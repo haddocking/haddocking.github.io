@@ -1,0 +1,85 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+{% include _head.html %}
+</head>
+
+<body class="page">
+
+{% include _browser-upgrade.html %}
+
+{% include _navigation.html %}
+
+{% if page.image.feature %}
+  <div class="image-wrap">
+  <img src=
+    {% if page.image.feature contains 'http' %}
+      "{{ page.image.feature }}"
+    {% else %}
+      "{{ site.url }}/images/{{ page.image.feature }}"
+    {% endif %}
+  alt="{{ page.title }} feature image">
+  {% if page.image.credit %}
+    <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
+  {% endif %}
+  </div><!-- /.image-wrap -->
+{% endif %}
+
+<div id="main" role="main">
+  <article class="people">
+    <h3>Current members</h3>
+    <ul class="rig columns-4">
+        {% for member in site.data.members %}
+            <li>
+                {% if member.avatar %}
+                    {% assign avatar = member.avatar %}
+                {% else %}
+                    {% assign avatar = '/images/people/bio-photo.jpg' %}
+                {% endif %}
+                
+                {% if member.url %}
+                <a href="{{ member.url }}" target="_blank">
+                    <img src="{{ avatar }}" />
+                </a>
+                {% else %}
+                    <img src="{{ avatar }}" />                
+                {% endif %}
+                <h3>{{ member.name }}</h3>
+                <a class='mem-position'>{{ member.position }}</a>
+                {% if member.bio %}
+                    <p class='mem-bio'>{{ member.bio }}</p>                
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <hr />
+    <h3>Past members</h3>
+    {% for alumn in site.data.alumni %}
+    <ul>
+    <li>
+        {% if alumn.url %}
+        <a href="{{ alumn.url }}" target="_blank" class="">
+            <p>{{ alumn.name }} ({{ alumn.current }})</p>
+        </a>
+        {% else %}
+            <p>{{ alumn.name }} ({{ alumn.current }})</p>
+        {% endif %}
+    </li>
+    </ul>
+    {% endfor %}
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    {% include _footer.html %}
+  </footer>
+</div><!-- /.footer-wrap -->
+
+{% include _scripts.html %}          
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Site wide configuration
+
+title:            Bonvin Lab
+locale:           en_US
+#url:              http://joaorodrigues.github.io
+
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+
+# Site owner
+owner:
+  name: Alexandre Bonvin
+  avatar: bio-haddock.png
+  bio: "Computational Structural Biology group focusing on dissecting, understanding and predicting biomolecular interactions at the molecular level."
+  email: a.m.j.j.bonvin@uu.nl
+  google:
+    analytics: 
+    verify: 
+    ad-client: 
+    ad-slot: 
+  github: haddocking
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "_utilities"]

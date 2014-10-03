@@ -1,0 +1,16 @@
+# Site navigation links
+
+- title: News
+  url: /news/
+
+- title: Research
+  url: /research/
+
+- title: Publications
+  url: /publications/
+
+- title: People
+  url: /people/
+
+- title: HADDOCK Web Server
+  url: http://haddocking.org
