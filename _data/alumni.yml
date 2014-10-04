@@ -1,50 +1,78 @@
 -   name: Marc van Dijk
     url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
-    current: 'VU, Amsterdam'
+    current: 'VU, Amsterdam, Netherlands'
 
 -   name: Adrien Melquiond
     url: http://www.hubrecht.eu/research/delaat/index.html
-    current: 'Hubrecht Institute, Utrecht'
+    current: 'Hubrecht Institute, Utrecht, Netherlands'
 
 -   name: Ezgi Karaca
     url: http://www.embl.de/research/units/scb/carlomagno/members/?s_personId=CP-60017810
-    current: 'EMBL, Heidelberg'
+    current: 'EMBL, Heidelberg, Germany'
 
 -   name: Panagiotis Kastritis
     url: http://www.embl.de/research/units/scb/beck/members/?s_personId=CP-60018094
-    current: 'EMBL, Heidelberg'
+    current: 'EMBL, Heidelberg, Germany'
 
 -   name: Charleen Don
     url: http://www.riniker.ethz.ch/people/charleen
-    current: 'ETH, Zurich'
+    current: 'ETH, Zurich, Switzerland'
 
 -   name: Koen Visscher
-    current: 'VU, Amsterdam'
+    current: 'VU, Amsterdam, Netherlands'
 
 -   name: Mikael Trellet
     url: http://www.limsi.fr/Annuaire/infos?id=trellet
-    current: 'CNRS-LIMSI, Paris'
+    current: 'CNRS-LIMSI, Paris, France'
 
 -   name: Christophe Schmitz
     url: http://nl.linkedin.com/in/cpfschmitz/en
-    current: 'Actian Corporation, Paris'
+    current: 'Actian Corporation, Paris, France'
 
 -   name: Nuno L. Ferreira
     url: http://www.egi.eu/about/people/Nuno_Ferreira.html
-    current: 'European Grid Initiative, Amsterdam'
+    current: 'European Grid Initiative, Amsterdam, Netherlands'
+
+-   name: Dirk Straatman
+    url: http://www.impmc.upmc.fr/~stratmann
+    current: 'Universite Pierre et Marie Curie (UPMC) - Paris VI, France'
 
 -   name: Sjoerd de Vries
     url: http://www.t38.ph.tum.de/index.php?id=38&type=98
-    current: 'TUM, Munich'
+    current: 'TUM, Munich, Germany'
 
 -   name: Tsjerk Wassenaar
     url: https://www.linkedin.com/in/tsjerkwassenaar
-    current: 'RUG, Groningen'
+    current: 'RUG, Groningen, Netherlands'
 
 -   name: Mickaël Krzeminski
     url: https://www.linkedin.com/in/mkrzemin
     current: 'Cyclica Inc., Canada'
 
+-   name: Christian Koehler
+    url: http://archive.igbmc.fr/recherche/Dep_BSG/Eq_BruKief/index_uk.html
+    current: 'IGBMC, Strasbourg, France'
+
+-   name: Alexey Neumoin
+    url: http://www.amway.com
+    current: 'Amway, Moscow, Russia'
+
+-   name: Aurelien Thureau
+    url: http://www.synchrotron-soleil.fr
+    current: Synchrotron Soleil, Paris, France
+
+-   name: Gloria Fuentes
+    url: http://www.bii.a-star.edu.sg
+    current: 'A-Star, Singapore'
+
 -   name: Aalt-Jan van Dijk
     url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
-    current: 'Wageningen UR, Wageningen'
+    current: 'Wageningen UR, Wageningen, Netherlands'
+
+-   name: Cyril Dominguez
+    url: http://www2.le.ac.uk/departments/biochemistry/staff/cyril-dominguez
+    current: 'Leicester University, UK'
+
+-   name: Thomas Stockner
+    url: http://www.meduniwien.ac.at/pharmakologie/stockner 
+    current: 'Medical University of Vienna, Austria'
