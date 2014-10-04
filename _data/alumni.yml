@@ -1,10 +1,14 @@
--   status: Visiting Professor
+-   status: Visiting Professors
     members:
         -   name: Jeff Grinstead
             url: http://webspace.pugetsound.edu/facultypages/jgrinstead/Grinstead/Homepage.html
             current: 'University of Puget Sound, WA, USA'
             
--   status: Postdoctoral Researcher
+        -   name: Victor Hsu 
+            url: http://biochem.science.oregonstate.edu/content/victor-hsu
+            current: 'Oregon State University, Corvallis OR, USA'
+            
+-   status: Postdoctoral Researchers
     members:
         -   name: Marc van Dijk
             url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
@@ -47,7 +51,7 @@
             current: 'A-Star, Singapore'
 
 
--   status: Ph.D Candidate
+-   status: Ph.D Candidates
     members:
         -   name: Ezgi Karaca
             url: http://www.embl.de/research/units/scb/carlomagno/members/?s_personId=CP-60017810
@@ -69,10 +73,6 @@
             url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
             current: 'Wageningen UR, Wageningen, Netherlands'
 
-        -   name: Leonardus M.I. Koharudin
-            url: http://scholar.google.com/citations?hl=en&user=7vO_FU0AAAAJ
-            current: 'University of Pittsburgh, USA'
-
         -   name: Danny S.-T. Hsu
             url: https://sites.google.com/site/hsushangte/
             current: 'Academia Sinica, Taiwan'
@@ -85,7 +85,7 @@
             url: http://www.meduniwien.ac.at/pharmakologie/stockner
             current: 'Medical University of Vienna, Austria'
 
--   status: 'M.Sc & B.Sc Student'
+-   status: 'M.Sc & B.Sc Students'
     members:
     -   name: Annin Ramsing
         url: www.linkedin.com/pub/annin-ramsing/91/15/527
@@ -93,10 +93,17 @@
         
     -   name: Charleen Don
         url: http://www.riniker.ethz.ch/people/charleen
-        current: 'ETH, Zurich'
+        current: 'ETH, Zurich, Switzerland'
 
     -   name: Koen Visscher
-        current: 'VU, Amsterdam'
+        current: 'VU, Amsterdam, Netherlands'
+
+    -   name: Manisha Anandbahadour
+        current: 'ABN-AMRO, Netherlands'
+
+    -   name: Gijs van der Schot
+        url: http://katalog.uu.se/empinfo/?id=N11-1085
+        current: 'Uppsala University, Sweden'
 
     -   name: Mikael Trellet
         url: http://www.limsi.fr/Annuaire/infos?id=trellet
