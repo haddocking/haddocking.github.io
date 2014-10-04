@@ -1,78 +1,106 @@
--   name: Marc van Dijk
-    url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
-    current: 'VU, Amsterdam, Netherlands'
+-   status: Visiting Professor
+    members:
+        -   name: Jeff Grinstead
+            url: http://webspace.pugetsound.edu/facultypages/jgrinstead/Grinstead/Homepage.html
+            current: 'University of Puget Sound, WA, USA'
+            
+-   status: Postdoctoral Researcher
+    members:
+        -   name: Marc van Dijk
+            url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
+            current: 'VU, Amsterdam'
 
--   name: Adrien Melquiond
-    url: http://www.hubrecht.eu/research/delaat/index.html
-    current: 'Hubrecht Institute, Utrecht, Netherlands'
+        -   name: Adrien Melquiond
+            url: http://www.hubrecht.eu/research/delaat/index.html
+            current: 'Hubrecht Institute, Utrecht'
 
--   name: Ezgi Karaca
-    url: http://www.embl.de/research/units/scb/carlomagno/members/?s_personId=CP-60017810
-    current: 'EMBL, Heidelberg, Germany'
+        -   name: Christophe Schmitz
+            url: http://nl.linkedin.com/in/cpfschmitz/en
+            current: 'Actian Corporation, Paris'
 
--   name: Panagiotis Kastritis
-    url: http://www.embl.de/research/units/scb/beck/members/?s_personId=CP-60018094
-    current: 'EMBL, Heidelberg, Germany'
+        -   name: Dirk Straatman
+            url: http://www.impmc.upmc.fr/~stratmann
+            current: 'Universite Pierre et Marie Curie (UPMC) - Paris VI, France'
 
--   name: Charleen Don
-    url: http://www.riniker.ethz.ch/people/charleen
-    current: 'ETH, Zurich, Switzerland'
+        -   name: Nuno L. Ferreira
+            url: http://www.egi.eu/about/people/Nuno_Ferreira.html
+            current: 'European Grid Initiative, Amsterdam'
 
--   name: Koen Visscher
-    current: 'VU, Amsterdam, Netherlands'
+        -   name: Tsjerk Wassenaar
+            url: https://www.linkedin.com/in/tsjerkwassenaar
+            current: 'RUG, Groningen'
 
--   name: Mikael Trellet
-    url: http://www.limsi.fr/Annuaire/infos?id=trellet
-    current: 'CNRS-LIMSI, Paris, France'
+        -   name: Christian Koehler
+            url: http://archive.igbmc.fr/recherche/Dep_BSG/Eq_BruKief/index_uk.html
+            current: 'IGBMC, Strasbourg, France'
 
--   name: Christophe Schmitz
-    url: http://nl.linkedin.com/in/cpfschmitz/en
-    current: 'Actian Corporation, Paris, France'
+        -   name: Alexey Neumoin
+            url: http://www.amway.com
+            current: 'Amway, Moscow, Russia'
 
--   name: Nuno L. Ferreira
-    url: http://www.egi.eu/about/people/Nuno_Ferreira.html
-    current: 'European Grid Initiative, Amsterdam, Netherlands'
+        -   name: Aurelien Thureau
+            url: http://www.synchrotron-soleil.fr
+            current: Synchrotron Soleil, Paris, France
 
--   name: Dirk Straatman
-    url: http://www.impmc.upmc.fr/~stratmann
-    current: 'Universite Pierre et Marie Curie (UPMC) - Paris VI, France'
+        -   name: Gloria Fuentes
+            url: http://www.bii.a-star.edu.sg
+            current: 'A-Star, Singapore'
 
--   name: Sjoerd de Vries
-    url: http://www.t38.ph.tum.de/index.php?id=38&type=98
-    current: 'TUM, Munich, Germany'
 
--   name: Tsjerk Wassenaar
-    url: https://www.linkedin.com/in/tsjerkwassenaar
-    current: 'RUG, Groningen, Netherlands'
+-   status: Ph.D Candidate
+    members:
+        -   name: Ezgi Karaca
+            url: http://www.embl.de/research/units/scb/carlomagno/members/?s_personId=CP-60017810
+            current: 'EMBL, Heidelberg'
 
--   name: Mickaël Krzeminski
-    url: https://www.linkedin.com/in/mkrzemin
-    current: 'Cyclica Inc., Canada'
+        -   name: Panagiotis Kastritis
+            url: http://www.embl.de/research/units/scb/beck/members/?s_personId=CP-60018094
+            current: 'EMBL, Heidelberg'
+        
+        -   name: Sjoerd de Vries
+            url: http://www.t38.ph.tum.de/index.php?id=38&type=98
+            current: 'TUM, Munich, Germany'
 
--   name: Christian Koehler
-    url: http://archive.igbmc.fr/recherche/Dep_BSG/Eq_BruKief/index_uk.html
-    current: 'IGBMC, Strasbourg, France'
+        -   name: Mickaël Krzeminski
+            url: https://www.linkedin.com/in/mkrzemin
+            current: 'Cyclica Inc., Canada'
 
--   name: Alexey Neumoin
-    url: http://www.amway.com
-    current: 'Amway, Moscow, Russia'
+        -   name: Aalt-Jan van Dijk
+            url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
+            current: 'Wageningen UR, Wageningen, Netherlands'
 
--   name: Aurelien Thureau
-    url: http://www.synchrotron-soleil.fr
-    current: Synchrotron Soleil, Paris, France
+        -   name: Leonardus M.I. Koharudin
+            url: http://scholar.google.com/citations?hl=en&user=7vO_FU0AAAAJ
+            current: 'University of Pittsburgh, USA'
 
--   name: Gloria Fuentes
-    url: http://www.bii.a-star.edu.sg
-    current: 'A-Star, Singapore'
+        -   name: Danny S.-T. Hsu
+            url: https://sites.google.com/site/hsushangte/
+            current: 'Academia Sinica, Taiwan'
 
--   name: Aalt-Jan van Dijk
-    url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
-    current: 'Wageningen UR, Wageningen, Netherlands'
+        -   name: Cyril Dominguez
+            url: http://www2.le.ac.uk/departments/biochemistry/staff/cyril-dominguez
+            current: 'Leicester University, UK'
 
--   name: Cyril Dominguez
-    url: http://www2.le.ac.uk/departments/biochemistry/staff/cyril-dominguez
-    current: 'Leicester University, UK'
+        -   name: Thomas Stockner
+            url: http://www.meduniwien.ac.at/pharmakologie/stockner
+            current: 'Medical University of Vienna, Austria'
 
--   name: Thomas Stockner
-    url: http://www.meduniwien.ac.at/pharmakologie/stockner 
-    current: 'Medical University of Vienna, Austria'
+-   status: 'M.Sc & B.Sc Student'
+    members:
+    -   name: Annin Ramsing
+        url: www.linkedin.com/pub/annin-ramsing/91/15/527
+        current: 'Tatsuno-shi, Hyogo, Japan'
+        
+    -   name: Charleen Don
+        url: http://www.riniker.ethz.ch/people/charleen
+        current: 'ETH, Zurich'
+
+    -   name: Koen Visscher
+        current: 'VU, Amsterdam'
+
+    -   name: Mikael Trellet
+        url: http://www.limsi.fr/Annuaire/infos?id=trellet
+        current: 'CNRS-LIMSI, Paris'
+
+-   status: Other
+    members:
