@@ -57,18 +57,23 @@
     </ul>
     <hr />
     <h3>Past members</h3>
-    {% for alumn in site.data.alumni %}
-    <ul>
-    <li>
-        {% if alumn.url %}
-        <a href="{{ alumn.url }}" target="_blank" class="">
-            <p>{{ alumn.name }} ({{ alumn.current }})</p>
-        </a>
-        {% else %}
-            <p>{{ alumn.name }} ({{ alumn.current }})</p>
+    {% for category in site.data.alumni %}
+        {% if category.members %}
+            <h5> {{ category.status }} </h5>
+            {% for alumn in category.members %}
+                <ul>
+                    <li>
+                        {% if alumn.url %}
+                        <a href="{{ alumn.url }}" target="_blank" class="">
+                            <p>{{ alumn.name }} ({{ alumn.current }})</p>
+                        </a>
+                        {% else %}
+                            <p>{{ alumn.name }} ({{ alumn.current }})</p>
+                        {% endif %}
+                    </li>
+                </ul>
+            {% endfor %}    
         {% endif %}
-    </li>
-    </ul>
     {% endfor %}
   </article>
 </div><!-- /#index -->
