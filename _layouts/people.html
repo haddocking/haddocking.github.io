@@ -57,7 +57,7 @@
     </ul>
     <hr />
     <h3>Past members</h3>
-    {% for category in site.data.alumni %}
+    <!-- {% for category in site.data.alumni %}
         {% if category.members %}
             <h5> {{ category.status }} </h5>
             {% for alumn in category.members %}
@@ -72,8 +72,34 @@
                         {% endif %}
                     </li>
                 </ul>
-            {% endfor %}    
+            {% endfor %}
         {% endif %}
+    {% endfor %} -->
+
+    {% for alumn in site.data.alumni %}
+    <ul>
+        <li>
+            {% if alumn.url %}
+            <a href="{{ alumn.url }}" target="_blank" class="">
+                <p>
+                    {{ alumn.name }} ({{ alumn.current }})
+                    {% assign statuses = alumn.status | split:',' %}
+                    {% for stat in statuses %}
+                        <a class="btn btn-{{ stat }}">{{ stat | split:'-' | join:' ' | capitalize }}</a>
+                    {% endfor %}
+                </p>
+            </a>
+            {% else %}
+                <p>
+                    {{ alumn.name }} ({{ alumn.current }})
+                    {% assign statuses = alumn.status | split:',' %}
+                    {% for stat in statuses %}
+                        <a class="btn btn-{{ stat }}">{{ stat | split:'-' | join:' ' | capitalize }}</a>
+                    {% endfor %}
+                </p>
+            {% endif %}
+        </li>
+    </ul>
     {% endfor %}
   </article>
 </div><!-- /#index -->

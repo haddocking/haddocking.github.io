@@ -1,113 +1,138 @@
--   status: Visiting Professors
-    members:
-        -   name: Jeff Grinstead
-            url: http://webspace.pugetsound.edu/facultypages/jgrinstead/Grinstead/Homepage.html
-            current: 'University of Puget Sound, WA, USA'
-            
-        -   name: Victor Hsu 
-            url: http://biochem.science.oregonstate.edu/content/victor-hsu
-            current: 'Oregon State University, Corvallis OR, USA'
-            
--   status: Postdoctoral Researchers
-    members:
-        -   name: Marc van Dijk
-            url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
-            current: 'VU, Amsterdam'
+#
+# 1. Careful with indentation
+#
+# 2. Supported statuses:
+#   visiting-professor
+#   postdoc
+#   phd
+#   student
+#
+# 3. You can add several statuses separated by commas and between quotes: e.g. 'a,b,c'
 
-        -   name: Adrien Melquiond
-            url: http://www.hubrecht.eu/research/delaat/index.html
-            current: 'Hubrecht Institute, Utrecht'
+-   name: Jeff Grinstead
+    url: http://webspace.pugetsound.edu/facultypages/jgrinstead/Grinstead/Homepage.html
+    current: 'University of Puget Sound, WA, USA'
+    status: visiting-professor
+    
+-   name: Victor Hsu 
+    url: http://biochem.science.oregonstate.edu/content/victor-hsu
+    current: 'Oregon State University, Corvallis OR, USA'
+    status: visiting-professor
+    
+-   name: Marc van Dijk
+    url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
+    current: 'VU, Amsterdam'
+    status: 'student,phd,postdoc'
+    
+-   name: Adrien Melquiond
+    url: http://www.hubrecht.eu/research/delaat/index.html
+    current: 'Hubrecht Institute, Utrecht'
+    status: postdoc
 
-        -   name: Christophe Schmitz
-            url: http://nl.linkedin.com/in/cpfschmitz/en
-            current: 'Actian Corporation, Paris'
+-   name: Christophe Schmitz
+    url: http://nl.linkedin.com/in/cpfschmitz/en
+    current: 'Actian Corporation, Paris'
+    status: postdoc
 
-        -   name: Dirk Straatman
-            url: http://www.impmc.upmc.fr/~stratmann
-            current: 'Universite Pierre et Marie Curie (UPMC) - Paris VI, France'
+-   name: Dirk Straatman
+    url: http://www.impmc.upmc.fr/~stratmann
+    current: 'Universite Pierre et Marie Curie (UPMC) - Paris VI, France'
+    status: postdoc
 
-        -   name: Nuno L. Ferreira
-            url: http://www.egi.eu/about/people/Nuno_Ferreira.html
-            current: 'European Grid Initiative, Amsterdam'
+-   name: Nuno L. Ferreira
+    url: http://www.egi.eu/about/people/Nuno_Ferreira.html
+    current: 'European Grid Initiative, Amsterdam'
+    status: postdoc
 
-        -   name: Tsjerk Wassenaar
-            url: https://www.linkedin.com/in/tsjerkwassenaar
-            current: 'RUG, Groningen'
+-   name: Tsjerk Wassenaar
+    url: https://www.linkedin.com/in/tsjerkwassenaar
+    current: 'RUG, Groningen'
+    status: postdoc
 
-        -   name: Christian Koehler
-            url: http://archive.igbmc.fr/recherche/Dep_BSG/Eq_BruKief/index_uk.html
-            current: 'IGBMC, Strasbourg, France'
+-   name: Christian Koehler
+    url: http://archive.igbmc.fr/recherche/Dep_BSG/Eq_BruKief/index_uk.html
+    current: 'IGBMC, Strasbourg, France'
+    status: postdoc
 
-        -   name: Alexey Neumoin
-            url: http://www.amway.com
-            current: 'Amway, Moscow, Russia'
+-   name: Alexey Neumoin
+    url: http://www.amway.com
+    current: 'Amway, Moscow, Russia'
+    status: postdoc
 
-        -   name: Aurelien Thureau
-            url: http://www.synchrotron-soleil.fr
-            current: Synchrotron Soleil, Paris, France
+-   name: Aurelien Thureau
+    url: http://www.synchrotron-soleil.fr
+    current: Synchrotron Soleil, Paris, France
+    status: postdoc
 
-        -   name: Gloria Fuentes
-            url: http://www.bii.a-star.edu.sg
-            current: 'A-Star, Singapore'
+-   name: Gloria Fuentes
+    url: http://www.bii.a-star.edu.sg
+    current: 'A-Star, Singapore'
+    status: postdoc
 
+-   name: Ezgi Karaca
+    url: http://www.embl.de/research/units/scb/carlomagno/members/?s_personId=CP-60017810
+    current: 'EMBL, Heidelberg'
+    status: phd
 
--   status: Ph.D Candidates
-    members:
-        -   name: Ezgi Karaca
-            url: http://www.embl.de/research/units/scb/carlomagno/members/?s_personId=CP-60017810
-            current: 'EMBL, Heidelberg'
+-   name: Panagiotis Kastritis
+    url: http://www.embl.de/research/units/scb/beck/members/?s_personId=CP-60018094
+    current: 'EMBL, Heidelberg'
+    status: 'phd,postdoc'
 
-        -   name: Panagiotis Kastritis
-            url: http://www.embl.de/research/units/scb/beck/members/?s_personId=CP-60018094
-            current: 'EMBL, Heidelberg'
-        
-        -   name: Sjoerd de Vries
-            url: http://www.t38.ph.tum.de/index.php?id=38&type=98
-            current: 'TUM, Munich, Germany'
+-   name: Sjoerd de Vries
+    url: http://www.t38.ph.tum.de/index.php?id=38&type=98
+    current: 'TUM, Munich, Germany'
+    status: 'student,phd'
+    
+-   name: Mickaël Krzeminski
+    url: https://www.linkedin.com/in/mkrzemin
+    current: 'Cyclica Inc., Canada'
+    status: phd
 
-        -   name: Mickaël Krzeminski
-            url: https://www.linkedin.com/in/mkrzemin
-            current: 'Cyclica Inc., Canada'
+-   name: Aalt-Jan van Dijk
+    url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
+    current: 'Wageningen UR, Wageningen, Netherlands'
+    status: phd
+    
+-   name: Danny S.-T. Hsu
+    url: https://sites.google.com/site/hsushangte/
+    current: 'Academia Sinica, Taiwan'
+    status: phd
+    
+-   name: Cyril Dominguez
+    url: http://www2.le.ac.uk/departments/biochemistry/staff/cyril-dominguez
+    current: 'Leicester University, UK'
+    status: phd
+    
+-   name: Thomas Stockner
+    url: http://www.meduniwien.ac.at/pharmakologie/stockner
+    current: 'Medical University of Vienna, Austria'
+    status: phd
+    
+-   name: Annin Ramsing
+    url: www.linkedin.com/pub/annin-ramsing/91/15/527
+    current: 'Tatsuno-shi, Hyogo, Japan'
+    status: student
 
-        -   name: Aalt-Jan van Dijk
-            url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
-            current: 'Wageningen UR, Wageningen, Netherlands'
-
-        -   name: Danny S.-T. Hsu
-            url: https://sites.google.com/site/hsushangte/
-            current: 'Academia Sinica, Taiwan'
-
-        -   name: Cyril Dominguez
-            url: http://www2.le.ac.uk/departments/biochemistry/staff/cyril-dominguez
-            current: 'Leicester University, UK'
-
-        -   name: Thomas Stockner
-            url: http://www.meduniwien.ac.at/pharmakologie/stockner
-            current: 'Medical University of Vienna, Austria'
-
--   status: 'M.Sc & B.Sc Students'
-    members:
-    -   name: Annin Ramsing
-        url: www.linkedin.com/pub/annin-ramsing/91/15/527
-        current: 'Tatsuno-shi, Hyogo, Japan'
-        
-    -   name: Charleen Don
-        url: http://www.riniker.ethz.ch/people/charleen
-        current: 'ETH, Zurich, Switzerland'
-
-    -   name: Koen Visscher
-        current: 'VU, Amsterdam, Netherlands'
-
-    -   name: Manisha Anandbahadour
-        current: 'ABN-AMRO, Netherlands'
-
-    -   name: Gijs van der Schot
-        url: http://katalog.uu.se/empinfo/?id=N11-1085
-        current: 'Uppsala University, Sweden'
-
-    -   name: Mikael Trellet
-        url: http://www.limsi.fr/Annuaire/infos?id=trellet
-        current: 'CNRS-LIMSI, Paris'
-
--   status: Other
-    members:
+-   name: Charleen Don
+    url: http://www.riniker.ethz.ch/people/charleen
+    current: 'ETH, Zurich, Switzerland'
+    status: student
+    
+-   name: Koen Visscher
+    current: 'VU, Amsterdam, Netherlands'
+    status: student
+    
+-   name: Manisha Anandbahadour
+    current: 'ABN-AMRO, Netherlands'
+    status: student
+    
+-   name: Gijs van der Schot
+    url: http://katalog.uu.se/empinfo/?id=N11-1085
+    current: 'Uppsala University, Sweden'
+    status: student
+    
+-   name: Mikael Trellet
+    url: http://www.limsi.fr/Annuaire/infos?id=trellet
+    current: 'CNRS-LIMSI, Paris'
+    status: student
