@@ -568,7 +568,7 @@ $button-size: 1.5rem;
 	h5,
 	h6,
 	span { 
-		@include font-rem(14);
+		@include font-rem(12);
 	}
 	footer {
 		@include grid(12,10);
