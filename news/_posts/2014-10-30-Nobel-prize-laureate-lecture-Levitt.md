@@ -1,14 +1,18 @@
 ---
 layout: page
-tags: [HADDOCK, EVFold, Co-Evolution, Docking, Integrative Modeling, Bioinformatics, Harvard University, Utrecht University]
+tags: [HADDOCK, Nobel Prize, Levitt, Molecular Modelling, Stanford University, Utrecht University]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 excerpt: 'Lecture Chemistry Nobel Prize laureate Michael Levitt - Utrecht, December 11th'
 image:
-  feature: posts/banner_once-upon-a-time-two-proteins.jpg
+  feature: pages/banner_home.jpg
 ---
-Last year's Nobel Prize laureate in chemistry Michael Levitt, professor of Structural Biology of Stanford University, will give a lecture at Utrecht University on December 11th at 16.00 hrs. Together with the two other laureates, he successfully developed methods that combined quantum and classical mechanics to calculate the courses of chemical reactions using computers. In his lecture he will describe the origins of computational structural biology and then go on to show some of the most exciting current and future applications. Levitt is in Utrecht because he is member of the PhD defence committee of Joao Rodrigues (Computational Structural Biology (NMR))
+Last year's Nobel Prize laureate in chemistry Michael Levitt, professor of Structural Biology of Stanford University, will give a lecture at Utrecht University on December 11th at 16.00 hrs. Together with the two other laureates, he successfully developed methods that combined quantum and classical mechanics to calculate the courses of chemical reactions using computers. In his lecture he will describe the origins of computational structural biology and then go on to show some of the most exciting current and future applications. Levitt is in Utrecht because he is member of the PhD defence committee of Joao Rodrigues (Computational Structural Biology - NMR).
 When he was awarded the Nobel Prize, Levitt said the award recognised him for work he had done when he was 20, before he even had his PhD. *"It was just me being in the right place at the right time and maybe having a few good ideas."* He added it was nice to see that computational science, computational biology is being recognized. *"It has become a very large field and it's always in some ways been the poor sister, or the ugly sister, to experimental biology."*
+
+<figure>
+    <img src="/images/posts/MichaelLevitt_1.jpg">
+</figure>
 
 ### Post-prize ambitions
 Levitt's diverse interests have included RNA and DNA modeling, protein folding simulation, classification of protein folds and protein geometry, antibody modeling, X-ray refinement, antibody humanization, side-chain geometry, torsional normal mode, molecular dynamics in solution, secondary structure prediction, aromatic hydrogen bonds, structure databases, and mass spectrometry. His current postdocs work on protein evolution, the crystallographic phase problem and Cryo-EM refinement. Also he still is an active programmer.
@@ -21,7 +25,7 @@ He went back to Israel as an EMBO postdoc. There, collaboration with fellow Nobe
 ### Lecture
 * *Title*: Birth and future of multi-scale modelling of macromolecules
 * *Date and time*: Thursday 11 December, 16.00 hrs
-* *Location*: Boothzaal, Universiteitsbibliotheek, De Uithof, Heidelberglaan 3, Utrecht
+* *Location*: [Boothzaal](http://www.cs.uu.nl/docs/reach/booth), Universiteitsbibliotheek, De Uithof, Heidelberglaan 3, Utrecht
 * *Attendance*: free but registration desirable at science.secr.nmr@uu.nl.
 * *More information*: Prof. Alexandre Bonvin, a.m.j.j.bonvin@uu.nl.
 
