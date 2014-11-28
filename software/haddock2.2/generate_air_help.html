@@ -1,0 +1,363 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_research-mini.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1>
+
+<H2 align=right><FONT COLOR=RED>A</FONT>mbiguous 
+		<FONT COLOR=RED>I</FONT>nteraction 
+		<FONT COLOR=RED>R</FONT>estraints 
+		(<FONT COLOR=RED>AIR</FONT>s)</H2>
+<hr>
+<li><a href="#general">General</a>
+<li><a href="#predictions">Use of bioinformatic interface predictions</a>
+<li><a href="#ranair">Random AIR definition (ab-initio mode)</a>
+<li><a href="#surf">Surface contact restraints</a>
+<li><a href="#cm">Center of mass restraints</a>
+<li><a href="#CSP">Use of NMR chemical shift perturbation data</a>
+<BR>
+<hr>
+<BR>
+<A NAME="general"><u><B>General:</B></u></A>
+<BR>
+<BR>
+Before starting HADDOCK, <FONT COLOR=RED>A</FONT COLOR=RED>mbiguous 
+<FONT COLOR=RED>I</FONT COLOR=RED>nteraction <FONT COLOR=RED>R</FONT COLOR=RED>estraints 
+(<FONT COLOR=RED>AIR</FONT COLOR=RED>s)
+should be generated. For this, it is important to define the 
+residues at the interface for each molecule based on NMR chemical shift 
+perturbation data, mutagenesis data or any kind of data that provides information on the 
+interaction interface.
+<BR>
+In the definition of those residues, one distinguishes between <B><I>"active"</I></B> 
+and <B><I>"passive"</I></B> residues.<BR>
+<UL>
+    <LI> The <B><I>"active"</I></B> residues are those experimentally identified 
+    to be involved in the interaction between the two molecules <B>AND</B> solvent 
+    accessible (either main chain or side chain relative accessibility 
+    should be typically > 40-50%).
+    <p>
+    <ul><b><I>Note</I></b> that the accessibility cutoff is not a hard limit. You
+    should carefully check the identity of the residues at the interface and possibly include
+    residues with lower accessibility if they carry potentially important functional groups.
+    </ul>
+    <P>
+    <LI> The <B><I>"passive"</I></B> residues are all solvent accessible surface 
+    neighbors of active residues.
+</UL>
+<BR>
+<B><I>Note</I></B> that the active and passive residues have to be defined by 
+    the users based on their own interpretation of the experimental data, especially in the case 
+    of NMR titration data. One way to interpret the significance of the shift is to calculate the 
+    average perturbation and to consider that all perturbations higher than the average are 
+    significant.
+<BR>
+<BR>
+Once you have defined your active and passive residues,
+<ul>
+    <li> go to the <A HREF="http://www.nmr.chem.uu.nl/haddock/">HADDOCK home page</A> 
+        (http://www.nmr.chem.uu.nl/haddock/)
+    <BR>
+    <BR>
+    <li> select "project setup" and click on "Generate AIR restraint file"
+    <BR>
+    <BR>
+    <li> Enter the residue numbers corresponding to the active and passive residues for each molecule.
+    <BR>
+    <BR>
+    <li> Define the upper distance limit for AIRs (maximum distance between any 
+        atom of an active residue of one molecule to any atom of an active or passive residue of the 
+        second molecule). 
+    <BR>
+    <BR>
+    <B><I>Note</I></B> that the current upper distance limit default value is 2A, which might seem quite 
+        short, BUT remember that the effective distance d<sub>eff</sub> will always be shorter than the shortest 
+        distance entering the sum: 
+        <br>
+        <br>
+        <ul>d<sub>eff</sub>=[Sum(1/r<sup>6</sup>)]<sup>1/6</sup> </ul>
+        <br>
+        In addition since the degree of ambiguity is very high (several thousands distances can enter the sum), 
+        the effective distance can be quite shorter than the shortest distance entering the sum!!!
+    <BR>
+    <BR>
+    <li> Finally, click on generate AIR restraints. An AIR restraint file in CNS format is generated.
+        Use "copy and paste" or save the generate AIR restraints to disk using "file save as".
+</ul>
+<hr>
+<BR>
+<A NAME="predictions"><U><B>Use of bioinformatic interface predictions:</B></U></A>
+<BR>
+<BR>
+In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction softwares called
+<a href="http://www.nmr.chem.uu.nl/whiscy">WHISCY</a> and <a href="http://haddock.science.uu.nl/services/CPORT">CPORT</a>. They has been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. <p>
+For more information refer to:
+<BR>
+<ul>
+<li>S.J. de Vries, A.D.J. van Dijk and A.M.J.J. Bonvin<br>
+"<A HREF="http://dx.doi.org/doi:10.1002/prot.20842">WHISCY: WHat Information does Surface Conservation Yield? Application to data-driven docking.</A>"<BR>
+<EM>Proteins: Struc. Funct. & Bioinformatics</EM>, <STRONG>63</STRONG>, 479-489 (2006).
+<BR>
+<li>S.J. de Vries and A.M.J.J. Bonvin<br>
+"<A HREF="http://dx.doi.org/doi:10.1371/journal.pone.0017695">CPORT: a Consensus Interface Predictor and its Performance in Prediction-driven Docking with HADDOCK.</a>"<BR>
+<EM>PlosONE</EM>, <STRONG>6</STRONG> e17695 (2011).
+</ul>
+<hr>
+<BR>
+<A NAME="ranair"><U><B>Random AIR definition (ab-initio mode):</B></U></A>
+<BR>
+<BR>
+In the absence of any experimental and/or bioinformatic information to drive the docking, HADDOCK 2.x now offers
+the possibility to randomly define AIRs from solvent accessible residues (>20% relative accessibility). 
+For each docking trial another set of AIRs will be used. These restraints are defined in the <i>randomairs.cns</i> CNS script.
+<BR>
+<BR>
+The sampling of residues is limited to the defined semi-flexible segments (<i>nseg_X</i> and following parameters in
+<a href="run.html">run.cns</a>). If no semi-flexible segment is defined, then all solvent accessible residues will be sampled (provided enough structures are generated in the rigid-body docking stage (it0)). By defining semi-flexible segments in combination with random AIR definition (<i>ranair=true</i> in <a href="run.html">run.cns</a>), it is possible to limit the sampling to a selected region of the surface (e.g. the CDR loops in an antibody-antigen complex).
+<BR>
+<BR>
+The random AIRs are defined (in the <i>randomairs.cns</i> CNS script) as follow (<u>only for the rigid-body energy minimization stage</u>):
+<ol>
+    <li> One residue on each molecule is selected randomly (Ai,Bi)
+    <p>
+    <li> All surface neighbors within 5A are also selected
+    <p>
+    <li> AIRs are defined between each residue selected from molecule A (Ai + 5A neighbors) and 
+         the first residue randomly selected from molecule B and all its surface neighbors within 
+         a 7.5A cutoff (Bi + 7.5A neighbors)
+    <p>
+    <li> AIRs are defined between each residue selected from molecule B (Bi + 5A neighbors) and 
+         the first residue randomly selected from molecule A and all its surface neighbors within 
+         a 7.5A cutoff (Ai + 7.5A neighbors)
+</ol>
+AIRs are thus defined from a 5A radius patch randomly selected from one molecule to a 7.5A radius patch randomly selected on the second molecule and vice-versa. The selected residues are written to disk in <i><b>structures/it0</i></b> as <i>fileroot_1.disp,...</i>.
+<BR>
+<BR>
+For the semi-flexible refinement stage, contact AIRs are automatically defined between all residues 
+within 5A across the interface. In the final explicit solvent refinement, no AIR restraints will be defined.
+<br>
+<b><li><i>Note1:</i></b> To ensure a thorough sampling of the surface, the number of structures generated at the
+                    rigid-body stage (it0) should be increased (e.g. 10000), depending on the extent of the surface 
+                    to be sampled.
+<p>
+<b><li><i>Note2:</i></b> The use of random AIRs is not compatible with other distance restraints (including unambiguous and hydrogen bond restraints).
+<BR>
+<hr>
+<BR>
+<A NAME="surf"><U><B>Surface contact restraints:</B></U></A>
+<BR>
+<BR>
+Surface contact restraints between the various molecules can be automatically defined in HADDOCK 2.x (<i>surfrest=true</i> in <a href="run.html">run.cns</a>). These restraints are defined in the <i>surf-restraint.cns</i> CNS script. 
+This option is fully compatible with all other types of restraints. 
+<p>
+If turned on, one surface contact restraint will be defined between each molecule as an ambiguous distance 
+restraint <u>with sum averaging</u> (as for the AIRs) between all CA or P atoms (protein and/or DNA) of one molecule 
+and all CA or P atoms of the other molecule. If less than 3 CA and P atoms are found, all atoms will be selected
+instead. The upper distance limit is set to either 7A (both molecules contain CA and/or P atoms) or 4.5A (only 
+one molecule contains CA and/or P atoms) or 2A (no molecule contains CA and/or P atoms). 
+<p>
+<br>
+Such restraints can be useful in multi-body (N>2) docking to ensure that all molecules are in contact and thus 
+promote compactness of the docking solutions. As for the <a href="ranair">random AIRs</a>, surface contact 
+restraints can be used in ab-initio docking; in such a case it is important to have enough sampling of 
+the random starting orientations and this significantly increases the number of structures for rigid-body docking.
+<BR>
+<hr>
+<BR>
+<A NAME="cm"><U><B>Center of mass restraints:</B></U></A>
+<BR>
+<BR>
+Center of mass restraints between the various molecules can be automatically defined in HADDOCK 2.x (<i>cmrest=true</i> in <a href="run.html">run.cns</a>). These restraints are defined in the <i>cm-restraint.cns</i> CNS script. 
+This option is fully compatible with all other types of restraints. 
+<p>
+If turned on, one center of mass restraint will be defined between each molecule as an ambiguous distance 
+restraint <u>with center averaging</u> between all CA or P atoms (protein and/or DNA) of one molecule 
+and all CA or P atoms of the other molecule. If less than 3 CA and P atoms are found, all atoms will be selected
+instead. The upper distance limit is automatically defined as the sum of the "effective radius" of each molecule. 
+The "effective radius" is defined as half the average length of the three principal components. 
+<br>
+Such restraints can be useful in multi-body (N>2) docking to ensure that all molecules are in contact and thus 
+promote compactness of the docking solutions. As for the <a href="ranair">random AIRs</a>, center of mass 
+restraints can be used in ab-initio docking; in such a case it is important to have enough sampling of 
+the random starting orientations and this increase significantly the number of structures for rigid-body docking.
+<br>
+<hr>
+<BR>
+<A NAME="CSP"><U><B>Use of NMR chemical shift perturbation data:</B></U></A>
+<BR>
+<BR>
+We will here illustrate the process of defining AIRs in the case of NMR 
+chemical shift perturbation data (CSP) describing the following steps:
+<UL>
+    <LI> <A HREF="#define">Defining residues with <I>"significant"</I> 
+    chemical shift perturbations</A>
+    <LI> <A HREF="#filter">Filtering active residues with solvent 
+accessibility</A>
+    <LI> <A HREF="#passive">Defining passive residues</A>
+    <LI> <A HREF="#ensemble">Residue filtering from an ensemble of 
+structures</A>
+    <LI> <A HREF="#generate">Generating the AIR restraint file</A>
+</UL>
+<BR>
+<BR>
+<B>1.</B> <A NAME="define"><B><U>Defining residues with <I>"significant"</I> 
+chemical shift perturbations</U></B></A>
+<BR>
+We will assume that we have a file called <i>csp.dat</I> containing the 
+combined proton/nitrogen chemical shift changes as obtained from 15N HSQC titration 
+experiments in the following format:
+<PRE>
+    1 0.0
+    2 0.0
+    3 0.06
+    4 0.3
+    ...
+</PRE>
+The first column corresponds to the residue number and the second to the 
+combined chemical shift perturbation.
+<BR>
+HADDOCK comes with a number of awk,csh and perl scripts to handle and analyze 
+data. To calculate the average perturbation use the average.perl script 
+located in $HADDOCKTOOLS (see <A HREF="installation.html">installation</A>). 
+The following command will give you the average of the second column of the above file:
+<PRE>
+    awk '{print $2}' csp.dat | $HADDOCKTOOLS/average.perl
+</PRE>
+Select then all residues that have a combined chemical shift perturbation 
+larger than for example the average value <i>avcsp</i>:
+<PRE>
+   awk '{if ($2>avcsp) print $0}' csp.dat
+</PRE>
+This will list you all the residues selected.
+<BR>
+The next step consists of filtering those residues according to their 
+solvent accessibility.
+<br>
+<br>
+<B>2.</B> <A NAME="filter"><B><U>Filtering active residues with solvent 
+accessibility </U></B></A>
+<BR>
+An important parameter in defining AIRs consists of the relative residue 
+solvent accessibility.  It can be calculated with the program 
+<A HREF="http://wolf.bms.umist.ac.uk/naccess">NACCESS</A> 
+(see <A HREF="software.html">software links</A>).<P> NACCESS will output 
+a file with extension <I>.rsa</I> containing the per- residue solvent 
+accessibilities divided into various classes:
+<PRE> <FONT SIZE=-2>
+    REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
+    REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
+    RES MET     1   125.45  64.6  75.64  48.3  49.81 132.8  75.64  47.9  49.81 137.1
+    RES PHE     2    83.49  41.9  83.49  50.9   0.00   0.0  83.49  50.5   0.00   0.0
+    RES GLN     3    79.31  44.4  62.27  44.2  17.04  45.4  17.75  34.0  61.56  48.7
+    RES GLN     4    83.82  47.0  83.82  59.4   0.00   0.0  15.03  28.8  68.79  54.5
+    RES GLU     5   133.48  77.5 100.65  74.7  32.83  87.5  34.78  57.7  98.70  88.2
+    RES VAL     6    20.78  13.7  20.78  18.2   0.00   0.0  20.78  18.0   0.00   0.0
+    ...  
+</PRE> </FONT SIZE=-2>
+Only the high solvent accessible amino acids should be selected. The selection 
+can be done either on the all-atoms accessibilities (e.g. >40%) using the following command 
+at the Unix prompt:
+<PRE>
+    awk '{if (NF==13 && $5>40) print $0; if (NF==14 && $6>40) print $0}' pdb_filename.rsa
+</PRE>
+or by requesting that either the main-chain or the side-chain relative 
+accessibility be larger than 50%:
+<PRE>
+    awk '{if (NF==13 && ($7>40 || $9>40)) print $0; if (NF==14 && ($8>40 || $10>40)) print $0}' pdb_filename.rsa
+</PRE>
+By combining the experimental data (mutagenesis or chemical shift perturbation) and the solvent 
+accessibility, you should be able to define precisely the active residues to use in HADDOCK.
+<BR>
+<BR>
+<B>3.</B> <A NAME="passive"><B><U>Defining passive residues</U></B></A>
+<BR>
+The passive residues are all solvent accessible surface neighbors of active 
+residues. To define them you can display your molecule in space-filling model 
+(<A HREF="http://www.umass.edu/microbio/rasmol">rasmol</A> will do) and color the active 
+residues for example in red.
+<TABLE>
+<TR>
+<TD colspan=1 align="left" WIDTH=25%><img src=hpr-csp-filtered.gif align="center"></TD>
+<TD colspan=1 align="justify">
+Then, filter out the residues having a low solvent accessibility (colored yellow in the figure).
+</TD>
+</TR>
+<TR>
+<TD colspan=1 align="left" WIDTH=25%><img src=hpr-passive.gif alt=" " align="center"></TD>
+<TD colspan=1 align="justify">
+Select then all surface neighbors to define the passive residues (colored green in the figure)
+</TD>
+</TR>
+<TR>
+<TD colspan=1 align="left" WIDTH=25%><img src=hpr-passive-filtered.gif alt=" " align="center"></TD>
+<TD colspan=1 align="justify"> 
+and filter them with the solvent accessibility criterion (see above).
+</TD>
+</TR>
+</TABLE>
+<LI><B><I>Note:</I></B> If you are using an ensemble of structures as the starting point, you should use the
+    average solvent accessibility to filter your active and passive residues (see <A HREF="#ensemble">below</A>).
+</LI>
+<BR>
+<BR>
+<B>4.</B> <A NAME="ensemble"><B><U>Residue filtering from an ensemble of structures</U></B></A>
+<BR>
+If you perform the docking from an ensemble of structures, the solvent accessibility filtering
+should be performed using the average relative accessibilities ASAav over the 
+ensemble. In such a case we are using the following accessibility cut-off:
+<br>
+<UL> <B>ASAav + SD > 40%</B> (for either all or main-chain or side-chain atoms)</UL>
+<br>
+where SD corresponds to the standard deviation. 
+<br>
+We are providing in the $HADDOCKTOOLS directory a csh script called <I>calc_ave_asa.csh</I> 
+that will allow you to calculate the average accessibilities from an ensemble 
+of structures using <A HREF="http://wolf.bms.umist.ac.uk/naccess">NACCESS</A>.
+<br>
+To do so, you should split your pdb file into different files containing each 
+one structure and then use <I>calc_ave_rsa.csh</I>:
+<PRE>
+    $HADDOCKTOOLS/calc_ave_rsa.csh *.pdb
+</PRE>
+A file named <I>"rsa_ave.lis"</I> will be created that contains the average 
+solvent accessibility and the standard deviation for each residue:
+<PRE> <FONT SIZE=-2>
+    # resnam resnum < rsa_all > (sd) < rsa_back > (sd) < rsa_side > (sd)
+    MET      1  69.323   10.370  125.390   13.626   55.903   12.599
+    PHE      2  37.490    5.216    0.320    0.753   45.500    6.390
+    GLN      3  53.793    8.246   50.147   14.108   54.770   10.873
+    GLN      4  40.907    5.578    0.070    0.306   51.757    7.042
+    GLU      5  70.330    6.312   68.017   15.608   70.963    7.614
+    VAL      6  16.183    4.345    0.133    0.483   21.397    5.791
+    ...
+</PRE> </FONT SIZE=-2>
+To select the residues that satisfy the 40% accessibility cut-off type:
+<PRE>
+    awk '{if (($5+$6)>=40 || ($7+$8)>=40) print $0}' rsa_ave.lis
+</PRE>
+<B><I>Note</I></B> that the 40% cut-off is not a hard limit and is left to 
+    the user choice.
+<BR>
+<BR>
+<B>5.</B> <A NAME="generate"><B><U>Generating the AIR restraints file</U></B></A>
+<BR>
+Once you have defined your active and passive residues, go to the 
+<A HREF="http://www.nmr.chem.uu.nl/haddock/">HADDOCK home page</A><BR> 
+(http://www.nmr.chem.uu.nl/haddock/), select project setup and click on "Generate AIR restraint file"
+<BR>
+Enter the residue numbers corresponding to the active and passive residues for each molecule.
+<BR>
+<BR>
+You can define the upper distance limit for AIRs (maximum distance between any 
+atom of an active residue of one molecule to any atom of an active or passive residues of the 
+second molecule).
+<BR>
+<BR>
+click on generate AIR restraints. An AIR restraint file in CNS format is generated.
+Use "copy and paste" or save the generate AIR restraints to disk using "file save as".
+<hr>

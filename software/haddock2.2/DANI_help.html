@@ -1,0 +1,131 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_research-mini.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1>
+
+<H2 align=right><FONT COLOR=RED>U</FONT>sing 
+		<FONT COLOR=RED>D</FONT>iffusion 
+		<FONT COLOR=RED>A</FONT>nisotropy 
+		<FONT COLOR=RED>D</FONT>ata
+</H2>
+
+<HR>
+Diffusion anisotropy data (relaxation data) can provide useful information on the orientation of the
+molecules to be docked (comparable to RDCs). They can be introduced in HADDOCK as direct restraints
+(DANI statement in CNS).
+<BR>
+For this, the tensor components need first to be determined. In the case of complexes, this
+can be easily done by using the known structures of the single domains. The software
+<a href="http://www.ibs.fr/ext/labos/LRMN/softs/">Tensor2</a> 
+(Dosset, Marion and Blackledge (2000). <i>J. Biomol. NMR</i> <b>16</b>, 23-28) can 
+be used for this purpose.
+<BR>
+<BR>
+You need for this to generate a <a href="http://www.ibs.fr/ext/labos/LRMN/softs/tensor/TENSORV2_DOC/Practice.html#prac3">
+Tensor2 input file</a> containing your relaxation data.
+<BR>
+<BR>
+A csh script called <i>ana_pdb_tensor2.csh</i> is provided in the 
+<b>haddock/DANItools</b> directory that will calculate from the experimental
+relaxation data the tensor parameters for all PDB files present in the 
+current directory by best-fitting the data to the
+corresponding 3D structures.
+<BR>
+<BR>
+Usage:
+<BR>
+<BR>
+<pre>
+   $HADDOCK/DANItools/ana_pdb_tensor2.csh tensor2.inp
+</pre>
+<BR>
+Note that you have to define the fitting options in the tensor2 GUI manually. Tensor2 writes its output
+for each structure to a file called <i>resaniso.0</i>; each of these are moved to a subdirectory with directory name
+equal to the corresponding pdb file.
+<BR>
+<BR>
+The script extracts the tensor parameters Dx, Dy and Dz and the chi2-value of the fit; these can be combined with the 
+following command:
+<BR>
+<BR>
+<pre>
+    paste D?_all.tmp chi2_all.tmp | awk '{print $1,$8,$16,$24,$27*100/100}' | sort -n +4 > tensor2_fit.lis
+</pre>
+<BR>
+The components from the structure giving the best fit to the 
+experimental data can be used to calculate the tensor parameters that are needed in run.cns with the 
+script <i>calc_tens.csh</i> (provided in the <b>haddock/DANItools</b> directory).
+<BR>
+<BR>
+Usage:
+<BR>
+<BR>
+<pre>
+    $HADDOCK/DANItools/calc_tens.csh dx dy dz
+</pre>
+<BR>
+Where dx, dy and dz are the values from the file <i>tensor2_fit.lis</i>.
+The output of <i>calc_tens.csh</i> can be used directly in run.cns as <i>dan1_tc</i>,
+<i>dan1_anis</i> and <i>dan1_r</i>, the rotational correlation time, anisotropy and rhombicity of the
+rotational diffusion tensor, respectively.
+Alternatively, average values could be used; these can be calculated with:
+<BR>
+<BR>
+<pre>
+   cat tensor2_fit.lis | awk '{print $2}' | $HADDOCKTOOLS/average.perl
+   cat tensor2_fit.lis | awk '{print $3}' | $HADDOCKTOOLS/average.perl
+   cat tensor2_fit.lis | awk '{print $4}' | $HADDOCKTOOLS/average.perl
+</pre>
+<BR>
+Check the values in tensor2_fit.lis to make sure they match (e.g. same sign) 
+before averaging them. Also make sure that an anisotropic model is in accordance with your data.
+<BR>
+<BR>
+<a name="dani"><b><u> Use of relaxation data as restraints for docking</u></b></a>
+<BR>
+<BR>
+The proper format for DANI restraints is the following:
+<BR>
+<BR>
+<pre>
+assi ( resid 999 and name OO )
+     ( resid 999 and name Z  )
+     ( resid 999 and name X  )
+     ( resid 999 and name Y  )
+     ( resid   20 and name N and segid A )
+     ( resid   20 and name HN and segid A )   8.705   0.200
+</pre>
+<BR>
+The restraints use the R2/R1 value; one should filter out residues where chemical exchange or mobility influences these values.
+Given a file containing <i>residue_number R2/R1value</i> and <i>Segid</i> a DANI
+restraint file in CNS format can be generated with the gawk script 
+<i>generate_dani</i> provided in the <b>HADDOCK/DANItools</b> directory:
+<BR>
+<BR>
+<pre>
+    $HADDOCK/DANItools/generate_dani dani_data_file
+</pre>
+<BR>
+The error on the R2/R1 values is set by default to 0.2. This can be overruled by
+giving the error value as argument:
+<BR>
+<BR>
+<pre>
+    $HADDOCK/DANItools/generate_dani ERR=0.5 dani_data_file
+</pre>
+<BR>
+The 2.2 version of HADDOCK supports up to 5 different DANI restraints sets. Each can have a separate tensor. 
+The tensor residue number should be in the range 999-995. You can edit and modify the <i>generate_dani</i> script to change the tensor number.
+To use DANI restraints in HADDOCK, use <i>DANI</i> in <a href="run.html#dani">run.cns</a>
+in the diffusion anisotropy section and define the proper tensor parameters that are output by the <i>calc_tens.csh</i> script. 
+
+The DANI restraints are first used in the 
+<a href="docking.html#mini">rigid body energy minimization step</a> using
+as force constant the value defined for the hot phase.
+<HR>
