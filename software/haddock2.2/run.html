@@ -1,0 +1,770 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 
+comments: false
+image:
+  feature: pages/banner_research-mini.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1> 
+
+<H2 align=right><FONT COLOR=RED>R</FONT>un.cns</H2>
+
+<HR>
+The <b>run.cns</b> file contains all the parameters to run the docking. 
+You need to edit this file to define a number of project-specific parameters
+such as the number of structures to generate at the various stages, which restraints
+to use for docking and various parameters governing the docking and scoring. Many parameters have
+default values which you do not need to change unless you want to experiment. 
+<BR><BR>
+Using a web browser, go to the project setup section of the HADDOCK home-page 
+(<A target=new HREF="http://www.bonvinlab.org/software/haddock2.2/haddock-start.html">http://www.bonvinlab.org/software/haddock2.2/haddock-start.html</a>)
+, enter the path of your <b>run.cns</b> file and click on <b>"edit file"</b>.
+<BR><BR>
+The <b>run.cns</b> is divided into several sections that will be detailed in the
+following:
+<ol>
+    <li><a href="#nummol">Number of molecules for docking</a>
+	<li><a href="#names">Filenames</a>
+	<li><a href="#histidines">Definition of the protonation state of histidines</a>
+	<li><a href="#interface">Definition of the semi-flexible interface</a>
+	<li><a href="#flex">Definition of fully flexible segments</a>
+	<li><a href="#sym">Symmetry restraints</a>
+	<li><a href="#disre">Distance restraints</a>
+	<li><a href="#rgre">Radius of gyration restraint</a>
+	<li><a href="#dna">DNA/RNA restraints</a>
+	<li><a href="#dihre">Dihedral angle restraints</a>
+	<li><a href="#karplus">Karplus coupling restraints</a>
+	<li><a href="#dipo">Residual dipolar couplings</a>
+        <li><a href="#pcs">Pseudo contact shifts</a>
+	<li><a href="#dani">Diffusion anisotropy restraints</a>
+	<li><a href="#topo">Topology and parameters files</a>
+	<li><a href="#param">Energy and interaction parameters</a>
+	<li><a href="#numstruc">Number of structures to dock</a>
+	<li><a href="#dock">DOCKING protocol</a>
+	<li><a href="#solvdock">Solvated docking</a>
+	<li><a href="#water">Final explicit solvent refinement</a>
+	<li><a href="#scoring">Scoring</a>
+	<li><a href="#anal">Analysis and clustering</a>
+	<li><a href="#clean">Cleaning</a>
+	<li><a href="#jobs">Parallels jobs</a>
+</ol>
+<BR>
+<hr>
+<BR>
+<a name="nummol"><b>1. <u>Number of molecules for docking</u></b></a>
+<BR><BR>
+here you have to specify the number of molecules for docking. HADDOCK version 2.0 and higher 
+currently supports up to six separate molecules, thus allowing multi-body (N>=2) docking. This
+should be set automatically by HADDOCK from the number defined in 
+<i><b><a href="start_new_help.html">new.html</a></b></i>.
+<BR>
+<UL><b><i>Note:</i></b> You can even specify only one molecule. This will no longer be called docking, but it
+   allows to use HADDOCK for refinement purpose instead.
+</UL>
+<hr>
+<BR>
+<a name="names"><b>2. <u>Filenames</u></b></a> <a href="filenames.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+This section consist of all the files that will be used for the docking. 
+If the <i><b>new.html</b></i> file has been set up properly, most fields will be set correctly.
+The only thing you might want to change is the name of the current project which is used as
+as rootname for all files. 
+<BR><BR>
+If one of the molecules is DNA (<i>and not RNA!</i>), set the DNA flag to true. This is needed since the
+building blocks in the DNA/RNA topology file correspond to RNA. When DNA is set to <i>true</i>, a patch will
+be applied to remove 2' hydroxyl groups.
+<BR><BR>
+Also check that the HADDOCK directory, defining the path to the HADDOCK programs, is correct.
+<BR><BR>
+<ul>
+    <b>Note 1:</b> Do not change the name of the input PDB file otherwise it will not be found by HADDOCK (this
+                file corresponds to the one you previously defined in <i><b>new.html</i></b>.
+    <BR><BR>
+    <b>Note 2:</b> Do not use similar names for the various molecules and the name of the current project.
+</ul>
+<hr>
+<BR>
+<a name="histidines"><b>3. <u>Definition of the protonation state of histidines</u></b></a> <a href="histidines.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+By default, all histidines are protonated and thus carry a net positive charge. In this
+section you can specify the protonation state of histidines for each protein. A neutral
+histidine can exist in two forms:
+<ul>
+   <li> HISD: the imino proton is attached to the ND1 nitrogen
+   <li> HISE: the imino proton is attached to the NE2 nitrogen
+</ul>
+It is important that you take time to think about the possible protonation state of histidines when present since
+a charge difference of +/- 1 can make quite some difference in the docking results. If no information is available
+on the pH of the solution and/or the pka of your histidines, one reasonable option is to use 
+<b><a href="http://www.cmbi.kun.nl/whatif/">WhatIF</a></b> to generate the protons on your molecule and check what
+choices were made for the protonation state of the various histidines. For this purpose you can use the 
+<a target=new href="http://www.cmbi.kun.nl/gv/servers/WIWWWI/">WhatIF web server</a>.
+<BR>
+<hr>
+<BR>
+<a name="interface"><b>4. <u>Definition of the semi-flexible interface</u></b></a> <a href="interface.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+HADDOCK performs a semi-flexible simulated annealing (SA). Here you have to 
+define the residues that will be allowed to move during the SA. 
+<BR><BR>
+In HADDOCK 2.X, you have two options:
+<BR><BR>
+<li> Manual definition of the semi-flexible segments
+<li> Automated mode (default)
+<BR><BR><BR>
+<i><u>Manual definition of the semi-flexible segments</u></i><BR><BR>
+Usually we define as <b>flexible residues</b> all <b>active and 
+passive residues +/- 2 sequential residues</b>. 
+<BR><BR>
+For each molecule, enter the number of flexible segments and then 
+the starting and ending residue of each segment.
+<BR><BR>
+<ul><b><i>Note</i></b> that the maximum number of segments is 10 for each 
+       molecule. To add more segments, edit the run.cns file (See the <a href="faq.html#segments">FAQ</a> section).
+</ul>
+<BR>
+<i><u>Automated mode (default)</u></i><BR><BR>
+HADDOCK 2.X offers the possibility to automatically define the semi-flexible residues. This is done automatically
+for each structure by selecting all residues that make intermolecular contacts within a 5A cutoff. You can change this
+cutoff value by editing the <i>flexauto.cns</i> CNS script in the <i><b>protocols</b></i> directory.
+<BR><BR>
+To turn on the automated mode, the number of segments should be a negative number (default: -1). Since HADDOCK2.X also
+allows to randomly define ambiguous interaction restraints from the defined semi-flexible segments (see the
+<a href="#disre">distance restraints</a> section below), this number could also be larger (e.g. -3 to define three segments from which to randomly define AIRs. As long as the number is negative, the semi-flexible residues will
+be defined automatically.
+<BR>
+<hr>
+<BR>
+<a name="flex"><b>5. <u>Definition of fully flexible segments</u></b></a> <a href="flexible.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+HADDOCK allows the definition of fully flexible segments for each molecule. 
+These will be fully flexible throughout the entire docking protocol except for the rigid body minimization
+(see <a href="docking.html"> the docking</a> section).
+<BR><BR>
+For each molecule, enter the number of fully flexible segments 
+and then the starting and ending residue of each segment.
+<BR><BR>
+<ul><b><i>Note</i></b> that the maximum number of fully flexible segments 
+       is 5 for each molecule. To add more segments, edit the run.cns file 
+       (See the <a href="faq.html#segments">FAQ</a> section)..
+</ul>
+<hr>
+<BR>
+<a name="sym"><b>6. <u>Symmetry restraints</u></b></a>
+<BR><BR>
+This section allows to define two types of restraints to enforce symmetry either within or between molecules:
+<ul>
+    <li> non-crystallographic symmetry restraints (NCS)
+    <li> C2, C3, S3, C4 and C5 symmetry restraints
+</ul> 
+<BR>
+<u><i>Non-crystallographic symmetry restraints (NCS)</i></u> <a href="ncs.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+The NCS option imposes non-crystallographic symmetry restraints: it enforces that two molecules, a fraction thereof or even two sub-domains within the same molecule should be identical without defining any symmetry operation between them.
+<BR><BR>
+HADDOCK 2.X allows to define up to five pairs for which NCS restraints will be applied. The syntax is fully flexible since start and end residues can be defined together with the molecule SEGID. In that way both intermolecular and intra-molecular NCS restraints can be defined. 
+<BR><BR>
+<ul>
+    <b>Note:</b> Since all atoms will be used for the definition of NCS restraints, it is important the NCS
+                pairs contain exactly the same number of atoms.
+</ul>
+<BR>
+<u><i>C2, C3, S3, C4 and C5 symmetry restraints</i></u> <a href="symmetry.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+HADDOCK 2.X offers the possibility to define multiple symmetry relationships within or in between molecules. This is done by using symmetry distance restraints (Nilges 1993). Symmetry distance restraints are a special class in CNS:
+for each restraint two distances are specified which are required to remain equal during the calculations, irrespective
+of the actual distance. They can be defined in CNS as:
+<pre>
+noe 
+    class symm
+    assign (resid 1 and name CA  and segid A)
+            (resid 50 and name CA  and segid B) 0 0 0
+    assign (resid 1 and name CA  and segid B)
+            (resid 50 and name CA  and segid A) 0 0 0
+end
+noe
+   potential  symm symmetry
+end
+</pre>
+By defining multiple pairs of distances between the CA atoms of two chains, C2 symmetry can be enforced. 
+<BR><BR>
+This can be easily extended to higher symmetries by defining multiple pairs of symmetry restraints:
+<ul>
+    <li> for C3, one can define three pairs of distances that should be equal:</li>
+        <BR>
+        <ul> A-B = B-C, B-C = C-A and C-A = A-B</ul>
+        <BR>
+    <li> C5 symmetry can be enforced by defining five pairs:</li>
+        <BR>
+        <ul> A-C = A-D, B-D = B-E, C-E = C-A, D-A = D-B and E-B = E-C</ul>
+        <BR>
+</ul>
+HADDOCK will automatically define the symmetry restraints based of the segments defined in <i>run.cns</i> (this is
+done in the <i>symmultimer.cns</i> CNS script). Currently
+10 C2 pairs, 2 C3 triplets, 4 S3 tiplet, 2 C4 quaduple and 1 C5 quintuplet can be defined.
+<BR><BR>
+<ul>
+    <b>Note:</b> By combining multiple symmetry restraints is is possible to enforce other symmetries. 
+            For example D2 symmetry in a tetramer can be defined by imposing six C2 symmetry pairs: 
+            A-B, B-C, C-D, D-A, A-C and B-D.
+</ul>
+<hr>
+<BR>
+<a name="disre"><b>7. <u>Distance restraints</u></b></a> <a href="distances.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+<u><i>Ambiguous (AIRs) and unambigous distance restraints</i></u><BR><BR>
+Ambiguous (AIRs) and unambigous distance restraints specified in <i>new.html</i> will always be read. 
+In this section, however, you can specify the stage of the docking protocol at which a given
+type of distance restraint will be used for the first and last time:
+<ul>
+<li>0: rigid body EM (it0)
+<li>1: semi-flexible simulated annealing (SA) (it1)
+<li>2: explicit solvent refinement (water)
+</ul>
+You should also specify the force constants for the various stages of the 
+docking protocol:
+<ul>
+<li><i>hot</i>: high temperature rigid body dynamics
+<li><i>cool1</i>: first rigid body slow cooling SA
+<li><i>cool2</i>: second slow cooling SA with flexible side-chains at interface
+<li><i>cool3</i>: third slow cooling SA with flexible side-chains and backbone at interface
+</ul>
+The force constants in the various stages are scaled from the previous to the current value, e.g.
+from the <i>cool1</i> to the <i>cool2</i> value in the second simulated annealing. For the explicit
+solvent refinement the value of <i>cool3</i> will be used.
+<BR><BR>
+<u><i>Random removal of AIRs</i></u>
+<BR><BR>
+HADDOCK offer the possibility to randomly remove a fraction of the AIRs (only active on the ambiguous interaction 
+restraints defined in <i>ambig.tbl</i> for each docking trial. This option is particularly useful when the
+accuracy of the AIRs is questionable since by random removal bad restraints could be discarded, allowing 
+for better docking solutions.
+<BR><BR>
+To enable random removal of restraints, set <i>noecv</i> to <i>true</i> and define the number of sets into which the AIRs will be partitioned; one set will be randomly discarded. By setting for example the number of partitions 
+(<i>npart</i>) to 2, 50% of the AIRs will be discarded for each docking trial; for <i>npart=4</i> 25% of the AIRs
+will be randomly discarded.
+<BR><BR>
+<u><i>Hydrogen bond restraints</i></u>
+<BR><BR>
+Define here if you want to use hydrogen bond restraints. The restraint file should have been specified in
+<i>new.html</i>.
+<BR><BR>
+<u><i>Random interaction restraints definition</i></u>
+<BR><BR>
+Define here if you want to randomly define interaction restraints (AIRs) from solvent accessible residues. 
+The sampling will be done from the defined <a href="#interface">semi-flexible segments</a>. To sample the entire
+surface, define the entire sequence as semi-flexible and use the <a href="run.cns#interface">automated 
+semi-flexible segment</a> definition to limit the amount of flexibility to the interface region. 
+For more details see the <a href="generate_air_help.html#ranair">AIR restraints</a> section of the online manual.
+<BR><BR>
+Random AIRs are only active during the rigid body stage of the <a href="docking.html">docking</a> protocol. For the <a href="docking.html#sa">semi-flexible refinement</a>, one AIR will be automatically defined between all residues 
+within 5A from another molecule. No AIRs will be active during the final <a href="docking.html#water">explicit
+solvent refinement</a>.
+<ul>
+    <b>Note1:</b> Random AIRs are exclusive with ambiguous, unambigous and hydrogen bond restraints defined in
+                <i>new.html</i>. They can however be combined with surface and center of mass restraints (see below).
+</ul>
+<u><i>Center of mass restraints</i></u>
+<BR><BR>
+Define here if you want to use <a href="generate_air_help.html#cm">center of mass restraints</a> and specify the corresponding force constant. Can be useful in combination with random interaction restraints definition (see above).
+<BR><BR>
+<u><i>Surface contact restraints</i></u>
+<BR><BR>
+Define here if you want to use <a href="generate_air_help.html#surf">surface contact restraints</a> and specify the corresponding force constant. This can be useful in combination with random interaction restraints definition (see above).
+<BR><BR>
+<u><i>Automatic weighting of distance restraints</i></u><BR><BR>
+Also available is an option to automatically adjust the force constant
+of the distance restraints (sum of distance and AIRs) to balance the 
+distance restraint energy with the sum of the force field energy terms
+(bonds, angles, dihedrals, electrostatic and van der Waals) such as the 
+ratio of force field energy versus distance restraint energy is equal to 2.
+For this you need to specify the number of distance and AIR restraints.
+The automatic scaling option will not appear when editing the <b>run.cns</b>
+file in a web browser. You will have to edit the file manually for this.
+<BR><BR>
+<ul><b><i>Note:</i></b> This option has not been thoroughly tested. An upper 
+       limit of 5000 is set for distance restraining force constant. For
+       more details have a look at the <i>set_noe_scale.cns</i> script in
+       the <i><b>protocols</b></i> directory.
+</ul>
+<hr>
+<BR>
+<a name="rgre"><b>8. <u>Radius of gyration restraint</u></b></a> <a href="rg.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+A radius of gyration distance restraint can be turned on here. It will be active throughout the entire protocol,
+but can be effectively turned off by setting the force constant for a given stage to 0. The radius of gyration should be entered in angstrom. By default it is applied to the entire system, but can be restricted to part of the system using standard CNS atom selections.
+<BR><BR>
+For example to limit it to chains B and C define:<BR>
+<ul>(segid B or segid C)</ul>
+<hr>
+<BR>
+<a name="dna"><b>9. <u>DNA/RNA restraints</u></b></a>
+<BR><BR>
+Define here if you want to use DNA/RNA restraints. To use such restraints, edit the <i>dna-rna-restraints.cns</i> file
+provided in the <i><b>protocols</b></i> directory (you can use the same mechanism for that as for editing the <i>run.cns</i> parameter file from the <a href="haddock-start.html">project setup</a> menu of HADDOCK), 
+adapt it to your particular case, and place it in the <i><b>data/sequence</b></i> directory. This file allows you to 
+define base-pair, backbone dihedral angle and sugar pucker restraints.
+<BR>
+<hr>
+<BR>
+<a name="dihre"><b>10. <u>Dihedrals</u></b></a> <a href="dihedrals.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+If dihedral angle restraints have been defined in the <b>new.html</b> file, 
+turn the flag <b>"use"</b> to true and specify the force constants for the 
+various stages of the semi-flexible simulated annealing (for water the value 
+of <i>cool3</i> will be used).
+<BR><BR>
+HADDOCK2.2 offer a new option to automatically dihedral angle restraints from the input structures. By default it is turned off, but you can specify to define dihedral angle restraints for the entire backbone, alpha-helices only or alpha-helices and beta-sheets. The secondary structure elements are defined based on a simple phi/psi dihedral angle criterion.
+<BR>
+<hr>
+<BR>
+<a name="karplus"><b>11. <u>Karplus coupling restraints</u></b></a>
+<BR><BR>
+You can specify in this section the Karplus coefficients and force constants for
+J-coupling restraints. This should directly be edited in the run.cns and will not
+show up in a browser window.
+<BR>
+<hr>
+<BR>
+<a name="dipo"><b>12. <u>Residual Dipolar couplings</u></b></a> <a href="RDCs.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+If RDC data are available and have been defined in the <b>new.html</b> file, 
+you can define them in this section. Five classes are supported. For each class you
+can specify the type of function:
+<BR><BR>
+<ul>
+	<li> SANI: direct refinement against the dipolar couplings (a tensor will be
+	     included in the structures calculations)<BR><BR>
+	<li> VANGLE: refinement using intervector projection angle restraints<br>
+	(<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract">Meiler et al. <i>J. Biomol. NMR</i> <b>17</b>, 185 (2000)</a>)
+</ul>
+<BR>
+You can specify the first and last stage at which the various RDCs will be used.
+<ul>
+<li>0: rigid body EM (it0)
+<li>1: semi-flexible simulated annealing (SA) (it1)
+<li>2: explicit solvent refinement (water)
+</ul>
+This option allows for example to combine VANGLE and SANI type restraints. Intervector projection
+angle restraints lead to better convergence in the first phase of the docking (0,1) while direct 
+RDC restraints can be used in the final explicit solvent refinement (2) to fine-tune the RDCs
+(see for details <A HREF="http://dx.doi.org/doi:10.1002/prot.20476">van Dijk <i>et al.</i>
+<EM>Proteins</EM>, <STRONG>60</STRONG>, 367-381 (2005)</a>).
+<BR><BR>
+For SANI Da (in Hz) and R (R=Dr/Da) should be specified. You should also specify the force 
+constants for the various stages of the docking protocol:
+<ul>
+<li><i>hot</i>: high temperature rigid body dynamics
+<li><i>cool1</i>: first rigid body slow cooling SA
+<li><i>cool2</i>: second slow cooling SA with flexible side-chains at interface
+<li><i>cool3</i>: third slow cooling SA with flexible side-chains and backbone at interface
+</ul>
+For more information on using RDC as restraints for docking see also the 
+<a href="RDC_help.html">RDC restraints</a> section of the online HADDOCK manual.
+<BR>
+<hr>
+<BR>
+<a name="pcs"><b>13. <u>Pseudo contact shifts</u></b></a> <a href="pcs.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+If pseudo contact shift data are available and have been defined in the <b>new.html</b> file, 
+you can define them in this section. Ten classes are supported. For each class you
+can specify the first and last stage at which the various RDCs will be used.
+<ul>
+<li>0: rigid body EM (it0)
+<li>1: semi-flexible simulated annealing (SA) (it1)
+<li>2: explicit solvent refinement (water)
+</ul>
+You should also specify the force constants for the various stages of the docking protocol:
+<ul>
+<li><i>hot</i>: high temperature rigid body dynamics
+<li><i>cool1</i>: first rigid body slow cooling SA
+<li><i>cool2</i>: second slow cooling SA with flexible side-chains at interface
+<li><i>cool3</i>: third slow cooling SA with flexible side-chains and backbone at interface
+</ul>
+and the tensor parameters R and D.
+<BR><BR>
+For more information on using diffusion anisotropy as restraints for docking see also the <a href="PCS_help.html">PCS restraints</a>section of the online HADDOCK manual. 
+Refer to the following publication for details of the implementation in HADDOCK:
+<ul>C. Schmitz and A.M.J.J. Bonvin<br>
+<a href="http://dx.doi.org/doi:10.1007/s10858-011-9514-4">Protein-Protein HADDocking using exclusively Pseudocontact Shifts.</a><BR>
+<em>J. Biomol. NMR</em>, <strong>50,</strong>, 263-266 (2011).
+</ul>
+<hr>
+<BR>
+<a name="dani"><b>14. <u>Diffusion anisotropy restraints</u></b></a> <a href="DANI.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+If <a href="DANI_help.html">diffusion anisotropy restraints (DANI)</a> (from <sup>15</sup>N relaxation measurements) 
+are available and have been defined in the <b>new.html</b> file, you can define them in this section. Five classes 
+are supported (e.g. for measurements at different fields). 
+<BR><BR>
+You can specify the first and last stage at which the various DANI restraint sets will be used.
+<ul>
+<li>0: rigid body EM (it0)
+<li>1: semi-flexible simulated annealing (SA) (it1)
+<li>2: explicit solvent refinement (water)
+</ul>
+For each DANI set, the correlation time (ns), Da (in Hz) and R (R=Dr/Da) should be specified, together with the proton
+and nitrogen 15 frequencies (MHz). You should also specify the force constants for the various stages of the docking 
+protocol:
+<ul>
+<li><i>hot</i>: high temperature rigid body dynamics
+<li><i>cool1</i>: first rigid body slow cooling SA
+<li><i>cool2</i>: second slow cooling SA with flexible side-chains at interface
+<li><i>cool3</i>: third slow cooling SA with flexible side-chains and backbone at interface
+</ul>
+For more information on using diffusion anisotropy as restraints for docking see also the 
+<a href="DANI_help.html">DANI restraints</a> section of the online HADDOCK manual. Their implementation
+in HADDOCK is described in <A HREF="http://dx.doi.org/doi:10.1007/s10858-006-0024-8">van Dijk <i>et al.</i>
+<EM>J. Biomol. NMR</EM>, <STRONG>34</STRONG>, 237-244 (2006)</a>.
+<BR>
+<hr>
+<BR>
+<a name="topo"><b>15. <u>Topology and parameters files</u></b></a> <a href="topology.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+In this section the topology, linkage and parameter files are specified for each molecule.
+The default values are for proteins using the improved parameters of 
+<a href="http://www3.interscience.wiley.com/cgi-bin/abstract/102523901/START">Linge et al. 2003</a>
+and OPLSX non-bonded parameters.
+<BR><BR>
+For dna use instead the <i>dna-rna-allatom.top</i>, <i>dna-rna-allatom.param</i> and
+<i>dna-rna.link</i> files in the <b>toppar</b> directory.
+<BR><BR>
+Also provided in the <b>toppar</b> directory in this version of HADDOCK are topologies 
+and parameters for heme groups.  See for this the <i>topallhdg.hemes</i> and 
+<i>parallhdg.hemes</i> files. An example of distance restraints to maintain non-covalently 
+attached heme in place is given in <i>metalcenter.tbl</i> in the <i><b>toppar</b></i> directory.
+<br><br>
+<i>topallhdg.hemes</i> also contains a number of patches to covalently attach the heme 
+group to CYS and HIS residues. These patches should be added manually to 
+the <i>generate_X.inp</i> when needed (an example is provided but currently commented out; search for heme in the file).  
+(These files were kindly provided by Gabriele Cavallaro, CERM Firenze).
+<BR><BR>
+Parameter and topology files for small ligands should be provided by the user and place in the <i><b>toppar</b></i>
+directory (see also the <a href="faq.html">FAQ</a> section of the online manual).
+<BR><BR>
+In this version of HADDOCK, ions should be automatically recognized provided their naming is consistent with
+what is defined in the <i>ion.top</i> topology file in the <i><b>toppar</b></i> directory. For the torsion angle
+dynamics part of the <a href="docking.html">docking protocol</a> (it1), a covalent bond will be automatically defined
+to the closest ligand atom (only for cations). This is done in the <i>covalions.cns</i> CNS script in the
+<i><b>protocols</b></i> directory; the following cations are currently defined: MG<sup>+2</sup>, CA<sup>+2</sup>, 
+FE<sup>+2</sup>, FE<sup>+3</sup>, NI<sup>+2</sup>, CO<sup>+2</sup>, CO<sup>+3</sup>, CU<sup>+1</sup>, CU<sup>+2</sup>
+and ZN<sup>+2</sup>. If your system contains other ions add them to the <i>covalions.cns</i> file
+(they should however be defined in <i>ion.top</i>).
+<BR>
+<hr>
+<BR>
+<a name="param"><b>16. <u>Energy and interaction parameters</u></b></a> <a href="energy.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+You can define in this section a number of parameters that control the electrostatic energy term 
+during the docking process, that allow you to scale down the intermolecular interactions and sample 180 degrees rotated
+solutions.
+<BR><BR>
+<u><i>Electrostatic treatment</i></u>
+<BR><BR>
+The electrostatic energy term can be turned on or off for the first two stages of the docking,
+namely the <a href="docking.html#mini">rigid body minimization</a>
+and the <a href="docking.html#sa">semi-flexible simulated annealing</a>. Two implementations
+are now supported to describe the solvent implicitly:
+<ul>
+<li> constant dielectric 
+<li> distance dependent dielectric
+</ul>
+The <i>epsilon</i> constant should be defined.
+<BR><BR>
+For the final stage, the <a href="docking.html#water">explicit solvent refinement</a>, 
+a constant dielectric with an epsilon equal to one is used by default.
+<BR><BR>
+<u><i>Scaling of intermolecular interactions</i></u><BR><BR>
+This section also allows you to specify scaling factors for the various stages of the docking:
+<ul>
+<li>rigid body EM
+<li>rigid body dynamic: high temperature and slow cooling SA rigid body dynamics
+<li>second slow cooling SA with flexible side-chains at interface
+<li>third slow cooling SA with flexible side-chains and backbone at interface
+</ul>
+These scaling factors only affect the intermolecular van der Waals and electrostatic energy terms. 
+<ul>
+    <b>Note:</b> It might be useful to scale down the intermolecular interactions during rigid-body 
+                docking in cases where a ligand has to penetrate in a deep and (partly) buried pocket
+                of a protein. A value of 0.01 should already be sufficient for this.
+</ul>
+<BR>
+<u><i>Interaction matrix for non-bonded interactions</i></u><a href="interaction-matrix.png"><img src=camera.gif alt="(screenshot)"></a><BR><BR>
+This is a new feature in HADDOCK2.2 which allows to scale down or turn off interactions between specific molecules. 
+It is useful for example in the context of ensemble-averaged docking where the distance restraints should be averaged over multiple binding poses.
+This option has been applied for example in ensemble-averaged docking of a peptide using PRE-derived distance restaints. See:
+<BR>
+<ul>
+E. Escobar-Cabrera, Okon, D.K.W. Lau, C.F. Dart, A.M.J.J. Bonvin and L.P. McIntosh<BR>
+<a href="http://dx.doi.org/doi:10.1074/jbc.M111.231647">Characterizing the N- and C-terminal SUMO interacting motifs of the scaffold protein DAXX.</a><BR>
+<em>J. Biol. Chem.</em>, <strong>286</strong>, 19816-19829 (2011).
+</ul>
+<hr>
+<BR>
+<a name="numstruc"><b>17. <u>Number of structures to dock</u></b></a> <a href="numstruc.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+The docking process is performed in three distinct steps:
+<ol>
+	<li> <a href="docking.html#mini">rigid body minimization</a> (it0)
+	<li> <a href="docking.html#sa">semi-flexible simulated annealing</a> (it1)
+	<li> <a href="docking.html#water">explicit solvent refinement</a> (water)
+</ol>
+You can define here the number of structures to generate in the first two steps and the number of 
+structures to analyze (for the explicit solvent refinement see <a href="#water">below</a>). 
+<BR><BR>
+<u><i>Sampling of 180 degrees-rotated solutions</i></u><BR><BR>
+This is a new option in HADDOCK 2.X that allows sampling of 180 degrees-rotated solutions at both the 
+<a href="docking.html#rigid">rigid-body</a> and <a href="docking.html#sa">semi-flexible</a> docking stages.
+If turned on (default for rigid-body stage), for each model generated, a 180 degree rotated solution will be
+generated automatically by HADDOCK and either energy minimized (rigid-body) or submitted to the semi-flexible
+refinement protocol (it1). The rotation axis is automatically defined from the vector connecting the center of 
+masses of the two interfaces, each interface being defined by all residues forming intermolecular contacts within
+5A (this cutoff is defined in the <i>rotation180.cns</i> CNS script in the <i><b>protocols</b></i> directory. 
+<BR><BR>
+Sampling of 180 degree rotated solutions in the rigid-body stage clearly improve the docking performance (unpublished
+data). If turned on during the semi-flexible refinement, both refined solutions will be written to disk, doubling the
+effective number of structures.
+<ul>
+    <b>Note1:</b> The sampling of 180 degree-rotated solutions in the semi-flexible refinement is not advised 
+                since it might lead to unrealistic structures (e.g. with knots!). If used, carefully check the
+                resulting structures for artifacts.
+</ul>
+<ul>
+    <b>Note2:</b> If <a href="#solvdock">solvated docking</a> is turned on, then the sampling of 180 degree-rotated
+                solutions will be automatically turned off during the calculations.
+</ul>
+<hr>
+<BR>
+<a name="dock"><b>18. <u>DOCKING protocol</u></b></a> <a href="docking.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+Here you can define parameters for the <a href="docking.html#mini">rigid-body</a> docking step (it0) if you want to:
+<ul>
+        <li> cross-dock all combinations in the ensembles of starting structures (should be turned off for example if you only want to perform water refinement of a preformed complex)
+	<li> randomize the starting orientations or not
+	<li> perform the rigid body minimization or not
+	<li> allow translation during the minimization (it can be useful to turn it off for docking highly 
+	       flexible small molecules (see the <a href="docking.html#mini">docking section of the online manual)).
+</ul>
+During the rigid body minimization you can define the <b>number of trials</b> for each 
+starting configuration. Only the best solution (according to your sorting criterion
+(see <a href="#scoring">scoring</a>)) will be kept. This option saves disk space, but the
+sorting scheme should be robust otherwise you might select out good solutions.
+This is typically a cheap step in terms of CPU requirements.
+<BR><BR>
+The next parameters govern the <a href="docking.html#sa">semi-flexible simulated annealing</a>
+protocol.  You can define the start and end temperatures and the number of integration steps for the
+various stages of the annealing protocol (see <a href="docking.html#sa">the docking</a> 
+section).
+<ul>
+    <b>Note:</b> If <a href="#solvdock">solvated docking</a> is turned on, then the number of MD steps for
+            the rigid body stages of the semi-flexible refinement (high temperature rigid-body TAD and slow
+            cooling annealing) will automatically be set to 0 during calculations.
+</ul>
+<hr>
+<BR>
+<a name="solvdock"><b>19. <u>Solvated docking</u></b></a> <a href="solvdock.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+In this section you can turn on solvated docking. If turned on, the initial structures will first be solvated in a shell of TIP3P water (only water molecules within 5.5 A of the protein will be kept). The rigid-body docking will thus be performed from solvated proteins. Two methods for dealing with interfacial waters are implemented:
+<BR>
+<ul>
+    <li> <b>database-based (db)</b> (<i>recommended upon restrained solvated docking</i> (see below)): interfacial
+            water molecules will be removed in a biased Monte Carlo 
+            process until a user-defined fraction of water remain. This process can make use of two different propensity scales:
+            <ul>
+              <li> propensities of finding water-mediated contacts between amino-acid pairs defined from a <i>statistical analysis of high-resolution 
+                   crystal structures</i>. The water-mediated contact propensities can be found in the <i>db_statistical.dat</i> CNS
+                   script in the <i><b>protocols</b></i> directory.<BR><BR>
+                For details see:<BR><BR>
+                <ul>A.D.J. van Dijk and A.M.J.J. Bonvin. 
+                "<A HREF="http://dx.doi.org/doi:10.1093/bioinformatics/btl395">Solvated docking: introducing water 
+                into the modelling of biomolecular complexes.</a>" <EM>Bioinformatics</EM>,  <STRONG>22</STRONG> 2340-2347 (2006).
+                </ul>
+              </li>
+              <BR><BR>
+              <li> propensities of finding water-mediated contacts between amino-acid pairs defined from the <i>Kyte-Doolittle hydrophobicity scale</i>. 
+                   The corresponding water-mediated contact propensities can be found in the <i>db_kyte-doolittle.dat</i> CNS
+                   script in the <i><b>protocols</b></i> directory.<BR><BR>
+                For details see: 
+                <ul>P.L. Kastritis, K.M. Visscher, A.D.J. van Dijk and A.M.J.J. Bonvin
+                <A HREF="http://dx.doi.org/doi:10.1002/prot.24210">Solvated docking using Kyte-Doolittle-based water propensities.</a> 
+                <EM>Proteins: Struc. Funct. & Bioinformatic</EM>, <STRONG>81</STRONG>, 510-518 (2013).
+                </ul>
+              </li>
+            </ul> 
+        <BR>
+        An important parameter to be defined for database-solvated docking is the <b>fraction of interfacial water</b>
+        to be kept after the Monte Carlo removal process. This is currently set to 50% based on our analysis of 
+        water-mediated contacts. New in HADDOCK2.2, this percentage can now be defined separately for nucleic acids (currently 75%).
+        This is coming from the observation that nucleic acids show typically higher solvation. For details regarding nucleic acids solvated docking see:
+        <ul>
+                M. van Dijk, K. Visscher, P.L. Kastritis and A.M.J.J. Bonvin.<br>
+                <a href="http://dx.doi.org/doi:10.1007/s10858-013-9734-x">Solvated protein-DNA docking using HADDOCK.</a><br>
+                <em>J. Biomol. NMR</em>, <strong>56</strong>, 51-63 (2013).
+        </ul>
+        <BR>
+        Note that typically less than that (or even none) of the water molecules will be kept 
+        since an energy cut-off is applied after the Monte Carlo water removal step: all waters with unfavorable
+        interaction energies (Evdw+Eelec>0) are removed. In some cases, this allows all interfacial 
+        waters to be removed at the end. The energy cutoff is defined in the <i>db1.cns</i> CNS script in the 
+        <i><b>protocols</b></i> directory.
+        <BR><BR>
+        <br>
+    <li> <b>restrained solvating (restraints)</b>: in this approach, water molecules are restrained to be at proximity
+            of amino-acids found to form the most water-mediated contacts (arg, asn, asp, gln, glu, his, lys, pro,
+            ser, thr and tyr). This is done by defining ambiguous distance restraints between each water and highly 
+            solvated amino-acids on both side on an interface. <i><b>Note that this method has not been 
+            thoroughly tested</i></b>.
+            <BR><BR>
+            If <i>restrained solvating</i> is chosen, three additional parameters should be set:<BR><BR>
+            <ul>
+            <li> <b>initial distance cutoff</b>: all water molecules further away from a highly solvated amino-acid will 
+                be removed in the solvent shell generation step.
+            <li> <b>initial distance cutoff</b>: upper distance restraints for the definition of ambiguous 
+                water-amino-acid restraints.
+            <li> <b>force constant</b> for water-amino-acid distance restraints.
+            </ul>
+</ul>
+Another parameters that can be modified is the <b>water-protein surface cut-off</b> used to remove water molecules
+ that are remote from the interface (a water must be with this cut-off distance from two chains to be kept).
+<BR><BR>
+It is also possible to turn off <b>water translation</b> during rigid-body energy minimization if desired.
+<BR><BR>Finally, to increase sampling, it is possible to start the docking from differently solvated molecules. The <b>number of initial solvation shells</b> can be define here. If more than 1 is defined, the protein will be randomly rotated and a new solvation shell will be generated.
+<BR>
+<hr>
+<BR>
+<a name="water"><b>20. <u>Final explicit solvent refinement</u></b></a> <a href="waterref.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+In this section you can define if the final <a href="docking.html#water">explicit solvent refinement</a>
+should be performed (recommended since it does improve the docking solutions) and on how many structures. 
+Two solvent models are currently supported: water and DMSO. DMSO is a fair mimic for a membrane environment.
+<BR><BR>
+You can also specify here the number of MD integration steps for the heating, sampling and cooling phases of the
+explicit solvent refinement.
+<BR><BR>
+You can also specify to keep the solvent, in which case an additional PDB file will be created in the 
+<i><b>structures/it1/water</b></i> directory with a <i>_h2o.pdb</i> extension containing both your complex 
+and the solvent molecules.
+<BR>
+<hr>
+<BR>
+<a name="scoring"><b>21. <u>Scoring</u></b></a> <a href="scoring.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+In this section you can define individual weigths for the various terms using in scoring. This can be done separately  for the various docking stages (rigid body, semi-flexible refinement and explicit solvent refinement).
+You can also define the number of structures to analyze after the simulated annealing (it1) and
+explicit solvent refinement (water).
+<BR><BR>
+This version of HADDOCK offers a fully flexible scoring scheme since the weight of the
+various energy terms can be defined separately for each phase of the docking. The scoring is
+performed according to the <b>weighted sum</b> (HADDOCK score) of the following terms:
+<ul>
+   <li><b>Evdw</b>: van der Waals energy
+   <li><b>Eelec</b>: electrostatic energy
+   <li><b>Eair</b>: distance restraints energy (only unambiguous and AIR (ambig) restraints)
+   <li><b>Erg</b>: radius of gyration restraint energy
+   <li><b>Esani</b>: direct RDC restraint energy
+   <li><b>Evean</b>: intervector projection angle restraints energy
+   <li><b>Epcs</b>: pseudo contact shift restraint energy
+   <li><b>Edani</b>: diffusion anisotropy energy
+   <li><b>Ecdih</b>: dihedral angle restraints energy
+   <li><b>Esym</b>: symmetry restraints energy (NCS and C2/C3/C5 terms)
+   <li><b>BSA</b>: buried surface area
+   <li><b>dEint</b>: binding energy (Etotal complex - Sum[Etotal components] )
+   <li><b>Edesol</b>: desolvation energy calculated using the empirical atomic solvation parameters
+                    from Fernandez-Recio <i>et al.</i> <i>JMB</i> <b>335</b>:843 (2004)
+</ul>
+The structure with the smallest weighted sum will be ranked first.
+<ul>
+<b>Note 1</b>: The vdw and elec energy terms can be negative indicating favorable interactions. 
+<BR><BR>
+<b>Note 2</b>: While smaller energy terms indicate improvement, a larger buried surface 
+area should indicate a better interface. It is therefore recommended to use a negative 
+weight for the BSA term (if included) to favor larger interfaces. 
+<BR><BR>
+<b>Note 3</b>: If you modify the <a href="#param">treatment of electrostatics</a> during docking you should probably
+                redefine the electrostatic weights for scoring of it0 and it1 structures since these have been
+                optimized for the current default settings. 
+</ul>
+Finally, you can define a "skipping" parameter that allows you to sample more solutions from
+the rigid body EM docking (it0). If the value <i>x</i> of this <i>skip</i> parameter is larger than 0 then every <i>(x+1)th</i> structure from it0 starting from the first structure will be further 
+refined in the semi-flexible simulated annealing.
+<BR><BR>
+For example, if skip=1 and 200 structures should be refined in the semi-flexible simulated 
+annealing, structures 1,3,5,7,... and 399 from the best 400 of it0 will be selected and 
+written to the <i>file.nam</i>, <i>file.list</i> and <i>file.cns</i> files in the 
+<b>structures/it0</b> directory. Three additional files (<i>file.nam_all</i>, <i>file.list_all</i> 
+and <i>file.cns_all</i>) containing the original sorting of all structures will be created.
+<BR>
+<hr>
+<BR>
+<a name="anal"><b>22. <u>Analysis and clustering</u></b></a> <a href="analysis.png"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+When performing the <a href="analysis.html">analysis</a>, HADDOCK will check 
+<a href="analysis.html#hb">intermolecular hydrogen bonds</a> and <a href="analysis.html#nb">
+intermolecular hydrophobic contacts</a>. 
+<BR><BR>
+Here you can define the cut-off distances in Angstrom to define a hydrogen bond and a hydrophobic contact. 
+Note that the hydrogen bond detection is only based on a distance criterion. For a more detailed
+analysis we recommend to use LIGPLOT (see <a href="software.html">software links</a>.
+<BR><BR>
+At the end of the calculation, the solutions are clustered. Two options for clustering are offered:
+<ul>
+  <li> RMSD-based clustering using the <b><i>tools/cluster_struc</i></b> program (a small C++ program that needs to be compiled during <a href="installation.html">installation</a>). 
+       cluster_struc reads the output of the rmsd.inp CNS analysis script that generates the pairwise rmsd matrix over all structures analyzed and perform clustering. 
+       The RMSDs are calculated on the interface residues of the second molecule after fitting on the interface residues of the first molecule, what can be termed: interface-ligand-RMSD.
+       The interface residues are automatically defined based on an analysis of all contacts found in all analysed models. Note that RMSD clustering might not be very discriminative in case of multibody docking.</li>
+   <BR>
+  <li> Fraction of native contacts (FCC) clustering using the <b><i>tools/cluster_fcc.py</i></b> python script. This option does not require a-priori fitting of the structures and is more robust for multibody docking.
+       For details see:<BR><BR>
+       <ul>
+          J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond and A.M.J.J. Bonvin<br>
+          <a href="http://dx.doi.org/doi:10.1002/prot.24078">Clustering biomolecular complexes by residue contacts similarity.</a><br>
+          <em>Proteins: Struc. Funct. & Bioinformatic</em>, <strong>80</strong>, 1810-1817 (2012).
+       </ul>
+  </li> 
+</ul>
+For this clustering step you need to specify a clustering cut-off and a minimum cluster size (recommended 4). For the cutoff, 7.5A works fine in most cases, while this value should be reduced to 5A or less for short peptides and 2 to 1A for small ligand docking. When using FCC clustering, a cutoff of 0.75 (or higher) is recommended.
+<BR><BR>
+The new FCC clustering offers the option to ignore chains when dealing with symmetrical oligomers. For example for a symmetrical trimer, this means that the ABC and ACB arrangements will cluster is the same cluster. 
+<BR><BR>
+(For further details for manual analysis see <a href="analysis.html#cluster">Analysis</a> for details).
+<BR>
+<hr>
+<BR>
+<a name="clean"><b>23. <u>Cleaning</u></b></a>
+<BR><BR>
+Since HADDOCK does generate a lot of data and output files, we now built in a cleaning option. If turned on (default)
+all (except for the first structure of each stage) job, input and output files for the rigid-body, semi-flexible refinement and final explicit solvent refinement will be removed automatically upon completion. This saves a significant
+amount of space.
+<BR>
+<hr>
+<BR>
+<a name="jobs"><b>25. <u>Parallels jobs</u></b></a> <a href="jobs.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR><BR>
+In this section you can define the way the structure calculation will be run, and the location
+of the <a href="http://cns.csb.yale.edu">CNS</a> executable. Currently 10 nodes or queues can
+be specified.
+<BR><BR>
+If you are going to run HADDOCK on a multi-processor computer with for example 4 CPUs, the entries
+for the first row could be:
+<ul>
+	<li> queue command: <i>csh</i> (this will run the jobs in background on the local computer)
+	<li> cns executable: <i>/software/bin/cns</i>
+	<li> number of jobs: <i>4</i> (four jobs in parallel)
+</ul>
+and all other entries empty.
+<BR><BR>
+In Utrecht we are using two different batch queuing system (DQS and openPBS) that distribute the jobs on various
+linux clusters. Our entry for this setup is:
+<ul>
+	<li> queue command: <i>ssub linux</i> (ssub is a wrapper script for submitting to the
+	     batch queuing system and linux is the queue destination)
+	<li> cns executable: <i>/software/bin/cns</i>
+	<li> number of jobs: <i>10</i> (10 jobs in parallel)
+</ul>
+and all other entries empty.
+<BR><BR>
+Other ways of distributing jobs over a cluster are addressed in the
+<a href="faq.html#batch">FAQ</a> section of the manual.
+<hr>

@@ -1,0 +1,182 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_research-mini.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1>
+
+<H2 align=right><FONT COLOR=RED>S</FONT>tart a 
+    <FONT COLOR=RED>N</FONT>ew  
+    <FONT SCOLOR=RED>P</FONT>roject
+</H2>
+
+<HR>
+
+Using your web browser, go to the 
+<A HREF="http://wwww.bonvinlab.org/software/haddock2.2">HADDOCK home-page</A>, 
+choose <A HREF="http://wwww.bonvinlab.org/software/haddock2.2/start-haddock.html">HADDOCK online</A> and click on <b>"Start a new project"</b>
+<BR>
+<HR>
+<BR>
+<B>First enter some general HADDOCK parameters:</B> <a href="haddock_setup.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR>
+<ul>
+<li> Enter the location of the directory where HADDOCK has been installed (if needed), e.g. </LI>
+<PRE> 
+     Current HADDOCK program directory: /software/haddock2.2
+</PRE>
+<BR>
+<B><I>Note:</I></B> When installing HADDOCK customize the location 
+of HADDOCK in the html file start_new.html, see <A HREF="installation.html">installation</A>.).
+<BR>
+<BR>
+<LI>Enter the location of the project, e.g. </LI>
+<PRE> 
+     Path of the new project: /home/tintin/e2a-hpr
+</PRE>
+<BR>
+<LI>Enter the run number, e.g. </LI>
+<PRE> 
+     Run number: 1
+</PRE>
+<BR>
+This is used to keep track of various runs. It can be a number or a string (or even a combination).
+<BR>
+<BR>
+<LI>Enter the number of molecules/fragments for docking: HADDOCK version 2.0 and higher currently supports 
+    up to six separate molecules, allowing thus multi-body (N>=2) docking, e.g.</LI>
+<PRE> 
+     Number of molecules for docking (max. 6): 2
+</PRE>
+<BR>
+<b><i>Note:</i></b> You can even specify only one molecule. This will no longer be called docking, but it
+   allows instead to use HADDOCK for refinement purpose.
+</UL>
+<BR>
+<HR>
+<BR>
+<B>Next define the PDB files of each molecule:</B> <a href="setup_pdbs.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR>
+<BR>
+You should provide here the name (including full directory path) of the
+PDB files of the various molecules, define the SEGIDs used to identify the chains
+in CNS and, if performing docking from an ensemble of structures, files 
+containing the names including full directory path of the various PDB
+structures to used for docking <a href="setup_listfiles.gif"><img src=camera.gif alt="(screenshot)"></a>. Leave the fields unused blank.
+<BR>
+<BR>
+<LI>Enter one PDB file for each molecule specifying the absolute path, <i>e.g.</I></LI>
+<PRE> 
+   PDB file of 1st molecule:  /home/tintin/e2a-hpr/e2a.pdb
+   PDB file of 2nd molecule:  /home/tintin/e2a-hpr/hpr.pdb
+   PDB file of 3rd molecule:  
+   PDB file of 4th molecule:  
+   PDB file of 5th molecule:  
+   PDB file of 6th molecule:  
+   Segid of 1st molecule:  A
+   Segid of 2nd molecule:  B
+   Segid of 3rd molecule:  C
+   Segid of 4th molecule:  D
+   Segid of 5th molecule:  E
+   Segid of 6th molecule:  F
+   file list for 1st molecule: 
+   file list for 2nd molecule:  /home/tintin/e2a-hpr/hpr_file.list
+   file list for 3rd molecule: 
+   file list for 4th molecule: 
+   file list for 5th molecule: 
+   file list for 6th molecule: 
+</PRE>
+<BR>
+In this example, we use an ensemble of starting conformations only for hpr.
+The list file should contain the name of the various PDBs between double quotes,
+<I>e.g.</I>:
+<BR>
+<PRE>
+   "/home/tintin/e2a-hpr/hpr-1hdn_001.pdb"
+   "/home/tintin/e2a-hpr/hpr-1hdn_002.pdb"
+   "/home/tintin/e2a-hpr/hpr-1hdn_003.pdb"
+   "/home/tintin/e2a-hpr/hpr-1hdn_004.pdb"
+   "/home/tintin/e2a-hpr/hpr-1hdn_005.pdb"
+   ...
+</PRE>
+<BR>
+<HR>
+<BR>
+<B>Define finally the <I><FONT COLOR=RED>A</FONT COLOR=RED></I>mbiguous 
+<I><FONT COLOR=RED>I</FONT COLOR=RED></I>nteraction 
+<I><FONT COLOR=RED>R</FONT COLOR=RED></I>estraints 
+(<FONT COLOR=RED>AIR</FONT COLOR=RED>s)</B>
+restraints if available, <I>e.g.</I> <a href="setup_restraints.gif"><img src=camera.gif alt="(screenshot)"></a>
+<BR>
+<PRE> 
+   AIR restraints: /home/tintin/e2a-hpr/e2a-hpr_air.tbl
+</PRE>
+<HR>
+<BR>
+<B>Define any other additional (classical NMR) restraints if available</b>, e.g. unambiguous
+distance restraints, dihedral angle and hydrogen bond restraints to maintain secondary structure for
+example, RDCs and diffusion anisotropy restraints.
+<BR>
+<BR>
+<b><i>Note:</i></b> AIRs, unambiguous and hydrogen bond restraints can be turned on and off at various
+stages during the docking and refinement stage. In that way you can define different type of restraints
+and assign separate weights to them. In principle there is no difference in the treatment of AIRs and unambiguous
+restraints, except for the fact that a user-defined fraction of the AIRs can be randomly deleted for each 
+docking trial; unambiguous restraints are not affected by this option.
+<BR>
+<HR>
+<BR>
+Save the updated parameters as <b>new.html</b> in the directory defined 
+as <b>"Path of the new project"</b> using the <b>"Save updated parameters"</b> 
+button at the bottom. This file contains all the data as html text in a 
+format which can be read by HADDOCK.
+<BR>
+<BR>
+Start HADDOCK in the directory where you saved the new.html file by typing
+<PRE>
+   haddock2.2
+</PRE>
+Make sure that the PYTHONPATH system variable contains the path of the 
+HADDOCK installation (see <A HREF="installation.html">installation</A>).
+<BR>
+<BR>
+HADDOCK will create a directory <b>runX</b> (where X is the run number 
+defined in the new.html file). In this directory, a <b>run.cns</b> file 
+will be created. You will have to edit this file to start the docking 
+(see "<A HREF="docking.html">the docking</a>" section).
+<BR>
+<BR>
+In the runX directory some subdirectories are created containing:
+<UL>
+<li> <B>runX/data/distances/</b>: HADDOCK copied the AIR file into 
+the ambig.tbl file. If you entered some unambiguous distance
+restraints, HADDOCK will copy them in the unambig.tbl file.</LI>
+<BR>
+<li> <B>runX/data/sequence/</b> : HADDOCK copied the pdb files of the two 
+molecules and the list files for ensembles in this directory.</LI>
+<BR>
+<li> <B>runX/data/ensemble-models/</b> : In case of an ensemble of starting structures, HADDOCK copies all pdb files of the two 
+molecules to this directory.</LI>
+<BR>
+<li> <B>runX/data/sequence/</b> : HADDOCK copied the pdb files of the two 
+molecules and the list files for ensembles in this directory.</LI>
+<BR>
+<li> <b>runX/data/dani/</b>, <B>runX/data/dihedrals/</b>, <b>runX/data/hbonds/</b>, 
+<b>runX/data/jcouplings/</b>, <b>runX/data/rdc/</b>, <b>runX/data/pcs/</b> correspond to directories
+containing diffusion anisotropy, dihedral, hydrogen bond, jcoupling, residual dipolar coupling and pseudo contact shift
+restraints if defined in the new.html file.</LI>
+<BR>
+<li> <b>runX/protocols/</b> : contains all the CNS scripts for docking and analysis</LI>
+<BR>
+<li> <b>runX/tools/</b> : some scripts used for the analysis of 
+the solutions will be stored in this directory</LI>
+<BR>
+<li> <b>runX/toppar/</b> : this directory contains all the parameters files</LI>
+<BR>
+<li> <b>runX/begin/</B> and <B>runX/structures/</b> : for a description of these directories, please refer to the "start the docking" section.</LI>
+</UL>
+<HR>

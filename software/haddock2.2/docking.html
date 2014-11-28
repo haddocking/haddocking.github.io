@@ -1,0 +1,559 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_research-mini.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1>
+
+<H2 align=right><FONT COLOR=RED>T</FONT>he 
+		<FONT COLOR=RED>D</FONT>ocking
+</H2>
+
+<HR>
+<li> <A HREF="#start">Before starting</A>
+<li> <A HREF="#topology">Topologies and structures generation</A>
+<li> <A HREF="#mini">Rigid body energy minimization</A>
+<li> <A HREF="#sa">Semi-flexible simulated annealing</A>
+<li> <A HREF="#water">Flexible refinement in explicit solvent (water or DMSO)</A>
+<HR>
+<BR>
+<A NAME="start"><B><U>Before starting</U></B></A>
+<BR>
+<BR>
+Before starting the docking, you need to specify a number of parameters, such as:
+<UL>
+	<LI> Number of structures to generate and refine
+	<LI> Histidine protonation state
+	<LI> Flexible segments
+	<LI> Which kind of restraints to use and associated parameters
+	<LI> Solvated docking options 
+	<LI> Scoring scheme
+	<LI> Electrostatic treatment
+	<LI> ...
+</UL>
+Many of those have default values which you do not need to change. 
+<BR>
+<BR>
+Using your web browser, go to the 
+<A HREF="http://www.nmr.chem.uu.nl/haddock">HADDOCK home-page</A>, 
+choose <A HREF="http://www.nmr.chem.uu.nl/haddock/start_new.html">project 
+setup</A> and enter the path of your <b>run.cns</b> file. 
+Click on <b>"edit file"</b>. A new window will be created.
+<BR>
+<BR>
+For a description of the run.cns file, refer to the 
+"<A HREF="run.html">run.cns file</A>" section.
+<BR>
+<BR>
+After setting all the parameters save the file as "run.cns" in your run
+directory using the <b>"save updated file"</b> button. 
+<BR>
+<BR>
+<ul><b>Note:</b> If you have turned on the use of DNA/RNA restraints in <b>run.cns</b>
+HADDOCK expects to find a file called <b>dna-rna_restraints.def</b> in 
+the <b>data/sequence</b> directory</b>. This files allows you to define 
+standard A-, B- or custom restraints for DNA such as base-pairing, 
+puckering and backbone dihedral angles. You can edit a template file 
+that can be found in the <b>protocols</b> directory and save it 
+as <b>dna-rna_restraint.def</b> into the <b>data/sequence</b> directory.
+Using your web browser, go to the 
+<A HREF="http://www.nmr.chem.uu.nl/haddock/haddock.html">HADDOCK home-page</A>, 
+choose <A HREF="http://www.nmr.chem.uu.nl/haddock/start_new.html">project 
+setup</A> and enter the path of the <b>dna-rna_restraints.def</b> file. 
+Click on <b>"edit file"</b>. A new window will be created.
+</ul>
+<BR>
+<BR>
+When all necessary files and parameters have been properly edited and saved
+then start HADDOCK in the run directory by typing:
+<PRE>
+    haddock2.2
+</PRE>
+The entire protocol consists of four stages:
+<ol>
+<li> <A HREF="#topology">Topologies and structures generation</A>
+<li> <A HREF="#mini">Randomization of the starting orientation and 
+                     rigid body energy minimization</A>
+<li> <A HREF="#sa">Semi-flexible simulated annealing</A>
+<li> <A HREF="#water">Flexible refinement in explicit solvent (water or DMSO)</A>
+</ol>
+<BR>
+<hr>
+<BR>
+<A NAME="topology"><B>1. <U>Topologies and structures generation</U></B></A>
+<BR>
+<BR>
+The first step in HADDOCK in the generation of the CNS topologies and coordinates
+files for the various molecules and for the complex from the input PDB files (see section
+<A HREF="pdb.html">PDB files</A>). HADDOCK should automatically
+recognize chain breaks, disulphide bonds, cis-prolines and even ions provided they are named
+as defined in the ion.top topology file located in the <b><i>toppar</i></b> directory.
+<BR>
+<BR>
+Job files will be generated in
+the <B><I>run</I></B> directory and the topologies, structures and output files will be
+generated in the <B><I>begin</I></B> directory. HADDOCK will use the fileroot
+names specified in the <A HREF="run.html"><i>run.cns</i></A> file. 
+<BR>
+<BR>
+The following scripts will be run:
+<BR>
+<BR>
+<li><b>fileroot_generate_A/B/C/D/E/F.job</B>: Generates the CNS topology and coordinates file(s) (if starting from an ensemble) for the various molecules.
+<BR>
+<BR>
+Output files:
+<BR>
+<ul>
+  <li> <i>fileroot_A/B/C/D/E/F.psf</i> (topology)
+  <li> <i>fileroot_A/B/C/D/E/F.pdb</i> (coordinates)
+  <li> <i>fileroot_A/B/C/D/E/F_1.pdb, fileroot_A/B/C/D/E/F_2.pdb</i>, ... 
+             (if starting from an ensemble)
+  <li> <i>file_A/B/C/D/E/F.list</i> (list of PDB coordinates files)
+</ul>
+<BR>
+CNS scripts called (depending on the options defined):
+<BR>
+<ul><i>
+  <li> generate_A/B/C/D/E/F.inp
+  <ul>
+	   <li> dna_break.cns
+	   <li> dna-rna_restraints.def
+	   <li> flex_segment_back.cns
+	   <li> iterations.cns
+	   <li> prot_break.cns
+	   <li> run.cns
+  </ul>
+  </i>
+</ul>
+<b><i>Note:</i></b> If solvated docking is turned on, <i>generate_A/B/C/D/E/F-water.inp</i> will be used instead
+               which calls in addition <i>generate_water.cns,rotate_pdb.cns</i>
+               and generates additional output pdb files containing the water 
+               (<i>fileroot_A/B/C/D/E/F_1_water.pdbw</i>, ...)
+<BR>
+<BR>
+<BR>
+<li><b>fileroot_generate_complex.job</B>: Generates the CNS topology and coordinates 
+file(s) for the complex by merging the various topologies and coordinates files. When 
+starting from ensembles, all combinations will be generated.
+<BR>
+<BR>
+Output files:
+<BR>
+<ul>
+	<li> <i>fileroot.psf</i> (topology)
+	<li> <i>fileroot.pdb</i> (coordinates)
+	<li> <i>fileroot_1.pdb, fileroot_2.pdb</i>, ... 
+             (if starting from an ensemble)
+	<li> <i>file.cns, file.list, file.nam</i> (list of PDB coordinates files)
+</ul>
+<BR>
+CNS scripts called:
+<BR>
+<ul><i>
+	<li> generate_complex.inp
+	<ul>
+	   <li> iterations.cns
+	   <li> run.cns
+	   <li> separate.cns
+       </ul>
+  </i>
+</ul>
+<BR>
+<b><i>Note:</i></b> If solvated docking is turned on, <i>generate_complex-water.inp</i> will 
+              be used instead which will generates additional output pdb files containing the 
+              water (<i>fileroot_1_water.pdbw</i> ,...)
+<BR>
+In case of problems (<i>and in general to make sure that everything is OK</i>) look
+into the output files generated (.out) for error messages (search for ERR).
+<BR>
+<hr>
+<BR>
+<A NAME="mini"><b>2. <U>Randomization and rigid body energy minimization:</U></b></A>
+<BR>
+<BR>
+The first docking step in HADDOCK is a rigid body energy minimization. 
+<BR>
+<BR>
+First the molecules will be separated by a minimum of 25A and rotated randomly around their center of mass. This randomization step can be turned off in the <A HREF="run.html"><i>run.cns</i></A> parameter file.
+If you wish to decrease (or increase) the separation distance between the
+two molecules, edit in the <i>protocols</i> directory the 
+<i>random_rotations.cns</i> CNS script and change the value of the <i>$minispacing</i> parameter.
+<BR>
+The rigid body minimization is performed stepwise:
+<BR>
+<ul>
+    <li> four cycles of rotational minimization in which each molecule (molecule+associated solvent in 
+	 case of solvated docking) is allowed to rotate in turn
+    <br>
+    <li> two cycles of rotational and translational rigid body minimization in which each molecule+associated solvent is treated as one rigid body
+    <br>
+    <BR>
+    If <b><i>solvated docking is turned on</i></b> the following additional steps will be performed:
+    <BR>
+    <ul>
+       <li> rotational and translational rigid bogy minimization with each molecule and water molecule 
+            treated as separate rigid bodies</li>
+       <br>
+       <li> Biased Monte Carlo removal of water molecules based on propensity of finding a water 
+            mediated contact until a user-defined percentage of water molecules remains</li>
+       <br>
+       <li> rotational and translational rigid bogy minimization with each molecule and water molecule 
+	        treated as separate rigid bodies</li>
+       <BR>
+     </ul>
+     For details of the solvated docking protocol refer to:
+     <ul>
+       <BR>
+       <Li>A.D.J. van Dijk and A.M.J.J. Bonvin<br>
+       "<A HREF="http://dx.doi.org/doi:10.1093/bioinformatics/btl395">Solvated docking: introducing water 
+       into the modelling of biomolecular complexes.</a>"<br>
+       <EM>Bioinformatics</EM>,  <STRONG>22</STRONG> 2340-2347 (2006).
+       </li>       
+       <BR>
+       <li>M. van Dijk, K. Visscher, P.L. Kastritis and A.M.J.J. Bonvin<<br>
+           "<a href="http://dx.doi.org/doi:10.1007/s10858-013-9734-x">Solvated protein-DNA docking using HADDOCK.</a>"<br>
+           <em>J. Biomol. NMR</em>, <strong>56</strong>, 51-63 (2013).
+       </li>
+       <BR>
+       <li>P.L. Kastritis, K.M. Visscher, A.D.J. van Dijk and <font color="#333333"><b>A.M.J.J. Bonvin</b></font><br>
+           "<a href="http://dx.doi.org/doi:10.1002/prot.24210">Solvated docking using Kyte-Doolittle-based water propensities.</a>"<br>
+           <em>Proteins: Struc. Funct. &amp; Bioinformatic.</em>, <strong>81</strong>, 510-518 (2013).
+       </li>
+    </ul>
+</ul>
+<BR>
+If <b><i>RDC or diffusion anisotropy restraints are used</i></b> two additional minimization steps are carried
+out to optimize the orientation of the molecules with respect to the alignment tensor(s).
+<BR>
+For each starting structure combination, this step can be repeated a number of
+times (given by the <i>Ntrials</i> parameter in the <i><A HREF="run.html">run.cns</A></i>
+parameter file, and only the best solution is written to disk.
+<BR>
+<BR>
+A new option in HADDOCK 2.x allows to systematically sample 180 degree rotated solutions. Since in our
+experience symmetrical solutions occur quite often, sampling of 180 degree rotated solutions can increase
+the success rate significantly. This option can be turned on and off with the <i>rotate180_0</i> parameter
+in the <i><A HREF="run.html">run.cns</A></i> parameter file.
+<BR>
+<BR>
+<b>Note:</b> The translational minimization can be turned off in 
+    <i><A HREF="run.html#dock">run.cns</A></i>. This option can be useful for example for small 
+    flexible molecules to perform the docking during the simulated annealing stage allowing
+    conformational changes to take place during the docking process. The number of steps in
+    the first two stages of the simulated annealing should then be increased by at least
+    a factor four to allow the molecules to approach each other.
+<BR>
+<br>
+The <i><b>refine.inp</b></i> CNS script is used for this step.
+<ul>
+    Output files:
+    <BR>
+    <BR>
+    <ul>
+	<li> <i>fileroot_1.pdb, fileroot_2.pdb</i>, ...  written
+             in the <i><b>structures/it0</b></i> directory
+    </ul>
+    <br>
+    <b><i>Note1:</i></b> If solvated docking is turned on (<i>waterdock=true</i> in 
+                <A HREF="run.html#iter"><i>run.cns</i></A>), additional output pdb files will be written to
+                disk containing the water (<i>fileroot_1_water.pdbw</i> ,...).
+    <BR>
+    <BR>
+    <b><i>Note2:</i></b> If random removal of restraints is turned on (<i>noecv=true</i> in 
+                <A HREF="run.html#iter"><i>run.cns</i></A>), additional files will be written to
+                disk containing the random number seed (<i>fileroot_1.seed</i> ,...). This seed is used in
+                the refinement to make sure that the same restraints are removed.
+    <BR>
+    <BR>
+    <b><i>Note3:</i></b> If random AIR definition is turned on (<i>ranair=true</i> in 
+                <A HREF="run.html#iter"><i>run.cns</i></A>), additional files will be written to
+                disk containing the list of residues selected for the AIR definition (<i>fileroot_1.disp</i> ,...)..
+    </ul>
+    <BR>
+    CNS scripts called in sequential order (depending on the options selected):
+    <ul>
+    <TABLE BORDER=0 CELLPADDING=5>
+    <TR rowspan=1 align="top">
+	<TD width=250 colspan=1 align="left"> 
+    <i>
+	<li> initialize.cns
+	<li> iterations.cns
+	<li> run.cns
+	<li> read_struc.cns
+	<li> covalions.cns
+	<li> flags_new.cns
+	<li> read_data.cns
+	<li> calc_free-ene.cns
+	<li> read_water1.cns
+	<li> water_rest.cns
+	<li> read_data.cns
+	<li> flags_new.cns
+	<li> randomairs.cns
+	<li> water_rest.cns
+	<li> symmultimer.cns
+	<li> cm-restraints.cns
+	<li> surf-restraints.cns
+	<li> random_rotations.cns
+    </i>
+    </TD>
+	<TD width=250 colspan=1 align="left">
+    <i>
+	<li> scale_inter_only.cns
+	<li> mini_tensor.cns
+	<li> mini_tensor_dani.cns
+	<li> waterdock_remove-water.cns
+	<li> db0.cns
+	<li> db00.cns
+	<li> db1.cns
+	<li> waterdock_mini.cns
+	<li> bestener.cns
+	<li> rotation180.cns
+	<li> bestener.cns
+	<li> read_noes.cns
+	<li> symmultimer.cns
+	<li> read_noes.cns
+	<li> scale_inter_only.cns
+	<li> print_coorheader.cns
+	<li> waterdock_out0.cns
+    </i>
+    </TD>
+    </TR>
+    </TABLE>
+    </UL>
+</ul>
+When all structures have been generated (typically in the order of  1000 to 2000 
+depending on the number of starting conformations and your CPU resources), HADDOCK 
+will sort them accordingly to the criterion defined in the 
+<A HREF="run.html#iter"><i>run.cns</i></A> parameter file and write the sorted PDB 
+filenames into <i>file.cns, file.list</i> and <i>file.nam</i> in the 
+<i><b>structures/it0</b></i> directory (see also the <a href="scoring.html">scoring</a> section 
+of the online manual). These will be used for the next step (semi-flexible simulated annealing).
+<BR>
+<hr>
+<BR>
+<A NAME="sa"><b>3. <u>Semi-flexible simulated annealing</u></b></A>
+<BR>
+<BR>
+The best XXX structures after rigid body docking (typically 200, but this is left to the user's 
+choice (see the <A HREF="run.html">run.cns file</A> section)) will be subjected to a 
+semi-flexible simulated annealing (SA) in torsion angle space. This semi-flexible annealing 
+consists of several stages:
+<BR>
+<ul>
+	<li> High temperature rigid body search
+	<li> Rigid body SA
+	<li> Semi-flexible SA with flexible side-chains at the interface
+	<li> Semi-flexible SA with fully flexible interface (both backbone and side-chains)
+</ul>
+<BR>
+The temperatures and number of steps for the various stages are defined in the 
+<A HREF="run.html"><i>run.cns</i></A> parameter file.
+<BR>
+<BR>
+<b><i>Note1:</i></b> HADDOCK also allows the definition of fully flexible regions (defined by
+                        the <i>nfle_X</i> parameter in <A HREF="run.html">run.cns</A>)
+                        that remain fully flexible throughout all four stages. This
+                        should be useful for cases where part of a structure are
+                        disordered or unstructured or when docking small flexible 
+                        ligands or peptides onto a protein. This option also allows the use of
+                        HADDOCK for structure calculations of complexes when classical
+                        NMR restraints are available to drive the folding.
+<BR>
+<BR>
+<b><i>Note2:</i></b> A new option in HADDOCK 2.x allows to automatically define the semi-flexible
+                     regions by considering all residues within 5A of another molecule. To use this
+                     option, set <i>nseg_X</i> to -1 in <A HREF="run.html">run.cns</A> (or another 
+                     negative number if you still want to define manually segments for 
+                     <a href="generate_air_help.html#ranair">random AIRs</a> definition from a limited
+                     region of the surface). This can be set for each molecule separately.
+<BR>
+<BR>
+The <i><b>refine.inp</b></i> CNS script is used for this step.
+<ul>
+    Output files:
+    <BR>
+    <BR>
+    <ul>
+	<li> <i>fileroot_1.pdb, fileroot_2.pdb</i>, ...  written
+             in the <i><b>structures/it1</b></i> directory
+    <BR>
+    <BR>
+    <b><i>Note1:</i></b> If solvated docking is turned on (<i>waterdock=true</i> in 
+                <A HREF="run.html#iter"><i>run.cns</i></A>), additional output pdb files will be written to
+                disk containing the water (<i>fileroot_1_water.pdbw</i> ,...).
+    <BR>
+    <BR>
+    <b><i>Note2:</i></b> If random removal of restraints is turned on (<i>noecv=true</i> in 
+                <A HREF="run.html#iter"><i>run.cns</i></A>), additional files will be written to
+                disk containing the random seed number (<i>fileroot_1.seed</i> ,...). This seed is used in
+                the explicit solvent refinement to make sure that the same restraints are removed.
+    </ul>
+    <BR>
+    CNS scripts called in sequential order (depending on options selected):
+    <BR>
+    <ul>
+    <TABLE BORDER=0 CELLPADDING=5>
+    <TR rowspan=1 align="top">
+	<TD width=250 colspan=1 align="left"> 
+    <i>
+	<li> initialize.cns
+	<li> iterations.cns
+	<li> run.cns
+	<li> read_struc.cns
+	<li> covalions.cns
+	<li> flags_new.cns
+	<li> read_data.cns
+	<li> calc_free-ene.cns
+	<li> read_water1.cns
+	<li> water_rest.cns
+	<li> flags_new.cns
+    <li> contactairs.cns
+	<li> water_rest.cns
+	<li> symmultimer.cns
+	<li> cm-restraints.cns
+	<li> surf-restraints.cns
+	<li> dna-rna_restraints.def
+	<li> set_noe_scale.cns
+	<li> mini_tensor.cns
+	<li> mini_tensor_dani.cns
+	<li> scale_inter_only.cns
+	<li> rotation180.cns
+	<li> flags_new.cns
+	<li> flex_segment_back.cns
+	<li> torsiontop.cns<br>
+		<ul>- flex_segment.cns</ul>
+		<ul>- numtrees.cns</ul>
+    </i>
+    </TD>
+	<TD width=250 colspan=1 align="left">
+    <i>
+	<li> sa_ltad_hightemp.cns
+		<ul>- set_noe_scale.cns</ul>
+		<ul>- scale_inter.cns</ul>
+	<li> sa_ltad_cool1.cns
+		<ul>- set_noe_scale.cns</ul>
+		<ul>- scale_inter.cns</ul>
+	<li> torsiontop_flex.cns
+		<ul>- flex_segment_side.cns</ul>
+		<ul>- numtrees.cns</ul>
+	<li> sa_ltad_cool2.cns
+		<ul>- set_noe_scale.cns</ul>
+		<ul>- scale_inter.cns</ul>
+	<li> torsiontop_flex_back.cns
+		<ul>- flex_segment_back.cns</ul>
+		<ul>- numtrees.cns</ul>
+	<li> sa_ltad_cool3.cns
+		<ul>- set_noe_scale.cns</ul>
+		<ul>- scale_inter.cns</ul>
+    <li> set_noe_scale.cns
+    <li> flex_segment_back.cns
+    <li> scale_intra_only.cns
+    <li> scale_inter_only.cns
+    <li> symmultimer.cns
+	<li> read_noes.cns
+	<li> dna-rna_restraints.def
+	<li> print_coorheader.cns
+	<li> waterdock_out1.cns
+    </i>
+    </TD>
+    </TR>
+    </TABLE>
+    </UL>
+</ul>
+At the end of the calculation, HADDOCK generates the <i>file.cns, file.list</i> 
+and <i>file.nam</i> files containing the filenames of the generated structures sorted 
+accordingly to the criterion defined in the  <A HREF="run.html#iter">run.cns</A> 
+parameter file (see also the <a href="scoring.html">scoring</a> section 
+of the online manual).
+<BR>
+At the end of this stage, the structures are analyzed and the results 
+are placed in the <b><i>structures/it1/analysis</i></b> directory (see the
+<A HREF="analysis.html">analysis</A> section).
+<BR>
+<hr>
+<BR>
+<A NAME="water"><b>4. <u>Flexible explicit solvent refinement</u></b></a>
+<BR>
+<BR>
+In this final step, the structures obtained after the semi-flexible simulated annealing are
+refined in an explicit solvent layer (8A for water, 12.5A for DMSO). In this step, no spectacular
+changes are expected, however, the scoring of the various structures is improved.
+<BR>
+<BR>
+The <i><b>re_h2o.inp</b></i> or <i><b>re_dmso.inp</b></i> CNS script is used for this step.
+<ul>
+    Output files:
+    <BR>
+    <BR>
+    <ul>
+	<li> <i>fileroot_1w.pdb, fileroot_2w.pdb</i>, ...  written
+             in the <i><b>structures/it1/water</b></i> directory
+    <BR>
+    <BR>
+    <b><i>Note1: </i></b>The numbering of the structures from it1 is kept.
+    <BR>
+    <BR>
+    <b><i>Note2:</i></b> If <i>keepwater</i> is set to true in 
+                <A HREF="run.html#iter"><i>run.cns</i></A>, additional output pdb files will be written to
+                disk containing the water (<i>fileroot_1_h2o.pdb</i> ,...).
+    </ul>
+    <BR>
+    CNS scripts called in sequential order (depending on the option defined):
+    <BR>
+    <ul>
+    <TABLE BORDER=0 CELLPADDING=5>
+    <TR rowspan=1 align="top">
+	<TD width=250 colspan=1 align="left"> 
+    <i>
+	<li> initialize.cns
+	<li> iterations.cns
+	<li> run.cns
+	<li> read_struc.cns
+	<li> flags_new.cns
+	<li> calc_free-solv-ene.cns
+	<li> calc_free-ene.cns
+	<li> read_water1.cns
+	<li> generate_water.cns (or generate_dmso.cns)
+	<li> water_rest.cns
+	<li> symmultimer.cns
+	<li> set_noe_scale.cns
+    </i>
+    </TD>
+	<TD width=250 colspan=1 align="left">
+    <i>
+	<li> dna-rna_restraints.def
+	<li> mini_tensor.cns
+	<li> mini_tensor_dani.cns
+	<li> flex_segment_side.cns
+	<li> set_noe_scale.cns
+	<li> flex_segment_back.cns
+	<li> set_noe_scale.cns
+	<li> scale_intra_only.cns
+	<li> scale_inter_only.cns
+	<li> symmultimer.cns
+	<li> read_noes.cns
+	<li> dna-rna_restraints.def
+	<li> print_coorheader.cns
+    </i>
+    </TD>
+    </TR>
+    </TABLE>
+    </UL>
+</ul>
+At the end of the explicit solvent refinement, HADDOCK generates the <i>file.cns, file.list</i> 
+and <i>file.nam</i> files containing the filenames of the generated structures sorted 
+accordingly to the criterion defined in the  <A HREF="run.html#iter">run.cns</A> 
+parameter file (see also the <a href="scoring.html">scoring</a> section 
+of the online manual).
+<BR>
+<BR>
+Finally, the structures are analyzed and the results are placed in the 
+<b><i>structures/it1/water/analysis</i></b> directory (see the
+<A HREF="analysis.html">analysis</A> section).
+<BR>
+<hr>
