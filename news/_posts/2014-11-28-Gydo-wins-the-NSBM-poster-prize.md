@@ -13,4 +13,10 @@ He presented his work on fast fitting of protein models into cryo-EM maps in a p
    <i>"How low can you go? Ultra-fast fitting of subunits in cryo-EM data with PowerFit"</i>
 </UL>
 <BR>
-Well done!
+And the runner up was Anna Vangone with her poster on <i>"Binding affinity in protein complexes"</i>!
+<BR>
+<BR>
+So top 2 for the group out of 24 posters.
+<BR>
+<BR>
+<b>Well done!</b>
