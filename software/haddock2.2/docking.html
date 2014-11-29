@@ -4,7 +4,7 @@ tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structu
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 image:
-  feature: pages/banner_research-mini.jpg
+  feature: pages/banner_software.jpg
 ---
 
 <H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1>
@@ -331,8 +331,7 @@ depending on the number of starting conformations and your CPU resources), HADDO
 will sort them accordingly to the criterion defined in the 
 <A HREF="run.html#iter"><i>run.cns</i></A> parameter file and write the sorted PDB 
 filenames into <i>file.cns, file.list</i> and <i>file.nam</i> in the 
-<i><b>structures/it0</b></i> directory (see also the <a href="scoring.html">scoring</a> section 
-of the online manual). These will be used for the next step (semi-flexible simulated annealing).
+<i><b>structures/it0</b></i> directory. These will be used for the next step (semi-flexible simulated annealing).
 <BR>
 <hr>
 <BR>
@@ -468,8 +467,7 @@ The <i><b>refine.inp</b></i> CNS script is used for this step.
 At the end of the calculation, HADDOCK generates the <i>file.cns, file.list</i> 
 and <i>file.nam</i> files containing the filenames of the generated structures sorted 
 accordingly to the criterion defined in the  <A HREF="run.html#iter">run.cns</A> 
-parameter file (see also the <a href="scoring.html">scoring</a> section 
-of the online manual).
+parameter file.
 <BR>
 At the end of this stage, the structures are analyzed and the results 
 are placed in the <b><i>structures/it1/analysis</i></b> directory (see the
@@ -548,8 +546,7 @@ The <i><b>re_h2o.inp</b></i> or <i><b>re_dmso.inp</b></i> CNS script is used for
 At the end of the explicit solvent refinement, HADDOCK generates the <i>file.cns, file.list</i> 
 and <i>file.nam</i> files containing the filenames of the generated structures sorted 
 accordingly to the criterion defined in the  <A HREF="run.html#iter">run.cns</A> 
-parameter file (see also the <a href="scoring.html">scoring</a> section 
-of the online manual).
+parameter file.
 <BR>
 <BR>
 Finally, the structures are analyzed and the results are placed in the 
