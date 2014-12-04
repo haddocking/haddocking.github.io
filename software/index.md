@@ -8,7 +8,7 @@ image:
 ---
 
 This page provide you links to software, software manuals and tutorials of the computational structural biology group.
-
+<HR>
 * #### HADDOCK
   Software package for integrative modelling of biomolecular complexes
 
@@ -17,9 +17,7 @@ This page provide you links to software, software manuals and tutorials of the c
   * [**HADDOCK web server**](http://haddock.science.uu.nl/services/HADDOCK)
 
   * [**HADDOCK grid-enabled web server**](http://haddock.science.uu.nl/enmr/services/HADDOCK)
-
-<BR>
-
+<HR>
 * #### [HADDOCKING github repository](http://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
 
@@ -28,5 +26,22 @@ This page provide you links to software, software manuals and tutorials of the c
 
   * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
   Clustering of biomolecular complexes based on the fraction of common contacts
+<HR>
+* #### 3D-DART DNA modelling 
+  3D-DART provides a convenient means of generating custom structural models of DNA.
+
+  * [**3D-DART server**](http://haddock.science.uu.nl/enmr/services/3DDART)
+
+  * [**User manual**](http://haddock.science.uu.nl/enmr/services/3DDART/DARTusage.html)
+<HR>
+* #### [Protein-DNA docking benchmark](http://haddock.science.uu.nl/dna/benchmark.html)
+<HR>
+* #### Bioinformatics interface predictors
+
+  * [**WHISCY**](http://nmr.chem.uu.nl/Software/whiscy/index.html)
+  WHISCY is a program to predict protein-protein interfaces. It is primarily based on conservation, but it also takes into account structural information. 
+
+  * [**CPORT**](http://haddock.science.uu.nl/services/CPORT)
+  CPORT is an algorithm for the prediction of protein-protein interface residues. It combines six interface prediction methods into a consensus predictor
 
 
