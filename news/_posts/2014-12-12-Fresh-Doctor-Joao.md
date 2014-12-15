@@ -17,5 +17,5 @@ A Nobel prize winner was among his jury: Prof. Michael Levitt from Standford Uni
     <img src="/images/posts/Joao-PhD2.jpg">
 </figure>
 <BR>
-Congratulations to the fresh doctor for his well-diserved title.
+Congratulations to the fresh doctor for his well-deserved title.
 
