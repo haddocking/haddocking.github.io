@@ -6,26 +6,29 @@ image:
 
 ## 2014
 <hr />
+* F.M. Ferguson, D.M. Dias, J.P.G.L.M. Rodrigues, J. Wienk, R. Boelens, **A.M.J.J. Bonvin**, C. Abell, A. Cuilli.
+[Binding Hotspots of BAZ2B Bromodomain: Histone Interaction Revealed by Solution NMR Driven Docking.](http://dx.doi.org/doi:10.1021/bi500909d)
+_Biochemistry._ *53*, 6706-6716 (2014).
 
 * T.A. Hopf#, C.P.I. Sch&auml;rfe#, J.P.G.L.M. Rodrigues#, A.G. Green, O. Kohlbacher, C. Sander\*, **A.M.J.J. Bonvin\*** and D.S. Marks\*.
 [Sequence co-evolution gives 3D contacts and structures of protein complexes.](http://elifesciences.org/content/early/2014/09/25/eLife.03430)
-_eLife._ 10.7554/eLife.03430, Advanced Online Publication (2014)
+_eLife._ *3* 10.7554/eLife.03430 (2014)
 
 * M. Rey, V. Sarpe, K. Burns, J. Buse, Ch.A.H. Baker, M. van Dijk, L. Wordeman, **A.M.J.J. Bonvin** and D. Schriemer.
 [Mass Spec Studio for Integrative Structural Biology.](http://dx.doi.org/10.1016/j.str.2014.08.013)
-_Structure._ Advanced Online Publication (2014).
+_Structure._ *22*, 1538-1548 (2014).
 
 * M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 Information-driven modelling of protein-peptide complexes.
 _Methods in Molecular Biology._ Ed. Peng Zhou. Humana Press Inc. In press.
 
 * J.P.G.L.M Rodrigues, E. Karaca and **A.M.J.J. Bonvin**.
-Information-driven structural modelling of protein-protein interactions.
-_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. <i>In press</i>.
+[Information-driven structural modelling of protein-protein interactions.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18#page-1)
+_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 399-424 (2014).
 
 * W.F. Vranken, G.W. Vuister and **A.M.J.J. Bonvin**.
-NMR-based modelling and refinement of protein 3D structures.
-_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. <i>In press</i>.
+[NMR-based modelling and refinement of protein 3D structures.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16#page-1)
+_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 351-380 (2014).
 
 * P.L. Kastritis, J.P.G.L.M Rodrigues, G.E. Folkers, R. Boelens and **A.M.J.J. Bonvin**.
 [Proteins feel more than they see: Fine-tuning of binding affinity by properties of the non-interacting surface.](http://dx.doi.org/10.1016/j.jmb.2014.04.017)
@@ -40,7 +43,7 @@ _FEBS J._, *281*, 1988-2003 (2014).
 _J. Chem. Info. Model._ *54*, 826-836 (2014).
 
 * H. van Ingen and **A.M.J.J. Bonvin**
-[Information-driven modeling of large macromolecular assemblies using NMR data.](http://dx.doi.org/10.1016/j.jmr.2013.10.021)
+[Information-driven modeling of large macromolecular assemblies using NMR data.](http://dx.doi.org/doi:10.1016/j.jmr.2013.10.021)
 _J. Magn. Reson._ *241*, 103-114 (2014).
 
 * J. Snijder, R.J. Burnley, A. Wiegard, A.S.J. Melquiond, **A.M.J.J. Bonvin**, I.M. Axmann, A.J.R. Heck
