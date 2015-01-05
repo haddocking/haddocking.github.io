@@ -10,7 +10,7 @@ Today, December 12th, Joao Rodrigues successfully defended his thesis entitled "
     <img src="/images/posts/Joao-PhD1.jpg">
 </figure>
 <BR>
-A Nobel prize winner was among his jury: Prof. Michael Levitt from Standford University who got the [2013 Nobel prize in Chemistry](http://www.bonvinlab.org/news/Nobel-prize-laureate-lecture-Levitt).
+A Nobel prize winner was among his jury: Prof. Michael Levitt from Stanford University who got the [2013 Nobel prize in Chemistry](http://www.bonvinlab.org/news/Nobel-prize-laureate-lecture-Levitt).
 <BR>
 
 <figure align="center">
