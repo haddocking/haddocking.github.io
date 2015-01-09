@@ -4,6 +4,12 @@ image:
   feature: pages/banner_publications-mini.jpg
 ---
 
+## 2015
+<hr />
+* M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
+[Information-driven modelling of protein-peptide complexes.](http://link.springer.com/protocol/10.1007/978-1-4939-2285-7_10)
+_Methods in Molecular Biology._ Ed. Peng Zhou. Humana Press Inc. 221-239 (2015)
+
 ## 2014
 <hr />
 * F.M. Ferguson, D.M. Dias, J.P.G.L.M. Rodrigues, J. Wienk, R. Boelens, **A.M.J.J. Bonvin**, C. Abell, A. Cuilli.
@@ -18,16 +24,12 @@ _eLife._ *3* 10.7554/eLife.03430 (2014)
 [Mass Spec Studio for Integrative Structural Biology.](http://dx.doi.org/10.1016/j.str.2014.08.013)
 _Structure._ *22*, 1538-1548 (2014).
 
-* M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
-Information-driven modelling of protein-peptide complexes.
-_Methods in Molecular Biology._ Ed. Peng Zhou. Humana Press Inc. In press.
-
 * J.P.G.L.M Rodrigues, E. Karaca and **A.M.J.J. Bonvin**.
-[Information-driven structural modelling of protein-protein interactions.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18#page-1)
+[Information-driven structural modelling of protein-protein interactions.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18)
 _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 399-424 (2014).
 
 * W.F. Vranken, G.W. Vuister and **A.M.J.J. Bonvin**.
-[NMR-based modelling and refinement of protein 3D structures.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16#page-1)
+[NMR-based modelling and refinement of protein 3D structures.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16)
 _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 351-380 (2014).
 
 * P.L. Kastritis, J.P.G.L.M Rodrigues, G.E. Folkers, R. Boelens and **A.M.J.J. Bonvin**.

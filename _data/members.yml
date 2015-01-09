@@ -5,7 +5,7 @@
 
 -   name: Anna Vangone
     position: Postdoctoral Researcher
-    avatar: /images/people/Vangone.jpeg
+    avatar: /images/people/Vangone.jpg
 
 -   name: Li Xue
     position: Postdoctoral Researcher
@@ -13,16 +13,15 @@
 
 -   name: João Rodrigues
     position: Ph.D Candidate
-    avatar: /images/people/Joao.jpeg
+    avatar: /images/people/Joao.jpg
 
 -   name: Gydo van Zundert
     position: Ph.D Candidate
+    avatar: /images/people/vanZundert.jpg
 
 -   name: Cunliang Geng
     position: Ph.D Candidate
-    
--   name: Malgorzata Szelag
-    position: Visiting Ph.D Candidate
+    avatar: /images/people/Cunliang.jpg
     
 -   name: Mehdi Nellen
     position: M.Sc Student
@@ -30,3 +29,12 @@
 
 -   name: Stefano Tagliabue
     position: M.Sc Student
+    avatar: /images/people/Tagliabue.jpg
+
+-   name: Sofia Rosback
+    position: M.Sc Student
+
+-   name: Siddarth Narasimhan
+    position: M.Sc Student
+    avatar: /images/people/Siddarth.jpg
+
