@@ -1,9 +1,8 @@
 ---
 layout: page
-tags: [HADDOCK, Nobel Prize, Levitt, Molecular Modelling, Stanford University, Utrecht University]
-modified: 2014-08-08T20:53:07.573882-04:00
+tags: [HADDOCK, NMR, Gordon Conference, Il Ciocco, Computation, Structure, Molecular Modelling, Utrecht University]
 comments: false
-excerpt: 'Lecture Chemistry Nobel Prize laureate Michael Levitt - Utrecht, December 11th'
+excerpt: 'Gordon Conference on Biomolecular Aspects of Biomolecular NMR - June 2015'
 image:
   feature: pages/banner_home.jpg
 ---
