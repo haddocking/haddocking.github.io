@@ -4,6 +4,10 @@ title:            Bonvin Lab
 locale:           en_US
 url:              http://haddocking.github.io
 
+# RSS Feed configuration
+name: Bonvin Lab
+description: Webpage of the computational structural biology lab of Alexandre Bonvin
+rss: true
 
 # Jekyll configuration
 
