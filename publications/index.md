@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* K.M. Visscher, P.L. Kastritis and **A.M.J.J. Bonvin**.
+[Non-interacting surface solvation and dynamics in protein-protein interactions.](http://dx.doi.org/doi:10.1002/prot.24741)
+_Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2015).
+
 * M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Information-driven modelling of protein-peptide complexes.](http://link.springer.com/protocol/10.1007/978-1-4939-2285-7_10)
 _Methods in Molecular Biology._ Ed. Peng Zhou. Humana Press Inc. 221-239 (2015)
