@@ -6,7 +6,7 @@ excerpt: 'Top performance of HADDOCK in the joint CASP/CAPRI prediction round!'
 image:
   feature: pages/banner_home.jpg
 ---
-Last summer, the [CASP](http://predictioncenter.org) and [CAPRI](http://www.ebi.ac.uk/msd-srv/capri/) communities teamed up for a joint round of predictions. 
+Last summer, the [CASP](http://predictioncenter.org) (Critical Assessment of Structure Prediction) and [CAPRI](http://www.ebi.ac.uk/msd-srv/capri/)  (Critical Assessment of PRedicted Interactions) communities teamed up for a joint round of predictions. 
 25 targets were made available to both communities in order to predict the 3D structure of those complexes.
 These were mostly homodimers with a few tetramers and some heteromers. This meant effectively modelling the structures of the monomers and their assemblies from sequence information only.
 <BR>
