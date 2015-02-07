@@ -1,6 +1,7 @@
 ---
-layout: page
+layout: news
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+date: 2014-08-08T20:53:07.573882-04:00
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 excerpt: 'Alexandre talks to the Desktop Grid Federation about the social life of molecules.'

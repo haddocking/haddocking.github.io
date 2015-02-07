@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, NMR, H2020, e-Infrastructure, CLOUD, GRID, Utrecht University]
 comments: false
 excerpt: 'A large international EU consortium gets funded under the H2020 eInfrastructure programme to develop CLOUD eScience solutions.'

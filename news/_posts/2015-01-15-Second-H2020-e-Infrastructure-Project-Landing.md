@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, NMR, H2020, e-Infrastructure, EGI, CLOUD, GRID, Utrecht University]
 comments: false
 excerpt: 'Utrecht participates to the newly funded EGI-Engage project under the H2020 e-Infrastructure programme.'
