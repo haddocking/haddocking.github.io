@@ -1,10 +1,11 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, NMR, H2020, e-Infrastructure, CLOUD, GRID, Utrecht University]
+date: 2015-01-14
 comments: false
 excerpt: 'A large international EU consortium gets funded under the H2020 eInfrastructure programme to develop CLOUD eScience solutions.'
 image:
-  feature: pages/banner_home.jpg
+  feature: 
 ---
 The Utrecht Computational Structural Biology group will be part of a large European consortium under the INDIGO-DataCLoud project (11 million budget), funded under the [Horizon 2020 e-Infrastructure programme](http://ec.europa.eu/programmes/horizon2020/en/h2020-section/european-research-infrastructures-including-e-infrastructures) ([H2020-EINFRA-2014-2 call](http://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/calls/h2020-einfra-2014-2.html)). 
 <BR>

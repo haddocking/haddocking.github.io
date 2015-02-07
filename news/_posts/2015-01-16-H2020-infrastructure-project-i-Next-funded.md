@@ -1,10 +1,11 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, NMR, H2020, Infrastructure, SAXS, cryoEM, crystallography, INSTRUCT, Utrecht University]
+date: 2015-01-16
 comments: false
-excerpt: 'iNEXT H2020 nfrastructure project funded - 10 million for structural biology in Europe!'
+excerpt: 'iNEXT H2020 infrastructure project funded - 10 million for structural biology in Europe!'
 image:
-  feature: pages/banner_home.jpg
+  feature: 
 ---
 The iNEXT project (10 million budget), coordinated by [Prof. Rolf Boelens](http://www.uu.nl/staff/RBoelens) from the [NMR group](http://www.nmr.chem.uu.nl), [Faculty of Science](http://www/science.uu.nl), Utrecht University, got funded under the [Horizon 2020 Research and Innovation programme](http://ec.europa.eu/research/participants/portal/desktop/en/opportunities/h2020/topics/64-infraia-1-2014-2015.html).
 <BR>

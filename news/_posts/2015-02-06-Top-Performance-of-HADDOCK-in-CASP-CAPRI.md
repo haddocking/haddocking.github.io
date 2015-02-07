@@ -1,10 +1,11 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, CASP, CAPRI, DOCKING, SCORING, Utrecht University]
+date: 2015-02-06
 comments: false
 excerpt: 'Top performance of HADDOCK in the joint CASP/CAPRI prediction round!'
 image:
-  feature: pages/banner_home.jpg
+  feature:
 ---
 Last summer, the [CASP](http://predictioncenter.org) (Critical Assessment of Structure Prediction) and [CAPRI](http://www.ebi.ac.uk/msd-srv/capri/)  (Critical Assessment of PRedicted Interactions) communities teamed up for a joint round of predictions. 
 25 targets were made available to both communities in order to predict the 3D structure of those complexes.
@@ -15,13 +16,13 @@ The HADDOCK team participated to the server and scoring competitions, using main
 <BR>
 <BR>
 The results of this joint CASP/CAPRI prediction round were presented by Shoshana Wodak at the CASP meeting in Cancun, Mexico last December.
-The results show that HADDOCK is mainting its leading position in this field, with the server ranking at the top of all servers (and above pretty much all CASP predictors!).
+The results show that HADDOCK is maintaining its leading position in this field, with the server ranking at the top of all servers (and above pretty much all CASP predictors!).
 In the scoring experiment, the HADDOCK score (based on the OPLS force field of Jorgensen) performed extremely well, ranking at the top among all participating CASP and CAPRI groups. This is summarized in the following slide taken from Shoshana Wodak's presentation:
 <BR>
 <BR>
    <img src="/images/posts/CASP-CAPRI.png">
 <BR>
 <BR>
-The slides of the full presentation given at the Cancun meeting are available *[here](http://www.ebi.ac.uk/msd-srv/capri/round30/CAPRI_R30_v20141224.SW.pdf)*.
+The slides of the full presentation given at the Cancun meeting are available [here](http://www.ebi.ac.uk/msd-srv/capri/round30/CAPRI_R30_v20141224.SW.pdf).
 
 

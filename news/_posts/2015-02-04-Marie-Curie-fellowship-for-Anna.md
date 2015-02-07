@@ -1,10 +1,11 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, H2020, Marie Curie, Utrecht University]
+date: 2015-02-04
 comments: false
 excerpt: 'Anna Vangone receives a H2020 Marie Curie fellowship!'
 image:
-  feature: pages/banner_home.jpg
+  feature: 
 ---
 Anna Vangone, a post-doc in the Computational Structural Biology group, received a [H2020 Marie Sklodowska-Curie Individual Fellowship](http://ec.europa.eu/programmes/horizon2020/en/h2020-section/marie-sklodowska-curie-actions). With this two-year fellowship, Anna will work on developing a dynamical view of binding affinity in protein-protein interactions. We are all glad to have her for two more years in the group!
 <BR>

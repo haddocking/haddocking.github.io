@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, EVFold, Co-Evolution, Docking, Integrative Modeling, Bioinformatics, Harvard University, Utrecht University]
-modified: 2014-08-08T20:53:07.573882-04:00
+date: 2014-10-03
 comments: false
 excerpt: 'HADDOCKing with co-evolution restraints: collaboration with Harvard University @eLife'
 image:

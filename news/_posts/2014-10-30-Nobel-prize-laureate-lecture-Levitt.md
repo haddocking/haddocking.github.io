@@ -1,11 +1,11 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, Nobel Prize, Levitt, Molecular Modelling, Stanford University, Utrecht University]
-modified: 2014-08-08T20:53:07.573882-04:00
+date: 2014-10-30
 comments: false
 excerpt: 'Lecture Chemistry Nobel Prize laureate Michael Levitt - Utrecht, December 11th'
 image:
-  feature: pages/banner_home.jpg
+  feature: 
 ---
 Last year's Nobel Prize laureate in chemistry Michael Levitt, professor of Structural Biology of Stanford University, will give a lecture at Utrecht University on December 11th at 16.00 hrs. Together with the two other laureates, he successfully developed methods that combined quantum and classical mechanics to calculate the courses of chemical reactions using computers. In his lecture he will describe the origins of computational structural biology and then go on to show some of the most exciting current and future applications. Levitt is in Utrecht because he is member of the PhD defence committee of Joao Rodrigues (Computational Structural Biology - NMR).
 When he was awarded the Nobel Prize, Levitt said the award recognised him for work he had done when he was 20, before he even had his PhD. *"It was just me being in the right place at the right time and maybe having a few good ideas."* He added it was nice to see that computational science, computational biology is being recognized. *"It has become a very large field and it's always in some ways been the poor sister, or the ugly sister, to experimental biology."*

@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: news
 tags: [HADDOCK, Docking, Integrative Modeling, Bioinformatics, Utrecht University, Ubiquitination, E2-E3]
-modified: 2014-08-08T20:53:07.573882-04:00
+date: 2014-12-12
 comments: False
 excerpt: 'Joao Rodrigues successfully defended his PhD thesis'
 ---
