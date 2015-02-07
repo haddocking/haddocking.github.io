@@ -4,7 +4,7 @@ tags: [HADDOCK, NMR, H2020, e-Infrastructure, EGI, CLOUD, GRID, Utrecht Universi
 comments: false
 excerpt: 'Utrecht participates to the newly funded EGI-Engage project under the H2020 e-Infrastructure programme.'
 image:
-  feature: pages/banner_home.jpg
+  feature: 
 ---
 The Utrecht Computational Structural Biology group will be part of a second large European consortium under the EGI-Engage project (8 million budget), funded under the [Horizon 2020 e-Infrastructure programme](http://ec.europa.eu/programmes/horizon2020/en/h2020-section/european-research-infrastructures-including-e-infrastructures) (H2020: Research & Innovation Actions (RIA)). 
 <BR>

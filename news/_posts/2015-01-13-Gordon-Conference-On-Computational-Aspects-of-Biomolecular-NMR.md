@@ -4,7 +4,7 @@ tags: [HADDOCK, NMR, Gordon Conference, Il Ciocco, Computation, Structure, Molec
 comments: false
 excerpt: 'Gordon Conference on Biomolecular Aspects of Biomolecular NMR - June 2015'
 image:
-  feature: pages/banner_home.jpg
+  feature: 
 ---
 
 The 2015 Gordon Conference on "Computational Aspects of Biomolecular NMR" will take place in 2015 from June 7 until June 12 in the beautiful Toscane site of [Il Ciocco](https://www.grc.org/sites.aspx?id=10&tab=0) in Italy .
