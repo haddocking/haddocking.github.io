@@ -1,7 +1,7 @@
 ---
 layout: news
 tags: [HADDOCK, Nobel Prize, Levitt, Molecular Modelling, Stanford University, Utrecht University]
-modified: 2014-08-08T20:53:07.573882-04:00
+date: 2014-10-30
 comments: false
 excerpt: 'Lecture Chemistry Nobel Prize laureate Michael Levitt - Utrecht, December 11th'
 image:

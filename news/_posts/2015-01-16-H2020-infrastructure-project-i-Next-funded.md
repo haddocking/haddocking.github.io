@@ -1,8 +1,9 @@
 ---
 layout: news
 tags: [HADDOCK, NMR, H2020, Infrastructure, SAXS, cryoEM, crystallography, INSTRUCT, Utrecht University]
+date: 2015-01-16
 comments: false
-excerpt: 'iNEXT H2020 nfrastructure project funded - 10 million for structural biology in Europe!'
+excerpt: 'iNEXT H2020 infrastructure project funded - 10 million for structural biology in Europe!'
 image:
   feature: 
 ---

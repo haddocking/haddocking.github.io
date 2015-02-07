@@ -1,6 +1,7 @@
 ---
 layout: news
 tags: [HADDOCK, CASP, CAPRI, DOCKING, SCORING, Utrecht University]
+date: 2015-02-06
 comments: false
 excerpt: 'Top performance of HADDOCK in the joint CASP/CAPRI prediction round!'
 image:

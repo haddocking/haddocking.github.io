@@ -1,6 +1,7 @@
 ---
 layout: news
 tags: [HADDOCK, NMR, DOCKING, complexes, Utrecht University]
+date: 2015-02-07
 comments: false
 excerpt: 'Positive quote from a satisfied HADDOCK user'
 image:

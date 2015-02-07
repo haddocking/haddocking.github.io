@@ -1,6 +1,7 @@
 ---
 layout: news
 tags: [HADDOCK, NMR, Gordon Conference, Il Ciocco, Computation, Structure, Molecular Modelling, Utrecht University]
+date: 2015-01-13
 comments: false
 excerpt: 'Gordon Conference on Biomolecular Aspects of Biomolecular NMR - June 2015'
 image:

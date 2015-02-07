@@ -1,6 +1,7 @@
 ---
 layout: news
 tags: [HADDOCK, H2020, Marie Curie, Utrecht University]
+date: 2015-02-04
 comments: false
 excerpt: 'Anna Vangone receives a H2020 Marie Curie fellowship!'
 image:

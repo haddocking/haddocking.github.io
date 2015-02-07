@@ -1,7 +1,7 @@
 ---
 layout: news
 tags: [HADDOCK, Docking, Integrative Modeling, Bioinformatics, Utrecht University, Ubiquitination, E2-E3]
-modified: 2014-08-08T20:53:07.573882-04:00
+date: 2014-11-28
 comments: False
 excerpt: 'Poster prize for Gydo van Zundert at the fall 2014 NSBM meeting'
 ---
