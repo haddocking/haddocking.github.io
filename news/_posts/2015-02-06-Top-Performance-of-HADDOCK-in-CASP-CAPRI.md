@@ -4,7 +4,7 @@ tags: [HADDOCK, CASP, CAPRI, DOCKING, SCORING, Utrecht University]
 comments: false
 excerpt: 'Top performance of HADDOCK in the joint CASP/CAPRI prediction round!'
 image:
-  feature: pages/banner_home.jpg
+  feature:
 ---
 Last summer, the [CASP](http://predictioncenter.org) (Critical Assessment of Structure Prediction) and [CAPRI](http://www.ebi.ac.uk/msd-srv/capri/)  (Critical Assessment of PRedicted Interactions) communities teamed up for a joint round of predictions. 
 25 targets were made available to both communities in order to predict the 3D structure of those complexes.
