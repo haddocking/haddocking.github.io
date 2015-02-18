@@ -22,10 +22,14 @@ This page provide you links to software, software manuals and tutorials of the c
   The GitHub repository for HADDOCK and its associated tools
 
   * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
-  A collection of python scripts for the manipulation (renumbering, changing chain and segID's...) of PBD files
+  A collection of python scripts for the manipulation (renumbering, changing chain and segID's...) of PBD files.
 
   * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
-  Clustering of biomolecular complexes based on the fraction of common contacts
+  Clustering of biomolecular complexes based on the fraction of common contacts.
+
+  * [**PowerFit**](https://github.com/haddocking/powerfit):
+  Automatic rigid-body fitting of high-resolution models in cryo-EM densities.
+
 <HR>
 * #### 3D-DART DNA modelling 
   3D-DART provides a convenient means of generating custom structural models of DNA.
@@ -46,6 +50,6 @@ This page provide you links to software, software manuals and tutorials of the c
   WHISCY is a program to predict protein-protein interfaces. It is primarily based on conservation, but it also takes into account structural information. 
 
   * [**CPORT**](http://haddock.science.uu.nl/services/CPORT)
-  CPORT is an algorithm for the prediction of protein-protein interface residues. It combines six interface prediction methods into a consensus predictor
+  CPORT is an algorithm for the prediction of protein-protein interface residues. It combines six interface prediction methods into a consensus predictor.
 
 
