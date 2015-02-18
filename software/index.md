@@ -36,6 +36,10 @@ This page provide you links to software, software manuals and tutorials of the c
 <HR>
 * #### [Protein-DNA docking benchmark](http://haddock.science.uu.nl/dna/benchmark.html)
 <HR>
+* #### Cryo-EM tools
+  * [**PowerFit**](https://github.com/haddocking/powerfit):
+  PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities. To this end it performs a full-exhaustive 6-dimensional cross-correlation search between the atomic structure and the density. Read more [here](https://github.com/haddocking/powerfit).
+<HR>
 * #### Bioinformatics interface predictors
 
   * [**WHISCY**](http://nmr.chem.uu.nl/Software/whiscy/index.html)
