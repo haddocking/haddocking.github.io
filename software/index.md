@@ -26,6 +26,9 @@ This page provide you links to software, software manuals and tutorials of the c
 
   * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
   Clustering of biomolecular complexes based on the fraction of common contacts
+
+  * [**PowerFit**](https://github.com/haddocking/powerfit):
+  PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities.
 <HR>
 * #### 3D-DART DNA modelling 
   3D-DART provides a convenient means of generating custom structural models of DNA.
@@ -35,10 +38,6 @@ This page provide you links to software, software manuals and tutorials of the c
   * [**User manual**](http://haddock.science.uu.nl/enmr/services/3DDART/DARTusage.html)
 <HR>
 * #### [Protein-DNA docking benchmark](http://haddock.science.uu.nl/dna/benchmark.html)
-<HR>
-* #### Cryo-EM tools
-  * [**PowerFit**](https://github.com/haddocking/powerfit):
-  PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities. To this end it performs a full-exhaustive 6-dimensional cross-correlation search between the atomic structure and the density. Read more [here](https://github.com/haddocking/powerfit).
 <HR>
 * #### Bioinformatics interface predictors
 
