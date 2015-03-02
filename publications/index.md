@@ -8,11 +8,20 @@ image:
 <hr />
 * K.M. Visscher, P.L. Kastritis and **A.M.J.J. Bonvin**.
 [Non-interacting surface solvation and dynamics in protein-protein interactions.](http://dx.doi.org/doi:10.1002/prot.24741)
-_Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2015).
+_Proteins: Struc. Funct. &amp; Bioinformatics_ *83*, 445-458 (2015).
 
 * M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Information-driven modelling of protein-peptide complexes.](http://link.springer.com/protocol/10.1007/978-1-4939-2285-7_10)
 _Methods in Molecular Biology._ Ed. Peng Zhou. Humana Press Inc. 221-239 (2015)
+
+* J.P.G.L.M Rodrigues, E. Karaca and **A.M.J.J. Bonvin**.
+[Information-driven structural modelling of protein-protein interactions.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18)
+_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 399-424 (2015).
+
+* W.F. Vranken, G.W. Vuister and **A.M.J.J. Bonvin**.
+[NMR-based modelling and refinement of protein 3D structures.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16)
+_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 351-380 (2015).
+
 
 ## 2014
 <hr />
@@ -27,14 +36,6 @@ _eLife._ *3* 10.7554/eLife.03430 (2014)
 * M. Rey, V. Sarpe, K. Burns, J. Buse, Ch.A.H. Baker, M. van Dijk, L. Wordeman, **A.M.J.J. Bonvin** and D. Schriemer.
 [Mass Spec Studio for Integrative Structural Biology.](http://dx.doi.org/10.1016/j.str.2014.08.013)
 _Structure._ *22*, 1538-1548 (2014).
-
-* J.P.G.L.M Rodrigues, E. Karaca and **A.M.J.J. Bonvin**.
-[Information-driven structural modelling of protein-protein interactions.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18)
-_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 399-424 (2014).
-
-* W.F. Vranken, G.W. Vuister and **A.M.J.J. Bonvin**.
-[NMR-based modelling and refinement of protein 3D structures.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16)
-_Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 351-380 (2014).
 
 * P.L. Kastritis, J.P.G.L.M Rodrigues, G.E. Folkers, R. Boelens and **A.M.J.J. Bonvin**.
 [Proteins feel more than they see: Fine-tuning of binding affinity by properties of the non-interacting surface.](http://dx.doi.org/10.1016/j.jmb.2014.04.017)
