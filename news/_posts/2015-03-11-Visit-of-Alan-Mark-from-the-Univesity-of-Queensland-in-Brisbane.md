@@ -14,9 +14,8 @@ He is currently professor in the the School of Chemistry and Molecular Biosience
    <center><img src="/images/posts/AlanMark.gif"></center>
 <BR>
 <BR>
-Those interested in talking to Alan during his visit should contact Alexandre Bonvin (a.m.j.j.bonvin_at_uu.nl).
-
-
+Those interested in talking to Alan during his visit should contact Alexandre Bonvin (a.m.j.j.bonvin_at_uu.nl). 
+<BR>
 While in Utrecht Alan will give a [Bijvoet Seminar](http://bijvoet-center.eu) on Tuesday March 31st at 11:00 (NPC Room O622, Kruyt building) with as title:
 
 
