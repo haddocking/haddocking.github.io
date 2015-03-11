@@ -40,7 +40,7 @@ if __name__ == '__main__':
         sys.exit(1)
     
     # Get data and make blank post
-    curdate = time.strftime("%d-%m-%Y")
+    curdate = time.strftime("%Y-%m-%d")
     title = ' '.join(rtitle)
     template = string.Template(news_template)
     post_content = template.substitute({'title': title, 'date': curdate})
