@@ -7,7 +7,7 @@ tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-[Prof. Alan Mark](http://staff.scmb.uq.edu.au/staff/alan-mark) has made many contributions to the MD field and is associated with GROMOS/Gromacs developments.
+[Prof. Alan Mark](http://staff.scmb.uq.edu.au/staff/alan-mark) has made many contributions to the molecular dynamics simulation field and is associated with [GROMOS](http://www.gromos.net)/[Gromacs](http://www.gromacs.org) developments.
 He is currently professor in the the School of Chemistry and Molecular Biosiences of the University of Queensland, St Lucia, Queensland, Australia.
 
 <BR>
