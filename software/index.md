@@ -29,6 +29,10 @@ This page provide you links to software, software manuals and tutorials of the c
 
   * [**PowerFit**](https://github.com/haddocking/powerfit):
   PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities.
+
+  * [**DisVis**](https://github.com/haddocking/disvis):
+  A Python package and command-line tool to quantify and visualize the accessible interaction space of distance-restrained biomolecular complexes.
+
 <HR>
 * #### 3D-DART DNA modelling 
   3D-DART provides a convenient means of generating custom structural models of DNA.
