@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* K.D. Brewer, T. Bacaj, A. Cavalli, C. Camilloni, J.D. Swarbrick, J. Liu, A. Zhou, P. Zhou, N. Barlow, J. Xu, A.B. Seven, E.A. Prinslow, R. Voleti, D. Haussinger, **A.M.J.J. Bonvin**, D.R. Tomchick, M. Vendruscolo, B. Graham, T.C. Sudhof, J. Rizo.
+Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution.
+_Nature Struct. &amp;  Mol. Biol._ In press (2015).
+
 * G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.
 _Structure._ In press (2015).
