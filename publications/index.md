@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* G.C.P. van Zundert and **A.M.J.J. Bonvin**.
+Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit.
+_AIMS Biophysics_. In press (2015).
+
 * K.D. Brewer, T. Bacaj, A. Cavalli, C. Camilloni, J.D. Swarbrick, J. Liu, A. Zhou, P. Zhou, N. Barlow, J. Xu, A.B. Seven, E.A. Prinslow, R. Voleti, D. Haussinger, **A.M.J.J. Bonvin**, D.R. Tomchick, M. Vendruscolo, B. Graham, T.C. Sudhof, J. Rizo.
 Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution.
 _Nature Struct. &amp;  Mol. Biol._ In press (2015).
