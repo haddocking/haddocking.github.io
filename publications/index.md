@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* T. Sinnige, M. Weingarth, . Daniëls, R. Boelens, **A.M.J.J. Bonvin**, Klaartje Houben and Marc Baldus.
+Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA.
+_Structure_. In press (2015).
+
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
 Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit.
 _AIMS Biophysics_. In press (2015).
