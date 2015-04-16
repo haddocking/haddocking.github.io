@@ -6,7 +6,7 @@ image:
 
 ## 2015
 <hr />
-* T. Sinnige, M. Weingarth, . Daniëls, R. Boelens, **A.M.J.J. Bonvin**, Klaartje Houben and Marc Baldus.
+* T. Sinnige, M. Weingarth, M. Daniëls, R. Boelens, **A.M.J.J. Bonvin**, K. Houben and M. Baldus.
 Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA.
 _Structure_. In press (2015).
 
