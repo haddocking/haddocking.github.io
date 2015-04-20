@@ -11,8 +11,8 @@ Conformational plasticity of the POTRA 5 domain in the outer membrane protein as
 _Structure_. In press (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
-Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit.
-_AIMS Biophysics_. In press (2015).
+[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73#sthash.WquE2P37.dpuf).
+_AIMS Biophysics_. *2*, 73-87 (2015).
 
 * K.D. Brewer, T. Bacaj, A. Cavalli, C. Camilloni, J.D. Swarbrick, J. Liu, A. Zhou, P. Zhou, N. Barlow, J. Xu, A.B. Seven, E.A. Prinslow, R. Voleti, D. Haussinger, **A.M.J.J. Bonvin**, D.R. Tomchick, M. Vendruscolo, B. Graham, T.C. Sudhof, J. Rizo.
 Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution.
