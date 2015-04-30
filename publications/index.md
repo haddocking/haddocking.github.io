@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* G. van der Schot and **A.M.J.J. Bonvin**
+Performance of the WeNMR CS-Rosetta3 web server in CASD-NMR.
+_J. Biomol. NMR_. In press (2015).
+
 * T. Sinnige, M. Weingarth, M. Daniëls, R. Boelens, **A.M.J.J. Bonvin**, K. Houben and M. Baldus.
 Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA.
 _Structure_. In press (2015).
@@ -19,7 +23,7 @@ Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution.
 _Nature Struct. &amp;  Mol. Biol._ In press (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
-Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.
+[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
 _Structure._ In press (2015).
 
 * M. Kaplan, A. Cukkemane, G.C.P. van Zundert, S. Narasimhan, G. Waksman, **A.M.J.J. Bonvin**, R. Fronzes, G.E. Folkers and M. Baldus.
