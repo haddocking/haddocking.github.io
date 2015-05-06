@@ -32,7 +32,7 @@ _Nature Struct. &amp;  Mol. Biol._ In press (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
-_Structure._ In press (2015).
+_Structure._ *23*, 949-960 (2015).
 
 * M. Kaplan, A. Cukkemane, G.C.P. van Zundert, S. Narasimhan, G. Waksman, **A.M.J.J. Bonvin**, R. Fronzes, G.E. Folkers and M. Baldus.
 Probing a cell-embedded Megadalton protein complex by DNP-supported solid-state NMR.
