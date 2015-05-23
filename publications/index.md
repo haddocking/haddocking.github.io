@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
+Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes.
+_Bioinformatics_. In press (2015).
+
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.
 [Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](http://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
 _Frontiers in Genetics_. In press (2015).
@@ -18,7 +22,7 @@ _Structure_. In press (2015).
 Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces
 _Current Topics in Medicinal Chemistry_. In press (2015).
 
-* G. van der Schot and **A.M.J.J. Bonvin**
+* G. van der Schot and **A.M.J.J. Bonvin**. 
 [Performance of the WeNMR CS-Rosetta3 web server in CASD-NMR](http://dx.doi.org/doi:10.1007/s10858-015-9942-7).
 _J. Biomol. NMR_. Advanced Online Publication (2015).
 
