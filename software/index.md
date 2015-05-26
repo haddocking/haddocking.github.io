@@ -18,11 +18,11 @@ This page provide you links to software, software manuals and tutorials of the c
 
   * [**HADDOCK grid-enabled web server**](http://haddock.science.uu.nl/enmr/services/HADDOCK)
 <HR>
-* #### [HADDOCKING github repository](http://github.com/haddocking)
+* #### [HADDOCKING GitHub repository](http://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
 
   * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
-  A collection of python scripts for the manipulation (renumbering, changing chain and segID's...) of PBD files
+  A collection of Python scripts for the manipulation (renumbering, changing chain and segID's...) of PDB files
 
   * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
   Clustering of biomolecular complexes based on the fraction of common contacts
