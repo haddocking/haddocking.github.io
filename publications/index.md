@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* M. Rad-Malekshahi, K. Visscher, J.P.G.L.M. Rodrigues, R. De Vries, W. Hennink, M. Baldus, **A.M.J.J. Bonvin**#, E. Mastrobattista# and M. Weingarth#.
+The supramolecular organization of a peptide-based nanocarrier at high molecular detail.
+_J. Am. Chem. Soc._ In press (2015).
+
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
 Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes.
 _Bioinformatics_. In press (2015).
@@ -43,8 +47,8 @@ _Nature Struct. &amp;  Mol. Biol._ In press (2015).
 _Structure._ *23*, 949-960 (2015).
 
 * M. Kaplan, A. Cukkemane, G.C.P. van Zundert, S. Narasimhan, G. Waksman, **A.M.J.J. Bonvin**, R. Fronzes, G.E. Folkers and M. Baldus.
-Probing a cell-embedded Megadalton protein complex by DNP-supported solid-state NMR.
-_Nature Methods._ In press (2015).
+[Probing a cell-embedded Megadalton protein complex by DNP-supported solid-state NMR](http://dx.doi.org/doi:10.1038/nmeth.3406).
+_Nature Methods._ Online Publication (2015).
 
 * K.M. Visscher, P.L. Kastritis and **A.M.J.J. Bonvin**.
 [Non-interacting surface solvation and dynamics in protein-protein interactions.](http://dx.doi.org/doi:10.1002/prot.24741)
