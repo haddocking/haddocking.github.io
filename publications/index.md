@@ -11,8 +11,8 @@ The supramolecular organization of a peptide-based nanocarrier at high molecular
 _J. Am. Chem. Soc._ In press (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
-Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes.
-_Bioinformatics_. In press (2015).
+[Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333).
+_Bioinformatics_. Advanced Online Publication (2015).
 
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.
 [Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](http://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
@@ -23,7 +23,7 @@ Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop.
 _Structure_. In press (2015).
 
 * R. Zhang, T. Eckert, T. Lütteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kožár, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces
+Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces.
 _Current Topics in Medicinal Chemistry_. In press (2015).
 
 * G. van der Schot and **A.M.J.J. Bonvin**. 
@@ -31,8 +31,8 @@ _Current Topics in Medicinal Chemistry_. In press (2015).
 _J. Biomol. NMR_. Advanced Online Publication (2015).
 
 * T. Sinnige, M. Weingarth, M. Daniëls, R. Boelens, **A.M.J.J. Bonvin**, K. Houben and M. Baldus.
-Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA.
-_Structure_. In press (2015).
+[Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA](http://dx.doi.org/10.1016/j.str.2015.04.014).
+_Structure_. Advanced Online Publication (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
 [Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73).
