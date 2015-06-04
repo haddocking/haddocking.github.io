@@ -11,7 +11,7 @@ The supramolecular organization of a peptide-based nanocarrier at high molecular
 _J. Am. Chem. Soc._ In press (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
-[Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333).
+[DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333).
 _Bioinformatics_. Advanced Online Publication (2015).
 
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.

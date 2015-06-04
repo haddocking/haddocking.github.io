@@ -13,10 +13,16 @@ web page](http://mmistakes.github.io/minimal-mistakes/theme-setup/).
 ##### Installation Instructions
 
 1. Install Bundler
-    gem install bundler
+
+```bash
+    $ gem install bundler
+```
 
 2. Run Bundler from the site's directory
-    bundle install
+
+```bash
+    $ bundle install
+```
 
 3. Adapt the settings in _config.yml accordingly
 
@@ -24,11 +30,12 @@ web page](http://mmistakes.github.io/minimal-mistakes/theme-setup/).
 
 To run the web site locally, e.g. to preview changes before pushing to the repository
 issue the following command:
-    bundle exec jekyll serve
-
+```bash
+    $ bundle exec jekyll serve
+```
 
 ##### We can now make a new post simply by typing, in the main folder of the site:
-
-python _utilities/create_new_article.py 'A Random Post'
-
+```python
+    $ python _utilities/create_new_article.py 'A Random Post'
+```
 
