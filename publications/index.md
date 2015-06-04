@@ -31,7 +31,7 @@ _Current Topics in Medicinal Chemistry_. In press (2015).
 _J. Biomol. NMR_. Advanced Online Publication (2015).
 
 * T. Sinnige, M. Weingarth, M. Daniëls, R. Boelens, **A.M.J.J. Bonvin**, K. Houben and M. Baldus.
-[Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA](http://dx.doi.org/10.1016/j.str.2015.04.014).
+[Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA](http://dx.doi.org/doi:10.1016/j.str.2015.04.014).
 _Structure_. Advanced Online Publication (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
@@ -39,8 +39,8 @@ _Structure_. Advanced Online Publication (2015).
 _AIMS Biophysics_. *2*, 73-87 (2015).
 
 * K.D. Brewer, T. Bacaj, A. Cavalli, C. Camilloni, J.D. Swarbrick, J. Liu, A. Zhou, P. Zhou, N. Barlow, J. Xu, A.B. Seven, E.A. Prinslow, R. Voleti, D. Haussinger, **A.M.J.J. Bonvin**, D.R. Tomchick, M. Vendruscolo, B. Graham, T.C. Sudhof, J. Rizo.
-Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution.
-_Nature Struct. &amp;  Mol. Biol._ In press (2015).
+[Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution](http://dx.doi.org/doi:10.1038/nsmb.3035).
+_Nature Struct. &amp;  Mol. Biol._ Advanced Online Publication (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
