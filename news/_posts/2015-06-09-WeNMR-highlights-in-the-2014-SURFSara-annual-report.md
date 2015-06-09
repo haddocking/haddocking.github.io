@@ -2,7 +2,7 @@
 layout: news
 title: WeNMR highlights in the 2014 SURFSara annual report
 date: 2015-06-09
-excerpt: SURFSara annual report 2014 hightlights protein research in the contact of WeNMR
+excerpt: SURFSara's annual report 2014 hightlights protein research with grid computing
 tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
