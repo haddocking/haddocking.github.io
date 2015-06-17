@@ -33,6 +33,9 @@ This page provide you links to software, software manuals and tutorials of the c
   * [**DisVis**](https://github.com/haddocking/disvis):
   A Python package and command-line tool to quantify and visualize the accessible interaction space of distance-restrained biomolecular complexes.
 
+  * [**Binding_affinity**](https://github.com/haddocking/binding_affinity):
+  A collection of Python scripts to calculate inter-residue contacts and non-interacting surface properties in protein-protein complexes. 
+
 <HR>
 * #### 3D-DART DNA modelling 
   3D-DART provides a convenient means of generating custom structural models of DNA.
