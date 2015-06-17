@@ -16,7 +16,7 @@ Inge Clemens, a final year high school (VWO) student from the [*Rythovius Colleg
     <img src="/images/posts/FBDD-Inge.png" width="75%">
 </figure>
 She wrote an excellent report that was given the top grade and was nominated for the best research report price of the OMO school organization ([*Vereniging Ons Middelbaar Onderwij*](http://www.omo.nl)). We thank Hans Wouters, the chemistry teacher at the Rythovius College supervising Inge, for bringing us such a bright student!
-The winner was announced on June 5th in a ceremony at the headquarters of OMO in Tilburg. 
+The winner (Inge, who received 1200.- euros!) was announced on June 5th in a ceremony at the headquarters of OMO in Tilburg. 
 <BR>
 <BR>
 Read more about it in a [*news item*](http://rythovius.mwp.nl/Home/tabid/41/ctl/details/itemid/33/mid/448/leerlingen-winnen-omo-profielwerkstukprijzen.aspx?SkinSrc=[G]Skins%2frythovius%2fvervolg&ContainerSrc=[G]Containers%2frythovius%2fgeentitel) from the Rythovius College (in Dutch).
