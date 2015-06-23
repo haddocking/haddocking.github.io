@@ -16,7 +16,7 @@ _Bioinformatics_. Advanced Online Publication (2015).
 
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.
 [Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](http://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
-_Frontiers in Genetics_. In press (2015).
+_Frontiers in Genetics_. *6:197*, doi:10.3389/fgene.2015.00197 (2015).
 
 * A. Sali, H.M. Berman, T. Schwede, J. Trewhella, G. Kleywegt, S.K. Burley, J. Markley, H. Nakamura, P. Adams, **A.M.J.J. Bonvin**, W. Chiu, M. Dal Peraro, F. Di Maio, T.E. Ferrin, K. Grünewald, A. Gutmanas, R. Henderson, G. Hummer, K. Iwasaki, G. Johnson, C.L. Lawson, J. Meiler, M.A. Marti-Renom, G.T. Montelione, M. Nilges, R. Nussinov, A. Patwardhan, J. Rappsilber, R.J. Read, H. Saibil, G.F. Schröder, C. Schwieters, C.A.M. Seidel, D. Svergun, M. Topf, E.L. Ulrich, S. Velankar, and J.D. Westbrook.
 Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop.
