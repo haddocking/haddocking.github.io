@@ -19,8 +19,8 @@ _Bioinformatics_. Advanced Online Publication (2015).
 _Frontiers in Genetics_. *6:197*, doi:10.3389/fgene.2015.00197 (2015).
 
 * A. Sali, H.M. Berman, T. Schwede, J. Trewhella, G. Kleywegt, S.K. Burley, J. Markley, H. Nakamura, P. Adams, **A.M.J.J. Bonvin**, W. Chiu, M. Dal Peraro, F. Di Maio, T.E. Ferrin, K. Grünewald, A. Gutmanas, R. Henderson, G. Hummer, K. Iwasaki, G. Johnson, C.L. Lawson, J. Meiler, M.A. Marti-Renom, G.T. Montelione, M. Nilges, R. Nussinov, A. Patwardhan, J. Rappsilber, R.J. Read, H. Saibil, G.F. Schröder, C. Schwieters, C.A.M. Seidel, D. Svergun, M. Topf, E.L. Ulrich, S. Velankar, and J.D. Westbrook.
-Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop.
-_Structure_. In press (2015).
+[Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop](http://dx.doi.org/10.1016/j.str.2015.05.013).
+_Structure_. Advanced Online Publication (2015).
 
 * R. Zhang, T. Eckert, T. Lütteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kožár, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
 Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces.
