@@ -45,6 +45,62 @@ svg:not(:root) {
 		}
 	}
 }
+/* Prompts */
+.prompt {
+  display: block;
+	margin-top: 2rem !important; // To detach from previous paragraph
+  margin-bottom: 5px;
+  padding: 4px 5px;
+	text-indent: 0rem;
+	font-family: $code-font;
+  background-color: $primary;
+  color: $white;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: $primary;
+  @include rounded(3px);
+}
+
+.prompt-attention {
+  background-color: $attention;
+  color: $white;
+  border-color: $attention;
+  &:hover {
+    background-color: $attention;
+    color: $white;
+  }
+}
+
+.prompt-info {
+  background-color: $infotext;
+  color: $white;
+  border-color: $infotext;
+  &:hover {
+    background-color: $infotext;
+    color: $white;
+  }
+}
+
+.prompt-pymol {
+  background-color: $pymoltext;
+  color: $white;
+  border-color: $pymoltext;
+  &:hover {
+    background-color: $pymoltext;
+    color: $white;
+  }
+}
+
+.prompt-cmd {
+  background-color: $cmdtext;
+  color: $black;
+  border-color: $cmdtext;
+  &:hover {
+    background-color: $cmdtext;
+    color: $black;
+  }
+}
+
 /* Buttons ============================================== */
 .btn {
   display: inline-block;
