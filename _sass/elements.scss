@@ -47,6 +47,7 @@ svg:not(:root) {
 }
 /* Prompts */
 .prompt {
+	@include font-rem(12);
   display: block;
 	margin-top: 2rem !important; // To detach from previous paragraph
   margin-bottom: 5px;
