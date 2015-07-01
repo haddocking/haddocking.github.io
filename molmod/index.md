@@ -24,14 +24,15 @@ academical use. Utrecht University students will be provided with a pre-configur
 compatible with [Virtualbox](http://www.virtualbox.org) (also free to install).  
   
 Each module has its own separate set of web pages, but they all share the same conventions. Throughout
-the material, you will find colored text that might refer to questions, Linux and/or Pymol commands,
-and attention prompts (to avoid distractions!). You should try your best and answer the questions and
-you should *not* blindly copy-paste the commands!  
+the material, you will find colored text that might refer to questions or instructions, Linux and/or
+Pymol commands, and attention prompts (to avoid distractions!). You should try your best and answer 
+the questions and you should *not* blindly copy-paste the commands!  
 
 <a class="prompt prompt-attention">You should pay special attention to this!</a>
-<a class="prompt prompt-info">This is a question prompt, can you see it?</a>
-<a class="prompt prompt-pymol">Pymol commands will be displayed here</a>
-<a class="prompt prompt-cmd">These will be used for Linux commands you should insert in the terminal</a>
+<a class="prompt prompt-question">Can you see this question? You should answer it!</a>
+<a class="prompt prompt-info">You should follow the instructions written here.</a>
+<a class="prompt prompt-pymol">Pymol commands will be displayed here.</a>
+<a class="prompt prompt-cmd">These will be used for Linux commands you should insert in the terminal.</a>
 
 #### Layout & Biological Significance
 The aim of this course is to computationally probe the binding of an N-terminal peptide sequence of 
