@@ -92,13 +92,23 @@ svg:not(:root) {
   }
 }
 
-.prompt-cmd {
-  background-color: $cmdtext;
-  color: $black;
-  border-color: $cmdtext;
+.prompt-question {
+  background-color: $question;
+  color: $white;
+  border-color: $question;
   &:hover {
-    background-color: $cmdtext;
-    color: $black;
+    background-color: $question;
+    color: $white;
+  }
+}
+
+.prompt-cmd {
+  background-color: $primary;
+  color: $white;
+  border-color: $primary;
+  &:hover {
+    background-color: $primary;
+    color: $white;
   }
 }
 
