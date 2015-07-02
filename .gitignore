@@ -8,3 +8,4 @@ codekit-config.json
 node_modules
 _asset_bundler_cache
 images/molecules-raw
+.bundle
