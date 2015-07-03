@@ -66,7 +66,7 @@ have fun modelling MDM2.
 &nbsp;Exploration of the conformational landscape of an N-terminal mouse p53 peptide sequence using 
 [GROMACS](http://www.gromacs.org). 
 
-- [Homology Modelling]({{site.url}}/molmod/modelling.html)  
+- [Homology Modelling]({{site.url}}/molmod/modelling1.html)  
 &nbsp;Structure prediction of the mouse MDM2 protein using [HMMER](http://hmmer.janelia.org) & 
 [MODELLER](https://salilab.org/modeller).  
 
