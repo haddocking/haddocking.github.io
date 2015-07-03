@@ -52,8 +52,9 @@ svg:not(:root) {
 //	margin-top: 2rem !important; // To detach from previous paragraph
   margin-bottom: 5px;
   padding: 4px 5px;
-	text-indent: 0rem;
-	font-family: $code-font;
+  text-indent: 0rem;
+  text-align: left;  
+  font-family: $code-font;
   background-color: $primary;
   color: $white;
   border-width: 1px !important;
