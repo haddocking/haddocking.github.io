@@ -7,35 +7,7 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 
-### A bite of theory
-Of the triumvirate in computational structure prediction, homology modelling is the most accurate 
-and reliable method for building the three-dimensional structure of a protein sequence of interest
-([source](http://salilab.org/modeller/downloads/marc-bozi.pdf)). The other two, molecular threading 
-and *ab initio* modelling, are usually only of interest when the sequence of interest does not have
-a close homologue with an experimentally determined structure. However, the last decades revealed 
-that the protein structure universe is finite and that the sequence universe is still expanding quite 
-rapidly. Indeed, there are millions of known protein sequences, two orders of magnitude more than 
-structures and many more than unique folds currently deposited in the RCSB PDB. As such, the 
-chances of *not* finding such a homologue are quite small and thus, homology modelling is often the
-first computational method to try when predicting protein structure.
-
-<figure>
-    <a href="/images/molmod/rcsb-statistics.png"><img src="/images/molmod/rcsb-statistics.png"></a>
-    <figcaption>Growth of the protein structure database since its inception in 1974.</figcaption>
-</figure>
-
-Homology modelling exploits the fact that protein tertiary structure is more conserved than the 
-primary structure, or the amino acid sequence. When looking at sequences of evolutionarily related 
-proteins, certain residues are observed to evolve slower than expected, or evolving within certain
-constraints, such as chemical similarity (i.e. same charge, aromatic character). These are usually 
-associated with key structural features necessary for protein function, be it the catalytic center of
-an enzyme or residues that mediate interactions with partner molecules. As such, in similar proteins,
-these residues ought to occupy similar structural positions - this is the basis of homology modelling
-algorithms since their inception in the late 80s/early 90s.
-
-### Modelling the MDM2 Mouse protein
-
-#### Finding the right sequence in Uniprot
+### Finding the right sequence in Uniprot
 
 Our goal is to create a model of the MDM2 mouse protein, in particular of its N-terminal region that
 we know binds the p53 trans-activation domain. So, where do we start?
@@ -111,34 +83,4 @@ Now that you have your sequence, the next step is to find a suitable homologue t
 modelling protocol. If you are looking for an easy way out (not possible if you are a student!),
 have a look at the [HHpred web server](http://toolkit.tuebingen.mpg.de/hhpred).
 
-#### Searching for a suitable template for homology modelling
-The template is the name given to the structure that will be used to model your sequence. In some
-course materials and web servers, your sequence is also referred to as 'query'. Our goal is to search
-through a structure database, such as [RCSB PDB](http://www.rcsb.org), for structures whose sequence
-is similar to ours. This begs the question: how similar is similar enough? Similarity is a 
-quantitative measure of how evolutionarily related two sequences are. It takes two aligned sequences
-and compares every amino acid to its aligned equivalent to determine if they are identical (exactly
-the same, i.e. A/A, K/K), similar (chemically equivalent, i.e., ASP/GLU or LYS/ARG, 
-[see here for more details](http://www.russelllab.org/aas/)), or otherwise different. This gives 
-rise to two measures, identity and similarity, that can be used to gauge the usefulness of a 
-particular template for modelling. As a rule of thumb, if you find a template that shares more than 
-30-35% sequence *identity* with your query, you can trust the overall features of the model.
-
-<figure>
-    <a href="/images/molmod/rcsb-statistics.png"><img src="/images/molmod/similarity-structures.png"></a>
-    <figcaption>Structures of sequence homologues of the Ribosomal protein L5 (in red).</figcaption>
-</figure>
-
-
-There are many algorithms available online (and offline) to search for sequence homologues. Given the
-rather small size of structure databases (~100k sequences) these searches run in a few seconds or 
-minutes, depending on the size of your query. [BLAST](http://blast.ncbi.nlm.nih.gov/Blast.cgi) was an
-early pioneer that remains in use even today, more than 20 years after its development. In short, it
-works by finding subsequences of the query that are similar to subsequences of sequences in the 
-database, and then merging them into full alignments ([learn more here](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3820096/)). 
-Another class of similarity search algorithms uses the query sequence to seed a general 'profile'
-sequence that summarises significant features in those sequences, for example only the most conserved
-amino acids. This 'profile' is then used to search again the database for homologues, yielding better
-results when looking for more evolutionarily distant relatives. This approach is used in PSI-BLAST
-and also in [HMMER](hmmer.janelia.org), although this method uses an entirely different mathematical
-framework and implementation.
+When you are ready to proceed, [click here]({{site.url}}/molmod/modelling3.html)  .
