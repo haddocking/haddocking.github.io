@@ -287,10 +287,10 @@ As a final exercise, compare the human and mouse proteins.
   pymol 4ODE\_A.pdb MDM2\_MOUSE.B99990014.pdb
 </a>
 <a class="prompt prompt-pymol">
-	alignto 4ODE\_A.pdb
-	zoom vis
-	show cartoon
-	set seq\_view, on
+	alignto 4ODE_A.pdb
+	zoom vis  
+	show cartoon  
+	set seq_view, on  
 </a>
 <a class="prompt prompt-question">
   Where are the mutations located? To they cluster together in a particular region? If so, which 
