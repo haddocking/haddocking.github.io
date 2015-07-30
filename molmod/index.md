@@ -31,7 +31,7 @@ To get started, click on the icons of the modules. Since the docking simulations
 <table class="three-col-table">
   <tr>
     <td>
-      <a href="{{site.url}}/molmod/modelling1.html"
+      <a href="{{site.url}}/molmod/modelling.html"
          alt="Structure prediction of the mouse MDM2 protein using HMMER & MODELLER"
          title="Structure prediction of the mouse MDM2 protein using HMMER & MODELLER">
          <img src="/images/molmod/hm_protein.jpg" class="col-table">
