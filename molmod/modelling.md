@@ -12,7 +12,8 @@ procedure:
 
 - [A bite of theory](#a-bite-of-theory)  
 - [Using Uniprot to retrieve sequence information](#using-uniprot-to-retrieve-sequence-information)  
-
+- [Finding homologues of known structure using HMMER](#finding-homologues-of-known-structure-using-hmmer)  
+- [Choosing a template from the list of homologues](#choosing-a-template-from-the-list-of-homologues)
 
 ## A bite of theory
 The last decades of scientific advances in the fields of protein biology revealed the extent of both
@@ -93,7 +94,7 @@ MCNTNMSVSTEGAASTSQIPASEQETLVRPKPLLLKLLKSVGAQNDTYTMKEIIFYIGQY
 IMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV
 {% endhighlight %}
 
-For each sequence in the file, it contains a header line starting with ```>``` followed by an identifier. In the Uniprot page, the identifier contains the entry's collection (sp - Swiss-Prot), accession code, and region of the sequence. The information on this header is used by several programs in many different ways, so it makes sense to keep it simple and readable.
+For each sequence in the file, it contains a header line starting with `>` followed by an identifier. In the Uniprot page, the identifier contains the entry's collection (sp - Swiss-Prot), accession code, and region of the sequence. The information on this header is used by several programs in many different ways, so it makes sense to keep it simple and readable.
 
 <a class="prompt prompt-info">
 Change the identifier to something more meaningful and human (e.g. MDM2_MOUSE).
@@ -108,4 +109,151 @@ Copy the FASTA-formatted sequence to a text file and save it under an appropriat
 Save the file in the home directory, Downloads/ folder, or any other easily accessible location.
 </a>
 
-Now that we have a sequence, the following step is to find a suitable homolog to use in the modeling protocol. The several homology modeling methods available online, such as the [HHpred web server](http://toolkit.tuebingen.mpg.de/hhpred), need only this sequence to start the entire procedure. After a few minutes or hours, depending on the protocol, these servers produce models and a set of quality criteria to help the user make a choice. The downside of using a web server is that, usually, the modeling protocol is a 'black box'. It is impossible to control settings beyond which templates and alignment to use. It is important, however, to understand what is happening behind the scenes, to make conscious choices and grasp the limitations of each method and model. Therefore, this tutorial uses a set of locally installed programs to search for templates, build the models, and evaluate their quality.
+Now that we have a sequence, the following step is to find a suitable homolog to use in the modelling protocol. The several homology modelling methods available online, such as the [HHpred web server](http://toolkit.tuebingen.mpg.de/hhpred), need only this sequence to start the entire procedure. After a few minutes or hours, depending on the protocol, these servers produce models and a set of quality criteria to help the user make a choice. The downside of using a web server is that, usually, the modelling protocol is a 'black box'. It is impossible to control settings beyond which templates and alignment to use. It is important, however, to understand what is happening behind the scenes, to make conscious choices and grasp the limitations of each method and model. Therefore, this tutorial uses a set of locally installed programs to search for templates, build the models, and evaluate their quality.
+
+## Finding homologues of known structure using HMMER
+The _template_ is the structurally-resolved homolog that serves as a basis for the modelling. The _query_, on the other hand, is the sequence being modelled.  This standard nomenclature is used by several web servers, software programs, and literature in the field of structure modelling. The first step in any modeling protocol is, therefore, to find a suitable template for the query.
+
+As mentioned before, there are computational methods that perform similarity searches against databases of known sequences. [BLAST](http://blast.ncbi.nlm.nih.gov/Blast.cgi) is the most popular of such methods, and probably the most popular bioinformatics algorithm, with two of its versions in the top 20 of the most cited papers in history ([source](http://www.nature.com/news/the-top-100-papers-1.16224)). It works by finding fragments of the query that are similar to fragments of sequences in a database and then merging them into full alignments ([source](http://www.ncbi.nlm.nih.gov/pubmed/23749753)). Another class of similarity search methods uses the query sequence to seed a general _profile sequence_ that summarises significant features in those sequences, such as the most conserved amino acids. This profile sequence is then used to search the database for homologues. This approach used in PSI-BLAST, an iterative version of BLAST, and also in [HMMER](http://hmmer.janelia.org), which employs an entirely different statistical framework.
+
+<a class="prompt prompt-question">
+What is the advantage of searching sequence databases with a "profile" sequence?
+</a>
+
+Whichever the sequence search algorithm, the chances are that, after running through the database, it returns a (hopefully) long list of results. Each entry in this list refers to a particular sequence, the hit, which was deemed similar to the query. It will contain the sequence alignment itself and also some quantitative statistics, namely the sequence similarity, the bit score of the alignment, and its expectation (E) value. Sequence similarity is a quantitative measure of how evolutionarily related two sequences are. It is essentially a comparison of every amino acid to its aligned equivalent. There are three possible outcomes out of this comparison: the amino acids are exactly the same, i.e. identical; they are different but share common physicochemical characteristics, i.e. similar; they are neither. It is also possible that the alignment algorithm introduced _gaps_ in either of the sequences, meaning that there was possibly an insertion or a deletion event during evolution. While identity is straightforward, similarity depends on specific criteria that group amino acids together, e.g. D/E, K/R/H, F/Y/W. The bit score is the likelihood that the query sequence is _truly_ a homologue of the hit, as opposed to a random match. The E-value represents the number of sequences that are expected to have a bit score higher than that of this particular alignment just by chance, given the database size. In essence, a very high bit score and a very small E-value is an assurance that the alignment is indeed significant and that this hit is likely a true homologue of the query sequence.
+
+Our goal is to search for homologues in a sequence database containing exclusively proteins of known structure, such as [RCSB PDB](http://www.rcsb.org). This database is available in text format at the RCSB website and as a selection in most of the homology search web servers. Given the rather small size of these databases (~100k sequences), for reasonably sized sequences, searches take only a few seconds on a laptop.
+
+Start by creating a folder to store all the information related to the modelling process. To keep the files easily accessible, create the folder in the home directory, for example.
+
+<a class="prompt prompt-cmd">
+    cd $HOME  
+    mkdir mdm2_modelling  
+    cd mdm2_modelling  
+</a>
+
+Assuming the Uniprot sequence file is in the Downloads folder, copy it to the newly created folder and launch a `phmmer` search against the RCSB PDB sequence database. `phmmer` is part of the HMMER suite and searches a query protein sequence against a database. Behind the scenes, it builds a profile HMM from the query sequence and uses this profile to search the database for homologs ([source](ftp://selab.janelia.org/pub/software/hmmer3/3.1b2/Userguide.pdf)).
+
+<a class="prompt prompt-cmd">
+    cp $HOME/Downloads/MDM2_MOUSE.fasta .  
+    phmmer \-\-notextw -o psa.out -A psa.sto MDM2_MOUSE.fasta /opt/database/pdb_seqres.txt
+</a>
+<a class="prompt prompt-attention">
+  Adapt the file names accordingly!
+</a>
+
+Take a moment to inspect that command. (Most) GNU/Linux commands start with the command or program name, after which follow arguments and options. Arguments are usually positional, meaning that there is a specific order that must be respected. A dash (`-`) symbol indicates an option. Some options do not take any values and act as a simple switch while others require a value. Usually, a well-written program supports a `-h` or `--help` option that will print useful information containing the program description and usage instructions. In this particular example, `phmmer` is the program being executed, `--notextw`, `-o psa.out`, and `-A psa.sto` are options, and the remaining are arguments. The output of `phmmer -h` shows that `-notextw` and `-o` are both output-related, referring to the maximum line width and output file name respectively. The remaining option, `-A`, forces HMMER to write the full alignments to a separate file. As for the arguments, it shows that the first must be the sequence file and the second the sequence database. Additionally, there are certain instructions that are not necessarily part of the command or explained in its documentation. These are part of the GNU/Linux system and deal mostly with the execution of the command and its input/output. This tutorial will use the ampersand (`&`) and the redirection (`>`) symbol repeatedly. The first runs a program in the background and prevents the terminal session from being blocked while the second to redirect the output of the command to a file. For more information, refer to a generic tutorial on command-line usage ([example](http://www.ee.surrey.ac.uk/Teaching/Unix/)).
+
+Back to the homology modelling, depending on which MDM2 sequence HMMER used to seed the search, the results will vary.
+
+<a class="prompt prompt-info">
+    Open and inspect the phmmer output file.
+</a>
+<a class="prompt prompt-cmd">
+    leafpad psa.out &
+</a>
+
+The output file, `psa.out`, contains detailed information on each hit of the database considered homologous to the query. The first lines, starting with a `#` character, show information on the search parameters and the version of HMMER used to carry it out. This information is always useful; it allows a user to trace back the specifics of a particular step of the modelling, therefore allowing some degree of reproducibility.
+The interesting bit comes next, after a line stating the name and length of the query sequence, as read from the input FASTA file.
+
+{% highlight Text only %}
+Query:       MDM2_MOUSE  [L=110]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+      1e-64  218.8   0.1    1.2e-64  218.6   0.1    1.0  1  1z1m_A    mol:protein length:119  Ubiquitin-protein ligase E3 Mdm2
+    1.2e-64  218.5   0.1    1.4e-64  218.3   0.1    1.0  1  2lzg_A    mol:protein length:125  E3 ubiquitin-protein ligase Mdm2
+    2.2e-62  211.3   0.1    2.4e-62  211.2   0.1    1.0  1  2mps_A    mol:protein length:107  E3 ubiquitin-protein ligase Mdm2
+{% endhighlight %}
+
+For each hit, HMMER outputs a line with several statistics and ending with the name and description of the hit. The first value, the sequence E-value, is the most important as it shows the significance of the hit to the query sequence. The lower this value, the better. The second value is the bit score, a database size-independent metric related to the E-value. The higher, the better. In this section, HMMER shows only one entry per hit, but a hit can have multiple domains matching the query sequence. The statistics in the middle columns refer to the best scoring domain and the number of domains in each hit.
+
+{% highlight Text only %}
+Domain annotation for each sequence (and alignments):
+>> 1z1m_A  mol:protein length:119  Ubiquitin-protein ligase E3 Mdm2
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  218.6   0.1   6.1e-68   1.2e-64       1     110 []       1     110 [.       1     110 [. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 218.6 bits;  conditional E-value: 6.1e-68
+  MDM2_MOUSE   1 mcntnmsvstegaastsqipaseqetlvrpkplllkllksvgaqndtytmkeiifyigqyimtkrlydekqqhivycsndllgdvfgvpsfsvkehrkiyamiyrnlvav 110
+                 mcntnmsv t+ga +tsqipaseqetlvrpkplllkllksvgaq dtytmke++fy+gqyimtkrlydekqqhivycsndllgd+fgvpsfsvkehrkiy miyrnlv v
+      1z1m_A   1 MCNTNMSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV 110
+                 8**********************************************************************************************************976 PP
+{% endhighlight %}
+
+The details of each hit and all its domains come next. The hit identifier and description are repeated, preceded by `>>`, and the domains are sorted by order of appearance in the sequence, not significance. The `c-Evalue` and `i-Evalue` values are conditional and independent E-values. The first represents the significance of this domain  _after establishing the hit is a homologue_, while the second measures the significance of the domain if it was the only one being identified. In general, this latter is the important metric. The next values are the boundaries of the local alignment, and the last is the expected accuracy per residues of the alignment. The actual domain alignments make up the remainder of the hit information and include the query sequence (or the matching fragment), a consensus sequence, and the hit sequence. The last line shows the posterior probabilities, i.e. the expected accuracy, of each position of the alignment, and can be used to gauge the less conserved regions of the sequence in the alignment. The last lines of the file show some statistics on the search itself and on the HMM model building
+process.
+
+<a class="prompt prompt-question">
+How many sequences does the RCSB PDB database contain and how many of these matched our query?
+</a>
+
+Unlike BLAST or the HMMER web server, the local version of HMMER does not provide any sequence identity or similarity scores. Since these are crucial statistics for deciding on a template for the modelling, we provide a Python script based on the [Biopython](http://biopython.org) library to parse the sequences and calculate identities. Additionally, the script calculates how much of the query sequence the hit is matching, also known as coverage. Run the script on the `psa.out` file and save the results in a separate `psa.info` file using the `-o` option.
+
+<a class="prompt prompt-cmd">
+python /opt/bin/aln_stats.py psa.out -o psa.info
+</a>
+
+<a class="prompt prompt-info">
+Open and inspect the contents of the alignment information file.
+</a>
+
+This newly created file aggregates, for each hit, information copied from the HMMER output file and newly calculated values of pairwise sequence identity and coverage. Its simple tabular format is very suitable to identify plausible templates.
+
+{% highlight Text Only %}
+#PDBID     E-value      Bit Score       Seq. Id.        Seq. Cov.       Hit Description
+1z1m_A     1.0E-64         218.80           0.90            1.00        Ubiquitin-protein ligase E3 Mdm2
+2lzg_A     1.2E-64         218.50           0.90            1.00        E3 ubiquitin-protein ligase Mdm2
+2mps_A     2.2E-62         211.30           0.91            0.96        E3 ubiquitin-protein ligase Mdm2
+4ode_A     1.8E-60         205.20           0.90            0.95        E3 ubiquitin-protein ligase Mdm2
+4odf_A     1.8E-60         205.20           0.90            0.95        E3 ubiquitin-protein ligase Mdm2
+{% endhighlight %}
+
+Apparently, there are plenty of homologues with known structure for mouse MDM2. A quick survey of the `psa.info` file shows that more than half of the hits has a sequence identity of at least 90% to the query sequence, which is the best possible for modelling. Nevertheless, protein structures are surprisingly robust to changes in sequence. Major structural characteristics are conserved even at _low_ sequence identities (~30%). As a rule of thumb, any sequence above 30-35% sequence _similarity_ can be used to build a somewhat
+reliable model ([source](http://peds.oxfordjournals.org/content/12/2/85.long)). It is still possible to model a sequence on a template with 20-30% sequence similarity, the so-called twilight zone, but there must be extreme care in choosing a proper template. Below 20%, in the danger zone, there is no guarantee that there is any sequence-structure correlation. Note, though, that all these are relative percentages to the sequence size.
+
+<figure>
+    <a href="/images/molmod/rcsb-statistics.png"><img src="/images/molmod/similarity-structures.png"></a>
+    <figcaption>Structures of sequence homologues of the Ribosomal protein L5 (in red).</figcaption>
+</figure>
+
+Choosing a template is, however, more complex than just choosing the most identical homologue. Modelling might be a computational method, based on chemical principles, but its fundamental principle is biological. The tertiary structure of a protein defines its function, and as such, folds should be conserved across functionally similar proteins. Consequently, it _always_ pays off to consider the biological function of both the query and the templates and make sure that there is, if possible, a match. Otherwise, nature might have a trick left up in her sleeve ([example](http://www.pnas.org/content/104/29/11963.full)). In the case of mouse MDM2, most of the hits belong to the E3 ubiquitin ligase family,  and several of them are MDM2 proteins of other organisms. It seems then that it is very much possible and straightforward to model mouse MDM2. Finally, the coverage metric also shows that there are very few gaps in the alignment, but it is important to know where these are. If a particular hit has 90% coverage, there could have been an insertion event during evolution. Another possibility, more common, are gaps at one or both termini of the sequences. Either way, gaps are always a point of concern, and there must always be a good justification for building a model from such an alignment.
+
+<a class="prompt prompt-question">
+Why is it worrying to have several gaps in the middle of the sequence, opposite to having them at the termini?
+</a>
+
+The second file produced by HMMER (`psa.sto`) contains the full sequence alignments for each query/hit pair, which is useful to check where the gaps are in a particular sequence. The Stockholm format is not as easy to read as FASTA though. Fortunately, HMMER includes a library called `easel` whose utilities are very helpful in doing these conversions and manipulations of sequence (alignment) files.
+
+<a class="prompt prompt-cmd">
+esl-reformat afa psa.sto -o psa.fasta
+</a>
+
+<a class="prompt prompt-info">
+Open and inspect the contents of the alignment FASTA file.
+</a>
+
+The `psa.fasta` file contains the same information as the Stockholm file, except for the forward probabilities, just in a different format. The two top scoring hits do not have any gap (coverage is 1.0). The next few hits have roughly 5% of gaps (coverage 0.95-0.96), which corresponds to ~5 positions in the alignment. Fortunately, these are distributed between the N and C termini of the protein sequence, or concentrated at the N-terminus. Indeed, even the worst scoring hits have a consistent region of gaps and a homologous core domain.
+
+{% highlight Text Only %}
+>1z1m_A/1-110 [subseq from] mol:protein length:119  Ubiquitin-protein ligase E3 Mdm2
+MCNTNMSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQY
+IMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV
+>2lzg_A/1-110 [subseq from] mol:protein length:125  E3 ubiquitin-protein ligase Mdm2
+MCNTNMSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQY
+IMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV
+>2mps_A/1-106 [subseq from] mol:protein length:107  E3 ubiquitin-protein ligase Mdm2
+--NTNMSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQY
+IMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLV--
+>4ode_A/1-105 [subseq from] mol:protein length:105  E3 ubiquitin-protein ligase Mdm2
+-----MSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQY
+IMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV
+>4odf_A/1-105 [subseq from] mol:protein length:105  E3 ubiquitin-protein ligase Mdm2
+-----MSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQY
+IMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV
+{% endhighlight %}
+
+## Choosing a template from the list of homologues
