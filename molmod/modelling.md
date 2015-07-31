@@ -257,3 +257,34 @@ IMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV
 {% endhighlight %}
 
 ## Choosing a template from the list of homologues
+The two closest homologues, as identified by HMMER, have both 90% sequence identity and 100% coverage. The question is thus, which of them should be used to model mouse MDM2? Most homology modelling methods, including MODELLER, can use either one or multiple templates to build the models. Using several different templates is only really advantageous, however, in the case where they provide a better coverage of the query sequence ([source](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2386743/)). If one template matches the first half of the sequence and another the second half, then both can and should be used to build the full model. Otherwise, a single template with large enough coverage is sufficient to build a high-quality model. Since the N-terminal region of MDM2 that interacts with p53 seems to be a single domain, judging by the consistency of the HMMER results, the best course of action is the use a single template.
+
+As previously mentioned, the main criteria to choose a template are its sequence identity to the query, the coverage, and the biological function. Beyond sequence features and function, it is also important to judge the structural quality of the templates. For example, structures determined by X-ray crystallography differ in the accuracy of the atomic positions in the final structure. On the other hand, NMR structures are built from a collection of experimental (distance, but not only) restraints that can rarely be satisfied by one single conformation. This ambiguity makes NMR structures relatively poor templates, as there is no _best_ model of an ensemble, only one with fewer restraints violations. Additionally, it is not straightforward to discern why a region is _floppy_ in the NMR ensemble: different restraints or a lack of thereof? Unlike NMR structures, X-ray structures have well-defined quality criteria, namely resolution and R-free. The resolution is a measure of the level of detail in the diffraction pattern, which translates to the unambiguity with which atoms fit into the electron density map. Ultra-high resolution structures have values below 1Å. The R-free value reflects the agreement of the final structure with a part of the diffraction data left aside for validation, i.e. a cross-validation measure. An average structure has an R-free value of 0.26, and the lower, the better ([source](http://www.rcsb.org/pdb/101/static101.do?p=education_discussion/Looking-at-Structures/resolution.html)). This preference is of course relative. Between two equally good structures, that determined by crystallography is likely best; however, if the NMR structure is far better in terms of sequence identity, for example, it becomes the obvious template. In this latter case, it might be productive to perform several _different_ single-template modelling runs, each using a different member of the NMR ensemble.
+
+To gain some insight on the structural quality of the templates suggested after the HMMER search, use the [RCSB PDB](http://www.rcsb.org) database. The first column of the `psa.info` file contains the PDB ID and the PDB chain belonging to the hit sequence. The ID is a four-character alphanumerical code (e.g. `1z1m`) that is unique to each structure, much like the accession code is for an Uniprot entry.
+
+<a class="prompt prompt-info">
+Look for the entries of the best five homologues in the RCSB PDB database, using the search bar and the PDB IDs.
+</a>
+
+The three highest scoring templates identified by HMMER  (`1z1m_A`, `2lzg_A`, and `2mps_A`) are all NMR structures. The fourth, `4ode_A`, is a crystal structure that given its values of sequence identity (90%) and coverage (95%) is likely the best candidate. The RCSB PDB page for this entry confirms what HMMER reported: the structure belongs to the E3 ubiquitin-protein ligase Mdm2 of *Homo sapiens*. Further, the "Experimental Details" and "Structure Validation" sections detail the high quality of this structure: 1.80Å resolution and above-average R-free and stereochemistry parameters for structures of similar resolution.
+
+Another factor to consider when choosing a template is its conformation in the crystal structure (or NMR ensemble) and experimental conditions under which the structure was obtained. The presence of co-factors, ligands, and other molecules might have a large impact on the conformation the protein adopts and, therefore, have a direct influence on the choice of using a structure as a template. A possible way of checking the conformational space, or at least its characterized fraction, is to analyze all the released structures related to this particular template. In the case of mouse MDM2, this means analyzing all the homologous MDM2 proteins HMMER found. Superimposing these structures and calculating overall and per-residue root mean square deviations (RMSD) of equivalent atomic coordinates gives a simple and clear answer to this problem.
+
+There are several programs that allow a user to download, visualize, and (quantitatively) compare structures. This tutorial uses PyMOL, a free and open-source molecular visualization software that runs on Windows, MacOS X, and Linux. If necessary, download it [here](http://pymol.org/dsc/). For any help with the commands, visit first the
+[community-maintained Wiki](www.pymolwiki.org) and then use Google; the chances are that someone else already posted that same problem in the PyMOL mailing-list.
+
+<a class="prompt prompt-info">
+Using PyMOL, download the structures of the top 10 templates and superimpose their structures.
+</a>
+
+<a class="prompt prompt-pymol">
+fetch 1z1m 2lzg 2mps, async=0  
+fetch 4ode 4odf 4ogn 4ogt 4wt2 4hbm 4hbm, async=0, type=pdb1  
+split_states 1z1m  
+split_states 2lzg  
+split_states 2mps  
+delete 1z1m or 2lzg or 2mps  
+select scaffold, 4ode and chain A and name ca  
+alignto scaffold  
+</a>
