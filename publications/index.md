@@ -6,9 +6,17 @@ image:
 
 ## 2015
 <hr />
+* T Vreven+, I.H. Moal+, A. Vangone+, B.G. Pierce, P.L. Kastritis, M. Torchala, R. Chaleil, B. Jiménez-García, P.A. Bates#, Juan Fernandez-Recio#, **A.M.J.J. Bonvin**# and Z. Weng#.
+[Updates to the integrated protein-protein interaction benchmarks: Docking benchmark version 5 and affinity benchmark version 2](http://dx.doi.org/doi:10.1016/j.jmb.2015.07.016).
+_J. Mol. Biol._ Advanced Online Publication (2015).
+
+* A Vangone and **A.M.J.J. Bonvin**.
+[Contacts-based prediction of binding affinity in protein-protein complexes](http://elifesciences.org/content/early/2015/07/22/eLife.07454.abstract).
+_eLife_, e07454 (2015).
+
 * M. Rad-Malekshahi, K. Visscher, J.P.G.L.M. Rodrigues, R. De Vries, W. Hennink, M. Baldus, **A.M.J.J. Bonvin**#, E. Mastrobattista# and M. Weingarth#.
-The supramolecular organization of a peptide-based nanocarrier at high molecular detail.
-_J. Am. Chem. Soc._ In press (2015).
+[The supramolecular organization of a peptide-based nanocarrier at high molecular detail](http://pubs.acs.org/doi/abs/10.1021/jacs.5b02919).
+_J. Am. Chem. Soc._ *137*, 7775-7784 (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
 [DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333).
@@ -20,10 +28,10 @@ _Frontiers in Genetics_. *6:197*, doi:10.3389/fgene.2015.00197 (2015).
 
 * A. Sali, H.M. Berman, T. Schwede, J. Trewhella, G. Kleywegt, S.K. Burley, J. Markley, H. Nakamura, P. Adams, **A.M.J.J. Bonvin**, W. Chiu, M. Dal Peraro, F. Di Maio, T.E. Ferrin, K. Grünewald, A. Gutmanas, R. Henderson, G. Hummer, K. Iwasaki, G. Johnson, C.L. Lawson, J. Meiler, M.A. Marti-Renom, G.T. Montelione, M. Nilges, R. Nussinov, A. Patwardhan, J. Rappsilber, R.J. Read, H. Saibil, G.F. Schröder, C. Schwieters, C.A.M. Seidel, D. Svergun, M. Topf, E.L. Ulrich, S. Velankar, and J.D. Westbrook.
 [Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop](http://dx.doi.org/10.1016/j.str.2015.05.013).
-_Structure_. Advanced Online Publication (2015).
+_Structure_. *23*, 1056-1067 (2015).
 
 * R. Zhang, T. Eckert, T. Lütteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kožár, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces.
+[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
 _Current Topics in Medicinal Chemistry_. In press (2015).
 
 * G. van der Schot and **A.M.J.J. Bonvin**. 
@@ -32,7 +40,7 @@ _J. Biomol. NMR_. Advanced Online Publication (2015).
 
 * T. Sinnige, M. Weingarth, M. Daniëls, R. Boelens, **A.M.J.J. Bonvin**, K. Houben and M. Baldus.
 [Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA](http://dx.doi.org/doi:10.1016/j.str.2015.04.014).
-_Structure_. Advanced Online Publication (2015).
+_Structure_. *23*, 1317-1324 (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
 [Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73).
@@ -40,7 +48,7 @@ _AIMS Biophysics_. *2*, 73-87 (2015).
 
 * K.D. Brewer, T. Bacaj, A. Cavalli, C. Camilloni, J.D. Swarbrick, J. Liu, A. Zhou, P. Zhou, N. Barlow, J. Xu, A.B. Seven, E.A. Prinslow, R. Voleti, D. Haussinger, **A.M.J.J. Bonvin**, D.R. Tomchick, M. Vendruscolo, B. Graham, T.C. Sudhof, J. Rizo.
 [Dynamic Synaptotagmin-1-SNARE Complex Binding Mode in Solution](http://dx.doi.org/doi:10.1038/nsmb.3035).
-_Nature Struct. &amp;  Mol. Biol._ Advanced Online Publication (2015).
+_Nature Struct. &amp;  Mol. Biol._ *22*, 555-564 (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
