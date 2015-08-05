@@ -11,8 +11,8 @@ image:
 _J. Mol. Biol._ Advanced Online Publication (2015).
 
 * A Vangone and **A.M.J.J. Bonvin**.
-[Contacts-based prediction of binding affinity in protein-protein complexes](http://elifesciences.org/content/early/2015/07/22/eLife.07454.abstract).
-_eLife_, e07454 (2015).
+[Contacts-based prediction of binding affinity in protein-protein complexes](http://elifesciences.org/content/4/e07454).
+_eLife_, *4*, e07454 (2015).
 
 * M. Rad-Malekshahi, K. Visscher, J.P.G.L.M. Rodrigues, R. De Vries, W. Hennink, M. Baldus, **A.M.J.J. Bonvin**#, E. Mastrobattista# and M. Weingarth#.
 [The supramolecular organization of a peptide-based nanocarrier at high molecular detail](http://pubs.acs.org/doi/abs/10.1021/jacs.5b02919).
@@ -82,8 +82,8 @@ _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kok
 _Biochemistry._ *53*, 6706-6716 (2014).
 
 * T.A. Hopf#, C.P.I. Sch&auml;rfe#, J.P.G.L.M. Rodrigues#, A.G. Green, O. Kohlbacher, C. Sander\*, **A.M.J.J. Bonvin\*** and D.S. Marks\*.
-[Sequence co-evolution gives 3D contacts and structures of protein complexes.](http://elifesciences.org/content/early/2014/09/25/eLife.03430)
-_eLife._ *3* 10.7554/eLife.03430 (2014)
+[Sequence co-evolution gives 3D contacts and structures of protein complexes.](http://elifesciences.org/content/3/e03430)
+_eLife._ *3* e03430 (2014)
 
 * M. Rey, V. Sarpe, K. Burns, J. Buse, Ch.A.H. Baker, M. van Dijk, L. Wordeman, **A.M.J.J. Bonvin** and D. Schriemer.
 [Mass Spec Studio for Integrative Structural Biology.](http://dx.doi.org/10.1016/j.str.2014.08.013)
