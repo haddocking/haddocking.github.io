@@ -1,6 +1,6 @@
 ---
 layout: news
-title: Anna's Binging Affinity Work Published in eLife
+title: Anna's Binding Affinity Work Published in eLife
 date: 2015-08-05
 excerpt: A simple, contact-based predictor of binding affinity for protein-protein complexes published in eLife
 tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
