@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
+[Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
+_J. Am. Chem. Soc._ Advanced Online Publication (2015).
+
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
 
