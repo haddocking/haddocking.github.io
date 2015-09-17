@@ -3,10 +3,6 @@
     url: http://www.uu.nl/staff/amjjbonvin
     avatar: /images/people/Bonvin-UU-2013.jpg
 
--   name: Jeff Grinstead
-    position: Visiting professor
-    avatar: /images/people/Jeff.jpg
-
 -   name: Anna Vangone
     position: Postdoctoral Researcher
     avatar: /images/people/Vangone.jpg
@@ -19,6 +15,10 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Joao.jpg
 
+-   name: Zeynep Kurkcuoglu
+    position: Postdoctoral Researcher
+    avatar: /images/people/Zeynep.jpg
+
 -   name: Gydo van Zundert
     position: Ph.D Candidate
     avatar: /images/people/vanZundert.jpg
@@ -27,15 +27,6 @@
     position: Ph.D Candidate
     avatar: /images/people/Cunliang.jpg
 
--   name: Stefano Tagliabue
-    position: M.Sc Student
-    avatar: /images/people/Tagliabue.jpg
-
 -   name: Sofia Rosback
     position: M.Sc Student
     avatar: /images/people/Sofia.jpg
-
--   name: Siddarth Narasimhan
-    position: M.Sc Student
-    avatar: /images/people/Siddarth.jpg
-
