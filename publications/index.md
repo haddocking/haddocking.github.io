@@ -43,7 +43,7 @@ _Current Topics in Medicinal Chemistry_. In press (2015).
 
 * G. van der Schot and **A.M.J.J. Bonvin**. 
 [Performance of the WeNMR CS-Rosetta3 web server in CASD-NMR](http://dx.doi.org/doi:10.1007/s10858-015-9942-7).
-_J. Biomol. NMR_. Advanced Online Publication (2015).
+_J. Biomol. NMR_. *62*, 497-502 (2015).
 
 * T. Sinnige, M. Weingarth, M. Daniëls, R. Boelens, **A.M.J.J. Bonvin**, K. Houben and M. Baldus.
 [Conformational plasticity of the POTRA 5 domain in the outer membrane protein assembly factor BamA](http://dx.doi.org/doi:10.1016/j.str.2015.04.014).
