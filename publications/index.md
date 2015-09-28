@@ -3,6 +3,10 @@ layout: page
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2016
+* R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
+[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
+_Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
 
 ## 2015
 <hr />
@@ -12,7 +16,7 @@ _J. Mol. Biol._ Advanced Online Publication (2015).
 
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
-_J. Am. Chem. Soc._ Advanced Online Publication (2015).
+_J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
 
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
@@ -40,10 +44,6 @@ _Frontiers in Genetics_. *6:197*, doi:10.3389/fgene.2015.00197 (2015).
 * A. Sali, H.M. Berman, T. Schwede, J. Trewhella, G. Kleywegt, S.K. Burley, J. Markley, H. Nakamura, P. Adams, **A.M.J.J. Bonvin**, W. Chiu, M. Dal Peraro, F. Di Maio, T.E. Ferrin, K. Grünewald, A. Gutmanas, R. Henderson, G. Hummer, K. Iwasaki, G. Johnson, C.L. Lawson, J. Meiler, M.A. Marti-Renom, G.T. Montelione, M. Nilges, R. Nussinov, A. Patwardhan, J. Rappsilber, R.J. Read, H. Saibil, G.F. Schröder, C. Schwieters, C.A.M. Seidel, D. Svergun, M. Topf, E.L. Ulrich, S. Velankar, and J.D. Westbrook.
 [Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop](http://dx.doi.org/10.1016/j.str.2015.05.013).
 _Structure_. *23*, 1056-1067 (2015).
-
-* R. Zhang, T. Eckert, T. Lütteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kožár, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
-_Current Topics in Medicinal Chemistry_. In press (2015).
 
 * G. van der Schot and **A.M.J.J. Bonvin**. 
 [Performance of the WeNMR CS-Rosetta3 web server in CASD-NMR](http://dx.doi.org/doi:10.1007/s10858-015-9942-7).
