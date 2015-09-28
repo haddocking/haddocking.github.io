@@ -7,8 +7,8 @@ image:
 ## 2015
 <hr />
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
-The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.
-_J. Mol. Biol._ In press (2015).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://www.sciencedirect.com/science/article/pii/S0022283615005379).
+_J. Mol. Biol._ Advanced Online Publication (2015).
 
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
