@@ -4,9 +4,11 @@ image:
   feature: pages/banner_publications-mini.jpg
 ---
 ## 2016
+<hr />
 * R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
 [Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
 _Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
+
 
 ## 2015
 <hr />
