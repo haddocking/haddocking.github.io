@@ -31,7 +31,7 @@ _J. Am. Chem. Soc._ *137*, 7775-7784 (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
 [DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333).
-_Bioinformatics_. Advanced Online Publication (2015).
+_Bioinformatics_. *31*, 3222-3224 (2015).
 
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.
 [Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](http://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
