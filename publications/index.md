@@ -3,12 +3,6 @@ layout: page
 image:
   feature: pages/banner_publications-mini.jpg
 ---
-## 2016
-<hr />
-* R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
-_Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
-
 
 ## 2015
 <hr />
@@ -22,6 +16,10 @@ _J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
 
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
+
+* R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
+[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
+_Current Topics in Medicinal Chemistry_. *16*, 89-98 (2015).
 
 * T Vreven+, I.H. Moal+, A. Vangone+, B.G. Pierce, P.L. Kastritis, M. Torchala, R. Chaleil, B. Jiménez-García, P.A. Bates#, Juan Fernandez-Recio#, **A.M.J.J. Bonvin**# and Z. Weng#.
 [Updates to the integrated protein-protein interaction benchmarks: Docking benchmark version 5 and affinity benchmark version 2](http://dx.doi.org/doi:10.1016/j.jmb.2015.07.016).
