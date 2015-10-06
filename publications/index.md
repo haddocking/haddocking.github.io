@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
+Computational Prediction of Protein Interfaces: A Review of Data Driven Methods.
+_FEBS Letters_ In Press (2015).
+
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._ Advanced Online Publication (2015).
