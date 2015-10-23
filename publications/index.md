@@ -25,6 +25,8 @@ In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Ri
 [Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
 _Current Topics in Medicinal Chemistry_. *16*, 89-98 (2015).
 
+* A. Vangone, **A.M.J.J. Bonvin**. "[HADDOCK docking models](http://dx.doi.org/10.15785/SBGRID/131).", SBGrid Data Bank, V1, DOI: 10.15785/SBGRID/131 (2015).
+
 * T Vreven+, I.H. Moal+, A. Vangone+, B.G. Pierce, P.L. Kastritis, M. Torchala, R. Chaleil, B. Jiménez-García, P.A. Bates#, Juan Fernandez-Recio#, **A.M.J.J. Bonvin**# and Z. Weng#.
 [Updates to the integrated protein-protein interaction benchmarks: Docking benchmark version 5 and affinity benchmark version 2](http://dx.doi.org/doi:10.1016/j.jmb.2015.07.016).
 _J. Mol. Biol._ *19*, 3031-3041 (2015).
