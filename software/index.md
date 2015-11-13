@@ -7,7 +7,7 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-This page provide you links to software, software manuals and tutorials of the computational structural biology group.
+This page provide you links to software and software manuals of the computational structural biology group.
 <HR>
 * #### HADDOCK
   Software package for integrative modelling of biomolecular complexes
@@ -34,10 +34,10 @@ This page provide you links to software, software manuals and tutorials of the c
   A Python package and command-line tool to quantify and visualize the accessible interaction space of distance-restrained biomolecular complexes.
 
   * [**Binding_affinity**](https://github.com/haddocking/binding_affinity):
-  A collection of Python scripts to calculate inter-residue contacts and non-interacting surface properties in protein-protein complexes. 
+  A collection of Python scripts to calculate inter-residue contacts and non-interacting surface properties in protein-protein complexes.
 
 <HR>
-* #### 3D-DART DNA modelling 
+* #### 3D-DART DNA modelling
   3D-DART provides a convenient means of generating custom structural models of DNA.
 
   * [**3D-DART server**](http://haddock.science.uu.nl/enmr/services/3DDART)
@@ -49,9 +49,7 @@ This page provide you links to software, software manuals and tutorials of the c
 * #### Bioinformatics interface predictors
 
   * [**WHISCY**](http://nmr.chem.uu.nl/Software/whiscy/index.html)
-  WHISCY is a program to predict protein-protein interfaces. It is primarily based on conservation, but it also takes into account structural information. 
+  WHISCY is a program to predict protein-protein interfaces. It is primarily based on conservation, but it also takes into account structural information.
 
   * [**CPORT**](http://haddock.science.uu.nl/services/CPORT)
   CPORT is an algorithm for the prediction of protein-protein interface residues. It combines six interface prediction methods into a consensus predictor
-
-

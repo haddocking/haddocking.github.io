@@ -3,17 +3,17 @@
 - title: News
   url: /news/
 
-- title: Research
-  url: /research/
-
-- title: Publications
-  url: /publications/
+- title: Education
+  url: /education/
 
 - title: People
   url: /people/
 
+- title: Publications
+  url: /publications/
+  
+- title: Research
+  url: /research/
+
 - title: Software
   url: /software/
-
-- title: HADDOCK Web Server
-  url: http://haddocking.org
