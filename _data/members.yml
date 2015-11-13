@@ -11,10 +11,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/LiXue.jpg
 
--   name: João Rodrigues
-    position: Postdoctoral Researcher
-    avatar: /images/people/Joao.jpg
-
 -   name: Zeynep Kurkcuoglu
     position: Postdoctoral Researcher
     avatar: /images/people/Zeynep.jpg
@@ -27,6 +23,14 @@
     position: Ph.D Candidate
     avatar: /images/people/Cunliang.jpg
 
+-   name: Malgorzata Szelag
+    position: visiting Ph.D Candidate
+    avatar: /images/people/Gosia.jpg
+
 -   name: Sofia Rosback
     position: M.Sc Student
     avatar: /images/people/Sofia.jpg
+
+-   name: Marijne Schijns
+    position: M.Sc Student
+    avatar: /images/people/Marijne.jpg

@@ -6,16 +6,30 @@ image:
 
 ## 2015
 <hr />
+* L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
+[Computational Prediction of Protein Interfaces: A Review of Data Driven Methods](http://dx.doi.org/10.1016/j.febslet.2015.10.003).
+_FEBS Letters_ Advanced Online Publication (2015).
+
+* G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
+_J. Mol. Biol._ Advanced Online Publication (2015).
+
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
-_J. Am. Chem. Soc._ Advanced Online Publication (2015).
+_J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
 
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
 
+* R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
+[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
+_Current Topics in Medicinal Chemistry_. *16*, 89-98 (2015).
+
+* A. Vangone, **A.M.J.J. Bonvin**. "[HADDOCK docking models](http://dx.doi.org/10.15785/SBGRID/131).", SBGrid Data Bank, V1, DOI: 10.15785/SBGRID/131 (2015).
+
 * T Vreven+, I.H. Moal+, A. Vangone+, B.G. Pierce, P.L. Kastritis, M. Torchala, R. Chaleil, B. Jiménez-García, P.A. Bates#, Juan Fernandez-Recio#, **A.M.J.J. Bonvin**# and Z. Weng#.
 [Updates to the integrated protein-protein interaction benchmarks: Docking benchmark version 5 and affinity benchmark version 2](http://dx.doi.org/doi:10.1016/j.jmb.2015.07.016).
-_J. Mol. Biol._ Advanced Online Publication (2015).
+_J. Mol. Biol._ *19*, 3031-3041 (2015).
 
 * A Vangone and **A.M.J.J. Bonvin**.
 [Contacts-based prediction of binding affinity in protein-protein complexes](http://elifesciences.org/content/4/e07454).
@@ -27,7 +41,7 @@ _J. Am. Chem. Soc._ *137*, 7775-7784 (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
 [DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333).
-_Bioinformatics_. Advanced Online Publication (2015).
+_Bioinformatics_. *31*, 3222-3224 (2015).
 
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.
 [Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](http://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
@@ -36,10 +50,6 @@ _Frontiers in Genetics_. *6:197*, doi:10.3389/fgene.2015.00197 (2015).
 * A. Sali, H.M. Berman, T. Schwede, J. Trewhella, G. Kleywegt, S.K. Burley, J. Markley, H. Nakamura, P. Adams, **A.M.J.J. Bonvin**, W. Chiu, M. Dal Peraro, F. Di Maio, T.E. Ferrin, K. Grünewald, A. Gutmanas, R. Henderson, G. Hummer, K. Iwasaki, G. Johnson, C.L. Lawson, J. Meiler, M.A. Marti-Renom, G.T. Montelione, M. Nilges, R. Nussinov, A. Patwardhan, J. Rappsilber, R.J. Read, H. Saibil, G.F. Schröder, C. Schwieters, C.A.M. Seidel, D. Svergun, M. Topf, E.L. Ulrich, S. Velankar, and J.D. Westbrook.
 [Outcome of the First wwPDB Hybrid / Integrative Methods Task Force Workshop](http://dx.doi.org/10.1016/j.str.2015.05.013).
 _Structure_. *23*, 1056-1067 (2015).
-
-* R. Zhang, T. Eckert, T. Lütteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kožár, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
-_Current Topics in Medicinal Chemistry_. In press (2015).
 
 * G. van der Schot and **A.M.J.J. Bonvin**. 
 [Performance of the WeNMR CS-Rosetta3 web server in CASD-NMR](http://dx.doi.org/doi:10.1007/s10858-015-9942-7).
