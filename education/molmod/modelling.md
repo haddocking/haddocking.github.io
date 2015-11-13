@@ -14,6 +14,7 @@ procedure:
 - [Using Uniprot to retrieve sequence information](#using-uniprot-to-retrieve-sequence-information)  
 - [Finding homologues of known structure using HMMER](#finding-homologues-of-known-structure-using-hmmer)  
 - [Choosing a template from the list of homologues](#choosing-a-template-from-the-list-of-homologues)
+- [Modelling mouse MDM2 using MODELLER](#modelling-mouse-mdm2-using-modeller)
 
 ## A bite of theory
 The last decades of scientific advances in the fields of protein biology revealed the extent of both
