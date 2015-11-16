@@ -413,11 +413,11 @@ The first line, the mouse MDM2 sequence, needs to be reformatted into the format
 {% highlight bash %}
 >P1;4ODE_A
 structureX:4ODE_A: 6: A: 110: A::::
-MSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV*
+-----MSVPTDGAVTTSQIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNLVVV*
 
 >P1;MDM2_MOUSE
 sequence:MDM2_MOUSE: 1: : 110: ::::
-MSVSTEGAASTSQIPASEQETLVRPKPLLLKLLKSVGAQNDTYTMKEIIFYIGQYIMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV*
+MCNTNMSVSTEGAASTSQIPASEQETLVRPKPLLLKLLKSVGAQNDTYTMKEIIFYIGQYIMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV*
 {% endhighlight %}
 
 Using MODELLER requires some programming knowledge. The software exposes a very complete Python API that allows users to create (simple) scripts to control all parameters of the modelling protocol. There are plenty of example scripts on the documentation and tutorial pages of MODELLER, but for your convenience, we provide one.
@@ -427,24 +427,89 @@ Using MODELLER requires some programming knowledge. The software exposes a very 
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 1 --loopmodel --num\_loop\_model 10
+    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 10
 </a>
 
-The protocol and settings the scripts will use are the default our group uses in *real* modelling jobs in the lab. It uses the MODELLER routine `loopmodel` to generate models, which automates most of the protocol and performs an additional loop modelling step. Loop modelling is necessary when parts of the query sequence do not have a matching region in the template. In these cases, MODELLER will try to model the conformation of the region - the loop - by positioning the unknown atoms in a line connecting the carbonyl oxygen and amide nitrogen of the flanking residues and then refining their conformation using an atomistic distance-dependent statistical potential for non-bonded interactions. However, the accuracy of this protocol degrades (very) rapidly with the loop length.
-
-<a class="prompt prompt-question">
-  Loop modelling has a length dependent accuracy. Can you think of alternative strategies to model long(er) loops in case they are missing in a template?
-</a>
-
-MODELLER starts by reading and validating the alignment against the PDB file(s) of the template(s). If a PDB file is missing some fragment of the sequence HMMER retrieved for that template, for example because it could not be observed in the electron density, then the alignment will have to be manually corrected. MODELLER is quite verbose when it comes to these and other error messages. In this particular case, it will show exactly where the discrepancy occurs. To avoid multiple iterations of trial and error, simply extract the sequence directly from the `ATOM` lines of the PDB file using the utility script `pdb_toseq.py` and align it to the sequence given by HMMER using for example the global pairwise alignment algorithms hosted at the [EBI servers](www.ebi.ac.uk/Tools/psa/emboss_needle/). This will highlight any missing regions.
+The protocol and settings the scripts will use are what our group uses in *real* modelling jobs in the lab. By default, it uses the MODELLER routine `automodel` to generate models, which automates most of the model building protocol, including a small refinement step. MODELLER starts by reading and validating the alignment against the PDB file(s) of the template(s). If a PDB file is missing some fragment of the sequence HMMER retrieved for that template, for example because it could not be observed in the electron density, then the alignment will have to be manually corrected. MODELLER is quite verbose when it comes to these and other error messages. In this particular case, it will show exactly where the discrepancy occurs. To avoid multiple iterations of trial and error, simply extract the sequence directly from the `ATOM` lines of the PDB file using the utility script `pdb_toseq.py` and align it to the sequence given by HMMER using for example the global pairwise alignment algorithms hosted at the [EBI servers](www.ebi.ac.uk/Tools/psa/emboss_needle/). This will highlight any missing regions.
 
 <a class="prompt prompt-question">
 	Why would some regions be missing in the electron density map of a crystal structure?
 </a>
 
-The next step in the modelling protocol is to calculate the coordinates of the atoms of an initial model. Equivalent atoms between query and template will be simply copied, and in the case of multiple templates, their positions averaged over all templates. The remaining atoms will be built from scratch using internal coordinates and the CHARMM topology library. Afterwards, MODELLER will create all the spatial restraints it will use to refine the model. These include, but are not limited to, stereochemical (bonds, angles, dihedrals, impropers) and homology-derived (distances between residues) restraints. The stereochemical restraints are derived from statistical analyses of many pairs of homologous structures. For each requested model, MODELLER will apply an optimization algorithm to fit the model as best as possible to all the restraints. Each model will be slightly randomized before this optimization, so that there is some variability at the end of the protocol. The optimization is done in several steps, first taking into account only restraints between atoms close in sequence, and later all other restraints. The optimization is carried out via a combination of conjugate gradients and molecular dynamics with simulated annealing. All models are then evaluated according to their stereochemical quality and the degree of restraints violations - the `molpdf` score. The resulting PDB files end in `.B9999*.pdb`. MODELLER also includes other scoring functions to gauge the quality of the models and their resemblance to *native* structures, such as the DOPE energy potential, which was derived from existing structures. After building the backbone models, MODELLER will proceed to build the loops, if there are any gapped regions in the alignment. The atoms are place as explained before, and then refined in context of the rest of the protein, that is, *feeling* the rest of the protein. The final models end in `.BL*.pdb` and are also scored using the same `molpdf` score, by default, and any other additional scoring functions.
+The next step in the modelling protocol is to calculate the coordinates of the atoms of an initial model. Equivalent atoms between query and template will be simply copied, and in the case of multiple templates, their positions averaged over all templates. The remaining atoms will be built from scratch using internal coordinates and the CHARMM topology library. Afterwards, MODELLER will create all the spatial restraints it will use to refine the model. These include, but are not limited to, stereochemical (bonds, angles, dihedrals, impropers) and homology-derived (distances between residues) restraints. The stereochemical restraints are derived from statistical analyses of many pairs of homologous structures. For each requested model, MODELLER will apply an optimization algorithm to fit the model as best as possible to all the restraints. Each model will be slightly randomized before this optimization, so that there is some variability at the end of the protocol. The optimization is done in several steps, first taking into account only restraints between atoms close in sequence, and later all other restraints. The optimization is carried out via a combination of conjugate gradients and molecular dynamics with simulated annealing. All models are then evaluated according to their stereochemical quality and the degree of restraints violations - the `molpdf` score. The resulting PDB files end in `.B9999*.pdb`. MODELLER also includes other scoring functions to gauge the quality of the models and their resemblance to *native* structures, such as the DOPE energy potential, which was derived from existing structures.
 
-Once MODELLER is finished, it will produce a listing of the models it created together with the values of whichever scoring functions we asked it to include. Backbone models come first, any loop models follow after. The models are not ranked by energy or quality, but by filename. The following is an excerpt of the models produced from the 4ODE template for the 1-110 region of the MDM2 mouse sequence.
+Once MODELLER is finished, it will produce a listing of the models it created together with the values of whichever scoring functions we asked it to include. The models are not ranked by energy or quality, but by filename. The following is an excerpt of the models produced from the 4ODE template for the 1-110 region of the MDM2 mouse sequence.
+
+{% highlight Text Only %}
+>> Summary of successfully produced models:
+Filename                          molpdf     DOPE score
+-------------------------------------------------------
+MDM2_MOUSE.B99990001.pdb       542.16193   -12232.60254
+MDM2_MOUSE.B99990002.pdb       493.51770   -12263.11816
+MDM2_MOUSE.B99990003.pdb       618.48962   -12130.24023
+MDM2_MOUSE.B99990004.pdb       538.61859   -12210.15723
+MDM2_MOUSE.B99990005.pdb       625.59253   -12057.88477
+MDM2_MOUSE.B99990006.pdb       687.50299   -12036.90625
+MDM2_MOUSE.B99990007.pdb       565.85083   -12211.46484
+MDM2_MOUSE.B99990008.pdb       587.98169   -12133.75293
+MDM2_MOUSE.B99990009.pdb       566.93512   -12212.98145
+MDM2_MOUSE.B99990010.pdb       549.83215   -12059.09277
+{% endhighlight %}
+
+<a class="prompt prompt-question">
+  Do the *molpdf* and *DOPE* scores correlate?
+</a>
+
+<a class="prompt prompt-info">
+  Compare the three best models (by DOPE score) and the template structure in Pymol.
+</a>
+
+<a class="prompt prompt-cmd">
+	pymol 4ODE\_A.pdb MDM2\_MOUSE.B99990002.pdb MDM2\_MOUSE.B99990001.pdb MDM2\_MOUSE.B99990009.pdb
+</a>
+
+<a class="prompt prompt-pymol">
+    align MDM2\_MOUSE.B99990002, 4ODE\_A  
+    align MDM2\_MOUSE.B99990001, 4ODE\_A  
+    align MDM2\_MOUSE.B99990009, 4ODE\_A  
+    show cartoon  
+    zoom vis  
+</a>
+
+Overall, the models are virtually identical and also identical to the template. This is not surprising, given the high degree of identity between the query and template sequences and the fact that the template sequence covers nearly all of the query. The DOPE and `molpdf` scores are also not very informative. The different models differ very slightly, particularly in DOPE score. Interestingly, the two scores are not correlated, which is again not surprising since they evaluate different properties. The `molpdf` score only informs about the agreement of the model with the restraints derived from the alignment, while the DOPE score tries to inform on the likelihood of the model resembling a real structure. An important feature of MODELLER and its scoring scheme is the possibility of obtaining per-residue scoring profiles, namely of the DOPE potential, which allow the identification of regions of the model that need further care. By convention, any residue scoring above -0.030 is considered problematic. However, keep in mind that the DOPE potential is not as fine-grained to single out badly modelled residues. Additional modelling should only be considered if a stretch of several residues scores consistently near or above this threshold.
+
+<a class="prompt prompt-info">
+  Build per-residue profiles of different models and inspect them visually.
+</a>
+
+<a class="prompt prompt-cmd">
+	evaluate_model.py MDM2\_MOUSE.B99990002.pdb
+    plot_profile.py MDM2\_MOUSE.B99990002.dope_profile
+</a>
+
+<a class="prompt prompt-question">
+  Which regions of the model(s) are scoring worse regading the DOPE potential? How can you explain these?
+</a>
+
+There are many possible strategies to improve the (local) quality of a protein model. In this particular case, the model is particularly worse at the N-terminal region, which correlates with the lack of structural information in the template. MODELLER has specific protocols that address such regions, called *loops*. By selecting the `loopmodel` routine instead of the default `automodel`, after building the backbone models, MODELLER will proceed to build the loops if there are any gapped regions in the alignment. The atoms in these regions are placed in a line connecting the carbonyl oxygen and amide nitrogen of the flanking (known) residues and then their conformation is refined using an atomistic distance-dependent statistical potential for non-bonded interactions. A second refinement step takes place, in context of the rest of the protein, that is, with the loop atoms *feeling* the rest of the protein. The final models end in `.BL*.pdb` and are also scored using the same `molpdf` score, by default, and any other additional scoring functions. Keep in mind, however, that the accuracy of the loop modelling protocol degrades (very) rapidly with the loop length.
+
+<a class="prompt prompt-info">
+  Redo the modelling using the loop modelling routine.
+</a>
+
+<a class="prompt prompt-attention">
+MODELLER generates a fixed number of loop models for *each* backbone model it creates, so pay attention to the number of structures you request. The default settings of the *cmd_modeller.py* script create 10 backbone models and 10 loop models for each of the latter, i.e. 100 models, which takes a considerable amount of time using a single processing core!
+</a>
+
+<a class="prompt prompt-cmd">
+    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 1 --loopmodel --num\_loop\_model 10
+</a>
+
+<a class="prompt prompt-question">
+  Loop modelling has a length dependent accuracy. Can you think of alternative strategies to model long(er) loops in case they are missing in a template?
+</a>
+
+The loop models are also ranked with both the `molpdf` and DOPE scores. Given the complete freedom of the loop atoms to sample the conformational space -- unlike the rest of the protein, there are no alignment-based restraints -- it is no surprise that first, the `molpdf` scores are much lower, and second, there is much more energetic discrepancy between the different models. Also, at first glance, the DOPE score of the models worsened drastically. However, the scores reported in the loop model listing reflect *only* the loop region. To obtain a full model DOPE score, use the `evaluate_model.py` script and note the score given at the end.
 
 {% highlight Text Only %}
 >> Summary of successfully produced models:
@@ -468,30 +533,34 @@ MDM2_MOUSE.BL00090001.pdb      -21.29531     -534.20166
 MDM2_MOUSE.BL00100001.pdb       15.27596     -294.98157
 {% endhighlight %}
 
-<a class="prompt prompt-question">
-  Do the *molpdf* and *DOPE* scores correlate? Why so?
-</a>
-
 <a class="prompt prompt-info">
-  Open the three best loop models (by DOPE score) and the template structure in Pymol.
+  Compare the three best loop models (by DOPE score) and the backbone model in Pymol.
 </a>
 
 <a class="prompt prompt-cmd">
-	pymol 4ODE\_A.pdb MDM2\_MOUSE.BL00070001.pdb MDM2\_MOUSE.BL00060001.pdb MDM2\_MOUSE.BL00040001.pdb
+	pymol MDM2\_MOUSE.B99990001.pdb MDM2\_MOUSE.BL00070001.pdb MDM2\_MOUSE.BL00040001.pdb MDM2\_MOUSE.BL00060001.pdb
 </a>
 
 <a class="prompt prompt-pymol">
-    align MDM2\_MOUSE.BL00070001, 4ODE\_A  
-    align MDM2\_MOUSE.BL00060001, 4ODE\_A  
-    align MDM2\_MOUSE.BL00040001, 4ODE\_A  
+    align MDM2\_MOUSE.BL00070001, MDM2\_MOUSE.B99990001  
+    align MDM2\_MOUSE.BL00040001, MDM2\_MOUSE.B99990001  
+    align MDM2\_MOUSE.BL00060001, MDM2\_MOUSE.B99990001  
     show cartoon  
     zoom vis  
 </a>
 
-Overall, the models are not significantly different from each other and from the template. This is not surprising, given the template sequence covers nearly all of the query. The largest differences in the models are thus located in the N-terminus, where there is no information from the template and the modelling relies on the loop modelling protocols. Yet, given the simple alignment and high sequence identity between our query and template sequences, there is likely no reason for alarm. In fact, any model of the 10 is probably good enough, regardless of the differences in energy. Regarding the stereochemical quality of the models, there are servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/), that specialize in analysing protein structures and reporting on both their overall and per-residue quality. This assessment often utilizes structure databases and compares, for instance, bond lengths and angles to those considered (statistically-speaking) normal. Nevertheless, this exercise of model validation, both visually and automatically, is extremely important in any real-case modelling scenario.
+<a class="prompt prompt-info">
+  Compare the per-residue DOPE score profile of the best loop model with that of the original backbone model.
+</a>
+
+<a class="prompt prompt-question">
+  Did the loop modelling protocol signficantly improve the scores of the N-terminal loop? Why so?
+</a>
+
+This validation using the tools built in MODELLER help understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
 
 <a class="prompt prompt-info">
-  If you have time (and will), submit your template structure and your best model to the QMEAN validation server. How do they compare?
+  If you have time (and will), submit your best (loop) model to the QMEAN validation server. How does it fare?
 </a>
 
 <a class="prompt prompt-info">
@@ -514,4 +583,4 @@ Overall, the models are not significantly different from each other and from the
 </a>
 
 ## Congratulations!
-You started with a sequence of a protein and went all the way from finding possible templates, to evaluating which to use, to building several models, and finally selecting one representative. This model can now be used to offer insights on the binding of MDM2 to p53, or on the structure of the mouse MDM2 protein, or to seed new computational analysis such as docking.
+You started with a sequence of a protein and went all the way from finding possible templates, to evaluating which to use, to building several models, assessing their quality, and finally selecting one representative. This model can now be used to offer insights on the binding of MDM2 to p53, or on the structure of the mouse MDM2 protein, or to seed new computational analysis such as docking.

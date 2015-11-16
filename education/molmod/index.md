@@ -38,17 +38,17 @@ To get started, click on the icons of the modules. Since the docking simulations
       </a>
     </td>
     <td>
-      <a href="#"
+      <a href="{{site.url}}/education/molmod/simulation.html"
          alt="Molecular dynamics simulation of a mouse p53 peptide fragment using GROMACS."
          title="Molecular dynamics simulation of a mouse p53 peptide fragment using GROMACS.">
-         <img src="/images/molmod/md_ensemble.jpg" class="grayscale col-table">
+         <img src="/images/molmod/md_ensemble.jpg" class="col-table">
       </a>
     </td>
     <td>
-      <a href="#"
+      <a href="{{site.url}}/education/molmod/docking.html"
          alt="Data-driven structure prediction of the mouse MDM2/p53 complex using HADDOCK."
          title="Data-driven structure prediction of the mouse MDM2/p53 complex using HADDOCK.">
-         <img src="/images/molmod/protein_cmplx.jpg" class="grayscale col-table">
+         <img src="/images/molmod/protein_cmplx.jpg" class="col-table">
       </a>
     </td>
   </tr>
