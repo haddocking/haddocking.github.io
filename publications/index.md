@@ -6,13 +6,17 @@ image:
 
 ## 2015
 <hr />
+* J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
+Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students.
+_Biochemistry and Molecular Biology Education_, In Press.
+
 * L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
 [Computational Prediction of Protein Interfaces: A Review of Data Driven Methods](http://dx.doi.org/10.1016/j.febslet.2015.10.003).
-_FEBS Letters_ Advanced Online Publication (2015).
+_FEBS Letters_, Advanced Online Publication (2015).
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
-_J. Mol. Biol._ Advanced Online Publication (2015).
+_J. Mol. Biol._, Advanced Online Publication (2015).
 
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
