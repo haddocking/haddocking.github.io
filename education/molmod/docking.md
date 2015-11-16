@@ -7,7 +7,7 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 ## General Overview
-This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The simulation protocol can be used as a starting point for the investigation of protein dynamics, provided your system does not contain non-standard groups. By the end of this tutorial, you should know the steps involved in setting up, running, and analysing a simulation, including critically asessing the choices made at the different steps.
+This tutorial introduces protein-protein docking using the HADDOCK web server. It also introduces the CPORT web server for interface prediction, based on evolutionary conservation and other biophysical properties. By the end of this tutorial, you should know how to setup a HADDOCK run and interpret its results in terms of biological insights.
 
 - [A bite of theory](#a-bite-of-theory)  
 - [Predicting the interface of p53 on Mdm2](#predicting-the-interface-of-p53-on-mdm2)  
