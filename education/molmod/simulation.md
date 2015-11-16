@@ -12,10 +12,11 @@ This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The si
 - [A bite of theory](#a-bite-of-theory)  
 - [Introduction and Outline](#introduction-and-outline)  
 - [Preparing the System](#preparing-the-system)  
-- [Choosing a template from the list of homologues](#choosing-a-template-from-the-list-of-homologues)
-- [Modelling mouse MDM2 using MODELLER](#modelling-mouse-mdm2-using-modeller)
+- [Production Simulation](#production-simulation)
+- [Analysis of the Molecular Dynamics Simulation](#analysis-of-the-molecular-dynamics-simulation)
+- [Picking representatives of the simulation](#picking-representatives-of-the-simulation)
 
-##A bite of theory
+## A bite of theory
 Molecular Dynamics generate successive configurations of a given molecular system, by integrating the classical laws of motion as decribed by Newton. Generally, the end product is a *trajectory* that describes the positions and velocities of the particles in the system throughout the simulation as they vary with time. The following equation describes the equations that describe the motion of a particle of mass $$m$$ along the $$x_{i}$$ coordinate, where $$F_{x_{i}}$$ is the force acting on that particle in that direction. In a realistic molecular system, this equation is expanded to a three-dimensional space.
 
 $$
@@ -230,7 +231,7 @@ The steepest descent algorithm used in this minimization calculates the gradient
     Are there major changes in the structure of the peptide? Where are most of these located?
 </a>
 
-###Solvating the simulation box
+### Solvating the simulation box
 The next step is to add solvent to the simulation box. The first molecular dynamics simulations of proteins were done in vacuum, but researchers quickly realized this was a major limitation. Water molecules interact with the protein, mediating interactions between residues. In addition, water as a solvent has a *screening* effect for long-range interactions, such as electrostatics. In vacuum, there is nothing to prevent two opposite charge atoms to feel each other even at a very long distance, as long as they are within the cutoff used for the simulation of course. With the addition of water, this is interaction is dampened significantly. The effect of water-mediated interactions are also important when choosing the size of the box. The presence of a solute, the peptide, induces a particular ordering of the water molecules in its vicinity. This might have a ripple effect that propagates the effect of the solute and causes artifacts well beyond the theoretical non-bonded cutoff.
 
 The solvent model used for water is also an active area of research. Several models exist, each more or less intimately linked to a particular force field. For AMBER99SB-ILDN, the recommended water model is TIP3P, which you should have chosen before when running `pdb2gmx`. The topology file is not required for the solvation. Essentially, this operation is just a matter of placing pre-calculated chunks of water molecules inside the box and remove those overlapping with protein atoms. No chemistry involved. However, the topology **must** be updated to reflect the addition of the solvent.
@@ -449,12 +450,12 @@ The production run is only the beginning of the real work behind molecular dynam
 
 The production simulation produces a number of files, each containing different information. Depending on the options provided to `mdrun`, the names may vary. The extensions, however, remain the same. For most of the analysis, the only requirements are the compressed trajectory (*.xtc*) and energy (*.edr*) files.
 
-- topol.tpr: Run input file, contains a complete description of the system at the start of the simulation.
-- confout.gro: Structure file, contains the coordinates and velocities of the last step of the simulation.
-- traj.trr: Full precision trajectory, contains the positions, velocities and forces over time.
-- traj.xtc: Compressed trajectory, contains only coordinates (low precision: 0.001 nm)
-- ener.edr: Energy file, contains energy, temperature, pressure and other related parameters over time
-- md.log: Log file containing information about the simulation, namely performance, warnings, and errors.
+- *topol.tpr*: Run input file, contains a complete description of the system at the start of the simulation.
+- *confout.gro*: Structure file, contains the coordinates and velocities of the last step of the simulation.
+- *traj.trr*: Full precision trajectory, contains the positions, velocities and forces over time.
+- *traj.xtc*: Compressed trajectory, contains only coordinates (low precision: 0.001 nm)
+- *ener.edr*: Energy file, contains energy, temperature, pressure and other related parameters over time
+- *md.log*: Log file containing information about the simulation, namely performance, warnings, and errors.
 
 ### Quality Assurance
 Before all else, it must be assured that the simulation finished properly. Many variables can cause a simulation to crash, especially problems related to the force field (if you use custom parameters) or insufficient or deficient equilibration of the system.
@@ -730,7 +731,7 @@ A key point of any molecular dynamics simulation analysis where periodic boundar
 
 The occurence of a periodic image *sighting* can be overlooked if it is very transient and infrequent. If it does occur frequently or consistently over a stretch of the simulation, time to go back and re-do the whole setup. Also, not only direct interactions are of concern. As mentioned before, the water around the solute has a different structure than the bulk water. To be on the safe side, add an extra nanometer when calculating the allowed minimal distance.
 
-### Conformational dynamics and stability -- (1) Radius of Gyration
+### Conformational dynamics and stability I -- Radius of Gyration
 Before analysing any structural parameter, the trajectory has to be massaged to avoid artifacts because of the periodic boundary conditions. In addition, all the analysis tools work faster if the trajectory contains only the necessary (protein) atoms and their information.
 
 <a class="prompt prompt-info">
@@ -759,7 +760,7 @@ Perhaps not entirely relevant for this particular simulation, since the goal is 
     Is there a relation between the radius of gyration and the minimum distance between periodic images? Why?
 </a>
 
-### Conformational dynamics and stability -- (2) Root Mean Square Fluctuation (RMSF)
+### Conformational dynamics and stability II -- Root Mean Square Fluctuation (RMSF)
 The structure of the peptide changes throughout the simulation, but not equally. Some regions are more flexible than others, usually due to differences in the amino acid sequence. The root mean square fluctuations capture, for each atom, the fluctuation about its average position and often correspond to the crystallographic temperature (or *b*) factors. Comparing this experimental measure with the RMSF profile can serve as an additional quality check for a simulation. The higher the temperature factor, the more mobile the atom. An interesting collateral of this analysis is the calculation of an average structure, which can be used for future analyses.
 
 <a class="prompt prompt-info">
@@ -784,7 +785,7 @@ The structure of the peptide changes throughout the simulation, but not equally.
     as lines
 </a>
 
-### Conformational dynamics and stability -- (3) Root Mean Square Deviation (RMSD)
+### Conformational dynamics and stability III -- Root Mean Square Deviation (RMSD)
 As the calculation of the RMSF also produced an average structure, it is now possible to calculate the root mean square deviation of the entire trajectory. This metric is commonly used as an indicator of convergence of the structure towards an equilibrium state. The RMSD is a distance measure, and as such is mostly meaningul for low values. Two frames that differ by 10Å from the average structure may well be entirely different conformations. The GROMACS tools `rms` allows such calculations, and in particular selecting only specific groups of atoms of the molecule, such as the backbone.
 
 <a class="prompt prompt-info">
@@ -797,10 +798,10 @@ As the calculation of the RMSF also produced an average structure, it is now pos
     gmx rms -f p53_helix_CAH_reduced.xtc -s md_average.pdb -o md_aarmsd_from_average.xvg  
 </a>
 
-<a class="prompt prompt-info">
+<a class="prompt prompt-question">
     Do the structures eventually converge?
 </a>
-<a class="prompt prompt-info">
+<a class="prompt prompt-question">
     Which reports higher values: backbone or all-atom RMSD? Why?
 </a>
 
@@ -818,230 +819,153 @@ Having assured that the simulation has converged to an equilibrium state, and th
     When running the GROMACS programs to perform the analyses, pay attention to their output as well as the plots they generate.
 </a>
 
-
-HYDROGEN BONDS
-One property which can be informative is the number of hydrogen bonds, either internally (Protein - Protein) or between the protein and the surrounding solvent. The presence or not of a hydrogen bond is inferred from the distance between a donor - H - acceptor pair and the donor - H - acceptor angle. To calculate the hydrogen bonds issue the following commands, and have a look at the output files using xmgrace:
-
-echo 1 1 | g_hbond -f traj_nojump.xtc -s topol.tpr -num hydrogen-bonds-intra-protein.xvg
-
-echo 1 12 | g_hbond -f traj_nojump.xtc -s topol.tpr -num hydrogen-bonds-protein-water.xvg
-
-==Q== Discuss the relation between the number of hydrogen bonds for both cases and the fluctuations in each.
-
-Specific hydrogen bonds can be investigated using an index file that contains the numbers of the atoms to be included. Have a look at the hydrogen bonding involving the first half and second half of your peptide. You must take a look at the confout.gro file to check what is the residue numbering and divide roughly the peptide in two halves. Let assumes that you are working on a 14 residues long peptide starting at residue 22 and ending at residue 35. You want to divide it in two parts: 22-28 and 29-35. The first command will create two new entries in the menu for the groups selection, part_1 and part_2. The second command is a generic command to run g_hbond with an index file. You may want to look at the hydrogen bonds between the Nter and the Cter segments to monitor the formation of β-hairpins for instance.
-
-echo "r 22-28\nname 19 part_1\nr 29-35\nname 20 part_2\nq" | make_ndx -f confout.gro -o my_index.ndx
-
-Be careful, you must replace the numbers in the previous command by suitable numbers for your peptide of interest!
-
-g_hbond -f traj_nojump.xtc -s topol.tpr -num hydrogen-bonds-strand.xvg -n my_index.ndx
-
-==Q== On the hydrogen bonding basis, is your peptide adopting a β-hairpin like conformation during your simulation?
-
-SECONDARY STRUCTURE
-Among the most common parameters to judge protein structure is the assignment of secondary structure elements, such as α-helices and β-sheets. One such assignment is provided by dssp. This program, which is not part of the gromacs distribution, but can be obtained at the CMBI, Radboud University. Gromacs does provide an interface to dssp, to allow the calculation of secondary structure for each frame of a trajectory.
-
-Log on the cloud to run the next command. You don't need to transfer any file to the cloud but you will have to download the .xpm and .xvg files generated by do_dssp.
-
-First, we need to generate the no_jump trajectory on the cloud again:
-
-trjconv -f traj.xtc -o traj_nojump.xtc -pbc nojump -dt 50
-
-Now you can run the following command:
-
-do_dssp -f traj_nojump.xtc -s topol.tpr -o secondary-structure.xpm -sc secondary-structure.xvg
-
-You can now log out the cloud and download the .xpm and .xvg files with the command scp (same as you did before to transfer your .xtc file) The file secondary-structure.xvg contains a time series, listing the numbers of residues associated with each type of secondary structure per frame. More detailed information is in the .xpm file, which gives a color coded assignment of the secondary structure per residue over time. The .xpm file can be viewed with e.g. the Gimp, but some useful metadata can be added with the gromacs tool xpm2ps and the result can be viewed with gview or after transformation in pdf, with the command xpdf or evince. For locals, do note the similarity between the plot and the front of the new building of the Hogeschool Utrecht.
-
-xpm2ps -f secondary-structure.xpm -o secondary-structure.eps -size 4000
-
-ps2pdf secondary-structure.eps
-
-evince secondary-structure.pdf
-
-==Q== Discuss some of the changes in the secondary structure, if any.
-
-==Q== Compare the stability of the secondary structures in the different proteins (between groups).
-
-RAMACHANDRAN (PHI/PSI) PLOTS
-Phi, psi and omega angles, and the ramachandran plot
-
-The phi and psi torsion angles of the protein backbone are two parameters that are useful to gain insight into the structural properties of a protein. The plot of phi against psi is called a Ramachandran plot and certain regions of this plot are characteristic of secondary structure elements or of amino acids. Other regions are considered forbidden (inaccessible). Projection of the phi/psi angles over time may give insight in structural transitions. These angles can be calculated by the program g_rama, albeit in a bit of a crude way, namely put all together in a single file. To investigate single residues, the linux progam 'grep' can be used to select them out of the plot.
-
-g_rama -f traj_nojump.xtc -s topol.tpr -o ramachandran.xvg
-
-This file contains all phi/psi angles for all residues. To extract the angles for a single residue, e.g. LEU-24, type:
-
-egrep "@|LEU-24" ramachandran.xvg > rama-LEU-24.xvg
-
-Do this to extract the ramachandran plots of all indivual residues (except the edges) and visualize them using xmgrace. Describe the main similarities and differences betweeen their profiles.
-
-==Q== What can you say about the conformational stability of each residue based on the ramachandran plots (see the plot given above)?
-
-ANALYSIS OF DYNAMICS AND TIME-AVERAGED PROPERTIES
-PREPARATION OF A CONCATENATED TRAJECTORY
-Each group simulated one peptide starting in different conformations. This was aimed at increasing sampling, or the structural space that was covered by the simulations. To have a complete overview of the trajectories and of the conformational properties of the peptide, we must then combine the trajectories together. We will only take the last 40 nanoseconds of each trajectory for the concatenation. Switch now to the fastest computer of the group and proceed with this analysis from there on.
-
-Since most of the operations/calculations we will perform need a topology file, to avoid problems with which file to use, from which trajectory, etc, please download the PDB file of your peptide from this website. The file contains the cartesian coordinates of the peptide molecule as present in the original protein-peptide complex. Effectively, you can also use this structure to calculate structural similarities with the bound structure. After you have downloaded the PDB file, we have to convert it to a GROMACS coordinate file (.gro), which is a repetition of our first step in this practical. Do not forget to choose the appropriate force field and water model, although this last one will not matter for now.
-
-pdb2gmx -f XXXX_peptide.pdb -o XXXX_peptide.gro -ignh
-
-Then, use this newly generated file to create an index file so that we can make selections further on. In this step, unlike before, we do not want to specify any particular group of residues, therefore we simply quit the program at the prompt (typing 'q').
-
-echo "q" | make_ndx -f XXXX_peptide.gro -o XXXX_peptide_index.ndx
-
-We can know trim our trajectory and eliminate the first 10 nanoseconds using trjconv and the files we just generated. The '-b' option sets the beginning of the new xtc file being created in picoseconds, meaning that we want the new files to start at the 10ps mark. The -dt option again refers to the resolution we wish to keep. You can download all the xtc files from each individual cloud if the Virtual Machine has problems using USB sticks or transferring files. Also, when asked, select the group 'Protein' to produce your xtc files!
-
-trjconv -f traj_helix.xtc -o traj_helix_10-50ns.xtc -n XXXX_peptide_index.ndx -pbc nojump -dt 100 -b 10000
-
-==Q== Why are we only analyzing the last 40 ns of the trajectories for this analysis?
-
-Change the name of the .xtc file accordingly (traj_bound_10-50ns.xtc for instance if you are simulating the bound conformation of the peptide).
-
-The following command will output one unique .xtc file that contains the four trajectories in the following order (bound-helix-polypro-extended). This order is particularly important because of later comparisons, so pay attention! The settime option produces a trajectory with cumulative time, meaning that the second trajectory, whose first frame is marked as at 10ns, is considered to be right after the last frame of the first trajectory: at 50ns. If you forgot this option, your concatenated trajectory would have repeated timestamps (ie. one mark at 10ns for each original trajectory). We will choose the option to 'continue' or 'c', which tells trjcat to start the new trajectory at the last timestamp of the previous one.
-
-trjcat -f traj_bound_10-50ns.xtc traj_helix_10-50ns.xtc traj_polypro_10-50ns.xtc traj_extended_10-50ns.xtc -o traj_concat_10-50ns.xtc -cat -settime
-
-ROOT MEAN SQUARE DEVIATIONS AGAIN
-The root mean square deviation (RMSD) was already calculated to check the convergence of the simulation. But it can also be used for further analysis. The RMSD is a measure relating two structures. If we calculate the RMSD for each combination of structures in a trajectory file, then we can see if there are groups of structures belonging together, sharing structural features. Such structures will have lower RMSD values within the group and higher RMSD values with other structures. Representing the RMSD values in a matrix, this also allows identifying transitions.
-
-To build an RMSD matrix, g_rms is called with two trajectories. If you want to individualize groups (clusters) and transtions between the different trajectories, one option is to concatenate all four trajectories in one and to generate a cross-RMSD matrix using g_rms. For all RMSD calculations, select the group "Mainchain".
-
-g_rms -s XXXX_peptide.gro -f traj_concat_10-50ns.xtc -f2 traj_concat_10-50ns.xtc -m rmsd-matrix.xpm -tu ns
-
-The resulting matrix is in grayscale. To make it more clear, we are going to apply a rainbow gradient.
-
-xpm2ps -f rmsd-matrix.xpm -o rmsd-matrix.eps -rainbow blue
-
-ps2pdf rmsd-matrix.eps
-
-evince rmsd-matrix.pdf
-
-==Q== How many clusters do you see?
-
-==Q== Do you sample same conformations in different trajectories? How can you see it? What are the trajectories that "overlap", i.e. sample the same conformational space?
-
-==Q== What can you conclude from this analysis? Could you expect such a result? Justify.
-
-CLUSTER ANALYSIS
-On the basis of the distances between structures, the RMSD, the these can also be assigned to a set of clusters that reflects the range of conformations accessible and the relative weight of each of these. This can be done using a clustering algorithm, of which several are implemented in g_cluster. This program generates a number of output files. Check the programs help file to see what each means. Then run the program. Note that we already calculated the RMSD matrix and can use it as input to g_cluster.
-
-g_cluster -h
-
-g_cluster -s XXXX_peptide.gro -f traj_concat_10-50ns.xtc -dm rmsd-matrix.xpm -dist rmsd-distribution.xvg -o clusters.xpm -sz cluster-sizes.xvg -tr cluster-transitions.xpm -ntr cluster-transitions.xvg -clid cluster-id-over-time.xvg -cl clusters.pdb -cutoff 0.2 -method gromos
-
-==Q== What is the RMSD cutoff used for the clustering algorithm? What does this value represent and how does it influence the number of clusters produced?
-
-==Q== How many clusters were found and what were the sizes of the largest two? ( T )
-
-Change the cutoff value to obtain a decent number of clusters (10 < Nclusters < 100).
-
-Open the file clusters.pdb with pymol and compare the structures from the first two clusters.
-
-disable all
-
-split_states clusters
-
-delete clusters
-
-/for i in range(3,100): cmd.delete( "clusters_%04d" %i )
-
-dss
-
-show cartoon
-
-util.cbam clusters_0002
-
-align clusters_0001 and ss h, clusters_0002 and ss h
-
-==Q== Are there notable differences between the two first clusters?
-
-DISTANCE RMSD
-One drawback of using the RMSD for comparing structures is that it involves least squares fitting, which will influence the results. But the structure of a protein can also be represented by the set of interatomic distances. These can be used to obtain a measure of comparison that does not depend on fitting: the distance RMSD (dRMSD). This can be obtained using the program g_rmsdist.
-
-g_rmsdist -s XXXX_peptide.gro -f traj_concat_10-50ns.xtc -o distance-rmsd-all-atoms.xvg
-
-==Q== How does this graph compare to the standard RMSD? Find in the GROMACS manual how both are calculated and try to explain the difference you observe in the plots with the math behind the calculation.
-
-We want now to answer the question of conformational sampling. Did we sample in our trajectories the bound conformation of the peptide? For that, we are going to run g_rms again against the bound conformation of the peptide. Instead of calculating and producing four different RMSD plots, we can use the concatenated trajectory to make this analysis. Remember the order in which you produced the concatenated trajectory, it will be useful now. Select the group 'Mainchain' when fitting and calculating the RMSD values.
-
-g_rms -f traj_concat_10-50ns.xtc -s XXXX_peptide.gro -o rmsd_concat-mainchain-vs-bound.xvg
-
-xmgrace rmsd_concat-mainchain-vs-bound.xvg
-
-g_rmsdist -f traj_bound_10-50ns.xtc -s XXXX_peptide.gro -o dist-rmsd_bound-mainchain-vs-bound.xvg
-
-xmgrace dist-rmsd_bound-mainchain-vs-*.xvg
-
-What would change if we would include the entire protein (ie. all atoms) in the calculation, instead of selecting only 'Mainchain' atoms?
-
-Do you see any difference in the rmsd and distance-rmsd plots?
-
-Do you sample the bound conformation of your peptide in the different trajectories? What can you conclude about the conformational sampling hypothesis for protein-peptide recognition in your case?
-
-FREE ENERGY LANDSCAPE
-The last step in this analysis is to compute a representation of the free energy landscape (FEL) sampled by your trajectories using different initial peptide conformations. Besides being a 'cool' representation, showing the valleys and hills of free energy that the peptide visited throughout the simulation, it has a more meaningful purpose when it comes to the selection of representatives to use in the docking calculations.
-
-The FEL represents a mapping of all possible conformations a molecule adopted during a simulation, together with their corresponding energy typically reported as the Gibbs Free Energy. As you can imagine, representing different conformations using cartesian coordinates is inappropriate (can you imagine a 4-dimensional landscape?) so usually FEL are represented using two variables that reflect specific properties of the system and measure conformational variability. One can for example measure the torsion angle around a specific bond or the radius of gyration of the molecule, or the the root mean square deviation with respect to the native state. The third variable is then the free energy, which be can estimated from populations (probability distributions) of the system with respect to the previously chosen variables. When represented in three dimensions, the landscape shows 'valleys' of low free-energy, which represent metastable conformational states of the system, and 'hills' that account for the energetic barriers that connect these states.
-
-The calculation of the FEL can be done using the GROMACS utility g_sham. For a better 'experience', we provide a few additional scripts to load the FEL in Mathematica (version 9 advised) and display it in all its beauty. Also, the Mathematica representation allows the identification of the 'valleys' of the landscape and determination of which coordinates match those particular states. Those can be then traced back to the input of g_sham and used to extract the time frame of the trajectory, and consequently a representative structure.
-
-Let us start with calculating the two coordinates we will use to obtain the free energies. To represent the conformational variability of the peptide, we will calculate the radius of gyration and RMSD to the average structure. We will not use the native structure since that would defeat the purpose of the docking simulation later on! Also, we calculate these variables on the concatenated trajectory. A prerequisite for the calculation of FELs is adequate sampling, which is obtained either by repetition of the long trajectories using different starting velocities or, in our case, starting from different conformations.
-
-How could we otherwise extract representative structures of the MD trajectory to use in the docking simulation? Give an example of a method that has been used previously to analyze the conformational variability of the peptide and that could be used for this purpose.
-
-Since the FEL analysis relies on a thorough sampling of the conformational space of your peptide to estimate Gibbs free energies based on the populations, we need to prepare new trajectory files (.xtc) that will contain ten times more frames that the ones we used until now. Note the absence of the -dt option. Repeat the following step for all four original trajectories, REMEMBER TO CHANGE THE NAMES!!
-
-trjconv -f traj_helix.xtc -o traj_helix_10-50ns-highresolution.xtc -pbc nojump -n XXXX_peptide_index.ndx -b 10000
-
-Concatenate the high resolution trajectories, exactly the same way you did before (choosing 'c', or continue, when prompted for the timestamps).
-
-trjcat -f traj_bound_10-50ns-highresolution.xtc traj_helix_10-50ns-highresolution.xtc traj_polypro_10-50ns-highresolution.xtc traj_extended_10-50ns-highresolution.xtc -o traj_concat_10-50ns-highresolution.xtc -cat -settime
-
-We can now proceed with the generation of data for the FEL calculation. Start by calculating the radius of gyration (Rg) for the concatenated trajectory using, just as before, g_gyrate:
-
-g_gyrate -f traj_concat_10-50ns-highresolution.xtc -s XXXX_peptide.gro -o rg-concatenated_traj.xvg
-
-To calculate the RMSD to the average structure, we first have to re-calculate the average structure for the whole trajectory. Use again g_rmsf to generate this average structure (-ox option). Then, use g_rms just like before, using as reference the average structure. When prompted, select 'Protein' for both fitting and calculation.
-
-g_rmsf -f traj_concat_10-50ns-highresolution.xtc -s XXXX_peptide.gro -ox average-structure-concat.pdb -o rmsf-per-residue.xvg
-g_rms -f traj_concat_10-50ns-highresolution.xtc -s average-structure-concat.pdb -o rmsd-vs-average-concat.xvg
-
-g_sham expects a file with multiple columns, each representing a different coordinate. To generate a proper input file, we use the Perl script sham.pl and provide it with both xvg files we just generated. Perl is a programming language much like Python. The script takes as input both files and also expects the columns in which the data is to be found. The first column is the xvg files is usually the time while the second is the coordinate of interest. As with Python, Perl starts counting from 0, so be careful when choosing which column has the data! Download the script here and use it as follows. The output file is simply a concatenation of the two xvg files, with the first column representing the time and the second and third columns the values of Rg and the RMSD to the average structure at that particular time.
-
-perl sham.pl -i1 rg-concatenated_traj.xvg -i2 rmsd-vs-average-concat.xvg -data1 1 -data2 1 -o gsham_input.xvg
-
-We now have the right input for g_sham to produce the FEL. If you remember the work you did in Werkcollege 6, the Gibbs Free Energy can be calculated from a probability distribution together with a specific temperature. Use the g_sham option -tsham to provide the correct temperature for your system (you should know it by now but in case you cannot recall it, check the mdp file used for the production run).
-
-g_sham -f gsham_input.xvg -ls free-energy-landscape.xpm
-
-What should happen if you use a much higher temperature (e.g. 1000K) to calculate the FEL with g_sham?
-
-The output of g_sham can be exported to a postscript file (ps) using xpm2ps and visualized in your PDF viewer. However, this 2D contour plot is not helpful when selecting representatives, nor it rewards you for all the trouble you went through to get this data. As such, we prepared a Mathematica notebook that you can use to visualize and inspect the FEL in 2D and 3D. Still, since Mathematica does not read xpm files, we came up with a script to convert *any* xpm file to a 3-column txt file that can be easily manipulated. You can download this Python script, appropriately called xpm2txt.py, here. Use it to convert the xpm file:
-
-python xpm2txt.py -f free-energy-landscape.xpm -o free-energy-landscape.txt
-
-The Mathematica notebook is available here and should be opened with the Mathematica version you have installed in your standard operative system (ie. out of the virtual machine). You therefore also need to copy the txt file generated with xpm2txt.py to your Windows/Mac/Linux system too. Follow the directions in the Mathematica notebook, namely change the file paths at the beginning. If you did everything correctly, you should see some plots like these:
-
-If you have an earlier version of Mathematica, download this script instead.
-
-
-Inspect the FEL and find where the Free Energy is minimal ('valleys'). Select a few 'valleys' (5) that you deem representative. You can check which coordinates these correspond by right-clicking the 2D contour plot and selecting the option "Get Coordinates". After this, when you move the mouse over the plot and it shows the coordinates at each particular point. Having the coordinates, you have to go back to the original sham.pl output and find at which timestamp they occur. The process of generating the FEL with g_sham involves binning of the coordinates and as such, some approximation of the original values. Do not expect to find exactly the same values back..
-
-Select 5 points from the FEL that you consider as representative states of the peptide. Note down their 'coordinates' in a table. (T)
-
-To help you sifting through 150.000 lines (although using the search feature of gedit is handy), we provide you with a script that tries to do this search for you. Download it here and use it to get those 5 timestamps. You need to provide the sham.pl output file and to give the two coordinates (in the correct order!). Look at this example and apply to your own values/file:
-
-python get_timestamp.py -f gsham_input.xvg -1 0.657 -2 3.1415
-
-If for some reason you always get a 'No timestamp found...' message, try either using a slightly different point nearby or open the script and increase the variable 'nval' to something like 100.
-
-Compare the time frames of the representatives with the RMSD matrix obtained before (you might have to do some math to get the time correct in the matrix). Do these representatives match any cluster of structures?
-
-Once you have the timestamps of the 5 points, you can use those values to extract representative structures from the concatenated trajectory using trjconv. The following example extracts the structure at time 45ns. After you are done with this extraction, open your web browser and navigate to the HADDOCK web page. You are (almost) ready to start docking!
-
-trjconv -f traj_concat_10-50ns-highresolution.xtc -s XXXX_peptide.gro -dump 45000 -o representative_45000ps.pdb
-
-Open the representative structures in PyMOL together with the bound structure. How do they compare? How do they compare to the bound structure?
-
-## END
+### Hydrogen Bonds
+Secondary structures (of proteins) are maintained by specific hydrogen bonding networks. Thus, the number of hydrogen bonds, both internal and between the peptide and the solvent. The presence or absence of a hydrogen bond is inferred from the distance between a donor/acceptor pair and the H-donor-acceptor angle. OH and NH groups are regarded as donors, while O is always classified as an acceptor. N is an acceptor by default as well, unless specifically disabled. GROMACS can calculate hydrogen bonds over full trajectories with the `hbond` program. The program output informs on the number of hydrogen bonds, distance and angle distributions, and an existence matrix of all internal hydrogen bonds over all frames. The number of hydrogen bonds alone is a proxy for the existence of secondary structures.
+
+<a class="prompt prompt-info">
+    Calculate the number of internal and protein-solvent hydrogen bonds over the trajectory.
+</a>
+<a class="prompt prompt-cmd">
+    gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_internal.xvg  
+    gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
+</a>
+<a class="prompt prompt-question">
+    How does the number of internal hydrogen bonds correlate with the radius of gyration?
+</a>
+<a class="prompt prompt-question">
+    Comment on the relation between the internal and the solvent hydrogen bond populations.
+</a>
+
+In addition to global analyses, many GROMACS programs support index files, which are created with the `make_ndx` program. These index files allow the creation of user-specified groups, such as single residues or stretches of residues. For example, it is possible to evaluate the creation of β-hairpins by checking the existence of hydrogen bonds between the two halves of the peptide. Assume you are working on a 14-residue long peptide. The syntax within `make_ndx` to create an index file to check for hydroben bonds between the two halves is as follows:
+
+{% highlight Text Only %}
+r 1-7
+name 19 half_1
+r 8-14
+name 20 half_2
+q
+{% endhighlight %}
+
+<a class="prompt prompt-info">
+    Create an index file to assess the existence of hydrogen bonds that might justify a β-hairpin structure.
+</a>
+<a class="prompt prompt-cmd">
+    gmx make_ndx -f p53_helix_CAH.tpr -o my_index.ndx  
+    gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -n my_index.ndx -num beta_hairpin_hbond.xvg
+</a>
+
+<a class="prompt prompt-question">
+    On the basis of this analysis, is your peptide adopting a β-hairpin structure during the simulation?
+</a>
+
+### Secondary Structure
+Among the most common parameters to analyse protein structure is the assignment of secondary structure elements, such as α-helices and β-sheets. One of the most popular tools for this purpose is the `dssp` software. Although not part of the GROMACS distribution, `dssp` can be freely obtained online at the [CMBI website](http://swift.cmbi.ru.nl/gv/dssp/), and integrated in many of its analysis tools. Specifically, the `do_dssp` tool produces a plot of the different secondary structure elements of each residue in the peptide as a function of time. This matrix, in *.xpm* format, can be converted into a Postscript file using the `xpm2ps` tool, and then into a PDF file using `ps2pdf`. The `xpm2ps` utility allows a scaling flag, `-by`, that is useful for very short sequences, as well as a `-rainbow` flag that controls the coloring of the output.
+
+<a class="prompt prompt-info">
+    Perform an analysis of the secondary structure of the peptide throughout the trajectory using *dssp*.
+</a>
+<a class="prompt prompt-cmd">
+    gmx do_dssp -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_secondary-structure.xpm  
+    xpm2ps -f md_secondary-structure.xpm -o md_secondary-structure.eps -by 20 -rainbow blue  
+    ps2pdf md_secondary-structure.eps md_secondary-structure.pdf
+</a>
+<a class="prompt prompt-question">
+    Discuss the changes in secondary structure, if any.
+</a>
+<a class="prompt prompt-question">
+    Compare and discuss the stability of the different secondary structures in the different conformations.
+</a>
+
+## Analysis of time-averaged properties
+This simulation considers only one conformation. To obtain proper sampling of the peptide conformational landscape, 50 nanoseconds do not suffice. However, trajectories starting from different initial structures or starting the from same structure with a different initial random seed explore different regions of the conformational landscape. It is then desirable to combine different trajectories together and therefore obtain a much larger body of data.
+
+<a class="prompt prompt-info">
+    Obtain different (full) trajectories from 2 of your colleagues. If possible, try to be as diverse as possible regarding initial structures.
+</a>
+
+### Preparation of a concatenated trajectory
+The first step is to trim the trajectories in order to remove the first 10 nanoseconds, which can be conservately considered as equilibration. This operation is possible through `trjconv` and its `-b` flag, which allows the user to specify an offset previous to which the trajectory data is ignored. To be able to extract only the peptide atoms, `trjconv` requires an *dummy* index file.
+
+<a class="prompt prompt-info">
+    Trim the first 10 nanoseconds of each trajectory to discard the equilibration stage.
+</a>
+<a class="prompt prompt-cmd">
+    gmx make_ndx -f p53_helix_CAH.tpr -o p53_helix_CAH.ndx  
+    gmx trjconv -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -n p53_helix_CAH.ndx -pbc nojump -dt 50 -b 10000 -o p53_helix_CAH_reduced_10-50ns.xtc
+</a>
+
+<a class="prompt prompt-question">
+    Why doesn't it matter which topology file is used to process the different trajectory files?
+</a>
+
+After all three trajectories are trimmed, they can be concatenated using the GROMACS program `trjcat`. Make sure to note down the order in which the trajectories are provided to `trjcat`. The concatenation requires two particular flags to be provided as input to the program: `-cat`, which avoids discarding double time frames, and `-settime`, which changes the starting time of the different trajectories interactively. Effectively, the second trajectory will start at 50ns and the third at 90ns. The program will prompt for an action during the concatenation: press `c`, which tells `trjcat` to append the next trajectory right after the last frame of the previous one.
+
+<a class="prompt prompt-info">
+    Concatenate all three trajectories into a single one for further processing.
+</a>
+<a class="prompt prompt-cmd">
+    gmx trjcat -f p53_helix_CAH_reduced_10-50ns.xtc p53_sheet_CAH_reduced_10-50ns.xtc p53_polypro_CAH_reduced_10-50ns.xtc -o p53_concatenated.xtc -cat -settime
+</a>
+
+### Root Mean Square Deviations -- Part II
+Although the root mean square deviation (RMSD) was already calcualted to check for the convergence of the simulation, it can be used for a more advanced and in-depth analysis of conformational diversity. After all, the RMSD is a metric that compares structures. By performing an all-vs-all comparison with all frames in the concatenated trajectory, it is possible to identify groups of frames that share similar structures. This also quantifies the conformational diversity of a particular trajectory (or trajectories). The matrix allows also to detect and quantify the number of transitions between different conformations during the simulations. It is as relevant to have 10 different conformations or 2 that interconvert quickly. Since an all-vs-all RMSD matrix entails a very large number of pairwise comparisons, and the peptide conformations are different enough, use only backbone atoms to fit and calculate the RMSD.
+
+<a class="prompt prompt-info">
+    Calculate and plot an all-vs-all RMSD matrix for the concatenated trajectory.
+</a>
+<a class="prompt prompt-cmd">
+    gmx rms -f p53_concatenated.xtc -f2 p53_concatenated.xtc -s p53_helix_CAH.tpr -m p53_concatenated_RMSD-matrix.xpm  
+    xpm2ps -f p53_concatenated_RMSD-matrix.xpm -o p53_concatenated_RMSD-matrix.eps -rainbow blue  
+    ps2pdf p53_concatenated_RMSD-matrix.eps p53_concatenated_RMSD-matrix.pdf  
+</a>
+<a class="prompt prompt-question">
+    How many groups of similar structures do you see in the RMSD matrix?
+</a>
+<a class="prompt prompt-question">
+    Are there overlapping regions of the conformational landscape in the different trajectories?
+</a>
+
+### Cluster Analysis
+Using the all-vs-all RMSD matrix calculated in the previous step, it is possible to quantitatively establish the number of group of similar structures that a trajectory (or concatenated trajectories) sample. Using a unsupervised classification algorithm, *clustering*, structures that are similar to each other within a certain RMSD threshold are grouped together. The size of a cluster, the number of structures that belong to it, is also an indication of how favourable that particular region of the conformational landscape is in terms of free energy. GROMACS implements several clustering algorithms in the `cluster` program. Here, we will use the `gromos` clustering algorithm with a cutoff of 2Å. Briefly, the algorithm first calculates how many frames are within 2Å of each particular frame, based on the RMSD matrix, and then selects the frame with the largest number of neighbors to form the first cluster. These structures are *removed* from the pool of available frames, and the calculation proceeds iteratively, until the next largest group is smaller than a pre-defined number. The `cluster` program produces a very large number of output files that inform on several different properties of the clusters. Importantly, it also produces a PDB file with the centroids, or representatives, of each cluster.
+
+<a class="prompt prompt-info">
+    Cluster the RMSD matrix using the GROMOS method to quantitatively extract representative structures of the simulation.
+</a>
+
+<a class="prompt prompt-cmd">
+    gmx cluster -f p53_concatenated.xtc -s p53_helix_CAH.tpr -dm p53_concatenated_RMSD-matrix.xpm -dist p53_concatenated_rmsd-distribution.xvg -o p53_concatenated_clusters.xpm -sz p53_concatenated_cluster-sizes.xvg -tr p53_concatenated_transitions.xpm -ntr p53_concatenated_transitions.xvg -clid p53_concatenated_cluster-id-over-time.xvg -cl p53_concatenated_clusters.pdb -cutoff 0.2 -method gromos
+</a>
+
+<a class="prompt prompt-question">
+    How many clusters did the algorithm find? Tune the cutoff to obtain a reasonable number of clusters (e.g. 10-15).
+</a>
+
+<a class="prompt prompt-question">
+    What is the clustering cutoff that allows the definition of that number of clusters? Do you think these clusters are meaningful, i.e. contain only similar structures?
+</a>
+
+<a class="prompt prompt-info">
+    Open the resulting PDB file in Pymol and compare the centroids of each cluster with the others.
+</a>
+
+<a class="prompt prompt-pymol">
+    disable all  
+    intra_fit name ca+n+c+o  
+    split_states p53_concatenated_clusters  
+    delete p53_concatenated_clusters  
+    dssp  
+    as cartoon
+</a>
+
+<a class="prompt prompt-question">
+    Are there any meaningful differences between the largest clusters?
+</a>
+
+## Picking representatives of the simulation
+The aim of this simulation exercise was the sample the conformational landscape of the p53 N-terminal transactivation peptide, in order to extract representatives that could be used to generate models of its interaction with the MDM2 protein. The last step of clustering provides an unbiased method to select structures that were sampled throughout most of the trajectory (large clusters) and are likely good candidates for seeding the docking calculations.
+
+<a class="prompt prompt-info">
+    Select 5 representatives of the clusters you obtained in the previous step and create individual PDB files using Pymol.
+</a>
+
+## Congratulations!
