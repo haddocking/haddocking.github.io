@@ -10,10 +10,10 @@ image:
 This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The simulation protocol can be used as a starting point for the investigation of protein dynamics, provided your system does not contain non-standard groups. By the end of this tutorial, you should know the steps involved in setting up, running, and analysing a simulation, including critically asessing the choices made at the different steps.
 
 - [A bite of theory](#a-bite-of-theory)  
-- [Introduction and Outline](#introduction-and-outline)  
-- [Preparing the System](#preparing-the-system)  
-- [Choosing a template from the list of homologues](#choosing-a-template-from-the-list-of-homologues)
-- [Modelling mouse MDM2 using MODELLER](#modelling-mouse-mdm2-using-modeller)
+- [Predicting the interface of p53 on Mdm2](#predicting-the-interface-of-p53-on-mdm2)  
+- [Preparing the structures for the docking calculation](#preparing-the-structures-for-the-docking-calculation)  
+- [Setting up the docking calculation using the HADDOCK web server](#setting-up-the-docking-calculation-using-the-haddock-web-server)
+- [Analysing the docking calculation results](#analysing-the-docking-calculation-results)
 
 ##A bite of theory
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation, proliferation, signal transduction, and cell death. Their structural characterization is however not always trivial, even with the constant developments in x-ray crystallography and nuclear magnetic resonance spectroscopy. The culprits widely vary, ranging from the native environment of the complexes, which might make them hard to purify or crystallize, to the size of the system being too large for current methodologies to grasp. More importantly, homeostasis often depends on very tightly regulated transient interactions, yet another hindrance to the purification and characterization of these complexes. Nevertheless, three decades of spectacular progress in structural biology have shown that the protein fold space is finite and the rules of the folding game are well defined. This prompted the development of several computational methods aimed at complementing experimental techniques in their quest for a full 3D view of the proteome.  A widely used computational method for the prediction of the protein-protein complexes is molecular docking, which aims at generating the structure of such a complex starting from the structures (or models) of its native constituents.
@@ -173,7 +173,7 @@ Any molecular simulation, docking included, lacks the accuracy to produce one si
     Based on the best scoring clusters, can you advance a putative binding interface for p53 on MDM2? Can you identify key residues that might be "hotspots" of this interaction?
 </a>
 
-### Congratulations!
+## Congratulations!
 The docking calculation of MDM2 and the p53 N-terminal transactivation peptide was the culmination of a three-stage computational exercise that involved the three major methods in the repertoire of a Computational Structural Biologist. As you have seen, in modelling, there are rarely any certainties and you must always operate with extreme care and a constant sense of (self-)criticism. Nevertheless, you started with only two sequences and have now three-dimensional models of interactions that can be put to the test in the lab. Who knows? Maybe one of your models is actually correct and it will help researchers to spare the life of a few of our mice friends!
 
 Thank you for following this tutorial. We welcome any feedback to improve it. For the students following the course Molecular Modeling and Simulation, please feel free to voice any criticism and/or suggestions to the instructors. You won't be negatively judged for it :) Others may send comments to the email on the right side of the page, under the head of Captain HADDOCK!
