@@ -8,7 +8,9 @@ image:
   feature:
 ---
 
-#BioExcel: New Centre of Excellence for Computational Biomolecular Research
+<figure>
+<img alt="#BioExcel: New Centre of Excellence for Computational Biomolecular Research" src="/images/posts/Logo_bioexcel.png">
+</figure>
 *(Adapted from a news item by Erwin Laure and Rossen Apostolov - KTH Stockholm)*
 <br>
 
