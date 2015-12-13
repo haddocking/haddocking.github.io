@@ -6,13 +6,21 @@ image:
 
 ## 2015
 <hr />
+* **A.M.J.J. Bonvin** and O. Keskin. 
+[Editorial overview: Protein-Protein Interactions.](http://dx.doi.org/10.1016/j.sbi.2015.11.004)
+_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015).
+
+* E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
+On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a.
+_J. Chem. Inf. and Model._, In Press.
+
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students.
 _Biochemistry and Molecular Biology Education_, In Press.
 
 * L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
 [Computational Prediction of Protein Interfaces: A Review of Data Driven Methods](http://dx.doi.org/10.1016/j.febslet.2015.10.003).
-_FEBS Letters_, Advanced Online Publication (2015).
+_FEBS Letters_, *589*, 3516-3526 (2015).
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
