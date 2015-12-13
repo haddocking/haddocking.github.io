@@ -8,7 +8,7 @@ image:
 <hr />
 * **A.M.J.J. Bonvin** and O. Keskin. 
 [Editorial overview: Protein-Protein Interactions.](http://dx.doi.org/10.1016/j.sbi.2015.11.004)
-_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015).
+_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://authors.elsevier.com/a/1SBy1,LqAqxhW8))
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a.
