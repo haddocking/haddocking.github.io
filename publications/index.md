@@ -6,6 +6,10 @@ image:
 
 ## 2015
 <hr />
+* M. Kalia, S. Willkomm, J.C. Claussen, T. Restle# and **A.M.J.J. Bonvin#**.
+Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2.
+_Int. J. Mol. Sci._ In Press.
+
 * **A.M.J.J. Bonvin** and O. Keskin. 
 [Editorial overview: Protein-Protein Interactions.](http://dx.doi.org/10.1016/j.sbi.2015.11.004)
 _Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://authors.elsevier.com/a/1SBy1,LqAqxhW8))
