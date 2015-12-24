@@ -4,15 +4,11 @@ image:
   feature: pages/banner_publications-mini.jpg
 ---
 
-## 2015
+## 2016
 <hr />
 * M. Kalia, S. Willkomm, J.C. Claussen, T. Restle# and **A.M.J.J. Bonvin#**.
-Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2.
-_Int. J. Mol. Sci._ In Press.
-
-* **A.M.J.J. Bonvin** and O. Keskin. 
-[Editorial overview: Protein-Protein Interactions.](http://dx.doi.org/10.1016/j.sbi.2015.11.004)
-_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://authors.elsevier.com/a/1SBy1,LqAqxhW8))
+[Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2](http://dx.doi.org/10.3390/ijms17010022).
+_Int. J. Mol. Sci._ *22*, doi:10.3390/ijms17010022 (2016).
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a.
@@ -21,6 +17,16 @@ _J. Chem. Inf. and Model._, In Press.
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students.
 _Biochemistry and Molecular Biology Education_, In Press.
+
+* A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
+In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
+
+
+## 2015
+<hr />
+* **A.M.J.J. Bonvin** and O. Keskin. 
+[Editorial overview: Protein-Protein Interactions.](http://dx.doi.org/10.1016/j.sbi.2015.11.004)
+_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://authors.elsevier.com/a/1SBy1,LqAqxhW8))
 
 * L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
 [Computational Prediction of Protein Interfaces: A Review of Data Driven Methods](http://dx.doi.org/10.1016/j.febslet.2015.10.003).
@@ -33,9 +39,6 @@ _J. Mol. Biol._, Advanced Online Publication (2015).
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
 _J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
-
-* A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
-In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
 
 * R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
 [Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
