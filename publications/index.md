@@ -7,12 +7,12 @@ image:
 ## 2016
 <hr />
 * M. Kalia, S. Willkomm, J.C. Claussen, T. Restle# and **A.M.J.J. Bonvin#**.
-[Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2](http://dx.doi.org/10.3390/ijms17010022).
+[Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2](http://dx.doi.org/doi:10.3390/ijms17010022).
 _Int. J. Mol. Sci._ *22*, doi:10.3390/ijms17010022 (2016).
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
-On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a.
-_J. Chem. Inf. and Model._, In Press.
+[On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
+_J. Chem. Inf. and Model._, Advanced Online Publication (2016).
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students.
