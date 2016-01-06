@@ -28,6 +28,7 @@ We are looking for motivated students to help us further develop HADDOCK. Exampl
 <li> Measure the impact of the electrostatics treatment on the docking performance.</li>
 <li> Assess how to best make use of mass-spectrometry information, e.g. chemical cross-links, to guide the modelling process.</li>
 <li> Work on interface predictors for protein-RNA complexes</li>
+<li> Work on structure-based prediction of binding affinity and specificity</li>
 <li> Build coarse-grained (simplified) representations of nucleic acid molecules. This dramatically decreases the computational cost of modelling large assemblies like the ribosome and the nucleosome.</li>
 </ul>
 
