@@ -6,10 +6,6 @@ image:
 
 ## 2016
 <hr />
-* M. Kalia, S. Willkomm, J.C. Claussen, T. Restle# and **A.M.J.J. Bonvin#**.
-[Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2](http://dx.doi.org/doi:10.3390/ijms17010022).
-_Int. J. Mol. Sci._ *22*, doi:10.3390/ijms17010022 (2016).
-
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 [On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
 _J. Chem. Inf. and Model._, Advanced Online Publication (2016).
@@ -24,6 +20,10 @@ In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Ri
 
 ## 2015
 <hr />
+* M. Kalia, S. Willkomm, J.C. Claussen, T. Restle# and **A.M.J.J. Bonvin#**.
+[Novel insights into guide RNA 5’-nucleoside/tide binding by human Argonaute 2](http://dx.doi.org/doi:10.3390/ijms17010022).
+_Int. J. Mol. Sci._ *22*, doi:10.3390/ijms17010022 (2015).
+
 * **A.M.J.J. Bonvin** and O. Keskin. 
 [Editorial overview: Protein-Protein Interactions.](http://dx.doi.org/10.1016/j.sbi.2015.11.004)
 _Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://authors.elsevier.com/a/1SBy1,LqAqxhW8))
