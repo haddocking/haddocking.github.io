@@ -17,6 +17,10 @@ _Biochemistry and Molecular Biology Education_, In Press.
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
 
+* R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
+[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
+_Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
+
 
 ## 2015
 <hr />
@@ -39,10 +43,6 @@ _J. Mol. Biol._, Advanced Online Publication (2015).
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
 _J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
-
-* R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
-_Current Topics in Medicinal Chemistry_. *16*, 89-98 (2015).
 
 * A. Vangone, **A.M.J.J. Bonvin**. "[HADDOCK docking models](http://dx.doi.org/10.15785/SBGRID/131).", SBGrid Data Bank, V1, DOI: 10.15785/SBGRID/131 (2015).
 
