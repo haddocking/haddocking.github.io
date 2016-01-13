@@ -357,8 +357,8 @@ Using the pdb-tools suite, *clean* the 4ODE_A PDB file of multiple occupancies.
 </a>
 
 <a class="prompt prompt-cmd">
-	pdb\_delocc.py 4ODE\_A.pdb > 4ODE\_A.pdb.clean
-    mv 4ODE\_A.pdb.clean 4ODE\_A.pdb
+pdb\_delocc.py 4ODE\_A.pdb > 4ODE\_A.pdb.clean <br> 
+mv 4ODE\_A.pdb.clean 4ODE\_A.pdb
 </a>
 
 As a side note, choosing *one* single template might not be ideal in all cases. When modelling a
