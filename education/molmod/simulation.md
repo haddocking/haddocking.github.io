@@ -35,9 +35,9 @@ $$
 \end{equation}
 $$
 
-The molecular dynamics algorithm starts by assigning random velocities to the atoms in the system, from a Maxwell-Boltzmann distribution at the desired temperature. The random seed value seen in many configuration files of molecular dynamics software influences this attribution. Two trajectories of the same system with the same random seed are numerically identical, given the deterministic nature of the simulation. To move the atoms from one configuration to another, the algorithm first calculates the forces acting on each atom. From that force, one can determine the acceleration of the atoms and combine these with their positions and velocities at time $$ t $$ to yield a new set of positions and velocities. The time between the old and new positions is fixed and pre-determined at the beginning of the simulation. In biomolecular simulations, the time step ($$ \delta t $$) is usually 2 femtoseconds, which is large enough to sample significant dynamics but not as large as to cause problems during the calculations. Too big of a time step and two atoms might overlook each other and end up overlapping! At $$ t + \delta t $$, a new set of forces is calculated and so on. The simulation finished only when there have been enough steps to reach the desired simulation time. Besides all these calculations, biomolecular simulations try to simulation also the conditions inside cells, namely regarding temperature and pressure. There are special algorithms in place, during the simulation, that maintain these two properties constant (or not, depends on the setup!).
+The molecular dynamics algorithm starts by assigning random velocities to the atoms in the system, from a Maxwell-Boltzmann distribution at the desired temperature. The random seed value seen in many configuration files of molecular dynamics software influences this attribution. Two trajectories of the same system with the same random seed are numerically identical, given the deterministic nature of the simulation. To move the atoms from one configuration to another, the algorithm first calculates the forces acting on each atom. From that force, one can determine the acceleration of the atoms and combine these with their positions and velocities at time $$ t $$ to yield a new set of positions and velocities. The time between the old and new positions is fixed and pre-determined at the beginning of the simulation. In biomolecular simulations, the time step ($$ \delta t $$) is usually 2 femtoseconds, which is large enough to sample significant dynamics but not as large as to cause problems during the calculations. Too big of a time step and two atoms might overlook each other and end up overlapping! At $$ t + \delta t $$, a new set of forces is calculated and so on. The simulation finishes when the accumulated times of the individual steps reach the predefined desired simulation time. Besides all these calculations, biomolecular simulations  also try to simulate the conditions inside cells, namely regarding temperature and pressure. There are special algorithms in place, during the simulation, that maintain these two properties constant (or not, depends on the setup!).
 
-Despite decades of research, as well as advances in computer science and hardware development, most simulations are able to sample only a few microseconds of *real time*, although they take several days/weeks running on multiple processors. The milisecond barrier was broken only recently, by simulating on a purpose-built computer. Moreover, the force fields used in biomolecular simulation are approximating the interactions happening in reality. This results in errors in the estimation of energies of interacting atoms and groups of atoms. As such, molecular dynamics are not a miraculous alternative to experiments, nor can the results of simulations be trusted blindly. There must always be some sort of validation, preferrably by experimental data. When considering setting up a molecular dynamics simulation, plan it wisely, choosing carefully the setup and the system so that there are a minimum of variables under study. If carried out properly, these simulations remain an unparallelled method in terms of spatial and temporal resolution that are able to shed light on principles underlying biological function and fuel the formulation of new hypotheses.
+Despite decades of research, as well as advances in computer science and hardware development, most simulations are able to sample only a few microseconds of *real time*, although they take several days/weeks running on multiple processors. The milisecond barrier was broken only recently, by simulating on a purpose-built computer. Moreover, the force fields used in biomolecular simulation are approximations of the interactions happening in reality. This results in errors in the estimation of energies of interacting atoms and groups of atoms. As such, molecular dynamics are not a miraculous alternative to experiments, nor can the results of simulations be trusted blindly. There must always be some sort of validation, preferrably by experimental data. When considering setting up a molecular dynamics simulation, plan it wisely, choosing carefully the setup and the system so that there are a minimum of variables under study. If carried out properly, these simulations remain an unparallelled method in terms of spatial and temporal resolution that are able to shed light on principles underlying biological function and fuel the formulation of new hypotheses.
 
 ## Introduction and Outline
 The aim of this tutorial is to simulate and analyse the conformational dynamics of a small peptide using molecular dynamics algorithms as implemented in the [GROMACS](www.gromacs.org) software. The following sections outline several preparation steps and analyses. These instructions do not apply to all molecular systems. Take your time to know your system and what particularities its simulation entails.
@@ -50,14 +50,14 @@ To run the actual simulation, you will need access to a computing cluster. Runni
 The preparation of the system is the heart of the simulation. Neglecting this stage can lead to artifacts or instability during the simulation. Each simulation must be prepared carefully, taking into consideration its purpose and the biological and chemical characteristics of the system under study.
 
 ### Selecting an initial structure
-The first step is obviously the selection of a starting structure. The aim of this tutorial is simulate a peptide of the N-terminal sequence of the transactivation domain of p53. The sequence of this peptide is given below, in FASTA format:
+The first step is obviously the selection of a starting structure. The aim of this tutorial is  to simulate a peptide of the N-terminal sequence of the transactivation domain of p53. The sequence of this peptide is given below, in FASTA format:
 
 {% highlight Text Only %}
 >P53_MOUSE
 SQETFSGLWKLLPPE
 {% endhighlight %}
 
-Peptides are often very flexible molecules with short-lived secondary structure elements. Some can even adopt different structures depending on which protein partner they are interacting with, remaining in a disordered state if free in solution. As such, the effort is using an advanced method such as homology modelling for this peptide is very likely unwarranted. Instead, it is possible, and plausible, to generate structures of the peptide in three ideal conformations -- helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/build_seq.py) if necessary.
+Peptides are often very flexible molecules with short-lived secondary structure elements. Some can even adopt different structures depending on which protein partner they are interacting with, remaining in a disordered state if free in solution. As such, the effort of using an advanced method such as homology modelling for this peptide is very likely unwarranted. Instead, it is possible, and plausible, to generate structures of the peptide in three ideal conformations -- helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/build_seq.py) if necessary.
 
 <a class="prompt prompt-info">
     Generate an ideal structure for the peptide sequence using Pymol.
@@ -73,7 +73,7 @@ Peptides are often very flexible molecules with short-lived secondary structure 
 </a>
 
 ### Preparing the initial structure
-In case of structures downloaded from the RCSB PDB, it is important to ensure that there are no missing atoms, as well as check for the presence of non-standard amino acids and other small ligands. Force fields usually contain parameters for natural amino acids and nucleotides, a few post-translation modifications, water, and ions. Exotic molecules such as pharmaceutical drugs and co-factors often have to be parameterized manually, which is a science on its own. Always judge if the presence of these exotic species is a necessity. In some cases, the ligands can be safely ignored and removed from the structure. As for missing residue and atoms, except hydrogens, it is absolutely necessary to rebuild them before starting a simulation. MODELLER is an excelent program for this purpose. In addition, some crystals diffract at a good enough resolution to distinguish water molecules in the density mesh. Save for very particular cases where these waters are the subject of the study, the best policy is to remove them altogether from the structure. Fortunately, most of these "problematic" molecules appear as hetero-atoms (HETATM) in the PDB file, and can therefore be removed rather easily with a simple `sed` command:
+In case of structures downloaded from the RCSB PDB, it is important to ensure that there are no missing atoms, as well as check for the presence of non-standard amino acids and other small ligands. Force fields usually contain parameters for natural amino acids and nucleotides, a few post-translational modifications, water, and ions. Exotic molecules such as pharmaceutical drugs and co-factors often have to be parameterized manually, which is a science on its own. Always judge if the presence of these exotic species is a necessity. In some cases, the ligands can be safely ignored and removed from the structure. As for missing residue and atoms, except hydrogens, it is absolutely necessary to rebuild them before starting a simulation. MODELLER is an excelent program for this purpose. In addition, some crystals diffract at a good enough resolution to distinguish water molecules in the density mesh. Save for very particular cases where these waters are the subject of the study, the best policy is to remove them altogether from the structure. Fortunately, most of these "problematic" molecules appear as hetero-atoms (HETATM) in the PDB file, and can therefore be removed rather easily with a simple `sed` command:
 
 <a class="prompt prompt-cmd">
     sed -e "/^HETATM/d" 1XYZ.pdb > 1XYZ_clean.pdb
@@ -87,7 +87,7 @@ Since the initial structure of the p53 peptide was generated using Pymol and ide
 A molecule is defined not only by the three-dimensional coordinates of its atoms, but also by the description of how these atoms are connected and how they interact with each other. The PDB file, which was generated or downloaded in the previous step, contains only the former. The description of the system in terms of atom types, charges, bonds, etc, is contained in the topology, which is specific to the force field used in the simulation. The choice of the force field must then not be taken lightly. For biomolecular systems, there are few major force fields -- e.g. CHARMM, AMBER, GROMOS, OPLS -- that have been parameterized to reproduce the properties of biological molecules, namely proteins. This has been, and continues to be, an area of active research since the very first day of molecular dynamics simulations. There are several literature reviews available in Pubmed that assess the quality and appropriateness of each force field and their several versions. Some are well-known for their artifacts, such as a biased propensity for alpha-helical conformations. Here, in this tutorial, we use the AMBER99SB-ILDN force field, which is widely used in sampling and folding simulations and has been shown to reproduce fairly well experimental data ([source](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131)). Another, more practical, reason behind this choice is the availability of this force field in GROMACS.
 
 <a class="prompt prompt-info">
-    Generate a topology and matching structure for the p53 peptide.
+    Generate a topology and matching structure for the p53 peptide. (Force Field: AMBER99SB-ILDN, Water Model: TIP 3-point)
 </a>
 <a class="prompt prompt-cmd">
     gmx pdb2gmx -f peptide.pdb -o peptide.gro -p peptide.top -ignh -ter
@@ -117,7 +117,7 @@ Different force fields define different atom types and/or give different names t
 The newly generated topology file is also worth some attention. It contains a listing of all the residues and their corresponding atoms, detailing the atom types, masses, and charges. Further, it contains a listing of all the bonds in the molecule, the angles, and the dihedral angles. Note that the topology file does not contain any information on their chemistry. This information is stored in internal parameter libraries that are defined at the very top of the topology file.
 
 <a class="prompt prompt-info">
-    Open the *protein.top* file in a text editor and browse through it.
+    Open the *peptide.top* file in a text editor and browse through it.
 </a>
 {% highlight Text Only %}
 ; Include forcefield parameters
@@ -154,7 +154,7 @@ Protein             3
 ### Periodic Boundary Conditions
 This converted structure includes several atoms, namely hydrogen, that have been added according only to ideal geometric parameters. If generated with Pymol, it also has ideal backbone geometry. If it was otherwise downloaded from the RCSB PDB, the structure is also likely to contain certain chemical aspects (bond lengths, angles, interatomic distances) that are not considered ideal by the force field. In fact, merely changing force fields will cause the definition of *ideal* to change as well. The first step towards preparing the system is then to remove these "imperfections" as best as possible, which is normally achieved through an energy minimization of the system. This optimization method essentially forces a set of atoms to adhere, as best as possible, to the definitions of the force field. The larger the number of atoms in the system, the harder it is to have all of them to comply ideally with respect to all the definitions. For example, moving two atoms closer to reduce the strain from violating the definitions imposed by the van der Waals forces may cause the strain from the electrostatic term to increase.
 
-Before minimizing the system, a general layout of the simulation setup has to be chosen. In other words, the peptide much be placed *somewhere* for this minimization to happen. Most modern simulations of proteins and peptides define periodic boundary conditions (PBC), which set a single unit cell that can be stacked infinitely. As a result, an infinite, periodic system is defined that avoids the problem of having hard boundaries (walls) that the molecules can literally bump into. When the protein crosses the *wall* on the left side, the periodic image to its right enters the current unit cell, maintaining a constant number of atoms in every unit cell. A simpler way to rationalize PBCs is to compare them to the snake game available in old Nokia cell phones. When the head of the snake crosses a boundary of the screen, it re-appears on the diametrically opposed edge.
+Before minimizing the system, a general layout of the simulation setup has to be chosen. In other words, the peptide must be placed *somewhere* for this minimization to happen. Most modern simulations of proteins and peptides define periodic boundary conditions (PBC), which set a single unit cell that can be stacked infinitely. As a result, an infinite, periodic system is defined that avoids the problem of having hard boundaries (walls) that the molecules can literally bump into. When the protein crosses the *wall* on the left side, the periodic image to its right enters the current unit cell, maintaining a constant number of atoms in every unit cell. A simpler way to rationalize PBCs is to compare them to the snake game available in old Nokia cell phones. When the head of the snake crosses a boundary of the screen, it re-appears on the diametrically opposed edge.
 
 {::comment}
 We should maybe add an image here to describe this better.
@@ -165,7 +165,7 @@ The choice of the shape of the unit cell is also important, since this will defi
 Another thing to have in mind when setting up the PBCs is the size of the unit cell. Continuing with the snake analogy, it is not proper to have the snake's head see its own tail. In other words, the cell must be sufficiently large to allow the molecule to cross the boundaries and still be at a sufficient distance from the next image that no force calculations are made between them. In GROMACS, this setting is defined as a distance from the molecule to the wall of the unit cell. This distance should not be arbitrarily large either, otherwise the box is to large and the simulation becomes computationally inefficient. Take the cutoff used to calculate non-bonded interactions (long range) in the force field as a rule of thumb. The distance to the wall must be larger than this value.
 
 <a class="prompt prompt-info">
-    Setup periodic boundary conditions using a minimal distance of 1.4nm between the peptide and the unit cell wall.
+    Setup periodic boundary conditions using a minimal distance of 1.4 nm between the peptide and the unit cell wall.
 </a>
 <a class="prompt prompt-cmd">
     gmx editconf -f peptide.gro -o peptide-PBC.gro -bt dodecahedron -c -d 1.4
@@ -240,7 +240,7 @@ The solvent model used for water is also an active area of research. Several mod
     Solvate the simulation box using the TIP3P water model.
 </a>
 <a class="prompt prompt-cmd">
-    gmx solvate -cp peptide-EM-vacuum.gro -cs spc216.gro -o peptide-water.gro -p protein.top
+    gmx solvate -cp peptide-EM-vacuum.gro -cs spc216.gro -o peptide-water.gro -p peptide.top
 </a>
 <a class="prompt prompt-question">
     Why can you use the structure of the SPC water model?
@@ -309,7 +309,7 @@ The addition of ions was the final step in setting up the system (chemically) fo
 ### Restrained MD -- relaxation of solvent and hydrogen atoms
 Despite dissipating most of the strain in the system, energy minimization does not consider temperature, and therefore velocities and kinetic energy. When first running molecular dynamics, the algorithm assigns velocities to the atoms, which again stresses the system and might cause the simulation to become unstable. To avoid possible instabilities, the preparation setup here described includes several stages of molecular dynamics that progressively remove constraints on the system and as such, let it slowly adapt to the conditions in which the production simulation will run.
 
-The *.mdp* file for this simulation is substantially different from those used for the minimization runs. First, the integrator is now `md`, which instructs `mdrun` to actually run molecular dynamics. Then, there are several new options that relate specifically to this algorithm: `dt`, `t_coupl`, `ref_t`, and `gen_vel`. At the top of the file, there is a preprocessing option that defines a particular flag `-DPOSRES`. In the topology file, there is a specific statement that is activated only when this flag is set, which relates to a file created by `pdb2gmx` -- `posres.itp`. This file contains position restraints for certain atoms of the system, which prevent them from moving freely during the simulations.
+The *.mdp* file for this simulation is substantially different from those used for the minimization runs. First, the integrator is now `md`, which instructs `mdrun` to actually run molecular dynamics. Then, there are several new options that relate specifically to this algorithm: `dt`, `t_coupl`, `ref_t`, and `gen_vel`. At the top of the file, there is a preprocessing option that defines a particular flag `-DPOSRES`. In the topology file, there is a specific statement that is activated only when this flag is set, which relates to a file created by `pdb2gmx` -- `posre.itp`. This file contains position restraints for certain atoms of the system, which prevent them from moving freely during the simulations.
 
 <a class="prompt prompt-info">
     Relax the solvent and hydrogen positions through molecular dynamics under NVT conditions.
@@ -357,7 +357,7 @@ Equilibration is often conducted in two stages: first, the system is simulated u
 </a>
 
 <a class="prompt prompt-cmd">
-    gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
+    gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr <br>
     gmx mdrun -v -deffnm peptide-NPT-PR1000  
     gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
     xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
@@ -370,7 +370,7 @@ Equilibration is often conducted in two stages: first, the system is simulated u
 ### Releasing the position restraints
 By now, the system had time to ajust to the injection of velocities and the introduction of both temperature and pressure. The heavy atoms of the peptide are, however, still restrained to their initial positions. The next and final steps of the simulation setup release these restraints, progressively, until the system is completely unrestrained and fully equilibrated at the desired temperature and pressure, thus ready for the production simulation.
 
-The strenght of the restraints is defined in the `posres.itp` file, created by `pdb2gmx`. The value of the force constant defines how strictly the atom is restrained. As such, releasing the restraints is as simple as modifying the numbers on the file.
+The strenght of the restraints is defined in the `posre.itp` file, created by `pdb2gmx`. The value of the force constant defines how strictly the atom is restrained. As such, releasing the restraints is as simple as modifying the numbers on the file.
 
 {% highlight Text Only %}
 [ position_restraints ]
@@ -390,16 +390,16 @@ The strenght of the restraints is defined in the `posres.itp` file, created by `
 </a>
 
 <a class="prompt prompt-cmd">
-    cp posres.itp posrest.itp.1000 # Make a backup of the original file  
-    sed -i -e 's/1000  1000  1000/ 100   100   100/g' posre.itp  
+    cp posre.itp posre.itp.1000 # Make a backup of the original file  
+    sed -i -e \'s/1000  1000  1000/ 100   100   100/g\' posre.itp  
     gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
     gmx mdrun -v -deffnm peptide-NPT-PR100  
 </a>
 
 <a class="prompt prompt-cmd">
-    cp posres.itp posrest.itp.100
-    sed -i -e 's/ 100   100   100/  10    10    10/g' posre.itp
-    gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
+    cp posre.itp posre.itp.100 <br>
+    sed -i -e \'s/ 100   100   100/  10    10    10/g\' posre.itp <br>
+    gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr <br> 
     gmx mdrun -v -deffnm peptide-NPT-PR10  
 </a>
 
@@ -418,7 +418,8 @@ The final equilibration step is to completely remove the position restraints. Th
 </a>
 
 ## Production Simulation
-Despite all these efforts, the system is likely yet to be in equilibrium. The first few nanoseconds of a simulation, depending on the system, are in fact an equilibration period that should be discarded when performing any analysis on the properties of interest. To setup the simulation for production, all it takes it to generate a new *.tpr* file that contains the desired parameters, namely the number of steps that defines the simulation length. At this stage, there are plenty of questions to address that have varying degrees of influence in the performance of the calculations:
+Despite all these efforts, the system is not likely to be in equilibrium yet. The first few nanoseconds of a simulation, depending on the system, are in fact an equilibration period that should be discarded when performing any analysis on the properties of interest. To setup the simulation for production, all it takes it to generate a new *.tpr* file that contains the desired parameters, namely the number of steps that define the simulation length. At this stage, there are plenty of questions to address that have varying degrees of influence in the performance of the calculations:
+
 - At what time scale do the processes under study occur? How long should the simulation run for?
 - What is the temporal resolution necessary to answer the research questions?
 - Is there a need to store velocities and energies frequently?

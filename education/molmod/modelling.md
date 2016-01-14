@@ -427,7 +427,7 @@ Using MODELLER requires some programming knowledge. The software exposes a very 
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 10
+    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 10
 </a>
 
 The protocol and settings the scripts will use are what our group uses in *real* modelling jobs in the lab. By default, it uses the MODELLER routine `automodel` to generate models, which automates most of the model building protocol, including a small refinement step. MODELLER starts by reading and validating the alignment against the PDB file(s) of the template(s). If a PDB file is missing some fragment of the sequence HMMER retrieved for that template, for example because it could not be observed in the electron density, then the alignment will have to be manually corrected. MODELLER is quite verbose when it comes to these and other error messages. In this particular case, it will show exactly where the discrepancy occurs. To avoid multiple iterations of trial and error, simply extract the sequence directly from the `ATOM` lines of the PDB file using the utility script `pdb_toseq.py` and align it to the sequence given by HMMER using for example the global pairwise alignment algorithms hosted at the [EBI servers](www.ebi.ac.uk/Tools/psa/emboss_needle/). This will highlight any missing regions.
@@ -483,7 +483,7 @@ Overall, the models are virtually identical and also identical to the template. 
 </a>
 
 <a class="prompt prompt-cmd">
-	evaluate_model.py MDM2\_MOUSE.B99990002.pdb
+    evaluate_model.py MDM2\_MOUSE.B99990002.pdb <br>
     plot_profile.py MDM2\_MOUSE.B99990002.dope_profile
 </a>
 
@@ -502,7 +502,7 @@ MODELLER generates a fixed number of loop models for *each* backbone model it cr
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 1 --loopmodel --num\_loop\_model 10
+    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 1 \-\-loopmodel \-\-num\_loop\_model 10
 </a>
 
 <a class="prompt prompt-question">
