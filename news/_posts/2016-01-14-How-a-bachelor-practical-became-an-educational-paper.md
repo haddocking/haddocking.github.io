@@ -8,7 +8,7 @@ image:
   feature:
 ---
 
-An article describing our experience in teaching molecular modelling to our chemistry bachelor students at Utrecht University 
+An article describing our experience in teaching molecular modelling to our chemistry bachelor students at [Utrecht University](http://www.uu.nl) 
 has just appeared in [Biochemistry and Molecular Biology Education (BAMBE)](http://onlinelibrary.wiley.com/doi/10.1002/bmb.20941/abstract), a Wiley journal:
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
