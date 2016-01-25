@@ -584,3 +584,8 @@ This validation using the tools built in MODELLER help understand the limitation
 
 ## Congratulations!
 You started with a sequence of a protein and went all the way from finding possible templates, to evaluating which to use, to building several models, assessing their quality, and finally selecting one representative. This model can now be used to offer insights on the binding of MDM2 to p53, or on the structure of the mouse MDM2 protein, or to seed new computational analysis such as docking.
+
+You might want to continue with the  tutorial on  <a href="{{site.url}}/education/molmod/simulation.html"
+         alt="Molecular dynamics simulation of a mouse p53 peptide fragment using GROMACS."
+         title="Molecular dynamics simulation of a mouse p53 peptide fragment using GROMACS.">
+      Molecular dynamics simulations</a>!

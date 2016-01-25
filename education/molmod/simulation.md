@@ -180,7 +180,7 @@ As with `pdb2gmx`, the GROMACS program `editconf` generates a sizable output tha
 ### Energy minimization of the structure in vacuum
 Having defined the physical space where simulations can take place, the molecule can now be energy minimized. GROMACS uses a two-step process for any calculation involving the molecules and a force field. First, the user must combine the structure and the topology data, together with the simulation parameters, in a single control file. This file contains *everything* about the system and ensures the reproducibility of the simulation, provided the same force field is available on the machine. Another advantage of having such a self-contained file is that the preparation can take place in one machine while the calculations run on another. Again, simulations are computationally demanding. While the system can be easily prepared on a laptop, with the help of Pymol, GUI-enabled text editors, and all the other advantages of having a screen, calculations usually run on specialized clusters with hundreds of processing cores that provide only a command-line interface access. This will be relevant when running the production simulation. The intermediate calculations to prepare the system are confortably small to run on a laptop.
 
-The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data/mdp)) and also already in our virtual image, if you are using it (see `/opt/data/mdp/`). These parameters specify, for example, the cutoffs used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the algorithms to calculate non-bonded interactions. They also specify the type of simulation, for example energy minimization or molecular dynamics, and its length and time step if appropriate. Finally, they describe also the frequency with which GROMACS should write to disk the coordinates and energy values. Depending on the aim of the simulation, this writing frequency can be increased to have a higher temporal resolution at a cost of some computational efficiency (writing takes time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS manual](http://manual.gromacs.org/online/mdp_opt.html).
+The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data/mdp)) and also already in our virtual image, if you are using it (see `/opt/data/mdp/`). These parameters specify, for example, the cutoffs used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each atom and, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the algorithms to calculate non-bonded interactions. They also specify the type of simulation, for example energy minimization or molecular dynamics, and its length and time step if appropriate. Finally, they describe also the frequency with which GROMACS should write to disk the coordinates and energy values. Depending on the aim of the simulation, this writing frequency can be increased to have a higher temporal resolution at a cost of some computational efficiency (writing takes time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS manual](http://manual.gromacs.org/online/mdp_opt.html).
 
 <a class="prompt prompt-info">
     Browse through the *01_em_vac_PME* file, which contains the parameters for an energy minimization in vacuum.
@@ -391,14 +391,14 @@ The strenght of the restraints is defined in the `posre.itp` file, created by `p
 
 <a class="prompt prompt-cmd">
     cp posre.itp posre.itp.1000 # Make a backup of the original file  
-    sed -i -e \'s/1000  1000  1000/ 100   100   100/g\' posre.itp  
+    sed -i -e \'s/1000\ \ 1000\ \ 1000/\ 100\ \ \ 100\ \ \ 100/g\' posre.itp  
     gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
     gmx mdrun -v -deffnm peptide-NPT-PR100  
 </a>
 
 <a class="prompt prompt-cmd">
     cp posre.itp posre.itp.100 <br>
-    sed -i -e \'s/ 100   100   100/  10    10    10/g\' posre.itp <br>
+    sed -i -e \'s/100\ \ \ 100\ \ \ 100/\ 10\ \ \ \ 10\ \ \ \ 10/g\' posre.itp <br>
     gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr <br> 
     gmx mdrun -v -deffnm peptide-NPT-PR10  
 </a>
@@ -622,10 +622,10 @@ Finished mdrun on rank 0 Thu Jul 16 21:58:00 2015
 Although most of the analysis comes down to extracting data and plotting them, molecular dynamics is first and foremost about *dynamical*. As such, it is possible to extract the frames from the trajectory and combine them into a movie. This alone can inform substantially about the integrity of the peptide throughout the simulation. The following Pymol commands show the peptide in a sausage-like representation colored sequentially from N- to C-terminal. To manipulate the trajectory file, use `trjconv`, the GROMACS *swiss-knife* utility. When asked to select a group to output, choose *Protein* only, otherwise you will end up with a box of slushy water molecules obscuring the real action!
 
 <a class="prompt prompt-info">
-    Extract 100 frames from the trajectory and visualize them in Pymol
+    Extract 1000 frames from the trajectory and visualize them in Pymol
 </a>
 <a class="prompt prompt-cmd">
-    gmx trjconv -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -o p53_helix_CAH-nojump.xtc -pbc nojump -dt 50
+    gmx trjconv -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -o p53_helix_CAH-nojump.pdb -pbc nojump -dt 50
 </a>
 <a class="prompt prompt-pymol">
     cartoon tube  
@@ -672,7 +672,7 @@ Then, in the command-line interface, assuming you are in the directory where Pym
 </a>
 
 ## Quantitative Quality Assurance
-After a first visual inspection of the trajectory, assuming the simulation went smoothly, it is time to perform additional and more thorough checks regarding the quality of the simulation. This analysis involves testing for the convergence of the thermodynamic parameters, such as temperature, pressure, and the potential and kinetic energies. Sometimes, the convergence of a simulation is also checked in terms of the root mean square deviation (RMSD) of the atomic coordinates of each frame against the initial structure and/or the average structure. Since this simulation is of a very small and flexbile peptide, it is expected that it does **not** converge, although there might be surprises! Finally, the interaction between the periodic images must be checked as well, as if they did occur, it might lead to artifacts in the simulation.
+After a first visual inspection of the trajectory, assuming the simulation went smoothly, it is time to perform additional and more thorough checks regarding the quality of the simulation. This analysis involves testing for the convergence of the thermodynamic parameters, such as temperature, pressure, and the potential and kinetic energies. Sometimes, the convergence of a simulation is also checked in terms of the root mean square deviation (RMSD) of the atomic coordinates of each frame against the initial structure and/or the average structure. Since this simulation is of a very small and flexbile peptide, it is expected that it does **not** converge, although there might be surprises! Finally, the interactions between the periodic images must be checked as well, if they did occur, it might lead to artifacts in the simulation.
 
 ### Convergence of the thermodynamical parameters
 Start off by extracting the thermodynamic parameters from the energy file, as done previously. Of interest are the temperature, pressure, potential energy, kinetic energy, unit cell volume, density, and the box dimensions. The energy file of the simulation contains several dozen terms. Some of the energetic terms are split in groups. These groups were defined in the *.mdp* file and can be used to isolate specific parts of the system for future analysis.
@@ -689,7 +689,11 @@ Start off by extracting the thermodynamic parameters from the energy file, as do
 </a>
 
 Have a look at the graph with the program xmgrace and see how the temperature fluctuates around the value specified (310 K).
-The Heat Capacity of the system can also be calculated from these fluctuations. The system temperature must be extracted from the .edr energy file together with the enthalpy (for NPT) or Etot (for NVT) values. Furthermore, we have to explictly state how many molecules we have in the system with the -nmol option (you can refer to the end of the topology file to get the total number of molecules in your system). This will allow g_energy to automatically calculate the heat capacity and show at the end of its output. Check section D.29 of the manual for more details.
+The Heat Capacity of the system can also be calculated from these fluctuations. The system temperature must be extracted from the .edr energy file together with the enthalpy (for NPT) or Etot (for NVT) values. Furthermore, we have to explicitly state how many molecules we have in the system with the -nmol option (you can refer to the end of the topology file to get the total number of molecules in your system). This will allow *gmx energy* to automatically calculate the heat capacity and show it at the end of its output. Check the gromacs manual for more details.
+
+<a class="prompt prompt-cmd">
+    gmx energy -f p53_helix_CAH.edr -fluct_props -nmol XXXX
+</a>
 
 <a class="prompt prompt-info">
     Extract and plot the pressure, potential and kinetic energies, volume, density, and box dimensions.
@@ -707,7 +711,7 @@ The equilibration of some terms takes longer than that of others. In particular,
     Extract and plot the interaction energies (Coul & LJ) between the peptide and the solvent.
 </a>
 <a class="prompt prompt-question">
-    Do they converge? What would do you expect?
+    Do they converge? What would you expect?
 </a>
 
 ### Calculation of the minimum distance between periodic images
@@ -730,7 +734,7 @@ A key point of any molecular dynamics simulation analysis where periodic boundar
     Which non-bonded energy term is most affected by a minimal distance shorter than its cutoff distance? Why?
 </a>
 
-The occurence of a periodic image *sighting* can be overlooked if it is very transient and infrequent. If it does occur frequently or consistently over a stretch of the simulation, time to go back and re-do the whole setup. Also, not only direct interactions are of concern. As mentioned before, the water around the solute has a different structure than the bulk water. To be on the safe side, add an extra nanometer when calculating the allowed minimal distance.
+The occurence of a periodic image *sighting* can be overlooked if it is very transient and infrequent. If it does occur frequently or consistently over a stretch of the simulation, it is neccesary to go back and re-do the whole setup. Also, not only direct interactions are of concern. As mentioned before, the water around the solute has a different structure than the bulk water. To be on the safe side, add an extra nanometer when calculating the allowed minimal distance.
 
 ### Conformational dynamics and stability I -- Radius of Gyration
 Before analysing any structural parameter, the trajectory has to be massaged to avoid artifacts because of the periodic boundary conditions. In addition, all the analysis tools work faster if the trajectory contains only the necessary (protein) atoms and their information.
@@ -828,7 +832,7 @@ Secondary structures (of proteins) are maintained by specific hydrogen bonding n
 </a>
 <a class="prompt prompt-cmd">
     gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_internal.xvg  
-    gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
+    gmx hbond -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
 </a>
 <a class="prompt prompt-question">
     How does the number of internal hydrogen bonds correlate with the radius of gyration?
@@ -837,7 +841,7 @@ Secondary structures (of proteins) are maintained by specific hydrogen bonding n
     Comment on the relation between the internal and the solvent hydrogen bond populations.
 </a>
 
-In addition to global analyses, many GROMACS programs support index files, which are created with the `make_ndx` program. These index files allow the creation of user-specified groups, such as single residues or stretches of residues. For example, it is possible to evaluate the creation of β-hairpins by checking the existence of hydrogen bonds between the two halves of the peptide. Assume you are working on a 14-residue long peptide. The syntax within `make_ndx` to create an index file to check for hydroben bonds between the two halves is as follows:
+In addition to global analyses, many GROMACS programs support index files, which are created with the `make_ndx` program. These index files allow the creation of user-specified groups, such as single residues or stretches of residues. For example, it is possible to evaluate the creation of β-hairpins by checking the existence of hydrogen bonds between the two halves of the peptide. Assume you are working on a 14-residue long peptide. The syntax within `make_ndx` to create an index file to check for hydrogen bonds between the two halves is as follows:
 
 {% highlight Text Only %}
 r 1-7
@@ -867,7 +871,7 @@ Among the most common parameters to analyse protein structure is the assignment 
 </a>
 <a class="prompt prompt-cmd">
     gmx do_dssp -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_secondary-structure.xpm  
-    xpm2ps -f md_secondary-structure.xpm -o md_secondary-structure.eps -by 20 -rainbow blue  
+    gmx xpm2ps -f md_secondary-structure.xpm -o md_secondary-structure.eps -by 20 -rainbow blue  
     ps2pdf md_secondary-structure.eps md_secondary-structure.pdf
 </a>
 <a class="prompt prompt-question">
@@ -878,7 +882,7 @@ Among the most common parameters to analyse protein structure is the assignment 
 </a>
 
 ## Analysis of time-averaged properties
-This simulation considers only one conformation. To obtain proper sampling of the peptide conformational landscape, 50 nanoseconds do not suffice. However, trajectories starting from different initial structures or starting the from same structure with a different initial random seed explore different regions of the conformational landscape. It is then desirable to combine different trajectories together and therefore obtain a much larger body of data.
+This simulation considers only one conformation. To obtain proper sampling of the peptide conformational landscape, 50 nanoseconds do not suffice. However, trajectories starting from different initial structures or starting from the same structure with a different initial random seed explore different regions of the conformational landscape. It is then desirable to combine different trajectories together and therefore obtain a much larger body of data.
 
 <a class="prompt prompt-info">
     Obtain different (full) trajectories from 2 of your colleagues. If possible, try to be as diverse as possible regarding initial structures.
@@ -899,7 +903,7 @@ The first step is to trim the trajectories in order to remove the first 10 nanos
     Why doesn't it matter which topology file is used to process the different trajectory files?
 </a>
 
-After all three trajectories are trimmed, they can be concatenated using the GROMACS program `trjcat`. Make sure to note down the order in which the trajectories are provided to `trjcat`. The concatenation requires two particular flags to be provided as input to the program: `-cat`, which avoids discarding double time frames, and `-settime`, which changes the starting time of the different trajectories interactively. Effectively, the second trajectory will start at 50ns and the third at 90ns. The program will prompt for an action during the concatenation: press `c`, which tells `trjcat` to append the next trajectory right after the last frame of the previous one.
+After all three trajectories are trimmed, they can be concatenated using the GROMACS program `trjcat`. Make sure to note down the order in which the trajectories are provided to `trjcat`. The concatenation requires two particular flags to be provided as input to the program: `-cat`, which avoids discarding double time frames, and `-settime`, which changes the starting time of the different trajectories interactively. Effectively, the second trajectory will start at 40 ns and the third at 80 ns. The program will prompt for an action during the concatenation: press `c`, which tells `trjcat` to append the next trajectory right after the last frame of the previous one.
 
 <a class="prompt prompt-info">
     Concatenate all three trajectories into a single one for further processing.
@@ -916,7 +920,7 @@ Although the root mean square deviation (RMSD) was already calcualted to check f
 </a>
 <a class="prompt prompt-cmd">
     gmx rms -f p53_concatenated.xtc -f2 p53_concatenated.xtc -s p53_helix_CAH.tpr -m p53_concatenated_RMSD-matrix.xpm  
-    xpm2ps -f p53_concatenated_RMSD-matrix.xpm -o p53_concatenated_RMSD-matrix.eps -rainbow blue  
+    gmx xpm2ps -f p53_concatenated_RMSD-matrix.xpm -o p53_concatenated_RMSD-matrix.eps -rainbow blue  
     ps2pdf p53_concatenated_RMSD-matrix.eps p53_concatenated_RMSD-matrix.pdf  
 </a>
 <a class="prompt prompt-question">
@@ -927,7 +931,7 @@ Although the root mean square deviation (RMSD) was already calcualted to check f
 </a>
 
 ### Cluster Analysis
-Using the all-vs-all RMSD matrix calculated in the previous step, it is possible to quantitatively establish the number of group of similar structures that a trajectory (or concatenated trajectories) sample. Using a unsupervised classification algorithm, *clustering*, structures that are similar to each other within a certain RMSD threshold are grouped together. The size of a cluster, the number of structures that belong to it, is also an indication of how favourable that particular region of the conformational landscape is in terms of free energy. GROMACS implements several clustering algorithms in the `cluster` program. Here, we will use the `gromos` clustering algorithm with a cutoff of 2Å. Briefly, the algorithm first calculates how many frames are within 2Å of each particular frame, based on the RMSD matrix, and then selects the frame with the largest number of neighbors to form the first cluster. These structures are *removed* from the pool of available frames, and the calculation proceeds iteratively, until the next largest group is smaller than a pre-defined number. The `cluster` program produces a very large number of output files that inform on several different properties of the clusters. Importantly, it also produces a PDB file with the centroids, or representatives, of each cluster.
+Using the all-vs-all RMSD matrix calculated in the previous step, it is possible to quantitatively establish the number of groups of similar structures that a trajectory (or concatenated trajectories) sample. Using an unsupervised classification algorithm, *clustering*, structures that are similar to each other within a certain RMSD threshold are grouped together. The size of a cluster, the number of structures that belong to it, is also an indication of how favourable that particular region of the conformational landscape is in terms of free energy. GROMACS implements several clustering algorithms in the `cluster` program. Here, we will use the `gromos` clustering algorithm with a cutoff of 2 Å. Briefly, the algorithm first calculates how many frames are within 2Å of each particular frame, based on the RMSD matrix, and then selects the frame with the largest number of neighbors to form the first cluster. These structures are *removed* from the pool of available frames, and the calculation proceeds iteratively, until the next largest group is smaller than a pre-defined number. The `cluster` program produces a very large number of output files that inform on several different properties of the clusters. Importantly, it also produces a PDB file with the centroids, or representatives, of each cluster.
 
 <a class="prompt prompt-info">
     Cluster the RMSD matrix using the GROMOS method to quantitatively extract representative structures of the simulation.
@@ -970,3 +974,6 @@ The aim of this simulation exercise was the sample the conformational landscape 
 </a>
 
 ## Congratulations!
+You may now proceed with the<a href="{{site.url}}/education/molmod/docking.html"
+         alt="Data-driven structure prediction of the mouse MDM2/p53 complex using HADDOCK."
+         title="Data-driven structure prediction of the mouse MDM2/p53 complex using HADDOCK."> HADDOCKing tutorial</a>!
