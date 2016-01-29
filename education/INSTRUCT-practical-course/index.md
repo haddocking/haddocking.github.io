@@ -69,7 +69,10 @@ A detailed programme will be provided at a later stage.
 * The MAX-OCC portal for domain dynamics in multidomain proteins
 * The Scipion cryo-EM analysis platform
 
-Case studies will be provided via the web for re-examination also at the home lab. We will make use as much as possible of pre-installed virtual machines so that the students can take them back with them for further analysis/use back home.
+_Note_ that participants are required to bring their ownlaptop, ideally with applications allowing remote ssh access and also VirtualBox installed to allow for running Virtual Machines that will be provided to the participants so that the students can take them back with them for further analysis/use back home. We will also make use of SURFSara cloud resources for the practicals.
+
+Case studies will be provided via the web for re-examination also at the home lab.
+
 
 ### Lecturers:
 
