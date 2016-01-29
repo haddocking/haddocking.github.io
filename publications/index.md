@@ -6,6 +6,14 @@ image:
 
 ## 2016
 <hr />
+* P. Sliz, P. Meyer, S. Socias, J. Key, E. Ransey, E.C. Tjon, A. Buschiazzo, M. Lei, C. Botka, J. Withrow, D.B. Neau, K. Rajashankar, K.S. Anderson, R. Baxter, S. Blacklow, T. Boggon, **A.M.J.J. Bonvin**, D. Borek, T. Brett, A. Caflisch, C. Chang, W. Chazin, K.D. Corbett, M. Cosgrove, S. Crosson, S. Dhe-Paganon, E. Di Cera, C. Drennan, M. Eck, B. Eichman, Q. Fan, A. Ferré-D'Amaré, J.S. Fraser, J.C. Fromme, K. Garcia, R. Gaudet, P. Gong, S. Harrison, E. Heldwein, Z. Jia, R. Keenan, A. Kruse, M. Kvansakul, J. McLellan, Y. Modis, Y. Nam, Zb. Otwinowski, E.F. Pai, P.J. Barbosa Pereira, C. Petosa, C.S. Raman, T. Rapoport, A. Roll-Mecak, M. Rosen, G. Rudenko, J. Schlessinger, T. Schwartz, Y. Shamoo, H. Sondermann, Y. Tao, N. Tolia, O.V. Tsodikov, K.D. Westover, H. Wu, I. Foster, F. Maia, T. Gonen, T. Kirchhausen, K. Diederichs and M. Crosas.
+Data publication with the structural biology data grid supports live analysis.
+_Nature Communications_, In Press (2016).
+
+* S. Jung, J. Fischer, B. Spudy, K. Tim, F.D. Soennichsen, L. Xue, **A.M.J.J. Bonvin**, P. Goettig, V. Magdolen, U. Meyer-Hoffert, J. Grötzinger.
+The solution structure of the kallikrein-related peptidases inhibitor SPINK6.
+_Biochemical and Biophysical Research Communications_, In Press (2016).
+
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 [On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
 _J. Chem. Inf. and Model._, Advanced Online Publication (2016).
