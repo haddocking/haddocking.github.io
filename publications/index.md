@@ -11,8 +11,8 @@ Data publication with the structural biology data grid supports live analysis.
 _Nature Communications_, In Press (2016).
 
 * S. Jung, J. Fischer, B. Spudy, K. Tim, F.D. Soennichsen, L. Xue, **A.M.J.J. Bonvin**, P. Goettig, V. Magdolen, U. Meyer-Hoffert, J. Grötzinger.
-The solution structure of the kallikrein-related peptidases inhibitor SPINK6.
-_Biochemical and Biophysical Research Communications_, In Press (2016).
+[The solution structure of the kallikrein-related peptidases inhibitor SPINK6](http://dx.doi.org/10.1016/j.bbrc.2016.01.172).
+_Biochemical and Biophysical Research Communications_, Advanced Online Publication (2016).
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 [On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
