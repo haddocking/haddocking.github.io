@@ -20,8 +20,8 @@
     status: visiting-professor
 
 -   name: Joao Rodrigues
-    url: 
-    current:
+    url: http://github.com/JoaoRodrigues
+    current: 'Stanford University, School of Medicine'
     status: 'student,phd,postdoc'
     
 -   name: Marc van Dijk
