@@ -81,14 +81,14 @@ Case studies will be provided via the web for re-examination also at the home la
 * [Piet Gros](http://www.uu.nl/staff/PGros) (Bijvoet/Instruct-NL)
 * [Rolf Boelens](http://www.uu.nl/staff/RBoelens) (Bijvoet/Instruct-NL)
 * [Marc Baldus](http://www.uu.nl/staff/MBaldus) (Bijvoet/Instruct-NL)
-* [Antonio Rosato](http://www.cerm.unifi.it/people/antonio-rosato) (CERM/CIRMMP)
-* [Giacomo Parigi](http://www.cerm.unifi.it/people/giacomo-parigi) (CERM/CIRMMP)
+* [Antonio Rosato](http://www.cerm.unifi.it/people/antonio-rosato) (CERM/INSTRUCT-IT)
+* [Giacomo Parigi](http://www.cerm.unifi.it/people/giacomo-parigi) (CERM/INSTRUCT-IT)
 * [José Maria Carazo](http://biocomp.cnb.csic.es/carazo) (I2PC)
 
  
 ### Costs: 
 
-100€ for participants from Instruct countries, 300€ for others. The registration fee covers lunches and coffee breaks and the course dinner. Travel and lodging are not included.
+100€ for participants from Instruct countries (check [here](https://www.structuralbiology.eu/resources/countries)), 300€ for others. The registration fee covers lunches and coffee breaks and the course dinner. Travel and lodging are not included.
 
 ### Housing information:
 
