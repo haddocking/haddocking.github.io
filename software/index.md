@@ -12,7 +12,7 @@ This page provide you links to software and software manuals of the computationa
 * #### HADDOCK
   Software package for integrative modelling of biomolecular complexes
 
-  * [**HADDOCK2.2 software**](haddock2.2/haddock.html)
+  * [**HADDOCK2.2 software**](/software/haddock2.2/haddock.html)
 
   * [**HADDOCK web server**](http://haddock.science.uu.nl/services/HADDOCK)
 
@@ -22,7 +22,7 @@ This page provide you links to software and software manuals of the computationa
   The GitHub repository for HADDOCK and its associated tools
 
   * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
-  A collection of Python scripts for the manipulation (renumbering, changing chain and segID's...) of PDB files
+  A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files
 
   * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
   Clustering of biomolecular complexes based on the fraction of common contacts
