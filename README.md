@@ -39,3 +39,8 @@ issue the following command:
     $ python _utilities/create_new_article.py 'A Random Post'
 ```
 
+4. For updating jeckyll and bundle
+
+```bash
+    $ gem update jekyll
+    $ gem update bundle 
