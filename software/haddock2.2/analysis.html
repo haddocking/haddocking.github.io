@@ -13,8 +13,8 @@ image:
 
 <HR>
 The analysis of the docking results are performed after the 
-<a href=docking.html#sa>semi-flexible simulated annealing step</a> and after the 
-<a href=docking.html#water>explicit solvent refinement</a>. A number of 
+<a href="http://www.bonvinlab.org/software/haddock2.2/docking#sa">semi-flexible simulated annealing step</a> and after the 
+<a href="http://www.bonvinlab.org/software/haddock2.2/docking#water">explicit solvent refinement</a>. A number of 
 <a href="#auto">standard CNS analysis</a> scripts are automatically run by HADDOCK and the 
 results are placed in the <b>analysis</b> directory in <b>runX/structures/it1</b> and 
 <b>runX/structures/it1/water</b>, respectively. Some of the generated output files are parsed
@@ -78,7 +78,7 @@ The following CNS analysis scripts are automatically run by HADDOCK:
 <BR>
 <li><a name="average"><b><u>get_average.inp</u></b></a>: This script will calculate an average structure by 
 superimposing the structures on the backbone atoms of the flexible interface 
-defined in the <a href="run.html#flex">run.cns</a> parameter file. 
+defined in the <a href="http://www.bonvinlab.org/software/haddock2.2/run#flex">run.cns</a> parameter file. 
 <BR><BR>
 <ul><b><i>Note1:</i></b> If less than three atoms are selected when using the defined semi-flexible 
             segments, then the entire backbone will used. If still less than three atoms are selected, 
@@ -157,7 +157,7 @@ Output files:
 per structure and averaged over the ensemble. Various energy terms are calculated:
 <ul>
    <li> over the entire complex
-   <li> over the flexible interface only (as defined in the <a href="run.html#flex">run.cns</a> parameter file)
+   <li> over the flexible interface only (as defined in the <a href="http://www.bonvinlab.org/software/haddock2.2/run#flex">run.cns</a> parameter file)
    <li> only the intermolecular energies (vdw and elec)
 </ul>
 In addition, the buried surface area is also reported. The buried surface area is calculated by taking the difference
@@ -287,7 +287,7 @@ Output files:
 <hr>
 <BR>
 <li><a name="sani"><b><u>print_sani.inp</u></b></a>: this script performs the analysis of
-<a href="RDC_help.html">dipolar coupling restraint</a>
+<a href="http://www.bonvinlab.org/software/haddock2.2/RDC_help">dipolar coupling restraint</a>
 violations, listing per structure the average rms violations and the number of violations above 1.0, 0.5 and 0.2 Hz, 
 respectively. It also reports the average rms violation over the entire ensemble.
 <BR><BR>
@@ -302,7 +302,7 @@ Output files:
 <hr>
 <BR>
 <li><a name="vean"><b><u>print_vean.inp</u></b></a>: this script performs the analysis of 
-<a href="RDC_help.html#vean">intervector projection angle restraint</a> violations, listing per 
+<a href="http://www.bonvinlab.org/software/haddock2.2/RDC_help#vean">intervector projection angle restraint</a> violations, listing per 
 structure the violations above 5 degrees. It also reports the average rms violation over the entire ensemble.
 <BR><BR>
 Output files:
@@ -316,7 +316,7 @@ Output files:
 <hr>
 <BR>
 <li><a name="dani"><b><u>print_dani.inp</u></b></a>: this script performs the analysis of 
-<a href="DANI_help.html">diffusion anisotropy restraint</a>
+<a href="http://www.bonvinlab.org/software/haddock2.2/DANI_help">diffusion anisotropy restraint</a>
 violations, listing per structure the average rms violations and the number of violations above 1.0, 0.5 and 0.2, 
 respectively. It also reports the average rms violation over the entire ensemble.
 <BR><BR>
@@ -332,7 +332,7 @@ Output files:
 <BR>
 <li><a name="hb"><b><u>print_hbonds.inp</u></b></a>: this script performs the analysis of intermolecular hydrogen bonds.
 The definition of an hydrogen  bond is however a crude one since it is only based on the proton-acceptor distance. This
-distance can be specified in the <a href="run.html#hbnb">run.cns</a> parameter file (default is 2.5A).
+distance can be specified in the <a href="http://www.bonvinlab.org/software/haddock2.2/run#hbnb">run.cns</a> parameter file (default is 2.5A).
 <BR><BR>
 Output files:
 <ul>
@@ -355,7 +355,7 @@ Output files:
 <BR>
 <li><a name="nb"><b><u>print_nb.inp</u></b></a>: this script performs the analysis of intermolecular hydrophobic contacts.
 An hydrophobic contact is identified when two carbon atoms are at less than a user-defined distance, typically 3.9A. This
-distance cut-off can be specified in the <a href="run.html#anal">run.cns</a> parameter file (default is 3.9A).
+distance cut-off can be specified in the <a href="http://www.bonvinlab.org/software/haddock2.2/run#anal">run.cns</a> parameter file (default is 3.9A).
 <BR><BR>
 Output files:
 <ul>
@@ -423,8 +423,8 @@ manually. A number of scripts are provided for this purpose in the <b>runX/tools
 <li><a name="anastruc"><b><u>ana_structure.csh</u></b>:</a>  This script should run once the 
    <i>file.list</i> file has been created. It extracts from the header of the PDB files various energy terms, 
    violation statistics and buried surface area and calculates the RMSD of each structure compared to the 
-   lowest energy one (if the location of  ProFit is defined (see <a href="installation.html">installation</a> 
-   and <a href="software.html">software links</a>)).
+   lowest energy one (if the location of  ProFit is defined (see <a href="http://www.bonvinlab.org/software/haddock2.2/installation">installation</a> 
+   and <a href="http://www.bonvinlab.org/software/haddock2.2/software">software links</a>)).
    <BR><BR>
    To run it type:
    <pre>
@@ -435,7 +435,7 @@ manually. A number of scripts are provided for this purpose in the <b>runX/tools
    <BR><BR>
    Ten files are created:
    <ul>
-     <li><i><b>structures_haddock-sorted.stat</b></i> <ul>sorting based on <a href="run.html#scoring">haddock score</a> 
+     <li><i><b>structures_haddock-sorted.stat</b></i> <ul>sorting based on <a href="http://www.bonvinlab.org/software/haddock2.2/run#scoring">haddock score</a> 
      (as in <i> file.list</i>)</ul>
      <li><i>structures_air-sorted.stat</i> <ul>sorting based on distance restraint energy</ul>
      <li><i>structures_airviol-sorted.stat</i> <ul>sorting based on number of distance violations</ul>
@@ -481,7 +481,7 @@ This will generate a file called <i>ene_rmsd.xmgr</i> which you can display with
 <BR>
 <li><a name="cluster"><b><u>Clustering of solutions using cluster_struc</u></b>:</a> 
 The clustering is run automatically by HADDOCK in <i><b>it1/analysis</b></i> and <i><b>it1/water/analysis</b></i> 
-based on the criteria defined in the <a href="run.html#clust">run.cns</a> file. A reasonable cutoff value to start with for protein-protein complexes is 7.5A (this is larger than in the previous version (1.3) since we now calculate the
+based on the criteria defined in the <a href="http://www.bonvinlab.org/software/haddock2.2/run#clust">run.cns</a> file. A reasonable cutoff value to start with for protein-protein complexes is 7.5A (this is larger than in the previous version (1.3) since we now calculate the
 interface ligand RMSD (see the part about the <a href="#rmsd">rmsd matrix</a> calculation above).
 We recommend however that you try using different cut-offs for the clustering since it is difficult to know
 a priori the best cut-off. This will depend on the system under study and the number of experimental restraints
@@ -489,7 +489,7 @@ used to drive the docking. If only a small fraction of the structures cluster, t
 <BR><BR>
 <b>cluster_struc</b> is a simple C++ program provided in the <i><b>tools</b></i> directory that read the 
 <a href=#rmsd><i>fileroot_rmsd.disp</i></a> file containing the pairwise rmsd matrix and generates clusters. This
-program should have been compiled for your system during <a href="installation.html">installation</a>. 
+program should have been compiled for your system during <a href="http://www.bonvinlab.org/software/haddock2.2/installation">installation</a>. 
 <BR><BR>
 Two clustering algorithms are implemented:
 <ol>
@@ -539,7 +539,7 @@ To run it, type with as argument the output file of the clustering, e.g.:
 <BR>
 The <b>[-best #]</b> is an optional (but recommended!) argument to generate additional files with cluster 
 averages calculated only on the best <b>#</b> structures of a cluster. The best structures are selected based on the
-HADDOCK score defined in <a href="run.html#iter">run.cns</a>, i.e. the sorting found in <i>file.list</i>. 
+HADDOCK score defined in <a href="http://www.bonvinlab.org/software/haddock2.2/run#iter">run.cns</a>, i.e. the sorting found in <i>file.list</i>. 
 This allows to remove the dependency of the cluster averages upon the size of the respective clusters. The
 following example will calculate cluster averages over the best 45 structures.
 <pre>
@@ -580,7 +580,7 @@ cluster containing the cluster number <i>clustX</i> in the name:
       <ul>contains all the energy terms (intermolecular, Van der Waals, electrostatic and AIR) for 
           each structures of cluster X </ul>
   <li><i>file.nam_clustX_haddock-score</i> 
-      <ul>contains the combined <a href="run.html#scoring">haddock score</a> </ul>
+      <ul>contains the combined <a href="http://www.bonvinlab.org/software/haddock2.2/run#scoring">haddock score</a> </ul>
   <li><i>file.nam_clustX_rmsd</i> 
       <ul>contains the RMSD of each structure of cluster X from the best (lowest) HADDOCK score 
           structure of cluster X.  </ul>
@@ -606,7 +606,7 @@ Eight files containing various averages over clusters are created:
   <li><i>cluster_ener.txt</i> 
       <ul>contains the average energy terms of each cluster and the standard deviations</ul>
   <li><i>cluster_haddock.txt</i> 
-      <ul>contains the average combined <a href="run.html#scoring">haddock score</a></ul>
+      <ul>contains the average combined <a href="http://www.bonvinlab.org/software/haddock2.2/run#scoring">haddock score</a></ul>
   <li><i>cluster_rmsd.txt</i> 
       <ul>contains the average RMSD and standard deviation from the best (lowest) HADDOCK score structure 
           of cluster of the structures belonging to that cluster </ul>
@@ -619,7 +619,7 @@ Eight files containing various averages over clusters are created:
 </ul>and twelve files combining all the above information and sorted based on various criteria:<ul>
   <li><b><i>clusters_haddock-sorted.stat</i></b> 
       <ul>contains the various cluster averages sorted as a function of the 
-          combined <a href="run.html#scoring">haddock score</a></ul>
+          combined <a href="http://www.bonvinlab.org/software/haddock2.2/run#scoring">haddock score</a></ul>
   <li><i>clusters.stat</i> 
       <ul>contains the various cluster averages sorted as a function of the cluster number</ul>
   <li><i>clusters_air-sorted.stat</i> 
