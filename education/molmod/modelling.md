@@ -557,7 +557,7 @@ MDM2_MOUSE.BL00100001.pdb       15.27596     -294.98157
   Did the loop modelling protocol signficantly improve the scores of the N-terminal loop? Why so?
 </a>
 
-This validation using the tools built in MODELLER help understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
+This validation using the built in tools of MODELLER helps understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
 
 <a class="prompt prompt-info">
   If you have time (and will), submit your best (loop) model to the QMEAN validation server. How does it fare?
@@ -578,7 +578,7 @@ This validation using the tools built in MODELLER help understand the limitation
 </a>
 
 <a class="prompt prompt-question">
-  Where are the mutations located? To they cluster together in a particular region? If so, which
+  Where are the mutations located? Do they cluster together in a particular region? If so, which
 	implications could this possibly have for its function?
 </a>
 
