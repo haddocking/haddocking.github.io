@@ -88,7 +88,7 @@ Case studies will be provided via the web for re-examination also at the home la
  
 ### Costs: 
 
-100€ for participants from Instruct countries (check [here](https://www.structuralbiology.eu/resources/countries)), 300€ for others. The registration fee covers lunches and coffee breaks and the course dinner. Travel and lodging are not included.
+100 euros for participants from Instruct countries (check [here](https://www.structuralbiology.eu/resources/countries)), 300 euros for others. The registration fee covers lunches and coffee breaks and the course dinner. Travel and lodging are not included.
 
 ### Housing information:
 
