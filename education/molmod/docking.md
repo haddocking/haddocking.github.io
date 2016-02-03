@@ -50,7 +50,7 @@ The assess sequence conservation, the homologous sequences have first to be alig
 
 <a class="prompt prompt-cmd">
     cat MDM2_MOUSE.fasta psa.fasta > MDM2_family.fasta  
-    clustalo -i MDM2_family.fasta --dealign -o MDM2_family.aln  
+    clustalo -i MDM2_family.fasta \-\-dealign -o MDM2_family.aln  
     weblogo -f MDM2_family.aln -D fasta -o MDM2_logo.pdf -F pdf
 </a>
 

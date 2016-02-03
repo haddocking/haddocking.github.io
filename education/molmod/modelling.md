@@ -357,8 +357,8 @@ Using the pdb-tools suite, *clean* the 4ODE_A PDB file of multiple occupancies.
 </a>
 
 <a class="prompt prompt-cmd">
-	pdb\_delocc.py 4ODE\_A.pdb > 4ODE\_A.pdb.clean
-    mv 4ODE\_A.pdb.clean 4ODE\_A.pdb
+pdb\_delocc.py 4ODE\_A.pdb > 4ODE\_A.pdb.clean <br> 
+mv 4ODE\_A.pdb.clean 4ODE\_A.pdb
 </a>
 
 As a side note, choosing *one* single template might not be ideal in all cases. When modelling a
@@ -427,7 +427,7 @@ Using MODELLER requires some programming knowledge. The software exposes a very 
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 10
+    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 10
 </a>
 
 The protocol and settings the scripts will use are what our group uses in *real* modelling jobs in the lab. By default, it uses the MODELLER routine `automodel` to generate models, which automates most of the model building protocol, including a small refinement step. MODELLER starts by reading and validating the alignment against the PDB file(s) of the template(s). If a PDB file is missing some fragment of the sequence HMMER retrieved for that template, for example because it could not be observed in the electron density, then the alignment will have to be manually corrected. MODELLER is quite verbose when it comes to these and other error messages. In this particular case, it will show exactly where the discrepancy occurs. To avoid multiple iterations of trial and error, simply extract the sequence directly from the `ATOM` lines of the PDB file using the utility script `pdb_toseq.py` and align it to the sequence given by HMMER using for example the global pairwise alignment algorithms hosted at the [EBI servers](www.ebi.ac.uk/Tools/psa/emboss_needle/). This will highlight any missing regions.
@@ -483,7 +483,7 @@ Overall, the models are virtually identical and also identical to the template. 
 </a>
 
 <a class="prompt prompt-cmd">
-	evaluate_model.py MDM2\_MOUSE.B99990002.pdb
+    evaluate_model.py MDM2\_MOUSE.B99990002.pdb <br>
     plot_profile.py MDM2\_MOUSE.B99990002.dope_profile
 </a>
 
@@ -502,7 +502,7 @@ MODELLER generates a fixed number of loop models for *each* backbone model it cr
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb --use\_dope --num\_models 1 --loopmodel --num\_loop\_model 10
+    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 1 \-\-loopmodel \-\-num\_loop\_model 10
 </a>
 
 <a class="prompt prompt-question">
@@ -557,7 +557,7 @@ MDM2_MOUSE.BL00100001.pdb       15.27596     -294.98157
   Did the loop modelling protocol signficantly improve the scores of the N-terminal loop? Why so?
 </a>
 
-This validation using the tools built in MODELLER help understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
+This validation using the built in tools of MODELLER helps understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
 
 <a class="prompt prompt-info">
   If you have time (and will), submit your best (loop) model to the QMEAN validation server. How does it fare?
@@ -578,9 +578,14 @@ This validation using the tools built in MODELLER help understand the limitation
 </a>
 
 <a class="prompt prompt-question">
-  Where are the mutations located? To they cluster together in a particular region? If so, which
+  Where are the mutations located? Do they cluster together in a particular region? If so, which
 	implications could this possibly have for its function?
 </a>
 
 ## Congratulations!
 You started with a sequence of a protein and went all the way from finding possible templates, to evaluating which to use, to building several models, assessing their quality, and finally selecting one representative. This model can now be used to offer insights on the binding of MDM2 to p53, or on the structure of the mouse MDM2 protein, or to seed new computational analysis such as docking.
+
+You might want to continue with the  tutorial on  <a href="{{site.url}}/education/molmod/simulation.html"
+         alt="Molecular dynamics simulation of a mouse p53 peptide fragment using GROMACS."
+         title="Molecular dynamics simulation of a mouse p53 peptide fragment using GROMACS.">
+      Molecular dynamics simulations</a>!
