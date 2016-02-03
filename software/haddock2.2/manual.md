@@ -32,7 +32,7 @@ image:
 * [SAXS scoring](https://www.wenmr.eu/wenmr/haddock-saxs-scoring)
 
 ### Download and Sofware links
-* [Obtaining HADDOCK](/software/haddock/download)
+* [Obtaining HADDOCK](/software/haddock2.2/download)
 * [Installing HADDOCK](/software/haddock2.2/installation)
 * [Software links](/software/haddock2.2/software)
 
