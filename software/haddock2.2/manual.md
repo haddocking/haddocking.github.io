@@ -9,7 +9,7 @@ image:
 
 ## <span style="color:red">HADDOCK2.2</span> manual 
 
-* [HADDOCK home page](haddock.html)
+* [HADDOCK home page](/software/haddock2.2/)
 * [Introduction](/software/haddock2.2/introduction.html)
 
 ### Input files and restraints
@@ -32,7 +32,7 @@ image:
 * [SAXS scoring](https://www.wenmr.eu/wenmr/haddock-saxs-scoring)
 
 ### Download and Sofware links
-* [Obtaining HADDOCK](download.html)
+* [Obtaining HADDOCK](/software/haddock/download)
 * [Installing HADDOCK](installation.html)
 * [Software links](software.html)
 
