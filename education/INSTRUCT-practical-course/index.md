@@ -58,11 +58,11 @@ A detailed programme will be provided at a later stage.
 <br><br>
 
 * April 12 (room 3.3): *NMR-based protein structure refinement + integration with SAXS*
-	*  9:00-10:45: **Rosato**: Molecular dynamics for NMR-based protein structure refinement
+	*  9:00-10:45: **Parigi**: Paramagnetic NMR data and integration of SAXS and NMR data for the analysis of protein structure/dynamics
 	* 10:45-11:15: coffee break
-	* 11:15:13:00: **Parigi**: Integration of SAXS and NMR data for the analysis of protein structure/dynamics
+	* 11:15:13:00: **Rosato**: Molecular dynamics for NMR-based protein structure refinement
 	* 13:00:13:45: Lunch
-	* 13:45-17:00: AMPS-NMR + MAXOCC **computer practicals** (Rosato / Parigi)
+	* 13:45-17:00: AMPS-NMR + FANTEN + MAXOCC **computer practicals** (Rosato / Parigi)
 <br><br>
 
 * April 13 (room 3.3): *Cryo-EM / Xray*
