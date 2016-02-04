@@ -25,7 +25,7 @@ had been solved experimentally by NMR<sup>5</sup> (PDB entry 1GGR).
            conformations. Because of that, the definition of active and
            passive residues might differ from the one in the HADDOCK
            paper since the filtering is based on the average accessibilities
-           (see the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/generate_air_help#filter">AIR restraints</a> section).
+           (see the <a target="new" href="/software/haddock2.2/generate_air_help#filter">AIR restraints</a> section).
 </ul>
 You should follow the following steps to run this tutorial:
 <ol>
@@ -105,12 +105,12 @@ passive residues for E2A and HPr,
  - hpr_rasmol_active-passive.script
 </pre>
 <BR>
-two example files for <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/start_new">setting up a new project</a>
+two example files for <a target="new" href="/software/haddock2.2/start_new">setting up a new project</a>
 <pre>
  - new.html-refe
 </pre>
 <BR>
-and to define all the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/docking">parameters for docking</a>
+and to define all the <a target="new" href="/software/haddock2.2/docking">parameters for docking</a>
 <pre>
  - run.cns-refe
 </pre>
@@ -134,7 +134,7 @@ Finally, a script to copy data from an example HADDOCK run is provided as:
 <B>2.</B> <a name="AIRs"><b><u>Defining the AIR restraints</u></b></a>
 <BR><BR>
 Some general explanations about how to define the interface can be found 
-in the HADDOCK <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/generate_air_help">AIR restraints</a> section.
+in the HADDOCK <a target="new" href="/software/haddock2.2/generate_air_help">AIR restraints</a> section.
 <BR><BR>
 For this particular example, based on the available NMR titration data<sup>3,4</sup>,
 and the relative solvent accessibilities, we defined 11 active residues for <b>E2A</b>:
@@ -167,8 +167,8 @@ You will now have to <i><b>define the passive residues</i></b>. For this, for ea
 in turn (E2A and HPr), load a PDB file in Rasmol, highlight all active 
 residues (in Rasmol source the corresponding <i>e2a/hpr_rasmol_active.script</i>) and
 pick all neighbors of active residues. Filter then the selected residues with their
-solvent accessibility (see the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/generate_air_help#filter">
-filtering residues</a> or <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/generate_air_help#ensemble">filtering
+solvent accessibility (see the <a target="new" href="/software/haddock2.2/generate_air_help#filter">
+filtering residues</a> or <a target="new" href="/software/haddock2.2/generate_air_help#ensemble">filtering
 from an ensemble of structures</a> sections).
 <BR>
 <ul><b>Note:</b> Rasmol scripts containing all the active and passive 
@@ -186,7 +186,7 @@ from an ensemble of structures</a> sections).
 </ul>
 Having defined active and passive residues for both molecules, you can now <i><b>generate the
 AIR restraint file</b></i> for use in HADDOCK. For this go to the HADDOCK 
-<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/haddock-start">project setup</a> section, click on 
+<a target="new" href="/software/haddock2.2/haddock-start">project setup</a> section, click on 
 <b>"generate AIR restraint file"</b> and follow the instructions.
 <BR>
 <hr>
@@ -196,12 +196,12 @@ AIR restraint file</b></i> for use in HADDOCK. For this go to the HADDOCK
 To start a new project in HADDOCK you have to define a number of files such as
 input PDB files for both molecules, various restraint files and the path and name
 of the project. For this, go again to the
-<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/haddock-start">project setup</a> page, click on
+<a target="new" href="/software/haddock2.2/haddock-start">project setup</a> page, click on
 <b>"start a new project"</b> and follow the instructions.
 <BR><BR>
 After saving the <b><i>new.html</i></b> file to disk, type <i>haddock2.2</i>
 in the same directory. This will generate a run directory containing all necessary
-information to run haddock. See the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/start_new_help">"a new project"</a>
+information to run haddock. See the <a target="new" href="/software/haddock2.2/start_new_help">"a new project"</a>
 section on the HADDOCK home page for more information and for a description of the
 content and organization of the generated run directory.
 <BR>
@@ -280,26 +280,26 @@ Finishing HADDOCK on:  2014-09-18 11:59:09
 <BR><BR>
 The next step consists in editing the various parameters that will govern the
 docking process in the <b><i>run.cns</i></b> file in the newly generated run directory. 
-For this, again go to the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/haddock-start">project setup</a> page, 
+For this, again go to the <a target="new" href="/software/haddock2.2/haddock-start">project setup</a> page, 
 enter the path of the <b><i>run.cns</i></b> file and click on <b>"edit</b>.
-Refer to the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</a> section for a description
+Refer to the <a target="new" href="/software/haddock2.2/run">run.cns</a> section for a description
 of the various parameters.
 <BR>
 <ul><b>Note:</b> Most of the parameters in <i><b>run.cns</b></i> are set by default
                  for the e2a-hpr example and you will only need to modify a few of those.
 		 <BR><BR>
 		 <li> Check the various paths to your project directory and the filenames
-		 to be used (<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/run#names">"Filenames"</a> section)
+		 to be used (<a target="new" href="/software/haddock2.2/run#names">"Filenames"</a> section)
 		 <BR><BR>
 		 <li> Check the definition of the semi-flexible interface 
-		 (<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/run#interface">"Definition of the interface"</a> 
+		 (<a target="new" href="/software/haddock2.2/run#interface">"Definition of the interface"</a> 
 		 section). The default in HADDOCK2.2 is -1, meaning that the semi-flexible
 		 interface will be automatically defined by HADDOCK from a contact analysis.
 		 <BR><BR>
 		 <li> Check the number of structures to generate at the various steps
 		 and decrease those if needed (strongly recommended if you are going
 		 to run all the structure calculations on a single processor).
-		 (<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/run#numstruc">"Number of structures to dock"</a> section)
+		 (<a target="new" href="/software/haddock2.2/run#numstruc">"Number of structures to dock"</a> section)
 		 <BR><BR>
 		 For the present tutorial, keep the default parameters (1000 structures
 		 for the rigid body docking stage and 200 afterwards). You will not perform
@@ -308,7 +308,7 @@ of the various parameters.
 		 <BR><BR>
 		 <li> Check the queue commands for running the jobs, the location of the
 		 cns executable and the number of jobs to run simultaneously.
-		 (<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/run#jobs">"Parallel jobs"</a> section)
+		 (<a target="new" href="/software/haddock2.2/run#jobs">"Parallel jobs"</a> section)
 		 <BR><BR>
 		 For the present tutorial, use <i>csh</i> as queue command and 1 as number
 		 of jobs. The CNS executable path should be properly set.
@@ -328,7 +328,7 @@ You would now be ready to run HADDOCK by simply typing <i>haddock2.2</i>
 in the same directory and the docking will start.
 <BR><BR>
 A description of what happens in the various HADDOCK steps can be found in the
-<a target="new" href="http://www.bonvinlab.org/software/haddock2.2/docking"><i>the docking</i></a> section of the
+<a target="new" href="/software/haddock2.2/docking"><i>the docking</i></a> section of the
 online HADDOCK manual.
 <BR><BR>
 Examine now the content of the various directories. The generated structures of the
@@ -343,7 +343,7 @@ of sorted structures in various format for use by CNS and HADDOCK:
 <ul>
    <li><i><b>file.nam</b></i>: list of PDB filenames only
    <li><i><b>file.list</b></i>: list of PDB filenames for use in CNS with the 
-                                <a href="http://www.bonvinlab.org/software/haddock2.2/run#scoring">haddock 
+                                <a href="/software/haddock2.2/run#scoring">haddock 
                                 score</a> that has been used for sorting
    <li><i><b>file.cns</b></i>: list of pdb filenames in yet another cns format.
 </ul>
@@ -353,13 +353,13 @@ of sorted structures in various format for use by CNS and HADDOCK:
 <BR><BR>
 in <i><b>structures/it1</b></i> and <i><b>structures/it1/water</b></i> you will find an
 <i><b>analysis</b></i> directory containing the results of the analysis automatically 
-performed by haddock. refer to the <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/analysis"><i>analysis</i></a>
+performed by haddock. refer to the <a target="new" href="/software/haddock2.2/analysis"><i>analysis</i></a>
 section of the online haddock manual for a description of the various analysis performed
 and inspect the content of some of the described files (mainly those with extensions <i>.disp</i>
 and <i>.lis</i>.
 <BR><BR>
 An important part come now: <b>the manual analysis of the results</b> (see also the 
-related <a target="new" href="http://www.bonvinlab.org/software/haddock2.2/analysis#manual">manual analysis</a> section of 
+related <a target="new" href="/software/haddock2.2/analysis#manual">manual analysis</a> section of 
 the online haddock manual). since typically the restraints used to drive the docking 
 are highly ambiguous, several solutions will be generated. clustering the solutions 
 and performing a manual analysis is therefore required. a number of scripts are 
@@ -447,7 +447,7 @@ with the <i>cluster_struc</i> program provided with HADDOCK.
 </pre>
 <i>e2a-hpr_rmsd.disp</i> is the file containing the rmsd matrix, 7.5 the rmsd distance cutoff 
 in Angstrom and 4 the minimum number of members to define a cluster. See also the 
-<a href="http://www.bonvinlab.org/software/haddock2.2/analysis#rmsd">pairwise RMSD matrix</a> section of the analysis manual page.
+<a href="/software/haddock2.2/analysis#rmsd">pairwise RMSD matrix</a> section of the analysis manual page.
 <BR><BR>
 The output looks like:
 <pre>
@@ -465,7 +465,7 @@ Try different cutoffs and compare the results. With a too small cutoff no cluste
 very small clusters are found. When increasing the cutoff, the clusters will grow and some
 might merge. There is no ideal value. It depends on the degree of flexibility present in
 the structure, the restraints used for docking and, therefore should be optimized for
-each system. A common cutoff value we are using is 7.5A. For more details see the <a href="http://www.bonvinlab.org/software/haddock2.2/analysis#cluster">clustering</a> section of the analysis manual page.
+each system. A common cutoff value we are using is 7.5A. For more details see the <a href="/software/haddock2.2/analysis#cluster">clustering</a> section of the analysis manual page.
 <ul>
     <b>Note:</b> When searching for a proper cutoff, it is a good idea to check how many
                  structures do fall into a cluster. This number can be obtained for example

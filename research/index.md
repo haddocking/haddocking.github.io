@@ -11,7 +11,7 @@ Research within the computational structural biology group focuses on the develo
 approaches to predict, model and dissect biomolecular interactions at atomic level. For this, bioinformatics data, structural 
 information and available biochemical or biophysical experimental data are combined to drive the modelling process. 
 This is implemented and further developed in the widely used 
-[HADDOCK software for the modelling of biomolecular complexes](http://haddock.science.uu.nl).
+[HADDOCK software for the modelling of biomolecular complexes](/software/haddock2.2).
 By following a holistic approach integrating various experimental information sources with computational structural biology methods 
 we aim at obtaining a comprehensive description of the structural and dynamic landscape of complex biomolecular machines, adding 
 the structural dimension to interaction networks and opening the route to systematic and genome-wide studies of biomolecular 
@@ -19,8 +19,8 @@ interactions.
 
 ### HADDOCK
 
-[HADDOCK](http://nmr.chem.uu.nl/haddock) is a pioneer software in data-driven (or integrative) modelling of protein interactions and our flagship project. 
-Developed since 2003 in our lab, it has been cited ca. 1000 times. A [user-friendly web server](http://haddock.science.uu.nl/services/HADDOCK/haddock.php)
+[HADDOCK](/software/haddock2.2) is a pioneer software in data-driven (or integrative) modelling of protein interactions and our flagship project. 
+Developed since 2003 in our lab, it has been cited ca. 1000 times. A [user-friendly web server](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php)
 is also available. HADDOCK is well-known for its ability to integrate data in the modelling calculations, such as:
 
 * *Nuclear Magnetic Resonance*: H/D Exchange, CSPs, RDCs (SANI, VEAN), PREs, PCSs, NOEs, Relaxation data (DANI)

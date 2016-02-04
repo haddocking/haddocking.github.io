@@ -39,13 +39,13 @@ Many of those have default values which you do not need to change.
 <BR>
 <BR>
 Using your web browser, go to the 
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/start_new">HADDOCK online page</A>, 
+<A HREF="/software/haddock2.2/start_new">HADDOCK online page</A>, 
 and use the Edit your run.cns option, choose the <b>run.cns</b> file to edit and click on <b>"edit file"</b>. A new window will be created.
 (If the window is empty, try using a different browser).
 <BR>
 <BR>
 For a description of the run.cns file, refer to the 
-"<A HREF="http://www.bonvinlab.org/software/haddock2.2/run">run.cns file</A>" section.
+"<A HREF="/software/haddock2.2/run">run.cns file</A>" section.
 <BR>
 <BR>
 After setting all the parameters save the file as "run.cns" in your run
@@ -60,7 +60,7 @@ puckering and backbone dihedral angles. You can edit a template file
 that can be found in the <b>protocols</b> directory and save it 
 as <b>dna-rna_restraint.def</b> into the <b>data/sequence</b> directory.
 Using your web browser, go to the 
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/start_new">HADDOCK online page</A>, 
+<A HREF="/software/haddock2.2/start_new">HADDOCK online page</A>, 
 and use the Edit your run.cns option, choose the  <b>dna-rna_restraints.def</b> file to edit and click on <b>"edit file"</b>. A new window will be created.
 (If the window is empty, try using a different browser).
 </ul>
@@ -87,7 +87,7 @@ The entire protocol consists of four stages:
 <BR>
 The first step in HADDOCK in the generation of the CNS topologies and coordinates
 files for the various molecules and for the complex from the input PDB files (see section
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/pdb">PDB files</A>). HADDOCK should automatically
+<A HREF="/software/haddock2.2/pdb">PDB files</A>). HADDOCK should automatically
 recognize chain breaks, disulphide bonds, cis-prolines and even ions provided they are named
 as defined in the ion.top topology file located in the <b><i>toppar</i></b> directory.
 <BR>
@@ -95,7 +95,7 @@ as defined in the ion.top topology file located in the <b><i>toppar</i></b> dire
 Job files will be generated in
 the <B><I>run</I></B> directory and the topologies, structures and output files will be
 generated in the <B><I>begin</I></B> directory. HADDOCK will use the fileroot
-names specified in the <A HREF="http://www.bonvinlab.org/software/haddock2.2/run"><i>run.cns</i></A> file. 
+names specified in the <A HREF="/software/haddock2.2/run"><i>run.cns</i></A> file. 
 <BR>
 <BR>
 The following scripts will be run:
@@ -177,7 +177,7 @@ into the output files generated (.out) for error messages (search for ERR).
 The first docking step in HADDOCK is a rigid body energy minimization. 
 <BR>
 <BR>
-First the molecules will be separated by a minimum of 25A and rotated randomly around their center of mass. This randomization step can be turned off in the <A HREF="http://www.bonvinlab.org/software/haddock2.2/run"><i>run.cns</i></A> parameter file.
+First the molecules will be separated by a minimum of 25A and rotated randomly around their center of mass. This randomization step can be turned off in the <A HREF="/software/haddock2.2/run"><i>run.cns</i></A> parameter file.
 If you wish to decrease (or increase) the separation distance between the
 two molecules, edit in the <i>protocols</i> directory the 
 <i>random_rotations.cns</i> CNS script and change the value of the <i>$minispacing</i> parameter.
@@ -229,18 +229,18 @@ If <b><i>RDC or diffusion anisotropy restraints are used</i></b> two additional 
 out to optimize the orientation of the molecules with respect to the alignment tensor(s).
 <BR>
 For each starting structure combination, this step can be repeated a number of
-times (given by the <i>Ntrials</i> parameter in the <i><A HREF="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</A></i>
+times (given by the <i>Ntrials</i> parameter in the <i><A HREF="/software/haddock2.2/run">run.cns</A></i>
 parameter file, and only the best solution is written to disk.
 <BR>
 <BR>
 A new option in HADDOCK 2.x allows to systematically sample 180 degree rotated solutions. Since in our
 experience symmetrical solutions occur quite often, sampling of 180 degree rotated solutions can increase
 the success rate significantly. This option can be turned on and off with the <i>rotate180_0</i> parameter
-in the <i><A HREF="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</A></i> parameter file.
+in the <i><A HREF="/software/haddock2.2/run">run.cns</A></i> parameter file.
 <BR>
 <BR>
 <b>Note:</b> The translational minimization can be turned off in 
-    <i><A HREF="http://www.bonvinlab.org/software/haddock2.2/run#dock">run.cns</A></i>. This option can be useful for example for small 
+    <i><A HREF="/software/haddock2.2/run#dock">run.cns</A></i>. This option can be useful for example for small 
     flexible molecules to perform the docking during the simulated annealing stage allowing
     conformational changes to take place during the docking process. The number of steps in
     the first two stages of the simulated annealing should then be increased by at least
@@ -258,18 +258,18 @@ The <i><b>refine.inp</b></i> CNS script is used for this step.
     </ul>
     <br>
     <b><i>Note1:</i></b> If solvated docking is turned on (<i>waterdock=true</i> in 
-                <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional output pdb files will be written to
+                <A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional output pdb files will be written to
                 disk containing the water (<i>fileroot_1_water.pdbw</i> ,...).
     <BR>
     <BR>
     <b><i>Note2:</i></b> If random removal of restraints is turned on (<i>noecv=true</i> in 
-                <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional files will be written to
+                <A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional files will be written to
                 disk containing the random number seed (<i>fileroot_1.seed</i> ,...). This seed is used in
                 the refinement to make sure that the same restraints are removed.
     <BR>
     <BR>
     <b><i>Note3:</i></b> If random AIR definition is turned on (<i>ranair=true</i> in 
-                <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional files will be written to
+                <A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional files will be written to
                 disk containing the list of residues selected for the AIR definition (<i>fileroot_1.disp</i> ,...)..
     </ul>
     <BR>
@@ -327,7 +327,7 @@ The <i><b>refine.inp</b></i> CNS script is used for this step.
 When all structures have been generated (typically in the order of  1000 to 2000 
 depending on the number of starting conformations and your CPU resources), HADDOCK 
 will sort them accordingly to the criterion defined in the 
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A> parameter file and write the sorted PDB 
+<A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A> parameter file and write the sorted PDB 
 filenames into <i>file.cns, file.list</i> and <i>file.nam</i> in the 
 <i><b>structures/it0</b></i> directory. These will be used for the next step (semi-flexible simulated annealing).
 <BR>
@@ -337,7 +337,7 @@ filenames into <i>file.cns, file.list</i> and <i>file.nam</i> in the
 <BR>
 <BR>
 The best XXX structures after rigid body docking (typically 200, but this is left to the user's 
-choice (see the <A HREF="http://www.bonvinlab.org/software/haddock2.2/run">run.cns file</A> section)) will be subjected to a 
+choice (see the <A HREF="/software/haddock2.2/run">run.cns file</A> section)) will be subjected to a 
 semi-flexible simulated annealing (SA) in torsion angle space. This semi-flexible annealing 
 consists of several stages:
 <BR>
@@ -349,11 +349,11 @@ consists of several stages:
 </ul>
 <BR>
 The temperatures and number of steps for the various stages are defined in the 
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/run"><i>run.cns</i></A> parameter file.
+<A HREF="/software/haddock2.2/run"><i>run.cns</i></A> parameter file.
 <BR>
 <BR>
 <b><i>Note1:</i></b> HADDOCK also allows the definition of fully flexible regions (defined by
-                        the <i>nfle_X</i> parameter in <A HREF="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</A>)
+                        the <i>nfle_X</i> parameter in <A HREF="/software/haddock2.2/run">run.cns</A>)
                         that remain fully flexible throughout all four stages. This
                         should be useful for cases where part of a structure are
                         disordered or unstructured or when docking small flexible 
@@ -364,9 +364,9 @@ The temperatures and number of steps for the various stages are defined in the
 <BR>
 <b><i>Note2:</i></b> A new option in HADDOCK 2.x allows to automatically define the semi-flexible
                      regions by considering all residues within 5A of another molecule. To use this
-                     option, set <i>nseg_X</i> to -1 in <A HREF="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</A> (or another 
+                     option, set <i>nseg_X</i> to -1 in <A HREF="/software/haddock2.2/run">run.cns</A> (or another 
                      negative number if you still want to define manually segments for 
-                     <a HREF="http://www.bonvinlab.org/software/haddock2.2/generate_air_help#ranair">random AIRs</a> definition from a limited
+                     <a HREF="/software/haddock2.2/generate_air_help#ranair">random AIRs</a> definition from a limited
                      region of the surface). This can be set for each molecule separately.
 <BR>
 <BR>
@@ -381,12 +381,12 @@ The <i><b>refine.inp</b></i> CNS script is used for this step.
     <BR>
     <BR>
     <b><i>Note1:</i></b> If solvated docking is turned on (<i>waterdock=true</i> in 
-                <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional output pdb files will be written to
+                <A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional output pdb files will be written to
                 disk containing the water (<i>fileroot_1_water.pdbw</i> ,...).
     <BR>
     <BR>
     <b><i>Note2:</i></b> If random removal of restraints is turned on (<i>noecv=true</i> in 
-                <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional files will be written to
+                <A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A>), additional files will be written to
                 disk containing the random seed number (<i>fileroot_1.seed</i> ,...). This seed is used in
                 the explicit solvent refinement to make sure that the same restraints are removed.
     </ul>
@@ -464,12 +464,12 @@ The <i><b>refine.inp</b></i> CNS script is used for this step.
 </ul>
 At the end of the calculation, HADDOCK generates the <i>file.cns, file.list</i> 
 and <i>file.nam</i> files containing the filenames of the generated structures sorted 
-accordingly to the criterion defined in the  <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter">run.cns</A> 
+accordingly to the criterion defined in the  <A HREF="/software/haddock2.2/run#iter">run.cns</A> 
 parameter file.
 <BR>
 At the end of this stage, the structures are analyzed and the results 
 are placed in the <b><i>structures/it1/analysis</i></b> directory (see the
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/analysis">analysis</A> section).
+<A HREF="/software/haddock2.2/analysis">analysis</A> section).
 <BR>
 <hr>
 <BR>
@@ -495,7 +495,7 @@ The <i><b>re_h2o.inp</b></i> or <i><b>re_dmso.inp</b></i> CNS script is used for
     <BR>
     <BR>
     <b><i>Note2:</i></b> If <i>keepwater</i> is set to true in 
-                <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter"><i>run.cns</i></A>, additional output pdb files will be written to
+                <A HREF="/software/haddock2.2/run#iter"><i>run.cns</i></A>, additional output pdb files will be written to
                 disk containing the water (<i>fileroot_1_h2o.pdb</i> ,...).
     </ul>
     <BR>
@@ -543,12 +543,12 @@ The <i><b>re_h2o.inp</b></i> or <i><b>re_dmso.inp</b></i> CNS script is used for
 </ul>
 At the end of the explicit solvent refinement, HADDOCK generates the <i>file.cns, file.list</i> 
 and <i>file.nam</i> files containing the filenames of the generated structures sorted 
-accordingly to the criterion defined in the  <A HREF="http://www.bonvinlab.org/software/haddock2.2/run#iter">run.cns</A> 
+accordingly to the criterion defined in the  <A HREF="/software/haddock2.2/run#iter">run.cns</A> 
 parameter file.
 <BR>
 <BR>
 Finally, the structures are analyzed and the results are placed in the 
 <b><i>structures/it1/water/analysis</i></b> directory (see the
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/analysis">analysis</A> section).
+<A HREF="/software/haddock2.2/analysis">analysis</A> section).
 <BR>
 <hr>

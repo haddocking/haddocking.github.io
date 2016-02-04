@@ -60,7 +60,7 @@ and <B><I>"passive"</I></B> residues.<BR>
 <BR>
 Once you have defined your active and passive residues,
 <ul>
-    <li> go to the <A HREF="http://www.bonvinlab.org/software/haddock2.2/haddock-start">HADDOCK online page</A> 
+    <li> go to the <A HREF="/software/haddock2.2/haddock-start">HADDOCK online page</A> 
         (http://www.bonvinlab.org/software/haddock2.2/haddock-start)
     <BR>
     <BR>
@@ -118,7 +118,7 @@ For each docking trial another set of AIRs will be used. These restraints are de
 <BR>
 <BR>
 The sampling of residues is limited to the defined semi-flexible segments (<i>nseg_X</i> and following parameters in
-<a href="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</a>). If no semi-flexible segment is defined, then all solvent accessible residues will be sampled (provided enough structures are generated in the rigid-body docking stage (it0)). By defining semi-flexible segments in combination with random AIR definition (<i>ranair=true</i> in <a href="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</a>), it is possible to limit the sampling to a selected region of the surface (e.g. the CDR loops in an antibody-antigen complex).
+<a href="/software/haddock2.2/run">run.cns</a>). If no semi-flexible segment is defined, then all solvent accessible residues will be sampled (provided enough structures are generated in the rigid-body docking stage (it0)). By defining semi-flexible segments in combination with random AIR definition (<i>ranair=true</i> in <a href="/software/haddock2.2/run">run.cns</a>), it is possible to limit the sampling to a selected region of the surface (e.g. the CDR loops in an antibody-antigen complex).
 <BR>
 <BR>
 The random AIRs are defined (in the <i>randomairs.cns</i> CNS script) as follow (<u>only for the rigid-body energy minimization stage</u>):
@@ -152,7 +152,7 @@ within 5A across the interface. In the final explicit solvent refinement, no AIR
 <A NAME="surf"><U><B>Surface contact restraints:</B></U></A>
 <BR>
 <BR>
-Surface contact restraints between the various molecules can be automatically defined in HADDOCK 2.x (<i>surfrest=true</i> in <a href="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</a>). These restraints are defined in the <i>surf-restraint.cns</i> CNS script. 
+Surface contact restraints between the various molecules can be automatically defined in HADDOCK 2.x (<i>surfrest=true</i> in <a href="/software/haddock2.2/run">run.cns</a>). These restraints are defined in the <i>surf-restraint.cns</i> CNS script. 
 This option is fully compatible with all other types of restraints. 
 <p>
 If turned on, one surface contact restraint will be defined between each molecule as an ambiguous distance 
@@ -172,7 +172,7 @@ the random starting orientations and this significantly increases the number of 
 <A NAME="cm"><U><B>Center of mass restraints:</B></U></A>
 <BR>
 <BR>
-Center of mass restraints between the various molecules can be automatically defined in HADDOCK 2.x (<i>cmrest=true</i> in <a href="http://www.bonvinlab.org/software/haddock2.2/run">run.cns</a>). These restraints are defined in the <i>cm-restraint.cns</i> CNS script. 
+Center of mass restraints between the various molecules can be automatically defined in HADDOCK 2.x (<i>cmrest=true</i> in <a href="/software/haddock2.2/run">run.cns</a>). These restraints are defined in the <i>cm-restraint.cns</i> CNS script. 
 This option is fully compatible with all other types of restraints. 
 <p>
 If turned on, one center of mass restraint will be defined between each molecule as an ambiguous distance 
@@ -223,7 +223,7 @@ combined chemical shift perturbation.
 <BR>
 HADDOCK comes with a number of awk,csh and perl scripts to handle and analyze 
 data. To calculate the average perturbation use the average.perl script 
-located in $HADDOCKTOOLS (see <A href="http://www.bonvinlab.org/software/haddock2.2/installation">installation</A>). 
+located in $HADDOCKTOOLS (see <A href="/software/haddock2.2/installation">installation</A>). 
 The following command will give you the average of the second column of the above file:
 <PRE>
     awk '{print $2}' csp.dat | $HADDOCKTOOLS/average.perl
@@ -245,7 +245,7 @@ accessibility </U></B></A>
 An important parameter in defining AIRs consists of the relative residue 
 solvent accessibility.  It can be calculated with the program 
 <A HREF="http://wolf.bms.umist.ac.uk/naccess">NACCESS</A> 
-(see <A href="http://www.bonvinlab.org/software/haddock2.2/software">software links</A>).<P> NACCESS will output 
+(see <A href="/software/haddock2.2/software">software links</A>).<P> NACCESS will output 
 a file with extension <I>.rsa</I> containing the per- residue solvent 
 accessibilities divided into various classes:
 <PRE> <FONT SIZE=-2>
@@ -347,7 +347,7 @@ To select the residues that satisfy the 40% accessibility cut-off type:
 <B>5.</B> <A NAME="generate"><B><U>Generating the AIR restraints file</U></B></A>
 <BR>
 Once you have defined your active and passive residues, go to the 
-<A HREF="http://www.bonvinlab.org/software/haddock2.2/haddock-start">HADDOCK online page</A> 
+<A HREF="/software/haddock2.2/haddock-start">HADDOCK online page</A> 
 (http://www.bonvinlab.org/software/haddock2.2/haddock-start)
 and click on "Generate AIR restraint file"
 <BR>

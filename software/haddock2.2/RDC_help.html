@@ -120,10 +120,10 @@ giving the error value as argument:
 </pre>
 The 2.2 version of HADDOCK supports up to 5 different SANI restraints sets. Each can have a separate tensor.
 The tensor residue number should be in the range 999-995. You can edit and modify the <i>generate_sani</i> script to change the tensor number.
-To use RDC restraints in HADDOCK, use <i>SANI</i> in <a HREF="http://www.bonvinlab.org/software/haddock2.2/run#dipo">run.cns</a>
+To use RDC restraints in HADDOCK, use <i>SANI</i> in <a HREF="/software/haddock2.2/run#dipo">run.cns</a>
 in the dipolar coupling section and define the proper Da and R parameters (R=Dr/Da). 
 The RDC restraints are first used in the 
-<a HREF="http://www.bonvinlab.org/software/haddock2.2/docking#mini">rigid body energy minimization step</a> using
+<a HREF="/software/haddock2.2/docking#mini">rigid body energy minimization step</a> using
 as force constant the value defined for the hot phase. Keep this value small 
 (the current default is 0.02) to keep a proper balance between the AIR and
 SANI energy terms. 
@@ -184,8 +184,8 @@ than 25% of the angular space type:
     awk '{if ($27 != $9 && $44 > 0.25) {print $0}}' vean_output_file >vean_inter_25.tbl
 </pre>
 To use intervector projection angle restraints in HADDOCK, use <i>VANGLE</i> 
-in <a HREF="http://www.bonvinlab.org/software/haddock2.2/run#dipo">run.cns</a> in the dipolar coupling section. The VANGLE 
-restraints are introduced in the <a HREF="http://www.bonvinlab.org/software/haddock2.2/docking#mini">
+in <a HREF="/software/haddock2.2/run#dipo">run.cns</a> in the dipolar coupling section. The VANGLE 
+restraints are introduced in the <a HREF="/software/haddock2.2/docking#mini">
 rigid body energy minimization step</a> using as initial force constants the 
 value defined for the hot phase. The restraints are activated in the second
 rotational minimization phase (thus earlier than the SANI restraints!)
