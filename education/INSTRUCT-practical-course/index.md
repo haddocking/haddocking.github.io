@@ -50,11 +50,11 @@ A detailed programme will be provided at a later stage.
 
 * April 11 (room 3.1): *MS and solution NMR*
 	* Morning: arrival
-	* 13:00-13:15 Welcome + intro (Bonvin)
-	* 13:15-14:45 **Heck**: Characterization of large assemblies by mass spectrometry
-	* 14:45-15:15 coffee break
-	* 15:15-16:45 **Boelens**: Characterization of macromolecular assemblies by solution NMR
-	* 16:45-17:00 Short intro to HPC/HTC infrastructure and services (SURFSara)
+	* 13:00-13:10 Welcome + intro (Bonvin)
+	* 13:10-13:30 Short intro to HPC/HTC infrastructure and services (SURFSara)
+	* 13:30-15:00 **Heck**: Characterization of large assemblies by mass spectrometry
+	* 15:00-15:30 coffee break
+	* 15:30-17:00 **Boelens**: Characterization of macromolecular assemblies by solution NMR
 <br><br>
 
 * April 12 (room 3.3): *NMR-based protein structure refinement + integration with SAXS*
