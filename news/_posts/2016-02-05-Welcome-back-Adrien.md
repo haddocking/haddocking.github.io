@@ -16,4 +16,4 @@ Since February 1st, Adrien is working for the [BioExcel Center of Excellence](ht
 <figure align="center">
     <img src="/images/people/Adrien.jpg">
 </figure>
-
+_All fresh and nicely shaved! Quite different from his Facebook picture for those of you having access to it... :-)_
