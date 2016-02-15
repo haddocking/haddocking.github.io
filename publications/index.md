@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* L.C. Xue, J.P.G.L.M. Rodrigues, D. Dobbs, V. Honavarand  **A.M.J.J. Bonvin**.
+Template-Based Protein-Protein Docking Exploiting Pairwise Interfacial Residue Restraints.
+_Briefings in Bioinformatics_, In Press (2016).
+
 * M.F. Lensink, S. Velankar, A. Kryshtafovych, S. Huang, D. Schneidman-Duhovny, A. Sali, J. Segura, N.s Fernandez-Fuentes, S. Viswanath, R. Elber, S. Grudinin, P. Popov, E. Neveu, Hasup Lee, M. Baek, S. Park, L. Heo, G. Rie Lee, C. Seok, S. Qin, H. Zhou, D.W. Ritchie, B. Maigret, M. Devignes, A. Ghoorah, M. Torchala, R.A.G. Chaleil, P.A. Bates, E.t Ben-Zeev, M. Eisenstein, S.S. Negi, Z. Weng, T. Vreven, B.G. Pierce, T. M. Borrman, J. Yu, F. Ochsenbein, R. Guerois, A. Vangone, J.P.G.L.M. Rodrigues, G. van Zundert, M. Nellen, L. Xue, E. Karaca, A.S.J. Melquiond, K. Visscher, P.L. Kastritis, **A.M.J.J. Bonvin**, X. Xu, L. Qiu, C. Yan, J. Li, Z. Ma, J. Cheng, X. Zou, Y. Shen, L.X. Peterson, H. Kim, A. Roy, X. Han, J. Esquivel-Rodriguez, D. Kihara, X. Yu, N.J. Bruce, J.C. Fuller, R.C. Wade, I. Anishchenko, P.J. Kundrotas, I.A. Vakser, K. Imai, K.i Yamada, T. Oda, T. Nakamura, K. Tomii, C. Pallara, M. Romero-Durana, B. Jimenez-Garcia, I.H. Moal, J Fernandez-Recio, J. Young Joung, J. Yun Kim, K.g Joo, J. Lee, D. Kozakov, S. Vajda, S. Mottarella, D.R. Hall, D. Beglov, A. Mamonov, B. Xia, T. Bohnuud, C.A. Del Carpio, E. Ichiishi, N. Marze, D. Kuroda, S.S. Roy Burman, J.J. Gray, E. Chermak, L. Cavallo, R. Oliva, A. Tovchigrechko and S.J. Wodak.
 Prediction of homo- and hetero-protein complexes by ab-initio and template-based docking: a CASP-CAPRI experiment
 _Proteins: Struc. Funct. &amp; Bioinformatics_, In press (2016)
@@ -20,7 +24,7 @@ _Biochemical and Biophysical Research Communications_, Advanced Online Publicati
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 [On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
-_J. Chem. Inf. and Model._, Advanced Online Publication (2016).
+_J. Chem. Inf. and Model._ *56*, 127-138n (2016).
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 [Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](http://dx.doi.org/doi:10.1002/bmb.20941).
@@ -32,6 +36,10 @@ In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Ri
 * R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
 [Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
 _Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
+
+* G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
+_J. Mol. Biol._, Advanced Online Publication (2015).
 
 
 ## 2015
@@ -47,10 +55,6 @@ _Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://aut
 * L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
 [Computational Prediction of Protein Interfaces: A Review of Data Driven Methods](http://dx.doi.org/10.1016/j.febslet.2015.10.003).
 _FEBS Letters_, *589*, 3516-3526 (2015).
-
-* G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
-_J. Mol. Biol._, Advanced Online Publication (2015).
 
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
