@@ -1,3 +1,6 @@
+# For general help on the options
+# # http://jekyllrb.com/docs/configuration/
+
 # Site wide configuration
 
 title:            Bonvin Lab
@@ -10,23 +13,33 @@ description: Webpage of the computational structural biology lab of Alexandre Bo
 rss: true
 
 # Jekyll configuration
-
 permalink:   /:categories/:title/
+post_dir: false
 markdown:    kramdown
-highlighter: pygments
 sass:
   sass_dir: _sass
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll-coffeescript
+  - jekyll-paginate
 
 kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  use_coderay: false
 
+# Github Specific Settings that *cannot* be changed
+# To ensure proper reproducibility
+# https://help.github.com/articles/configuring-jekyll/
+gist:
+  noscript: false
+github: [metadata]
+highlighter: rouge
+incremental: false
+lsi: false
+safe: true
 
 # Site owner
 owner:
@@ -36,10 +49,10 @@ owner:
   email: a.m.j.j.bonvin@uu.nl
   youtube: haddocking
   google:
-    analytics: 
-    verify: 
-    ad-client: 
-    ad-slot: 
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
   github: haddocking
 
 include: [".htaccess"]
