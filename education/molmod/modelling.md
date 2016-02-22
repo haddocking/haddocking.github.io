@@ -62,13 +62,13 @@ that binds the p53 trans-activation domain. So, where to start?
 The Uniprot database is an online resource offering access to _all_ known protein sequences. Besides raw sequence data, Uniprot aggregates information from several other databases such as [RCSB PDB](http://www.rcsb.org) and its [European](http://www.ebi.ac.uk/pdbe) and [Japanese](http://www.pdbj.org) mirrors, NCBI [Pubmed](http://www.pubmed.org), [KEGG](http://www.genome.jp/kegg/), [Pfam](http://pfam.xfam.org/), and many others. This set of features makes Uniprot an obvious go-to resource when looking for information on any protein. There are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision, and TrEMBL, where the annotation is unsupervised. Consequently, if the entry for a particular protein of interest belongs to Swiss-Prot, it will be marked by a golden star/icon meaning its contents are very likely (but not blindly!) reliable.
 
 <a class="prompt prompt-info">
-    Find the mouse MDM2 entry in Uniprot using the search box on the home page.
+  Find the mouse MDM2 entry in Uniprot using the search box on the home page.
 </a>
 
 Take the time to browse through the Uniprot page of mouse MDM2. The header of the page lists the protein, gene, and organism names for this particular entry, as well as its unique Uniprot accession code. On the left, below the header, there is a sidebar listing the several sections of the page. You can use these to navigate directly to the 'Structure' section to verify if there are already published experimental structures for mouse MDM2. Fortunately, there aren't any; otherwise this tutorial would end here.
 
 <a class="prompt prompt-question">
-Given the lack of experimentally determined structures, how come there are plenty of structural annotations for mouse MDM2?
+  Given the lack of experimentally determined structures, how come there are plenty of structural annotations for mouse MDM2?
 </a>
 
 Besides reporting on experimental structures, Uniprot links to portals such as the [ProteinModelPortal](http://www.proteinmodelportal.org/), [SWISS-MODEL Repository](http://swissmodel.expasy.org/), and [ModBase](http://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi), which regularly cross-reference sequence and structure databases in order to build homology models. These automated protocols are configured to create models only under certain conditions, such as sufficient sequence identity and coverage. Still, the template identification, target/template alignment, and modelling options are unsupervised, which may lead to severe errors in some cases. In general, these models offer a quick peek of what fold(s) a particular sequence can adapt and may as well serve as a starting point for further refinement and analyses. Nevertheless, if the model will be a central part of a larger study, it might be worth to invest time and effort in modelling a particular protein of interest with a set of dedicated protocols.
@@ -76,7 +76,7 @@ Besides reporting on experimental structures, Uniprot links to portals such as t
 The following tab, "Family & Domains", lists structural and domain information derived either from experiments or by similarity to other entries. For the mouse MDM2 protein, it shows that it contains a SWIB domain and two zinc fingers and that it interacts with proteins such as USP2, PYHIN1, RFFL, RNF34, among others. Additional information displayed in the text offers additional insights on binding partners and interfaces.
 
 <a class="prompt prompt-question">
-Which region(s) of MDM2 bind p53 and which of those bind to the trans-activation domain?
+  Which region(s) of MDM2 bind p53 and which of those bind to the trans-activation domain?
 </a>
 
 From the introduction, you know that our region of interest in MDM2 interacts with the trans-activation region of p53 and does _not_ ubiquitinate it. The small print under the "Domain" header gives clues regarding possible p53 interfaces: "Region I is sufficient for binding p53"; "the RING finger domain [...] is also essential for [MDM2] ubiquitin ligase E3 activity toward p53". It seems, therefore, that _Region I_ is our modelling target, but besides this annotation, it is not listed anywhere on the Uniprot page. While this mystery has plenty of possible solutions, the easiest of which would be to search for a publication on the MDM2 domain organization, keep to the Uniprot page to find an answer.
@@ -84,7 +84,7 @@ From the introduction, you know that our region of interest in MDM2 interacts wi
 Browsing further down the page, the "Sequences" tab lists the several isoforms of this particular protein as they have been observed. One of these is classified as "canonical" while others are products of splicing events or mutations. The notes on isoform MDM2-p76 reveal that it lacks the first 47 amino acids and that it does _not_ bind p53. The interaction occurs then through the N-terminal of MDM2. Linking this information with that of the domain organization hints that the first region (positions 1-110) is very likely our modelling target. This selection can be further refined by choosing only the region comprising the SWIB domain (positions 27-107). Choose either the first region (positions 1-110), the SWIB domain, or whatever seems best in your opinion.
 
 <a class="prompt prompt-question">
-Why can the first ~20 amino acids of MDM2 be neglected for the modelling?
+  Why can the first ~20 amino acids of MDM2 be neglected for the modelling?
 </a>
 
 Clicking on the "position(s)" column of a particular region/domain opens a new window showing the corresponding sequence as well as the region in the context of the full sequence. Although this window provides a shortcut to launch a BLAST similarity search against the UniprotKB (or another) database, there are other more sensitive methods for this purpose. For now, pay attention to the sequence and its format. Named FASTA after the software program it was first implemented in, it is perhaps the most widely used file format in bioinformatics, owing surely to its readability for both humans and machines.
@@ -98,16 +98,16 @@ IMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV
 For each sequence in the file, it contains a header line starting with `>` followed by an identifier. In the Uniprot page, the identifier contains the entry's collection (sp - Swiss-Prot), accession code, and region of the sequence. The information on this header is used by several programs in many different ways, so it makes sense to keep it simple and readable.
 
 <a class="prompt prompt-info">
-Change the identifier to something more meaningful and human (e.g. MDM2_MOUSE).
+  Change the identifier to something more meaningful and human (e.g. MDM2_MOUSE).
 </a>
 
 The next line(s) contains the sequence in the standard one-letter code. Any character other than an upper case letter will cause some (not all) programs to throw an error about the format of the sequence. Although there is not a strictly enforced character limit, it is customary to split the sequence into multiple lines of 80 characters each. This limit, as many others based on character length, is a legacy from the old days when screen resolutions were small or terminals the only way of interfacing with the computer. Nevertheless, some programs will complain, or even worse, truncate, sequences longer than these 80 characters, so it is wise to respect this limit!
 
 <a class="prompt prompt-info">
-Copy the FASTA-formatted sequence to a text file and save it under an appropriate name (e.g. MDM2_MOUSE.fasta).
+  Copy the FASTA-formatted sequence to a text file and save it under an appropriate name (e.g. MDM2_MOUSE.fasta).
 </a>
 <a class="prompt prompt-attention">
-Save the file in the home directory, Downloads/ folder, or any other easily accessible location.
+  Save the file in the home directory, Downloads/ folder, or any other easily accessible location.
 </a>
 
 Now that you have a sequence, the following step is to find a suitable homolog to use in the modelling protocol. The several homology modelling methods available online, such as the [HHpred web server](http://toolkit.tuebingen.mpg.de/hhpred), need only this sequence to start the entire procedure. After a few minutes or hours, depending on the protocol, these servers produce models and a set of quality criteria to help the user make a choice. The downside of using a web server is that, usually, the modelling protocol is a 'black box'. It is impossible to control settings beyond which templates and alignment to use. It is important, however, to understand what is happening behind the scenes, to make conscious choices and grasp the limitations of each method and model. Therefore, this tutorial uses a set of locally installed programs to search for templates, build the models, and evaluate their quality.
@@ -118,7 +118,7 @@ The _template_ is the structurally-resolved homolog that serves as a basis for t
 As mentioned before, there are computational methods that perform similarity searches against databases of known sequences. [BLAST](http://blast.ncbi.nlm.nih.gov/Blast.cgi) is the most popular of such methods, and probably the most popular bioinformatics algorithm, with two of its versions in the top 20 of the most cited papers in history ([source](http://www.nature.com/news/the-top-100-papers-1.16224)). It works by finding fragments of the query that are similar to fragments of sequences in a database and then merging them into full alignments ([source](http://www.ncbi.nlm.nih.gov/pubmed/23749753)). Another class of similarity search methods uses the query sequence to seed a general _profile sequence_ that summarises significant features in those sequences, such as the most conserved amino acids. This profile sequence is then used to search the database for homologues. This approach used in PSI-BLAST, an iterative version of BLAST, and also in [HMMER](http://hmmer.janelia.org), which employs an entirely different statistical framework.
 
 <a class="prompt prompt-question">
-What is the advantage of searching sequence databases with a "profile" sequence?
+  What is the advantage of searching sequence databases with a "profile" sequence?
 </a>
 
 Whichever the sequence search algorithm, the chances are that, after running through the database, it returns a (hopefully) long list of results. Each entry in this list refers to a particular sequence, the hit, which was deemed similar to the query. It will contain the sequence alignment itself and also some quantitative statistics, namely the sequence similarity, the bit score of the alignment, and its expectation (E) value. Sequence similarity is a quantitative measure of how evolutionarily related two sequences are. It is essentially a comparison of every amino acid to its aligned equivalent. There are three possible outcomes out of this comparison: the amino acids are exactly the same, i.e. identical; they are different but share common physicochemical characteristics, i.e. similar; they are neither. It is also possible that the alignment algorithm introduced _gaps_ in either of the sequences, meaning that there was possibly an insertion or a deletion event during evolution. While identity is straightforward, similarity depends on specific criteria that group amino acids together, e.g. D/E, K/R/H, F/Y/W. The bit score is the likelihood that the query sequence is _truly_ a homologue of the hit, as opposed to a random match. The E-value represents the number of sequences that are expected to have a bit score higher than that of this particular alignment just by chance, given the database size. In essence, a very high bit score and a very small E-value is an assurance that the alignment is indeed significant and that this hit is likely a true homologue of the query sequence.
@@ -128,16 +128,16 @@ Our goal is to search for homologues in a sequence database containing exclusive
 Start by creating a folder to store all the information related to the modelling process. To keep the files easily accessible, create the folder in the home directory, for example.
 
 <a class="prompt prompt-cmd">
-    cd $HOME  
-    mkdir mdm2_modelling  
-    cd mdm2_modelling  
+  cd $HOME  
+  mkdir mdm2_modelling  
+  cd mdm2_modelling  
 </a>
 
 Assuming the Uniprot sequence file is in the Downloads folder, copy it to the newly created folder and launch a `phmmer` search against the RCSB PDB sequence database. `phmmer` is part of the HMMER suite and searches a query protein sequence against a database. Behind the scenes, it builds a profile HMM from the query sequence and uses this profile to search the database for homologs ([source](ftp://selab.janelia.org/pub/software/hmmer3/3.1b2/Userguide.pdf)).
 
 <a class="prompt prompt-cmd">
-    cp $HOME/Downloads/MDM2_MOUSE.fasta .  
-    phmmer \-\-notextw -o psa.out -A psa.sto MDM2_MOUSE.fasta /opt/share/pdb_seqres.txt
+  cp $HOME/Downloads/MDM2_MOUSE.fasta .  
+  phmmer \-\-notextw -o psa.out -A psa.sto MDM2_MOUSE.fasta /opt/share/pdb_seqres.txt
 </a>
 <a class="prompt prompt-attention">
   Adapt the file names accordingly!
@@ -148,10 +148,10 @@ Take a moment to inspect that command. (Most) GNU/Linux commands start with the 
 Back to the homology modelling, depending on which MDM2 sequence HMMER used to seed the search, the results will vary.
 
 <a class="prompt prompt-info">
-    Open and inspect the phmmer output file.
+  Open and inspect the phmmer output file.
 </a>
 <a class="prompt prompt-cmd">
-    leafpad psa.out &
+  leafpad psa.out &
 </a>
 
 The output file, `psa.out`, contains detailed information on each hit of the database considered homologous to the query. The first lines, starting with a `#` character, show information on the search parameters and the version of HMMER used to carry it out. This information is always useful; it allows a user to trace back the specifics of a particular step of the modelling, therefore allowing some degree of reproducibility.
@@ -189,17 +189,17 @@ The details of each hit and all its domains come next. The hit identifier and de
 process.
 
 <a class="prompt prompt-question">
-How many sequences does the RCSB PDB database contain and how many of these matched our query?
+  How many sequences does the RCSB PDB database contain and how many of these matched our query?
 </a>
 
 Unlike BLAST or the HMMER web server, the local version of HMMER does not provide any sequence identity or similarity scores. Since these are crucial statistics for deciding on a template for the modelling, we provide a Python script based on the [Biopython](http://biopython.org) library to parse the sequences and calculate identities. Additionally, the script calculates how much of the query sequence the hit is matching, also known as coverage. Run the script on the `psa.out` file and save the results in a separate `psa.info` file using the `-o` option.
 
 <a class="prompt prompt-cmd">
-python /opt/bin/aln_stats.py psa.out -o psa.info
+  python /opt/bin/aln_stats.py psa.out -o psa.info
 </a>
 
 <a class="prompt prompt-info">
-Open and inspect the contents of the alignment information file.
+  Open and inspect the contents of the alignment information file.
 </a>
 
 This newly created file aggregates, for each hit, information copied from the HMMER output file and newly calculated values of pairwise sequence identity and coverage. Its simple tabular format is very suitable to identify plausible templates.
@@ -217,24 +217,24 @@ Apparently, there are plenty of homologues with known structure for mouse MDM2. 
 reliable model ([source](http://peds.oxfordjournals.org/content/12/2/85.long)). It is still possible to model a sequence on a template with 20-30% sequence similarity, the so-called twilight zone, but there must be extreme care in choosing a proper template. Below 20%, in the danger zone, there is no guarantee that there is any sequence-structure correlation. Note, though, that all these are relative percentages to the sequence size.
 
 <figure>
-    <a href="/images/molmod/rcsb-statistics.png"><img src="/images/molmod/similarity-structures.png"></a>
-    <figcaption>Structures of sequence homologues of the Ribosomal protein L5 (in red).</figcaption>
+  <a href="/images/molmod/rcsb-statistics.png"><img src="/images/molmod/similarity-structures.png"></a>
+  <figcaption>Structures of sequence homologues of the Ribosomal protein L5 (in red).</figcaption>
 </figure>
 
 Choosing a template is, however, more complex than just choosing the most identical homologue. Modelling might be a computational method, based on chemical principles, but its fundamental principle is biological. The tertiary structure of a protein defines its function, and as such, folds should be conserved across functionally similar proteins. Consequently, it _always_ pays off to consider the biological function of both the query and the templates and make sure that there is, if possible, a match. Otherwise, nature might have a trick left up in her sleeve ([example](http://www.pnas.org/content/104/29/11963.full)). In the case of mouse MDM2, most of the hits belong to the E3 ubiquitin ligase family,  and several of them are MDM2 proteins of other organisms. It seems then that it is very much possible and straightforward to model mouse MDM2. Finally, the coverage metric also shows that there are very few gaps in the alignment, but it is important to know where these are. If a particular hit has 90% coverage, there could have been an insertion event during evolution. Another possibility, more common, are gaps at one or both termini of the sequences. Either way, gaps are always a point of concern, and there must always be a good justification for building a model from such an alignment.
 
 <a class="prompt prompt-question">
-Why is it worrying to have several gaps in the middle of the sequence, opposite to having them at the termini?
+  Why is it worrying to have several gaps in the middle of the sequence, opposite to having them at the termini?
 </a>
 
 The second file produced by HMMER (`psa.sto`) contains the full sequence alignments for each query/hit pair, which is useful to check where the gaps are in a particular sequence. The Stockholm format is not as easy to read as FASTA though. Fortunately, HMMER includes a library called `easel` whose utilities are very helpful in doing these conversions and manipulations of sequence (alignment) files.
 
 <a class="prompt prompt-cmd">
-esl-reformat -o psa.fasta afa psa.sto
+  esl-reformat -o psa.fasta afa psa.sto
 </a>
 
 <a class="prompt prompt-info">
-Open and inspect the contents of the alignment FASTA file.
+  Open and inspect the contents of the alignment FASTA file.
 </a>
 
 The `psa.fasta` file contains the same information as the Stockholm file, except for the forward probabilities, just in a different format. The two top scoring hits do not have any gap (coverage is 1.0). The next few hits have roughly 5% of gaps (coverage 0.95-0.96), which corresponds to ~5 positions in the alignment. Fortunately, these are distributed between the N and C termini of the protein sequence, or concentrated at the N-terminus. Indeed, even the worst scoring hits have a consistent region of gaps and a homologous core domain.
@@ -267,7 +267,7 @@ Another factor to consider when choosing a template is its conformation in the c
 To gain some insight on the structural quality of the templates suggested after the HMMER search, use the [RCSB PDB](http://www.rcsb.org) database. The first column of the `psa.info` file contains the PDB ID and the PDB chain belonging to the hit sequence. The ID is a four-character alphanumerical code (e.g. `1z1m`) that is unique to each structure, much like the accession code is for an Uniprot entry. The last character, usually a letter, identifies the chain within the structure that HMMER identified as a hit.
 
 <a class="prompt prompt-info">
-Look for the entries of the best five homologues in the RCSB PDB database, using the search bar and the PDB IDs.
+  Look for the entries of the best five homologues in the RCSB PDB database, using the search bar and the PDB IDs.
 </a>
 
 The three highest scoring templates identified by HMMER  (`1z1m_A`, `2lzg_A`, and `2mps_A`) are all NMR structures. The fourth, `4ode_A`, is a crystal structure that given its values of sequence identity (90%) and coverage (95%) is likely the best candidate. The RCSB PDB page for this entry confirms what HMMER reported: the structure belongs to the E3 ubiquitin-protein ligase MDM2 of *Homo sapiens*. Further, the "Experimental Details" and "Structure Validation" sections detail the high quality of this structure: 1.80Å resolution and above-average R-free and stereochemistry parameters for structures of similar resolution. The fifth ranked templated, `4odf_A`, has virtually the same bit score, identity, and coverage values as `4ode_A`. Their very similar names are also not a coincidence. `4odf_A`, as seen in its RCSB PDB entry page, was crystallized by the same authors, during the same study that produced `4ode_A`, using the same experimental methods and conditions. The only difference is the co-factor that is bound to the protein. The structures should be, therefore, virtually identical as well.
@@ -275,35 +275,35 @@ The three highest scoring templates identified by HMMER  (`1z1m_A`, `2lzg_A`, an
 There are several programs that allow a user to download, visualize, and (quantitatively) compare structures. If possible, use [PyMOL](http://pymol.org/), a free and open-source molecular visualization software that runs on Windows, MacOS X, and Linux. For any help with the commands, visit first the [community-maintained Wiki](www.pymolwiki.org) and then use Google; chances are that someone else already posted that same problem in the PyMOL mailing-list.
 
 <a class="prompt prompt-info">
-Create a sub-folder (e.g. templates) to store the downloaded structures.
+  Create a sub-folder (e.g. templates) to store the downloaded structures.
 </a>
 
 <a class="prompt prompt-cmd">
-mkdir templates  
-cd templates
+  mkdir templates  
+  cd templates
 </a>
 
 <a class="prompt prompt-info">
-Download and analyse 4ode and 4odf using Pymol.
+  Download and analyse 4ode and 4odf using Pymol.
 </a>
 
 <a class="prompt prompt-cmd">
-pymol
+  pymol
 </a>
 
 <a class="prompt prompt-pymol">
-fetch 4ode, type=pdb1, async=0  
-fetch 4odf, type=pdb1, async=0  
-as cartoon  
-zoom vis  
+  fetch 4ode, type=pdb1, async=0  
+  fetch 4odf, type=pdb1, async=0  
+  as cartoon  
+  zoom vis  
 </a>
 
 The `fetch` command of Pymol retrieves a structure from the RCSB PDB database. The `async` option enables/disables the asynchronous behaviour of the download, or, in other words, if Pymol waits for the `fetch` command to finish before executing the next command. We set it to 0, as otherwise the two last commands will fail. The default set of coordinates downloaded by Pymol is that of the asymmetric unit (see [here](http://www.rcsb.org/pdb/101/static101.do?p=education_discussion/Looking-at-Structures/bioassembly_tutorial.html)), the smallest portion of crystal structure to which symmetry operations can be applied to generate the complete unit cell, which is the crystal repeating unit. Sometimes the asymmetric unit contains several copies of the structure of interest, which can be tedious to handle when performing analyses. To circumvent this, the RCSB PDB asks the authors of each crystal structure to provide their interpretation of a biological unit, or the structure that is actually functionally active. This can be a simple monomer, or a multi-molecule assembly, such as in the case of viral capsids. Besides the biological unit assigned by the authors, the RCSB PDB has also software that automatically detects the biological unit. In the end, specifying `type=pdb1` to Pymol requests the first biological unit of that particular structure, which is *usually* appropriate enough. For both `4ode` and `4odf`, there is only one protein molecule in the biological unit, which corresponds to chain **A**. The structures also contain additional molecules, such as the co-crystallized ligand, solvent, and other small leftovers of the crystallization process (e.g. SO<sub>4</sub>). As these will not be needed for the modelling, remove them. Then, align the structures on each other using the `align` command.
 
 <a class="prompt prompt-pymol">
-remove solvent  
-remove het  
-align 4odf and name ca+c+n+o, 4ode and name ca+c+n+o, object=aln_4ode_4odf  
+  remove solvent  
+  remove het  
+  align 4odf and name ca+c+n+o, 4ode and name ca+c+n+o, object=aln_4ode_4odf  
 </a>
 
 Coincidentally, the two structures are roughly aligned already from the beginning. The `align` command in Pymol performs a sequence-based structure alignment, meaning it superimposes two structures after aligning their sequences to find equivalent pairs of atoms. As it is written above, the command will minimize the distances between all equivalent pairs of backbone atoms in the two structures, using `4ode` as a reference. The sequence alignment is saved in a separate object, `aln_4ode_4odf`, that can also be visualized to give information on which atoms match which and where the biggest differences lie. The output of the alignment command is also worthy of reading:
@@ -323,7 +323,7 @@ Executive: object "aln_4ode_4odf" created.
 {% endhighlight %}
 
 <a class="prompt prompt-question">
-Why is there a different number of residues between the two structures?
+  Why is there a different number of residues between the two structures?
 </a>
 
 The `align` command aligns the minimum number of common atoms (99 x 4 = 396) between the structures and iteratively removes outliers, those that contribute the most to the RMS value, in order to optimize the superimposition. The default number of cycles is 5, but this can be controlled with the `cycles` option (e.g. `cycles=1`). This is sometimes useful to obtain a proper full-structure RMS value, since there is no control over which atoms are effectively removed; i.e. different pairs of structures can, and will likely have, different outliers that make comparisons between RMS values wrong. In this case, since there is only one comparison to make and the initial RMS is already extremely low (0.26Å), controlling the number of cycles is a futile exercise.
@@ -333,32 +333,32 @@ Besides observing and analysing the structures, Pymol provides information about
 Either way, the quick analysis shows that `4ode` and `4odf` are similar not only in name but also in conformation. In fact, they are virtually identical with an RMS below 0.5Å!
 
 <a class="prompt prompt-info">
-Repeat the same analysis for the top hit of HMMER: 1z1m
+  Repeat the same analysis for the top hit of HMMER: 1z1m
 </a>
 
 <a class="prompt prompt-question">
-Why can't Pymol fetch 1z1m if *type* is set to *pdb1*? Why does it work if you remove this option altogether?
+  Why can't Pymol fetch 1z1m if *type* is set to *pdb1*? Why does it work if you remove this option altogether?
 </a>
 
 <a class="prompt prompt-question">
-What can you conclude from the conformational variability of MDM2 from the various structures deposited in the RCSB PDB?
+  What can you conclude from the conformational variability of MDM2 from the various structures deposited in the RCSB PDB?
 </a>
 
 Having concluded that `4ode` is a suitable template to model mouse MDM2, save the structure (without solvent or heteroatoms) from Pymol to a new PDB file.
 
 <a class="prompt prompt-pymol">
-save 4ODE_A.pdb, 4ode  
+  save 4ODE_A.pdb, 4ode  
 </a>
 
 Another common issue with PDB files is the presence of atoms with multiple occupancies, or atoms whose position could not be unambiguously determined in the electron density map. Modelling programs usually complain, sometimes loudly, about these and they add little to no information to the modelling protocol itself (although they can be useful in some specific scenarios!). Usually, it suffices to keep the highest occupancy position of each atom.
 
 <a class="prompt prompt-info">
-Using the pdb-tools suite, *clean* the 4ODE_A PDB file of multiple occupancies.
+  Using the pdb-tools suite, *clean* the 4ODE_A PDB file of multiple occupancies.
 </a>
 
 <a class="prompt prompt-cmd">
-	pdb\_delocc.py 4ODE\_A.pdb > 4ODE\_A.pdb.clean  
-    mv 4ODE\_A.pdb.clean 4ODE\_A.pdb
+  pdb\_delocc.py 4ODE\_A.pdb > 4ODE\_A.pdb.clean  
+  mv 4ODE\_A.pdb.clean 4ODE\_A.pdb
 </a>
 
 As a side note, choosing *one* single template might not be ideal in all cases. When modelling a
@@ -371,8 +371,7 @@ although this is disputed. Regardless, this is beyond the scope of this course. 
 Having chosen a template, it is time to focus on building the model itself. While there are many homology modelling methods in the literature, [MODELLER](https://salilab.org/modeller), developed by Andrej Šali and a host of co-workers since the early 1990s, stands out as a robust and popular software package. It builds a structural model from a set of automatically generated spatial restraints, but it also allows the user to define other types of restraints such as secondary structure definitions, generic distance restraints from NMR or cross-linking mass spectrometry, angle and dihedral angle restraints, and also Cryo-EM density maps. If you wish to learn more about MODELLER, have a look at the [online manual](https://salilab.org/modeller/manual/) and the [tutorial pages](https://salilab.org/modeller/tutorial/).
 
 <a class="prompt prompt-attention">
-  MODELLER requires users to register and obtain an installation key. There are no costs for academic
-	users though, so go ahead and get one.
+  MODELLER requires users to register and obtain an installation key. There are no costs for academic users though, so go ahead and get one.
 </a>
 
 To run, MODELLER requires an alignment file with the sequence to be modelled, in our case mouse MDM2, and the sequence(s) of the template(s). In addition, it obviously requires the structure(s) of the template(s). The input alignment file MODELLER reads must be in a modified PIR format. This format is quite unusual and requires particular attention to write correctly. From experience, the overwhelming majority of the errors MODELLER throws at the user come from inconsistencies in the alignment. For an in-depth description of this format, read the [MODELLER manual webpage](https://salilab.org/modeller/manual/node494.html).
@@ -427,7 +426,7 @@ Using MODELLER requires some programming knowledge. The software exposes a very 
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 10
+  cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 10
 </a>
 
 The protocol and settings the scripts will use are what our group uses in *real* modelling jobs in the lab. By default, it uses the MODELLER routine `automodel` to generate models, which automates most of the model building protocol, including a small refinement step. MODELLER starts by reading and validating the alignment against the PDB file(s) of the template(s). If a PDB file is missing some fragment of the sequence HMMER retrieved for that template, for example because it could not be observed in the electron density, then the alignment will have to be manually corrected. MODELLER is quite verbose when it comes to these and other error messages. In this particular case, it will show exactly where the discrepancy occurs. To avoid multiple iterations of trial and error, simply extract the sequence directly from the `ATOM` lines of the PDB file using the utility script `pdb_toseq.py` and align it to the sequence given by HMMER using for example the global pairwise alignment algorithms hosted at the [EBI servers](www.ebi.ac.uk/Tools/psa/emboss_needle/). This will highlight any missing regions.
@@ -469,11 +468,11 @@ MDM2_MOUSE.B99990010.pdb       549.83215   -12059.09277
 </a>
 
 <a class="prompt prompt-pymol">
-    align MDM2\_MOUSE.B99990002, 4ODE\_A  
-    align MDM2\_MOUSE.B99990001, 4ODE\_A  
-    align MDM2\_MOUSE.B99990009, 4ODE\_A  
-    show cartoon  
-    zoom vis  
+  align MDM2\_MOUSE.B99990002, 4ODE\_A  
+  align MDM2\_MOUSE.B99990001, 4ODE\_A  
+  align MDM2\_MOUSE.B99990009, 4ODE\_A  
+  show cartoon  
+  zoom vis  
 </a>
 
 Overall, the models are virtually identical and also identical to the template. This is not surprising, given the high degree of identity between the query and template sequences and the fact that the template sequence covers nearly all of the query. The DOPE and `molpdf` scores are also not very informative. The different models differ very slightly, particularly in DOPE score. Interestingly, the two scores are not correlated, which is again not surprising since they evaluate different properties. The `molpdf` score only informs about the agreement of the model with the restraints derived from the alignment, while the DOPE score tries to inform on the likelihood of the model resembling a real structure. An important feature of MODELLER and its scoring scheme is the possibility of obtaining per-residue scoring profiles, namely of the DOPE potential, which allow the identification of regions of the model that need further care. By convention, any residue scoring above -0.030 is considered problematic. However, keep in mind that the DOPE potential is not as fine-grained to single out badly modelled residues. Additional modelling should only be considered if a stretch of several residues scores consistently near or above this threshold.
@@ -483,8 +482,8 @@ Overall, the models are virtually identical and also identical to the template. 
 </a>
 
 <a class="prompt prompt-cmd">
-	evaluate_model.py MDM2\_MOUSE.B99990002.pdb  
-    plot_profile.py MDM2\_MOUSE.B99990002.dope_profile
+  evaluate_model.py MDM2\_MOUSE.B99990002.pdb  
+  plot_profile.py MDM2\_MOUSE.B99990002.dope_profile
 </a>
 
 <a class="prompt prompt-question">
@@ -498,11 +497,11 @@ There are many possible strategies to improve the (local) quality of a protein m
 </a>
 
 <a class="prompt prompt-attention">
-MODELLER generates a fixed number of loop models for *each* backbone model it creates, so pay attention to the number of structures you request. The default settings of the *cmd_modeller.py* script create 10 backbone models and 10 loop models for each of the latter, i.e. 100 models, which takes a considerable amount of time using a single processing core!
+  MODELLER generates a fixed number of loop models for *each* backbone model it creates, so pay attention to the number of structures you request. The default settings of the *cmd_modeller.py* script create 10 backbone models and 10 loop models for each of the latter, i.e. 100 models, which takes a considerable amount of time using a single processing core!
 </a>
 
 <a class="prompt prompt-cmd">
-    cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 1 \-\-loopmodel \-\-num\_loop\_model 10
+  cmd\_modeller.py -a alignment.pir -t 4ODE\_A.pdb \-\-use\_dope \-\-num\_models 1 \-\-loopmodel \-\-num\_loop\_model 10
 </a>
 
 <a class="prompt prompt-question">
@@ -542,11 +541,11 @@ MDM2_MOUSE.BL00100001.pdb       15.27596     -294.98157
 </a>
 
 <a class="prompt prompt-pymol">
-    align MDM2\_MOUSE.BL00070001, MDM2\_MOUSE.B99990001  
-    align MDM2\_MOUSE.BL00040001, MDM2\_MOUSE.B99990001  
-    align MDM2\_MOUSE.BL00060001, MDM2\_MOUSE.B99990001  
-    show cartoon  
-    zoom vis  
+  align MDM2\_MOUSE.BL00070001, MDM2\_MOUSE.B99990001  
+  align MDM2\_MOUSE.BL00040001, MDM2\_MOUSE.B99990001  
+  align MDM2\_MOUSE.BL00060001, MDM2\_MOUSE.B99990001  
+  show cartoon  
+  zoom vis  
 </a>
 
 <a class="prompt prompt-info">
@@ -557,14 +556,14 @@ MDM2_MOUSE.BL00100001.pdb       15.27596     -294.98157
   Did the loop modelling protocol signficantly improve the scores of the N-terminal loop? Why so?
 </a>
 
-This validation using the tools built in MODELLER help understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
+This validation using the tools bundled with MODELLER helps understand the limitation of the models. Analysing which regions are reliable and which are more likely to be incorrect is an extremely important part of the modelling exercise, particularly before handing out the model to collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles, there are other dedicated validation protocols that analyse the quality of the models based on many different criteria. Many of these are available as web servers, such as [QMEAN](http://swissmodel.expasy.org/qmean/cgi/index.cgi), [PSVS](http://psvs-1_5-dev.nesg.org/) and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall quality of the model and per-residue profiles, using metrics based on statistical comparisons to existing high-resolution crystal structures. For instance, they calculate all bond lengths and angles in the model and compare the distribution with that found in experimental structures. Using these dedicated validation servers is a quick and reliable way of checking the quality of one or more homology models, and is usually advised in any realistic modelling application.
 
 <a class="prompt prompt-info">
   If you have time (and will), submit your best (loop) model to the QMEAN validation server. How does it fare?
 </a>
 
 <a class="prompt prompt-info">
-    As a final exercise, compare your template (human) and best model (mouse) structures, paying special attention to the amino acids that change between the two sequences. If necessary, refer to the sequence viewer to find these more easily.
+  As a final exercise, compare your template (human) and best model (mouse) structures, paying special attention to the amino acids that change between the two sequences. If necessary, refer to the sequence viewer to find these more easily.
 </a>
 
 <a class="prompt prompt-cmd">
@@ -584,3 +583,5 @@ This validation using the tools built in MODELLER help understand the limitation
 
 ## Congratulations!
 You started with a sequence of a protein and went all the way from finding possible templates, to evaluating which to use, to building several models, assessing their quality, and finally selecting one representative. This model can now be used to offer insights on the binding of MDM2 to p53, or on the structure of the mouse MDM2 protein, or to seed new computational analysis such as docking.
+
+You might want to continue with the  tutorial on [molecular dynamics simulations](/education/molmod/simulation)!
