@@ -12,7 +12,7 @@ This page provide you links to software and software manuals of the computationa
 * #### HADDOCK
   Software package for integrative modelling of biomolecular complexes
 
-  * [**HADDOCK2.2 software**](haddock2.2/haddock.html)
+  * [**HADDOCK2.2 software**](haddock2.2/haddock)
 
   * [**HADDOCK web server**](http://haddock.science.uu.nl/services/HADDOCK)
 
