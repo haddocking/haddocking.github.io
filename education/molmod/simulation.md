@@ -57,12 +57,12 @@ The first step is obviously the selection of a starting structure. The aim of th
 SQETFSGLWKLLPPE
 {% endhighlight %}
 
-Peptides are often very flexible molecules with short-lived secondary structure elements. Some can even adopt different structures depending on which protein partner they are interacting with, remaining in a disordered state if free in solution. As such, the effort of using an advanced method such as homology modelling for this peptide is very likely unwarranted. Instead, it is possible, and plausible, to generate structures of the peptide in three ideal conformations -- helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/build_seq.py) if necessary.
+Peptides are often very flexible molecules with short-lived secondary structure elements. Some can even adopt different structures depending on which protein partner they are interacting with, remaining in a disordered state if free in solution. As such, the effort of using an advanced method such as homology modelling for this peptide is very likely unwarranted. Instead, it is possible, and plausible, to generate structures of the peptide in three ideal conformations -- helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/) if necessary.
 
 The instructions shown in this tutorial refer only to the helical peptide, for simplicity. The successful completion of the tutorial requires, however, all three conformations to be simulated.
 
 <a class="prompt prompt-info">
-  Generate an ideal structure for the peptide sequence using Pymol.
+  Generate an ideal structure for the peptide sequence using the build_seq script in Pymol (ss=helix/beta/polypro).
 </a>
 
 <a class="prompt prompt-pymol">
@@ -78,7 +78,7 @@ The instructions shown in this tutorial refer only to the helical peptide, for s
 In case of structures downloaded from the RCSB PDB, it is important to ensure that there are no missing atoms, as well as check for the presence of non-standard amino acids and other small ligands. Force fields usually contain parameters for natural amino acids and nucleotides, a few post-translational modifications, water, and ions. Exotic molecules such as pharmaceutical drugs and co-factors often have to be parameterized manually, which is a science on its own. Always judge if the presence of these exotic species is a necessity. In some cases, the ligands can be safely ignored and removed from the structure. As for missing residues and atoms, except hydrogens, it is absolutely necessary to rebuild them before starting a simulation. MODELLER is an excelent program for this purpose. In addition, some crystals diffract at a good enough resolution to distinguish water molecules in the density mesh. Save for very particular cases where these waters are the subject of the study, the best policy is to remove them altogether from the structure. Fortunately, most of these "problematic" molecules appear as hetero-atoms (HETATM) in the PDB file, and can therefore be removed rather easily with a simple `sed` command:
 
 <a class="prompt prompt-cmd">
-  sed -e "/^HETATM/d" 1XYZ.pdb > 1XYZ_clean.pdb
+  sed -e '/^HETATM/d' 1XYZ.pdb > 1XYZ_clean.pdb
 </a>
 
 It is also good practice to run additional quality checks on the structure before starting the simulation. The refinement process in structure determination does not always yield a proper orientation of some side-chains, such as glutamine and asparagine, given the difficulty in distinguishing nitrogen and oxygen atoms in the density mesh. Also, the protonation state of several residues depends on the pH and can influence the protein's hydrogen bonding network. For crystal structures, the [PDB_REDO](http://xtal.nki.nl/PDB_REDO/) database contains refined versions of structures deposited in the RCSB PDB, which address some of these problems. Alternatively, there are web servers that allow these and other problems to be detected and corrected, such as [WHATIF](http://swift.cmbi.ru.nl/).
@@ -255,7 +255,7 @@ You should have already chosen the appropriate water model -- TIP3P -- when runn
 GROMACS backs up the previous topology file before updating it. Generally, GROMACS *never* overwrites files, instead copying the previous one and renaming it with **#** symbols. At the end of the new topology file, there is an additional entry listing the number of water molecules that are now in the structure. It also added a definition that loads the water model parameters.
 
 <a class="prompt prompt-info">
-  Visualize the solvated structure and the unit cell in Pymol.
+  Convert the solvated structure to PDB using editconf and visualize the unit cell in Pymol.
 </a>
 
 <a class="prompt prompt-pymol">
@@ -321,10 +321,11 @@ The *.mdp* file for this simulation is substantially different from those used f
   Relax the solvent and hydrogen positions through molecular dynamics under NVT conditions.
 </a>
 <a class="prompt prompt-attention">
-  Edit the *.mdp* file to change the temperature and the random seed used to generate initial velocities. Pick an unlikely number for the random seed.
+  Copy the the *.mdp* file to your home directory and change the temperature and the random seed used to generate initial velocities. Pick an unlikely number for the random seed (e.g. your birth date).
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr  
+  cp /opt/data/mdp/03_nvt_pr1000_PME.mdp ~/  
+  gmx grompp -v -f ~/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NVT-PR1000
 </a>
 
@@ -397,14 +398,14 @@ The strenght of the restraints is defined in the `posre.itp` file, created by `p
 
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.1000 # Make a backup of the original file  
-  sed -i -e \'s/1000  1000  1000/ 100   100   100/g\' posre.itp  
+  sed -i -e \'s/1000&nbsp;&nbsp;1000&nbsp;&nbsp;1000/&nbsp;100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/g\' posre.itp  
   gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR100  
 </a>
 
 <a class="prompt prompt-cmd">
-  cp posre.itp posrest.itp.100
-  sed -i -e \'s/100   100   100/ 10    10    10/g\' posre.itp  
+  cp posre.itp posrest.itp.100  
+  sed -i -e \'s/100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10/g\' posre.itp  
   gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR10  
 </a>
@@ -417,7 +418,7 @@ The final equilibration step is to completely remove the position restraints. Th
 </a>
 
 <a class="prompt prompt-info">
-  Extract and plot the energies, temperature, and pressure.
+  Extract and plot the energies, temperature, and pressure. Zoom in the plot and analyse each property.
 </a>
 <a class="prompt prompt-question">
   Is the system ready to be simulated?
@@ -433,7 +434,7 @@ Despite all these efforts, the system is unlikely to be in equilibrium already. 
 The simulation will run for 50 nanoseconds, which is sufficient to derive some insights on the conformational dynamics of such a small peptide. Bear in mind that a proper simulation to fully and exhaustively sample the entire landscape should last much longer, and probably make use of more advance molecular dynamics protocols such as replica exchange. In this case, since several students are expected to work on the same peptide, using different random seeds and starting from different initial conformations, we assume that individual simulations of 50 nanoseconds are informative enough.
 
 <a class="prompt prompt-question">
-  Edit the final *06_md_PME.mdp* file to set the number of steps necessary to reach 50 ns.
+  Copy the final *06_md_PME.mdp* file to your home directory and edit it to set the number of steps necessary to reach 50 ns.
 </a>
 
 The production run will run on our local cluster over the next couple of days. The only step missing is to generate a *.tpr* file containing the information for this simulation. Give this input file a clear name, combining the protein identifier (p53_helix, p53_extended, or p53_polypro) with your name or initials.
@@ -442,13 +443,14 @@ The production run will run on our local cluster over the next couple of days. T
   Generate the production *.tpr* file.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/06_md_PME.mdp -c peptide-NPT-noPR.gro -p peptide.top -o p53_helix_CAH.tpr
+  cp /opt/data/mdp/06_md_PME.mdp ~/06_md_PME.mdp  
+  gmx grompp -v -f ~/06_md_PME.mdp -c peptide-NPT-noPR.gro -p peptide.top -o p53_helix_CAH.tpr
 </a>
 
 If you wish to inspect the contents of the *.tpr* file, use the `dump` utility of GROMACS, which, as the name indicates, outputs the entire contents of the file to the screen. Pipe the output of the command to a text processor such as `less` or `more` (Linux joke) to paginate the output. Press `q` to quit the program.
 
 <a class="prompt prompt-cmd">
-  gmx dump -f p53_helix_CAH.tpr | more
+  gmx dump -s p53_helix_CAH.tpr | more
 </a>
 
 ## Analysis of the Molecular Dynamics Simulation
@@ -793,7 +795,7 @@ The structure of the peptide changes throughout the simulation, but not equally.
   Load the two newly created PDB files in Pymol. Color the b-factor structure accordingly and inspect the flexible regions visually. Note the unphysical character of the average structure.
 </a>
 <a class="prompt prompt-pymol">
-  spectrum b, blue_white_red, md_average  
+  spectrum b, blue_white_red, md_temperature-factors-residue  
   as lines
 </a>
 
@@ -965,8 +967,8 @@ Using the all-vs-all RMSD matrix calculated in the previous step, it is possible
   intra_fit name ca+n+c+o  
   split_states p53_concatenated_clusters  
   delete p53_concatenated_clusters  
-  dssp  
-  as cartoon
+  dssp all, /opt/bin/dssp  
+  as cartoon  
 </a>
 
 <a class="prompt prompt-question">
