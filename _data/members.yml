@@ -11,6 +11,10 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Adrien.jpg
 
+-   name: Irina Moreira 
+    position: Postdoctoral Researcher
+    avatar: /images/people/Moreira.jpg
+
 -   name: Joerg Schaarschmidt
     position: Postdoctoral Researcher
     avatar: /images/people/Jorg.jpg
@@ -31,6 +35,9 @@
     position: Ph.D Candidate
     avatar: /images/people/Cunliang.jpg
 
+-   name: Panagiotis Koukos
+    position: Ph.D Candidate
+
 -   name: Malgorzata Szelag
     position: visiting Ph.D Candidate
     avatar: /images/people/Gosia.jpg
@@ -46,3 +53,6 @@
 -   name: Marijne Schijns
     position: M.Sc Student
     avatar: /images/people/Marijne.jpg
+
+-   name: Mick Walter
+    position: M.Sc Student
