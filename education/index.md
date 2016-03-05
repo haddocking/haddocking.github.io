@@ -16,7 +16,7 @@ In this page you can find links to our educational material, namely tutorials on
 
 ## Tutorials
 
-* [PowerFit tutorial](/education/powerfit-tutorial/): a small introduction into
+* [PowerFit tutorial](/education/powerfit/): a small introduction into
   PowerFit to automatically place a high-resolution atomic structure in a
   lower-resolution cryo-electron microscopy density map.
 
