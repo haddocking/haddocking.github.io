@@ -9,8 +9,8 @@ image:
 
 ## Introduction
 
-PowerFit is a software application developed to fit atomic resolution 
-structures of biomolecules to cryo-EM density maps. It is open-source and 
+PowerFit is a software application developed to fit atomic resolution
+structures of biomolecules to cryo-EM density maps. It is open-source and
 available for download on [Github][link-powerfit].
 
 This tutorial will show you how to utilize PowerFit
@@ -230,8 +230,7 @@ PowerFit calculations. Make the main display window active by clicking on it,
 then go to `Tools` → `Volume data` → `Fit in Map`. In the newly opened `Fit in 
 Map` window, select the best-fitted structure of PowerFit (`fit_1.pdb`) as 
 `Fit` model and the original electron density map (`emd-2017.map`) as the map. 
-Press `Fit` to
-start the optimization. 
+Press `Fit` to start the optimization. 
 
 <a class="prompt prompt-question">
   Does the Chimera local fit optimization tool improve the results of PowerFit?
@@ -294,6 +293,44 @@ clashes?
 <a class="prompt prompt-question">
   Are the three residues identified by mutagenesis involved in any 
 energetically favourable interaction?
+</a>
+
+Finally, to make the impact of HADDOCK more quantitative, we will make a
+distance histogram of the contacts between the ribosome and KsgA. First,
+combine the ribosome together your preferred PowerFit fit.
+
+<a class="prompt prompt-cmd">
+  cat ribosome.pdb run-KsgA/fit_?.pdb > ribosome-KsgA.pdb
+</a>
+
+To calculate all the contacts distances, we make use of a standard tool that is
+shipped with HADDOCK. 
+
+<a class="prompt prompt-cmd">
+  contact-chainID ribosome-KsgA.pdb > ribosome-KsgA.contacts
+</a>
+
+Now we can generate the histogram, and visualize it with xmgrace
+
+<a class="prompt prompt-cmd">
+  make-contact-histogram.csh ribosome-KsgA.contacts
+  xmgrace ribosome-KsgA-contacts-histogram.xmgr
+</a>
+
+<a class="prompt prompt-question">
+  Are there any clashes to be found in the model? An interaction is typically
+  considered clashing if the distance is smaller than 2.8Å.
+</a>
+
+For the HADDOCK model we already combined the ribosome and KsgA
+(`HADDOCK-ribosome-KsgA.pdb`).
+
+<a class="prompt prompt-info">
+    Make a distance histogram for the HADDOCK generated model.
+</a>
+
+<a class="prompt prompt-question">
+    Are there any clashes found for the HADDOCK model?
 </a>
 
 The combination of cryo-EM and mutagenesis data, a physics-based force field, 
