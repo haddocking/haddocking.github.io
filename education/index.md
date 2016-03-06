@@ -13,6 +13,14 @@ In this page you can find links to our educational material, namely tutorials on
 
 * [INSTRUCT practical course: Advanced methods for the integration of diverse structural data with NMR data - April 2016](/education/INSTRUCT-practical-course/)
 
+
+## Tutorials
+
+* [PowerFit tutorial](/education/powerfit/): a small introduction into
+  PowerFit to automatically place a high-resolution atomic structure in a
+  lower-resolution cryo-electron microscopy density map.
+
+
 ## Research projects
 
 We offer various [research projects](/education/research-projects/) to both bachelor and master students, all centered around our main research area: the development of reliable bioinformatics and computational approaches to predict, model and dissect biomolecular interactions at atomic level. Read more [here](/education/research-projects/).
