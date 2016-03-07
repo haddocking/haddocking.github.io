@@ -25,11 +25,11 @@ be installed.
 
 The PowerFit and HADDOCK software are described in
 
-* G.C.P. van Zundert and **A.M.J.J. Bonvin**.
+* G.C.P. van Zundert and A.M.J.J. Bonvin.
 [Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73).
 _AIMS Biophysics_. *2*, 73-87 (2015).
 
-* G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
+* G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
 _Structure._ *23*, 949-960 (2015).
 
@@ -50,10 +50,8 @@ coli ribosome and KsgA, and a cryo-EM density map of around 13Å resolution
 ([EMD-2017][link-density]).
 
 
-## Inspecting the data
 
-Let us first inspect the data we have available, namely the cryo-EM density map
-and the structures we will attempt to fit. 
+## Setup
 
 If you are using one of our pre-packed VM images, the data should be directly
 available in the image. We prepared a folder that contains the cryo-EM density
@@ -69,13 +67,21 @@ ribosome has already been properly fitted in the density.
     cd ~/Desktop/powerfit-tutorial
 </a>
 
-In case you might run this tutorial on your own, make sure to have the required
-software installed, and download the data to run this tutorial from our GitHub
+*In case you might run this tutorial on your own*, make sure to have the required
+software installed ([UCSF Chimera][link-chimera] and [PowerFit][link-powerfit]), 
+and download the data to run this tutorial from our GitHub
 data repository [here][link-data] or clone it from the command line
 
 <a class="prompt prompt-cmd">
     git clone https://github.com/haddocking/powerfit-tutorial
 </a>
+
+
+
+## Inspecting the data
+
+Let us first inspect the data we have available, namely the cryo-EM density map
+and the structures we will attempt to fit. 
 
 Using Chimera, we can easily visualize and inspect the density and models,
 mostly through a few mouse clicks.
@@ -319,11 +325,11 @@ combine the ribosome together your preferred PowerFit fit.
   cat ribosome.pdb run-KsgA/fit_?.pdb > ribosome-KsgA.pdb
 </a>
 
-To calculate all the contacts distances, we make use of a standard tool that is
+To calculate all the contacts within a 5.0Å cutoff distances, we make use of a standard tool that is
 shipped with HADDOCK. 
 
 <a class="prompt prompt-cmd">
-  contact-chainID ribosome-KsgA.pdb > ribosome-KsgA.contacts
+  contact-chainID ribosome-KsgA.pdb 5.0 > ribosome-KsgA.contacts
 </a>
 
 Now we can generate the histogram, and visualize it with xmgrace
