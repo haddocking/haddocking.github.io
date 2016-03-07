@@ -39,7 +39,7 @@ _Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
-_J. Mol. Biol._, Advanced Online Publication (2015).
+_J. Mol. Biol._, *428*, 720-725 (2015).
 
 
 ## 2015
