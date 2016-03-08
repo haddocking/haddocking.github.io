@@ -181,7 +181,7 @@ with date and timing information.
 best-ranked solutions in Chimera.
 </a>
 <a class="prompt prompt-cmd">
-  chimera ribosome-KsgA.map run-KsgA/lcc.mrc run-KsgA/fit_*.pdb
+  chimera ribosome-KsgA.map run-KsgA/lcc.mrc ribosome.pdb run-KsgA/fit_*.pdb
 </a>
 
 Make the density map transparent again, by adjusting the alpha channel value to
