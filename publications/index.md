@@ -15,8 +15,8 @@ Prediction of homo- and hetero-protein complexes by ab-initio and template-based
 _Proteins: Struc. Funct. &amp; Bioinformatics_, In press (2016)
 
 * P. Sliz, P. Meyer, S. Socias, J. Key, E. Ransey, E.C. Tjon, A. Buschiazzo, M. Lei, C. Botka, J. Withrow, D.B. Neau, K. Rajashankar, K.S. Anderson, R. Baxter, S. Blacklow, T. Boggon, **A.M.J.J. Bonvin**, D. Borek, T. Brett, A. Caflisch, C. Chang, W. Chazin, K.D. Corbett, M. Cosgrove, S. Crosson, S. Dhe-Paganon, E. Di Cera, C. Drennan, M. Eck, B. Eichman, Q. Fan, A. Ferré-D'Amaré, J.S. Fraser, J.C. Fromme, K. Garcia, R. Gaudet, P. Gong, S. Harrison, E. Heldwein, Z. Jia, R. Keenan, A. Kruse, M. Kvansakul, J. McLellan, Y. Modis, Y. Nam, Zb. Otwinowski, E.F. Pai, P.J. Barbosa Pereira, C. Petosa, C.S. Raman, T. Rapoport, A. Roll-Mecak, M. Rosen, G. Rudenko, J. Schlessinger, T. Schwartz, Y. Shamoo, H. Sondermann, Y. Tao, N. Tolia, O.V. Tsodikov, K.D. Westover, H. Wu, I. Foster, F. Maia, T. Gonen, T. Kirchhausen, K. Diederichs and M. Crosas.
-Data publication with the structural biology data grid supports live analysis.
-_Nature Communications_, In Press (2016).
+[Data publication with the structural biology data grid supports live analysis](http://dx.doi.org/10.1038/ncomms10882).
+_Nature Communications_, *7*: 10882, 1-12 (2016).
 
 * S. Jung, J. Fischer, B. Spudy, K. Tim, F.D. Soennichsen, L. Xue, **A.M.J.J. Bonvin**, P. Goettig, V. Magdolen, U. Meyer-Hoffert, J. Grötzinger.
 [The solution structure of the kallikrein-related peptidases inhibitor SPINK6](http://dx.doi.org/10.1016/j.bbrc.2016.01.172).
