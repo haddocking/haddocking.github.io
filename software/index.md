@@ -24,6 +24,9 @@ This page provide you links to software and software manuals of the computationa
   * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
   A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files
 
+  * [**HADDOCK-tools**](http://github.com/haddocking/haddock-tools):
+  A collection of useful scripts related to HADDOCK
+
   * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
   Clustering of biomolecular complexes based on the fraction of common contacts
 
