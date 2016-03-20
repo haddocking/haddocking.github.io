@@ -28,7 +28,7 @@ _J. Chem. Inf. and Model._ *56*, 127-138n (2016).
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 [Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](http://dx.doi.org/doi:10.1002/bmb.20941).
-_Biochemistry and Molecular Biology Education_, Advanced Online Publication (2016).
+_Biochemistry and Molecular Biology Education_, *44*, 160-167 (2016).
 
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.

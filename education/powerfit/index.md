@@ -322,13 +322,13 @@ To calculate all the contacts within a 5.0Å cutoff distances, we make use of a
 standard tool (`contact-chainID`) that is shipped with HADDOCK. 
 
 <a class="prompt prompt-cmd">
-  contact-chainID ribosome-KsgA.pdb 5.0 > ribosome-KsgA.contacts
+  ./contact-chainID ribosome-KsgA.pdb 5.0 > ribosome-KsgA.contacts
 </a>
 
 Now we can generate the histogram, and visualize it with xmgrace
 
 <a class="prompt prompt-cmd">
-  make-contact-histogram.csh ribosome-KsgA.contacts  
+  ./make-contact-histogram.csh ribosome-KsgA.contacts  
   xmgrace ribosome-KsgA-contacts-histogram.xmgr
 </a>
 <a class="prompt prompt-question">
