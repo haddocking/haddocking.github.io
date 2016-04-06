@@ -420,7 +420,7 @@ An important part of the analysis, namely the analysis of the clusters, needs to
 manually. A number of scripts are provided for this purpose in the <b>runX/tools</b> directory.
 <BR>
 <hr>
-<li><a name="anastruc"><b><u>ana_structure.csh</u></b>:</a>  This script should run once the 
+<li><a name="anastruc"><b><u>ana_structures.csh</u></b>:</a>  This script should run once the 
    <i>file.list</i> file has been created. It extracts from the header of the PDB files various energy terms, 
    violation statistics and buried surface area and calculates the RMSD of each structure compared to the 
    lowest energy one (if the location of  ProFit is defined (see <a href="/software/haddock2.2/installation">installation</a> 
@@ -428,7 +428,7 @@ manually. A number of scripts are provided for this purpose in the <b>runX/tools
    <BR><BR>
    To run it type:
    <pre>
-   $HADDOCKTOOLS/ana_structure.csh
+   $HADDOCKTOOLS/ana_structures.csh
    </pre>
    in the directory where <i>file.list</i> has been created (e.g. <i><b>structures/it1</b></i> or 
    <i><b>structures/it1/water</b></i>).
@@ -528,13 +528,13 @@ their index.
 <BR>
 <hr>
 <BR>
-<li><a name="anaclust"><b><u>ana_cluster.csh</u></b>:</a> This script takes the output of 
+<li><a name="anaclust"><b><u>ana_clusters.csh</u></b>:</a> This script takes the output of 
 <b>cluster_struc</b> to perform an analysis of the various clusters, calculating average energies, 
 RMSDs and buried surface area per cluster.
 <BR><BR>
 To run it, type with as argument the output file of the clustering, e.g.:
 <pre>
-   $HADDOCKTOOLS/ana_cluster.csh [-best #] analysis/cluster.out
+   $HADDOCKTOOLS/ana_clusters.csh [-best #] analysis/cluster.out
 </pre>
 <BR>
 The <b>[-best #]</b> is an optional (but recommended!) argument to generate additional files with cluster 
@@ -543,10 +543,10 @@ HADDOCK score defined in <a href="/software/haddock2.2/run#iter">run.cns</a>, i.
 This allows to remove the dependency of the cluster averages upon the size of the respective clusters. The
 following example will calculate cluster averages over the best 45 structures.
 <pre>
-   $HADDOCKTOOLS/ana_cluster.csh -best 4 analysis/cluster.out
+   $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster.out
 </pre>
 <BR>
-The <b>ana_cluster.csh</b> script analyzes the clusters in a similar way as the <b>ana_structure.csh</b> script,
+The <b>ana_clusters.csh</b> script analyzes the clusters in a similar way as the <b>ana_structures.csh</b> script,
 but in addition generates average values over the structures belonging to one cluster. It creates a number of files for each
 cluster containing the cluster number <i>clustX</i> in the name:
 <ul>
@@ -674,7 +674,7 @@ It is possible to rerun the HADDOCK analysis for a given cluster. For this, the 
 These three files contain the sorted list of all structures calculated. Similarly, the <b>analysis</b>
 directory should be renamed. Create then an empty analysis directory and cope the files containing the PDB
 file listings for a given cluster (these are created when performing the analysis of the clusters with
-<a href="#anaclust">ana_cluster.csh</a>) to <i>file.cns</i>, <i>file.list</i> and <i>file.nam</i>, respectively.
+<a href="#anaclust">ana_clusters.csh</a>) to <i>file.cns</i>, <i>file.list</i> and <i>file.nam</i>, respectively.
 <BR><BR>
 To simplify this entire procedure, we are providing a csh script named <b>make_links.csh</b> in the <b>tools</b>
 directory (defined by the environment variable $HADDOCKTOOLS). To make the links type:
