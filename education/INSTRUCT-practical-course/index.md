@@ -83,7 +83,7 @@ A detailed programme will be provided at a later stage.
 <br><br>
 
 * April 15 (room 3.3): *Solid state NMR lecture + open discussion / question and answers*
-	*  9:00-10:45: **Baldus**: Characterization of macromolecular assemblies by solid-state NM
+	*  9:00-10:45: **Baldus**: Characterization of macromolecular assemblies by solid-state NMR
 	* 10:45-11:15: coffee break
 	* 11:15-12:15: **Open discussion / question and answers**
 	* 12:15:13:00: Lunch
