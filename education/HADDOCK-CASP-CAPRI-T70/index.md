@@ -64,7 +64,7 @@ For this go into the ana_scripts directory of the cloned directory and type make
 <a class="prompt prompt-cmd">
 cd CASP-CAPRI-T70-tutorial/ana_scripts<BR>
 make<BR>
-source set-target.csh
+source set-target.csh<BR>
 cd ..</a>
 
 If you don't want to wait with the docking runs to complete in order to proceed with the analysis (see below), you can already download pre-calculated runs using the script provided into the runs directory:
@@ -241,7 +241,7 @@ $WDIR/run_all.csh *my-run-directory*
 **Note**: If you use the pre-calculated runs, this analysis has already been performed and you can skip the above step.
 
 
-Be patient since this might take some time depending on whether you are analysing a full or reduced run. The script will calculate CAPRI statistics for all generated models (rigid-body (it0) - semi-flexible refinement (it1) - water refinement (water)). Those can be found in the unpack run directory under `structures/it0`, `structures/it1` and `structures/it1/water` directories, respectively.
+Be patient since this might take some time depending on whether you are analysing a full or reduced run. The script will calculate CAPRI statistics for all generated models (rigid-body (it0) - semi-flexible refinement (it1) - water refinement (water)). Those can be found in the unpacked run directory under `structures/it0`, `structures/it1` and `structures/it1/water` directories, respectively.
 
 Once the analysis script has completed you can get a first glimpse of the number of acceptable models or better using the following command:
 
@@ -319,7 +319,7 @@ The above results show three clusters with medium quality (around 1.3Å i-RMSD).
 Check also the ranking of the clusters. Did the HADDOCK score do a good job are ranking at the top acceptable clusters?
 </a>
 
-In case there is no single acceptable cluster, but the `check_runs_i-rmasd.csh` script did report some acceptable models at water refinement, do check the ranking of those single structure. For this go into the *<my-docking-run>/structures/it1/water* directory and inspect the *i-RMSD.dat* file. This file contains the i-RMSD values sorted according to the HADDOCK score. 
+In case there is no single acceptable cluster, but the `check_runs_i-rmasd.csh` script did report some acceptable models at water refinement, do check the ranking of those single structure. For this go into the *my-docking-run*`/structures/it1/water` directory and inspect the `i-RMSD.dat` file. This file contains the i-RMSD values sorted according to the HADDOCK score. 
 
 <a class="prompt prompt-linux">
 cd *my-docking-run*/structures/it1/water<br>
@@ -372,7 +372,7 @@ Is dimer docking as successful as tetramer docking?
 
 You have completed this tutorial. If you have any questions or 
 suggestions, feel free to contact us via email or by submitting an issue in the 
-appropriate Github repository or asking a question through our [support center](http://www.askbioexcel.eu).
+appropriate [Github repository](https://github.com/haddocking/CASP-CAPRI-T70-tutorial) or asking a question through our [support center](http://ask.bioexcel.eu).
 
 [link-profit]: https://github.com/haddocking/powerfit "ProFit"
 [link-pymol]: http://www.pymol.org/ "Pymol"
