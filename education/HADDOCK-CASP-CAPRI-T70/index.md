@@ -188,6 +188,8 @@ Use the **C2 symmetry segment pair** menu to define those six pairs of symmetry 
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html)
 
+**Note:** You can also view a result page from a downloaded pre-calculated docking run by opening in your favorite browser the `index.html` file provided in the run directory.
+
 The run with reduced numnber of models (course setting) should be returning only one cluster. Load a representative model and compare it to the crystal structure:
 
 <a class="prompt prompt-linux">
@@ -223,7 +225,12 @@ Let's have a more detailed look at the quality and ranking of the generated mode
 * **Medium**:          2Å <=i-RMSD < 1Å and Fnat > 0.3
 * **Acceptable**:       i-RMSD < 1Å and Fnat > 0.5
 
-In order to perform the more quantitative analysis, download the full run from the results page (provide in a link in the first line of the result page) and unpack it. Alternatively, download the pre-calculated data using the `download.csh` or `download-full.csh` scripts in the *runs* directory.
+In order to perform the more quantitative analysis, download the full run from the results page (provide in a link in the first line of the result page) and unpack it. Alternatively, download the pre-calculated data from the following links:
+
+* T70 tetramer docking - reduced settings: [link](https://www.dropbox.com/s/8j26q5yehyvszde/T70-tetramer.tgz)
+* T70 tetramer docking - full sampling: [link](https://www.dropbox.com/s/ygg7l4l1xqms9gy/T70-tetramer-full.tgz)
+* T70 dimer docking - reduced settings: [link](https://www.dropbox.com/s/8j26q5yehyvszde/T70-dimer.tgz)
+* T70 dimer docking - full sampling: [link](https://www.dropbox.com/s/u5ap3yu7hpoyfrn/T70-dimer-full.tgz)
 
 Then start the quantitave analysis in the directory where you saved and unpacked the run with the following command:
 
