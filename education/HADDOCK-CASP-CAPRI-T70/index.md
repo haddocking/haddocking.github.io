@@ -188,6 +188,8 @@ Use the **C2 symmetry segment pair** menu to define those six pairs of symmetry 
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html)
 
+**Note:** You can also view a result page from a downloaded pre-calculated docking run by opening in your favorite browser the `index.html` file provided in the run directory.
+
 The run with reduced numnber of models (course setting) should be returning only one cluster. Load a representative model and compare it to the crystal structure:
 
 <a class="prompt prompt-linux">
