@@ -247,7 +247,7 @@ Here is an example of what this script will return for a full tetramer docking r
 
 <pre>
 T70-tetramer-full
-  #it0: structures with i-RMSD<4A:       143
+  #it0: structures with i-RMSD<4A:       194
   #it0: structures within best200 with i-RMSD<4A:       94
   #it0: structures within best200 with i-RMSD<2A:       94
   #it0: structures within best200 with i-RMSD<1A:        0
