@@ -11,10 +11,10 @@ image:
 
 Our information-driven docking approach [HADDOCK](http://www.bonvinlab.org/software/haddock2.2) is a consistent top predictor and scorer since the start of its participation in the [CAPRI](http://www.ebi.ac.uk/msd-srv/capri) community-wide experiment. This sustained performance is due, in part, to its ability to integrate experimental data and/or bioinformatics information into the modelling process, and also to the overall robustness of the scoring function used to assess and rank the predictions. 
 
-This tutorial will demonstrate the use of HADDOCK for predicting target70 of the CASP-CAPRI experiment. This target was given to the CAPRI community as a tetramer, but there has been discussions weither the biological unit is a dimer or a tetramer. We will use this target to illustrate the ab-initio docking mode of HADDOCK, using a combination of [center-of-mass restraints](http://www.bonvinlab.org/software/haddock2.2/run/#disre) to bring the subunits together and [symmetry restraints](http://www.bonvinlab.org/software/haddock2.2/run/#sym) to define the symmetry of the assembly.
+This tutorial will demonstrate the use of HADDOCK for predicting target70 of the CASP-CAPRI experiment. This target was given to the CAPRI community as a tetramer, but there has been discussions whether the biological unit is a dimer or a tetramer. We will use this target to illustrate the ab-initio docking mode of HADDOCK, using a combination of [center-of-mass restraints](http://www.bonvinlab.org/software/haddock2.2/run/#disre) to bring the subunits together and [symmetry restraints](http://www.bonvinlab.org/software/haddock2.2/run/#sym) to define the symmetry of the assembly.
 
 For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2).
-A description of our web server van be found in the following publications:
+A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
@@ -31,7 +31,7 @@ Further, multi-body docking and the use of symmetry restraints is described in t
 _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
 
 
-Throughout the tutorial, colored text will be used to refer to questions or 
+Throughout the tutorial, coloured text will be used to refer to questions or 
 instructions, Linux and/or Pymol commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering 
@@ -91,13 +91,13 @@ You will see three directories and one file:
 
 * **protein1.pdb**: this is the model we built for this target based on the sequence information that was provided to the CAPRI predictors.
 
-* **runs**: this directory contains a script that allows you to download precalculated full docking runs.
+* **runs**: this directory contains a script that allows you to download pre-calculated full docking runs.
 
 
 <hr>
 ## Ab-initio, multi-body docking with symmetry restraints
 
-We will launch two docking runs, one for the dimeric and one for the tetrametic form of this target.
+We will launch two docking runs, one for the dimeric and one for the tetrameric form of this target.
 For this we will make us of the [multi-body interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-multi.html) of the HADDOCK web server, which does require guru level access (provided with course credential if given to you, otherwise register to the server and request this access level):
 
 <a class="prompt prompt-info">
@@ -154,10 +154,10 @@ Number of structures for the explicit solvent refinement -> 400
 </a>
 
 
-**Note:** If you use course credentials, these numbers wil be reduced to 500/50/50 to save computing time and get back results faster. You can also manually decrease those numbers and download instead a full pre-calculated run for analysis (see setup above).
+**Note:** If you use course credentials, these numbers will be reduced to 500/50/50 to save computing time and get back results faster. You can also manually decrease those numbers and download instead a full pre-calculated run for analysis (see setup above).
 
 
-* **Step 7:** Define noncrystallographic symmetry restraint to enforce the various chains will have exaclty the same conformation. For this unfold the **Noncrystalligraphic symmetry restraints menu**:
+* **Step 7:** Define noncrystallographic symmetry restraint to enforce the various chains will have exactly the same conformation. For this unfold the **Noncrystalligraphic symmetry restraints menu**:
 
 <a class="prompt prompt-info">
 Use this type of restraints	 -> Check the box
@@ -184,13 +184,13 @@ Use the **C2 symmetry segment pair** menu to define those six pairs of symmetry 
 
 
 <hr>
-## First visual analyzis of the results
+## First visual analysis of the results
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html)
 
-**Note:** You can also view a result page from a downloaded pre-calculated docking run by opening in your favorite browser the `index.html` file provided in the run directory.
+**Note:** You can also view a result page from a downloaded pre-calculated docking run by opening in your favourite browser the `index.html` file provided in the run directory.
 
-The run with reduced numnber of models (course setting) should be returning only one cluster. Load a representative model and compare it to the crystal structure:
+The run with reduced number of models (course setting) should be returning only one cluster. Load a representative model and compare it to the crystal structure:
 
 <a class="prompt prompt-linux">
 pymol cluster1_1.pdb $WDIR/30_70.2.pdb
@@ -208,7 +208,7 @@ util.cbc
 </a>
 
 <a class="prompt prompt-question">
-Does the model (or any of the cluster representatives in case of a full run) ressemble the reference crystal structure?
+Does the model (or any of the cluster representatives in case of a full run) resemble the reference crystal structure?
 </a>
 <a class="prompt prompt-question">
 In case you found a reasonable prediction, check what was its rank in the server?
@@ -241,7 +241,7 @@ $WDIR/run_all.csh *my-run-directory*
 **Note**: If you use the pre-calculated runs, this analysis has already been performed and you can skip the above step.
 
 
-Be patient since this might take some time depending on wether you are analysing a full or reduced run. The script will calculate CAPRI statistics for all generated models (rigid-body (it0) - semi-flexible refinement (it1) - water refinement (water)). Those can be found in the unpack run directory under `structures/it0`, `structures/it1` and `structures/it1/water` directories, respectively.
+Be patient since this might take some time depending on whether you are analysing a full or reduced run. The script will calculate CAPRI statistics for all generated models (rigid-body (it0) - semi-flexible refinement (it1) - water refinement (water)). Those can be found in the unpack run directory under `structures/it0`, `structures/it1` and `structures/it1/water` directories, respectively.
 
 Once the analysis script has completed you can get a first glimpse of the number of acceptable models or better using the following command:
 
@@ -277,7 +277,7 @@ Which fraction of the acceptable models at it0 is selected for further refinemen
 </a>
 
 <a class="prompt prompt-question">
-Considering that we are generating 10000 models for a full run at it0, how succesful was our scoring function in selecting acceptable models for further flexible refinement?
+Considering that we are generating 10000 models for a full run at it0, how successful was our scoring function in selecting acceptable models for further flexible refinement?
 </a>
 
 You can also check the cluster-based statistics with the following command:
@@ -332,7 +332,7 @@ Did HADDOCK rank any acceptable model at the top? If not, try to find out what i
 
 You can also inspect the fraction of native contacts of the models by looking at the `file.nam_fnat` file.
 
-Let's inspect the best generated model in terms of i-RMSDs. This is the top model listed in `i-RMSD-sorted.dat`. Upload it in pymol (or your favorite graphical program) and compare it to the crystal structure:
+Let's inspect the best generated model in terms of i-RMSDs. This is the top model listed in `i-RMSD-sorted.dat`. Upload it in pymol (or your favourite graphical program) and compare it to the crystal structure:
 
 <a class="prompt prompt-linux">
 pymol *my-best-model* $WDIR/30_70.2.pdb
@@ -357,7 +357,7 @@ cealign *my-best-model*, 30_70.2<br>
 <hr>
 ## Comparing dimer and tetramer docking
 
-You can follow the same steps described above to perform instead of a tetramer docking a dimer docking. Simply follow the provided instructions, but inputing to the HADDOCK server only two molecules. 
+You can follow the same steps described above to perform instead of a tetramer docking a dimer docking. Simply follow the provided instructions, but inputting to the HADDOCK server only two molecules. 
 
 Repeat the analysis of the results and compare the success with tetramer docking.
 
