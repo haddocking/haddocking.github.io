@@ -9,7 +9,7 @@ In this page you can find links to our educational material, namely tutorials on
 
 ## Courses
 
-* [Structural Bioinformatics & Modelling](/education/molmod/): a MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
+* [Structural Bioinformatics & Modelling](/education/molmod/): A MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
 
 * [INSTRUCT practical course: Advanced methods for the integration of diverse structural data with NMR data - April 2016](/education/INSTRUCT-practical-course/)
 
@@ -21,6 +21,10 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 ## Tutorials
 
-* [PowerFit tutorial](/education/powerfit/): a small introduction into
+* [PowerFit tutorial](/education/powerfit/): A small introduction into
   PowerFit to automatically place a high-resolution atomic structure in a
   lower-resolution cryo-electron microscopy density map.
+
+* [HADDOCK ab-initio, multi-body symmetrical docking tutorial](/education/HADDOCK-CASP-CAPRI-T70):
+  A short tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
+  It is based on a former CASP-CAPRI target (T70).
