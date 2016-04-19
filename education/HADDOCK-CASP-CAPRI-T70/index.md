@@ -72,12 +72,12 @@ If you don't want to wait with the docking runs to complete in order to proceed 
 
 <a class="prompt prompt-cmd">cd runs<BR>./download-run-data.csh<BR>cd ..</a>
 
-This will download two reduced dockings runs, one for the dimeric and one for the tetrameric forms of T70 (about 38MB of data).
+This will download two reduced docking runs, one for the dimeric and one for the tetrameric forms of T70 (about 38MB of data).
 
 Or:
 <a class="prompt prompt-cmd">cd runs<BR>./download-run-data-full.csh<BR>cd ..</a>
 
-This will download two full dockings runs, one for the dimeric and one for the tetrameric forms of T70  (about 800MB of data).
+This will download two full docking runs, one for the dimeric and one for the tetrameric forms of T70  (about 800MB of data).
 
 
 <hr>
@@ -217,7 +217,7 @@ In case you found a reasonable prediction, check what was its rank in the server
 
 
 <hr>
-## More quantitative analyzis of the results
+## More quantitative analysis of the results
 
 Let's have a more detailed look at the quality and ranking of the generated models. For this we will calculate CAPRI statistics, namely the interface RMSD (i-RMSD) and fraction of native contacts (Fnat) compared to the reference crystal structure. CAPRI has defined the following criteria to assess the quality of a model:
 
@@ -233,7 +233,7 @@ In order to perform the more quantitative analysis, download the full run from t
 * T70 dimer docking - reduced settings: [link](https://www.dropbox.com/s/8j26q5yehyvszde/T70-dimer.tgz)
 * T70 dimer docking - full sampling: [link](https://www.dropbox.com/s/u5ap3yu7hpoyfrn/T70-dimer-full.tgz)
 
-Then start the quantitave analysis in the directory where you saved and unpacked the run with the following command:
+Then start the quantitative analysis in the directory where you saved and unpacked the run with the following command:
 
 <a class="prompt prompt-linux">
 $WDIR/run_all.csh *my-run-directory*
