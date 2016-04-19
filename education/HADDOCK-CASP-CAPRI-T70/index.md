@@ -158,7 +158,7 @@ Number of structures for the explicit solvent refinement -> 400
 **Note:** If you use course credentials, these numbers will be reduced to 500/50/50 to save computing time and get back results faster. You can also manually decrease those numbers and download instead a full pre-calculated run for analysis (see setup above).
 
 
-* **Step 7:** Define noncrystallographic symmetry restraint to enforce the various chains will have exactly the same conformation. For this unfold the **Noncrystalligraphic symmetry restraints menu**:
+* **Step 7:** Define noncrystallographic symmetry restraint to enforce the various chains will have exactly the same conformation. For this unfold the **Noncrystallographic symmetry restraints menu**:
 
 <a class="prompt prompt-info">
 Use this type of restraints	 -> Check the box
