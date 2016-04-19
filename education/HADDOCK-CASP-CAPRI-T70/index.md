@@ -57,6 +57,7 @@ data repository [here][link-data] or clone it from the command line
     git clone https://github.com/haddocking/CASP-CAPRI-T70-tutorial
 </a>
 
+Alternatively, if you don't have git installed, simply go the above web address and download the zip archive.
 You will also need to compile a few provided programs for post-analysis.
 For this go into the ana_scripts directory of the cloned directory and type make 
 (we are here assuming a tcsh or csh shell):
@@ -374,6 +375,6 @@ You have completed this tutorial. If you have any questions or
 suggestions, feel free to contact us via email or by submitting an issue in the 
 appropriate [Github repository](https://github.com/haddocking/CASP-CAPRI-T70-tutorial) or asking a question through our [support center](http://ask.bioexcel.eu).
 
-[link-profit]: https://github.com/haddocking/powerfit "ProFit"
+[link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
 [link-pymol]: http://www.pymol.org/ "Pymol"
 [link-data]: https://github.com/haddocking/CASP-CAPRI-T70-tutorial "CASP-CAPRI tutorial data"
