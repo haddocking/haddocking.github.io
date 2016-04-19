@@ -49,7 +49,7 @@ The case we will be investigating is target70 from the CASP-CAPRI experiment, wh
 ## Setup
 
 In order to run this tutorial you will need to have the following software installed:
- ([Pymol][link-pymol] and [PowerFit][link-profit]), 
+ ([Pymol][link-pymol] and [ProFit][link-profit]), 
 and download the data to run this tutorial from our GitHub
 data repository [here][link-data] or clone it from the command line
 
