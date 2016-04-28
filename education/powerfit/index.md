@@ -126,7 +126,7 @@ on the map and calculate a cross-correlation score for each of them.
   map.
 </a>
 <a class="prompt prompt-cmd">
-  powerfit KsgA.pdb ribosome-KsgA.map 13 -d run-KsgA -a 20 -p 2 -l
+  powerfit ribosome-KsgA.map 13 KsgA.pdb -d run-KsgA -a 20 -p 2 -l
 </a>
 
 While performing the search, PowerFit will update you on the progress of the 
@@ -166,10 +166,11 @@ After the search, PowerFit creates a `run-KsgA` directory containing the
 following files:
 
 * `fit_N.pdb`: the best *N* fits, judged by the cross-correlation score.
-* `solutions.out`: a list of all non-redundant solutions, ordered by their
-correlation score. The first column shows the cross-correlation score; columns 
-2 to 4 are the z, y and x coordinate of the center of the structure; columns 5 
-to 14 show the rotation matrix values.
+* `solutions.out`: all the non-redundant solutions found, ordered by their
+correlation score. The first column shows the rank, column 2 the correlation
+score, column 3 and 4 the Fisher z-score and the number of standard
+deviations; column 5 to 7 are the x, y and z coordinate of the center of the
+chain; column 8 to 17 are the rotation matrix values.
 * `lcc.mrc`: a cross-correlation map showing, at each grid position, the 
 highest cross-correlation score found during the search, thus showing the most 
 likely location of the center of mass of the structure.
@@ -283,7 +284,7 @@ experiments, we can integrate both in HADDOCK and benefit of its semi-flexible
 refinement protocols to improve the stereochemistry of our model. To use 
 cryo-EM data, HADDOCK requires the map and also the approximate positions of 
 each chain, as given by their centers of mass. This information is provided 
-directly by PowerFit, in the `solutions.out` file, columns 2 to 4 (z, y, x
+directly by PowerFit, in the `solutions.out` file, columns 5 to 7 (x, y, z
 coordinates):
 
 <a class="prompt prompt-cmd">
