@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* T. Bohnuud, L. Luo, S.J. Wodak, **A.M.J.J. Bonvin**, Z. Weng, S. Vajda, O. Schueler-Furman and D. Kozakov.
+A benchmark testing ground for integrating homology modeling and protein docking.
+_Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
+
 * L.C. Xue, J.P.G.L.M. Rodrigues, D. Dobbs, V. Honavarand  **A.M.J.J. Bonvin**.
 [Template-Based Protein-Protein Docking Exploiting Pairwise Interfacial Residue Restraints](http://dx.doi.org/10.1093/bib/bbw027).
 _Briefings in Bioinformatics_, Advanced Online Publication (2016).
