@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* C. Geng, A. Vangone and **A.M.J.J. Bonvin**.
+Exploring the interplay between experimental methods and the performance of predictors of binding affinity change upon mutations in protein complexes.
+_Protein Engineering, Design, and Selection_, In Press (2016).
+
 * T. Bohnuud, L. Luo, S.J. Wodak, **A.M.J.J. Bonvin**, Z. Weng, S. Vajda, O. Schueler-Furman and D. Kozakov.
 A benchmark testing ground for integrating homology modeling and protein docking.
 _Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
