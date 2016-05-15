@@ -804,9 +804,8 @@ You can also compare the orientation of the ligand in our models with the orient
 
 You have completed this tutorial. If you have any questions or 
 suggestions, feel free to contact us via email or by submitting an issue in the 
-appropriate [Github repository](https://github.com/haddocking/HADDOCK-binding-sites) or asking a question through our [support center](http://ask.bioexcel.eu).
+appropriate [Github repository][link-data] or asking a question through our [support center](http://ask.bioexcel.eu).
 
-[link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
 [link-pymol]: http://www.pymol.org/ "Pymol"
-[link-data]: https://github.com/haddocking/HADDOCK-binding-sites "HADDOCK binding site tutorial data"
+[link-data]: https://github.com/haddocking/HADDOCK-binding-sites-tutorial "HADDOCK binding site tutorial data"
 [link-pdb-tools]: https://github.com/haddocking/pdb-tools "PDB tools"
