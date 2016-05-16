@@ -11,7 +11,7 @@ Exploring the interplay between experimental methods and the performance of pred
 _Protein Engineering, Design, and Selection_, In Press (2016).
 
 * T. Bohnuud, L. Luo, S.J. Wodak, **A.M.J.J. Bonvin**, Z. Weng, S. Vajda, O. Schueler-Furman and D. Kozakov.
-A benchmark testing ground for integrating homology modeling and protein docking.
+[A benchmark testing ground for integrating homology modeling and protein docking](http://dx.doi.org/10.1002/prot.25063).
 _Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
 
 * L.C. Xue, J.P.G.L.M. Rodrigues, D. Dobbs, V. Honavarand  **A.M.J.J. Bonvin**.
