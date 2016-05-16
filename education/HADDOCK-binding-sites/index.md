@@ -260,7 +260,7 @@ First molecule: where is the structure provided? -> "I am submitting it"
 Which chain to be used? -> All (to select all three chains)
 </a>
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select 2JOA-renumbered.pdb
+PDB structure to submit -> Browse and select 2J8S-renumbered.pdb
 </a>
 <a class="prompt prompt-info">
 Segment ID to use during docking -> A
@@ -524,7 +524,7 @@ They report in particular that chain B has the largest channel opening in their 
 *"The three AcrB subunits are bound in three different conformations, revealing three distinct channels ([**Figure 3**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). The width of these channels is sufficient for the passage of typical AcrB substrates. In subunit A, a channel is observed, extending from the external depression through the large periplasmic domain reaching almost the central funnel at the top of the protein ([**Figure 4A**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). Here the side chains of residues Gln124, Gln125, and Tyr758 form a gate, closing the channel and therefore preventing direct access to the central funnel. ... A similar channel, although a little wider, is present in subunit B ([**Figure 4B**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). In addition, the channel is open not only to the periplasm but also to the membrane bilayer at the periphery of the TM domain. In subunit C, the channel entrances are closed due to movements of PC2 and PN1 ([**Figure 4C**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004))."*
 
 <a class="prompt prompt-question">
-To which one of the three channels/submit do we observer preferential contacts on docking models?.
+To which one of the three channels/subunit do we observe preferential contacts on docking models?.
 </a>
 <a class="prompt prompt-question">
 Is this consistent with the observations by Sennhauser *et al*?.
@@ -546,7 +546,7 @@ pymol AcrB_contacts.pdb \$WDIR/3AOD-renumbered.pdb
 <hr>
 ## Identifying a binding pocket from the contact statistics
 
-We will now make use of the contact statistics abtained previously to target a specific binding site in a new docking run. We should make use of statistics obtained from a full docking run.
+We will now make use of the contact statistics obtained previously to target a specific binding site in a new docking run. We should make use of statistics obtained from a full docking run.
 In the previous section we have identified a preferred binding pocket in what should be chain B of the receptor (with residue numbering starting at 2001).
 
 We can extract the most contacted residue for chain B from the file containing the contacts statistics provided in the ```runs``` directory and called ```AcrB-rifampicin-surface-full-contacts.lis```
@@ -662,7 +662,7 @@ Click on submit and save the resulting page, naming it AcrB-rifampicin-act-act.t
 Now repeat the above steps, but this time entering the list of residues for the binding pocket into the passive residue list.
 Save the resulting restraint file as AcrB-rifampicin-pass-act.tbl
 
-The number of distance restraints defined in those file can be obtained by counting hte number of times that an ```assign``` statement is found in the file, e.g.:
+The number of distance restraints defined in those file can be obtained by counting the number of times that an ```assign``` statement is found in the file, e.g.:
 
 <a class="prompt prompt-cmd">
 grep -i assign AcrB-rifampicin-act-act.tbl \| wc -l
@@ -681,7 +681,7 @@ _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a h
 
 
 
-We have now all the required information to setup our targeted docking run. We will again make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
+We have now all the required information to setup our targeted docking run. We will again make use of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
 
 <a class="prompt prompt-info">
 http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
@@ -700,7 +700,7 @@ First molecule: where is the structure provided? -> "I am submitting it"
 Which chain to be used? -> All (to select all three chains)
 </a>
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select 2JOA-renumbered.pdb
+PDB structure to submit -> Browse and select 2J8S-renumbered.pdb
 </a>
 <a class="prompt prompt-info">
 Segment ID to use during docking -> A
