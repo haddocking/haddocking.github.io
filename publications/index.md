@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmon.
+Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function.
+_J. Biol. Chem._, In Press (2016).
+
 * C. Geng, A. Vangone and **A.M.J.J. Bonvin**.
 Exploring the interplay between experimental methods and the performance of predictors of binding affinity change upon mutations in protein complexes.
 _Protein Engineering, Design, and Selection_, In Press (2016).
