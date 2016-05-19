@@ -26,5 +26,11 @@ We offer various [research projects](/education/research-projects/) to both bach
   lower-resolution cryo-electron microscopy density map.
 
 * [HADDOCK ab-initio, multi-body symmetrical docking tutorial](/education/HADDOCK-CASP-CAPRI-T70):
-  A short tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
+  A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
   It is based on a former CASP-CAPRI target (T70).
+
+* [HADDOCK ligand binding site tutorial](/education/HADDOCK-binding-sites):
+  A tutorial demonstrating the use of HADDOCK in ab-initio mode to screen for potential ligand binding sites. 
+  The information from the ab-initio run is then used to setup a binding pocket-targetet protein-ligand docking run.
+  We use as example the multidrug exporter AcrB.
+
