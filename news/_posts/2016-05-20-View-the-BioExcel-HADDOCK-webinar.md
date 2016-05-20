@@ -1,6 +1,6 @@
 ---
 layout: news
-title: First BioExcel HADDOCK webinar
+title: View the First BioExcel HADDOCK webinar
 date: 2016-05-20
 excerpt: Webinar about HADDOCK and the differences between the server and a local version"
 tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking, BioExcel]
