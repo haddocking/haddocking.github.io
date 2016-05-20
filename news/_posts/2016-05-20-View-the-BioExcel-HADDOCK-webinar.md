@@ -11,7 +11,7 @@ The [BioExcel](http://www.bioexcel.eu) Center of Excellence offers educational w
 
 The first webinar of this series feature *Integrative modelling of biomolecular complexes with HADDOCK* by [Alexandre Bonvin](http://www.uu.nl/staff/amjjbonvin).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Dbv6Jvge0Zk" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kxEidXfUUB4" frameborder="0" allowfullscreen></iframe>
 
 <BR>
 <BR>
