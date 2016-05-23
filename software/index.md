@@ -36,8 +36,8 @@ This page provide you links to software and software manuals of the computationa
   * [**DisVis**](https://github.com/haddocking/disvis):
   A Python package and command-line tool to quantify and visualize the accessible interaction space of distance-restrained biomolecular complexes.
 
-  * [**Binding_affinity**](https://github.com/haddocking/binding_affinity):
-  A collection of Python scripts to calculate inter-residue contacts and non-interacting surface properties in protein-protein complexes.
+  * [**Binding_affinity: PRODIGY**](https://github.com/haddocking/binding_affinity):
+  A collection of Python scripts to predict the binding affinity in protein-protein complexes.
 
 <HR>
 * #### 3D-DART DNA modelling
