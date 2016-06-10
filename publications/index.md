@@ -11,8 +11,8 @@ Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function
 _J. Biol. Chem._, In Press (2016).
 
 * C. Geng, A. Vangone and **A.M.J.J. Bonvin**.
-Exploring the interplay between experimental methods and the performance of predictors of binding affinity change upon mutations in protein complexes.
-_Protein Engineering, Design, and Selection_, In Press (2016).
+[Exploring the interplay between experimental methods and the performance of predictors of binding affinity change upon mutations in protein complexes](http://dx.doi.org/10.1093/protein/gzw020).
+_Protein Engineering, Design, and Selection_, Advanced Online Publication (2016).
 
 * T. Bohnuud, L. Luo, S.J. Wodak, **A.M.J.J. Bonvin**, Z. Weng, S. Vajda, O. Schueler-Furman and D. Kozakov.
 [A benchmark testing ground for integrating homology modeling and protein docking](http://dx.doi.org/10.1002/prot.25063).
