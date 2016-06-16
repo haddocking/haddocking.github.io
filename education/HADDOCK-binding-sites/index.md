@@ -177,7 +177,7 @@ remove sele
 Now you only see the mutlidrug exporter. It consists of chain A,B and C and is the system which we will further use for docking, but we have to make sure first that there is no overlap in numbering.
 For this we will work at the terminal level and use our ```pbd-tools``` utilities. Quit first pymol.
 
-Let's first find out what it the first and last residue numbers of the various chains, to check if there is any overlap in numbering:
+Let's first find out what are the first and last residue numbers of the various chains, to check if there is any overlap in numbering:
 
 <a class="prompt prompt-cmd">
 pdb_selchain.py -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
@@ -219,7 +219,7 @@ This will report formatting issues.
 Several small molecules are known to bind to this receptor, among which [rifampicin](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP) and [minocycline](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/MIY). A crystal structure of the complex with both ligands is also available from the PDB website ([PBD entry 3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod)). Those ligands are binding to [two different sites](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/ligands) on the receptor. 
 
 For docking we need coordinates of those ligands in PDB format with line starting with HETATM.
-After downloading the correspond PDB entry [3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod) extract the ligands from it with the following commands:
+After downloading the corresponding PDB entry [3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod) extract the ligands from it with the following commands:
 
 For rifampicin (called RFP in the PDB file):
 
@@ -241,7 +241,7 @@ For minocycline (called MIY in the PDB file):
 ## Ab-initio surface-based docking with HADDOCK
 
 We will launch here a docking run using the apo form of the receptor (the renumbered PDB we just prepared) and rifampicin as potential ligand.
-For this we will make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
+For this we will make use of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
 
 <a class="prompt prompt-info">
 http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
@@ -266,10 +266,10 @@ PDB structure to submit -> Browse and select 2J8S-renumbered.pdb
 Segment ID to use during docking -> A
 </a>
 <a class="prompt prompt-info">
-The N-terminus of your protein is positively charged -> uncheck the box
+The N-terminus of your protein is positively charged -> uncheck the box if needed
 </a>
 <a class="prompt prompt-info">
-The C-terminus of your protein is negatively charged -> uncheck the box
+The C-terminus of your protein is negatively charged -> uncheck the box if needed
 </a>
 
 (Our structure might not be the real fragment used for crystallisation - better to have uncharged termini)
@@ -277,7 +277,7 @@ The C-terminus of your protein is negatively charged -> uncheck the box
 * **Step 3.** Input the ligand PDB file. For this unfold the **Molecule definition menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
+Second molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All
@@ -393,7 +393,7 @@ If you want to inspect some of the docking models, change directly to ```runname
 You can for example inspect the first 10 with pymol, comparing them to the reference complex 3AOD:
 
 <a class="prompt prompt-cmd">
-pymol complexfit_[0-9].pdb complexfit_10.pdb $WDIR/3AOD-renumbered.pdb
+pymol complexfit_[1-9].pdb complexfit_10.pdb $WDIR/3AOD-renumbered.pdb
 </a>
 
 This will load the top 10 models and a renumbered reference crystal structure into pymol (make sure to have run the [Setup](#setup) described above). In case WDIR is not defined or you are not running under a linux-like environment you can find the reference structure into the *ana_scripts* directory. 
@@ -479,7 +479,7 @@ And then we will use this PDB file, together with the contacts statistics file j
 
 The result is a new PDB file called ```AcrB_contacts.pdb``` which can now be visualized in Pymol (we also load here the reference structure).
 If you have performed the analysis on a full run, use the ```AcrB_contacts.pdb``` file you just created. Otherwise, in order to get more significant results, 
-use instead the model provided in the ```AcrB-rifampicin-surface-full``` directory in which you will find the pre-comoputed data from an analysis 
+use instead the model provided in the ```AcrB-rifampicin-surface-full``` directory in which you will find the pre-computed data from an analysis 
 of 10000 rigid body docking (it0 models). The corresponding full run archive can be downloaded using the ```download-run-data-full.csh``` script 
 (but beware it is a large amount of data >10GB when unpacked).
 
@@ -514,7 +514,7 @@ You can distinguish the various chains by the corresponding resisude numbering:
 
 * Chain A starts at residue number 1
 * Chain B starts at residue number 2001
-* Chain C starts at residue number 4004.
+* Chain C starts at residue number 4001.
 
 <a class="prompt prompt-question">
 With this knowledgle at hand, try to identify in which chain we find a binding pocket highlighted by the most contacted residues from our analysis.
@@ -596,7 +596,7 @@ Let us now extract the list of the top 10% most contacted residues (change the v
 awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \| head -84 > AcrB-rifampicin-surface-full-contacts-top10.lis
 </a>
 
-We can now encode this information in a PDF file to visualize the defined binding site:
+We can now encode this information in a PDB file to visualize the defined binding site:
 
 <a class="prompt prompt-cmd">
 pdb_b.py -1 ../2J8S-renumbered.pdb \|pdb_chain.py -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
@@ -708,10 +708,10 @@ PDB structure to submit -> Browse and select 2J8S-renumbered.pdb
 Segment ID to use during docking -> A
 </a>
 <a class="prompt prompt-info">
-The N-terminus of your protein is positively charged -> uncheck the box
+The N-terminus of your protein is positively charged -> uncheck the box if needed
 </a>
 <a class="prompt prompt-info">
-The C-terminus of your protein is negatively charged -> uncheck the box
+The C-terminus of your protein is negatively charged -> uncheck the box if needed
 </a>
 
 (Our structure might not be the real fragment used for crystallisation - better to have uncharged termini)
@@ -719,7 +719,7 @@ The C-terminus of your protein is negatively charged -> uncheck the box
 * **Step 3.** Input the ligand PDB file. For this unfold the **Molecule definition menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
+Second molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All
@@ -797,6 +797,25 @@ Visualize and compare the various clusters (use all what you have learned about 
 </a>
 
 You can also compare the orientation of the ligand in our models with the orientation of the same ligand in the crystal structure with rifampicin bound in chain C (remember that chain C of that structure corresponds to chain A in the nomemclature of Sennhauser et al.) ([3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP)), corresponding to a channel slightly narrower than for chain A (our current chain B in Sennhauser). Or simply use the renumbered 3AOD structure provided in the ```pdbs``` directory called ```3AOD-renumbered-BCA.pdb``` to compare the structures in Pymol. In this renumbered structure, we changed the chain IDs such as that the chain binding rifampicin corresponds to chain B of 2J8S which we targeted.
+
+<a class="prompt prompt-cmd">
+pymol cluster*_1.pdb $WDIR/3AOD-renumbered-BCA.pdb
+</a>
+
+<a class="prompt prompt-pymol">
+select refe, 3AOD-renumbered-BCA<br>
+select cluster*<br>
+alignto refe<br>
+zoom vis<br>
+show ribbon<br>
+hide lines<br>
+util.cbc<BR>
+select resn MIY+RFP<BR>
+show sphere, sele<BR>
+color orange, sele<BR>
+select 3AOD-renumbered-BCA and resn MIY+RFP<BR>
+color red, sele<BR>
+</a>
 
 
 **Note:** You should realize that the crystal structure has a limited resolution (3.3Å) and its quality is also limited (see the "[Experiments and Validation](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/experiment)" page provided by the PDBe for this structure). In general for modelling purposes, it might also be worth considering the recalculated structure from [PDB_REDO](http://www.cmbi.ru.nl/pdb_redo/), the database of updated and optimized X-ray structure models.
