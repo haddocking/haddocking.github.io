@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* G.C.P van Zundert and  **A.M.J.J. Bonvin**.
+[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
+_J. Struct. Biol._, Advanced Online Publication (2016).
+
 * Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmon.
 Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function.
 _J. Biol. Chem._, In Press (2016).
