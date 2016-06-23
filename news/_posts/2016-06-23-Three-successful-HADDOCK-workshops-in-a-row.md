@@ -7,7 +7,7 @@ tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-No less than three HADDOCK tutorials have been given in the last three weeks in Italy. The first one took place at the [University of Cagliari](http://www.unica.it/pub/english/), [Department of Physics](http://www.dsf.unica.it) early June, sponsored by [Sardinie Richerce](http://www.sardegnaricerche.it). 
+No less than three HADDOCK tutorials have been given in the last three weeks in Italy. The first one took place at the [University of Cagliari](http://www.unica.it/pub/english/), [Department of Physics](http://www.dsf.unica.it) early June, sponsored by [Sardegna Ricerche](http://www.sardegnaricerche.it). 
 
 <figure align="center">
     <img src="/images/posts/HADDOCK-tutorial-Cagliari.png">
