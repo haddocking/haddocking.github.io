@@ -1,6 +1,6 @@
 ---
 layout: news
-title: Zeynep-wins-doctoral-dissertation-award
+title: Zeynep wins doctoral dissertation award
 date: 2016-06-23
 excerpt: Congratulations to Zeynep for her doctoral dissertation award from Bogazici University
 tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
