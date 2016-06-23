@@ -27,4 +27,4 @@ The third workshop was help in Salerno preceeding the 13th annual [meeting of th
 
 The tutorials covered various scenarios of HADDOCK from the basic protein-protein docking tutorial to more advanced ligand binding site screening as available on our [Education](/education) web page.
 
-Such events also always provide an opportunitu to adversite the expertise and e-infrastructure provided by various [European e-Infrastructure](https://ec.europa.eu/programmes/horizon2020/en/h2020-section/e-infrastructures) projects such as [West-Life](http://west-life.eu), [INDIGO-Datacloud](https://www.indigo-datacloud.eu), [BioExcel](http://www.bioexcel.eu) with the support of the [EGI](http://www.egi.eu).
+Such events also always provide an opportunitu to advertise the expertise and e-infrastructure provided by various [European e-Infrastructure](https://ec.europa.eu/programmes/horizon2020/en/h2020-section/e-infrastructures) projects such as [West-Life](http://west-life.eu), [INDIGO-Datacloud](https://www.indigo-datacloud.eu), [BioExcel](http://www.bioexcel.eu) with the support of [EGI](http://www.egi.eu).
