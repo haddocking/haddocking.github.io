@@ -124,6 +124,10 @@
     current: 'Adam Mickiewicz University, Poznan, Poland'
     status: graduate student
 
+-   name: Venkata Krishnan Ramaswamy
+    current: 'Cagliari University, Italy'
+    position: visiting graduate student
+
 -   name: Siddarth Narasimhan
     url: http://www.uu.nl/nmr
     current: 'Solid state NMR group, Utrecht, the Netherlands'
@@ -159,8 +163,8 @@
     url: http://katalog.uu.se/empinfo/?id=N11-1085
     current: 'Uppsala University, Sweden'
     status: student
-    
--   name: Mikael Trellet
-    url: http://www.limsi.fr/Annuaire/infos?id=trellet
-    current: 'CNRS-LIMSI, Paris'
+
+-   name: Chiara Fais
+    current: 'Cagliari University, Italy'
     status: student
+
