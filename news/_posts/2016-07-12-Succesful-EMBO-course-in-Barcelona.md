@@ -16,7 +16,7 @@ Last week (July 4-9, 2016), the [EMBO practical course on Integrative Modelling 
 HADDOCK was of course represented in this course, with both a lecture on Integrative Modelling using HADDOCK by Alexandre Bonvin and a HADDOCK computer tutorial given by Anna Vangone and João Rodrigues. Use of our [web portal](http://haddock.science.uu.nl/enmr/services/HADDOCK2.2), powered by [EGI-Engage](http://www.egi.eu), [West-Life](http://www.west-life.eu), [INDIGO-DataCloud](http://www.indigo-datacloud.eu) and [BioExcel](http://www.bioexcel.eu) H2020 EU projects was demonstrated.
 
 <figure align="center">
-    <img src="/images/posts/EMBO2016-HADDOCk-team.jpg">
+    <img src="/images/posts/EMBO2016-HADDOCK-team.jpg">
 </figure>
 
 
