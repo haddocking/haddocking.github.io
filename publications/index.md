@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* R. Melo, R. Fieldhouse, A. Melo, J.D.G. Correia, M.D.S. Cordeiro, Z.H. Gumus, J. Costa,  **A.M.J.J. Bonvin** and I.S. Moreira.
+A Machine-Learning Approach for Hot-Spot Detection at Protein-Protein Interfaces.
+_International Journal of Molecular Sciences_, In Press (2016).
+
 * G.C.P van Zundert and  **A.M.J.J. Bonvin**.
 [Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
 _J. Struct. Biol._, *195*, 252-258 (2016).
