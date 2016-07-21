@@ -21,23 +21,26 @@ This page provide you links to software and software manuals of the computationa
 * #### [HADDOCKING GitHub repository](http://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
 
-  * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
-  A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files
-
-  * [**HADDOCK-tools**](http://github.com/haddocking/haddock-tools):
-  A collection of useful scripts related to HADDOCK
-
-  * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
-  Clustering of biomolecular complexes based on the fraction of common contacts
-
-  * [**PowerFit**](https://github.com/haddocking/powerfit):
-  PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities.
+  * [**Binding_affinity: PRODIGY**](https://github.com/haddocking/binding_affinity):
+  A collection of Python scripts to predict the binding affinity in protein-protein complexes.
 
   * [**DisVis**](https://github.com/haddocking/disvis):
   A Python package and command-line tool to quantify and visualize the accessible interaction space of distance-restrained biomolecular complexes.
 
-  * [**Binding_affinity: PRODIGY**](https://github.com/haddocking/binding_affinity):
-  A collection of Python scripts to predict the binding affinity in protein-protein complexes.
+  * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
+  Clustering of biomolecular complexes based on the fraction of common contacts
+
+  * [**HADDOCK-tools**](http://github.com/haddocking/haddock-tools):
+  A collection of useful scripts related to HADDOCK
+
+  * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
+  A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files
+
+  * [**PowerFit**](https://github.com/haddocking/powerfit):
+  PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities.
+
+  * [**Samplex**](https://github.com/haddocking/samplex):
+  Samplex is an automatic and unbiased method to distinguish perturbed and unperturbed regions in a protein existing in two distinct states (folded/partially unfolded, bound/unbound). Samplex takes as input a set of data and the corresponding three-dimensional structure and returns the confidence for each residue to be in a perturbed or unperturbed state.
 
 <HR>
 * #### 3D-DART DNA modelling
