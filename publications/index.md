@@ -6,9 +6,13 @@ image:
 
 ## 2016
 <hr />
+* L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#
+PRODIGY: a web server for predicting the binding affinity of protein-protein complexes.
+_Bioinformatics_, In Press (2016).
+
 * R. Melo, R. Fieldhouse, A. Melo, J.D.G. Correia, M.D.S. Cordeiro, Z.H. Gumus, J. Costa,  **A.M.J.J. Bonvin** and I.S. Moreira.
 A Machine-Learning Approach for Hot-Spot Detection at Protein-Protein Interfaces.
-_International Journal of Molecular Sciences_, In Press (2016).
+_International Journal of Molecular Sciences_, *17*, 1215 (2016).
 
 * G.C.P van Zundert and  **A.M.J.J. Bonvin**.
 [Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
