@@ -11,7 +11,7 @@ image:
 _Bioinformatics_, Advanced Online Publication (2016).
 
 * R. Melo, R. Fieldhouse, A. Melo, J.D.G. Correia, M.D.S. Cordeiro, Z.H. Gumus, J. Costa,  **A.M.J.J. Bonvin** and I.S. Moreira.
-A Machine-Learning Approach for Hot-Spot Detection at Protein-Protein Interfaces.
+[A Machine-Learning Approach for Hot-Spot Detection at Protein-Protein Interfaces](http://dx.doi.org/10.3390/ijms17081215).
 _International Journal of Molecular Sciences_, *17*, 1215 (2016).
 
 * G.C.P van Zundert and  **A.M.J.J. Bonvin**.
@@ -19,12 +19,12 @@ _International Journal of Molecular Sciences_, *17*, 1215 (2016).
 _J. Struct. Biol._, *195*, 252-258 (2016).
 
 * Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmon.
-Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function.
-_J. Biol. Chem._, In Press (2016).
+[Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function](http://dx.doi.org/10.1074/jbc.M116.717884).
+_J. Biol. Chem._, *291*, 15057-15068 (2016).
 
 * C. Geng, A. Vangone and **A.M.J.J. Bonvin**.
 [Exploring the interplay between experimental methods and the performance of predictors of binding affinity change upon mutations in protein complexes](http://dx.doi.org/10.1093/protein/gzw020).
-_Protein Engineering, Design, and Selection_, Advanced Online Publication (2016).
+_Protein Engineering, Design, and Selection_, *29*, 291-299 (2016).
 
 * T. Bohnuud, L. Luo, S.J. Wodak, **A.M.J.J. Bonvin**, Z. Weng, S. Vajda, O. Schueler-Furman and D. Kozakov.
 [A benchmark testing ground for integrating homology modeling and protein docking](http://dx.doi.org/10.1002/prot.25063).
@@ -44,11 +44,11 @@ _Nature Communications_, *7*: 10882, 1-12 (2016).
 
 * S. Jung, J. Fischer, B. Spudy, K. Tim, F.D. Soennichsen, L. Xue, **A.M.J.J. Bonvin**, P. Goettig, V. Magdolen, U. Meyer-Hoffert, J. Grötzinger.
 [The solution structure of the kallikrein-related peptidases inhibitor SPINK6](http://dx.doi.org/10.1016/j.bbrc.2016.01.172).
-_Biochemical and Biophysical Research Communications_, Advanced Online Publication (2016).
+_Biochemical and Biophysical Research Communications_, *471*, 103-108 (2016).
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 [On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
-_J. Chem. Inf. and Model._ *56*, 127-138n (2016).
+_J. Chem. Inf. and Model._ *56*, 127-138 (2016).
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 [Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](http://dx.doi.org/doi:10.1002/bmb.20941).
