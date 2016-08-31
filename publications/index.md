@@ -6,7 +6,11 @@ image:
 
 ## 2016
 <hr />
-* L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#
+* A.D. Spiliotopoulos, P.L. Kastritis, A.S.J. Melquiond, **A.M.J.J. Bonvin**, G. Musco, W. Rocchia, A. Spitaleri.
+[dMM-PBSA: a new HADDOCK scoring function for protein-peptide docking](http://journal.frontiersin.org/article/10.3389/fmolb.2016.00046/full).
+_Frontiers in Molecular Biosciences_ *3*:46 doi:10.3389/fmolb.2016.00046(2016).
+
+* L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#.
 [PRODIGY: a web server for predicting the binding affinity of protein-protein complexes](http://dx.doi.org/10.1093/bioinformatics/btw514).
 _Bioinformatics_, Advanced Online Publication (2016).
 
