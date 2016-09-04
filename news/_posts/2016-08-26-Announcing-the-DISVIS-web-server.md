@@ -2,7 +2,7 @@
 layout: news
 title: Announcing the DISVIS web server
 date: 2016-08-26
-excerpt: Vsiualize your accessible interaction space with the DISVIS server
+excerpt: Visualize your accessible interaction space with the DISVIS server
 tags: [HADDOCK, DISVIS, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
