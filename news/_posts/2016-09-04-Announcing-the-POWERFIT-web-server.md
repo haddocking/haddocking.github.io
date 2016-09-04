@@ -26,7 +26,7 @@ _AIMS Biophysics_. *2*, 73-87 (2015).
 [Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
 _J. Struct. Biol._, *195*, 252-258 (2016).
 	
-POWERFIT is also freely available for local installation through our GitHub repository: [https://github.com/haddocking/pwerfit](https://github.com/haddocking/pwerfit). 
+POWERFIT is also freely available for local installation through our GitHub repository: [https://github.com/haddocking/powerfit](https://github.com/haddocking/powerfit). 
 A Docker container is available from the [INDIGO-Datacloud](http://www.indigo-datacloud.eu) repository: [https://github.com/indigo-dc/docker-powerfit](https://github.com/indigo-dc/docker-powerfit).
 
 The POWERFIT web server is powered by EGI ([www.egi.eu](http://www.egi.eu)) GPGPU HTC resources. 
