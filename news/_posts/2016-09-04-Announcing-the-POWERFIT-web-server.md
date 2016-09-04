@@ -10,7 +10,7 @@ image:
 
 We are glad to announce the release of our [POWERFIT web server](http://milou.science.uu.nl/services/POWERFIT). 
 
-PowerFit automatically fits high-resolution atomic structures in cryo-EM densities. To this end it performs a full-exhaustive 6-dimensional cross-correlation search between the atomic structure and the density. It takes as input an atomic structure in PDB-format and a cryo-EM density with its resolution; and outputs positions and rotations of the atomic structure corresponding to high correlation values. PowerFit uses the local cross-correlation function as its base score. The score can optionally be enhanced by a Laplace pre-filter and/or a core-weighted version to minimize overlapping densities from neighboring subunits.
+PowerFit automatically fits high-resolution atomic structures in cryo-EM densities. To this end it performs a full-exhaustive 6-dimensional cross-correlation search between the atomic structure and the density. It takes as input an atomic structure in PDB-format and a cryo-EM density with its resolution; and outputs positions and rotations of the atomic structure corresponding to high correlation values. PowerFit uses the local cross-correlation function as its base score, enhanced by a Laplace pre-filter and/or core-weighting to minimize overlapping densities from neighboring subunits.
 
 <figure align="center">
     <img src="/images/posts/powerfit.png">
