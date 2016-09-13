@@ -6,9 +6,12 @@ image:
 
 ## 2016
 <hr />
-* A.D. Spiliotopoulos, P.L. Kastritis, A.S.J. Melquiond, **A.M.J.J. Bonvin**, G. Musco, W. Rocchia, A. Spitaleri.
+* M. Trellet, J. Schaarschmidt, G.C.P. van Zundert, Z. Kurkcuoglu, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
+[Integrative modelling goes HPC/HTC](http://dx.doi.org/10.7490/f1000research.1113051.1). _F1000Research_ *5*:2216 (poster) (2016).
+
+* A.D. Spiliotopoulos, P.L. Kastritis, A.S.J. Melquiond, **A.M.J.J. Bonvin**, G. Musco, W. Rocchia and A. Spitaleri.
 [dMM-PBSA: a new HADDOCK scoring function for protein-peptide docking](http://journal.frontiersin.org/article/10.3389/fmolb.2016.00046/full).
-_Frontiers in Molecular Biosciences_ *3*:46 doi:10.3389/fmolb.2016.00046(2016).
+_Frontiers in Molecular Biosciences_ *3*:46 doi:10.3389/fmolb.2016.00046 (2016).
 
 * L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#.
 [PRODIGY: a web server for predicting the binding affinity of protein-protein complexes](http://dx.doi.org/10.1093/bioinformatics/btw514).
@@ -22,7 +25,7 @@ _International Journal of Molecular Sciences_, *17*, 1215 (2016).
 [Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
 _J. Struct. Biol._, *195*, 252-258 (2016).
 
-* Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmon.
+* Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmond.
 [Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function](http://dx.doi.org/10.1074/jbc.M116.717884).
 _J. Biol. Chem._, *291*, 15057-15068 (2016).
 
