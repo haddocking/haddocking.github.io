@@ -6,6 +6,10 @@ image:
 
 ## 2016
 <hr />
+* J. Felix, E. Kandiah, S. De Munck, Y. Bloch, G.C.P. van Zundert, K. Pauwels, A. Dansercoer, K. Novanska, R.J. Read, **A.M.J.J. Bonvin**, B. Vergauwen, K. Verstraete, I. Gutsche and S.N. Savvides.
+Structural basis of GM-CSF and IL-2 sequestration by the viral decoy receptor GIF to achieve immunomodulation.
+_Nature Communications_ In Press (2016).
+
 * M. Trellet, J. Schaarschmidt, G.C.P. van Zundert, Z. Kurkcuoglu, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Integrative modelling goes HPC/HTC](http://dx.doi.org/10.7490/f1000research.1113051.1). _F1000Research_ *5*:2216 (poster) (2016).
 
