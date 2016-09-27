@@ -84,5 +84,5 @@ Attendence if free of charge but registration is required.
 Lunch and coffee will be provided thanks to the support of the [Utrecht Bioinformatics Center](http://ubc.uu.nl) and the H2020 EU [BioExcel](http://www.bioexcel.eu) Center of Excellence.
 
 <center>
-<img width="100" src="/images/UBC_logo.png">        <img width="100" src="/images/Bioexcel_logo.png">          <img width="100" src="/images/UU-logo.png">
+<img width="150" src="/images/UBC_logo.png">        <img width="150" src="/images/Bioexcel_logo.png">          <img width="150" src="/images/UU-logo.png">
 </center>
