@@ -51,10 +51,13 @@ The [Netherlands Society on Biomolecular Modelling](http://www.nsbm.nl) (NSBM) i
 <br><br>
 * 11:20-11:40	Short talk selected from abstracts
 <br><br>
-* 11:40-12:20	Lecture 
+* 11:40-12:10	Lecture 
 	* **Dr. Linda Kaldenberg**, [Merus B.V.](http://www.merus.nl) Utrecht
 <br><br>
-* 12:12-14:00	Lunch and **poster session**
+* 12:10-12:30	Lecture 
+	* **BioExcel**, A center of excellence for computational biomolecular research.
+<br><br>
+* 12:30-14:00	Lunch and **poster session**
 <br><br>
 * 14:00-14:50	Keynote II: 
 	* [**Prof. Friedrich Foerster**](http://www.uu.nl/staff/FGForster), Utrecht University. 
