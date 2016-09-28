@@ -28,6 +28,7 @@ The [Netherlands Society on Biomolecular Modelling](http://www.nsbm.nl) (NSBM) i
 * *Submission of an abstract is required if you want to present a poster.*
 * Indicate in your email if you want be selected for a short oral presentation.
 
+**Note**: The maximum number of participants is limited to 75! So do register on time.
 
 
 
