@@ -9,9 +9,7 @@ In this page you can find links to our educational material, namely tutorials on
 
 ## Courses
 
-* [Structural Bioinformatics & Modelling](/education/molmod/): a MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
-
-* [INSTRUCT practical course: Advanced methods for the integration of diverse structural data with NMR data - April 2016](/education/INSTRUCT-practical-course/)
+* [Structural Bioinformatics & Modelling](/education/molmod/): A MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
 
 
 ## Research projects
@@ -19,8 +17,25 @@ In this page you can find links to our educational material, namely tutorials on
 We offer various [research projects](/education/research-projects/) to both bachelor and master students, all centered around our main research area: the development of reliable bioinformatics and computational approaches to predict, model and dissect biomolecular interactions at atomic level. Read more [here](/education/research-projects/).
 
 
+## Conferences and workshops
+
+* [Fall meeting of the Netherlands Society for Biomolecular Modelling - November 2016](/news/NSBM-fall-meeting)
+
+* [INSTRUCT practical course: Advanced methods for the integration of diverse structural data with NMR data - April 2016](/education/INSTRUCT-practical-course/)
+
+
 ## Tutorials
 
-* [PowerFit tutorial](/education/powerfit/): a small introduction into
+* [PowerFit tutorial](/education/powerfit/): A small introduction into
   PowerFit to automatically place a high-resolution atomic structure in a
   lower-resolution cryo-electron microscopy density map.
+
+* [HADDOCK ab-initio, multi-body symmetrical docking tutorial](/education/HADDOCK-CASP-CAPRI-T70):
+  A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
+  It is based on a former CASP-CAPRI target (T70).
+
+* [HADDOCK ligand binding site tutorial](/education/HADDOCK-binding-sites):
+  A tutorial demonstrating the use of HADDOCK in ab-initio mode to screen for potential ligand binding sites. 
+  The information from the ab-initio run is then used to setup a binding pocket-targetet protein-ligand docking run.
+  We use as example the multidrug exporter AcrB.
+

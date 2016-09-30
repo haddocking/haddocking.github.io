@@ -6,25 +6,64 @@ image:
 
 ## 2016
 <hr />
+* D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
+Structure of the bacterial plant-ferredoxin receptor FusA.
+_Nature Communications_ In Press (2016)
+
+* J. Felix, E. Kandiah, S. De Munck, Y. Bloch, G.C.P. van Zundert, K. Pauwels, A. Dansercoer, K. Novanska, R.J. Read, **A.M.J.J. Bonvin**, B. Vergauwen, K. Verstraete, I. Gutsche and S.N. Savvides.
+Structural basis of GM-CSF and IL-2 sequestration by the viral decoy receptor GIF to achieve immunomodulation.
+_Nature Communications_ In Press (2016).
+
+* M. Trellet, J. Schaarschmidt, G.C.P. van Zundert, Z. Kurkcuoglu, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
+[Integrative modelling goes HPC/HTC](http://dx.doi.org/10.7490/f1000research.1113051.1). _F1000Research_ *5*:2216 (poster) (2016).
+
+* A.D. Spiliotopoulos, P.L. Kastritis, A.S.J. Melquiond, **A.M.J.J. Bonvin**, G. Musco, W. Rocchia and A. Spitaleri.
+[dMM-PBSA: a new HADDOCK scoring function for protein-peptide docking](http://journal.frontiersin.org/article/10.3389/fmolb.2016.00046/full).
+_Frontiers in Molecular Biosciences_ *3*:46 doi:10.3389/fmolb.2016.00046 (2016).
+
+* L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#.
+[PRODIGY: a web server for predicting the binding affinity of protein-protein complexes](http://dx.doi.org/10.1093/bioinformatics/btw514).
+_Bioinformatics_, Advanced Online Publication (2016).
+
+* R. Melo, R. Fieldhouse, A. Melo, J.D.G. Correia, M.D.S. Cordeiro, Z.H. Gumus, J. Costa,  **A.M.J.J. Bonvin** and I.S. Moreira.
+[A Machine-Learning Approach for Hot-Spot Detection at Protein-Protein Interfaces](http://dx.doi.org/10.3390/ijms17081215).
+_International Journal of Molecular Sciences_, *17*, 1215 (2016).
+
+* G.C.P van Zundert and  **A.M.J.J. Bonvin**.
+[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
+_J. Struct. Biol._, *195*, 252-258 (2016).
+
+* Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmond.
+[Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function](http://dx.doi.org/10.1074/jbc.M116.717884).
+_J. Biol. Chem._, *291*, 15057-15068 (2016).
+
+* C. Geng, A. Vangone and **A.M.J.J. Bonvin**.
+[Exploring the interplay between experimental methods and the performance of predictors of binding affinity change upon mutations in protein complexes](http://dx.doi.org/10.1093/protein/gzw020).
+_Protein Engineering, Design, and Selection_, *29*, 291-299 (2016).
+
+* T. Bohnuud, L. Luo, S.J. Wodak, **A.M.J.J. Bonvin**, Z. Weng, S. Vajda, O. Schueler-Furman and D. Kozakov.
+[A benchmark testing ground for integrating homology modeling and protein docking](http://dx.doi.org/10.1002/prot.25063).
+_Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
+
 * L.C. Xue, J.P.G.L.M. Rodrigues, D. Dobbs, V. Honavarand  **A.M.J.J. Bonvin**.
 [Template-Based Protein-Protein Docking Exploiting Pairwise Interfacial Residue Restraints](http://dx.doi.org/10.1093/bib/bbw027).
 _Briefings in Bioinformatics_, Advanced Online Publication (2016).
 
 * M.F. Lensink, S. Velankar, A. Kryshtafovych, S. Huang, D. Schneidman-Duhovny, A. Sali, J. Segura, N.s Fernandez-Fuentes, S. Viswanath, R. Elber, S. Grudinin, P. Popov, E. Neveu, Hasup Lee, M. Baek, S. Park, L. Heo, G. Rie Lee, C. Seok, S. Qin, H. Zhou, D.W. Ritchie, B. Maigret, M. Devignes, A. Ghoorah, M. Torchala, R.A.G. Chaleil, P.A. Bates, E.t Ben-Zeev, M. Eisenstein, S.S. Negi, Z. Weng, T. Vreven, B.G. Pierce, T. M. Borrman, J. Yu, F. Ochsenbein, R. Guerois, A. Vangone, J.P.G.L.M. Rodrigues, G. van Zundert, M. Nellen, L. Xue, E. Karaca, A.S.J. Melquiond, K. Visscher, P.L. Kastritis, **A.M.J.J. Bonvin**, X. Xu, L. Qiu, C. Yan, J. Li, Z. Ma, J. Cheng, X. Zou, Y. Shen, L.X. Peterson, H. Kim, A. Roy, X. Han, J. Esquivel-Rodriguez, D. Kihara, X. Yu, N.J. Bruce, J.C. Fuller, R.C. Wade, I. Anishchenko, P.J. Kundrotas, I.A. Vakser, K. Imai, K.i Yamada, T. Oda, T. Nakamura, K. Tomii, C. Pallara, M. Romero-Durana, B. Jimenez-Garcia, I.H. Moal, J Fernandez-Recio, J. Young Joung, J. Yun Kim, K.g Joo, J. Lee, D. Kozakov, S. Vajda, S. Mottarella, D.R. Hall, D. Beglov, A. Mamonov, B. Xia, T. Bohnuud, C.A. Del Carpio, E. Ichiishi, N. Marze, D. Kuroda, S.S. Roy Burman, J.J. Gray, E. Chermak, L. Cavallo, R. Oliva, A. Tovchigrechko and S.J. Wodak.
-Prediction of homo- and hetero-protein complexes by ab-initio and template-based docking: a CASP-CAPRI experiment
-_Proteins: Struc. Funct. &amp; Bioinformatics_, In press (2016)
+[Prediction of homo- and hetero-protein complexes by ab-initio and template-based docking: a CASP-CAPRI experiment](http://dx.doi.org/10.1002/prot.25007).
+_Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2016)
 
-* P. Sliz, P. Meyer, S. Socias, J. Key, E. Ransey, E.C. Tjon, A. Buschiazzo, M. Lei, C. Botka, J. Withrow, D.B. Neau, K. Rajashankar, K.S. Anderson, R. Baxter, S. Blacklow, T. Boggon, **A.M.J.J. Bonvin**, D. Borek, T. Brett, A. Caflisch, C. Chang, W. Chazin, K.D. Corbett, M. Cosgrove, S. Crosson, S. Dhe-Paganon, E. Di Cera, C. Drennan, M. Eck, B. Eichman, Q. Fan, A. Ferré-D'Amaré, J.S. Fraser, J.C. Fromme, K. Garcia, R. Gaudet, P. Gong, S. Harrison, E. Heldwein, Z. Jia, R. Keenan, A. Kruse, M. Kvansakul, J. McLellan, Y. Modis, Y. Nam, Zb. Otwinowski, E.F. Pai, P.J. Barbosa Pereira, C. Petosa, C.S. Raman, T. Rapoport, A. Roll-Mecak, M. Rosen, G. Rudenko, J. Schlessinger, T. Schwartz, Y. Shamoo, H. Sondermann, Y. Tao, N. Tolia, O.V. Tsodikov, K.D. Westover, H. Wu, I. Foster, F. Maia, T. Gonen, T. Kirchhausen, K. Diederichs and M. Crosas.
+* P. Sliz, P. Meyer, S. Socias, J. Key, E. Ransey, E.C. Tjon, A. Buschiazzo, M. Lei, C. Botka, J. Withrow, D.B. Neau, K. Rajashankar, K.S. Anderson, R. Baxter, S. Blacklow, T. Boggon, **A.M.J.J. Bonvin**, D. Borek, T. Brett, A. Caflisch, C. Chang, W. Chazin, K.D. Corbett, M. Cosgrove, S. Crosson, S. Dhe-Paganon, E. Di Cera, C. Drennan, M. Eck, B. Eichman, Q. Fan, A. Ferra-D Amara, J.S. Fraser, J.C. Fromme, K. Garcia, R. Gaudet, P. Gong, S. Harrison, E. Heldwein, Z. Jia, R. Keenan, A. Kruse, M. Kvansakul, J. McLellan, Y. Modis, Y. Nam, Zb. Otwinowski, E.F. Pai, P.J. Barbosa Pereira, C. Petosa, C.S. Raman, T. Rapoport, A. Roll-Mecak, M. Rosen, G. Rudenko, J. Schlessinger, T. Schwartz, Y. Shamoo, H. Sondermann, Y. Tao, N. Tolia, O.V. Tsodikov, K.D. Westover, H. Wu, I. Foster, F. Maia, T. Gonen, T. Kirchhausen, K. Diederichs and M. Crosas.
 [Data publication with the structural biology data grid supports live analysis](http://dx.doi.org/10.1038/ncomms10882).
 _Nature Communications_, *7*: 10882, 1-12 (2016).
 
 * S. Jung, J. Fischer, B. Spudy, K. Tim, F.D. Soennichsen, L. Xue, **A.M.J.J. Bonvin**, P. Goettig, V. Magdolen, U. Meyer-Hoffert, J. Grötzinger.
 [The solution structure of the kallikrein-related peptidases inhibitor SPINK6](http://dx.doi.org/10.1016/j.bbrc.2016.01.172).
-_Biochemical and Biophysical Research Communications_, Advanced Online Publication (2016).
+_Biochemical and Biophysical Research Communications_, *471*, 103-108 (2016).
 
 * E. Deplazes, J. Davies, **A.M.J.J. Bonvin**, G.F. King and A.E. Mark.
 [On the Combination of Ambiguous and Unambiguous Data in the Restraint-driven Docking of Flexible Peptides with HADDOCK: The Binding of the Spider Toxin PcTx1 to the Acid Sensing Ion channel (ASIC)1a](http://dx.doi.org/doi:10.1021/acs.jcim.5b00529).
-_J. Chem. Inf. and Model._ *56*, 127-138n (2016).
+_J. Chem. Inf. and Model._ *56*, 127-138 (2016).
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 [Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](http://dx.doi.org/doi:10.1002/bmb.20941).
@@ -39,7 +78,7 @@ _Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
-_J. Mol. Biol._, *428*, 720-725 (2015).
+_J. Mol. Biol._, *428*, 720-725 (2016).
 
 
 ## 2015
