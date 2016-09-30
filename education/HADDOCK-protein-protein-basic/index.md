@@ -281,11 +281,57 @@ Enter your username and password (or the course credentials provided to you).
 </a>
 
 
+Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run. 
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/submission.png">
+</figure>
+
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can this serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+
+<pre>
+HaddockRunParameters (
+  runname = 'E2A-HPR',
+  auto_passive_radius = 6.5,
+  create_narestraints = True,
+  delenph = True,
+  ranair = False,
+  cmrest = False,
+  kcont = 1.0,
+  surfrest = False,
+  ksurf = 1.0,
+  noecv = True,
+  ncvpart = 2.0,
+  structures_0 = 1000,
+  ntrials = 5,
+...
+</pre>
+
+Click new on the link to the results page. While your input data are being validated and processed the page will show:
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/processing.png">
+</figure>
+
+During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/running.png">
+</figure>
+
+The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+
+
 
 <hr>
 ## Analysing the results
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html) in case you don't want to wait for the results of your docking run.
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/results.png">
+</figure>
+
 
 <a class="prompt prompt-question">Inspect the result page</a>
 <a class="prompt prompt-question">How many clusters are generated?</a>
@@ -359,8 +405,9 @@ Are the active residues in the interface?
 The E2A-HPR complex is involved in phosphate-transfer, in which a phosphate group attached to histidine 90 of E2A (which we named NEP) is transferred to a histidine of HPR. As such, the docking models should make sense according to this information, meaning that two histidines should be in close proximity at the interface. Using PyMOL, check the various cluster representatives (we are assuming here you have performed all PyMOL commands of the previous section):
 
 <a class="prompt prompt-pymol">
-select histidines, resn HIS+NEP
-show spheres, histidines
+select histidines, resn HIS+NEP<br>
+show spheres, histidines<br>
+util.cnc<br>
 </a>
 
 <a class="prompt prompt-question">First of all, has the phosphate group been poperly generated?</a>
@@ -370,6 +417,10 @@ show spheres, histidines
 <a class="prompt prompt-pymol">
 zoom resn NEP
 </a>
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/phosphorylated-histidine.png">
+</figure>
 
 Zoom back to all visible molecules with 
 
