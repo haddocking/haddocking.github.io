@@ -54,6 +54,7 @@ The [Netherlands Society on Biomolecular Modelling](http://www.nsbm.nl) (NSBM) i
 <br><br>
 * 11:40-12:10	Lecture 
 	* **Linda Kaldenberg**, [Merus B.V.](http://www.merus.nl) Utrecht
+	* *Application of HADDOCK in bispecific IgG drug design*
 <br><br>
 * 12:10-12:30	Lecture 
 	* **BioExcel**, A center of excellence for computational biomolecular research.
