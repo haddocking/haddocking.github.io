@@ -31,10 +31,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/LiXue.jpg
 
--   name: Gydo van Zundert
-    position: Postdoctoral Researcher
-    avatar: /images/people/vanZundert.jpg
-
 -   name: Cunliang Geng
     position: Ph.D Candidate
     avatar: /images/people/Cunliang.jpg
@@ -42,10 +38,6 @@
 -   name: Panagiotis Koukos
     position: Ph.D Candidate
     avatar: /images/people/PanosK.jpg
-
--   name: Malgorzata Szelag
-    position: visiting Ph.D Candidate
-    avatar: /images/people/Gosia.jpg
 
 -   name: Jeaphianne van Rijn
     position: visiting Ph.D Candidate
@@ -67,9 +59,9 @@
     position: M.Sc Student
     avatar: /images/people/Adrian.jpg
 
--   name: Zhengyue Zhang
-    position: Visiting Student
-    avatar: /images/people/Zhengyue.jpg
+-   name: Nevia Citro
+    position: M.Sc Student
+    avatar: /images/people/Nevia.jpg
 
 -   name: Kasey Pham
     position: Visiting Student
