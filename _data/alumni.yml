@@ -19,6 +19,11 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Gydo van Zundert
+    url: https://github.com/latrocinia
+    current: 'Schrödinger Inc., New York, NY, USA'
+    status: 'phd,postdoc'
+
 -   name: Joao Rodrigues
     url: http://github.com/JoaoRodrigues
     current: 'Stanford University, School of Medicine'
