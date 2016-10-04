@@ -19,6 +19,11 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Gydo van Zundert
+    url: https://github.com/latrocinia
+    current: 'Schrödinger Inc., New York, NY, USA'    
+    status: 'phd,postdoc'
+
 -   name: Joao Rodrigues
     url: http://github.com/JoaoRodrigues
     current: 'Stanford University, School of Medicine'
@@ -117,11 +122,11 @@
 -   name: Malgorzata Szelag
     url: http://amu.academia.edu/Ma?gorzataSzelag
     current: 'Adam Mickiewicz University, Poznan, Poland'
-    status: graduate student
+    status: visiting-phd
 
 -   name: Venkata Krishnan Ramaswamy
     current: 'Cagliari University, Italy'
-    position: visiting graduate student
+    position: visiting-phd
 
 -   name: Siddarth Narasimhan
     url: http://www.uu.nl/nmr
@@ -162,4 +167,10 @@
 -   name: Chiara Fais
     current: 'Cagliari University, Italy'
     status: student
+
+-   name: Zhengyue Zhang
+    url: http://www.zju.edu.cn/english/
+    current: 'Zhejiang University, China'
+    status: student
+
 
