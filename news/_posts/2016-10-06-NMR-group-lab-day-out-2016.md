@@ -7,7 +7,7 @@ tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-The [NMR group](http://www.uu.nl/nmr) had its annual lab day out on October 5th. It started with a fierce gaming competition. After several rounds of Pictionary, music recognition challenge and DIXIT, my team won! I am now the proud owner of the PI of the year 2016 award (which does look much larger than it is in reality on the picture) :-)
+The [NMR group](http://www.uu.nl/nmr) had its annual lab day out on October 5th. It started with a fierce gaming competition. After several rounds of Pictionary, music recognition challenge and DIXIT, my team won! I am now the proud owner of the PI of the year 2016 award (which does look on the picture much larger than it is in reality) :-)
 
 <figure align="center">
     <img width="200" src="/images/posts/2016-10-05-PI-of-the-year.png">
