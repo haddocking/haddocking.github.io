@@ -15,10 +15,13 @@ The [NMR group](http://www.uu.nl/nmr) had its annual lab day out on October 5th.
 
 After that, we put our scientific skills to work in a cooking workshop at the [Gracht Atelier](http://www.grachtenatelier.nl/workshops/culinair) in Utrecht. 
 Lot's of great food was the result.
-The best course award was won by a team consisting of Mikeal Trellet and Joerg Schaarschmidt from the CSB group and Mark Daniels - again an excellent performance of CSB group members!
+The best course award was won by a team consisting of Mikeal Trellet and Joerg Schaarschmidt from the CSB group and Mark Daniels - considering we are only doing computational work, a great performance of the CSB group members!
 
-Here is a picture of the chefs:
+<figure align="center">
+    <img src="/images/posts/2016-10-05-winning-team.png">
+</figure>
 
+And here is a picture of all the chefs:
 <figure align="center">
     <img src="/images/posts/2016-10-05-NMR-group.jpg">
 </figure>
