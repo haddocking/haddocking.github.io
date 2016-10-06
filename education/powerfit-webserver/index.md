@@ -137,47 +137,64 @@ biomolecule to be fitted (`KsgA.pdb`), a target cryo-EM density map to fit the
 structure in (`ribosome-KsgA.map`), and the resolution, in ångstrom, of the
 density map (`13`). They correspond to the minimum number of input you have 
 to provide to the web server in order to setup a run.
+The submission of a PowerFit run takes place here
 
-<a class="prompt prompt-info">
-  Perform the rigid-body fitting of the KsgA structure on the cryo-EM density
-  map.
-</a>
-<a class="prompt prompt-cmd">
-  powerfit ribosome-KsgA.map 13 KsgA.pdb -d run-KsgA -a 20 -p 2 -l
-</a>
+<a class="prompt prompt-info">http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit</a>
 
-While performing the search, PowerFit will update you on the progress of the 
-search. The example case in this tutorial should run in 10 minutes. If the ETA 
-on your screen is substantially lower, your computer might be fast enough to 
-allow an increase in the rotational sampling interval to 10°.
+* **Step1:** Add the input files and parameters.
 
-While the calculation is running, open a second terminal window (or tab) and 
-type `powerfit --help` to have a look at the several features and options of 
-PowerFit and what each flag of the previous command means.
+<a class="prompt prompt-info">Cryo-EM map -> `ribosome-KsgA.map`</a>
+<a class="prompt prompt-info">Map resolution -> `13`</a>
+<a class="prompt prompt-info">Atomic structure -> `KsgA.pdb`</a>
+<a class="prompt prompt-info">Rotational angle interval -> `20.0`</a>
+<a class="prompt prompt-info">Submit the job to our server by clicking on "Submit" at the bottom of the page</a>
 
+If the input fields have been correctly filled you should be redirected to a status page displaying a pop-up message
+indicating that your run has been successfully submitted to the server.
+While performing the search, PowerFit web server will update you on the progress of the 
+job by reloading the status page every 30 seconds.
+The example case in this tutorial should run in about 5 minutes on our local servers but due to pre- and post-processing
+it might take a bit longer to come back to you.
 
+While the calculation is running, open a second tab and go to
 
-The `-a` (or `--angle`) option specifies the rotational sampling interval in
-degrees, i.e. how tightly the three rotational degrees of freedom will be
+<a class="prompt prompt-info">http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help</a>
+
+Here, you can have a look at the several features and options of PowerFit and what each input parameter (including the
+ones in "Advanced parameters") of the submission page means.
+
+The rotational sampling interval option is given in
+degrees and defines how tightly the three rotational degrees of freedom will be
 sampled. Lower values will cause PowerFit to perform a finer search, at the
 expense of computational time. The default value is 10°, but it can be lowered
 to 5° for more sensitive searches, or raised to 20° if time is an issue or if
 there aren't sufficient computational resources. For the sake of time in this
-tutorial, we set the sampling interval to this latter coarser value. The `-d`
-option specifies where the results will be stored while the `-p` option
-specifies the number of processors that PowerFit can use during the search, to
-leverage available CPU resources.
-
-Finally, the `-l` flag applies a Laplace pre-filter on the density data, which
-increases the cross-correlation sensitivity by enhancing edges in the density.
-In this example scenario, all other options are left at their default values
-but feel free to explore them.
+tutorial, we set the sampling interval to this latter coarser value.
+The number of processors used for the calculation is fixed on the web server side to 8 processors. This number can of
+course be reduced for a local use of PowerFit.
 
 
 ## Analyzing the results
 
-After the search, PowerFit creates a `run-KsgA` directory containing the 
-following files:
+When a job is finished, and if you did not close the status page, you will be automatically redirected to a results
+page.
+A summary of the results is displayed and the page is split into several sections:
+
+* `Status`: A link with the ensemble of PowerFit output is available for download there as well as some information
+to aknowledge the software.
+* `Solutions`: The 15 non-redundant solutions found, ordered by their
+cross correlation score. The first column shows the rank, column 2 the correlation
+score, column 3 and 4 the Fisher z-score and the number of standard
+deviations. The table is created with values taken from the file `solutions.out`.
+* `Fit N`: Summary of the previous table for the 10 best fitted structures according to the cross correlation score. 
+A PDB of the solution can be downloaded and 6 images of the PDB within the density map are shown, covering different 
+views over the scene.
+ 
+You can have a first overview online of what the results look like and what are the highest score output by PowerFit.
+However, it is difficult to really appreciate the accuracy of PowerFit and the differences between the solutions with
+only images.
+Download on your computer the results archive available at the top of your results page.
+In the archive you can download at the top of the results page, you will find the following files:
 
 * `fit_N.pdb`: the best *N* fits, judged by the cross-correlation score.
 * `solutions.out`: all the non-redundant solutions found, ordered by their
@@ -190,6 +207,7 @@ highest cross-correlation score found during the search, thus showing the most
 likely location of the center of mass of the structure.
 * `powerfit.log`: a log file of the calculation, including the input parameters 
 with date and timing information.
+
 
 <a class="prompt prompt-info">
   Open the density map, the *lcc.mrc* cross-correlation map, and the 10 
