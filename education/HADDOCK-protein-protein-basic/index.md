@@ -326,7 +326,7 @@ The page will automatically refresh and the results will appear upon completions
 <hr>
 ## Analysing the results
 
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html) in case you don't want to wait for the results of your docking run.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPR/index.php) in case you don't want to wait for the results of your docking run.
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic/HADDOCK-result-page.png">
