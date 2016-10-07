@@ -326,10 +326,10 @@ The page will automatically refresh and the results will appear upon completions
 <hr>
 ## Analysing the results
 
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html) in case you don't want to wait for the results of your docking run.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPR/index.php) in case you don't want to wait for the results of your docking run.
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/results.png">
+<img src="/education/HADDOCK-protein-protein-basic/HADDOCK-result-page.png">
 </figure>
 
 
@@ -337,6 +337,12 @@ Once your run has completed you will be presented with a result page showing the
 <a class="prompt prompt-question">How many clusters are generated?</a>
 
 **Note:** The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the RMSD from the best generated model (the best scoring model).
+
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/HADDOCK-result-graph.png">
+</figure>
+
 
 
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated as:
