@@ -195,7 +195,7 @@ A PDB of the solution can be downloaded and 6 images of the PDB within the densi
 views over the scene.
 
 <figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_results.png">
+  <img src="/education/powerfit-webserver/powerfit_results.png" width="800">
 </figure>
  
 You can have a first overview online of what the results look like and what are the highest score output by PowerFit.
