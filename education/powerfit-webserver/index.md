@@ -164,8 +164,6 @@ While the calculation is running, open a second tab and go to
 
 <a class="prompt prompt-info">http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help</a>
 
-
-
 Here, you can have a look at the several features and options of PowerFit and what each input parameter (including the
 ones in "Advanced parameters") of the submission page means.
 
@@ -195,6 +193,10 @@ deviations. The table is created with values taken from the file `solutions.out`
 * `Fit N`: Summary of the previous table for the 10 best fitted structures according to the cross correlation score. 
 A PDB of the solution can be downloaded and 6 images of the PDB within the density map are shown, covering different 
 views over the scene.
+
+<figure align="center">
+  <img src="/education/powerfit-webserver/powerfit_results.png">
+</figure>
  
 You can have a first overview online of what the results look like and what are the highest score output by PowerFit.
 However, it is difficult to really appreciate the accuracy of PowerFit and the differences between the solutions with
