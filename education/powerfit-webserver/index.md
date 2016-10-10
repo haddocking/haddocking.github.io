@@ -141,6 +141,10 @@ The submission of a PowerFit run takes place here
 
 <a class="prompt prompt-info">http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit</a>
 
+<figure align="center">
+  <img src="/education/powerfit-webserver/powerfit_submission.png">
+</figure>
+
 * **Step1:** Add the input files and parameters.
 
 <a class="prompt prompt-info">Cryo-EM map -> `ribosome-KsgA.map`</a>
@@ -159,6 +163,8 @@ it might take a bit longer to come back to you.
 While the calculation is running, open a second tab and go to
 
 <a class="prompt prompt-info">http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help</a>
+
+
 
 Here, you can have a look at the several features and options of PowerFit and what each input parameter (including the
 ones in "Advanced parameters") of the submission page means.
