@@ -14,9 +14,9 @@ structures of biomolecules to cryo-electron microscopy (cryo-EM) density maps.
 It is open-source and available for download on [Github][link-powerfit].
 
 
-This tutorial will show you how to utilize the PowerFit web server developped
+This tutorial will show you how to utilize the PowerFit web server developed
 in our lab and that uses either a multi-core version of the software through 
-a local cluster hosted in Utrecht or some GPGPU resources available worldwide. 
+a local cluster hosted in Utrecht or some GP-GPU resources available worldwide. 
 This web server only requires a web browser to work and benefits from the last
 development made in the software within a stable and tested workflow.
 Beyond the automated workflow making use of PowerFit, the web server also performs
@@ -32,8 +32,6 @@ version making use of a cluster resources available in Utrecht:
 We will apply Powerfit to an E.coli ribosome case and we will further discuss 
 the limits of rigid body fitting, and how HADDOCK can alleviate some of the 
 shortcomings. We provide the data necessary to run this tutorial [here][link-data]. 
-If you are following one of our workshops, where we use a Virtual Machine, 
-then all the required software and data should already be installed.
 
 The PowerFit and HADDOCK software are described in
 
@@ -323,6 +321,18 @@ again.
 
 We showed along this tutorial how to make use of the PowerFit web server to fit
 atomic structures in cryo-EM map.
+The obvious limitation of rigid-body fitting is that it cannot account for any
+conformational changes the structures might undergo. Further, the low
+resolution of this particular density map does not allow the identification of
+side-chain atoms. The quality of the fitted models by PowerFit is, therefore,
+limited.
+
+Given the availability of both the cryo-EM density map and of the mutagenesis 
+experiments, we can integrate both in HADDOCK and benefit of its semi-flexible 
+refinement protocols to improve the stereochemistry of our model.
+To do so, you can follow our [step-by-step tutorial][link-haddock-tuto] detailing
+how to use HADDOCK with such data.
+
 Thank you for following this tutorial. If you have any questions or 
 suggestions, feel free to contact us via email or by submitting an issue in the 
 appropriate Github repository.
@@ -331,5 +341,6 @@ appropriate Github repository.
 [link-powerfit-web]: http://milou.science.uu.nl/services/POWERFIT/ "PowerFit web server"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
-[link-data]: https://bonvinlab.org/education/powerfit-webserver/powerfit-tutorial.tgz "PowerFit tutorial data"
+[link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-2017 "Ribosome KsgA density"
+[link-haddock-tuto]: http://bonvinlab.org/education/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
