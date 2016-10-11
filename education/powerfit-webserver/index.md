@@ -141,7 +141,7 @@ To run PowerFit, go to
 
 <a class="prompt prompt-info">http://milou.science.uu.nl/services/POWERFIT/</a>
 
-Then click on the "Submit" menu to access the submit form.
+Then click on the "**Submit**" menu to access the submit form.
 
 <figure align="center">
   <img src="/education/powerfit-webserver/powerfit_submission.png">
@@ -149,11 +149,13 @@ Then click on the "Submit" menu to access the submit form.
 
 * **Step1:** Add the input files and parameters.
 
-<a class="prompt prompt-info">Cryo-EM map -> `ribosome-KsgA.map`</a>
-<a class="prompt prompt-info">Map resolution -> `13`</a>
-<a class="prompt prompt-info">Atomic structure -> `KsgA.pdb`</a>
-<a class="prompt prompt-info">Rotational angle interval -> `20.0`</a>
-<a class="prompt prompt-info">Submit the job to our server by clicking on "Submit" at the bottom of the page</a>
+<a class="prompt prompt-info">Cryo-EM map -> ribosome-KsgA.map</a>
+<a class="prompt prompt-info">Map resolution -> 13</a>
+<a class="prompt prompt-info">Atomic structure -> KsgA.pdb</a>
+<a class="prompt prompt-info">Rotational angle interval -> 20.0</a>
+
+Once the fields have been filled in you can submit your job to our server 
+by clicking on "**Submit**" at the bottom of the page.
 
 If the input fields have been correctly filled you should be redirected to a status page displaying a pop-up message
 indicating that your run has been successfully submitted to the server.
@@ -166,10 +168,10 @@ While the calculation is running, open a second tab and go to
 
 <a class="prompt prompt-info">http://milou.science.uu.nl/services/POWERFIT/</a>
 
-Then click on the "Help/Manual" menu. 
+Then click on the "**Help/Manual**" menu. 
 
 Here, you can have a look at the several features and options of PowerFit and what each input parameter (including the
-ones in "Advanced parameters") of the submission page means.
+ones in "**Advanced parameters**") of the submission page means.
 
 The rotational sampling interval option is given in
 degrees and defines how tightly the three rotational degrees of freedom will be
