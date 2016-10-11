@@ -31,7 +31,9 @@ version making use of a cluster resources available in Utrecht:
 
 We will apply Powerfit to an E.coli ribosome case and we will further discuss 
 the limits of rigid body fitting, and how HADDOCK can alleviate some of the 
-shortcomings. We provide the data necessary to run this tutorial [here][link-data]. 
+shortcomings. 
+The HADDOCK part of the tutorial can be find [here][link-haddock-tuto] 
+as part of another [PowerFit tutorial][link-powerfit-tuto] focused on its command-line version.
 
 The PowerFit and HADDOCK software are described in
 
@@ -59,32 +61,17 @@ ribosome and KsgA, a methyltransferase. There are models available for the E.
 coli ribosome and KsgA, and a cryo-EM density map of around 13Å resolution
 ([EMD-2017][link-density]).
 
-
-
 ## Setup
 
-If you are using one of our pre-packed VM images, the data should be directly
-available in the image. We prepared a folder that contains the cryo-EM density
-map file in CCP4 format and the starting models of the ribosome and KsgA. The
-ribosome has already been properly fitted in the density.
+The ribosome has already been properly fitted in the density map (.
 
-<a class="prompt prompt-info">
-  Copy the data to the Desktop and then move the newly copied folder.
-</a>
-<a class="prompt prompt-cmd">
-    cp -r /opt/powerfit-tutorial ~/Desktop  
-    cd ~/Desktop/powerfit-tutorial
-</a>
+Make sure to install [UCSF Chimera][link-chimera] and to download the 
+data to run this tutorial from our GitHub data repository [here][link-github-data] 
+or directly from this [link][link-data]
 
-*In case you might run this tutorial on your own*, make sure to install [UCSF Chimera][link-chimera]
- and to download the data to run this tutorial from our GitHub data repository [here][link-data] 
-or clone it from the command line
-
-<a class="prompt prompt-cmd">
-    git clone https://github.com/haddocking/powerfit-tutorial
-</a>
-
-
+All of the files you will need for the tutorial are in the data directory
+you downloaded. This is the case for both Chimera and PowerFit web server
+usage.
 
 ## Inspecting the data
 
@@ -95,12 +82,21 @@ Using Chimera, we can easily visualize and inspect the density and models,
 mostly through a few mouse clicks.
 
 <a class="prompt prompt-info">
-  Open the density map together with the ribosome and KsgA.
-</a>
-<a class="prompt prompt-cmd">
-    chimera ribosome-KsgA.map ribosome.pdb KsgA.pdb
+  Open the density map together with the ribosome and KsgA in Chimera.
 </a>
 
+To use Chimera command-line, go to `Favorites` → `Command Line`, and type:
+
+<a class="prompt prompt-pymol">
+  open /path/to/ribosome-KsgA.map
+</a>
+<a class="prompt prompt-pymol">
+open /path/to/KsgA.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/ribosome.pdb
+</a> 
+  
 In the `Volume Viewer` window, the middle slide bar provides control on the
 value at which the isosurface of the density is shown. At high values, the
 envelope will sink while lower values might even display the noise in the map.
@@ -229,9 +225,19 @@ with date and timing information.
   Open the density map, the *lcc.mrc* cross-correlation map, and the 10 
 best-ranked solutions in Chimera.
 </a>
-<a class="prompt prompt-cmd">
-  chimera ribosome-KsgA.map run-KsgA/lcc.mrc ribosome.pdb run-KsgA/fit_*.pdb
+<a class="prompt prompt-pymol">
+  open /path/to/ribosome-KsgA.map
 </a>
+<a class="prompt prompt-pymol">
+  open /path/to/lcc.mrc
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/ribosome.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/fit_*.pdb
+</a>
+
 
 Make the density map transparent again, by adjusting the alpha channel value to
 0.6. The values of the `lcc.mrc` slider bar correspond to the cross-correlation
@@ -259,8 +265,14 @@ model you can click the box in the `S` column.
   In a new Chimera session, reopen the density map and the fit that you find 
 best. Replace *?* by the appropriate solution number.
 </a>
-<a class="prompt prompt-cmd">
-  chimera ribosome-KsgA.map ribosome.pdb run-KsgA/fit_?.pdb
+<a class="prompt prompt-pymol">
+  open /path/to/ribosome-KsgA.map
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/ribosome.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/fit_?.pdb
 </a>
 
 You now have combined the ribosome structure with the rigid-body fit of KsgA
@@ -341,6 +353,8 @@ appropriate Github repository.
 [link-powerfit-web]: http://milou.science.uu.nl/services/POWERFIT/ "PowerFit web server"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
+[link-github-data]: https://github.com/haddocking/powerfit-tutorial "PowerFit tutorial data"
 [link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-2017 "Ribosome KsgA density"
 [link-haddock-tuto]: http://bonvinlab.org/education/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
+[link-powerfit-tuto]: http://bonvinlab.org/education/powerfit "Powerfit command-line tutorial"
