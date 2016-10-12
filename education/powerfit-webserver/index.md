@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "PowerFit Tutorial"
-excerpt: "A small tutorial on PowerFit webserver for automatic rigid body fitting"
+title: "PowerFit web server Tutorial"
+excerpt: "A small tutorial on PowerFit web server for automatic rigid body fitting"
 tags: [PowerFit, Cryo-EM, HADDOCK, Ribosome, Chimera, rigid body fitting]
 image:
   feature: pages/banner_education-thin.jpg
@@ -16,7 +16,8 @@ It is open-source and available for download on [Github][link-powerfit].
 
 This tutorial will show you how to utilize the PowerFit web server developed
 in our lab and that uses either a multi-core version of the software through 
-a local cluster hosted in Utrecht or some GP-GPU resources available worldwide. 
+a local cluster hosted in Utrecht or a GPU-accelerated version making use of some 
+GP-GPU resources available worldwide. 
 This web server only requires a web browser to work and benefits from the last
 development made in the software within a stable and tested workflow.
 Beyond the automated workflow making use of PowerFit, the web server also performs
@@ -33,7 +34,7 @@ We will apply Powerfit to an E.coli ribosome case and we will further discuss
 the limits of rigid body fitting, and how HADDOCK can alleviate some of the 
 shortcomings. 
 The HADDOCK part of the tutorial can be find [here][link-haddock-tuto] 
-as part of another [PowerFit tutorial][link-powerfit-tuto] focused on its command-line version.
+as part of another [PowerFit tutorial][link-powerfit-tuto] using the command-line version.
 
 The PowerFit and HADDOCK software are described in
 
@@ -58,12 +59,10 @@ terminal!</a>
 
 The case we will be investigating is a complex between the 30S maturing E. coli
 ribosome and KsgA, a methyltransferase. There are models available for the E.
-coli ribosome and KsgA, and a cryo-EM density map of around 13Å resolution
+coli ribosome and KsgA ([4ADV][link-pdb]), and a cryo-EM density map of around 13Å resolution
 ([EMD-2017][link-density]).
 
 ## Setup
-
-The ribosome has already been properly fitted in the density map (.
 
 Make sure to install [UCSF Chimera][link-chimera] and to download the 
 data to run this tutorial from our GitHub data repository [here][link-github-data] 
@@ -85,7 +84,7 @@ mostly through a few mouse clicks.
   Open the density map together with the ribosome and KsgA in Chimera.
 </a>
 
-To use Chimera command-line, go to `Favorites` → `Command Line`, and type:
+If you want to use Chimera command-line, go to `Favorites` → `Command Line`, and type:
 
 <a class="prompt prompt-pymol">
   open /path/to/ribosome-KsgA.map
@@ -356,5 +355,6 @@ appropriate Github repository.
 [link-github-data]: https://github.com/haddocking/powerfit-tutorial "PowerFit tutorial data"
 [link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-2017 "Ribosome KsgA density"
+[link-pdb]: http://www.rcsb.org/pdb/explore/explore.do?structureId=4ADV "PDBid 4ADV"
 [link-haddock-tuto]: http://bonvinlab.org/education/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
 [link-powerfit-tuto]: http://bonvinlab.org/education/powerfit "Powerfit command-line tutorial"
