@@ -271,7 +271,7 @@ again.
 </a>
 
 
-## Integrative modeling with HADDOCK
+## <a name="HADDOCK-cryoEM"></a> Integrative modeling with HADDOCK
 
 The obvious limitation of rigid-body fitting is that it cannot account for any
 conformational changes the structures might undergo. Further, the low
