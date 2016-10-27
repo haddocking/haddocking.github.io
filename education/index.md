@@ -43,3 +43,7 @@ We offer various [research projects](/education/research-projects/) to both bach
   PowerFit to automatically place a high-resolution atomic structure in a
   lower-resolution cryo-electron microscopy density map.
 
+* [PowerFit webserver tutorial](/education/powerfit-webserver/): A small introduction into
+  PowerFit to automatically place a high-resolution atomic structure in a
+  lower-resolution cryo-electron microscopy density map making use of our [web portal](http://milou.science.uu.nl/enmr/services/POWERFIT) 
+  (does not require Linux).
