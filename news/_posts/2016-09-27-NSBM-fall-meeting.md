@@ -21,6 +21,9 @@ The [Netherlands Society on Biomolecular Modelling](http://www.nsbm.nl) (NSBM) i
 * [http://www.uu.nl/universiteitsbibliotheek/locaties](http://www.uu.nl/universiteitsbibliotheek/locaties)
 
 
+### Deadlines
+* Registration deadline to be considered for a short talk: **November 4th**
+* Registration deadline (including lunch): **November 9th**
 
 
 ### Application procedure: 

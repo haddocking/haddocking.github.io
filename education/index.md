@@ -26,9 +26,9 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 ## Tutorials
 
-* [PowerFit tutorial](/education/powerfit/): A small introduction into
-  PowerFit to automatically place a high-resolution atomic structure in a
-  lower-resolution cryo-electron microscopy density map.
+* [HADDOCK basic protein-protein docking tutorial](/education/HADDOCK-protein-protein-basic):
+  A tutorial demonstrating the use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.
+  This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](http://www.pymol.org) for visualisation/analysis.
 
 * [HADDOCK ab-initio, multi-body symmetrical docking tutorial](/education/HADDOCK-CASP-CAPRI-T70):
   A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
@@ -39,3 +39,11 @@ We offer various [research projects](/education/research-projects/) to both bach
   The information from the ab-initio run is then used to setup a binding pocket-targetet protein-ligand docking run.
   We use as example the multidrug exporter AcrB.
 
+* [PowerFit tutorial](/education/powerfit/): A small introduction into
+  PowerFit to automatically place a high-resolution atomic structure in a
+  lower-resolution cryo-electron microscopy density map.
+
+* [PowerFit webserver tutorial](/education/powerfit-webserver/): A small introduction into
+  PowerFit to automatically place a high-resolution atomic structure in a
+  lower-resolution cryo-electron microscopy density map making use of our [web portal](http://milou.science.uu.nl/enmr/services/POWERFIT) 
+  (does not require Linux).
