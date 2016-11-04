@@ -6,20 +6,28 @@ image:
 
 ## 2016
 <hr />
+* A. Vangone, J.P.G.L.M. Rodrigues, L.C. Xue, G.C.P. van Zundert, C. Geng, Z. Kurkcuoglu, M. Nellen, S. Narasimhan, E. Karaca, M. van Dijk, A.S.J. Melquiond, K.M. Visscher, M. Trellet, P.L. Kastritis and **A.M.J.J. Bonvin**.
+[Sense and Simplicity in HADDOCK Scoring: Lessons from CASP-CAPRI Round 1](http://onlinelibrary.wiley.com/doi/10.1002/prot.25198/full).
+_Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
+
+* R.C.G. de Bruin, A.G.M. Stam, A. Vangone, P. van Bergen en Henegouwen, H.M.W. Verheul, **A.M.J.J. Bonvin**, T.D. de Gruijl, H.J. van der Vliet.
+Prevention of Vγ9Vδ2-T cell activation by a Vγ9Vδ2-TCR nanobody.
+_Journal of Immunology_, In Press (2016).
+
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
 [Structure of the bacterial plant-ferredoxin receptor FusA](http://dx.doi.org/10.1038/NCOMMS13308).
-_Nature Communications_ In Press (2016)
+_Nature Communications_, In Press (2016).
 
 * J. Felix, E. Kandiah, S. De Munck, Y. Bloch, G.C.P. van Zundert, K. Pauwels, A. Dansercoer, K. Novanska, R.J. Read, **A.M.J.J. Bonvin**, B. Vergauwen, K. Verstraete, I. Gutsche and S.N. Savvides.
-Structural basis of GM-CSF and IL-2 sequestration by the viral decoy receptor GIF to achieve immunomodulation.
-_Nature Communications_ In Press (2016).
+[Structural basis of GM-CSF and IL-2 sequestration by the viral decoy receptor GIF to achieve immunomodulation](http://dx.doi.org/10.1038/NCOMMS13228).
+_Nature Communications_, In Press (2016).
 
 * M. Trellet, J. Schaarschmidt, G.C.P. van Zundert, Z. Kurkcuoglu, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
-[Integrative modelling goes HPC/HTC](http://dx.doi.org/10.7490/f1000research.1113051.1). _F1000Research_ *5*:2216 (poster) (2016).
+[Integrative modelling goes HPC/HTC](http://dx.doi.org/10.7490/f1000research.1113051.1). _F1000Research_, *5*:2216 (poster) (2016).
 
 * A.D. Spiliotopoulos, P.L. Kastritis, A.S.J. Melquiond, **A.M.J.J. Bonvin**, G. Musco, W. Rocchia and A. Spitaleri.
 [dMM-PBSA: a new HADDOCK scoring function for protein-peptide docking](http://journal.frontiersin.org/article/10.3389/fmolb.2016.00046/full).
-_Frontiers in Molecular Biosciences_ *3*:46 doi:10.3389/fmolb.2016.00046 (2016).
+_Frontiers in Molecular Biosciences_, *3*:46 doi:10.3389/fmolb.2016.00046 (2016).
 
 * L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#.
 [PRODIGY: a web server for predicting the binding affinity of protein-protein complexes](http://dx.doi.org/10.1093/bioinformatics/btw514).
