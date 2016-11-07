@@ -51,16 +51,21 @@ The [Netherlands Society on Biomolecular Modelling](http://www.nsbm.nl) (NSBM) i
 	* [**Prof. Matteo Dal Peraro**](http://lbm.epfl.ch), EPFL Lausanne, Switzerland. 
 	* *Exploring protein-membrane interplay with molecular simulations*
 <br><br>
-* 11:00-11:20	Short talk selected from abstracts
+* 11:00-11:20	Short talk
+	* **Jeaphianne P. M. van Rijn**, MPI Muelheim
+	* *QM/MM Study of the Taxadiene Synthase Mechanism*
 <br><br>
-* 11:20-11:40	Short talk selected from abstracts
+* 11:20-11:40	Short talk
+	* **Dr. Kanin Wichapong**, Masstricht University
+	* *A Generic Method for the Accurate and Rapid Prediction of Molecular Interactions in In Silico Structure-Based Drug Design*
 <br><br>
 * 11:40-12:10	Lecture 
 	* **Linda Kaldenberg**, [Merus B.V.](http://www.merus.nl) Utrecht
 	* *Application of HADDOCK in bispecific IgG drug design*
 <br><br>
 * 12:10-12:30	Lecture 
-	* **BioExcel**, A center of excellence for computational biomolecular research.
+	* **Dr. Mikael Trellet**, Utrecht University
+	* *BioExcel - Integrative modelling goes HPC/HTC*
 <br><br>
 * 12:30-14:00	Lunch and **poster session**
 <br><br>
@@ -68,9 +73,13 @@ The [Netherlands Society on Biomolecular Modelling](http://www.nsbm.nl) (NSBM) i
 	* [**Prof. Friedrich Foerster**](http://www.uu.nl/staff/FGForster), Utrecht University. 
 	* *Structural biology in situ using cryo-electron tomography and subtomogram analysis*
 <br><br>
-* 14:50-15:10	Short talk selected from abstracts
+* 14:50-15:10	Short talk
+	* **Dr. Panagiotis L. Kastritis**, EMBL Heidelberg
+	* *Structural and computational biology of cellular homogenates*
 <br><br>
-* 15:10-15:30	Short talk selected from abstracts
+* 15:10-15:30	Short talk
+	* **Dr. Tobias A. Knoch**, Erasmus MC
+	* *A Systems Genomic Approach Combining Simulations and Experiments Reveals the Detailed 3D Multi-Loop Aggregate/Rosette Chromatin Architecture and Functional Dynamic Organization of Genomes*
 <br><br>
 * 15:30-16:00	Coffee break
 <br><br>
