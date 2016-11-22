@@ -16,7 +16,7 @@ _Journal of Immunology_, In Press (2016).
 
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
 [Structure of the bacterial plant-ferredoxin receptor FusA](http://dx.doi.org/10.1038/NCOMMS13308).
-_Nature Communications_, In Press (2016).
+_Nature Communications_, *7*, 13308 (2016).
 
 * J. Felix, E. Kandiah, S. De Munck, Y. Bloch, G.C.P. van Zundert, K. Pauwels, A. Dansercoer, K. Novanska, R.J. Read, **A.M.J.J. Bonvin**, B. Vergauwen, K. Verstraete, I. Gutsche and S.N. Savvides.
 [Structural basis of GM-CSF and IL-2 sequestration by the viral decoy receptor GIF to achieve immunomodulation](http://dx.doi.org/10.1038/NCOMMS13228).
