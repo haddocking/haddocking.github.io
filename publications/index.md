@@ -6,8 +6,8 @@ image:
 
 ## 2016
 <hr />
-* G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and **A.M.J.J. Bonvin**. The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.
-_J. Mol. Biol._, In Press (2016).
+* G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and **A.M.J.J. Bonvin**. [The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes](http://dx.doi.org/10.1016/j.jmb.2016.11.032).
+_J. Mol. Biol._, Advanced Online Publication (2016).
 
 * A. Vangone, J.P.G.L.M. Rodrigues, L.C. Xue, G.C.P. van Zundert, C. Geng, Z. Kurkcuoglu, M. Nellen, S. Narasimhan, E. Karaca, M. van Dijk, A.S.J. Melquiond, K.M. Visscher, M. Trellet, P.L. Kastritis and **A.M.J.J. Bonvin**.
 [Sense and Simplicity in HADDOCK Scoring: Lessons from CASP-CAPRI Round 1](http://onlinelibrary.wiley.com/doi/10.1002/prot.25198/full).
