@@ -4,6 +4,12 @@ image:
   feature: pages/banner_publications-mini.jpg
 ---
 
+## 2017 
+<hr />
+* C. Geng, S. Narasimhan, J. P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**.
+Information-driven, ensemble flexible peptide docking using HADDOCK.
+_Methods in Molecular Biology: Modeling Peptide-Protein Interactions._ Eds Ora Schueler-Furman and Nir London. Humana Press Inc. In press (2017).
+
 ## 2016
 <hr />
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and **A.M.J.J. Bonvin**. [The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes](http://dx.doi.org/10.1016/j.jmb.2016.11.032).
@@ -14,8 +20,8 @@ _J. Mol. Biol._, Advanced Online Publication (2016).
 _Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
 
 * R.C.G. de Bruin, A.G.M. Stam, A. Vangone, P. van Bergen en Henegouwen, H.M.W. Verheul, **A.M.J.J. Bonvin**, T.D. de Gruijl, H.J. van der Vliet.
-Prevention of Vγ9Vδ2-T cell activation by a Vγ9Vδ2-TCR nanobody.
-_Journal of Immunology_, In Press (2016).
+[Prevention of Vγ9Vδ2-T cell activation by a Vγ9Vδ2-TCR nanobody](http://www.jimmunol.org/content/early/2016/11/26/jimmunol.1600948.abstract).
+_Journal of Immunology_, Advanced Online Publication (2016).
 
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
 [Structure of the bacterial plant-ferredoxin receptor FusA](http://dx.doi.org/10.1038/NCOMMS13308).
