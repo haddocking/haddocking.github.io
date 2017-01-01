@@ -301,7 +301,7 @@ HaddockRunParameters (
 ...
 </pre>
 
-Click new on the link to the results page. While your input data are being validated and processed the page will show:
+Click now on the link to the results page. While your input data are being validated and processed the page will show:
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic/processing.png">
