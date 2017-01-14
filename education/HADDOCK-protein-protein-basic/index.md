@@ -397,7 +397,7 @@ Let's now check if the active residues which we defined are actually part of the
 select e2a_active, (resi 38,40,45,46,69,71,78,80,94,96,141) and chain A<br>
 select hpr_active, (resi 15,16,17,20,48,49,51,52,54,56) and chain B<br>
 color red, e2a_active<br>
-color orange, hrp_active<br>
+color orange, hpr_active<br>
 </a>
 
 <a class="prompt prompt-question">
@@ -460,7 +460,7 @@ color orange, 1GGR and chain B<br>
 Then superimpose all cluster representatives on the reference structure, using chain A (E2A):
 
 <a class="prompt prompt-pymol">
-select cluster1_11GGR and chain A<br>
+select 1GGR and chain A<br>
 align cluster1_1, sele
 </a>
 
@@ -480,6 +480,8 @@ In the blind protein-protein prediction experiment [CAPRI](http://capri.ebi.ac.u
 <a class="prompt prompt-pymol">
 rmsd cluster1_1 and chain B, 1GGR<br>
 </a>
+
+**Note** that the rmsd command might not be available on all versions of PyMOL, in which case you won't be able to perform this last analysis.
 
 In CAPRI, the l-RMSD value defines the quality of a model:
 

@@ -48,7 +48,8 @@ identification of the best(s) cluster(s).
   <li> <a href="#manual">Manual analysis</a>
   <ul>
      <li> <a href="#anastruc">Structure statistics</a>
-     <li> <a href="#cluster">Clustering of solutions</a>
+     <li> <a href="#clusterrmsd">RMSD-based clustering of solutions</a>
+     <li> <a href="#clusterfcc">FCC-based clustering of solutions</a>
      <li> <a href="#anaclust">Cluster analysis</a>
   </ul>
   <li> <a href="#reanal">Rerunning the analysis for a given cluster</a>
@@ -131,15 +132,7 @@ structures. For this the structures are first superimposed on the flexible inter
 and the RMSD is calculated on the flexible interface backbone atoms of the other molecules 
 (see <b><i>Note1</i></b> above). This RMSD can be termed: "ligand interface RMSD". 
 <BR>
-<ul>
-<b><i>Note3:</i></b> Compared to the previous HADDOCK1.3 version, the ligand interface RMSD values calculated 
-                     are much higher and consequently a larger cutoff should be used for the 
-                     <a href="#cluster">clustering</a> (e.g. 7.5A).
-<BR><BR>
-<b><i>Note4:</i></b> Running this script is somewhat time consuming since a larger number of structure comparisons
-                    are required (N*(N-1) where N is the number of structures analyzed). However, the reduced 
-                    trajectory format significantly reduces the computing time compared to earlier versions.
-</ul>
+<BR>
 Output files:
 <BR>
 <ul>
@@ -149,7 +142,7 @@ Output files:
    <b><i>Note5:</i></b> The numbering of the structures corresponds to the position of the structure 
                        in the sorted <i>file.list</i> file.
    <BR><BR>
-   This file is used as input for the RMSD <a href="#cluster">clustering</a>.
+   This file is used as input for the RMSD <a href="#clusterrmsd">clustering</a>.
 </ul>
 <hr>
 <BR>
@@ -479,10 +472,10 @@ This will generate a file called <i>ene_rmsd.xmgr</i> which you can display with
 </pre>
 <hr>
 <BR>
-<li><a name="cluster"><b><u>Clustering of solutions using cluster_struc</u></b>:</a> 
+<li><a name="clusterrmsd"><b><u>RMSD-based clustering of solutions using cluster_struc</u></b>:</a> 
 The clustering is run automatically by HADDOCK in <i><b>it1/analysis</b></i> and <i><b>it1/water/analysis</b></i> 
-based on the criteria defined in the <a href="/software/haddock2.2/run#clust">run.cns</a> file. A reasonable cutoff value to start with for protein-protein complexes is 7.5A (this is larger than in the previous version (1.3) since we now calculate the
-interface ligand RMSD (see the part about the <a href="#rmsd">rmsd matrix</a> calculation above).
+based on the criteria defined in the <a href="/software/haddock2.2/run#clust">run.cns</a> file. 
+In case RMSD-based clustering has been selected, a reasonable cutoff value to start with for protein-protein complexes is 7.5A.
 We recommend however that you try using different cut-offs for the clustering since it is difficult to know
 a priori the best cut-off. This will depend on the system under study and the number of experimental restraints
 used to drive the docking. If only a small fraction of the structures cluster, try increasing the cut-off.
@@ -508,7 +501,7 @@ The usage is:
 <PRE> <FONT SIZE=-1>
    cluster_struc [-f]  fileroot_rmsd.disp cut-off  min_cluster_size >cluster.out
 </PRE> </FONT SIZE=-1>
-example for:
+Example for its use:
 <PRE> <FONT SIZE=-1>
   cluster_struc e2a-hpr_rmsd.disp 7.5 4 >cluster.out
 </PRE> </FONT SIZE=-1>
@@ -525,6 +518,43 @@ The numbers correspond to the structure number in the analysis file. For example
 analysis, i.e, the eigth structure in <i>file.list</i> in <i><b>it1/water</b></i>.
 The first structure of each cluster above corresponds to the cluster center. The remaining structures are sorted according to 
 their index.
+<BR><BR>
+
+<BR>
+<hr>
+<BR>
+<li><a name="clusterfcc"><b><u>Contact-based clustering of solutions using cluster_fcc.py</u></b>:</a> 
+The clustering is run automatically by HADDOCK in <i><b>it1/analysis</b></i> and <i><b>it1/water/analysis</b></i> 
+based on the criteria defined in the <a href="/software/haddock2.2/run#clust">run.cns</a> file. 
+In case FCC clustering has been chosen (which means clustering based on the fraction of common contacts), a reasonable cutoff value to start with for protein-protein complexes is 0.75.
+We recommend however that you try using different cut-offs for the clustering since it is difficult to know
+a priori the best cut-off. This will depend on the system under study and the number of experimental restraints
+used to drive the docking. If only a small fraction of the structures cluster, try increasing the cut-off.
+<BR><BR>
+<b>cluster_fcc.py</b> is a python code provided in the <i><b>tools</b></i> directory that read the 
+<i>fileroot_fcc.disp</i> file containing the pairwise fraction of common contact matrix and generates clusters. 
+The clustering algorithm is described in Rodrigues et al. <a href="http://dx.doi.org/doi:10.1002/prot.24078"><i>Proteins: Struc. Funct. & Bioinformatic</i>, <b>80</b> 1810-1817 (2012)</a>.
+<BR><BR>
+The usage is:
+<PRE> <FONT SIZE=-1>
+Usage: cluster_fcc.py <matrix file> <threshold [float]> [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -o OUTPUT_HANDLE, --output=OUTPUT_HANDLE
+                        Output File [STDOUT]
+  -c CLUS_SIZE, --cluster-size=CLUS_SIZE
+                        Minimum number of elements in a cluster [4]
+</PRE> </FONT SIZE=-1>
+Example for its use:
+<PRE> <FONT SIZE=-1>
+  python cluster_fcc.py e2a-hpr_fcc.disp 0.75 -c 4 >cluster.out
+</PRE> </FONT SIZE=-1>
+will create clusters using a 0.75 FCC cut-off requiring a minimum of four structures per cluster.
+<BR><BR>
+The output looks the same as for the RMSD-based clustering explained above
+<BR><BR>
+
 <BR>
 <hr>
 <BR>
@@ -652,7 +682,7 @@ will be created containing the average values over the best # structures.
 You can plot the HADDOCK score of the clusters as a function of their RMSD from the lowest energy
 structure (using <a href="http://plasma-gate.weizmann.ac.il/Grace/">xmgr/xmgrace</a> for example).
 <BR><BR>
-<img align=center src=haddock-score_vs_rmsd.gif width="500" alt="graph">
+<img align=center src="/software/haddock2.2/haddock-score_vs_rmsd.png" width="500" alt="graph">
 <BR><BR>
 The gray circles correspond to the individual structures and the filled circles correspond to the cluster
 averages with the standard deviation indicated by bars.
