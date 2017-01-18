@@ -186,7 +186,7 @@ As with `pdb2gmx`, the GROMACS program `editconf` generates a sizable output tha
 ### Energy minimization of the structure in vacuum
 Having defined the physical space where simulations can take place, the molecule can now be energy minimized. GROMACS uses a two-step process for any calculation involving the molecules and a force field. First, the user must combine the structure and the topology data, together with the simulation parameters, in a single control file. This file contains *everything* about the system and ensures the reproducibility of the simulation, provided the same force field is available on the machine. Another advantage of having such a self-contained file is that the preparation can take place in one machine while the calculations run on another. Again, simulations are computationally demanding. While the system can be easily prepared on a laptop, with the help of Pymol, GUI-enabled text editors, and all the other advantages of having a screen, calculations usually run on specialized clusters with hundreds of processing cores that provide only a command-line interface access. This will be relevant when running the production simulation. The intermediate calculations to prepare the system are confortably small to run on a laptop.
 
-The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data/mdp)) and also already in our virtual image, if you are using it (see `/opt/data/mdp/`). These parameters specify, for example, the cutoffs used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the algorithms to calculate non-bonded interactions. They also specify the type of simulation, for example energy minimization or molecular dynamics, and its length and time step if appropriate. Finally, they describe also the frequency with which GROMACS should write to disk the coordinates and energy values. Depending on the aim of the simulation, this writing frequency can be increased to have a higher temporal resolution at a cost of some computational efficiency (writing takes time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS manual](http://manual.gromacs.org/online/mdp_opt.html).
+The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data/mdp)) and also already in our virtual image, if you are using it (see `$MOLMOD_DATA/mdp/`). These parameters specify, for example, the cutoffs used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the algorithms to calculate non-bonded interactions. They also specify the type of simulation, for example energy minimization or molecular dynamics, and its length and time step if appropriate. Finally, they describe also the frequency with which GROMACS should write to disk the coordinates and energy values. Depending on the aim of the simulation, this writing frequency can be increased to have a higher temporal resolution at a cost of some computational efficiency (writing takes time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS manual](http://manual.gromacs.org/online/mdp_opt.html).
 
 <a class="prompt prompt-info">
   Browse through the *01_em_vac_PME* file, which contains the parameters for an energy minimization in vacuum.
@@ -199,7 +199,7 @@ The simulation parameters are contained in a separate file, usually with the *.m
   Create a *.tpr* file to energy minimize the peptide structure in vacuum.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o peptide-EM-vacuum.tpr
+  gmx grompp -v -f $MOLMOD_DATA/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o peptide-EM-vacuum.tpr
 </a>
 
 <a class="prompt prompt-info">
@@ -273,7 +273,7 @@ Besides water, the cellular environment contains a number of ions that maintain 
   Add counter ions to the simulation box at a concentration of 0.15M.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  
   gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL-
 </a>
 <a class="prompt prompt-question">
@@ -305,7 +305,7 @@ The addition of ions was the final step in setting up the system (chemically) fo
   Relax the structure of the solvated peptide with another energy minimization step.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/02_em_sol_PME.mdp -c peptide-solvated.gro -p peptide.top -o peptide-EM-solvated.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-solvated.gro -p peptide.top -o peptide-EM-solvated.tpr  
   gmx mdrun -v -deffnm peptide-EM-solvated
 </a>
 <a class="prompt prompt-question">
@@ -324,7 +324,7 @@ The *.mdp* file for this simulation is substantially different from those used f
   Copy the the *.mdp* file to your home directory and change the temperature and the random seed used to generate initial velocities. Pick an unlikely number for the random seed (e.g. your birth date).
 </a>
 <a class="prompt prompt-cmd">
-  cp /opt/data/mdp/03_nvt_pr1000_PME.mdp ~/  
+  cp $MOLMOD_DATA/mdp/03_nvt_pr1000_PME.mdp ~/  
   gmx grompp -v -f ~/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NVT-PR1000
 </a>
@@ -364,7 +364,7 @@ Equilibration is often conducted in two stages: first, the system is simulated u
 </a>
 
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
   gmx mdrun -v -deffnm peptide-NPT-PR1000  
   gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
   xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
@@ -399,21 +399,21 @@ The strenght of the restraints is defined in the `posre.itp` file, created by `p
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.1000 # Make a backup of the original file  
   sed -i -e \'s/1000&nbsp;&nbsp;1000&nbsp;&nbsp;1000/&nbsp;100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/g\' posre.itp  
-  gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR100  
 </a>
 
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.100  
   sed -i -e \'s/100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10/g\' posre.itp  
-  gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR10  
 </a>
 
 The final equilibration step is to completely remove the position restraints. This is done by removing the `-DPOSRES` definition at the beginning of the *.mdp* file, while maintaining all other parameters. For simplicity, we provide a further *.mdp* file without this definition.
 
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/05_npt_NOpr_PME.mdp -c peptide-NPT-PR10.gro -p peptide.top -o peptide-NPT-noPR.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/05_npt_NOpr_PME.mdp -c peptide-NPT-PR10.gro -p peptide.top -o peptide-NPT-noPR.tpr  
   gmx mdrun -v -deffnm peptide-NPT-noPR  
 </a>
 
@@ -443,7 +443,7 @@ The production run will run on our local cluster over the next couple of days. T
   Generate the production *.tpr* file.
 </a>
 <a class="prompt prompt-cmd">
-  cp /opt/data/mdp/06_md_PME.mdp ~/06_md_PME.mdp  
+  cp $MOLMOD_DATA/mdp/06_md_PME.mdp ~/06_md_PME.mdp  
   gmx grompp -v -f ~/06_md_PME.mdp -c peptide-NPT-noPR.gro -p peptide.top -o p53_helix_CAH.tpr
 </a>
 
@@ -967,7 +967,7 @@ Using the all-vs-all RMSD matrix calculated in the previous step, it is possible
   intra_fit name ca+n+c+o  
   split_states p53_concatenated_clusters  
   delete p53_concatenated_clusters  
-  dssp all, /opt/bin/dssp  
+  dssp all, $MOLMOD_BIN/dssp  
   as cartoon  
 </a>
 

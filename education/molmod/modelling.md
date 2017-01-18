@@ -59,7 +59,7 @@ biologists created the first homology modelling algorithms in the late 1980s/ear
 Your goal is to create a model of the MDM2 mouse protein, in particular of its N-terminal region
 that binds the p53 trans-activation domain. So, where to start?
 
-The Uniprot database is an online resource offering access to _all_ known protein sequences. Besides raw sequence data, Uniprot aggregates information from several other databases such as [RCSB PDB](http://www.rcsb.org) and its [European](http://www.ebi.ac.uk/pdbe) and [Japanese](http://www.pdbj.org) mirrors, NCBI [Pubmed](http://www.pubmed.org), [KEGG](http://www.genome.jp/kegg/), [Pfam](http://pfam.xfam.org/), and many others. This set of features makes Uniprot an obvious go-to resource when looking for information on any protein. There are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision, and TrEMBL, where the annotation is unsupervised. Consequently, if the entry for a particular protein of interest belongs to Swiss-Prot, it will be marked by a golden star/icon meaning its contents are very likely (but not blindly!) reliable.
+The [Uniprot](http://www.uniprot.org) database is an online resource offering access to _all_ known protein sequences. Besides raw sequence data, Uniprot aggregates information from several other databases such as [RCSB PDB](http://www.rcsb.org) and its [European](http://www.ebi.ac.uk/pdbe) and [Japanese](http://www.pdbj.org) mirrors, NCBI [Pubmed](http://www.pubmed.org), [KEGG](http://www.genome.jp/kegg/), [Pfam](http://pfam.xfam.org/), and many others. This set of features makes Uniprot an obvious go-to resource when looking for information on any protein. There are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision, and TrEMBL, where the annotation is unsupervised. Consequently, if the entry for a particular protein of interest belongs to Swiss-Prot, it will be marked by a golden star/icon meaning its contents are very likely (but not blindly!) reliable.
 
 <a class="prompt prompt-info">
   Find the mouse MDM2 entry in Uniprot using the search box on the home page.
@@ -195,7 +195,7 @@ process.
 Unlike BLAST or the HMMER web server, the local version of HMMER does not provide any sequence identity or similarity scores. Since these are crucial statistics for deciding on a template for the modelling, we provide a Python script based on the [Biopython](http://biopython.org) library to parse the sequences and calculate identities. Additionally, the script calculates how much of the query sequence the hit is matching, also known as coverage. Run the script on the `psa.out` file and save the results in a separate `psa.info` file using the `-o` option.
 
 <a class="prompt prompt-cmd">
-  python /opt/bin/aln_stats.py psa.out -o psa.info
+  python $MOLMOD_BIN/aln_stats.py psa.out -o psa.info
 </a>
 
 <a class="prompt prompt-info">
