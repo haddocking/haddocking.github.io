@@ -35,12 +35,12 @@ $$
 \end{equation}
 $$
 
-The molecular dynamics algorithm starts by assigning random velocities to the atoms in the system, from a Maxwell-Boltzmann distribution at the desired temperature. The random seed value seen in many configuration files of molecular dynamics software influences this attribution. Two trajectories of the same system with the same random seed are numerically identical, given the deterministic nature of the simulation. To move the atoms from one configuration to another, the algorithm first calculates the forces acting on each atom. From that force, one can determine the acceleration of the atoms and combine these with their positions and velocities at time $$ t $$ to yield a new set of positions and velocities. The time between the old and new positions is fixed and pre-determined at the beginning of the simulation. In biomolecular simulations, the time step ($$ \delta t $$) is usually 2 femtoseconds, which is large enough to sample significant dynamics but not as large as to cause problems during the calculations. Too big of a time step and two atoms might overlook each other and end up overlapping! At $$ t + \delta t $$, a new set of forces is calculated and so on. The simulation finishes only when there have been enough steps to reach the desired simulation time. Besides all these calculations, biomolecular simulations try to simulation also the conditions inside cells, namely regarding temperature and pressure. There are special algorithms in place, during the simulation, that maintain these two properties constant (or not, depends on the setup!).
+The molecular dynamics algorithm starts by assigning random velocities to the atoms in the system, from a Maxwell-Boltzmann distribution at the desired temperature. The random seed value seen in many configuration files of molecular dynamics software influences this attribution. Two trajectories of the same system with the same random seed are numerically identical, given the deterministic nature of the simulation. To move the atoms from one configuration to another, the algorithm first calculates the forces acting on each atom. From that force, one can determine the acceleration of the atoms and combine these with their positions and velocities at time $$ t $$ to yield a new set of positions and velocities. The time between the old and new positions is fixed and pre-determined at the beginning of the simulation. In biomolecular simulations, the time step ($$ \delta t $$) is usually 2 femtoseconds, which is large enough to sample significant dynamics but not as large as to cause problems during the calculations. Too big of a time step and two atoms might overlook each other and end up overlapping! At $$ t + \delta t $$, a new set of forces is calculated and so on. The simulation finishes only when there have been enough steps to reach the desired simulation time. Besides all these calculations, biomolecular simulations try to also simulate the conditions inside cells, namely regarding temperature and pressure. There are special algorithms in place, during the simulation, that maintain these two properties constant (or not, depends on the setup!).
 
 Despite decades of research, as well as advances in computer science and hardware development, most simulations are able to sample only a few microseconds of *real time*, although they take several days/weeks running on multiple processors. The milisecond barrier was broken only recently, by simulating on a purpose-built computer. Moreover, the force fields used in biomolecular simulation are approximating the interactions happening in reality. This results in errors in the estimation of energies of interacting atoms and groups of atoms. As such, molecular dynamics are not a miraculous alternative to experiments, nor can the results of simulations be trusted blindly. There must always be some sort of validation, preferrably by experimental data. When considering setting up a molecular dynamics simulation, plan it wisely, choosing carefully the setup and the system so that there are a minimum of variables under study. If carried out properly, these simulations remain an unparallelled method in terms of spatial and temporal resolution that are able to shed light on principles underlying biological function and fuel the formulation of new hypotheses.
 
 ## Introduction and Outline
-The aim of this tutorial is to simulate and analyse the conformational dynamics of a small peptide using molecular dynamics algorithms as implemented in the [GROMACS](www.gromacs.org) software. The following sections outline several preparation steps and analyses. These instructions do not apply to all molecular systems. Take your time to know your system and what particularities its simulation entails.
+The aim of this tutorial is to simulate and analyse the conformational dynamics of a small peptide using molecular dynamics algorithms as implemented in the [GROMACS](http://www.gromacs.org) software. The following sections outline several preparation steps and analyses. These instructions do not apply to all molecular systems. Take your time to know your system and what particularities its simulation entails.
 
 <a class="prompt prompt-attention">
   To run the actual simulation, you will need access to a computing cluster. Running on your laptop is likely to take far too long. In our hands, the simulations of this system take ~2 full days on 18 CPU cores in our dedicated cluster.
@@ -186,7 +186,7 @@ As with `pdb2gmx`, the GROMACS program `editconf` generates a sizable output tha
 ### Energy minimization of the structure in vacuum
 Having defined the physical space where simulations can take place, the molecule can now be energy minimized. GROMACS uses a two-step process for any calculation involving the molecules and a force field. First, the user must combine the structure and the topology data, together with the simulation parameters, in a single control file. This file contains *everything* about the system and ensures the reproducibility of the simulation, provided the same force field is available on the machine. Another advantage of having such a self-contained file is that the preparation can take place in one machine while the calculations run on another. Again, simulations are computationally demanding. While the system can be easily prepared on a laptop, with the help of Pymol, GUI-enabled text editors, and all the other advantages of having a screen, calculations usually run on specialized clusters with hundreds of processing cores that provide only a command-line interface access. This will be relevant when running the production simulation. The intermediate calculations to prepare the system are confortably small to run on a laptop.
 
-The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data/mdp)) and also already in our virtual image, if you are using it (see `/opt/data/mdp/`). These parameters specify, for example, the cutoffs used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the algorithms to calculate non-bonded interactions. They also specify the type of simulation, for example energy minimization or molecular dynamics, and its length and time step if appropriate. Finally, they describe also the frequency with which GROMACS should write to disk the coordinates and energy values. Depending on the aim of the simulation, this writing frequency can be increased to have a higher temporal resolution at a cost of some computational efficiency (writing takes time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS manual](http://manual.gromacs.org/online/mdp_opt.html).
+The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data/mdp)) and also already in our virtual image, if you are using it (see `$MOLMOD_DATA/mdp/`). These parameters specify, for example, the cutoffs used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the algorithms to calculate non-bonded interactions. They also specify the type of simulation, for example energy minimization or molecular dynamics, and its length and time step if appropriate. Finally, they describe also the frequency with which GROMACS should write to disk the coordinates and energy values. Depending on the aim of the simulation, this writing frequency can be increased to have a higher temporal resolution at a cost of some computational efficiency (writing takes time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS manual](http://manual.gromacs.org/online/mdp_opt.html).
 
 <a class="prompt prompt-info">
   Browse through the *01_em_vac_PME* file, which contains the parameters for an energy minimization in vacuum.
@@ -199,7 +199,7 @@ The simulation parameters are contained in a separate file, usually with the *.m
   Create a *.tpr* file to energy minimize the peptide structure in vacuum.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o peptide-EM-vacuum.tpr
+  gmx grompp -v -f $MOLMOD_DATA/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o peptide-EM-vacuum.tpr
 </a>
 
 <a class="prompt prompt-info">
@@ -238,7 +238,7 @@ The steepest descent algorithm used in this minimization calculates the gradient
 </a>
 
 ### Solvating the simulation box
-The next step is to add solvent to the simulation box. The first molecular dynamics simulations of proteins were done in vacuum, but researchers quickly realized this was a major limitation. Water molecules interact with the protein, mediating interactions between residues. In addition, water as a solvent has a *screening* effect for long-range interactions, such as electrostatics. In vacuum, there is nothing to prevent two opposite charge atoms to feel each other even at a very long distance, as long as they are within the cutoff used for the simulation of course. With the addition of water, this is interaction is dampened significantly. The effect of water-mediated interactions are also important when choosing the size of the box. The presence of a solute, the peptide, induces a particular ordering of the water molecules in its vicinity. This might have a ripple effect that propagates the effect of the solute and causes artifacts well beyond the theoretical non-bonded cutoff.
+The next step is to add solvent to the simulation box. The first molecular dynamics simulations of proteins were done in vacuum, but researchers quickly realized this was a major limitation. Water molecules interact with the protein, mediating interactions between residues. In addition, water as a solvent has a *screening* effect for long-range interactions, such as electrostatics. In vacuum, there is nothing to prevent two opposite charge atoms to feel each other even at a very long distance, as long as they are within the cutoff used for the simulation of course. With the addition of water, this interaction is dampened significantly. The effect of water-mediated interactions are also important when choosing the size of the box. The presence of a solute, the peptide, induces a particular ordering of the water molecules in its vicinity. This might have a ripple effect that propagates the effect of the solute and causes artifacts well beyond the theoretical non-bonded cutoff.
 
 You should have already chosen the appropriate water model -- TIP3P -- when running `pdb2gmx`. The topology file is not required for the solvation. Essentially, this operation is just a matter of placing pre-calculated chunks of water molecules inside the box and remove those overlapping with protein atoms. No chemistry involved. However, the topology **must** be updated to reflect the addition of the solvent.
 
@@ -273,7 +273,7 @@ Besides water, the cellular environment contains a number of ions that maintain 
   Add counter ions to the simulation box at a concentration of 0.15M.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  
   gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL-
 </a>
 <a class="prompt prompt-question">
@@ -305,7 +305,7 @@ The addition of ions was the final step in setting up the system (chemically) fo
   Relax the structure of the solvated peptide with another energy minimization step.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/02_em_sol_PME.mdp -c peptide-solvated.gro -p peptide.top -o peptide-EM-solvated.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-solvated.gro -p peptide.top -o peptide-EM-solvated.tpr  
   gmx mdrun -v -deffnm peptide-EM-solvated
 </a>
 <a class="prompt prompt-question">
@@ -324,7 +324,7 @@ The *.mdp* file for this simulation is substantially different from those used f
   Copy the the *.mdp* file to your home directory and change the temperature and the random seed used to generate initial velocities. Pick an unlikely number for the random seed (e.g. your birth date).
 </a>
 <a class="prompt prompt-cmd">
-  cp /opt/data/mdp/03_nvt_pr1000_PME.mdp ~/  
+  cp $MOLMOD_DATA/mdp/03_nvt_pr1000_PME.mdp ~/  
   gmx grompp -v -f ~/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NVT-PR1000
 </a>
@@ -364,7 +364,7 @@ Equilibration is often conducted in two stages: first, the system is simulated u
 </a>
 
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
   gmx mdrun -v -deffnm peptide-NPT-PR1000  
   gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
   xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
@@ -399,21 +399,21 @@ The strenght of the restraints is defined in the `posre.itp` file, created by `p
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.1000 # Make a backup of the original file  
   sed -i -e \'s/1000&nbsp;&nbsp;1000&nbsp;&nbsp;1000/&nbsp;100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/g\' posre.itp  
-  gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR100  
 </a>
 
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.100  
   sed -i -e \'s/100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10/g\' posre.itp  
-  gmx grompp -v -f /opt/data/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR10  
 </a>
 
 The final equilibration step is to completely remove the position restraints. This is done by removing the `-DPOSRES` definition at the beginning of the *.mdp* file, while maintaining all other parameters. For simplicity, we provide a further *.mdp* file without this definition.
 
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f /opt/data/mdp/05_npt_NOpr_PME.mdp -c peptide-NPT-PR10.gro -p peptide.top -o peptide-NPT-noPR.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/05_npt_NOpr_PME.mdp -c peptide-NPT-PR10.gro -p peptide.top -o peptide-NPT-noPR.tpr  
   gmx mdrun -v -deffnm peptide-NPT-noPR  
 </a>
 
@@ -443,7 +443,7 @@ The production run will run on our local cluster over the next couple of days. T
   Generate the production *.tpr* file.
 </a>
 <a class="prompt prompt-cmd">
-  cp /opt/data/mdp/06_md_PME.mdp ~/06_md_PME.mdp  
+  cp $MOLMOD_DATA/mdp/06_md_PME.mdp ~/06_md_PME.mdp  
   gmx grompp -v -f ~/06_md_PME.mdp -c peptide-NPT-noPR.gro -p peptide.top -o p53_helix_CAH.tpr
 </a>
 
@@ -967,7 +967,7 @@ Using the all-vs-all RMSD matrix calculated in the previous step, it is possible
   intra_fit name ca+n+c+o  
   split_states p53_concatenated_clusters  
   delete p53_concatenated_clusters  
-  dssp all, /opt/bin/dssp  
+  dssp all, $MOLMOD_BIN/dssp  
   as cartoon  
 </a>
 

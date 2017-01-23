@@ -42,7 +42,7 @@ The final models are automatically clustered based on a specific similarity meas
 ## Predicting the interface of p53 on Mdm2
 HADDOCK excels at predicting the structure of the protein complexes given there is some sort of information to guide the docking. In the absence of experimental information, it is possible to use features such as sequence conservation and biophysical characteristics of surface residues to infer putative interfaces on a protein surface. Since the homology modelling module created a list of homologues of mouse MDM2, it is possible to assess which residues are more conserved.
 
-The assess sequence conservation, the homologous sequences have first to be aligned using a multiple sequence alignment algorithm, such as [Clustal](http://www.clustal.org/). HMMER calculates *pairwise* sequence alignments between the query and all the hits. In the homology modelling module, these alignments were converted to a FASTA format and stored in the `psa.fasta` file. All it takes to build a multiple sequence alignment is then to combine the original `MDM2_MOUSE.fasta` file with this other FASTA file and submit it to Clustal Omega. To visualize the alignment, and which positions are more conserved, the easiest way is to generate a sequence *logo*. For each position in the sequence, the logo identifies the most frequently occuring residues and scales its one-letter code according to a conservation score.
+The assess sequence conservation, the homologous sequences have first to be aligned using a multiple sequence alignment algorithm, such as [Clustal](http://www.clustal.org/). HMMER calculates *pairwise* sequence alignments between the query and all the hits. In the homology modelling module, these alignments were converted to a FASTA format and stored in the `psa.fasta` file. All it takes to build a multiple sequence alignment is then to combine the original `MDM2_MOUSE.fasta` file with this other FASTA file and submit it to Clustal Omega. To visualize the alignment, and which positions are more conserved, the easiest way is to generate a sequence *logo*. For each position in the sequence, the logo identifies the most frequently occuring residues and scales its one-letter code according to a conservation score. We will be using the [weblogo server](http://weblogo.threeplusone.com/create.cgi), in order the generate the sequence logo for the alignment produced by `clustalo`.
 
 <a class="prompt prompt-info">
   Generate a multiple sequence alignment of the MDM2 homologous sequences and create a web logo to inspect which residues are highly conserved.
@@ -51,7 +51,6 @@ The assess sequence conservation, the homologous sequences have first to be alig
 <a class="prompt prompt-cmd">
     cat MDM2_MOUSE.fasta psa.fasta > MDM2_family.fasta  
     clustalo -i MDM2_family.fasta --dealign -o MDM2_family.aln  
-    weblogo -f MDM2_family.aln -D fasta -o MDM2_logo.pdf -F pdf
 </a>
 
 <a class="prompt prompt-question">
