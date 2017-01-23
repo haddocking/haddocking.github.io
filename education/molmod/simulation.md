@@ -72,6 +72,14 @@ The instructions shown in this tutorial refer only to the helical peptide, for s
 
 <a class="prompt prompt-attention">
   Pay attention when typing the sequence! A missing or swapped amino acid will render your simulation **useless**!
+  Also carefully inspect the resulting sequence whether it matches your expectations - you might want to adjust the 
+  residue numbers to start at 1.
+</a>
+
+To change residue numbers you might want to read the help message of pymol's alter command:
+
+<a class="prompt prompt-pymol">
+help alter
 </a>
 
 ### Preparing the initial structure
@@ -364,7 +372,7 @@ Equilibration is often conducted in two stages: first, the system is simulated u
 </a>
 
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR1000  
   gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
   xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
