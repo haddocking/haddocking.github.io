@@ -975,7 +975,7 @@ Using the all-vs-all RMSD matrix calculated in the previous step, it is possible
   intra_fit name ca+n+c+o  
   split_states p53_concatenated_clusters  
   delete p53_concatenated_clusters  
-  dssp all, $MOLMOD_BIN/dssp  
+  dssp all, [PATH TO DSSP e.g. /opt/bin/dssp]  
   as cartoon  
 </a>
 
