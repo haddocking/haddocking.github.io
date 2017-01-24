@@ -42,7 +42,7 @@ These forces are calculated using the *force field*, a set of functions and para
 approximate the potential energy of the system. These parameters are usually derived either from 
 experiments or high-level quantum mechanical calculations. Although force fields come in many 
 flavors, in the field of biomolecular simulation they generally respect the same principles. First 
-of all, atoms are represented by single particles, with a fixed charged and size. Then, bonds are 
+of all, atoms are represented by single particles, with a fixed charge and size. Then, bonds are 
 modelled as springs and follow quadratic energy functions, meaning that they are effectively 
 unbreakable. Finally, the force field is divided in interactions of atoms linked by covalent bonds 
 (bonded interactions) and other interactions (non-bonded) such as electrostatics and van der Waals 
@@ -73,8 +73,8 @@ might overlook each other and end up overlapping! At $$ t + \delta t $$, a new s
 calculated and so on. The simulation finishes only when there have been enough steps to reach the 
 desired simulation time. Besides all these calculations, biomolecular simulations try to also 
 simulate the conditions inside cells, namely regarding temperature and pressure. There are special 
-algorithms in place, during the simulation, that maintain these two properties constant (or not, 
-depends on the setup!).
+algorithms in place, during the simulation, that maintain these two properties constant (or not 
+depending on the setup!).
 
 Despite decades of research, as well as advances in computer science and hardware development, most 
 simulations are able to sample only a few microseconds of *real time*, although they take several 
@@ -144,12 +144,11 @@ successful completion of the tutorial requires, however, all three conformations
 <a class="prompt prompt-attention">
   Pay attention when typing the sequence! A missing or swapped amino acid will render your 
 simulation **useless**!
-  Also carefully inspect the resulting sequence whether it matches your expectations - you might 
-want to adjust the 
-  residue numbers to start at 1.
+  Also carefully inspect the generated object whether it matches your expectations - you might 
+e.g. want to adjust the residue numbers.
 </a>
 
-To change residue numbers you might want to read the help message of pymol's alter command:
+To change residue numbers within pymol take a look at the help message of the alter command:
 
 <a class="prompt prompt-pymol">
 help alter
@@ -163,7 +162,7 @@ post-translational modifications, water, and ions. Exotic molecules such as phar
 and co-factors often have to be parameterized manually, which is a science on its own. Always judge 
 if the presence of these exotic species is a necessity. In some cases, the ligands can be safely 
 ignored and removed from the structure. As for missing residues and atoms, except hydrogens, it is 
-absolutely necessary to rebuild them before starting a simulation. MODELLER is an excelent program 
+absolutely necessary to rebuild them before starting a simulation. MODELLER is an excellent program 
 for this purpose. In addition, some crystals diffract at a good enough resolution to distinguish 
 water molecules in the density mesh. Save for very particular cases where these waters are the 
 subject of the study, the best policy is to remove them altogether from the structure. Fortunately, 
