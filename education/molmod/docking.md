@@ -2,7 +2,7 @@
 layout: page
 title: "HADDOCKing of the p53 N-terminal peptide to MDM2"
 excerpt: "HADDOCKing of the p53 N-terminal peptide to MDM2"
-tags: [MODELLER, GROMACS, HADDOCK, molecular dynamics, homology modelling, docking, p53, MDM2]
+tags: [MODELLER, GROMACS, HADDOCK, molecular dynamics, homology modeling, docking, p53, MDM2]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -16,7 +16,7 @@ interpret its results in terms of biological insights.
 - [Predicting the interface of p53 on Mdm2](#predicting-the-interface-of-p53-on-mdm2)  
 - [Preparing the structures for the docking calculation](#preparing-the-structures-for-the-docking-calculation)  
 - [Setting up the docking calculation using the HADDOCK web server](#setting-up-the-docking-calculation-using-the-haddock-web-server)
-- [Analysing the docking calculation results](#analysing-the-docking-calculation-results)
+- [Analyzing the docking calculation results](#analyzing-the-docking-calculation-results)
 
 ##A bite of theory
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation, 
@@ -114,17 +114,17 @@ based on an analysis of all contacts made in all models.
 HADDOCK excels at predicting the structure of the protein complexes given there is some sort of 
 information to guide the docking. In the absence of experimental information, it is possible to use 
 features such as sequence conservation and biophysical characteristics of surface residues to infer 
-putative interfaces on a protein surface. Since the homology modelling module created a list of 
+putative interfaces on a protein surface. Since the homology modeling module created a list of 
 homologues of mouse MDM2, it is possible to assess which residues are more conserved.
 
 The assess sequence conservation, the homologous sequences have first to be aligned using a 
 multiple sequence alignment algorithm, such as [Clustal](http://www.clustal.org/). HMMER calculates 
-*pairwise* sequence alignments between the query and all the hits. In the homology modelling 
+*pairwise* sequence alignments between the query and all the hits. In the homology modeling 
 module, these alignments were converted to a FASTA format and stored in the `psa.fasta` file. All 
 it takes to build a multiple sequence alignment is then to combine the original `MDM2_MOUSE.fasta` 
 file with this other FASTA file and submit it to Clustal Omega. To visualize the alignment, and 
 which positions are more conserved, the easiest way is to generate a sequence *logo*. For each 
-position in the sequence, the logo identifies the most frequently occuring residues and scales its 
+position in the sequence, the logo identifies the most frequently occurring residues and scales its 
 one-letter code according to a conservation score. We will be using the 
 [weblogo server](http://weblogo.threeplusone.com/create.cgi), in order the generate the sequence
 logo for the alignment produced by `clustalo`.
@@ -234,10 +234,10 @@ header *HADDOCK Webserver* there are links to all the interfaces: Easy, Expert, 
 Multibody, and File Upload. It also lists both the default settings of the webserver 
 ([here](http://haddock.science.uu.nl/services/HADDOCK2.2/settings.html)), which are important to 
 understand how restraints for example are handled, as well as a listing of supported modified 
-aminoacids. Proceed to the *Guru* interface by clicking on the appropriate link.
+amino acids. Proceed to the *Guru* interface by clicking on the appropriate link.
 
 <a class="prompt prompt-attention">
-  If you are following the Molecular Modelling course, ask the instructors for the web server 
+  If you are following the Molecular Modeling course, ask the instructors for the web server 
 credentials. Otherwise, please register for an (free for academics) account.
 </a>
 
@@ -249,7 +249,7 @@ and three foldable menus. In *Structure definition*, we can specify where the st
 from in dropdown menu, which chains are to be extracted from the PDB file and, in case we choose to 
 directly take a structure deposited in the Protein Data Bank, its PDB ID. In *Restraints 
 definition*, two text fields are available to write down comma-separated lists of residues (e.g. 
-1,2,3,4 ). It also allows to automatically selecting passive residues based on those neighbouring 
+1,2,3,4 ). It also allows to automatically selecting passive residues based on those neighboring 
 the active residues. Again, while passive residues are optional, we must always submit active 
 residues – at least for one partner, the other partner can have only passive for example - for the 
 docking to start. For MDM2, uncheck the two boxes at the end of the tab concerning the charge of 
@@ -292,20 +292,20 @@ the several stages of the docking protocol. As a rule of thumb, 1000 rigid-body 
 of the ensemble is a good number. The number of models selected to it1 and water can simply be 
 doubled. The computational cost of these refinement stages does not allow a proportional increase. 
 These numbers can be edited in the *Sampling parameters* tab. Likewise, the number of structures to 
-be analysed must be adapted to reflect these changes. You can find this in the last tab of all: 
+be analyzed must be adapted to reflect these changes. You can find this in the last tab of all: 
 *Analysis parameters*.
 
 <a class="prompt prompt-info">
   Change the number of models generated at the rigid-body stage to 10.000, and of the semi-flexible 
-and water refinement stages to 400. Change also the number of structures to analyse to 400.
+and water refinement stages to 400. Change also the number of structures to analyze to 400.
 </a>
 
-The clustering algorithm must also be adjusted to accomodate the small size of the peptide. The 
+The clustering algorithm must also be adjusted to accommodate the small size of the peptide. The 
 default cutoff of 7.5Å (interface-ligand RMSD) is very likely too broad and will generate very 
 large and diverse clusters. This setting can be changed in the *Parameters for clustering* tab.
 
 <a class="prompt prompt-info">
-  Reduce the clustering cutoff to 2.0Å to accomodate the small size of the peptide.
+  Reduce the clustering cutoff to 2.0Å to accommodate the small size of the peptide.
 </a>
 
 Having filled all the necessary fields, running the docking simulation is one click away. Choose a 
@@ -326,7 +326,7 @@ of these status changes are accompanied by an e-mail that is sent to the address
 account. In case of errors, this e-mail also offers additional details on the cause(s). For 
 students, since all accounts are pre-configured, the email notification is turned off.
 
-## Analysing the docking calculation results
+## Analyzing the docking calculation results
 After the simulation is complete, the results page is generated and a notification email sent to 
 the user. This results page entails an overview of the top ten clusters, ranked by average HADDOCK 
 score of their four best structures, including statistics of energetic terms and other structural 
@@ -380,7 +380,7 @@ MDM2? Can you identify key residues that might be "hotspots" of this interaction
 ## Congratulations!
 The docking calculation of MDM2 and the p53 N-terminal transactivation peptide was the culmination 
 of a three-stage computational exercise that involved the three major methods in the repertoire of 
-a Computational Structural Biologist. As you have seen, in modelling, there are rarely any 
+a Computational Structural Biologist. As you have seen, in modeling, there are rarely any 
 certainties and you must always operate with extreme care and a constant sense of (self-)criticism. 
 Nevertheless, you started with only two sequences and have now three-dimensional models of 
 interactions that can be put to the test in the lab. Who knows? Maybe one of your models is 
