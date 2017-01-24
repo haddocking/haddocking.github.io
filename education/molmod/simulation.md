@@ -646,7 +646,7 @@ particles, the pressure is kept constant by varying the volume of the simulation
 $$).
 
 <a class="prompt prompt-info">
-  Equilibrate the system under NPT conditions and re-analyse the several thermodynamical variables.
+  Equilibrate the system under NPT conditions and re-analyze the several thermodynamical variables.
 </a>
 
 <a class="prompt prompt-cmd">
