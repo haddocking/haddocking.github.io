@@ -10,7 +10,7 @@ image:
 This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The simulation protocol 
 can be used as a starting point for the investigation of protein dynamics, provided your system 
 does not contain non-standard groups. By the end of this tutorial, you should know the steps 
-involved in setting up, running, and analysing a simulation, including critically asessing the 
+involved in setting up, running, and analyzing a simulation, including critically assessing the 
 choices made at the different steps.
 
 - [A bite of theory](#a-bite-of-theory)  
@@ -22,7 +22,7 @@ choices made at the different steps.
 
 ## A bite of theory
 Molecular Dynamics generate successive configurations of a given molecular system, by integrating 
-the classical laws of motion as decribed by Newton. Generally, the end product is a *trajectory* 
+the classical laws of motion as described by Newton. Generally, the end product is a *trajectory* 
 that describes the positions and velocities of the particles in the system throughout the 
 simulation as they vary with time. The following equation describes the equations that describe the 
 motion of a particle of mass $$m$$ along the $$x_{i}$$ coordinate, where $$F_{x_{i}}$$ is the force 
@@ -37,7 +37,7 @@ $$
 
 The force felt by each individual particle is a collection of the effects exerted by other 
 neighboring particles in the system. For protein simulations, the effect of distant particles can 
-be ignored given their neglegible contribution, saving substantial computation time in the process. 
+be ignored given their negligible contribution, saving substantial computation time in the process. 
 These forces are calculated using the *force field*, a set of functions and parameters that 
 approximate the potential energy of the system. These parameters are usually derived either from 
 experiments or high-level quantum mechanical calculations. Although force fields come in many 
@@ -78,19 +78,19 @@ depending on the setup!).
 
 Despite decades of research, as well as advances in computer science and hardware development, most 
 simulations are able to sample only a few microseconds of *real time*, although they take several 
-days/weeks running on multiple processors. The milisecond barrier was broken only recently, by 
+days/weeks running on multiple processors. The millisecond barrier was broken only recently, by 
 simulating on a purpose-built computer. Moreover, the force fields used in biomolecular simulation 
 are approximating the interactions happening in reality. This results in errors in the estimation 
 of energies of interacting atoms and groups of atoms. As such, molecular dynamics are not a 
 miraculous alternative to experiments, nor can the results of simulations be trusted blindly. There 
-must always be some sort of validation, preferrably by experimental data. When considering setting 
+must always be some sort of validation, preferably by experimental data. When considering setting 
 up a molecular dynamics simulation, plan it wisely, choosing carefully the setup and the system so 
 that there are a minimum of variables under study. If carried out properly, these simulations 
-remain an unparallelled method in terms of spatial and temporal resolution that are able to shed 
+remain an unparalleled method in terms of spatial and temporal resolution that are able to shed 
 light on principles underlying biological function and fuel the formulation of new hypotheses.
 
 ## Introduction and Outline
-The aim of this tutorial is to simulate and analyse the conformational dynamics of a small peptide 
+The aim of this tutorial is to simulate and analyze the conformational dynamics of a small peptide 
 using molecular dynamics algorithms as implemented in the [GROMACS](http://www.gromacs.org) 
 software. The following sections outline several preparation steps and analyses. These instructions 
 do not apply to all molecular systems. Take your time to know your system and what particularities 
@@ -121,7 +121,7 @@ SQETFSGLWKLLPPE
 Peptides are often very flexible molecules with short-lived secondary structure elements. Some can 
 even adopt different structures depending on which protein partner they are interacting with, 
 remaining in a disordered state if free in solution. As such, the effort of using an advanced 
-method such as homology modelling for this peptide is very likely unwarranted. Instead, it is 
+method such as homology modeling for this peptide is very likely unwarranted. Instead, it is 
 possible, and plausible, to generate structures of the peptide in three ideal conformations -- 
 helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the 
 peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating 
@@ -248,7 +248,7 @@ parameters defined in the force field. Also, the program allows the user to defi
 the termini of the molecule through the `-ter` flag. Termini can be either charged (e.g. 
 NH<sub>3</sub><sup>+</sup> and COO<sup>-</sup>), uncharged (e.g. NH<sub>2</sub> and COOH), or 
 capped by an additional chemical group (e.g. N-terminal acetyl and C-terminal amide). This is very 
-important since leaving the termini charged (default) can lead to artifical charge-charge 
+important since leaving the termini charged (default) can lead to artificial charge-charge 
 interactions, particular in small molecules. If a peptide is part of a larger structure, then it 
 makes sense to cap the termini in order to neutralize their charge, as it would happen in reality. 
 Read through the output of `pdb2gmx` and check the choices the program made for histidine 
@@ -383,7 +383,7 @@ computationally demanding. While the system can be easily prepared on a laptop, 
 Pymol, GUI-enabled text editors, and all the other advantages of having a screen, calculations 
 usually run on specialized clusters with hundreds of processing cores that provide only a 
 command-line interface access. This will be relevant when running the production simulation. The 
-intermediate calculations to prepare the system are confortably small to run on a laptop.
+intermediate calculations to prepare the system are comfortably small to run on a laptop.
 
 The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For 
 simplicity, we provide these files in our [GitHub 
@@ -555,7 +555,7 @@ CL                  5
 ### Energy minimization of the solvated system
 The addition of ions was the final step in setting up the system (chemically) for the simulation. 
 From here on, all that is necessary is to relax the system in a controlled manner. Adding the 
-solvent and the ions might have caused some unfavourable interactions, such as overlapping atoms 
+solvent and the ions might have caused some unfavorable interactions, such as overlapping atoms 
 and equal charges placed too close together.
 
 <a class="prompt prompt-info">
@@ -661,13 +661,13 @@ $$).
 </a>
 
 ### Releasing the position restraints
-By now, the system had time to ajust to the injection of velocities and the introduction of both 
+By now, the system had time to adjust to the injection of velocities and the introduction of both 
 temperature and pressure. The heavy atoms of the peptide are, however, still restrained to their 
 initial positions. The next and final steps of the simulation setup release these restraints, 
 progressively, until the system is completely unrestrained and fully equilibrated at the desired 
 temperature and pressure, thus ready for the production simulation.
 
-The strenght of the restraints is defined in the `posre.itp` file, created by `pdb2gmx`. The value 
+The strength of the restraints is defined in the `posre.itp` file, created by `pdb2gmx`. The value 
 of the force constant defines how strictly the atom is restrained. As such, releasing the 
 restraints is as simple as modifying the numbers on the file.
 
@@ -1039,7 +1039,7 @@ analysis involves testing for the convergence of the thermodynamic parameters, s
 pressure, and the potential and kinetic energies. Sometimes, the convergence of a simulation is 
 also checked in terms of the root mean square deviation (RMSD) of the atomic coordinates of each 
 frame against the initial structure and/or the average structure. Since this simulation is of a 
-very small and flexbile peptide, it is expected that it does **not** converge, although there might 
+very small and flexible peptide, it is expected that it does **not** converge, although there might 
 be surprises! Finally, the occurrence of interactions between periodic images must be checked as 
 well since, if these did occur, they might lead to artifacts in the simulation.
 
@@ -1125,14 +1125,14 @@ the simulation, what would be the minimum distance allowed between two periodic 
 distance? Why?
 </a>
 
-The occurence of a periodic image *sighting* can be overlooked if it is very transient and 
+The occurrence of a periodic image *sighting* can be overlooked if it is very transient and 
 infrequent. If it does occur frequently or consistently over a stretch of the simulation, time to 
 go back and re-do the whole setup. Also, not only direct interactions are of concern. As mentioned 
 before, the water around the solute has a different structure than the bulk water. To be on the 
 safe side, add an extra nanometer when calculating the allowed minimal distance.
 
 ### Conformational dynamics and stability I -- Radius of Gyration
-Before analysing any structural parameter, the trajectory has to be massaged to avoid artifacts 
+Before analyzing any structural parameter, the trajectory has to be massaged to avoid artifacts 
 because of the periodic boundary conditions. In addition, all the analysis tools work faster if the 
 trajectory contains only the necessary (protein) atoms and their information.
 
@@ -1208,7 +1208,7 @@ inspect the flexible regions visually. Note the unphysical character of the aver
 As the calculation of the RMSF also produced an average structure, it is now possible to calculate 
 the root mean square deviation of the entire trajectory. This metric is commonly used as an 
 indicator of convergence of the structure towards an equilibrium state. The RMSD is a distance 
-measure, and as such is mostly meaningul for low values. Two frames that differ by 10Å from the 
+measure, and as such is mostly meaningful for low values. Two frames that differ by 10Å from the 
 average structure may well be entirely different conformations. The GROMACS tools `rms` allows such 
 calculations, and in particular selecting only specific groups of atoms of the molecule, such as 
 the backbone.
@@ -1357,7 +1357,7 @@ as possible regarding initial structures.
 
 ### Preparation of a concatenated trajectory
 The first step is to trim the trajectories in order to remove the first 10 nanoseconds, which can 
-be conservately considered as equilibration. This operation is possible through `trjconv` and its 
+be conservatively considered as equilibration. This operation is possible through `trjconv` and its 
 `-b` flag, which allows the user to specify an offset previous to which the trajectory data is 
 ignored. To be able to extract only the peptide atoms, `trjconv` requires an *dummy* index file.
 
@@ -1390,7 +1390,7 @@ p53_polypro_CAH_reduced_10-50ns.xtc -o p53_concatenated.xtc -cat -settime
 </a>
 
 ### Root Mean Square Deviations -- Part II
-Although the root mean square deviation (RMSD) was already calcualted to check for the convergence 
+Although the root mean square deviation (RMSD) was already calculated to check for the convergence 
 of the simulation, it can be used for a more advanced and in-depth analysis of conformational 
 diversity. After all, the RMSD is a metric that compares structures. By performing an all-vs-all 
 comparison with all frames in the concatenated trajectory, it is possible to identify groups of 

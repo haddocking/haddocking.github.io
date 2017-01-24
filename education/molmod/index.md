@@ -22,10 +22,10 @@ goal is to combine the three methods to answer a biological problem, each module
 independently. The two first modules, molecular dynamics and homology modelling, require 
 installation of specific software packages: [GROMACS](http://www.gromacs.org), 
 [MODELLER](https://salilab.org/modeller), and [HMMER](http://hmmer.janelia.org). Further, the 
-homology modelling part relies heavily on MODELLER, which is free for academical use but 
+homology modelling part relies heavily on MODELLER, which is free for academic use but 
 nonetheless requires registration. The third module, data-driven docking, uses the 
 [HADDOCK web server](http://haddocking.org), which, like MODELLER, requires registration but is 
-free for academical users. The course material is available for free on 
+free for academic users. The course material is available for free on 
 [GitHub](http://github.com/haddocking/molmod) and makes use of virtualization software 
 ([Virtualbox](http://virtualbox.org)).
 
@@ -48,7 +48,7 @@ advantage of this interplay and overexpress MDM2, making the p53/MDM2 interactio
 for drug development for cancer therapeutics. While many researchers focus on the human p53/MDM2 
 interaction, we believe mice (Mus musculus) also deserve their share of cutting-edge research, if 
 only for their long-standing contribution to human disease! Therefore, the aim of this course is to 
-probe the binding of a peptide sequence of the mouse p53 tumor suppressor protein to mouse MDM2. 
+probe the binding of a peptide sequence of the mouse p53 tumour suppressor protein to mouse MDM2. 
 Since neither partner has an experimentally determined crystal structure available, this scientific 
 problem is perfectly suited for a course on computational structural biology.
 
