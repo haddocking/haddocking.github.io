@@ -488,7 +488,7 @@ addition of the solvent.
   gmx solvate -cp peptide-EM-vacuum.gro -cs spc216.gro -o peptide-water.gro -p peptide.top
 </a>
 <a class="prompt prompt-question">
-  Why can you use the structure of the SPC water model?
+  Why can you use the coordinates of the pre-equilibrated SPC water box instead of a specific TIP3P box?
 </a>
 
 GROMACS backs up the previous topology file before updating it. Generally, GROMACS *never* 
