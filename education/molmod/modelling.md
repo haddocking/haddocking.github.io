@@ -250,7 +250,7 @@ profile HMM from the query sequence and uses this profile to search the database
 
 <a class="prompt prompt-cmd">
   cp $HOME/Downloads/MDM2_MOUSE.fasta .  
-  phmmer \-\-notextw -o psa.out -A psa.sto MDM2_MOUSE.fasta /opt/share/pdb_seqres.txt
+  phmmer \-\-notextw -o psa.out -A psa.sto MDM2_MOUSE.fasta $MOLMOD_DATA/pdb_seqres.txt
 </a>
 <a class="prompt prompt-attention">
   Adapt the file names accordingly!
