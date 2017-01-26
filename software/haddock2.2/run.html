@@ -84,6 +84,17 @@ Also check that the HADDOCK directory, defining the path to the HADDOCK programs
     <BR><BR>
     <b>Note 2:</b> Do not use similar names for the various molecules and the name of the current project.
 </ul>
+<BR><BR>
+In that section there is also a paramater that defines if non-polar protons should be kept or not:
+<pre>
+{* Remove non-polar hydrogens? *}
+{+ choice: true false +}
+{===>} delenph=true; 
+</pre>
+By default non-polar protons are deleted to speed-up the calculations. They are however accounted for in the heavy atoms parameters since the force field used (OPLS) is a united atom force field.
+<UL>
+    <b>Important:</b> In case you are defining distance restraints involving non-polar protons (e.g. NOE restraints), make sure to set delenph to false, otherwise your restraints will not be used! To make sure all your restraints are properly read, it is recommended to check one of the generated output file for a model (e.g. from the rigid body docking) and search for error messages related to the NOE restraints (NOESET-INFO).
+</ul>
 <hr>
 <BR>
 <a name="histidines"><b>3. <u>Definition of the protonation state of histidines</u></b></a> <a href="/software/haddock2.2/histidines.png"><img src="http://www.bonvinlab.org/software/haddock2.2/camera.jpg" alt="(screenshot)"></a>
