@@ -65,7 +65,7 @@ each with a defined goal and characteristics:
 1.	Randomization of orientations and rigid-body minimization (it0).
 In this initial stage, the interacting partners are treated as rigid bodies, meaning that all 
 geometrical parameters such as bonds lengths, bond angles, and dihedral angles are frozen. The 
-partners are separated in space and rotated randomly about their centres of mass. This is followed 
+partners are separated in space and rotated randomly about their centers of mass. This is followed 
 by a rigid body energy minimization step, where the partners are allowed to rotate and translate to 
 optimize the interaction.
 The role of AIRs in this stage is of particular importance. Since they are included in the energy 
@@ -200,7 +200,7 @@ allowed and little information on the role of these termini in the binding. Thes
 or flexible regions probably flop about in space, making their conformation in the model very 
 likely artificial. The previous conservation analysis showed that the first 16 residues are not 
 conserved in the MDM2 alignment, which contains 169 members. In the structure of the homology 
-model, these 16 residues correspond to the N-terminal region that was modelled using the 
+model, these 16 residues correspond to the N-terminal region that was modeled using the 
 `loopmodel` protocol, and which scored badly at the validation stage. It seems safe then, to remove 
 this region of the homology model before the docking calculations.
 
@@ -279,7 +279,7 @@ protein that is predicted as being part of the interface.
 <a class="prompt prompt-info">
   Define as passive residues of MDM2 as those provided by CPORT. Remember to remove from the list 
 numbers 1-16, as these were removed from the PDB file. For the p53 peptide, list as active all 
-residues (1 to 14).
+residues (1 to 15).
 </a>
 
 The use of an ensemble of structures translates to a worse sampling at the rigid-body stage. The 
@@ -305,7 +305,7 @@ default cutoff of 7.5Å (interface-ligand RMSD) is very likely too broad and wil
 large and diverse clusters. This setting can be changed in the *Parameters for clustering* tab.
 
 <a class="prompt prompt-info">
-  Reduce the clustering cutoff to 2.0Å to accommodate the small size of the peptide.
+  Set the clustering cutoff to 5.0Å to accommodate the small size of the peptide.
 </a>
 
 Having filled all the necessary fields, running the docking simulation is one click away. Choose a 
