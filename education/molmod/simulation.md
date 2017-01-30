@@ -1272,11 +1272,11 @@ hydrogen bonds over all frames. The number of hydrogen bonds alone is a proxy fo
 secondary structures.
 
 <a class="prompt prompt-info">
-  Calculate the number of internal and protein-solvent hydrogen bonds over the trajectory.
+  Calculate the number of internal and protein-solvent hydrogen bonds over the trajectory. Note that for determining hydrogen bonds to the solvent the reduced trajectory cannot be used.
 </a>
 <a class="prompt prompt-cmd">
   gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_internal.xvg  
-  gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
+  gmx hbond -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
 </a>
 <a class="prompt prompt-question">
   How does the number of internal hydrogen bonds correlate with the radius of gyration?
