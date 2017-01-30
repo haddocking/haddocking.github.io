@@ -276,7 +276,7 @@ the docking of MDM2 and p53, given the nature of the interface data and of the s
 [Structure 2013](http://dx.plos.org/10.1371/journal.pone.0058769) paper.
 
 <a class="prompt prompt-info">
-  Define as active, the residues returned as active by CPORT. Remember to remove from the list 
+  For MDM2, define as active the residues returned as active by CPORT. Remember to remove from the list 
 numbers 1-16, as these were removed from the PDB file. For the p53 peptide, list as passive all 
 residues (1 to 15).
 </a>
