@@ -1156,7 +1156,7 @@ the experimentally obtainable hydrodynamic radius.
   Calculate and plot the radius of gyration of the peptide across the trajectory.
 </a>
 <a class="prompt prompt-cmd">
-  gmx gyrate -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_radius-of-gyration.xvg
+  gmx gyrate -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_radius-of-gyration.xvg  
   xvg_plot.py -i md_radius-of-gyration.xvg  
 </a>
 <a class="prompt prompt-question">
