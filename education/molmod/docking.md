@@ -18,6 +18,7 @@ interpret its results in terms of biological insights.
 - [Setting up the docking calculation using the HADDOCK web server](#setting-up-the-docking-calculation-using-the-haddock-web-server)
 - [Analyzing the docking calculation results](#analyzing-the-docking-calculation-results)
 
+
 ##A bite of theory
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation, 
 proliferation, signal transduction, and cell death. Their structural characterization is however 
