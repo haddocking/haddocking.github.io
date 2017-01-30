@@ -7,6 +7,7 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 ## General Overview
+
 This tutorial introduces protein-protein docking using the HADDOCK web server. It also introduces 
 the CPORT web server for interface prediction, based on evolutionary conservation and other 
 biophysical properties. By the end of this tutorial, you should know how to setup a HADDOCK run and 
@@ -19,7 +20,9 @@ interpret its results in terms of biological insights.
 - [Analyzing the docking calculation results](#analyzing-the-docking-calculation-results)
 
 
-##A bite of theory
+
+## A bite of theory
+
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation, 
 proliferation, signal transduction, and cell death. Their structural characterization is however 
 not always trivial, even with the constant developments in x-ray crystallography and nuclear 
@@ -111,7 +114,10 @@ fitting on the interface of the receptor (the first molecule) and calculating th
 interface of the smaller partner. The interface used in this calculation is automatically defined 
 based on an analysis of all contacts made in all models.
 
+
+
 ## Predicting the interface of p53 on Mdm2
+
 HADDOCK excels at predicting the structure of the protein complexes given there is some sort of 
 information to guide the docking. In the absence of experimental information, it is possible to use 
 features such as sequence conservation and biophysical characteristics of surface residues to infer 
@@ -186,7 +192,10 @@ in Pymol.
   Note down the list of residues predicted by CPORT to be part of an interface.
 </a>
 
+
+
 ## Preparing the structures for the docking calculation
+
 In order to perform a docking calculation with HADDOCK, the initial structures of both MDM2 and p53 
 must fulfill a few requirements. First, the PDB files must have an `END` statement as a last line. 
 The files cannot contain also atoms with multiple occupancies. It is also possible to submit an 
@@ -227,7 +236,10 @@ structure.
   pdb_join.py p53_cluster_1.pdb p53_cluster_2.pdb p53_cluster_3.pdb > p53_ensemble.pdb
 </a>
 
+
+
 ## Setting up the docking calculation using the HADDOCK web server
+
 Having prepared the initial structures and constructed a list of putative interface residues, it is 
 time to submit the docking calculation using the 
 [HADDOCK web server interface](haddock.science.uu.nl/services/HADDOCK2.2/haddock.php). Under the 
@@ -450,6 +462,7 @@ students, since all accounts are pre-configured, the email notification is turne
 
 
 ## Analyzing the docking calculation results
+
 After the simulation is complete, the results page is generated and a notification email sent to 
 the user. This results page entails an overview of the top ten clusters, ranked by average HADDOCK 
 score of their four best structures, including statistics of energetic terms and other structural 
@@ -469,7 +482,8 @@ answer of which conformation is more likely to be realistic?
 
 
 
-### Visual inspection of the cluster representatives
+## Visual inspection of the cluster representatives
+
 Any molecular simulation, docking included, lacks the accuracy to produce one single good model. 
 However, with sufficient attempts, reasonable models are likely to populate the results. HADDOCK in 
 particular, given its data-driven character, produces a much higher quantity models if the quality 
