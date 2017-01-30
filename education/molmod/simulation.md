@@ -1029,7 +1029,7 @@ Then, in the command-line interface, assuming you are in the directory where Pym
 *.png* files:
 
 <a class="prompt prompt-cmd">
-  convert -delay 1 -loop 0 frame\_\*.png dynamics.gif
+  convert -delay 1 -loop 0 -dispose Background frame\_\*.png dynamics.gif
 </a>
 
 ## Quantitative Quality Assurance
