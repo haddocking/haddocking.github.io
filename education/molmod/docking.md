@@ -271,12 +271,14 @@ passive residues of the other, but never between passive residues only. Further,
 two active residues **must** be respected or there is an energy penalty. Restraints between active 
 and passive residues are more flexible and can be violated freely without an energetic penalty. For 
 the docking of MDM2 and p53, given the nature of the interface data and of the system 
-(protein/peptide interaction), the recommended course of action is to classify residues on the protein as 
-*active* and those on the peptide as *passive* following the recepee with published in our [Structure 2013](http://dx.plos.org/10.1371/journal.pone.0058769) paper.
+(protein/peptide interaction), the best course of action is to classify residues on the peptide as 
+*active* and those on the protein as *passive*. This ensures that there is no bias on the protein 
+side, in other words, that the only requirement is that the peptide contacts some part of the 
+protein that is predicted as being part of the interface.
 
 <a class="prompt prompt-info">
-  Define as active residues of MDM2 the active ones provided by CPORT. Remember to remove from the list 
-numbers 1-16, as these were removed from the PDB file. For the p53 peptide, list as passive all 
+  Define as passive residues of MDM2 as those provided by CPORT. Remember to remove from the list 
+numbers 1-16, as these were removed from the PDB file. For the p53 peptide, list as active all 
 residues (1 to 15).
 </a>
 
