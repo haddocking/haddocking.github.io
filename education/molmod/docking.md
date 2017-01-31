@@ -407,7 +407,7 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 
 ### Step 6: Adjust the clustering parameters
 
-For this unfold the **Parameters for clustering**.
+For this unfold the **Parameters for clustering menu**.
 
 HADDOCK offers two different clustering algorithms. 
 Refer to the [online manual](http://www.bonvinlab.org/software/haddock2.2/run/#anal) for more details. 
@@ -425,7 +425,21 @@ likely generate very large and diverse clusters. We should therefore reduce the 
 </a>
 
 
-### Step 7: Adjust the number of flexible refinement steps to increase the sampling of peptide conformations
+### Step 7: Turn on automatic restraining of secondary structure elements
+
+For this unfold the **Restraint energy contstants menu**.
+
+HADDOCK offers an option to automatically define dihedral angle restraints based on the input structure.
+This can be applied either to the entire sequence, or only to alpha helical segments or to alpha and beta segments.
+These are automatically detected based on the measured dihedral angles. For flexible peptides, since we are treating them
+as fully flexible, it is recommended to turn on this option. 
+
+<a class="prompt prompt-info">
+  Automatically define backbone dihedral restraints from structure? -> Select Only for alpha helix
+</a>
+
+
+### Step 8: Adjust the number of flexible refinement steps to increase the sampling of peptide conformations
 
 For this unfold the **Advanced sampling parameter menu**.
 
@@ -446,7 +460,7 @@ Double the number of steps for all four stages of the semi-flexible refinement:
 
 
 
-### Step 8: Adjust the number of models considered for the analysis
+### Step 9: Adjust the number of models considered for the analysis
 
 For this unfold the **Analysis parameters menu**.
 
@@ -457,7 +471,7 @@ Number of structures to analyze -> 400
 </a>
 
 
-### Step 9: Submit your docking run
+### Step 10: Submit your docking run
 
 
 Having filled all the necessary fields, running the docking simulation is one click away. 
