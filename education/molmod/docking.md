@@ -7,19 +7,15 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 ## General Overview
+{:.no_toc}
 
 This tutorial introduces protein-protein docking using the HADDOCK web server. It also introduces 
 the CPORT web server for interface prediction, based on evolutionary conservation and other 
 biophysical properties. By the end of this tutorial, you should know how to setup a HADDOCK run and 
 interpret its results in terms of biological insights.
 
-- [A bite of theory](#a-bite-of-theory)  
-- [Predicting the interface of p53 on Mdm2](#predicting-the-interface-of-p53-on-mdm2)  
-- [Preparing the structures for the docking calculation](#preparing-the-structures-for-the-docking-calculation)  
-- [Setting up the docking calculation using the HADDOCK web server](#setting-up-the-docking-calculation-using-the-haddock-web-server)
-- [Analyzing the docking calculation results](#analyzing-the-docking-calculation-results)
-
-
+* table of contents
+{:toc}
 
 ## A bite of theory
 
@@ -267,12 +263,12 @@ the registered username and password.
 **Note:** The red or blue bars on the server can be folded/unfolded by clicking on the arrow on the right. 
 In the following we will only describe the fields/parameters that needs to be filled/changed.
 
-### Step1: Define a name for your docking run
+### Step 1: Define a name for your docking run
 <a class="prompt prompt-info">
 Enter a meaningful name for your run e.g. *MDM2-p53*.
 </a>
 
-### Step2: Input the protein PDB file
+### Step 2: Input the protein PDB file
 For this unfold the **First molecule menu**.
 
 <a class="prompt prompt-info">
@@ -304,7 +300,7 @@ Since our homology model does not correspond to the full sequence it is better t
 termini 
 
 
-### Step3: Input the peptide PDB file
+### Step 3: Input the peptide PDB file
 
 For this unfold the **Second molecule menu**.
 
@@ -360,7 +356,7 @@ In that way the active residues of the protein will attract the peptide, while p
 all to make contacts per se. 
 
 
-### Step4: Increase the fraction of randomly deleted restraints
+### Step 4: Increase the fraction of randomly deleted restraints
 
 For this unfold the **Distance restraints menu**.
 
@@ -375,7 +371,7 @@ For this change the value of the number of partitions:
 Number of partitions for random exclusion (%excluded=100/number of partitions) -> 1.1429
 </a>
 
-### Step5: Change the sampling parameters to increase the number of models generated
+### Step 5: Change the sampling parameters to increase the number of models generated
 
 For this unfold the **Sampling parameter menu**.
 
@@ -409,7 +405,7 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 
 
 
-### Step6: Adjust the clustering parameters
+### Step 6: Adjust the clustering parameters
 
 For this unfold the **Parameters for clustering**.
 
@@ -429,7 +425,7 @@ likely generate very large and diverse clusters. We should therefore reduce the 
 </a>
 
 
-### Step7: Adjust the number of flexible refinement steps to increase the sampling of peptide conformations
+### Step 7: Adjust the number of flexible refinement steps to increase the sampling of peptide conformations
 
 For this unfold the **Advanced sampling parameter menu**.
 
@@ -450,7 +446,7 @@ Double the number of steps for all four stages of the semi-flexible refinement:
 
 
 
-### Step8: Adjust the number of models considered for the analysis
+### Step 8: Adjust the number of models considered for the analysis
 
 For this unfold the **Analysis parameters menu**.
 
@@ -461,7 +457,7 @@ Number of structures to analyze -> 400
 </a>
 
 
-### Step9: Submit your docking run
+### Step 9: Submit your docking run
 
 
 Having filled all the necessary fields, running the docking simulation is one click away. 
