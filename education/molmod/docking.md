@@ -7,19 +7,15 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 ## General Overview
+{:.no_toc}
 
 This tutorial introduces protein-protein docking using the HADDOCK web server. It also introduces 
 the CPORT web server for interface prediction, based on evolutionary conservation and other 
 biophysical properties. By the end of this tutorial, you should know how to setup a HADDOCK run and 
 interpret its results in terms of biological insights.
 
-- [A bite of theory](#a-bite-of-theory)  
-- [Predicting the interface of p53 on Mdm2](#predicting-the-interface-of-p53-on-mdm2)  
-- [Preparing the structures for the docking calculation](#preparing-the-structures-for-the-docking-calculation)  
-- [Setting up the docking calculation using the HADDOCK web server](#setting-up-the-docking-calculation-using-the-haddock-web-server)
-- [Analyzing the docking calculation results](#analyzing-the-docking-calculation-results)
-
-
+* table of contents
+{:toc}
 
 ## A bite of theory
 
@@ -146,6 +142,10 @@ inspect which residues are highly conserved.
     clustalo -i MDM2_family.fasta --dealign -o MDM2_family.aln  
 </a>
 
+<a class="prompt prompt-info">
+  Create the sequence logo by submitting the alignment file to the weblogo server.  
+</a>
+
 <a class="prompt prompt-question">
   Which regions of the sequence are highly conserved? And which are less conserved?
 </a>
@@ -169,16 +169,15 @@ This information, combined with evolutionary conservation and with a surface clu
 that finds groups of surface residues meeting both the previous criteria results in reasonably 
 accurate predictions. This is the basis of the 
 [WHISCY](http://www.nmr.chem.uu.nl/Software/whiscy/startpage.htm) algorithm. A more advanced 
-predictor, the [CPORT](http://haddock.science.uu.nl/services/CPORT/) web server, judiciously 
-combined (up to) 6 different predictors to provide a a consensus prediction that is more robust and 
+predictor, the [CPORT](http://milou.science.uu.nl/services/CPORT/) web server, judiciously 
+combines (up to) 6 different predictors to provide a consensus prediction that is more robust and 
 more reliable than any of the individual predictors alone. CPORT was designed to provide 
-predictions for HADDOCK and as such, its output consists of a listing of residues predicted to be 
-at the interface with a high degree of confidence. The server also returns a PDB file of the 
+predictions for HADDOCK. The server also returns a PDB file of the 
 original structure loaded with the predictions in the temperature factor column. This is extremely 
 helpful to visualize the predictions in Pymol.
 
 <a class="prompt prompt-info">
-  Submit the homology model of mouse MDM2 to the [CPORT web server](http://haddock.science.uu.nl/services/CPORT) and load the resulting PDB file 
+  Submit the homology model of mouse MDM2 to the CPORT web server and load the resulting PDB file 
 in Pymol.
 </a>
 <a class="prompt prompt-pymol">
@@ -198,15 +197,15 @@ in Pymol.
 
 In order to perform a docking calculation with HADDOCK, the initial structures of both MDM2 and p53 
 must fulfill a few requirements. First, the PDB files must have an `END` statement as a last line. 
-The files cannot contain also atoms with multiple occupancies. It is also possible to submit an 
+The files can also not contain atoms with multiple occupancies. It is however possible to submit an 
 ensemble of structures, which is useful for the representatives of p53 extracted from the molecular 
-dynamics simulation. However, all members must contain exactly the same atoms. Luckily, both the 
-files produces by MODELLER and by GROMACS respect the `END` statement and multiple occupancy 
+dynamics simulation. When submitting such an ensemble, all members must contain exactly the same atoms.
+Luckily, both the files produced by MODELLER and by GROMACS respect the `END` statement and multiple occupancy 
 requirement, so no action is necessary here.
 
 Then, when performing a docking calculation, it is wise to remove any unstructured or flexible 
 termini that might obstruct the binding of the partner, particularly if there is no flexibility 
-allowed and little information on the role of these termini in the binding. These long unstructured 
+allowed and little information on the role of these termini in the binding is available. These long unstructured 
 or flexible regions probably flop about in space, making their conformation in the model very 
 likely artificial. The previous conservation analysis showed that the first 16 residues are not 
 conserved in the MDM2 alignment, which contains 169 members. In the structure of the homology 
@@ -240,19 +239,23 @@ structure.
 
 ## Setting up the docking calculation using the HADDOCK web server
 
+<a class="prompt prompt-attention">
+If you are following the Molecular Modeling course, ask the instructors for the web server 
+credentials. Otherwise, please register for an account (free for academics).
+</a>
+
+[HADDOCK registration page](http://haddock.science.uu.nl/services/HADDOCK2.2/signup.html)
+{: style="text-align: center"}
+
 Having prepared the initial structures and constructed a list of putative interface residues, it is 
 time to submit the docking calculation using the 
-[HADDOCK web server interface](haddock.science.uu.nl/services/HADDOCK2.2/haddock.php). Under the 
+[HADDOCK web server interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php). Under the 
 header *HADDOCK Webserver* there are links to all the interfaces: Easy, Expert, Guru, Prediction, 
-Multibody, and File Upload. It also lists both the default settings of the webserver 
-([here](http://haddock.science.uu.nl/services/HADDOCK2.2/settings.html)), which are important to 
-understand how restraints for example are handled, as well as a listing of supported modified 
-amino acids. Proceed to the *Guru* interface by clicking on the appropriate link.
-
-<a class="prompt prompt-attention">
-  If you are following the Molecular Modeling course, ask the instructors for the web server 
-credentials. Otherwise, please [register](http://haddock.science.uu.nl/services/HADDOCK2.2/signup.html) for an (free for academics) account.
-</a>
+Multibody, and File Upload. It also lists both the 
+[default settings of the webserver](http://haddock.science.uu.nl/services/HADDOCK2.2/settings.html),
+which are important to understand how restraints for example are handled, as well as a 
+[listing of supported modified amino acids](http://haddock.science.uu.nl/services/HADDOCK2.2/library.html).
+Proceed to the *Guru* interface by clicking on the appropriate link.
 
 The *Guru* interface presents several foldable tabs and text input fields for a custom run name, 
 the registered username and password. 
@@ -260,9 +263,13 @@ the registered username and password.
 **Note:** The red or blue bars on the server can be folded/unfolded by clicking on the arrow on the right. 
 In the following we will only describe the fields/parameters that needs to be filled/changed.
 
-* **Step1:** Define a name for your docking run, e.g. *MDM2-p53*.
+### Step 1: Define a name for your docking run
+<a class="prompt prompt-info">
+Enter a meaningful name for your run e.g. *MDM2-p53*.
+</a>
 
-* **Step2:** Input the protein PDB file. For this unfold the **First molecule menu**.
+### Step 2: Input the protein PDB file
+For this unfold the **First molecule menu**.
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -289,10 +296,13 @@ The N-terminus of your protein is positively charged -> uncheck the box if neede
 The C-terminus of your protein is negatively charged -> uncheck the box if needed
 </a>
 
-(Our homology model does not correspond to the full sequence - better to have uncharged termini)
+Since our homology model does not correspond to the full sequence it is better to have uncharged 
+termini 
 
 
-* **Step3:** Input the peptide PDB file. For this unfold the **Second molecule menu**.
+### Step 3: Input the peptide PDB file
+
+For this unfold the **Second molecule menu**.
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -319,11 +329,11 @@ The N-terminus of your protein is positively charged -> uncheck the box if neede
 The C-terminus of your protein is negatively charged -> uncheck the box if needed
 </a>
 
-(The peptide is only a fragment of the full p53 and as such its termini should be uncharged).
+Again, the peptide is only a fragment of the full p53 and as such its termini should be uncharged.
 
 
 Since peptides are highly flexible we will give more flexibility to the peptide to allow for larger conformational changes.
-For this unfold the *Fully flexible segments mean* tab and in *First segment* enter:
+For this unfold the *Fully flexible segments* tab and in *First segment* enter:
 
 <a class="prompt prompt-info">
 First number -> 1 (the first residue of your peptide)
@@ -338,18 +348,21 @@ simulated annealing refinement stage and therefore increase sampling.
 The definition of restraints does require some thoughts. Active residues in HADDOCK are those that are 
 *required* to be at the interface. Passive residues, on the other hand, are those that 
 *might* be at the interface. Ambiguous Interaction Restraints, or AIRs, are created 
-between each active residues of a partner and the combination of active and passive residues of the other partner. 
+between each active residue of a partner and the combination of active and passive residues of the other partner. 
 An active residue which is not at the interface will cause an energy penalty while this is not the case for passive residues. 
-For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](http://haddock.science.uu.nl/services/CPORT) predicitons, 
-while the peptide is only defined as passive. This follows the recepee published in our [Structure 2013](http://dx.plos.org/10.1371/journal.pone.0058769) paper 
+For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](http://haddock.science.uu.nl/services/CPORT) predictions, 
+while the peptide is only defined as passive. This follows the recipe published in our [Structure 2013](http://dx.plos.org/10.1371/journal.pone.0058769) paper 
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have 
 all to make contacts per se. 
 
 
-* **Step4:** Increasing the fraction of randomly deleted restraints. For this unfold the **Distance restraints menu**.
+### Step 4: Increase the fraction of randomly deleted restraints
 
-Since we have used [CPORT](http://haddock.science.uu.nl/services/CPORT) to define the putative interface on MDM2 it is recommended to increased the fraction of restraints 
-randomly deleled for each docking trial. By default this is 50%. In CPORT, however, we rather overpredict than underpredict
+For this unfold the **Distance restraints menu**.
+
+Since we have used [CPORT](http://milou.science.uu.nl/services/CPORT) to define the putative interface
+on MDM2 it is recommended to increase the fraction of restraints 
+randomly deleted for each docking trial. By default this is 50%. In CPORT, however, we rather overpredict than underpredict
 to make sure that the binding site is covered by our predictions. Because of this overprediction it is therefore recommended to
 increase the fraction of randomly deleted restraints to 87.5% (as described in our [CPORT paper](http://dx.doi.org/doi:10.1371/journal.pone.0017695)).
 For this change the value of the number of partitions:
@@ -358,7 +371,9 @@ For this change the value of the number of partitions:
 Number of partitions for random exclusion (%excluded=100/number of partitions) -> 1.1429
 </a>
 
-* **Step5:** Change the sampling parameters to increase the number of models generated.  For this unfold the **Sampling parameter menu**.
+### Step 5: Change the sampling parameters to increase the number of models generated
+
+For this unfold the **Sampling parameter menu**.
 
 The use of an ensemble of structures translates into a worse sampling per conformation at the rigid-body stage. 
 Each starting conformation will be sampled a limited number of times as defined by the total number of models sampled 
@@ -367,7 +382,7 @@ an ensemble of 10 starting conformations translates to 100 models generated per 
 This reduction in sampling per model might deteriorate the accuracy of the docking calculations, 
 particularly if the restraints are fuzzy, as is the case when using bioinformatics predictions. 
 For this reason it is recommended to increase the number of structures generated at 
-the several stages of the docking protocol. As a rule of thumb, 1000 rigid-body models per member 
+the various stages of the docking protocol. As a rule of thumb, 1000 rigid-body models per member 
 of the ensemble is a good number. The number of models selected to it1 and water can simply be 
 doubled. The computational cost of these refinement stages does not allow a proportional increase. 
 These numbers can be edited in the *Sampling parameters* tab. 
@@ -376,10 +391,10 @@ These numbers can be edited in the *Sampling parameters* tab.
 Number of structures for rigid body docking -> Increase this number from 1000 to N*1000 (with a max of 10000), where N is the number of conformers in the ensemble.
 </a>
 <a class="prompt prompt-info">
-Number of structures for semi-flexible refinement -> Increase this number 400.
+Number of structures for semi-flexible refinement -> Increase this number to 400.
 </a>
 <a class="prompt prompt-info">
-Number of structures for the explicit solvent refinement -> Increase this number 400.
+Number of structures for the explicit solvent refinement -> Increase this number to 400.
 </a>
 
 **Note:** Because of the decreased sampling per model in the case of an ensemble of starting structures, 
@@ -390,7 +405,9 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 
 
 
-* **Step6:** Adjust the clustering parameters. For this unfold the **Parameters for clustering**.
+### Step 6: Adjust the clustering parameters
+
+For this unfold the **Parameters for clustering**.
 
 HADDOCK offers two different clustering algorithms. 
 Refer to the [online manual](http://www.bonvinlab.org/software/haddock2.2/run/#anal) for more details. 
@@ -408,7 +425,9 @@ likely generate very large and diverse clusters. We should therefore reduce the 
 </a>
 
 
-* **Step7:** Adjust the number of flexible refinement steps to increase the sampling of peptide conformations. For this unfold the **Advanced sampling parameter menu**.
+### Step 7: Adjust the number of flexible refinement steps to increase the sampling of peptide conformations
+
+For this unfold the **Advanced sampling parameter menu**.
 
 Double the number of steps for all four stages of the semi-flexible refinement:
 
@@ -427,7 +446,9 @@ Double the number of steps for all four stages of the semi-flexible refinement:
 
 
 
-* **Step8:** Adjust the number of models to consider for the analysis. For this unfold the **Analysis parameters menu**.
+### Step 8: Adjust the number of models considered for the analysis
+
+For this unfold the **Analysis parameters menu**.
 
 Make the number of models equal to the number of models generated at the water refinement stage:
 
@@ -436,7 +457,7 @@ Number of structures to analyze -> 400
 </a>
 
 
-* **Step9:** Submit your docking run
+### Step 9: Submit your docking run
 
 
 Having filled all the necessary fields, running the docking simulation is one click away. 
@@ -447,12 +468,13 @@ password -- and click *Submit*.
 
 After submission, the webserver redirects to a confirmation page that contains two links. 
 
-The first prompts the download of the docking parameter file – **haddockparam.web**. *This file contains all the 
-settings and data necessary to reproduce the simulation. It is therefore recommended to save it!*. It 
-can be used through the *File Upload* interface of the webserver. 
+The first prompts the download of the docking parameter file – *haddockparam.web*. **This file contains all the 
+settings and data necessary to reproduce the simulation. It is therefore recommended to save it!** 
+If necessary a run with the exact same setting can be submitted by simply submitting this file at the *File Upload* 
+interface of the webserver. 
 
 The second link points to the results page of the simulation. Since a regular docking simulation lasts, on average, a couple of 
-hours, this page displays its current status while not complete: PROCESSING, QUEUED, or RUNNING. In 
+hours, this page displays its current status while not complete as PROCESSING, QUEUED, or RUNNING. In 
 case a critical error prevents the simulation from continuing, whether because of problems with the 
 input data, or problems during the simulation itself, the webpage displays an ERROR message. Most 
 of these status changes are accompanied by an e-mail that is sent to the address linked to the user 
@@ -464,11 +486,11 @@ students, since all accounts are pre-configured, the email notification is turne
 ## Analyzing the docking calculation results
 
 After the simulation is complete, the results page is generated and a notification email sent to 
-the user. This results page entails an overview of the top ten clusters, ranked by average HADDOCK 
+the user. This results page includes an overview of the top ten clusters, ranked by average HADDOCK 
 score of their four best structures, including statistics of energetic terms and other structural 
 measures for each cluster. This allows a quick assessment of the quality of the generated models. 
 Furthermore, at the bottom of the page, several plots of different quality-control measures of the 
-models also give the opportunity of, at a glance checking the quality of the docking simulation.
+models also give the opportunity of checking the quality of the docking simulation at a glance.
 
 <a class="prompt prompt-question">
     How many of the final water-refined models cluster? How many clusters did the docking produce? 
@@ -486,7 +508,7 @@ answer of which conformation is more likely to be realistic?
 
 Any molecular simulation, docking included, lacks the accuracy to produce one single good model. 
 However, with sufficient attempts, reasonable models are likely to populate the results. HADDOCK in 
-particular, given its data-driven character, produces a much higher quantity models if the quality 
+particular, given its data-driven character, produces much higher quality models if the quality 
 of the data is good enough. At the end of the simulation, all the models are clustered so as to 
 filter out the isolated structures that resemble few others in the pool of models. The models are 
 then analyzed on a cluster basis and the best models of the best clusters are considered the best 
