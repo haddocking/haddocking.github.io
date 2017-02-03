@@ -61,11 +61,16 @@ luck, these results will be transferable to the human p53/MDM2 complex and will 
 our well-being.
 
 ## Get started!
-To get started, click on the icons of the modules. Since the docking simulations require 
+**To get started, click on the icons of the modules**. Since the docking simulations require 
 structures, we suggest that for last. If time is an issue, start with the molecular dynamics 
 simulations and, while these run, have fun modelling MDM2.
 
 <table class="three-col-table">
+  <tr>
+    <td><center><i>Homology modelling</i></center></td>
+    <td><center><i>Molecular dynamics</i></center></td>
+    <td><center><i>Docking</i></center></td>
+  </tr>
   <tr>
     <td>
       <a href="/education/molmod/modelling"
