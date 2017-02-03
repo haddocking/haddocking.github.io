@@ -2,7 +2,7 @@
 layout: page
 title: "DisVis web server Tutorial"
 excerpt: "A small tutorial on DisVis web server for visualisation of distance restraints between macromolecular complexes."
-tags: [PowerFit, Cryo-EM, HADDOCK, Ribosome, Chimera, rigid body fitting]
+tags: [DisVis, Interaction, HADDOCK, 26S proteasome, PyMol, Visualisation]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -31,12 +31,15 @@ developments in the software based on a stable and tested workflow. Next to prov
 the web server also performs some postprocessing of the DisVis output using [UCSF Chimera][link-chimera] to provide a
 first overview of the interaction space between the two molecules.
 
-The case we will be investigating is the RNA polymerase II complex of S. cerevisiae (PDBid: [1WCM](https://www.ebi.ac.uk/pdbe/entry/pdb/1wcm))
-and more precisely the interaction between its chains A and E. Six BS3 cross-links are available 
-([Chen et al., 2010](https://dx.doi.org/10.1038/emboj.2009.401); [Kahraman et al., 2013](https://dx.doi.org/10.1371/journal.pone.0073411))
-on top of which we will add two false-positive restraints of 35.7 (FP1) and 42.2Å (FP2). We will try to see if DisVis is 
- able to filter out these false-positive restraints while asserting the true interaction space between the two chains.
- As a last step, we will show how the restraints can be provided to HADDOCK in order to model the 3D interaction between the
+The case we will be investigating is the interaction between two proteins of the 26S proteasome of S. pombe, PRE5 
+(UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
+Seven cross-links (4 ADH & 3 ZL) are available ([Leitner et al., 2014](https://dx.doi:10.1073/pnas.1320298111)) and on top of which 
+we will add two false-positive restraints. We will try to see if DisVis is able to filter out these false-positive 
+restraints while asserting the true interaction space between the two chains.
+We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues found 
+hypothetically involved in the interaction between the two molecules. To do so, we will extract a list of residues from the
+1st round of DisVis, regarding their distances to the accessible interaction map output by DisVis.
+Finally, we will show how the restraints can be provided to HADDOCK in order to model the 3D interaction between the
  2 partners.
   
 The DisVis and HADDOCK software are described in:
@@ -80,7 +83,7 @@ we will provide as input.
 Using PyMol, we can easily visualize the models and the identified cross-links as distance restraints, mostly with a few 
 lines of command within PyMol software.
 
-For this open the PDB files `1wcm_A.pdb` and `1wcm_E.pdb`.
+For this open the PDB files `PRE5.pdb` and `PUP2.pdb`.
 
 <a class="prompt prompt-info">
   PyMol Menu -> File -> Open... -> Select the file
@@ -91,10 +94,10 @@ Repeat this for each file. PyMol will automatically guess their type.
 If you want to use instead the the PyMol command-line and type:
 
 <a class="prompt prompt-pymol">
-  open /path/to/1wcm_A.pdb
+  open /path/to/PRE5.pdb
 </a>
 <a class="prompt prompt-pymol">
-  open /path/to/1wcm_E.pdb
+  open /path/to/PUP2.pdb
 </a> 
 
 The 1st step will be to customize a bit the look of the molecules to easily spot the interesting regions.
@@ -121,19 +124,24 @@ distances will be displayed in PyMol:
 <a class="prompt prompt-pymol">
   set dash_radius, 0.4
 </a>
-
-An extra slider bar appears in the box called A, for the alpha channel.
-
-<a class="prompt prompt-info">
-Set the alpha channel value to around 0.6.
+<a class="prompt prompt-pymol">
+  set dash_gap, 0
 </a>
 
-Notice that the density becomes transparent providing a better view of the fit
-of the ribosome model. On closer inspection, you can also discern a region of
-the density that is not accounted for by the ribosome structure alone: This should be the
-binding location of KsgA. Although you could try and manually place the crystal
+Then we draw the crosslinks pair by pair by using the ['distance'](https://pymolwiki.org/index.php/Distance) command as
+explained [here](https://pymolwiki.org/index.php/Lines).
+
+<a class="prompt prompt-pymol">
+distance d, /PRE5//A/27/CA, /PUP2//A/18/CA
+</a>
+
+Repeat the command for each restraint present in the `restraints.txt` file.
+
+Once all restraints have been
+Although you could try and manually place the crystal
 structure in that region, finding the correct orientation is not
-straightforward. PowerFit can help you here as it will exhaustively sample all possible translations and rotations in order to find the best fit, based on an objective score.
+straightforward. PowerFit can help you here as it will exhaustively sample all possible translations and rotations in 
+order to find the best fit, based on an objective score.
 
 
 ## Rigid body fitting
