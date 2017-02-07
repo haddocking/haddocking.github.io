@@ -36,9 +36,9 @@ The case we will be investigating is the interaction between two proteins of the
 Seven cross-links (4 ADH & 3 ZL) are available ([Leitner et al., 2014](https://dx.doi:10.1073/pnas.1320298111)) and on top of which 
 we will add two false-positive restraints. We will try to see if DisVis is able to filter out these false-positive 
 restraints while asserting the true interaction space between the two chains.
-We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues found 
-hypothetically involved in the interaction between the two molecules. To do so, we will extract a list of residues from the
-1st round of DisVis, regarding their distances to the accessible interaction map output by DisVis.
+We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues 
+putatively involved in the interaction between the two molecules. To do so, we will extract all accessible residues of
+the two partners, and give the list of residue to DisVis using its interaction analysis feature.
 Finally, we will show how the restraints can be provided to HADDOCK in order to model the 3D interaction between the
  2 partners.
   
@@ -100,7 +100,9 @@ If you want to use instead the the PyMol command-line and type:
   open /path/to/PUP2.pdb
 </a> 
 
-The 1st step will be to customize a bit the look of the molecules to easily spot the interesting regions.
+We voluntarily placed the two molecules in a particular conformation found in a known structure of the 26S proteasome solved
+ by X-ray at a 2.4Å resolution and released in november 2016 (see [associated article](https://dx.doi.org/10.15252/embj.201695222)).
+ The 1st step will be to slightly adapt the look of the molecules to easily spot the interesting regions.
 We will first draw them using a cartoon representation for the protein backbone and hide the side chains for better clarity.
 To do so type:
 
@@ -128,7 +130,7 @@ distances will be displayed in PyMol:
   set dash_gap, 0
 </a>
 
-Then we draw the crosslinks pair by pair by using the ['distance'](https://pymolwiki.org/index.php/Distance) command as
+Then we draw the cross-links pair by pair by using the ['distance'](https://pymolwiki.org/index.php/Distance) command as
 explained [here](https://pymolwiki.org/index.php/Lines).
 
 <a class="prompt prompt-pymol">
@@ -137,77 +139,72 @@ distance d, /PRE5//A/27/CA, /PUP2//A/18/CA
 
 Repeat the command for each restraint present in the `restraints.txt` file.
 
-Once all restraints have been
-Although you could try and manually place the crystal
-structure in that region, finding the correct orientation is not
-straightforward. PowerFit can help you here as it will exhaustively sample all possible translations and rotations in 
-order to find the best fit, based on an objective score.
+We can already see that some restraints do not fit well with the X-ray information obtained previously.
+We will try to assess the quality of the restraints with DisVis and try to figure out which restraints might be false positive
+thanks to an exhaustive analysis of the interaction space between the two molecules.
 
 
-## Rigid body fitting
+## Accessible interaction space search
 
-PowerFit is a rigid body fitting software that quickly calculates the 
-cross-correlation, a common measure of the goodness-of-fit, between the atomic 
-structure and the density map. It performs a systematic 6-dimensional scan of 
-the three translational and three rotational degrees of freedom. In short, 
-PowerFit will try to fit the structure in many orientations at every position 
-on the map and calculate a cross-correlation score for each of them.
+DisVis performs a full and systematic 6 dimensional search of the three translational and rotational degrees of freedom to 
+determine the number of complexes consistent with the restraints. In addition, it outputs the percentage of restraints 
+being violated and a density that represents the center-of-mass position of the scanning chain corresponding to the 
+highest number of consistent restraints at every position in space.
 
-PowerFit requires three input: a high-resolution atomic structure of the
-biomolecule to be fitted (`KsgA.pdb`), a target cryo-EM density map to fit the
-structure in (`ribosome-KsgA.map`), and the resolution, in ångstrom, of the
-density map (`13`). They correspond to the minimum number of input you have 
+DisVis requires three input: two high-resolution atomic structures of the
+biomolecules to be analysed (`PRE5.pdb` and `PUP2.pdb`) and a list of distance restraints, under TBL format, with which 
+ the two biomolecules should comply with (`restraints.txt`). They correspond to the minimum number of input you have 
 to provide to the web server in order to setup a run.
-To run PowerFit, go to
+To run DisVis, go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/DISVIS">http://haddock.science.uu.nl/services/DISVIS</a>
 
 Then click on the "**Submit**" menu to access the submit form.
 
 <figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_submission.png">
+  <img src="/education/disvis-webserver/disvis_submission.png">
 </figure>
 
 
-* **Step1:** Register for getting access to the webserver (or use the credentials provided in case of a workshop).
+* **Step1:** Register for getting access to the web server (or use the credentials provided in case of a workshop).
 
 Click on the "**Register**" menu and fill the required information. Registration is not automatic, so be patient.
 
 
 * **Step2:** Define the input files and parameters.
 
-<a class="prompt prompt-info">Cryo-EM map -> ribosome-KsgA.map</a>
-<a class="prompt prompt-info">Map resolution -> 13</a>
-<a class="prompt prompt-info">Atomic structure -> KsgA.pdb</a>
-<a class="prompt prompt-info">Rotational angle interval -> 20.0</a>
+<a class="prompt prompt-info">Fixed chain -> PRE5.pdb</a>
+<a class="prompt prompt-info">Scanning chain -> PUP2.pdb</a>
+<a class="prompt prompt-info">Restraints file -> restraints.txt</a>
 
 Once the fields have been filled in you can submit your job to our server 
 by clicking on "**Submit**" at the bottom of the page.
 
 If the input fields have been correctly filled you should be redirected to a status page displaying a pop-up message
 indicating that your run has been successfully submitted.
-While performing the search, the PowerFit web server will update you on the progress of the 
+While performing the search, the DisVis web server will update you on the progress of the 
 job by reloading the status page every 30 seconds.
 The example case in this tutorial should run in about 5 minutes on our local servers but due to pre- and post-processing
 it might take a bit longer for the result page to appear.
 
 While the calculations are running, open a second tab and go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/DISVIS">http://haddock.science.uu.nl/services/DISVIS</a>
 
 Then click on the "**Help/Manual**" menu. 
 
-Here, you can have a look at the several features and options of PowerFit and read about the meaning of the various input parameters (including the ones in "**Advanced parameters**").
+Here, you can have a look at the several features and options of DisVis and read about the meaning of the various input 
+parameters (including the ones in "**Advanced options**").
 
 The rotational sampling interval option is given in
 degrees and defines how tightly the three rotational degrees of freedom will be
-sampled. Lower values will cause PowerFit to perform a finer search, at the
-expense of increased computational time. The default value is 10°, but it can be lowered
-to 5° for more sensitive searches, or raised to 20° if time is an issue or if
-there aren't sufficient computational resources. For the sake of time in this
-tutorial, we set the sampling interval to this latter coarser value.
+sampled. Voxel spacing is the size of the grid's voxels that will be crossed during the 6D search.
+Lower values of both parameters will cause DisVis to perform a finer search, at the
+expense of increased computational time. The default value is `15°` and `2.0Å` for a quick scanning and `9.72°` and `1.0Å` 
+for a complete one. 
+For the sake of time in this tutorial, we will keep the sampling interval to the quick scanning value (`15.00°`).
 The number of processors used for the calculation is fixed on the web server side to 8 processors. 
-This number can of course be changed when using the local version of PowerFit.
+This number can of course be changed when using the local version of DisVis.
 
 
 ## Analyzing the results
@@ -217,27 +214,50 @@ page (you will also receive an email notification). The results page presents a 
 
 * `Status`: In this section you will find a link from which you can download the output data as well as some information
 about how to cite the use of the portal.
-* `Solutions`: The best 15 non-redundant solutions found, ordered by their
-cross correlation score. The first column shows the rank, column 2 the cross correlation
-score, column 3 and 4 the Fisher z-score and the number of standard
-deviations. The table is created with values taken from the file `solutions.out`.
-* `Fit N`: Summary of the previous table for the 10 best fitted structures according to the cross correlation score. 
-A PDB of the solution can be downloaded and 6 images of the PDB within the density map are shown, covering different 
-views over the scene.
+* `Accessible Interaction Space`: Here, images of the fixed chain together with the accessible interaction space, as 
+a density map representation, will be displayed. Several point of views over the molecular scene can be chosen by clicking
+ on the right or left part of the image frame. Each set of images matches a specific level of restraints N which corresponds
+ to the accessible interaction space by complexes consistent with at least N restraints. A slider vbelow the image container
+ gives the possibility to change the level and load the corresponding set of images.
+* `Accessible Complexes`: Summary of the statistics for complexes consistent with at least N number of restraints. Statistics
+ are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `restraints.txt`)
+* `z-Score`: For each restraint provided as input, a z-Score, as a indication of how likely the restraint is a false-positive,
+is provided. The higher the score, the most likely a restraint might be a false-positive. Putative false-positive restraints
+are highlighted if there was no complexes found to be consistent with a certain number of restraints provided. If DisVis
+found complexes consistent with all restraints provided, z-Score will be displayed as an indication but cannot be used to
+discriminate true- and false-positive restraints and should be then ignored.
+* `Violations`: The table in this sections shows how often a specific restraint is violated for complexes consistent with 
+a number of restraints. The higher the violation fraction of a specific restraint, the more likely it is to be a false-positive. 
+Column 1 shows the number of consistent restraints N, while each following column indicates the violation fractions of 
+a specific restraint for complexes consistent with at least N restraints. Each row thus represents the fraction of all 
+complexes consistent with at least N restraints that violated a particular restraint. As for z-Scores, if complexes have
+been found to be consistent with all restraints provided, this table should be ignored.
 
-The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better), which, together with its associated number of standard deviations, is an excellent indicator of the accuracy of a fit (see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
- 
 
 <figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_results_summary.png">
+  <img src="/education/disvis-webserver/disvis_results_summary.png">
 </figure>
 
-<figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_results.png">
-</figure>
+You can have a complete overview of a typical DisVis web server output in the [Example](http://milou.science.uu.nl/cgi/services/DISVIS/disvis/example)
+section of the web server. (You will note that this tutorial is an extension of the `26S proteasome` example). 
  
+It is already possible to extract significant results from the results page. 
 
-You can inspect online the results for the top 10 models (different views are provided). However, it is difficult to really appreciate the accuracy of PowerFit and the differences between the solutions with only images. Therefore download to your computer the results archive available at the top of your results page. You will find in it the following files:
+<a class="prompt prompt-question"> Using the different descriptions of the sections we provided above together with the information
+on the results page of your run, what are the two restraints DisVis has detected as false-positive?</a>
+
+
+As mentioned above, the two last sections
+feature a table that highlight putative false-positive restraints based o n their z-Score and their violations frequency 
+for a specific number of restraints. We will naturally look for the statistics of the highest number of restraints. DisVis
+preformat the results in a way that false-positive restraints are highlighted and can be spotted in a glance.
+In our case, you should observe that the following two restraints are highlighted as putative false-positives:
+
+`A164(CA)-A49(CA)` and `A49(CA)-A188(CA)`
+
+Tt is difficult to really appreciate the accessible interaction space between the two partners with only images. 
+Therefore download to your computer the results archive available at the top of your results page. You will find in it the 
+following files:
 
 * `fit_N.pdb`: the best *N* fits, judged by the cross-correlation score.
 * `solutions.out`: all the non-redundant solutions found, ordered by their
