@@ -139,8 +139,11 @@ distance d, /PRE5//A/27/CA, /PUP2//A/18/CA
 
 Repeat the command for each restraint present in the `restraints.txt` file.
 
-We can already see that some restraints do not fit well with the X-ray information obtained previously.
-We will try to assess the quality of the restraints with DisVis and try to figure out which restraints might be false positive
+<a class="prompt prompt-question">
+Can you already spot the false positive restraints?
+</a>
+
+We will try to assess the quality of those restraints with DisVis and try to figure out which restraints might be false positive
 thanks to an exhaustive analysis of the interaction space between the two molecules.
 
 
@@ -151,10 +154,10 @@ determine the number of complexes consistent with the restraints. In addition, i
 being violated and a density that represents the center-of-mass position of the scanning chain corresponding to the 
 highest number of consistent restraints at every position in space.
 
-DisVis requires three input: two high-resolution atomic structures of the
-biomolecules to be analysed (`PRE5.pdb` and `PUP2.pdb`) and a list of distance restraints, under TBL format, with which 
- the two biomolecules should comply with (`restraints.txt`). They correspond to the minimum number of input you have 
-to provide to the web server in order to setup a run.
+DisVis requires three input: two high-resolution atomic structures of the biomolecules to be analysed (`PRE5.pdb` and 
+`PUP2.pdb`) and a list of distance restraints, under TBL format, with which the two biomolecules should comply with 
+(`restraints.txt`). They correspond to the minimum number of input you have to provide to the web server in order to 
+setup a run.
 To run DisVis, go to
 
 <a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/DISVIS">http://haddock.science.uu.nl/services/DISVIS</a>
@@ -259,51 +262,34 @@ Tt is difficult to really appreciate the accessible interaction space between th
 Therefore download to your computer the results archive available at the top of your results page. You will find in it the 
 following files:
 
-* `fit_N.pdb`: the best *N* fits, judged by the cross-correlation score.
-* `solutions.out`: all the non-redundant solutions found, ordered by their
-cross-correlation score. The first column shows the rank, column 2 the correlation
-score, column 3 and 4 the Fisher z-score and the number of standard
-deviations; column 5 to 7 are the x, y and z coordinate of the center of the
-chain; column 8 to 17 are the rotation matrix values.
-* `lcc.mrc`: a cross-correlation map showing, at each grid position, the 
-highest cross-correlation score found during the search, thus showing the most 
-likely location of the center of mass of the structure.
-* `powerfit.log`: a log file of the calculation, including the input parameters 
-with date and timing information.
-
+* `accessible_complexes.out`: a text file containing the number of complexes consistent with a number of restraints.
+* `accessible_interaction_space.mrc`: a density file in MRC format. The density represents the center of mass of the 
+scanning chain conforming to the maximum found consistent restraints at every position in space
+* `disvis.log`: a log file showing all the parameters used, together with date and time indications.
+* `violations.out`: a text file showing how often a specific restraint is violated for each number of consistent restraints.
+* `z-score.out`: a text file giving the Z-score for each restraint. The higher the score, the more likely the restraint 
+is a false-positive.
 
 Let us inspect now the solutions in Chimera.
 
 <a class="prompt prompt-info">
-  Open the density map, the *lcc.mrc* cross-correlation map, and the 10 
-best-ranked solutions in Chimera.
+  Open the fixed chain PDB file and the *accessible_interaction_space.mrc* density map in Chimera.
 </a>
 
 Use for this either the `Menus` or the `command line interface` as explained [before](#inspecting-the-data), e.g.:
 
 <a class="prompt prompt-pymol">
-  open /path/to/ribosome-KsgA.map
+  open /path/to/fixed_chain.pdb
 </a>
 <a class="prompt prompt-pymol">
-  open /path/to/lcc.mrc
-</a>
-<a class="prompt prompt-pymol">
-  open /path/to/ribosome.pdb
-</a>
-<a class="prompt prompt-pymol">
-  open /path/to/fit_*.pdb
+  open /path/to/accessible_interaction_space.mrc
 </a>
 
-
-Make the density map transparent again, by adjusting the alpha channel value to
-0.6. The values of the `lcc.mrc` slider bar correspond to the cross-correlation
+The values of the `accessible_interaction_space.mrc` slider bar correspond to the cross-correlation
 score found. In this way, you can selectively visualize regions of high or low
 cross-correlation values: i.e., pushing the slider to the right (higher cutoff)
 shows only regions of the grid with high cross-correlation scores. 
 
-As you can see, PowerFit found quite some local optima, one of which stands out
-(if the rotational search was tight enough). Further, the 10 best-ranked
-solutions are centered on regions corresponding to local cross-correlation maxima.
 
 To view each fitted solution individually, in the main panel, go to `Favorites`
 → `Model Panel` to open the `Model Panel` window. The window shows each model
