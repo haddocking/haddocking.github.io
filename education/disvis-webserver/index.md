@@ -2,7 +2,7 @@
 layout: page
 title: "DisVis web server Tutorial"
 excerpt: "A small tutorial on DisVis web server for visualisation of distance restraints between macromolecular complexes."
-tags: [DisVis, Interaction, HADDOCK, 26S proteasome, PyMol, Visualisation]
+tags: [DisVis, Interaction, HADDOCK, 26S proteasome, Chimera, Visualisation]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -13,6 +13,7 @@ This tutorial consists of the following sections:
 * [Inspecting the data](#inspecting-the-data)
 * [Accessible interaction space search](#access-inter-space-search)
 * [Analyzing the results](#analysing-the-results)
+* [Residues interaction analysis](#residues-interaction-analysis)
 * [Final remarks](#final-remarks)
 
 
@@ -58,19 +59,19 @@ _J. Mol. Biol._ *428(4)*, 720-725 (2016).
 
 
 Throughout the tutorial, colored text will be used to refer to questions or 
-instructions and/or PyMol commands.
+instructions and/or Chimera commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering 
 it!</a>
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
-<a class="prompt prompt-pymol">This is a PyMol prompt: write this in the 
+<a class="prompt prompt-pymol">This is a Chimera prompt: write this in the 
 Chimera command line prompt!</a>
 
 
 ## Setup
 
 In order to run this tutorial, which can be run from any operating system and does not require Linux expertise, you will 
-need to install [PyMol][link-pymol] on your computer in order to visualise the input and output data.  
+need to install [UCSF Chimera][link-chimera] on your computer in order to visualise the input and output data.  
 Further, the required data to run this tutorial should be downloaded from this [link][link-data].
 Once downloaded, make sure to unpack the archive.
 
@@ -80,36 +81,35 @@ Once downloaded, make sure to unpack the archive.
 Let us first inspect the data we have available, namely the two individual structures as well as the distance restraints
 we will provide as input. 
 
-Using PyMol, we can easily visualize the models and the identified cross-links as distance restraints, mostly with a few 
-lines of command within PyMol software.
+Using Chimera, we can easily visualize the models and the identified cross-links as distance restraints, mostly with a few 
+lines of command within Chimera command-line interface.
 
 For this open the PDB files `PRE5.pdb` and `PUP2.pdb`.
 
 <a class="prompt prompt-info">
-  PyMol Menu -> File -> Open... -> Select the file
+  UCSG Chimera Menu -> File -> Open... -> Select the file
 </a>
 
-Repeat this for each file. PyMol will automatically guess their type.
+Repeat this for each file. Chimera will automatically guess their type.
 
-If you want to use instead the the PyMol command-line and type:
+
+If you want to use instead the the Chimera command-line:
+
+<a class="prompt prompt-info">
+  UCSG Chimera Menu -> Favorites -> Command Line
+</a>
+
+and type:
 
 <a class="prompt prompt-pymol">
   open /path/to/PRE5.pdb
 </a>
 <a class="prompt prompt-pymol">
   open /path/to/PUP2.pdb
-</a> 
-
-We voluntarily placed the two molecules in a particular conformation found in a known structure of the 26S proteasome solved
- by X-ray at a 2.4Å resolution and released in november 2016 (see [associated article](https://dx.doi.org/10.15252/embj.201695222)).
- The 1st step will be to slightly adapt the look of the molecules to easily spot the interesting regions.
-We will first draw them using a cartoon representation for the protein backbone and hide the side chains for better clarity.
-To do so type:
-
-<a class="prompt prompt-pymol">
-  show cartoon
 </a>
 
+
+The 1st step will be to slightly adapt the look of the molecules to easily spot the interesting regions.
 You can explore quickly the two chains and try to imagine where their interactive regions will be located.
 
 Now, we will visualize the cross-links identified in the two articles mentioned above. The cross-link will be visualized by
@@ -117,27 +117,47 @@ Now, we will visualize the cross-links identified in the two articles mentioned 
 We have to look at the file gathering the distance restraints to extract the information.
 Open `restraints.txt` from the tutorial input data with your favorite text editor.
 
-To draw a line between two atoms in PyMol, we will use the distance widget. And first, we will slightly change the way those
-distances will be displayed in PyMol:
+To draw a line between two atoms in Chimera, we will use the ['distance'](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html) widget.
+To help you with the atom selection syntax, you can have a look at the ['atom specification'](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/frameatom_spec.html) 
+section of Chimera documentation.
+Here are the commands you need to execute in order to draw all restraints:
 
 <a class="prompt prompt-pymol">
-  set dash_gap, 0
+distance #0:27@CA | #1:18@CA
 </a>
 <a class="prompt prompt-pymol">
-  set dash_radius, 0.4
+distance #0:122@CA | #1:125@CA
 </a>
 <a class="prompt prompt-pymol">
-  set dash_gap, 0
+distance #0:122@CA | #1:127@CA
+</a>
+<a class="prompt prompt-pymol">
+distance #0:122@CA | #1:128@CA
+</a>
+<a class="prompt prompt-pymol">
+distance #0:164@CA | #1:49@CA
+</a>
+<a class="prompt prompt-pymol">
+distance #0:55@CA | #1:169@CA
+</a>
+<a class="prompt prompt-pymol">
+distance #0:55@CA | #1:179@CA
+</a>
+<a class="prompt prompt-pymol">
+distance #0:54@CA | #1:179@CA
+</a>
+<a class="prompt prompt-pymol">
+distance #0:49@CA | #1:188@CA
 </a>
 
-Then we draw the cross-links pair by pair by using the ['distance'](https://pymolwiki.org/index.php/Distance) command as
-explained [here](https://pymolwiki.org/index.php/Lines).
+Each restraint present in the `restraints.txt` file should now be displayed in Chimera. For a better view of these restraints,
+you can open the `Distances` windows:
 
 <a class="prompt prompt-pymol">
-distance d, /PRE5//A/27/CA, /PUP2//A/18/CA
+UCSG Chimera Menu -> Tools -> Structure Analysis -> Distances
 </a>
 
-Repeat the command for each restraint present in the `restraints.txt` file.
+And now change the `Line width`, the `Line style` or even the `Color` of the distance representations.
 
 <a class="prompt prompt-question">
 Can you already spot the false positive restraints?
@@ -145,7 +165,6 @@ Can you already spot the false positive restraints?
 
 We will try to assess the quality of those restraints with DisVis and try to figure out which restraints might be false positive
 thanks to an exhaustive analysis of the interaction space between the two molecules.
-
 
 ## Accessible interaction space search
 
@@ -212,6 +231,8 @@ This number can of course be changed when using the local version of DisVis.
 
 ## Analyzing the results
 
+<h3> Web server output </h3>
+
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification). The results page presents a summary split into several sections:
 
@@ -249,16 +270,23 @@ It is already possible to extract significant results from the results page.
 <a class="prompt prompt-question"> Using the different descriptions of the sections we provided above together with the information
 on the results page of your run, what are the two restraints DisVis has detected as false-positive?</a>
 
+<a class="prompt prompt-question"> Does it validate the guess you had when loking at those restraints in Chimera?</a>
 
-As mentioned above, the two last sections
-feature a table that highlight putative false-positive restraints based o n their z-Score and their violations frequency 
-for a specific number of restraints. We will naturally look for the statistics of the highest number of restraints. DisVis
-preformat the results in a way that false-positive restraints are highlighted and can be spotted in a glance.
+As mentioned above, the two last sections feature a table that highlight putative false-positive restraints based on 
+their z-Score and their violations frequency for a specific number of restraints. We will naturally look for the 
+statistics of the highest number of restraints. DisVis preformat the results in a way that false-positive restraints 
+are highlighted and can be spotted in a glance.
+
 In our case, you should observe that the following two restraints are highlighted as putative false-positives:
+<details><summary><b>See solution:</b>
+</summary>
+<center><b>A164(CA)-A49(CA)  &  A49(CA)-A188(CA)</b></center>
+</details>
 
-`A164(CA)-A49(CA)` and `A49(CA)-A188(CA)`
 
-Tt is difficult to really appreciate the accessible interaction space between the two partners with only images. 
+<h3> DisVis output files </h3>
+
+It is difficult to really appreciate the accessible interaction space between the two partners with only images. 
 Therefore download to your computer the results archive available at the top of your results page. You will find in it the 
 following files:
 
@@ -276,7 +304,7 @@ Let us inspect now the solutions in Chimera.
   Open the fixed chain PDB file and the *accessible_interaction_space.mrc* density map in Chimera.
 </a>
 
-Use for this either the `Menus` or the `command line interface` as explained [before](#inspecting-the-data), e.g.:
+Use for this either the `Menus` or the `Command-line interface` as explained [before](#inspecting-the-data), e.g.:
 
 <a class="prompt prompt-pymol">
   open /path/to/fixed_chain.pdb
@@ -285,66 +313,73 @@ Use for this either the `Menus` or the `command line interface` as explained [be
   open /path/to/accessible_interaction_space.mrc
 </a>
 
-The values of the `accessible_interaction_space.mrc` slider bar correspond to the cross-correlation
-score found. In this way, you can selectively visualize regions of high or low
-cross-correlation values: i.e., pushing the slider to the right (higher cutoff)
-shows only regions of the grid with high cross-correlation scores. 
-
-
-To view each fitted solution individually, in the main panel, go to `Favorites`
-→ `Model Panel` to open the `Model Panel` window. The window shows each model
-and its associated color that Chimera has processed. To show or hide a specific
-model you can click the box in the `S` column.
-
-<a class="prompt prompt-info">
-  Go through the 10 solutions one by one to asses their goodness-of-fit
-  with the density.
-</a>
+The values of the `accessible_interaction_space.mrc` slider bar correspond to the number of restraints (N).
+In this way, you can selectively visualize regions where complexes have been found to be consistent with a certain number of 
+restraints. In our case, we are interested in observing the results for the maximum number of restraints where complexes 
+were found, here **7**.
 
 <a class="prompt prompt-question">
-  Do you agree with what PowerFit proposes as the best solution?
+  Does the accessible interaction space between of the fixed chain seem to match the conformation found in the litterature
+   and used as template for the structure observed in the 1st step?
 </a>
 
-<a class="prompt prompt-info">
-  In a new Chimera session, reopen the density map and the fit that you find 
-best.
-</a>
+## Residues interaction analysis
 
-Use for this either the `Menus` or the `Command Line`option to load the following files:
+We now have an idea of the interactive region between the two molecules. To go further, and prepare a putative future
+docking experiment to obtain models of the interaction, we might want to know what are the most important residues involved
+in the interaction.
+To do so, we will use the `Interaction Analysis` feature of DisVis by providing a list of residues that DisVis will analysis
+ with regards to the complexes found consistent with a number of restraints.
+ 
+Go to:
 
-* `ribosome-KsgA.map`
-* `ribosome.pdb`
-* `fit_?.pdb`
+<a class="prompt prompt-info" href="http://haddock.science.uu.nl/cgi/services/DISVIS/disvis/submit">http://haddock.science.uu.nl/cgi/services/DISVIS/disvis/submit</a>
 
-Replace *?* by the appropriate solution number.
+As for the 1st run of DisVis, we will use the same input files:
 
-You now have combined the ribosome structure with the rigid-body fit of KsgA
-calculated by PowerFit, yielding an initial model of the complex. Mutagenesis
-experiments performed on this complex indicate three charged residues of KsgA -
-`R221`, `R222`, and `K223` - that are of special importance for the
-interaction. 
+<a class="prompt prompt-info">Fixed chain -> PRE5.pdb</a>
+<a class="prompt prompt-info">Scanning chain -> PUP2.pdb</a>
+<a class="prompt prompt-info">Restraints file -> restraints.txt</a>
 
-In the same session of Chimera where you have your chosen fitted KsgA
-structure, go to `Favorites` → `Command Line`. A command line is now present
-below the main viewing window.  In the command line of Chimera, type the
-following instructions to center your view on these residues and highlight
-their interactions:
+But we will also provide a list of residue for the fixed and scanning chains in a file names `selection.txt` and present
+in the tutorial data. The residues we have selected are all residues considered as surface accessible for both the fixed
+and the scanning chain. We used [NACCESS](http://www.bioinf.manchester.ac.uk/naccess/) to compute the accessibility of each
+and defined a threshold of 40% of relative accessibility for either the backbone or the side-chain to filter accessible 
+to non-accessible residues.
 
-<a class="prompt prompt-pymol">
-  show #2:221-223 zr<5 & #1 || #2:221-223  
-  center #2:221-223 zr<5 & #1 || #2:221-223
-</a>
-<a class="prompt prompt-info">
-  Take some time to inspect the model, paying particular attention to these three
-  residues and their spatial neighbors.
-</a>
-<a class="prompt prompt-question">
-  Are there any clashes between the ribosome and KsgA chains?
-</a>
-<a class="prompt prompt-question">
-  Is the mutagenesis data explained by the model, i.e. are the three charged 
-amino acids involved in strong interactions?
-</a>
+<a class="prompt prompt-info">Interaction Analysis -> selection.txt</a>
+
+For this specific run, we will use the `Complete scanning` option but we will uncheck the `Occupancy Analysis` option to
+keep the computation time in a reasonable window for this tutorial.
+
+Then click on the `Submit` button to start the run. The monitoring of your job will be identical to the one explained in
+the [previous section](#access-inter-space-search).
+
+One your job is finished, the results page will display, complementary to the sections we had previously, a new section:
+ 
+* `Interaction analysis`: The tables of these sections shows how many interactions a specific residue makes in the complexes
+ consistent with a specific number of restraints. The higher the interaction fraction of a specific residue is, the more 
+ likely it is involved in the complex interaction.
+
+Thanks to this new information, we can now identify key residues that play a crucial role in the complexes consistent with
+our restraints. It is easy to sort the tables by their average number of interactions and then detect the most important ones.
+
+<a class="prompt prompt-question> How many key residues can you identify from the tables? </a>
+<a class="prompt prompt-question> Create a list of these residues for both the fixed and the scanning chain.</a>
+
+<details><summary><b>See solution:</b>
+</summary>
+Respectively <b>X</b> and <b>Y</b> residues have been identified as important for the interaction in the fixed and
+ scanning chains:><br>
+ 
+</details>
+
+In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera, using a
+recently published ([article]november 2016) structure of an homologue of the 26S proteasome we are studying where the structure of 
+two very similar molecules have been solved by X-ray at high resolution (2.4Å).
+
+We voluntarily placed the two molecules in a particular conformation found in a known structure of the 26S proteasome solved
+ by X-ray at a 2.4Å resolution and released in november 2016 (see [associated article](https://dx.doi.org/10.15252/embj.201695222)).
 
 Chimera also includes a tool to locally optimize the fit of a rigid structure 
 against a given density map, which can be an additional help on top of the 
