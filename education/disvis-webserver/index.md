@@ -369,14 +369,14 @@ our restraints. It is easy to sort the tables by their average number of interac
 
 <details><summary><b>See solution:</b>
 </summary>
-Respectively <b>X</b> and <b>Y</b> residues have been identified as important for the interaction in the fixed and
- scanning chains:><br>
- 
+Respectively <b>12</b> and <b>10</b> residues have been identified as important for the interaction between PRE5 and PUP2:><br>
+ PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 129, 130, 101, 133
+ PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123
 </details>
 
 In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera, using a
-recently published ([article]november 2016) structure of an homologue of the 26S proteasome we are studying where the structure of 
-two very similar molecules have been solved by X-ray at high resolution (2.4Å).
+recently published [article](https://dx.doi.org/10.15252/embj.201695222) (november 2016) where the structure of an homologue 
+of the 26S proteasome we are studying have been solved by X-ray at high resolution (2.4Å).
 
 We voluntarily placed the two molecules in a particular conformation found in a known structure of the 26S proteasome solved
  by X-ray at a 2.4Å resolution and released in november 2016 (see [associated article](https://dx.doi.org/10.15252/embj.201695222)).
