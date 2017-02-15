@@ -35,7 +35,7 @@ first overview of the interaction space between the two molecules.
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of S. pombe, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 Seven cross-links (4 ADH & 3 ZL) are available ([Leitner et al., 2014](https://dx.doi:10.1073/pnas.1320298111)) and on top of which 
-we will add two false-positive restraints. We will try to see if DisVis is able to filter out these false-positive 
+we will add two false positive restraints. We will try to see if DisVis is able to filter out these false positive 
 restraints while asserting the true interaction space between the two chains.
 We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues 
 putatively involved in the interaction between the two molecules. To do so, we will extract all accessible residues of
@@ -245,13 +245,13 @@ a density map representation, will be displayed. Several point of views over the
  gives the possibility to change the level and load the corresponding set of images.
 * `Accessible Complexes`: Summary of the statistics for complexes consistent with at least N number of restraints. Statistics
  are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `restraints.txt`)
-* `z-Score`: For each restraint provided as input, a z-Score, as a indication of how likely the restraint is a false-positive,
-is provided. The higher the score, the most likely a restraint might be a false-positive. Putative false-positive restraints
+* `z-Score`: For each restraint provided as input, a z-Score, as a indication of how likely the restraint is a false positive,
+is provided. The higher the score, the most likely a restraint might be a false positive. Putative false positive restraints
 are highlighted if there was no complexes found to be consistent with a certain number of restraints provided. If DisVis
 found complexes consistent with all restraints provided, z-Score will be displayed as an indication but cannot be used to
-discriminate true- and false-positive restraints and should be then ignored.
+discriminate true- and false positive restraints and should be then ignored.
 * `Violations`: The table in this sections shows how often a specific restraint is violated for complexes consistent with 
-a number of restraints. The higher the violation fraction of a specific restraint, the more likely it is to be a false-positive. 
+a number of restraints. The higher the violation fraction of a specific restraint, the more likely it is to be a false positive. 
 Column 1 shows the number of consistent restraints N, while each following column indicates the violation fractions of 
 a specific restraint for complexes consistent with at least N restraints. Each row thus represents the fraction of all 
 complexes consistent with at least N restraints that violated a particular restraint. As for z-Scores, if complexes have
@@ -268,19 +268,21 @@ section of the web server. (You will note that this tutorial is an extension of 
 It is already possible to extract significant results from the results page. 
 
 <a class="prompt prompt-question"> Using the different descriptions of the sections we provided above together with the information
-on the results page of your run, what are the two restraints DisVis has detected as false-positive?</a>
+on the results page of your run, what are the two restraints DisVis has detected as false positive?</a>
 
 <a class="prompt prompt-question"> Does it validate the guess you had when loking at those restraints in Chimera?</a>
 
-As mentioned above, the two last sections feature a table that highlight putative false-positive restraints based on 
+As mentioned above, the two last sections feature a table that highlight putative false positive restraints based on 
 their z-Score and their violations frequency for a specific number of restraints. We will naturally look for the 
-statistics of the highest number of restraints. DisVis preformat the results in a way that false-positive restraints 
+statistics of the highest number of restraints. DisVis preformat the results in a way that false positive restraints 
 are highlighted and can be spotted in a glance.
 
-In our case, you should observe that the following two restraints are highlighted as putative false-positives:
-<details><summary><b>See solution:</b>
+In our case, you should observe that the following two restraints are highlighted as putative false positives:
+
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-<center><b>A164(CA)-A49(CA)  &  A49(CA)-A188(CA)</b></center>
+<center><b>A164(CA) - A49(CA)</b></center>
+<center><b>A49(CA) - A188(CA)</b></center>
 </details>
 
 
@@ -296,7 +298,7 @@ scanning chain conforming to the maximum found consistent restraints at every po
 * `disvis.log`: a log file showing all the parameters used, together with date and time indications.
 * `violations.out`: a text file showing how often a specific restraint is violated for each number of consistent restraints.
 * `z-score.out`: a text file giving the Z-score for each restraint. The higher the score, the more likely the restraint 
-is a false-positive.
+is a false positive.
 
 Let us inspect now the solutions in Chimera.
 
@@ -341,18 +343,18 @@ As for the 1st run of DisVis, we will use the same input files:
 <a class="prompt prompt-info">Scanning chain -> PUP2.pdb</a>
 <a class="prompt prompt-info">Restraints file -> restraints.txt</a>
 
-But we will also provide a list of residue for the fixed and scanning chains in a file names `selection.txt` and present
+But we will also provide a list of residue for the fixed and scanning chains in a file names `accessible_res_70.list` and present
 in the tutorial data. The residues we have selected are all residues considered as surface accessible for both the fixed
 and the scanning chain. We used [NACCESS](http://www.bioinf.manchester.ac.uk/naccess/) to compute the accessibility of each
 and defined a threshold of 40% of relative accessibility for either the backbone or the side-chain to filter accessible 
 to non-accessible residues.
 
-<a class="prompt prompt-info">Interaction Analysis -> selection.txt</a>
+<a class="prompt prompt-info">Interaction Analysis -> accessible_res_70.list</a>
 
-For this specific run, we will use the `Complete scanning` option but we will uncheck the `Occupancy Analysis` option to
+For this specific run, we will use the **Complete scanning** option but we will uncheck the **Occupancy Analysis** option to
 keep the computation time in a reasonable window for this tutorial.
 
-Then click on the `Submit` button to start the run. The monitoring of your job will be identical to the one explained in
+Then click on the **Submit** button to start the run. The monitoring of your job will be identical to the one explained in
 the [previous section](#access-inter-space-search).
 
 One your job is finished, the results page will display, complementary to the sections we had previously, a new section:
@@ -364,25 +366,30 @@ One your job is finished, the results page will display, complementary to the se
 Thanks to this new information, we can now identify key residues that play a crucial role in the complexes consistent with
 our restraints. It is easy to sort the tables by their average number of interactions and then detect the most important ones.
 
-<a class="prompt prompt-question> How many key residues can you identify from the tables? </a>
-<a class="prompt prompt-question> Create a list of these residues for both the fixed and the scanning chain.</a>
+<a class="prompt prompt-question"> How many key residues can you identify from the tables? </a>
+<a class="prompt prompt-question"> Create a list of these residues for both the fixed and the scanning chain.</a>
 
-<details><summary><b>See solution:</b>
-</summary>
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary><br>
 Respectively <b>12</b> and <b>10</b> residues have been identified as important for the interaction between <b>PRE5</b> 
-and <b<PUP2</b>:<br>
+and <b>PUP2</b>:<br><br>
+
  PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 129, 130, 101, 133 <br>
- PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123<br>
- You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/run/aaa_3ooH45x2">here</a>
-</details>
+ 
+ PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123<br><br>
 
-In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera, using a
-recently published [article](https://dx.doi.org/10.15252/embj.201695222) (november 2016) where the structure of an homologue 
-of the 26S proteasome (from S. cerevisiae) has been solved by X-ray at high resolution (2.4Å - PDBid 
-[5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A)).
+ 
+You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/run/aaa_3ooH45x2" style="color:#0000FF">here</a>
+</details><br>
 
-Chimera also includes a tool to fit a rigid structure against another one, allowing us to place our two partners in a 
-biologically relevant conformation extracted from the S. cerevesiaie 26S proteasome. 
+In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera and use a
+recently published [article](https://dx.doi.org/10.15252/embj.201695222) (november 2016) structure of an homologue 
+of the 26S proteasome (from S. cerevisiae). This structure has been solved by X-ray at high resolution (2.4Å - PDBid 
+[5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A)). We will only use the two chains that are of interest
+from the full 26S proteasome, **PRE5** and **PUP2** chains, respectively **D** and **C** in the PDB file `5l5a_CD.pdb`.
+
+Chimera includes a tool to superimpose a rigid structure on top of another one, allowing us to place our two partners in the
+ conformation extracted from the S. cerevisiae 26S proteasome. 
 Re-open a new Chimera session and load the `PRE5.pdb`, `PUP2.pdb` and `5l5a_CD.pdb` as explained [previously](#inspecting-the-data).
 
 <a class="prompt prompt-pymol">
@@ -404,7 +411,9 @@ Go to Tools → Structure Comparison → MatchMaker
 In the newly opened MatchMaker window, check "Specific chain in reference structure with best-aligning chain in match structure"
 in the "Chain Pairing" box.
 </a>
+
 To superimpose PRE5, do the following:
+
 <a class="prompt prompt-info">
 In the "Reference chain", select "5l5a_CD.pdb (#1) chain D" and in "Structure(s) to match" select "fixed_chain.pdb (#2)".
 </a>
@@ -417,6 +426,7 @@ Press Apply to start the optimization.
 </a>
 
 To superimpose PUP2, we will repeat the previous steps:
+
 <a class="prompt prompt-info">
 In the "Reference chain", select "5l5a_CD.pdb (#1) chain C" and in "Structure(s) to match" select "scanning_chain.pdb (#3)".
 </a>
@@ -432,7 +442,7 @@ We can see that S. pombe PRE5 and PUP2 monomers are quite close from the S. cere
 Now, we will observe if the residues identified as active in our last DisVis run are coherent with the new bound conformation
 extracted from S.cerevisiae.
 
-We will first hide `5l5a_CD.pdb`
+To ease the visualisation of the residues we will first hide `5l5a_CD.pdb`
 
 <a class="prompt prompt-info">
 Go to Favorites → Model Panel
@@ -457,12 +467,23 @@ select #2:5,11,13,15,16,17,121,122,123
 
 ## Final remarks
 
-We have demonstrated in this tutorial how to make use of the DisVis web server to: 1) identify false-positive restraints
-among a list of restraints obtained experimentally and 2) identify interacting residues among a list of accessible residues
- from the two partners.
-The obvious limitation of the second usage of the web server is the list of restraints given as input and the lack of knowledge
-of the environment. In our case, the two partners are involved in a macromolecular assembly that make them interact with more
-than one partner. This is obviously not taken into account in DisVis which explore the full 3D space around the partners.
+We have demonstrated in this tutorial how to make use of the DisVis web server to: 
+1. [identify false positive restraints
+among a list of restraints obtained either experimentally or via bioinformatics methods](#access-inter-space-search) and 
+2. [identify key residues involved in the interaction among a list of accessible residues from the two partners.](#residues-interaction-analysis)
+
+One should keep in mind that false positive restraints highlighted by DisVis do not necessarily mean wrong restraints. It is
+also possible that they reflect another binding site of the partners for different homologue structures. The identification 
+of different sets of restraints with DisVis is a multi-iterative process where you need to test each sets independently to
+properly filter the false positive and get only groups of coherent restraints.
+
+As we have seen in the [last section](#residues-interaction-analysis), one of the limitation of the second usage of the 
+web server is the lack of information about the binding mode we obtain as a result. DisVis can be a very powerful and accurate
+identify active residues but one should keep in mind that they are directly dependent on the quality and quantity of restraints
+provided as input. Howeever, this is a very useful step in the aim of getting a proper model of the interaction between two partners
+since active residues can be given as input to a docking method in order to drive it. Then, proper models can be obtained
+and refined to get an idea of the complex structure.
+This is obviously not taken into account in DisVis which explore the full 3D space around the partners.
  Quality of the restraints are then a key criteria. The second  The quality of the fitted models by PowerFit is, therefore,
 limited. In particular, such models will typically result in a significant clashes at the interface between molecules.
 Such clashes can be removed by making use of the HADDOCK-EM flexible refinement capabilities.
