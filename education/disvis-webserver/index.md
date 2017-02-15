@@ -369,68 +369,101 @@ our restraints. It is easy to sort the tables by their average number of interac
 
 <details><summary><b>See solution:</b>
 </summary>
-Respectively <b>12</b> and <b>10</b> residues have been identified as important for the interaction between PRE5 and PUP2:><br>
- PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 129, 130, 101, 133
- PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123
+Respectively <b>12</b> and <b>10</b> residues have been identified as important for the interaction between <b>PRE5</b> 
+and <b<PUP2</b>:<br>
+ PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 129, 130, 101, 133 <br>
+ PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123<br>
+ You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/run/aaa_3ooH45x2">here</a>
 </details>
 
 In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera, using a
 recently published [article](https://dx.doi.org/10.15252/embj.201695222) (november 2016) where the structure of an homologue 
-of the 26S proteasome we are studying have been solved by X-ray at high resolution (2.4Å).
+of the 26S proteasome (from S. cerevisiae) has been solved by X-ray at high resolution (2.4Å - PDBid 
+[5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A)).
 
-We voluntarily placed the two molecules in a particular conformation found in a known structure of the 26S proteasome solved
- by X-ray at a 2.4Å resolution and released in november 2016 (see [associated article](https://dx.doi.org/10.15252/embj.201695222)).
+Chimera also includes a tool to fit a rigid structure against another one, allowing us to place our two partners in a 
+biologically relevant conformation extracted from the S. cerevesiaie 26S proteasome. 
+Re-open a new Chimera session and load the `PRE5.pdb`, `PUP2.pdb` and `5l5a_CD.pdb` as explained [previously](#inspecting-the-data).
 
-Chimera also includes a tool to locally optimize the fit of a rigid structure 
-against a given density map, which can be an additional help on top of the 
-PowerFit calculations. Make the main display window active by clicking on it, 
+<a class="prompt prompt-pymol">
+  open /path/to/PRE5.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/PUP2.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/5l5a_CD.pdb
+</a>
+
+Make the main display window active by clicking on it, 
 
 <a class="prompt prompt-info">
-Go to Tools → Volume data → Fit in Map
+Go to Tools → Structure Comparison → MatchMaker
 </a>
 <a class="prompt prompt-info">
-In the newly opened Fit in Map window, select the best-fitted structure of PowerFit (fit_?.pdb) as 
-Fit model and the original density map (ribosome-KsgA.map) as the map.
+In the newly opened MatchMaker window, check "Specific chain in reference structure with best-aligning chain in match structure"
+in the "Chain Pairing" box.
+</a>
+To superimpose PRE5, do the following:
+<a class="prompt prompt-info">
+In the "Reference chain", select "5l5a_CD.pdb (#1) chain D" and in "Structure(s) to match" select "fixed_chain.pdb (#2)".
 </a>
 <a class="prompt prompt-info">
-Press Fit to start the optimization. 
+Press Apply to start the optimization. 
 </a>
 
 <a class="prompt prompt-question">
-  Does the Chimera local fit optimization tool improve the results of PowerFit?
+  What is the RMSD (Root Mean Square Deviation) between PRE5 and the chain D of 5L5A (in Å)?
 </a>
 
-The scoring function used by Chimera to estimate the quality of the fit makes 
-our model worse, increasing the number of clashes between the ribosomal RNA and 
-KsgA. Click `Undo` in the `Fit in Map` window to undo the optimization.
-
-Next, we will try to optimize the fit using the cross-correlation that Chimera 
-provides. 
-
+To superimpose PUP2, we will repeat the previous steps:
 <a class="prompt prompt-info">
-Click Options and check the Use map simulated from atoms, resolution box and fill in 13 for resolution. 
+In the "Reference chain", select "5l5a_CD.pdb (#1) chain C" and in "Structure(s) to match" select "scanning_chain.pdb (#3)".
 </a>
 <a class="prompt prompt-info">
-Check the correlation radio button and uncheck the Use only data above contour level from first map. 
-</a>
-<a class="prompt prompt-info">
-Press Fit. 
+Press Apply to start the optimization. 
 </a>
 
 <a class="prompt prompt-question">
-  Does this second strategy improve the quality of the fit? If not, undo it 
-again.
+  What is the RMSD (Root Mean Square Deviation) between PUP2 and the chain C of 5L5A (in Å)?
+</a>
+
+We can see that S. pombe PRE5 and PUP2 monomers are quite close from the S. cerevisiae respective PRE5 and PUP2 monomers.
+Now, we will observe if the residues identified as active in our last DisVis run are coherent with the new bound conformation
+extracted from S.cerevisiae.
+
+We will first hide `5l5a_CD.pdb`
+
+<a class="prompt prompt-info">
+Go to Favorites → Model Panel
+</a>
+<a class="prompt prompt-info">
+  Select "5l5a_CD.pdb" and click "hide" on the right panel
+</a>
+
+Now we will select the active residues:
+
+<a class="prompt prompt-pymol">
+select #1:10,13,58,83,125,126,127,128,129,130,101,133
+</a>
+<a class="prompt prompt-pymol">
+select #2:5,11,13,15,16,17,121,122,123
+</a>
+
+<a class="prompt prompt-question">
+  Are the active residues given by DisVis consistent with the putative bound interaction of PRE5 and PUP2?
 </a>
 
 
 ## Final remarks
 
-We have demonstrated in this tutorial how to make use of the PowerFit web server to fit
-atomic structures in cryo-EM map. 
-The obvious limitation of rigid-body fitting is that it cannot account for any
-conformational changes that the structures might undergo. Further, the low
-resolution of this particular density map does not allow to identify
-side-chain atoms. The quality of the fitted models by PowerFit is, therefore,
+We have demonstrated in this tutorial how to make use of the DisVis web server to: 1) identify false-positive restraints
+among a list of restraints obtained experimentally and 2) identify interacting residues among a list of accessible residues
+ from the two partners.
+The obvious limitation of the second usage of the web server is the list of restraints given as input and the lack of knowledge
+of the environment. In our case, the two partners are involved in a macromolecular assembly that make them interact with more
+than one partner. This is obviously not taken into account in DisVis which explore the full 3D space around the partners.
+ Quality of the restraints are then a key criteria. The second  The quality of the fitted models by PowerFit is, therefore,
 limited. In particular, such models will typically result in a significant clashes at the interface between molecules.
 Such clashes can be removed by making use of the HADDOCK-EM flexible refinement capabilities.
 This is demonstrated in the [command line version][link-haddock-tuto] of the PowerFit tutorial and described in:
