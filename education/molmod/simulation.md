@@ -1029,7 +1029,7 @@ Then, in the command-line interface, assuming you are in the directory where Pym
 *.png* files:
 
 <a class="prompt prompt-cmd">
-  convert -delay 1 -loop 0 frame\_\*.png dynamics.gif
+  convert -delay 1 -loop 0 -dispose Background frame\_\*.png dynamics.gif
 </a>
 
 ## Quantitative Quality Assurance
@@ -1156,7 +1156,7 @@ the experimentally obtainable hydrodynamic radius.
   Calculate and plot the radius of gyration of the peptide across the trajectory.
 </a>
 <a class="prompt prompt-cmd">
-  gmx gyrate -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_radius-of-gyration.xvg
+  gmx gyrate -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_radius-of-gyration.xvg  
   xvg_plot.py -i md_radius-of-gyration.xvg  
 </a>
 <a class="prompt prompt-question">
@@ -1272,11 +1272,11 @@ hydrogen bonds over all frames. The number of hydrogen bonds alone is a proxy fo
 secondary structures.
 
 <a class="prompt prompt-info">
-  Calculate the number of internal and protein-solvent hydrogen bonds over the trajectory.
+  Calculate the number of internal and protein-solvent hydrogen bonds over the trajectory. Note that for determining hydrogen bonds to the solvent the reduced trajectory cannot be used.
 </a>
 <a class="prompt prompt-cmd">
   gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_internal.xvg  
-  gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
+  gmx hbond -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -num md_hbond_solvent.xvg  
 </a>
 <a class="prompt prompt-question">
   How does the number of internal hydrogen bonds correlate with the radius of gyration?

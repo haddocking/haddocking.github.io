@@ -330,7 +330,7 @@ To do so, we will use the `Interaction Analysis` feature of DisVis by providing 
  
 Go to:
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/cgi/services/DISVIS/disvis/submit">http://haddock.science.uu.nl/cgi/services/DISVIS/disvis/submit</a>
+<a class="prompt prompt-info" href="http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit">http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit</a>
 
 As for the 1st run of DisVis, we will use the same input files:
 

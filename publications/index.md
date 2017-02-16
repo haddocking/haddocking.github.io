@@ -35,6 +35,9 @@ _Nature Communications_, *7*, 13228 (2016).
 [Structural basis of GM-CSF and IL-2 sequestration by the viral decoy receptor GIF to achieve immunomodulation](http://dx.doi.org/10.1038/NCOMMS13228).
 _Nature Communications_, *7*, 13228 (2016).
 
+* Z. Kurkcuoglu and **A.M.J.J. Bonvin**. 
+[Science in the clouds: virtualizing HADDOCK, PowerFit and DisVis using INDIGO-DataCloud solutions](https://f1000research.com/posters/5-874). _F1000Research_, *5*:874 (poster) (2016). 
+
 * M. Trellet, J. Schaarschmidt, G.C.P. van Zundert, Z. Kurkcuoglu, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Integrative modelling goes HPC/HTC](http://dx.doi.org/10.7490/f1000research.1113051.1). _F1000Research_, *5*:2216 (poster) (2016).
 
