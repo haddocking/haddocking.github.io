@@ -11,8 +11,8 @@ This tutorial consists of the following sections:
 * [Introduction](#introduction)
 * [Setup](#setup)
 * [Inspecting the data](#inspecting-the-data)
-* [Accessible interaction space search](#access-inter-space-search)
-* [Analyzing the results](#analysing-the-results)
+* [Accessible interaction space search](#accessible-interaction-space-search)
+* [Analysing the results](#analysing-the-results)
 * [Residues interaction analysis](#residues-interaction-analysis)
 * [Final remarks](#final-remarks)
 
@@ -229,7 +229,7 @@ The number of processors used for the calculation is fixed on the web server sid
 This number can of course be changed when using the local version of DisVis.
 
 
-## Analyzing the results
+## Analysing the results
 
 <h3> Web server output </h3>
 
@@ -257,13 +257,8 @@ a specific restraint for complexes consistent with at least N restraints. Each r
 complexes consistent with at least N restraints that violated a particular restraint. As for z-Scores, if complexes have
 been found to be consistent with all restraints provided, this table should be ignored.
 
-
-<figure align="center">
-  <img src="/education/disvis-webserver/disvis_results_summary.png">
-</figure>
-
-You can have a complete overview of a typical DisVis web server output in the [Example](http://milou.science.uu.nl/cgi/services/DISVIS/disvis/example)
-section of the web server. (You will note that this tutorial is an extension of the `26S proteasome` example). 
+You can have a complete overview of a typical DisVis web server output in the [Tutorial](http://milou.science.uu.nl/cgi/services/DISVIS/disvis/tutorial)
+section of the web server.
  
 It is already possible to extract significant results from the results page. 
 
@@ -355,7 +350,7 @@ For this specific run, we will use the **Complete scanning** option but we will 
 keep the computation time in a reasonable window for this tutorial.
 
 Then click on the **Submit** button to start the run. The monitoring of your job will be identical to the one explained in
-the [previous section](#access-inter-space-search).
+the [previous section](#accessible-interaction-space-search).
 
 One your job is finished, the results page will display, complementary to the sections we had previously, a new section:
  
@@ -379,7 +374,7 @@ and <b>PUP2</b>:<br><br>
  PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123<br><br>
 
  
-You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/run/aaa_3ooH45x2" style="color:#0000FF">here</a>
+You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2" style="color:#294fa7">here</a>
 </details><br>
 
 In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera and use a
@@ -451,17 +446,31 @@ Go to Favorites → Model Panel
   Select "5l5a_CD.pdb" and click "hide" on the right panel
 </a>
 
-Now we will select the active residues:
+Now we will select and color the active residues:
 
 <a class="prompt prompt-pymol">
-select #1:10,13,58,83,125,126,127,128,129,130,101,133
+color red #1:10,13,58,83,125,126,127,128,129,130,101,133
 </a>
 <a class="prompt prompt-pymol">
-select #2:5,11,13,15,16,17,121,122,123
+color orange #2:5,11,13,15,16,17,121,122,123
+</a>
+<a class="prompt prompt-pymol">
+show #1:10,13,58,83,125,126,127,128,129,130,101,133
+</a>
+<a class="prompt prompt-pymol">
+show #2:5,11,13,15,16,17,121,122,123
 </a>
 
+<details style="background-color:#DAE4E7">
+<summary>See solution:
+</summary>
+<figure align="center">
+  <img src="/education/disvis-webserver/active_residues.png">
+</figure>
+</details>
+<br>
 <a class="prompt prompt-question">
-  Are the active residues given by DisVis consistent with the putative bound interaction of PRE5 and PUP2?
+  Are the active residues given by DisVis consistent with the putative complex of PRE5 and PUP2?
 </a>
 
 
@@ -469,38 +478,25 @@ select #2:5,11,13,15,16,17,121,122,123
 
 We have demonstrated in this tutorial how to make use of the DisVis web server to: 
 1. [identify false positive restraints
-among a list of restraints obtained either experimentally or via bioinformatics methods](#access-inter-space-search) and 
+among a list of restraints obtained either experimentally or via bioinformatics methods](#accessible-interaction-space-search) and 
 2. [identify key residues involved in the interaction among a list of accessible residues from the two partners.](#residues-interaction-analysis)
 
 One should keep in mind that false positive restraints highlighted by DisVis do not necessarily mean wrong restraints. It is
-also possible that they reflect another binding site of the partners for different homologue structures. The identification 
-of different sets of restraints with DisVis is a multi-iterative process where you need to test each sets independently to
-properly filter the false positive and get only groups of coherent restraints.
+also possible that they reflect another binding site of the partners. The identification of different sets of restraints 
+is possible with DisVis but it is a multi-iterative process where you need to test different combinations independently.
 
-As we have seen in the [last section](#residues-interaction-analysis), one of the limitation of the second usage of the 
-web server is the lack of information about the binding mode we obtain as a result. DisVis can be a very powerful and accurate
-identify active residues but one should keep in mind that they are directly dependent on the quality and quantity of restraints
-provided as input. Howeever, this is a very useful step in the aim of getting a proper model of the interaction between two partners
-since active residues can be given as input to a docking method in order to drive it. Then, proper models can be obtained
-and refined to get an idea of the complex structure.
-This is obviously not taken into account in DisVis which explore the full 3D space around the partners.
- Quality of the restraints are then a key criteria. The second  The quality of the fitted models by PowerFit is, therefore,
-limited. In particular, such models will typically result in a significant clashes at the interface between molecules.
-Such clashes can be removed by making use of the HADDOCK-EM flexible refinement capabilities.
-This is demonstrated in the [command line version][link-haddock-tuto] of the PowerFit tutorial and described in:
+As we have seen in the [last section](#residues-interaction-analysis), one of the limitation of DisVis usage for the identification
+of active residues is the lack of structural information as output. DisVis can be a very powerful and accurate to
+identify key residues involved in the interaction between two partners but it will not provide any contact information. 
+However, this is a very important first step in the aim of generating a proper model of a complex. Our docking program, HADDOCK
+can, for instance, take active residues as input to drive the docking and then generate a biologically relevant model directly from
+DisVis analyses. You can have your hands on HADDOCK by following this [tutorial](http://bonvinlab.org/education/HADDOCK-protein-protein-basic)
+and get insights on how the lists of active residues for two partners can easily be used to setup a docking run.
 
-* G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
-[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
-_Structure._ *23*, 949-960 (2015).
-
-
-Thank you for following this tutorial. If you have any questions or 
-suggestions, feel free to contact us via email.
+Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email.
 
 [link-disvis]: https://github.com/haddocking/disvis "DisVis"
 [link-disvis-web]: http://haddock.science.uu.nl/services/DISVIS/ "DisVis web server"
 [link-disvis-submit]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit "DisVis submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link-pdb]: https://www.ebi.ac.uk/pdbe/entry/pdb/1wcm "PDBid 1WCM"
-[link-pymol]: https://sourceforge.net/projects/pymol/ "PyMol open source"
