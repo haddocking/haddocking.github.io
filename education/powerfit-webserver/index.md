@@ -12,7 +12,7 @@ This tutorial consists of the following sections:
 * [Setup](#setup)
 * [Inspecting the data](#inspecting-the-data)
 * [Rigid body fitting](#rigid-body-fitting)
-* [Analyzing the results](#analysing-the-results)
+* [Analysing the results](#analysing-the-results)
 * [Final remarks](#final-remarks)
 
 
@@ -199,7 +199,7 @@ The number of processors used for the calculation is fixed on the web server sid
 This number can of course be changed when using the local version of PowerFit.
 
 
-## Analyzing the results
+## Analysing the results
 
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification). The results page presents a summary split into several sections:
