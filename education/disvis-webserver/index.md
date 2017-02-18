@@ -108,10 +108,7 @@ and type:
 </a>
 
 
-First slightly adapt the look of the molecules to easily spot the interesting regions.
-You can explore quickly the two chains and try to imagine where their interactive regions will be located.
-
-Now, visualize the cross-links. This can be done by
+Now, we will visualize the cross-links. This can be done by
 drawing a line for each bond identified between each pair of atoms.
 We have to look at the file gathering the distance restraints to extract the information.
 Open `restraints.txt` from the tutorial input data with your favorite text editor.
@@ -326,11 +323,13 @@ Go to:
 
 <a class="prompt prompt-info" href="http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit">http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit</a>
 
-We will use the same input as for the 1st run of DisVis, :
+We will use the same input as for the 1st run of DisVis, removing the false positive
+crosslinks identified at the previous step. The new set of restraints can be found in
+`restraints_filtered.txt`:
 
 <a class="prompt prompt-info">Fixed chain -> PRE5.pdb</a>
 <a class="prompt prompt-info">Scanning chain -> PUP2.pdb</a>
-<a class="prompt prompt-info">Restraints file -> restraints.txt</a>
+<a class="prompt prompt-info">Restraints file -> restraints_filtered.txt</a>
 
 But, in addition, we will now provide a list of residue for the fixed and scanning chains. These are defined in the text file `accessible_res_70.list`provided with the tutorial data. 
 The residues we have selected are all residues considered as surface accessible for both the fixed
