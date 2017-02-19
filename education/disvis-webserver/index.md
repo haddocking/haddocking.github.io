@@ -107,10 +107,22 @@ and type:
   open /path/to/PUP2.pdb
 </a>
 
+As a first step, we will color all residues involved in a cross-link. You can find the list of cross-links
+in the file `restraints.txt`. The first column indicates the residues of PRE5 and the second column the
+ residues of PUP2. To color residues in Chimera, write in the `Command Line` window:
+
+<a class="prompt prompt-pymol">
+color red #0:27,49,54,55,122,164
+</a>
+<a class="prompt prompt-pymol">
+color orange #1:18,49,125,127,128,169,179,188
+</a>
+
+PS: Check that the identifiers (#0 and #1) match the models (respectively PRE5 and PUP2).
+
 Now, visualize the cross-links. This can be done by
 drawing a line for each link identified between the corresponding residues.
-We have to look at the file gathering the distance restraints to extract the information.
-Open `restraints.txt` from the tutorial input data with your favorite text editor.
+We have to look at the file gathering the distance restraints to extract the information (`restraints.txt`).
 
 To draw a line between two atoms in Chimera, we will use the ['distance'](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html) function.
 To help you with the atom selection syntax, you can have a look at the ['atom specification'](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/frameatom_spec.html) 
@@ -211,7 +223,8 @@ While the calculations are running, open a second tab and go to
 Then click on the "**Help/Manual**" menu. 
 
 Here, you can have a look at the several features and options of DisVis and read about the meaning of the various input 
-parameters (including the ones in "**Advanced options**").
+parameters (including the ones in "**Advanced options**"). You can come back to the [submission page](http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit)
+and play with the different parameters.
 
 The rotational sampling interval option is given in
 degrees and defines how tightly the three rotational degrees of freedom will be
@@ -220,7 +233,7 @@ Lower values of both parameters will cause DisVis to perform a finer search, at 
 expense of increased computational time. The default values are `15°` and `2.0Å` for a quick scanning and `9.72°` and `1.0Å` 
 for a more thorough scanning. 
 For the sake of time in this tutorial, we will keep the sampling interval to the quick scanning settings (`15.00°` and `2.0Å`).
-The number of processors used for the calculation is fixed to 8 processors on the web server side . 
+The number of processors used for the calculation is fixed to 8 processors on the web server side.
 This number can of course be changed when using the local version of DisVis.
 
 
@@ -310,8 +323,8 @@ were found, here **7**. Try to change the level in the "**Volume Viewer**"to see
 the accessible interaction space.
 
 <a class="prompt prompt-question">
-  Does the identified accessible interaction space seem to match the conformation found in the literature
-   and used to visualize the restraints in the 1st step of this tutorial?
+  Does the identified accessible interaction space seem to match the conformation in which you
+  found the two partners when we visualised them in Chimera?
 </a>
 
 ## Interaction analysis
@@ -361,18 +374,20 @@ Once your job has completed, the results page will be displayed. Next to the pre
 
 Thanks to this new information, we can now identify putative key residues that should be part of the interface of the complex. 
 The tables can be sorted by their average number of interactions, which allows easy identification of the the most important ones.
+We usually consider as active (or important for the interaction) any residue with more than **1** interaction in average
+in the complexes that comply with the maximum number of restraints.
 
 <a class="prompt prompt-question"> How many key residues can you identify from the tables? </a>
 <a class="prompt prompt-question"> Create a list of these residues for both the fixed and the scanning chain.</a>
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary><br>
-Respectively <b>12</b> and <b>10</b> residues have been identified as important for the interaction between <b>PRE5</b> 
+Respectively <b>11</b> and <b>8</b> residues have been identified as important for the interaction between <b>PRE5</b>
 and <b>PUP2</b>:<br><br>
 
- PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 129, 130, 101, 133 <br>
+ PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 130, 101, 133 <br>
  
- PUP2 active residues: 5, 11, 13, 15, 16, 17, 121, 122, 123<br><br>
+ PUP2 active residues: 11, 13, 15, 16, 17, 121, 122, 123<br><br>
 
  
 You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2" style="color:#294fa7">here</a>
@@ -449,16 +464,16 @@ Go to Favorites -> Model Panel
 Now we will select and color the key residues identified by DisVis:
 
 <a class="prompt prompt-pymol">
-color red #1:10,13,58,83,125,126,127,128,129,130,101,133
+color red #1:10,13,58,83,125,126,127,128,130,101,133
 </a>
 <a class="prompt prompt-pymol">
-color orange #2:5,11,13,15,16,17,121,122,123
+color orange #2:11,13,15,16,17,121,122,123
 </a>
 <a class="prompt prompt-pymol">
-show #1:10,13,58,83,125,126,127,128,129,130,101,133
+show #1:10,13,58,83,125,126,127,128,130,101,133
 </a>
 <a class="prompt prompt-pymol">
-show #2:5,11,13,15,16,17,121,122,123
+show #2:11,13,15,16,17,121,122,123
 </a>
 
 <details style="background-color:#DAE4E7">
