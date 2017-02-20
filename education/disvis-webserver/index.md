@@ -457,7 +457,7 @@ UCSF Chimera Menu -> Tools -> Structure Analysis -> Distances
 And now change the `Line width`, the `Line style` or even the `Color` of the distance representations.
 
 <a class="prompt prompt-question">
-What is the distance of the false positive restraints? By how much does it exceed the cutoff specified in the `restraints.txt` file?
+What is the distance of the false positive restraints? By how much does it exceed the cutoff specified in the restraints.txt file?
 </a>
 
 Now, we will determine whether the residues identified as active in our last DisVis run are coherent with the conformation of the complex
@@ -506,7 +506,7 @@ You can even rerun DisVis with the occupancy analysis option enabled and repeat 
 We have demonstrated in this tutorial how to make use of the DisVis web server to:
 
 1. [Identify false positive restraints](#accessible-interaction-space-search)
-among a list of restraints obtained either experimentally or via bioinformatics methods and 
+among a list of restraints obtained either experimentally or via bioinformatic methods and 
 2. [Identify key residues involved in the interaction](#interaction-analysis) among a list of accessible residues from the two partners.
 
 One should keep in mind that false positive restraints highlighted by DisVis do not necessarily mean wrong restraints. It is
