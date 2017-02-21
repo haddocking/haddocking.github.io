@@ -277,6 +277,17 @@ In this way, you can selectively visualise regions where complexes have been fou
 restraints. Try to change the level in the "**Volume Viewer**" to see how the addition of restraints reduces
 the accessible interaction space.
 
+<a class="prompt prompt-question">
+How many restraints do you need to significantly reduce the AIS? Can you explain why?
+</a>
+
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary><br>
+The most significant difference can be seen when going from <b>4</b> to <b>5</b> restraints. By looking closer at the restraints,
+we can see that two clusters of 3 and 4 residues exist. Once we add a fifth restraint, links from both clusters need to be
+fulfilled. Thus, significantly reducing the accessible interaction space.
+</details>
+
 ## Interaction analysis
 
 We now have an idea of the accessible interaction space between the two molecules defined by the distance restraints. 
@@ -337,7 +348,7 @@ docking of both partners in a [HADDOCK][link-haddock-web] docking run.
 Respectively <b>11</b> and <b>8</b> residues have been identified as important for the interaction between <b>PRE5</b>
 and <b>PUP2</b>:<br><br>
 
- PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 130, 101, 133 <br>
+ PRE5 active residues: 10, 13, 58, 83, 101, 125, 126, 127, 128, 130, 133 <br>
  
  PUP2 active residues: 11, 13, 15, 16, 17, 121, 122, 123<br><br>
 
@@ -467,16 +478,16 @@ extracted from *S.cerevisiae*.
 First select and colour the key residues identified by DisVis:
 
 <a class="prompt prompt-pymol">
-color red #1:10,13,58,83,125,126,127,128,130,101,133
+color red #0:10,13,58,83,101,125,126,127,128,130,133
 </a>
 <a class="prompt prompt-pymol">
-color orange #2:11,13,15,16,17,121,122,123
+color orange #1:11,13,15,16,17,121,122,123
 </a>
 <a class="prompt prompt-pymol">
-show #1:10,13,58,83,125,126,127,128,130,101,133
+show #0:10,13,58,83,101,125,126,127,128,130,133
 </a>
 <a class="prompt prompt-pymol">
-show #2:11,13,15,16,17,121,122,123
+show #1:11,13,15,16,17,121,122,123
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -540,7 +551,7 @@ for computational biomolecular research.
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-chimera-distance]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera distance command"
 [link-chimera-atomspec]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera atom specification"
-[naccess]: (http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
+[naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
 [link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: http://haddock.science.uu.nl/services/HADDOCK2.2 "HADDOCK 2.2 webserver"
 [link-haddock-tutorial]: http://bonvinlab.org/education/HADDOCK-protein-protein-basic "HADDOCK 2.2 webserver tutorial"
