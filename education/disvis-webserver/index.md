@@ -83,7 +83,7 @@ Chimera's menus or simply entering the corresponding command within the Chimera 
 For this open the PDB files `PRE5.pdb` and `PUP2.pdb`.
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu -> File -> Open... -> Select the file
+  UCSF Chimera Menu → File → Open... → Select the file
 </a>
 
 Repeat this for each file. Chimera will automatically guess their type.
@@ -95,7 +95,7 @@ to work on the correct residues!
 If you want to use the Chimera command-line instead, you need to first display it:
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu -> Favorites -> Command Line
+  UCSF Chimera Menu → Favorites → Command Line
 </a>
 
 and type:
@@ -126,7 +126,7 @@ color orange #1:18,49,125,127,128,169,179,188
 show #1:18,49,125,127,128,169,179,188
 </a>
 
-PS: Make sure the identifiers match the models (#0 -> PRE5 and #1 -> PUP2).
+PS: Make sure the identifiers match the models (#0 → PRE5 and #1 → PUP2).
 
 <a class="prompt prompt-question">
 Does the location of the residues already suggest an interface or which residues might be part of the false positive restraints?
@@ -152,7 +152,8 @@ To run DisVis, go to
 
 [Register][link-disvis-register] for getting access to the web server (or use the credentials provided in case of a workshop).
 
-Click on the "**Register**" menu and fill the required information. Registration is not automatic, so be patient.
+You can click on the "**Register**" menu from any DisVis page and fill the required information.
+Registration is not automatic but is usually processed within 12h, so be patient.
 
 
 ### Step2: Define the input files and parameters and submit
@@ -163,9 +164,9 @@ Click on the "**Submit**" menu to access the [input form][link-disvis-submit].
 <img src="/education/disvis-webserver/disvis_submission.png">
 </figure>
 
-<a class="prompt prompt-info">Fixed chain -> PRE5.pdb</a>
-<a class="prompt prompt-info">Scanning chain -> PUP2.pdb</a>
-<a class="prompt prompt-info">Restraints file -> restraints.txt</a>
+<a class="prompt prompt-info">Fixed chain → PRE5.pdb</a>
+<a class="prompt prompt-info">Scanning chain → PUP2.pdb</a>
+<a class="prompt prompt-info">Restraints file → restraints.txt</a>
 
 Once the fields have been filled in, you can submit your job to our server 
 by clicking on "**Submit**" at the bottom of the page.
@@ -292,9 +293,9 @@ We will use the same input as for the first run of DisVis, removing the false po
 crosslinks identified at the previous step. The new set of restraints can be found in
 `restraints_filtered.txt`:
 
-<a class="prompt prompt-info">Fixed chain -> PRE5.pdb</a>
-<a class="prompt prompt-info">Scanning chain -> PUP2.pdb</a>
-<a class="prompt prompt-info">Restraints file -> restraints_filtered.txt</a>
+<a class="prompt prompt-info">Fixed chain → PRE5.pdb</a>
+<a class="prompt prompt-info">Scanning chain → PUP2.pdb</a>
+<a class="prompt prompt-info">Restraints file → restraints_filtered.txt</a>
 
 But, in addition, we will now provide a list of residues for the fixed and scanning chains. 
 These are defined in the text file `accessible_res_70.list`provided with the tutorial data. 
@@ -303,7 +304,7 @@ and the scanning chain. We used [NACCESS][naccess] to compute the
 solvent accessibility of each residue and selected the accessible ones using a threshold of 40% relative 
 accessibility for either the backbone or the side-chain.
 
-<a class="prompt prompt-info">Interaction Analysis -> accessible_res_70.list</a>
+<a class="prompt prompt-info">Interaction Analysis → accessible_res_70.list</a>
 
 For this specific run, we will use the **Complete scanning** option. By default the server activates  
 the **Occupancy Analysis** option when **Complete scanning** is selected but we will disable it to
@@ -366,7 +367,7 @@ Re-open a new Chimera session and load the `PRE5.pdb`, `PUP2.pdb` and `5l5a_CD.p
 Make the main display window active by clicking on it, 
 
 <a class="prompt prompt-info">
-Go to Tools -> Structure Comparison -> MatchMaker
+Go to Tools → Structure Comparison → MatchMaker
 </a>
 <a class="prompt prompt-info">
 In the newly opened MatchMaker window, check "Specific chain in reference structure with best-aligning chain in match structure"
@@ -404,7 +405,7 @@ We can see that *S. pombe* PRE5 and PUP2 monomers are quite close from the respe
 To ease the subsequent visualisation steps we will first hide the homologous structure `5l5a_CD.pdb`.
 
 <a class="prompt prompt-info">
-Go to Favorites -> Model Panel
+Go to Favorites → Model Panel
 </a>
 <a class="prompt prompt-info">
 Select "5l5a_CD.pdb" and click "hide" on the right panel
@@ -451,7 +452,7 @@ Each restraint present in the `restraints.txt` file should now be displayed in C
 you can open the `Distances` window:
 
 <a class="prompt prompt-pymol">
-UCSF Chimera Menu -> Tools -> Structure Analysis -> Distances
+UCSF Chimera Menu → Tools → Structure Analysis → Distances
 </a>
 
 And now change the `Line width`, the `Line style` or even the `Color` of the distance representations.
