@@ -41,13 +41,13 @@ Finally, we will show how the restraints can be provided to HADDOCK in order to 
   
 DisVis and HADDOCK are described in:
 
+* G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
+[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](http://dx.doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
+_J. Mol. Biol._. *429(3)*, 399-407 (2016).
+
 * G.C.P van Zundert and A.M.J.J. Bonvin. 
 [DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333){:target="_blank"}. 
   _Bioinformatics_ *31*, 3222-3224 (2015).
-
-* G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
-[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](http://dx.doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
-_J. Mol. Biol._. *429(3)*, 399-407 (2015).
 
 * G.C.P. van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries, A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}

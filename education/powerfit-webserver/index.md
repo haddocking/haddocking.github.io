@@ -37,6 +37,10 @@ detailed analysis of the results of a run with the methyltransferase KsgA, anoth
 
 The PowerFit and HADDOCK software are described in:
 
+* G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
+[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](http://dx.doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
+_J. Mol. Biol._. *429(3)*, 399-407 (2016).
+
 * G.C.P van Zundert and A.M.J.J. Bonvin. 
 [Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}. 
   _J. Struct. Biol._ *195*, 252-258 (2016).
