@@ -410,7 +410,7 @@ suggestions, feel free to contact us via email.
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/register "PowerFit registration"
+[link-powerfit-register]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/register "PowerFit registration"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
