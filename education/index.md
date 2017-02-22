@@ -43,7 +43,12 @@ We offer various [research projects](/education/research-projects/) to both bach
   PowerFit to automatically place a high-resolution atomic structure in a
   lower-resolution cryo-electron microscopy density map.
 
-* [**PowerFit webserver tutorial**](/education/powerfit-webserver/): A small introduction into
+* [**PowerFit web server tutorial**](/education/powerfit-webserver/): A small introduction into
   PowerFit to automatically place a high-resolution atomic structure in a
   lower-resolution cryo-electron microscopy density map making use of our [web portal](http://milou.science.uu.nl/enmr/services/POWERFIT) 
   (does not require Linux).
+
+* [**DisVis web server tutorial**](/education/disvis-webserver/): A small introduction into
+  DisVis to analyse the interaction space between two molecules from a set of restraints. It can help to filter out putative 
+  false positive restraints and predict key residues involved in the interaction from this set of restraints. 
+  It makes use of our [web portal](http://milou.science.uu.nl/enmr/services/POWERFIT) (does not require Linux).
