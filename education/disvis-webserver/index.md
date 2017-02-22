@@ -336,7 +336,7 @@ Once your job has completed, the results page will be displayed. Next to the pre
 Thanks to this new information, we can now identify putative key residues that should be part of the interface of the complex. 
 The tables can be sorted by their average number of interactions, which allows easy identification of the the most important ones.
 Depending on the downstream utilization you might be interested in all residues potentially involved in the interaction or a few of the
-most likely ones. In this specific example considering residues with more than **1** interaction in average
+most likely ones. In this specific example considering residues with more than **1** interaction on average
 in the complexes that comply with the maximum number of restraints, results in a reasonable list of residues to e. g. drive the 
 docking of both partners in a [HADDOCK][link-haddock-web] docking run.
 

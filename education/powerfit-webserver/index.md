@@ -8,13 +8,8 @@ image:
 ---
 This tutorial consists of the following sections:
 
-* [Introduction](#introduction)
-* [Setup](#setup)
-* [Inspecting the data](#inspecting-the-data)
-* [Rigid body fitting](#rigid-body-fitting)
-* [Analysing the results](#analysing-the-results)
-* [Final remarks](#final-remarks)
-
+* table of contents
+{:toc}
 
 
 ## Introduction
@@ -25,16 +20,19 @@ It is open-source and available for download from our [Github repository][link-p
 To facilitate its use, we have developed a [web portal][link-powerfit-web] for it.
 
 This tutorial demonstrates the use of the PowerFit web server. The server makes use of either 
-local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the [EGI](http://www.egi.eu) to speed up the calculations. It only requires a web browser to work and benefits from the latest
-developments in the software based on a stable and tested workflow. Next to providing an automated workflow around  PowerFit, the web server also performs some postprocessing of the PowerFit output using [UCSF Chimera][link-chimera].
-Chimera is a visualization software and popular tool in the cryo-EM community for its volume visualization capabilities. 
+local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
+[EGI](http://www.egi.eu) to speed up the calculations. It only requires a web browser to work and benefits from the latest
+developments in the software based on a stable and tested workflow. Next to providing an automated workflow around
+PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
+of the PowerFit output using [UCSF Chimera][link-chimera].
+Chimera is a visualization software and popular tool in the cryo-EM community for its volume visualization capabilities.
 
-The case we will be investigating is a complex between the 30S maturing E. coli
-ribosome and KsgA, a methyltransferase. There are models available for the E.
-coli ribosome and KsgA ([4ADV][link-pdb]), and a cryo-EM density map of around 13Å resolution
-([EMD-2017][link-density]).
+The case we will be investigating is a complex between the 30S maturing *E. coli*
+ribosome and KsgA, a methyltransferase. There are models ([4ADV][link-pdb]) and a cryo-EM density map of around 13Å resolution
+([EMD-2017][link-density]) available for the complex.
 
-A related tutorial, based on a local installation of PowerFit can be found [here][link-haddock-tuto]. It provides a more detailed analysis of the results and shows how HADDOCK can be used to obtained better quality models.
+A related tutorial, based on a local installation of PowerFit can be found [here][link-haddock-tuto]. It provides a more 
+detailed analysis of the results and shows how HADDOCK can be used to obtain higher quality models.
 
 
 The PowerFit and HADDOCK software are described in:
@@ -52,8 +50,8 @@ _AIMS Biophysics_. *2*, 73-87 (2015).
 _Structure._ *23*, 949-960 (2015).
 
 
-Throughout the tutorial, colored text will be used to refer to questions or 
-instructions and/or Chimera commands.
+Throughout the tutorial, coloured text will be used to refer to questions, 
+instructions, and Chimera commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering 
 it!</a>
@@ -62,10 +60,11 @@ it!</a>
 Chimera command line prompt!</a>
 
 
-## Setup
+## Setup/Requirements
 
-In order to run this tutorial, which can be run from any operating system and does not require Linux expertise, you will need to install [UCSF Chimera][link-chimera] on your computer in order to visualise the input and output data.  
-Further, the required data to run this tutorial should be downloaded from this [link][link-data].
+In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF Chimera**][link-chimera] 
+(freely available for most operating systems) on your computer in order to visualise the input and output data.  
+Further, the required data to run this tutorial should be downloaded [**here**][link-data].
 Once downloaded, make sure to unpack the archive.
 
 
@@ -77,19 +76,19 @@ and the structures we will attempt to fit.
 Using Chimera, we can easily visualize and inspect the density and models,
 mostly through a few mouse clicks.
 
-For this open the  density map `ribosome-KsgA.map` and the PDB file of the ribosome which is already fitted into the map `ribosome.pdb`.
+For this open the density map `ribosome-KsgA.map` and the PDB file of the ribosome which is already fitted into the map `ribosome.pdb`.
 
 <a class="prompt prompt-info">
-  UCSG Chimera Menu -> File -> Open... -> Select the file
+  UCSF Chimera Menu -> File -> Open... -> Select the file
 </a>
 
 Repeat this for each file. Chimera will automatically guess their type.
 
 
-If you want to use instead the the Chimera command-line:
+If you want to use the Chimera command-line instead, you need to first display it:
 
 <a class="prompt prompt-info">
-  UCSG Chimera Menu -> Favorites -> Command Line
+  UCSF Chimera Menu -> Favorites -> Command Line
 </a>
 
 and type:
@@ -139,31 +138,36 @@ PowerFit is a rigid body fitting software that quickly calculates the
 cross-correlation, a common measure of the goodness-of-fit, between the atomic 
 structure and the density map. It performs a systematic 6-dimensional scan of 
 the three translational and three rotational degrees of freedom. In short, 
-PowerFit will try to fit the structure in many orientations at every position 
-on the map and calculate a cross-correlation score for each of them.
+PowerFit will try to systemetically fit the structure in different orientations at every position 
+in the map and calculate a cross-correlation score for each of them.
 
-PowerFit requires three input: a high-resolution atomic structure of the
+In order to perform the search PowerFit requires three different things:
+a high-resolution atomic structure of the
 biomolecule to be fitted (`KsgA.pdb`), a target cryo-EM density map to fit the
 structure in (`ribosome-KsgA.map`), and the resolution, in ångstrom, of the
-density map (`13`). They correspond to the minimum number of input you have 
-to provide to the web server in order to setup a run.
+density map (`13`). This is also the minimal required input for the web server in order to setup a run.
+
 To run PowerFit, go to
 
 <a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT">http://haddock.science.uu.nl/services/POWERFIT</a>
 
-Then click on the "**Submit**" menu to access the submit form.
+### Step1: Register to the server
+
+[Register][link-powerfit-register] for getting access to the webserver (or use the credentials provided in case of a workshop).
+
+You can click on the "**Register**" menu from any PowerFit page and fill the required information.
+Registration is not automatic but is usually processed within 12h, so be patient.
+
+### Step2: Define the input files and parameters and submit
+
+Click on the "**Submit**" menu to access the [input form][link-powerfit-submit]:
 
 <figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_submission.png">
+<img src="/education/powerfit-webserver/powerfit_submission.png">
 </figure>
 
-
-* **Step1:** Register for getting access to the webserver (or use the credentials provided in case of a workshop).
-
-Click on the "**Register**" menu and fill the required information. Registration is not automatic, so be patient.
-
-
-* **Step2:** Define the input files and parameters.
+Complete the form by filling the reqired fields and selecting the respective files
+(most browsers should also support dragging the files onto the selection button):
 
 <a class="prompt prompt-info">Cryo-EM map -> ribosome-KsgA.map</a>
 <a class="prompt prompt-info">Map resolution -> 13</a>
@@ -177,8 +181,8 @@ If the input fields have been correctly filled you should be redirected to a sta
 indicating that your run has been successfully submitted.
 While performing the search, the PowerFit web server will update you on the progress of the 
 job by reloading the status page every 30 seconds.
-The example case in this tutorial should run in about 5 minutes on our local servers but due to pre- and post-processing
-it might take a bit longer for the result page to appear.
+The runtime of this example case is below  5 minutes on our local servers. However the load of the server as well as 
+pre- and post-processing steps might substantially increase the time until the results are available.
 
 While the calculations are running, open a second tab and go to
 
@@ -186,7 +190,8 @@ While the calculations are running, open a second tab and go to
 
 Then click on the "**Help/Manual**" menu. 
 
-Here, you can have a look at the several features and options of PowerFit and read about the meaning of the various input parameters (including the ones in "**Advanced parameters**").
+Here, you can have a look at the several features and options of PowerFit and read about the meaning of the various input
+parameters (including the ones under "**Advanced options**").
 
 The rotational sampling interval option is given in
 degrees and defines how tightly the three rotational degrees of freedom will be
@@ -194,7 +199,7 @@ sampled. Lower values will cause PowerFit to perform a finer search, at the
 expense of increased computational time. The default value is 10°, but it can be lowered
 to 5° for more sensitive searches, or raised to 20° if time is an issue or if
 there aren't sufficient computational resources. For the sake of time in this
-tutorial, we set the sampling interval to this latter coarser value.
+tutorial, we left the sampling interval at the default value.
 The number of processors used for the calculation is fixed on the web server side to 8 processors. 
 This number can of course be changed when using the local version of PowerFit.
 
@@ -214,7 +219,9 @@ deviations. The table is created with values taken from the file `solutions.out`
 A PDB of the solution can be downloaded and 6 images of the PDB within the density map are shown, covering different 
 views over the scene.
 
-The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better), which, together with its associated number of standard deviations, is an excellent indicator of the accuracy of a fit (see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
+The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better), 
+which, together with its associated number of standard deviations, is an excellent indicator of the accuracy of a fit 
+(see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
  
 
 <figure align="center">
@@ -224,9 +231,12 @@ The higher the cross-correlation score the better the fit. But also important is
 <figure align="center">
   <img src="/education/powerfit-webserver/powerfit_results.png">
 </figure>
- 
 
-You can inspect online the results for the top 10 models (different views are provided). However, it is difficult to really appreciate the accuracy of PowerFit and the differences between the solutions with only images. Therefore download to your computer the results archive available at the top of your results page. You will find in it the following files:
+You can inspect online the results for the top 10 models (different views are provided). However, it is difficult to 
+really appreciate the accuracy of PowerFit and the differences between the solutions with only images. 
+Therefore download the results archive to your computer which is available at the top of your results page.
+
+You will find in it the following files:
 
 * `fit_N.pdb`: the best *N* fits, judged by the cross-correlation score.
 * `solutions.out`: all the non-redundant solutions found, ordered by their
@@ -241,7 +251,7 @@ likely location of the center of mass of the structure.
 with date and timing information.
 
 
-Let us inspect now the solutions in Chimera.
+Let us now inspect the solutions in Chimera.
 
 <a class="prompt prompt-info">
   Open the density map, the *lcc.mrc* cross-correlation map, and the 10 
@@ -274,8 +284,13 @@ As you can see, PowerFit found quite some local optima, one of which stands out
 (if the rotational search was tight enough). Further, the 10 best-ranked
 solutions are centered on regions corresponding to local cross-correlation maxima.
 
-To view each fitted solution individually, in the main panel, go to `Favorites`
-→ `Model Panel` to open the `Model Panel` window. The window shows each model
+To view each fitted solution individually, open the `Model Panel` window.
+
+<a class="prompt prompt-pymol">
+Favorites → Model Panel
+</a>
+
+The window shows each model
 and its associated color that Chimera has processed. To show or hide a specific
 model you can click the box in the `S` column.
 
@@ -301,15 +316,17 @@ Use for this either the `Menus` or the `Command Line`option to load the followin
 
 Replace *?* by the appropriate solution number.
 
+
+**Note**: Make sure to load the files in the specified order for the subsequent commands 
+to work on the correct residues!
+
 You now have combined the ribosome structure with the rigid-body fit of KsgA
 calculated by PowerFit, yielding an initial model of the complex. Mutagenesis
 experiments performed on this complex indicate three charged residues of KsgA -
 `R221`, `R222`, and `K223` - that are of special importance for the
-interaction. 
+interaction.
 
-In the same session of Chimera where you have your chosen fitted KsgA
-structure, go to `Favorites` → `Command Line`. A command line is now present
-below the main viewing window.  In the command line of Chimera, type the
+In the command line of Chimera, type the
 following instructions to center your view on these residues and highlight
 their interactions:
 
@@ -393,6 +410,7 @@ suggestions, feel free to contact us via email.
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
+[link-powerfit-register]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/register "PowerFit registration"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
