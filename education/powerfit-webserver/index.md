@@ -16,37 +16,37 @@ This tutorial consists of the following sections:
 
 PowerFit is a software developed in our lab to fit atomic resolution
 structures of biomolecules into cryo-electron microscopy (cryo-EM) density maps.
-It is open-source and available for download from our [Github repository][link-powerfit].
-To facilitate its use, we have developed a [web portal][link-powerfit-web] for it.
+It is open-source and available for download from our [Github repository][link-powerfit]{:target="_blank"}.
+To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
 This tutorial demonstrates the use of the PowerFit web server. The server makes use of either 
 local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
-[EGI](http://www.egi.eu) to speed up the calculations. It only requires a web browser to work and benefits from the latest
+[EGI](http://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
-of the PowerFit output using [UCSF Chimera][link-chimera].
+of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
 Chimera is a visualization software and popular tool in the cryo-EM community for its volume visualization capabilities.
 
 The case we will be investigating is a complex between the 30S maturing *E. coli*
-ribosome and KsgA, a methyltransferase. There are models ([4ADV][link-pdb]) and a cryo-EM density map of around 13Å resolution
-([EMD-2017][link-density]) available for the complex.
+ribosome and KsgA, a methyltransferase. There are models ([4ADV][link-pdb]{:target="_blank"}) and a cryo-EM density map of around 13Å resolution
+([EMD-2017][link-density]{:target="_blank"}) available for the complex.
 
-A related tutorial, based on a local installation of PowerFit can be found [here][link-haddock-tuto]. It provides a more 
+A related tutorial, based on a local installation of PowerFit can be found [here][link-powerfit-tuto]{:target="_blank"}. It provides a more 
 detailed analysis of the results and shows how HADDOCK can be used to obtain higher quality models.
 
 
 The PowerFit and HADDOCK software are described in:
 
 * G.C.P van Zundert and A.M.J.J. Bonvin. 
-[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011). 
+[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}. 
   _J. Struct. Biol._ *195*, 252-258 (2016).
 
 * G.C.P. van Zundert and A.M.J.J. Bonvin.
-[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73).
+[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73){:target="_blank"}.
 _AIMS Biophysics_. *2*, 73-87 (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
-[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
+[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014){:target="_blank"}.
 _Structure._ *23*, 949-960 (2015).
 
 
@@ -62,9 +62,9 @@ Chimera command line prompt!</a>
 
 ## Setup/Requirements
 
-In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF Chimera**][link-chimera] 
+In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF Chimera**][link-chimera]{:target="_blank"} 
 (freely available for most operating systems) on your computer in order to visualise the input and output data.  
-Further, the required data to run this tutorial should be downloaded [**here**][link-data].
+Further, the required data to run this tutorial should be downloaded [**here**][link-data]{:target="_blank"}.
 Once downloaded, make sure to unpack the archive.
 
 
@@ -144,23 +144,25 @@ in the map and calculate a cross-correlation score for each of them.
 In order to perform the search PowerFit requires three different things:
 a high-resolution atomic structure of the
 biomolecule to be fitted (`KsgA.pdb`), a target cryo-EM density map to fit the
-structure in (`ribosome-KsgA.map`), and the resolution, in ångstrom, of the
+structure in (`ribosome-KsgA.map`), and the resolution, in Ångstrom, of the
 density map (`13`). This is also the minimal required input for the web server in order to setup a run.
 
 To run PowerFit, go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT" target="_blank">http://haddock.science.uu.nl/services/POWERFIT</a>
+
+On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
 ### Step1: Register to the server
 
-[Register][link-powerfit-register] for getting access to the webserver (or use the credentials provided in case of a workshop).
+[Register][link-powerfit-register]{:target="_blank"} for getting access to the webserver (or use the credentials provided in case of a workshop).
 
 You can click on the "**Register**" menu from any PowerFit page and fill the required information.
 Registration is not automatic but is usually processed within 12h, so be patient.
 
 ### Step2: Define the input files and parameters and submit
 
-Click on the "**Submit**" menu to access the [input form][link-powerfit-submit]:
+Click on the "**Submit**" menu to access the [input form][link-powerfit-submit]{:target="_blank"}:
 
 <figure align="center">
 <img src="/education/powerfit-webserver/powerfit_submission.png">
@@ -186,7 +188,7 @@ pre- and post-processing steps might substantially increase the time until the r
 
 While the calculations are running, open a second tab and go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT" target="_blank">http://haddock.science.uu.nl/services/POWERFIT</a>
 
 Then click on the "**Help/Manual**" menu. 
 
@@ -219,18 +221,23 @@ deviations. The table is created with values taken from the file `solutions.out`
 A PDB of the solution can be downloaded and 6 images of the PDB within the density map are shown, covering different 
 views over the scene.
 
+If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted 
+with the same input at the [Tutorial][link-powerfit-tutorial]{:target="_blank"} section of the web server.
+
 The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better), 
-which, together with its associated number of standard deviations, is an excellent indicator of the accuracy of a fit 
-(see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
+which, together with its associated number of standard deviations (σ difference), is an excellent indicator of the accuracy of a fit 
+(see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](http://dx.doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}
+and PowerFit [help page](link-powerfit-help){:target="_blank"}).
+To enhance the interpretation of the results in the `Solutions` table, the entries are colored in a green gradient up to 
+a sigma difference of 3.
  
 
 <figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_results_summary.png">
+  <img width="400" src="/education/powerfit-webserver/sigma-difference.jpg">
+  <figcaption>The true-positive rate is given versus the difference in Fisher z-score standard deviations between the 
+  top 2 solutions. The fitting results were binned in 6 bins, starting from 0 to 3 sigma with a step size of 0.5.</figcaption>
 </figure>
 
-<figure align="center">
-  <img src="/education/powerfit-webserver/powerfit_results.png">
-</figure>
 
 You can inspect online the results for the top 10 models (different views are provided). However, it is difficult to 
 really appreciate the accuracy of PowerFit and the differences between the solutions with only images. 
@@ -398,10 +405,10 @@ resolution of this particular density map does not allow to identify
 side-chain atoms. The quality of the fitted models by PowerFit is, therefore,
 limited. In particular, such models will typically result in a significant clashes at the interface between molecules.
 Such clashes can be removed by making use of the HADDOCK-EM flexible refinement capabilities.
-This is demonstrated in the [command line version][link-haddock-tuto] of the PowerFit tutorial and described in:
+This is demonstrated in the [command line version][link-haddock-tuto]{:target="_blank"} of the PowerFit tutorial and described in:
 
 * G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
-[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
+[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014){:target="_blank"}
 _Structure._ *23*, 949-960 (2015).
 
 
@@ -412,9 +419,11 @@ suggestions, feel free to contact us via email.
 [link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
 [link-powerfit-register]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/register "PowerFit registration"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
+[link-powerfit-help]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-2017 "Ribosome KsgA density"
 [link-pdb]: http://www.rcsb.org/pdb/explore/explore.do?structureId=4ADV "PDBid 4ADV"
 [link-haddock-tuto]: http://bonvinlab.org/education/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
 [link-powerfit-tuto]: http://bonvinlab.org/education/powerfit "Powerfit command-line tutorial"
+[link-powerfit-tutorial]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/tutorial "Powerfit tutorial results page"
