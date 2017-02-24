@@ -17,7 +17,7 @@ image:
 * [Using pseudo contact shift restraints](/software/haddock2.2/PCS_help)
 * [Using diffusion anisotropy restraints](/software/haddock2.2/DANI_help)
 
-### Project setup and paramters
+### Project setup and parameters
 * [The docking](/software/haddock2.2/docking)
 * [Setting up a new project](/software/haddock2.2/start_new_help)
 * [HADDOCK parameters and settings (run.cns)](/software/haddock2.2/run)
@@ -29,10 +29,13 @@ image:
 * [Chemical shift scoring](https://www.wenmr.eu/wenmr/CS-HADDOCK)
 * [SAXS scoring](https://www.wenmr.eu/wenmr/haddock-saxs-scoring)
 
-### Download and Sofware links
+### Download and Software links
 * [Obtaining HADDOCK](/software/haddock2.2/download)
 * [Installing HADDOCK](/software/haddock2.2/installation)
 * [Software links](/software/haddock2.2/software)
+
+### Tips & tricks
+* [Advanced model refinement](/software/haddock2.2/tips/advanced_refinement)
 
 ### [HADDOCK-related publications](/software/haddock2.2/publications)
 
