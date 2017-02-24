@@ -1,14 +1,12 @@
 ---
 layout: page
+title: "HADDOCK2.2 manual"
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 image:
   feature: pages/banner_software.jpg
 ---
-
-## <span style="color:red">HADDOCK2.2</span> manual 
-
 * [HADDOCK home page](/software/haddock2.2/)
 * [Introduction](/software/haddock2.2/introduction)
 
