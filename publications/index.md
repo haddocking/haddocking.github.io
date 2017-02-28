@@ -7,8 +7,8 @@ image:
 ## 2017 
 <hr />
 * C. Geng, S. Narasimhan, J. P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**.
-Information-driven, ensemble flexible peptide docking using HADDOCK.
-_Methods in Molecular Biology: Modeling Peptide-Protein Interactions._ Eds Ora Schueler-Furman and Nir London. Humana Press Inc. In press (2017).
+[Information-driven, ensemble flexible peptide docking using HADDOCK](http://dx.doi.org/10.1007/978-1-4939-6798-8_8).
+_Methods in Molecular Biology: Modeling Peptide-Protein Interactions._ Eds Ora Schueler-Furman and Nir London. Humana Press Inc. *1561*, 109-138 (2017).
 
 * R.C.G. de Bruin, A.G.M. Stam, A. Vangone, P. van Bergen en Henegouwen, H.M.W. Verheul, **A.M.J.J. Bonvin**, T.D. de Gruijl, H.J. van der Vliet.
 [Prevention of Vγ9Vδ2-T cell activation by a Vγ9Vδ2-TCR nanobody](http://dx.doi.org/10.4049/jimmunol.1600948).
