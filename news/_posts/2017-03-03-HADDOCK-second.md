@@ -7,7 +7,7 @@ tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-###A message from the HADDOCK team to our friends and competitors worldwide
+### A message from the HADDOCK team to our friends and competitors worldwide
 
 We've got HADDOCK, it’s the best docking program in
 the world - it’s true, it’s great!
