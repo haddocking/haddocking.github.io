@@ -408,9 +408,10 @@ This is demonstrated in the [command line version][link-haddock-tuto]{:target="_
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014){:target="_blank"}
 _Structure._ *23*, 949-960 (2015).
 
+Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to
+our [PowerFit forum](http://ask.bioexcel.eu/c/powerfit){:target="_blank"} hosted by the [<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} center of excellence
+for computational biomolecular research.
 
-Thank you for following this tutorial. If you have any questions or 
-suggestions, feel free to contact us via email.
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
