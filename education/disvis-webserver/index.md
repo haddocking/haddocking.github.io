@@ -30,7 +30,7 @@ first overview of the interaction space between the two molecules with images au
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
-([Leitner et al., 2014](https://dx.doi:10.1073/pnas.1320298111)). 
+([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)).
 **We added two false positive restraints - it is your task to try to identify these!** For this, we use DisVis 
 to try to filter out these false positive restraints while assessing the true interaction space between the two chains.
 We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues 
