@@ -29,13 +29,13 @@ first overview of the interaction space between the two molecules with images au
 
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
-for this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
+For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
 ([Leitner et al., 2014](https://dx.doi:10.1073/pnas.1320298111)). 
-We added two false positive restraints - it is your task to try to identify these! For this, we use DisVis 
+**We added two false positive restraints - it is your task to try to identify these!** For this, we use DisVis 
 to try to filter out these false positive restraints while assessing the true interaction space between the two chains.
 We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues 
 putatively involved in the interaction between the two molecules. To do so, we will extract all accessible residues of
-the two partners, and give the list of residue to DisVis using its interaction analysis feature.
+the two partners, and give the list of residues to DisVis using its interaction analysis feature.
 Finally, we will show how the restraints can be provided to HADDOCK in order to model the 3D interaction between the
  2 partners.
   
@@ -68,7 +68,7 @@ Chimera command line prompt!</a>
 
 In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF Chimera**][link-chimera]{:target="_blank"} 
 (freely available for most operating systems) on your computer in order to visualise the input and output data.  
-Further, the required data to run this tutorial should be downloaded [**here**][link-data]{:target="_blank"}.
+Further, the required data to run this tutorial should be downloaded from [**here**][link-data]{:target="_blank"}.
 Once downloaded, make sure to unpack the archive.
 
 
@@ -302,7 +302,7 @@ Go to:
 
 <a class="prompt prompt-info" href="http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit" target="_blank">http://milou.science.uu.nl/cgi/services/DISVIS/disvis/submit</a>
 
-We will use the same input as for the first run of DisVis, removing the false positive
+We will use the same input as for the first run of DisVis, but removing this time the false positive
 crosslinks identified at the previous step. The new set of restraints can be found in
 `restraints_filtered.txt`:
 
@@ -342,7 +342,7 @@ most likely ones. In this specific example considering residues with more than *
 in the complexes that comply with the maximum number of restraints, results in a reasonable list of residues to e. g. drive the 
 docking of both partners in a [HADDOCK][link-haddock-web]{:target="_blank"} docking run.
 
-<a class="prompt prompt-question"> How many key residues meeting above mentioned criteria can you identify from the tables? </a>
+<a class="prompt prompt-question"> How many key residues meeting the above mentioned criteria can you identify from the tables? </a>
 <a class="prompt prompt-question"> Create a list of these residues for both the fixed and the scanning chain.</a>
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
@@ -424,7 +424,7 @@ Go to Favorites → Model Panel
 Select "5l5a_CD.pdb" and click "hide" on the right panel
 </a>
 
-In a first step we visualise the cross-links. This can be done by
+In a first step we will visualise the cross-links. This can be done by
 drawing a line for each link identified between the corresponding residues.
 We can again look at the file gathering the distance restraints to extract the information (`restraints.txt`).
 
