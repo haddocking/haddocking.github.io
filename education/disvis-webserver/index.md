@@ -30,7 +30,7 @@ first overview of the interaction space between the two molecules with images au
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
-([Leitner et al., 2014](https://dx.doi:10.1073/pnas.1320298111)). 
+([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)).
 **We added two false positive restraints - it is your task to try to identify these!** For this, we use DisVis 
 to try to filter out these false positive restraints while assessing the true interaction space between the two chains.
 We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues 
@@ -350,7 +350,7 @@ docking of both partners in a [HADDOCK][link-haddock-web]{:target="_blank"} dock
 Respectively <b>11</b> and <b>8</b> residues have been identified as important for the interaction between <b>PRE5</b>
 and <b>PUP2</b>:<br><br>
 
- PRE5 active residues: 10, 13, 58, 83, 101, 125, 126, 127, 128, 130, 133 <br>
+ PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 130, 131, 133 <br>
  
  PUP2 active residues: 11, 13, 15, 16, 17, 121, 122, 123<br><br>
 
@@ -390,7 +390,7 @@ in the "Chain Pairing" box.
 To superimpose PRE5, do the following:
 
 <a class="prompt prompt-info">
-In the "Reference chain", select "5l5a_CD.pdb (#1) chain D" and in "Structure(s) to match" select "PRE5.pdb (#2)".
+In the "Reference chain", select "5l5a_CD.pdb (#2) chain D" and in "Structure(s) to match" select "PRE5.pdb (#0)".
 </a>
 <a class="prompt prompt-info">
 Press Apply to start the optimisation. 
@@ -403,7 +403,7 @@ Press Apply to start the optimisation.
 To superimpose PUP2, we will repeat the previous steps:
 
 <a class="prompt prompt-info">
-In the "Reference chain", select "5l5a_CD.pdb (#1) chain C" and in "Structure(s) to match" select "scanning_chain.pdb (#3)".
+In the "Reference chain", select "5l5a_CD.pdb (#2) chain C" and in "Structure(s) to match" select "PUP2.pdb (#1)".
 </a>
 <a class="prompt prompt-info">
 Press Apply to start the optimisation. 
@@ -480,13 +480,13 @@ extracted from *S.cerevisiae*.
 First select and colour the key residues identified by DisVis:
 
 <a class="prompt prompt-pymol">
-color red #0:10,13,58,83,101,125,126,127,128,130,133
+color red #0:10,13,58,83,125,126,127,128,130,131,133
 </a>
 <a class="prompt prompt-pymol">
 color orange #1:11,13,15,16,17,121,122,123
 </a>
 <a class="prompt prompt-pymol">
-show #0:10,13,58,83,101,125,126,127,128,130,133
+show #0:10,13,58,83,125,126,127,128,130,131,133
 </a>
 <a class="prompt prompt-pymol">
 show #1:11,13,15,16,17,121,122,123
