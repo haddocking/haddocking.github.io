@@ -225,7 +225,7 @@ A PDB of the solution can be downloaded and 6 images of the PDB within the densi
 views over the scene.
 
 If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted 
-with the same input at the [Tutorial][link-powerfit-tutorial]{:target="_blank"} section of the web server.
+with the same input [here][link-powerfit-tutorial]{:target="_blank"}.
 
 The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better), 
 which, together with its associated number of standard deviations (σ difference), is an excellent indicator of the accuracy of a fit 
