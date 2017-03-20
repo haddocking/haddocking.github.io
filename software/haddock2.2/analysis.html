@@ -529,7 +529,7 @@ based on the criteria defined in the <a href="/software/haddock2.2/run#clust">ru
 In case FCC clustering has been chosen (which means clustering based on the fraction of common contacts), a reasonable cutoff value to start with for protein-protein complexes is 0.75.
 We recommend however that you try using different cut-offs for the clustering since it is difficult to know
 a priori the best cut-off. This will depend on the system under study and the number of experimental restraints
-used to drive the docking. If only a small fraction of the structures cluster, try increasing the cut-off.
+used to drive the docking. If only a small fraction of the structures cluster, try decreasing the cut-off.
 <BR><BR>
 <b>cluster_fcc.py</b> is a python code provided in the <i><b>tools</b></i> directory that read the 
 <i>fileroot_fcc.disp</i> file containing the pairwise fraction of common contact matrix and generates clusters. 
