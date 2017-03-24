@@ -244,11 +244,7 @@ their z-Score and their violation frequency for a specific number of restraints.
 crosslinks with the highest number of violations. The DisVis web server preformats the results in a way that false positive restraints 
 are highlighted and can be spotted at a glance.
 
-In our case, you should observe that DisVis found solutions consistent with up to 6 restraints indicating that there might be three false positive restraints.
-When DisVis fails to identify complexes consistent with all provided restraints during quick scanning it is advisable to rerun with the complete scanning 
-parameters. It is possible that a more thourough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the
-list of putative false positive restraints.  
-Taking a closer look at the violations table might already be enough to determine which residues are most likely True false positives.
+In our case, you should observe that DisVis found solutions consistent with up to 6 restraints indicating that there might be three false positive restraints.Taking a closer look at the violations table might already be enough to determine which residues are most likely True false positives.
 In this example two restraints are violated in all complexes consistent with 6 restrains and are thus the most likely candidates:
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
@@ -257,6 +253,7 @@ In this example two restraints are violated in all complexes consistent with 6 r
 <center><b>A49(CA) - A188(CA)</b></center>
 </details>
 
+When DisVis fails to identify complexes consistent with all provided restraints during quick scanning it is advisable to rerun with the complete scanning parameters before remove all restraints (or remove only the most violated ones and rerun with complete scanning). It is possible that a more thourough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the list of putative false positive restraints.  
 
 ### DisVis output files
 
