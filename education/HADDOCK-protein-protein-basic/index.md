@@ -451,11 +451,17 @@ color yellow, 1GGR and chain A<br>
 color orange, 1GGR and chain B<br>
 </a>
 
-Then superimpose all cluster representatives on the reference structure, using chain A (E2A):
+The number of chain B in this structure is however different from the HPR numbering in the structure we used: It starts at 301 while in our models chain B starts at 1. We can change the residue numbering easily in PyMol with the following command:
+
+<a class="prompt prompt-pymol">
+alter (chain B and 1GGR), resv -=300
+</a>
+
+Then superimpose all cluster representatives on the reference structure, using the entire chain A (E2A):
 
 <a class="prompt prompt-pymol">
 select 1GGR and chain A<br>
-align cluster1_1, sele
+align cluster1_1, sele, cycles=0
 </a>
 
 <a class="prompt prompt-info">
@@ -472,10 +478,8 @@ In case you found a reasonable prediction, what is its cluster rank?
 In the blind protein-protein prediction experiment [CAPRI](http://capri.ebi.ac.uk/) (Critical PRediction of Interactions), a measure of the quality of a model is the so-called ligand-RMSD (l-RMSD). It is calculated by fitting on the receptor chain (E2A or chain A in our case) and calculating the RMSD on the backbone of the ligand (HPR or chain B in our case). This can be done in PyMOL with the following command:
 
 <a class="prompt prompt-pymol">
-rmsd cluster1_1 and chain B, 1GGR<br>
+rms_cur cluster1_1 and chain B, 1GGR<br>
 </a>
-
-**Note** that the rmsd command might not be available on all versions of PyMOL, in which case you won't be able to perform this last analysis.
 
 In CAPRI, the l-RMSD value defines the quality of a model:
 
