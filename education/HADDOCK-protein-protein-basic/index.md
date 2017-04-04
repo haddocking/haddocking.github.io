@@ -180,7 +180,7 @@ show ribbon<br>
 set all_states, on<br>
 </a>
 
-You should now be seing the 20 conformers present in this NMR structure. To illustrate the potential benefit of using an ensemble of conformations as starting point for docking let's look at the side-chains of the active residues:
+You should now be seing the 30 conformers present in this NMR structure. To illustrate the potential benefit of using an ensemble of conformations as starting point for docking let's look at the side-chains of the active residues:
 
 <a class="prompt prompt-pymol">
 show lines, hpr_active<br>
@@ -250,9 +250,6 @@ Active residues (directly involved in the interaction) -> 38,40,45,46,69,71,78,8
 </a>
 <a class="prompt prompt-info">Define passive residues automatically around the active residues -> check box
 </a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> A
-</a>
 
 * **Step3:** Input the proteins PDB files. For this unfold the **Second Molecule menu**.
 
@@ -269,9 +266,6 @@ PDB structure to submit -> Browse and select *hpr-ensemble.pdb* (the file you sa
 Active residues (directly involved in the interaction) -> 15,16,17,20,48,49,51,52,54,56
 </a>
 <a class="prompt prompt-info">Define passive residues automatically around the active residues -> check box
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> B
 </a>
 
 * **Step 4:** You are ready to submit! 
@@ -326,7 +320,7 @@ The page will automatically refresh and the results will appear upon completions
 <hr>
 ## Analysing the results
 
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPR/index.php) in case you don't want to wait for the results of your docking run.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPR) in case you don't want to wait for the results of your docking run.
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic/HADDOCK-result-page.png">
