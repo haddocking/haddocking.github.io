@@ -541,7 +541,20 @@ This files contains the results of the contacts analysis of 10000 rigid body doc
 </a>
 
 <a class="prompt prompt-cmd">
-pymol AcrB_contacts.pdb \$WDIR/3AOD-renumbered.pdb
+pymol AcrB-rifampicin-surface-full-contacts.pdb \$WDIR/3AOD-renumbered.pdb
+</a>
+
+And then in Pymol type:
+
+<a class="prompt prompt-pymol">
+align 3AOD-renumbered, AcrB-rifampicin-surface-full-contacts<br>
+zoom vis<br>
+hide lines<br>
+show mesh, AcrB-rifampicin-surface-full-contacts<BR>
+spectrum b, blue_white_red, minimum=1, maximum=100<BR>
+select resn MIY+RFP<BR>
+show sphere, sele<BR>
+color green, sele<BR>
 </a>
 
 
