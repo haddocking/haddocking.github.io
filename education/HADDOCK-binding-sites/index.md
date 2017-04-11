@@ -812,7 +812,7 @@ Visualize and compare the various clusters (use all what you have learned about 
 You can also compare the orientation of the ligand in our models with the orientation of the same ligand in the crystal structure with rifampicin bound in chain C (remember that chain C of that structure corresponds to chain A in the nomemclature of Sennhauser et al.) ([3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP)), corresponding to a channel slightly narrower than for chain A (our current chain B in Sennhauser). Or simply use the renumbered 3AOD structure provided in the ```pdbs``` directory called ```3AOD-renumbered-BCA.pdb``` to compare the structures in Pymol. In this renumbered structure, we changed the chain IDs such as that the chain binding rifampicin corresponds to chain B of 2J8S which we targeted.
 
 <a class="prompt prompt-cmd">
-pymol cluster*_1.pdb $WDIR/3AOD-renumbered-BCA.pdb
+pymol cluster*_1.pdb $WDIR/../pdbs/3AOD-renumbered-BCA.pdb
 </a>
 
 <a class="prompt prompt-pymol">
