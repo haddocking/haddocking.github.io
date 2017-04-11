@@ -100,7 +100,7 @@ For this go into the ```ana_scripts``` directory of the cloned directory and typ
 (we are here assuming a tcsh or csh shell):
 
 <a class="prompt prompt-cmd">
-cd HADDOCK-binding-sites-turorial/ana_scripts<BR>
+cd HADDOCK-binding-sites-tutorial/ana_scripts<BR>
 make<BR>
 source setup.csh<BR>
 cd ..</a>
