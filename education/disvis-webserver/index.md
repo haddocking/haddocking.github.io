@@ -173,11 +173,11 @@ Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:t
 Once the fields have been filled in, you can submit your job to our server 
 by clicking on "**Submit**" at the bottom of the page.
 
-If the input fields have been correctly filled you should be redirected to a status page displaying a pop-up message
+If the input fields have been correctly filled you should be redirected to a status page displaying a message
 indicating that your run has been successfully submitted.
 While performing the search, the DisVis web server will update you on the progress of the 
 job by reloading the status page every 30 seconds.
-The runtime of this example case is below  5 minutes on our local servers. However the load of the server as well as 
+The runtime of this example case is below  5 minutes on our local CPU and grid GPU servers. However the load of the server as well as 
 pre- and post-processing steps might substantially increase the time until the results are available.
 
 While the calculations are running, open a second tab and go to
@@ -215,7 +215,8 @@ a density map representation, are displayed. Different views of the molecular sc
  on the right or left part of the image frame. Each set of images matches a specific level of N restraints which corresponds
  to the accessible interaction space by complexes consistent with at least N restraints. A slider below the image container
  allows you to change the the number of restraints N and load the corresponding set of images.
-* `Accessible Complexes`: Summary of the statistics for number of complexes consistent with at least N number of restraints. The statistics are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `restraints.txt`)
+* `Accessible Complexes`: Summary of the statistics for number of complexes consistent with at least N number of restraints. 
+ The statistics are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `restraints.txt`)
 * `z-Score`: For each restraint provided as input, a z-Score is provided, giving an indication of how likely it is that the restraint is a false positive. 
 The higher the score, the more likely it is that a restraint might be a false positive. Putative false positive restraints
 are only highlighted if no single solution was found to be consistent with the total number of restraints provided. If DisVis
@@ -233,7 +234,7 @@ with the same input at the [Tutorial][link-disvis-tutorial]{:target="_blank"} se
 It is possible to extract significant results from the results page of this initial run. 
 
 <a class="prompt prompt-question"> Using the different descriptions of the sections we provided above together with the information
-on the results page of your run, what are the two likely false positive restraints according to DisVis?</a>
+on the results page of your run, what are likely false positive restraints according to DisVis?</a>
 
 <a class="prompt prompt-question"> Do the results confirm your selection of residues putatively involved in false positive restraints
 when you were initially looking at the structures in Chimera?</a>
@@ -243,7 +244,8 @@ their z-Score and their violation frequency for a specific number of restraints.
 crosslinks with the highest number of violations. The DisVis web server preformats the results in a way that false positive restraints 
 are highlighted and can be spotted at a glance.
 
-In our case, you should observe that the following two restraints are highlighted as putative false positives:
+In our case, you should observe that DisVis found solutions consistent with up to 6 restraints indicating that there might be three false positive restraints.Taking a closer look at the violations table might already be enough to determine which residues are most likely True false positives.
+In this example two restraints are violated in all complexes consistent with 6 restrains and are thus the most likely candidates:
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
@@ -251,6 +253,7 @@ In our case, you should observe that the following two restraints are highlighte
 <center><b>A49(CA) - A188(CA)</b></center>
 </details>
 
+When DisVis fails to identify complexes consistent with all provided restraints during quick scanning it is advisable to rerun with the complete scanning parameters before remove all restraints (or remove only the most violated ones and rerun with complete scanning). It is possible that a more thourough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the list of putative false positive restraints.  
 
 ### DisVis output files
 
@@ -265,6 +268,8 @@ scanning chain conforming to the maximum number of consistent restraints at ever
 * `violations.out`: A text file showing how often a specific restraint is violated for each number of consistent restraints.
 * `z-score.out`: A text file giving the Z-score for each restraint. The higher the score, the more likely the restraint 
 is a false positive.
+* `run_parameters.json`: A text file containing the parameters of your run.
+* `result.html`: A reduced version of the results page for viewing the results offline or after the data have been deleted from our servers.
 
 Let us now inspect the solutions in Chimera:
 
@@ -321,7 +326,8 @@ accessibility for either the backbone or the side-chain.
 
 For this specific run, we will use the **Complete scanning** option. By default the server activates  
 the **Occupancy Analysis** option when **Complete scanning** is selected but we will disable it to
-keep the computation time in a reasonable window for this tutorial.
+keep the computation time in a reasonable window for this tutorial (The occupancy analysis option was enabed in the run on the
+Tutorial page so you can access the resulting files by Downloading the associated results archive ).
 
 <a class="prompt prompt-info">Select the **Complete Scanning** radio button</a>
 <a class="prompt prompt-info">Uncheck the **Occupancy Analysis** checkbox</a>
@@ -331,6 +337,10 @@ Then click on the **Submit** button to start the run.
 
 Once your job has completed, the results page will be displayed. Next to the previously described sections, it now contains a new section:
  
+<a class="prompt prompt-question">
+Did the number of satisfied restraints change in comparison to the first quick scanning run?
+</a>
+
 * `Interaction analysis`: The tables of this section show how many interactions a specific residue makes in the complexes
  consistent with a specific number of restraints. The higher the interaction fraction of a specific residue is, the more 
  likely it is to be part of the interface of the complex.
@@ -350,7 +360,7 @@ docking of both partners in a [HADDOCK][link-haddock-web]{:target="_blank"} dock
 Respectively <b>11</b> and <b>8</b> residues have been identified as important for the interaction between <b>PRE5</b>
 and <b>PUP2</b>:<br><br>
 
- PRE5 active residues: 10, 13, 58, 83, 125, 126, 127, 128, 130, 131, 133 <br>
+ PRE5 active residues: 10, 13, 58, 60, 83, 125, 126, 127, 130, 131, 133 <br>
  
  PUP2 active residues: 11, 13, 15, 16, 17, 121, 122, 123<br><br>
 
@@ -480,13 +490,13 @@ extracted from *S.cerevisiae*.
 First select and colour the key residues identified by DisVis:
 
 <a class="prompt prompt-pymol">
-color red #0:10,13,58,83,125,126,127,128,130,131,133
+color red #0:10,13,58,60,83,125,126,127,130,131,133
 </a>
 <a class="prompt prompt-pymol">
 color orange #1:11,13,15,16,17,121,122,123
 </a>
 <a class="prompt prompt-pymol">
-show #0:10,13,58,83,125,126,127,128,130,131,133
+show #0:10,13,58,60,83,125,126,127,130,131,133
 </a>
 <a class="prompt prompt-pymol">
 show #1:11,13,15,16,17,121,122,123

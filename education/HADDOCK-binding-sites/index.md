@@ -100,7 +100,7 @@ For this go into the ```ana_scripts``` directory of the cloned directory and typ
 (we are here assuming a tcsh or csh shell):
 
 <a class="prompt prompt-cmd">
-cd HADDOCK-binding-sites/ana_scripts<BR>
+cd HADDOCK-binding-sites-tutorial/ana_scripts<BR>
 make<BR>
 source setup.csh<BR>
 cd ..</a>
@@ -541,7 +541,20 @@ This files contains the results of the contacts analysis of 10000 rigid body doc
 </a>
 
 <a class="prompt prompt-cmd">
-pymol AcrB_contacts.pdb \$WDIR/3AOD-renumbered.pdb
+pymol AcrB-rifampicin-surface-full-contacts.pdb \$WDIR/3AOD-renumbered.pdb
+</a>
+
+And then in Pymol type:
+
+<a class="prompt prompt-pymol">
+align 3AOD-renumbered, AcrB-rifampicin-surface-full-contacts<br>
+zoom vis<br>
+hide lines<br>
+show mesh, AcrB-rifampicin-surface-full-contacts<BR>
+spectrum b, blue_white_red, minimum=1, maximum=100<BR>
+select resn MIY+RFP<BR>
+show sphere, sele<BR>
+color green, sele<BR>
 </a>
 
 
@@ -799,7 +812,7 @@ Visualize and compare the various clusters (use all what you have learned about 
 You can also compare the orientation of the ligand in our models with the orientation of the same ligand in the crystal structure with rifampicin bound in chain C (remember that chain C of that structure corresponds to chain A in the nomemclature of Sennhauser et al.) ([3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP)), corresponding to a channel slightly narrower than for chain A (our current chain B in Sennhauser). Or simply use the renumbered 3AOD structure provided in the ```pdbs``` directory called ```3AOD-renumbered-BCA.pdb``` to compare the structures in Pymol. In this renumbered structure, we changed the chain IDs such as that the chain binding rifampicin corresponds to chain B of 2J8S which we targeted.
 
 <a class="prompt prompt-cmd">
-pymol cluster*_1.pdb $WDIR/3AOD-renumbered-BCA.pdb
+pymol cluster*_1.pdb $WDIR/../pdbs/3AOD-renumbered-BCA.pdb
 </a>
 
 <a class="prompt prompt-pymol">

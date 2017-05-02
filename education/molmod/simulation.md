@@ -132,8 +132,10 @@ The instructions shown in this tutorial refer only to the helical peptide, for s
 successful completion of the tutorial requires, however, all three conformations to be simulated.
 
 <a class="prompt prompt-info">
-  Generate an ideal structure for the peptide sequence using the build_seq script in Pymol 
-(ss=helix/beta/polypro).
+  Generate an ideal structure for the peptide sequence using the build_seq script in Pymol
+ (ss=helix/beta/polypro). If you have trouble with the build_seq script you could also resort to 
+ the built-in fab command to generate the helix (ss=1) and beta (ss=3) conformations. (The command 
+ doesn't offer the polypro conformation)
 </a>
 
 <a class="prompt prompt-pymol">

@@ -6,6 +6,9 @@ image:
 
 ## 2017 
 <hr />
+* A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. [Prediction of Biomolecular Complexes](http://link.springer.com/chapter/10.1007/978-94-024-1069-3_8).
+In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, 160-167 (2017).
+
 * C. Geng, S. Narasimhan, J. P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**.
 [Information-driven, ensemble flexible peptide docking using HADDOCK](http://dx.doi.org/10.1007/978-1-4939-6798-8_8).
 _Methods in Molecular Biology: Modeling Peptide-Protein Interactions._ Eds Ora Schueler-Furman and Nir London. Humana Press Inc. *1561*, 109-138 (2017).
@@ -25,10 +28,10 @@ _J. Mol. Biol._, *429*, 399-407 (2017).
 <hr />
 * A. Vangone, J.P.G.L.M. Rodrigues, L.C. Xue, G.C.P. van Zundert, C. Geng, Z. Kurkcuoglu, M. Nellen, S. Narasimhan, E. Karaca, M. van Dijk, A.S.J. Melquiond, K.M. Visscher, M. Trellet, P.L. Kastritis and **A.M.J.J. Bonvin**.
 [Sense and Simplicity in HADDOCK Scoring: Lessons from CASP-CAPRI Round 1](http://onlinelibrary.wiley.com/doi/10.1002/prot.25198/full).
-_Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2016).
+_Proteins: Struc. Funct. &amp; Bioinformatics_, *85*, 417-423 (2016).
 
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
-[Structure of the bacterial plant-ferredoxin receptor FusA](http://dx.doi.org/10.1038/ncomms13228ncomms132288).
+[Structure of the bacterial plant-ferredoxin receptor FusA](http://dx.doi.org/10.1038/ncomms13308).
 _Nature Communications_, *7*, 13228 (2016).
 
 * J. Felix, E. Kandiah, S. De Munck, Y. Bloch, G.C.P. van Zundert, K. Pauwels, A. Dansercoer, K. Novanska, R.J. Read, **A.M.J.J. Bonvin**, B. Vergauwen, K. Verstraete, I. Gutsche and S.N. Savvides.
@@ -88,9 +91,6 @@ _J. Chem. Inf. and Model._ *56*, 127-138 (2016).
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
 [Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](http://dx.doi.org/doi:10.1002/bmb.20941).
 _Biochemistry and Molecular Biology Education_, *44*, 160-167 (2016).
-
-* A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. Prediction of Biomolecular Complexes.
-In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, In Press.
 
 * R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
 [Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
