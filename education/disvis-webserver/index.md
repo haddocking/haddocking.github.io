@@ -348,9 +348,12 @@ Did the number of satisfied restraints change in comparison to the first quick s
 Thanks to this new information, we can now identify putative key residues that should be part of the interface of the complex. 
 The tables can be sorted by their average number of interactions, which allows easy identification of the the most important ones.
 Depending on the downstream utilization you might be interested in all residues potentially involved in the interaction or a few of the
-most likely ones. In this specific example considering residues with more than **1** interaction on average
+most likely ones. In this specific example considering residues with more than **0.5** interaction on average
 in the complexes that comply with the maximum number of restraints, results in a reasonable list of residues to e. g. drive the 
 docking of both partners in a [HADDOCK][link-haddock-web]{:target="_blank"} docking run.
+
+__Note__ _that in the context of using this information to drive the docking in HADDOCK, it is better to be too generous in the definition of the interface rather than too restrictive. Better results are expected if the "true" interface is properly covered. False predictions will not hurt the performance too much since by default HADDOCK will randomly delete for each model a fraction of the provided data._
+
 
 <a class="prompt prompt-question"> How many key residues meeting the above mentioned criteria can you identify from the tables? </a>
 <a class="prompt prompt-question"> Create a list of these residues for both the fixed and the scanning chain.</a>
@@ -360,9 +363,9 @@ docking of both partners in a [HADDOCK][link-haddock-web]{:target="_blank"} dock
 Respectively <b>11</b> and <b>8</b> residues have been identified as important for the interaction between <b>PRE5</b>
 and <b>PUP2</b>:<br><br>
 
- PRE5 active residues: 10, 13, 58, 60, 83, 125, 126, 127, 130, 131, 133 <br>
+ PRE5 active residues: 7, 10, 13, 15, 55, 58, 60, 82, 83, 125, 126, 127, 128, 129, 131, 133 <br>
  
- PUP2 active residues: 11, 13, 15, 16, 17, 121, 122, 123<br><br>
+ PUP2 active residues: 1, 2, 3, 5, 8, 11, 13, 15, 16, 17, 114, 121, 122, 123, 124, 140, 152, 154, 177<br><br>
 
  
 You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>
@@ -490,16 +493,16 @@ extracted from *S.cerevisiae*.
 First select and colour the key residues identified by DisVis:
 
 <a class="prompt prompt-pymol">
-color red #0:10,13,58,60,83,125,126,127,130,131,133
+color red #0:7,10,13,15,55,58,60,82,83,125,126,127,128,129,131,133
 </a>
 <a class="prompt prompt-pymol">
-color orange #1:11,13,15,16,17,121,122,123
+color orange #1:1,2,3,5,8,11,13,15,16,17,114,121,122,123,124,140,152,154,177
 </a>
 <a class="prompt prompt-pymol">
-show #0:10,13,58,60,83,125,126,127,130,131,133
+show #0:7,10,13,15,55,58,60,82,83,125,126,127,128,129,131,133
 </a>
 <a class="prompt prompt-pymol">
-show #1:11,13,15,16,17,121,122,123
+show #1:1,2,3,5,8,11,13,15,16,17,114,121,122,123,124,140,152,154,177
 </a>
 
 <details style="background-color:#DAE4E7">
