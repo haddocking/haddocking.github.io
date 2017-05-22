@@ -20,7 +20,7 @@ This tutorial will demonstrate the use of HADDOCK for predicting the structure o
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
-([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DISVIS tutorial](/education/disvis-webserver) to evalate the information content of MS cross-links and identify possible false positive. Another feature of DISVIS is that it allows to identify the surface residues that most often contacted in all possible models of the complex satisfying the cross-links. This is an additional information which might be usuful to guide the docking.
+([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DISVIS tutorial](/education/disvis-webserver) to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DISVIS is, that it allows to identify the surface residues that are most often contacted in all possible models of the complex satisfying the cross-links. This is an additional information which might be useful to guide the docking.
 
 We will thus be making use of the results of the [DISVIS tutorial](/education/disvis-webserver) to setup various docking runs using our [HADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2).
 
@@ -34,7 +34,7 @@ _J. Mol. Biol._, *428*, 720-725 (2015).
 [The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
-Throughout the tutorial, coloured text will be used to refer to questions or 
+Throughout the tutorial, colored text will be used to refer to questions or 
 instructions, and/or PyMOL commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
@@ -47,7 +47,7 @@ instructions, and/or PyMOL commands.
 ## Setup/Requirements
 
 In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**PyMOL**][link-pymol]{:target="_blank"} 
-(freely available for most operating systems) on your computer in order to visualise the input and output data.  
+(freely available for most operating systems) on your computer in order to visualize the input and output data.  
 Further, the required data to run this tutorial are the same as for the [DISVIS tutorial](/education/disvis-webserver) 
 and should be downloaded from [**here**][link-data]{:target="_blank"}.
 Once downloaded, make sure to unpack the archive.
@@ -63,7 +63,7 @@ A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraint
 The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and different chemical environments, and it can be divided in three different stages, each with a defined goal and characteristics:
 
 * **1. Randomization of orientations and rigid-body minimization (it0)** <BR>
-In this initial stage, the interacting partners are treated as rigid bodies, meaning that all geometrical parameters such as bonds lengths, bond angles, and dihedral angles are frozen. The partners are separated in space and rotated randomly about their centres of mass. This is followed by a rigid body energy minimization step, where the partners are allowed to rotate and translate to optimize the interaction.
+In this initial stage, the interacting partners are treated as rigid bodies, meaning that all geometrical parameters such as bonds lengths, bond angles, and dihedral angles are frozen. The partners are separated in space and rotated randomly about their centers of mass. This is followed by a rigid body energy minimization step, where the partners are allowed to rotate and translate to optimize the interaction.
 The role of AIRs in this stage is of particular importance. Since they are included in the energy function being minimized, the resulting complexes will be biased towards them. For example, defining a very strict set of AIRs leads to a very narrow sampling of the conformational space, meaning that the generated poses will be very similar. Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions, displaying greater variability in the region of binding.
 
 * **2. Semi-flexible simulated annealing in torsion angle space (it1)** <BR>
@@ -83,7 +83,7 @@ The final models are automatically clustered based on a specific similarity meas
 
 Let us first inspect the available data, namely the two individual structures (or rather homology models) as well as the information from MS we have at hand to guide the docking. 
 
-In the data you downloaded you will find two PDB files for PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)), the components of the complex we are modelling. If you click on the UniProtLB entries and search for the available structural information you will see that no experimental structures are available for those. What we will be using here are homology models obtained from [SwissModel](https://swissmodel.expasy.org/repository) (this can also be seen in the content of the PDB file if you open it in a text editor for example).
+In the data you downloaded you will find two PDB files for PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)), the components of the complex we are modeling. If you click on the UniProtLB entries and search for the available structural information you will see that no experimental structures are available for those. What we will be using here are homology models obtained from [SwissModel](https://swissmodel.expasy.org/repository) (this can also be seen in the content of the PDB file if you open it in a text editor for example).
 
 From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)).
 These are provided in the `restraints_filtered.txt` file in the data you just downloaded:
@@ -193,7 +193,7 @@ If you want to use the PyMOL command-line instead, type the following command:
   load PUP2.pdb
 </a>
 
-As a first step, we will colour in orange all residues identified by the DISVIS interaction analysis.
+As a first step, we will color in orange all residues identified by the DISVIS interaction analysis.
 Enter following commands at the Command Line in PyMOL:
 
 <a class="prompt prompt-pymol">
@@ -203,7 +203,7 @@ hide lines<br>
 color orange, resid 1+2+3+5+8+11+13+15+16+17+114+121+122+123+124+140+152+154+177<br>
 </a>
 
-And then we will colour in red all residues involved in a cross-link:
+And then we will color in red all residues involved in a cross-link:
 
 <a class="prompt prompt-pymol">
 color red, resid 18+125+127+128+169+179<br>
@@ -549,7 +549,7 @@ __Remember__ _to save the haddockparameter file for reference._
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). If using course credentials provided to you, the number of model generated will have been decreased to allow the runs to complete within a reasonable amount of time. Because of that, the results might not be very good.
 
-We already pre-calculated full dockings runs (meaning that the default number of models has been generated: 1000 for rigid-body docking and 200 for semi-flexible and water refinement). The full runs for the three scenarios described above can be accessed at:
+We already pre-calculated full docking runs (meaning that the default number of models has been generated: 1000 for rigid-body docking and 200 for semi-flexible and water refinement). The full runs for the three scenarios described above can be accessed at:
 
 1. **Scenario 1**: [http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/](http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/)
 
@@ -587,15 +587,15 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
 <a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
 
-In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution.
+In case the scores of various clusters are within standard deviation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution.
 
 <hr>
 ## Visualisation of docked models
 
 
-Let's now visualise the various solutions for the three different scenarios
+Let's now visualize the various solutions for the three different scenarios
 
-<a class="prompt prompt-info">Download and save to disk the first model of each cluster (create a subdirectoy for each scenario to avoid mixing models</a>
+<a class="prompt prompt-info">Download and save to disk the first model of each cluster (create a subdirectory for each scenario to avoid mixing models</a>
 
 We illustrate the procedure using the results from scenario 1. You can repeat it for the other scenarios.
 Start PyMOL and load each cluster representative:
@@ -630,7 +630,7 @@ Examine the various clusters. How does the orientation of PUP2 differ between th
 __Note:__ _You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window._
 
 Let's now check if the solutions actually fit the cross-links we defined. 
-Start a new PyMOL session and load as described about the model you want to analyse, e.g. the best model of the top ranking cluster `cluster1_1.pdb` for scenario 1.
+Start a new PyMOL session and load as described about the model you want to analyze, e.g. the best model of the top ranking cluster `cluster1_1.pdb` for scenario 1.
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
@@ -678,7 +678,7 @@ color orange, chain A and resid 7+10+13+15+55+58+60+82+83+125+126+127+128+129+13
 color pink, chain B and resid 1+2+3+5+8+11+13+15+16+17+114+121+122+123+124+140+152+154+177<br>
 </a>
 
-For better visualisation turn on the surface representation:
+For better visualization turn on the surface representation:
 
 <a class="prompt prompt-pymol">
 show surface<br>
@@ -717,7 +717,7 @@ Are all predicted interface residues from DISVIS forming contacts?
   <img src="/education/HADDOCK-Xlinks/cluster10-interface-surface.png">
 </figure>
 <br>
-In this model some cross-links are severly violated with distances > 40Å. But the putative interface residues are mostly forming contacts.
+In this model some cross-links are severely violated with distances > 40Å. But the putative interface residues are mostly forming contacts.
 </details>
 <br>
 <details style="background-color:#DAE4E7">
@@ -727,7 +727,7 @@ In this model some cross-links are severly violated with distances > 40Å. But t
   <img src="/education/HADDOCK-Xlinks/cluster1-crosslinks-interface-surface.png">
 </figure>
 <br>
-This model nicely statisfies both the cross-links and the predicted interface residues from the DISVIS interaction analysis.
+This model nicely satisfies both the cross-links and the predicted interface residues from the DISVIS interaction analysis.
 </details>
 
 
@@ -753,7 +753,7 @@ Open PyMOL and load the top ranking model of each cluster
 Also load the structure of the homologous complex -> *5l5a_CD.pdb*
 </a>
 
-In PyMOL type the following commnands (the last two lines are for removing water from the crystal structure):
+In PyMOL type the following commands (the last two lines are for removing water from the crystal structure):
 
 <a class="prompt prompt-pymol">
 show cartoon<br>
@@ -785,7 +785,7 @@ You now see all models superimposed on the the crystal structure of the homologo
 Turn on and off models (by clicking on the name in the right panel).
 
 <a class="prompt prompt-question">
-Can you identify any cluster that ressembles the crystal structure?<br>
+Can you identify any cluster that resembles the crystal structure?<br>
 </a>
 <a class="prompt prompt-question">
 If this the case, what is the rank of that cluster in the HADDOCK ranking?<br>
@@ -804,7 +804,7 @@ The cluster number only reflect the size of the cluster, with cluster1 being the
 </figure>
 <br>
 Cluster1 of the scenario 3 docking run using both cross-links and the interfaces predicted by DISVIS nicely matches the crystal structure.
-This is also the top-ranking cluster accorind to HADDOCK.
+This is also the top-ranking cluster according to HADDOCK.
 </a>
 </details>
 
@@ -858,7 +858,7 @@ Additional information on the putative interfaces can be extracted by performing
 By performing an exhaustive search of all geometrically feasible complexes consistent with the cross-linking data, DISVIS can
 extract key interacting residues. This is additional information that might be beneficial to guide the docking as demonstrated here.
 
-We should also note that the modelling was done from models of PRE5 and PUP2, with their limitations. 
+We should also note that the modeling was done from models of PRE5 and PUP2, with their limitations. 
 If better, higher accuracy structures are available the results might well be different. Still, from this analysis, the recommended scenario
 for docking using our HADDOCK software would be the combination of distance restraints representing the cross-links with interface information
 extracted from the DISVIS interaction analysis.
