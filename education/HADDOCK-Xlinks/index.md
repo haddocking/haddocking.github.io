@@ -20,12 +20,12 @@ This tutorial will demonstrate the use of HADDOCK for predicting the structure o
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
-([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DISVIS tutorial](/education/disvis-webserver)
-to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DISVIS is,
+([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DisVis tutorial](/education/disvis-webserver)
+to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DisVis is,
 that it allows to identify the surface residues that are most often contacted in all possible models of the complex 
 satisfying the cross-links. This is an additional information which might be useful to guide the docking.
 
-We will thus be making use of the results of the [DISVIS tutorial](/education/disvis-webserver) to setup various 
+We will thus be making use of the results of the [DisVis tutorial](/education/disvis-webserver) to setup various 
 docking runs using our [HADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2).
 
 A description of our web server can be found in the following publications:
@@ -52,7 +52,7 @@ instructions, and/or PyMOL commands.
 
 In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**PyMOL**][link-pymol]{:target="_blank"} 
 (freely available for most operating systems) on your computer in order to visualize the input and output data.  
-Further, the required data to run this tutorial are the same as for the [DISVIS tutorial](/education/disvis-webserver) 
+Further, the required data to run this tutorial are the same as for the [DisVis tutorial](/education/disvis-webserver) 
 and should be downloaded from [**here**][link-data]{:target="_blank"}.
 Once downloaded, make sure to unpack the archive.
 
@@ -155,7 +155,7 @@ A 55 CA B 179 CA 0 26
 A 54 CA B 179 CA 0 26
 </pre>
 
-This is the format used by DISVIS to represent the cross-links. Each cross-link definition consists of eight fields:
+This is the format used by DisVis to represent the cross-links. Each cross-link definition consists of eight fields:
 
 * chainID of the 1st molecule
 * residue number
@@ -166,7 +166,7 @@ This is the format used by DISVIS to represent the cross-links. Each cross-link 
 * lower distance limit
 * upper distance limit
 
-In addition to those, the [DISVIS interaction analysis](http://www.bonvinlab.org/education/disvis-webserver/#interaction-analysis) 
+In addition to those, the [DisVis interaction analysis](http://www.bonvinlab.org/education/disvis-webserver/#interaction-analysis) 
 provided us with a list of putative interface residues for each molecule:
 
 <pre style="background-color:#DAE4E7">
@@ -177,8 +177,8 @@ PUP2 predicted interface residues:
 1,2,3,5,8,11,13,15,16,17,114,121,122,123,124,140,152,154,177
 </pre>
 
-These correspond to the interface residues identified by DISVIS using a cutoff of 0.5 for the average number of 
-interactions as obtained from the following [DISVIS run](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2). 
+These correspond to the interface residues identified by DisVis using a cutoff of 0.5 for the average number of 
+interactions as obtained from the following [DisVis run](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2). 
 
 __Note__ _that this cutoff is not a hard limit. However, in the context of using this information to drive the docking 
 in HADDOCK, it is better to be too generous in the definition of the interface rather than too restrictive. Better 
@@ -201,7 +201,7 @@ If you want to use the PyMOL command-line instead, type the following command:
   load PRE5.pdb
 </a>
 
-As a first step, we will colour in orange all residues identified by the DISVIS interaction analysis.
+As a first step, we will color in orange all residues identified by the DisVis interaction analysis.
 Enter following commands at the Command Line in PyMOL:
 
 <a class="prompt prompt-pymol">
@@ -211,7 +211,7 @@ hide lines<br>
 color orange, resid 7+10+13+15+55+58+60+82+83+125+126+127+128+129+131+133<br>
 </a>
 
-And then we will colour in red all residues involved in a cross-link:
+And then we will color in red all residues involved in a cross-link:
 
 <a class="prompt prompt-pymol">
 color red, resid 27+54+55+122<br>
@@ -252,7 +252,7 @@ If you want to use the PyMOL command-line instead, type the following command:
   load PUP2.pdb
 </a>
 
-As a first step, we will color in orange all residues identified by the DISVIS interaction analysis.
+As a first step, we will color in orange all residues identified by the DisVis interaction analysis.
 Enter following commands at the Command Line in PyMOL:
 
 <a class="prompt prompt-pymol">
@@ -293,7 +293,7 @@ show surface<br>
 We have two types of data:
 
 1. The `cross-links detected by MS` that provide distance restraints between pairs of residues/atoms
-2. The `derived information about putative interface residues` obtained from the DISVIS interaction analysis
+2. The `derived information about putative interface residues` obtained from the DisVis interaction analysis
 
 In this tutorial we will investigate three different scenarios to guide the docking in HADDOCK:
 
@@ -301,7 +301,7 @@ In this tutorial we will investigate three different scenarios to guide the dock
 The latter option is added to ensure more compact solutions since the distances defined by the cross-links
 are rather loose (this is defined by the chemistry and flexibility of the molecules used for the cross-link reaction).
 
-2. `Using the derived interface residues to defined ambiguous interaction restraints`. 
+2. `Using the derived interface residues to define ambiguous interaction restraints`. 
 Those residues will be input as active residues in HADDOCK. These do not define any specific pairwise distance, 
 but rather a network of ambiguous distances that will pull the interface together without pre-defining their orientation.
 
@@ -311,10 +311,8 @@ For setting up the docking runs we will be using the [expert interface][link-had
 HADDOCK server for scenarios 1 and 3 and the [easy interface][link-haddock-easy] for scenario 2.
 
 
-Before settinp up the docking we need first to generate the distance restraint file for the cross-links in a format 
-suitable for HADDOCK. 
-HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types 
-supported by HADDOCK can
+Before setting up the docking we need first to generate the distance restraint file for the cross-links in a format suitable for HADDOCK. 
+HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
 be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
 
 Distance restraints are defined as:
@@ -324,15 +322,14 @@ assi (selection1) (selection2) distance, lower-bound correction, upper-bound cor
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound correction
-And the upper limit as: distance plus upper-bound correction
+and the upper limit as: distance plus upper-bound correction
 
 The syntax for the selections can combine information about chainID - `segid` keyword -, residue number - `resid` 
-keyword -, atom name - `name` keywork.
-Other keywords can be used is various combinations of OR and AND statements. Please refer for that to the [online CNS manual][link-cns].
+keyword -, atom name - `name` keyword.
+Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual][link-cns].
 
-Here would be an example of a distance restraint between the CB carbons of residue 10 and 200 in chains A and B with an 
-allowed distance range between
-10 and 20Å:
+Here would be an example of a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an 
+allowed distance range between 10 and 20Å:
 
 <pre>
 assi (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
@@ -500,7 +497,7 @@ job has successfully completed.
 
 
 <hr>
-## Setting up the docking with the DISVIS-derived interfaces (scenario 2)
+## Setting up the docking with the DisVis-derived interfaces (scenario 2)
 
 For this scenario we will make us of the [easy interface][link-haddock-easy]{:target="_blank"} of the HADDOCK web server:
 
@@ -555,7 +552,7 @@ __Remember__ _to save the haddockparameter file for reference._
 
 
 <hr>
-## Setting up the docking with cross-links and the DISVIS-derived interfaces (scenario 3)
+## Setting up the docking with cross-links and the DisVis-derived interfaces (scenario 3)
 
 For this scenario we will make us of the [expert interface][link-haddock-expert]{:target="_blank"} of the HADDOCK web server:
 
@@ -768,7 +765,7 @@ surface of the molecule which might results in a longer effective distance. A pr
 calculating the surface distance instead. Such an analysis can be done with the [XWalk sofware][link-xwalk]._
 
 
-We can also visualize the interface residues identified from the DISVIS interaction analysis.
+We can also visualize the interface residues identified from the DisVis interaction analysis.
 For this type in the PyMOL command window:
 
 <a class="prompt prompt-pymol">
@@ -783,7 +780,7 @@ show surface<br>
 </a>
 
 <a class="prompt prompt-question">
-Are all predicted interface residues from DISVIS forming contacts?
+Are all predicted interface residues from DisVis forming contacts?
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -794,7 +791,7 @@ Are all predicted interface residues from DISVIS forming contacts?
 </figure>
 <br>
 While the model is mostly satisfying the defined distance restraints, many residues identified as potential interface 
-by DISVIS are not forming contacts.
+by DisVis are not forming contacts.
 </details>
 
 <br>
@@ -806,7 +803,7 @@ Now repeat this analysis for the top ranking model of scenario 2 and 3.
 Is the model satisfying the cross-link restraints?
 </a>
 <a class="prompt prompt-question">
-Are all predicted interface residues from DISVIS forming contacts?
+Are all predicted interface residues from DisVis forming contacts?
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -827,7 +824,7 @@ mostly forming contacts.
   <img src="/education/HADDOCK-Xlinks/cluster1-crosslinks-interface-surface.png">
 </figure>
 <br>
-This model nicely satisfies both the cross-links and the predicted interface residues from the DISVIS interaction 
+This model nicely satisfies both the cross-links and the predicted interface residues from the DisVis interaction 
 analysis.
 </details>
 
@@ -905,7 +902,7 @@ The cluster number only reflect the size of the cluster, with cluster1 being the
   <img src="/education/HADDOCK-Xlinks/crosslinks-interface-vs-xray.png">
 </figure>
 <br>
-Cluster1 of the scenario 3 docking run using both cross-links and the interfaces predicted by DISVIS nicely matches the crystal structure.
+Cluster1 of the scenario 3 docking run using both cross-links and the interfaces predicted by DisVis nicely matches the crystal structure.
 This is also the top-ranking cluster according to HADDOCK.
 </a>
 </details>
@@ -931,7 +928,7 @@ No single cluster matches the crystal structure in this case.
 
 <br>
 <a class="prompt prompt-question">
-Does the docking using only the the predicted interfaces from the DISVIS interaction analysis generate any reasonable models?<br>
+Does the docking using only the the predicted interfaces from the DisVis interaction analysis generate any reasonable models?<br>
 </a>
 <details style="background-color:#DAE4E7">
 <summary>See solution for scenario 2:
@@ -940,7 +937,7 @@ Does the docking using only the the predicted interfaces from the DISVIS interac
   <img src="/education/HADDOCK-Xlinks/interface-vs-xray.png">
 </figure>
 <br>
-Cluster9 of the scenario 2 docking run using the interfaces predicted by DISVIS nicely matches the crystal structure.
+Cluster9 of the scenario 2 docking run using the interfaces predicted by DisVis nicely matches the crystal structure.
 Cluster9 in this case is the second-ranking cluster. Its score (-85+/-12) is lower than the top-ranking cluster (-104+/-21), 
 but both cluster have large standard deviations in their score and overlap.
 </a>
@@ -956,14 +953,14 @@ We have demonstrated the use of cross-linking data from mass spectrometry for gu
 Because of the rather low precision of the detected cross-links (meaning here their rather large distance range), 
 using them alone to guide docking in HADDOCK might not be the best scenario.
 
-Additional information on the putative interfaces can be extracted by performing an interaction analysis in our [DISVIS web portal][link-disvis].
-By performing an exhaustive search of all geometrically feasible complexes consistent with the cross-linking data, DISVIS can
+Additional information on the putative interfaces can be extracted by performing an interaction analysis in our [DisVis web portal][link-disvis].
+By performing an exhaustive search of all geometrically feasible complexes consistent with the cross-linking data, DisVis can
 extract key interacting residues. This is additional information that might be beneficial to guide the docking as demonstrated here.
 
 We should also note that the modeling was done from models of PRE5 and PUP2, with their limitations. 
 If better, higher accuracy structures are available the results might well be different. Still, from this analysis, the recommended scenario
 for docking using our HADDOCK software would be the combination of distance restraints representing the cross-links with interface information
-extracted from the DISVIS interaction analysis.
+extracted from the DisVis interaction analysis.
 
 
 <hr>
@@ -975,7 +972,7 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 
 [link-cns]: http://cns-online.org "CNS online"
 [link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link-disvis]: http://milou.science.uu.nl/services/DISVIS "DISVIS webserver"
+[link-disvis]: http://milou.science.uu.nl/services/DISVIS "DisVis webserver"
 [link-pymol]: http://www.pymol.org/ "PyMOL"
 [link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: http://haddock.science.uu.nl/services/HADDOCK2.2 "HADDOCK 2.2 webserver"
