@@ -30,6 +30,12 @@ We offer various [research projects](/education/research-projects/) to both bach
   A tutorial demonstrating the use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.
   This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](http://www.pymol.org) for visualisation/analysis.
 
+* [**HADDOCK MS cross-links tutorial**](/education/HADDOCK-Xlinks):
+  A tutorial demonstrating the use of cross-linking data from mass spectrometry to guide the docking in HADDOCK. 
+  This tutorial builds on our [DisVis tutorial](/education/disvis-webserver/) and illustrates various scenarios of using 
+  cross-linking data in HADDOCK.
+  This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](http://www.pymol.org) for visualisation/analysis.
+
 * [**HADDOCK ab-initio, multi-body symmetrical docking tutorial**](/education/HADDOCK-CASP-CAPRI-T70):
   A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
   It is based on a former CASP-CAPRI target (T70).
