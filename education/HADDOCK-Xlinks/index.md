@@ -411,7 +411,7 @@ Segment ID to use during docking -> A
 * **Step3:** Input the second protein PDB files. For this unfold the **Second Molecule menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
+Second molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
