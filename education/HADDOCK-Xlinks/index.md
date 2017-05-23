@@ -442,16 +442,16 @@ Enter your username and password (or the course credentials provided to you).
 
 If the input fields have been correctly filled you should be redirected to a status page displaying a message
 indicating that your run has been successfully submitted. You will first be presented with a web page containing 
-a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) 
+a link to the results page, but also an important link to a haddockparameter file (simple text format) 
 containing all settings and input data of your run. 
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic/submission.png">
 </figure>
 
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the 
-[file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
-It can this serve as input reference for the run. This file can also be edited to change a few parameters, 
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simply uploading it into the 
+[file upload interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
+It can thus serve as input reference for the run. This file can also be edited to change a few parameters, 
 for example increasing the number of models generated. 
 
 An excerpt of this file is shown here:
@@ -467,7 +467,7 @@ HaddockRunParameters (
 ...
 </pre>
 
-This file contains all parameters and input data of your, including the uploaded PDB files and the restraints.
+This file contains all parameters and input data of your run, including the uploaded PDB files and the restraints.
 
 <a class="prompt prompt-question">
 Can you locate the distance restraints in this file?
@@ -483,14 +483,14 @@ Click now on the link to the results page. While your input data are being valid
 
 During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of 
 [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the 
-protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is 
+protonation state of histidine residues. Once this has been successfully done, the page will indicate that your job is 
 first QUEUED, and then RUNNING.
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic/running.png">
 </figure>
 
-The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to 
+The page will automatically refresh and the results will appear upon completion (which can take between 1/2 hour to 
 several hours depending on the size of your system and the load of the server). You will be notified by email once your 
 job has successfully completed.
 
@@ -527,7 +527,7 @@ Active residues (directly involved in the interaction) -> 7,10,13,15,55,58,60,82
 * **Step3:** Input the second protein PDB files. For this unfold the **Second Molecule menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
+Second molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
@@ -582,7 +582,7 @@ Active residues (directly involved in the interaction) -> 7,10,13,15,55,58,60,82
 * **Step3:** Input the second protein PDB files. For this unfold the **Second Molecule menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
+Second molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
@@ -620,7 +620,7 @@ __Remember__ _to save the haddockparameter file for reference._
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical 
 representation of the data (and if registered, you will also be notified by email). If using course credentials 
-provided to you, the number of model generated will have been decreased to allow the runs to complete within a 
+provided to you, the number of models generated will have been decreased to allow the runs to complete within a 
 reasonable amount of time. Because of that, the results might not be very good.
 
 We already pre-calculated full docking runs (meaning that the default number of models has been generated: 1000 for 
@@ -632,12 +632,12 @@ above can be accessed at:
 OCK2.2/Files/PRE5-PUP2-MS-crosslinks/)
 
 2. **Scenario 2**: 
-[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/](http://milou.science.uu.nl/services/HADD
-OCK2.2/Files/PRE5-PUP2-MS-crosslinks/)
+[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-interface/](http://milou.science.uu.nl/services/HADD
+OCK2.2/Files/PRE5-PUP2-MS-interface/)
 
 3. **Scenario 3**: 
-[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/](http://milou.science.uu.nl/services/HADD
-OCK2.2/Files/PRE5-PUP2-MS-crosslinks/)
+[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks-interface/](http://milou.science.uu.nl/services/HADD
+OCK2.2/Files/PRE5-PUP2-MS-crosslinks-interface/)
 
 
 <figure align="center">
@@ -676,7 +676,7 @@ components of the HADDOCK score are also reported for each cluster on the result
 <a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also 
 reflected in the z-score).</a>
 
-In case the scores of various clusters are within standard deviation from each other, all should be considered as a 
+In case the scores of various clusters are within the standard deviation from each other, all should be considered as a 
 valid solution for the docking. Ideally, some additional independent experimental information should be available to 
 decide on the best solution.
 
@@ -722,7 +722,7 @@ Examine the various clusters. How does the orientation of PUP2 differ between th
 __Note:__ _You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window._
 
 Let's now check if the solutions actually fit the cross-links we defined. 
-Start a new PyMOL session and load as described about the model you want to analyze, e.g. the best model of the top 
+Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top 
 ranking cluster `cluster1_1.pdb` for scenario 1.
 In the PyMOL command window type:
 
@@ -740,7 +740,7 @@ distance d7-26A, chain A and resid 54 and name CA, chain B and resid 179 and nam
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
-Object are created in the left panel with their corresponding to the cross-link and its associated maximum distance.
+Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
 
 <details style="background-color:#DAE4E7">
 <summary>See solution:
@@ -837,11 +837,10 @@ we will compare them to a recently published [article](https://dx.doi.org/10.152
 of the 26S proteasome (from *S. cerevisiae*). This structure has been solved by X-ray crystallography at 2.4Å resolution (PDBid 
 [5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}). 
 We will only use the two chains that are of interest, namely chains **D** and **C** corresponding to **PRE5** and **PUP2** respectively. 
-The correspond PDB file is available in the downloaded tutorial data as `5l5a_CD.pdb`.
+The corresponding PDB file is available in the downloaded tutorial data as `5l5a_CD.pdb`.
 
 For each of the three docking scenarios we will visualize the top ranking model of each cluster 
-and compare those to the crystal structure of the homologous complex. We will only illustrate this process for scenario 
-3, 
+and compare those to the crystal structure of the homologous complex. We will only illustrate this process for scenario 3, 
 for which the top 10 clusters correspond to 1-9 and 11.
 
 <a class="prompt prompt-info">
@@ -862,7 +861,7 @@ select 5l5a_CD and resn HOH<br>
 remove sele<br>
 </a>
 
-Let's now superimpose all models onto the crystal structure, using PRE5 to emphasis the difference in the orientation of PUP2.
+Let's now superimpose all models onto the crystal structure, using PRE5 to emphasize the difference in the orientation of PUP2.
 For this we need to superimpose chain A of our models onto chain D of the homologous crystal structure.
 
 <a class="prompt prompt-pymol">
@@ -887,12 +886,12 @@ Turn on and off models (by clicking on the name in the right panel).
 Can you identify any cluster that resembles the crystal structure?<br>
 </a>
 <a class="prompt prompt-question">
-If this the case, what is the rank of that cluster in the HADDOCK ranking?<br>
+If this is the case, what is the rank of that cluster in the HADDOCK ranking?<br>
 </a>
 
 __Note__ _that the cluster number does not indicate its rank. 
-The clusters listed in the HADDOCK result page in the order of their ranking. 
-The cluster number only reflect the size of the cluster, with cluster1 being the most populated._
+The clusters are listed in the HADDOCK result page in the order of their ranking. 
+The cluster number only reflects the size of the cluster, with cluster1 being the most populated._
 
 
 <details style="background-color:#DAE4E7">
@@ -928,7 +927,7 @@ No single cluster matches the crystal structure in this case.
 
 <br>
 <a class="prompt prompt-question">
-Does the docking using only the the predicted interfaces from the DisVis interaction analysis generate any reasonable models?<br>
+Does the docking using only the predicted interfaces from the DisVis interaction analysis generate any reasonable models?<br>
 </a>
 <details style="background-color:#DAE4E7">
 <summary>See solution for scenario 2:
@@ -938,8 +937,8 @@ Does the docking using only the the predicted interfaces from the DisVis interac
 </figure>
 <br>
 Cluster9 of the scenario 2 docking run using the interfaces predicted by DisVis nicely matches the crystal structure.
-Cluster9 in this case is the second-ranking cluster. Its score (-85+/-12) is lower than the top-ranking cluster (-104+/-21), 
-but both cluster have large standard deviations in their score and overlap.
+Cluster9 in this case is the second-ranking cluster. Its score (-85+/-12) is higher (the lower the score the better) than
+the top-ranking cluster (-104+/-21), but both cluster have large standard deviations in their score and overlap.
 </a>
 </details>
 
@@ -979,4 +978,4 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 [link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
 [link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
 [link-haddock-register]: http://haddock.science.uu.nl/services/HADDOCK2.2/register.html "HADDOCK web server registration"
-[link-xwalk]: 
+[link-xwalk]: http://www.xwalk.org
