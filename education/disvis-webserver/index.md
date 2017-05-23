@@ -95,7 +95,7 @@ to work on the correct residues!
 If you want to use the Chimera command-line instead, you need to first display it:
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → Favorites → Command Line
+  UCSF Chimera Menu → Tools → General Control → Command Line
 </a>
 
 and type:
