@@ -818,7 +818,7 @@ pymol cluster*_1.pdb $WDIR/../pdbs/3AOD-renumbered-BCA.pdb
 <a class="prompt prompt-pymol">
 select refe, 3AOD-renumbered-BCA<br>
 select cluster*<br>
-alignto refe<br>
+alignto refe, method=align, cycles=0<br>
 zoom vis<br>
 show ribbon<br>
 hide lines<br>
