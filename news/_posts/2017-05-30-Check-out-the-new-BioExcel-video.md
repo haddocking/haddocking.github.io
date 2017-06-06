@@ -13,6 +13,6 @@ Our HADDOCK software is one of the [flagship software](http://bioexcel.eu/softwa
 
 BioExcel's vision is to become _the central hub for biomolecular modelling and simulations_.
 
-Check out its new BioExcel [video](https://www.youtube.com/watch?v=Bf0a4fzYSf8){:target="_blank"}!
+Check out its new BioExcel [video](https://www.youtube.com/watch?v=2aF3Wx3uKmA){:target="_blank"}!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Bf0a4fzYSf8" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2aF3Wx3uKmA" frameborder="0" allowfullscreen></iframe>
