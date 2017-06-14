@@ -95,7 +95,7 @@ to work on the correct residues!
 If you want to use the Chimera command-line instead, you need to first display it:
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → Favorites → Command Line
+  UCSF Chimera Menu → Tools → General Control → Command Line
 </a>
 
 and type:
@@ -206,7 +206,12 @@ This number can of course be changed when using the local version of DisVis.
 ### Web server output
 
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
-page (you will also receive an email notification). The results page presents a summary split into several sections:
+page (you will also receive an email notification). 
+
+If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted 
+with the same input [here](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/1){:target="_blank"}.
+
+The results page presents a summary split into several sections:
 
 * `Status`: In this section you will find a link from which you can download the output data as well as some information
 about how to cite the use of the portal.
@@ -227,9 +232,6 @@ Column 1 shows the number of consistent restraints N, while each following colum
 a specific restraint for complexes consistent with at least N restraints. Each row thus represents the fraction of all 
 complexes consistent with at least N restraints that violated a particular restraint. As for the z-Scores, if solutions have been found 
 that are consistent with all restraints provided, this table should be ignored.
-
-If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted 
-with the same input at the [Tutorial][link-disvis-tutorial]{:target="_blank"} section of the web server.
  
 It is possible to extract significant results from the results page of this initial run. 
 
@@ -335,12 +337,16 @@ Tutorial page so you can access the resulting files by Downloading the associate
 Expand the **Advanced Options** group to verify that the sampling interval has been set to `9.72°` and `1.0Å`.
 Then click on the **Submit** button to start the run.
 
-Once your job has completed, the results page will be displayed. Next to the previously described sections, it now contains a new section:
- 
+Once your job has completed, the results page will be displayed. 
+If you don't want to wait for your run to complete, you can see the results of a pre-calculated run 
+<a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>.
+
 <a class="prompt prompt-question">
 Did the number of satisfied restraints change in comparison to the first quick scanning run?
 </a>
 
+Next to the previously described sections, it now contains a new section:
+ 
 * `Interaction analysis`: The tables of this section show how many interactions a specific residue makes in the complexes
  consistent with a specific number of restraints. The higher the interaction fraction of a specific residue is, the more 
  likely it is to be part of the interface of the complex.

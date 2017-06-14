@@ -59,10 +59,6 @@
     position: M.Sc Student
     avatar: /images/people/Adrian.jpg
 
--   name: Nevia Citro
-    position: M.Sc Student
-    avatar: /images/people/Nevia.jpg
-
 -   name: Leander Goldbach
     position: M.Sc Student
     avatar: /images/people/Leander.png
@@ -71,4 +67,11 @@
     position: M.Sc Student
     avatar: /images/people/Bastiaan.jpg
 
+-   name: Rosanna Denis
+    position: M.Sc Student
+    avatar: /images/people/Rosanna.jpg
+
+-   name: Sevilay Gülesen
+    position: Erasmus Student
+    avatar: /images/people/Sevilay.jpg
 

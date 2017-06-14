@@ -281,7 +281,7 @@ Upon submission you will first be presented with a web page containing a link to
 <img src="/education/HADDOCK-protein-protein-basic/submission.png">
 </figure>
 
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can this serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
 
 <pre>
 HaddockRunParameters (
@@ -301,7 +301,7 @@ HaddockRunParameters (
 ...
 </pre>
 
-Click new on the link to the results page. While your input data are being validated and processed the page will show:
+Click now on the link to the results page. While your input data are being validated and processed the page will show:
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic/processing.png">
@@ -341,7 +341,7 @@ Once your run has completed you will be presented with a result page showing the
 
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated as:
 <pre>
-      HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 1.0 * Eair
+      HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 0.1 * Eair
 </pre>
 where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR energy. The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. The various components of the HADDOCK score are also reported for each cluster on the results web page.
 
