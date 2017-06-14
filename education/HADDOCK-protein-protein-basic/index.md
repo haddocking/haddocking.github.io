@@ -281,7 +281,7 @@ Upon submission you will first be presented with a web page containing a link to
 <img src="/education/HADDOCK-protein-protein-basic/submission.png">
 </figure>
 
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can this serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
 
 <pre>
 HaddockRunParameters (
