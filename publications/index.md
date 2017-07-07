@@ -6,6 +6,10 @@ image:
 
 ## 2017 
 <hr />
+* I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots. _Sci. Reports_. In press (2017).
+
+* K.M. Visscher, J. Medeiros-Silva, D. Mance, J.P.G.L.M. Rodrigues, M. Daniëls, **A.M.J.J. Bonvin**, M. Baldus, and M. Weingarth. A study on the supramolecular organization of K+ channel clusters in membranes. _Angew. Chem. Intl._ In press (2017).
+
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. [Prediction of Biomolecular Complexes](http://link.springer.com/chapter/10.1007/978-94-024-1069-3_8).
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, 160-167 (2017).
 
@@ -61,7 +65,7 @@ _International Journal of Molecular Sciences_, *17*, 1215 (2016).
 _J. Struct. Biol._, *195*, 252-258 (2016).
 
 * Y. Liu, J.P.G.L.M. Rodrigues, **A.M.J.J. Bonvin**, E.A. Zaal, C.R. Berkers, M. Heger, K. Gawarecka, E. Swiezewska, E. Breukink and M.R. Egmond.
-[Phospho-MurNAc-pentapeptide translocase MraY. From structural models to function](http://dx.doi.org/10.1074/jbc.M116.717884).
+[New Insight into the Catalytic Mechanism of Bacterial MraY from Enzyme Kinetics and Docking Studies](http://dx.doi.org/10.1074/jbc.M116.717884).
 _J. Biol. Chem._, *291*, 15057-15068 (2016).
 
 * C. Geng, A. Vangone and **A.M.J.J. Bonvin**.
@@ -277,7 +281,7 @@ _J. Biomol. NMR_, *56*, 51-63 (2013).
 _Acta Cryst. D._, *D69*, 683-694 (2013).
 
 * M. Weingarth, A. Prokofyev, E. van der Cruijsen, D. Nand, **A.M.J.J. Bonvin**, O. Pongs and M. Baldus
-[Structural determinants and functional aspects of specific lipid binding to potassium channels.](http://dx/doi.org/doi:10.1021/ja3119114)
+[Structural determinants and functional aspects of specific lipid binding to potassium channels.](http://dx.doi.org/doi:10.1021/ja3119114)
 _J. Am. Chem. Soc._, *35*, 3983-3988 (2013).
 
 * S. Alex, K. Lange, T. Amolo, J.S. Grinstead, E. Szalowska, A. Koppen, K. Mudde, D. Haenen, S. Al-Lahham, H. Roelofsen, R. Houtman, B. van der Burg, **A.M.J.J. Bonvin**, E. Kalkhoven, M. Muller, G. Hooiveld and S. Kersten.
