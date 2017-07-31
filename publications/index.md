@@ -6,9 +6,13 @@ image:
 
 ## 2017 
 <hr />
+* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. An Integrative Framework for Structure Determination of Molecular Machines. _Nature Methods_ In Press (2017).
+
 * I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots. _Sci. Reports_. In press (2017).
 
-* K.M. Visscher, J. Medeiros-Silva, D. Mance, J.P.G.L.M. Rodrigues, M. Daniëls, **A.M.J.J. Bonvin**, M. Baldus, and M. Weingarth. A study on the supramolecular organization of K+ channel clusters in membranes. _Angew. Chem. Intl._ In press (2017).
+* J.G. Almeida, A.J. Preto, P.I. Koukos, **A.M.J.J. Bonvin** and I.S. Moreira. [Membrane proteins structures: A review on computational modeling tools](http://dx.doi.org/10.1016/j.bbamem.2017.07.008). _Biochimica et Biophysica Acta (BBA) - Biomembranes_. *1859*, 2021–2039 (2017).
+
+* K.M. Visscher, J. Medeiros-Silva, D. Mance, J.P.G.L.M. Rodrigues, M. Daniëls, **A.M.J.J. Bonvin**, M. Baldus, and M. Weingarth. [A study on the supramolecular organization of K+ channel clusters in membranes](http://dx.doi.org/10.1002/anie.201705723). _Angew. Chem. Intl._ Advanced Online Publication (2017).
 
 * A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. [Prediction of Biomolecular Complexes](http://link.springer.com/chapter/10.1007/978-94-024-1069-3_8).
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, 160-167 (2017).
@@ -78,7 +82,7 @@ _Briefings in Bioinformatics_, *18*, 458-466 (2016).
 
 * M.F. Lensink, S. Velankar, A. Kryshtafovych, S. Huang, D. Schneidman-Duhovny, A. Sali, J. Segura, N.s Fernandez-Fuentes, S. Viswanath, R. Elber, S. Grudinin, P. Popov, E. Neveu, Hasup Lee, M. Baek, S. Park, L. Heo, G. Rie Lee, C. Seok, S. Qin, H. Zhou, D.W. Ritchie, B. Maigret, M. Devignes, A. Ghoorah, M. Torchala, R.A.G. Chaleil, P.A. Bates, E.t Ben-Zeev, M. Eisenstein, S.S. Negi, Z. Weng, T. Vreven, B.G. Pierce, T. M. Borrman, J. Yu, F. Ochsenbein, R. Guerois, A. Vangone, J.P.G.L.M. Rodrigues, G. van Zundert, M. Nellen, L. Xue, E. Karaca, A.S.J. Melquiond, K. Visscher, P.L. Kastritis, **A.M.J.J. Bonvin**, X. Xu, L. Qiu, C. Yan, J. Li, Z. Ma, J. Cheng, X. Zou, Y. Shen, L.X. Peterson, H. Kim, A. Roy, X. Han, J. Esquivel-Rodriguez, D. Kihara, X. Yu, N.J. Bruce, J.C. Fuller, R.C. Wade, I. Anishchenko, P.J. Kundrotas, I.A. Vakser, K. Imai, K.i Yamada, T. Oda, T. Nakamura, K. Tomii, C. Pallara, M. Romero-Durana, B. Jimenez-Garcia, I.H. Moal, J Fernandez-Recio, J. Young Joung, J. Yun Kim, K.g Joo, J. Lee, D. Kozakov, S. Vajda, S. Mottarella, D.R. Hall, D. Beglov, A. Mamonov, B. Xia, T. Bohnuud, C.A. Del Carpio, E. Ichiishi, N. Marze, D. Kuroda, S.S. Roy Burman, J.J. Gray, E. Chermak, L. Cavallo, R. Oliva, A. Tovchigrechko and S.J. Wodak.
 [Prediction of homo- and hetero-protein complexes by ab-initio and template-based docking: a CASP-CAPRI experiment](http://dx.doi.org/10.1002/prot.25007).
-_Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2016)
+_Proteins: Struc. Funct. &amp; Bioinformatics_, *84*, 323-348 (2016)
 
 * P. Sliz, P. Meyer, S. Socias, J. Key, E. Ransey, E.C. Tjon, A. Buschiazzo, M. Lei, C. Botka, J. Withrow, D.B. Neau, K. Rajashankar, K.S. Anderson, R. Baxter, S. Blacklow, T. Boggon, **A.M.J.J. Bonvin**, D. Borek, T. Brett, A. Caflisch, C. Chang, W. Chazin, K.D. Corbett, M. Cosgrove, S. Crosson, S. Dhe-Paganon, E. Di Cera, C. Drennan, M. Eck, B. Eichman, Q. Fan, A. Ferra-D Amara, J.S. Fraser, J.C. Fromme, K. Garcia, R. Gaudet, P. Gong, S. Harrison, E. Heldwein, Z. Jia, R. Keenan, A. Kruse, M. Kvansakul, J. McLellan, Y. Modis, Y. Nam, Zb. Otwinowski, E.F. Pai, P.J. Barbosa Pereira, C. Petosa, C.S. Raman, T. Rapoport, A. Roll-Mecak, M. Rosen, G. Rudenko, J. Schlessinger, T. Schwartz, Y. Shamoo, H. Sondermann, Y. Tao, N. Tolia, O.V. Tsodikov, K.D. Westover, H. Wu, I. Foster, F. Maia, T. Gonen, T. Kirchhausen, K. Diederichs and M. Crosas.
 [Data publication with the structural biology data grid supports live analysis](http://dx.doi.org/10.1038/ncomms10882).
