@@ -58,7 +58,7 @@ _Frontiers in Molecular Biosciences_, *3*:46 doi:10.3389/fmolb.2016.00046 (2016)
 
 * L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#.
 [PRODIGY: a web server for predicting the binding affinity of protein-protein complexes](http://dx.doi.org/10.1093/bioinformatics/btw514).
-_Bioinformatics_, Advanced Online Publication (2016).
+_Bioinformatics_, *32*, 3676-3678 (2016).
 
 * R. Melo, R. Fieldhouse, A. Melo, J.D.G. Correia, M.D.S. Cordeiro, Z.H. Gumus, J. Costa,  **A.M.J.J. Bonvin** and I.S. Moreira.
 [A Machine-Learning Approach for Hot-Spot Detection at Protein-Protein Interfaces](http://dx.doi.org/10.3390/ijms17081215).
