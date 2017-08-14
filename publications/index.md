@@ -8,7 +8,7 @@ image:
 <hr />
 * E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. An Integrative Framework for Structure Determination of Molecular Machines. _Nature Methods_ In Press (2017).
 
-* I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots. _Sci. Reports_. In press (2017).
+* I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. [SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots](http://dx.doi.org/10.1038/s41598-017-08321-2). _Sci. Reports_. *7*:8007 (2017).
 
 * J.G. Almeida, A.J. Preto, P.I. Koukos, **A.M.J.J. Bonvin** and I.S. Moreira. [Membrane proteins structures: A review on computational modeling tools](http://dx.doi.org/10.1016/j.bbamem.2017.07.008). _Biochimica et Biophysica Acta (BBA) - Biomembranes_. *1859*, 2021–2039 (2017).
 
