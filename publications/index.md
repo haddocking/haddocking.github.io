@@ -6,7 +6,7 @@ image:
 
 ## 2017 
 <hr />
-* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. An Integrative Framework for Structure Determination of Molecular Machines. _Nature Methods_ In Press (2017).
+* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](http://dx.doi.org/10.1038/nmeth.4392). _Nature Methods_ Advanced Online Publication (2017).
 
 * I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. [SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots](http://dx.doi.org/10.1038/s41598-017-08321-2). _Sci. Reports_. *7*:8007 (2017).
 
