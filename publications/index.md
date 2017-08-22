@@ -6,7 +6,7 @@ image:
 
 ## 2017 
 <hr />
-* Z. Kurkcuoglu, P.I. Koukos, N. Citro, M.E. Trellet, J.P.G.L.M. Rodrigues, I.S. Moreira, J. Roel-Touris, A.S.J. Melquiond, C. Geng, J. Schaarschmidt, L.C. Xue, A. Vangoneand **A.M.J.J. Bonvin**. Performance of HADDOCK and a simple contact-based protein-ligand binding affinity predictor in the D3R Grand Challenge 2. _J. Comp. Aid. Mol. Des._ In press (2017).
+* Z. Kurkcuoglu, P.I. Koukos, N. Citro, M.E. Trellet, J.P.G.L.M. Rodrigues, I.S. Moreira, J. Roel-Touris, A.S.J. Melquiond, C. Geng, J. Schaarschmidt, L.C. Xue, A. Vangoneand **A.M.J.J. Bonvin**. [Performance of HADDOCK and a simple contact-based protein-ligand binding affinity predictor in the D3R Grand Challenge 2](http://dx.doi.org/10.1007/s10822-017-0049-y). _J. Comp. Aid. Mol. Des._ Advanced Online Publication (2017).
 
 * E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](http://dx.doi.org/10.1038/nmeth.4392). _Nature Methods_ Advanced Online Publication (2017).
 
@@ -775,7 +775,7 @@ _J. Mol. Biol._, *328*, 325-334 (2003).
 _Eur. J. Biochem._, *270*, 849-860 (2003).
 
 * C. Dominguez, R. Boelens and **A.M.J.J. Bonvin**
-[HADDOCK: A protein-protein docking approach based on biochemical or biophysical information.](http://pubs3.acs.org/acs/journals/doilookup?in_doi=10.1021/ja026939x)
+[HADDOCK: A protein-protein docking approach based on biochemical or biophysical information.](http://pubs.acs.org/doi/abs/10.1021/ja026939x)
 _J. Am. Chem. Soc._, *125*, 1731-1737 (2003).
 
 * J. Linge, M.A. Williams, C.A.E.M. Spronk, **A.M.J.J. Bonvin**<sup>\*</sup> and M. Nilges<sup>\*</sup>
