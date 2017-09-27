@@ -3,10 +3,6 @@
     url: http://www.uu.nl/staff/amjjbonvin
     avatar: /images/people/Bonvin-UU-2013.jpg
 
--   name: Zeynep Kurkcuoglu
-    position: Postdoctoral Researcher
-    avatar: /images/people/Zeynep.jpg
-
 -   name: Adrien Melquiond 
     position: Postdoctoral Researcher
     avatar: /images/people/Adrien.jpg
@@ -74,4 +70,8 @@
 -   name: Floor van der Valk
     position: M.Sc Student
     avatar: /images/people/Floor-Valk.png
+
+-   name: Zhengyue Zhang
+    position: M.Sc Student
+    avatar: /images/people/Zhengyue.jpg
 
