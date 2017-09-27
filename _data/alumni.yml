@@ -19,6 +19,9 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Zeynep Kurkcuoglu
+    status: 'postdoc'
+
 -   name: Gydo van Zundert
     url: https://github.com/latrocinia
     current: 'Schrödinger Inc., NY - Stanford University - UCSF, CA, USA'
@@ -166,11 +169,6 @@
 
 -   name: Chiara Fais
     current: 'Cagliari University, Italy'
-    status: student
-
--   name: Zhengyue Zhang
-    url: http://www.zju.edu.cn/english/
-    current: 'Zhejiang University, China'
     status: student
 
 -   name: Kasey Pham
