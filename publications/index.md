@@ -8,7 +8,7 @@ image:
 <hr />
 * Z. Kurkcuoglu, P.I. Koukos, N. Citro, M.E. Trellet, J.P.G.L.M. Rodrigues, I.S. Moreira, J. Roel-Touris, A.S.J. Melquiond, C. Geng, J. Schaarschmidt, L.C. Xue, A. Vangoneand **A.M.J.J. Bonvin**. [Performance of HADDOCK and a simple contact-based protein-ligand binding affinity predictor in the D3R Grand Challenge 2](http://dx.doi.org/10.1007/s10822-017-0049-y). _J. Comp. Aid. Mol. Des._ Advanced Online Publication (2017).
 
-* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](http://dx.doi.org/10.1038/nmeth.4392). _Nature Methods_ Advanced Online Publication (2017).
+* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](http://dx.doi.org/10.1038/nmeth.4392). _Nature Methods_ *14*, 897-902 (2017).
 
 * I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. [SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots](http://dx.doi.org/10.1038/s41598-017-08321-2). _Sci. Reports_. *7*:8007 (2017).
 
