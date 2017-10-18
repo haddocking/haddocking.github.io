@@ -3,10 +3,6 @@
     url: http://www.uu.nl/staff/amjjbonvin
     avatar: /images/people/Bonvin-UU-2013.jpg
 
--   name: Zeynep Kurkcuoglu
-    position: Postdoctoral Researcher
-    avatar: /images/people/Zeynep.jpg
-
 -   name: Adrien Melquiond 
     position: Postdoctoral Researcher
     avatar: /images/people/Adrien.jpg
@@ -31,6 +27,10 @@
     position: Postdoctoral Researcher
     avatar: /images/people/LiXue.jpg
 
+-   name: Cristina Paissoni
+    position: visiting Postdoctoral Researcher
+    avatar: /images/people/Cristina.jpg
+
 -   name: Cunliang Geng
     position: Ph.D Candidate
     avatar: /images/people/Cunliang.jpg
@@ -47,13 +47,13 @@
     position: visiting Ph.D Candidate
     avatar: /images/people/Jeaphianne.jpg
 
+-   name: Francesco Ambrosetti
+    position: Ph.D Candidate
+    avatar: /images/people/Francesco.jpg
+
 -   name: Sofia Rosback
     position: M.Sc Student
     avatar: /images/people/Sofia.jpg
-
--   name: Mick Walter
-    position: M.Sc Student
-    avatar: /images/people/Walter.jpg
 
 -   name: Adrian Gondra Gogorza
     position: M.Sc Student
@@ -71,7 +71,11 @@
     position: M.Sc Student
     avatar: /images/people/Rosanna.jpg
 
--   name: Sevilay Gülesen
-    position: Erasmus Student
-    avatar: /images/people/Sevilay.jpg
+-   name: Floor van der Valk
+    position: M.Sc Student
+    avatar: /images/people/Floor-Valk.png
+
+-   name: Zhengyue Zhang
+    position: M.Sc Student
+    avatar: /images/people/Zhengyue.jpg
 

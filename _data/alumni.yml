@@ -19,6 +19,9 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Zeynep Kurkcuoglu
+    status: 'postdoc'
+
 -   name: Gydo van Zundert
     url: https://github.com/latrocinia
     current: 'Schrödinger Inc., NY - Stanford University - UCSF, CA, USA'
@@ -168,11 +171,6 @@
     current: 'Cagliari University, Italy'
     status: student
 
--   name: Zhengyue Zhang
-    url: http://www.zju.edu.cn/english/
-    current: 'Zhejiang University, China'
-    status: student
-
 -   name: Kasey Pham
     current: 'Michigan State University, USA'
     status: student
@@ -185,4 +183,11 @@
     current: M.Sc Student, University of Salerno
     status: student
 
+-   name: Sevilay Gülesen
+    current: 'Kadir Has University, Istanbul, Turkey'
+    status: student
+
+-   name: Mick Walter
+    position: M.Sc Student
+    status: student
 
