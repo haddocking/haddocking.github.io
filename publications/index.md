@@ -302,7 +302,7 @@ _PloS Pathogens_, *9*, e1003202 (2013).
 
 * M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [A Unified Conformational Selection and Induced Fit Approach to Protein-Peptide Docking](http://dx.plos.org/10.1371/journal.pone.0058769)
-_PLoS ONE_, *8(3)* e58769 (2013).
+_PLoS ONE_, *8(3)* e58769 (2013). --> [**ERRATUM**](https://milou.science.uu.nl/Files/ERRATUM_unified_conformational_selection.pdf)
 
 * R. Dagil, C O'Shea, A. Nykaer, **A.M.J.J. Bonvin** and B.B. Kragelund
 [Gentamicin Binds to Megalin as a Competitive Inhibitor and Utilizes the Common Ligand Binding Motif of Complement Type Repeats.](http://dx.doi.org/doi:10.1074/jbc.M112.434159)
