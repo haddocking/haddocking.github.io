@@ -19,6 +19,9 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Anna Vangone
+    status: 'postdoc'
+
 -   name: Zeynep Kurkcuoglu
     status: 'postdoc'
 
@@ -125,6 +128,9 @@
 -   name: Malgorzata Szelag
     url: http://amu.academia.edu/Ma?gorzataSzelag
     current: 'Adam Mickiewicz University, Poznan, Poland'
+    status: visiting-phd
+
+-   name: Jeaphianne van Rijn
     status: visiting-phd
 
 -   name: Venkata Krishnan Ramaswamy
