@@ -6,8 +6,8 @@ image:
 
 ## 2017 
 <hr />
-* J. Schaarschmidt, B. Monastyrskyy, A.y Kryshtafovych and **A.M.J.J. Bonvin**. Assessment of Contact Predictions in CASP12: Co-Evolution and Deep Learning Coming of Age. 
-_Proteins: Struc. Funct. &amp; Bioinformatics_ In press (2017).
+* J. Schaarschmidt, B. Monastyrskyy, A.y Kryshtafovych and **A.M.J.J. Bonvin**. [Assessment of Contact Predictions in CASP12: Co-Evolution and Deep Learning Coming of Age](http://dx.doi.org/10.1002/prot.25407). 
+_Proteins: Struc. Funct. &amp; Bioinformatics_ Advanced Online Publication (2017).
 
 * A.J. Preto, J.G. Almeida, J. Schaarschmidt, L.C. Xue, I.S. Moreira and **A.M.J.J. Bonvin**. Computational tools for the structural characterization of proteins and their complexes from sequence-evolutionary data. _Encyclopedia of Analytical Chemistry_ In press (2018),
 
