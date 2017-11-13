@@ -14,7 +14,7 @@ Our [HADDOCK web portal](http://haddock.science.uu.nl/services/HADDOCK2.2) has r
         <img align="center" src="/images/posts/HADDOCK-10K.png">
 </figure>
 
-Since June 2008, the server has processed over 180'000 docking runs, about 35% of whose have run on the High Throughput Computing (HTC) resources of [EGI](href="http://www.egi.eu) building on the European e-Infrastructure. The continuous development and operation of the HADDOCK web portal has been made possible over the years thanks to the support of [Utrecht University]http://www.uu.nl), the [Bijvoet Center for Biomolecular Research](http://bijvoet-center.eu) and various grant agencies and projects.
+Since June 2008, the server has processed over 180'000 docking runs, about 35% of whose have run on the High Throughput Computing (HTC) resources of [EGI](href="http://www.egi.eu) building on the European e-Infrastructure. The continuous development and operation of the HADDOCK web portal has been made possible over the years thanks to the support of [Utrecht University](http://www.uu.nl), the [Bijvoet Center for Biomolecular Research](http://bijvoet-center.eu) and various grant agencies and projects.
 
 <center>
 <a href="http://www.uu.nl"><img src="/images/UU_logo-small.png"></a>
