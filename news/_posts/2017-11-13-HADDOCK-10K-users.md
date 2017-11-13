@@ -16,6 +16,7 @@ Our [HADDOCK web portal](http://haddock.science.uu.nl/services/HADDOCK2.2) has r
 Since June 2008, the server has processed over 180'000 docking runs, about 35% of whose have run on the High Throughput Computing (HTC) resources of [EGI](href="http://www.egi.eu) building on the European e-Infrastructure. The continuous development and operation of the HADDOCK web portal has been made possible over the years thanks to the support of [Utrecht University\(http://www.uu.nl)</a>, the [Bijvoet Center for Biomolecular Research](http://bijvoet-center.eu) and various grant agencies and projects.
 
 <figure>
+  
 <a href="http://www.uu.nl"><img align="center" src="/images/UU_logo-small.png"></a>
 <p>
 <a href="http://www.nwo.nl"><img align="center" src="/images/NWO_logo-small.png"></a>
@@ -31,10 +32,6 @@ Since June 2008, the server has processed over 180'000 docking runs, about 35% o
 <a href="http://www.bioexcel.eu"><img align="center" src="/images/BioExcel_logo-small.png"></a>
 <p>
 <a href="http://ec.europa.eu/programmes/horizon2020/en/h2020-section/research-infrastructures-including-e-infrastructures"><img align="center" height="30" src="/images/H2020_logo-small.png"></a>
+<p>
+  
 </figure>
-
-
-
-
-
-
