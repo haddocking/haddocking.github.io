@@ -20,10 +20,12 @@
     status: visiting-professor
 
 -   name: Anna Vangone
-    status: 'postdoc'
+    status: postdoc
 
 -   name: Zeynep Kurkcuoglu
-    status: 'postdoc'
+    url: http://niped.org/en/
+    current: 'NIPED Institute, the Netherlands'
+    status: postdoc
 
 -   name: Gydo van Zundert
     url: https://github.com/latrocinia
@@ -131,6 +133,7 @@
     status: visiting-phd
 
 -   name: Jeaphianne van Rijn
+    current: 'UMC Utrecht, the Netherlands'
     status: visiting-phd
 
 -   name: Venkata Krishnan Ramaswamy
