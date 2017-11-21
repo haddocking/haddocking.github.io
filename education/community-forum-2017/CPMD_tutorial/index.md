@@ -7,11 +7,11 @@ image:
 ---
 
 Starting from the best pose provided by the HADDOCK procedure, we want
-to exploit the capability of CPMD[1] and in particular its QM/MM
+to exploit the capability of CPMD[<sup>1</sup>](#one) and in particular its QM/MM
 approach in order to get a guess of the topology of the covalent
 complex.
 
-To achieve this objective, we will need a series of codes and tools[2]
+To achieve this objective, we will need a series of codes and tools[<sup>2</sup>](#two)
 that we will suppose to be already installed on your Linux/MacOS X
 machine and that can be loaded through the module environment:
 
@@ -29,7 +29,7 @@ grep UNK cluster1_1.pdb > ligand.pdb
 
 # Protonation states
 
-If you inspect the `ligand.pdb` file with the Chimera[3] visualization
+If you inspect the `ligand.pdb` file with the Chimera[<sup>3</sup>](#three) visualization
 tool:
 
 ```
@@ -49,7 +49,7 @@ Therefore, we will preliminary investigate the protonation states of the
 ligand by calculating the pKa (in vacuum, i.e. without the protein
 matrix) of the potential H<sup>+</sup> sites. This can be easily
 achieved by using the ChemAxon tool “MarvinSketch” within the Marvin
-Suite:[4]
+Suite[<sup>4</sup>](#four):
 
 The suite can be downloaded after a free registration, and the
 protonation analysis workflow is available without any license.
@@ -141,7 +141,8 @@ approach built in the antechamber tool:
 ```
 module load AmberTools/17
 
-antechamber -i ligandH.pdb -fi pdb -o ligandH.prepin -fo prepi –nc 1 –m 1 -c bcc –pf y -rn UNK
+antechamber -i ligandH.pdb -fi pdb -o ligandH.prepin -fo prepi
+–nc 1 –m 1 -c bcc –pf y -rn UNK
 ```
 
 After few seconds of calculations the `sqm` code recalled by antechamber
@@ -197,7 +198,13 @@ also `xleap` that is the GUI version of `tleap`):
 tleap –f $AMBERHOME/dat/leap/cmd/oldff/leaprc.protein.ff99SB -s
 ```
 
-where the file `leaprc.protein.ff99SB` is used to load all the libraries containing the parameters of the Amber force field ff99SB that we will use in this tutorial. In fact, the current QM/MM interface has been validated mainly by using this force field and it is a good standard for our aim[[5]](#five). Moreover, the conversion script that we will provide you for converting the Amber topology file to a GROMOS one has been developed specifically for this force field.
+where the file `leaprc.protein.ff99SB` is used to load all the libraries
+containing the parameters of the Amber force field ff99SB that we will use
+in this tutorial. In fact, the current QM/MM interface has been validated
+mainly by using this force field and it is a good standard for our aim[<sup>5</sup>](#five).
+Moreover, the conversion script that we will provide you for converting
+the Amber topology file to a GROMOS one has been developed specifically
+for this force field.
 
 To make `tleap` able to recognize the UNK ligand, we need to load the GAFF
 library:
@@ -277,7 +284,7 @@ solvatebox XXX TIP3PBOX 14
 ```
 
 The first command loads the library with the solvent parameters. In
-particular, the parameters for the classical “TIP3P” water model[5] that
+particular, the parameters for the classical “TIP3P” water model[<sup>6</sup>](#six) that
 we have used in the second command. An orthorhombic box whose walls are
 at least 14 Å from any atom of the complex system will be created:
 
@@ -324,7 +331,7 @@ To run MD simulation we will use the sander program in the AmberTools
 suite.
 
 There is no unique procedure to equilibrate a solvated system. Below a
-possible one with a rationale for each step:[[6]](#six)
+possible one with a rationale for each step:[<sup>7</sup>](#seven)
 
 1.  First, classical minimization of the system restraining the protein
     and ligand molecules to their initial position: this step is
@@ -334,7 +341,7 @@ possible one with a rationale for each step:[[6]](#six)
     around the complex molecules:
 
     ```
-    mpirun -np 2 sander.MPI -O -i 1-restraint.inp -o eq_restraint.out –c 
+    mpirun -np 2 sander.MPI -O -i 1-restraint.inp -o eq_restraint.out –c
     complex_solv.rst -p complex_solv.top -r eq_restraint.rst –ref complex_solv.rst &
     ```
 
@@ -351,8 +358,8 @@ It is very frequent that the minimization stops before reaching the
 maximum number of steps even if the convergence has not been obtained:
 in this case an error message like this:
 
-    <div align='center'><b>`***** REPEATED LINMIN FAILURE *****`</b></div>
-
+    <div align='center'><b>***** REPEATED LINMIN FAILURE *****</b></div>
+    <br>
     can appear close to the end of the log file eq\_restraint.out. This
 means only that the minimizer got "stuck" in a place from which the
 minimization algorithm could not find a way out. Unless there is
@@ -361,12 +368,13 @@ is always the first check</u>), the amount of minimization that has
 occurred by the time you reach such a "sticking" point will be
 sufficient to move on to the next step.
 
-2. Then, a minimization without restraints is performed in order to
+2.  Then, a minimization without restraints is performed in order to
     find a configuration close to the T=0 most stable one:
 
     ```
-    mpirun -np 2 sander.MPI -O -i 2-minimization.inp –o eq_minimization.out 
-    -c eq_restraint.rst -p complex_solv.top -r eq_minimization.rst &
+    mpirun -np 2 sander.MPI -O -i 2-minimization.inp –o
+    eq_minimization.out -c eq_restraint.rst -p complex_solv.top
+    -r eq_minimization.rst &
     ```
 
 3.  Now, we bring the system temperature to 300 K with a MD at constant
@@ -377,19 +385,20 @@ sufficient to move on to the next step.
     previous steps.
 
     ```
-    mpirun -np 2 sander.MPI -O -i 3-heating.inp -p complex_solv.top -c eq_minimization.rst 
-    -ref eq_minimization.rst -o eq_heating.out -r eq_heating.rst -x eq_heating.crd -e eq_heating.en &
+    mpirun -np 2 sander.MPI -O -i 3-heating.inp -p complex_solv.top
+    -c eq_minimization.rst -ref eq_minimization.rst -o eq_heating.out
+    -r eq_heating.rst -x eq_heating.crd -e eq_heating.en &
     ```
 
     **Is the temperature stable at 300 K?**
 
-     If the simulation has to be extended, you can use the input file
- `3-heating_1.inp`, which allows you to extend the simulation for
- additional 300 ps:
+    If the simulation has to be extended, you can use the input file
+    `3-heating_1.inp`, which allows you to extend the simulation for
+    additional 300 ps:
 
     ```
-    mpirun -np 2 sander.MPI -O -i 3-heating_1.inp -p complex_solv.top 
-    -c eq_heating.rst -ref eq_heating.rst -o eq_heating_1.out -r eq_heating_1.rst 
+    mpirun -np 2 sander.MPI -O -i 3-heating_1.inp -p complex_solv.top
+    -c eq_heating.rst -ref eq_heating.rst -o eq_heating_1.out -r eq_heating_1.rst
     -x eq_heating_1.crd -e eq_heating_1.en &
     ```
 
@@ -401,8 +410,8 @@ sufficient to move on to the next step.
     perform this equilibration with a simulation much longer than 10 ps:
 
     ```
-    mpirun -np 2 sander.MPI -O -i 4-eq_density.inp -p complex_solv.top 
-    -c eq_heating.rst -o eq_density.out -r eq_density.rst -x eq_density.crd 
+    mpirun -np 2 sander.MPI -O -i 4-eq_density.inp -p complex_solv.top
+    -c eq_heating.rst -o eq_density.out -r eq_density.rst -x eq_density.crd
     -e eq_density.en &
     ```
 
@@ -416,16 +425,13 @@ sufficient to move on to the next step.
 
 Note: when the last step ends, you can fast analyze the behavior of all
 the physically relevant quantities of your system (like the density for
-example) by using the perl script “**process\_mdout.perl**” that you can
+example) by using the perl script `process_mdout.perl` that you can
 find in the same tarball together the AMBER input files:
 
 ```
 mkdir analysis
-
 cd analysis
-
 process_mdout.perl ../eq_density.out
-
 xmgrace summary.DENSITY
 ```
 
@@ -439,19 +445,22 @@ If you open the final equilibrated structure with VMD:
 vmd -parm7 complex_solv.top -rst7 eq_density.rst
 ```
 
-it is possible that the ligand is not so close to its binding site as it was in the structure coming from HADDOCK. This is not very good when one wants to try to induce a chemical reaction inside the site. This instability could be due to several reasons: 
+it is possible that the ligand is not so close to its binding site as it
+was in the structure coming from HADDOCK. This is not very good when one wants
+to try to induce a chemical reaction inside the site. This instability could
+be due to several reasons:
 
 1.	A poor initial pose: additional work on the HADDOCK parameters here would be needed.
 2.	An unsuitable force field: force fields are continuously updated and in principle the newer ones should be preferred. But as we mentioned above, this is not always true and one should always preliminarily go through the literature regarding his system and select the force field that has given the better results.
 3.	The semiempirical parameterization of the ligand, and in particular its partial charges: there are more accurate methods to perform this step, in particular the one that require more expensive quantum chemistry calculations to get the electric potential around the ligand. See for example this tutorial:
 
-https://www.dropbox.com/s/2b0qgfkd991l2f3/QMMM_Tutorial_EMBL-EBI.pdf
+<https://www.dropbox.com/s/2b0qgfkd991l2f3/QMMM_Tutorial_EMBL-EBI.pdf/>
 
 If all the previous causes has been investigated and excluded, one can repeat the equilibration by employing restrains specifically design to maintain the desire relative positions between the ligand and the protein. As an example, in the usual tarball you can find input file with the name suffix “_constraint” that allows one to perform the same equilibration steps described above and in addition include a distance restraint between the nitrile carbon atom and the sulfur atom of CYS25.
 
 In place of the AmberTools suite, the entire equilibration procedure
 (including building the topology file) could be done with any other
-classical MD package you are familiar with, such as GROMACS.[[7]](#seven) However,
+classical MD package you are familiar with, such as GROMACS.[<sup>8</sup>](#eight) However,
 in this case, as it will be clear in a short, you will need to convert
 your topology and final coordinate files in the Amber format. If you are
 using GROMACS, see for example
@@ -479,17 +488,14 @@ is a normal situation in MD. However, now we want to move to CPMD in
 order to perform a QM/MM MD simulation, and CPMD does not apply
 “automatically” PBC to the starting configuration. Consequently, we need
 to “reimage” the coordinates into the primary unit cell. We can use the
-cpptraj program[8] in the AmberTools suite to accomplish this task. Move
+cpptraj program[<sup>9</sup>](#nine) in the AmberTools suite to accomplish this task. Move
 the topology and final coordinates files to a folder and then create the
 input file **eq\_density.cpptraj** for `cpptraj`:
 
 ```
 trajin eq_density.rst         <- coordinates file to read
-
 trajout reimaged.rst          <- restart output file and format
-
 center :1-216                 <- center the box to the geometric center of the complex
-
 image center                  <- force all the molecules into the primary unit cell
 ```
 
@@ -516,7 +522,7 @@ format that the current QM/MM interface of CPMD can read. The
 `amber12togromos.x` code you can find in the above tarball file, is an
 in-house program (source available under request:
 <e.ippoliti@fz-juelich.de>) written some years ago to convert the Amber
-MD files in the GROMOS format:
+MD files in the GROMOS format[<sup>10</sup>](#ten):
 
 ```
 amber12togromos.x complex_solv.top reimaged.rst solvate
@@ -543,7 +549,7 @@ vmd –g96 gromos.crd
 
 These 3 files are ready for a QM/MM MD simulation. However, some changes
 in those files could be necessary in order to correctly set up the
-simulation. Below we describe the most relevant sections[9] of these
+simulation. Below we describe the most relevant sections[<sup>11</sup>](#eleven) of these
 files that need to be verified. Note that the `amber12togromos.x` code
 provides a `gromos.inp` file with fully commented sections.
 
@@ -552,7 +558,7 @@ provides a `gromos.inp` file with fully commented sections.
 1.  In the section SYSTEM the two numbers should be in sequence:
 
     Number of (identical) solute (not necessarily the QM part!)
-    molecules[10]
+    molecules[<sup>12</sup>](#twelve)
 
     Number of (identical) solvent (not necessarily the MM part!) molecules
 
@@ -739,7 +745,7 @@ index 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361
 
 Use VMD to understand how the final QM part has been determined and the
 bond to cut selected. Then, save a PDB file with only the QM part and
-name it QM.pdb:[11]
+name it `QM.pdb`:[<sup>13</sup>](#thirteen)
 
 ```
 set QM [atomselect top "index 346 347 348 349 350 351 352 353 354 355
@@ -792,7 +798,7 @@ for *ab initio* molecular dynamics. This means that CPMD:
 4.  Allows performing Car-Parrinello molecular dynamics scheme
 
 We cannot enter here in the details of DFT and its implementation in
-CPMD[12] and in what follows the basics of the theory are supposed to be
+CPMD[<sup>14</sup>](#fourteen) and in what follows the basics of the theory are supposed to be
 known.
 
 <u>*CPMD Input file*</u>
@@ -889,7 +895,7 @@ convergence tests by focusing on quantities like the total energy.
 CPMD uses the Density Functional Theory (DFT) to solve the quantum
 problem. The **&DFT section** is used to select the density functional
 (FUNCTIONAL) and its related parameters. In the case of the example the
-gradient corrected BLYP functional[13] is employed (local density
+gradient corrected BLYP functional[<sup>15</sup>](#fifteen) is employed (local density
 approximation is the default).
 
 Finally, the **&ATOMS section** is needed to specify the atom
@@ -909,11 +915,12 @@ CPMD input files.
 The next line contains information on the nonlocality of the
 pseudopotential: you can specify the maximum *l*-quantum number terms that CPMD will 
 take into account in the calculations with `LMAX`= _l_ where _l_ is S for _l_ =0, P for
-_l_ =1, D for _l_ =2, and so on. For each pseudopotential, the information of only a
+_l_ =1, D for _l_ =2, and so on[<sup>16</sup>](#sixteen). For each pseudopotential, the information of only a
 limited number of l-quantum number terms has been stored in its file. You can verify 
 how many l-quantum number terms are available by opening the pseudopotential file and
 looking at the number of columns in the section &WAVEFUNCTION: the first column is 
-the distance from the nucleus, while the other columns are the data for _l_ =0, _l_ =1, _l_=2, … Of course, larger is `LMAX`, more expensive will be the computation.
+the distance from the nucleus, while the other columns are the data for _l_ =0, _l_ =1, _l_=2, …
+Of course, larger is `LMAX`, more expensive will be the computation.
 
 
 On the following lines the coordinates for this atomic species have to
@@ -964,7 +971,7 @@ the current QM/MM interface of CPMD:
     interactions between periodic images and there are methods
     (activated with the keyword `POISSON SOLVER` in the `&SYSTEM` section)
     implemented in CPMD to compensate for this effect. We will choose
-    the `TUCKERMAN` Poisson solver*[15](#fifteen) since it has been proven to be
+    the `TUCKERMAN` Poisson solver*[<sup>17</sup>](#seventeen) since it has been proven to be
     the most effective one with typical systems studied in biology.
     Decoupling of the electrostatic images in the Poisson solver
     requires increasing the box size over the dimension of the molecule:
@@ -1006,7 +1013,7 @@ following standard bash procedure:
 <u>*`&QMMM` section*</u>
 
 In this paragraph we will review the most relevant keywords to be
-specified in the **`&QMMM` section** of the CPMD input file:[16](#sixteen)
+specified in the **`&QMMM` section** of the CPMD input file:[<sup>18</sup>](#eighteen)
 
  `TOPOLOGY`: On the next line the name of a GROMOS topology file has to
  be given.
@@ -1066,7 +1073,7 @@ specified in the **`&QMMM` section** of the CPMD input file:[16](#sixteen)
  `ARRAYSIZES`: Parameters for the dimensions of various internal arrays
  can be given in this block. The syntax is one label and the
  corresponding size for each line. The suitable parameters can be
- estimated using the script **estimate\_gromos\_size.sh**:[17](#seventeen)
+ estimated using the script **estimate\_gromos\_size.sh**:[<sup>19</sup>](#nineteen)
 
 ```
 estimate_gromos_size.sh gromos.top
@@ -1083,10 +1090,10 @@ electronic structure of the QM-subsystem is a good representation of a
 fill QM calculation, and also the structure in the boundary region is
 preserved. So far, two different approaches has been implemented in
 CPMD: the hydrogen capping and the special link-atom pseudopotentials.
-The first one, that is described in the CPMD manual,[18] is a bit
+The first one, that is described in the CPMD manual,[<sup>20</sup>](#twenty) is a bit
 laborious to setup and it is very useful when the classical atom at one
 end of the cut bond is not a carbon atom. The second one has been
-further improved and optimized with the method described in [19] and it
+further improved and optimized with the method described in [<sup>21</sup>](#twentyone) and it
 is currently the most popular one. It consists in placing a scaled down
 optimized pseudopotential with the required valence change (usually ZV=1
 since cutting through a single bond) in place of classical atom.
@@ -1148,8 +1155,20 @@ in this tutorial we will focus mainly on the first two approaches.
 
 # QM/MM annealing
 
-If there is no energy barrier in the chemical reaction, then you should observe the reaction with a simple **geometry optimization**, i.e. by minimizing the potential energy of the (quantum) system as a function of the nuclear coordinates. Unfortunately, all the geometry optimization algorithms in CPMD either do not work in combination with the QM/MM interface, or do support optimization of the QM atom positions only.[[22]](#twenty-two)
-Consequently, we have to use some “trick” to find a minimal energy structure (at QM/MM level). In particular, in this tutorial we will perform a _simulated annealing_ (keyword `ANNEALING IONS`), i.e. we run a Car-Parrinello MD where gradually removing kinetic energy from the nuclei by multiplying velocities with a factor (in our case it is set to 0.99, so 1% of the kinetic energy will be removed in every step). Here it is the `annealing.inp` file that performs this preliminary step:[[23]](#twenty-three)
+If there is no energy barrier in the chemical reaction, then you should
+observe the reaction with a simple **geometry optimization**, i.e. by
+minimizing the potential energy of the (quantum) system as a function of
+the nuclear coordinates. Unfortunately, all the geometry optimization
+algorithms in CPMD either do not work in combination with the QM/MM
+interface, or do support optimization of the QM atom positions only.[<sup>22</sup>](#twentytwo)
+Consequently, we have to use some “trick” to find a minimal energy
+structure (at QM/MM level). In particular, in this tutorial we will
+perform a _simulated annealing_ (keyword `ANNEALING IONS`), i.e. we run
+a Car-Parrinello MD where gradually removing kinetic energy from the
+nuclei by multiplying velocities with a factor (in our case it is set to
+0.99, so 1% of the kinetic energy will be removed in every step).
+Here it is the `annealing.inp` file that performs this preliminary
+step:[<sup>23</sup>](#twentythree)
 
 ```
 &QMMM
@@ -1280,7 +1299,13 @@ CP stands for a Car-Parrinello type of MD.
 
 `TEMPERATURE`:	The initial temperature for the atoms in Kelvin is read from the next line: we start from 300 K since it is the temperature at which we equilibrate the system classically.
 
-`EMASS`:	The fictitious electron mass in atomic units for the CP dynamics is read from the next line. We choose 600 a.u. but ideally a careful set of tests should be done to verify that adiabaticity conditions are met: this and the following parameter are the only parameters to tune in order to decouple the electronic and ionic degrees of freedom in order to minimize their energy transfer (adiabatic condition needed to perform a correct Car-Parrinello MD).
+`EMASS`:	The fictitious electron mass in atomic units for the CP
+dynamics is read from the next line. We choose 600 a.u. but ideally a
+careful set of tests should be done to verify that adiabaticity conditions
+are met[<sup>24</sup>](#twentyfour): this and the following parameter are the only parameters to tune
+in order to decouple the electronic and ionic degrees of freedom in order
+to minimize their energy transfer (adiabatic condition needed to perform
+a correct Car-Parrinello MD).
 
 `TIMESTEP`:	The time step in atomic units is read from the next line. We use the default time step of 5 a.u. ~ 0.12 fs.
 
@@ -1299,8 +1324,13 @@ module load CPMD
 mpirun -np 2 cpmd.x annealing.inp . > annealing.out &
 ```
 
-The “.” after the input file name is the folder where CPMD will look for the pseudopotential files (of course you can put the pseudopotential files in a different folders and replace “.” with the absolute path of this folder; this is the usual situation, since people using CPMD collect their own pseudopotential library).
-While the simulation runs you can monitor the decreasing temperature (third column named TEMPP) this way:
+The “.” after the input file name is the folder where CPMD will look
+for the pseudopotential files (of course you can put the pseudopotential
+files in a different folders and replace “.” with the absolute path of
+this folder; this is the usual situation, since people using CPMD collect
+their own pseudopotential library).
+While the simulation runs you can monitor the decreasing temperature
+(third column named TEMPP) this way:
 
 ```
 tail -f annealing.out
@@ -1335,7 +1365,7 @@ Several files will be generated during a CPMD QM/MM simulation:
 
 The last two files are common to a simpler full QM simulation with CPMD as well.
 
-Let’s give a closer look at the output file `annealing.out`[[25]](#twenty-five) and find the following section:
+Let’s give a closer look at the output file `annealing.out`[<sup>25</sup>](#twentyfive) and find the following section:
 
 ```
 CAR-PARRINELLO MOLECULAR DYNAMICS
@@ -1490,27 +1520,29 @@ To verify that the reached configuration is physically "reasonable" and that thi
      ```
      
  - Modify the test.inp file in order to change the &CPMD section so as to appear:
-    ```
-    &CPMD
-    RESTART COORDINATES VELOCITIES WAVEFUNCTION
-    QMMM
-    MOLECULAR DYNAMICS CP
-    ISOLATED MOLECULE
-    EMASS
-     600.
-    TIMESTEP
-     5.0
-    MAXSTEP
-     3000
-    TRAJECTORY SAMPLE
-     0
-    &END
-    ```
-    And replace `gromos.crd` with `CRD_FIN.g96` in the section `&QMMM`.
 
-    The `RESTART` keyword tells CPMD to read atomic coordinates, atomic velocities and the wavefunction from a restart file called “`RESTART`”. If the option `LATEST` is add at this line, the name of the restart file will be read in a text file named “`LATEST`” that CPMD creates every time it writes a restart file. (therefore you should both files were generated in the previous calculation).
+```
+&CPMD
+RESTART COORDINATES VELOCITIES WAVEFUNCTION
+QMMM
+MOLECULAR DYNAMICS CP
+ISOLATED MOLECULE
+EMASS
+600.
+TIMESTEP
+5.0
+MAXSTEP
+3000
+TRAJECTORY SAMPLE
+0
+&END
+```
 
-    The rest of the input file is the same as the annealing step and cannot be removed without making CPMD complain.
+   And replace `gromos.crd` with `CRD_FIN.g96` in the section `&QMMM`.
+
+   The `RESTART` keyword tells CPMD to read atomic coordinates, atomic velocities and the wavefunction from a restart file called “`RESTART`”. If the option `LATEST` is add at this line, the name of the restart file will be read in a text file named “`LATEST`” that CPMD creates every time it writes a restart file. (therefore you should both files were generated in the previous calculation).
+
+   The rest of the input file is the same as the annealing step and cannot be removed without making CPMD complain.
 
  - Run the test:
     ```
@@ -1523,6 +1555,7 @@ To verify that the reached configuration is physically "reasonable" and that thi
     ```
     
  - When it ends, you can plot on a graph the temperature and the physical energy by using for example gnuplot
+
     ```
     gnuplot
     p 'ENERGIES' u 1:3 w l
@@ -1534,7 +1567,17 @@ To verify that the reached configuration is physically "reasonable" and that thi
 
 # QM/MM MD
 
-If a molecular dynamics is required and the test in the previous section was successful, we can come back to the configuration obtained by the annealing procedure and start heating the system up to the room temperature. There are several methods implemented in CPMD to heat the system. We choose to increase the target temperature by coupling the system to a thermostat and linearly increasing its target temperature at each step by performing a usual Car-Parrinello MD. A simple Berendsen-type thermostat can be used for this step: it does not fully preserve the correct canonical ensemble but we are not interested to this feature at this stage and it is numerically fast and more stable than alternative algorithms.
+If a molecular dynamics is required and the test in the previous section
+was successful, we can come back to the configuration obtained by the
+annealing procedure and start heating the system up to the room temperature.
+There are several methods implemented in CPMD to heat the system.
+We choose to increase the target temperature by coupling the system to a
+thermostat and linearly increasing its target
+temperature at each step by performing a usual Car-Parrinello MD.
+A simple Berendsen-type thermostat[<sup>26</sup>](#twentysix) can be used for this step: it does not
+fully preserve the correct canonical ensemble but we are not interested
+to this feature at this stage and it is numerically fast and more stable
+than alternative algorithms.
 Two additional keywords are required in the `&CPMD` section with respect to the previous input file:
 
 1. `TEMPERATURE` with the option `RAMP`; 3 numbers have to be specified on the line below the keyword: initial and target temperature in K and the ramping speed in K per atomic time unit (to get the change per time step you have to multiply it with the value of `TIMESTEP`). Read the initial temperature from the output file of the annealing procedure.
@@ -1553,19 +1596,20 @@ If you come back to the folder where the annealing has been performed, the proce
     
  - Copy the following files from the previous calculation:
 
-  ```
-  cp ../gromos* .
-  cp ../CRD_FIN.g96 .
-  cp ../RESTART.1 RESTART 
-  cp ../TEST/test.inp   heating.inp
-  ```
- 
+```
+cp ../gromos* .
+cp ../CRD_FIN.g96 .
+cp ../RESTART.1 RESTART
+cp ../TEST/test.inp   heating.inp
+```
+
  - Modify `heating.inp` according the rules above mentioned:
 
   ```
   vi heating.inp
   ```
-    by adding the two following lines in the `&CPMD` section:
+
+  by adding the two following lines in the `&CPMD` section:
 
   ```
   BERENDEN IONS
@@ -1573,11 +1617,13 @@ If you come back to the folder where the annealing has been performed, the proce
   TEMPERATURE RAMP
   3.8  340.0  1
   ```
+
  - Monitor the temperature:
 
   ```
   tail -f heating.out
   ```
+
  - If the temperature reaches approximately the target temperature before the MAXSTEP number of steps are performed and it stays stable, you can stops the simulation in advance:
 
   ```
@@ -1605,7 +1651,7 @@ cp ../HEATING/heating.inp   cpmd.inp
 To run a correct Car-Parrinello molecular dynamics we need to modify the previous input file according to the following prescriptions:
 
  - We want to restart from the previous wavefunction, coordinates and velocities since we want to use the temperature information from the “`RESTART`” file. Therefore, we keep the option `VELOCITIES` in the `RESTART` keyword and we will remove `TEMPERATURE` keyword.
- - We replace the Berendsen thermostat with the Nose-Hoover chains: this because unlike the Berendsen one this kind of thermostat preserves the Maxwell distribution of the velocities and there it allows sampling the correct canonical ensemble. In other words, it provides an NVT ensemble for a system in equilibrium.
+ - We replace the Berendsen thermostat with the Nose-Hoover chains:[<sup>27</sup>](#twentyseven) this because unlike the Berendsen one this kind of thermostat preserves the Maxwell distribution of the velocities and there it allows sampling the correct canonical ensemble. In other words, it provides an NVT ensemble for a system in equilibrium.
 The keyword that turns this algorithm on is `NOSE`, and then you have to specify the degrees of freedom to which you want to apply it (`IONS`); the target temperature in Kelvin and the thermostat frequency in cm-1 are read from the next line:
 
  ```
@@ -1686,8 +1732,8 @@ TOTAL INTEGRATED ELECTRONIC DENSITY
 ```
 
 
-<div align='center'><img src="./media/image10.png" width="613" height="415" /></div>
-
+<div align='center'><img src="./media/image10.png" width="306" height="207" /></div>
+<br>
 Ensuring adiabaticity of Car Parrinello MD consists of decoupling the electronic and nuclear subsystems and thus minimizing the energy transfer from ionic degrees of freedom to electronic ones. In this sense, the system during a Car Parrinello MD should be kept in a metastable state.
 
 Hint: any time you notice some strange behavior of some physical quantity, but also a very good practice in general, is to look at your trajectory through some visualization tool: the most of the problems are immediately identified by visual inspection …
@@ -1770,28 +1816,44 @@ created in the current directory.
 
 ------------------
 
-[1] [www.cpmd.org](http://www.cpmd.org)
+## References
 
-[2] All the tools can be freely downloaded from their corresponding
+<a name="one">[1] [www.cpmd.org](http://www.cpmd.org)</a>
+
+<a name="two">[2] </a>All the tools can be freely downloaded from their corresponding
 website, apart from the QM/MM routines of CPMD which are not available
 on the CPMD website since they require a commercial GROMOS license to be
 used for publication or commercial purposes. You can download and
-install them from this link:
+install them from this link (to be used only within the scope of this tutorial):
 
 <https://www.dropbox.com/s/rr8ifkgwgo5gwl2/cpmd-4.0-Rev3392.tar.gz>
 
-to be used only within the scope of this tutorial.
+<a name="three">[3]</a> [www.cgl.ucsf.edu/chimera/](https://www.cgl.ucsf.edu/chimera/)
 
-[3] [www.cgl.ucsf.edu/chimera/](https://www.cgl.ucsf.edu/chimera/)
+<a name="four">[4]</a> [www.chemaxon.com/download/marvin-suite/\#marvin](https://www.chemaxon.com/download/marvin-suite/#marvin)
 
-[4] [www.chemaxon.com/download/marvin-suite/\#marvin](https://www.chemaxon.com/download/marvin-suite/#marvin)
+<a name="five">[5]</a> Regarding more recent Amber force fields, according to our experience in
+the most recent ff14SB the barriers associated to angle and dihedral of PHE,
+TYR and TRP aromatic side chains are lower than the ones in the ff12SB.
+Since the active site has also aromatic side chains close to where the
+chemical reaction has to take place, this might be relevant for our system
+description. Unfortunately, in the last version of AmberTools, for some
+weird reason it is not possible to load directly ff12SB with a leaprc file.
+Therefore, in case we would like to try to use this force field, the simple
+way we found to load ff12SB parameters in this new version of AmberTools is
+initializing tleap with the leaprc.protein.ff14SB and then loading the
+ff12SB frcmod file:
 
-[5] <http://en.wikipedia.org/wiki/Water_model>
+```
+loadamberparams frcmod.ff12SB
+```
 
-[6] All the input files mentioned here for the sander program can be
+<a name="six">[6]</a> <http://en.wikipedia.org/wiki/Water_model>
+
+<a name="seven">[7]</a> All the input files mentioned here for the sander program can be
 found in:
 
-<https://www.dropbox.com/s/jjyszkscz7vgaev/sander.tar.gz>
+<https://www.dropbox.com/s/fk6i2g403p48ev9/amber.tar.gz>
 
 Each file has comments on each keyword. More information could be found
 in the AmberTools17 reference manual:
@@ -1801,53 +1863,74 @@ Since the equilibration phase can take a considerable amount of time,
 you can just read this section and use the already equilibrated
 eq\_density.rst file in the above archive and proceed to the next step.
 
-[7] <http://www.gromacs.org>
+<a name="eight">[8]</a> <http://www.gromacs.org>
 
-[8] <http://ambermd.org/doc12/Amber17.pdf>
+<a name="nine">[9]</a> <http://ambermd.org/doc12/Amber17.pdf>
 
-[9] see also section 11.16 in the CPMD reference manual:  
+<a name="ten">[10]</a> You can safely ignore error messages like `WRTOPO: illegal bond type in ICQH!`
+
+<a name="eleven">[11]</a> see also section 11.16 in the CPMD reference manual:
 <http://cpmd.org/downloadable-files/no-authentication/manual_v4_0_1.pdf>
 
-[10] Note that in the context of the CPMD QM/MM input file, in a system
+<a name="twelve">[12]</a> Note that in the context of the CPMD QM/MM input file, in a system
 like ours the protein, the ligand and the counterions have to be
 considered as a **1-molecule** solute.
 
-[11] One could guess that side chain of the TRP26:
+<a name="thirteen">[13]</a> One could guess that side chain of the TRP26:
 
-index 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391
+`index 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391`
 
 is not relevant for the chemical reaction to occur. This would reduce
 the QM part to 75 atoms. This is also a possible, smaller and therefore
 computational less demanding QM part to start investigating.
 
-[12] For an overview refer to the CPMD manual
+<a name="fourteen">[14]</a> For an overview refer to the CPMD manual
 <http://www.cpmd.org/documentation/cpmd-html-manual>, the references
 therein and the book “[Ab Initio Molecular Dynamics: Basic Theory and
 Advanced
 Methods](https://books.google.de/books/about/Ab_Initio_Molecular_Dynamics.html?id=VRZUw8Wk4CIC&redir_esc=y&hl=en)” by
 D. Marx and J. Hutter (2009).
 
-[13] A.D. Becke, J.Chem.Phys. 98 (1993) 5648-5652; C. Lee, W. Yang, R.G.
+<a name="fifteen">[15]</a> A.D. Becke, J.Chem.Phys. 98 (1993) 5648-5652; C. Lee, W. Yang, R.G.
 Parr, Phys. Rev. B 37 (1988) 785-789.
 
-[14] If LMAX is the only entry in this line, the program assumes that
+<a name="sixteen">[16]</a>  If LMAX is the only entry in this line, the program assumes that
 LMAX is the l for the local potential. You can use another local
 function by specifying the keyword \`\`LOC= '' after LMAX separated by a
 comma. In addition, it is possible to assign the local potential to a
 further potential with the keyword \`\`SKIP= '' (see the CPMD manual).
 
-[15] G.J. Martyna and M. E. Tuckerman, J. Chem. Phys. 110, 2810 (1999),
+<a name="seventeen">[17]</a> G.J. Martyna and M. E. Tuckerman, J. Chem. Phys. 110, 2810 (1999),
 and section 11.4 in the CPMD reference manual.
 
-[16] See section 11.16.6 of the CPMD reference manual for a complete
+<a name="eighteen">[18]</a> See section 11.16.6 of the CPMD reference manual for a complete
 list.
 
-[17] This script and the input files for CPMD used in this tutorial can
+<a name="nineteen">[19]</a> This script and the input files for CPMD used in this tutorial can
 be downloaded at the link:
 
-[18] Section 11.16.9.
+<a name="twenty">[20]</a> Section 11.16.9.
 
-[19] O. A. v. Lilienfeld, D. Sebastiani, I. Tavernelli, and U.
-Rothlisberger, Phys. Rev. Lett. 93,
+<a name="twentyone">[21]</a> O. A. v. Lilienfeld, D. Sebastiani, I. Tavernelli, and U.
+Rothlisberger, Phys. Rev. Lett. 93, 153004 (2004).
 
-153004 (2004).
+<a name="twentytwo">[22]</a> Sometimes, it could be worth trying such a
+partial optimization. Test it also in this case.
+
+<a name="twentythree">[23]</a> The CPMD input files can be download from the following link:
+<https://www.dropbox.com/s/ouypmhxomzmfofg/qmmm.tar.gz>
+
+<a name="twentyfour">[24]</a> <http://www.theochem.ruhr-uni-bochum.de/research/marx/marx.pdf>
+
+<a name="twentyfive">[25]</a> For a more exhaustive description of the
+CPMD log file see the introductory QM/MM tutorial:
+<https://www.dropbox.com/s/2b0qgfkd991l2f3/QMMM_Tutorial_EMBL-EBI.pdf>
+
+<a name="twentysix">[26]</a> H. J. C. Berendsen, J. P. M. Postma,
+W. F. van Gunsteren, A. DiNola, J. R. Haak J. Chem. Phys, 81, 3684 (1984).
+
+<a name="twentyseven">[27]</a> S. Nosé and M. L. Klein, Mol. Phys. 50,
+1055 (1983); S. Nosé, Mol. Phys. 52, 255 (1984); S. Nosé, J. Chem. Phys.
+81, 511 (1984);  S. Nosé, Prog. Theor. Phys. Suppl. 103, 1 (1991); W. G.
+Hoover, Phys. Rev. A 31, 1695 (1985).
+
