@@ -13,5 +13,5 @@ In this page you can find links to the tutorials given during the BioExcel Commu
   A tutorial demonstrating the use of HADDOCK to covalently bind a ligand to a receptor.
 
 * [**CPMD**](/education/community-forum-2017/CPMD_tutorial):
-  A tutorial demonstrating the use of the CPMD to get the topology of a covalent ligand bound to a protein.
+  A tutorial demonstrating the use of the CPMD to get the topology and parameters of a covalent ligand bound to a protein.
   

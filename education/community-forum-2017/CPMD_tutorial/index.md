@@ -1138,8 +1138,13 @@ Three scenarios are possible:
 
 3. The **free energy barrier is considerably larger than k<sub>B</sub>T** and/or the timescale for the reaction is much larger than picoseconds, the reaction cannot occur spontaneously during the simulation time of the quantum molecular dynamics and a <u>constrained molecular dynamics</u> or more in general some <u>enhanced sampling technique</u> (e.g. metadynamics, umbrella sampling) has to be employed.
 
-When we have no information about the reaction, each of the above mentioned approach has to be attempted in sequence, also because each approach is preliminary for the subsequent one.
-Moreover, the approaches are listed in increasing order of complexity and computational requirements. Just to provide some estimates, for a system with a size similar to the one we are currently investigating, on a state-of-the-art workstation the first approach is supposed to take several hours/days of calculations, the second one requires order of weeks, while performing a meaningful simulation with the third approach needs some months. For this reason, in this tutorial we will discuss only the first two.
+When we have no information about the reaction, each of the above mentioned approach has to be attempted in sequence, 
+also because each approach is preliminary for the subsequent one.
+Moreover, the approaches are listed in increasing order of complexity and computational requirements. Just to provide 
+some estimates, for a system with a size similar to the one we are currently investigating, on a state-of-the-art 
+workstation the first approach is supposed to take several hours/days of calculations, the second one requires order 
+of weeks, while performing a meaningful simulation with the third approach needs some months. For this reason, 
+in this tutorial we will focus mainly on the first two approaches.
 
 # QM/MM annealing
 
@@ -1691,6 +1696,77 @@ To visualize a CPMD QM/MM trajectory stored in the `TRAJECTORY` file you can use
 ```
 vmd -g96 CRD_INI.g96 -cpmd TRAJECTORY
 ```
+
+# Restrained QM/MM MD
+
+When the chemical reaction has a free energy barrier significantly larger than kBT, it cannot occur spontaneously during 
+a QM/MM molecular dynamics simulation. We need therefore somehow to provide the system the energy necessary to overcome 
+the barrier. This can be done in several different ways and the best approach depends on the system and specific reaction 
+we have to deal with. However, there are some common strategies that we want to mention here.
+A common feature of any chemical reaction between a ligand and a target is that in order it can take place, the ligand 
+needs to approach some atoms in the binding site. Often, we know already which are the atoms involve, or at least we 
+have some educated guess. Therefore, the simpler approach is to restrained or constrained some distances between ligand 
+and target atoms. By the way, this is the approach of several enhanced sampling methods that allows calculating the 
+potential of mean force (PMF), i.e. the projection of the free energy landscape over some specified direction, such as 
+Umbrella Sampling (restraints) and Thermodynamic Integration (constraints). If those directions are good reaction 
+coordinates then the free energy barrier associated to the chemical reaction can be directly inferred from the 
+calculated free energy profile.
+
+CPMD allows specifying several constraints and restraints on the atoms. In particular in the section `&ATOM` of the 
+input you can introduce the input block:
+
+```
+CONSTRAINTS 
+…
+…
+END CONSTRAINTS
+```
+
+and inside there define several constraints and restraints on the atoms according to the syntax described in section 
+9.5.2 of the CPMD manual. For example, in order to constrain the distance between the nitrile carbon of our ligand 
+(`index 3268`) and the sulfur atom of CYS25 (`index 367`) at its initial value and then smoothly modify it to a target 
+value, you could use the block:
+
+```
+CONSTRAINTS 
+DIST 3268 367 -999. GROWTH -0.001
+END CONSTRAINTS
+```
+
+The value -999. refers to the current value to be fixed. The keyword GROWTH indicates that the constraint value should 
+be changed at each time step with a rate of change (-0.001) given after the keyword in units per atomic time unit, i.e. 
+independent from the current length of a time step. Note that in MD runs only the actual initial value (-999.) can be 
+fixed. With this approach, the number of time steps has to be carefully calculated in order to reach the target value 
+for the distance.
+
+Alternatively, instead of constrain the distance between the two atoms, we can restrain it:
+
+```
+CONSTRAINTS 
+RESTRAINTS
+DIST 3268 367 -999. 0.1 GROWTH -0.001
+END CONSTRAINTS
+```
+
+by a harmonic potential having a spring constant 0.1 in a.u.
+
+Sometimes it can be useful to constrain this way:
+
+```
+CONSTRAINTS 
+FIX STRUCTURE SHOVE
+  1
+DIST 3268 367 -999. -1
+END CONSTRAINTS
+```
+
+where the `SHOVE` option of the `FIX STRUCTURE` keyword requires an additional entry at the end of each constraint 
+line (only one in our case). This entry has to be either -1, 0, or 1. The constraint is then either fixed (0) or 
+allowed to shrink (-1) or grow (1).
+
+The values of the Lagrange multipliers and of the actual constraint are printed in the file `CONSTRAINT` that is 
+created in the current directory.
+
 
 ------------------
 
