@@ -6,11 +6,21 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 
+This tutorial consists of the following sections:
+
 * table of contents
 {:toc}
 
 ## Introduction
-The format of the community forum has been defined as an _unconference_, stimulating us to think outside of the box and discussing challenges that are barely touched upon by our communities. This tutorial paves the route for the use of [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) to covalently bind a ligand to a receptor. This use-case is a first attempt to blur different software and take on the challenge of "covalent docking". You are greatly encouraged to work at your own pace, to discuss with your neighbours, to interrupt us, to recommend different methods and/or software, to switch to one of the [many well-established HADDOCK tutorials](http://www.bonvinlab.org/education/), to calmly disagree, to enthusiastically demonstrate your interest for the topic, to correct typos, to challenge us with your own system of interest, to suggest new developments ... Just remember that, at this stage, this tutorial shall not serve as a standard protocol to predict the covalent binding of a small ligand in the active site a protein.
+The format of the community forum has been defined as an _unconference_, stimulating us to think outside of the box and 
+discussing challenges that are barely touched upon by our communities. This tutorial paves the route for the use 
+of [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) to covalently bind a ligand to a receptor. This use-case 
+is a first attempt to blur different software and take on the challenge of "covalent docking". You are greatly 
+encouraged to work at your own pace, to discuss with your neighbours, to interrupt us, to recommend different methods 
+and/or software, to switch to one of the [many well-established HADDOCK tutorials](http://www.bonvinlab.org/education/), 
+to calmly disagree, to enthusiastically demonstrate your interest for the topic, to correct typos, to challenge us with 
+your own system of interest, to suggest new developments ... Just remember that, at this stage, this tutorial shall 
+not serve as a standard protocol to predict the covalent binding of a small ligand in the active site a protein.
 
 ## Motivations
 We listed here some motivations for this topic, in no particular order:
@@ -47,15 +57,6 @@ One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.
 *Table 1: Selectivity Data on the Inhibition of Homologous Cathepsins*
 
 Since a lot of three-dimensional structures of cathepsins in the presence of small inhibitors are available on the Protein Data Bank, we can simulate an "unbound" challenge where we must predict the correct interaction of this ligand with each cathepsin protein (respectively K, L and S) starting from homologous templates. As an additional challenge, we will also start from the [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) string of the ligand and only use non-commercial third party software, or commercial software that deliver academic license.
-
-This tutorial consists of the following sections:
-- Setup
-- Select the "best" cathepsin templates for the docking
-- Generate a starting structure for the ligand from SMILES strings
-- Define restraint(s) for the docking
-- Submit your docking runs
-- Analysis of the results
-- Perspectives
 
 Because this tutorial requires a lot of efforts to edit and clean PDB files in preparation for docking, we will provide you with most of the files. Feel free to DIY and share with us your best tips to fasten this fastidious work.
 
