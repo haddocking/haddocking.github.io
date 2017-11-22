@@ -19,7 +19,7 @@ dedicated post on [our forum](http://ask.bioexcel.eu/t/community-forum-2017-mode
 ## User information
 
 In order to have a good idea of the audience and be able to provide you with a tailormade
-session, please fill in this short form: https://goo.gl/forms/mfXdeq6CfJmCo9EY2
+session, please fill in this short form: <https://goo.gl/forms/OtBHvhnIPGP2drP53>
 This should not take you more than a couple of minutes but will be very valuable for these two
 days.
 
