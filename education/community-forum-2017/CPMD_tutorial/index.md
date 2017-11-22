@@ -6,6 +6,9 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 
+* table of contents
+{:toc}
+
 Starting from the best pose provided by the HADDOCK procedure, we want
 to exploit the capability of CPMD[<sup>1</sup>](#one) and in particular its QM/MM
 approach in order to get a guess of the topology of the covalent
