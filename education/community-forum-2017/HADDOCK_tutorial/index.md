@@ -190,7 +190,7 @@ distance restraint between the sulfur atom of the targeted cysteine and the reac
 This distance is set to 1.8&Aring; &plusmn; 0.1&Aring;, consistent with the average length of a simple C-S bond. 
 This is done by creating a tbl file consisting of the following statement:
 
-    assign (segid A and name SG and resi 25) (segid B and name C0Q and resi 1) 1.8 0.1 0.1
+```assign (segid A and name SG and resi 25) (segid B and name C0Q and resi 1) 1.8 0.1 0.1```
 
 This file will be given to HADDOCK as an unambiguous distance restraint.
 
@@ -204,21 +204,34 @@ The main bottleneck when trying to "covalently dock" a small ligand is that we m
 
 > As an additional remark, the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) directly fetches topology and parameters for the small ligand from [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg). In the near future, we may want to allow users to provide their own set of topology/parameter files, which is for the moment only possible provided the user runs the command line version of the software (or bribe us to implement the parameter files in the production server).
 
-Apart from the modified residue discussed previously, three more points should require your attention:
+Apart from the modified residue discussed previously, some points must require your attention:
 - In the field `First Molecule`: we must provide manually the histidine protonation state. Pay attention to uncheck the automatic option and specify the following protonation states:
-    * 3KW9 (catK): HIE162 / HIE177
-    * 4AXM (catL): HIE140 / HIE163 / HID208
-    * 3N4C (catS): HIE142 / HIE164 / HIE188 / HID205
+    * 3KW9 (catK): **HIE162** / **HIE177**
+    * 4AXM (catL): **HIE140** / **HIE163** / **HID208**
+    * 3N4C (catS): **HIE142** / **HIE164** / **HIE188** / **HID205**
 - In the `Distance Restraints` menu: upload the tbl file as unambiguous restraints
-- In the `Distance Restraints` menu: by default, HADDOCK removes the non-polar hydrogen that might account for the tightly binding of the chemical. This option must be unchecked
-- In the `Sampling parameters` menu: please set the number of structure for explicit solvent refinement to 0 to skip the last refinement stage of HADDOCK. Since the ligand is pretty buried and in a rather dry pocket, we experienced that we achieve better results with the structures generated in the second/flexible stage of HADDOCK (it1)
-- In the field `Parameters for clutering`: the default clustering method in HADDOCK2.2 is [fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on pairwise residue contacts. If this method outperforms RMSD-based clustering for large systems, both in term of accuracy and speed, interface-RMSD remains a method of choice for small ligand docking. In the ‘Parameters for clustering’ section, please change the clustering method to RMSD and set the cutoff value for clustering to 2&Aring;
-- In the field `Energy and interaction parameters`: we must scale down the non-bonded intermolecular interaction to already bring the ligand deep in the pocket at the rigid body monimisation stage of HADDOCK. For this, we must scaling the intermolecular interactions for rigid body EM to 0.001
-- In the field `Advanced sampling parameters`: some advanced parameters for the sampling are too aggressive for protein-small molecule binding and must be reduced or removed to avoid the ligand being kicked out the binding pocket:
-    * number of MD steps for rigid body high temperature TAD = 0
-    * number of MD steps during first rigid body cooling stage = 0
+- In the `Distance Restraints` menu: by default, HADDOCK removes the non-polar hydrogen that might account for the 
+tightly binding of the chemical. This option must be **unchecked**
+- In the `Sampling parameters` menu: please set the number of structure for explicit solvent refinement to **0** to 
+skip the last refinement stage of HADDOCK. Since the ligand is pretty buried and in a rather dry pocket,
+ we experienced that we achieve better results with the structures generated in the second/flexible stage of HADDOCK (it1)
+- In the field `Parameters for clutering`: the default clustering method in HADDOCK2.2 is 
+[fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on 
+pairwise residue contacts. If this method outperforms RMSD-based clustering for large systems, both in term of accuracy 
+and speed, interface-RMSD remains a method of choice for small ligand docking. In the ‘Parameters for clustering’
+ section, please change the clustering method to **RMSD** and set the cutoff value for clustering to **2&Aring;**
+- In the field `Energy and interaction parameters`: we must scale down the non-bonded intermolecular interaction to 
+already bring the ligand deep in the pocket at the rigid body monimisation stage of HADDOCK. For this, we must scaling
+ the intermolecular interactions for rigid body EM to **0.001**
+- In the field `Advanced sampling parameters`: some advanced parameters for the sampling are too aggressive for 
+protein-small molecule binding and must be reduced or removed to avoid the ligand being kicked out the binding pocket:
+    * number of MD steps for rigid body high temperature TAD = **0**
+    * number of MD steps during first rigid body cooling stage = **0**
 
-Once all the web server options have been filled out, you can enter your username and password and click submit. The web form will first be validated. Once done it will be added to the job queue and start running when resources are available. Normally you will be notified by email once your job is added to the queue and afterwards on the continuation of your job.
+Once all the web server options have been filled out, you can enter your username and password and click submit. 
+The web form will first be validated. Once done it will be added to the job queue and start running when resources 
+are available. Normally you will be notified by email once your job is added to the queue and afterwards on the 
+continuation of your job.
 
 <!-- ## Analysis of the results
 
