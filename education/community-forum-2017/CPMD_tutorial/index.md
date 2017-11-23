@@ -738,12 +738,12 @@ that can be visualized on VMD by using the following selection that will
 be useful later to build the CPMD input file as well:
 
 ```
-index 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361
-362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379
-380 381 382 383 384 385 386 387 388 389 390 391 2401 2402 2403 2404 2405
-2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419
-2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 3264 3265
-3266 3267 3268 3269 3270 3271 3272 3273 3274 3275
+serial 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 
+363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 
+381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 
+2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 
+2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3263 3264 
+3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276
 ```
 
 Use VMD to understand how the final QM part has been determined and the
@@ -751,13 +751,13 @@ bond to cut selected. Then, save a PDB file with only the QM part and
 name it `QM.pdb`:[<sup>13</sup>](#thirteen)
 
 ```
-set QM [atomselect top "index 346 347 348 349 350 351 352 353 354 355
-356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373
-374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391
-2401 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414
-2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428
-2429 2430 2431 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274
-3275”]
+set QM [atomselect top "serial 347 348 349 350 351 352 353 354 355 356 
+357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 
+375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 
+2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 
+2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 
+2430 2431 2432 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 
+3274 3275 3276"]
 
 $QM writepdb QM.pdb
 ```
@@ -952,6 +952,35 @@ the current QM/MM interface of CPMD:
     ```
     vi gromos.crd
     ```
+    
+    A bash command to get the string of indices corresponding to the 
+    carbon (“C”) from the `gromos.crd` file is:
+    
+    ```
+    for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 
+    362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 
+    379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 
+    2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 
+    2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 
+    3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276; 
+    do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") 
+    print $4}' | tr '\n' ' '; echo
+    ```
+    
+    while to get the number of “C” atoms in the QM part:
+    
+    ```
+    for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 
+    362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 
+    379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 
+    2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 
+    2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 
+    3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276; 
+    do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") 
+    print $4}' | wc -l
+    ```
+    
+    and in a similar way for the other atomic species (“H”, “”N”, “O”, “S”).
 
 1.  The `ANGSTROM` keyword in the `&SYSTEM` section cannot be used, so any
     length has to be specified **in a.u.**
@@ -1105,14 +1134,14 @@ carbon atom has been developed “`C_GIA_DUM_AN_BLYP.oecp`” and it is
 provided in the tarball together the CPMD input files.
 
 Therefore, in the `&ATOMS` section we will need to add an additional
-entry, representing the monovalent carbon atoms (green balls in the picture) that saturate all the 6
-dangling bonds of our QM part:
+entry, representing the monovalent carbon atoms (green balls in the picture[<sup>22</sup>](#twentytwo)) 
+that saturate all the 6 dangling bonds of our QM part:
 
 ```
 *C_GIA_DUM_AN_BLYP.oecp KLEINMAN-BYLANDER
   LMAX=P
     6
-  343 392 2391 2432
+  344 393 2392 2433 3261 3277
 ```
 
 The addition of these 6 atoms in the QM part has to be taken into account when we calculate the size of the quantum simulation box.
@@ -1163,7 +1192,7 @@ observe the reaction with a simple **geometry optimization**, i.e. by
 minimizing the potential energy of the (quantum) system as a function of
 the nuclear coordinates. Unfortunately, all the geometry optimization
 algorithms in CPMD either do not work in combination with the QM/MM
-interface, or do support optimization of the QM atom positions only.[<sup>22</sup>](#twentytwo)
+interface, or do support optimization of the QM atom positions only.[<sup>23</sup>](#twentythree)
 Consequently, we have to use some “trick” to find a minimal energy
 structure (at QM/MM level). In particular, in this tutorial we will
 perform a _simulated annealing_ (keyword `ANNEALING IONS`), i.e. we run
@@ -1171,7 +1200,7 @@ a Car-Parrinello MD where gradually removing kinetic energy from the
 nuclei by multiplying velocities with a factor (in our case it is set to
 0.99, so 1% of the kinetic energy will be removed in every step).
 Here it is the `annealing.inp` file that performs this preliminary
-step:[<sup>23</sup>](#twentythree)
+step:[<sup>24</sup>](#twentyfour)
 
 ```
 &QMMM
@@ -1305,7 +1334,7 @@ CP stands for a Car-Parrinello type of MD.
 `EMASS`:	The fictitious electron mass in atomic units for the CP
 dynamics is read from the next line. We choose 600 a.u. but ideally a
 careful set of tests should be done to verify that adiabaticity conditions
-are met[<sup>24</sup>](#twentyfour): this and the following parameter are the only parameters to tune
+are met[<sup>25</sup>](#twentyfive): this and the following parameter are the only parameters to tune
 in order to decouple the electronic and ionic degrees of freedom in order
 to minimize their energy transfer (adiabatic condition needed to perform
 a correct Car-Parrinello MD).
@@ -1368,7 +1397,7 @@ Several files will be generated during a CPMD QM/MM simulation:
 
 The last two files are common to a simpler full QM simulation with CPMD as well.
 
-Let’s give a closer look at the output file `annealing.out`[<sup>25</sup>](#twentyfive) and find the following section:
+Let’s give a closer look at the output file `annealing.out`[<sup>26</sup>](#twentysix) and find the following section:
 
 ```
 CAR-PARRINELLO MOLECULAR DYNAMICS
@@ -1577,7 +1606,7 @@ There are several methods implemented in CPMD to heat the system.
 We choose to increase the target temperature by coupling the system to a
 thermostat and linearly increasing its target
 temperature at each step by performing a usual Car-Parrinello MD.
-A simple Berendsen-type thermostat[<sup>26</sup>](#twentysix) can be used for this step: it does not
+A simple Berendsen-type thermostat[<sup>27</sup>](#twentyseven) can be used for this step: it does not
 fully preserve the correct canonical ensemble but we are not interested
 to this feature at this stage and it is numerically fast and more stable
 than alternative algorithms.
@@ -1654,7 +1683,7 @@ cp ../HEATING/heating.inp   cpmd.inp
 To run a correct Car-Parrinello molecular dynamics we need to modify the previous input file according to the following prescriptions:
 
  - We want to restart from the previous wavefunction, coordinates and velocities since we want to use the temperature information from the “`RESTART`” file. Therefore, we keep the option `VELOCITIES` in the `RESTART` keyword and we will remove `TEMPERATURE` keyword.
- - We replace the Berendsen thermostat with the Nose-Hoover chains:[<sup>27</sup>](#twentyseven) this because unlike the Berendsen one this kind of thermostat preserves the Maxwell distribution of the velocities and there it allows sampling the correct canonical ensemble. In other words, it provides an NVT ensemble for a system in equilibrium.
+ - We replace the Berendsen thermostat with the Nose-Hoover chains:[<sup>28</sup>](#twentyeight) this because unlike the Berendsen one this kind of thermostat preserves the Maxwell distribution of the velocities and there it allows sampling the correct canonical ensemble. In other words, it provides an NVT ensemble for a system in equilibrium.
 The keyword that turns this algorithm on is `NOSE`, and then you have to specify the degrees of freedom to which you want to apply it (`IONS`); the target temperature in Kelvin and the thermostat frequency in cm-1 are read from the next line:
 
  ```
@@ -1688,9 +1717,19 @@ The keyword that turns this algorithm on is `NOSE`, and then you have to specify
  
  This way CPMD will create two restart files in sequence called `RESTART.1`, and `RESTART.2`, and it will overwrite them in the same sequence. 
 
-Running a physically correct Car-Parrinello MD simulation requires that the adiabaticity condition be met during the simulation, i.e. the separation of the electronic and ionic degrees of freedom be maintained along the entire trajectory.
-Theoretically, such separation can be achieved by separating the power spectrum of the orbital classical fields from the phonon spectrum of the ions (the gap between the lowest electronic frequency and the highest ionic frequency should be large enough). Since the electronic frequencies depend on the fictitious electron mass EMASS one should carefully optimize its value in order to set the lowest electronic frequency appropriately. 
-The adiabaticity can be verified by running test simulations with this setup and looking at the energy components. In particular, if adiabatic condition holds, the fictitious kinetic energy of the electronic degrees of freedom (`EKINC`, second column in the “`ENERGIES`” file) should keep small and must not have an increasing trend. In fact, only in this case the electronic structure can remain close to the Born-Oppenheimer surface and thus the wavefunction and the forces derived from this wavefunction can be physically meaningful. Therefore, we must monitor the behavior of the `EKINC` in order to verify that the system keeps being in the adiabatic regime and the production run simulation is physically meaningful:
+Running a physically correct Car-Parrinello MD simulation requires that the adiabaticity condition be met during the 
+simulation, i.e. the separation of the electronic and ionic degrees of freedom be maintained along the entire trajectory.
+Theoretically, such separation can be achieved by separating the power spectrum of the orbital classical fields from 
+the phonon spectrum of the ions (the gap between the lowest electronic frequency and the highest ionic frequency should 
+be large enough). Since the electronic frequencies depend on the fictitious electron mass EMASS one should carefully 
+optimize its value in order to set the lowest electronic frequency appropriately. 
+The adiabaticity can be verified by running test simulations with this setup and looking at the energy components. 
+In particular, if adiabatic condition holds, the fictitious kinetic energy of the electronic degrees of freedom 
+(`EKINC`, second column in the “`ENERGIES`” file) should keep small and must not have an increasing trend. In fact, 
+only in this case the electronic structure can remain close to the Born-Oppenheimer surface and thus the wavefunction 
+and the forces derived from this wavefunction can be physically meaningful. Therefore, we must monitor the behavior 
+of the `EKINC` in order to verify that the system keeps being in the adiabatic regime and the production run simulation 
+is physically meaningful:
 
 ```
 TOTAL INTEGRATED ELECTRONIC DENSITY
@@ -1881,7 +1920,7 @@ considered as a **1-molecule** solute.
 
 <a name="thirteen">[13]</a> One could guess that side chain of the TRP26:
 
-`index 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391`
+`serial 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392`
 
 is not relevant for the chemical reaction to occur. This would reduce
 the QM part to 75 atoms. This is also a possible, smaller and therefore
@@ -1917,22 +1956,26 @@ be downloaded at the link:
 <a name="twentyone">[21]</a> O. A. v. Lilienfeld, D. Sebastiani, I. Tavernelli, and U.
 Rothlisberger, Phys. Rev. Lett. 93, 153004 (2004).
 
-<a name="twentytwo">[22]</a> Sometimes, it could be worth trying such a
+<a name="twentytwo">[22]</a>Note that the picture reports the “index” of the atoms, while 
+the “serial”, which corresponds at the sequential index inside gromos.crd file, in VMD differs 
+for 1: “serial” starts to count from 1, while “index” from 0.
+
+<a name="twentythree">[23]</a> Sometimes, it could be worth trying such a
 partial optimization. Test it also in this case.
 
-<a name="twentythree">[23]</a> The CPMD input files can be download from the following link:
+<a name="twentyfour">[24]</a> The CPMD input files can be download from the following link:
 <https://www.dropbox.com/s/ouypmhxomzmfofg/qmmm.tar.gz>
 
-<a name="twentyfour">[24]</a> <http://www.theochem.ruhr-uni-bochum.de/research/marx/marx.pdf>
+<a name="twentyfive">[25]</a> <http://www.theochem.ruhr-uni-bochum.de/research/marx/marx.pdf>
 
-<a name="twentyfive">[25]</a> For a more exhaustive description of the
+<a name="twentysix">[26]</a> For a more exhaustive description of the
 CPMD log file see the introductory QM/MM tutorial:
 <https://www.dropbox.com/s/2b0qgfkd991l2f3/QMMM_Tutorial_EMBL-EBI.pdf>
 
-<a name="twentysix">[26]</a> H. J. C. Berendsen, J. P. M. Postma,
+<a name="twentyseven">[27]</a> H. J. C. Berendsen, J. P. M. Postma,
 W. F. van Gunsteren, A. DiNola, J. R. Haak J. Chem. Phys, 81, 3684 (1984).
 
-<a name="twentyseven">[27]</a> S. Nosé and M. L. Klein, Mol. Phys. 50,
+<a name="twentyeight">[28]</a> S. Nosé and M. L. Klein, Mol. Phys. 50,
 1055 (1983); S. Nosé, Mol. Phys. 52, 255 (1984); S. Nosé, J. Chem. Phys.
 81, 511 (1984);  S. Nosé, Prog. Theor. Phys. Suppl. 103, 1 (1991); W. G.
 Hoover, Phys. Rev. A 31, 1695 (1985).
