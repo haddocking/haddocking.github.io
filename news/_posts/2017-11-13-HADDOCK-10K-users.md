@@ -32,7 +32,7 @@ Since June 2008, the server has processed over 180'000 docking runs, about 35% o
 <a href="http://www.bioexcel.eu"><img src="/images/Bioexcel_logo-small.png"></a>
 <p>
 <a href="http://ec.europa.eu/programmes/horizon2020/en/h2020-section/research-infrastructures-including-e-infrastructures"><img height="30" src="/images/H2020_logo-small.png"></a>
-
+</center>
 
 
 
