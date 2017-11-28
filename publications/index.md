@@ -4,6 +4,10 @@ image:
   feature: pages/banner_publications-mini.jpg
 ---
 
+## 2018 
+* S. Narasimhan, D. Mance, C. Pinto, M. Weingarth, **A.M.J.J. Bonvin** and Marc Baldus.
+[Rapid Prediction of Multi-dimensional NMR Data Sets Using FANDAS](http://dx.doi.org/10.1007/978-1-4939-7386-6_6). In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, 111-132 (2018).
+
 ## 2017 
 <hr />
 * J. Schaarschmidt, B. Monastyrskyy, A.y Kryshtafovych and **A.M.J.J. Bonvin**. [Assessment of Contact Predictions in CASP12: Co-Evolution and Deep Learning Coming of Age](http://dx.doi.org/10.1002/prot.25407). 
