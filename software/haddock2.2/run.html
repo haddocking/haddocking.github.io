@@ -662,9 +662,8 @@ and the solvent molecules.
 <BR>
 <a name="scoring"><b>21. <u>Scoring</u></b></a> <a href="/software/haddock2.2/scoring.png"><img src="http://www.bonvinlab.org/software/haddock2.2/camera.jpg" alt="(screenshot)"></a>
 <BR><BR>
-In this section you can define individual weigths for the various terms using in scoring. This can be done separately  for the various docking stages (rigid body, semi-flexible refinement and explicit solvent refinement).
-You can also define the number of structures to analyze after the simulated annealing (it1) and
-explicit solvent refinement (water).
+In this section you can define individual weigths for the various terms using in scoring. This can be done separately for the various docking stages (rigid body (it0), semi-flexible refinement (it1) and explicit solvent refinement(water)).
+You can also define the number of structures to analyze after the simulated annealing and explicit solvent refinement.
 <BR><BR>
 This version of HADDOCK offers a fully flexible scoring scheme since the weight of the
 various energy terms can be defined separately for each phase of the docking. The scoring is
@@ -697,7 +696,25 @@ weight for the BSA term (if included) to favor larger interfaces.
                 redefine the electrostatic weights for scoring of it0 and it1 structures since these have been
                 optimized for the current default settings. 
 </ul>
-Finally, you can define a "skipping" parameter that allows you to sample more solutions from
+<BR><BR>
+The default scoring function settings of HADDOCK are for protein-protein complexes and use the following weights:
+<BR><BR>
+<pre>
+     HADDOCKscore-it0   = 0.01 Evdw + 1.0 Eelec + 1.0 Edesol + 0.01 Eair - 0.01 BSA
+     
+     HADDOCKscore-it1   =  1.0 Evdw + 1.0 Eelec + 1.0 Edesol +  0.1 Eair - 0.01 BSA
+
+     HADDOCKscore-water =  1.0 Evdw + 0.2 Eelec + 1.0 Edesol +  0.1 Eair
+</pre>
+<ul>
+<b>Note:</b> Additional terms are used if other types of experimental restraints are used. Refer to run.cns for their default settings
+<BR><BR>
+<b>Note:</b> For protein-ligand (small molecule) docking we recommend to change the weight of Evdw(it0) to 1.0 and Eelec(water) to 0.1.
+<BR><BR>
+<b>Note:</b> For protein-nucleic acids docking we recommend to set the Edesol weight to 0 for all stages
+</ul>
+<BR><BR>
+In this section, you can also define a "skipping" parameter that allows you to sample more solutions from
 the rigid body EM docking (it0). If the value <i>x</i> of this <i>skip</i> parameter is larger than 0 then every <i>(x+1)th</i> structure from it0 starting from the first structure will be further 
 refined in the semi-flexible simulated annealing.
 <BR><BR>
