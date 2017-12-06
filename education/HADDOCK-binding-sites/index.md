@@ -321,7 +321,30 @@ RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.75 for FCC) -> 2.0
 </a>
 
 
-* **Step 7:** Apply some ligand-specific setting. For this unfold the **Advanced sampling parameter menu**:
+* **Step 7:** Apply some ligand-specific scoring setting. For this unfold the **Scoring parameter menu**:
+
+Our recommended HADDOCK score settings for small ligands docking are the following:
+
+<pre>
+     HADDOCKscore-it0   = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol + 0.01 Eair - 0.01 BSA
+     
+     HADDOCKscore-it1   = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol +  0.1 Eair - 0.01 BSA
+
+     HADDOCKscore-water = 1.0 Evdw + 0.1 Eelec + 1.0 Edesol +  0.1 Eair
+</pre>
+
+This differs from the defaults setting (defined for protein-protein complexes). We recommend to change two weights for protein-ligand docking:
+
+<a class="prompt prompt-info">
+Evdw 1 -> 1.0
+</a>
+
+<a class="prompt prompt-info">
+Eelec 3 -> 0.1
+</a>
+
+
+* **Step 8:** Apply some ligand-specific protocol setting. For this unfold the **Advanced sampling parameter menu**:
 
 <a class="prompt prompt-info">
 initial temperature for second TAD cooling step with flexible side-chain at the inferface -> 500
@@ -350,20 +373,9 @@ Once your run has completed (this can take quite some time considering the size 
 
 Instead, you can also use the precalculated run. Simply unpack the archive (see the [Setup](#setup) section for downloading the archives), go into the directory and open with your favorite web browser the index.html file to view the results page.
 
-Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the result page will report an error in the clustering of solutions. 
+Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the minimum number of structures per cluster will have automatically reduced to 2 or even 1 in order to produce a result page. If 1, then the clusters reported on the web page will correspond to the top10 ranked models.
 
-<pre>
-Status: FAILED
-Your run completed successfully, but there was an error in the clustering of the solutions.
-The complete run can be downloaded as a gzipped tar file <b>here</b>
-
-If you are unsure how to correct the error, visit the HADDOCK website, check out the HADDOCK discuss group, or send a mail to haddock.support@gmail.com
-
-The output of HADDOCK is <b>here</b>.
-The file containing your docking parameters is <b>here</b>.
-</pre>
-
-This is due to the limited sampling and not enough models clustering together. You can still download the full run as a gzipped tar archive and inspect the results. Copy for this the link provided in the result page and download the archive with:
+You can download the full run as a gzipped tar archive and inspect the results. Copy for this the link provided in the result page and download the archive with:
 
 <a class="prompt prompt-linux">
 curl -L -O \<link\>
@@ -581,13 +593,18 @@ The most contacted residues are found at the head of this file:
 awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \|head -5
 </a>
 
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary>
 <pre>
- 187 2717 A
- 172 2830 A
- 166 2715 A
- 164 2566 A
- 164 2029 A
+ 198 2717 A
+ 171 2566 A
+ 166 2830 A
+ 158 2715 A
+ 154 2029 A
 </pre>
+</details>
+<br>
+
 
 And the less often contacted residues at the bottom:
 
@@ -595,24 +612,28 @@ And the less often contacted residues at the bottom:
 awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \|tail -5
 </a>
 
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary>
 <pre>
-   1 2193 A
-   1 2158 A
+   1 2379 A
+   1 2351 A
+   1 2329 A
+   1 2200 A
    1 2132 A
-   1 2094 A
-   1 2056 A
 </pre>
+</details>
+<br>
 
 Let us now extract the list of the top 10% most contacted residues (change the value in the head statement if required) and store it to a new file:
 
 <a class="prompt prompt-cmd">
-awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \| head -84 > AcrB-rifampicin-surface-full-contacts-top10.lis
+awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \| head -n 82 > AcrB-rifampicin-surface-full-contacts-top10.lis
 </a>
 
 We can now encode this information in a PDB file to visualize the defined binding site:
 
 <a class="prompt prompt-cmd">
-pdb_b.py -1 ../2J8S-renumbered.pdb \|pdb_chain.py -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
+pdb_b.py -1 $WDIR/../pdbs/2J8S-renumbered.pdb \|pdb_chain.py -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
 $WDIR/encode-contacts.csh AcrB-rifampicin-surface-full-contacts-top10.lis AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
 </a>
 
@@ -642,10 +663,13 @@ We can extract their number from the top 10 contact statistics file with:
 awk \'$2>2550 && $2<2725\' AcrB-rifampicin-surface-full-contacts-top10.lis \| awk \'{printf \"%s, \", $2}\'
 </a>
 
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary>
 <pre>
-2717, 2715, 2566, 2645, 2676, 2664, 2662, 2690, 2562, 2689, 2677, 2678, 2561, 2722, 2666, 2694, 2718, 2674, 2580, 2649, 2579, 2667, 2577, 2675, 2564, 2716, 2560, 2565, 2721, 2720,
+2717, 2566, 2715, 2722, 2676, 2562, 2677, 2678, 2645, 2561, 2580, 2690, 2694, 2662, 2579, 2674, 2675, 2689, 2718, 2664, 2560, 2667, 2564, 2693, 2716, 2700, 2666, 2563, 2565, 2554, 2577, 2601
 </pre>
-
+</details>
+<br>
 Save this list since we will need it to setup the targeted docking run.
 
 
@@ -674,8 +698,18 @@ Selection 2: Active residues (directly involved in the interaction) -> enter her
 Click on submit and save the resulting page, naming it AcrB-rifampicin-act-act.tbl
 </a>
 
+**Note:** This works best with Firefox. Currently when using Chrome, saving as text writes the wrong info to file. In that case copy the content of the page and paste it in a text file.
+
+**Note:** Avoid Safari for the time being - it is giving problems (we are working on it).
+
 Now repeat the above steps, but this time entering the list of residues for the binding pocket into the passive residue list.
 Save the resulting restraint file as AcrB-rifampicin-pass-act.tbl
+
+**Note:** Two pre-generated distance restraints files are available in the `runs` directory:
+<pre>
+    AcrB-rifampicin-act-act.tbl
+    AcrB-rifampicin-pass-act.tbl
+</pre>
 
 The number of distance restraints defined in those file can be obtained by counting the number of times that an ```assign``` statement is found in the file, e.g.:
 
@@ -768,7 +802,30 @@ RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.75 for FCC) -> 2.0
 Last iteration (0-2) -> 0 (this defines that the ambiguous restraints (the act-act file) will only be used in iteration 0 (rigid-body docking)
 </a>
 
-* **Step 7:** Apply some ligand-specific setting. For this unfold the **Advanced sampling parameter menu**:
+* **Step 7:** Apply some ligand-specific scoring setting. For this unfold the **Scoring parameter menu**:
+
+Our recommended HADDOCK score settings for small ligands docking are the following:
+
+<pre>
+     HADDOCKscore-it0   = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol + 0.01 Eair - 0.01 BSA
+     
+     HADDOCKscore-it1   = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol +  0.1 Eair - 0.01 BSA
+
+     HADDOCKscore-water = 1.0 Evdw + 0.1 Eelec + 1.0 Edesol +  0.1 Eair
+</pre>
+
+This differs from the defaults setting (defined for protein-protein complexes). We recommend to change two weights for protein-ligand docking:
+
+<a class="prompt prompt-info">
+Evdw 1 -> 1.0
+</a>
+
+<a class="prompt prompt-info">
+Eelec 3 -> 0.1
+</a>
+
+
+* **Step 8:** Apply some ligand-specific setting. For this unfold the **Advanced sampling parameter menu**:
 
 <a class="prompt prompt-info">
 initial temperature for second TAD cooling step with flexible side-chain at the inferface -> 500
