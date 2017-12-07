@@ -389,7 +389,7 @@ intermediate calculations to prepare the system are comfortably small to run on 
 
 The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For 
 simplicity, we provide these files in our [GitHub 
-repository](https://github.com/haddocking/molmod-data/master/mdp)) and also already in our virtual image, 
+repository](https://github.com/haddocking/molmod-data)) and also already in our virtual image, 
 if you are using it (see `$MOLMOD_DATA/mdp/`). These parameters specify, for example, the cutoffs 
 used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each 
 atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the 
