@@ -19,6 +19,9 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Cristina Paissoni
+    status: visiting postdoc
+
 -   name: Anna Vangone
     status: postdoc
 
@@ -197,6 +200,9 @@
     status: student
 
 -   name: Mick Walter
-    position: M.Sc Student
     status: student
+
+-   name: Floor van der Valk
+    status: student
+
 
