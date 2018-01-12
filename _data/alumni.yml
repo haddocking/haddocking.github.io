@@ -141,7 +141,7 @@
 
 -   name: Venkata Krishnan Ramaswamy
     current: 'Cagliari University, Italy'
-    position: visiting-phd
+    status: visiting-phd
 
 -   name: Siddarth Narasimhan
     url: http://www.uu.nl/nmr
@@ -203,6 +203,14 @@
     status: student
 
 -   name: Floor van der Valk
+    status: student
+
+-   name: Leander Goldbach
+    current: M.Sc Student UU
+    status: student
+
+-   name: Bastiaan de Graaf
+    current: M.Sc Student UU
     status: student
 
 
