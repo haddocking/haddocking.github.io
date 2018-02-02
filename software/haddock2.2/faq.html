@@ -219,9 +219,9 @@ as no password is needed. See for that:<br>
 <BR>
 <hr>
 <BR>
-<a name="batch"><b><u> Running HADDOCK on a cluster using a queuing system (e.g. PBS or Torque)</u></b></a>
+<a name="queue"><b><u> Running HADDOCK on a cluster using a queuing system (e.g. PBS or Torque)</u></b></a>
 <BR><BR>
-In order to submit to the queueing system we use typically a wrapper script that will add some directives to the job files. Here is one example of such a wrapper script called <i>ssub</i> that would submit to the default queue:<BR>
+In order to submit to the queuing system we use typically a wrapper script that will add some directives to the job files. Here is one example of such a wrapper script called <i>ssub</i> that would submit to the default queue:<BR>
 <pre>
 #!/bin/csh -f
 if ($#argv < 1) then
