@@ -20,7 +20,7 @@ We will collect here frequently occorring problems and solutions. The following 
    <li> <a href="#cluster">Clustering issues</a>
    <li> <a href="#segments">Increasing the number of flexible segments</a>
    <li> <a href="#batch">Running in batch mode without a queuing system</a>
-   <li> <a href="#queue">Running in batch mode using a queuing system</a>
+   <li> <a href="#batchqueue">Running in batch mode using a queuing system</a>
    <li> <a href="#ligand">Small ligands docking with HADDOCK</a>
 </ul>
 <hr>
@@ -219,7 +219,7 @@ as no password is needed. See for that:<br>
 <BR>
 <hr>
 <BR>
-<a name="queue"><b><u> Running HADDOCK on a cluster using a queuing system (e.g. PBS or Torque)</u></b></a>
+<a name="batchqueue"><b><u> Running HADDOCK on a cluster using a queuing system (e.g. PBS or Torque)</u></b></a>
 <BR><BR>
 In order to submit to the queuing system we use typically a wrapper script that will add some directives to the job files. Here is one example of such a wrapper script called <i>ssub</i> that would submit to the default queue:<BR>
 <pre>
