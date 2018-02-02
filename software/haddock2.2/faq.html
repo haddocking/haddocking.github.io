@@ -19,7 +19,8 @@ We will collect here frequently occorring problems and solutions. The following 
    <li> <a href="#domain">Domain definition for docking</a>
    <li> <a href="#cluster">Clustering issues</a>
    <li> <a href="#segments">Increasing the number of flexible segments</a>
-   <li> <a href="#batch">Running in batch mode using a queuing system</a>
+   <li> <a href="#batch">Running in batch mode without a queuing system</a>
+   <li> <a href="#queue">Running in batch mode using a queuing system</a>
    <li> <a href="#ligand">Small ligands docking with HADDOCK</a>
 </ul>
 <hr>
@@ -179,12 +180,9 @@ definition.
 <BR>
 <hr>
 <BR>
-<a name="batch"><b><u> Running in batch mode using a queuing system</u></b></a>
+<a name="batch"><b><u> Running in batch mode without a queuing system</u></b></a>
 <BR><BR>
-There are several ways to run HADDOCK in batch mode on cluster. Here are a few examples provides by users.
-<BR><BR>
-<u>Running HADDOCK on a cluster without queuing system</u><BR><BR>
-<i> a contribution from Melissa Stauffer, Vanderbilt University, USA</i>
+<i> A contribution from Melissa Stauffer, Vanderbilt University, USA</i>
 <BR><BR>
 Here is a description of the setup on a Linux cluster that has no queuing system
 installed. It has a head node/firewall with 16 dual-cpu compute nodes
@@ -203,9 +201,14 @@ Then, in the run.cns file, we define our "queues" like:
 {===>} queue_1="rsh node1 ~/bin/haddock_wrapper";
 {===>} cns_exe_1="cns";
 {===>} cpunumber_1=2;
+
+{===>} queue_2="rsh node1 ~/bin/haddock_wrapper";
+{===>} cns_exe_2="cns";
+{===>} cpunumber_2=2;
+
+...
 </pre>
-...etc - one "queue" for each compute node to be included in this haddock
-run.
+etc - one "queue" for each compute node to be included in this haddock run.
 <br>
 <br>
 If rsh is blocked, you can use instead ssh, but for this to work you need to set up ssh such
@@ -213,47 +216,72 @@ as no password is needed. See for that:<br>
 <a href="http://www.astro.caltech.edu/~mbonati/WIRC/manual/DATARED/setting_up_no-password_ssh.html">http://www.astro.caltech.edu/~mbonati/WIRC/manual/DATARED/setting_up_no-password_ssh.html</a>
 <br>
 (Thanks to Andrea Spitaleri)
-<BR><BR><BR>
-<u>Running HADDOCK on a cluster using the <a href="http://www.openpbs.org">PBS</a> queuing system</u><BR><BR>
-<i> a contribution from Nuno Ferreira, Universidade de Coimbra, Portugal</i>
+<BR>
+<hr>
+<BR>
+<a name="batch"><b><u> Running HADDOCK on a cluster using a queuing system (e.g. PBS or Torque)</u></b></a>
 <BR><BR>
-Here is an example on how to run HADDOCK in two nodes with PBS queuing system.
-<BR><BR>
-<lo> Write a batch executable script
-<BR><BR>
---> <i>masterqueue</i> is the routing queue<br>
---> <i>clustermaster</i> is the head, where you submit the job<br>
---> <i>node1</i> and <i>node2</i> are the name of the two requested nodes<br>
---> after editing all the files, submit job with qsub job.pbs<br>
-<BR><BR>
-The PBS script (job.pbs) should look like:
-<BR><BR>
+In order to submit to the queueing system we use typically a wrapper script that will add some directives to the job files. Here is one example of such a wrapper script called <i>ssub</i> that would submit to the default queue:<BR>
 <pre>
-#!/bin/bash
-#PBS -q masterqueue@clustermaster
-#PBS -l nodes=1:node1+1:node2
-#PBS -l cput=24:00:00
-#PBS -N haddock_test
-#PBS -o haddock.out
-#PBS -e haddock.err
+#!/bin/csh -f
+if ($#argv < 1) then
+  echo "Usage : ssub jobname"
+  exit 1
+endif
 
-cd /home/haddock/e2a-hpr/run1
-/usr/bin/python $HADDOCK/Haddock/Runhaddock.py
+# check if job exists + make it executable
+set jobname=$1
+if (! -e $1) then
+  echo "job file does not exist"
+  exit 1
+endif
+if (! -x $jobname) chmod +x $jobname
+
+# write temporary pbs script
+set pbsjob=$jobname.pbsjob.$$
+if (! -e $pbsjob) then
+  touch $pbsjob
+else
+  \rm $pbsjob
+  touch $pbsjob
+endif
+set PWD=`pwd`
+
+echo "#PBS -S" $SHELL >> $pbsjob
+set outfile=$PWD/$jobname.out.$$ >> $pbsjob
+echo "#PBS -o $outfile" >> $pbsjob
+set errorfile=$PWD/$jobname.err.$$ >> $pbsjob
+echo "#PBS -e $errorfile" >> $pbsjob
+echo "#PBS -m n" >> $pbsjob
+echo "cd $PWD" >> $pbsjob
+echo "./$jobname" >>$pbsjob
+
+chmod +x $pbsjob
+qsub -j eo $pbsjob
+rm -rf $pbsjob
+exit
 </pre>
 <BR>
-<lo> Change your run.cns script
-<BR><BR>
+<lo> Change your run.cns script (here we assume <i>ssub</i> is in your path, otherwise give the full path to it):
+<BR>
 <pre>
-{===>} queue_1="rsh node1 /home/haddock/e2a-hpr/haddock_wrapper";
-{===>} cns_exe_1="/home/cns_solve_1.1_ev67/dec-alpha-linux/bin/cns";
-{===>} cpunumber_1=1;
-
-{===>} queue_2="rsh node2 /home/haddock/e2a-hpr/haddock_wrapper";
-{===>} cns_exe_2="/home/cns_solve_1.1_ev67/dec-alpha-linux/bin/cns";
-{===>} cpunumber_2=1;
+{===>} queue_1="ssub";
+{===>} cns_exe_1="/home/software/software/cns_solve_1.31-UU/intel-x86_64bit-linux/bin/cns";
+{===>} cpunumber_1=100;
 </pre>
-<BR><BR>
-haddock_wrapper is a script similar to the one described above.
+<BR>
+This will cause HADDOCK to submit 100 jobs simultaneously to the batch system. Once a structure comes back the next job will be submitted.
+You can adapt the wrapper script to submit to specific queues.
+<br><br>
+Note that since the rigid-body docking jobs (it0) are usually very fast, it is possible to bundle a number of those into a single job to avoid overloading the batch system.
+For this edit in your HADDOCK installation the following file: <i>Haddock/Main/QueueSubmit_concat.py</i> and change the value of <i>jobmax["it0"]</i>. 
+In the following example, 5 docking jobs would be concatenated into one job for it0:
+<BR>
+<pre>
+jobmax["it0"] = 5
+jobmax["it1"] = 1
+jobmax["water"]= 1
+</pre>
 <BR>
 <hr>
 <BR>
