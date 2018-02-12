@@ -182,7 +182,7 @@ We have all input data required to run DisVis. To launch the run go to:
 
 On this page, you will find the most relevant information about the server. 
 
-### Step1: Register to the server
+* **Step1:** Register to the server
 
 [Register][link-disvis-register]{:target="_blank"} for getting access to the web server (or use the credentials provided to you).
 
@@ -190,7 +190,7 @@ You can click on the "**Register**" menu from any DisVis page and fill the requi
 Registration is not automatic but is usually processed within 12h, so be patient.
 
 
-### Step2: Define the input files and parameters and submit
+* **Step2:** Define the input files and parameters and submit
 
 Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:target="_blank"}.
 
@@ -217,9 +217,9 @@ You can however choose to perform a `complete scanning`, which should give more 
 
 
 <hr>
-## Analysing the results
+## Analysing the DisVis results
 
-### Web server output
+**Web server output**
 
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification). 
