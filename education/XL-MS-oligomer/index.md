@@ -448,7 +448,7 @@ Answer the following questions:
 
 <a class="prompt prompt-question"><b>Q9:</b>  Considering the HADDOCK scores and their standard deviation, is the top-ranked cluster significantly better than the second one?</a>
 
-<a class="prompt prompt-question"><b>Q10:</b>  Which cluster does have the smallest restraints violation energy (meaning it satisfies best the cross-link restraints) ?</a>
+<a class="prompt prompt-question"><b>Q10:</b>  Which cluster has the smallest restraints violation energy (meaning it satisfies best the cross-link restraints) ?</a>
 
 Now download the top model of each cluster and inspect them in PyMol:
 
