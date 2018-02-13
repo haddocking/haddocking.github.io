@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Modelling an homo-oligomeric complex from MS cross-links"
+title: "Modelling a homo-oligomeric complex from MS cross-links"
 excerpt: "A small tutorial making use of our DisVis and HADDOCK web servers to define the oligomeric state of a homomeric complex from MS cross-linking data."
 tags: [DisVis, Interaction, HADDOCK, 26S proteasome, Chimera, Visualisation]
 image:
