@@ -15,9 +15,9 @@ This tutorial consists of the following sections:
 <hr>
 ## Introduction
 
-In this tutorial, your task is to determine the oligomeric state of a homomeric complex and model its 3D structure, based on cross-linking data obtained by mass spectrometry.
+In this tutorial, your task is to determine the oligomeric state of a homomeric symmetrical complex and model its 3D structure, based on cross-linking data obtained by mass spectrometry.
 Note that for the purpose of this tutorial we are using simulated data that would correspond to rather short cross-linkers that are not amino-acid specific.
-We are also assuming that all detected cross-links are highlight reliable, i.e. there are no false positives in our data. 
+We are also assuming that all detected cross-links are highly reliable, i.e. there are no false positives in our data. 
 (This differs thus from our [DisVis Webserver Tutorial](/education/disvis-webserver) in which you first have to identify false positives). 
 
 You will first use our DisWis web server to analyse the data and visualise the accessible interaction space defined by the cross-links.
@@ -45,6 +45,10 @@ _J. Mol. Biol._. *429(3)*, 399-407 (2016).
 * G.C.P. van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries, A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}
 _J. Mol. Biol._ *428(4)*, 720-725 (2016).
+
+* S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
+[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).
 
 Further, multi-body docking and the use of symmetry restraints is described in the following paper:
 
