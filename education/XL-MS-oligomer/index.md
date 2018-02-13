@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Modelling an homo-oligomeric complex from MS cross-links"
-excerpt: "A small tutorial making use of our DisVis and HADDOCK web servers to define the oligomeric state of a homomeric complex from MS cross-linking datap."
+excerpt: "A small tutorial making use of our DisVis and HADDOCK web servers to define the oligomeric state of a homomeric complex from MS cross-linking data."
 tags: [DisVis, Interaction, HADDOCK, 26S proteasome, Chimera, Visualisation]
 image:
   feature: pages/banner_education-thin.jpg
@@ -17,10 +17,10 @@ This tutorial consists of the following sections:
 
 In this tutorial, your task is to determine the oligomeric state of a homomeric complex and model its 3D structure, based on cross-linking data obtained by mass spectrometry.
 Note that for the purpose of this tutorial we are using simulated data that would correspond to rather short cross-linkers that are not amino-acid specific.
-We are also assuming that all detected cross-links are highlight reliable, i.e. there are no false positives in our data. 
+We are also assuming that all detected cross-links are highly reliable, i.e. there are no false positives in our data. 
 (This differs thus from our [DisVis Webserver Tutorial](/education/disvis-webserver) in which you first have to identify false positives). 
 
-You will first use our DisWis web server to analyse the data and visualise the accessible interaction space defined by the cross-links.
+You will first use our DisVis web server to analyse the data and visualise the accessible interaction space defined by the cross-links.
 Based on those results you should then make a choice about the putative oligomeric state of the complex (e.g. homodimer, homotrimer, homotetramer,...) 
 and then try to model its 3D structure using our HADDOCK web portal. This means defining the cross-links as distance restraints to guide the docking 
 and imposing symmetry restraints to generate the proper homomeric complex. Those two aspects are described in two related online tutorials:
@@ -54,7 +54,7 @@ _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author versio
 
 
 Throughout the tutorial, coloured text will be used to refer to questions, 
-instructions, and PyMol/Chimera commands.
+instructions, and PyMol commands.
 
 <a class="prompt prompt-question">This is a question prompt: Answer it! (This will be part of the report you should submit)</a>
 <a class="prompt prompt-info">This is an instruction prompt: follow it!</a>
@@ -86,7 +86,7 @@ Residue 135 <-> 158
 Residue 161 <-> 132
 </pre>
 
-In principle, since we are dealing with a homomeric complex, we don't know if those cross-links are intra or intermolecular.
+In principle, since we are dealing with a homomeric complex, we don't know if those cross-links are intra- or intermolecular.
 Based on the cross-linking reaction we assume here a maximum distance between CA carbons of 10Å. Let us first inspect the structure and 
 check if those cross-links could be explained by intramolecular links. 
 
@@ -111,7 +111,7 @@ Highlight the residues involved in cross-links:
   show sphere, sele<br>
 </a>
 
-The CA atoms of those residues are now shown as sheres.
+The CA atoms of those residues are now shown as spheres.
 Let's now measure the intramolecular distances corresponding to the detected cross-links:
 
 <a class="prompt prompt-pymol">
@@ -121,14 +121,14 @@ Let's now measure the intramolecular distances corresponding to the detected cro
   distance name CA and resid 161, name CA and resid 132<br>
 </a>
 
-This creates five objects called dist01...dist05. You toggle them on and off in the right panel by clicking on them. Check for each the reported distance.
+This creates five objects called dist01...dist05. You toggle them on and off in the right panel by clicking on them. Check the reported distance for each .
 
 <a class="prompt prompt-question">
-<b>Q1:</b> Can any of the cross-links be explained by in intramolecular contact?
+<b>Q1:</b> Can any of the cross-links be explained by an intramolecular contact?
 Or differently said, is any of those distances shorter than 10Å?
 </a>
 
-In case you do identify a crosslink that could be explained by an intramolecular contact (within the same monomer), exclude it from all steps in the remaining of this tutorial.
+In case you do identify a crosslink that could be explained by an intramolecular contact (within the same monomer), exclude it from all steps in the remaining part of this tutorial.
 
 <hr>
 ## Visualizing the accessible interaction space with DisVis
@@ -213,7 +213,7 @@ The runtime of this example case is below  5 minutes on our local CPU and grid G
 pre- and post-processing steps might substantially increase the time until the results are available.
 
 The default on the server is to perform a `quick scanning` (meaning `15.00°` rotational sampling and `2.0Å` grid) in order to get results in a reasonable time.
-You can however choose to perform a `complete scanning`, which should give more reliable results (`9.72°` rotational sampling and `1.0Å` grid). The result of such
+You can however choose to perform a `complete scanning`, which should give more reliable results (`9.72°` rotational sampling and `1.0Å` grid). 
 
 
 <hr>
@@ -257,7 +257,7 @@ Take your time to analyse the output of DisVis and try to answer the following q
 
 Looking at the `z-Score` section, the DisVis output does highlight some restraints as likely false positives. 
 Remember however that we have full trust in our cross-links. 
-So we don't expect any false positives. Look now at the pictures visualising the accessible space is the `Accessible Interaction Space` section.
+So we don't expect any false positives. Look now at the pictures visualising the accessible space in the `Accessible Interaction Space` section.
 Change the value of the slider `Current Level (N)`. Changing its value changes the displayed accessible space, showing the space consistent with N cross-links.
 
 <a class="prompt prompt-question"> <b>Q4:</b> Do you observe a continuous density?</a>
@@ -266,10 +266,10 @@ Change the value of the slider `Current Level (N)`. Changing its value changes t
 
 Now set the `Current Level (N)` to its maximum value and look at the view from the top of the structure (i.e. looking down the helices) (you can toggle between different views by clicking on the arrows on the side of the picture):
 
-<a class="prompt prompt-question"><b>Q6:</b> Considering the shape of the molecule and the assessible interaction space, what would be your guess of the oligomerisation state of this complex?</a>
+<a class="prompt prompt-question"><b>Q6:</b> Considering the shape of the molecule and the accessible interaction space, what would be your guess of the oligomeric state of this complex?</a>
 
 
-The next step in this tutorial will be to model the complex based on the cross-links and the oligomerisation state you think if the correct one from the DisVis analysis.
+The next step in this tutorial will be to model the complex based on the cross-links and the oligomeric state you think if the correct one from the DisVis analysis.
 
 
 ## Modelling the symmetrical homomeric complex using HADDOCK
@@ -286,7 +286,7 @@ Here we will use HADDOCK in order to model the symmetrical oligomeric state of t
 2. [Center-of-mass restraints](http://www.bonvinlab.org/software/haddock2.2/run/#disre) to bring the subunits together and ensure compact solutions
 3. [Symmetry restraints](http://www.bonvinlab.org/software/haddock2.2/run/#sym) to define the symmetry of the assembly.
 
-For this you will make use of the [multi-body docking interface][link-haddock-multi]{:target="_blank"} our 
+For this you will make use of the [multi-body docking interface][link-haddock-multi]{:target="_blank"} of our 
 [HADDOCK web portal][link-haddock-web]{:target="_blank"}. This does require guru level access (provided with course credentials if given to you, 
 otherwise [register][link-haddock-register]{:target="_blank"} to the server and request this access level)
 
@@ -295,7 +295,7 @@ Before setting up the docking we need first to generate the distance restraint f
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
 be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
 
-Distance restraints are defined as:
+Distance restraints are defined as follows:
 
 <pre>
 assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
@@ -312,8 +312,8 @@ The syntax for the selections can combine information about:
 
 Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual][link-cns]{:target="_blank"}.
 
-Here would be an example of a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an 
-allowed distance range between 10 and 20Å:
+E. g. a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an 
+allowed distance range between 10 and 20Å would be defined as follows:
 
 <pre>
 assi (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
@@ -380,7 +380,7 @@ PDB structure to submit -> Browse and select *monomer-B.pdb*
 Segment ID to use during docking -> B
 </a>
 
-* **Step3X:** Repeat Step3 as many times as required based on the stochiometry you choose from the DisVis results (from 2 to 5 molecules). For this unfold the **Third Molecule menu** and additional ones as needed.
+* **Step3X:** Repeat Step3 as many times as required based on the stoichiometry you choose from the DisVis results (from 2 to 5 molecules). For this unfold the **Third Molecule menu** and additional ones as needed.
 
 <a class="prompt prompt-info">
 XX molecule: where is the structure provided? -> "I am submitting it"
@@ -436,7 +436,11 @@ Eair 3	 -> 1.0<br>
 <hr>
 ## Analysing the docking results
 
-Once you docking run has completed you will be presented with a result page (and in case you registered for the server an email will be sent to you). HADDOCK returns statistics for the top10 clusters, which are averages over the top4 members of each cluster. The ranking of the clusters is based on the HADDOCK score. Consult the online [HADDOCK manual](http://www.bonvinlab.org/software/haddock2.2/run/#scoring) pages for an explanation of the scoring scheme and the default weigths used at various stages. Remember that we have increased the weight of the distance restraints for our runs since we wanted to put more weight on the cross-links which we considered highly reliable.
+Once you docking run has completed you will be presented with a result page (and in case you registered for the server an email will be sent to you). 
+HADDOCK returns statistics for the top10 clusters, which are averages over the top4 members of each cluster. 
+The ranking of the clusters is based on the HADDOCK score. Consult the online [HADDOCK manual](http://www.bonvinlab.org/software/haddock2.2/run/#scoring) 
+pages for an explanation of the scoring scheme and the default weights used at various stages. 
+Remember that we have increased the weight of the distance restraints for our runs since we wanted to put more weight on the cross-links which we considered highly reliable.
 
 Answer the following questions:
 
@@ -462,7 +466,7 @@ If you want to use the PyMOL command-line instead, type the following command:
 
 This will display the docking model in cartoon mode, with each chain colored differently.
 
-<a class="prompt prompt-question"><b>Q11:</b>  Do the models show the symmetry that you had defined?</a>
+<a class="prompt prompt-question"><b>Q11:</b>  Do the models show the symmetry that you defined?</a>
 
 <a class="prompt prompt-question"><b>Q12:</b>  If two clusters have rather similar scores (possibly overlapping within their standard deviations), compare them in PyMol. What are the differences?</a>
 
@@ -475,15 +479,19 @@ For example for the first cross-link between residues 40 and 252 we should calcu
   ...<br>
 </a>
 
-<a class="prompt prompt-question"><b>Q13:</b>  For each of our experimental cross-links (the 8 restraints we defined), find the shortest distance from the various chain combinations. Does the model satisties the cross-links?</a>
+<a class="prompt prompt-question"><b>Q13:</b>  For each of our experimental cross-links (the 8 restraints we defined), 
+find the shortest distance from the various chain combinations. Does the model satisfy the cross-links?</a>
 
-If the restraint energy is still very high and your best docking model does not satisfy the restraints very well, you could conclude that your choice of oligomeric state was not optimal. In that case you could consider performing another docking run with a different number of monomers and another symmetry.
+If the restraint energy is still very high and your best docking model does not satisfy the restraints very well, you could conclude that your choice of oligomeric state was not optimal. 
+In that case you could consider performing another docking run with a different number of monomers and another symmetry.
 
 In case you did perform multiple docking runs with different numbers of monomers and symmetries, it could happen that two runs generate solutions that satisfy the cross-links equally.
-In that case compare their HADDOCK scores. Remember that the HADDOCK score is calculated based on intermolecular interactions. So when comparing the scores of runs from different numbers of monomers, take the number of interfaces in your complex into account when comparing two runs to make your choice (for example by dividing the HADDOCK score of each run by the number of interfaces).
+In that case compare their HADDOCK scores. Remember that the HADDOCK score is calculated based on intermolecular interactions. 
+So when comparing the scores of runs from different numbers of monomers, take the number of interfaces in your complex into account when comparing two runs to make your choice 
+(for example by dividing the HADDOCK score of each run by the number of interfaces).
 
 
-<a class="prompt prompt-question"><b>Q14:</b>  FINALLY, based on all above analysis,what is your conclusion concerning the oligomeric state and symmetry of this complex?
+<a class="prompt prompt-question"><b>Q14:</b>  FINALLY, based on all above analysis, what is your conclusion concerning the oligomeric state and symmetry of this complex?
 
  
 <hr>
