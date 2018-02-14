@@ -125,7 +125,7 @@ Let's now measure the intramolecular distances corresponding to the detected cro
   distance name CA and resid 161, name CA and resid 132<br>
 </a>
 
-This creates five objects called dist01...dist05. You toggle them on and off in the right panel by clicking on them. Check the reported distance for each .
+This creates four objects called dist01...dist04. You toggle them on and off in the right panel by clicking on them. Check the reported distance for each .
 
 <a class="prompt prompt-question">
 <b>Q1:</b> Can any of the cross-links be explained by an intramolecular contact?
