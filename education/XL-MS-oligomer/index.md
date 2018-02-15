@@ -494,6 +494,9 @@ In that case compare their HADDOCK scores. Remember that the HADDOCK score is ca
 So when comparing the scores of runs from different numbers of monomers, take the number of interfaces in your complex into account when comparing two runs to make your choice 
 (for example by dividing the HADDOCK score of each run by the number of interfaces).
 
+Another way of thinking about your choice is to apply Occam's razor (see [Wikipedia](https://en.wikipedia.org/wiki/Occam%27s_razor) page):
+
+_"Occam's razor (also Ockham's razor; Latin: lex parsimoniae "law of parsimony") is a problem-solving principle that, when presented with competing hypothetical answers to a problem, one should select the one that makes the fewest assumptions."_
 
 <a class="prompt prompt-question"><b>Q14:</b>  FINALLY, based on all above analysis, what is your conclusion concerning the oligomeric state and symmetry of this complex?
 
