@@ -665,7 +665,7 @@ generated model (the best scoring model)._
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated 
 as:
 <pre>
-      HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 1.0 * Eair
+      HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 0.1 * Eair
 </pre>
 where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents 
 an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR energy. 

@@ -24,6 +24,9 @@ image:
 * [Editing online the run.cns parameter file](/software/haddock2.2/haddock-start)
 * [FAQ](/software/haddock2.2/faq)
 
+### HADDOCK scoring
+* [Scoring](/software/haddock2.2/scoring)
+
 ### Analysis and scoring
 * [Analysis](/software/haddock2.2/analysis)
 * [Chemical shift scoring](https://www.wenmr.eu/wenmr/CS-HADDOCK)
