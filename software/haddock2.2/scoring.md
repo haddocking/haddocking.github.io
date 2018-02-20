@@ -8,7 +8,7 @@ image:
   feature: pages/banner_software.jpg
 ---
 The HADDOCK scoring function consists of a linear combination of various energies and buried surface area.
-It is differs for the various docking stages (rigid body (it0), semi-flexible refinement (it1) and explicit solvent refinement(water)).
+It differs for the various docking stages (rigid body (it0), semi-flexible refinement (it1) and explicit solvent refinement(water)).
 
 The scoring is
 performed according to the _weighted sum_ (HADDOCK score) of the following terms:
