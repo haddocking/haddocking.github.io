@@ -362,7 +362,7 @@ assi (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26
 </details>
 
 <br>
-__Note:__ _Under Linux (or OSX), this file could be generated automatically from the `restraints_filtered.txt`
+__Note:__ Under Linux (or OSX), this file could be generated automatically from the `restraints_filtered.txt`
  file provided with the data for this tutorial by giving the following command (one line) in a terminal window:_
 
 <a class="prompt prompt-linux">
@@ -922,7 +922,6 @@ Does the docking using only the cross-links as distance restraints generate any 
 </figure>
 <br>
 No single cluster matches the crystal structure in this case.
-</a>
 </details>
 
 <br>
