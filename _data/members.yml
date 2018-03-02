@@ -11,10 +11,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Adrien.jpg
 
--   name: Irina Moreira 
-    position: Postdoctoral Researcher
-    avatar: /images/people/Moreira.jpg
-
 -   name: Joerg Schaarschmidt
     position: Postdoctoral Researcher
     avatar: /images/people/Jorg.jpg
@@ -22,6 +18,10 @@
 -   name: Mikael Trellet
     position: Postdoctoral Researcher
     avatar: /images/people/Mikael.jpg
+
+-   name: Rodrigo Vargas Honorato
+    position: Visiting Researcher
+    avatar: /images/people/Rodrigo.jpg
 
 -   name: Cunliang Geng
     position: Ph.D Candidate
@@ -38,6 +38,9 @@
 -   name: Francesco Ambrosetti
     position: Ph.D Candidate
     avatar: /images/people/Francesco.jpg
+
+-   name: Miguel Pedrouzo
+    position: Visiting Ph.D Candidate
 
 -   name: Sofia Rosback
     position: M.Sc Student
@@ -58,4 +61,8 @@
 -   name: Charlotte van Noort
     position: M.Sc Student
     avatar: /images/people/Charlotte.jpg
+
+-   name: Angelina Claij
+    position: M.Sc Student
+    avatar: /images/people/Angelina.jpg
 
