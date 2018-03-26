@@ -10,13 +10,14 @@ image:
 * S. Narasimhan, D. Mance, C. Pinto, M. Weingarth, **A.M.J.J. Bonvin** and Marc Baldus.
 [Rapid Prediction of Multi-dimensional NMR Data Sets Using FANDAS](http://dx.doi.org/10.1007/978-1-4939-7386-6_6). In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, 111-132 (2018).
 
+* J. Schaarschmidt, B. Monastyrskyy, A.y Kryshtafovych and **A.M.J.J. Bonvin**. [Assessment of Contact Predictions in CASP12: Co-Evolution and Deep Learning Coming of Age](http://dx.doi.org/10.1002/prot.25407). 
+_Proteins: Struc. Funct. &amp; Bioinformatics_ *86(S1)*, 51-66 (2018).
+
 * Z. Kurkcuoglu, P.I. Koukos, N. Citro, M.E. Trellet, J.P.G.L.M. Rodrigues, I.S. Moreira, J. Roel-Touris, A.S.J. Melquiond, C. Geng, J. Schaarschmidt, L.C. Xue, A. Vangone and **A.M.J.J. Bonvin**. [Performance of HADDOCK and a simple contact-based protein-ligand binding affinity predictor in the D3R Grand Challenge 2](http://dx.doi.org/10.1007/s10822-017-0049-y). _J. Comp. Aid. Mol. Des._ *32*, 175-185 (2018).
+
 
 ## 2017 
 <hr />
-* J. Schaarschmidt, B. Monastyrskyy, A.y Kryshtafovych and **A.M.J.J. Bonvin**. [Assessment of Contact Predictions in CASP12: Co-Evolution and Deep Learning Coming of Age](http://dx.doi.org/10.1002/prot.25407). 
-_Proteins: Struc. Funct. &amp; Bioinformatics_ Advanced Online Publication (2017).
-
 * E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](http://dx.doi.org/10.1038/nmeth.4392). _Nature Methods_ *14*, 897-902 (2017).
 
 * I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. [SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots](http://dx.doi.org/10.1038/s41598-017-08321-2). _Sci. Reports_. *7*:8007 (2017).
