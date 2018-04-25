@@ -133,7 +133,7 @@ The other required piece of software to run HADDOCK is its computational engine,
   cd software <br>
   tar xvfz freesasa-2.0.3.tar.gz <br>
   cd freesasa-2.0.3 <br>
-  ./configure --disable-json --disable-xml --prefix ~/software <br>
+  ./configure \-\-disable-json \-\-disable-xml \-\-prefix ~/software <br>
   make<br>
   make install<br>
 </a>
