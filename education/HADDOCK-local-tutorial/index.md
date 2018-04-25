@@ -17,7 +17,7 @@ This tutorial consists of the following sections:
 <hr>
 ## Introduction
 
-This tutorial will demonstrate the use of a local installation of HADDOCK for predicting the structure of biomolecular complexes. It will cover various steps, from the installation of a local HADDOCK version and the third party software required, the preparation of PDB files for docking, the definition of restraints to guide the docking, the setup of the docking and finally the analysis of the results. General information about HADDOCK can be found on our [group page][link-haddock]{:target="_blank"}{:target="_blank"} and its corresponding [online manual][link-manual]{:target="_blank"}. Also take note of the [HADDOCK online forum][link-forum]{:target="_blank"} where you can post HADDOCK-related questions and search the archive for possible answers.
+This tutorial will demonstrate the use of a local installation of HADDOCK for predicting the structure of biomolecular complexes. It will cover various steps, from the installation of a local HADDOCK version and the third party software required, the preparation of PDB files for docking, the definition of restraints to guide the docking, the setup of the docking and finally the analysis of the results. General information about HADDOCK can be found on our [group page][link-haddock]{:target="_blank"} and its corresponding [online manual][link-manual]{:target="_blank"}. Also take note of the [HADDOCK online forum][link-forum]{:target="_blank"} where you can post HADDOCK-related questions and search the archive for possible answers.
 
 
 Throughout the tutorial, colored text will be used to refer to questions or 
@@ -133,7 +133,7 @@ The other required piece of software to run HADDOCK is its computational engine,
   cd software <br>
   tar xvfz freesasa-2.0.3.tar.gz <br>
   cd freesasa-2.0.3 <br>
-  ./configure --disable-json --disable-xml --prefix ~/software <br>
+  ./configure \-\-disable-json \-\-disable-xml \-\-prefix ~/software <br>
   make<br>
   make install<br>
 </a>
@@ -1081,7 +1081,7 @@ In order to extract stats from the various PDB files following the HADDOCK ranki
 
 <a class="prompt prompt-cmd">
   $HADDOCKTOOLS/ana_structures.csh
-<pre>
+</a>
 
 This generates a variety of data files, the most interesting one being `structures_haddock-sorted.stat` which lists the various terms following the HADDOCK sorting.
 For more details refer to the [online manual](http://www.bonvinlab.org/software/haddock2.2/analysis/#anastruc).
@@ -1102,7 +1102,7 @@ The header in this file indicated the various terms reported. If PROFIT was inst
 You can generate an XMGrace plot with the following command:
 
 <a class="prompt prompt-cmd">
-  $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_haddock-sorted.stat
+  \$HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_haddock-sorted.stat
 </a>
 
 The first and second arguments are the column numbers and the last the data file to use. In the above example we will be plotting the HADDOCK score versus the RMSD from the lowest energy model.
@@ -1122,6 +1122,7 @@ Thank you for following this tutorial. If you have any questions or suggestions,
 our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
 [<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
+
 [link-cns]: http://cns-online.org "CNS online"
 [link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
 [link-pymol]: http://www.pymol.org/ "PyMOL"
@@ -1130,7 +1131,7 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 [link-forum]: http://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
 [link-freesasa]: http://freesasa.github.io "FreeSASA"
-[link-profit]: [link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
+[link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
 [link-pymol]: http://www.pymol.org/ "PyMOL"
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-pdbtools]: http://github.com/haddocking/pdb-tools "PDB-Tools"
