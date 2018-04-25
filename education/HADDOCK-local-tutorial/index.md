@@ -122,6 +122,8 @@ In this tutorial we will make use of the new HADDOCK2.4 version. You can downloa
 ### Downloading CNS
 The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23). For this tutorial you can download pre-compiled executables for Linux and OSX from the following [link](https://surfdrive.surf.nl/files/index.php/s/Wcv67D5IX0DuZK5){:target="_blank"} (again password-protected).
 
+Untar the archive in the `software` directory.
+
 <br>
 <hr>
 ### Auxiliary software
@@ -167,6 +169,33 @@ In case git is not installed on your system, go the GitHub site given in the com
 
 At this point we will assume that you successfully downloaded all auxiliary software and installed the executables (or links to them) in `~/software/bin`
 
+<a class="prompt prompt-info">
+In order to run this tutorial smoothly, you should add to your path the various software directories we just installed.
+Go into the software directory where you installed the various software components.
+</a>
+
+If running under `bash` shell, type:
+
+<a class="prompt prompt-cmd">
+  cd bin; export PATH=${PATH}:\`pwd\` <br>
+  cd .. <br>
+  cd haddock-tools; export PATH=${PATH}:\`pwd\` <br>
+  cd .. <br>
+  cd pdb-tools; export PATH=${PATH}:\`pwd\` <br>
+  cd .. <br>
+</a>
+
+And for `csh`:
+
+<a class="prompt prompt-cmd">
+cd bin; set path= ( $path \`pwd\` ) <br>
+cd .. <br>
+cd haddock-tools; set path= ( $path \`pwd\` ) <br>
+cd .. <br>
+cd pdb-tools; set path= ( $path \`pwd\` ) <br>
+cd .. <br>
+</a>
+
 <br>
 <hr>
 ### Configuring HADDOCK
@@ -209,7 +238,7 @@ Depending on the size of your system, a typical run time for rigid body docking 
 
 <a class="prompt prompt-info">
 To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat.py located in the haddock2.4 installation directory and change the values as required:
-</a<
+</a>
 
 <pre style="background-color:#DAE4E7">
 jobmax["it0"] = 10
@@ -221,37 +250,6 @@ In our case, if running on local system, change all values to 1.
 
 
 At this stage you should be ready to use HADDOCK!
-
-<br>
-<hr>
-### Final setup for this tutorial
-
-<a class="prompt prompt-info">
-In order to run this tutorial smoothly, you should add to your path the various software directories we just installed.
-Go into the software directory where you installed the various software components.
-</a>
-
-If running under `bash` shell, type:
-
-<a class="prompt prompt-cmd">
-  cd bin; export PATH=${PATH}:\`pwd\` <br>
-  cd .. <br>
-  cd haddock-tools; export PATH=${PATH}:\`pwd\` <br>
-  cd .. <br>
-  cd pdb-tools; export PATH=${PATH}:\`pwd\` <br>
-  cd .. <br>
-</a>
-
-And for `csh`:
-
-<a class="prompt prompt-cmd">
-cd bin; set path= ( $path \`pwd\` ) <br>
-cd .. <br>
-cd haddock-tools; set path= ( $path \`pwd\` ) <br>
-cd .. <br>
-cd pdb-tools; set path= ( $path \`pwd\` ) <br>
-cd .. <br>
-</a>
 
 <br>
 <hr>
