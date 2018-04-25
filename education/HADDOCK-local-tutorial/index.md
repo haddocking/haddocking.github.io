@@ -271,6 +271,8 @@ We will illustrate here three aspects:
 * Dealing with an ensemble of models
 * Dealing with multi-chain proteins
 
+We suggest to create separate directories for the different cases and work from those.
+
 <br>
 <hr>
 ### Cleaning PDB files prior to docking
@@ -303,13 +305,9 @@ As a preparation step before docking, it is advised to remove any irrelevant wat
 <a class="prompt prompt-pymol">remove resn HOH</a>
 
 As final step save the molecule as a new PDB file which we will call: *e2a_1F3G.pdb*<br>
-For this in the PyMOL menu on top select:
+For this in the PyMOL command line type:
 
-<a class="prompt prompt-info">File -> Export molecule...</a>
-<a class="prompt prompt-info">Uncheck the option to write segids</a>
-<a class="prompt prompt-info">Click on the save button</a>
-<a class="prompt prompt-info">Name your file *e2a_1F3G.pdb*</a>
-<a class="prompt prompt-info">Select PDB as file format</a>
+<a class="prompt prompt-pymol">save e2a_1F3G.pdb</a>
 
 **Note** that you can of course also simply edit the PDB file with your favorite text editor.
 
@@ -329,7 +327,7 @@ In order to use a modified amino-acid in HADDOCK, the only thing you will need t
 **Note:** In the `haddock-tools` scripts that you installed, there is a python script called `pdb_mutate.py` that allows you to indroduce such a mutation from the command line (call the script without arguments to see its usage):
 
 <a class="prompt prompt-cmd">
-  pdb_mutate.py e2a_1F3G-clean.pdb A 90 HIS NEP >e2aP_1F3G.pdb
+  pdb_mutate.py e2a_1F3G.pdb A 90 HIS NEP >e2aP_1F3G.pdb
 </a>
 
 Prior to using this file in HADDOCK is to remove any chainID and segID information. This can easily be done using our `pdb-tools` scripts:
@@ -374,14 +372,9 @@ set all_states, on<br>
 
 You should now be seing the 30 conformers present in this NMR structure.
 Save the molecule as a new PDB file which we will call: *hpr_1HDN.pdb*<br>
-For this in the PyMOL menu on top select:
+For this in the PyMOL command line window type:
 
-<a class="prompt prompt-info">File -> Export molecule...</a>
-<a class="prompt prompt-info">State -> Select *0 (all states)*</a>
-<a class="prompt prompt-info">Uncheck the option to write segids</a>
-<a class="prompt prompt-info">Click on the save button</a>
-<a class="prompt prompt-info">Name your file *hpr_1HDN.pdb*</a>
-<a class="prompt prompt-info">Select PDB as file format</a>
+<a class="prompt prompt-pymol">save hpr_1HDN.pdb</a>
 
 As in the previous example, make sure to remove all chainID and segidID from the PDB file
 
@@ -419,13 +412,9 @@ remove resn HOH<br>
 
 This structure consists of two chains, L and H, with overlapping residue numnbering. Turn on the sequence in PyMol (under the Display menu) and find out what is the last residue number of the first chain L. We need this information to know by how much we should shift the numbering of the second chain.
 
-Save the molecule as a PDF file:
+Save the molecule as a PDB file:
 
-<a class="prompt prompt-info">File -> Export molecule...</a>
-<a class="prompt prompt-info">Uncheck the option to write segids</a>
-<a class="prompt prompt-info">Click on the save button</a>
-<a class="prompt prompt-info">Name your file *4G6K.pdb*</a>
-<a class="prompt prompt-info">Select PDB as file format</a>
+<a class="prompt prompt-pymol">save 4G6K.pdb</a>
 
 We will now shift the numbering of chain H to avoid overlap in numbering. This can easily be done using our `pdb-tools` scripts. The first chain ends with residue number 212 and the second chain starts at 1. We will shift the numbering of the second chain by 500 to avoid numbering overlap:
 
