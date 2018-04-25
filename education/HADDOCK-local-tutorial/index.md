@@ -122,6 +122,8 @@ In this tutorial we will make use of the new HADDOCK2.4 version. You can downloa
 ### Downloading CNS
 The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23). For this tutorial you can download pre-compiled executables for Linux and OSX from the following [link](https://surfdrive.surf.nl/files/index.php/s/Wcv67D5IX0DuZK5){:target="_blank"} (again password-protected).
 
+Untar the archive in the `software` directory.
+
 <br>
 <hr>
 ### Auxiliary software
