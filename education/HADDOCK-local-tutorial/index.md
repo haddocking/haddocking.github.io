@@ -584,13 +584,13 @@ To use our `haddock-tools` `active-passive-to-ambig.py` script you need to creat
 
 For our E2A-HPR example this would be:
 
-* For E2A (a file called `e2a-act-pass.list`):
+* For E2A (a file called [e2a-act-pass.list](/education/HADDOCK-local-tutorial/e2a-act-pass.list){:target="_blank"}):
 <pre style="background-color:#DAE4E7">
 38 40 45 46 69 71 78 80 94 96 141
 35 37 39 42 43 44 47 48 64 66 68 72 73 74 82 83 84 86 97 99 100 105 109 110 112 131 132 133 143 144
 </pre>
 
-* and for HPR (a file called `hpr-act-pass.list`):
+* and for HPR (a file called [hpr-act-pass.list](/education/HADDOCK-local-tutorial/hpr-act-pass.list){:target="_blank"}):
 <pre style="background-color:#DAE4E7">
 15 16 17 20 48 49 51 52 54 56
 9 10 11 12 21 24 25 34 37 38 40 41 43 45 46 47 53 55 57 58 59 60 84 85
@@ -609,7 +609,7 @@ The effective distance is calculated as the SUM over all pairwise atom-atom dist
 <hr>
 ### Defining specific distance restraints
 
-You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our [HADDOCK cross-links tutorial](/education/HADDOCK-Xlinks) obtained for the complex betweeen PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250){:target="_blank"}) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97){:target="_blank"}). From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111){:target="_blank"}), which we will define as CA-CA distance restraints:
+You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our [HADDOCK cross-links tutorial](/education/HADDOCK-Xlinks) obtained for the complex betweeen PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250){:target="_blank"}) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97){:target="_blank"}). From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111){:target="_blank"}), which we will define as CA-CA distance restraints ([restraints.txt](/education/HADDOCK-local-tutorial/restraints.txt){:target="_blank"}):
 
 <pre style="background-color:#DAE4E7">
 # ADH crosslinks
@@ -635,20 +635,20 @@ This is the format used by our [DisVis portal](https://haddock.science.uu.nl/ser
 * lower distance limit
 * upper distance limit
 
-The corresponding CNS-formatted HADDOCK restraint file for those would be:
+The corresponding CNS-formatted HADDOCK restraint file for those would be ([unambig-xlinks.tbl](/education/HADDOCK-local-tutorial/unambig-xlinks.tbl){:target="_blank"}):
 <pre style="background-color:#DAE4E7">
-assi (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
-assi (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
-assi (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
-assi (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
-assi (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
-assi (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
-assi (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
+assign (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
+assign (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
 </pre>
 
 As a reminder, distance restraints are defined as:
 <pre style="background-color:#DAE4E7">
-assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
 where the lower limit for the distance is calculated as: distance minus lower-bound correction
@@ -656,10 +656,10 @@ and the upper limit as: distance plus upper-bound correction.
 
 
 **Note:** Under Linux (or OSX), this file could be generated automatically from a text file containing the DisVis restraints
- with the following command (one line) in a terminal window:_
+ with the following command (one line) in a terminal window:
 
 <a class="prompt prompt-linux">
-  cat restraints.txt | awk \'{if (NF == 8) {print \"assi (segid \",$1,\" and resid \",$2,\" and name \",$3,\") (segid \",$4,\" and resid \",$5,\" and name \",$6,\") \",$8,$8,$7}}\' > pre5-pur2-Xlinks.tbl
+  cat restraints.txt | awk \'{if (NF == 8) {print \"assi (segid \",$1,\" and resid \",$2,\" and name \",$3,\") (segid \",$4,\" and resid \",$5,\" and name \",$6,\") \",$8,$8,$7}}\' > pre5-pup2-Xlinks.tbl
 </a>
 
 <br>
