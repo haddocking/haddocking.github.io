@@ -546,7 +546,7 @@ Our webserver uses a default relative accessibility of 15% as cutoff. This is no
 We can use `freesasa` to calculate the residue solvent accessibilities:
 
 <a class="prompt prompt-cmd">
-  freesasa e2a_1F3G.pdb --format=rsa >e2a_1F3G.rsa
+  freesasa e2a_1F3G.pdb \-\-format=rsa >e2a_1F3G.rsa
 </a>
 
 The results is file similar to the output of `naccess` containing the per residue solvent accessibilities, both absolute and relative values, also distinguishing between backbone and side-chains:
@@ -724,7 +724,7 @@ We can fetch is from the PDB using another `pdb-tools` script:
 For the antigen, since we don't have information about the epitope in this case, we will define the entire solvent accessible surface area as passive. For this we will first use `freesasa` to calculate the solvent accessible residues and the filter those using a 40% accessibility cutoff (less than the 15% used previously to avoid defining too many passive residues which would slow down the computations).
 
 <a class="prompt prompt-cmd">
-  freesasa 4I1B.pdb --format=rsa >4I1B.rsa
+  freesasa 4I1B.pdb \-\-format=rsa >4I1B.rsa
 </a>
 
 And then generate a list of solvent accessible residues using the 40% cutoff and save it to file:
