@@ -125,13 +125,15 @@ The other required piece of software to run HADDOCK is its computational engine,
 <br>
 <hr>
 ### Auxiliary software
-**[FreeSASA][link-freesasa]{:target="_blank"}**. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freessasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freessasa]{:target="_blank"}. If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `sotware` directory in your home directory:
+**[FreeSASA][link-freesasa]{:target="_blank"}**. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freessasa]{:target="_blank"}. If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
 
 <a class="prompt prompt-cmd">
-  cd home<br>
-  tar xvfz freesasa-2.0.3.tar.gz<br>
-  cd freesasa-2.0.3<br>
-  ./configure --disable-json --disable-xml --prefix ~/software<br>
+  cd <br>
+  mkdir software <br>
+  cd software <br>
+  tar xvfz freesasa-2.0.3.tar.gz <br>
+  cd freesasa-2.0.3 <br>
+  ./configure --disable-json --disable-xml --prefix ~/software <br>
   make<br>
   make install<br>
 </a>
@@ -982,25 +984,133 @@ You will see text appearing indicating the progression of your run. It is a good
 <hr>
 ## Analysing the docking results
 
+HADDOCK will perform various analysis of the resulting models, both after `it1` and `water`. For details see the online [HADDOCK manual](http://www.bonvinlab.org/software/haddock2.2/analysis/).
+While the web server will present you with cluster statistics, in the local version you will need to perform this analysis manually.
 
+There are various steps that can be performed:
 
-The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated 
+* Gathering single structure statistics
+* Performing cluster analysis
+* Rerunning the analysis for a single cluster
+
+<br>
+<hr>
+### HADDOCK scoring
+
+The ranking of single models and clusters is based on the HADDOCK score calculated as: 
 as:
 <pre style="background-color:#DAE4E7">
       HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 0.1 * Eair
 </pre>
 where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents 
 an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR energy. 
-The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. The various 
-components of the HADDOCK score are also reported for each cluster on the results web page.
 
-<a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
-<a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also 
-reflected in the z-score).</a>
+When performing cluster-based analysis, the score and ranking is based on the average score of the top 4 members of each cluster. 
+The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. 
 
 In case the scores of various clusters are within the standard deviation from each other, all should be considered as a 
 valid solution for the docking. Ideally, some additional independent experimental information should be available to 
 decide on the best solution. 
+
+<br>
+<hr>
+### Single structure analysis
+
+In each directory containing docked model you will find a file called `file.list` which contains the sorted PDB models with their corresponding HADDOCK score, e.g.:
+
+<pre style="background-color:#DAE4E7">
+"PREVIT:antibody-antigen_1w.pdb"  { -91.3741 }
+"PREVIT:antibody-antigen_3w.pdb"  { -89.63574 }
+"PREVIT:antibody-antigen_12w.pdb"  { -79.9501 }
+"PREVIT:antibody-antigen_17w.pdb"  { -79.1546 }
+"PREVIT:antibody-antigen_2w.pdb"  { -73.35884 }
+...
+</pre>
+
+Each PDB model contains a header section with the various energy terms, e.g.:
+
+<pre style="background-color:#DAE4E7">
+REMARK FILENAME="antibody-antigen_1w.pdb0"
+REMARK ===============================================================
+REMARK HADDOCK run for antibody-antigen
+REMARK initial structure: antibody-antigen_1.pdb
+REMARK final NOE weights: unambig 50 amb: 50
+REMARK ===============================================================
+REMARK            total,bonds,angles,improper,dihe,vdw,elec,air,cdih,coup,rdcs,vean,dani,xpcs,rg
+REMARK energies: 102.321, 0, 0, 0, 0, -74.9325, -169.12, 346.374, 0, 0, 0, 0, 0, 0, 0
+REMARK ===============================================================
+REMARK            bonds,angles,impropers,dihe,air,cdih,coup,rdcs,vean,dani,xpcs
+REMARK rms-dev.: 0,0,0,0,1.23139,0,0, 0, 0, 0, 0
+REMARK ===============================================================
+REMARK               air,cdih,coup,rdcs,vean,dani,xpcs
+REMARK               >0.3,>5,>1,>0,>5,>0.2,>0.2
+REMARK violations.: 10, 0, 0, 0, 0, 0, 0
+REMARK ===============================================================
+REMARK                        CVpartition#,violations,rms
+REMARK AIRs cross-validation: 2, 28, 1.81811
+REMARK ===============================================================
+REMARK NCS energy: 0
+REMARK ===============================================================
+REMARK Symmetry energy: 0
+REMARK ===============================================================
+REMARK Membrane restraining energy: 0
+REMARK ===============================================================
+REMARK Local cross-correlation:  0.0000
+REMARK ===============================================================
+REMARK Desolvation energy: -17.255
+REMARK Internal energy free molecules: -22849.8
+REMARK Internal energy complex: -22121.3
+REMARK Binding energy: 467.21
+REMARK ===============================================================
+REMARK buried surface area: 2068.14
+REMARK ===============================================================
+REMARK water - chain_1: 0 0 0
+REMARK water - chain_2: 0 0 0
+REMARK ===============================================================
+REMARK water - water: 0 0 0
+REMARK ===============================================================
+REMARK DATE:25-Apr-2018  11:28:44       created by user: abonvin
+REMARK VERSION:1.3U
+ATOM      1  N   GLN     1       4.527   0.579 -14.142  1.00 10.00      A
+ATOM      2  HN  GLN     1       3.641   0.595 -14.566  1.00 10.00      A
+ATOM      3  CA  GLN     1       5.589  -0.216 -14.745  1.00 10.00      A
+...
+</pre>
+
+In order to extract stats from the various PDB files following the HADDOCK ranking, you can use the `ana_structures.csh` script provided in the HADDOCK `tools` directory:
+
+<a class="prompt prompt-cmd">
+  $HADDOCKTOOLS/ana_structures.csh
+<pre>
+
+This generates a variety of data files, the most interesting one being `structures_haddock-sorted.stat` which lists the various terms following the HADDOCK sorting.
+For more details refer to the [online manual](http://www.bonvinlab.org/software/haddock2.2/analysis/#anastruc).
+
+
+<pre style="background-color:#DAE4E7">
+#struc haddock-score rmsd_all Einter Enb Evdw+0.1Eelec Evdw Eelec Eair Ecdih Ecoup Esani Evean Edani #NOEviol #Dihedviol #Jviol #Saniviol #veanviol #Daniviol bsa dH Edesolv
+antibody-antigen_1w.pdb -91.3741 0.000 102.321 -244.053 -91.8445 -74.9325 -169.12 346.374 0 0 0 0 0 10 0 0 0 0 0 antibody-antigen_3w.pdb antibody-antigen_17w.pdb antibody-antigen_7w.pdb
+antibody-antigen_3w.pdb -89.63574 12.044 41.738 -351.468 -95.2768 -66.8111 -284.657 393.206 0 0 0 0 0 10 0 0 0 0 0 -5.21384
+antibody-antigen_12w.pdb -79.9501 7.974 95.5286 -446.773 -97.6146 -58.8192 -387.954 542.302 0 0 0 0 0 14 0 0 0 0 0 2.2297
+antibody-antigen_17w.pdb -79.1546 8.554 15.3915 -403.584 -98.1683 -64.2332 -339.351 418.976 0 0 0 0 0 11 0 0 0 0 0 11.0512
+antibody-antigen_2w.pdb -73.35884 12.458 93.8325 -347.032 -83.3448 -54.0462 -292.986 440.865 0 0 0 0 0 12 0 0 0 0 0 -4.80194
+...
+</pre>
+
+The header in this file indicated the various terms reported. If PROFIT was installed, the third column will reporte the RMSD with respect to the lowest scoring model generated.
+
+You can generate an XMGrace plot with the following command:
+
+<a class="prompt prompt-cmd">
+  $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_haddock-sorted.stat
+</a>
+
+The first and second arguments are the column numbers and the last the data file to use. In the above example we will be plotting the HADDOCK score versus the RMSD from the lowest energy model.
+The resulting file is called `ene_rmsd.xmgr` and can be visualized with xmgrace if installed:
+
+<a class="prompt prompt-cmd">
+  xmgrace ene_rmsd.xmgr
+</a>
 
 
 
