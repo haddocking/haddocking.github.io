@@ -912,7 +912,7 @@ The result should be:
 {* Number of HISD for molecule 1 *}
 {===>} numhisd_1=1;
 
-{===>} hisd_1_1=690;
+{===>} hisd_1_1=689;
 {===>} hisd_1_2=0;
 ...
 </pre>
@@ -938,7 +938,7 @@ and
 
 #### Changing the number of models to be generated
 
-In order to be able to generate models in a reasonable time on limited CPU resourses, we will decrease by a factor 10 the number of models generated, i.e. from 1000/200/200 for `it0`, `it1` and `water` to 100/20/20. 
+In order to be able to generate models in a reasonable time on limited CPU resourses, we will decrease by a factor 20 the number of models generated, i.e. from 1000/200/200 for `it0`, `it1` and `water` to 50/10/10. 
 
 <a class="prompt prompt-info">
 Locate for this the following section in run.cns:
@@ -959,14 +959,14 @@ And change the values for structures_0 and structures_1 (the number of models fo
 {* Setting for the rigid-body (it0) and semi-flexible refiment (it1) *}
 
 {* number of structures for rigid body docking *}
-{===>} structures_0=100;
+{===>} structures_0=50;
        keepstruct_0=&structures_0;
 {* number of structures for refinement *}
-{===>} structures_1=20;
+{===>} structures_1=10;
        keepstruct_1=&structures_1;
        keepstruct_2=&structures_1;
 {* number of structures to be analysed*}
-{===>} anastruc_1=200;
+{===>} anastruc_1=10;
        anastruc_0=&anastruc_1;
        anastruc_2=&anastruc_1;
 ...
