@@ -505,7 +505,6 @@ Let's visualize them in PyMOL using the clean PDB file we created in the [Cleani
 
 
 <a class="prompt prompt-pymol">
-load e2a_1F3G.pdb<br>
 color white, all<br>
 show surface<br>
 select e2a_active, (resi 38,40,45,46,69,71,78,80,94,96,141)<br>
@@ -530,8 +529,8 @@ A list of passive residues the server would select in this case is:
 In the same PyMol session as before you can visualize them with:
 
 <a class="prompt prompt-pymol">
-as cartoon
-hide lines
+as cartoon <br>
+hide lines <br>
 select e2a_passive, (resi 35,37,39,42,43,44,47,48,64,66,68,72,73,74,82,83,84,86,97,99,100,105,109,110,112,131,132,133,143,144)<br>
 color green, e2a_passive<br>
 </a>
