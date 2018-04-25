@@ -251,7 +251,7 @@ In our case, if running on local system, change all values to 1.
 One last command to source the HADDOCK environment (under bash) (for csh, replace `.sh` by `.csh`):
 
 <a class="prompt prompt-cmd">
-  cd ~/software/haddock2.4
+  cd ~/software/haddock2.4 <br>
   source ./haddock-configure.sh
 </a>
 
