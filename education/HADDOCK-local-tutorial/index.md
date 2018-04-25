@@ -211,7 +211,7 @@ Depending on the size of your system, a typical run time for rigid body docking 
 
 <a class="prompt prompt-info">
 To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat.py located in the haddock2.4 installation directory and change the values as required:
-</a<
+</a>
 
 <pre style="background-color:#DAE4E7">
 jobmax["it0"] = 10
