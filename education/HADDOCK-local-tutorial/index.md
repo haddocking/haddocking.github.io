@@ -429,9 +429,9 @@ We will now shift the numbering of chain H to avoid overlap in numbering. This c
 
 <a class="prompt prompt-cmd">
   pdb_selchain.py -H 4G6K.pdb >4G6K_H.pdb <br>
-  echo TER >>4G6K_H.pdb <br>
+  echo TER \>\>4G6K_H.pdb <br>
   pdb_selchain.py -L 4G6K.pdb | pdb_shiftres.py -500 >4G6K_L.pdb <br>
-  echo END >>4G6K_L.pdb <br>
+  echo END \>\>4G6K_L.pdb <br>
   cat 4G6K_H.pdb 4G6K_L.pdb | pdb_chain.py | pdb_seg.py > 4G6K-clean.pdb <br>
 </a>
 
