@@ -112,7 +112,7 @@ the interface used in the calculation is automatically defined based on an analy
 <br>
 <hr>
 ### Downloading HADDOCK
-In this tutorial we will make use of the new HADDOCK2.4 version. You can download a gzipped archive from the following [link](https://surfdrive.surf.nl/files/index.php/s/216C0MqCOMlsd5t){:target="_blank"}.
+In this tutorial we will make use of the new HADDOCK2.4 version. You can download a gzipped archive from the following [link](https://surfdrive.surf.nl/files/index.php/s/ht4EAcKlHUPh2bx){:target="_blank"}.
 
 
 *Note* that this does require a password that will be provided to you during the tutorial (or upon request once you have filled the [HADDOCK license form]((http://www.bonvinlab.org/software/haddock2.2/download/){:target="_blank"} ).
@@ -127,12 +127,18 @@ Untar the archive in the `software` directory.
 <br>
 <hr>
 ### Auxiliary software
-**[FreeSASA][link-freesasa]{:target="_blank"}**. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freesasa]{:target="_blank"}. If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
+**[FreeSASA][link-freesasa]{:target="_blank"}**. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freesasa]{:target="_blank"}. The direct download command is:
 
 <a class="prompt prompt-cmd">
   cd <br>
   mkdir software <br>
   cd software <br>
+  git clone https://freesasa.github.io/freesasa-2.0.3.tar.gz
+</a>
+
+If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
+
+<a class="prompt prompt-cmd">
   tar xvfz freesasa-2.0.3.tar.gz <br>
   cd freesasa-2.0.3 <br>
   ./configure \-\-disable-json \-\-disable-xml \-\-prefix ~/software <br>
@@ -440,7 +446,7 @@ We added a TER statement between the chains and an END statement at the end of t
 **Note** that this structure consists of two separate chains. It will therefore be important to define a few distance restraints to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be done using another script from `haddock-tools`:
 
 <a class="prompt prompt-cmd">
-  restrain_bodies.py  4G6K-clean.pdb >unambig.tbl
+  restrain_bodies.py  4G6K-clean.pdb >antibody-unambig.tbl
 </a>
 
 The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:
@@ -790,13 +796,13 @@ The first step in setting up the docking is to create a `run.param` file contain
 ### Defining the input data
 
 Here we will illustrate setting a docking run for the antibody-antigen complex for which we defined restraints in the previous section.
-We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `unambig.tbl which we generated when [preparing the antibody PDB file for docking](#dealing-with-multi-chain-proteins).
+We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `unambig.tbl` which we generated when [preparing the antibody PDB file for docking](#dealing-with-multi-chain-proteins).
 
 The generic format of the `run.param` file for such an case would be:
 
 <pre style="background-color:#DAE4E7">
-AMBIG_TBL=ambig.tbl
-HADDOCK_DIR=/home/abonvin/software/haddock2.4
+AMBIG_TBL=antigen-antibody-ambig.tbl
+HADDOCK_DIR=PATH/TO/HADDOCK/INSTALLATIONDIR/haddock2.4
 N_COMP=2
 PDB_FILE1=4G6K-clean.pdb
 PDB_FILE2=4I1B.pdb
@@ -804,7 +810,7 @@ PROJECT_DIR=./
 PROT_SEGID_1=A
 PROT_SEGID_2=B
 RUN_NUMBER=1
-UNAMBIG_TBL=unambig.tbl
+UNAMBIG_TBL=antibody-unambig.tbl
 </pre>
 
 _N_COMP_ defines the number of molecules to dock
