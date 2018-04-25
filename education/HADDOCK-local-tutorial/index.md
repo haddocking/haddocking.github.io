@@ -339,7 +339,7 @@ Prior to using this file in HADDOCK is to remove any chainID and segID informati
 In case your PDB file comes from some modelling software, it might be good to check that it is properly formatted. This can be done withour `pdb-tools` script:
 
 <a class="prompt prompt-cmd">
-  pdb_format.py e2aP_1F3G.pdb 
+  pdb_format.py e2aP_1F3G-clean.pdb 
 </a>
 
 **Note** that not all warnings are relevant. The important part is that the columns be properly aligned.
