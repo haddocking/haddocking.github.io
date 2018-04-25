@@ -175,7 +175,7 @@ After having downloaded HADDOCK from the above link, unpack the archive under th
 </a>
 
 <a class="prompt prompt-info">
-Go into the newly created `haddock2.4 directory and edit a configuration file specific to your system. 
+Go into the newly created haddock2.4 directory and edit a configuration file specific to your system. 
 </a>
 
 This configuration file should contain the following information:
@@ -206,7 +206,7 @@ There is one more file that should be manually edited to define the number of mo
 Depending on the size of your system, a typical run time for rigid body docking would be a few tens of seconds per model written to disk (which effectively correspond to 10 docking trials intenally), and a few minutes per model for the flexible refinement and water refinement. But this can increase a lot depending on the complexity of your system and the number of molecules to dock. 
 
 <a class="prompt prompt-info">
-To define the number of concatenated models edit `Haddock/Main/QueueSubmit_concat.py` located in the `haddock2.4` installation directory and change the values as required:
+To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat.py located in the haddock2.4 installation directory and change the values as required:
 </a<
 
 <pre style="background-color:#DAE4E7">
@@ -243,11 +243,11 @@ If running under `bash` shell, type:
 And for `csh`:
 
 <a class="prompt prompt-cmd">
-cd bin; set path= ( $path `pwd` ) <br>
+cd bin; set path= ( $path \`pwd\` ) <br>
 cd .. <br>
-cd haddock-tools; set path= ( $path `pwd` ) <br>
+cd haddock-tools; set path= ( $path \`pwd\` ) <br>
 cd .. <br>
-cd pdb-tools; set path= ( $path `pwd` ) <br>
+cd pdb-tools; set path= ( $path \`pwd\` ) <br>
 cd .. <br>
 </a>
 
@@ -870,7 +870,7 @@ HIS ( 698 )	-->	HISE
 </pre>
 We will have to define alternative protonation states for five histidine in the antibody.
 
-and creates a new optimized PDB file with all hydrogens and possibly some side-chain groups swapped (e.g. ASN and GLN side-chains). You could also use this optimized PDB as input for HADDOCK (which means in this case editing the `run.in` file and regenerating the run directory).
+and creates a new optimized PDB file with all hydrogens and possibly some side-chain groups swapped (e.g. ASN and GLN side-chains). You could also use this optimized PDB as input for HADDOCK (which means in this case editing the `run.param` file and regenerating the run directory).
 
 For the antigen the output is:
 <pre style="background-color:#DAE4E7">
