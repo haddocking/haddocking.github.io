@@ -691,7 +691,7 @@ Based on these predictions, we can define the active residues (no need to define
 27 28 29 30 31 32 33 34 35 36 37 49 50 51 52 53 54 55 56 57 58 59 60 61 99 100 101 102 103 104 105 106 107 108 109 527 528 529 530 531 532 533 534 546 547 548 549 550 551 552 553 554 555 556 589 590 592 593 593 594 595 596
 
 </pre>
-Save this residue list (including an empty line for the passive residue) in a test file (e.g. `4G6K-active.list`)
+Save this residue list (including an empty line for the passive residue) in a test file (e.g. [4G6K-active.list](/education/HADDOCK-local-tutorial/4G6K-active.list){:target="_blank"})
 
 We can visualize those in PyMOL using the clean PDB file we generated previously:
 <a class="prompt prompt-linux">
@@ -719,7 +719,7 @@ We can fetch is from the PDB using another `pdb-tools` script:
   pdb_fetch.py 4I1B |grep -v HOH >4I1B.pdb
 </a>
 
-**Note that the `grep1` command in the above command will filter out the crystal water molecules. Alternatively inspec the file in PyMOL and remove any water or other crystallistion small molecule.
+**Note that the `grep` command in the above command will filter out the crystal water molecules. Alternatively inspec the file in PyMOL and remove any water or other crystallistion small molecule.
 
 For the antigen, since we don't have information about the epitope in this case, we will define the entire solvent accessible surface area as passive. For this we will first use `freesasa` to calculate the solvent accessible residues and the filter those using a 40% accessibility cutoff (less than the 15% used previously to avoid defining too many passive residues which would slow down the computations).
 
@@ -731,7 +731,7 @@ And then generate a list of solvent accessible residues using the 40% cutoff and
 
 <a class="prompt prompt-cmd">
   echo \" \" >4I1B-passive.list <br>
-  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"%s \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"%s \",$4}\' 4I1B.rsa >>4I1B-passive.list
+  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"%s \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"%s \",$4}\' 4I1B.rsa \>\>4I1B-passive.list
 </a>
 
 We can visualize those in PyMOL:
@@ -766,7 +766,7 @@ The resulting AIR restraint file is: `ambig.tbl`
 <hr>
 ## Setting up the docking
 
-The first step in setting up the docking is to create a `new.html` file containing the information about your molecules, restraints and the location of the HADDOCK sofware in your system. The HADDOCK distribution you installed at the beginning of this tutorial contains an example directory with examples for a variety of docking scenarios:
+The first step in setting up the docking is to create a `run.param` file containing the information about your molecules, restraints and the location of the HADDOCK sofware in your system. The HADDOCK distribution you installed at the beginning of this tutorial contains an example directory with examples for a variety of docking scenarios:
 
 * _protein-dna_              : protein-DNA docking (3CRO)
 * _protein-ligand_           : protein-ligand docking (Neuraminidase)
@@ -792,11 +792,11 @@ The first step in setting up the docking is to create a `new.html` file containi
 Here we will illustrate setting a docking run for the antibody-antigen complex for which we defined restraints in the previous section.
 We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `unambig.tbl which we generated when [preparing the antibody PDB file for docking](#dealing-with-multi-chain-proteins).
 
-The generic format of the `new.html` file for such an case would be:
+The generic format of the `run.param` file for such an case would be:
 
 <pre style="background-color:#DAE4E7">
 AMBIG_TBL=ambig.tbl
-HADDOCK_DIR=/home/abonvin/haddock2.4
+HADDOCK_DIR=/home/abonvin/software/haddock2.4
 N_COMP=2
 PDB_FILE1=4G6K-clean.pdb
 PDB_FILE2=4I1B.pdb
@@ -811,7 +811,7 @@ _N_COMP_ defines the number of molecules to dock
 _RUN_NUMBER_ defined the number (or name - can be a string) of the run
 _PROT_SEGID_1_ and _PROT_SEGID_2_ are the chain or rather segIDs use by HADDOCK to identify the two molecules. It is important that those match what has been used in defining the distance restraints!
 
-Once this file has been created (use one example `new.html` file from the `haddock2.4/examples` directory as template and edit as needed), start HADDOCK by typing in the same directory where the file has been created:
+Once this file has been created (use one example `run.param` file from the `haddock2.4/examples` directory as template and edit as needed), start HADDOCK by typing in the same directory where the file has been created:
 
 <a class="prompt prompt-cmd">
   haddock2.4
