@@ -125,7 +125,7 @@ The other required piece of software to run HADDOCK is its computational engine,
 <br>
 <hr>
 ### Auxiliary software
-**[FreeSASA][link-freesasa]{:target="_blank"}**. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freessasa]{:target="_blank"}. If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
+**[FreeSASA][link-freesasa]{:target="_blank"}**. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freesasa]{:target="_blank"}. If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
 
 <a class="prompt prompt-cmd">
   cd <br>
