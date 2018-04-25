@@ -599,7 +599,7 @@ For our E2A-HPR example this would be:
 Using those two file we can generate the CNS-formatted AIR restraint files with the following command:
 
 <a class="prompt prompt-cmd">
-  active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list
+  active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list >e2a-hpr-ambig.tbl
 </a>
 
 This generates a file called `ambig.tbl` that contains the AIR restraints. The default distance range for those is between 0 and 2Å, which might seem short but makes senses because of the 1/r^6 summation in the AIR energy function that makes the effective distance be significantly shorter than the shortest distance entering the sum.
@@ -742,7 +742,7 @@ pymol 4I1B.pdb
 <a class="prompt prompt-pymol">
 color white, all<br>
 show surface<br>
-select passive, (resid ,4,5,6,13,14,15,20,21,22,23,24,25,30,32,33,34,35,37,38,48,49,50,51,52,53,54,55,61,63,64,65,66,73,74,75,76,77,80,84,86,87,88,89,90,91,93,94,96,97,105,106,107,108,109,118,119,126,127,128,129,130,135,136,137,138,139,140,141,142,147,148,150,151,152,153)<br>
+select passive, (resid 3,4,5,6,13,14,15,20,21,22,23,24,25,30,32,33,34,35,37,38,48,49,50,51,52,53,54,55,61,63,64,65,66,73,74,75,76,77,80,84,86,87,88,89,90,91,93,94,96,97,105,106,107,108,109,118,119,126,127,128,129,130,135,136,137,138,139,140,141,142,147,148,150,151,152,153)<br>
 color green, passive<br>
 </a>
 
@@ -756,7 +756,7 @@ color green, passive<br>
 We have now all the necessary information to generate an AIR restraint file for this complex:
 
 <a class="prompt prompt-cmd">
-  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list
+  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list >antigen-antibody-ambig.tbl
 </a>
 
 The resulting AIR restraint file is: `ambig.tbl`
