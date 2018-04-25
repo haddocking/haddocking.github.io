@@ -282,6 +282,9 @@ Start PyMOL and in the command line window of PyMOL (indicated by PyMOL>) type:
 
 <a class="prompt prompt-pymol">
 fetch 1F3G<br>
+</a>
+
+<a class="prompt prompt-pymol">
 show cartoon<br>
 hide lines<br>
 show sticks, resn HIS<br>
@@ -344,7 +347,7 @@ In case your PDB file comes from some modelling software, it might be good to ch
 
 **Note** that not all warnings are relevant. The important part is that the columns be properly aligned.
 
-You can also check if your PDB model has gaps in the structure. If gaps are detected you can either try to modell the missing fragments, or define a few distance restraints to keep the fragments together during docking (see the section about [Dealing with multi-chain proteins](#markdown-toc-dealing-with-multi-chain-proteins).
+You can also check if your PDB model has gaps in the structure. If gaps are detected you can either try to modell the missing fragments, or define a few distance restraints to keep the fragments together during docking (see the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins).
 
 <a class="prompt prompt-cmd">
   pdb_gap.py e2aP_1F3G-clean.pdb 
@@ -358,7 +361,7 @@ For HADDOCK, you will have to remove those double occupancies (or create multipl
 <hr>
 ### Dealing with an ensemble of models
 
-HADDOCK can take as input an ensemble of conformation. This has the advantage that it allows to pre-sample possible conformational changes. We however recommend to limit the number of conformers used for docking, since the number of conformer combinations of the input molecules might explode (e.g. 10 conformers each will give 100 starting combinations, and if we generate 1000 ridig body models (see [HADDOCK general concepts](#markdown-toc-haddock-general-concepts) above) each combination will only be sampled 10 times). 
+HADDOCK can take as input an ensemble of conformation. This has the advantage that it allows to pre-sample possible conformational changes. We however recommend to limit the number of conformers used for docking, since the number of conformer combinations of the input molecules might explode (e.g. 10 conformers each will give 100 starting combinations, and if we generate 1000 ridig body models (see [HADDOCK general concepts](#haddock-general-concepts) above) each combination will only be sampled 10 times). 
 
 While the HADDOCK webportal will take those as an ensemble PDB file (with `MODEL` / `ENDMDL` statements), the local version of HADDOCK expects those models to be provided as single structure and an additional file providing a listing of the models. To illustrate this we will use the HPR protein used as input in our [HADDOCK webserver basic protein-protein docking tutorial](/education/HADDOCK-protein-protein-basic/). The input structure for docking corresponds to an NMR ensemble of 30 models.
 
@@ -366,6 +369,9 @@ We will now inspect the HPR structure. For this start PyMOL and in the command l
 
 <a class="prompt prompt-pymol">
 fetch 1HDN<br>
+</a>
+
+<a class="prompt prompt-pymol">
 show cartoon<br>
 set all_states, on<br>
 </a>
@@ -405,6 +411,9 @@ HADDOCK can in principle handle those, but it is important that there is not ove
 
 <a class="prompt prompt-pymol">
 fetch 4G6K<br>
+</a>
+
+<a class="prompt prompt-pymol">
 show cartoon<br>
 hide lines<br>
 remove resn HOH<br>
@@ -488,7 +497,7 @@ We will use as example here the NMR chemical shift perturbations from the E2A-HP
 
 <a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a>
 
-Let's visualize them in PyMOL using the clean PDB file we created in the [Cleaning PDB files prior to docking](#markdown-toc-cleaning-pdb-files-prior-to-docking) section of this tutorial:
+Let's visualize them in PyMOL using the clean PDB file we created in the [Cleaning PDB files prior to docking](#cleaning-pdb-files-prior-to-docking) section of this tutorial:
 
 <a class="prompt prompt-cmd">
   pymol e2a_1F3G.pdb
@@ -660,7 +669,7 @@ and the upper limit as: distance plus upper-bound correction.
 <hr>
 ### Defining AIRs from interface mapping on one side, full surface on the other
 
-To illustrate such a case, we will define restraints between the CRD loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#markdown-toc-dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](http://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
+To illustrate such a case, we will define restraints between the CRD loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](http://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
 <pre style="background-color:#DAE4E7">
 >paratome_8633_pdbChain_H (heavy chain)
 QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQV
@@ -784,7 +793,7 @@ The first step in setting up the docking is to create a `new.html` file containi
 ### Defining the input data
 
 Here we will illustrate setting a docking run for the antibody-antigen complex for which we defined restraints in the previous section.
-We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `unambig.tbl which we generated when [preparing the antibody PDB file for docking](#markdown-toc-dealing-with-multi-chain-proteins).
+We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `unambig.tbl which we generated when [preparing the antibody PDB file for docking](#dealing-with-multi-chain-proteins).
 
 The generic format of the `new.html` file for such an case would be:
 
