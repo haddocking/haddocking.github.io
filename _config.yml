@@ -5,8 +5,8 @@
 
 title:            Bonvin Lab
 locale:           en_US
-url:              http://haddocking.github.io
-#url:              http://127.0.0.1:4000/
+#url:              http://haddocking.github.io
+url:              http://127.0.0.1:4000/
 
 # RSS Feed configuration
 name: Bonvin Lab
