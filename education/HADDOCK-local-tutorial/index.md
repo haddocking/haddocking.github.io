@@ -608,7 +608,7 @@ Using those two file we can generate the CNS-formatted AIR restraint files with 
   active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list >e2a-hpr-ambig.tbl
 </a>
 
-This generates a file called `ambig.tbl` that contains the AIR restraints. The default distance range for those is between 0 and 2Å, which might seem short but makes senses because of the 1/r^6 summation in the AIR energy function that makes the effective distance be significantly shorter than the shortest distance entering the sum.
+This generates a file called `e2a-hpr-ambig.tbl` that contains the AIR restraints. The default distance range for those is between 0 and 2Å, which might seem short but makes senses because of the 1/r^6 summation in the AIR energy function that makes the effective distance be significantly shorter than the shortest distance entering the sum.
 The effective distance is calculated as the SUM over all pairwise atom-atom distance combinations between an active residue and all the active+passive on the other molecule: SUM[1/r^6]^(-1/6).
 
 If you modify this file, it is possible to quickly check if the format is valid. To do so, you can find in the `haddock-tools` repository a folder named `haddock_tbl_validation` that contains a script called `validate_tbl.py`. To use it, simply run:
