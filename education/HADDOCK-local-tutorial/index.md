@@ -611,6 +611,14 @@ Using those two file we can generate the CNS-formatted AIR restraint files with 
 This generates a file called `ambig.tbl` that contains the AIR restraints. The default distance range for those is between 0 and 2Å, which might seem short but makes senses because of the 1/r^6 summation in the AIR energy function that makes the effective distance be significantly shorter than the shortest distance entering the sum.
 The effective distance is calculated as the SUM over all pairwise atom-atom distance combinations between an active residue and all the active+passive on the other molecule: SUM[1/r^6]^(-1/6).
 
+If you modify this file, it is possible to quickly check if the format is valid. To do so, you can find in the `haddock-tools` repository a folder named `haddock_tbl_validation` that contains a script called `validate_tbl.py`. To use it, simply run:
+
+<a class="prompt prompt-cmd">
+  python ~/software/haddock-tools/haddock_tbl_validation/validate_tbl.py --silent e2a-hpr-ambig.tbl
+</a>
+
+No output means that your TBL file is valid. You can also find TBL file examples for different types of restraints in the `haddock-tools/haddock_tbl_validation/` directory.
+
 <br>
 <hr>
 ### Defining specific distance restraints
@@ -672,7 +680,7 @@ and the upper limit as: distance plus upper-bound correction.
 <hr>
 ### Defining AIRs from interface mapping on one side, full surface on the other
 
-To illustrate such a case, we will define restraints between the CRD loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](http://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
+To illustrate such a case, we will define restraints between the CDR loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](http://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
 <pre style="background-color:#DAE4E7">
 >paratome_8633_pdbChain_H (heavy chain)
 QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQV
