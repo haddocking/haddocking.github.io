@@ -155,11 +155,11 @@ If running into problems you might want to disable `json` and `xml` support. Her
 
 In case git is not installed on your system, go the GitHub site given in the command and download directly the archive.
 
-**[MolProbity][link-molprobity]{:target="_blank"}**: MolProbity is a structure validate software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely download from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity). You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
+**[MolProbity][link-molprobity]{:target="_blank"}**: MolProbity is a structure validate software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely downloaded from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity). You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
 
 Put the executable in `~software/bin`, rename it to `reduce` if needed and make sure it is executable (e.g. `chmod +x ~/software/bin/reduce`).
 
-**[PDB-tools][link-pdbtools]{:target="_blank"}**: A useful collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files freely available from our GitHub repository. To install it:
+**[PDB-tools][link-pdbtools]{:target="_blank"}**: A useful collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files is freely available from our GitHub repository. To install it:
 
 <a class="prompt prompt-cmd">
   cd ~/software<br>
@@ -239,8 +239,8 @@ In order to configure HADDOCK, call the `install.csh` script with as argument th
   ./install.csh \<my-config-file\>
 </a>
 
-There is one more file that should be manually edited to define the number of models to concatenate within one job (usuful when submitting to a batch system to ensure jobs are not too short in queue).
-Depending on the size of your system, a typical run time for rigid body docking would be a few tens of seconds per model written to disk (which effectively correspond to 10 docking trials intenally), and a few minutes per model for the flexible refinement and water refinement. But this can increase a lot depending on the complexity of your system and the number of molecules to dock. 
+There is one more file that should be manually edited to define the number of models to concatenate within one job (useful when submitting to a batch system to ensure jobs are not too short in queue).
+Depending on the size of your system, a typical run time for rigid body docking would be a few tens of seconds per model written to disk (which effectively correspond to 10 docking trials internally), and a few minutes per model for the flexible refinement and water refinement. But this can increase a lot depending on the complexity of your system and the number of molecules to dock. 
 
 <a class="prompt prompt-info">
 To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat.py located in the haddock2.4 installation directory and change the values as required:
@@ -333,7 +333,7 @@ In order to use a modified amino-acid in HADDOCK, the only thing you will need t
 
 **Note:** The same procedure can be used to introduce a mutation in an input protein structure. 
 
-**Note:** In the `haddock-tools` scripts that you installed, there is a python script called `pdb_mutate.py` that allows you to indroduce such a mutation from the command line (call the script without arguments to see its usage):
+**Note:** In the `haddock-tools` scripts that you installed, there is a python script called `pdb_mutate.py` that allows you to introduce such a mutation from the command line (call the script without arguments to see its usage):
 
 <a class="prompt prompt-cmd">
   pdb_mutate.py e2a_1F3G.pdb A 90 HIS NEP >e2aP_1F3G.pdb
@@ -345,7 +345,7 @@ Prior to using this file in HADDOCK is to remove any chainID and segID informati
   pdb_chain.py e2aP_1F3G.pdb | ~/software/pdb-tools/pdb_seg.py >e2aP_1F3G-clean.pdb
 </a>
 
-In case your PDB file comes from some modelling software, it might be good to check that it is properly formatted. This can be done withour `pdb-tools` script:
+In case your PDB file comes from some modelling software, it might be good to check that it is properly formatted. This can be done with our `pdb-tools` script:
 
 <a class="prompt prompt-cmd">
   pdb_format.py e2aP_1F3G-clean.pdb 
@@ -367,7 +367,7 @@ For HADDOCK, you will have to remove those double occupancies (or create multipl
 <hr>
 ### Dealing with an ensemble of models
 
-HADDOCK can take as input an ensemble of conformation. This has the advantage that it allows to pre-sample possible conformational changes. We however recommend to limit the number of conformers used for docking, since the number of conformer combinations of the input molecules might explode (e.g. 10 conformers each will give 100 starting combinations, and if we generate 1000 ridig body models (see [HADDOCK general concepts](#haddock-general-concepts) above) each combination will only be sampled 10 times). 
+HADDOCK can take as input an ensemble of conformation. This has the advantage that it allows to pre-sample possible conformational changes. We however recommend to limit the number of conformers used for docking, since the number of conformer combinations of the input molecules might explode (e.g. 10 conformers each will give 100 starting combinations, and if we generate 1000 rigid body models (see [HADDOCK general concepts](#haddock-general-concepts) above) each combination will only be sampled 10 times). 
 
 While the HADDOCK webportal will take those as an ensemble PDB file (with `MODEL` / `ENDMDL` statements), the local version of HADDOCK expects those models to be provided as single structure and an additional file providing a listing of the models. To illustrate this we will use the HPR protein used as input in our [HADDOCK webserver basic protein-protein docking tutorial](/education/HADDOCK-protein-protein-basic/). The input structure for docking corresponds to an NMR ensemble of 30 models.
 
@@ -382,7 +382,7 @@ show cartoon<br>
 set all_states, on<br>
 </a>
 
-You should now be seing the 30 conformers present in this NMR structure.
+You should now be seeing the 30 conformers present in this NMR structure.
 Save the molecule as a new PDB file which we will call: *hpr_1HDN.pdb*<br>
 For this in the PyMOL command line window type:
 
@@ -425,7 +425,7 @@ hide lines<br>
 remove resn HOH<br>
 </a>
 
-This structure consists of two chains, L and H, with overlapping residue numnbering. Turn on the sequence in PyMol (under the Display menu) and find out what is the last residue number of the first chain L. We need this information to know by how much we should shift the numbering of the second chain.
+This structure consists of two chains, L and H, with overlapping residue numbering. Turn on the sequence in PyMol (under the Display menu) and find out what is the last residue number of the first chain L. We need this information to know by how much we should shift the numbering of the second chain.
 
 Save the molecule as a PDB file:
 
@@ -615,7 +615,7 @@ The effective distance is calculated as the SUM over all pairwise atom-atom dist
 <hr>
 ### Defining specific distance restraints
 
-You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our [HADDOCK cross-links tutorial](/education/HADDOCK-Xlinks) obtained for the complex betweeen PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250){:target="_blank"}) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97){:target="_blank"}). From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111){:target="_blank"}), which we will define as CA-CA distance restraints ([restraints.txt](/education/HADDOCK-local-tutorial/restraints.txt){:target="_blank"}):
+You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our [HADDOCK cross-links tutorial](/education/HADDOCK-Xlinks) obtained for the complex between PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250){:target="_blank"}) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97){:target="_blank"}). From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111){:target="_blank"}), which we will define as CA-CA distance restraints ([restraints.txt](/education/HADDOCK-local-tutorial/restraints.txt){:target="_blank"}):
 
 <pre style="background-color:#DAE4E7">
 # ADH crosslinks
@@ -740,7 +740,7 @@ We can fetch is from the PDB using another `pdb-tools` script:
   pdb_fetch.py 4I1B |grep -v HOH >4I1B.pdb
 </a>
 
-**Note that the `grep` command in the above command will filter out the crystal water molecules. Alternatively inspec the file in PyMOL and remove any water or other crystallistion small molecule.
+**Note that the `grep` command in the above command will filter out the crystal water molecules. Alternatively inspec the file in PyMOL and remove any water or other crystallisation small molecule.
 
 For the antigen, since we don't have information about the epitope in this case, we will define the entire solvent accessible surface area as passive. For this we will first use `freesasa` to calculate the solvent accessible residues and the filter those using a 40% accessibility cutoff (less than the 15% used previously to avoid defining too many passive residues which would slow down the computations).
 
@@ -771,7 +771,7 @@ color green, passive<br>
 <img src="/education/HADDOCK-local-tutorial/antigen-passive.png">
 </figure>
 
-We have now all the necessary information to generate an AIR restraint file for this complex. The large number of active+passive residues will results in a large numnber of atom-atom distances to be evaluated which might slow down the computations. A solution for this is to make the restraints more specific only between CA-CA atoms and increase slightly the distance bound to 3.0Å. This is what the `sed` command is doing in the following command to generate the restraints:
+We have now all the necessary information to generate an AIR restraint file for this complex. The large number of active+passive residues will results in a large number of atom-atom distances to be evaluated which might slow down the computations. A solution for this is to make the restraints more specific only between CA-CA atoms and increase slightly the distance bound to 3.0Å. This is what the `sed` command is doing in the following command to generate the restraints:
 
 <a class="prompt prompt-cmd">
   active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list | sed s/segid/name\ CA\ and\ segid/g | sed s/2\.0/3\.0/g >antigen-antibody-ambig.tbl
@@ -797,12 +797,12 @@ This distance restraint can be combined with the specific distances defined to k
 <hr>
 ## Setting up the docking
 
-The first step in setting up the docking is to create a `run.param` file containing the information about your molecules, restraints and the location of the HADDOCK sofware in your system. The HADDOCK distribution you installed at the beginning of this tutorial contains an example directory with examples for a variety of docking scenarios:
+The first step in setting up the docking is to create a `run.param` file containing the information about your molecules, restraints and the location of the HADDOCK software in your system. The HADDOCK distribution you installed at the beginning of this tutorial contains an example directory with examples for a variety of docking scenarios:
 
 * _protein-dna_              : protein-DNA docking (3CRO)
 * _protein-ligand_           : protein-ligand docking (Neuraminidase)
 * _protein-peptide-ensemble_ : example of ensemble-averaged PRE restraints docking with two copies of a peptide not seeing
-                           eachother (multiple binding modes) (sumo-daxx-simc system)
+                           each other (multiple binding modes) (sumo-daxx-simc system)
 * _protein-peptide_          : protein-peptide docking from an ensemble of three peptide conformations with increased flexibility
 * _protein-protein_          : protein-protein docking from an ensemble of NMR structure using CSP data (e2a-hpr)
 * _protein-protein-dani_     : protein-protein docking from an ensemble of NMR structure using CSP data (e2a-hpr)
@@ -813,7 +813,7 @@ The first step in setting up the docking is to create a `run.param` file contain
 * _protein-refine-pcs_       : example of single structure water refinement with NMR PCS restraints
 * _protein-tetramer-CG_      : multi-body docking of a C4 tetramer with a coarse grained representation
 * _protein-trimer_           : three body docking of a homotrimer using bioinformatic predictions (pdb1qu9)
-* _refine-complex_           : refinement of a comple in water (it0 and it1 skipped)
+* _refine-complex_           : refinement of a complex in water (it0 and it1 skipped)
 * _solvated-docking_         : solvated protein-protein docking (barnase-barstar) using bioinformatic predictions
 
 <br>
@@ -863,12 +863,12 @@ The run directory is thus a self-contained archive of your run containing all or
 
 <br>
 <hr>
-### Customizing the docking paramters
+### Customizing the docking parameters
 
 The next step consists of editing the `run.cns` file in the generated run directory to customize the docking run.
 This involves mainly:
 
-* Defining the protonation state of Histines
+* Defining the protonation state of Histidines
 * Defining symmetry restraints if needed
 * Inputing restraint-specific parameters (e.g. for NMR RDC restraints)
 * Changing the number of models to be generated
@@ -880,9 +880,9 @@ For this example we will limit ourselves to defining the Histidine protonation s
 Edit `run.cns` using your favorite editor. Take the time to look a bit at its content. There is a very large number of variables defined that you can change (provided you know what you are doing...). Some of these are explained in our [HADDOCK2.2 online manual](software/haddock2.2/run/)
 
 
-#### Defining the protonation state of Histines
+#### Defining the protonation state of Histidines
 
-By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use [PROPKA](http://www.propka.org). The HADDOCK webservers defines the protonation state of Histdine using [MolProbity][link-molprobity]{:target="_blank"}. This is what we are going to demonstrate here. For this we will make use of the `reduce` executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based. 
+By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use [PROPKA](http://www.propka.org). The HADDOCK webservers defines the protonation state of Histidine using [MolProbity][link-molprobity]{:target="_blank"}. This is what we are going to demonstrate here. For this we will make use of the `reduce` executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based. 
 
 Our `haddock-tools` contain a script that will run `reduce` and extract the protonation state information (`reduce` must be in your path for the script to work):
 
@@ -963,7 +963,7 @@ and
 
 #### Changing the number of models to be generated
 
-In order to be able to generate models in a reasonable time on limited CPU resourses, we will decrease by a factor 20 the number of models generated, i.e. from 1000/200/200 for `it0`, `it1` and `water` to 50/10/10. 
+In order to be able to generate models in a reasonable time on limited CPU resources, we will decrease by a factor 20 the number of models generated, i.e. from 1000/200/200 for `it0`, `it1` and `water` to 50/10/10. 
 
 <a class="prompt prompt-info">
 Locate for this the following section in run.cns:
@@ -971,7 +971,7 @@ Locate for this the following section in run.cns:
 
 <pre style="background-color:#DAE4E7">
 {===================== Number of structures to dock =======================}
-{* Setting for the rigid-body (it0) and semi-flexible refiment (it1) *}
+{* Setting for the rigid-body (it0) and semi-flexible refinement (it1) *}
 ...
 </pre>
 
@@ -981,7 +981,7 @@ And change the values for structures_0 and structures_1 (the number of models fo
 
 <pre style="background-color:#DAE4E7">
 {===================== Number of structures to dock =======================}
-{* Setting for the rigid-body (it0) and semi-flexible refiment (it1) *}
+{* Setting for the rigid-body (it0) and semi-flexible refinement (it1) *}
 
 {* number of structures for rigid body docking *}
 {===>} structures_0=50;
@@ -998,7 +998,7 @@ And change the values for structures_0 and structures_1 (the number of models fo
 </pre>
 
 To run this example, these are the only changes required. We are ready to dock!
-Lauch HADDOCK again from the `run1` directory:
+Launch HADDOCK again from the `run1` directory:
 
 <a class="prompt prompt-cmd">
   haddock2.4
@@ -1128,7 +1128,7 @@ antibody-antigen_2w.pdb -73.35884 12.458 93.8325 -347.032 -83.3448 -54.0462 -292
 ...
 </pre>
 
-The header in this file indicated the various terms reported. If PROFIT was installed, the third column will reporte the RMSD with respect to the lowest scoring model generated.
+The header in this file indicated the various terms reported. If PROFIT was installed, the third column will report the RMSD with respect to the lowest scoring model generated.
 
 You can generate an XMGrace plot with the following command:
 
