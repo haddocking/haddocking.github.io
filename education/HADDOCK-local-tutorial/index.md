@@ -431,7 +431,7 @@ Save the molecule as a PDB file:
 
 <a class="prompt prompt-pymol">save 4G6K.pdb</a>
 
-We will now shift the numbering of chain H to avoid overlap in numbering. This can easily be done using our `pdb-tools` scripts. The first chain ends with residue number 212 and the second chain starts at 1. We will shift the numbering of the second chain by 500 to avoid numbering overlap:
+We will now shift the numbering of chain L to avoid overlap in numbering. This can easily be done using our `pdb-tools` scripts. The first chain ends with residue number 212 and the second chain starts at 1. We will shift the numbering of the second chain by 500 to avoid numbering overlap:
 
 <a class="prompt prompt-cmd">
   pdb_selchain.py -H 4G6K.pdb >4G6K_H.pdb <br>
@@ -459,8 +459,8 @@ The result file contains two CA-CA distance restraints with the exact distance m
 **Note** that in this example, we are missing segment identifiers since they were not present in the PDBs. And if they are present, make sure those match what you are going to define as segIDs in HADDOCK. So in this case we need to add `A` for the first molecule and `B` for the second: 
 
 <pre style="background-color:#DAE4E7">
-  assign (segid A and resi 189 and name CA) (segid B and resi 693 and name CA) 21.023 0.0 0.0
-  assign (segid A and resi 116 and name CA) (segid B and resi 702 and name CA) 44.487 0.0 0.0
+  assign (segid A and resi 189 and name CA) (segid A and resi 693 and name CA) 21.023 0.0 0.0
+  assign (segid A and resi 116 and name CA) (segid A and resi 702 and name CA) 44.487 0.0 0.0
 </pre>
 
 This is the file you should save as `unambig.tbl` and pass to HADDOCK.
@@ -786,8 +786,8 @@ This distance restraint can be combined with the specific distances defined to k
 
 <pre style="background-color:#DAE4E7">
  ! antibody inter-chain restraints
- assign (segid A and resi 189 and name CA) (segid B and resi 693 and name CA) 21.023 0.0 0.0
- assign (segid A and resi 116 and name CA) (segid B and resi 702 and name CA) 44.487 0.0 0.0
+ assign (segid A and resi 189 and name CA) (segid A and resi 693 and name CA) 21.023 0.0 0.0
+ assign (segid A and resi 116 and name CA) (segid A and resi 702 and name CA) 44.487 0.0 0.0
  ! cross-link
  assign (segid A and resid 66  and name CB) (segid B and resid 99  and name CB)  23 23 0
 </pre>
