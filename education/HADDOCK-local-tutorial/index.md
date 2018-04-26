@@ -691,13 +691,7 @@ ABR2: LLIYYTSKLHS (46,47,48,49,50,51,52,53,54,55,56)
 ABR3: LQGKMLPW (89,90,91,92,93,94,95,96)
 </pre>
 
-Based on these predictions, we can define the active residues (no need to define passive in this case since the second molecule won't have any active residues) as (save this in a text file to generate later the CNS-formatted restraint file) - remember in this case to shift the numbering of chain L by 500 as we can't have overlapping numbering within one molecule):
-
-<pre style="background-color:#DAE4E7">
-27 28 29 30 31 32 33 34 35 36 37 49 50 51 52 53 54 55 56 57 58 59 60 61 99 100 101 102 103 104 105 106 107 108 109 527 528 529 530 531 532 533 534 546 547 548 549 550 551 552 553 554 555 556 589 590 592 593 593 594 595 596
-
-</pre>
-Save this residue list (including an empty line for the passive residue) in a test file (e.g. [4G6K-active.list](/education/HADDOCK-local-tutorial/4G6K-active.list){:target="_blank"})
+Based on these predictions, we can define the active residues (no need to define passive in this case since the second molecule won't have any active residues) as (save this in a text file to generate later the CNS-formatted restraint file) - remember in this case to shift the numbering of chain L by 500 as we can't have overlapping numbering within one molecule). 
 
 We can visualize those in PyMOL using the clean PDB file we generated previously:
 <a class="prompt prompt-linux">
@@ -707,7 +701,7 @@ pymol 4G6K-clean.pdb
 <a class="prompt prompt-pymol">
 as cartoon <br>
 hide lines <br>
-select CDR, (resid 27,28,29,30,31,32,33,34,35,36,37,49,50,51,52,53,54,55,56,57,58,59,60,61,99,100,101,102,103,104,105,106,107,108,109,527,528,529,530,531,532,533,534,546,547,548,549,550,551,552,553,554,555,556,589,590,592,593,593,594,595,596) <br>
+select CDR, (resid 27,28,30,32,33,35,37,56,57,58,59,61,101,102,103,527,528,531,532,550,552,553,554,556,592,593,593,594) <br>
 color red, CDR <br>
 </a>
 
@@ -716,7 +710,28 @@ color red, CDR <br>
 </figure>
 
 
-Eventually refine this prediction, or check for buried residues you might want to exclude.
+Not all predicted residues might however be solvent accessible. Therefore we should first filter for accessibility. For this we will use `freesasa`:
+
+<a class="prompt prompt-cmd">
+  freesasa 4G6K-clean.pdb \-\-format=rsa >4G6K.rsa
+</a>
+
+The list of accessible residues (with a cutoff of 40% in this case) can be obtained with:
+
+<a class="prompt prompt-cmd">
+  echo \" \" >4I1B-passive.list <br>
+  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"%s \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"%s \",$4}\' 4G6K.rsa
+</a>
+
+Cross-referencing those against the predicted CDR residues gives a final list for HADDOCK:
+
+<pre style="background-color:#DAE4E7">
+27 28 30 32 33 35 37 56 57 58 59 61 101 102 103 527 528 531 532 550 552 553 554 556 592 593 593 594
+
+</pre>
+Save this residue list (including an empty line for the passive residue) in a test file (e.g. [4G6K-active.list](/education/HADDOCK-local-tutorial/4G6K-active.list){:target="_blank"})
+
+
 
 The antigen in this case in interleukin 1-beta corresponding to chain A in PDB entry 4I1B.
 We can fetch is from the PDB using another `pdb-tools` script:
@@ -756,16 +771,26 @@ color green, passive<br>
 <img src="/education/HADDOCK-local-tutorial/antigen-passive.png">
 </figure>
 
-
-
-
-We have now all the necessary information to generate an AIR restraint file for this complex:
+We have now all the necessary information to generate an AIR restraint file for this complex. The large number of active+passive residues will results in a large numnber of atom-atom distances to be evaluated which might slow down the computations. A solution for this is to make the restraints more specific only between CA-CA atoms and increase slightly the distance bound to 3.0Å. This is what the `sed` command is doing in the following command to generate the restraints:
 
 <a class="prompt prompt-cmd">
-  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list >antigen-antibody-ambig.tbl
+  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list | sed s/segid/name\ CA\ and\ segid/g | sed s/2\.0/3\.0/g >antigen-antibody-ambig.tbl
 </a>
 
 The resulting AIR restraint file is: `ambig.tbl`
+
+Finally, let's assume we have one detected DSS cross-link between Lys63 of the antibody and Lys93 or the antigen with an upper limit of 23Å.
+We can define an ambiguous restraints between the CB of those two residues:
+
+This distance restraint can be combined with the specific distances defined to keep the two antibody chains together (see [Dealing with multi-chain proteins](#dealing-with-multi-chain proteins) into a new [antibody-antigen-unambig.tbl](/education/HADDOCK-local-tutorial/antibody-antigen-unambig.tbl) file:
+
+<pre style="background-color:#DAE4E7">
+ ! antibody inter-chain restraints
+ assign (segid A and resi 189 and name CA) (segid B and resi 693 and name CA) 21.023 0.0 0.0
+ assign (segid A and resi 116 and name CA) (segid B and resi 702 and name CA) 44.487 0.0 0.0
+ ! cross-link
+ assign (segid A and resid 66  and name CB) (segid B and resid 99  and name CB)  23 23 0
+</pre>
 
 
 <hr>
@@ -810,7 +835,7 @@ PROJECT_DIR=./
 PROT_SEGID_1=A
 PROT_SEGID_2=B
 RUN_NUMBER=1
-UNAMBIG_TBL=antibody-unambig.tbl
+UNAMBIG_TBL=antibody-antigen-unambig.tbl
 </pre>
 
 _N_COMP_ defines the number of molecules to dock
