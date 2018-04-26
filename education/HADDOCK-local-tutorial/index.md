@@ -782,10 +782,10 @@ color green, passive<br>
 We have now all the necessary information to generate an AIR restraint file for this complex. The large number of active+passive residues will results in a large number of atom-atom distances to be evaluated which might slow down the computations. A solution for this is to make the restraints more specific only between CA-CA atoms and increase slightly the distance bound to 3.0Å. This is what the `sed` command is doing in the following command to generate the restraints:
 
 <a class="prompt prompt-cmd">
-  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list | sed s/segid/name\ CA\ and\ segid/g | sed s/2\.0/3\.0/g >antigen-antibody-ambig.tbl
+  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list | sed s/segid/name\ CA\ and\ segid/g | sed s/2\.0/3\.0/g >antibody-antigen-ambig.tbl
 </a>
 
-The resulting AIR restraint file is: `ambig.tbl`
+The resulting AIR restraint file is: `antibody-antigen-ambig.tbl`
 
 Finally, let's assume we have one detected DSS cross-link between Lys63 of the antibody and Lys93 or the antigen with an upper limit of 23Å.
 We can define an ambiguous restraints between the CB of those two residues:
@@ -829,12 +829,12 @@ The first step in setting up the docking is to create a `run.param` file contain
 ### Defining the input data
 
 Here we will illustrate setting a docking run for the antibody-antigen complex for which we defined restraints in the previous section.
-We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `unambig.tbl` which we generated when [preparing the antibody PDB file for docking](#dealing-with-multi-chain-proteins).
+We will need to define the two input PDB files (the renumbered clean antibody PDB file `4G6K-clean.pdb`, the antigen PDB file `4I1B.pdb`, the AIR restraint file `antibody-antigen-ambig.tbl` and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together `antibody-antigen-unambig.tbl` which we generated when [preparing the antibody PDB file for docking](#dealing-with-multi-chain-proteins).
 
 The generic format of the `run.param` file for such an case would be:
 
 <pre style="background-color:#DAE4E7">
-AMBIG_TBL=antigen-antibody-ambig.tbl
+AMBIG_TBL=antibody-antigen-ambig.tbl
 HADDOCK_DIR=PATH/TO/HADDOCK/INSTALLATIONDIR/haddock2.4
 N_COMP=2
 PDB_FILE1=4G6K-clean.pdb
