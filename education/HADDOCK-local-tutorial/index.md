@@ -1024,7 +1024,12 @@ There are various steps that can be performed:
 * Performing cluster analysis
 * Rerunning the analysis for a single cluster
 
-In order to work with real data, we have performed full runs on this system. Download and unpack the following [gzipped tar archive]().
+In order to work with real data, we have performed full runs on this system. Download and unpack the following [gzipped tar archive](https://surfdrive.surf.nl/files/index.php/s/sf2FUVau1Iasocd).
+
+<a class="prompt prompt-cmd">
+  tar xfz antibody-antigen.tgz
+</a>
+
 It will create a new directory called `antibody-antigen` that contained the various files we created previously in this tutorial, 
 together with data from a full run corresponding to the run we just set up (`antibody-antigen-run-1xl`) and an additional run in which two cross links 
 were defined (`antibody-antigen-run-2xl`)
