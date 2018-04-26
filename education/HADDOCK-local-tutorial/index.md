@@ -490,7 +490,7 @@ Other keywords can be used in various combinations of OR and AND statements. Ple
 We will shortly explain in this section how to generate both ambiguous interaction restraints (AIRs) and specific distance restraints for use in HADDOCK illustrating three scenarios:
 
 * **Interface mapping on both side** (e.g. from NMR chemical shift perturbation data)
-* **Specific distance restraints** (e.g. cross-links detected by NMR)
+* **Specific distance restraints** (e.g. cross-links detected by MS)
 * **Interface mapping on one side, full surface on the other**
 
 Information about various types of distance restraints in HADDOCK can also be found in our [online manual](http://www.bonvinlab.org/software/haddock2.2/generate_air_help/) pages.
