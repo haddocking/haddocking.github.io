@@ -727,7 +727,6 @@ Not all predicted residues might however be solvent accessible. Therefore we sho
 The list of accessible residues (with a cutoff of 40% in this case) can be obtained with:
 
 <a class="prompt prompt-cmd">
-  echo \" \" >4I1B-passive.list <br>
   awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"%s \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"%s \",$4}\' 4G6K.rsa
 </a>
 
