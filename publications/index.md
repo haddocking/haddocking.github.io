@@ -5,7 +5,11 @@ image:
 ---
 
 ## 2018 
-* A.J. Preto, J.G. Almeida, J. Schaarschmidt, L.C. Xue, I.S. Moreira and **A.M.J.J. Bonvin**. Computational tools for the structural characterization of proteins and their complexes from sequence-evolutionary data. _Encyclopedia of Analytical Chemistry_ In press (2018),
+* **A.M.J.J. Bonvin**, C. Geng, M. van Dijk, E. Karaca, P. L. Kastritis, P.I. Koukos, Z. Kurkcuoglu, A.S.J. Melquiond, 
+J.P.G.L.M. Rogridues, J. Schaarschmidt, C. Schmitz, J. Roel-Touris, M.E. Trellet, S. de Vries, A. Vangone, L. Xue, G.C.P. van Zundert
+HADDOCK. In _Encyclopedia of Biophysics_, In press (2018).
+
+* A.J. Preto, J.G. Almeida, J. Schaarschmidt, L.C. Xue, I.S. Moreira and **A.M.J.J. Bonvin**. [Computational tools for the structural characterization of proteins and their complexes from sequence-evolutionary data](https://doi.org/10.1002/9780470027318.a9615). _Encyclopedia of Analytical Chemistry_ In press (2018),
 
 * S. Narasimhan, D. Mance, C. Pinto, M. Weingarth, **A.M.J.J. Bonvin** and Marc Baldus.
 [Rapid Prediction of Multi-dimensional NMR Data Sets Using FANDAS](http://dx.doi.org/10.1007/978-1-4939-7386-6_6). In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, 111-132 (2018).
