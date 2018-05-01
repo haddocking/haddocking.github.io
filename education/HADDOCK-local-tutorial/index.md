@@ -258,7 +258,7 @@ One last command to source the HADDOCK environment (under bash) (for csh, replac
 
 <a class="prompt prompt-cmd">
   cd ~/software/haddock2.4 <br>
-  source ./haddock-configure.sh
+  source ./haddock_configure.sh
 </a>
 
 
