@@ -1154,27 +1154,214 @@ You can generate an XMGrace plot with the following command:
   \$HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_haddock-sorted.stat
 </a>
 
-The first and second arguments are the column numbers and the last the data file to use. In the above example we will be plotting the HADDOCK score versus the RMSD from the lowest energy model.
+The first and second arguments are the column numbers and the last the data file to use. In the above example we will be plotting the HADDOCK score versus the RMSD from the best scoring model.
 The resulting file is called `ene_rmsd.xmgr` and can be visualized with xmgrace if installed:
 
 <a class="prompt prompt-cmd">
   xmgrace ene_rmsd.xmgr
 </a>
 
+The resulting plot shows you a distribution of scores versus the RMSD from the best scoring model.
+<details style="background-color:#DAE4E7"><summary><b>See plot:</b></summary><br>
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/run-1xl-haddock-vs-rmsd.png">
+</figure>
+</details>
+<br>
+
+<a class="prompt prompt-question">
+  Is there a well-defined unique solution (i.e. are the points clustering and forming a unique energy funnel?
+</a>
+
+<a class="prompt prompt-question">
+  By definition the best model has RMSD 0 (as it was chosen as reference). Are there many other models close to it or is it rather isolated?
+</a>
+
+While such plots allow you to visualise the distribution of scores and RMSDs in your ensemble of model, we usually rather cluster the models, and score the resulting clusters, which will be described in the next section.
+
+<br>
+<hr>
+### Cluster-based analysis
+
+One section of `run.cns` which we have not modified in this example specifies the clustering method and paramters:
+
+<pre style="background-color:#DAE4E7">
+{* Clustering method (RMSD or Fraction of Common Contacts (FCC)) *}
+{+ choice: "RMSD" "FCC" +}
+{===>} clust_meth="FCC";
+
+{* RMSD cutoff for clustering? (Recommended values: RMSD 7.5, FCC 0.60) *}
+{===>} clust_cutoff=0.60;
+
+{* Minimum cluster size? *}
+{===>} clust_size=4;
+
+{* Chain-Agnostic Algorithm (used for FCC clustering in symmetrical complexes) *}
+{+ choice: "true" "false" +}
+{===>} fcc_ignc=false;
+</pre>
+
+HADDOCK supports two different clustering methods:
+
+* One based on the fraction of common contacts between the molecules (FCC clustering) (for details see the [online manual](/software/haddock2.2/analysis/#clusterrmsd){:target="_blank"})
+* One based on the ligand interface RMSD (here the structures are first fitted on the interface of the first molecule and then the RMSD is calculated on the interface of the remaining molecules (for details see the [online manual](/software/haddock2.2/analysis/#clusterfcc){:target="_blank"})
+
+The default is `FCC` (also recommended for multimeric complexes). For small ligand and peptide docking we however recommend using the RMSD clustering option with reduced cutoffs of 2.0Å and 5.0Å, respectively. 
+
+The minimum cluster size is set to 4, but in case the clustering fails, HADDOCK will automatically reduce it.
+
+The clustering output `cluster.out` can be found in the `analysis` directories, both in the `it1` and `water` directories. Unzip the file if necessary. For this particular example, its content should look like:
+
+<pre style="background-color:#DAE4E7">
+Cluster 1 -> 201 11 18 26 29 35 39 44 51 54 55 56 62 65 71 74 77 82 83 84 86 87 90 91 92 93 94 96 99 103 104 105 107 108 113 114 115 116 122 123 127 131 132 133 136 137 139 143 145 146 150 153 155 163 164 168 169 172 175 176 177 178 179 180 182 183 184 185 186 187 188 192 195 199 204 205 207 208 214 215 217 219 220 221 222 226 229 231 235 236 241 242 243 244 246 249 250 251 255 257 259 262 265 271 273 278 279 281 287 295 296 299 302 306 308 310 312 315 320 326 328 333 338 340 342 346 352 353 366 367 370 371 375 379 381 386 387 395 398
+Cluster 2 -> 301 4 12 14 15 17 20 21 22 23 25 41 45 46 47 48 58 59 60 61 67 69 70 72 81 89 95 100 101 109 112 118 119 121 126 129 130 138 142 148 152 154 156 157 159 161 162 165 173 174 181 190 193 194 197 202 203 209 210 212 216 224 230 232 238 239 245 252 253 254 258 264 268 269 275 286 289 293 298 314 317 319 321 334 373 374 389 392
+Cluster 3 -> 380 24 106 160 189 213 223 248 266 294 297 305 318 330 332 351 361 364 377 384 393 394
+Cluster 4 -> 356 151 211 282 288 300 304 329 336 337 359 368
+Cluster 5 -> 357 144 166 274 307 311 322 323 343 344 355
+Cluster 6 -> 256 33 76 98 125 134 135 147 237
+Cluster 7 -> 369 53 63 102 191 196 206 372
+Cluster 8 -> 388 50 247 350 354 362 396
+Cluster 9 -> 28 1 3 5 8 9 158
+Cluster 10 -> 120 32 42 141 261 270
+Cluster 11 -> 80 10 36 52 128 280
+Cluster 12 -> 227 57 66 97 140
+Cluster 13 -> 349 16 49 272
+Cluster 14 -> 348 85 110 267
+Cluster 15 -> 117 37 78 88
+</pre>
+
+The clusters are sorted and numbered in order of their size. The first number after the arrow corresponds to the cluster center. The number themselves correspond to the ranking of the models in the `it1` or `water` directories. For example, model 15 in this list corresponds to the 15th ranked model in the `water` directory, corresponding to `antibody-antigen_138w.pdb` (which can be found in `file.nam`). The PDB files present in the `analysis` directory have however been renumbered according to their rank.
+
+We will now perform a cluster-based analysis and ranking, calculating the average score (and other statistics) over each cluster. However to avoid having the size of the cluster affect its score, we rather consider a same number of models for each cluster, e.g. 4 (the minimum number of models defining a cluster). The perform this analysis, type in the `water` directory the following command:
+
+<a class="prompt prompt-cmd">
+  $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster.out
+</a>
+
+This generates a variety of data files, the most interesting one being `clusters_haddock-sorted.stats_best4` which lists the various terms following the clusters and their corresponding average score and other energy terms based on their average HADDOCK score. For details refer to the [online manual](/software/haddock2.2/analysis/#anaclust).
+
+<pre style="background-color:#DAE4E7">
+#Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
+file.nam_clust9 -106.537 7.163 1.725 1.157 1.725 1.157 7 -71.32 25.31 -516.21 43.66 -106.15 11.16 -60.59 9.24 -455.62 39.86 444.89 53.88 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 8.75 0.43 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1991.763 106.862 0.000 0.000 0.690 4.566
+file.nam_clust2 -91.262 7.903 1.965 1.353 8.784 0.619 88 -16.14 80.97 -437.63 36.52 -98.98 5.12 -61.35 8.35 -376.28 43.45 421.48 65.71 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.25 1.92 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1845.930 158.949 0.000 0.000 3.195 3.249
+file.nam_clust1 -83.864 2.881 0.972 0.568 11.403 0.024 139 -60.20 56.12 -441.44 51.61 -86.02 5.39 -46.53 5.51 -394.91 54.23 381.24 75.49 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.25 0.83 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1615.718 27.902 0.000 0.000 3.524 1.050
+...
+</pre>
+
+The first row indicates the various terms in the file. In this example we can see that the best cluster according to the HADDOCK score is `cluster 9` which has 7 members.
+The RMSD from the best scoring model (`rmsd-Emin`) indicates that this cluster contains it. The first RMSD value reported corresponds to the average pairwise RMSD within the cluster.
+
+
+When comparing clusters it is also important to consider the standard deviations of the various scores.
+
+<a class="prompt prompt-question">
+Considering the average HADDOCK scores and their standard deviations, would you say that the top ranked cluster is significantly better than the second cluster?
+</a>
+
+<br><br>
+<a class="prompt prompt-info">
+Now try to locate the averge RMSD from the best model of the second (_cluster 2_) and third (_cluster 1_) ranked clusters. Those two clusters are the most populated.
+</a>
+
+<a class="prompt prompt-question">
+Looking at the plot of HADDOCK scores vs RMSD from the best model we generated above, can you locate those clusters?
+</a>
+
+<br><br>
+<a class="prompt prompt-info">
+Try now to locate the column corresponding to the AIR energy (_Eair_) and the number of violations of the AIR restraints (_#AURviol_)
+</a>
+
+<a class="prompt prompt-question">
+Do the clusters satisfy all the restraints we defined?
+</a>
+
+Between 8 and 9 restraints are violated on average in this example, out of the 28 AIR restraints we defined. 
+Remember that our definition of active residues in the antibody was based on predicted CDR loops and might not be perfect.
+
+
+In principle you could analyse which restraints are most often violated 
+But in this particular example we only performed the clustering since the following settings were defined in `run.cns`:
+
+<pre style="background-color:#DAE4E7">
+* Full or limited analysis of results? *}
+{+ choice: "full" "cluster" "none" +}
+{===>} runana="cluster";
+</pre>
+
+To perform the full analysis, you would have to empty the `analysis` directory, change the setting in `run.cns` to `full` and restart HADDOCK.
+Note that a full analysis can take quite some time, up to a few hours depending on the number of models generated and the size of your complex.
+For details about violations analysis, please refer to the [online manual](software/haddock2.2/analysis/#noes){:target="_blank"}
+
+
+<br>
+<hr>
+### Comparison with the crystal structure of this antibody-antigen complex
+
+The crystal structure of the complex we just modelled is available from the PDB database (PDB ID `4G6M`). 
+Let's consider the top model of the top three clusters (#9, #2 and #1) and compare their structure with the crystal structure of this complex.
+We will use for that models from the analysis directory since those do contain a chainID which makes the comparison easier 
+(HADDOCK/CNS internally uses the segID to identify molecules). Using `cluster.out` identify the model number 
+which corresponds to the best scoring model for each of those three clusters and load these in PyMol with:
+
+<a class="prompt prompt-cmd">
+  pymol antibody-antigenfit_1.pdb antibody-antigenfit_4.pdb antibody-antigenfit_11.pdb
+</a>
+
+<a class="prompt prompt-pymol">
+show cartoon<br>
+hide lines<br>
+remove resn HOH<br>
+</a>
+
+<a class="prompt prompt-info">
+Then load the crystal structure:
+</a>
+
+<a class="prompt prompt-pymol">
+fetch 4g6m<br>
+show cartoon<br>
+hide lines<br>
+remove resn HOH<br>
+util.cbc<br>
+</a>
+
+<a class="prompt prompt-info">
+Now align all models onto the crystal reference using the antibody as reference for fitting:
+</a>
+
+<a class="prompt prompt-pymol">
+select 4g6m and chain H+L<br>
+align antibody-antigenfit_1, sele<br>
+align antibody-antigenfit_4, sele<br>
+align antibody-antigenfit_11, sele<br>
+</a>
+
+<a class="prompt prompt-question">
+Can you identify a solution which is reasonably close to the crystal structure? (Turn on and off the models to better distinguish)
+</a>
+
+<a class="prompt prompt-question">
+Does it actually correspond to the best scored cluster representative?
+</a>
 
 
 <hr>
 <hr>
 ## Congratulations!
 
-Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to 
+You have now completed this tutorial! But if you are curious about the impact of adding a second cross-link restraint on the docking results, 
+consider repeating the analysis for another run provided with the data you downloaded (`antibody-antigen-run-2xl`).
+
+
+If you have any questions or suggestions, feel free to contact us via email, or post your question to 
 our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
 [<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
 
 [link-cns]: http://cns-online.org "CNS online"
 [link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
+[link]: http://www.pymol.org/ "PyMOL"
 [link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-manual]: http://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
 [link-forum]: http://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
