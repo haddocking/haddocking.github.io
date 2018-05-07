@@ -1068,35 +1068,35 @@ decide on the best solution.
 In each directory containing docked model you will find a file called `file.list` which contains the sorted PDB models with their corresponding HADDOCK score, e.g.:
 
 <pre style="background-color:#DAE4E7">
-"PREVIT:antibody-antigen_1w.pdb"  { -91.3741 }
-"PREVIT:antibody-antigen_3w.pdb"  { -89.63574 }
-"PREVIT:antibody-antigen_12w.pdb"  { -79.9501 }
-"PREVIT:antibody-antigen_17w.pdb"  { -79.1546 }
-"PREVIT:antibody-antigen_2w.pdb"  { -73.35884 }
+"PREVIT:antibody-antigen_203w.pdb"  { -126.88945 }
+"PREVIT:antibody-antigen_78w.pdb"  { -117.76065 }
+"PREVIT:antibody-antigen_26w.pdb"  { -115.902035 }
+"PREVIT:antibody-antigen_227w.pdb"  { -109.66402 }
+"PREVIT:antibody-antigen_100w.pdb"  { -108.65817 }
 ...
 </pre>
 
 Each PDB model contains a header section with the various energy terms, e.g.:
 
 <pre style="background-color:#DAE4E7">
-REMARK FILENAME="antibody-antigen_1w.pdb0"
+REMARK FILENAME="antibody-antigen_203w.pdb0"
 REMARK ===============================================================
 REMARK HADDOCK run for antibody-antigen
-REMARK initial structure: antibody-antigen_1.pdb
+REMARK initial structure: antibody-antigen_203.pdb
 REMARK final NOE weights: unambig 50 amb: 50
 REMARK ===============================================================
 REMARK            total,bonds,angles,improper,dihe,vdw,elec,air,cdih,coup,rdcs,vean,dani,xpcs,rg
-REMARK energies: 102.321, 0, 0, 0, 0, -74.9325, -169.12, 346.374, 0, 0, 0, 0, 0, 0, 0
+REMARK energies: -178.455, 0, 0, 0, 0, -62.989, -534.486, 419.02, 0, 0, 0, 0, 0, 0, 0
 REMARK ===============================================================
 REMARK            bonds,angles,impropers,dihe,air,cdih,coup,rdcs,vean,dani,xpcs
-REMARK rms-dev.: 0,0,0,0,1.23139,0,0, 0, 0, 0, 0
+REMARK rms-dev.: 0,0,0,0,3.97561,0,0, 0, 0, 0, 0
 REMARK ===============================================================
 REMARK               air,cdih,coup,rdcs,vean,dani,xpcs
 REMARK               >0.3,>5,>1,>0,>5,>0.2,>0.2
-REMARK violations.: 10, 0, 0, 0, 0, 0, 0
+REMARK violations.: 8, 0, 0, 0, 0, 0, 0
 REMARK ===============================================================
 REMARK                        CVpartition#,violations,rms
-REMARK AIRs cross-validation: 2, 28, 1.81811
+REMARK AIRs cross-validation: 2, 19, 5.64725
 REMARK ===============================================================
 REMARK NCS energy: 0
 REMARK ===============================================================
@@ -1106,23 +1106,23 @@ REMARK Membrane restraining energy: 0
 REMARK ===============================================================
 REMARK Local cross-correlation:  0.0000
 REMARK ===============================================================
-REMARK Desolvation energy: -17.255
-REMARK Internal energy free molecules: -22849.8
-REMARK Internal energy complex: -22121.3
-REMARK Binding energy: 467.21
+REMARK Desolvation energy: 1.09475
+REMARK Internal energy free molecules: -23198.4
+REMARK Internal energy complex: -22506
+REMARK Binding energy: 96.0208
 REMARK ===============================================================
-REMARK buried surface area: 2068.14
+REMARK buried surface area: 2079.75
 REMARK ===============================================================
 REMARK water - chain_1: 0 0 0
 REMARK water - chain_2: 0 0 0
 REMARK ===============================================================
 REMARK water - water: 0 0 0
 REMARK ===============================================================
-REMARK DATE:25-Apr-2018  11:28:44       created by user: abonvin
+REMARK DATE:26-Apr-2018  13:44:49       created by user: abonvin
 REMARK VERSION:1.3U
-ATOM      1  N   GLN     1       4.527   0.579 -14.142  1.00 10.00      A
-ATOM      2  HN  GLN     1       3.641   0.595 -14.566  1.00 10.00      A
-ATOM      3  CA  GLN     1       5.589  -0.216 -14.745  1.00 10.00      A
+ATOM      1  N   GLN     1      -1.906  -0.593 -17.682  1.00 10.00      A
+ATOM      2  HN  GLN     1      -2.433  -1.413 -17.828  1.00 10.00      A
+ATOM      3  CA  GLN     1      -1.990   0.481 -18.666  1.00 10.00      A
 ...
 </pre>
 
@@ -1213,21 +1213,25 @@ The minimum cluster size is set to 4, but in case the clustering fails, HADDOCK 
 The clustering output `cluster.out` can be found in the `analysis` directories, both in the `it1` and `water` directories. Unzip the file if necessary. For this particular example, its content should look like:
 
 <pre style="background-color:#DAE4E7">
-Cluster 1 -> 201 11 18 26 29 35 39 44 51 54 55 56 62 65 71 74 77 82 83 84 86 87 90 91 92 93 94 96 99 103 104 105 107 108 113 114 115 116 122 123 127 131 132 133 136 137 139 143 145 146 150 153 155 163 164 168 169 172 175 176 177 178 179 180 182 183 184 185 186 187 188 192 195 199 204 205 207 208 214 215 217 219 220 221 222 226 229 231 235 236 241 242 243 244 246 249 250 251 255 257 259 262 265 271 273 278 279 281 287 295 296 299 302 306 308 310 312 315 320 326 328 333 338 340 342 346 352 353 366 367 370 371 375 379 381 386 387 395 398
-Cluster 2 -> 301 4 12 14 15 17 20 21 22 23 25 41 45 46 47 48 58 59 60 61 67 69 70 72 81 89 95 100 101 109 112 118 119 121 126 129 130 138 142 148 152 154 156 157 159 161 162 165 173 174 181 190 193 194 197 202 203 209 210 212 216 224 230 232 238 239 245 252 253 254 258 264 268 269 275 286 289 293 298 314 317 319 321 334 373 374 389 392
-Cluster 3 -> 380 24 106 160 189 213 223 248 266 294 297 305 318 330 332 351 361 364 377 384 393 394
-Cluster 4 -> 356 151 211 282 288 300 304 329 336 337 359 368
-Cluster 5 -> 357 144 166 274 307 311 322 323 343 344 355
-Cluster 6 -> 256 33 76 98 125 134 135 147 237
-Cluster 7 -> 369 53 63 102 191 196 206 372
-Cluster 8 -> 388 50 247 350 354 362 396
-Cluster 9 -> 28 1 3 5 8 9 158
-Cluster 10 -> 120 32 42 141 261 270
-Cluster 11 -> 80 10 36 52 128 280
-Cluster 12 -> 227 57 66 97 140
-Cluster 13 -> 349 16 49 272
-Cluster 14 -> 348 85 110 267
-Cluster 15 -> 117 37 78 88
+Cluster 1 -> 349 15 17 26 29 32 37 41 46 49 50 52 54 68 69 72 73 74 78 83 88 91 92 94 98 100 101 105 107 110 117 122 124 125 126 128 135 137 139 1
+41 145 146 152 153 154 155 157 158 159 161 163 164 167 169 177 182 183 184 185 189 192 193 196 197 200 205 210 211 214 217 219 220 225 227 230 234
+ 238 247 250 252 253 254 255 256 257 258 260 273 275 277 278 283 284 285 286 290 296 297 298 300 306 309 319 321 323 326 327 330 331 333 335 337 3
+39 344 345 348 355 357 358 359 364 366 367 375 377 378 387 388
+Cluster 2 -> 320 8 11 21 22 23 24 27 30 31 36 39 40 51 53 55 59 60 61 62 64 65 66 67 70 75 80 81 85 87 89 90 93 99 111 112 114 119 120 127 131 132
+ 140 142 144 149 150 160 165 168 170 171 172 179 180 181 186 191 198 199 202 206 207 212 218 226 229 231 232 235 237 243 251 272 276 280 289 291 3
+04 313 314 318 322 334 343 352 356 362 392
+Cluster 3 -> 242 63 82 84 97 116 130 134 162 190 216 267 270 301 312 338 346 347 351 363 380 397
+Cluster 4 -> 368 195 203 262 268 299 311 329 350 361 376 382 384 386 389
+Cluster 5 -> 294 71 77 178 224 259 279 293 295 305 308 317
+Cluster 6 -> 187 28 38 118 121 174 213 240 264 328 342
+Cluster 7 -> 310 7 25 79 96 102 138 147 188
+Cluster 8 -> 353 47 95 104 109 113 115 340
+Cluster 9 -> 315 57 263 303 336
+Cluster 10 -> 266 14 20 44 143
+Cluster 11 -> 244 48 136 201 204
+Cluster 12 -> 194 236 302 324 325
+Cluster 13 -> 173 34 58 108
+Cluster 14 -> 5 1 2 4
 </pre>
 
 The clusters are sorted and numbered in order of their size. The first number after the arrow corresponds to the cluster center. The number themselves correspond to the ranking of the models in the `it1` or `water` directories. For example, model 15 in this list corresponds to the 15th ranked model in the `water` directory, corresponding to `antibody-antigen_138w.pdb` (which can be found in `file.nam`). The PDB files present in the `analysis` directory have however been renumbered according to their rank.
@@ -1242,13 +1246,18 @@ This generates a variety of data files, the most interesting one being `clusters
 
 <pre style="background-color:#DAE4E7">
 #Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
-file.nam_clust9 -106.537 7.163 1.725 1.157 1.725 1.157 7 -71.32 25.31 -516.21 43.66 -106.15 11.16 -60.59 9.24 -455.62 39.86 444.89 53.88 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 8.75 0.43 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1991.763 106.862 0.000 0.000 0.690 4.566
-file.nam_clust2 -91.262 7.903 1.965 1.353 8.784 0.619 88 -16.14 80.97 -437.63 36.52 -98.98 5.12 -61.35 8.35 -376.28 43.45 421.48 65.71 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.25 1.92 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1845.930 158.949 0.000 0.000 3.195 3.249
-file.nam_clust1 -83.864 2.881 0.972 0.568 11.403 0.024 139 -60.20 56.12 -441.44 51.61 -86.02 5.39 -46.53 5.51 -394.91 54.23 381.24 75.49 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.25 0.83 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1615.718 27.902 0.000 0.000 3.524 1.050
+#Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean
+sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
+file.nam_clust14 -115.743 7.339 1.433 0.946 1.433 0.946 4 -110.79 70.50 -567.22 23.43 -114.59 2.56 -64.30 4.37 -502.92 26.99 456.43 49.82 0.00 0.0
+0 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.00 0.71 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 2021.175 41.803 0.000 0.000 3.495 1.749
+file.nam_clust2 -89.292 4.620 1.482 1.014 8.832 0.460 89 -32.63 47.83 -417.01 57.40 -94.60 2.26 -58.78 6.26 -358.23 63.22 384.38 26.04 0.00 0.00 0
+.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 8.25 0.83 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1783.680 115.230 0.000 0.000 2.697 3.510
+file.nam_clust1 -85.455 3.444 1.035 0.640 11.362 0.049 128 -47.75 63.27 -463.55 24.95 -91.90 2.15 -50.60 2.81 -412.95 26.82 415.81 77.45 0.00 0.00
+ 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.75 1.48 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1665.472 51.602 0.000 0.000 6.159 2.172
 ...
 </pre>
 
-The first row indicates the various terms in the file. In this example we can see that the best cluster according to the HADDOCK score is `cluster 9` which has 7 members.
+The first row indicates the various terms in the file. In this example we can see that the best cluster according to the HADDOCK score is `cluster 14` which has only 4 members.
 The RMSD from the best scoring model (`rmsd-Emin`) indicates that this cluster contains it. The first RMSD value reported corresponds to the average pairwise RMSD within the cluster.
 
 
@@ -1299,13 +1308,13 @@ For details about violations analysis, please refer to the [online manual](softw
 ### Comparison with the crystal structure of this antibody-antigen complex
 
 The crystal structure of the complex we just modelled is available from the PDB database (PDB ID `4G6M`). 
-Let's consider the top model of the top three clusters (#9, #2 and #1) and compare their structure with the crystal structure of this complex.
+Let's consider the top model of the top three clusters (#14, #2 and #1) and compare their structure with the crystal structure of this complex.
 We will use for that models from the analysis directory since those do contain a chainID which makes the comparison easier 
 (HADDOCK/CNS internally uses the segID to identify molecules). Using `cluster.out` identify the model number 
 which corresponds to the best scoring model for each of those three clusters and load these in PyMol with:
 
 <a class="prompt prompt-cmd">
-  pymol antibody-antigenfit_1.pdb antibody-antigenfit_4.pdb antibody-antigenfit_11.pdb
+  pymol antibody-antigenfit_1.pdb antibody-antigenfit_8.pdb antibody-antigenfit_15.pdb
 </a>
 
 <a class="prompt prompt-pymol">
@@ -1333,8 +1342,8 @@ Now align all models onto the crystal reference using the antibody as reference 
 <a class="prompt prompt-pymol">
 select 4g6m and chain H+L<br>
 align antibody-antigenfit_1, sele<br>
-align antibody-antigenfit_4, sele<br>
-align antibody-antigenfit_11, sele<br>
+align antibody-antigenfit_8, sele<br>
+align antibody-antigenfit_15, sele<br>
 </a>
 
 <a class="prompt prompt-question">
@@ -1353,7 +1362,15 @@ Does it actually correspond to the best scored cluster representative?
 You have now completed this tutorial! But if you are curious about the impact of adding a second cross-link restraint on the docking results, 
 consider repeating the analysis for another run provided with the data you downloaded (`antibody-antigen-run-2xl`).
 
-
+<details style="background-color:#DAE4E7"><summary><b>See a preview of the results:</b></summary><br>
+The following plot shows the distribution of HADDOCK scores vs RMSD from the top ranked model for a run using two cross-link restraints.
+Compared to the run we just analysed, the distribution of points is quite different with a much larger population around the best model.
+This of course does not mean that that model is the correct one per se. Up to you to figure it out...
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/run-2xl-haddock-vs-rmsd.png">
+</figure>
+</details>
+<br>
 If you have any questions or suggestions, feel free to contact us via email, or post your question to 
 our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
 [<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
