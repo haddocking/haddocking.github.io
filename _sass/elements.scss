@@ -83,6 +83,7 @@ img.grayscale {
   @include rounded(3px);
   width: 100% !important;
   overflow: scroll !important;
+  border-bottom: 0px !important;
 }
 
 .prompt-attention {
