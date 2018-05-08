@@ -82,7 +82,7 @@ img.grayscale {
   border-color: $primary;
   @include rounded(3px);
   width: 100% !important;
-  overflow: scroll !important;
+  overflow: auto !important;
   border-bottom: 0px !important;
 }
 
