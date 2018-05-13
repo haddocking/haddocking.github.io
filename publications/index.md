@@ -5,6 +5,9 @@ image:
 ---
 
 ## 2018 
+
+* M.J. Abraham, A.S.J. Melquiond, E. Ippoliti, V. Gapsys, B. Hess, M. Trellet, J.P.G.L.M. Rodrigues, E. Laure, R. Apostolov, B.L. de Groot, **A.M.J.J. Bonvin**, E. Lindahl. [BioExcel Whitepaper on Scientific Software Development](https://doi.org/10.5281/zenodo.1194634). _Zenodo_ http://doi.org/10.5281/zenodo.1194634 (2018).
+
 * **A.M.J.J. Bonvin**, C. Geng, M. van Dijk, E. Karaca, P. L. Kastritis, P.I. Koukos, Z. Kurkcuoglu, A.S.J. Melquiond, 
 J.P.G.L.M. Rogridues, J. Schaarschmidt, C. Schmitz, J. Roel-Touris, M.E. Trellet, S. de Vries, A. Vangone, L. Xue, G.C.P. van Zundert
 HADDOCK. In _Encyclopedia of Biophysics_, In press (2018).
