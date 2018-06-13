@@ -148,6 +148,10 @@
     current: 'Cagliari University, Italy'
     status: visiting-phd
 
+-   name: Miguel Pedrouzo
+    current: 'University of Valencia, Spain'
+    status: visiting-phd
+
 -   name: Siddarth Narasimhan
     url: http://www.uu.nl/nmr
     current: 'Solid state NMR group, Utrecht, the Netherlands'
@@ -226,5 +230,11 @@
     current: M.Sc Student UU
     status: student
 
+-   name: Rosanna Denis
+    status: student
+
+-   name: Carlos Barreto
+    current: 'University of Coimbra, Portugal'
+    status: student
 
 

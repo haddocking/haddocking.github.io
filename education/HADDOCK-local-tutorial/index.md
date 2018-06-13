@@ -133,7 +133,7 @@ Untar the archive in the `software` directory.
   cd <br>
   mkdir software <br>
   cd software <br>
-  git clone https://freesasa.github.io/freesasa-2.0.3.tar.gz
+  wget https://freesasa.github.io/freesasa-2.0.3.tar.gz
 </a>
 
 If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
