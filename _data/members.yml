@@ -47,21 +47,9 @@
     position: Ph.D Candidate
     avatar: /images/people/Francesco.jpg
 
--   name: Miguel Pedrouzo
-    position: Visiting Ph.D Candidate
-    avatar: /images/people/Miguel.jpg
-
--   name: Carlos Barreto
-    position: Visiting Ph.D Candidate
-    avatar: /images/people/cbarreto.jpg
-
 -   name: Andrea Basciu
     position: Visiting Ph.D Candidate
     avatar: /images/people/Andrea-Basciu.png
-
--   name: Rosanna Denis
-    position: M.Sc Student
-    avatar: /images/people/Rosanna.jpg
 
 -   name: Zhengyue Zhang
     position: M.Sc Student
@@ -75,3 +63,6 @@
     position: M.Sc Student
     avatar: /images/people/Angelina.jpg
 
+-   name: Daan Sybrandi
+    position: M.Sc Student
+    avatar: /images/people/Daan.png
