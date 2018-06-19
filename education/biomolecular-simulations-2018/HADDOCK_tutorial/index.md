@@ -26,7 +26,7 @@ your own system of interest (*maybe after the tutorial*), to suggest new develop
 <hr>
 ## Motivation
 We listed here some motivations for this topic, in no particular order:
-- There is no publication from the Bonvin's group systematically benchmarking protein-small ligand docking using HADDOCK, yet! Despite the lack of a thoroughly benchmarked protocol, about 20% of the jobs submitted on the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) are dealing with small ligands. 
+- There is no publication from the Bonvin's group systematically benchmarking protein-small ligand docking using HADDOCK, yet! Despite the lack of a thoroughly benchmarked protocol, about 20% of the jobs submitted on the [HADDOCK web server](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php) are dealing with small ligands. 
 - [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) recently participated to the [D3R Grand Challenges 2 and 3](https://drugdesigndata.org/about/grand-challenge), blind prediction challenges involving three-dimensional calculation of protein-ligand poses and prediction of affinities or scores. We recently published our performance in the D3R Grand Challenge 2 ([dx.doi.org/10.1007/s10822-017-0049-y](dx.doi.org/10.1007/s10822-017-0049-y)).
 - "Covalent docking" is something HADDOCK can actually handle by defining some specific distance restraints, something that other small molecule docking software surprisingly are unable to do.
 - This topic is appealing to our industrial partners.
@@ -45,7 +45,7 @@ Osteoporosis affects about 10% of the population in Europe, Japan and North Amer
 <hr>
 ## Overview
 In this tutorial we will use [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) to predict the covalent binding of a small ligand on a protein receptor, using as example a purine nitrile derived inhibitor of cathepsin K (see fig. 1), described in the following publication:<br>
-*Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K* ([doi.org/doi:10.1021/jm0493111](doi.org/doi:10.1021/jm0493111))<br>
+*[Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K](http://doi.org/doi:10.1021/jm0493111)*<br>
 E. Altmann\*, S.W. Cowan-Jacob and M. Missbach\*<br>
 J. Med. Chem. (2004)
 
@@ -69,7 +69,7 @@ Since a lot of three-dimensional structures of cathepsins in the presence of sma
 
 Because this tutorial requires a lot of efforts to edit and clean PDB files in preparation for docking, we will provide you with most of the files. Feel free to try by yourself and please share with us any tips to speed up this fastidious work.
 
-For this tutorial we will make use of the [HADDOCK2.2 web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php). A description of our web server can be found in the following publications:
+For this tutorial we will make use of the [HADDOCK2.2 web server](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php). A description of our web server can be found in the following publications:
 * _[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](doi.org/10.1016/j.jmb.2015.09.014)_<br>
 G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van 
 Dijk, S.J. de Vries and A.M.J.J. Bonvin<br>
@@ -88,7 +88,10 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 <hr>
 ## Setup
+
 Before you get started, we invite you all to create an account for our web-services using our [registration portal](https://nestor.science.uu.nl/auth/register/). Alternatively, you can make use of the special workshop credentials provided to you during the tutorial. Remember that the usage of our web services is **only free for non-profit work**!
+
+> Given the limited time for this hands-on tutorial, we advise you to use the special workshop credentials (reduced number of models) and to only submit one docking run (either catK, catL or catS).
 
 In order to run this tutorial, you will need to have a molecular viewer installed. We advise you to use 
 [PyMOL](https://pymol.org/) and the visualization commands given during the hands-on will be specific to this software. 
@@ -163,17 +166,17 @@ You can upload all the PDB files in PyMOL and align them to appreciate the struc
 Or if you want to use the PyMOL command-line instead, type the following command:
 
 <a class="prompt prompt-pymol">
-	load 3kw9_clean.pdb
-	load 4axm_clean.pdb
+	load 3kw9_clean.pdb<br>
+	load 4axm_clean.pdb<br>
 	load 3n4c_clean.pdb
 </a>
 
 Now we want to add the reference structure to this session and align structurally all the files:
 
 <a class="prompt prompt-pymol">
-	fetch 1u9v
-	for i in cmd.get_object_list(): cmd.align(i, "1u9v")
-	zoom vis
+	fetch 1u9v<br>
+	for i in cmd.get_object_list(): cmd.align(i, "1u9v")<br>
+	zoom vis<br>
 	as cartoon
 </a>
 
@@ -258,17 +261,17 @@ The main bottleneck when trying to "covalently dock" a small ligand is that we m
 **Instruction:** If you did not download the PDB files we providing you in table 2, you will have to modify the residue name of cysteine 25 and replace "CYS A  25" by "CYC A  25". This can be done using the following command in a terminal:
 
 <a class="prompt prompt-cmd">
-  sed -e 's/CYS A  25/CYC A  25/g' file_original.pdb > file_modified.pdb
+  sed -e 's/CYS\ A\ \ 25/CYC\ A\ \ 25/g' file_original.pdb > file_modified.pdb
 </a>
 
 <!--
-> As an additional remark, the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) directly fetches topology and parameters for the small ligand from [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg). In the near future, we may want to allow users to provide their own set of topology/parameter files, which is for the moment only possible provided the user runs the command line version of the software (or bribe us to implement the parameter files in the production server).
+> As an additional remark, the [HADDOCK web server](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php) directly fetches topology and parameters for the small ligand from [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg). In the near future, we may want to allow users to provide their own set of topology/parameter files, which is for the moment only possible provided the user runs the command line version of the software (or bribe us to implement the parameter files in the production server).
 -->
 
-We will now launch the docking run. For this we will make us of the [guru interface](http://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server:
+We will now launch the docking run. For this we will make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-http://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
+http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
 </a>
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
@@ -423,7 +426,35 @@ The page will automatically refresh and the results will appear upon completions
 <hr>
 ## Analysis of the results
 
-Please find below the pre-processed runs for the different cathepsins using the best OpenEye conformer. 
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Please find below the pre-processed runs for the different cathepsins templates using the best OpenEye conformer:
+
+- **CatK**: [download here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3kw9_IHE-OpenEye-1A)
+
+- **CatL**: [download here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/4axm_IHE-OpenEye-1A)
+
+- **CatS**: [download here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3n4c_IHE-OpenEye-1A)
+
+<a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
+
+**Note:** The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the RMSD from the best generated model (the best scoring model).
+
+The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated as:
+<pre>
+      HADDOCKscore = 1.0 Evdw + 0.1 Eelec + 1.0 Edesol + 0.1 Eair
+</pre>
+where `Evdw` is the intermolecular van der Waals energy, `Eelec` the intermolecular electrostatic energy, `Edesol` represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and `Eair` the AIR energy. The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. The various components of the HADDOCK score are also reported for each cluster on the results web page.
+
+<a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
+<a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
+
+In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution.
+
+<a class="prompt prompt-question">Assuming our docking simulations are accurate, what can you say about the average HADDOCK score of the top cluster for the different docking runs? Is is consistent with the IC50 values reported experimentally?</a>
+
+
+Let's now visualise the various solutions.
+
+<a class="prompt prompt-info">Download and save to disk the first model of each cluster</a>
 
 <!-- 
 
