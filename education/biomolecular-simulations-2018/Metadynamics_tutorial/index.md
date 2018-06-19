@@ -733,17 +733,9 @@ are also given.
 More detailed information on how to run a metadynamics simulation can be 
 found at the following webpages:
 
-<ul>
-<li>
-[General documentation on metadynamics with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/_m_e_t_a_d.html)
-</li>
-<li>
-[Running metadynamics simulations with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/trieste-4.html)
-</li>
-<li>
-[Running Bias Exchange metadynamics simulations with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/cambridge.html#cambridge-exercise-2)
-</li>
-</ul>
+- [General documentation on metadynamics with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/_m_e_t_a_d.html)
+- [Running metadynamics simulations with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/trieste-4.html)
+- [Running Bias Exchange metadynamics simulations with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/cambridge.html#cambridge-exercise-2)
 
 Now go in the `MD/meta` folder created at the beginning of the tutorial and copy there: 
 i) the three plumed files just described, ii) the "equil-pbc.tpr" file used for the apo 
@@ -772,8 +764,8 @@ The flag "-replex" is used to specify th frequency of attempts to exchange the b
 between the two replicas.
 
 Wait for a few minutes and check the content of the directory. If the files "COLVAR.X" 
-and "HILLS.X" are being written (you can easily check with "cat <filename>" or "wc -l 
-<filename>") it means your simulation is running. As for the previous simulation, you 
+and "HILLS.X" are being written (you can easily check with "cat &lt;filename&gt;" or "wc -l 
+&lt;filename&gt;") it means your simulation is running. As for the previous simulation, you 
 can use pre-calculated data to analyze the trajectory.
 
 ## Analysis of the metadynamics simulation
@@ -786,7 +778,7 @@ the MD trajectories mainly in terms of structural variation of the BS compared t
 experimental structure of the complex. We'll start by plotting the profile of the RoG 
 as calculated along the MD trajectory. If our sampling strategy was successful, some 
 sampled structure should feature a RoG close to that of the experimental holo protein. 
-Copy the COLVAR.X and the ref_meta.dat files from the directory "tutorial_files/plumed" 
+Copy the COLVAR.X and the ref_meta.dat files from the directory `tutorial_files/plumed` 
 to your working folder, then type the following commands:
 
 <a class="prompt prompt-cmd">
