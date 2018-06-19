@@ -383,7 +383,7 @@ number of MD steps during first rigid body cooling stage -> 0
 </a>
 
 
-* **Step 8:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
+* **Step 9:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
 
 
 Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run. 
@@ -434,9 +434,7 @@ The page will automatically refresh and the results will appear upon completions
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Please find below the pre-processed runs for the different cathepsins templates using the best OpenEye conformer:
 
 - **CatK**: [View here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3kw9_IHE-OpenEye-1A){:target="_blank"}
-
 - **CatL**: [View here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/4axm_IHE-OpenEye-1A){:target="_blank"}
-
 - **CatS**: [View here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3n4c_IHE-OpenEye-1A){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
@@ -490,9 +488,12 @@ for i in cmd.get_object_list(): cmd.align(i,"1u9v")<br>
 
 We computed ligand RMSD values (in &Aring;) for a number of docking runs (fit on the backbone of the protein and calculate RMSD on all atoms of the ligand) for the top model of the top cluster:
 
-**catK** | **catL** | **catS** | **catK-bound** | **catK-bound_lig-rigid** |
-| :------------ |:---------------:| -------------:| -------------:| -------------:|
-| 3.35 | 3.62 | 3.65 | 3.1 | 2.8 |
+- **catK**      3.35Å
+- **catL**      3.62Å
+- **catS**      3.65Å
+- **catK-bound**        3.1Å
+- **catK-bound_lig-rigid**      2.8Å 
+
 
 Here, the **catK**, **catL** and **catS** runs correspond to the docking runs we have been setting up from homologous templates (resp. 3kw9, 4axm and 3n4c PDBids).
 
