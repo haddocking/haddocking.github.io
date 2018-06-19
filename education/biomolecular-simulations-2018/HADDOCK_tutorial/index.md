@@ -76,6 +76,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
 <a class="prompt prompt-info">This is an instruction prompt: follow it!</a>
 <a class="prompt prompt-pymol">This is a PyMol prompt: write this in the PyMol command line prompt!</a>
+<a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
 ## Setup
 Before you get started, we invite you all to create an account for our web-services using our [registration portal](https://nestor.science.uu.nl/auth/register/). Alternatively, you can make use of the special workshop credentials provided to you during the tutorial. Remember that the usage of our web services is **only free for non-profit work**!
@@ -239,7 +240,7 @@ The main bottleneck when trying to "covalently dock" a small ligand is that we m
 
 **Instruction:** If you did not download the PDB files we providing you in table 2, you will have to modify the residue name of cysteine 25 and replace "CYS A  25" by "CYC A  25". This can be done using the following command in a terminal:
 
-<a class="prompt prompt-info">
+<a class="prompt prompt-cmd">
   sed -e 's/CYS A  25/CYC A  25/g' file_original.pdb > file_modified.pdb
 </a>
 
@@ -247,40 +248,118 @@ The main bottleneck when trying to "covalently dock" a small ligand is that we m
 > As an additional remark, the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) directly fetches topology and parameters for the small ligand from [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg). In the near future, we may want to allow users to provide their own set of topology/parameter files, which is for the moment only possible provided the user runs the command line version of the software (or bribe us to implement the parameter files in the production server).
 -->
 
-Apart from the modified residue discussed previously, some points must require your attention:
-- In the field `First Molecule`: we must provide manually the histidine protonation state. Pay attention to uncheck the automatic option and specify the following protonation states:
+We will now launch the docking run. For this we will make us of the [guru interface](http://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server:
+
+<a class="prompt prompt-info">
+http://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
+</a>
+
+**Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
+
+
+* **Step1:** Define a name for your docking run, e.g. *CatK-ligand1*.
+
+* **Step2:** Input the protein PDB file. For this unfold the **First Molecule menu**.
+
+<a class="prompt prompt-info">
+First molecule: where is the structure provided? -> "I am submitting it"
+</a>
+<a class="prompt prompt-info">
+Which chain to be used? -> All (for this particular case)
+</a>
+<a class="prompt prompt-info">
+PDB structure to submit -> Choose the proper Cathepsin file
+</a>
+
+* **Step3:** Define manually the protonation state of Histidines. For this unfold the **Histine protonation state menu**.
+
+<a class="prompt prompt-info">
+Automatically guess histidine protonation states using molprobity -> uncheck this option
+
+<a class="prompt prompt-info">
+Specify the following protonation states depending on which Cathepsin you are using:
+</a>
+
     * 3KW9 (catK): **HIE162** / **HIE177**
     * 4AXM (catL): **HIE140** / **HIE163** / **HID208**
     * 3N4C (catS): **HIE142** / **HIE164** / **HIE188** / **HID205**
-- In the `Distance Restraints` menu: upload the tbl file as unambiguous restraints
-- In the `Distance Restraints` menu: by default, HADDOCK removes the non-polar hydrogen that might account for the 
-tightly binding of the chemical. This option must be **unchecked**
-<!--
-- In the `Sampling parameters` menu: please set the number of structure for explicit solvent refinement to **0** to 
-skip the last refinement stage of HADDOCK. Since the ligand is pretty buried and in a rather dry pocket,
- we experienced that we achieve better results with the structures generated in the second/flexible stage of HADDOCK (it1)
--->
-- In the field `Parameters for clutering`: the default clustering method in HADDOCK2.2 is 
-[fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on 
-pairwise residue contacts. If this method outperforms RMSD-based clustering for large systems, both in term of accuracy 
-and speed, interface-RMSD remains a method of choice for small ligand docking. In the ‘Parameters for clustering’
- section, please change the clustering method to **RMSD** and set the cutoff value for clustering to **1&Aring;**
-<!--
-- In the field `Energy and interaction parameters`: we must scale down the non-bonded intermolecular interaction to 
-already bring the ligand deep in the pocket at the rigid body monimisation stage of HADDOCK. For this, we must scaling
- the intermolecular interactions for rigid body EM to **0.001**
--->
-- In the field `Scoring parameters`: reduce the weight for the Elec3 to **0.1** (improves slightly the scoring)
-- In the field `Advanced sampling parameters`: some advanced parameters for the sampling are too aggressive for 
-protein-small molecule binding and must be reduced or removed to avoid the ligand being kicked out the binding pocket:
-	* initial temperature for third TAD cooling step with fully flexible interface = **300**
-    * number of MD steps for rigid body high temperature TAD = **0**
-    * number of MD steps during first rigid body cooling stage = **0**
 
-Once all the web server options have been filled out, you can enter your username and password and click submit. 
-The web form will first be validated. Once done it will be added to the job queue and start running when resources 
-are available. Normally you will be notified by email once your job is added to the queue and afterwards on the 
-continuation of your job.
+* **Step4:** Input the ligand PDB file. For this unfold the **Second Molecule menu**.
+
+<a class="prompt prompt-info">
+First molecule: where is the structure provided? -> "I am submitting it"
+</a>
+<a class="prompt prompt-info">
+Which chain to be used? -> All (for this particular case)
+</a>
+<a class="prompt prompt-info">
+PDB structure to submit -> Choose the proper ligand PDB file
+</a>
+
+* **Step5:** Upload the distance restraing file (.tbl). For this unfold the **Distance restraints menu**.
+
+<a class="prompt prompt-info">
+Upload the tbl file as unambiguous restraints
+</a>
+<a class="prompt prompt-info">
+HADDOCK deletes by default all hydrogens except those bonded to a polar atom (N, O).
+Uncheck this option if you have NOEs or other specific restraints to non-polar hydrogens -> uncheck this option
+</a>
+
+* **Step6:** Change the clustering settings. For this unfold the **Parameters for clustering menu**.
+
+The default clustering method in the HADDOCK2.2 server is 
+[fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on 
+pairwise residue contacts. This method outperforms RMSD-based clustering for large systems, both in term of accuracy 
+and speed. However for ligand docking, interface-RMSD remains the method of choice. Change therefore the clustering method:
+
+<a class="prompt prompt-info">
+Clustering method (RMSD or Fraction of Common Contacts (FCC)) -> RMSD
+</a>
+<a class="prompt prompt-info">
+RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 1&Aring;
+</a>	
+
+* **Step 7:** Apply some ligand-specific scoring setting. For this unfold the **Scoring parameter menu**:
+
+Our recommended HADDOCK score settings for small ligands docking are the following:
+
+<pre>
+     HADDOCKscore-it0   = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol + 0.01 Eair - 0.01 BSA
+     
+     HADDOCKscore-it1   = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol +  0.1 Eair - 0.01 BSA
+
+     HADDOCKscore-water = 1.0 Evdw + 0.1 Eelec + 1.0 Edesol +  0.1 Eair
+</pre>
+
+This differs from the defaults setting (defined for protein-protein complexes). We recommend to change two weights for protein-ligand docking:
+
+<a class="prompt prompt-info">
+Evdw 1 -> 1.0
+</a>
+<a class="prompt prompt-info">
+Eelec 3 -> 0.1
+</a>
+
+
+* **Step 8:** Apply some ligand-specific protocol setting. For this unfold the **Advanced sampling parameter menu**:
+
+<a class="prompt prompt-info">
+initial temperature for second TAD cooling step with flexible side-chain at the inferface -> 500
+</a>
+<a class="prompt prompt-info">
+initial temperature for third TAD cooling step with fully flexible interface -> 300
+</a>
+<a class="prompt prompt-info">
+number of MD steps for rigid body high temperature TAD -> 0
+</a>
+<a class="prompt prompt-info">
+number of MD steps during first rigid body cooling stage -> 0
+</a>
+
+
+* **Step 8:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
+
 
 ## Analysis of the results
 
