@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Modelling a covalent inhibitor of cathepsin proteins"
-tags: [GROMACS, HADDOCK, CPMD, covalent docking, molecular dynamics, docking]
+tags: [HADDOCK, docking, covalent docking, tutorials, BioExcel, summer school]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -12,23 +12,22 @@ This tutorial consists of the following sections:
 {:toc}
 
 ## Introduction
+<!--
 The format of the community forum has been defined as an _unconference_, stimulating us to think outside of the box and 
-discussing challenges that are barely touched upon by our communities. This tutorial paves the route for the use 
-of [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) to covalently bind a ligand to a receptor. This use-case 
-is a first attempt to blur different software and take on the challenge of "covalent docking". You are greatly 
-encouraged to work at your own pace, to discuss with your neighbours, to interrupt us, to recommend different methods 
-and/or software, to switch to one of the [many well-established HADDOCK tutorials](http://www.bonvinlab.org/education/), 
+discussing challenges that are barely touched upon by our communities.
+-->
+This use-case is a first attempt to blur different software and take on the challenge of "covalent docking", an important part of pharceutical chemistry that has been barely touched upon by the integrative modelling community. For this, we will make use of our in-house software, [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/), to predict the three dimensional structures of a covalently bound ligand to cathepsin proteins.
+You are greatly encouraged to work at your own pace, to discuss with your neighbours, to interrupt us, to recommend different methods and/or software, to switch to one of the [many well-established HADDOCK tutorials](http://www.bonvinlab.org/education/), 
 to calmly disagree, to enthusiastically demonstrate your interest for the topic, to correct typos, to challenge us with 
-your own system of interest, to suggest new developments ... Just remember that, at this stage, this tutorial shall 
-not serve as a standard protocol to predict the covalent binding of a small ligand in the active site a protein.
+your own system of interest (*maybe after the tutorial*), to suggest new developments ... Just remember that, at this stage, this tutorial shall not serve as a standard protocol to predict the covalent binding of a small ligand in the active site a protein, but we are working on extending the scope of our approach.
 
 ## Motivations
 We listed here some motivations for this topic, in no particular order:
-- There is no publication from the Bonvin's group on protein-small ligand docking using HADDOCK, yet! Despite the lack of a thoroughly benchmarked protocol, about 20% of the jobs submitted on the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) are dealing with small ligands.
-- [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) recently participated to the [D3R Grand Challenges 2 and 3](https://drugdesigndata.org/about/grand-challenge), blind prediction challenges involving three-dimensional calculation of protein-ligand poses and prediction of affinities or scores.
-- "Covalent docking" calls for the development of specific features in [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/), some of which have just been implemented before this community forum.
+- There is no publication from the Bonvin's group systematically benchmarking protein-small ligand docking using HADDOCK, yet! Despite the lack of a thoroughly benchmarked protocol, about 20% of the jobs submitted on the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) are dealing with small ligands. 
+- [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) recently participated to the [D3R Grand Challenges 2 and 3](https://drugdesigndata.org/about/grand-challenge), blind prediction challenges involving three-dimensional calculation of protein-ligand poses and prediction of affinities or scores. We recently published our performance in the D3R Grand Challenge 2 ([dx.doi.org/10.1007/s10822-017-0049-y](dx.doi.org/10.1007/s10822-017-0049-y)).
+- "Covalent docking" is something HADDOCK can actually handle by defining some specific distance restraints, something that other small molecule docking software surprisingly are unable to do.
 - This topic is appealing to our industrial partners.
-- Unique opportunity to work at the interface between most of the interest groups: [Integrative Modelling](http://bioexcel.eu/community/interest-groups/integrative-modelling-ig/), [Hybrid Methods](http://bioexcel.eu/community/interest-groups/hybrid-method-ig/), [Practical Applications for Industry](http://bioexcel.eu/community/interest-groups/industry-ig/) and Free Energy Calculations.
+- Unique opportunity to work at the interface between most of the interest groups: [Integrative Modelling](http://bioexcel.eu/community/interest-groups/integrative-modelling-ig/), [Hybrid Methods](http://bioexcel.eu/community/interest-groups/hybrid-method-ig/), [Practical Applications for Industry](http://bioexcel.eu/community/interest-groups/industry-ig/) and [Free Energy Calculations](http://ask.bioexcel.eu/c/free-energy).
 - Could possibly combine all three [BioExcel flagship software](http://bioexcel.eu/software/) into one common workflow.
 - This is a collaborative effort, where software developers meet the different players in the field to combine expertise and skills in order to solve the puzzle.
 
@@ -39,12 +38,15 @@ Osteoporosis affects about 10% of the population in Europe, Japan and North Amer
 
 ## Overview
 In this tutorial we will use [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) to predict the covalent binding of a small ligand on a protein receptor, using as example a purine nitrile derived inhibitor of cathepsin K (see fig. 1), described in the following publication:<br>
-_[Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K](doi.org/doi:10.1021/jm0493111)_<br>
+*Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K* ([doi.org/doi:10.1021/jm0493111](doi.org/doi:10.1021/jm0493111))<br>
 E. Altmann\*, S.W. Cowan-Jacob and M. Missbach\*<br>
 J. Med. Chem. (2004)
 
-![](media/cover_paper.gif "Cathepsin K inhibitor")
-*Figure 1: Purine nitrile derived inhibitor cocrystallized in the cathepsin K active site. PDB code is 1u9v*
+<figure align="center">
+<img src="media/cover_paper.gif">
+</figure>
+<!-- ![](media/cover_paper.gif "Cathepsin K inhibitor") -->
+<br> *Figure 1: Purine nitrile derived inhibitor cocrystallized in the cathepsin K active site. PDB code is 1u9v*
 
 One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE)) is that it can bind three highly homologous cathepsin proteins, with a remarkable affinity:
 
@@ -58,16 +60,14 @@ One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.
 
 Since a lot of three-dimensional structures of cathepsins in the presence of small inhibitors are available on the Protein Data Bank, we can simulate an "unbound" challenge where we must predict the correct interaction of this ligand with each cathepsin protein (respectively K, L and S) starting from homologous templates. As an additional challenge, we will also start from the [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) string of the ligand and only use non-commercial third party software, or commercial software that deliver academic license.
 
-Because this tutorial requires a lot of efforts to edit and clean PDB files in preparation for docking, we will provide you with most of the files. Feel free to DIY and share with us your best tips to fasten this fastidious work.
+Because this tutorial requires a lot of efforts to edit and clean PDB files in preparation for docking, we will provide you with most of the files. Feel free to try by yourself and please share with us any tips to speed up this fastidious work.
 
 For this tutorial we will make use of the [HADDOCK2.2 web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php). A description of our web server can be found in the following publications:
-
-_[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](doi.org/10.1016/j.jmb.2015.09.014)_<br>
+* _[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](doi.org/10.1016/j.jmb.2015.09.014)_<br>
 G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van 
 Dijk, S.J. de Vries and A.M.J.J. Bonvin<br>
 J. Mol. Biol. (2015)
-
-_[The HADDOCK web server for data-driven biomolecular docking](http://doi.org/doi:10.1038/nprot.2010.32)_<br>
+* _[The HADDOCK web server for data-driven biomolecular docking](http://doi.org/doi:10.1038/nprot.2010.32)_<br>
 S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin<br>
 Nature Protocols (2010)
 
@@ -75,17 +75,17 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
 <a class="prompt prompt-info">This is an instruction prompt: follow it!</a>
-
+<a class="prompt prompt-pymol">This is a PyMol prompt: write this in the PyMol command line prompt!</a>
 
 ## Setup
-Before you get started, we invite you all to create an account on our [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php). Please fill in the [registration form](http://milou.science.uu.nl/services/HADDOCK2.2/signup.html). The usage of the web server is **only free for non-profit work**.
+Before you get started, we invite you all to create an account for our web-services using our [registration portal](https://nestor.science.uu.nl/auth/register/). Alternatively, you can make use of the special workshop credentials provided to you during the tutorial. Remember that the usage of our web services is **only free for non-profit work**!
 
-In order to run this tutorial, you will need to have a molecular viewer installed. We advise you to us 
-[PyMOL](https://pymol.org/) and the visualization commands provided during the hands-on will be given for PyMOL. 
-Schrödinger offers [Educational-use-only PyMOL](https://pymol.org/edu/?q=educational/) builds available at no cost for courses.
+In order to run this tutorial, you will need to have a molecular viewer installed. We advise you to use 
+[PyMOL](https://pymol.org/) and the visualization commands given during the hands-on will be specific to this software. 
+Schrödinger offers [Educational-use-only PyMOL](https://pymol.org/edu/?q=educational/) builds freely available for courses.
 
 
-> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/c/IG-IM)
+> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/)
 
 ## Select the "best" cathepsin templates for the docking
 
@@ -96,8 +96,8 @@ sequence similarity, structure resolution and experimental conditions will deter
 - Bound structures of homologous proteins are known and can be used to approximate the bound structure of the receptor.
 - Bound structures of the protein with different ligands are known.
 
-<a class="prompt prompt-question">Providing we can find either bound structures of close homologous 
-proteins or  bound structures of our protein of interest with different ligands, how would you select the best template 
+<a class="prompt prompt-question">Assuming we can find either bound structures of close homologous 
+proteins or bound structures of our target protein with different ligands, how would you select the best template 
 for the docking?</a>
 
 Based on our previous experience with the [D3R](https://drugdesigndata.org/) challenges, we decided to use ligand 
@@ -107,33 +107,69 @@ $$TC=\frac{C}{A+B-C}$$
 where TC is the Tanimoto Coefficient, A is the set of atoms of molecule A, B is the set of atoms of molecule B and C 
 is the set of atoms that is shared between the two molecules.
 
-![](media/tanamoto_example.png "How to calculate TC?")
-*Figure 2: Depictions of the molecules being compared. On the left is the ligand of the structure with PDBid 
-[1U9V](http://www.rcsb.org/pdb/explore/explore.do?structureId=1u9v) and on the right the one with 
-PDBid [3KW9](http://www.rcsb.org/pdb/explore/explore.do?structureId=3kw9)*
+<figure align="center">
+<img src="media/tanamoto_example.png">
+</figure>
+<!-- ![](media/tanamoto_example.png "How to calculate TC?") -->
+<br> *Figure 2: How to calculate TC? Illustration on two ligands used in this tutorial. On the left is the structure of our ligand of interest taken from the reference PDBid [1U9V](https://www.rcsb.org/structure/1u9v), and on the right another covalent inhibitor of cathepsin K proteins taken from the PDBid [3KW9](https://www.rcsb.org/structure/3kw9)*
 
 The shared set of atoms is depicted in fig. 3 and it is identified by detecting the Maximum Common Substructure (MCS) 
 of the two molecules.
 
-![](media/tanamoto_example2.png "Common atoms between the two molecules")
-*Figure 3: Highlight of the shared atoms between the two molecules*
+<figure align="center">
+<img src="media/tanamoto_example2.png">
+</figure>
+<!-- ![](media/tanamoto_example2.png "Common atoms between the two molecules") -->
+<br> *Figure 3: How to calculate TC? Maximum Common Substructure shared between the two molecules. The shared atoms are highlighted with a blue background.*
 
 To illustrate the rich diversity of cathepsins K, L and S structures with inhibitors and their TC differences despite 
 their very high homology, we calculated a pairwise TC matrix (see fig. 4)
 
-![](media/tanimoto_distance_cathepsins.png "tanimoto distances catK catL catS")
-*Figure 4: Pairwise TC distances between all cathepsins K, L and S structures available in the presence of a small inhibitor*
+<figure align="center">
+<img src="media/tanimoto_distance_cathepsins.png">
+</figure>
+<!-- ![](media/tanimoto_distance_cathepsins.png "tanimoto distances catK catL catS") -->
+<br> *Figure 4: Pairwise TC distances between all cathepsins K, L and S structures available in the presence of a small inhibitor*
 
 We decided to choose the closest related templates based on their TC (table 2). To save you some time in 
-fetching/cleaning the files, you can directly download them from the table 2.
+fetching/cleaning the files, you can directly download them from the table 2 (just **click** on the PDBids).
 
 | CatK | CatL | CatS |
 | :------------ |:---------------:| -------------:|
 | [3kw9](media/3kw9_clean.pdb) | [4axm](media/4axm_clean.pdb) | [3n4c](media/3n4c_clean.pdb) |
 | 0.25 | 0.62 | 0.56 |
 
-*Table 2: PDB codes of the templates used for the three cathepsins and respective C&alpha;-RMSD calculated with 
+*Table 2: PDB codes of the structural templates used for the three cathepsins and respective C&alpha;-RMSD calculated with 
 respect to the reference structure in &Aring;*
+
+You can upload all the PDB files in PyMOL and align them to appreciate the structural conservation of the core of the proteins.
+
+<a class="prompt prompt-info">
+  PyMOL Menu → File → Open... → Select the files
+</a>
+
+Or if you want to use the PyMOL command-line instead, type the following command:
+
+<a class="prompt prompt-pymol">
+	load 3kw9_clean.pdb
+	load 4axm_clean.pdb
+	load 3n4c_clean.pdb
+</a>
+
+Now we want to add the reference structure to this session and align structurally all the files:
+
+<a class="prompt prompt-pymol">
+	fetch 1u9v
+	for i in cmd.get_object_list(): cmd.align(i, "1u9v")
+	zoom vis
+	as cartoon
+</a>
+
+If you want to highlight the ligand in the active site, you can display it as "sticks":
+
+<a class="prompt prompt-pymol">
+	show sticks, resn IHE
+</a>
 
 ## Generate a starting structure for the ligand from SMILES strings
 
@@ -145,17 +181,16 @@ choose only one of the main possible strings. For instance, open the PDBeChem pa
 our [cathepsin K inhibitor](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE) and look for the SMILES 
 provided (ACDLabs, CACTVS, OpenEye).
 
-<a class="prompt prompt-question"> What will you say about the consistency between the different SMILES sequences? 
+<a class="prompt prompt-question"> What can you say about the consistency between the different SMILES sequences? 
 Can you recognise the different structural groups in the ligand based on the SMILES?</a>
-
 
 Use the [LigParGen server](http://zarbi.chem.yale.edu/ligpargen/) developed by the Jorgensen group, a free web-based 
 service that provides structure and force field topology/parameters for organic molecules and small ligands. Generate 
 starting structures using the default parameters for the three different SMILES strings provided by PDBeChem.
 
 If you look carefully to the PDB files, you will notice that the atom naming and ordering varies from one file to the other. 
-To save you some time and efforts, we provide you (table 3) with the renamed PDB files for all three conformers of the 
-ligand, with a consistent naming and in an appropriate format for HADDOCK (chainID was added and ATOM is replaced by HETATM):
+To save you some time and efforts, we provide you (table 3, **click** on the PDBids) with the renamed PDB files for all three conformers of the 
+ligand, with a consistent naming and in an appropriate format for HADDOCK (`chainID` was added and `ATOM` is replaced by `HETATM`):
 
 | [OpenEye](media/IHE_ligpargen_OpenEye-renamed.pdb) | [CACTVS](media/IHE_ligpargen_CACTVS-renamed.pdb) | [ACDLabs](media/IHE_ligpargen_ACDLabs-renamed.pdb) |
 | :------------ |:---------------:| -------------:|
@@ -166,8 +201,11 @@ ligand, with a consistent naming and in an appropriate format for HADDOCK (chain
 In figure 5, you can appreciate the relative good performance of this web-service. For the rest of the tutorial, we will 
 use the model based on OpenEye SMILES as this is the one that gives in our experience the best results.
 
-![](media/IHE_SMILES.png "LigParGen models")
-*Figure 5: Superposition of the LigParGen models based on SMILES strings (OpenEye=yellow, CACTVS=magenta, ACDLabs=cyan) 
+<figure align="center">
+<img src="media/IHE_SMILES.png">
+</figure>
+<!-- ![](media/IHE_SMILES.png "LigParGen models") -->
+<br> *Figure 5: Superposition of the LigParGen models based on SMILES strings (OpenEye=yellow, CACTVS=magenta, ACDLabs=cyan) 
 with the reference structure of the ligand (green)*
 
 It is important to note at this point that the conformational sampling of the ligand can be greatly improved by using 
@@ -176,20 +214,18 @@ possible to request an academic
 license to use OMEGA for free. Since this field is extremely competitive and occupied by many commercial players, 
 keep in mind that there are probably other solutions available, just as good or better than OMEGA, depending on your budget.
 
-When using the torsional sampling with OMEGA, we can generate ~350 conformers with some very good hits, as illustrated 
-in fig. 6. The best model comes with a RMSD of just about 0.4&Aring; and you can download it [here](media/omega_IHE.pdb). 
-However, selecting the best conformer without any _a priori_ information on the ligand remains a very challenging task, 
-for which we would be happy to get your advises.
+When using the torsional sampling with OMEGA, we can generate ~350 conformers with some very good hits (i.e. low RMSD models with respect to the bound ligand), as illustrated in fig. 6. The best model comes with a RMSD of just about 0.4&Aring; and you can download it [here](media/omega_IHE.pdb). However, selecting the best conformer without any _a priori_ information on the ligand remains a very challenging task, for which we would be happy to get your advises.
 
+<figure align="center">
 <img src="./media/rmsd_to_ref_small.png" width="1000" title="OMEGA conformers" />
-
-*Figure 6: RMSD of all OMEGA conformers with respect to the reference structure of the ligand*
+</figure>
+<br> *Figure 6: RMSD of all OMEGA conformers with respect to the reference structure of the ligand*
 
 ## Define restraint(s) for the docking
 Since we do not want to be to restrictive on the docking, we will only enforce the "covalent bond" by defining a 
 distance restraint between the sulfur atom of the targeted cysteine and the reactive nitrile carbon of the ligand. 
 This distance is set to 1.8&Aring; &plusmn; 0.1&Aring;, consistent with the average length of a simple C-S bond. 
-This is done by creating a tbl file consisting of the following statement:
+This is done by creating a distance restraint file in CNS format (.tbl file) consisting of the following statement:
 
 ```assign (segid A and name SG and resi 25) (segid B and name C0Q and resi 1) 1.8 0.1 0.1```
 
@@ -197,13 +233,19 @@ This file will be given to HADDOCK as an unambiguous distance restraint.
 
 ## Submit your docking runs
 
-> Note that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilge on the web server. If you have not be granted the guru access level yet, it is time to apply for it by sending a request to [haddocksupport_@_gmail.com](mailto:haddocksupport@gmail.com)
+> Note that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the "guru" access level yet, it is time to apply for it on our [registration portal](https://nestor.science.uu.nl/auth/register/).
 
-The main bottleneck when trying to "covalently dock" a small ligand is that we must trick our software to work against all the safeguards we implemented to prevent clashes. Especially when the ligand is buried, which is to some extent the case here, we need to work against the repulsive component of the VDW forces. To allow the distance restraint to be satisfied, we need to either scale down the non-bonded interactions in HADDOCK or to modify the parameters of a residue to reduce its VDW parameters. We decided to create a modified cysteine (residue name: CYC) with significantly reduced VDW parameters for the sulfur atom (scaled down by a factor 10).
+The main bottleneck when trying to "covalently dock" a small ligand is that we must trick our software to work against all the safeguards we implemented to prevent clashes. To allow the distance restraint to be satisfied, we need to scale down the non-bonded interactions between the specific atoms involved in that covalent bond. For this purpose we created a special Cysteine residue (residue name: CYC) with significantly reduced VDW parameters for the sulfur atom (scaled down by a factor 10).
 
-**Instruction:** If you did not download the PDB files we providing you in table 2, you will have to modify the residue name of cysteine 25 and replace "CYS A  25" by "CYC A  25".
+**Instruction:** If you did not download the PDB files we providing you in table 2, you will have to modify the residue name of cysteine 25 and replace "CYS A  25" by "CYC A  25". This can be done using the following command in a terminal:
 
+<a class="prompt prompt-info">
+  sed -e 's/CYS A  25/CYC A  25/g' file_original.pdb > file_modified.pdb
+</a>
+
+<!--
 > As an additional remark, the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) directly fetches topology and parameters for the small ligand from [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg). In the near future, we may want to allow users to provide their own set of topology/parameter files, which is for the moment only possible provided the user runs the command line version of the software (or bribe us to implement the parameter files in the production server).
+-->
 
 Apart from the modified residue discussed previously, some points must require your attention:
 - In the field `First Molecule`: we must provide manually the histidine protonation state. Pay attention to uncheck the automatic option and specify the following protonation states:
@@ -213,19 +255,25 @@ Apart from the modified residue discussed previously, some points must require y
 - In the `Distance Restraints` menu: upload the tbl file as unambiguous restraints
 - In the `Distance Restraints` menu: by default, HADDOCK removes the non-polar hydrogen that might account for the 
 tightly binding of the chemical. This option must be **unchecked**
+<!--
 - In the `Sampling parameters` menu: please set the number of structure for explicit solvent refinement to **0** to 
 skip the last refinement stage of HADDOCK. Since the ligand is pretty buried and in a rather dry pocket,
  we experienced that we achieve better results with the structures generated in the second/flexible stage of HADDOCK (it1)
+-->
 - In the field `Parameters for clutering`: the default clustering method in HADDOCK2.2 is 
 [fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on 
 pairwise residue contacts. If this method outperforms RMSD-based clustering for large systems, both in term of accuracy 
 and speed, interface-RMSD remains a method of choice for small ligand docking. In the ‘Parameters for clustering’
- section, please change the clustering method to **RMSD** and set the cutoff value for clustering to **2&Aring;**
+ section, please change the clustering method to **RMSD** and set the cutoff value for clustering to **1&Aring;**
+<!--
 - In the field `Energy and interaction parameters`: we must scale down the non-bonded intermolecular interaction to 
 already bring the ligand deep in the pocket at the rigid body monimisation stage of HADDOCK. For this, we must scaling
  the intermolecular interactions for rigid body EM to **0.001**
+-->
+- In the field `Scoring parameters`: reduce the weight for the Elec3 to **0.1** (improves slightly the scoring)
 - In the field `Advanced sampling parameters`: some advanced parameters for the sampling are too aggressive for 
 protein-small molecule binding and must be reduced or removed to avoid the ligand being kicked out the binding pocket:
+	* initial temperature for third TAD cooling step with fully flexible interface = **300**
     * number of MD steps for rigid body high temperature TAD = **0**
     * number of MD steps during first rigid body cooling stage = **0**
 
@@ -234,7 +282,11 @@ The web form will first be validated. Once done it will be added to the job queu
 are available. Normally you will be notified by email once your job is added to the queue and afterwards on the 
 continuation of your job.
 
-<!-- ## Analysis of the results
+## Analysis of the results
+
+Please find below the pre-processed runs for the different cathepsins using the best OpenEye conformer. 
+
+<!-- 
 
 ## Perspectives
 - check mutations catK/catL/catS
@@ -244,4 +296,5 @@ continuation of your job.
 challenges: conformational sampling ligand, template selection, ligand conformers clustering, scoring, binding affinity predictions (check slack Alex)
 
 goals: 3D structure of the cpx, relative ranking, absolution BA predictions
+
 -->
