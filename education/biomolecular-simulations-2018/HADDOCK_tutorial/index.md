@@ -11,6 +11,7 @@ This tutorial consists of the following sections:
 * table of contents
 {:toc}
 
+<hr>
 ## Introduction
 <!--
 The format of the community forum has been defined as an _unconference_, stimulating us to think outside of the box and 
@@ -21,7 +22,9 @@ You are greatly encouraged to work at your own pace, to discuss with your neighb
 to calmly disagree, to enthusiastically demonstrate your interest for the topic, to correct typos, to challenge us with 
 your own system of interest (*maybe after the tutorial*), to suggest new developments ... Just remember that, at this stage, this tutorial shall not serve as a standard protocol to predict the covalent binding of a small ligand in the active site a protein, but we are working on extending the scope of our approach.
 
-## Motivations
+
+<hr>
+## Motivation
 We listed here some motivations for this topic, in no particular order:
 - There is no publication from the Bonvin's group systematically benchmarking protein-small ligand docking using HADDOCK, yet! Despite the lack of a thoroughly benchmarked protocol, about 20% of the jobs submitted on the [HADDOCK web server](http://milou.science.uu.nl/services/HADDOCK2.2/haddock.php) are dealing with small ligands. 
 - [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) recently participated to the [D3R Grand Challenges 2 and 3](https://drugdesigndata.org/about/grand-challenge), blind prediction challenges involving three-dimensional calculation of protein-ligand poses and prediction of affinities or scores. We recently published our performance in the D3R Grand Challenge 2 ([dx.doi.org/10.1007/s10822-017-0049-y](dx.doi.org/10.1007/s10822-017-0049-y)).
@@ -31,11 +34,15 @@ We listed here some motivations for this topic, in no particular order:
 - Could possibly combine all three [BioExcel flagship software](http://bioexcel.eu/software/) into one common workflow.
 - This is a collaborative effort, where software developers meet the different players in the field to combine expertise and skills in order to solve the puzzle.
 
+
+<hr>
 ## Scientific context
 Osteoporosis affects about 10% of the population in Europe, Japan and North America and its incidence rate is growing with increasing life expectancy. The main feature of osteoporosis is bone loss mediated by osteoclasts and insufficient rebuilding of bone matrix by osteoblasts. A longstanding theory of osteoporosis is that the balance between these two activities has gone off, with bone destruction running ahead. It is very hard to slow down osteoclast activity without slowing down osteoblast activity as well, but one therapy showed promises: the cathepsin K inhibitors.
 
 [Cathepsin K](https://en.wikipedia.org/wiki/Cathepsin_K) is a highly potent cysteine protease expressed in osteoclasts. This enzyme is able to break down collagen, elastin, gelatin and other proteins. It is found almost entirely in this cell type, giving a real hope of targeting osteoclasts selectively. At last, protease inhibitors themselves are a type of small molecule that, in general, give good success in drug discovery. For all those reasons, cathepsin K inhibitors have been studied for more than 20 years and several pharmaceutical companies have currently compounds in clinical trials.
 
+
+<hr>
 ## Overview
 In this tutorial we will use [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) to predict the covalent binding of a small ligand on a protein receptor, using as example a purine nitrile derived inhibitor of cathepsin K (see fig. 1), described in the following publication:<br>
 *Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K* ([doi.org/doi:10.1021/jm0493111](doi.org/doi:10.1021/jm0493111))<br>
@@ -78,6 +85,8 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 <a class="prompt prompt-pymol">This is a PyMol prompt: write this in the PyMol command line prompt!</a>
 <a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
+
+<hr>
 ## Setup
 Before you get started, we invite you all to create an account for our web-services using our [registration portal](https://nestor.science.uu.nl/auth/register/). Alternatively, you can make use of the special workshop credentials provided to you during the tutorial. Remember that the usage of our web services is **only free for non-profit work**!
 
@@ -88,6 +97,8 @@ Schrödinger offers [Educational-use-only PyMOL](https://pymol.org/edu/?q=educat
 
 > If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/)
 
+
+<hr>
 ## Select the "best" cathepsin templates for the docking
 
 In practice, the structure of the protein can be obtained if:
@@ -172,6 +183,8 @@ If you want to highlight the ligand in the active site, you can display it as "s
 	show sticks, resn IHE
 </a>
 
+
+<hr>
 ## Generate a starting structure for the ligand from SMILES strings
 
 For the ligand, some programs like [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg) allow you to generate a 
@@ -222,6 +235,8 @@ When using the torsional sampling with OMEGA, we can generate ~350 conformers wi
 </figure>
 <br> *Figure 6: RMSD of all OMEGA conformers with respect to the reference structure of the ligand*
 
+
+<hr>
 ## Define restraint(s) for the docking
 Since we do not want to be to restrictive on the docking, we will only enforce the "covalent bond" by defining a 
 distance restraint between the sulfur atom of the targeted cysteine and the reactive nitrile carbon of the ligand. 
@@ -232,6 +247,8 @@ This is done by creating a distance restraint file in CNS format (.tbl file) con
 
 This file will be given to HADDOCK as an unambiguous distance restraint.
 
+
+<hr>
 ## Submit your docking runs
 
 > Note that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the "guru" access level yet, it is time to apply for it on our [registration portal](https://nestor.science.uu.nl/auth/register/).
@@ -361,12 +378,58 @@ number of MD steps during first rigid body cooling stage -> 0
 * **Step 8:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
 
 
+Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run. 
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/submission.png">
+</figure>
+
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+
+<pre>
+HaddockRunParameters (
+  runname = 'Cathepsin-ligand',
+  auto_passive_radius = 6.5,
+  create_narestraints = True,
+  delenph = False,
+  ranair = False,
+  cmrest = False,
+  kcont = 1.0,
+  surfrest = False,
+  ksurf = 1.0,
+  noecv = True,
+  ncvpart = 2.0,
+  structures_0 = 1000,
+  ntrials = 5,
+...
+</pre>
+
+Click now on the link to the results page. While your input data are being validated and processed the page will show:
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/processing.png">
+</figure>
+
+During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/running.png">
+</figure>
+
+The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+
+
+
+<hr>
 ## Analysis of the results
 
 Please find below the pre-processed runs for the different cathepsins using the best OpenEye conformer. 
 
 <!-- 
 
+
+
+<hr>
 ## Perspectives
 - check mutations catK/catL/catS
 - ligplotplus
