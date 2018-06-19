@@ -429,11 +429,11 @@ The page will automatically refresh and the results will appear upon completions
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Please find below the pre-processed runs for the different cathepsins templates using the best OpenEye conformer:
 
-- **CatK**: [download here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3kw9_IHE-OpenEye-1A)
+- **CatK**: [View here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3kw9_IHE-OpenEye-1A){:target="_blank"}
 
-- **CatL**: [download here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/4axm_IHE-OpenEye-1A)
+- **CatL**: [View here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/4axm_IHE-OpenEye-1A){:target="_blank"}
 
-- **CatS**: [download here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3n4c_IHE-OpenEye-1A)
+- **CatS**: [View here the pre-processed results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/3n4c_IHE-OpenEye-1A){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
 
