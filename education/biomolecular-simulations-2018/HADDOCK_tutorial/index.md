@@ -247,8 +247,15 @@ distance restraint between the sulfur atom of the targeted cysteine and the reac
 This distance is set to 1.8&Aring; &plusmn; 0.1&Aring;, consistent with the average length of a simple C-S bond. 
 This is done by creating a distance restraint file in CNS format (.tbl file) consisting of the following statement:
 
-```assign (segid A and name SG and resi 25) (segid B and name C0Q and resi 1) 1.8 0.1 0.1```
+<pre>
+assign (segid A and name SG and resi 25) (segid B and name C0Q and resi 1) 1.8 0.1 0.1
+assign (segid A and name CB and resi 25) (segid B and name C0Q and resi 1) 2.8 0.1 0.1
+</pre>
 
+You can either create it yourself using your favorite text editor (BUT NOT Word) or download it from [here](./media/unambig.tbl){:target="_blank"} for convenience.
+
+
+Note that the second distance is meant to define the angle around the sulphur atom.
 This file will be given to HADDOCK as an unambiguous distance restraint.
 
 
@@ -465,7 +472,7 @@ Then start PyMOL and load the three cluster representatives:
 Repeat this for each cluster. Once all files have been loaded, type in the PyMOL command window:
 
 <a class="prompt prompt-pymol">
-fetch 1uv9<br>
+fetch 1u9v<br>
 as cartoon<br>
 util.cnc<br>
 </a>
@@ -473,7 +480,7 @@ util.cnc<br>
 We now want to highlight the reactive cysteine (position 25) and the covalently bound ligand in sticks. In the reference structure, the ligand is referred to as residue name IHE. However, in HADDOCK models, the ligand is typically named UNK. At last, because HADDOCK added hydrogens to all polar and non-polar atoms, we can remove them to facilitate the visual comparison with the reference structure.
 
 <a class="prompt prompt-pymol">
-show sticks, resn IHE+UNK
+show sticks, resn IHE+UNK<br>
 show stick, resi 25<br>
 remove hydrogens<br>
 </a>
@@ -481,10 +488,10 @@ remove hydrogens<br>
 Let's then superimpose all models on the reference structure 1u9v:
 
 <a class="prompt prompt-pymol">
-for i in cmd.get_object_list(): cmd.align(i, "1u9v")<br>
+for i in cmd.get_object_list(): cmd.align(i,"1u9v")<br>
 </a>
 
-To illustrate the accuracy of the modelling, we computed interface-ligand RMSD values (in &Aring;) for a number of docking runs (fit on the backbone of the interface of the reference complex, defined using a 5&Aring; threshold, and calculate RMSD on all atoms of the ligand):
+We computed ligand RMSD values (in &Aring;) for a number of docking runs (fit on the backbone of the protein and calculate RMSD on all atoms of the ligand) for the top model of the top cluster:
 
 | **catK** | **catL** | **catS** | **catK-bound** | **catK-bound_lig-rigid** |
 | :------------ |:---------------:| -------------:| -------------:| -------------:|
