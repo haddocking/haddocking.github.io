@@ -460,7 +460,7 @@ Let's now visualise the various solutions!
 
 Then start PyMOL and load the three cluster representatives:
 
-<a class="prompt prompt-pymol">File menu -> Open -> Select the files ...</a>
+<a class="prompt prompt-info">File menu -> Open -> Select the files ...</a>
 
 Repeat this for each cluster. Once all files have been loaded, type in the PyMOL command window:
 
