@@ -149,10 +149,10 @@ their very high homology, we calculated a pairwise TC matrix (see fig. 4)
 We decided to choose the closest related templates based on their TC (table 2). To save you some time in 
 fetching/cleaning the files, you can directly download them from the table 2 (just **click** on the PDBids).
 
-| CatK | CatL | CatS |
-| :------------ |:---------------:| -------------:|
-| [3kw9](media/3kw9_clean.pdb) | [4axm](media/4axm_clean.pdb) | [3n4c](media/3n4c_clean.pdb) |
-| 0.25 | 0.62 | 0.56 |
+ * CatK  [3kw9](media/3kw9_clean.pdb) 0.25
+ * CatL  [4axm](media/4axm_clean.pdb) 0.62
+ * CatS  [3n4c](media/3n4c_clean.pdb) 0.56
+
 
 *Table 2: PDB codes of the structural templates used for the three cathepsins and respective C&alpha;-RMSD calculated with 
 respect to the reference structure in &Aring;*
@@ -210,11 +210,12 @@ If you look carefully to the PDB files, you will notice that the atom naming and
 To save you some time and efforts, we provide you (table 3, **click** on the PDBids) with the renamed PDB files for all three conformers of the 
 ligand, with a consistent naming and in an appropriate format for HADDOCK (`chainID` was added and `ATOM` is replaced by `HETATM`):
 
-| [OpenEye](media/IHE_ligpargen_OpenEye-renamed.pdb) | [CACTVS](media/IHE_ligpargen_CACTVS-renamed.pdb) | [ACDLabs](media/IHE_ligpargen_ACDLabs-renamed.pdb) |
-| :------------ |:---------------:| -------------:|
-| 1.39 | 2.02 | 2.20 |
+ * [OpenEye](media/IHE_ligpargen_OpenEye-renamed.pdb) RMSD 1.39Å
+ * [CACTVS](media/IHE_ligpargen_CACTVS-renamed.pdb)   RMSD 2.02Å
+ * [ACDLabs](media/IHE_ligpargen_ACDLabs-renamed.pdb) RMSD 2.20Å
 
-*Table 3: Edited LigParGen models generated from the respective SMILES strings and their all-atom RMSD to the reference*
+Click on the software name you wish to use to download a 3D model of the ligand.
+
 
 In figure 5, you can appreciate the relative good performance of this web-service. For the rest of the tutorial, we will 
 use the model based on OpenEye SMILES as this is the one that gives in our experience the best results.
