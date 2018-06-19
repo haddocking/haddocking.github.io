@@ -57,13 +57,9 @@ J. Med. Chem. (2004)
 
 One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE)) is that it can bind three highly homologous cathepsin proteins, with a remarkable affinity:
 
-
-| | IC50 (nM) | |
-| :------------ |:---------------:| -------------:|
-| Cat K | Cat L | Cat S |
-| 6 | 89 | 150 |
-
-*Table 1: Selectivity Data on the Inhibition of Homologous Cathepsins*
+ * Cat K    6 nM IC50
+ * Cat L   89 nM IC50
+ * Cat S  150 nM IC50
 
 Since a lot of three-dimensional structures of cathepsins in the presence of small inhibitors are available on the Protein Data Bank, we can simulate an "unbound" challenge where we must predict the correct interaction of this ligand with each cathepsin protein (respectively K, L and S) starting from homologous templates. As an additional challenge, we will also start from the [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) string of the ligand and only use non-commercial third party software, or commercial software that deliver academic license.
 
@@ -309,9 +305,9 @@ Automatically guess histidine protonation states using molprobity -> uncheck thi
 Specify the following protonation states depending on which Cathepsin you are using:
 </a>
 
-    * 3KW9 (catK): **HIE162** / **HIE177**
-    * 4AXM (catL): **HIE140** / **HIE163** / **HID208**
-    * 3N4C (catS): **HIE142** / **HIE164** / **HIE188** / **HID205**
+* 3KW9 (catK):  HIE162  / HIE177
+* 4AXM (catL):  HIE140  / HIE163 / HID208
+* 3N4C (catS):  HIE142  / HIE164 / HIE188 / HID205
 
 * **Step4:** Input the ligand PDB file. For this unfold the **Second Molecule menu**.
 
@@ -494,7 +490,7 @@ for i in cmd.get_object_list(): cmd.align(i,"1u9v")<br>
 
 We computed ligand RMSD values (in &Aring;) for a number of docking runs (fit on the backbone of the protein and calculate RMSD on all atoms of the ligand) for the top model of the top cluster:
 
-| **catK** | **catL** | **catS** | **catK-bound** | **catK-bound_lig-rigid** |
+**catK** | **catL** | **catS** | **catK-bound** | **catK-bound_lig-rigid** |
 | :------------ |:---------------:| -------------:| -------------:| -------------:|
 | 3.35 | 3.62 | 3.65 | 3.1 | 2.8 |
 
