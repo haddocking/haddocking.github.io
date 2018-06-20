@@ -206,11 +206,9 @@ Next, we fill the box containing our protein with water molecules, and save
 the corresponding structure and topology files. We will first copy the protein 
 topology file `apo_GLUCO.top` into `apo-solv.top` in order to use the last 
 file for the remaining steps and to keep the `apo_GLUCO.top` as a backup file. 
-We will also copy the positional restraint file `posre.itp` in the same 
-directory:
 
 <a class="prompt prompt-cmd">
-cp ../apo_GLUCO.top apo-solv.top; cp ../posre.itp .
+cp ../apo_GLUCO.top apo-solv.top
 </a>
 
 Now, run the `solvate` command (we will choose the single point charge SPC 
@@ -468,7 +466,7 @@ lsort -integer -uniq [$BP_residues get serial] <br>
 You will get the following list of residue numbers:
 
 <a class="prompt prompt-info">
-18 187 188 189 191 195 213 214 237 238 240 243 261 268 269 272
+18 188 189 191 195 213 214 237 238 240 243 261 268 269 272
 </a>
 
 And a similar list containing the atom numbers (serials) of BP's residues.
@@ -505,10 +503,13 @@ As you will see below, PLUMED needs atomic serial numbers as input. Thus, to
 perform the simulation, we should get the list of serial numbers defining 
 the BP. We thus load the apo protein ready to be simulated into VMD and use 
 the residue list obtained previously to print the list of serials defining 
-the BS. Copy the `em-pbc.gro` file from the `../MD/plain` directory and 
-open it on VMD.
+the BS. Go to the `../MD/plain` directory and copy there the `em-pbc.gro` file from the `tutorial_files` folder. Now open it on VMD.
 
-<a class="prompt prompt-cmd">vmd -dispdev none em-pbc.gro</a>
+<a class="prompt prompt-cmd">
+cd ../MD/plain<br>
+cp ../../tutorial_files/apoMD/em-pbc.gro .<br>
+vmd -dispdev none em-pbc.gro
+</a>
 
 Now, paste into the Tk console all the following commands:
 
@@ -516,7 +517,7 @@ Now, paste into the Tk console all the following commands:
 set out1 [open BS_serial_numbers.dat w] <br>
 set out2 [open BS_resid_numbers.dat w] <br>
 set out3 [open BS_RGyr_apo.dat w] <br>
-set BS [atomselect top &#34;protein and resid 18 187 188 189 191 195 213 214 237 238 240 243 261 268 269 272 and noh&#34;] <br>
+set BS [atomselect top &#34;protein and resid 18 188 189 191 195 213 214 237 238 240 243 261 268 269 272 and noh&#34;] <br>
 set BS_serials [lsort -integer -uniq [$BS get serial]] <br>
 puts $out1 $BS_serials <br>
 set BS_resids [lsort -integer -uniq [$BS get resid]] <br>
@@ -551,7 +552,8 @@ available in the folder `tutorial_files/apoMD`. Go to the `MD/plain`
 directory, copy both files and then type:
 
 <a class="prompt prompt-cmd">
-vmd em-pbc.gro equil-pbc.trr -m ../../Xray/holo_GLUCO.pdb -m ../../Xray/apo_GLUCO-solv.pdb
+cd ../MD/plain<br>
+vmd em-pbc.gro equil-pbc.trr -m ../../Xray/holo_GLUCO.pdb -m ../../Xray/apo_GLUCO.pdb
 </a>
 
 The main window of VMD should appear as in Figure 2:
@@ -635,9 +637,10 @@ we can use the tool `driver` of the PLUMED package. First, we need a text
 file defining the CVs to be analyzed along the trajectory; driver will read 
 the trajectory and will print for each frame the values of the CVs selected 
 in the input file. From `tutorial_files/Driver` move the input file 
-`plumed_driver.dat` in in the folder `MDs/plainMD/analysis`, and type:
+`plumed_driver.dat` in in the folder `MD/plainMD/analysis`, and type:
 
 <a class="prompt prompt-cmd">
+cd analysis<br>
 plumed driver --mf_trr <trajectory_name> --plumed plumed_driver.dat
 </a>
 
@@ -658,8 +661,8 @@ These commands print the columns corresponding to the RoG and to the NCs
 into two separate files and get rid of the first line which is not correctly 
 interpreted by xmgrace. For the sake of an easy comparison with the 
 experimental RoG values for the apo and holo X-ray structures let's create a 
-simple text file containing these values. Open `ref.dat` with your preferred 
-editor and type (the brackets <,> should not be included!)
+simple text file containing these values. Open `ref.dat` in the folder `tutorial_files/apoMD` with your preferred 
+editor and type (the brackets < , > should not be included!)
 
 <a class="prompt prompt-info"> 
 0 &lt;insert the RoG value for the apo structure&gt; <br>
@@ -670,8 +673,7 @@ editor and type (the brackets <,> should not be included!)
 &
 </a>
 
-You can find this file in the folder `tutorial_files/apoMD`. Now we are 
-ready to plot the CVs profiles. Type:
+Now we are ready to plot the CVs profiles. Type:
 
 <a class="prompt prompt-cmd">xmgrace -nxy ref.dat RoG.dat</a>
 
@@ -699,7 +701,7 @@ deviation of the CVs over 200 frames spaced 10 ps (thus 5000 MD steps) from
 each other. You could calculate the standard deviation using your preferred 
 way, either by means of a graphics plot program such as xmgrace, or by 
 coding this into a script. Here, we will use the bash script av_std-sel-region-column.sh which can be found in the directory 
-`tutorial_files/script` to calculate the average and standard deviation of 
+`tutorial_files/scripts` to calculate the average and standard deviation of 
 our CVs. The script takes as input the name of the file containing the 
 values of the CVs, the column corresponding to the CV, the first and last 
 rows delimiting the size of the data, and the stride parameter to consider 
@@ -708,14 +710,14 @@ and standard deviation of the CV corresponding to the column you chose. The
 script can be used with the following command:
 
 <a class="prompt prompt-cmd">
-sh ./av_std-sel-region-column.sh COLVAR.0 column2 init end stride
+~/Tutorials/metaHADDOCK/tutorial_files/scripts/av_std-sel-region-column.sh COLVAR.0 column2 init end stride
 </a>
 
 To perform the analysis described above, type:
 
 <a class="prompt prompt-cmd">
-sh ./av_std-sel-region-column.sh COLVAR_driver 2 1 200 1 <br>
-sh ./av_std-sel-region-column.sh COLVAR_driver 3 1 200 1
+~/Tutorials/metaHADDOCK/tutorial_files/scripts/av_std-sel-region-column.sh COLVAR_driver 2 1 200 1 <br>
+~/Tutorials/metaHADDOCK/tutorial_files/scripts/av_std-sel-region-column.sh COLVAR_driver 3 1 200 1
 </a>
 
 The standard deviations of RoG and NCs will be used to set up the following 
@@ -756,8 +758,8 @@ simulation from the `MD/plain` folder. Now go to the `MD/meta` folder and create
 file for each of the two replicas that we are going to run:
 
 <a class="prompt prompt-cmd">
-cp equil-pbc.tpr topol0.tpr <br>
-cp equil-pbc.tpr topol1.tpr
+cp ../../tutorial_files/plumed/equil-pbc.tpr topol0.tpr<br>
+cp ../../tutorial_files/plumed/equil-pbc.tpr topol1.tpr
 </a>
 
 Open and read `plumed-common.dat` to understand clearly all the instructions. As you 
@@ -777,8 +779,7 @@ The flag "-replex" is used to specify th frequency of attempts to exchange the b
 between the two replicas.
 
 Wait for a few minutes and check the content of the directory. If the files `COLVAR.X` 
-and `HILLS.X` are being written (you can easily check with `cat &lt;filename&gt;` or `wc -l 
-&lt;filename&gt;`) it means your simulation is running. As for the previous simulation, you 
+and `HILLS.X` are being written (you can easily check with `cat <filename>` or `wc -l <filename>`) it means your simulation is running. As for the previous simulation, you 
 can use pre-calculated data to analyze the trajectory.
 
 ## Analysis of the metadynamics simulation
@@ -791,17 +792,18 @@ the MD trajectories mainly in terms of structural variation of the BS compared t
 experimental structure of the complex. We'll start by plotting the profile of the RoG 
 as calculated along the MD trajectory. If our sampling strategy was successful, some 
 sampled structure should feature a RoG close to that of the experimental holo protein. 
-Copy the COLVAR.X and the ref_meta.dat files from the directory `tutorial_files/plumed` 
+Copy the `COLVAR.X` and the ref_meta.dat files from the directory `tutorial_files/plumed` 
 to your working folder, then type the following commands:
 
 <a class="prompt prompt-cmd">
+cp ../../backup_files/plumed/COLVAR.* ../../backup_files/plumed/ref_meta.dat .<br>
 grep -v "#" COLVAR.0 | awk '{print $2}' > RoG0.dat <br>
 grep -v "#" COLVAR.1 | awk '{print $2}' > RoG1.dat
 </a>
 
 Now type:
 
-<a class="prompt prompt-cmd">xmgrace -nxy ref.dat RoG0.dat RoG1.dat</a>
+<a class="prompt prompt-cmd">xmgrace -nxy ref_meta.dat RoG0.dat RoG1.dat</a>
 
 You should see a plot which looks like the one in Figure 8.
 
@@ -863,11 +865,11 @@ pocket (and not, for example, on the whole protein), you need to edit the index 
 defining the BP. At the end of the `apo-solv_withBS.ndx` file, you should have 
 something like the following:
 
-<a class="prompt prompt-info">
+```
 ...<br>
 [ BS33 ] <br>
-MANY NUMBERS. MAYBE THE BEST FORMAT IS A TABLE?
-</a>
+172   174   175   176   177   178   179  1969  1971  1972  1973  1974  1976  1977  1978 [...] 2832  2835  2838  2839  2869  2871  2872  2873  2874  2875  2876  2877  2878
+```
 
 To run the cluster analysis type:
 
