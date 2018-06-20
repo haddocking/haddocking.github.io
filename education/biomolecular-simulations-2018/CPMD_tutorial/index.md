@@ -18,7 +18,7 @@ To achieve this objective, we will need a series of codes and tools[<sup>2</sup>
 that are already installed on your machine and that are directly available at the command line or can be loaded through the module environment:
 
 <a class="prompt prompt-cmd">
-module load <Module name to load>
+module load &lt;Module name to load&gt;
 </a>
 
 Most of the input/output files mentioned in this tutorial can be found in the folder of your laptop:
@@ -28,7 +28,7 @@ Most of the input/output files mentioned in this tutorial can be found in the fo
 <a class="prompt prompt-question">Some questions displayed in orange are supposed to be answered by the reader.</a>
 
 
-The PDB file `cluster1\_1.pdb` contains the best pose by HADDOCK. The
+The PDB file `cluster1_1.pdb` contains the best pose by HADDOCK. The
 ligand (residue UNK) is at the bottom of the file:
 
 <a class="prompt prompt-cmd">
@@ -93,21 +93,19 @@ but any lone pairs and unidentifiable-element atoms are deleted.
 
 Let us remove the HAB atom:
 
--   Select / Atom Specifier…
-
--   Insert @HAB
-
--   Press OK
-
--   Actions / Atoms/Bonds / Delete
+<a class="prompt prompt-info">
+Select / Atom Specifier …<br>
+Insert @HAB<br>
+Press OK<br>
+Actions / Atoms/Bonds / Delete
+</a>
 
 and save the structure as `ligandH.pdb`:
-
--   File / Save PDB
-
--   Write the name in the “File name” field
-
--   Press “Save”
+<a class="prompt prompt-info">
+File / Save PDB<br>
+Write the name in the “File name” field<br>
+Press “Save”
+</a>
 
 Finally, let us remove all the H atoms from the `cluster1_1.pdb` file by
 using the tool `pdb4amber` in the free AmberTools suite[<sup>6</sup>](#six):
@@ -222,7 +220,10 @@ check UNK
 
 It is possible that the following warning appears:
 
-**_WARNING: The unperturbed charge of the unit: 0.999000 is not zero._**
+<div align='center'>
+<b>WARNING: The unperturbed charge of the unit: 0.999000 is not zero</b>
+</div>
+<br>
 
 This is due to precision accuracy in the ligand parameterization and it
 can be ignored.
@@ -241,7 +242,11 @@ check UNK
 
 a warning will show up[<sup>10</sup>](#ten): 
 
-**_WARNING: The unperturbed charge of the unit: 8.000000 is not zero_**
+
+<div align='center'>
+<b>WARNING: The unperturbed charge of the unit: 8.000000 is not zero</b>
+</div>
+<br>
 
 In fact, the charge of the complex is not zero and needs to be neutralized
 with counterions in order to perform the next “equilibration” step
@@ -281,10 +286,10 @@ edit XXX
 In the new window you can also look at the partial charges and other
 parameters of your system:
 
--   Select the atoms (Press “Select” at the top and keep pressing the
-    left button of the mouse to select the interested atoms)
-
--   Click on the menu Edit/Edit selected atoms
+<a class="prompt prompt-info">
+Select the atoms (Press “Select” at the top and keep pressing the left button of the mouse to select the interested atoms)<br>
+Click on the menu Edit/Edit selected atoms
+</a>
 
 Finally (after coming back to the main window if needed), we save the topology and coordinates files for our solvated
 complex:
@@ -337,8 +342,10 @@ It is very frequent that the minimization stops before reaching the
 maximum number of steps even if the convergence has not been reached.
 In this case an error message like this:
 
-    <div align='center'><b>***** REPEATED LINMIN FAILURE *****</b></div>
-    <br>
+<div align='center'>
+<b>REPEATED LINMIN FAILURE</b>
+</div>
+<br>
     can appear close to the end of the log file eq\_restraint.out. This
 means that the minimizer got "stuck" in a place from which the
 minimization algorithm could not find a way out. Unless there is
@@ -366,9 +373,7 @@ mpirun -np 2 sander.MPI -O -i 2-minimization.inp –o eq_minimization.out -c eq_
 
 <a class="prompt prompt-question">Is the temperature stable at 300 K?</a>
 
-    If the simulation has to be extended, you can use the input file
-    `3-heating_1.inp`, which allows you to extend the simulation for
-    additional 300 ps:
+If the simulation has to be extended, you can use the input file `3-heating_1.inp`, which allows you to extend the simulation for additional 300 ps:
 
 <a class="prompt prompt-cmd"> mpirun -np 2 sander.MPI -O -i 3-heating_1.inp -p complex_solv.top -c eq_heating.rst -ref eq_heating.rst -o eq_heating_1.out -r eq_heating_1.rst -x eq_heating_1.crd -e eq_heating_1.en &
 </a>
