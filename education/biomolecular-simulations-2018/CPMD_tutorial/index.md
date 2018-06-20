@@ -427,7 +427,7 @@ be due to several reasons:
 2. _An unsuitable force field_: force fields are continuously updated and in principle the newer ones should be preferred. But as we also mentioned in footnote <sup>9</sup>, this is not always true and one should always preliminarily go through the literature regarding his system and then choose the force field that has proved to provide the better results.
 3. _The semi-empirical parameterization of the ligand_, and in particular its partial charges: there are more accurate methods to perform this step, in particular the one that require more expensive quantum chemistry calculations to get the electric potential around the ligand. See for example the other CPMD QM/MM tutorial investigating the acetone molecule in water solvent.
 
-If all the previous causes has been investigated and excluded, then the most reasonable reason is that
+    If all the previous causes has been investigated and excluded, then the most reasonable reason is that
 
 4. _the pose is intrinsically instable at force-field level_: in fact, it could be the case that non-bonding interactions are not enough to keep the ligand/protein complex in that position and that only the covalent bonding (not imposed/obtainable in our current level of description) could allow the formation of such complex. Therefore, at this stage the best one can do is repeat the equilibration by employing restrains specifically design to maintain the desire relative positions between the ligand and the protein. As an example, we provide input files with the name suffix “_constraint” that allows one to perform the same equilibration steps described above and in addition include a distance restraint between the nitrile carbon atom of the ligand and the sulfur atom of CYS25. 
 
@@ -515,7 +515,7 @@ simulation. Below we describe the most relevant sections[<sup>15</sup>](#fifteen
 files that need to be verified. Note that the `amber12togromos.x` code
 provides a `gromos.inp` file with fully commented sections.
 
-<u>*In `gromos.inp`*</u>
+<u> _In `gromos.inp`_ </u>
 
 1.  In the section SYSTEM the two numbers should be in sequence:
 
@@ -567,7 +567,7 @@ provides a `gromos.inp` file with fully commented sections.
     Index of the last atom of layer 2  
     ...
 
-<u>*In `gromos.top`*</u>
+<u> _In `gromos.top`_ </u>
 
 1.  In the section ATOMTYPENAME replace the names of the types of the
     atoms, coming from the standard generic force field library GAFF (o,
@@ -600,7 +600,7 @@ and from this, by visual inspection we can identify and exclude the farthest res
 <img src="./media/image5.png" width="309" height="266" />
 </figure>
 
-<br>*The ligand is colored in gray in the picture*
+<br>*Note that the ligand is colored in gray in the picture*
 
 If we open the Tk console of VMD by selecting from the menu in the VMD Main window:
 
@@ -718,7 +718,7 @@ We cannot enter here in the details of DFT and its implementation in
 CPMD[<sup>19</sup>](#nineteen) and in what follows the basics of the theory are supposed to be
 known.
 
-<u>*CPMD Input file*</u>
+<u> _CPMD Input file_ </u>
 
 Any CPMD input file is organized in sections that start with `&<NAME
 OF THE SECTION>` and end with `&END`. Everything outside those sections
@@ -833,7 +833,7 @@ _l_ =1, D for _l_ =2, and so on[<sup>21</sup>](#twentyone). For each pseudopoten
 limited number of l-quantum number terms has been stored in its file. You can verify 
 how many l-quantum number terms are available by opening the pseudopotential file and
 looking at the number of columns in the section `&WAVEFUNCTION`: the first column is 
-the distance from the nucleus, while the other columns are the data for _l_ =0, _l_ =1, _l_=2, …
+the distance from the nucleus, while the other columns are the data for _l_ =0, _l_ =1, _l_=2…
 Of course, larger is `LMAX`, more expensive will be the computation.
 
 
@@ -842,7 +842,7 @@ be given.
 
 The first line gives the number of atoms of the current type.
 
-<u>*CPMD QM/MM Input file*</u>
+<u> _CPMD QM/MM Input file_ </u>
 
 A CPMD input file for a QM/MM simulation is similar to the CPMD input
 file for a standard full QM calculation. However, there are 6 main
@@ -870,13 +870,13 @@ A bash command to get the string of indices corresponding to the carbon (“C”
 for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276 3277 3278 3279 3280 3281 3282 3283 3284 3285 3286 3287 3288 3289 3290 3291 3292 3293 3294 3295 3296 3297 3298 3299 3300 3301; do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") print $4}' | tr '\n' ' '; echo
 </a>
 
-    while to get the number of “C” atoms in the QM part:
+while to get the number of “C” atoms in the QM part:
     
 <a class="prompt prompt-cmd">
 for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276 3277 3278 3279 3280 3281 3282 3283 3284 3285 3286 3287 3288 3289 3290 3291 3292 3293 3294 3295 3296 3297 3298 3299 3300 3301; do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") print $4}' | wc -l
 </a>
     
-    and in a similar way for the other atomic species (“H”, “”N”, “O”, “S”).
+and in a similar way for the other atomic species (“H”, “”N”, “O”, “S”).
 
 1.  The `ANGSTROM` keyword in the `&SYSTEM` section cannot be used, so any
     length has to be specified in *a.u.*
@@ -928,7 +928,7 @@ following standard bash procedure:
 
 <a class="prompt prompt-info"> size_x     size_y/size_x  size_z/size_x  0   0   0 </a>
 
-<u>*`&QMMM` section*</u>
+<u> _`&QMMM` section_ </u>
 
 In this paragraph we will review the most relevant keywords to be
 specified in the **`&QMMM` section** of the CPMD input file:[<sup>24</sup>](#twentyfour)
@@ -998,68 +998,52 @@ The suitable parameters can be estimated using the script estimate_gromos_size.s
 
 <a class="prompt prompt-cmd"> estimate_gromos_size.sh gromos.top </a>
 
-<u>*How to Cut the Bonds*</u>
+<u> _How to Cut the Bonds_ </u>
 
-As we have already mentioned, whenever the QM/MM boundary cuts through
-an existing bond, special care has to be taken to make sure that the
-electronic structure of the QM-subsystem is a good representation of a
-fill QM calculation, and also the structure in the boundary region is
-preserved. So far, two different approaches has been implemented in
-CPMD: the hydrogen capping and the special link-atom pseudopotentials.
-The first one, that is described in the CPMD manual,[<sup>20</sup>](#twenty) is a bit
-laborious to setup and it is very useful when the classical atom at one
-end of the cut bond is not a carbon atom. The second one has been
-further improved and optimized with the method described in [<sup>21</sup>](#twentyone) and it
-is currently the most popular one. It consists in placing a scaled down
-optimized pseudopotential with the required valence change (usually ZV=1
-since cutting through a single bond) in place of classical atom.
-Currently, the optimized monovalent pseudopotential for replacing a
-carbon atom has been developed “`C_GIA_DUM_AN_BLYP.oecp`” and it is
-provided in the tarball together the CPMD input files.
+As we have already mentioned in the previous section, whenever the QM/MM boundary cuts through an existing bond, special care has to be taken to make sure that the electronic structure of the QM-subsystem is a good representation of the one we would get with a full QM calculation, and also that the structure in the boundary region is preserved. So far, two different approaches have been implemented in CPMD: the hydrogen capping and the special link-atom pseudopotentials. The former, that is described in the CPMD manual[<sup>25</sup>](#twentyfive), is a bit laborious to setup and it is very useful when the classical atom at one end of the cut bond is not a carbon atom. The latter has been further improved and optimized with the method[<sup>26</sup>](#twentysix) described in and it is currently the most popular one. It consists in placing a scaled down optimized pseudopotential with the required valence change (usually ZV=1 since cutting through a single bond) in place of classical atom. Currently, the optimized monovalent pseudopotential for replacing a carbon atom has been developed “C_GIA_DUM_AN_BLYP.oecp” and it is provided in the tutorial subfolder `7-Preparing_the_QM_files_for_CPMD` together with all the other pseudopotential files associated to the atomic species present in the system investigated in this tutorial.
 
 Therefore, in the `&ATOMS` section we will need to add an additional
-entry, representing the monovalent carbon atoms (green balls in the picture[<sup>22</sup>](#twentytwo)) 
-that saturate all the 6 dangling bonds of our QM part:
+entry, representing the monovalent carbon atoms (green balls in the picture[<sup>27</sup>](#twentyseven) below) 
+that saturate all the 4 dangling bonds of our QM part:
 
-```
+<a class="prompt prompt-pymol"> 
 *C_GIA_DUM_AN_BLYP.oecp KLEINMAN-BYLANDER
   LMAX=P
-    6
-  344 393 2392 2433 3261 3277
-```
+    4
+  344 393 2392 2433
+</a>
 
-The addition of these 6 atoms in the QM part has to be taken into account when we calculate the size of the quantum simulation box.
+Note that the addition of these 4 atoms in the QM part has to be taken into account when we calculate the size of the quantum simulation box!
 
+<figure align="center">
 <img src="./media/image9.png" width="552" height="484" />
+</figure>
 
 By using the Tk console of VMD, we can write the PDB file of the complete (saturated) QM part:
 
-```
-set sel [atomselect top "index 343 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2391 2401 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3260 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276"]
-
+<a class="prompt prompt-pymol"> 
+set sel [atomselect top "serial 344 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 2392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 2433 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276 3277 3278 3279 3280 3281 3282 3283 3284 3285 3286 3287 3288 3289 3290 3291 3292 3293 3294 3295 3296 3297 3298 3299 3300 3301"]<br>
 $sel writepdb QM_saturated.pdb
-```
+</a>
 
 Finally, repeating the previously mentioned procedure to get the size of the QM simulation box, we can get the line to be added below the CELL keyword in the CPMD input file:
 
-```
+<a class="prompt prompt-info"> 
 CELL
-43.13  0.86  0.77  0  0  0
-```
+42.38  1.1279  0.8436  0  0  0
+</a>
 
-# QM/MM strategies
+## QM/MM strategies
 
-In the previous paragraph you have discussed almost all the ingredients to setup the input files for a QM/MM simulation. What is missing is to understand which “kind” of simulation we want to perform.
-
-Usually, we are in the condition to know (or at least suspect) that a chemical reaction within the selected QM part has to take place. Our objective is therefore to make this chemical reaction to occur and consequently have a preliminary topology for subsequent equilibration and analysis.
-
+In the previous paragraph you have discussed almost all the ingredients to setup the input files for a QM/MM simulation. In the tutorial folder `8-QMMM_Strategies` you can find a `template.inp` input file for our complex system with all the sections discussed so far. What is still missing is to understand which “kind” of simulation we want to perform and populate the `&CPMD` section accordingly.
+Usually, as in this tutorial case, we are in the condition to know (or at least suppose) that a chemical reaction within the selected QM part has to take place. The objective is therefore to make this chemical reaction to occur and consequently have a preliminary topology for subsequent equilibration and analysis.
 Three scenarios are possible:
 
 1. There is **no potential energy barrier** for the chemical reaction. In this case a geometry optimization or as we will see in a short a <u>simulating annealing</u> could be enough to get an initial topology for our complex.
 
 2. There is **a free energy barrier of order of k<sub>B</sub>T**. In this case, after the initial simulating annealing, we need to setup a <u>quantum molecular dynamics</u> (e.g. a Car-Parrinello MD). If the chemical reaction is supposed to occur on the picosecond timescale, this approach should be enough to observe the reaction.
 
-3. The **free energy barrier is considerably larger than k<sub>B</sub>T** and/or the timescale for the reaction is much larger than picoseconds, the reaction cannot occur spontaneously during the simulation time of the quantum molecular dynamics and a <u>constrained molecular dynamics</u> or more in general some <u>enhanced sampling technique</u> (e.g. metadynamics, umbrella sampling) has to be employed.
+3. The **free energy barrier is considerably larger than k<sub>B</sub>T** and/or the timescale for the reaction is much larger than picoseconds, the reaction cannot occur spontaneously during the simulation time of the quantum molecular dynamics and a <u>steered or restrained/constrained molecular dynamics</u> or more in general some <u>enhanced sampling technique</u> (e.g. metadynamics, umbrella sampling) has to be employed.
 
 When we have no information about the reaction, each of the above mentioned approach has to be attempted in sequence, 
 also because each approach is preliminary for the subsequent one.
@@ -1069,22 +1053,22 @@ workstation the first approach is supposed to take several hours/days of calcula
 of weeks, while performing a meaningful simulation with the third approach needs some months. For this reason, 
 in this tutorial we will focus mainly on the first two approaches.
 
-# QM/MM annealing
+## QM/MM annealing
 
 If there is no energy barrier in the chemical reaction, then you should
 observe the reaction with a simple **geometry optimization**, i.e. by
 minimizing the potential energy of the (quantum) system as a function of
 the nuclear coordinates. Unfortunately, all the geometry optimization
 algorithms in CPMD either do not work in combination with the QM/MM
-interface, or do support optimization of the QM atom positions only.[<sup>23</sup>](#twentythree)
+interface, or do support optimization of the QM atom positions only.[<sup>28</sup>](#twentyeight)
 Consequently, we have to use some “trick” to find a minimal energy
-structure (at QM/MM level). In particular, in this tutorial we will
-perform a _simulated annealing_ (keyword `ANNEALING IONS`), i.e. we run
+structure at QM/MM level. In particular, in this tutorial we will
+perform a _simulated annealing_ (keyword in the `&CPMD` section of the CPMD input file: `ANNEALING IONS`), i.e. we run
 a Car-Parrinello MD where gradually removing kinetic energy from the
 nuclei by multiplying velocities with a factor (in our case it is set to
 0.99, so 1% of the kinetic energy will be removed in every step).
 Here it is the `annealing.inp` file that performs this preliminary
-step:[<sup>24</sup>](#twentyfour)
+step:[<sup>29</sup>](#twentynine)
 
 ```
 &QMMM
@@ -1111,21 +1095,22 @@ ARRAYSIZES
  MAXATT 29
  MAXAA2 234
  MAXNRP 3319
- MAXNBT 98
+ MAXNBT 74
  MAXBNH 1626
  MAXBON 1736
- MAXTTY 203
+ MAXTTY 139
  MXQHEH 3692
  MAXTH  2350
  MAXQTY 10
  MAXHIH 10
  MAXQHI 10
- MAXPTY 11
- MXPHIH 7542
- MAXPHI 7215
+ MAXPTY 62
+ MXPHIH 7336
+ MAXPHI 5835
  MAXCAG 1049
  MAXAEX 29364
  MXEX14 8682
+
  END ARRAYSIZES
 &END
 
@@ -1144,7 +1129,7 @@ EMASS
 TIMESTEP
  5.0
 MAXSTEP
- 10000
+ 3000
 TRAJECTORY SAMPLE
  0
 STORE
@@ -1153,13 +1138,16 @@ RESTFILE
  1
 &END
 
+&DFT
+FUNCTIONAL BLYP
+&END
 
 &SYSTEM
 POISSON SOLVER TUCKERMAN
 SYMMETRY
  0
 CELL
- 43.13  0.86  0.77  0  0  0
+ 42.38  1.1279  0.8436  0  0  0
 CUTOFF
  70.
 CHARGE
@@ -1170,104 +1158,95 @@ CHARGE
 &ATOMS
 *H_MT_BLYP.psp KLEINMAN-BYLANDER
    LMAX=P
-    35
- 349 351 353 354 356 360 362 364 365 367 371 373 375 376 379 381 384 386 388 390 2404 2406 2408 2409 2413 2415 2417 2421 2423 2425 2426 2427 2431 3263 3274
+    62
+ 350 352 354 355 357 361 363 365 366 368 372 374 376 377 380 382 385 387 389 391 2405 2407 2409 2410 2414 2416 2418 2422 2424 2426 2427 2428 2432 3247 3248 3250 3251 3253 3254 3256 3257 3259 3260 3262 3264 3275 3278 3279 3281 3282 3285 3286 3288 3289 3292 3293 3294 3295 3297 3298 3300 3301
 
 *C_MT_BLYP.psp KLEINMAN-BYLANDER
    LMAX=D
-    33
- 346 350 352 357 361 363 368 372 374 377 378 382 383 385 387 389 391 2401 2405 2407 2410 2412 2416 2418 2422 2424 2428 3264 3266 3267 3270 3271 3273
+    46
+347 351 353 358 362 364 369 373 375 378 379 383 384 386 388 390 392 2402 2406 2408 2411 2413 2417 2419 2423 2425 2429 3246 3249 3252 3255 3258 3261 3265 3267 3268 3271 3272 3274 3277 3280 3284 3287 3291 3296 3299
 
 *O_MT_BLYP.psp KLEINMAN-BYLANDER
    LMAX=D
     7
- 347 355 358 369 2402 2419 2429
+348 356 359 370 2403 2420 2430
 
 *N_MT_BLYP.psp KLEINMAN-BYLANDER
    LMAX=D
-    15
- 348 359 370 380 2403 2411 2414 2420 2430 3262 3265 3268 3269 3272 3275
+    17
+349 360 371 381 2404 2412 2415 2421 2431 3263 3266 3269 3270 3273 3276 3283 3290
      
 *S_MT_BLYP.psp KLEINMAN-BYLANDER
    LMAX=D
     1
- 339
+ 367
+
 *C_GIA_DUM_AN_BLYP.oecp KLEINMAN-BYLANDER
    LMAX=P
-    6
- 343 392 2391 2432 3260 3276
-&END
-
-
-&DFT
-FUNCTIONAL BLYP
+    4
+ 344 393 2392 2433
 &END
 ```
 
-Some comments on the keywords in the &CPMD section which have not been explained, yet:
+Some comments on the keywords in the `&CPMD` section which have not been explained, yet:
 
 `MOLECULAR DYNAMICS CP`: 	Perform a molecular dynamics run. 
 CP stands for a Car-Parrinello type of MD.
 
-`ISOLATED MOLECULE`:	Calculate the ionic temperature assuming that the (quantum) system consists of an isolated molecule or cluster.
+`ISOLATED MOLECULE`:	Calculate the (quantum) ionic temperature assuming that the (quantum) system consists of an isolated molecule or cluster.
 
-`QUENCH BO`:	The wavefunction is minimized at the beginning of the MD run.
+`QUENCH BO`:	The wavefunction of the QM part is minimized at the beginning of the MD run.
 
-`TEMPERATURE`:	The initial temperature for the atoms in Kelvin is read from the next line: we start from 300 K since it is the temperature at which we equilibrate the system classically.
+`TEMPERATURE`:	The initial temperature for the QM atoms in Kelvin is read from the next line: we start from 300 K since it is the temperature at which we equilibrate the system classically.
 
 `EMASS`:	The fictitious electron mass in atomic units for the CP
 dynamics is read from the next line. We choose 600 a.u. but ideally a
 careful set of tests should be done to verify that adiabaticity conditions
-are met[<sup>25</sup>](#twentyfive): this and the following parameter are the only parameters to tune
-in order to decouple the electronic and ionic degrees of freedom in order
+are met[<sup>30</sup>](#thirty): this and the following parameter are the only parameters to tune
+in order to decouple the electronic and ionic degrees of freedom and therefore 
 to minimize their energy transfer (adiabatic condition needed to perform
 a correct Car-Parrinello MD).
 
 `TIMESTEP`:	The time step in atomic units is read from the next line. We use the default time step of 5 a.u. ~ 0.12 fs.
 
-`MAXSTEP`:	The maximum number of steps for molecular dynamics to be performed. The value is read from the next line.
+`MAXSTEP`:	The maximum number of MD steps for molecular dynamics to be performed. The value is read from the next line.
 
-`TRAJECTORY SAMPLE`:	Store the atomic positions, velocities and optionally forces at N every time step on the `TRAJECTORY` file. N is read from the next line. If N=0 the trajectory file will not be written.
+`TRAJECTORY SAMPLE`:	Store the atomic positions, velocities and optionally forces every N time steps into the `TRAJECTORY` file. N is read from the next line. If N = 0 the trajectory file will not be written.
 
-`STORE`:	The `RESTART` file is updated every N steps. N is read from the next line. Default is at the end of the run.
+`STORE`:	The `RESTART` file is updated every N steps. N is read from the next line. Default behavior is to write the file just at the end of the run.
 
-`RESTFILE`:	The number of distinct `RESTART` files generated during CPMD runs is read from the next line. The restart files are written in turn. Default is 1.
+`RESTFILE`:	The number of distinct `RESTART` files (named `RESTART.1`, `RESTART.2`, etc.) generated during CPMD runs is read from the next line. The restart files are written in turn. Default is 1.
 
-We are now ready to run the first simulations with CPMD. To run the CPMD simulation, copy the input file `annealing.inp`, the (modified) `gromos`* files and the pseudopotential files in a folder and run the commands:
+We are now ready to run the first simulation with CPMD. To run the CPMD simulation, copy the input file `annealing.inp`, the (modified) `gromos`* files and the pseudopotential files in a folder and run the commands:
 
-```
-module load CPMD
-mpirun -np 2 cpmd.x annealing.inp . > annealing.out &
-```
+<a class="prompt prompt-cmd"> 
+module load CPMD/QMMM
+mpirun -np 2 cpmd.x annealing.inp . &gt; annealing.out &
+</a>
 
-The “.” after the input file name is the folder where CPMD will look
-for the pseudopotential files (of course you can put the pseudopotential
-files in a different folders and replace “.” with the absolute path of
-this folder; this is the usual situation, since people using CPMD collect
-their own pseudopotential library).
-While the simulation runs you can monitor the decreasing temperature
-(third column named TEMPP) this way:
+The “.” after the input file name is the folder where CPMD will look for the pseudopotential files (of course, you can put the pseudopotential files in a different folders and replace “.” with the absolute path of this folder; this is the usual situation since CPMD users are used to collect their own pseudopotential library).
+While the simulation runs, you can monitor the decreasing QM temperature (third column named TEMPP) this way from the log file:
 
-```
+<a class="prompt prompt-cmd">
 tail -f annealing.out
-```
+</a>
 
-When the temperature reaches about 2-4 K we can “softly” stop the calculation (that is in order to make CPMD write a `RESTART` file) by typing on the prompt line:
+When the temperature reaches about 2-4 K, we can “softly” stop the calculation (that is in order to make CPMD write a `RESTART` file) by typing on the prompt line:
 
-```
+<a class="prompt prompt-cmd">
 touch EXIT
-```
+</a>
 
 The final configuration will be stored in the `RESTART.1` file.
 Several files will be generated during a CPMD QM/MM simulation:
 
-`QMMM_ORDER`: The first line specifies the total number of atoms (NAT) and the number of quantum atoms (NATQ). The subsequent NAT lines contain, for every atom, the gromos atom number, the internal CPMD atom number, the CP species number isp and the number in the list of atoms for this species NA(isp). The quantum atoms are specified in the first NATQ lines.
+`QMMM_ORDER`: The first line specifies the total number of atoms (NAT) and the number of quantum atoms (NATQ). The subsequent NAT lines contain for each atom 1) the GROMOS atom number as defined in the topology and coordinate files, 2) the internal CPMD atom number as in the `TRAJECTORY` file, 3) the internal species number (isp) and 4) the number in the list of atoms for this species NA(isp). The quantum atoms are specified in the first NATQ lines.
 
 `CRD_INI.g96`: Contains the positions of all atoms in the first frame of the simulation in GROMOS96 (extended) format (g96).
 
 `CRD_FIN.g96`: Contains the positions of all atoms in the last frame of the simulation in GROMOS96 (extended) format (g96).
 
-`INTERACTING.pdb`: Contains (in a non-standard PDB-like format) all the QM atoms and all the MM atoms in the electrostatic coupling NN list. The 5-th column in this file specifies the gromos atom number as defined in the topology file and in the coordinates file. The 10-th column specifies the CPMD atom number as in the TRAJECTORY file. The quantum atoms are labeled by the residue name QUA.
+`INTERACTING.pdb`: Contains all the QM atoms and all the MM atoms in the NN list (see `ELECTROSTATIC COUPLING` in section 7) in a non-standard PDB-like format. The 5<sup>th</sup> column specifies the GROMOS atom number as defined in the topology file and in the coordinates file. The 10<sup>th</sup> column specifies the CPMD atom number as in the TRAJECTORY file. The quantum atoms are labeled by the residue name QUA.
 
 `INTERACTING_NEW.pdb`: The same as before, but it is created if the file INTERACTING.pdb is detected in the current working directory of the CPMD run.
 
@@ -1275,31 +1254,32 @@ Several files will be generated during a CPMD QM/MM simulation:
 
 `ENERGIES`: Contains all the energies along the trajectory.
 
-`RESTART.1`: A binary restart file containing all the information to restart a calculation.
+`RESTART.<1,2,...>`: Binary restart files containing all the information to restart the simulation.
 
 `LATEST`: A text file that contains the name of the last restart file written and the time that file has been overwritten.
 
-The last two files are common to a simpler full QM simulation with CPMD as well.
+The last two files are present in a simpler full QM simulation with CPMD as well.
 
-Let’s give a closer look at the output file `annealing.out`[<sup>26</sup>](#twentysix) and find the following section:
+Let’s give a closer look at the output file `annealing.out`[<sup>31</sup>](#thirtyone) by starting from the following lines:
 
 ```
 CAR-PARRINELLO MOLECULAR DYNAMICS
 
+ USING SEED       123456 TO INIT. PSEUDO RANDOM NUMBER GEN.
  PATH TO THE RESTART FILES:                                    ./
  ITERATIVE ORTHOGONALIZATION
     MAXIT:                                                     30
     EPS:                                                 1.00E-06
- MAXIMUM NUMBER OF STEPS:                             10000 STEPS
+ MAXIMUM NUMBER OF STEPS:                              3000 STEPS
  MAXIMUM NUMBER OF ITERATIONS FOR SC:                 10000 STEPS
  PRINT INTERMEDIATE RESULTS EVERY                     10001 STEPS
  STORE INTERMEDIATE RESULTS EVERY                       100 STEPS
  STORE INTERMEDIATE RESULTS EVERY     10001 SELF-CONSISTENT STEPS
  NUMBER OF DISTINCT RESTART FILES:                              1
- TEMPERATURE IS CALCULATED ASSUMING AN ISOLATED MOLECULE
+ TEMPERATURE IS CALCULATED ASSUMING AN ISOLATED MOLECULE 
 ```
 
-In CPMD, atoms are frequently referred to as ions, which may be confusing. This is due to the pseudopotential approach, that allows one to integrate the core electrons into the (pseudo)atom description, which then is traditionally referred as an ion. See for example the following output segment:
+In the CPMD code, atoms are frequently referred to as ions, which may be confusing. This is due to the pseudopotential approach that allows one to integrate the core electrons (i.e. the electron closer to the nucleus as opposed to the valence ones) into the (pseudo)atom description: this pseudoatom is traditionally referred to as an ion. See for example the following output segment:
 
 ```
  FICTITIOUS ELECTRON MASS:                               600.0000
@@ -1311,79 +1291,79 @@ In CPMD, atoms are frequently referred to as ions, which may be confusing. This 
  ION DYNAMICS:      THE TEMPERATURE IS NOT CONTROLLED
 ```
 
-This part of the output tells us, that the `TIMESTEP` keyword was recognized as well as the output option and that there will be no temperature control, i.e. we will do a microcanonical (NVE-ensemble) simulation.
-
-```
-43.13  0.86  0.77
-```
+From this part of the output you can verify that the TIMESTEP keyword was correctly recognized as well as the output options, and that there will be no temperature control, i.e. we were doing a microcanonical (NVE-ensemble) simulation.
 
 Then, several sections devoted to detail the QM/MM interface and its data immediately follow:
 
 ```
-INITIALIZATION TIME:                                1.05 SECONDS
+INITIALIZATION TIME:                                4.83 SECONDS
 
  ***      MDPT| SIZE OF THE PROGRAM IS   95528/ 288728 kBYTES ***
  ***     PHFAC| SIZE OF THE PROGRAM IS   97076/ 300980 kBYTES ***
  ***    ATOMWF| SIZE OF THE PROGRAM IS   98100/ 302796 kBYTES ***
- ATRHO| CHARGE(R-SPACE):   24.000000      (G-SPACE):   24.000000
+ ATRHO| CHARGE(R-SPACE):   383.000000     (G-SPACE):   383.000000
 
  RE-CENTERING QM SYSTEM AT EVERY TIME STEP
 
    BOX TOLERANCE [a.u.]     7.00000000000000
 
  BOX SIZE [a.u.]                     QM SYSTEM SIZE [a.u.]
-  X DIRECTION:  CELLDIM =    43.1300; XMAX-XMIN=     5.3773
-  Y DIRECTION:  CELLDIM =    37.0918; YMAX-YMIN=     7.3868
-  Z DIRECTION:  CELLDIM =    33.2101; ZMAX-ZMIN=     4.3595
+  X DIRECTION:  CELLDIM =    42.3800; XMAX-XMIN=    29.1370
+  Y DIRECTION:  CELLDIM =    47.8004; YMAX-YMIN=    34.5556
+  Z DIRECTION:  CELLDIM =    35.7518; ZMAX-ZMIN=    22.5106
 
- >>>>>>>> QUENCH SYSTEM TO THE BORN-OPPENHEIMER SURFACE <<<<<<<<
+>>>>>>>> QUENCH SYSTEM TO THE BORN-OPPENHEIMER SURFACE <<<<<<<<
 
  ***    QUENBO| SIZE OF THE PROGRAM IS  112180/ 308536 kBYTES ***
  *** MM_ELSTAT| SIZE OF THE PROGRAM IS  112288/ 308536 kBYTES ***
+ WARNING! CUTTING THROUGH CHARGE GROUP     110  ATOMS:     342     346
+ WARNING! CUTTING THROUGH CHARGE GROUP     127  ATOMS:     393     394
+ WARNING! CUTTING THROUGH CHARGE GROUP     746  ATOMS:    2390    2393
+ WARNING! CUTTING THROUGH CHARGE GROUP     760  ATOMS:    2433    2434
 
      !!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!
      THE QM SYSTEM DOES NOT HAVE AN INTEGER CHARGE.
-     A COMPENSATING CHARGE OF   0.000040 HAS BEEN
+     A COMPENSATING CHARGE OF   -0.114400 HAS BEEN
      DISTRIBUTED OVER THE NN ATOMS.
      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 …
 ```
 
-0.000040e of charge has been added to the background in order to compensate the non-zero value of the total charge in the QM part: for all practical purposes this is zero!
+CPMD issues warnings due to the positions of the boundaries between QM and MM parts: the cuts have been done within a charge group, i.e. a set of atoms whose sum of all the partial charges is zero. Therefore, the QM part does not have an integral part and -0.1144e of charge has been added to the background in order to compensate the non-zero value of the total charge in the QM part.
 
-After the force initialization section, the molecular dynamics begins:
+After the force initialization section, the molecular dynamics (MD) begins:
 
 ```
-NFI    EKINC   TEMPP       EKS         ECLASSIC     EHAM          EQM            DIS       TCPU
-   1      0.00006   297.0     -54.34715     -51.01094     -51.01088     -36.46342   0.218E-04    1.53
-   2      0.00056   293.9     -54.34671     -51.04477     -51.04421     -36.46309   0.863E-04    1.54
-   3      0.00136   290.9     -54.34661     -51.07860     -51.07724     -36.46309   0.191E-03    1.52
-   4      0.00201   287.9     -54.34663     -51.11193     -51.10992     -36.46319   0.335E-03    1.52
+NFI    EKINC   TEMPP           EKS      ECLASSIC          EHAM           EQM         DIS          TCPU
+  1     0.00054    296.9    -786.38895      -746.83295    -746.83241    -588.23597   0.390E-04    5.98
+  2     0.00492    293.8    -786.37247      -747.23299    -747.22807    -588.23123   0.155E-03    5.53
+  3     0.01258    290.7    -786.35229      -747.63219    -747.61961    -588.22936   0.346E-03    5.78
+  4     0.01981    287.5    -786.32791      -748.02673    -748.00692    -588.22916   0.608E-03    5.78
 ...
 ```
 
 The individual columns have the following meaning:
 
-`NFI`: 	Step number (number of finite iterations) 
+`NFI`: 	MD step number (number of finite iterations) 
 
-`EKINC`: 	Fictitious kinetic energy of the electronic degrees of freedom
+`EKINC`: Kinetic energy of the “fictitious” electronic degrees of freedom of a Car-Parrinello MD.
 
 `TEMPP`: 	Temperature (= kinetic energy / degrees of freedom) for atoms (ions) 
 
-`EKS`: 	Kohn-Sham energy; equivalent to the potential energy in classical MD
+`EKS`: 	Quantum DFT Kohn-Sham electronic energy; equivalent to the potential energy in classical MD
 
-`ECLASSIC`: 	The total energy in a classical MD, but not the conserved quantity for CP-dynamics (ECLASSIC = EHAM - EKINC).
+`ECLASSIC`: The total energy in a classical MD, but it is not the conserved quantity in a Car-Parrinello MD (ECLASSIC = EHAM - EKINC).
 
-`EHAM`:	Energy of the total CP-Hamiltonian; the conserved quantity. 
+`EHAM`:	Energy of the total Car-Parrinello Hamiltonian; the conserved quantity. 
 
 `EQM`:	Energy of QM part (electrons + nuclei contribution)
 
 `DIS`:	Mean squared displacement of the atoms from the initial coordinates.
 
-`TCPU`: 	Time needed for this step
+`TCPU`: 	Time took to calculate this step
 
-Finally, we get a summary of averages and root mean squared deviations for some of the monitored quantities. This is quite useful to detect unwanted energy drifts or too large fluctuations in the simulation:
+Finally, we get a summary of averages and root mean squared deviations for some of the monitored quantities. This is quite useful in order to detect unwanted energy drifts or too large fluctuations in the simulation:
 
 ```
 RESTART INFORMATION WRITTEN ON FILE                  ./RESTART.1
@@ -1393,49 +1373,51 @@ RESTART INFORMATION WRITTEN ON FILE                  ./RESTART.1
  ****************************************************************
                               MEAN VALUE       +/-  RMS DEVIATION
                                      <x>     [<x^2>-<x>^2]**(1/2)
- ELECTRON KINETIC ENERGY        0.000867             0.300539E-03
- IONIC TEMPERATURE               37.2640              52.8318    
- DENSITY FUNCTIONAL ENERGY    -56.788301             0.907159    
- CLASSICAL ENERGY             -56.369667              1.48329    
- CONSERVED ENERGY             -56.368800              1.48357    
- NOSE ENERGY ELECTRONS          0.000000              0.00000    
- NOSE ENERGY IONS               0.000000              0.00000    
- CONSTRAINTS ENERGY             0.000000              0.00000    
- RESTRAINTS ENERGY              0.000000              0.00000    
- ION DISPLACEMENT           	  0.306287              0.932230E-01
- CPU TIME                         1.5641
+ ELECTRON KINETIC ENERGY        0.009665             0.224681E-02
+ IONIC TEMPERATURE               20.5072              42.4041
+ DENSITY FUNCTIONAL ENERGY   -821.253298              9.75456
+ CLASSICAL ENERGY            -818.521420              15.1955
+ CONSERVED ENERGY            -818.511755              15.1976
+ NOSE ENERGY ELECTRONS          0.000000              0.00000
+ NOSE ENERGY IONS               0.000000              0.00000
+ CONSTRAINTS ENERGY             0.000000              0.00000
+ RESTRAINTS ENERGY              0.000000              0.00000
+ ION DISPLACEMENT               0.384781             0.121723
+ CPU TIME                         5.9034
 ```
 
 The simplest way to visually inspect if the reaction has taken place is to use the `interacting.pdb` file:
 
-```
-vmd interacting.pdb
-```
+<a class="prompt prompt-cmd"> vmd INTERACTING_NEW.pdb </a>
 
 The full final configuration can be found in the `CRD_FIN.g96` file:
 
-```
-vmd –g96 CRD_FIN.g96
-```
+<a class="prompt prompt-cmd"> vmd –g96 CRD_FIN.g96 </a>
 
-To verify that the reached configuration is physically "reasonable" and that this “artificial” Car-Parrinello MD has not brought the system in a very improbable configuration, a good test is to run a simulation in an NVE ensemble and monitoring the temperature (`TEMPP`, column 3) and the physical energy (`ECLASSIC`, column 5): if after some steps these two quantities stabilize (usually with the temperature oscillating around a value smaller than 100 K) then we can be confident that the `CRD_FIN.g96` and the `RESTART.1` file previously obtained contains a good minimum energy structure. On the other hand, if energy and/or temperature continuously increase, that means we have not get a good structure yet and another annealing procedure is required, usually starting it from another point (for example after heating the system at 300 K as we will explain in the next section, in order to move the system away from that “wrong” energy potential basin). The test can be accomplished by the following procedure:
+## QM/MM MD
+
+If the reaction has not occurred, then we can proceed with the next step, i.e. a QM/MM MD.
+
+To verify that the final configuration obtained in the previous section is physically "reasonable" minimum energy configuration and that the “artificial” Car-Parrinello MD has not brought the system in a very improbable configuration, a good test is to run a simulation in an NVE ensemble monitoring temperature (`TEMPP`, column 3) and physical energy (`ECLASSIC`, column 5): if after some steps these two quantities stabilize (usually with the temperature oscillating around a value smaller than 100 K), then we can be a bit more confident that the `CRD_FIN.g96` and the `RESTART.1` files previously obtained contain a good minimum energy structure. On the other hand, if energy and/or temperature continuously increase, that means we have not get a good structure yet and another annealing procedure is required, usually starting it from another point (for example after heating the system at 300 K as we will explain in the next section, in order to move the system away from that “wrong” energy potential basin). The test can be accomplished by the following procedure:
 
 
- - Create a new folder:
-     ```
-     mkdir TEST
-     cd TEST
-     ```
+Create a new folder:
+<a class="prompt prompt-cmd">
+mkdir TEST<br>
+cd TEST
+</a>
      
- - Copy the following files from the previous calculation:
-     ```
-     cp ../gromos* .
-     cp ../CRD_FIN.g96 .
-     cp ../RESTART.1 RESTART
-     cp ../annealing.inp   test.inp
-     ```
+Copy the following files from the previous calculation:
+<a class="prompt prompt-cmd">
+cp ../gromos* .<br>
+cp ../CRD_FIN.g96 ./annealing.g96<br>
+cp ../RESTART.1 RESTART<br>
+cp ../annealing.inp test.inp
+</a>
      
- - Modify the test.inp file in order to change the &CPMD section so as to appear:
+Modify the `test.inp` file in order to:
+
+1. Change the `&CPMD` section this way:
 
 ```
 &CPMD
@@ -1454,238 +1436,218 @@ TRAJECTORY SAMPLE
 &END
 ```
 
-   And replace `gromos.crd` with `CRD_FIN.g96` in the section `&QMMM`.
+The `RESTART` keyword tells CPMD to read atomic coordinates, atomic velocities and the wavefunction from a restart file called `RESTART`. If the option `LATEST` is added to this line, the name of the restart file will be read in a text file named LATEST that CPMD creates every time it writes a restart file (if you adopt this restarting strategy, you should copy both `RESTART.1` and `LATEST` from the previous calculation).
 
-   The `RESTART` keyword tells CPMD to read atomic coordinates, atomic velocities and the wavefunction from a restart file called “`RESTART`”. If the option `LATEST` is add at this line, the name of the restart file will be read in a text file named “`LATEST`” that CPMD creates every time it writes a restart file. (therefore you should both files were generated in the previous calculation).
+The rest of the input file is the same as the annealing step and cannot be removed without making CPMD complain.
 
-   The rest of the input file is the same as the annealing step and cannot be removed without making CPMD complain.
+2. Replace the gromos.crd entry for the COORDINATES keyword in the &QMMM section with annealing.g96.
 
- - Run the test:
-    ```
-    mpirun -np 8 cpmd.x test.inp .. > test.out
-    ```
+Run the test
+<a class="prompt prompt-cmd">
+mpirun -np 2 cpmd.x test.inp .. > test.out
+</a>
 
- - Monitor the simulation
-    ```
-    tail -f test.out
-    ```
+Monitor the simulation
+<a class="prompt prompt-cmd">
+tail -f test.out
+</a>
     
- - When it ends, you can plot on a graph the temperature and the physical energy by using for example gnuplot
+When it ends, you can plot on a graph the temperature and the physical energy reported in `ENERGIES` by using for example gnuplot
+<a class="prompt prompt-cmd"> gnuplot </a>
+<a class="prompt prompt-info">
+p 'ENERGIES' u 1:3 w l<br>
+p 'ENERGIES' u 1:5 w l<br>
+quit
+</a>
 
-    ```
-    gnuplot
-    p 'ENERGIES' u 1:3 w l
-    p 'ENERGIES' u 1:5 w l
-    quit
-    ```
-
+<figure align="center">
 <div align='center'><img src="./media/image10.png" width="319" height="206" /></div>
+</figure>
 
-# QM/MM MD
+NOTE: Very probably the picture above does not correspond to your test. In fact, if you obtained the initial structure from a classical **constrained** molecular dynamics, the system is not already at or close to equilibrium as the test assumes! In that case, in this test without constrains you will observe the temperature increasing for a (very) long time before reaching equilibrium. Therefore, in this case for the test will be sufficient to focus on the energy of the fictitious electron (`EKIN`, column 2) and verify that it is oscillate without assuming an increasing trend. 
 
-If a molecular dynamics is required and the test in the previous section
-was successful, we can come back to the configuration obtained by the
-annealing procedure and start heating the system up to the room temperature.
-There are several methods implemented in CPMD to heat the system.
-We choose to increase the target temperature by coupling the system to a
-thermostat and linearly increasing its target
-temperature at each step by performing a usual Car-Parrinello MD.
-A simple Berendsen-type thermostat[<sup>27</sup>](#twentyseven) can be used for this step: it does not
-fully preserve the correct canonical ensemble but we are not interested
-to this feature at this stage and it is numerically fast and more stable
-than alternative algorithms.
+If the test is successful, we can take the configuration obtained by the annealing procedure and start heating the system up to the room temperature. There are several methods implemented in CPMD to heat the system. We choose to increase the target temperature by coupling the system to a thermostat and linearly increasing its target temperature at each time step by performing a usual Car-Parrinello MD. A simple Berendsen-type thermostat[<sup>32</sup>](#thirtytwo) can be used in the heating phase: it does not fully preserve the correct canonical ensemble but we are not interested to this feature at this stage, while it is numerically fast and more stable than alternative algorithms.
+
 Two additional keywords are required in the `&CPMD` section with respect to the previous input file:
 
 1. `TEMPERATURE` with the option `RAMP`; 3 numbers have to be specified on the line below the keyword: initial and target temperature in K and the ramping speed in K per atomic time unit (to get the change per time step you have to multiply it with the value of `TIMESTEP`). Read the initial temperature from the output file of the annealing procedure.
 
-2. `BERENDSEN` with the option IONS; 2 numbers has to be specified on the line below the keyword: the target temperature (the initial one in our case) and the time constant $\tau$ of the thermostat in a.u. (0.12 ps is a reasonable value).
+2. `BERENDSEN` with the option IONS; 2 numbers has to be specified on the line below the keyword: the target temperature (the initial one in our case) and the time constant $\tau$ of the thermostat in a.u. (0.12 ps = 5000 a.u. is a reasonable value).
 
 If you come back to the folder where the annealing has been performed, the procedure to accomplish the heating run can be summarized this way:
 
-
- - Create a new folder:
-
-  ```
-  mkdir HEATING
-  cd HEATING
-  ```
+Create a new folder:
+<a class="prompt prompt-cmd">
+mkdir HEATING<br>
+cd HEATING
+</a>
     
- - Copy the following files from the previous calculation:
+Copy the following files from the previous calculation:
+<a class="prompt prompt-cmd">
+cp ../gromos_mod* .<br>
+cp ../CRD_FIN.g96 ./annealing.g96<br>
+cp ../RESTART.1 RESTART<br>
+cp ../TEST/test.inp heating.inp
+</a>
+
+Modify `heating.inp` according the rules above mentioned:
+<a class="prompt prompt-cmd"> vi heating.inp </a>
+
+by adding the two following lines in the `&CPMD` section:
 
 ```
-cp ../gromos* .
-cp ../CRD_FIN.g96 .
-cp ../RESTART.1 RESTART
-cp ../TEST/test.inp   heating.inp
+BERENDEN IONS
+ 3.8  5000
+TEMPERATURE RAMP
+ 3.8  340.0  20
 ```
 
- - Modify `heating.inp` according the rules above mentioned:
+and requesting 5000 steps:
 
-  ```
-  vi heating.inp
-  ```
+```
+MAXSTEP
+ 5000
+```
 
-  by adding the two following lines in the `&CPMD` section:
+Monitor the temperature:
 
-  ```
-  BERENDEN IONS
-  3.8  5000
-  TEMPERATURE RAMP
-  3.8  340.0  1
-  ```
+<a class="prompt prompt-cmd"> tail -f heating.out </a>
 
- - Monitor the temperature:
+If the temperature reaches approximately the target temperature before the `MAXSTEP` number of steps are performed and it keeps stable, you can gently stops the simulation in advance:
 
-  ```
-  tail -f heating.out
-  ```
-
- - If the temperature reaches approximately the target temperature before the MAXSTEP number of steps are performed and it stays stable, you can stops the simulation in advance:
-
-  ```
-  touch EXIT
-  ```
+<a class="prompt prompt-cmd"> touch EXIT </a>
 
 We are finally ready to run a Car-Parrinello molecular dynamics at room conditions.
 To do that, as usual, we will create a new folder:
 
-```
-cd ..
-mkdir PRODUCTION-RUN
+<a class="prompt prompt-cmd">
+cd ..<br>
+mkdir PRODUCTION-RUN<br>
 cd PRODUCTION-RUN
-```
+</a>
 
 and then we will copy the necessary files in order to start the calculation from the last configuration got in the heating run:
 
-```
-cp ../HEATING/gromos* .
-cp ../CRD_FIN.g96 .
-cp ../HEATING/RESTART.1 RESTART
+<a class="prompt prompt-cmd"> 
+cp ../HEATING/gromos* .<br>
+cp ../CRD_FIN.g96 ./heating.g96<br>
+cp ../HEATING/RESTART.1 RESTART<br>
 cp ../HEATING/heating.inp   cpmd.inp
-```
+</a>
 
 To run a correct Car-Parrinello molecular dynamics we need to modify the previous input file according to the following prescriptions:
 
- - We want to restart from the previous wavefunction, coordinates and velocities since we want to use the temperature information from the “`RESTART`” file. Therefore, we keep the option `VELOCITIES` in the `RESTART` keyword and we will remove `TEMPERATURE` keyword.
- - We replace the Berendsen thermostat with the Nose-Hoover chains:[<sup>28</sup>](#twentyeight) this because unlike the Berendsen one this kind of thermostat preserves the Maxwell distribution of the velocities and there it allows sampling the correct canonical ensemble. In other words, it provides an NVT ensemble for a system in equilibrium.
+- We replace the `annealing.g96` entry for the `COORDINATES` keyword in the `&QMMM` section with heating.g96.
+
+- Before the MD starts, we request to perform a wavefunction optimization (by using the wavefunction read from the `RESTART` file as starting point) in order to begin the Car-Parrinello MD with the well-optimized wavefunction corresponding to the current atomic positions (read from the `RESTART` file as well). In fact, if the adiabatic condition holds (see later in this section) and the initial wavefunction is already close to the Born-Oppenheimer (BO) surface, the Car-Parrinello scheme evolves the quantum system wavefunction by keeping it close to, but not exactly on the BO surface. Therefore, allowing the Car-Parrinello MD to start from a wavefunction on the BO surface will improve the quality of the Car-Parrinello dynamical evolution of the wavefunction. The initial wavefunction optimization can be requested with the keyword in the `&CPMD` section:
+
+```
+QUENCH BO
+```
+ 
+- We want to restart from the previous wavefunction, coordinates and velocities since we want to use the temperature information from the `RESTART` file. Therefore, we keep the option `VELOCITIES` in the `RESTART` keyword and we will remove the `TEMPERATURE` keyword[<sup>33</sup>](#thirtythree). 
+
+- We replace the Berendsen thermostat with the Nose-Hoover chainskeyword[<sup>34</sup>](#thirtyfour): this because unlike the faster and more stable Berendsen one this kind of thermostat preserves the Maxwell distribution of the velocities and it allows sampling the correct canonical ensemble. In other words, it provides an NVT ensemble for a system in equilibrium.
 The keyword that turns this algorithm on is `NOSE`, and then you have to specify the degrees of freedom to which you want to apply it (`IONS`); the target temperature in Kelvin and the thermostat frequency in cm-1 are read from the next line:
 
- ```
- NOSE IONS
- 300  4000
- ```
- Regarding the choice of frequency (at which the energy transfer from/to the thermostat happens), you have only to pay attention not to select a resonance vibrational frequency of your system.
+```
+NOSE IONS
+300  4000
+```
 
- - We will perform 10,000 molecular dynamics steps (or more if you have time: typical CPMD trajectories nowadays are hundreds of ps long!) which correspond to about 1.2 ps with our current timestep (5 a.u. = ~0.12 fs):
+Regarding the choice of frequency (at which the energy transfer from/to the thermostat happens), you have only to pay attention not to select a resonance vibrational frequency of your system: a normal mode analysis can help to identify them.
 
- ```
- MAXSTEP
- 10000
- ```
+- We will perform 10,000 molecular dynamics steps (or more if you have time: typical CPMD trajectories nowadays are hundreds of ps long!) which correspond to about 1.2 ps with our current timestep (5 a.u. = ~0.12 fs):
+
+```
+MAXSTEP
+10000
+```
  
- - We want to write a trajectory file every 100 steps:
+- We want to write a trajectory file every 100 steps:
 
- ```
- TRAJECTORY SAMPLE
- 100
- ```
+```
+TRAJECTORY SAMPLE
+100
+```
  
- - Finally, we want to save a restart file every 1000 steps and maybe keep at least two consecutive restart files at each moment for security reason. We can do that by properly using the keyword `RESTFILE` and `STORE`:
+- Finally, we want to save a restart file every 1000 steps and maybe retain at least two consecutive restart files for security reason. We can do that by properly using the keyword `RESTFILE` and `STORE`:
 
-  ```
-  STORE
-  1000
-  RESTFILE
-  2
-  ```
+```
+STORE
+1000
+RESTFILE
+2
+```
  
- This way CPMD will create two restart files in sequence called `RESTART.1`, and `RESTART.2`, and it will overwrite them in the same sequence. 
+This way CPMD will create two restart files in sequence called `RESTART.1`, and `RESTART.2`, and it will overwrite them in the same sequence. 
 
-Running a physically correct Car-Parrinello MD simulation requires that the adiabaticity condition be met during the 
-simulation, i.e. the separation of the electronic and ionic degrees of freedom be maintained along the entire trajectory.
-Theoretically, such separation can be achieved by separating the power spectrum of the orbital classical fields from 
-the phonon spectrum of the ions (the gap between the lowest electronic frequency and the highest ionic frequency should 
-be large enough). Since the electronic frequencies depend on the fictitious electron mass EMASS one should carefully 
-optimize its value in order to set the lowest electronic frequency appropriately. 
-The adiabaticity can be verified by running test simulations with this setup and looking at the energy components. 
-In particular, if adiabatic condition holds, the fictitious kinetic energy of the electronic degrees of freedom 
-(`EKINC`, second column in the “`ENERGIES`” file) should keep small and must not have an increasing trend. In fact, 
-only in this case the electronic structure can remain close to the Born-Oppenheimer surface and thus the wavefunction 
-and the forces derived from this wavefunction can be physically meaningful. Therefore, we must monitor the behavior 
-of the `EKINC` in order to verify that the system keeps being in the adiabatic regime and the production run simulation 
-is physically meaningful:
+Running a physically correct Car-Parrinello MD simulation requires that the adiabaticity condition be met during the simulation, i.e. the separation of the electronic and ionic degrees of freedom is maintained along the entire trajectory.
+Theoretically, such separation can be achieved by separating the power spectrum of the classical or “fictitious” orbital fields from the phonon spectrum of the ions. A condition sufficient to guarantee it is to assure that the gap between the lowest fictitious electronic frequency and the highest ionic frequency is large enough. Since the classical electronic frequencies depend on the fictitious electron mass EMASS one should carefully optimize its value in order to set the lowest electronic frequency appropriately. 
+The adiabaticity can be verified by running test simulations with this setup and looking at the energy components. In particular, if adiabatic condition holds, the kinetic energy of the fictitious electronic degrees of freedom (`EKINC`, second column in the “ENERGIES” file) should keep small and must not have an increasing trend. In fact, only in this case the electronic structure is supposed to remain close to the Born-Oppenheimer surface and thus the wavefunction and the forces derived from this wavefunction can be considered physically meaningful. Therefore, we must monitor the behavior of the `EKINC` in order to verify that the system keeps being in the adiabatic regime and the production run simulation is physically meaningful:
 
 ```
 TOTAL INTEGRATED ELECTRONIC DENSITY
-    IN G-SPACE =                                        24.000000
-    IN R-SPACE =                                        24.000000
+    IN G-SPACE =                                   383.0000000000
+    IN R-SPACE =                                   383.0000000000
 
- (K+E1+L+N+X+Q+M)       TOTAL ENERGY =          -57.87866446 A.U.
- (K+E1+L+N+X)        TOTAL QM ENERGY =          -36.47942711 A.U.
- (Q)              TOTAL QM/MM ENERGY =            0.00000000 A.U.
- (M)                 TOTAL MM ENERGY =          -21.38112962 A.U.
-                     DIFFERENCE      =           -0.01810773 A.U.
- (K)                  KINETIC ENERGY =           27.71754549 A.U.
- (E1=A-S+R)     ELECTROSTATIC ENERGY =          -27.62122216 A.U.
- (S)                           ESELF =           29.92067103 A.U.
- (R)                             ESR =            1.68558813 A.U.
- (L)    LOCAL PSEUDOPOTENTIAL ENERGY =          -29.41090607 A.U.
- (N)      N-L PSEUDOPOTENTIAL ENERGY =            3.57237860 A.U.
- (X)     EXCHANGE-CORRELATION ENERGY =          -10.73722297 A.U.
-          GRADIENT CORRECTION ENERGY =           -0.58313547 A.U.
+ (K+E1+L+N+X+Q+M)       TOTAL ENERGY =         -786.38895465 A.U.
+ (K+E1+L+N+X)        TOTAL QM ENERGY =         -588.23597149 A.U.
+ (Q)              TOTAL QM/MM ENERGY =           -0.02330326 A.U.
+ (M)                 TOTAL MM ENERGY =         -197.90779871 A.U.
+                     DIFFERENCE      =           -0.22188119 A.U.
+ (K)                  KINETIC ENERGY =          444.70658466 A.U.
+ (E1=A-S+R)     ELECTROSTATIC ENERGY =         -468.48899310 A.U.
+ (S)                           ESELF =          503.66462901 A.U.
+ (R)                             ESR =           27.34136599 A.U.
+ (L)    LOCAL PSEUDOPOTENTIAL ENERGY =         -425.81394778 A.U.
+ (N)      N-L PSEUDOPOTENTIAL ENERGY =           33.22785637 A.U.
+ (X)     EXCHANGE-CORRELATION ENERGY =         -171.86747163 A.U.
+          GRADIENT CORRECTION ENERGY =           -8.25344627 A.U.
 
        NFI    EKINC   TEMPP           EKS      ECLASSIC          EHAM           EQM         DIS    TCPU
-         1  0.00001   302.5     -57.87866     -54.48084     -54.48082     -36.47943   0.538E-05    1.50
-         2  0.00011   302.3     -57.87721     -54.48093     -54.48082     -36.47936   0.214E-04    1.47
-         3  0.00027   302.2     -57.87578     -54.48109     -54.48082     -36.47937   0.480E-04    1.35
-         4  0.00037   302.0     -57.87431     -54.48118     -54.48081     -36.47937   0.849E-04    1.50
-         5  0.00039   301.9     -57.87280     -54.48119     -54.48080     -36.47937   0.132E-03    1.35
-         6  0.00039   301.8     -57.87125     -54.48118     -54.48079     -36.47937   0.190E-03    1.35
-         7  0.00037   301.6     -57.86966     -54.48116     -54.48078     -36.47937   0.258E-03    1.67
-         8  0.00037   301.5     -57.86803     -54.48115     -54.48078     -36.47936   0.336E-03    1.35
-         9  0.00037   301.3     -57.86636     -54.48114     -54.48077     -36.47936   0.425E-03    1.46
- NBPML:     80733 ELEMENTS IN THE PAIRLIST
-        10  0.00037   301.2     -57.86466     -54.48114     -54.48077     -36.47935   0.523E-03    1.37
-        11  0.00036   301.0     -57.86291     -54.48113     -54.48077     -36.47934   0.632E-03    1.46
-        12  0.00035   300.9     -57.86112     -54.48111     -54.48076     -36.47932   0.752E-03    1.35
-        13  0.00035   300.7     -57.85927     -54.48107     -54.48073     -36.47931   0.881E-03    1.35
-        14  0.00034   300.5     -57.85740     -54.48106     -54.48072     -36.47929   0.102E-02    1.46
-        15  0.00033   300.4     -57.85551     -54.48106     -54.48073     -36.47928   0.117E-02    1.35
-        16  0.00032   300.2     -57.85357     -54.48105     -54.48073     -36.47927   0.133E-02    1.46
-        17  0.00031   300.0     -57.85159     -54.48103     -54.48072     -36.47926   0.150E-02    1.35
-        18  0.00030   299.8     -57.84956     -54.48101     -54.48070     -36.47925   0.169E-02    1.51
-        19  0.00030   299.7     -57.84751     -54.48099     -54.48070     -36.47924   0.188E-02    1.42
+         1  0.00054   302.5    -786.38895    -746.83295    -746.83241    -588.23597   0.390E-04    5.98
+         2  0.00492   302.3    -786.37247    -747.23299    -747.22807    -588.23123   0.155E-03    5.53
+         3  0.01258   302.2    -786.35229    -747.63219    -747.61961    -588.22936   0.346E-03    5.78
+         4  0.01981   302.0    -786.32791    -748.02673    -748.00692    -588.22916   0.608E-03    5.78
+         5  0.02453   301.9    -786.29831    -748.41435    -748.38982    -588.22910   0.939E-03    5.84
+         6  0.02644   301.8    -786.26381    -748.79506    -748.76862    -588.22853   0.134E-02    5.72
+         7  0.02630   301.6    -786.22469    -749.16917    -749.14286    -588.22749   0.180E-02    5.94
+         8  0.02515   301.5    -786.18254    -749.53824    -749.51309    -588.22627   0.233E-02    5.83
+         9  0.02374   301.3    -786.13832    -749.90283    -749.87909    -588.22515   0.292E-02    5.62
+ NBPML:    923208 ELEMENTS IN THE PAIRLIST
+        10  0.02248   301.2    -786.09343    -750.26370    -750.24122    -588.22427   0.358E-02    6.13
+        11  0.02159   301.0    -786.04886    -750.62107    -750.59948    -588.22368   0.430E-02    5.92
+        12  0.02106   300.9    -786.00529    -750.97467    -750.95361    -588.22334   0.507E-02    5.87
+        13  0.02072   300.7    -785.96367    -751.32445    -751.30373    -588.22312   0.591E-02    6.33
+        14  0.02039   300.5    -785.92494    -751.67036    -751.64998    -588.22288   0.679E-02    5.75
+        15  0.01997   300.4    -785.89000    -752.01236    -751.99239    -588.22260   0.773E-02    5.88
+        16  0.01951   300.2    -785.85983    -752.35058    -752.33107    -588.22238   0.871E-02    6.08
+        17  0.01908   300.0    -785.83531    -752.68518    -752.66610    -588.22231   0.973E-02    5.70
+        18  0.01872   299.8    -785.81719    -753.01630    -752.99758    -588.22243   0.108E-01    6.05
+        19  0.01843   299.7    -785.80622    -753.34423    -753.32580    -588.22275   0.119E-01    5.84
+
+                    EKIN/100  
+
 ```
 
+<figure align="center">
+<img src="./media/image10.png" width="306" height="207" />
+</figure>
+<div align="center">_#steps_</div>
 
-<div align='center'><img src="./media/image10.png" width="306" height="207" /></div>
-<br>
-Ensuring adiabaticity of Car Parrinello MD consists of decoupling the electronic and nuclear subsystems and thus minimizing the energy transfer from ionic degrees of freedom to electronic ones. In this sense, the system during a Car Parrinello MD should be kept in a metastable state.
+Ensuring adiabaticity of Car-Parrinello MD consists of decoupling the electronic and nuclear subsystems and thus minimizing the energy transfer from ionic degrees of freedom to electronic ones. In this sense, the system during a Car-Parrinello MD should be kept in a metastable state.
 
-Hint: any time you notice some strange behavior of some physical quantity, but also a very good practice in general, is to look at your trajectory through some visualization tool: the most of the problems are immediately identified by visual inspection …
+Hint: any time you notice some strange behavior of some physical quantity, but also a very good practice in general, is to look at your trajectory through some visualization tool: the most of the problems are immediately identified by a visual inspection!
 To visualize a CPMD QM/MM trajectory stored in the `TRAJECTORY` file you can use VMD:
 
-```
-vmd -g96 CRD_INI.g96 -cpmd TRAJECTORY
-```
+<a class="prompt prompt-cmd"> vmd -g96 CRD_INI.g96 -cpmd TRAJECTORY </a>
 
-# Restrained QM/MM MD
+## Restrained QM/MM MD
 
-When the chemical reaction has a free energy barrier significantly larger than kBT, it cannot occur spontaneously during 
-a QM/MM molecular dynamics simulation. We need therefore somehow to provide the system the energy necessary to overcome 
-the barrier. This can be done in several different ways and the best approach depends on the system and specific reaction 
-we have to deal with. However, there are some common strategies that we want to mention here.
-A common feature of any chemical reaction between a ligand and a target is that in order it can take place, the ligand 
-needs to approach some atoms in the binding site. Often, we know already which are the atoms involve, or at least we 
-have some educated guess. Therefore, the simpler approach is to restrained or constrained some distances between ligand 
-and target atoms. By the way, this is the approach of several enhanced sampling methods that allows calculating the 
-potential of mean force (PMF), i.e. the projection of the free energy landscape over some specified direction, such as 
-Umbrella Sampling (restraints) and Thermodynamic Integration (constraints). If those directions are good reaction 
-coordinates then the free energy barrier associated to the chemical reaction can be directly inferred from the 
-calculated free energy profile.
-
-CPMD allows specifying several constraints and restraints on the atoms. In particular in the section `&ATOM` of the 
-input you can introduce the input block:
+When the chemical reaction has a free energy barrier significantly larger than _k_<sub>B</sub>T, it cannot occur spontaneously during a QM/MM molecular dynamics simulation. We need therefore somehow to provide the system the energy necessary to overcome the barrier. This can be done in several different ways and the best approach depends on the system and specific reaction we have to deal with. However, there are some common strategies that we want to mention here.
+A common feature of any chemical reaction between a ligand and a target is that in order it can take place, the ligand needs to approach some atoms in the binding site. Often, we know already which are the involved atoms, or at least we have some educated guess. Therefore, the simpler approach is to steer or restrained/constrained some distances between ligand and target atoms. By the way, this is the basis of several enhanced sampling methods that allows calculating the potential of mean force (PMF), i.e. the projection of the free energy landscape over some specified direction, such as Umbrella Sampling (restraints) and Thermodynamic Integration (constraints). If those directions are good reaction coordinates then the free energy barrier associated to the chemical reaction can be directly inferred from the calculated free energy profile. 
+CPMD allows specifying several constraints and restraints on the atoms. This can be done by introducing the following input block in the section `&ATOMS` of the CPMD input file:
 
 ```
 CONSTRAINTS 
@@ -1694,33 +1656,29 @@ CONSTRAINTS
 END CONSTRAINTS
 ```
 
-and inside there define several constraints and restraints on the atoms according to the syntax described in section 
-9.5.2 of the CPMD manual. For example, in order to constrain the distance between the nitrile carbon of our ligand 
-(`index 3268`) and the sulfur atom of CYS25 (`index 367`) at its initial value and then smoothly modify it to a target 
-value, you could use the block:
+and inside there defining one or more atomic constraints and restraints according to the syntax described in section 9.5.2 of the CPMD manual. For example, in order to constrain the distance between the nitrile carbon of our ligand (`index 3268`) and the sulfur atom of CYS25 (`index 367`) at its initial value and then smoothly modify it to a target value, you could use the block:
 
 ```
 CONSTRAINTS 
-DIST 3268 367 -999. GROWTH -0.001
+FIX STRUCTURE
+  1
+DIST 3268 367 -999. GROWTH -0.0005
 END CONSTRAINTS
 ```
 
-The value -999. refers to the current value to be fixed. The keyword GROWTH indicates that the constraint value should 
-be changed at each time step with a rate of change (-0.001) given after the keyword in units per atomic time unit, i.e. 
-independent from the current length of a time step. Note that in MD runs only the actual initial value (-999.) can be 
-fixed. With this approach, the number of time steps has to be carefully calculated in order to reach the target value 
-for the distance.
+`FIX STRUCTURE` starts a group of individual constraints where the whole structural units can be fixed. The keyword is followed by the number of individual constraints on the next line. In our case we have only a distance constraint as specified in the `DIST` line. The value -999. instructs CPMD to constrain to the current value. The keyword `GROWTH` indicates that the constraint value should be changed at each time step with a rate of change given after the keyword (-0.0005) in units (bohr) per atomic time unit, i.e. independent from the current length of a time step. Note that in MD runs only the actual initial value (-999.) can be fixed. With this approach, the number of time steps has to be carefully calculated in order to reach the target value for the distance.
 
-Alternatively, instead of constrain the distance between the two atoms, we can restrain it:
+Alternatively, instead of constraining the distance between the two atoms, we can restrain it: 
 
 ```
 CONSTRAINTS 
 RESTRAINTS
-DIST 3268 367 -999. 0.1 GROWTH -0.001
+ 1
+DIST 3268 367 -999. 0.5 GROWTH -0.0005
 END CONSTRAINTS
 ```
 
-by a harmonic potential having a spring constant 0.1 in a.u.
+by a harmonic potential having a spring constant 0.5 in a.u.
 
 Sometimes it can be useful to constrain this way:
 
@@ -1732,12 +1690,13 @@ DIST 3268 367 -999. -1
 END CONSTRAINTS
 ```
 
-where the `SHOVE` option of the `FIX STRUCTURE` keyword requires an additional entry at the end of each constraint 
-line (only one in our case). This entry has to be either -1, 0, or 1. The constraint is then either fixed (0) or 
-allowed to shrink (-1) or grow (1).
+where the `SHOVE` option of the `FIX STRUCTURE` keyword requires an additional entry at the end of each constraint line (only one in our case). This entry has to be either -1, 0, or 1. The constraint is then either fixed (0) or allowed to shrink (-1) or grow (1).
 
-The values of the Lagrange multipliers and of the actual constraint are printed in the file `CONSTRAINT` that is 
-created in the current directory.
+The values of the Lagrange multipliers and of the actual constraint are printed in the file `CONSTRAINT` that is created in the current directory.
+
+In the folder `~/Tutorials/CPMD/3-Covalent_Binding_OLD_QMMM_Interface/10-QMMM_MD/STEERED` you can find an attempt of a steered (constrained) MD. 
+<a class="prompt prompt-question"> Does the expected chemical reaction between the nitrile carbon atom of the ligand and the sulfur atom of CYS25 take place? What is missing?</a>
+
 
 
 ------------------
@@ -1837,37 +1796,27 @@ further potential with the keyword \`\`SKIP= '' (see the CPMD manual).
 <a name="twentyfour">[24]</a> See section 11.16.6 of the CPMD reference manual for a complete
 list.
 
+<a name="twentyfive">[25]</a> Section 11.16.9.
 
-
-<a name="nineteen">[19]</a> This script and the input files for CPMD used in this tutorial can
-be downloaded at the link:
-
-<a name="twenty">[20]</a> Section 11.16.9.
-
-<a name="twentyone">[21]</a> O. A. v. Lilienfeld, D. Sebastiani, I. Tavernelli, and U.
+<a name="twentysix">[26]</a> O. A. v. Lilienfeld, D. Sebastiani, I. Tavernelli, and U.
 Rothlisberger, Phys. Rev. Lett. 93, 153004 (2004).
 
-<a name="twentytwo">[22]</a> Note that the picture reports the “index” of the atoms, while 
-the “serial”, which corresponds at the sequential index inside gromos.crd file, in VMD differs 
-for 1: “serial” starts to count from 1, while “index” from 0.
+<a name="twentyseven">[27]</a> Note that the picture reports the “index” of the atoms, while the “serial”, which corresponds at the sequential index inside gromos.crd file, in VMD differs for a unit: “serial” starts to count from 1, while “index” from 0.
 
-<a name="twentythree">[23]</a> Sometimes, it could be worth trying such a
-partial optimization. Test it also in this case.
+<a name="twentyeight">[28]</a> Sometimes, it could be worth trying such a partial optimization. The reader is invited to test this approach as well.
 
-<a name="twentyfour">[24]</a> The CPMD input files can be download from the following link:
-<https://www.dropbox.com/s/ouypmhxomzmfofg/qmmm.tar.gz>
+<a name="twentynine">[29]</a> This CPMD input files can be also found in the tutorial subfolder `9-QMMM_Annealing`
 
-<a name="twentyfive">[25]</a> <http://www.theochem.ruhr-uni-bochum.de/research/marx/marx.pdf>
+<a name="thirty">[30]</a> <http://www.theochem.ruhr-uni-bochum.de/research/marx/marx.pdf>
 
-<a name="twentysix">[26]</a> For a more exhaustive description of the
-CPMD log file see the introductory QM/MM tutorial:
-<https://www.dropbox.com/s/2b0qgfkd991l2f3/QMMM_Tutorial_EMBL-EBI.pdf>
+<a name="thirtyone">[31]</a> For a more exhaustive description of the CPMD log file see the other more introductory CPMD QM/MM tutorial that studies the acetone molecule in water. 
 
-<a name="twentyseven">[27]</a> H. J. C. Berendsen, J. P. M. Postma,
+<a name="thirtytwo">[32]</a> H. J. C. Berendsen, J. P. M. Postma,
 W. F. van Gunsteren, A. DiNola, J. R. Haak J. Chem. Phys, 81, 3684 (1984).
 
-<a name="twentyeight">[28]</a> S. Nosé and M. L. Klein, Mol. Phys. 50,
+<a name="thirtythree">[33]</a> Note that restarting with the velocities from the heating phase where we have employed the Berendsen thermostat algorithm is not always a good idea. In fact, this thermostat does not sample a correct canonical ensemble and therefore the velocity distribution of the atoms in the system could slightly deviate from the Maxwell one. However, the Nose-Hoover thermostat we employ in this step will adjust the velocity distribution during the first time steps and anyway the difference in the distribution can be important only for large systems and if high accuracy is required.
+
+<a name="thirtyfour">[34]</a> S. Nosé and M. L. Klein, Mol. Phys. 50,
 1055 (1983); S. Nosé, Mol. Phys. 52, 255 (1984); S. Nosé, J. Chem. Phys.
 81, 511 (1984);  S. Nosé, Prog. Theor. Phys. Suppl. 103, 1 (1991); W. G.
 Hoover, Phys. Rev. A 31, 1695 (1985).
-
