@@ -514,7 +514,7 @@ remove hydrogens<br>
 To allow RMSD calculations, we first need to change the chainID of the ligand in the reference structure:
 
 <a class="prompt prompt-pymol">
-alter (resn IHE and 1u9v), chain='B'
+alter (resn IHE and 1u9v), chain=&#34;B&#34;
 </a>
 
 Let's now superimpose the models on the reference structure 1u9v and calculate the ligand RMSD:
@@ -549,6 +549,17 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 If not, what is its rank? And is the HADDOCK score of this cluster significantly better than the best cluster?
 </a>
 
+<details style="background-color:#DAE4E7">
+<summary>See solution:
+</summary>
+
+<pre>
+ * Cluster1     HADDOCKscore [a.u.] = -68.2 +/- 0.5       ligand-RMSD = 2.04
+ * Cluster3     HADDOCKscore [a.u.] = -60.5 +/- 4.3       ligand-RMSD = 2.15
+ * Cluster2     HADDOCKscore [a.u.] = -55.3 +/- 1.0       ligand-RMSD = 0.65
+</pre>
+</details>
+<br>
 
 Now finally, let's consider the scores of the three cathepsin-ligand docking runs (CatK, CatL and CatS). 
 
@@ -556,21 +567,22 @@ Now finally, let's consider the scores of the three cathepsin-ligand docking run
 Compare the score of the best cluster with the IC50 values of the ligand
 </a>
 
+<a class="prompt prompt-question">
+Is there any correlation between docking score and IC50s?
+</a>
+
+
 <details style="background-color:#DAE4E7">
 <summary>See the IC50 and HADDOCK scores of the three cathepsins:
 </summary>
 
 <pre>
  * Cat K     IC50 =   6 nM      HADDOCKscore [a.u.] = -68.2 +/- 0.5
- * Cat L     IC50 =  89 nM      HADDOCKscore [a.u.] = -XX.X +/- 0.5
- * Cat S     IC50 = 150 nM      HADDOCKscore [a.u.] = -YY.Y +/- 0.5
+ * Cat L     IC50 =  89 nM      HADDOCKscore [a.u.] = -61.2 +/- 1.0
+ * Cat S     IC50 = 150 nM      HADDOCKscore [a.u.] = -47.5 +/- 0.1
 </pre>
 </details>
 <br>
-
-<a class="prompt prompt-question">
-Is there any correlation between docking score and IC50s?
-</a>
 
 **Note** *that in general we should not interpret docking scores in terms of binding affinity values. So any correlation observed here does not mean this is generally applicable. In this particular case, considering that the ligand is the same and only rather minor changes are present between the different cathepsin sequences, we do observe a slight correlation. But again, this should not be taken as a rule. We have actually shown that for protein-protein complexes that there is no correlation between the various scoring functions using in docking and binding affinity.*
 
