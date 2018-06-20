@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "CPMD for QM/MM simulation with GROMACS"
-tags: [GROMACS, HADDOCK, CPMD, covalent docking, molecular dynamics, docking]
+title: "CPMD for QM/MM simulation"
+tags: [CPMD, covalent docking, molecular dynamics, docking, QM/MM simuations]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -15,67 +15,73 @@ approach in order to get a guess of the topology of the covalent
 complex.
 
 To achieve this objective, we will need a series of codes and tools[<sup>2</sup>](#two)
-that we will suppose to be already installed on your Linux/MacOS X
-machine and that can be loaded through the module environment:
+that are already installed on your machine and that are directly available at the command line or can be loaded through the module environment:
 
-```
+<a class="prompt prompt-cmd">
 module load <Module name to load>
-```
+</a>
 
-The PDB file cluster1\_1.pdb contains the best pose by HADDOCK. The
+Most of the input/output files mentioned in this tutorial can be found in the folder of your laptop:
+
+`~/Tutorials/CPMD/3-Covalent_Binding_OLD_QMMM_Interface`
+
+<a class="prompt prompt-question">Some questions displayed in orange are supposed to be answered by the reader.</a>
+
+
+The PDB file `cluster1\_1.pdb` contains the best pose by HADDOCK. The
 ligand (residue UNK) is at the bottom of the file:
 
-```bash
+<a class="prompt prompt-cmd">
 grep UNK cluster1_1.pdb > ligand.pdb
-```
+</a>
 
 
-# Protonation states
+## Protonation states
 
 If you inspect the `ligand.pdb` file with the Chimera[<sup>3</sup>](#three) visualization
 tool:
 
-```
-module load chimera
-```
-
-```
+<a class="prompt prompt-cmd">
 chimera ligand.pdb
-```
+</a>
 
 you will notice that the large majority of the H atoms are missing. Only
-3 H atoms are present in the structure. However, HAA and HBB are bound
+three H atoms are present in the structure. However, HAA and HBB are bound
 to the N atoms of the piperazine ring and their protonation is
 debatable.
 
 Therefore, we will preliminary investigate the protonation states of the
 ligand by calculating the pKa (in vacuum, i.e. without the protein
 matrix) of the potential H<sup>+</sup> sites. This can be easily
-achieved by using the ChemAxon tool “MarvinSketch” within the Marvin
+achieved by using the ChemAxon tool "MarvinSketch" within the Marvin
 Suite[<sup>4</sup>](#four):
+
+<a class="prompt prompt-cmd">
+MarvinSketch
+</a>
 
 The suite can be downloaded after a free registration, and the
 protonation analysis workflow is available without any license.
 
 MarvinSketch does not work with the atom coordinates with chemical
 structures. The chemical structure of the ligand has to be “drawn”
-through the provided buttons along the frame of the main window:
+through the provided buttons along the frame of the main window
 
-```
-module load MarvinSuite
-```
+Drawing a molecule is rather intuitive and will be left to the reader discover the details and have fun with that. Remember that the ligand has a piperazine and cyclohexane rings at its ends.
 
-To start the calculation of the pKa, select `Calculations/Protonation/pKa`
-from the menu bar. Keep all the default parameters and press OK.
+After drawing the molecule, if the structure is chemically consistent (no pink clouds within the structure) we can move to calculate the pKa by selecting `Calculations/Protonation/pKa` from the menu bar. Keep all the default parameters and press OK (twice).
 
+<figure align="center">
 <img src="./media/image1.png" width="446" height="328" />
+</figure>
 
 The analysis shows that at physiological pH (~7.4) the most probable
-protonation state (47.52%) is the one with only HAA. Therefore, we now
-create a PDB file for the ligand with all the H atoms. This can easily
-be done by using the AddH tool in Chimera:
+protonation state (47.52%) is the one with only HAA. this will be the protonation state that we will consider in this tutorial[<sup>5</sup>](#five). Let us create a PDB file for the ligand with all the H atoms. This can easily
+be done by using the `AddH` tool in Chimera:
 
-`Tools/Structure Editing/AddH`
+<a class="prompt prompt-pymol">
+Tools/Structure Editing/AddH
+</a>
 
 Keep all the default parameters and press `OK`.
 
@@ -104,140 +110,115 @@ and save the structure as `ligandH.pdb`:
 -   Press “Save”
 
 Finally, let us remove all the H atoms from the `cluster1_1.pdb` file by
-using the tool `pdb4amber` in AmberTools:
+using the tool `pdb4amber` in the free AmberTools suite[<sup>6</sup>](#six):
 
-```
+<a class="prompt prompt-cmd">
+module load AmberTools/18<br>
 pdb4amber -i cluster1_1.pdb -o complex.pdb -y
-```
+</a>
+
+Type simply the command name `pdb4amber` to get a short description of the options of the command[<sup>7</sup>](#seven).
 
 In fact, AMBER does not follow the PDB standard atom name convention and
-a name remapping would be needed to get the PDB correctly recognized by
-`tleap` (see below). Removing the H atoms allows us to overcome the issue
-without compromising accuracy: the H atoms will be added later by the
-`tleap` tool in standard positions and the subsequent equilibration phase
-needed to correctly solvate the system will provide compatible H
+a name remapping for some H atoms would be needed to get the PDB correctly recognized by
+the `tleap` program of AmberTools (see below). Removing the H atoms allows us to overcome the issue
+without compromising accuracy: the H atoms will be added in standard positions later by the
+`tleap` tool itself and the subsequent equilibration phase
+needed to correctly solvate the system will provide compatible H atom
 positions.
 
-The current QM/MM interface of CPMD can deal with AMBER or GROMOS force
+The (old) QM/MM interface of CPMD we will use in this tutorial can deal with AMBER or GROMOS force
 fields. For our aim, the AMBER force field is more suitable. Therefore,
 we need to build the topology file for our system in AMBER format. We
-will perform this task with the free AmberTools suite:
-<http://ambermd.org/#AmberTools>.
+will perform this task with the AmberTools suite.
 
-# Ligand Parameterization
+## Ligand parameterization
 
-While the protein is constituted by standard residues and suitable force
+While standard residues constitute the protein of our system and suitable force
 field parameter libraries are available in AmberTools for them, no
 partial charges are available for non-standard chemical compounds like
 our ligand. Several methods are available for calculating partial atomic
 charges of a non standard compound (see for example
-<http://ambermd.org/tutorials/basic/tutorial4b/>). The most accurate
+<http://ambermd.org/tutorials/basic/tutorial4b/> or the other CPMD QM/MM tutorial for the old QM/MM interface where the acetone molecule in water is investigated). The most accurate
 methods require the use of a quantum mechanical code, like Gaussian
 (<http://gaussian.com>) to calculate the electronic potential around the
-system over which to fit the “RESP” partial atomic charges. However, in
+system over which to fit the “RESP” (Restrained ElectroStatic Potential) partial atomic charges[<sup>8</sup>](#eight). However, in
 our final QM/MM setup our ligand will be fully included in the quantum
 region and therefore an accurate description of the ligand at force
 field level is not needed. For this reason, we will parameterize the
-ligand within AmberTools, and in particular by using the semiempirical
+ligand within AmberTools, and in particular by using the semi-empirical
 approach built in the antechamber tool:
 
-```
-module load AmberTools/17
-
+<a class="prompt prompt-cmd">
 antechamber -i ligandH.pdb -fi pdb -o ligandH.prepin -fo prepi
 –nc 1 –m 1 -c bcc –pf y -rn UNK
-```
+</a>
 
-After few seconds of calculations the `sqm` code recalled by antechamber
+After few seconds of calculations the `sqm` code called by antechamber
 will produce the file `ligandH.prepin` that contains the AM1-BCC partial
-charges together with the atom and bond types from the GAFF (Generalized
+charges together with the atom and bond types derived from the GAFF (Generalized
 Amber Force Field) library for the atoms and bonds of the ligand residue
 UNK.
 
-Actually, `antechamber` sequentially recalls several programs that produce
-many intermediate files in your directory: the option `–pf y` removes
-them.
+Actually, `antechamber` calls several programs in sequence that produce
+many intermediate files in your directory: the option "-pf y" removes
+them at the end of the process.
 
-Run simply the command
-
-```
-antechamber
-```
-
-to have a short description for all the options recognized by
-antechamber and to understand each option in the command above. In
-addition, you can use
-
-```
-antechamber –L
-```
-
-to list the supported file formats and charge methods.
+As already mentioned, use the –h option or type simply the command name `antechamber` to get a short description of all the options recognized by antechamber and to understand the meaning of each option employed in the instruction above. In addition, you can use `antechamber –L` to list the supported file formats and charge methods.
 
 To complete the ligand parameterization we need to add the other
 parameters like the ones associated to angles and dihedrals. The `parmchk`
-tool in AmberTools allows one to add them in a `ligand.frcmod` file that
+tool in AmberTools allows one to add them in a file (usually named with the `.frcmod` extension) that
 will be needed in the next step:
 
-```
+<a class="prompt prompt-cmd">
 parmchk -i ligandH.prepin -o ligandH.frcmod -f prepi
-```
+</a>
 
-Again, run simply the command
-
-```
-parmchk
-```
-
-to get a short description of the different available options.
-
-# Topology and Coordinate files
+## Topology and coordinate files
 
 To build the topology and coordinate files for our protein+ligand
-complex in AMBER format we will use the `tleap` tool (AmberTools contains
-also `xleap` that is the GUI version of `tleap`):
+complex in AMBER format we will employ the `tleap` tool (AmberTools contains
+also `xleap` that is the GUI version of `tleap`). Enter the tleap environment with the command:
 
-```
+<a class="prompt prompt-cmd">
 tleap –f $AMBERHOME/dat/leap/cmd/oldff/leaprc.protein.ff99SB -s
-```
+</a>
 
 where the file `leaprc.protein.ff99SB` is used to load all the libraries
-containing the parameters of the Amber force field ff99SB that we will use
-in this tutorial. In fact, the current QM/MM interface has been validated
-mainly by using this force field and it is a good standard for our aim[<sup>5</sup>](#five).
-Moreover, the conversion script that we will provide you for converting
-the Amber topology file to a GROMOS one has been developed specifically
-for this force field.
+containing the parameters of the AMBER force field ff99SB that we are going to use
+in this tutorial. In fact, the QM/MM interface of CPMD has been mainly validated
+mainly by using this force field and it is a good standard for our aim[<sup>9</sup>](#nine).
+Moreover, the conversion script that we will provide you to convert the AMBER topology file to a GROMOS one readable by the QM/MM interface in CPMD (see later) has been developed specifically for this force field.
 
-To make `tleap` able to recognize the UNK ligand, we need to load the GAFF
+To make `tleap` parameters in `ligandH.prepin` and `ligandH.frcmod`, first we need to load the GAFF
 library:
 
-```
+<a class="prompt prompt-info">
 loadamberparams gaff.dat
-```
+</a>
 
-together with the ligand library and the ligand `.frcmod` file created in
+and then the ligand library `ligandH.prepin` and the ligand `.frcmod` file created in
 the previous step:
 
-```
-loadamberprep ./ligandH.prepin
-
+<a class="prompt prompt-info">
+loadamberprep ./ligandH.prepin<br>
 loadamberparams ./ligandH.frcmod
-```
+</a>
 
 If we are using the GUI version of `tleap`, `xleap`, we can now give a look
 at the ligand through the command edit:
 
-```
+<a class="prompt prompt-info">
 edit UNK
-```
+</a>
 
 One can also check if all the parameters for the ligand have been
 correctly loaded:
 
-```
+<a class="prompt prompt-info">
 check UNK
-```
+</a>
 
 It is possible that the following warning appears:
 
@@ -246,56 +227,58 @@ It is possible that the following warning appears:
 This is due to precision accuracy in the ligand parameterization and it
 can be ignored.
 
-At this point we can load the PDB file of the complex:
+At this point all the required libraries to recognize the different moieties of our complex have been loaded, and we can now proceed by loading the PDB file of the complex itself:
 
-```
-XXX = loadamberpdb complex.pdb
-```
+<a class="prompt prompt-info">
+XXX = loadpdb complex.pdb
+</a>
 
-The program creates a new unit XXX with our complex. All the residues
-should be now correctly recognized and the missing H atoms added
-accordingly. A warning will show up at the end of the process:
+The program creates a new unit XXX containing our complex. All the residues should be now correctly recognized and the missing H atoms added accordingly. If you check the XXX unit:
+
+<a class="prompt prompt-info">
+check UNK
+</a>
+
+a warning will show up[<sup>10</sup>](#ten): 
 
 **_WARNING: The unperturbed charge of the unit: 8.000000 is not zero_**
 
-In fact, the charge of complex is not zero and needs to be neutralized
+In fact, the charge of the complex is not zero and needs to be neutralized
 with counterions in order to perform the next “equilibration” step
-through classical molecular dynamics simulations. To do that, we need
+through classical molecular dynamics simulations. To this aim, we need
 first to load the library containing the force field parameters for the
 ions (Joung & Cheatham JPCB (2008)):
 
-```
+<a class="prompt prompt-info">
 loadamberparams frcmod.ionsjc_tip3p 
-```
+</a>
 
-and then use the command addions to add CL- counterions in a shell
+and then use the command addions to add CL<sup>-</sup> ions in a shell
 around the complex using a Coulombic potential on a grid:
 
-```
+<a class="prompt prompt-info">
 addions XXX Cl- 0
-```
+</a>
 
-where “0” instructs the command to neutralize the unit.
+where “0” instructs `addions` to neutralize the unit.
 
 The complex environment is the cellular one, therefore we want to
-solvate the complex in order to better mimic it:
+solvate the complex in order to better mimic such environment:
 
-```
-loadOff solvents.lib
-
+<a class="prompt prompt-info">
+loadOff solvents.lib<br>
 solvatebox XXX TIP3PBOX 14
-```
+</a>
 
-The first command loads the library with the solvent parameters. In
-particular, the parameters for the classical “TIP3P” water model[<sup>6</sup>](#six) that
-we have used in the second command. An orthorhombic box whose walls are
-at least 14 Å from any atom of the complex system will be created:
+The first command loads the library with the solvent parameters and in particular the parameters for the classical “TIP3P” water model[<sup>11</sup>](#eleven) that we have used in the second command. In the second command an orthorhombic box whose walls are at least 14 Å from any atom of the complex system is created around the system and fulfilled by TIP3P water molecules. 
 
-```
+If you are using the graphical environment (`xleap`), we can visualize the resulting system:
+
+<a class="prompt prompt-info">
 edit XXX
-```
+</a>
 
-From the new window you can also look at the partial charges and other
+In the new window you can also look at the partial charges and other
 parameters of your system:
 
 -   Select the atoms (Press “Select” at the top and keep pressing the
@@ -303,38 +286,38 @@ parameters of your system:
 
 -   Click on the menu Edit/Edit selected atoms
 
-Finally, we save the topology and coordinates files for our solvated
+Finally (after coming back to the main window if needed), we save the topology and coordinates files for our solvated
 complex:
 
-```
+<a class="prompt prompt-info">
 saveamberparm XXX complex_solv.top complex_solv.rst
-```
+</a>
 
-Exit the program:
+and we exit the program:
 
-```
+<a class="prompt prompt-info">
 quit
-```
+</a>
 
-You can visualize your system though for example VMD (http://www.ks.uiuc.edu/Research/vmd):
+You can now visualize the complex system though for example the popular VMD software[<sup>12</sup>](#twelve):
 
-```
-module load vmd
-
+<a class="prompt prompt-cmd">
 vmd –parm7 complex_solv.top –rst7 complex_solv.rst
-```
+</a>
 
-# Force Field-based Equilibration
+and for example exploit this software to convert the two input files in a `complex_solv.pdb` file in PDB format:
+<a class="prompt prompt-info">
+In the “VMD Main” window select the complex_solv.top entry<br>
+From the menu: File / Save Coordinates<br>
+In the field “Select atoms” choose “all”<br>
+Click on “save” and give the file name complex_solv.pdb
+</a>
 
-We need now to equilibrate the system at force field level in order to
-start later the QM/MM simulation from an initial configuration “not so
-far” from an equilibrium one (at the QM/MM level of theory).
+## Force Field-based equilibration
 
-To run MD simulation we will use the sander program in the AmberTools
-suite.
-
-There is no unique procedure to equilibrate a solvated system. Below a
-possible one with a rationale for each step:[<sup>7</sup>](#seven)
+We need now to equilibrate the system at force field level. This is important because a QM/MM simulation (and more in general a quantum molecular dynamics simulation) that we are going to run in this tutorial is numerically much less stable than a classical or force field-based molecular dynamics simulation (hereafter “MD simulation”). This means that it will probably crash in the first steps if it is not started from a “good” initial configuration, i.e. a configuration as close as possible to a thermodynamical equilibrium configuration at QM/MM level compatible with the imposed ensemble conditions. Therefore, the best we can do at this stage is to obtain a well-equilibrated configuration at force field level, under the assumption that force field and QM/MM equilibrium configurations be close.
+To run MD simulation we will use the sander program in the AmberTools suite (or its parallel counterpart `sander.MPI` to exploit the parallel futures of your machine).
+There is no unique procedure to equilibrate a solvated system. Below a possible procedure with a rationale for each step: 
 
 1.  First, classical minimization of the system restraining the protein
     and ligand molecules to their initial position: this step is
@@ -343,28 +326,21 @@ possible one with a rationale for each step:[<sup>7</sup>](#seven)
     this way we favor water molecules to move and reorient correctly
     around the complex molecules:
 
-    ```
-    mpirun -np 2 sander.MPI -O -i 1-restraint.inp -o eq_restraint.out –c
-    complex_solv.rst -p complex_solv.top -r eq_restraint.rst –ref complex_solv.rst &
-    ```
+<a class="prompt prompt-cmd">
+mpirun -np 2 sander.MPI -O -i 1-restraint.inp -o eq_restraint.out –c complex_solv.rst -p complex_solv.top -r eq_restraint.rst –ref complex_solv.rst &
+</a>
 
-    Note: the command
-
-    ```
-    tail –f eq_restraint.out
-    ```
-
-    can be used to monitor the minimization progress and verify if the
+Note: the command <a class="prompt prompt-cmd">tail –f eq_restraint.out</a> can be used to monitor the minimization progress and verify if the
 convergence has been obtained or if it reaches the max number of steps
 specified in the input file without satisfying the convergence criteria.
 It is very frequent that the minimization stops before reaching the
-maximum number of steps even if the convergence has not been obtained:
-in this case an error message like this:
+maximum number of steps even if the convergence has not been reached.
+In this case an error message like this:
 
     <div align='center'><b>***** REPEATED LINMIN FAILURE *****</b></div>
     <br>
     can appear close to the end of the log file eq\_restraint.out. This
-means only that the minimizer got "stuck" in a place from which the
+means that the minimizer got "stuck" in a place from which the
 minimization algorithm could not find a way out. Unless there is
 something very askew with the system (<u>visual inspection of the system
 is always the first check</u>), the amount of minimization that has
@@ -372,149 +348,127 @@ occurred by the time you reach such a "sticking" point will be
 sufficient to move on to the next step.
 
 2.  Then, a minimization without restraints is performed in order to
-    find a configuration close to the T=0 most stable one:
+    find a configuration close to the most stable T=0 one:
 
-    ```
-    mpirun -np 2 sander.MPI -O -i 2-minimization.inp –o
-    eq_minimization.out -c eq_restraint.rst -p complex_solv.top
-    -r eq_minimization.rst &
-    ```
+<a class="prompt prompt-cmd">
+mpirun -np 2 sander.MPI -O -i 2-minimization.inp –o eq_minimization.out -c eq_restraint.rst -p complex_solv.top -r eq_minimization.rst &
+</a>
 
-3.  Now, we bring the system temperature to 300 K with a MD at constant
-    volume and a linear heating. In this step we restrain *weakly* the
+3.  Now, we rise the system temperature to 300 K through a linear heating with a MD simulation at constant
+    volume. In this step we restrain *weakly* the
     protein and ligand molecules to the initial position so that water
     can spread all around the complex without forming “holes”. This and
     the following simulations can require much longer time than the
     previous steps.
 
-    ```
-    mpirun -np 2 sander.MPI -O -i 3-heating.inp -p complex_solv.top
-    -c eq_minimization.rst -ref eq_minimization.rst -o eq_heating.out
-    -r eq_heating.rst -x eq_heating.crd -e eq_heating.en &
-    ```
+<a class="prompt prompt-cmd"> mpirun -np 2 sander.MPI -O -i 3-heating.inp -p complex_solv.top -c eq_minimization.rst -ref eq_minimization.rst -o eq_heating.out -r eq_heating.rst -x eq_heating.crd -e eq_heating.en &
+</a>
 
-    **Is the temperature stable at 300 K?**
+<a class="prompt prompt-question">Is the temperature stable at 300 K?</a>
 
     If the simulation has to be extended, you can use the input file
     `3-heating_1.inp`, which allows you to extend the simulation for
     additional 300 ps:
 
-    ```
-    mpirun -np 2 sander.MPI -O -i 3-heating_1.inp -p complex_solv.top
-    -c eq_heating.rst -ref eq_heating.rst -o eq_heating_1.out -r eq_heating_1.rst
-    -x eq_heating_1.crd -e eq_heating_1.en &
-    ```
+<a class="prompt prompt-cmd"> mpirun -np 2 sander.MPI -O -i 3-heating_1.inp -p complex_solv.top -c eq_heating.rst -ref eq_heating.rst -o eq_heating_1.out -r eq_heating_1.rst -x eq_heating_1.crd -e eq_heating_1.en &
+</a>
 
 4.  Finally, we couple our system simultaneously to a thermostat at 300
     K and a barostat at 1 atm and perform an NPT simulation to let the
     density of the system to reach the equilibrium value at room
-    condition (~ 1g/cm<sup>3</sup> since the most is formed by water).
+    condition (~ 1 g/cm<sup>3</sup> since the largest majority of the system is formed by water molecules).
     Since the liquid water relaxation time is order of 10 ps we need to
     perform this equilibration with a simulation much longer than 10 ps:
 
-    ```
-    mpirun -np 2 sander.MPI -O -i 4-eq_density.inp -p complex_solv.top
-    -c eq_heating.rst -o eq_density.out -r eq_density.rst -x eq_density.crd
-    -e eq_density.en &
-    ```
+<a class="prompt prompt-cmd"> mpirun -np 2 sander.MPI -O -i 4-eq_density.inp -p complex_solv.top -c eq_heating.rst -o eq_density.out -r eq_density.rst -x eq_density.crd -e eq_density.en &
+</a>
 
-    You can monitor the status of the simulation looking at the log file:
+You can monitor the status of the simulation looking at the log file:
 
-    ```
-    tail –f eq_density.out
-    ```
+<a class="prompt prompt-cmd"> tail –f eq_density.out </a>
 
-    **Is the system well-equilibrated? Which quantities can you look at to assess this?**
+<a class="prompt prompt-question">
+Is the system well-equilibrated? Which quantities can you look at to assess this?
+</a>
 
 Note: when the last step ends, you can fast analyze the behavior of all
 the physically relevant quantities of your system (like the density for
 example) by using the perl script `process_mdout.perl` that you can
-find in the same tarball together the AMBER input files:
+find in the tutorial subfolder `4-Force_Field-based-equilibration` together the AMBER input files:
 
-```
-mkdir analysis
-cd analysis
-process_mdout.perl ../eq_density.out
+<a class="prompt prompt-cmd">
+mkdir analysis<br>
+cd analysis<br>
+process_mdout.perl ../eq_density.out<br>
 xmgrace summary.DENSITY
-```
+</a>
 
+<figure align="center">
 <img src="./media/image2.png" width="552" height="417" />
+</figure>
 
-**Why is density slightly larger than 1 g/cm<sup>3</sup>?**
+<a class="prompt prompt-question"> Why is density slightly larger than 1 g/cm<sup>3</sup>? </a>
 
 If you open the final equilibrated structure with VMD:
 
-```
-vmd -parm7 complex_solv.top -rst7 eq_density.rst
-```
+<a class="prompt prompt-cmd"> vmd -parm7 complex_solv.top -rst7 eq_density.rst </a>
 
 it is possible that the ligand is not so close to its binding site as it
 was in the structure coming from HADDOCK. This is not very good when one wants
 to try to induce a chemical reaction inside the site. This instability could
 be due to several reasons:
 
-1.	A poor initial pose: additional work on the HADDOCK parameters here would be needed.
-2.	An unsuitable force field: force fields are continuously updated and in principle the newer ones should be preferred. But as we mentioned above, this is not always true and one should always preliminarily go through the literature regarding his system and select the force field that has given the better results.
-3.	The semiempirical parameterization of the ligand, and in particular its partial charges: there are more accurate methods to perform this step, in particular the one that require more expensive quantum chemistry calculations to get the electric potential around the ligand. See for example this tutorial:
+1. _A poor initial pose_: additional work on the HADDOCK parameters here would be needed.
+2. _An unsuitable force field_: force fields are continuously updated and in principle the newer ones should be preferred. But as we also mentioned in footnote <sup>9</sup>, this is not always true and one should always preliminarily go through the literature regarding his system and then choose the force field that has proved to provide the better results.
+3. _The semi-empirical parameterization of the ligand_, and in particular its partial charges: there are more accurate methods to perform this step, in particular the one that require more expensive quantum chemistry calculations to get the electric potential around the ligand. See for example the other CPMD QM/MM tutorial investigating the acetone molecule in water solvent.
 
-<https://www.dropbox.com/s/2b0qgfkd991l2f3/QMMM_Tutorial_EMBL-EBI.pdf/>
+If all the previous causes has been investigated and excluded, then the most reasonable reason is that
 
-If all the previous causes has been investigated and excluded, one can repeat the equilibration by employing restrains specifically design to maintain the desire relative positions between the ligand and the protein. As an example, in the usual tarball you can find input file with the name suffix “_constraint” that allows one to perform the same equilibration steps described above and in addition include a distance restraint between the nitrile carbon atom and the sulfur atom of CYS25.
+4. _the pose is intrinsically instable at force-field level_: in fact, it could be the case that non-bonding interactions are not enough to keep the ligand/protein complex in that position and that only the covalent bonding (not imposed/obtainable in our current level of description) could allow the formation of such complex. Therefore, at this stage the best one can do is repeat the equilibration by employing restrains specifically design to maintain the desire relative positions between the ligand and the protein. As an example, we provide input files with the name suffix “_constraint” that allows one to perform the same equilibration steps described above and in addition include a distance restraint between the nitrile carbon atom of the ligand and the sulfur atom of CYS25. 
 
-In place of the AmberTools suite, the entire equilibration procedure
-(including building the topology file) could be done with any other
-classical MD package you are familiar with, such as GROMACS.[<sup>8</sup>](#eight) However,
-in this case, as it will be clear in a short, you will need to convert
-your topology and final coordinate files in the Amber format. If you are
-using GROMACS, see for example
+In place of the AmberTools suite, the entire equilibration procedure (including building the topology file) could be done with any other classical MD package you are familiar with, such as [GROMACS](http://www.gromacs.org). However, in this case, as it will be clear in the next section, you will need to convert your topology and final coordinate files back to the Amber format. If you are using GROMACS, see for example 
 
 <https://fertoledo.wordpress.com/2015/10/21/how-to-convert-a-trajectory-from-gromacs-to-amber/>
 
-# Preparing the MM files for CPMD
+## Preparing the MM files for CPMD
 
 Let’s give a look at the last configuration obtained from the classical
 molecular dynamics equilibration:
 
-```
+<a class="prompt prompt-cmd"> 
 vmd -parm7 complex_solv.top -rst7 eq_density.rst
-```
+</a>
 
+<figure align="center">
 <img src="./media/image3.png" width="386" height="396" />
+</figure>
 
-**What happened to our orthorhombic box?**
+<a class="prompt prompt-question"> What happened to our orthorhombic box? </a>
 
-The picture shows your system without applying periodic boundary
-conditions (PBC) that however sander and many other programs in
-AmberTools suite take into account. Therefore, in this representation
-the molecules drift over time and may span multiple periodic cells; this
-is a normal situation in MD. However, now we want to move to CPMD in
-order to perform a QM/MM MD simulation, and CPMD does not apply
-“automatically” PBC to the starting configuration. Consequently, we need
-to “reimage” the coordinates into the primary unit cell. We can use the
-cpptraj program[<sup>9</sup>](#nine) in the AmberTools suite to accomplish this task. Move
-the topology and final coordinates files to a folder and then create the
-input file **eq\_density.cpptraj** for `cpptraj`:
+The picture shows the solvated system without applying periodic boundary conditions (PBC) that however sander and many other programs in AmberTools suite take into account. Therefore, in this representation the molecules drift over time and may span multiple periodic cells; this is a normal situation in MD. However, now we want to move to CPMD in order to perform a QM/MM MD simulation, and CPMD does not apply “automatically” PBC to the starting configuration. Consequently, we need to “reimage” the coordinates into the primary unit cell. This task can be performed by the [cpptraj](http://ambermd.org/doc12/Amber18.pdf) program in the AmberTools suite. Move the topology and final coordinates files to a folder and then create the input file eq_density.cpptraj for cpptraj:
 
-```
+<a class="prompt prompt-info">
 trajin eq_density.rst         <- coordinates file to read
 trajout reimaged.rst          <- restart output file and format
 center :1-216                 <- center the box to the geometric center of the complex
 image center                  <- force all the molecules into the primary unit cell
-```
+</a>
 
-Run `ptraj` according this syntax:
+Run `cpptraj` according to this syntax:
 
-```
-ptraj complex_solv.top &lt; eq_density.cpptraj
-```
+<a class="prompt prompt-cmd">
+cpptraj complex_solv.top &lt; eq_density.cpptraj
+</a>
 
-Verify that the imaging has been correctly done:
+Verify that the reimaging has been correctly accomplished:
 
-```
+<a class="prompt prompt-cmd">
 vmd -parm7 acetone_solv.top -rst7 reimaged.rst
-```
+</a>
 
+<figure align="center">
 <img src="./media/image4.png" width="386" height="330" />
+</figure>
 
 The picture above has been obtained with VMD by selecting (in the
 Display menu) the Orthographic display mode in place of the default
@@ -522,21 +476,21 @@ Perspective one.
 
 We are now ready to convert our topology and coordinate files in a
 format that the current QM/MM interface of CPMD can read. The
-`amber12togromos.x` code you can find in the above tarball file, is an
+`amber12togromos.x` code[<sup>13</sup>](#thirteen) you can find in the above tarball file, is an
 in-house program (source available under request:
 <e.ippoliti@fz-juelich.de>) written some years ago to convert the Amber
-MD files in the GROMOS format[<sup>10</sup>](#ten):
+MD files in the GROMOS format[<sup>14</sup>](#fourteen):
 
-```
+<a class="prompt prompt-cmd">
 amber12togromos.x complex_solv.top reimaged.rst solvate
-```
+</a>
 
 The option “solvate” allows one to specify that the water molecules
 should be treated as solvent ones: this is useful only if you are
-interested to read in the CPMD log files energies and other quantities
+interested to read in the CPMD log file energies and other quantities
 partitioned in solute and solvent components.
 
-The converter will produce the following 3 text files:
+The converter will generate the following text files:
 
 -   `gromos.top` the GROMOS topology file for our system
 
@@ -546,31 +500,29 @@ The converter will produce the following 3 text files:
 
 Note: to open and visualize the `gromos.crd` file with VMD:
 
-```
+<a class="prompt prompt-cmd">
 vmd –g96 gromos.crd
-```
+</a>
 
 These 3 files are ready for a QM/MM MD simulation. However, some changes
 in those files could be necessary in order to correctly set up the
-simulation. Below we describe the most relevant sections[<sup>11</sup>](#eleven) of these
+simulation. Below we describe the most relevant sections[<sup>15</sup>](#fifteen) of these
 files that need to be verified. Note that the `amber12togromos.x` code
 provides a `gromos.inp` file with fully commented sections.
 
-<u>*Changes in `gromos.inp`*</u>
+<u>*In `gromos.inp`*</u>
 
 1.  In the section SYSTEM the two numbers should be in sequence:
 
     Number of (identical) solute (not necessarily the QM part!)
-    molecules[<sup>12</sup>](#twelve)
+    molecules[<sup>16</sup>](#sixteen)
 
     Number of (identical) solvent (not necessarily the MM part!) molecules
 
     This information can be obtained for example by inspecting the
  `gromos.crd` file:
 
-    ```
-    vi gromos.crd
-    ```
+<a class="prompt prompt-cmd"> vi gromos.crd </a>
 
 2.  In the section BOUNDARY:
 
@@ -587,7 +539,7 @@ provides a `gromos.inp` file with fully commented sections.
 
 3.  In the section SUBMOLECULES the numbers in sequence should be:
 
-    Number of (different) solute molecules.<sup>10</sup>
+    Number of (different) solute molecules<sup>18</sup>.
 
     Index of the last atom of the first solute molecule.
 
@@ -599,7 +551,7 @@ provides a `gromos.inp` file with fully commented sections.
 
 4.  In the section PRINT you may want to modify the first number, which
     is the number of steps after that CPMD writes info of the energy in
-    the output file (20 is usually enough).
+    the output file (100 is usually enough).
 
 5.  In the section FORCE, under the line of 1's (which turn the various
     force components on, so that when only 1’s are present all the force
@@ -610,109 +562,79 @@ provides a `gromos.inp` file with fully commented sections.
     Index of the last atom of layer 2  
     ...
 
-<u>*Changes in `gromos.top`*</u>
+<u>*In `gromos.top`*</u>
 
 1.  In the section ATOMTYPENAME replace the names of the types of the
     atoms, coming from the standard generic force field library GAFF (o,
     c, c3, etc):
 
-    ```
-    vi $AMBERHOME/dat/leap/parm/gaff.dat
-    ```
+<a class="prompt prompt-cmd"> vi $AMBERHOME/dat/leap/parm/gaff.dat </a>
 
     to the Amber force field library (O, C, CT, etc):
 
-    ```
-    vi $AMBERHOME/dat/leap/parm/parm99.dat
-    ```
+<a class="prompt prompt-cmd"> vi $AMBERHOME/dat/leap/parm/parm99.dat </a>
 
-The correctly modified files `gromos_mod.top` and `gromos_mod.inp` can be found in:
+The correctly modified files gromos_mod.top and gromos_mod.inp have been provided in the tutorial subfolder `5-Preparing_the_MM_files_for_CPMD`
 
-https://www.dropbox.com/s/ouypmhxomzmfofg/qmmm.tar.gz
+## Selecting the QM part
 
-# Selecting the QM part
+The system we want to study contains 40,554 atoms. With the current computational architectures, a full quantum description of a system of this size is far beyond the capabilities of any QM code. The largest systems that so far have been fully treated at quantum level are order of 5,000 atoms. This is the reason why we need to resort to QM/MM approaches to deal with such large systems and at the same time having the possibility to treat at quantum level the part(s) that require the inclusion of the electronic degrees of freedom for a correct description (e.g. for the description of chemical reactions).
+Usually, the computational load of a QM/MM calculation is dominated by the size of the QM part. Therefore, the QM part should be as small as possible, but at the same time it should of course include all the regions that are important (e.g. the ones involved in the chemical reaction) or potentially important (e.g. the ones whose polarization has an effect on the phenomenon under investigation) to be treated at quantum level.
 
-The system we want to study contains 40,554 atoms. A full quantum
-description of a system of this size is far beyond the capabilities of
-any QM code with the current computational architectures. The largest
-systems that have been fully treated at quantum level are order of 5,000
-atoms. This is the reason why we need to resort to QM/MM approaches to
-deal with such large systems and at the same time having the possibility
-to treat at quantum level the part(s) that require the inclusion of the
-electronic degrees of freedom for a correct description (e.g. chemical
-reactions).
+<a class="prompt prompt-question"> How should the QM part for our system be selected? </a>
 
-Usually, the computational load of a QM/MM calculation is dominated by
-the size of the QM part. Therefore, the QM part should be as small as
-possible, but of course include all the regions that are important (e.g.
-the ones involved in the chemical reaction) or potentially important
-(e.g. the ones whose polarization has an effect on the phenomenon under
-investigation) to be treated at quantum level.
+<a class="prompt prompt-cmd"> vmd –g96 gromos.crd </a>
 
-How should be selected the QM part for our system?
+Since we want to consider a chemical reaction between the ligand and the protein, the first idea is to include the entire ligand and the residues closer to it, let us say within ~6 Å from the atoms of the ligand. We can visualize this complex region with VMD by using the selection:
+ 
+<a class="prompt prompt-pymol"> resname UNK or (not resname SOLV and same residue as within 6 of resname UNK) </a>
 
-```
-vmd –g96 gromos.crd
-```
+and from this, by visual inspection we can identify and exclude the farthest residues that probably are not involved in the reaction mechanism between the nitrile carbon atom of the ligand and the closer sulfur atom on the protein (resid: 19, 135, 136, 137, 159, 183, 184, 216):
 
-Since we want to consider a chemical reaction between the ligand and the
-protein, the first idea is to include the entire ligand and the residues
-closer to it, let us say within ~7 Å from the atoms of the ligand (in
-gray the ligand):
-
+<figure align="center">
 <img src="./media/image5.png" width="309" height="266" />
+</figure>
 
-If we open the Tk console of VMD we can easily count the number of atoms
-for this selection:
+<br>*The ligand is colored in gray in the picture*
 
-```
-set sel [atomselect top "(not resname SOLV) and (resname UNK or resid
-21 22 23 24 25 26 63 64 65 66 67 68 134 160 161 162 163 209)"]
+If we open the Tk console of VMD by selecting from the menu in the VMD Main window:
 
+<a class="prompt prompt-info"> Extensions / Tk Console </a>
+
+we can easily count the number of atoms for this selection:
+
+<a class="prompt prompt-pymol">
+set sel [atomselect top "resname UNK or (not resname SOLV and resid 22 23 24 25 26 63 64 65 66 67 68 134 160 161 162 163 209)"]<br>
 $sel num
-```
+</a>
 
-The result is 294 atoms. Even if the largest QM/MM systems studied with
-CPMD have a QM part of around 2000 atoms, such systems required a huge
-amount of computational resources on an of the most powerful recent
-supercomputers, an IBM BlueGene machine. Typical QM parts contain less
-than 200 atoms and also in this case, projects involving QM/MM
-simulations of that size usually take around one year.
+The result is 277 atoms. Even if the largest QM/MM systems studied with CPMD have a QM part of around 2000 atoms, such calculations required a huge amount of computational resources and were performed on one of the recent and most powerful supercomputers, an IBM BlueGene machine. In fact, typical QM parts contain less than 200 atoms and also in this case, projects involving QM/MM simulations of that size usually take around one year to be finalized.
+Since the reaction we are interested in involves the nitrile carbon atom of the ligand and the sulfur atom in the CYS25, we could think to reduce the QM part to the ligand and only the residues close to the CYS 25 (resid: 23, 24, 25, 26, 64, 65, 66, 162, 163):
 
-Since the reaction we are interested in involve the nitrile carbon atom
-of the ligand and the sulfur atom in the CYS25, we could think to reduce
-the QM part to the ligand and the residues close to the CYS 25:
-
+<figure align="center">
 <img src="./media/image6.png" width="251" height="237" />
+</figure>
 
-The selection contains 157 atoms:
+This new selection contains 157 atoms:
 
-```
-set sel [atomselect top "(not resname SOLV) and (resname UNK or resid
-23 24 25 26 64 65 66 162 163)"]
-
+<a class="prompt prompt-pymol">
+set sel [atomselect top "resname UNK or (not resname SOLV and resid 23 24 25 26 64 65 66 162 163)"]<br>
 $sel num
-```
+</a>
 
-This is a more treatable QM part but very probably we will need a very
-large amount of computational time to perform our calculations.
+This is a more treatable QM part but very probably we will need a very large amount of computational time to perform our calculations.
+We can think to further reduce our selection by considering only the part of the ligand involved in the reaction (i.e. the aromatic plane containing the nitrile group) and the closest residues to the sulfur atom in CYS25 (resid: 23, 24, 25, 26, 162, 163):
 
-We can think to further reduce our selection by considering only the
-part of the ligand involve in the reaction (i.e. the aromatic plane
-containing the nitrile group) and the closest residues to the sulfur
-atom in CYS25:
-
+<figure align="center">
 <img src="./media/image7.png" width="264" height="233" />
+</figure>
 
 This way we reach a size of 91 atoms:
 
-```
-set sel [atomselect top "(not resname SOLV) and ((resname UNK and name
-C08 C0A C0B C0K C0N C0O N07 N09 N0J N0M N0P HC1) or resid 23 24 25 26
-162 163)"]
-
+<a class="prompt prompt-pymol">
+set sel [atomselect top "(name C08 C0A C0B C0K C0N C0O N07 N09 N0J N0M N0P HC1) or (not resname SOLV and resid 23 24 25 26 162 163)"]<br>
 $sel num
-```
+</a>
 
 Really, the boundary between the QM and MM part cannot be arbitrarily
 chosen. In particular, the bonds “to cut”, i.e. the bonds that connect
@@ -732,59 +654,46 @@ For biological systems these rules imply that QM/MM boundaries can only
 be introduced between C-C or possibly C-N bonds. This bring us to
 a QM part with 93 atoms:
 
+<figure align="center">
 <img src="./media/image8.png" width="248" height="245" />
+</figure>
 
-that can be visualized on VMD by using the following selection that will
-be useful later to build the CPMD input file as well:
+that can be visualized on VMD by using the following selection:
 
-```
-serial 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 
-363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 
-381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 
-2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 
-2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3263 3264 
-3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276
-```
+<a class="prompt prompt-pymol">
+serial 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276
+</a>
 
-Use VMD to understand how the final QM part has been determined and the
-bond to cut selected. Then, save a PDB file with only the QM part and
-name it `QM.pdb`:[<sup>13</sup>](#thirteen)
+Cutting a large molecule like a protein by following the prescriptions above is usually a safe procedure. However, describing at two different levels of theory (quantum and force field) a small molecule like the ligand could be more troublesome. We left as an exercise to verify that the removal of the cyclohexane ring, even performing the correct valence capping as explained in the next section, will produce a too poor electronic description for the ligand, that in turn will result in the lose of structure during the first steps of the simulation. In contrast, the removal of the 4-methylpiperazinylethyl moiety does not trigger any lose of stability. However, as mentioned in the article where the original PDB of the complex has been taken[<sup>17</sup>](#seventeen), homologous cathepsins that differ in those moieties can have very different inhibition potencies and could therefore be important to keep that moiety for a correct description of the reaction that is going to take place. Therefore, keeping the entire ligand we finally have a QM part formed by 133 atoms:
 
-```
-set QM [atomselect top "serial 347 348 349 350 351 352 353 354 355 356 
-357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 
-375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 
-2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 
-2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 
-2430 2431 2432 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 
-3274 3275 3276"]
+<figure align="center">
+<img src="./media/image8bis.png" width="248" height="245" />
+</figure>
 
+that can be visualized on VMD by using the following selection (that will be useful later to build the CPMD input file as well):
+
+<a class="prompt prompt-pymol">
+serial 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264
+</a>
+
+Use VMD to understand how the final QM part has been determined and which bonds are cut.
+
+Then, save a PDB file with only the QM part and name it QM.pdb[<sup>18</sup>](#eighteen):
+
+<a class="prompt prompt-pymol">
+set QM [atomselect top "serial 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276 3277 3278 3279 3280 3281 3282 3283 3284 3285 3286 3287 3288 3289 3290 3291 3292 3293 3294 3295 3296 3297 3298 3299 3300 3301"]<br>
 $QM writepdb QM.pdb
-```
+</a>
 
-This will be useful to determine the box size to insert in the CPMD
-input file.
+Before concluding this section about the selection of the QM part, it is important to highlight an important point. The computational load of a QM or QM/MM simulation depends on the size of the basis set employed. In the case of QM codes employing a “localized” basis set (e.g. Gaussian2016), the computational cost is proportional to the number of atoms. However, CPMD expands the system wavefunction over a “plain waves” basis set. This means that the computational load is not proportional to the number of atoms inside the cell but to the size of box itself. Therefore, once fixed the size of the QM simulation box, for CPMD it does not matter (from the computational point of view) how many atoms inside the box you will treat at quantum mechanical level, i.e. how many atoms inside the box you will add in the input file! What is relevant for the computational cost point of view is only the size of box.
 
-Before concluding this section about the selection of the QM part, it is
-important to highlight an important point. The computational load of a
-QM or QM/MM simulation depends on the *size of the basis set* employed.
-In the case of QM codes employing a “localized” basis set (e.g.
-Gaussian2016), the computational cost is proportional to the number of
-atoms. However, CPMD expands the total wavefunction over a “plain wave”
-basis set. This means that the computational load is not proportional to
-the number of atoms inside the cell but to the size of box itself.
-Therefore, once fixed the size of the QM simulation box, for CPMD it
-does not matter (from the computational point of view) how many atoms
-inside the box you will treat at quantum mechanical level, i.e. how many
-atoms inside the box you will add in the input file!
-
-# Preparing the QM files for CPMD
+## Preparing the QM files for CPMD
 
 With the AMBER package we have built the system and the files needed to
 describe the “MM” part, i.e. the part of the system that in a QM/MM
 simulation is described at force field level. The next step to setup a
-QM/MM simulation with CPMD is to write the input file. This file is the
-place where to specify 1) the QM part, 2) the details of the simulation.
+QM/MM simulation with CPMD is to write the input file of CPMD. This file is the
+place where to specify 1) the QM part, 2) the details of the QM/MM simulation.
 
 The CPMD code is a parallelized **plane wave** / **pseudopotential**
 implementation of Density Functional Theory (DFT), particularly designed
@@ -798,17 +707,17 @@ for *ab initio* molecular dynamics. This means that CPMD:
     and uses the **pseudopotentials** to approximate the effect of the
     neglected core electrons over the valence ones.
 
-4.  Allows performing Car-Parrinello molecular dynamics scheme
+4.  Allows performing Car-Parrinello (and also Born-Oppenheimer) molecular dynamics simulations 
 
 We cannot enter here in the details of DFT and its implementation in
-CPMD[<sup>14</sup>](#fourteen) and in what follows the basics of the theory are supposed to be
+CPMD[<sup>19</sup>](#nineteen) and in what follows the basics of the theory are supposed to be
 known.
 
 <u>*CPMD Input file*</u>
 
 Any CPMD input file is organized in sections that start with `&<NAME
 OF THE SECTION>` and end with `&END`. Everything outside those sections
-is ignored. Also all keywords have to be in upper case or else they will
+is ignored. Moreover, all keywords have to be in upper case otherwise they will
 be ignored. The sequence of the sections does not matter, nor does the
 order of keywords (except in some special case reported in the manual).
 A minimal input file (for the simplest full QM calculations) must have
@@ -817,7 +726,6 @@ example:
 
 ```
 &INFO
-  Acetone molecule
   Geometry optimization
 &END
 
@@ -829,6 +737,10 @@ OPTIMIZE GEOMETRY XYZ
     7.0d-4
 &END
 
+&DFT
+ FUNCTIONAL BLYP
+&END
+
 &SYSTEM
   ANGSTROM
   SYMMETRY
@@ -837,10 +749,6 @@ OPTIMIZE GEOMETRY XYZ
     10.6 10.0 9.8 0.0 0.0 0.0
   CUTOFF
     70.
-&END
-
-&DFT
-  FUNCTIONAL BLYP
 &END
 
 &ATOMS
@@ -873,7 +781,7 @@ allows you to put comments about the calculation into the input file and
 they will be repeated in the output file. This can be very useful to
 identify and match your input and output files.
 
-The first part of the **&CPMD section** instructs the program about the
+The first part of the `&CPMD section` instructs the program about the
 kind of job to perform. In the case of the example, a geometry
 optimization (XYZ option specifies you want the final structure also in
 xyz format in a file called `GEOMETRY.xyz` and a ’trajectory’ of the
@@ -881,7 +789,7 @@ optimization in a file named `GEO_OPT.xyz`) with a tight wavefunction and
 geometry convergence criterions respectively (default 10<sup>-5</sup>
 and 5\*10<sup>-4</sup>) is requested.
 
-The **&SYSTEM section** contains various parameters related to the
+The `&SYSTEM section` contains various parameters related to the
 simulation cell and the representation of the electronic structure. The
 keywords SYMMETRY, CELL and CUTOFF are required and define the
 (periodic) symmetry, the shape and size of the simulation box (x, y, z,
@@ -896,12 +804,12 @@ order to verify if the box size is large enough, one usually performs
 convergence tests by focusing on quantities like the total energy.
 
 CPMD uses the Density Functional Theory (DFT) to solve the quantum
-problem. The **&DFT section** is used to select the density functional
+problem. The `&DFT section` is used to select the density functional
 (FUNCTIONAL) and its related parameters. In the case of the example the
-gradient corrected BLYP functional[<sup>15</sup>](#fifteen) is employed (local density
+gradient corrected BLYP functional[<sup>20</sup>](#twenty) is employed (local density
 approximation is the default).
 
-Finally, the **&ATOMS section** is needed to specify the atom
+Finally, the `&ATOMS section` is needed to specify the atom
 coordinates and the pseudopotential(s), that are used to represent them.
 
 The input for a new atom type is started with a "_*_" in the first
@@ -911,17 +819,15 @@ possible labels such as KLEINMAN-BYLANDER in the example, which
 specifies the method to be used for the calculation of the nonlocal
 parts of the pseudopotential (this approximation make the nonlocal parts
 calculation extremely fast but it keeps also in general high accuracy). The 
-collection of pseudopotential files is available for CPMD. We provide the ones
-necessary to describe the atoms of this system in the tarball together with the 
-CPMD input files.
+collection of pseudopotential files is available for CPMD. We provide in the tutorial subfolder `7-Preparing_the_QM_files_for_CPMD` and the ones necessary to describe the atoms of this system.
 
 The next line contains information on the nonlocality of the
 pseudopotential: you can specify the maximum *l*-quantum number terms that CPMD will 
 take into account in the calculations with `LMAX`= _l_ where _l_ is S for _l_ =0, P for
-_l_ =1, D for _l_ =2, and so on[<sup>16</sup>](#sixteen). For each pseudopotential, the information of only a
+_l_ =1, D for _l_ =2, and so on[<sup>21</sup>](#twentyone). For each pseudopotential, the information of only a
 limited number of l-quantum number terms has been stored in its file. You can verify 
 how many l-quantum number terms are available by opening the pseudopotential file and
-looking at the number of columns in the section &WAVEFUNCTION: the first column is 
+looking at the number of columns in the section `&WAVEFUNCTION`: the first column is 
 the distance from the nucleus, while the other columns are the data for _l_ =0, _l_ =1, _l_=2, …
 Of course, larger is `LMAX`, more expensive will be the computation.
 
@@ -936,7 +842,7 @@ The first line gives the number of atoms of the current type.
 A CPMD input file for a QM/MM simulation is similar to the CPMD input
 file for a standard full QM calculation. However, there are 6 main
 differences that should always be taken into account when you deal with
-the current QM/MM interface of CPMD:
+the old QM/MM interface of CPMD:
 
 1.  In the `&CPMD` section the `QMMM` keyword has to be added.
 
@@ -949,103 +855,78 @@ the current QM/MM interface of CPMD:
     previous paragraph) as given in the GROMOS topology or coordinates
     files:
 
-    ```
-    vi gromos.crd
-    ```
+<a class="prompt prompt-cmd"> vi gromos.crd </a>
     
-    A bash command to get the string of indices corresponding to the 
-    carbon (“C”) from the `gromos.crd` file is:
+We have already identified the atom indices in the previous section and in particular these indices correspond to the ones identified with the VMD keyword `serial`.
+A bash command to get the string of indices corresponding to the carbon (“C”) from the `gromos.crd` file is: 
+
     
-    ```
-    for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 
-    362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 
-    379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 
-    2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 
-    2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 
-    3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276; 
-    do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") 
-    print $4}' | tr '\n' ' '; echo
-    ```
-    
+<a class="prompt prompt-cmd">
+for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276 3277 3278 3279 3280 3281 3282 3283 3284 3285 3286 3287 3288 3289 3290 3291 3292 3293 3294 3295 3296 3297 3298 3299 3300 3301; do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") print $4}' | tr '\n' ' '; echo
+</a>
+
     while to get the number of “C” atoms in the QM part:
     
-    ```
-    for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 
-    362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 
-    379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 
-    2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 
-    2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 
-    3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276; 
-    do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") 
-    print $4}' | wc -l
-    ```
+<a class="prompt prompt-cmd">
+for i in 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2428 2429 2430 2431 2432 3246 3247 3248 3249 3250 3251 3252 3253 3254 3255 3256 3257 3258 3259 3260 3261 3262 3263 3264 3265 3266 3267 3268 3269 3270 3271 3272 3273 3274 3275 3276 3277 3278 3279 3280 3281 3282 3283 3284 3285 3286 3287 3288 3289 3290 3291 3292 3293 3294 3295 3296 3297 3298 3299 3300 3301; do grep " $i  " gromos.crd; done | awk '{if (substr($3,1,1) ~ "C") print $4}' | wc -l
+</a>
     
     and in a similar way for the other atomic species (“H”, “”N”, “O”, “S”).
 
 1.  The `ANGSTROM` keyword in the `&SYSTEM` section cannot be used, so any
-    length has to be specified **in a.u.**
+    length has to be specified in *a.u.*
 
 2.  The option `ABSOLUTE` in the keyword `CELL` cannot be used. Therefore,
     the correct syntax for the size of an orthorhombic box A x B x C is
 
-    ```
-    A B/A C/A 0 0 0
-    ```
+<a class="prompt prompt-info"> A  B/A  C/A  0  0  0 </a>
 
 1.  The QM system in a QM/MM calculation can only be dealt as isolated
     system, i.e. without explicit PBC since there is the MM environment
     all round it. Even though we are requesting an isolated system
     calculation (SYMMETRY keyword with the option `ISOLATED SYSTEM` or
-    0), the calculation is, in fact, still done in a periodic cell (we
+    `0`), the calculation is, in fact, still done in a periodic cell (we
     are still using a plane wave basis set to expand the wavefunction of
     the QM part!). Biological molecules are charged or they have a
     dipole moment, therefore we have to take care of the long-range
     interactions between periodic images and there are methods
     (activated with the keyword `POISSON SOLVER` in the `&SYSTEM` section)
     implemented in CPMD to compensate for this effect. We will choose
-    the `TUCKERMAN` Poisson solver*[<sup>17</sup>](#seventeen) since it has been proven to be
+    the `TUCKERMAN` Poisson solver[<sup>22</sup>](#twentytwo) since it has been proven to be
     the most effective one with typical systems studied in biology.
     Decoupling of the electrostatic images in the Poisson solver
     requires increasing the box size over the dimension of the molecule:
     practical experience shows that 3.5 Å between the outmost atoms and
-    the box walls is usually sufficient for typical biological systems.
+    the box walls is usually sufficient for typical biological systems. More information about the solver can be found on the CPMD manual[<sup>23</sup>](#twentythree). 
 
 To determine the box size of the QM part one can for example use the
 following standard bash procedure:
 
--   Remove the first line (comment):
+-   Remove the first line:
 
-    ```
-    tail –n +2 QM.pdb > QM.dat
-    ```
+<a class="prompt prompt-cmd"> tail –n +2 QM.pdb > QM.dat </a>
 
 -   Reorder the lines in the column 7 (8,9) for the coordinate x (y, z)
     with an increasing numerical (-n) order:
 
-    ```
-    sort -k 7 -n QM.dat
-    ```
+<a class="prompt prompt-cmd"> sort -k 7 -n QM.dat </a>
 
 -   Take the last value (L) of the column (in Å), subtract it to the
     first one (F), add 7 Å (i.e. 2 \* 3.5 Å for the Poisson
     solver’s requirements) and then convert it to a.u.:
 
-    ```
-    echo "(L - F + 7)/0.529" | bc –l
-    ```
+<a class="prompt prompt-cmd"> echo "(L - F + 7)/0.529" | bc –l </a>
 
 -   Finally, remember that under the `CELL` keyword of the CPMD input file
     the size of the quantum cell will be inserted according to the
     syntax:
 
-    ```
-    size_x size_y/size_x size_z/size_x 0 0 0
-    ```
+<a class="prompt prompt-info"> size_x     size_y/size_x  size_z/size_x  0   0   0 </a>
 
 <u>*`&QMMM` section*</u>
 
 In this paragraph we will review the most relevant keywords to be
-specified in the **`&QMMM` section** of the CPMD input file:[<sup>18</sup>](#eighteen)
+specified in the **`&QMMM` section** of the CPMD input file:[<sup>24</sup>](#twentyfour)
 
  `TOPOLOGY`: On the next line the name of a GROMOS topology file has to
  be given.
@@ -1102,17 +983,15 @@ specified in the **`&QMMM` section** of the CPMD input file:[<sup>18</sup>](#eig
  `OFF` keyword or a sampling rate of `0`, those trajectories are not
  written.
 
- `ARRAYSIZES`: Parameters for the dimensions of various internal arrays
- can be given in this block. The syntax is one label and the
- corresponding size for each line. The suitable parameters can be
- estimated using the script **estimate\_gromos\_size.sh**:[<sup>19</sup>](#nineteen)
+ `ARRAYSIZES`: This keyword defines the beginning of a block (to be terminated by a line containing `END ARRAYSIZES`) that can contain the parameters for the dimensions of various internal arrays. Each vector size has to be specified in a single line with the syntax:
 
 ```
-estimate_gromos_size.sh gromos.top
+<vector name>  <size>
 ```
 
- This section of the input has to be terminated by a line containing
- `END ARRAYSIZES`.
+The suitable parameters can be estimated using the script estimate_gromos_size.sh that can be found in the tutorial subfolder `7-Preparing_the_QM_files_for_CPMD`:
+
+<a class="prompt prompt-cmd"> estimate_gromos_size.sh gromos.top </a>
 
 <u>*How to Cut the Bonds*</u>
 
@@ -1862,7 +1741,7 @@ created in the current directory.
 
 <a name="one">[1] [www.cpmd.org](http://www.cpmd.org)</a>
 
-<a name="two">[2] </a>All the tools can be freely downloaded from their corresponding
+<a name="two">[2] </a>All the tools can also be freely downloaded from their corresponding
 website, apart from the QM/MM routines of CPMD which are not available
 on the CPMD website since they require a commercial GROMOS license to be
 used for publication or commercial purposes. You can download and
@@ -1874,79 +1753,86 @@ install them from this link (to be used only within the scope of this tutorial):
 
 <a name="four">[4]</a> [www.chemaxon.com/download/marvin-suite/\#marvin](https://www.chemaxon.com/download/marvin-suite/#marvin)
 
-<a name="five">[5]</a> Regarding more recent Amber force fields, according to our experience in
+<a name="five">[5]</a> Note that in a thorough analysis one should take into account all the protonation states with a probability let us say > 1%. This is in particular important if the protonation states varies in the region of the molecule that will be later described at quantum mechanical level (QM part). 
+
+<a name="six">[6]</a> http://ambermd.org/#AmberTools
+
+<a name="seven">[7]</a> To have the list of options for any command of AmberTools, just type the name of the command followed by “-h” option in the terminal.
+
+<a name="eight">[8]</a> For details and background of the RESP procedure see J. Phys. Chem, 1993, 97, 10269-10280.
+
+<a name="nine">[9]</a> Regarding more recent Amber force fields, according to our experience in
 the most recent ff14SB the barriers associated to angle and dihedral of PHE,
 TYR and TRP aromatic side chains are lower than the ones in the ff12SB.
 Since the active site has also aromatic side chains close to where the
 chemical reaction has to take place, this might be relevant for our system
-description. Unfortunately, in the last version of AmberTools, for some
+description. Unfortunately, in the last versions of AmberTools, for some
 weird reason it is not possible to load directly ff12SB with a leaprc file.
-Therefore, in case we would like to try to use this force field, the simple
-way we found to load ff12SB parameters in this new version of AmberTools is
+Therefore, in case you would like to try to use this force field, the simple
+way we found to load ff12SB parameters is
 initializing tleap with the leaprc.protein.ff14SB and then loading the
 ff12SB frcmod file:
 
-```
+<a class="prompt prompt-info">
+tleap -f $AMBERHOME/dat/leap/cmd/oldff/leaprc.protein.ff14SB -s
+</a>
+
+and then loading the ff12SB frcmod file:
+
+<a class="prompt prompt-info">
 loadamberparams frcmod.ff12SB
-```
+</a>
 
-<a name="six">[6]</a> <http://en.wikipedia.org/wiki/Water_model>
+<a name="ten">[10]</a> Probably, other “close contact” warnings will show up as well. These can be ignored because the correct contact distances will be sorted out during the equilibration phase (see next section).
 
-<a name="seven">[7]</a> All the input files mentioned here for the sander program can be
-found in:
+<a name="eleven">[11]</a> <http://en.wikipedia.org/wiki/Water_model>
 
-<https://www.dropbox.com/s/fk6i2g403p48ev9/amber.tar.gz>
+<a name="twelve">[12]</a> http://www.ks.uiuc.edu/Research/vmd
 
-Each file has comments on each keyword. More information could be found
-in the AmberTools17 reference manual:
-<http://ambermd.org/doc12/Amber17.pdf>.
+<a name="thirteen">[13]</a> You can also find the binary in the tutorial subfolder `5-Preparing_the_MM_files_for_CPMD`
 
-Since the equilibration phase can take a considerable amount of time,
-you can just read this section and use the already equilibrated
-eq\_density.rst file in the above archive and proceed to the next step.
+<a name="fourteen">[14]</a> You can safely ignore error messages like `WRTOPO: illegal bond type in ICQH!`
 
-<a name="eight">[8]</a> <http://www.gromacs.org>
-
-<a name="nine">[9]</a> <http://ambermd.org/doc12/Amber17.pdf>
-
-<a name="ten">[10]</a> You can safely ignore error messages like `WRTOPO: illegal bond type in ICQH!`
-
-<a name="eleven">[11]</a> see also section 11.16 in the CPMD reference manual:
+<a name="fifteen">[15]</a> See also section 11.16 in the CPMD reference manual:
 <http://cpmd.org/downloadable-files/no-authentication/manual_v4_0_1.pdf>
 
-<a name="twelve">[12]</a> Note that in the context of the CPMD QM/MM input file, in a system
+<a name="sixteen">[16]</a> Note that in the context of the CPMD QM/MM input file, in a system
 like ours the protein, the ligand and the counterions have to be
 considered as a **1-molecule** solute.
 
-<a name="thirteen">[13]</a> One could guess that side chain of the TRP26:
+<a name="seventeen">[17]</a> E. Altmann, S. W. Cowan-Jacob and M. Missbach, J. Med. Chem. 2004, 47, 5833-5836.
 
-`serial 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392`
+<a name="eighteen">[18]</a> One could guess that side chain of the TRP26:
+
+<a class="prompt prompt-pymol"> serial 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 </a>
 
 is not relevant for the chemical reaction to occur. This would reduce
 the QM part to 75 atoms. This is also a possible, smaller and therefore
 computational less demanding QM part to start investigating.
 
-<a name="fourteen">[14]</a> For an overview refer to the CPMD manual
+<a name="nineteen">[19]</a> For an overview refer to the CPMD manual
 <http://www.cpmd.org/documentation/cpmd-html-manual>, the references
 therein and the book “[Ab Initio Molecular Dynamics: Basic Theory and
 Advanced
 Methods](https://books.google.de/books/about/Ab_Initio_Molecular_Dynamics.html?id=VRZUw8Wk4CIC&redir_esc=y&hl=en)” by
 D. Marx and J. Hutter (2009).
 
-<a name="fifteen">[15]</a> A.D. Becke, J.Chem.Phys. 98 (1993) 5648-5652; C. Lee, W. Yang, R.G.
-Parr, Phys. Rev. B 37 (1988) 785-789.
+<a name="twenty">[20]</a> A.D. Becke, J.Chem.Phys. 1993, 98, 5648-5652; C. Lee, W. Yang, R.G. Parr, Phys. Rev. B 1988, 37, 785-789.
 
-<a name="sixteen">[16]</a>  If LMAX is the only entry in this line, the program assumes that
+<a name="twentyone">[21]</a>  If LMAX is the only entry in this line, the program assumes that
 LMAX is the l for the local potential. You can use another local
 function by specifying the keyword \`\`LOC= '' after LMAX separated by a
 comma. In addition, it is possible to assign the local potential to a
 further potential with the keyword \`\`SKIP= '' (see the CPMD manual).
 
-<a name="seventeen">[17]</a> G.J. Martyna and M. E. Tuckerman, J. Chem. Phys. 110, 2810 (1999),
-and section 11.4 in the CPMD reference manual.
+<a name="twentytwo">[22]</a> G.J. Martyna and M. E. Tuckerman, J. Chem. Phys. 110, 2810 (1999).
 
-<a name="eighteen">[18]</a> See section 11.16.6 of the CPMD reference manual for a complete
+<a name="twentythree">[23]</a> Section 11.4.
+
+<a name="twentyfour">[24]</a> See section 11.16.6 of the CPMD reference manual for a complete
 list.
+
+
 
 <a name="nineteen">[19]</a> This script and the input files for CPMD used in this tutorial can
 be downloaded at the link:
@@ -1956,7 +1842,7 @@ be downloaded at the link:
 <a name="twentyone">[21]</a> O. A. v. Lilienfeld, D. Sebastiani, I. Tavernelli, and U.
 Rothlisberger, Phys. Rev. Lett. 93, 153004 (2004).
 
-<a name="twentytwo">[22]</a>Note that the picture reports the “index” of the atoms, while 
+<a name="twentytwo">[22]</a> Note that the picture reports the “index” of the atoms, while 
 the “serial”, which corresponds at the sequential index inside gromos.crd file, in VMD differs 
 for 1: “serial” starts to count from 1, while “index” from 0.
 
