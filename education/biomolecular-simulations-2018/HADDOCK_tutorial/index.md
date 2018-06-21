@@ -13,14 +13,14 @@ This tutorial consists of the following sections:
 
 <hr>
 ## Introduction
-This use-case is a first attempt to blur different software and take on the challenge of "covalent docking", an important part of pharceutical chemistry that has been barely touched upon by the integrative modelling community. For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2) to predict the three dimensional structures of a covalently bound ligand to cathepsin proteins. A description of our web server can be found in the following publications:
+This use-case is a first attempt to blur different software and take on the challenge of "covalent docking", an important part of pharceutical chemistry that has been barely touched upon by the integrative modelling community. For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"} to predict the three dimensional structures of a covalently bound ligand to cathepsin proteins. A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 Throughout the tutorial, coloured text will be used to refer to questions or 
@@ -37,15 +37,15 @@ instructions and/or PyMOL commands.
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this our [registration page](https://nestor.science.uu.nl/auth/register/).
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this our [registration page](https://nestor.science.uu.nl/auth/register/){:target="_blank"}.
 
-> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/)
+> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}
 
 
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/haddock.html](http://www.bonvinlab.org/software/haddock2.2/haddock.html)) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. 
+HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/haddock.html](http://www.bonvinlab.org/software/haddock2.2/haddock.html){:target="_blank"}) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr){:target="_blank"}) that harness the power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. 
 
 A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall under two categories: active and passive. Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking. 
 
@@ -72,11 +72,11 @@ The final models are automatically clustered based on a specific similarity meas
 ## Scientific context
 Osteoporosis affects about 10% of the population in Europe, Japan and North America and its incidence rate is growing with increasing life expectancy. The main feature of osteoporosis is bone loss mediated by osteoclasts and insufficient rebuilding of bone matrix by osteoblasts. A longstanding theory of osteoporosis is that the balance between these two activities has gone off, with bone destruction running ahead. It is very hard to slow down osteoclast activity without slowing down osteoblast activity as well, but one therapy showed promises: the cathepsin K inhibitors.
 
-[Cathepsin K](https://en.wikipedia.org/wiki/Cathepsin_K) is a highly potent cysteine protease expressed in osteoclasts. This enzyme is able to break down collagen, elastin, gelatin and other proteins. It is found almost entirely in this cell type, giving a real hope of targeting osteoclasts selectively. At last, protease inhibitors themselves are a type of small molecule that, in general, give good success in drug discovery. For all those reasons, cathepsin K inhibitors have been studied for more than 20 years and several pharmaceutical companies have currently compounds in clinical trials.
+[Cathepsin K](https://en.wikipedia.org/wiki/Cathepsin_K){:target="_blank"} is a highly potent cysteine protease expressed in osteoclasts. This enzyme is able to break down collagen, elastin, gelatin and other proteins. It is found almost entirely in this cell type, giving a real hope of targeting osteoclasts selectively. At last, protease inhibitors themselves are a type of small molecule that, in general, give good success in drug discovery. For all those reasons, cathepsin K inhibitors have been studied for more than 20 years and several pharmaceutical companies have currently compounds in clinical trials.
 
 We will use HADDOCK to predict the covalent binding of a small ligand on a protein receptor, using as example a purine nitrile derived inhibitor of cathepsin K (see fig. 1), described in the following publication:<br>
 
-* E. Altmann, S.W. Cowan-Jacob and M. Missbach. [Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K](http://doi.org/doi:10.1021/jm0493111) _J. Med. Chem_ (2004)
+* E. Altmann, S.W. Cowan-Jacob and M. Missbach. [Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K](http://doi.org/doi:10.1021/jm0493111){:target="_blank"} _J. Med. Chem_ (2004)
 
 <figure align="center">
 <img src="media/cover_paper.gif">
@@ -85,7 +85,7 @@ We will use HADDOCK to predict the covalent binding of a small ligand on a prote
 **Figure 1**: *Purine nitrile derived inhibitor cocrystallized in the cathepsin K active site. PDB code is 1u9v.*
 
 
-One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE)) is that it can bind three highly homologous cathepsin proteins, with a remarkable affinity:
+One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"}) is that it can bind three highly homologous cathepsin proteins, with a remarkable affinity:
 
  * **Cat K**    6 nM IC50
  * **Cat L**   89 nM IC50
@@ -109,7 +109,7 @@ sequence similarity, structure resolution and experimental conditions will deter
 proteins or bound structures of our target protein with different ligands, how would you select the best template 
 for the docking?</a>
 
-Based on our previous experience with the [D3R](https://drugdesigndata.org/) challenges, we decided to use ligand 
+Based on our previous experience with the [D3R](https://drugdesigndata.org/){:target="_blank"} challenges, we decided to use ligand 
 similarity to select a protein template for small molecule docking. The similarity metric that we employ is the widely 
 accepted **Tanimoto Coefficient** (TC). Given two molecules, A and B, depicted in fig. 2 the TC is defined as follows:
 $$TC=\frac{C}{A+B-C}$$
@@ -120,7 +120,7 @@ is the set of atoms that is shared between the two molecules.
 <img src="media/tanamoto_example.png">
 </figure>
 
-**Figure 2**: *How to calculate TC? Illustration on two ligands used in this tutorial. On the left is the structure of our ligand of interest taken from the reference PDBid [1U9V](https://www.rcsb.org/structure/1u9v), and on the right another covalent inhibitor of cathepsin K proteins taken from the PDBid [3KW9](https://www.rcsb.org/structure/3kw9)*
+**Figure 2**: *How to calculate TC? Illustration on two ligands used in this tutorial. On the left is the structure of our ligand of interest taken from the reference PDBid [1U9V](https://www.rcsb.org/structure/1u9v){:target="_blank"}, and on the right another covalent inhibitor of cathepsin K proteins taken from the PDBid [3KW9](https://www.rcsb.org/structure/3kw9){:target="_blank"}*
 
 The shared set of atoms is depicted in fig. 3 and it is identified by detecting the Maximum Common Substructure (MCS) 
 of the two molecules.
@@ -192,21 +192,21 @@ For this in the PyMOL menu on top select:
 <hr>
 ## Inspecting and preparing the ligand for docking
 
-For the ligand, some programs like [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg) allow you to generate a 
+For the ligand, some programs like [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg){:target="_blank"} allow you to generate a 
 structure for a chemical directly from a simple sketch in a text editor. However, whenever possible, we advise you to 
 use SMILES or MOL files for the ligand when the atomic coordinates are not available. To illustrate the difficulty of 
 ligand modelling, there is no strict consensus in the algorithms that generate the SMILES strings and each of them 
 choose only one of the main possible strings. For instance, open the PDBeChem page for 
-our [cathepsin K inhibitor](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE) and look for the SMILES 
+our [cathepsin K inhibitor](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"} and look for the SMILES 
 provided (ACDLabs, CACTVS, OpenEye).
 
 <a class="prompt prompt-question"> What can you say about the consistency between the different SMILES sequences? 
 Can you recognise the different structural groups in the ligand based on the SMILES?</a>
 
 Generating and sampling suitable ligand conformations for docking is an art in itself, which we will not cover in this tutorial
-From our participation to the [D3R](https://drugdesigndata.org/) challenges, we have good experience with the [OpenEye](https://www.eyesopen.com) Scientific Software suite for which it is possible to request an academic license.
+From our participation to the [D3R](https://drugdesigndata.org/){:target="_blank"} challenges, we have good experience with the [OpenEye](https://www.eyesopen.com){:target="_blank"} Scientific Software suite for which it is possible to request an academic license.
 
-For this tutorial we could download a representive PDB file of our ligand from the [PDBeChem database](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE).
+For this tutorial we could download a representive PDB file of our ligand from the [PDBeChem database](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"}.
 This representative conformation is actually the bound form of the ligand from the `1U9V` PDB entry we are aiming at reproducing. 
 This means that effectively in the docking we are going to perform the ligand is in an ideal conformation already.
 
@@ -240,7 +240,7 @@ save IHE.pdb, resn IHE<br>
 
 Before setting up the docking we need first to generate the distance restraint file for defining the "covalent bond" in a format suitable for HADDOCK. 
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
+be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -292,7 +292,7 @@ or download it from [here](./media/unambig.tbl){:target="_blank"} for convenienc
 <hr>
 ## Submit your docking run
 
-**Note** *that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the "guru" access level yet, it is time to apply for it on our [registration portal](https://nestor.science.uu.nl/auth/register/). If  using workshop credentials, you will have "guru" access already.*
+**Note** *that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the "guru" access level yet, it is time to apply for it on our [registration portal](https://nestor.science.uu.nl/auth/register/){:target="_blank"}. If  using workshop credentials, you will have "guru" access already.*
 
 A problem when trying to "covalently dock" a small ligand is that the van der Waals interactions will typically prevent close proximity of the atoms involved in the covalent bond.
 To allow the distance restraint to be satisfied, we need to scale down the non-bonded interactions between the specific atoms involved in that covalent bond. For this purpose we created a special Cysteine residue (residue name: CYC), without hydrgogen atom on the sulfur and with significantly reduced VDW parameters for the sulfur atom (scaled down by a factor 10).
@@ -308,7 +308,7 @@ You can do it with your favorite text editor, or using the following command in 
 </a>
 
 
-We will now launch the docking run. For this we will make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server:
+We will now launch the docking run. For this we will make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html){:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
 http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
@@ -356,7 +356,7 @@ Uncheck this option if you have NOEs or other specific restraints to non-polar h
 * **Step5:** Change the clustering settings. For this unfold the **Parameters for clustering menu**.
 
 The default clustering method in the HADDOCK2.2 server is 
-[fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on 
+[fcc-based clustering](https://github.com/haddocking/fcc){:target="_blank"}, which is a measure of similarity of interfaces based on 
 pairwise residue contacts. This method outperforms RMSD-based clustering for large systems, both in term of accuracy 
 and speed. However for ligand docking, interface-RMSD remains the method of choice. Change therefore the clustering method:
 
@@ -414,7 +414,7 @@ Upon submission you will first be presented with a web page containing a link to
 <img src="/education/HADDOCK-protein-protein-basic/submission.png">
 </figure>
 
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
 
 <pre>
 HaddockRunParameters (
@@ -440,7 +440,7 @@ Click now on the link to the results page. While your input data are being valid
 <img src="/education/HADDOCK-protein-protein-basic/processing.png">
 </figure>
 
-During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
+During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity](https://github.com/rlabduke/MolProbity){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
 
 
@@ -589,13 +589,13 @@ Is there any correlation between docking score and IC50s?
 See:
 
 * P.L. Kastritis and A.M.J.J. Bonvin.
-[Molecular origins of binding affinity: Seeking the Archimedean point.](http://dx.doi.org/doi:10.1016/j.sbi.2013.07.001)
+[Molecular origins of binding affinity: Seeking the Archimedean point.](http://dx.doi.org/doi:10.1016/j.sbi.2013.07.001){:target="_blank"}
 _Curr. Opin. Struct. Biol._, *23*, 868-877 (2013).
 * P.L. Kastritis and A.M.J.J. Bonvin.
-[On the binding affinity of macromolecular interactions: daring to ask why proteins interact](http://dx.doi.org/doi:10.1098/rsif.2012.0835)
+[On the binding affinity of macromolecular interactions: daring to ask why proteins interact](http://dx.doi.org/doi:10.1098/rsif.2012.0835){:target="_blank"}
 _J. R. Soc. Interface_, *10*, doi: 10.1098/rsif.2012.0835 (2013).
 * P. Kastritis and A.M.J.J. Bonvin.
-[Are scoring functions in protein-protein docking ready to predict interactomes? Clues from a novel binding affinity benchmark.](http://dx.doi.org/doi:10.1021/pr9009854)
+[Are scoring functions in protein-protein docking ready to predict interactomes? Clues from a novel binding affinity benchmark.](http://dx.doi.org/doi:10.1021/pr9009854){:target="_blank"}
 _J. Proteome Research_, *9*, 2216-2225 (2010).
 
 
@@ -603,7 +603,7 @@ _J. Proteome Research_, *9*, 2216-2225 (2010).
 <hr>
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to post on the dedicated topic on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/).
+You have completed this tutorial. If you have any questions or suggestions, feel free to post on the dedicated topic on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}.
 
 
 
