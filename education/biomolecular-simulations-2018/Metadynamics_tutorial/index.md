@@ -656,7 +656,7 @@ viewer. Here we will use [xmgrace](http://plasma-gate.weizmann.ac.il/Grace).
 Type the following commands:
 
 <a class="prompt prompt-cmd">
-grep -v &#34;#&#34; COLVAR_driver | awk &#39;print $2}&#39; > RoG.dat <br>
+grep -v &#34;#&#34; COLVAR_driver | awk &#39;{print $2}&#39; > RoG.dat <br>
 grep -v &#34;#&#34; COLVAR_driver | awk &#39;{print $3}&#39; > NCs.dat
 </a>
 
