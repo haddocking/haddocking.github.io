@@ -532,7 +532,7 @@ Repeat this for the various cluster representatives and take note of the ligand 
 
 
 <details style="background-color:#DAE4E7">
-<summary>See a view of the top models of each cluster for this particular run, superimposed on the reference structure (1U9V in yellow:
+<summary>See a view of the top models of each cluster for this particular run, superimposed on the reference structure (1U9V in yellow):
 </summary>
 <figure align="center">
   <img src="./media/CatK-clusters.png">
