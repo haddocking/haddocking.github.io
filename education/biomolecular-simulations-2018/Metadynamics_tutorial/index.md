@@ -105,6 +105,7 @@ starting with the string “REMARK 470”).
 <br>
 </details>
 
+<br>
 Fortunately, our structure contain all the residues present in the aminoacid 
 sequence, as well as all the heavy atoms. For the sake of simplifying the 
 subsequent analysis, we will generate a “clean” pdb file without 
@@ -1208,7 +1209,28 @@ We now want to highlight the ligand in sticks. In the reference structure, the l
 <a class="prompt prompt-pymol">
 alter (resn UDP and 1jg6), chain=&#34;B&#34;<br>
 alter (resn UDP and 1jg6), segi=&#34;B&#34;<br>
-alter (resn UDP and 1jg6), resi=&#34;1&#34;
+alter (resn UDP and 1jg6), resi=&#34;1&#34;<br>
+alter (resn UDP and 1jg6 and name O4), name=&#34;O2&#34;<br>
+alter (resn UDP and 1jg6 and name C4), name=&#34;C2&#34;<br>
+alter (resn UDP and 1jg6 and name C5), name=&#34;C3&#34;<br>
+alter (resn UDP and 1jg6 and name N3), name=&#34;N2&#34;<br>
+alter (resn UDP and 1jg6 and name C6), name=&#34;C4&#34;<br>
+alter (resn UDP and 1jg6 and name C2), name=&#34;C1&#34;<br>
+alter (resn UDP and 1jg6 and name O2), name=&#34;O1&#34;<br>
+alter (resn UDP and 1jg6 and name C1&#39;), name=&#34;C5&#34;<br>
+alter (resn UDP and 1jg6 and name C2&#39;), name=&#34;C6&#34;<br>
+alter (resn UDP and 1jg6 and name O2&#39;), name=&#34;O3&#34;<br>
+alter (resn UDP and 1jg6 and name C3&#39;), name=&#34;C7&#34;<br>
+alter (resn UDP and 1jg6 and name C4&#39;), name=&#34;C8&#34;<br>
+alter (resn UDP and 1jg6 and name O3&#39;), name=&#34;O5&#34;<br>
+alter (resn UDP and 1jg6 and name O4&#39;), name=&#34;O4&#34;<br>
+alter (resn UDP and 1jg6 and name C5&#39;), name=&#34;C9&#34;<br>
+alter (resn UDP and 1jg6 and name O5&#39;), name=&#34;O6&#34;<br>
+alter (resn UDP and 1jg6 and name PA), name=&#34;P1&#34;<br>
+alter (resn UDP and 1jg6 and name O1A), name=&#34;O7&#34;<br>
+alter (resn UDP and 1jg6 and name O2A), name=&#34;O8&#34;<br>
+alter (resn UDP and 1jg6 and name O3A), name=&#34;O9&#34;<br>
+alter (resn UDP and 1jg6 and name PB), name=&#34;P2&#34;<br>
 </a>
 
 At last, we can remove water molecules (reference structure) and hydrogens (HADDOCK models) to facilitate the visual comparison with the reference structure.
@@ -1236,6 +1258,19 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 
 <a class="prompt prompt-question">If not, what is its rank? And is the HADDOCK score of this cluster significantly better than the best cluster?</a>
 
+<details style="background-color:#DAE4E7">
+<summary>See solution:
+</summary>
+<pre>
+ * bemeta cluster2_1     HADDOCKscore [a.u.] = -47.2 +/- 1.4       ligand-RMSD = &Aring;
+ * bemeta cluster1_1     HADDOCKscore [a.u.] = -44.1 +/- 2.2       ligand-RMSD = 0.60&Aring;
+ * apoMD cluster3_1      HADDOCKscore [a.u.] = -32.4 +/- 2.0       ligand-RMSD = &Aring;
+ * apoMD cluster2_1      HADDOCKscore [a.u.] = -26.2 +/- 1.2       ligand-RMSD = &Aring;
+ * apoMD cluster1_1      HADDOCKscore [a.u.] = -24.9 +/- 0.9       ligand-RMSD = 3.98&Aring;
+</pre>
+<br>
+</details>
+
 <hr>
 ## Congratulations!
 
@@ -1244,42 +1279,23 @@ You have completed this tutorial. If you have any questions or suggestions, feel
 <hr>
 ## References
 
-<a name="ref01">[1]: Laio and Parrinello, PNAS October 1, 2002. 99 (20) 12562-12566
-
-<a name="ref02">[2: Huang and Zou, Proteins. 2007 Feb 1;66(2):399-421
-
-<a name="ref03">[3]: Forli, Molecules 2015, 20, 18732-18758
-
-<a name="ref04">[4]: Mandal et al., Eur J Pharmacol. 2009 Dec 25;625(1-3):90-100
-
-<a name="ref05">[5]: Sliwoski et al., Pharmacol Rev. 2013 Dec 31;66(1):334-95
-
-[6]: Chen, Trends Pharmacol Sci. 2015 Feb;36(2):78-95
-
-[7]: Koshland D. E. PNAS 1958, 44, 98-104
-
-[8]: Teague, Nat Rev Drug Discov. 2003 Jul;2(7):527-41
-
-[9]: G.C.P van Zundert et al., J. Mol. Biol., 2015, 428, 720-725
-
-[10]: Pronk et al. Bioinf, 29 (2013), pp. 845-854
-
-[11]: Deserno and Holm, J. Chem. Phys. 109, (1998) 7678
-
-[12]: Laio et al., J. Phys. Chem. B, 2005, 109 (14), pp 6714–6721
-
-[13]: Bussi et al., Phys. Rev. Lett. 2006, 96, 090601
-
-[14]: Laio and Gervasio, Reports on Progress in Physics (2008), Vol 71, Num 12
-
-[15]: Barducci et al., Phys. Rev. Lett. 2008, 100, 020603
-
-[16]: Piana and Laio., J. Phys. Chem. B, 2007, 111 (17), pp 4553–4559
-
-[17]: Tribello et al., Comput. Phys. Commun. 185, 604 (2014)
-
-[18]: Gervasio et al., J Am Chem Soc. 2005 Mar 2;127(8):2600-7
-
-[19]: Vargiu et al., Nucleic Acids Res. 2008 Oct; 36(18): 5910–5921
-
-[20]: Shao et al., J. Chem. Theory Comput. 2007, 3, 2312-2334
+<a name="ref01">[1]</a>: Laio and Parrinello, PNAS October 1, 2002. 99 (20) 12562-12566
+<a name="ref02">[2</a>: Huang and Zou, Proteins. 2007 Feb 1;66(2):399-421
+<a name="ref03">[3]</a>: Forli, Molecules 2015, 20, 18732-18758
+<a name="ref04">[4]</a>: Mandal et al., Eur J Pharmacol. 2009 Dec 25;625(1-3):90-100
+<a name="ref05">[5]</a>: Sliwoski et al., Pharmacol Rev. 2013 Dec 31;66(1):334-95
+<a name="ref06">[6]</a>: Chen, Trends Pharmacol Sci. 2015 Feb;36(2):78-95
+<a name="ref07">[7]</a>: Koshland D. E. PNAS 1958, 44, 98-104
+<a name="ref08">[8]</a>: Teague, Nat Rev Drug Discov. 2003 Jul;2(7):527-41
+<a name="ref09">[9]</a>: G.C.P van Zundert et al., J. Mol. Biol., 2015, 428, 720-725
+<a name="ref10">[10]</a>: Pronk et al. Bioinf, 29 (2013), pp. 845-854
+<a name="ref11">[11]</a>: Deserno and Holm, J. Chem. Phys. 109, (1998) 7678
+<a name="ref12">[12]</a>: Laio et al., J. Phys. Chem. B, 2005, 109 (14), pp 6714–6721
+<a name="ref13">[13]</a>: Bussi et al., Phys. Rev. Lett. 2006, 96, 090601
+<a name="ref14">[14]</a>: Laio and Gervasio, Reports on Progress in Physics (2008), Vol 71, Num 12
+<a name="ref15">[15]</a>: Barducci et al., Phys. Rev. Lett. 2008, 100, 020603
+<a name="ref16">[16]</a>: Piana and Laio., J. Phys. Chem. B, 2007, 111 (17), pp 4553–4559
+<a name="ref17">[17]</a>: Tribello et al., Comput. Phys. Commun. 185, 604 (2014)
+<a name="ref18">[18]</a>: Gervasio et al., J Am Chem Soc. 2005 Mar 2;127(8):2600-7
+<a name="ref19">[19]</a>: Vargiu et al., Nucleic Acids Res. 2008 Oct; 36(18): 5910–5921
+<a name="ref20">[20]</a>: Shao et al., J. Chem. Theory Comput. 2007, 3, 2312-2334

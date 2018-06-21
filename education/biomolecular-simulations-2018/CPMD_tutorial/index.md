@@ -1703,9 +1703,9 @@ In the folder `~/Tutorials/CPMD/3-Covalent_Binding_OLD_QMMM_Interface/10-QMMM_MD
 
 ## References
 
-<a name="one">[1] [www.cpmd.org](http://www.cpmd.org)</a>
+<a name="one">[1]</a> <http://www.cpmd.org>
 
-<a name="two">[2] </a>All the tools can also be freely downloaded from their corresponding
+<a name="two">[2]</a> All the tools can also be freely downloaded from their corresponding
 website, apart from the QM/MM routines of CPMD which are not available
 on the CPMD website since they require a commercial GROMOS license to be
 used for publication or commercial purposes. You can download and
@@ -1713,13 +1713,13 @@ install them from this link (to be used only within the scope of this tutorial):
 
 <https://www.dropbox.com/s/rr8ifkgwgo5gwl2/cpmd-4.0-Rev3392.tar.gz>
 
-<a name="three">[3]</a> [www.cgl.ucsf.edu/chimera/](https://www.cgl.ucsf.edu/chimera/)
+<a name="three">[3]</a> <https://www.cgl.ucsf.edu/chimera/>
 
-<a name="four">[4]</a> [www.chemaxon.com/download/marvin-suite/\#marvin](https://www.chemaxon.com/download/marvin-suite/#marvin)
+<a name="four">[4]</a> <https://www.chemaxon.com/download/marvin-suite/#marvin>
 
 <a name="five">[5]</a> Note that in a thorough analysis one should take into account all the protonation states with a probability let us say > 1%. This is in particular important if the protonation states varies in the region of the molecule that will be later described at quantum mechanical level (QM part). 
 
-<a name="six">[6]</a> http://ambermd.org/#AmberTools
+<a name="six">[6]</a> <http://ambermd.org/#AmberTools>
 
 <a name="seven">[7]</a> To have the list of options for any command of AmberTools, just type the name of the command followed by “-h” option in the terminal.
 
@@ -1751,7 +1751,7 @@ loadamberparams frcmod.ff12SB
 
 <a name="eleven">[11]</a> <http://en.wikipedia.org/wiki/Water_model>
 
-<a name="twelve">[12]</a> http://www.ks.uiuc.edu/Research/vmd
+<a name="twelve">[12]</a> <http://www.ks.uiuc.edu/Research/vmd>
 
 <a name="thirteen">[13]</a> You can also find the binary in the tutorial subfolder `5-Preparing_the_MM_files_for_CPMD`
 
