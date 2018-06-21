@@ -105,6 +105,7 @@ starting with the string “REMARK 470”).
 <br>
 </details>
 
+<br>
 Fortunately, our structure contain all the residues present in the aminoacid 
 sequence, as well as all the heavy atoms. For the sake of simplifying the 
 subsequent analysis, we will generate a “clean” pdb file without 
@@ -1244,42 +1245,23 @@ You have completed this tutorial. If you have any questions or suggestions, feel
 <hr>
 ## References
 
-<a name="ref01">[1]: Laio and Parrinello, PNAS October 1, 2002. 99 (20) 12562-12566
-
-<a name="ref02">[2: Huang and Zou, Proteins. 2007 Feb 1;66(2):399-421
-
-<a name="ref03">[3]: Forli, Molecules 2015, 20, 18732-18758
-
-<a name="ref04">[4]: Mandal et al., Eur J Pharmacol. 2009 Dec 25;625(1-3):90-100
-
-<a name="ref05">[5]: Sliwoski et al., Pharmacol Rev. 2013 Dec 31;66(1):334-95
-
-[6]: Chen, Trends Pharmacol Sci. 2015 Feb;36(2):78-95
-
-[7]: Koshland D. E. PNAS 1958, 44, 98-104
-
-[8]: Teague, Nat Rev Drug Discov. 2003 Jul;2(7):527-41
-
-[9]: G.C.P van Zundert et al., J. Mol. Biol., 2015, 428, 720-725
-
-[10]: Pronk et al. Bioinf, 29 (2013), pp. 845-854
-
-[11]: Deserno and Holm, J. Chem. Phys. 109, (1998) 7678
-
-[12]: Laio et al., J. Phys. Chem. B, 2005, 109 (14), pp 6714–6721
-
-[13]: Bussi et al., Phys. Rev. Lett. 2006, 96, 090601
-
-[14]: Laio and Gervasio, Reports on Progress in Physics (2008), Vol 71, Num 12
-
-[15]: Barducci et al., Phys. Rev. Lett. 2008, 100, 020603
-
-[16]: Piana and Laio., J. Phys. Chem. B, 2007, 111 (17), pp 4553–4559
-
-[17]: Tribello et al., Comput. Phys. Commun. 185, 604 (2014)
-
-[18]: Gervasio et al., J Am Chem Soc. 2005 Mar 2;127(8):2600-7
-
-[19]: Vargiu et al., Nucleic Acids Res. 2008 Oct; 36(18): 5910–5921
-
-[20]: Shao et al., J. Chem. Theory Comput. 2007, 3, 2312-2334
+<a name="ref01">[1]</a>: Laio and Parrinello, PNAS October 1, 2002. 99 (20) 12562-12566
+<a name="ref02">[2</a>: Huang and Zou, Proteins. 2007 Feb 1;66(2):399-421
+<a name="ref03">[3]</a>: Forli, Molecules 2015, 20, 18732-18758
+<a name="ref04">[4]</a>: Mandal et al., Eur J Pharmacol. 2009 Dec 25;625(1-3):90-100
+<a name="ref05">[5]</a>: Sliwoski et al., Pharmacol Rev. 2013 Dec 31;66(1):334-95
+<a name="ref06">[6]</a>: Chen, Trends Pharmacol Sci. 2015 Feb;36(2):78-95
+<a name="ref07">[7]</a>: Koshland D. E. PNAS 1958, 44, 98-104
+<a name="ref08">[8]</a>: Teague, Nat Rev Drug Discov. 2003 Jul;2(7):527-41
+<a name="ref09">[9]</a>: G.C.P van Zundert et al., J. Mol. Biol., 2015, 428, 720-725
+<a name="ref10">[10]</a>: Pronk et al. Bioinf, 29 (2013), pp. 845-854
+<a name="ref11">[11]</a>: Deserno and Holm, J. Chem. Phys. 109, (1998) 7678
+<a name="ref12">[12]</a>: Laio et al., J. Phys. Chem. B, 2005, 109 (14), pp 6714–6721
+<a name="ref13">[13]</a>: Bussi et al., Phys. Rev. Lett. 2006, 96, 090601
+<a name="ref14">[14]</a>: Laio and Gervasio, Reports on Progress in Physics (2008), Vol 71, Num 12
+<a name="ref15">[15]</a>: Barducci et al., Phys. Rev. Lett. 2008, 100, 020603
+<a name="ref16">[16]</a>: Piana and Laio., J. Phys. Chem. B, 2007, 111 (17), pp 4553–4559
+<a name="ref17">[17]</a>: Tribello et al., Comput. Phys. Commun. 185, 604 (2014)
+<a name="ref18">[18]</a>: Gervasio et al., J Am Chem Soc. 2005 Mar 2;127(8):2600-7
+<a name="ref19">[19]</a>: Vargiu et al., Nucleic Acids Res. 2008 Oct; 36(18): 5910–5921
+<a name="ref20">[20]</a>: Shao et al., J. Chem. Theory Comput. 2007, 3, 2312-2334
