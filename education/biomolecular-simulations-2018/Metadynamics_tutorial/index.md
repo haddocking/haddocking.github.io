@@ -1199,17 +1199,18 @@ Then start PyMOL and load the best clusters representatives:
 Repeat this for each cluster. Once all files have been loaded, type in the PyMOL command window:
 
 <a class="prompt prompt-pymol">
-fetch 1jg6<br>
+load ~/Tutorials/metaHADDOCK/tutorial_files/apoMD/holo_GLUCO.pdb<br>
 as cartoon<br>
 util.cnc<br>
 </a>
 
+The reference 
 We now want to highlight the ligand in sticks. In the reference structure, the ligand belong to chain A and has the residue number 400. To allow RMSD calculations, we first need to change the residue number, chainID and segid of the ligand in the reference structure:
 
 <a class="prompt prompt-pymol">
-alter (resn UDP and 1jg6), chain=&#34;B&#34;<br>
-alter (resn UDP and 1jg6), segi=&#34;B&#34;<br>
-alter (resn UDP and 1jg6), resi=&#34;1&#34;
+alter (resn UDP and holo_GLUCO), chain=&#34;B&#34;<br>
+alter (resn UDP and holo_GLUCO), segi=&#34;B&#34;<br>
+alter (resn UDP and holo_GLUCO), resi=&#34;1&#34;
 </a>
 
 <!--<br>
@@ -1241,7 +1242,7 @@ alter (resn UDP and 1jg6 and name O3B), name=&#34;O12&#34;<br>
 </a>
 -->
 
-At last, we can remove water molecules (reference structure) and hydrogens (HADDOCK models) to facilitate the visual comparison with the reference structure.
+At last, we can remove water molecules (reference structure) and hydrogens to facilitate the visual comparison with the reference structure.
 
 <a class="prompt prompt-pymol">
 show sticks, resn UDP<br>
@@ -1249,11 +1250,11 @@ remove hydrogens<br>
 remove resn HOH
 </a>
 
-Let's then superimpose all models on the reference structure 1jg6 and calculate the ligand RMSD:
+Let's then superimpose all models on the reference structure holo_GLUCO and calculate the ligand RMSD:
 
 <a class="prompt prompt-pymol">
-align cluster1_1, 1jg6<br>
-rms_cur resn UDP and cluster1_1, resn UDP and 1jg6
+align bemeta_cluster1_1, holo_GLUCO<br>
+rms_cur resn UDP and holo_GLUCO, resn UDP and bemeta_cluster1_1
 </a>
 
 <a class="prompt prompt-info">
@@ -1270,10 +1271,10 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 <summary>See solution:
 </summary>
 <pre>
- <!--* bemeta cluster2_1     HADDOCKscore [a.u.] = -47.2 +/- 1.4       ligand-RMSD = &Aring;-->
- * bemeta cluster1_1     HADDOCKscore [a.u.] = -44.1 +/- 2.2       ligand-RMSD = 0.60&Aring;
-<!-- * apoMD cluster3_1      HADDOCKscore [a.u.] = -32.4 +/- 2.0       ligand-RMSD = &Aring;
- * apoMD cluster2_1      HADDOCKscore [a.u.] = -26.2 +/- 1.2       ligand-RMSD = &Aring;-->
+ * bemeta cluster2_1     HADDOCKscore [a.u.] = -47.2 +/- 1.4       ligand-RMSD = 7.48&Aring;
+ * bemeta cluster1_1     HADDOCKscore [a.u.] = -44.1 +/- 2.2       ligand-RMSD = 0.79&Aring;
+ * apoMD cluster3_1      HADDOCKscore [a.u.] = -32.4 +/- 2.0       ligand-RMSD = 7.86&Aring;
+ * apoMD cluster2_1      HADDOCKscore [a.u.] = -26.2 +/- 1.2       ligand-RMSD = 7.48&Aring;
  * apoMD cluster1_1      HADDOCKscore [a.u.] = -24.9 +/- 0.9       ligand-RMSD = 3.98&Aring;
 </pre>
 <br>
