@@ -644,7 +644,7 @@ in the input file. From `tutorial_files/Driver` move the input file
 
 <a class="prompt prompt-cmd">
 cd analysis<br>
-plumed driver --mf_trr ../../../tutorial_files/apoMD/equil-pbc.trr --plumed plumed_driver.dat
+plumed driver &#8208;&#8208;mf_trr ../../../tutorial_files/apoMD/equil-pbc.trr &#8208;&#8208;plumed plumed_driver.dat
 </a>
 
 The output file COLVAR_driver lists the values of the CVs sampled along the 
