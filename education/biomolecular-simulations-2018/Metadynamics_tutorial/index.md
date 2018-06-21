@@ -439,9 +439,6 @@ lining the BS:
 
 <a class="prompt prompt-cmd"> vmd holo_GLUCO.pdb</a>
 
-Note: do not worry if you see a different number of atoms in your VMD 
-screen. We have used an hydrogenated structure of the protein.
-
 You will see a VMD Main window, as well as a Display and a Graphics representation window.
 
 <a class="prompt prompt-info">
@@ -637,11 +634,11 @@ we can use the tool `driver` of the PLUMED package. First, we need a text
 file defining the CVs to be analyzed along the trajectory; driver will read 
 the trajectory and will print for each frame the values of the CVs selected 
 in the input file. From `tutorial_files/Driver` move the input file 
-`plumed_driver.dat` in in the folder `MD/plainMD/analysis`, and type:
+`plumed_driver.dat` in the folder `MD/plainMD/analysis`, and type:
 
 <a class="prompt prompt-cmd">
 cd analysis<br>
-plumed driver --mf_trr <trajectory_name> --plumed plumed_driver.dat
+plumed driver --mf_trr ../equi-pbc.trr --plumed plumed_driver.dat
 </a>
 
 The output file COLVAR_driver lists the values of the CVs sampled along the 
@@ -866,8 +863,8 @@ defining the BP. At the end of the `apo-solv_withBS.ndx` file, you should have
 something like the following:
 
 ```
-...<br>
-[ BS33 ] <br>
+...
+[ BS33 ]
 172   174   175   176   177   178   179  1969  1971  1972  1973  1974  1976  1977  1978 [...] 2832  2835  2838  2839  2869  2871  2872  2873  2874  2875  2876  2877  2878
 ```
 
@@ -921,6 +918,9 @@ docking calculations in `tutorial_files/clusteranalysis/clusters_ready`.
 ## Docking with HADDOCK
 _(coming soon)_
 
+http://alcazar.science.uu.nl/services/HADDOCK2.2/Files/bemeta_ensemble_rigid/
+
+http://alcazar.science.uu.nl/services/HADDOCK2.2/Files/apo_ensemble_rigid/
 
 ## References
 
