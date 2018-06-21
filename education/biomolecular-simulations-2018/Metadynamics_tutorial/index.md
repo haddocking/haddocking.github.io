@@ -1209,14 +1209,17 @@ We now want to highlight the ligand in sticks. In the reference structure, the l
 <a class="prompt prompt-pymol">
 alter (resn UDP and 1jg6), chain=&#34;B&#34;<br>
 alter (resn UDP and 1jg6), segi=&#34;B&#34;<br>
-alter (resn UDP and 1jg6), resi=&#34;1&#34;<br>
+alter (resn UDP and 1jg6), resi=&#34;1&#34;
+</a>
+
+<!--<br>
+alter (resn UDP and 1jg6 and name O2), name=&#34;O1&#34;<br>
 alter (resn UDP and 1jg6 and name O4), name=&#34;O2&#34;<br>
+alter (resn UDP and 1jg6 and name C2), name=&#34;C1&#34;<br>
 alter (resn UDP and 1jg6 and name C4), name=&#34;C2&#34;<br>
 alter (resn UDP and 1jg6 and name C5), name=&#34;C3&#34;<br>
 alter (resn UDP and 1jg6 and name N3), name=&#34;N2&#34;<br>
 alter (resn UDP and 1jg6 and name C6), name=&#34;C4&#34;<br>
-alter (resn UDP and 1jg6 and name C2), name=&#34;C1&#34;<br>
-alter (resn UDP and 1jg6 and name O2), name=&#34;O1&#34;<br>
 alter (resn UDP and 1jg6 and name C1&#39;), name=&#34;C5&#34;<br>
 alter (resn UDP and 1jg6 and name C2&#39;), name=&#34;C6&#34;<br>
 alter (resn UDP and 1jg6 and name O2&#39;), name=&#34;O3&#34;<br>
@@ -1231,7 +1234,12 @@ alter (resn UDP and 1jg6 and name O1A), name=&#34;O7&#34;<br>
 alter (resn UDP and 1jg6 and name O2A), name=&#34;O8&#34;<br>
 alter (resn UDP and 1jg6 and name O3A), name=&#34;O9&#34;<br>
 alter (resn UDP and 1jg6 and name PB), name=&#34;P2&#34;<br>
+alter (resn UDP and 1jg6 and name O1B), name=&#34;O10&#34;<br>
+alter (resn UDP and 1jg6 and name O1B), name=&#34;O10&#34;<br>
+alter (resn UDP and 1jg6 and name O2B), name=&#34;O11&#34;<br>
+alter (resn UDP and 1jg6 and name O3B), name=&#34;O12&#34;<br>
 </a>
+-->
 
 At last, we can remove water molecules (reference structure) and hydrogens (HADDOCK models) to facilitate the visual comparison with the reference structure.
 
@@ -1262,10 +1270,10 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 <summary>See solution:
 </summary>
 <pre>
- * bemeta cluster2_1     HADDOCKscore [a.u.] = -47.2 +/- 1.4       ligand-RMSD = &Aring;
+ <!--* bemeta cluster2_1     HADDOCKscore [a.u.] = -47.2 +/- 1.4       ligand-RMSD = &Aring;-->
  * bemeta cluster1_1     HADDOCKscore [a.u.] = -44.1 +/- 2.2       ligand-RMSD = 0.60&Aring;
- * apoMD cluster3_1      HADDOCKscore [a.u.] = -32.4 +/- 2.0       ligand-RMSD = &Aring;
- * apoMD cluster2_1      HADDOCKscore [a.u.] = -26.2 +/- 1.2       ligand-RMSD = &Aring;
+<!-- * apoMD cluster3_1      HADDOCKscore [a.u.] = -32.4 +/- 2.0       ligand-RMSD = &Aring;
+ * apoMD cluster2_1      HADDOCKscore [a.u.] = -26.2 +/- 1.2       ligand-RMSD = &Aring;-->
  * apoMD cluster1_1      HADDOCKscore [a.u.] = -24.9 +/- 0.9       ligand-RMSD = 3.98&Aring;
 </pre>
 <br>
