@@ -6,6 +6,10 @@ image:
 
 ## 2018 
 
+* K. Elez, **A.M.J.J. Bonvin*** and A. Vangone*. Distinguishing crystallographic from biological interfaces in protein complexes: Role of intermolecular contacts and energetics for classification. _BMC Bioinformatics_, In press (2018).
+
+* **A.M.J.J. Bonvin**, E. Karaca, P.L. Kastritis & J.P.G.L.M. Rodrigues. Correspondence: [Defining distance restraints in HADDOCK](https://doi.org/10.1038/s41596-018-0017-6). _Nature Protocols_ (2018). [Free online only access](https://rdcu.be/1OyH)
+
 * M.J. Abraham, A.S.J. Melquiond, E. Ippoliti, V. Gapsys, B. Hess, M. Trellet, J.P.G.L.M. Rodrigues, E. Laure, R. Apostolov, B.L. de Groot, **A.M.J.J. Bonvin**, E. Lindahl. [BioExcel Whitepaper on Scientific Software Development](https://doi.org/10.5281/zenodo.1194634). _Zenodo_ http://doi.org/10.5281/zenodo.1194634 (2018).
 
 * **A.M.J.J. Bonvin**, C. Geng, M. van Dijk, E. Karaca, P. L. Kastritis, P.I. Koukos, Z. Kurkcuoglu, A.S.J. Melquiond, 
