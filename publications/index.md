@@ -6,9 +6,11 @@ image:
 
 ## 2018 
 
+* D. Salomoni, I. Campos, L. Gaido, J. Marco de Lucas, P. Solagna, J. Gomes, L. Matyska, P. Fuhrman, M. Hardt, G. Donvito, L. Dutka, M. Plociennik, R. Barbera, I. Blanquer, A. Ceccanti, E. Cetinic, M. David, C. Duma, A. López-García, G. Moltó, P. Orviz, Z. Sustr, M. Viljoen, F. Aguilar, L. Alves, M. Antonacci, L. A. Antonelli, S. Bagnasco,  **A.M.J.J. Bonvin**, R. Bruno, Y. Chen, A. Costa, D. Davidovic, B. Ertl, M. Fargetta, S. Fiore, S. Gallozzi, Z. Kurkcuoglu, L. Lloret, J. Martins, A. Nuzzo, P. Nassisi, C. Palazzo, J. Pina, E. Sciacca, D. Spiga, M. Tangaro, M. Urbaniak, S. Vallero, B. Wegh, V. Zaccolo, F. Zambelli, T. Zok. [INDIGO-DataCloud: a Platform to Facilitate Seamless Access to E-Infrastructures](https://doi.org/10.1007/s10723-018-9453-3). _J. Grid. Comp._ Advanced Online Publication (2018).
+
 * K. Elez, **A.M.J.J. Bonvin*** and A. Vangone*. Distinguishing crystallographic from biological interfaces in protein complexes: Role of intermolecular contacts and energetics for classification. _BMC Bioinformatics_, In press (2018).
 
-* **A.M.J.J. Bonvin**, E. Karaca, P.L. Kastritis & J.P.G.L.M. Rodrigues. Correspondence: [Defining distance restraints in HADDOCK](https://doi.org/10.1038/s41596-018-0017-6). _Nature Protocols_ (2018). [Free online only access](https://rdcu.be/1OyH)
+* **A.M.J.J. Bonvin**, E. Karaca, P.L. Kastritis & J.P.G.L.M. Rodrigues. Correspondence: [Defining distance restraints in HADDOCK](https://doi.org/10.1038/s41596-018-0017-6). _Nature Protocols_ *13*, 1503 (2018). [Free online only access](https://rdcu.be/1OyH)
 
 * M.J. Abraham, A.S.J. Melquiond, E. Ippoliti, V. Gapsys, B. Hess, M. Trellet, J.P.G.L.M. Rodrigues, E. Laure, R. Apostolov, B.L. de Groot, **A.M.J.J. Bonvin**, E. Lindahl. [BioExcel Whitepaper on Scientific Software Development](https://doi.org/10.5281/zenodo.1194634). _Zenodo_ http://doi.org/10.5281/zenodo.1194634 (2018).
 
