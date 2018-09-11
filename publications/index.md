@@ -17,7 +17,7 @@ image:
 * M.J. Abraham, A.S.J. Melquiond, E. Ippoliti, V. Gapsys, B. Hess, M. Trellet, J.P.G.L.M. Rodrigues, E. Laure, R. Apostolov, B.L. de Groot, **A.M.J.J. Bonvin**, E. Lindahl. [BioExcel Whitepaper on Scientific Software Development](https://doi.org/10.5281/zenodo.1194634). _Zenodo_ http://doi.org/10.5281/zenodo.1194634 (2018).
 
 * **A.M.J.J. Bonvin**, C. Geng, M. van Dijk, E. Karaca, P. L. Kastritis, P.I. Koukos, Z. Kurkcuoglu, A.S.J. Melquiond, 
-J.P.G.L.M. Rogridues, J. Schaarschmidt, C. Schmitz, J. Roel-Touris, M.E. Trellet, S. de Vries, A. Vangone, L. Xue, G.C.P. van Zundert
+J.P.G.L.M. Rodrigues, J. Schaarschmidt, C. Schmitz, J. Roel-Touris, M.E. Trellet, S. de Vries, A. Vangone, L. Xue, G.C.P. van Zundert
 [HADDOCK](https://doi.org/10.1007/978-3-642-35943-9_330-1). In _Encyclopedia of Biophysics_, In press (2018).
 
 * A.J. Preto, J.G. Almeida, J. Schaarschmidt, L.C. Xue, I.S. Moreira and **A.M.J.J. Bonvin**. [Computational tools for the structural characterization of proteins and their complexes from sequence-evolutionary data](https://doi.org/10.1002/9780470027318.a9615). In: Roberts G., Watts A., European Biophysical Societies (eds) _Encyclopedia of Biophysics_. Springer, Berlin, Heidelberg (2018),
