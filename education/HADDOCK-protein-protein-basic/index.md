@@ -370,7 +370,7 @@ Let's then superimpose all models on chain A of the first cluster:
 
 <a class="prompt prompt-pymol">
 select cluster1_1 and chain A<br>
-align cluster2_1, sele
+align cluster2_1, sele<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -415,7 +415,7 @@ util.cnc<br>
 **Note:** You can zoom on the phosphorylated histidine using the following PyMOL command:
 
 <a class="prompt prompt-pymol">
-zoom resn NEP
+zoom resn NEP<br>
 </a>
 
 <figure align="center">
@@ -425,7 +425,7 @@ zoom resn NEP
 Zoom back to all visible molecules with 
 
 <a class="prompt prompt-pymol">
-zoom vis
+zoom vis<br>
 </a>
 
 
@@ -454,14 +454,14 @@ color orange, 1GGR and chain B<br>
 The number of chain B in this structure is however different from the HPR numbering in the structure we used: It starts at 301 while in our models chain B starts at 1. We can change the residue numbering easily in PyMol with the following command:
 
 <a class="prompt prompt-pymol">
-alter (chain B and 1GGR), resv -=300
+alter (chain B and 1GGR), resv -=300<br>
 </a>
 
 Then superimpose all cluster representatives on the reference structure, using the entire chain A (E2A):
 
 <a class="prompt prompt-pymol">
 select 1GGR and chain A<br>
-align cluster1_1, sele, cycles=0
+align cluster1_1, sele, cycles=0<br>
 </a>
 
 <a class="prompt prompt-info">
