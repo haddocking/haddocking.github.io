@@ -6,9 +6,11 @@ image:
 
 ## 2018 
 
+* A. Vangone*, J. Schaarschmidt, P. Koukos, C. Geng, N. Citro, M.E. Trellet, L.C. Xue and **A.M.J.J. Bonvin**. Large-scale prediction of binding affinity in protein-small ligand complexes: the PRODIGY-LIG web server. _Bioinformatics_, In press (2018).
+
 * P.I. Koukos, L.C. Xue and **A.M.J.J. Bonvin**. [Protein-ligand pose and affinity prediction. Lessons from D3R Grand Challenge 3](https://doi.org/10.1007/s10822-018-0148-4).  _J. Comp. Aid. Mol. Des._ Advanced Online Publication (2018).
 
-* D. Salomoni, I. Campos, L. Gaido, J. Marco de Lucas, P. Solagna, J. Gomes, L. Matyska, P. Fuhrman, M. Hardt, G. Donvito, L. Dutka, M. Plociennik, R. Barbera, I. Blanquer, A. Ceccanti, E. Cetinic, M. David, C. Duma, A. López-García, G. Moltó, P. Orviz, Z. Sustr, M. Viljoen, F. Aguilar, L. Alves, M. Antonacci, L. A. Antonelli, S. Bagnasco,  **A.M.J.J. Bonvin**, R. Bruno, Y. Chen, A. Costa, D. Davidovic, B. Ertl, M. Fargetta, S. Fiore, S. Gallozzi, Z. Kurkcuoglu, L. Lloret, J. Martins, A. Nuzzo, P. Nassisi, C. Palazzo, J. Pina, E. Sciacca, D. Spiga, M. Tangaro, M. Urbaniak, S. Vallero, B. Wegh, V. Zaccolo, F. Zambelli, T. Zok. [INDIGO-DataCloud: a Platform to Facilitate Seamless Access to E-Infrastructures](https://doi.org/10.1007/s10723-018-9453-3). _J. Grid. Comp._ Advanced Online Publication (2018).
+* D. Salomoni, I. Campos, L. Gaido, J. Marco de Lucas, P. Solagna, J. Gomes, L. Matyska, P. Fuhrman, M. Hardt, G. Donvito, L. Dutka, M. Plociennik, R. Barbera, I. Blanquer, A. Ceccanti, E. Cetinic, M. David, C. Duma, A. López-García, G. Moltó, P. Orviz, Z. Sustr, M. Viljoen, F. Aguilar, L. Alves, M. Antonacci, L. A. Antonelli, S. Bagnasco,  **A.M.J.J. Bonvin**, R. Bruno, Y. Chen, A. Costa, D. Davidovic, B. Ertl, M. Fargetta, S. Fiore, S. Gallozzi, Z. Kurkcuoglu, L. Lloret, J. Martins, A. Nuzzo, P. Nassisi, C. Palazzo, J. Pina, E. Sciacca, D. Spiga, M. Tangaro, M. Urbaniak, S. Vallero, B. Wegh, V. Zaccolo, F. Zambelli, T. Zok. [INDIGO-DataCloud: a Platform to Facilitate Seamless Access to E-Infrastructures](https://doi.org/10.1007/s10723-018-9453-3). _J. Grid. Comp._ *16*, 381-408 (2018).
 
 * K. Elez, **A.M.J.J. Bonvin*** and A. Vangone*. Distinguishing crystallographic from biological interfaces in protein complexes: Role of intermolecular contacts and energetics for classification. _BMC Bioinformatics_, In press (2018).
 
