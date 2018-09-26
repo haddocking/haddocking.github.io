@@ -6,8 +6,8 @@ image:
 
 ## 2018 
 
-* W. Roseboom, M.G. Nazir, N.Y. Meiresonne, T. Mohammadi, J. Verheul, H. Buncherd, **A.M.J.J. Bonvin**, L.J. de Koning, C.G. de Koster, L. de Jong*, T. Den Blaauwen*. Mapping the contact sites of the Escherichia coli division initiating 
-proteins FtsZ and ZapA by BAMG cross-linking and site directed mutagenesis. _International Journal of Molecular Sciences_ In press (2018).
+* W. Roseboom, M.G. Nazir, N.Y. Meiresonne, T. Mohammadi, J. Verheul, H. Buncherd, **A.M.J.J. Bonvin**, L.J. de Koning, C.G. de Koster, L. de Jong*, T. Den Blaauwen*. [Mapping the contact sites of the Escherichia coli division initiating 
+proteins FtsZ and ZapA by BAMG cross-linking and site directed mutagenesis](https://doi.org/10.3390/ijms19102928). _International Journal of Molecular Sciences_ *19*, 2928 (2018).
 
 * A. Vangone*, J. Schaarschmidt, P. Koukos, C. Geng, N. Citro, M.E. Trellet, L.C. Xue and **A.M.J.J. Bonvin**. [Large-scale prediction of binding affinity in protein-small ligand complexes: the PRODIGY-LIG web server](https://doi.org/10.1093/bioinformatics/bty816). _Bioinformatics_, Advanced Online Publication (2018).
 
