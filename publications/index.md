@@ -6,6 +6,9 @@ image:
 
 ## 2018 
 
+* A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin**, A.V. Vargiu
+[An enhanced-sampling MD-based protocol for molecular docking](https://doi.org/10.1101/434092). BioRxiv https://doi.org/10.1101/434092
+
 * W. Roseboom, M.G. Nazir, N.Y. Meiresonne, T. Mohammadi, J. Verheul, H. Buncherd, **A.M.J.J. Bonvin**, L.J. de Koning, C.G. de Koster, L. de Jong*, T. Den Blaauwen*. [Mapping the contact sites of the Escherichia coli division initiating 
 proteins FtsZ and ZapA by BAMG cross-linking and site directed mutagenesis](https://doi.org/10.3390/ijms19102928). _International Journal of Molecular Sciences_ *19*, 2928 (2018).
 
