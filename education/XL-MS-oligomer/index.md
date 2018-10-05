@@ -446,6 +446,17 @@ The ranking of the clusters is based on the HADDOCK score. Consult the online [H
 pages for an explanation of the scoring scheme and the default weights used at various stages. 
 Remember that we have increased the weight of the distance restraints for our runs since we wanted to put more weight on the cross-links which we considered highly reliable.
 
+<details style="background-color:#DAE4E7"><summary><b>Don't want to wait for your results?</b>
+</summary>
+<li> <a href="https://surfdrive.surf.nl/files/index.php/s/tQuToprVwHZORnb" target="_blank">Download dimer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/files/index.php/s/za9ILYprxF9gDVw" target="_blank">Download trimer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/files/index.php/s/VkiC8cZBosVALBR" target="_blank">Download tetramer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/files/index.php/s/sAh09Cf2bJNykbk" target="_blank">Download pentamer HADDOCK run</a></li>
+
+</details>
+<br>
+
+
 Answer the following questions:
 
 <a class="prompt prompt-question"><b>Q8:</b>  How many clusters have been generated?</a>
