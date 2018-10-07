@@ -25,7 +25,14 @@
     status: Visiting Researcher
 
 -   name: Cristina Paissoni
+    url: http://sites.unimi.it/camilloni/
+    current: 'University of Milano, Italy'
     status: visiting postdoc
+
+-   name: Joerg Schaarschmidt
+    url:  http://www.kit.edu/english/
+    current: 'Karlsruhe Institute of Technology, Germany'
+    status: postdoc
 
 -   name: Irina Moreira 
     url:  http://www.moreiralab.com/
@@ -33,6 +40,8 @@
     status: postdoc
 
 -   name: Anna Vangone
+    url:  http://www.roche.com
+    current: 'Roche Diagnostics GmbH, Munich, Germany'
     status: postdoc
 
 -   name: Zeynep Kurkcuoglu

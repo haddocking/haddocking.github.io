@@ -11,10 +11,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Adrien.jpg
 
--   name: Joerg Schaarschmidt
-    position: Postdoctoral Researcher
-    avatar: /images/people/Jorg.jpg
-
 -   name: Mikael Trellet
     position: Postdoctoral Researcher
     avatar: /images/people/Mikael.jpg
@@ -46,6 +42,10 @@
 -   name: Andrea Basciu
     position: Visiting Ph.D Candidate
     avatar: /images/people/Andrea-Basciu.png
+
+-   name: Farzaneh Meimandi Parizi
+    position: Visiting Ph.D Candidate
+    avatar: /images/people/Farzaneh.jpg
 
 -   name: Zhengyue Zhang
     position: M.Sc Student
