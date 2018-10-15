@@ -94,15 +94,13 @@
     <ul>
         <li>
             {% if alumn.url %}
-            <a href="{{ alumn.url }}" target="_blank" class="">
                 <p>
-                    {{ alumn.name }} ({{ alumn.current }})
+                    <a href="{{ alumn.url }}" target="_blank" class="">{{ alumn.name }} ({{ alumn.current }})</a>
                     {% assign statuses = alumn.status | split:',' %}
                     {% for stat in statuses %}
                         <a class="btn btn-{{ stat }}">{{ stat | split:'-' | join:' ' | capitalize }}</a>
                     {% endfor %}
                 </p>
-            </a>
             {% else %}
                 <p>
                     {{ alumn.name }} ({{ alumn.current }})
