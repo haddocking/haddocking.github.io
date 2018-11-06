@@ -6,7 +6,12 @@ image:
 
 ## 2018 
 
-* A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin**, A.V. Vargiu
+* P.I. Koukos, I. Faro, C.W. van Noortand **A.M.J.J. Bonvin**. A membrane protein complex docking benchmark. _J. Mol. Biol._ In press (2018).
+
+* C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations.
+  _Proteins: Struc. Funct. &amp; Bioinformatics_ In press (2018).
+
+* A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu
 [An enhanced-sampling MD-based protocol for molecular docking](https://doi.org/10.1101/434092). BioRxiv https://doi.org/10.1101/434092
 
 * W. Roseboom, M.G. Nazir, N.Y. Meiresonne, T. Mohammadi, J. Verheul, H. Buncherd, **A.M.J.J. Bonvin**, L.J. de Koning, C.G. de Koster, L. de Jong*, T. Den Blaauwen*. [Mapping the contact sites of the Escherichia coli division initiating 
