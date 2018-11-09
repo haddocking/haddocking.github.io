@@ -6,7 +6,7 @@ image:
 
 ## 2018 
 
-* P.I. Koukos, I. Faro, C.W. van Noortand **A.M.J.J. Bonvin**. A membrane protein complex docking benchmark. _J. Mol. Biol._ In press (2018).
+* P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ Advanced Online Publication (2018).
 
 * C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations.
   _Proteins: Struc. Funct. &amp; Bioinformatics_ In press (2018).
