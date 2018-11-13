@@ -221,10 +221,10 @@ In case you found a reasonable prediction, check what was its rank in the server
 
 Let's have a more detailed look at the quality and ranking of the generated models. For this we will calculate CAPRI statistics, namely the interface RMSD (i-RMSD) and fraction of native contacts (Fnat) compared to the reference crystal structure. CAPRI has defined the following criteria to assess the quality of a model:
 
-* **Unacceptable**:     i-RMSD >4Å or Fnat < 0.1
-* **Acceptable**:       4Å <=i-RMSD < 2Å and Fnat > 0.1
+* **Unacceptable**:    i-RMSD >4Å or Fnat < 0.1
+* **Acceptable**:      4Å <=i-RMSD < 2Å and Fnat > 0.1
 * **Medium**:          2Å <=i-RMSD < 1Å and Fnat > 0.3
-* **Acceptable**:       i-RMSD < 1Å and Fnat > 0.5
+* **High**:            i-RMSD < 1Å and Fnat > 0.5
 
 In order to perform the more quantitative analysis, download the full run from the results page (provide in a link in the first line of the result page) and unpack it. Alternatively, download the pre-calculated data from the following links:
 
