@@ -152,7 +152,7 @@ In the remaining of this tutorial we will work with Cathepsin K, but you are wel
 <hr>
 ## Inspecting and preparing Cathepsin K for docking
 
-We will now inspect the Cathepsin L structure. For this start PyMOL and in the command line window of PyMOL (indicated by PyMOL>) type:
+We will now inspect the Cathepsin K structure. For this start PyMOL and in the command line window of PyMOL (indicated by PyMOL>) type:
 
 <a class="prompt prompt-pymol">
 fetch 3KW9<br>
@@ -364,7 +364,7 @@ and speed. However for ligand docking, interface-RMSD remains the method of choi
 Clustering method (RMSD or Fraction of Common Contacts (FCC)) -> RMSD
 </a>
 <a class="prompt prompt-info">
-RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 2&Aring;
+RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 1&Aring;
 </a>	
 
 * **Step 6:** Apply some ligand-specific scoring setting. For this unfold the **Scoring parameter menu**:
