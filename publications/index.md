@@ -4,6 +4,10 @@ image:
   feature: pages/banner_publications-mini.jpg
 ---
 
+## 2019 
+
+* C. Geng. Li C. Xue, J. Roel-Touris and **A.M.J.J. Bonvin**. Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it? _WIREs Computational Molecular Science_ In Press.
+
 ## 2018 
 
 * P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ Advanced Online Publication (2018).
@@ -23,7 +27,7 @@ proteins FtsZ and ZapA by BAMG cross-linking and site directed mutagenesis](http
 
 * D. Salomoni, I. Campos, L. Gaido, J. Marco de Lucas, P. Solagna, J. Gomes, L. Matyska, P. Fuhrman, M. Hardt, G. Donvito, L. Dutka, M. Plociennik, R. Barbera, I. Blanquer, A. Ceccanti, E. Cetinic, M. David, C. Duma, A. López-García, G. Moltó, P. Orviz, Z. Sustr, M. Viljoen, F. Aguilar, L. Alves, M. Antonacci, L. A. Antonelli, S. Bagnasco,  **A.M.J.J. Bonvin**, R. Bruno, Y. Chen, A. Costa, D. Davidovic, B. Ertl, M. Fargetta, S. Fiore, S. Gallozzi, Z. Kurkcuoglu, L. Lloret, J. Martins, A. Nuzzo, P. Nassisi, C. Palazzo, J. Pina, E. Sciacca, D. Spiga, M. Tangaro, M. Urbaniak, S. Vallero, B. Wegh, V. Zaccolo, F. Zambelli, T. Zok. [INDIGO-DataCloud: a Platform to Facilitate Seamless Access to E-Infrastructures](https://doi.org/10.1007/s10723-018-9453-3). _J. Grid. Comp._ *16*, 381-408 (2018).
 
-* K. Elez, **A.M.J.J. Bonvin*** and A. Vangone. [Distinguishing crystallographic from biological interfaces in protein complexes: Role of intermolecular contacts and energetics for classification](https://doi.org/10.1186/s12859-018-2414-9). _BMC Bioinformatics_, *19 (Suppl 15)*:438 (2018).
+* K. Elez, **A.M.J.J. Bonvin*** and A. Vangone. [Distinguishing crystallographic from biological interfaces in protein complexes: Role of intermolecular contacts and energetics for classification](https://doi.org/10.1186/s12859-018-2414-9). _BMC Bioinformatics_, *19 (Suppl 15)*, 438 (2018).
 
 * **A.M.J.J. Bonvin**, E. Karaca, P.L. Kastritis & J.P.G.L.M. Rodrigues. Correspondence: [Defining distance restraints in HADDOCK](https://doi.org/10.1038/s41596-018-0017-6). _Nature Protocols_ *13*, 1503 (2018). [Free online only access](https://rdcu.be/1OyH)
 
