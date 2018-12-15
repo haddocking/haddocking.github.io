@@ -26,11 +26,11 @@ be installed.
 The PowerFit and HADDOCK software are described in
 
 * G.C.P. van Zundert and A.M.J.J. Bonvin.
-[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73).
+[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](https://doi.org/doi:10.3934/biophy.2015.2.73).
 _AIMS Biophysics_. *2*, 73-87 (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
-[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014)
+[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](https://doi.org/10.1016/j.str.2015.03.014)
 _Structure._ *23*, 949-960 (2015).
 
 Throughout the tutorial, colored text will be used to refer to questions or 

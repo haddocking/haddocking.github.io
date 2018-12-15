@@ -12,7 +12,7 @@ image:
 In this tutorial we will use HADDOCK in its ab-initio mode to try to identify putative binding sites for small ligands on a protein receptor, 
 using as example the multidrug exporter AcrB, described in the following publication:
 
-[Drug export pathway of multidrug exporter AcrB revealed by DARPin inhibitors](http://dx.doi.org/doi:10.1371/journal.pbio.0050007).<br>
+[Drug export pathway of multidrug exporter AcrB revealed by DARPin inhibitors](https://doi.org/doi:10.1371/journal.pbio.0050007).<br>
 Sennhauser G, Amstutz P, Briand C, Storchenegger O, Grütter MG<BR>
 *PLoS Biol.* **5** e7 (2007)
 
@@ -43,7 +43,7 @@ For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.
 A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
@@ -532,7 +532,7 @@ You can distinguish the various chains by the corresponding resisude numbering:
 With this knowledgle at hand, try to identify in which chain we find a binding pocket highlighted by the most contacted residues from our analysis.
 </a>
 
-The original paper by [Sennhauser *et al*](http://dx.doi.org/doi:10.1371/journal.pbio.0050007) indicates that the three chains are locked in different conformations.
+The original paper by [Sennhauser *et al*](https://doi.org/doi:10.1371/journal.pbio.0050007) indicates that the three chains are locked in different conformations.
 They report in particular that chain B has the largest channel opening in their structure:
 
 *"The three AcrB subunits are bound in three different conformations, revealing three distinct channels ([**Figure 3**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). The width of these channels is sufficient for the passage of typical AcrB substrates. In subunit A, a channel is observed, extending from the external depression through the large periplasmic domain reaching almost the central funnel at the top of the protein ([**Figure 4A**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). Here the side chains of residues Gln124, Gln125, and Tyr758 form a gate, closing the channel and therefore preventing direct access to the central funnel. ... A similar channel, although a little wider, is present in subunit B ([**Figure 4B**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). In addition, the channel is open not only to the periplasm but also to the membrane bilayer at the periphery of the TM domain. In subunit C, the channel entrances are closed due to movements of PC2 and PN1 ([**Figure 4C**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004))."*
@@ -649,7 +649,7 @@ show mesh<br>
 spectrum b, blue_white_red, minimum=1, maximum=100<br>
 </a>
 
-You should now be looking only at highly contacted regions of chain B. There is a clear binding pocket visible in the chainB corresponding to the entrance of the channel as described by [Sennhauser *et al*](http://dx.doi.org/doi:10.1371/journal.pbio.0050007) (see [Figure 3](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). This is the left view in the figure below. A second highly contacted region seems to be in the inside of the trimer (right picture below).
+You should now be looking only at highly contacted regions of chain B. There is a clear binding pocket visible in the chainB corresponding to the entrance of the channel as described by [Sennhauser *et al*](https://doi.org/doi:10.1371/journal.pbio.0050007) (see [Figure 3](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). This is the left view in the figure below. A second highly contacted region seems to be in the inside of the trimer (right picture below).
 
 <figure align="center">
     <img src="/education/HADDOCK-binding-sites/AcrB-rifampicin-contacts.png">

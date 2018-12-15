@@ -16,7 +16,7 @@ This tutorial consists of the following sections:
 This use-case is a first attempt to blur different software and take on the challenge of "covalent docking", an important part of pharceutical chemistry that has been barely touched upon by the integrative modelling community. For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"} to predict the three dimensional structures of a covalently bound ligand to cathepsin proteins. A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
@@ -76,7 +76,7 @@ Osteoporosis affects about 10% of the population in Europe, Japan and North Amer
 
 We will use HADDOCK to predict the covalent binding of a small ligand on a protein receptor, using as example a purine nitrile derived inhibitor of cathepsin K (see fig. 1), described in the following publication:<br>
 
-* E. Altmann, S.W. Cowan-Jacob and M. Missbach. [Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K](http://doi.org/doi:10.1021/jm0493111){:target="_blank"} _J. Med. Chem_ (2004)
+* E. Altmann, S.W. Cowan-Jacob and M. Missbach. [Novel Purine Nitrile Derived Inhibitors of the Cysteine Protease Cathepsin K](https://doi.org/doi:10.1021/jm0493111){:target="_blank"} _J. Med. Chem_ (2004)
 
 <figure align="center">
 <img src="media/cover_paper.gif">
@@ -589,13 +589,13 @@ Is there any correlation between docking score and IC50s?
 See:
 
 * P.L. Kastritis and A.M.J.J. Bonvin.
-[Molecular origins of binding affinity: Seeking the Archimedean point.](http://dx.doi.org/doi:10.1016/j.sbi.2013.07.001){:target="_blank"}
+[Molecular origins of binding affinity: Seeking the Archimedean point.](https://doi.org/doi:10.1016/j.sbi.2013.07.001){:target="_blank"}
 _Curr. Opin. Struct. Biol._, *23*, 868-877 (2013).
 * P.L. Kastritis and A.M.J.J. Bonvin.
-[On the binding affinity of macromolecular interactions: daring to ask why proteins interact](http://dx.doi.org/doi:10.1098/rsif.2012.0835){:target="_blank"}
+[On the binding affinity of macromolecular interactions: daring to ask why proteins interact](https://doi.org/doi:10.1098/rsif.2012.0835){:target="_blank"}
 _J. R. Soc. Interface_, *10*, doi: 10.1098/rsif.2012.0835 (2013).
 * P. Kastritis and A.M.J.J. Bonvin.
-[Are scoring functions in protein-protein docking ready to predict interactomes? Clues from a novel binding affinity benchmark.](http://dx.doi.org/doi:10.1021/pr9009854){:target="_blank"}
+[Are scoring functions in protein-protein docking ready to predict interactomes? Clues from a novel binding affinity benchmark.](https://doi.org/doi:10.1021/pr9009854){:target="_blank"}
 _J. Proteome Research_, *9*, 2216-2225 (2010).
 
 

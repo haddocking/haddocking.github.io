@@ -7,7 +7,7 @@ tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-In a recent article we report the performance of HADDOCK in the 2018 iteration of the Grand Challenge organised by the [D3R](https://drugdesigndata.org) consortium. Building on the [findings of our participation in last year’s challenge](http://dx.doi.org/10.1007/s10822-017-0049-y), we significantly improved our pose prediction protocol which resulted in a mean RMSD for the top scoring pose of 3.04 and 2.67 Å for the cross-docking and self-docking experiments respectively, which corresponds to an overall success rate of 63% and 71% when considering the top1 and top5 models respectively.
+In a recent article we report the performance of HADDOCK in the 2018 iteration of the Grand Challenge organised by the [D3R](https://drugdesigndata.org) consortium. Building on the [findings of our participation in last year’s challenge](https://doi.org/10.1007/s10822-017-0049-y), we significantly improved our pose prediction protocol which resulted in a mean RMSD for the top scoring pose of 3.04 and 2.67 Å for the cross-docking and self-docking experiments respectively, which corresponds to an overall success rate of 63% and 71% when considering the top1 and top5 models respectively.
 
 This performance ranks HADDOCK as the 6th and 3rd best performing group (excluding multiple submissions from a same group) out of a total of 44 and 47 submissions respectively. 
 

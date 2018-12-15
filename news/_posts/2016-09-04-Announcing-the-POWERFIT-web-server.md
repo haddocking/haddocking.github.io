@@ -19,11 +19,11 @@ PowerFit automatically fits high-resolution atomic structures in cryo-EM densiti
 Read more about PowerFit in the following publications:
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
-[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73).
+[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](https://doi.org/doi:10.3934/biophy.2015.2.73).
 _AIMS Biophysics_. *2*, 73-87 (2015).
 
 * G.C.P van Zundert and  **A.M.J.J. Bonvin**.
-[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011).
+[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](https://doi.org/10.1016/j.jsb.2016.06.011).
 _J. Struct. Biol._, *195*, 252-258 (2016).
 	
 POWERFIT is also freely available for local installation through our GitHub repository: [https://github.com/haddocking/powerfit](https://github.com/haddocking/powerfit). 

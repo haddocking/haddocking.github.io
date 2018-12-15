@@ -30,7 +30,7 @@ first overview of the interaction space between the two molecules with images au
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
-([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)).
+([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111)).
 **We added two false positive restraints - it is your task to try to identify these!** For this, we use DisVis 
 to try to filter out these false positive restraints while assessing the true interaction space between the two chains.
 We will then use the interaction analysis feature of DisVis that allows for a more complete analysis of the residues 
@@ -42,15 +42,15 @@ Finally, we will show how the restraints can be provided to HADDOCK in order to 
 DisVis and HADDOCK are described in:
 
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
-[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](http://dx.doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
+[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](https://doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
 _J. Mol. Biol._. *429(3)*, 399-407 (2016).
 
 * G.C.P van Zundert and A.M.J.J. Bonvin. 
-[DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](http://dx.doi.org/doi:10.1093/bioinformatics/btv333){:target="_blank"}. 
+[DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](https://doi.org/doi:10.1093/bioinformatics/btv333){:target="_blank"}. 
   _Bioinformatics_ *31*, 3222-3224 (2015).
 
 * G.C.P. van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries, A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}
 _J. Mol. Biol._ *428(4)*, 720-725 (2016).
 
 
@@ -378,7 +378,7 @@ You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DI
 </details><br>
 
 In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera and use a
-recently published [article](https://dx.doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue 
+recently published [article](https://doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue 
 of the 26S proteasome (from *S. cerevisiae*). This structure has been solved by X-ray crystallography at 2.4Å resolution (PDBid 
 [5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}). We will only use the two chains that are of interest, 
 chains **D** and **C** corresponding to **PRE5** and **PUP2** respectively, in PDB file `5l5a_CD.pdb`.

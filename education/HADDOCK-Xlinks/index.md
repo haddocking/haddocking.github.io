@@ -20,7 +20,7 @@ This tutorial will demonstrate the use of HADDOCK for predicting the structure o
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
-([Leitner et al., 2014](https://dx.doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DisVis tutorial](/education/disvis-webserver)
+([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DisVis tutorial](/education/disvis-webserver)
 to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DisVis is,
 that it allows to identify the surface residues that are most often contacted in all possible models of the complex 
 satisfying the cross-links. This is an additional information which might be useful to guide the docking.
@@ -31,7 +31,7 @@ docking runs using our [HADDOCK2.2 webserver](http://haddock.science.uu.nl/servi
 A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
@@ -139,7 +139,7 @@ are homology models obtained from [SwissModel](https://swissmodel.expasy.org/rep
 content of the PDB file if you open it in a text editor for example).
 
 From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 
-2014](https://dx.doi.org/10.1073/pnas.1320298111)).
+2014](https://doi.org/10.1073/pnas.1320298111)).
 These are provided in the `restraints_filtered.txt` file in the data you just downloaded:
 
 <pre style="background-color:#DAE4E7">
@@ -833,7 +833,7 @@ analysis.
 ## Comparison with the crystal structure of an homologous complex
 
 In order to check if any of the docking models we obtained using the various scenarios makes sense,
-we will compare them to a recently published [article](https://dx.doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue 
+we will compare them to a recently published [article](https://doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue 
 of the 26S proteasome (from *S. cerevisiae*). This structure has been solved by X-ray crystallography at 2.4Å resolution (PDBid 
 [5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}). 
 We will only use the two chains that are of interest, namely chains **D** and **C** corresponding to **PRE5** and **PUP2** respectively. 

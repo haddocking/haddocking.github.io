@@ -7,7 +7,7 @@ tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-With our recent [Nature Methods](http://dx.doi.org/10.1038/nmeth.4392) publication we have now officially extended HADDOCK to support up to 20 separate molecules, expanding its capabilities as truly integrative modelling platform.
+With our recent [Nature Methods](https://doi.org/10.1038/nmeth.4392) publication we have now officially extended HADDOCK to support up to 20 separate molecules, expanding its capabilities as truly integrative modelling platform.
 
 
 <figure align="center">
@@ -25,6 +25,6 @@ We hope in a near future to release a new version of our [HADDOCK web portal](ha
 
 Read more about this in our publication:
 
-* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](http://dx.doi.org/10.1038/nmeth.4392). _Nature Methods_ *14*, 897-902 (2017).
+* E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](https://doi.org/10.1038/nmeth.4392). _Nature Methods_ *14*, 897-902 (2017).
 
 And in the following [**news item**](https://www.uu.nl/en/news/new-platform-for-elucidation-of-large-protein-and-nucleic-acid-structures-in-infections).
