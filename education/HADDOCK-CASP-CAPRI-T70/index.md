@@ -17,7 +17,7 @@ For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.
 A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](http://dx.doi.org/doi:10.1016/j.jmb.2015.09.014).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
@@ -27,7 +27,7 @@ _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a h
 Further, multi-body docking and the use of symmetry restraints is described in the following paper:
 
 * E. Karaca, A.S.J. Melquiond, S.J. de Vries, P.L. Kastritis and A.M.J.J. Bonvin.
-[Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](http://dx.doi.org/doi:10.1074/mcp.M000051-MCP201)
+[Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](https://doi.org/doi:10.1074/mcp.M000051-MCP201)
 _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
 
 

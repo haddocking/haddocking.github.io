@@ -16,5 +16,5 @@ HADDOCK is one on the [scientific application](https://www.egi.eu/use-cases/scie
 The full story was published in Nature Communications:
 
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, A.M.J.J. Bonvin, J. Milner, S. Kelly, O. Byron and B. Smith.
-[Structure of the bacterial plant-ferredoxin receptor FusA](http://dx.doi.org/10.1038/NCOMMS13308).
+[Structure of the bacterial plant-ferredoxin receptor FusA](https://doi.org/10.1038/NCOMMS13308).
 _Nature Communications_, *7*, 13308 (2016).

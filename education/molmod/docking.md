@@ -364,7 +364,7 @@ Since we have used [CPORT](http://milou.science.uu.nl/services/CPORT) to define 
 on MDM2 it is recommended to increase the fraction of restraints 
 randomly deleted for each docking trial. By default this is 50%. In CPORT, however, we rather overpredict than underpredict
 to make sure that the binding site is covered by our predictions. Because of this overprediction it is therefore recommended to
-increase the fraction of randomly deleted restraints to 87.5% (as described in our [CPORT paper](http://dx.doi.org/doi:10.1371/journal.pone.0017695)).
+increase the fraction of randomly deleted restraints to 87.5% (as described in our [CPORT paper](https://doi.org/doi:10.1371/journal.pone.0017695)).
 For this change the value of the number of partitions:
 
 <a class="prompt prompt-info">

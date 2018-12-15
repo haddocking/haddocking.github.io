@@ -36,4 +36,4 @@ You will work independently - although with guidance - on your own project, whic
 
 
 ### References
-• J.P.G.L.M Rodrigues and A.M.J.J. Bonvin. [Integrative computational modeling of protein interactions.](http://dx.doi.org/doi:10.1111/febs.12771) _FEBS J._, *281*, 1988-2003 (2014).
+• J.P.G.L.M Rodrigues and A.M.J.J. Bonvin. [Integrative computational modeling of protein interactions.](https://doi.org/doi:10.1111/febs.12771) _FEBS J._, *281*, 1988-2003 (2014).

@@ -12,7 +12,7 @@ An article describing our experience in teaching molecular modelling to our chem
 has just appeared in [Biochemistry and Molecular Biology Education (BAMBE)](http://onlinelibrary.wiley.com/doi/10.1002/bmb.20941/abstract), a Wiley journal:
 
 * J.P.G.L.M. Rodrigues, A.S.J. Melquiond and  **A.M.J.J. Bonvin**.
-[Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](http://dx.doi.org/doi:10.1002/bmb.20941).
+[Molecular Dynamics Characterization of the Conformational Landscape of Small Peptides: A series of hands-on collaborative practical sessions for undergraduate students](https://doi.org/doi:10.1002/bmb.20941).
 _Biochemistry and Molecular Biology Education_, Advanced Online Publication (2016).
 
 

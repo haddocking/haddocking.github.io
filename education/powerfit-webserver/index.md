@@ -38,19 +38,19 @@ detailed analysis of the results of a run with the methyltransferase KsgA, anoth
 The PowerFit and HADDOCK software are described in:
 
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
-[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](http://dx.doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
+[The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](https://doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
 _J. Mol. Biol._. *429(3)*, 399-407 (2016).
 
 * G.C.P van Zundert and A.M.J.J. Bonvin. 
-[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](http://dx.doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}. 
+[Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](https://doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}. 
   _J. Struct. Biol._ *195*, 252-258 (2016).
 
 * G.C.P. van Zundert and A.M.J.J. Bonvin.
-[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](http://dx.doi.org/doi:10.3934/biophy.2015.2.73){:target="_blank"}.
+[Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit](https://doi.org/doi:10.3934/biophy.2015.2.73){:target="_blank"}.
 _AIMS Biophysics_. *2*, 73-87 (2015).
 
 * G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
-[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014){:target="_blank"}.
+[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](https://doi.org/10.1016/j.str.2015.03.014){:target="_blank"}.
 _Structure._ *23*, 949-960 (2015).
 
 
@@ -229,7 +229,7 @@ with the same input [here][link-powerfit-tutorial]{:target="_blank"}.
 
 The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better), 
 which, together with its associated number of standard deviations (σ difference), is an excellent indicator of the accuracy of a fit 
-(see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](http://dx.doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}
+(see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](https://doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}
 and PowerFit [help page](link-powerfit-help){:target="_blank"}).
 To enhance the interpretation of the results in the `Solutions` table, the entries are colored in a green gradient up to 
 a sigma difference of 3.
@@ -405,7 +405,7 @@ Such clashes can be removed by making use of the HADDOCK-EM flexible refinement 
 This is demonstrated in the [command line version][link-haddock-tuto]{:target="_blank"} of the PowerFit tutorial and described in:
 
 * G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
-[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](http://dx.doi.org/10.1016/j.str.2015.03.014){:target="_blank"}
+[Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](https://doi.org/10.1016/j.str.2015.03.014){:target="_blank"}
 _Structure._ *23*, 949-960 (2015).
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to
