@@ -10,7 +10,9 @@ image:
 
 ## 2018 
 
-* P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ Advanced Online Publication (2018).
+* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.1101/483305). _bioRxiv_, *483305* 2018
+
+* P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ *430*, 5246-‌5256 (2018).
 
 * C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. [iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations](https://doi.org//10.1002/prot.25630).
   _Proteins: Struc. Funct. &amp; Bioinformatics_ Advanced Online Publication (2018).
