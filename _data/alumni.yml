@@ -149,6 +149,14 @@
     current: 'Medical University of Vienna, Austria'
     status: phd
     
+-   name: Andrea Basciu
+    current: 'University of Cagliari, Italy'
+    status: visiting-phd
+
+-   name: Miguel Pedrouzo
+    current: 'University of Valencia, Spain'
+    status: visiting-phd
+
 -   name: Malgorzata Szelag
     url: http://amu.academia.edu/Ma?gorzataSzelag
     current: 'Adam Mickiewicz University, Poznan, Poland'
@@ -162,10 +170,6 @@
     current: 'Cagliari University, Italy'
     status: visiting-phd
 
--   name: Miguel Pedrouzo
-    current: 'University of Valencia, Spain'
-    status: visiting-phd
-
 -   name: Siddarth Narasimhan
     url: http://www.uu.nl/nmr
     current: 'Solid state NMR group, Utrecht, the Netherlands'
@@ -175,8 +179,7 @@
     status: student
 
 -   name: Mehdi Nellen
-    url: http://www.linkedin.com/pub/mehdi-nellen/67/920/677
-    current: 'Birte Höcker Group, Max Planck Campus Tübingen, Germany'
+    current: ' '
     status: student
 
 -   name: Annin Ramsing
@@ -185,8 +188,7 @@
     status: student
 
 -   name: Charleen Don
-    url: http://www.riniker.ethz.ch/people/charleen
-    current: 'ETH, Zurich, Switzerland'
+    current: 'University of Basel, Switzerland'
     status: student
     
 -   name: Koen Visscher
@@ -220,6 +222,12 @@
 
 -   name: Sevilay Gülesen
     current: 'Kadir Has University, Istanbul, Turkey'
+    status: student
+
+-   name: Zhengyue Zhang
+    status: student
+
+-   name: Angelina Claij
     status: student
 
 -   name: Mick Walter
