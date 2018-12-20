@@ -6,11 +6,15 @@ image:
 
 ## 2019 
 
-* C. Geng. Li C. Xue, J. Roel-Touris and **A.M.J.J. Bonvin**. Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it? _WIREs Computational Molecular Science_ In Press.
+* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
+
+* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin** and L.C. Xue. Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it? _WIREs Computational Molecular Science_ In Press (2019).
 
 ## 2018 
 
-* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.1101/483305). _bioRxiv_, *483305* 2018
+* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin**. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1101/498584) _BioRxiv_ https://doi.org/10.1101/498584 (2018).
+
+* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* 2018
 
 * P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ *430*, 5246-‌5256 (2018).
 
