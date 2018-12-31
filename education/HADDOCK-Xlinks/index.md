@@ -482,7 +482,7 @@ Click now on the link to the results page. While your input data are being valid
 </figure>
 
 During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of 
-[Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the 
+[Molprobity][link-molprobity]{:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the 
 protonation state of histidine residues. Once this has been successfully done, the page will indicate that your job is 
 first QUEUED, and then RUNNING.
 
@@ -977,4 +977,5 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 [link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
 [link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
 [link-haddock-register]: http://haddock.science.uu.nl/services/HADDOCK2.2/register.html "HADDOCK web server registration"
+[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-xwalk]: http://www.xwalk.org
