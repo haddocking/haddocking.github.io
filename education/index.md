@@ -36,6 +36,10 @@ We offer various [research projects](/education/research-projects/) to both bach
   cross-linking data in HADDOCK.
   This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](http://www.pymol.org) for visualisation/analysis.
 
+* [**HADDOCK CA-CA restraints guided docking tutorial**](/education/HADDOCK-CACA-guided):
+  A tutorial demonstrating a template-based approach to model protein-protein complexes. It combines the PS-HomPPI web server to find suitable templates and generate CA-CA distance restraints and HADDOCK for the CA-CA guided modelling.
+  This tutorial does not require any Linux expertise and only makes use of the PS-HomPPI and HADDOCK web servers and [PyMol](http://www.pymol.org) for visualisation/analysis.
+
 * [**HADDOCK ab-initio, multi-body symmetrical docking tutorial**](/education/HADDOCK-CASP-CAPRI-T70):
   A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
   It is based on a former CASP-CAPRI target (T70).
