@@ -164,7 +164,7 @@ in it0, they are the result of five minimization trials and for each of these th
 sampled. Effectively, the 1000 models written to disk are thus the results of the sampling of 10.000 docking solutions.
 
 The final models are automatically clustered based on a specific similarity measure - either the *positional interface 
-ligand RMSD* (iL-RMSD) that captures conformational changes about the interface by fitting on the interface of the 
+ligand RMSD* (il-RMSD) that captures conformational changes about the interface by fitting on the interface of the 
 receptor (the first molecule) and calculating the RMSDs on the interface of the smaller partner, or the *fraction of 
 common contacts* (current default) that measures the similarity of the intermolecular contacts. For RMSD clustering, 
 the interface used in the calculation is automatically defined based on an analysis of all contacts made in all models. 
@@ -338,7 +338,7 @@ Distance restraints for use in HADDOCK are defined as (following the [CNS][link-
     assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
-The lower limit for the distance is calculated as: distance minus lower-bound correction, and the upper limit as: distance plus upper-bound correction. 
+The lower limit for the distance is calculated as: distance minus lower-bound correction, and the upper limit as: distance plus upper-bound correction. There is often confusion about this definition of lower and upper distance bounds, something we addressed in a recent correspondence to [Nature Protocols](https://www.nature.com/articles/s41596-018-0017-6). 
 
 Here would be an example of a distance restraint between the alpha carbons (CAs) of residues 128 and 21 in chains A and B with an allowed distance range between 13.263 (= 13.999-0.736) and 14.708 (= 13.999+0.709) Å:
 
