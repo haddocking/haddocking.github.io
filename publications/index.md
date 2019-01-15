@@ -8,7 +8,7 @@ image:
 
 * M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
 
-* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin** and L.C. Xue. Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it? _WIREs Computational Molecular Science_ In Press (2019).
+* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin** and L.C. Xue. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/journal/17590884) _WIREs Computational Molecular Science_ Advanced Online Publication (2019).
 
 ## 2018 
 
