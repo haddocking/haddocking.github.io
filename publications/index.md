@@ -10,6 +10,9 @@ image:
 
 * C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin** and L.C. Xue. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ Advanced Online Publication (2019).
 
+* C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. [iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations](https://doi.org//10.1002/prot.25630).
+  _Proteins: Struc. Funct. &amp; Bioinformatics_ *87*, 110-119  (2019).
+
 ## 2018 
 
 * M.F. Broekema, M.P.G. Massink, C. Donato, J. de Ligt, J. Schaarschmidt, M.G. Schooneman, F.S. van Nierop, D. Melchers, M.N. Gerding, R. Houtman, **A.M.J.J. Bonvin**, A.R. Majithia, H. Monajemi, G.W. van Haaften, M.R. Soeters and E. Kalkhoven. [Natural helix 9 mutants of PPARγ differently affect its transcriptional activity](https://doi.org/10.1016/j.molmet.2018.12.005). _Molecular Metabolism_ Advanced Online Publication (2018).
@@ -19,9 +22,6 @@ image:
 * J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* 2018
 
 * P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ *430*, 5246-‌5256 (2018).
-
-* C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. [iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations](https://doi.org//10.1002/prot.25630).
-  _Proteins: Struc. Funct. &amp; Bioinformatics_ Advanced Online Publication (2018).
 
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu
 [An enhanced-sampling MD-based protocol for molecular docking](https://doi.org/10.1101/434092). BioRxiv https://doi.org/10.1101/434092
