@@ -6,12 +6,16 @@ image:
 
 ## 2019 
 
+* C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, M. Winn. _Journal of Structural Biology: X_, In Press (2019).
+
 * M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
 
 * C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin** and L.C. Xue. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ Advanced Online Publication (2019).
 
 * C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. [iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations](https://doi.org//10.1002/prot.25630).
   _Proteins: Struc. Funct. &amp; Bioinformatics_ *87*, 110-119  (2019).
+
+* P.I. Koukos, L.C. Xue and **A.M.J.J. Bonvin**. [Protein-ligand pose and affinity prediction. Lessons from D3R Grand Challenge 3](https://doi.org/10.1007/s10822-018-0148-4).  _J. Comp. Aid. Mol. Des._ *33*, 83-91 (2019).
 
 ## 2018 
 
@@ -30,8 +34,6 @@ image:
 proteins FtsZ and ZapA by BAMG cross-linking and site directed mutagenesis](https://doi.org/10.3390/ijms19102928). _International Journal of Molecular Sciences_ *19*, 2928 (2018).
 
 * A. Vangone*, J. Schaarschmidt, P. Koukos, C. Geng, N. Citro, M.E. Trellet, L.C. Xue and **A.M.J.J. Bonvin**. [Large-scale prediction of binding affinity in protein-small ligand complexes: the PRODIGY-LIG web server](https://doi.org/10.1093/bioinformatics/bty816). _Bioinformatics_, Advanced Online Publication (2018).
-
-* P.I. Koukos, L.C. Xue and **A.M.J.J. Bonvin**. [Protein-ligand pose and affinity prediction. Lessons from D3R Grand Challenge 3](https://doi.org/10.1007/s10822-018-0148-4).  _J. Comp. Aid. Mol. Des._ Advanced Online Publication (2018).
 
 * D. Salomoni, I. Campos, L. Gaido, J. Marco de Lucas, P. Solagna, J. Gomes, L. Matyska, P. Fuhrman, M. Hardt, G. Donvito, L. Dutka, M. Plociennik, R. Barbera, I. Blanquer, A. Ceccanti, E. Cetinic, M. David, C. Duma, A. López-García, G. Moltó, P. Orviz, Z. Sustr, M. Viljoen, F. Aguilar, L. Alves, M. Antonacci, L. A. Antonelli, S. Bagnasco,  **A.M.J.J. Bonvin**, R. Bruno, Y. Chen, A. Costa, D. Davidovic, B. Ertl, M. Fargetta, S. Fiore, S. Gallozzi, Z. Kurkcuoglu, L. Lloret, J. Martins, A. Nuzzo, P. Nassisi, C. Palazzo, J. Pina, E. Sciacca, D. Spiga, M. Tangaro, M. Urbaniak, S. Vallero, B. Wegh, V. Zaccolo, F. Zambelli, T. Zok. [INDIGO-DataCloud: a Platform to Facilitate Seamless Access to E-Infrastructures](https://doi.org/10.1007/s10723-018-9453-3). _J. Grid. Comp._ *16*, 381-408 (2018).
 
