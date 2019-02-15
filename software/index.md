@@ -69,6 +69,8 @@ This page provide you links to software and software manuals of the computationa
 
 * Docking benchmark of membrane protein complexes ([GitHub](https://github.com/haddocking/MemCplxDB)) and associated decoy dataset [ https://doi.org/10.15785/SBGRID/618]( https://doi.org/10.15785/SBGRID/618)
 
+* Cleaned Docking Benchmark 5 dataset, HADDOCK-ready, with unbound and bound structures matched: [https://github.com/haddocking/BM5-clean](https://github.com/haddocking/BM5-clean)
+
 * HADDOCK docking decoys for the new entries (55) of the protein-protein Docking Benchmark5: [https://data.sbgrid.org/dataset/131/](https://data.sbgrid.org/dataset/131/)
 
 * HADDOCK refined models for the biological/crystallographic interfaces collected in the DC and MANY datasets: [https://doi.org/10.15785/SBGRID/566](https://doi.org/10.15785/SBGRID/566)
