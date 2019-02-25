@@ -90,7 +90,7 @@ _J. Mol. Biol._, *429*, 399-407 (2017).
 <hr />
 * A. Vangone, J.P.G.L.M. Rodrigues, L.C. Xue, G.C.P. van Zundert, C. Geng, Z. Kurkcuoglu, M. Nellen, S. Narasimhan, E. Karaca, M. van Dijk, A.S.J. Melquiond, K.M. Visscher, M. Trellet, P.L. Kastritis and **A.M.J.J. Bonvin**.
 [Sense and Simplicity in HADDOCK Scoring: Lessons from CASP-CAPRI Round 1](http://onlinelibrary.wiley.com/doi/10.1002/prot.25198/full).
-_Proteins: Struc. Funct. &amp; Bioinformatics_, *85*, 417-423 (2016).
+_Proteins: Struc. Funct. &amp; Bioinformatics_, *85*, 417-423 (2016). See also erratum: [https://doi.org/10.1002/prot.25339](https://doi.org/10.1002/prot.25339)
 
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
 [Structure of the bacterial plant-ferredoxin receptor FusA](https://doi.org/10.1038/ncomms13308).
