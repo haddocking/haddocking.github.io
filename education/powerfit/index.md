@@ -6,6 +6,13 @@ tags: [PowerFit, Cryo-EM, HADDOCK, Ribosome, Chimera, rigid body fitting]
 image:
   feature: pages/banner_education-thin.jpg
 ---
+This tutorial consists of the following sections:
+
+* table of contents
+{:toc}
+
+
+
 
 ## Introduction
 
