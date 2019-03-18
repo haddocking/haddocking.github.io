@@ -6,6 +6,9 @@ image:
 
 ## 2019 
 
+* A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu
+Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape. _J. Chem. Inf. and Mod._ In press (2019) - BioRxiv [https://doi.org/10.1101/434092](https://doi.org/10.1101/434092)
+
 * C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, M. Winn. _Journal of Structural Biology: X_, In Press (2019).
 
 * M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
@@ -26,9 +29,6 @@ image:
 * J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* 2018
 
 * P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ *430*, 5246-‌5256 (2018).
-
-* A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu
-[An enhanced-sampling MD-based protocol for molecular docking](https://doi.org/10.1101/434092). BioRxiv https://doi.org/10.1101/434092
 
 * W. Roseboom, M.G. Nazir, N.Y. Meiresonne, T. Mohammadi, J. Verheul, H. Buncherd, **A.M.J.J. Bonvin**, L.J. de Koning, C.G. de Koster, L. de Jong*, T. Den Blaauwen*. [Mapping the contact sites of the Escherichia coli division initiating 
 proteins FtsZ and ZapA by BAMG cross-linking and site directed mutagenesis](https://doi.org/10.3390/ijms19102928). _International Journal of Molecular Sciences_ *19*, 2928 (2018).
