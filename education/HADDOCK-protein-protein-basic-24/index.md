@@ -15,6 +15,10 @@ This tutorial consists of the following sections:
 * [Inspecting and preparing HPR for docking](#inspecting-and-preparing-hpr-for-docking)
 * [Adding a phosphate group](#adding-a-phosphate-group)
 * [Setting up the docking run](#setting-up-the-docking-run)
+  * [Login](#login)
+  * [Submission and validation of structures](#submission-and-validation-of-structures)
+  * [Definition of restraints](#definition-of-restraints)
+  * [Job submission](#job-submission)
 * [Analysing the results](#analysing-the-results)
 * [Biological insights](#biological-insights)
 * [Comparison with the reference structure](#comparison-with-the-reference-structure)
@@ -23,9 +27,9 @@ This tutorial consists of the following sections:
 <hr>
 ## Introduction
 
-This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, we will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](http://www.ebi.ac.uk/pdbe/entry/search/index?text:1F3G)) and NMR spectroscopy (HPr) (PDB ID [1HDN](http://www.ebi.ac.uk/pdbe/entry/search/index?text:1HDN)). The structure of the native complex has also been determined with NMR (PDB ID [1GGR](http://www.ebi.ac.uk/pdbe/entry/search/index?text:1GGR)). These NMR experiments have also provided us with an array of data on the interaction itself (chemical shift perturbations, intermolecular NOEs, residual dipolar couplings, and simulated diffusion anisotropy data), which will be useful for the docking. For this tutorial, we will only make use of inteface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract).
+This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, we will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](https://www.ebi.ac.uk/pdbe/entry/pdb/1f3g)) and NMR spectroscopy (HPr) (PDB ID [1HDN](https://www.ebi.ac.uk/pdbe/entry/pdb/1hdn)). The structure of the native complex has also been determined with NMR (PDB ID [1GGR](https://www.ebi.ac.uk/pdbe/entry/pdb/1ggr)). These NMR experiments have also provided us with an array of data on the interaction itself (chemical shift perturbations, intermolecular NOEs, residual dipolar couplings, and simulated diffusion anisotropy data), which will be useful for the docking. For this tutorial, we will only make use of inteface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract).
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://nestor.science.uu.nl/haddock2.4/).
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://haddock.science.uu.nl/services/HADDOCK2.4).
 
 A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
@@ -192,7 +196,7 @@ show lines, hpr_active<br>
 
 You should be able to see the amount of conformational space sampled by those surface side-chains. You can clearly see that some residues do sample a large variety of conformations, one of which might lead to much better docking results.
 
-**Note:** Pre-sampling of possible conformational changes can thus be beneficial for the docking, but again do limit the number of conformers used for the docking (or increase the number of sampled models, which is possible in the [expert interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html) of the HADDOCK portal - the default access level is however only easy - for a higher level access do request it via email).
+**Note:** Pre-sampling of possible conformational changes can thus be beneficial for the docking, but again do limit the number of conformers used for the docking (or increase the number of sampled models, which is possible for users with expert- or guru-level access. The default access level is however only easy - for a higher level access do request it after registration).
 
 As final step, save the molecule as a new PDB file which we will call: *hpr-ensemble.pdb*
 For this in the PyMOL menu select:
@@ -204,7 +208,7 @@ For this in the PyMOL menu select:
 <hr>
 ## Adding a phosphate group
 
-Since the biological function of this complex is to transfer a phosphate group from one protein to another, via histidines side-chains, it is relevant to make sure that a phosphate group be present for docking. As we have seen above none is currently present in the PDB files. HADDOCK does support a list of modified amino acids which you can find at the following link: [http://haddock.science.uu.nl/services/HADDOCK2.2/library.html](http://haddock.science.uu.nl/services/HADDOCK2.2/library.html).
+Since the biological function of this complex is to transfer a phosphate group from one protein to another, via histidines side-chains, it is relevant to make sure that a phosphate group be present for docking. As we have seen above none is currently present in the PDB files. HADDOCK does support a list of modified amino acids which you can find at the following link: [https://wenmr.science.uu.nl/haddock2.4/library](https://wenmr.science.uu.nl/haddock2.4/library).
 
 <a class="prompt prompt-question">Check the list of supported modified amino acids.</a>
 <a class="prompt prompt-question">What is the proper residue name for a phospho-histidine in HADDOCK?</a>
@@ -220,17 +224,21 @@ In order to use a modified amino-acid in HADDOCK, the only thing you will need t
 <hr>
 ## Setting up the docking run
 
-We will now launch the docking run. For this we will make us of the [easy interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html) of the HADDOCK web server:
+We will now launch the docking run. For this we will be using the [HADDOCK2.4 webserver](https://haddock.science.uu.nl/services/HADDOCK2.4):
 
-<a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
-</a>
+#### Login
 
-**Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
+After clicking on "here" to start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
-* **Step1:** Define a name for your docking run, e.g. *E2A-HPR*.
+**Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
-* **Step2:** Input the first protein PDB file. For this unfold the **First Molecule menu**.
+#### Submission and validation of structures
+
+In this stage of the submission process we can upload the structures we previously prepared with PyMOL.
+
+* **Step1:** Define a name for your docking run in the field "Job name", e.g. *E2A-HPR*.
+
+* **Step2:** Input the first protein PDB file. For this unfold the **Molecule 1 - input** if it isn't already unfolded.
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -241,13 +249,8 @@ Which chain to be used? -> All (for this particular case)
 <a class="prompt prompt-info">
 PDB structure to submit -> Browse and select *e2aP_1F3G.pdb* (the file you edited to modify the histidine)
 </a>
-<a class="prompt prompt-info">
-Active residues (directly involved in the interaction) -> 38,40,45,46,69,71,78,80,94,96,141
-</a>
-<a class="prompt prompt-info">Define passive residues automatically around the active residues -> check box
-</a>
 
-* **Step3:** Input the proteins PDB files. For this unfold the **Second Molecule menu**.
+* **Step3:** Input the second protein PDB file. For this unfold the **Molecule 2 - input** if it isn't already unfolded.
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -258,28 +261,35 @@ Which chain to be used? -> All (for this particular case)
 <a class="prompt prompt-info">
 PDB structure to submit -> Browse and select *hpr-ensemble.pdb* (the file you saved)
 </a>
+
+* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+
+#### Definition of restraints
+
+If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. We will be making use of the text boxes below the residue sequence of every molecule to specify the list of active residues to be used for the docking run.
+
+* **Step 5:** Specify the active residues for the first molecule. For this unfold the "Molecule 1 - parameters" if it isn't already unfolded.
+
+<a class="prompt prompt-info">
+Active residues (directly involved in the interaction) -> 38,40,45,46,69,71,78,80,94,96,141
+</a>
+<a class="prompt prompt-info">Automatically define passive residues around the active residues -> check (checked by default)
+</a>
+
+* **Step 6:** Specify the active residues for the second molecule. For this unfold the "Molecule 2 - parameters" if it isn't already unfolded.
+
 <a class="prompt prompt-info">
 Active residues (directly involved in the interaction) -> 15,16,17,20,48,49,51,52,54,56
 </a>
-<a class="prompt prompt-info">Define passive residues automatically around the active residues -> check box
+<a class="prompt prompt-info">Automatically define passive residues around the active residues -> check (checked by default)
 </a>
 
-* **Step 4:** You are ready to submit!
+#### Job submission
 
-<a class="prompt prompt-info">
-Enter your username and password (or the course credentials provided to you).
-</a>
-
-Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run.
-
-<figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic-24/submission.png">
-</figure>
-
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 <pre>
-HaddockRunParameters (
+{
   runname = 'E2A-HPR',
   auto_passive_radius = 6.5,
   create_narestraints = True,
@@ -296,13 +306,15 @@ HaddockRunParameters (
 ...
 </pre>
 
-Click now on the link to the results page. While your input data are being validated and processed the page will show:
+* **Step 7:** Click on the "Submit" button at the bottom left of the interface.
+
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic-24/processing.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/submission.png">
 </figure>
 
-During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
+Currently your run should be queued but eventually its status will change to "Running":
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic-24/running.png">
@@ -313,7 +325,7 @@ The page will automatically refresh and the results will appear upon completions
 <hr>
 ## Analysing the results
 
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPR) in case you don't want to wait for the results of your docking run.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/basic) in case you don't want to wait for the results of your docking run.
 
 <figure align="center">
 <img src="/education/HADDOCK-protein-protein-basic-24/HADDOCK-result-page.png">
@@ -388,7 +400,7 @@ Are the active residues in the interface?
 </a>
 
 <hr>
-## Biological insight
+## Biological insights
 
 The E2A-HPR complex is involved in phosphate-transfer, in which a phosphate group attached to histidine 90 of E2A (which we named NEP) is transferred to a histidine of HPR. As such, the docking models should make sense according to this information, meaning that two histidines should be in close proximity at the interface. Using PyMOL, check the various cluster representatives (we are assuming here you have performed all PyMOL commands of the previous section):
 
