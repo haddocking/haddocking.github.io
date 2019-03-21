@@ -25,8 +25,9 @@ This tutorial consists of the following sections:
 
 This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, we will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](http://www.ebi.ac.uk/pdbe/entry/search/index?text:1F3G)) and NMR spectroscopy (HPr) (PDB ID [1HDN](http://www.ebi.ac.uk/pdbe/entry/search/index?text:1HDN)). The structure of the native complex has also been determined with NMR (PDB ID [1GGR](http://www.ebi.ac.uk/pdbe/entry/search/index?text:1GGR)). These NMR experiments have also provided us with an array of data on the interaction itself (chemical shift perturbations, intermolecular NOEs, residual dipolar couplings, and simulated diffusion anisotropy data), which will be useful for the docking. For this tutorial, we will only make use of inteface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract).
 
-For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2).
-A description of our web server can be found in the following publications:
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://nestor.science.uu.nl/haddock2.4/).
+
+A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
@@ -35,6 +36,8 @@ _J. Mol. Biol._, *428*, 720-725 (2015).
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
 [The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+
+The current version of the webserver and standalone HADDOCK (v2.4) are under beta testing.
 
 Throughout the tutorial, coloured text will be used to refer to questions or instructions, and/or PyMOL commands.
 
@@ -47,12 +50,12 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [http://haddock.science.uu.nl/services/HADDOCK2.2/signup.html](http://haddock.science.uu.nl/services/HADDOCK2.2/signup.html).
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://nestor.science.uu.nl/auth/register/haddock](https://nestor.science.uu.nl/auth/register/haddock).
 
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/haddock.html](http://www.bonvinlab.org/software/haddock2.2/haddock.html)) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
+HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/](http://www.bonvinlab.org/software/haddock2.2/)) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
 A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall under two categories: active and passive. Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.
 
@@ -67,6 +70,9 @@ The second stage of the docking protocol introduces flexibility to the interacti
 The AIRs again play an important role at this stage since they might drive conformational changes.
 
 * **3. Refinement in Cartesian space with explicit solvent (water)** <BR>
+
+This stage was part of the standard HADDOCK protocol up to (and including) v2.2. As of v2.4 it is no longer performed by default but the user still has the option of enabling it. In its place, a short energy minimisation is performed instead.
+
 The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side chains to be optimized.
 
 The performance of this protocol of course depends on the number of models generated at each step. Few models are less probable to capture the correct binding pose, while an exaggerated number will become computationally unreasonable. The standard HADDOCK protocol generates 1000 models in the rigid body minimization stage, and then refines the best 200 – regarding the energy function - in both it1 and water. Note, however, that while 1000 models are generated by default in it0, they are the result of five minimization trials and for each of these the 180º symmetrical solution is also sampled. Effectively, the 1000 models written to disk are thus the results of the sampling of 10.000 docking solutions.
@@ -116,7 +122,7 @@ color red, e2a_active<br>
 </a>
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/e2a-surface-airs.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/e2a-surface-airs.png">
 </figure>
 
 Inspect the surface.
@@ -181,7 +187,7 @@ show lines, hpr_active<br>
 </a>
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/hpr-ensemble.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/hpr-ensemble.png">
 </figure>
 
 You should be able to see the amount of conformational space sampled by those surface side-chains. You can clearly see that some residues do sample a large variety of conformations, one of which might lead to much better docking results.
@@ -267,7 +273,7 @@ Enter your username and password (or the course credentials provided to you).
 Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run.
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/submission.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/submission.png">
 </figure>
 
 We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
@@ -293,13 +299,13 @@ HaddockRunParameters (
 Click now on the link to the results page. While your input data are being validated and processed the page will show:
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/processing.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/processing.png">
 </figure>
 
-During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
+During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/running.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/running.png">
 </figure>
 
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
@@ -310,7 +316,7 @@ The page will automatically refresh and the results will appear upon completions
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPR) in case you don't want to wait for the results of your docking run.
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/HADDOCK-result-page.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/HADDOCK-result-page.png">
 </figure>
 
 <a class="prompt prompt-question">Inspect the result page</a>
@@ -319,7 +325,7 @@ Once your run has completed you will be presented with a result page showing the
 **Note:** The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the RMSD from the best generated model (the best scoring model).
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/HADDOCK-result-graph.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/HADDOCK-result-graph.png">
 </figure>
 
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated as:
@@ -401,7 +407,7 @@ zoom resn NEP<br>
 </a>
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/phosphorylated-histidine.png">
+<img src="/education/HADDOCK-protein-protein-basic-24/phosphorylated-histidine.png">
 </figure>
 
 Zoom back to all visible molecules with
