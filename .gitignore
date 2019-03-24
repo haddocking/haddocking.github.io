@@ -10,3 +10,4 @@ _asset_bundler_cache
 images/molecules-raw
 .bundle
 .jekyll-metadata
+.markdownlint.json
