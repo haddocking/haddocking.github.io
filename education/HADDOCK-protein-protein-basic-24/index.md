@@ -8,21 +8,9 @@ image:
 ---
 This tutorial consists of the following sections:
 
-* [Introduction](#introduction)
-* [Setup](#setup)
-* [HADDOCK general concepts](#haddock-general-concepts)
-* [Inspecting and preparing E2A for docking](#inspecting-and-preparing-e2a-for-docking)
-* [Inspecting and preparing HPR for docking](#inspecting-and-preparing-hpr-for-docking)
-* [Adding a phosphate group](#adding-a-phosphate-group)
-* [Setting up the docking run](#setting-up-the-docking-run)
-  * [Login](#login)
-  * [Submission and validation of structures](#submission-and-validation-of-structures)
-  * [Definition of restraints](#definition-of-restraints)
-  * [Job submission](#job-submission)
-* [Analysing the results](#analysing-the-results)
-* [Biological insights](#biological-insights)
-* [Comparison with the reference structure](#comparison-with-the-reference-structure)
-* [Additional docking runs](#additional-docking-runs)
+* table of contents
+{:toc}
+
 
 <hr>
 ## Introduction
