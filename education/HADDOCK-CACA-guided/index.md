@@ -105,7 +105,7 @@ PS-HomPPI v2.0 makes pairwise interface predictions with the following steps:
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/haddock.html](http://www.bonvinlab.org/software/haddock2.2/haddock.html){:target="_blank"}) 
+HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) 
 is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr){:target="_blank"}) that harness the 
 power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"}) for structure 
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 

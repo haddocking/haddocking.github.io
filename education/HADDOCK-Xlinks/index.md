@@ -60,7 +60,7 @@ Once downloaded, make sure to unpack the archive.
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/haddock.html](http://www.bonvinlab.org/software/haddock2.2/haddock.html)) 
+HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2)) 
 is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the 
 power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure 
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 
