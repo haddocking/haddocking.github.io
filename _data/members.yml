@@ -7,14 +7,6 @@
     position: Assistant Professor
     avatar: /images/people/LiXue.jpg
 
--   name: Adrien Melquiond 
-    position: Postdoctoral Researcher
-    avatar: /images/people/Adrien.jpg
-
--   name: Mikael Trellet
-    position: Postdoctoral Researcher
-    avatar: /images/people/Mikael.jpg
-
 -   name: Brian Jimenez Garcia
     position: Postdoctoral Researcher
     avatar: /images/people/Brian.png
@@ -23,9 +15,13 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Attilio.png
 
--   name: Cunliang Geng
+-   name: Rodrigo Vargas Honorato
     position: Postdoctoral Researcher
-    avatar: /images/people/Cunliang.jpg
+    avatar: /images/people/Rodrigo.jpg
+
+-   name: Zuzana Jandova
+    position: Postdoctoral Researcher
+    avatar: /images/people/Zuzana.jpg
 
 -   name: Panagiotis Koukos
     position: Ph.D Candidate
@@ -46,10 +42,6 @@
 -   name: Farzaneh Meimandi Parizi
     position: Visiting Ph.D Candidate
     avatar: /images/people/Farzaneh.jpg
-
--   name: Daan Sybrandi
-    position: M.Sc Student
-    avatar: /images/people/Daan.png
 
 -   name: Sam de Vos
     position: M.Sc Student

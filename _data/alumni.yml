@@ -19,10 +19,15 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
--   name: Rodrigo Vargas Honorato
-    url: http://http://lnbio.cnpem.br
-    current: 'Brazilian Biosciences National Laboratory / LNBio'
-    status: Visiting Researcher
+-   name: Adrien Melquiond 
+    url: http://www.umcutrecht.nl    
+    Current: University Medical Center Utrecht
+
+-   name: Mikael Trellet
+    status: postdoc
+
+-   name: Cunliang Geng
+    status: 'phd,postdoc'
 
 -   name: Cristina Paissoni
     url: http://sites.unimi.it/camilloni/
@@ -222,6 +227,9 @@
 
 -   name: Sevilay Gülesen
     current: 'Kadir Has University, Istanbul, Turkey'
+    status: student
+
+-   name: Daan Sybrandi
     status: student
 
 -   name: Zhengyue Zhang
