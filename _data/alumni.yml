@@ -20,8 +20,9 @@
     status: visiting-professor
 
 -   name: Adrien Melquiond 
-    url: http://www.umcutrecht.nl    
-    Current: University Medical Center Utrecht
+    url: http://www.ubc.uu.nl    
+    current: 'Utrecht Bioinformatic Center and University Medical Center Utrecht'
+    status: postdoc^2
 
 -   name: Mikael Trellet
     status: postdoc
