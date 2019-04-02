@@ -6,8 +6,10 @@ image:
 
 ## 2019 
 
+* J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. LightDock goes information-driven. BioRxiv [https://doi.org/10.1101/595983](https://doi.org/10.1101/595983) (2019)
+
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu
-Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape. _J. Chem. Inf. and Mod._ In press (2019) - BioRxiv [https://doi.org/10.1101/434092](https://doi.org/10.1101/434092)
+Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape. _J. Chem. Inf. and Mod._ In press (2019) - BioRxiv [https://doi.org/10.1101/434092](https://doi.org/10.1101/434092) (2019)
 
 * C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, M. Winn. _Journal of Structural Biology: X_, In Press (2019).
 

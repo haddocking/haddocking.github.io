@@ -25,7 +25,9 @@
     status: postdoc^2
 
 -   name: Mikael Trellet
-    status: postdoc
+    url: http://www.fluigent.com
+    current: 'Fluigent Smart Mircrofluidic, Paris, France'
+    status: 'student,postdoc'
 
 -   name: Cunliang Geng
     status: 'phd,postdoc'
