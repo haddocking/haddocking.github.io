@@ -1,5 +1,6 @@
 ---
 layout: page
+title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
