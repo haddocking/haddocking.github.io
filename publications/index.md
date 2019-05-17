@@ -11,6 +11,8 @@ image:
 
 * J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. LightDock goes information-driven. BioRxiv [https://doi.org/10.1101/595983](https://doi.org/10.1101/595983) (2019).
 
+* B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes. _Bioinformatics_ In press (2019).
+
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu.
 [Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](http://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._ *59*, 1515–1528 (2019).
 
