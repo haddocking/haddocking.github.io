@@ -5,8 +5,8 @@
 
 title:            Bonvin Lab
 locale:           en_US
-url:              http://haddocking.github.io
-#url:              http://127.0.0.1:4000/
+url: "" # Empty string will render the page successfully locally. Do not commit it to the main repository!
+incremental: true # This will be disabled by Github, but is useful for testing changes locally!
 
 # RSS Feed configuration
 name: Bonvin Lab
