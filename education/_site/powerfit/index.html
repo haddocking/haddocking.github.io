@@ -1,0 +1,365 @@
+<p>This tutorial consists of the following sections:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#setup" id="markdown-toc-setup">Setup</a></li>
+  <li><a href="#inspecting-the-data" id="markdown-toc-inspecting-the-data">Inspecting the data</a></li>
+  <li><a href="#rigid-body-fitting" id="markdown-toc-rigid-body-fitting">Rigid body fitting</a></li>
+  <li><a href="#analyzing-the-results" id="markdown-toc-analyzing-the-results">Analyzing the results</a></li>
+  <li><a href="#-integrative-modeling-with-haddock" id="markdown-toc--integrative-modeling-with-haddock"><a name="HADDOCK-cryoEM"></a> Integrative modeling with HADDOCK</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>PowerFit is a software application developed to fit atomic resolution
+structures of biomolecules to cryo-electron microscopy (cryo-EM) density maps.
+It is open-source and available for download on <a href="https://github.com/haddocking/powerfit" title="PowerFit">Github</a>.</p>
+
+<p>This tutorial will show you how to utilize PowerFit by applying it to an E.coli
+ribosome case. To follow this tutorial, you need, in addition to PowerFit, the
+<a href="https://www.cgl.ucsf.edu/chimera/" title="UCSF Chimera">UCSF Chimera</a> visualization software, a popular tool in the
+cryo-electron microscopy community for its volume visualization capabilities.
+We will further discuss the limits of rigid body fitting, and how HADDOCK can
+alleviate some of the shortcomings. We provide the data necessary to run this
+tutorial <a href="https://github.com/haddocking/powerfit-tutorial" title="PowerFit tutorial data">here</a>. If you are following one of our workshops, where we
+use a Virtual Machine, then all the required software and data should already
+be installed.</p>
+
+<p>The PowerFit and HADDOCK software are described in</p>
+
+<ul>
+  <li>
+    <p>G.C.P. van Zundert and A.M.J.J. Bonvin.
+<a href="https://doi.org/doi:10.3934/biophy.2015.2.73">Fast and sensitive rigid-body fitting into cryo-EM density maps with PowerFit</a>.
+<em>AIMS Biophysics</em>. <em>2</em>, 73-87 (2015).</p>
+  </li>
+  <li>
+    <p>G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
+<a href="https://doi.org/10.1016/j.str.2015.03.014">Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.</a>
+<em>Structure.</em> <em>23</em>, 949-960 (2015).</p>
+  </li>
+</ul>
+
+<p>Throughout the tutorial, colored text will be used to refer to questions or 
+instructions, Linux and/or Chimera commands.</p>
+
+<p><a class="prompt prompt-question">This is a question prompt: try answering 
+it!</a>
+<a class="prompt prompt-info">This an instruction prompt: follow it!</a>
+<a class="prompt prompt-pymol">This is a Chimera prompt: write this in the 
+Chimera command line prompt!</a>
+<a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the 
+terminal!</a></p>
+
+<p>The case we will be investigating is a complex between the 30S maturing E. coli
+ribosome and KsgA, a methyltransferase. There are models available for the E.
+coli ribosome and KsgA, and a cryo-EM density map of around 13Å resolution
+(<a href="https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-2017" title="Ribosome KsgA density">EMD-2017</a>).</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>If you are using one of our pre-packed VM images, the data should be directly
+available in the image. We prepared a folder that contains the cryo-EM density
+map file in CCP4 format and the starting models of the ribosome and KsgA. The
+ribosome has already been properly fitted in the density.</p>
+
+<p><a class="prompt prompt-info">
+  Copy the data to the Desktop and then move the newly copied folder.
+</a>
+<a class="prompt prompt-cmd">
+    cp -r /opt/powerfit-tutorial ~/Desktop<br />
+    cd ~/Desktop/powerfit-tutorial
+</a></p>
+
+<p><em>In case you might run this tutorial on your own</em>, make sure to have the required
+software installed (<a href="https://www.cgl.ucsf.edu/chimera/" title="UCSF Chimera">UCSF Chimera</a> and <a href="https://github.com/haddocking/powerfit" title="PowerFit">PowerFit</a>), 
+and download the data to run this tutorial from our GitHub
+data repository <a href="https://github.com/haddocking/powerfit-tutorial" title="PowerFit tutorial data">here</a> or clone it from the command line</p>
+
+<p><a class="prompt prompt-cmd">
+    git clone https://github.com/haddocking/powerfit-tutorial
+</a></p>
+
+<h2 id="inspecting-the-data">Inspecting the data</h2>
+
+<p>Let us first inspect the data we have available, namely the cryo-EM density map
+and the structures we will attempt to fit.</p>
+
+<p>Using Chimera, we can easily visualize and inspect the density and models,
+mostly through a few mouse clicks.</p>
+
+<p><a class="prompt prompt-info">
+  Open the density map together with the ribosome and KsgA.
+</a>
+<a class="prompt prompt-cmd">
+    chimera ribosome-KsgA.map ribosome.pdb KsgA.pdb
+</a></p>
+
+<p>In the <code class="highlighter-rouge">Volume Viewer</code> window, the middle slide bar provides control on the
+value at which the isosurface of the density is shown. At high values, the
+envelope will sink while lower values might even display the noise in the map.
+We will first make the density transparent, to see the fitted structure inside:</p>
+
+<ul>
+  <li>Within the <code class="highlighter-rouge">Volume Viewer</code> click on the gray box next to <code class="highlighter-rouge">Color</code>, which opens
+the <code class="highlighter-rouge">Color Editor</code> window.</li>
+  <li>In there, check the <code class="highlighter-rouge">Opacity</code> box. An extra slider bar appears in the box
+called <code class="highlighter-rouge">A</code>, for the alpha channel.</li>
+  <li>Set the alpha channel value to around 0.6.</li>
+</ul>
+
+<p>Notice that the density becomes transparent providing a better view of the fit
+of the ribosome model. On closer inspection, you can also discern a region of
+the density that is not accounted by the ribosome structure alone; this is the
+binding location of KsgA. Although you could try and manually place the crystal
+structure in that region, finding the correct orientation is not
+straightforward. PowerFit can help here as it attempts to find the best fit
+automatically and exhaustively, based on an objective score.</p>
+
+<h2 id="rigid-body-fitting">Rigid body fitting</h2>
+
+<p>PowerFit is a rigid body fitting software that quickly calculates the 
+cross-correlation, a common measure of the goodness-of-fit, between the atomic 
+structure and the density map. It performs a systematic 6-dimensional scan of 
+the three translational and three rotational degrees of freedom. In short, 
+PowerFit will try to fit the structure in many orientations at every position 
+on the map and calculate a cross-correlation score for each of them.</p>
+
+<p><a class="prompt prompt-info">
+  Perform the rigid-body fitting of the KsgA structure on the cryo-EM density
+  map.
+</a>
+<a class="prompt prompt-cmd">
+  powerfit ribosome-KsgA.map 13 KsgA.pdb -d run-KsgA -a 20 -p 2 -l
+</a></p>
+
+<p>While performing the search, PowerFit will update you on the progress of the 
+search. The example case in this tutorial should run in 10 minutes. If the ETA 
+on your screen is substantially lower, your computer might be fast enough to 
+allow an increase in the rotational sampling interval to 10°.</p>
+
+<p>While the calculation is running, open a second terminal window (or tab) and 
+type <code class="highlighter-rouge">powerfit --help</code> to have a look at the several features and options of 
+PowerFit and what each flag of the previous command means.</p>
+
+<p>PowerFit requires three arguments: a high-resolution atomic structure of the
+biomolecule to be fitted (<code class="highlighter-rouge">KsgA.pdb</code>), a target cryo-EM density map to fit the
+structure in (<code class="highlighter-rouge">ribosome-KsgA.map</code>), and the resolution, in ångstrom, of the
+density map (<code class="highlighter-rouge">13</code>).</p>
+
+<p>The <code class="highlighter-rouge">-a</code> (or <code class="highlighter-rouge">--angle</code>) option specifies the rotational sampling interval in
+degrees, i.e. how tightly the three rotational degrees of freedom will be
+sampled. Lower values will cause PowerFit to perform a finer search, at the
+expense of computational time. The default value is 10°, but it can be lowered
+to 5° for more sensitive searches, or raised to 20° if time is an issue or if
+there aren’t sufficient computational resources. For the sake of time in this
+tutorial, we set the sampling interval to this latter coarser value. The <code class="highlighter-rouge">-d</code>
+option specifies where the results will be stored while the <code class="highlighter-rouge">-p</code> option
+specifies the number of processors that PowerFit can use during the search, to
+leverage available CPU resources.</p>
+
+<p>Finally, the <code class="highlighter-rouge">-l</code> flag applies a Laplace pre-filter on the density data, which
+increases the cross-correlation sensitivity by enhancing edges in the density.
+In this example scenario, all other options are left at their default values
+but feel free to explore them.</p>
+
+<h2 id="analyzing-the-results">Analyzing the results</h2>
+
+<p>After the search, PowerFit creates a <code class="highlighter-rouge">run-KsgA</code> directory containing the 
+following files:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">fit_N.pdb</code>: the best <em>N</em> fits, judged by the cross-correlation score.</li>
+  <li><code class="highlighter-rouge">solutions.out</code>: all the non-redundant solutions found, ordered by their
+correlation score. The first column shows the rank, column 2 the correlation
+score, column 3 and 4 the Fisher z-score and the number of standard
+deviations; column 5 to 7 are the x, y and z coordinate of the center of the
+chain; column 8 to 17 are the rotation matrix values.</li>
+  <li><code class="highlighter-rouge">lcc.mrc</code>: a cross-correlation map showing, at each grid position, the 
+highest cross-correlation score found during the search, thus showing the most 
+likely location of the center of mass of the structure.</li>
+  <li><code class="highlighter-rouge">powerfit.log</code>: a log file of the calculation, including the input parameters 
+with date and timing information.</li>
+</ul>
+
+<p><a class="prompt prompt-info">
+  Open the density map, the <em>lcc.mrc</em> cross-correlation map, and the 10 
+best-ranked solutions in Chimera.
+</a>
+<a class="prompt prompt-cmd">
+  chimera ribosome-KsgA.map run-KsgA/lcc.mrc ribosome.pdb run-KsgA/fit_*.pdb
+</a></p>
+
+<p>Make the density map transparent again, by adjusting the alpha channel value to
+0.6. The values of the <code class="highlighter-rouge">lcc.mrc</code> slider bar correspond to the cross-correlation
+score found. In this way, you can selectively visualize regions of high or low
+cross-correlation values: i.e., pushing the slider to the right (higher cutoff)
+shows only regions of the grid with high cross-correlation scores.</p>
+
+<p>As you can see, PowerFit found quite some local optima, one of which stands out
+(if the rotational search was tight enough). Further, the 10 best-ranked
+solutions are centered on regions corresponding to local cross-correlation maxima.</p>
+
+<p>To view each fitted solution individually, in the main panel, go to <code class="highlighter-rouge">Favorites</code>
+→ <code class="highlighter-rouge">Model Panel</code> to open the <code class="highlighter-rouge">Model Panel</code> window. The window shows each model
+and its associated color that Chimera has processed. To show or hide a specific
+model you can click the box in the <code class="highlighter-rouge">S</code> column.</p>
+
+<p><a class="prompt prompt-info">
+  Go through the 10 solutions one by one to appreciate their goodness-of-fit
+  with the density.
+</a>
+<a class="prompt prompt-question">
+  Do you agree with what PowerFit proposes as the best solution?
+</a>
+<a class="prompt prompt-info">
+  In a new Chimera session, reopen the density map and the fit that you find 
+best. Replace <em>?</em> by the appropriate solution number.
+</a>
+<a class="prompt prompt-cmd">
+  chimera ribosome-KsgA.map ribosome.pdb run-KsgA/fit_?.pdb
+</a></p>
+
+<p>You now have combined the ribosome structure with the rigid-body fit of KsgA
+calculated by PowerFit, yielding an initial model of the complex. Mutagenesis
+experiments performed on this complex indicate three charged residues of KsgA -
+<code class="highlighter-rouge">R221</code>, <code class="highlighter-rouge">R222</code>, and <code class="highlighter-rouge">K223</code> - that are of special importance for the
+interaction.</p>
+
+<p>In the same session of Chimera where you have your chosen fitted KsgA
+structure, go to <code class="highlighter-rouge">Favorites</code> → <code class="highlighter-rouge">Command Line</code>. A command line is now present
+below the main viewing window.  In the command line of Chimera, type the
+following instructions to center your view on these residues and highlight
+their interactions:</p>
+
+<p><a class="prompt prompt-pymol">
+  show #2:221-223 zr&lt;5 &amp; #1 || #2:221-223<br />
+  center #2:221-223 zr&lt;5 &amp; #1 || #2:221-223
+</a>
+<a class="prompt prompt-info">
+  Take some time to inspect the model, paying particular attention to these three
+  residues and their spatial neighbors.
+</a>
+<a class="prompt prompt-question">
+  Are there any clashes between the ribosome and KsgA chains?
+</a>
+<a class="prompt prompt-question">
+  Is the mutagenesis data explained by the model, i.e. are the three charged 
+amino acids involved in strong interactions?
+</a></p>
+
+<p>Chimera also includes a tool to locally optimize the fit of a rigid structure 
+against a given density map, which can be an additional help on top of the 
+PowerFit calculations. Make the main display window active by clicking on it, 
+then go to <code class="highlighter-rouge">Tools</code> → <code class="highlighter-rouge">Volume data</code> → <code class="highlighter-rouge">Fit in Map</code>. In the newly opened <code class="highlighter-rouge">Fit in 
+Map</code> window, select the best-fitted structure of PowerFit (<code class="highlighter-rouge">fit_?.pdb</code>) as 
+<code class="highlighter-rouge">Fit</code> model and the original density map (<code class="highlighter-rouge">ribosome-KsgA.map</code>) as the map. 
+Press <code class="highlighter-rouge">Fit</code> to start the optimization.</p>
+
+<p><a class="prompt prompt-question">
+  Does the Chimera local fit optimization tool improve the results of PowerFit?
+</a></p>
+
+<p>The scoring function used by Chimera to estimate the quality of the fit makes 
+our model worse, increasing the number of clashes between the ribosomal RNA and 
+KsgA. Click <code class="highlighter-rouge">Undo</code> in the <code class="highlighter-rouge">Fit in Map</code> window to undo the optimization.</p>
+
+<p>Next, we will try to optimize the fit using the cross-correlation that Chimera 
+provides. Click <code class="highlighter-rouge">Options</code> and check the <code class="highlighter-rouge">Use map simulated from atoms, 
+resolution</code> box and fill in <code class="highlighter-rouge">13</code> for resolution. Check the <code class="highlighter-rouge">correlation</code> radio 
+button and uncheck the <code class="highlighter-rouge">Use only data above contour level from first map</code>. 
+Press <code class="highlighter-rouge">Fit</code>.</p>
+
+<p><a class="prompt prompt-question">
+  Does this second strategy improve the quality of the fit? If not, undo it 
+again.
+</a></p>
+
+<h2 id="-integrative-modeling-with-haddock"><a name="HADDOCK-cryoEM"></a> Integrative modeling with HADDOCK</h2>
+
+<p>The obvious limitation of rigid-body fitting is that it cannot account for any
+conformational changes the structures might undergo. Further, the low
+resolution of this particular density map does not allow the identification of
+side-chain atoms. The quality of the fitted models by PowerFit is, therefore,
+limited.</p>
+
+<p>Given the availability of both the cryo-EM density map and of the mutagenesis 
+experiments, we can integrate both in HADDOCK and benefit of its semi-flexible 
+refinement protocols to improve the stereochemistry of our model. To use 
+cryo-EM data, HADDOCK requires the map and also the approximate positions of 
+each chain, as given by their centers of mass. This information is provided 
+directly by PowerFit, in the <code class="highlighter-rouge">solutions.out</code> file, columns 5 to 7 (x, y, z
+coordinates):</p>
+
+<p><a class="prompt prompt-cmd">
+  head -n 10 run-KsgA/solutions.out
+</a></p>
+
+<p>Unfortunately, running HADDOCK is out of the scope of this tutorial as it
+requires a significant amount of time. Therefore, we provide the best-ranked 
+HADDOCK model, generated by combining the cryo-EM map, the PowerFit centroid
+positions, and the mutagenesis data, in the tutorial data folder.</p>
+
+<p><a class="prompt prompt-info">
+  Open the density map in Chimera and load the best-ranked HADDOCK model.
+</a>
+<a class="prompt prompt-cmd">
+  chimera ribosome-KsgA.map HADDOCK-ribosome.pdb HADDOCK-KsgA.pdb
+</a>
+<a class="prompt prompt-question">
+Does HADDOCK improve the quality of the model, i.e. are the number of clashes
+reduced?
+</a>
+<a class="prompt prompt-question">
+  Are the three residues identified by mutagenesis involved in any 
+energetically favourable interaction?
+</a></p>
+
+<p>Finally, to make the impact of HADDOCK more quantitative, we will make a
+distance histogram of the contacts between the ribosome and KsgA. First,
+combine the ribosome together with your preferred fitted model.</p>
+
+<p><a class="prompt prompt-cmd">
+  cat ribosome.pdb run-KsgA/fit_?.pdb &gt; ribosome-KsgA.pdb
+</a></p>
+
+<p>To calculate all the contacts within a 5.0Å cutoff distances, we make use of a
+standard tool (<code class="highlighter-rouge">contact-chainID</code>) that is shipped with HADDOCK.</p>
+
+<p><a class="prompt prompt-cmd">
+  ./contact-chainID ribosome-KsgA.pdb 5.0 &gt; ribosome-KsgA.contacts
+</a></p>
+
+<p>Now we can generate the histogram, and visualize it with xmgrace</p>
+
+<p><a class="prompt prompt-cmd">
+  ./make-contact-histogram.csh ribosome-KsgA.contacts<br />
+  xmgrace ribosome-KsgA-contacts-histogram.xmgr
+</a>
+<a class="prompt prompt-question">
+  Are there any clashes to be found in the model? An interaction is typically
+  considered clashing if the distance is smaller than 2.8Å.
+</a></p>
+
+<p>For the HADDOCK model we already combined the ribosome and KsgA
+(<code class="highlighter-rouge">HADDOCK-ribosome-KsgA.pdb</code>).</p>
+
+<p><a class="prompt prompt-info">
+    Make a distance histogram for the HADDOCK generated model.
+</a>
+<a class="prompt prompt-question">
+    Are there any clashes found for the HADDOCK model?
+</a></p>
+
+<p>The combination of cryo-EM and mutagenesis data, a physics-based force field,
+and a semi-flexible refinement protocol improves the quality of the resulting
+models. In this tutorial, we showed you how to use PowerFit to fit
+high-resolution structures to a cryo-EM density map and how to interpret the
+results. Further, we also showed how integrative modeling using HADDOCK can
+improve the stereochemistry of the models, in particular if done in combination
+with additional experimental data, such as mutagenesis.</p>
+
+<p>Thank you for following this tutorial. If you have any questions or 
+suggestions, feel free to contact us via email or by submitting an issue in the 
+appropriate Github repository.</p>
+

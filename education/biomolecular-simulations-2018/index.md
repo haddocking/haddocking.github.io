@@ -17,7 +17,7 @@ You can actively contribute to the dedicated topic on [our forum](http://ask.bio
 
 
 All tutorials are an initiative of the Integrative Modelling and Hybrid Methodes Interest Groups,
-nested at the Centre of Excellence for Computational Biomolecular Research - BioExcel. Feedbacks/questions are more than welcome! 
+nested at the Centre of Excellence for Computational Biomolecular Research - BioExcel. Feedbacks/questions are more than welcome!
 
 
 ## User information
@@ -29,7 +29,7 @@ support, please fill in this very short survey:
 
 This should not take you more than a minute but will be very valuable for these two days.
 
-## Tutorials
+## Tutorials 
 
 * [**HADDOCK covalent binding**](/education/biomolecular-simulations-2018/HADDOCK_tutorial):
   This tutorial demonstrates how to use HADDOCK for the prediction of the three dimensional structure of a covalently bound ligand onto a receptor.
@@ -37,5 +37,5 @@ This should not take you more than a minute but will be very valuable for these 
 * [**CPMD**](/education/biomolecular-simulations-2018/CPMD_tutorial):
   This tutorial shows how to run CPMD calculations to get the topology and parameters of a covalently bound protein-ligand complex.
 
-* [**Metadynamics**](/education/biomolecular-simulations-2018/Metadynamics_tutorial): 
+* [**Metadynamics**](/education/biomolecular-simulations-2018/Metadynamics_tutorial):
   This tutorial explains how to perform metadynamics simulations to enhance the comformational sampling of a binding site on a protein to improve molecular docking predictions.

@@ -1,0 +1,11 @@
+# ADH crosslinks
+A  27 CA B  18 CA 0 23
+A 122 CA B 125 CA 0 23
+A 122 CA B 128 CA 0 23
+A 122 CA B 127 CA 0 23
+
+# ZL crosslinks
+A 55 CA B 169 CA 0 26
+A 55 CA B 179 CA 0 26
+A 54 CA B 179 CA 0 26
+

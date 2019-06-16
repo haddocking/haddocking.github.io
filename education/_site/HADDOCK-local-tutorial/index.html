@@ -1,0 +1,1443 @@
+<p>This tutorial consists of the following sections:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#setuprequirements" id="markdown-toc-setuprequirements">Setup/Requirements</a></li>
+  <li><a href="#haddock-general-concepts" id="markdown-toc-haddock-general-concepts">HADDOCK general concepts</a></li>
+  <li><a href="#installing-haddock" id="markdown-toc-installing-haddock">Installing HADDOCK</a>    <ul>
+      <li><a href="#downloading-haddock" id="markdown-toc-downloading-haddock">Downloading HADDOCK</a></li>
+      <li><a href="#downloading-cns" id="markdown-toc-downloading-cns">Downloading CNS</a></li>
+      <li><a href="#auxiliary-software" id="markdown-toc-auxiliary-software">Auxiliary software</a></li>
+      <li><a href="#configuring-haddock" id="markdown-toc-configuring-haddock">Configuring HADDOCK</a></li>
+    </ul>
+  </li>
+  <li><a href="#preparing-pdb-files-for-docking" id="markdown-toc-preparing-pdb-files-for-docking">Preparing PDB files for docking</a>    <ul>
+      <li><a href="#cleaning-pdb-files-prior-to-docking" id="markdown-toc-cleaning-pdb-files-prior-to-docking">Cleaning PDB files prior to docking</a></li>
+      <li><a href="#dealing-with-an-ensemble-of-models" id="markdown-toc-dealing-with-an-ensemble-of-models">Dealing with an ensemble of models</a></li>
+      <li><a href="#dealing-with-multi-chain-proteins" id="markdown-toc-dealing-with-multi-chain-proteins">Dealing with multi-chain proteins</a></li>
+    </ul>
+  </li>
+  <li><a href="#defining-restraints-for-docking" id="markdown-toc-defining-restraints-for-docking">Defining restraints for docking</a>    <ul>
+      <li><a href="#defining-airs-from-interface-mapping" id="markdown-toc-defining-airs-from-interface-mapping">Defining AIRs from interface mapping</a></li>
+      <li><a href="#defining-specific-distance-restraints" id="markdown-toc-defining-specific-distance-restraints">Defining specific distance restraints</a></li>
+      <li><a href="#defining-airs-from-interface-mapping-on-one-side-full-surface-on-the-other" id="markdown-toc-defining-airs-from-interface-mapping-on-one-side-full-surface-on-the-other">Defining AIRs from interface mapping on one side, full surface on the other</a></li>
+    </ul>
+  </li>
+  <li><a href="#setting-up-the-docking" id="markdown-toc-setting-up-the-docking">Setting up the docking</a>    <ul>
+      <li><a href="#defining-the-input-data" id="markdown-toc-defining-the-input-data">Defining the input data</a></li>
+      <li><a href="#customizing-the-docking-parameters" id="markdown-toc-customizing-the-docking-parameters">Customizing the docking parameters</a>        <ul>
+          <li><a href="#defining-the-protonation-state-of-histidines" id="markdown-toc-defining-the-protonation-state-of-histidines">Defining the protonation state of Histidines</a></li>
+          <li><a href="#changing-the-number-of-models-to-be-generated" id="markdown-toc-changing-the-number-of-models-to-be-generated">Changing the number of models to be generated</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#analysing-the-docking-results" id="markdown-toc-analysing-the-docking-results">Analysing the docking results</a>    <ul>
+      <li><a href="#haddock-scoring" id="markdown-toc-haddock-scoring">HADDOCK scoring</a></li>
+      <li><a href="#single-structure-analysis" id="markdown-toc-single-structure-analysis">Single structure analysis</a></li>
+      <li><a href="#cluster-based-analysis" id="markdown-toc-cluster-based-analysis">Cluster-based analysis</a></li>
+      <li><a href="#comparison-with-the-crystal-structure-of-this-antibody-antigen-complex" id="markdown-toc-comparison-with-the-crystal-structure-of-this-antibody-antigen-complex">Comparison with the crystal structure of this antibody-antigen complex</a></li>
+    </ul>
+  </li>
+  <li><a href="#congratulations" id="markdown-toc-congratulations">Congratulations!</a></li>
+</ul>
+
+<hr />
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This tutorial will demonstrate the use of a local installation of HADDOCK for predicting the structure of biomolecular complexes. It will cover various steps, from the installation of a local HADDOCK version and the third party software required, the preparation of PDB files for docking, the definition of restraints to guide the docking, the setup of the docking and finally the analysis of the results. General information about HADDOCK can be found on our <a href="http://bonvinlab.org/software/haddock2.2" title="HADDOCK 2.2" target="_blank">group page</a> and its corresponding <a href="http://www.bonvinlab.org/software/haddock2.2/manual/" title="HADDOCK Manual" target="_blank">online manual</a>. Also take note of the <a href="http://ask.bioexcel.eu/c/haddock" title="HADDOCK Forum" target="_blank">HADDOCK online forum</a> where you can post HADDOCK-related questions and search the archive for possible answers.</p>
+
+<p>Throughout the tutorial, colored text will be used to refer to questions or 
+instructions, and/or PyMOL commands.</p>
+
+<p><a class="prompt prompt-question">This is a question prompt: try answering it!</a>
+<a class="prompt prompt-info">This an instruction prompt: follow it!</a>
+<a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
+<a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a></p>
+
+<hr />
+
+<hr />
+
+<h2 id="setuprequirements">Setup/Requirements</h2>
+
+<p>In order to follow this tutorial you will need to work on a Linux or MaxOSX system. We will also make use of <a href="http://www.pymol.org/" title="PyMOL" target="_blank"><strong>PyMOL</strong></a> 
+(freely available for most operating systems) on your computer in order to visualize the input and output data.
+We will provide you links to download the various required software and data.</p>
+
+<hr />
+
+<hr />
+
+<h2 id="haddock-general-concepts">HADDOCK general concepts</h2>
+
+<p>HADDOCK (see <a href="http://www.bonvinlab.org/software/haddock2.2">http://www.bonvinlab.org/software/haddock2.2</a>) 
+is a collection of python scripts derived from ARIA (<a href="http://aria.pasteur.fr">http://aria.pasteur.fr</a>) that harness the 
+power of CNS (Crystallography and NMR System – <a href="http://cns-online.org">http://cns-online.org</a>) for structure 
+calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 
+from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside 
+traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the 
+ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.</p>
+
+<p>A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation 
+of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are 
+incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall 
+under two categories: active and passive. Generally, active residues are those of central importance for the 
+interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is 
+higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, 
+otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are 
+deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a 
+careful selection of which residues are active and which are passive is critical for the success of the docking.</p>
+
+<p>The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and 
+different chemical environments, and it can be divided in three different stages, each with a defined goal and 
+characteristics:</p>
+
+<ul>
+  <li>
+    <p><strong>1. Randomization of orientations and rigid-body minimization (it0)</strong> <br />
+In this initial stage, the interacting partners are treated as rigid bodies, meaning that all geometrical parameters 
+such as bonds lengths, bond angles, and dihedral angles are frozen. The partners are separated in space and rotated 
+randomly about their centers of mass. This is followed by a rigid body energy minimization step, where the partners are 
+allowed to rotate and translate to optimize the interaction.
+The role of AIRs in this stage is of particular importance. Since they are included in the energy function being 
+minimized, the resulting complexes will be biased towards them. For example, defining a very strict set of AIRs leads 
+to a very narrow sampling of the conformational space, meaning that the generated poses will be very similar. 
+Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions, 
+displaying greater variability in the region of binding.</p>
+  </li>
+  <li>
+    <p><strong>2. Semi-flexible simulated annealing in torsion angle space (it1)</strong> <br />
+The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step 
+molecular dynamics-based refinement in order to optimize interface packing. It is worth noting that flexibility in 
+torsion angle space means that bond lengths and angles are still frozen. The interacting partners are first kept rigid 
+and only their orientations are optimized. Flexibility is then introduced in the interface, which is automatically 
+defined based on an analysis of intermolecular contacts within a 5Å cut-off. This allows different binding poses coming 
+from it0 to have different flexible regions defined. Residues belonging to this interface region are then allowed to 
+move their side-chains in a second refinement step. Finally, both backbone and side-chains of the flexible interface 
+are granted freedom.
+The AIRs again play an important role at this stage since they might drive conformational changes.</p>
+  </li>
+  <li>
+    <p><strong>3. Refinement in Cartesian space with explicit solvent (water)</strong> <br />
+The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the 
+interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane 
+mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 
+300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side 
+chains to be optimized.</p>
+  </li>
+</ul>
+
+<p>The performance of this protocol of course depends on the number of models generated at each step. Few models are less 
+probable to capture the correct binding pose, while an exaggerated number will become computationally unreasonable. The 
+standard HADDOCK protocol generates 1000 models in the rigid body minimization stage, and then refines the best 200 – 
+regarding the energy function - in both it1 and water. Note, however, that while 1000 models are generated by default 
+in it0, they are the result of five minimization trials and for each of these the 180º symmetrical solution is also 
+sampled. Effectively, the 1000 models written to disk are thus the results of the sampling of 10.000 docking solutions.</p>
+
+<p>The final models are automatically clustered based on a specific similarity measure - either the <em>positional interface 
+ligand RMSD</em> (iL-RMSD) that captures conformational changes about the interface by fitting on the interface of the 
+receptor (the first molecule) and calculating the RMSDs on the interface of the smaller partner, or the <em>fraction of 
+common contacts</em> (current default) that measures the similarity of the intermolecular contacts. For RMSD clustering, 
+the interface used in the calculation is automatically defined based on an analysis of all contacts made in all models.</p>
+
+<hr />
+
+<hr />
+
+<h2 id="installing-haddock">Installing HADDOCK</h2>
+
+<p><br /></p>
+<hr />
+
+<h3 id="downloading-haddock">Downloading HADDOCK</h3>
+<p>In this tutorial we will make use of the new HADDOCK2.4 version. You can download a gzipped archive from the following <a href="https://surfdrive.surf.nl/files/index.php/s/ZKnfCWpnOjkl9Sg" target="_blank">link</a>.</p>
+
+<p><em>Note</em> that this does require a password that will be provided to you during the tutorial (or upon request once you have filled the <a href="(http://www.bonvinlab.org/software/haddock2.2/download/){:target=&quot;_blank&quot;}">HADDOCK license form</a>.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="downloading-cns">Downloading CNS</h3>
+<p>The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – <a href="http://cns-online.org" target="_blank">http://cns-online.org</a> ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the <code class="highlighter-rouge">cns1.3</code> directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the <a href="http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23">HADDOCK forum</a>. For this tutorial you can download pre-compiled executables for Linux and OSX from the following <a href="https://surfdrive.surf.nl/files/index.php/s/Wcv67D5IX0DuZK5" target="_blank">link</a> (again password-protected).</p>
+
+<p>Untar the archive in the <code class="highlighter-rouge">software</code> directory.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="auxiliary-software">Auxiliary software</h3>
+<p><strong><a href="http://freesasa.github.io" title="FreeSASA" target="_blank">FreeSASA</a></strong>. In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of <a href="http://www.bioinf.manchester.ac.uk/naccess/" title="NACCESS" target="_blank">NACCESS</a> freely available to non-profit users, or its open-source software alternative <a href="http://freesasa.github.io" title="FreeSASA" target="_blank">FreeSASA</a>. We will here make use of FreeSASA. Following the download and installation instructions from the <a href="http://freesasa.github.io" title="FreeSASA" target="_blank">FreeSASA website</a>. The direct download command is:</p>
+
+<p><a class="prompt prompt-cmd">
+  cd <br />
+  mkdir software <br />
+  cd software <br />
+  wget https://freesasa.github.io/freesasa-2.0.3.tar.gz
+</a></p>
+
+<p>If running into problems you might want to disable <code class="highlighter-rouge">json</code> and <code class="highlighter-rouge">xml</code> support. Here we will assume you save the tar archive under the <code class="highlighter-rouge">software</code> directory in your home directory:</p>
+
+<p><a class="prompt prompt-cmd">
+  tar xvfz freesasa-2.0.3.tar.gz <br />
+  cd freesasa-2.0.3 <br />
+  ./configure --disable-json --disable-xml --prefix ~/software <br />
+  make<br />
+  make install<br />
+</a></p>
+
+<p><strong><a href="http://github.com/haddocking/haddock-tools" title="HADDOCK-Tools" target="_blank">HADDOCK-tools</a></strong>: A collection of HADDOCK-related scripts freely available from our GitHub repository. To install it:</p>
+
+<p><a class="prompt prompt-cmd">
+  cd ~/software<br />
+  git clone https://github.com/haddocking/haddock-tools
+</a></p>
+
+<p>In case git is not installed on your system, go the GitHub site given in the command and download directly the archive.</p>
+
+<p><strong><a href="http://molprobity.biochem.duke.edu" title="MolProbity" target="_blank">MolProbity</a></strong>: MolProbity is a structure validate software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the <code class="highlighter-rouge">reduce</code> application. An pre-compiled executable can be freely downloaded from the <a href="https://github.com/rlabduke/MolProbity">MolProbity GitHub website</a>. You can directly download the <code class="highlighter-rouge">reduce</code> executable for <a href="https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce" target="_blank">Linux</a> or <a href="https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce" target="_blank">OSX</a>.</p>
+
+<p>Put the executable in <code class="highlighter-rouge">~software/bin</code>, rename it to <code class="highlighter-rouge">reduce</code> if needed and make sure it is executable (e.g. <code class="highlighter-rouge">chmod +x ~/software/bin/reduce</code>).</p>
+
+<p><strong><a href="http://github.com/haddocking/pdb-tools" title="PDB-Tools" target="_blank">PDB-tools</a></strong>: A useful collection of Python scripts for the manipulation (renumbering, changing chain and segIDs…) of PDB files is freely available from our GitHub repository. To install it:</p>
+
+<p><a class="prompt prompt-cmd">
+  cd ~/software<br />
+  git clone https://github.com/haddocking/pdb-tools
+</a></p>
+
+<p>In case git is not installed on your system, go the GitHub site given in the command and download directly the archive.</p>
+
+<p><strong><a href="http://www.bioinf.org.uk/software/profit/index.html" title="ProFit" target="_blank">ProFit</a></strong>: ProFit is designed to be the ultimate protein least squares fitting program. Some of the provided analysis tools in HADDOCK make use of Profit. Profit can be obtained free of charge for both non-profit and commercial users. The latter should notify the authors that they are using it. For information and download see the <a href="http://www.bioinf.org.uk/software/profit/index.html" title="ProFit" target="_blank">ProFit webpage</a>.</p>
+
+<p><strong><a href="http://www.pymol.org/" title="PyMOL" target="_blank">PyMol</a></strong>: We will make use of PyMol for visualisation. If not already installed on your system, download and install PyMol.</p>
+
+<p>At this point we will assume that you successfully downloaded all auxiliary software and installed the executables (or links to them) in <code class="highlighter-rouge">~/software/bin</code></p>
+
+<p><a class="prompt prompt-info">
+In order to run this tutorial smoothly, you should add to your path the various software directories we just installed.
+Go into the software directory where you installed the various software components.
+</a></p>
+
+<p>If running under <code class="highlighter-rouge">bash</code> shell, type:</p>
+
+<p><a class="prompt prompt-cmd">
+  cd bin; export PATH=${PATH}:`pwd` <br />
+  cd .. <br />
+  cd haddock-tools; export PATH=${PATH}:`pwd` <br />
+  cd .. <br />
+  cd pdb-tools; export PATH=${PATH}:`pwd` <br />
+  cd .. <br />
+</a></p>
+
+<p>And for <code class="highlighter-rouge">csh</code>:</p>
+
+<p><a class="prompt prompt-cmd">
+cd bin; set path= ( $path `pwd` ) <br />
+cd .. <br />
+cd haddock-tools; set path= ( $path `pwd` ) <br />
+cd .. <br />
+cd pdb-tools; set path= ( $path `pwd` ) <br />
+cd .. <br />
+</a></p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="configuring-haddock">Configuring HADDOCK</h3>
+<p>After having downloaded HADDOCK from the above link, unpack the archive under the <code class="highlighter-rouge">~/software</code> directory with the following command:</p>
+
+<p><a class="prompt prompt-cmd">
+  tar xvfz haddock2.4.tgz<br />
+</a></p>
+
+<p><a class="prompt prompt-info">
+Go into the newly created haddock2.4 directory and edit a configuration file specific to your system. 
+</a></p>
+
+<p>This configuration file should contain the following information:</p>
+
+<p><code class="highlighter-rouge">CNSTMP</code> defining the location of your CNS executable</p>
+
+<p><code class="highlighter-rouge">QUEUETMP</code> defining the submission command for running the jobs (e.g. either via <code class="highlighter-rouge">csh</code> or through a specific command submitting to your local batch system)</p>
+
+<p><code class="highlighter-rouge">NUMJOB</code> defining the number of concurrent jobs executed (or submitted).</p>
+
+<p>And example configuration file for running on local resources assuming a 4 core system would be:</p>
+<pre style="background-color:#DAE4E7">
+  set CNSTMP=/home/abonvin/software/cns/cns_solve-1.31-UU-Linux64bits.exe
+  set QUEUETMP=/bin/csh
+  set NUMJOB=4
+</pre>
+
+<p>For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found <a href="http://www.bonvinlab.org/software/haddock2.2/faq/#batchqueue">here</a>.</p>
+
+<p>In order to configure HADDOCK, call the <code class="highlighter-rouge">install.csh</code> script with as argument the configuration script you just created:</p>
+
+<p><a class="prompt prompt-cmd">
+  ./install.csh &lt;my-config-file&gt;
+</a></p>
+
+<p>There is one more file that should be manually edited to define the number of models to concatenate within one job (useful when submitting to a batch system to ensure jobs are not too short in queue).
+Depending on the size of your system, a typical run time for rigid body docking would be a few tens of seconds per model written to disk (which effectively correspond to 10 docking trials internally), and a few minutes per model for the flexible refinement and water refinement. But this can increase a lot depending on the complexity of your system and the number of molecules to dock.</p>
+
+<p><a class="prompt prompt-info">
+To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat.py located in the haddock2.4 installation directory and change the values as required:
+</a></p>
+
+<pre style="background-color:#DAE4E7">
+jobmax["it0"] = 10
+jobmax["it1"] = 2
+jobmax["water"]= 1
+</pre>
+
+<p>In our case, if running on local system, change all values to 1.</p>
+
+<p>One last command to source the HADDOCK environment (under bash) (for csh, replace <code class="highlighter-rouge">.sh</code> by <code class="highlighter-rouge">.csh</code>):</p>
+
+<p><a class="prompt prompt-cmd">
+  cd ~/software/haddock2.4 <br />
+  source ./haddock_configure.sh
+</a></p>
+
+<p>At this stage you should be ready to use HADDOCK!</p>
+
+<p><br /></p>
+<hr />
+
+<hr />
+
+<h2 id="preparing-pdb-files-for-docking">Preparing PDB files for docking</h2>
+
+<p>In this section we describe some basic points in preparing PDB files for HADDOCK. First of all, each PDB file must end with an <code class="highlighter-rouge">END</code> statement.
+We will illustrate here three aspects:</p>
+
+<ul>
+  <li>Cleaning PDB files prior to docking</li>
+  <li>Introducing a mutation in a PDB file</li>
+  <li>Dealing with an ensemble of models</li>
+  <li>Dealing with multi-chain proteins</li>
+</ul>
+
+<p>We suggest to create separate directories for the different cases and work from those.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="cleaning-pdb-files-prior-to-docking">Cleaning PDB files prior to docking</h3>
+<p>We will use here as example the E2A structure used as input in our <a href="/education/HADDOCK-protein-protein-basic/">HADDOCK webserver basic protein-protein docking tutorial</a>.
+This protein is part of a phospho-transfer complex and one of its histidine residue should in principle be phosphorylated.
+Start PyMOL and in the command line window of PyMOL (indicated by PyMOL&gt;) type:</p>
+
+<p><a class="prompt prompt-pymol">
+fetch 1F3G<br />
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+show cartoon<br />
+hide lines<br />
+show sticks, resn HIS<br />
+</a></p>
+
+<p>You should see a backbone representation of the protein with only the histidine side-chains visible.
+Try to locate the histidines in this structure.</p>
+
+<p><a class="prompt prompt-question">Is there any phosphate group present in this structure?</a></p>
+
+<p>Note that you can zoom on the histidines by typing in PyMOL:</p>
+
+<p><a class="prompt prompt-pymol">zoom resn HIS</a></p>
+
+<p>Revert to a full view with:</p>
+
+<p><a class="prompt prompt-pymol">zoom vis</a></p>
+
+<p>As a preparation step before docking, it is advised to remove any irrelevant water and other small molecules (e.g. small molecules from the crystallisation buffer), however do leave relevant co-factors if present. For E2A, the PDB file only contains water molecules. You can remove those in PyMOL by typing:</p>
+
+<p><a class="prompt prompt-pymol">remove resn HOH</a></p>
+
+<p>As final step save the molecule as a new PDB file which we will call: <em>e2a_1F3G.pdb</em><br />
+For this in the PyMOL command line type:</p>
+
+<p><a class="prompt prompt-pymol">save e2a_1F3G.pdb</a></p>
+
+<p><strong>Note</strong> that you can of course also simply edit the PDB file with your favorite text editor.</p>
+
+<p>Since the biological function of the E2A-HPR complex is to transfer a phosphate group from one protein to another, via histidines side-chains, it is relevant to make sure that a phosphate group be present for docking. As we have seen above none is currently present in the PDB files. HADDOCK does support a list of modified amino acids which you can find at the following link: <a href="http://haddock.science.uu.nl/services/HADDOCK2.2/library.html">http://haddock.science.uu.nl/services/HADDOCK2.2/library.html</a>.</p>
+
+<p><a class="prompt prompt-question">Check the list of supported modified amino acids.</a>
+<a class="prompt prompt-question">What is the proper residue name for a phospho-histidine in HADDOCK?</a></p>
+
+<p>In order to use a modified amino-acid in HADDOCK, the only thing you will need to do is to edit the PDB file and change the residue name of the amino-acid you want to modify. Don’t bother deleting irrelevant atoms or adding missing ones, HADDOCK will take care of that. For E2A, the histidine that is phosphorylated has residue number 90. In order to change it to a phosphorylated histidine do the following:</p>
+
+<p><a class="prompt prompt-info">Edit the PDB file (<em>e2a_1F3G.pdb</em>) in your favorite editor</a>
+<a class="prompt prompt-info">Change the name of histidine 90 to NEP </a>
+<a class="prompt prompt-info">Save the file (as simple text file) under a new name, e.g. <em>e2aP_1F3G.pdb</em></a></p>
+
+<p><strong>Note:</strong> The same procedure can be used to introduce a mutation in an input protein structure.</p>
+
+<p><strong>Note:</strong> In the <code class="highlighter-rouge">haddock-tools</code> scripts that you installed, there is a python script called <code class="highlighter-rouge">pdb_mutate.py</code> that allows you to introduce such a mutation from the command line (call the script without arguments to see its usage):</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_mutate.py e2a_1F3G.pdb A 90 HIS NEP &gt;e2aP_1F3G.pdb
+</a></p>
+
+<p>Prior to using this file in HADDOCK is to remove any chainID and segID information. This can easily be done using our <code class="highlighter-rouge">pdb-tools</code> scripts:</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_chain.py e2aP_1F3G.pdb | ~/software/pdb-tools/pdb_seg.py &gt;e2aP_1F3G-clean.pdb
+</a></p>
+
+<p>In case your PDB file comes from some modelling software, it might be good to check that it is properly formatted. This can be done with our <code class="highlighter-rouge">pdb-tools</code> script:</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_format.py e2aP_1F3G-clean.pdb 
+</a></p>
+
+<p><strong>Note</strong> that not all warnings are relevant. The important part is that the columns be properly aligned.</p>
+
+<p>You can also check if your PDB model has gaps in the structure. If gaps are detected you can either try to modell the missing fragments, or define a few distance restraints to keep the fragments together during docking (see the section about <a href="#dealing-with-multi-chain-proteins">Dealing with multi-chain proteins</a>.</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_gap.py e2aP_1F3G-clean.pdb 
+</a></p>
+
+<p>Another possible issue with the starting PDB structures can be double occupancy of some side-chains. This is quite common in high resolution crystal structures.
+For HADDOCK, you will have to remove those double occupancies (or create multiple models corresponding to various conformations). A simply way to get rid of double occupancies (only the first occurence of each side-chain will be kept) is to use our <code class="highlighter-rouge">pdb-tools</code> <code class="highlighter-rouge">pdb_delocc.py</code> script.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="dealing-with-an-ensemble-of-models">Dealing with an ensemble of models</h3>
+
+<p>HADDOCK can take as input an ensemble of conformation. This has the advantage that it allows to pre-sample possible conformational changes. We however recommend to limit the number of conformers used for docking, since the number of conformer combinations of the input molecules might explode (e.g. 10 conformers each will give 100 starting combinations, and if we generate 1000 rigid body models (see <a href="#haddock-general-concepts">HADDOCK general concepts</a> above) each combination will only be sampled 10 times).</p>
+
+<p>While the HADDOCK webportal will take those as an ensemble PDB file (with <code class="highlighter-rouge">MODEL</code> / <code class="highlighter-rouge">ENDMDL</code> statements), the local version of HADDOCK expects those models to be provided as single structure and an additional file providing a listing of the models. To illustrate this we will use the HPR protein used as input in our <a href="/education/HADDOCK-protein-protein-basic/">HADDOCK webserver basic protein-protein docking tutorial</a>. The input structure for docking corresponds to an NMR ensemble of 30 models.</p>
+
+<p>We will now inspect the HPR structure. For this start PyMOL and in the command line window of PyMOL type:</p>
+
+<p><a class="prompt prompt-pymol">
+fetch 1HDN<br />
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+show cartoon<br />
+set all_states, on<br />
+</a></p>
+
+<p>You should now be seeing the 30 conformers present in this NMR structure.
+Save the molecule as a new PDB file which we will call: <em>hpr_1HDN.pdb</em><br />
+For this in the PyMOL command line window type:</p>
+
+<p><a class="prompt prompt-pymol">save hpr_1HDN.pdb, state=0</a></p>
+
+<p>As in the previous example, make sure to remove all chainID and segidID from the PDB file</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_chain.py hpr_1HDN.pdb | pdb_seg.py &gt;hpr_1HDN-clean.pdb
+</a></p>
+
+<p>While this file would be ready for upload to the HADDOCK server, we need to split the models into individual files for use with the local version of HADDOCK.
+Again, this can be done easily with one of our <code class="highlighter-rouge">pdb-tools</code> script:</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_splitmodel.py hpr_1HDN-clean.pdb
+</a></p>
+
+<p>The result of this are 30 separate PBD models named <code class="highlighter-rouge">hpr_1HDN-clean_XX.pdb</code> where XX is the model number. To use this ensemble of models we need to create a text file listing those models. This can be done for example with the following command (using in this example only the top10 models):</p>
+
+<p><a class="prompt prompt-cmd">
+  \ls -1 hpr_1HDN-clean_*.pdb | awk '{print $1}' &gt;hpr_1HDN.list
+</a></p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="dealing-with-multi-chain-proteins">Dealing with multi-chain proteins</h3>
+
+<p>It can happen that one of your molecule consists of multiple chains, such as for example a homo-dimer or an antibody structure.
+HADDOCK can in principle handle those, but it is important that there is not overlap in the residue numbering between the chains since the molecule will be assigned a single chainID/segID for docking. As an example we will consider an antibody structure (PDB entry 4G6K).</p>
+
+<p><a class="prompt prompt-pymol">
+fetch 4G6K<br />
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+show cartoon<br />
+hide lines<br />
+remove resn HOH<br />
+</a></p>
+
+<p>This structure consists of two chains, L and H, with overlapping residue numbering. Turn on the sequence in PyMol (under the Display menu) and find out what is the last residue number of the first chain L. We need this information to know by how much we should shift the numbering of the second chain.</p>
+
+<p>Save the molecule as a PDB file:</p>
+
+<p><a class="prompt prompt-pymol">save 4G6K.pdb</a></p>
+
+<p>We will now shift the numbering of chain L to avoid overlap in numbering. This can easily be done using our <code class="highlighter-rouge">pdb-tools</code> scripts. The first chain ends with residue number 212 and the second chain starts at 1. We will shift the numbering of the second chain by 500 to avoid numbering overlap:</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_selchain.py -H 4G6K.pdb &gt;4G6K_H.pdb <br />
+  echo TER &gt;&gt;4G6K_H.pdb <br />
+  pdb_selchain.py -L 4G6K.pdb | pdb_shiftres.py -500 &gt;4G6K_L.pdb <br />
+  echo END &gt;&gt;4G6K_L.pdb <br />
+  cat 4G6K_H.pdb 4G6K_L.pdb | pdb_chain.py | pdb_seg.py &gt; 4G6K-clean.pdb <br />
+</a></p>
+
+<p>We added a TER statement between the chains and an END statement at the end of the file.</p>
+
+<p><strong>Note</strong> that this structure consists of two separate chains. It will therefore be important to define a few distance restraints to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be done using another script from <code class="highlighter-rouge">haddock-tools</code>:</p>
+
+<p><a class="prompt prompt-cmd">
+  restrain_bodies.py  4G6K-clean.pdb &gt;antibody-unambig.tbl
+</a></p>
+
+<p>The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:</p>
+
+<pre style="background-color:#DAE4E7">
+  assign (segid  and resi 189 and name CA) (segid  and resi 693 and name CA) 21.023 0.0 0.0
+  assign (segid  and resi 116 and name CA) (segid  and resi 702 and name CA) 44.487 0.0 0.0
+</pre>
+
+<p><strong>Note</strong> that in this example, we are missing segment identifiers since they were not present in the PDBs. And if they are present, make sure those match what you are going to define as segIDs in HADDOCK. So in this case we need to add <code class="highlighter-rouge">A</code> for the first molecule and <code class="highlighter-rouge">B</code> for the second:</p>
+
+<pre style="background-color:#DAE4E7">
+  assign (segid A and resi 189 and name CA) (segid A and resi 693 and name CA) 21.023 0.0 0.0
+  assign (segid A and resi 116 and name CA) (segid A and resi 702 and name CA) 44.487 0.0 0.0
+</pre>
+
+<p>This is the file you should save as <code class="highlighter-rouge">unambig.tbl</code> and pass to HADDOCK.</p>
+
+<p><br /></p>
+<hr />
+
+<hr />
+
+<h2 id="defining-restraints-for-docking">Defining restraints for docking</h2>
+
+<p>Before setting up the docking we need first to generate distance restraint files in a format suitable for HADDOCK. 
+HADDOCK uses <a href="http://cns-online.org" title="CNS online">CNS</a> as computational engine. A description of the format for the various restraint types supported by HADDOCK can
+be found in our <a href="http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html" target="_blank">Nature Protocol</a> paper, Box 4.</p>
+
+<p>Distance restraints are defined as:</p>
+
+<pre style="background-color:#DAE4E7">
+  assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+</pre>
+
+<p>The lower limit for the distance is calculated as: distance minus lower-bound correction
+and the upper limit as: distance plus upper-bound correction.
+The syntax for the selections can combine information about chainID - <code class="highlighter-rouge">segid</code> keyword -, residue number - <code class="highlighter-rouge">resid</code> 
+keyword -, atom name - <code class="highlighter-rouge">name</code> keyword.
+Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the <a href="http://cns-online.org" title="CNS online">online CNS manual</a>.</p>
+
+<p>We will shortly explain in this section how to generate both ambiguous interaction restraints (AIRs) and specific distance restraints for use in HADDOCK illustrating three scenarios:</p>
+
+<ul>
+  <li><strong>Interface mapping on both side</strong> (e.g. from NMR chemical shift perturbation data)</li>
+  <li><strong>Specific distance restraints</strong> (e.g. cross-links detected by MS)</li>
+  <li><strong>Interface mapping on one side, full surface on the other</strong></li>
+</ul>
+
+<p>Information about various types of distance restraints in HADDOCK can also be found in our <a href="http://www.bonvinlab.org/software/haddock2.2/generate_air_help/">online manual</a> pages.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="defining-airs-from-interface-mapping">Defining AIRs from interface mapping</h3>
+
+<p>We will use as example here the NMR chemical shift perturbations from the E2A-HPR complex used in our <a href="/education/HADDOCK-protein-protein-basic/">HADDOCK webserver basic protein-protein docking tutorial</a>. The following residues of E2A were identified by <a href="http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract" target="_blank">Wang <em>et al</em>, EMBO J (2000)</a> as having significant chemical shift perturbations:</p>
+
+<p><a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a></p>
+
+<p>Let’s visualize them in PyMOL using the clean PDB file we created in the <a href="#cleaning-pdb-files-prior-to-docking">Cleaning PDB files prior to docking</a> section of this tutorial:</p>
+
+<p><a class="prompt prompt-cmd">
+  pymol e2a_1F3G.pdb
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+color white, all<br />
+show surface<br />
+select e2a_active, (resi 38,40,45,46,69,71,78,80,94,96,141)<br />
+color red, e2a_active<br />
+</a></p>
+
+<figure align="center">
+<img src="/education/HADDOCK-protein-protein-basic/e2a-surface-airs.png" />
+</figure>
+
+<p>Inspect the surface.</p>
+
+<p><a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
+<a class="prompt prompt-question">Do they form a contiguous surface?</a></p>
+
+<p>The answer to the last question should be no: We can observe residue in the center of the patch that do not seem significantly affected while still being in the middle of the defined interface. This is the reason why in HADDOCK we also define “<em>passive</em>” residues that correspond to surface neighbors of active residues. These should be selected manually, filtering for solvent accessible residues (the HADDOCK server will do it for you).</p>
+
+<p>A list of passive residues the server would select in this case is:</p>
+
+<p><a class="prompt prompt-info">35,37,39,42,43,44,47,48,64,66,68,72,73,74,82,83,84,86,97,99,100,105,109,110,112,131,132,133,143,144</a></p>
+
+<p>In the same PyMol session as before you can visualize them with:</p>
+
+<p><a class="prompt prompt-pymol">
+select e2a_passive, (resi 35,37,39,42,43,44,47,48,64,66,68,72,73,74,82,83,84,86,97,99,100,105,109,110,112,131,132,133,143,144)<br />
+color green, e2a_passive<br />
+</a></p>
+
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/e2a-active-passive.png" />
+</figure>
+
+<p>In general it is better to be too generous rather than too strict in the definition of passive residues.</p>
+
+<p>And important aspect is to filter both the active (the residues identified from your mapping experiment) and passive residues by their solvent accessibility.
+Our webserver uses a default relative accessibility of 15% as cutoff. This is not a hard limit. You might consider including even more buried residues if some important chemical group seems solvent accessible from a visual inspection.</p>
+
+<p>We can use <code class="highlighter-rouge">freesasa</code> to calculate the residue solvent accessibilities:</p>
+
+<p><a class="prompt prompt-cmd">
+  freesasa e2a_1F3G.pdb --format=rsa &gt;e2a_1F3G.rsa
+</a></p>
+
+<p>The results is file similar to the output of <code class="highlighter-rouge">naccess</code> containing the per residue solvent accessibilities, both absolute and relative values, also distinguishing between backbone and side-chains:</p>
+
+<pre style="background-color:#DAE4E7">
+REM  FreeSASA 2.0.3
+REM  Absolute and relative SASAs for e2a_1F3G.pdb
+REM  Atomic radii and reference values for relative SASA: ProtOr
+REM  Chains: A
+REM  Algorithm: Lee &amp; Richards
+REM  Probe-radius: 1.40
+REM  Slices: 20
+REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
+REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
+RES THR A  19   125.49  89.3  59.11  59.9  66.38 158.2  33.47  45.0  92.02 139.1
+RES ILE A  20    29.18  16.6  23.16  17.3   6.02  14.5  29.18  21.0   0.00   0.0
+RES GLU A  21    63.92  36.7  50.29  38.0  13.63  32.5  13.71  26.5  50.21  41.0
+RES ILE A  22     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES ILE A  23    25.26  14.4  25.26  18.8   0.00   0.0  25.26  18.2   0.00   0.0
+...
+</pre>
+
+<p>The following command will return all residues with a relative SASA for either the backbone or the side-chain &gt; 15%:</p>
+
+<p><a class="prompt prompt-cmd">
+  awk '{if (NF==13 &amp;&amp; $5&gt;40) print $0; if (NF==14 &amp;&amp; $6&gt;40) print $0}' e2a_1F3G.rsa
+</a></p>
+
+<p>Once you have defined your active and passive residues for both molecules, you can proceed with the generation of the AIR restraint file for HADDOCK.
+For this you can either make use of our online <a href="https://milou.science.uu.nl/services/GenTBL/" target="_blank">GenTBL</a> webserver, entering the list of active and passive residues for each molecule, and saving the resulting restraint list to a text file, or use another <code class="highlighter-rouge">haddock-tools</code> script.</p>
+
+<p>To use our <code class="highlighter-rouge">haddock-tools</code> <code class="highlighter-rouge">active-passive-to-ambig.py</code> script you need to create for each molecule a file containing two lines:</p>
+<ul>
+  <li>The first line corresponds to the list of active residues (numbers separated by spaces)</li>
+  <li>The second line corresponds to the list of passive residues.</li>
+</ul>
+
+<p>For our E2A-HPR example this would be:</p>
+
+<ul>
+  <li>For E2A (a file called <a href="/education/HADDOCK-local-tutorial/e2a-act-pass.list" target="_blank">e2a-act-pass.list</a>):</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+38 40 45 46 69 71 78 80 94 96 141
+35 37 39 42 43 44 47 48 64 66 68 72 73 74 82 83 84 86 97 99 100 105 109 110 112 131 132 133 143 144
+</pre>
+
+<ul>
+  <li>and for HPR (a file called <a href="/education/HADDOCK-local-tutorial/hpr-act-pass.list" target="_blank">hpr-act-pass.list</a>):</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+15 16 17 20 48 49 51 52 54 56
+9 10 11 12 21 24 25 34 37 38 40 41 43 45 46 47 53 55 57 58 59 60 84 85
+</pre>
+
+<p>Using those two file we can generate the CNS-formatted AIR restraint files with the following command:</p>
+
+<p><a class="prompt prompt-cmd">
+  active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list &gt;e2a-hpr-ambig.tbl
+</a></p>
+
+<p>This generates a file called <code class="highlighter-rouge">e2a-hpr-ambig.tbl</code> that contains the AIR restraints. The default distance range for those is between 0 and 2Å, which might seem short but makes senses because of the 1/r^6 summation in the AIR energy function that makes the effective distance be significantly shorter than the shortest distance entering the sum.
+The effective distance is calculated as the SUM over all pairwise atom-atom distance combinations between an active residue and all the active+passive on the other molecule: SUM[1/r^6]^(-1/6).</p>
+
+<p>If you modify this file, it is possible to quickly check if the format is valid. To do so, you can find in the <code class="highlighter-rouge">haddock-tools</code> repository a folder named <code class="highlighter-rouge">haddock_tbl_validation</code> that contains a script called <code class="highlighter-rouge">validate_tbl.py</code>. To use it, simply run:</p>
+
+<p><a class="prompt prompt-cmd">
+  python ~/software/haddock-tools/haddock_tbl_validation/validate_tbl.py –silent e2a-hpr-ambig.tbl
+</a></p>
+
+<p>No output means that your TBL file is valid. You can also find TBL file examples for different types of restraints in the <code class="highlighter-rouge">haddock-tools/haddock_tbl_validation/</code> directory.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="defining-specific-distance-restraints">Defining specific distance restraints</h3>
+
+<p>You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our <a href="/education/HADDOCK-Xlinks">HADDOCK cross-links tutorial</a> obtained for the complex between PRE5 (UniProtKB: <a href="http://www.uniprot.org/uniprot/O14250" target="_blank">O14250</a>) and PUP2 (UniProtKB: <a href="http://www.uniprot.org/uniprot/Q9UT97" target="_blank">Q9UT97</a>). From MS, we have seven experimentally determined cross-links (4 ADH &amp; 3 ZL) (<a href="https://doi.org/10.1073/pnas.1320298111" target="_blank">Leitner et al., 2014</a>), which we will define as CA-CA distance restraints (<a href="/education/HADDOCK-local-tutorial/restraints.txt" target="_blank">restraints.txt</a>):</p>
+
+<pre style="background-color:#DAE4E7">
+# ADH crosslinks
+A  27 CA B  18 CA 0 23
+A 122 CA B 125 CA 0 23
+A 122 CA B 128 CA 0 23
+A 122 CA B 127 CA 0 23
+
+# ZL crosslinks
+A 55 CA B 169 CA 0 26
+A 55 CA B 179 CA 0 26
+A 54 CA B 179 CA 0 26
+</pre>
+
+<p>This is the format used by our <a href="https://haddock.science.uu.nl/services/DISVIS">DisVis portal</a> to represent the cross-links. Each cross-link definition consists of eight fields:</p>
+
+<ul>
+  <li>chainID of the 1st molecule</li>
+  <li>residue number</li>
+  <li>atom name</li>
+  <li>chainID of the 2nd molecule</li>
+  <li>residue number</li>
+  <li>atom name</li>
+  <li>lower distance limit</li>
+  <li>upper distance limit</li>
+</ul>
+
+<p>The corresponding CNS-formatted HADDOCK restraint file for those would be (<a href="/education/HADDOCK-local-tutorial/unambig-xlinks.tbl" target="_blank">unambig-xlinks.tbl</a>):</p>
+<pre style="background-color:#DAE4E7">
+assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
+assign (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
+assign (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
+</pre>
+
+<p>As a reminder, distance restraints are defined as:</p>
+<pre style="background-color:#DAE4E7">
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+</pre>
+
+<p>where the lower limit for the distance is calculated as: distance minus lower-bound correction
+and the upper limit as: distance plus upper-bound correction.</p>
+
+<p><strong>Note:</strong> Under Linux (or OSX), this file could be generated automatically from a text file containing the DisVis restraints
+ with the following command (one line) in a terminal window:</p>
+
+<p><a class="prompt prompt-linux">
+  cat restraints.txt | awk '{if (NF == 8) {print "assi (segid ",$1," and resid ",$2," and name ",$3,") (segid ",$4," and resid ",$5," and name ",$6,") ",$8,$8,$7}}' &gt; pre5-pup2-Xlinks.tbl
+</a></p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="defining-airs-from-interface-mapping-on-one-side-full-surface-on-the-other">Defining AIRs from interface mapping on one side, full surface on the other</h3>
+
+<p>To illustrate such a case, we will define restraints between the CDR loops residue of an antibody and the entire surface of its antigen. The assumption is that we don’t know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about <a href="#dealing-with-multi-chain-proteins">Dealing with multi-chain proteins</a>. The CRD loops can be identified manually, or using for example the <a href="http://ofranservices.biu.ac.il/site/services/paratome/index.html" target="_blank">Paratome webserver</a> (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:</p>
+<pre style="background-color:#DAE4E7">
+&gt;paratome_8633_pdbChain_H (heavy chain)
+QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQV
+SLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSSASTKGPSVF
+
+ABR1: FSLSTSGMGVG (27,28,29,30,31,32,33,34,35,36,37)
+ABR2: WLAHIWWDGDESY (49,50,51,52,53,54,55,56,57,58,59,60,61)
+ABR3: RNRYDPPWFVD (99,100,101,102,103,104,105,106,107,108,109)
+
+&gt;paratome_8633_pdbChain_L (light chain)
+DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPSRFSGSGSGTDYTLTISSLQQ
+EDFATYFCLQGKMLPWTFGQGTKLEIKRTVAAPSVFIFPPSDEQLKSGTASVVC
+
+ABR1: QDISNYLS (27,28,29,30,31,32,33,34)
+ABR2: LLIYYTSKLHS (46,47,48,49,50,51,52,53,54,55,56)
+ABR3: LQGKMLPW (89,90,91,92,93,94,95,96)
+</pre>
+
+<p>Based on these predictions, we can define the active residues (no need to define passive in this case since the second molecule won’t have any active residues) as (save this in a text file to generate later the CNS-formatted restraint file) - remember in this case to shift the numbering of chain L by 500 as we can’t have overlapping numbering within one molecule).</p>
+
+<p>We can visualize those in PyMOL using the clean PDB file we generated previously:
+<a class="prompt prompt-linux">
+pymol 4G6K-clean.pdb
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+as cartoon <br />
+hide lines <br />
+select CDR, (resid 27,28,30,32,33,35,37,56,57,58,59,61,101,102,103,527,528,531,532,550,552,553,554,556,592,593,593,594) <br />
+color red, CDR <br />
+</a></p>
+
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/antibody-CDRs.png" />
+</figure>
+
+<p>Not all predicted residues might however be solvent accessible. Therefore we should first filter for accessibility. For this we will use <code class="highlighter-rouge">freesasa</code>:</p>
+
+<p><a class="prompt prompt-cmd">
+  freesasa 4G6K-clean.pdb --format=rsa &gt;4G6K.rsa
+</a></p>
+
+<p>The list of accessible residues (with a cutoff of 40% in this case) can be obtained with:</p>
+
+<p><a class="prompt prompt-cmd">
+  awk '{if (NF==13 &amp;&amp; ($7&gt;40 || $9&gt;40)) printf "%s ",$3; if (NF==14 &amp;&amp; ($8&gt;40 || $10&gt;40)) printf "%s ",$4}' 4G6K.rsa
+</a></p>
+
+<p>Cross-referencing those against the predicted CDR residues gives a final list for HADDOCK:</p>
+
+<pre style="background-color:#DAE4E7">
+27 28 30 32 33 35 37 56 57 58 59 61 101 102 103 527 528 531 532 550 552 553 554 556 592 593 593 594
+
+</pre>
+<p>Save this residue list (including an empty line for the passive residue) in a test file (e.g. <a href="/education/HADDOCK-local-tutorial/4G6K-active.list" target="_blank">4G6K-active.list</a>)</p>
+
+<p>The antigen in this case in interleukin 1-beta corresponding to chain A in PDB entry 4I1B.
+We can fetch is from the PDB using another <code class="highlighter-rouge">pdb-tools</code> script:</p>
+
+<p><a class="prompt prompt-cmd">
+  pdb_fetch.py 4I1B |grep -v HOH &gt;4I1B.pdb
+</a></p>
+
+<p>**Note that the <code class="highlighter-rouge">grep</code> command in the above command will filter out the crystal water molecules. Alternatively inspec the file in PyMOL and remove any water or other crystallisation small molecule.</p>
+
+<p>For the antigen, since we don’t have information about the epitope in this case, we will define the entire solvent accessible surface area as passive. For this we will first use <code class="highlighter-rouge">freesasa</code> to calculate the solvent accessible residues and the filter those using a 40% accessibility cutoff (less than the 15% used previously to avoid defining too many passive residues which would slow down the computations).</p>
+
+<p><a class="prompt prompt-cmd">
+  freesasa 4I1B.pdb --format=rsa &gt;4I1B.rsa
+</a></p>
+
+<p>And then generate a list of solvent accessible residues using the 40% cutoff and save it to file:</p>
+
+<p><a class="prompt prompt-cmd">
+  echo " " &gt;4I1B-passive.list <br />
+  awk '{if (NF==13 &amp;&amp; ($7&gt;40 || $9&gt;40)) printf "%s ",$3; if (NF==14 &amp;&amp; ($8&gt;40 || $10&gt;40)) printf "%s ",$4}' 4I1B.rsa &gt;&gt;4I1B-passive.list
+</a></p>
+
+<p>We can visualize those in PyMOL:
+<a class="prompt prompt-linux">
+pymol 4I1B.pdb
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+color white, all<br />
+show surface<br />
+select passive, (resid 3,4,5,6,13,14,15,20,21,22,23,24,25,30,32,33,34,35,37,38,48,49,50,51,52,53,54,55,61,63,64,65,66,73,74,75,76,77,80,84,86,87,88,89,90,91,93,94,96,97,105,106,107,108,109,118,119,126,127,128,129,130,135,136,137,138,139,140,141,142,147,148,150,151,152,153)<br />
+color green, passive<br />
+</a></p>
+
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/antigen-passive.png" />
+</figure>
+
+<p>We have now all the necessary information to generate an AIR restraint file for this complex. The large number of active+passive residues will results in a large number of atom-atom distances to be evaluated which might slow down the computations. A solution for this is to make the restraints more specific only between CA-CA atoms and increase slightly the distance bound to 3.0Å. This is what the <code class="highlighter-rouge">sed</code> command is doing in the following command to generate the restraints:</p>
+
+<p><a class="prompt prompt-cmd">
+  active-passive-to-ambig.py 4G6K-active.list 4I1B-passive.list | sed s/segid/name\ CA\ and\ segid/g | sed s/2.0/3.0/g &gt;antibody-antigen-ambig.tbl
+</a></p>
+
+<p>The resulting AIR restraint file is: <code class="highlighter-rouge">antibody-antigen-ambig.tbl</code></p>
+
+<p>Finally, let’s assume we have one detected DSS cross-link between Lys63 of the antibody and Lys93 or the antigen with an upper limit of 23Å.
+We can define an ambiguous restraints between the CB of those two residues:</p>
+
+<p>This distance restraint can be combined with the specific distances defined to keep the two antibody chains together (see <a href="#dealing-with-multi-chain proteins">Dealing with multi-chain proteins</a> into a new <a href="/education/HADDOCK-local-tutorial/antibody-antigen-unambig.tbl">antibody-antigen-unambig.tbl</a> file:</p>
+
+<pre style="background-color:#DAE4E7">
+ ! antibody inter-chain restraints
+ assign (segid A and resi 189 and name CA) (segid A and resi 693 and name CA) 21.023 0.0 0.0
+ assign (segid A and resi 116 and name CA) (segid A and resi 702 and name CA) 44.487 0.0 0.0
+ ! cross-link
+ assign (segid A and resid 66  and name CB) (segid B and resid 99  and name CB)  23 23 0
+</pre>
+
+<hr />
+
+<hr />
+
+<h2 id="setting-up-the-docking">Setting up the docking</h2>
+
+<p>The first step in setting up the docking is to create a <code class="highlighter-rouge">run.param</code> file containing the information about your molecules, restraints and the location of the HADDOCK software in your system. The HADDOCK distribution you installed at the beginning of this tutorial contains an example directory with examples for a variety of docking scenarios:</p>
+
+<ul>
+  <li><em>protein-dna</em>              : protein-DNA docking (3CRO)</li>
+  <li><em>protein-ligand</em>           : protein-ligand docking (Neuraminidase)</li>
+  <li><em>protein-peptide-ensemble</em> : example of ensemble-averaged PRE restraints docking with two copies of a peptide not seeing
+                         each other (multiple binding modes) (sumo-daxx-simc system)</li>
+  <li><em>protein-peptide</em>          : protein-peptide docking from an ensemble of three peptide conformations with increased flexibility</li>
+  <li><em>protein-protein</em>          : protein-protein docking from an ensemble of NMR structure using CSP data (e2a-hpr)</li>
+  <li><em>protein-protein-dani</em>     : protein-protein docking from an ensemble of NMR structure using CSP data (e2a-hpr)
+                             and diffusion anisotropy restraints</li>
+  <li><em>protein-protein-em</em>       : protein-protein docking into a cryo-EM map</li>
+  <li><em>protein-protein-pcs</em>      : protein-protein docking using NMR PCS restraints (eps-hot_pcs system)</li>
+  <li><em>protein-protein-rdc</em>      : protein-protein docking using NMR RDC restraints (di-ubiquitin system)</li>
+  <li><em>protein-refine-pcs</em>       : example of single structure water refinement with NMR PCS restraints</li>
+  <li><em>protein-tetramer-CG</em>      : multi-body docking of a C4 tetramer with a coarse grained representation</li>
+  <li><em>protein-trimer</em>           : three body docking of a homotrimer using bioinformatic predictions (pdb1qu9)</li>
+  <li><em>refine-complex</em>           : refinement of a complex in water (it0 and it1 skipped)</li>
+  <li><em>solvated-docking</em>         : solvated protein-protein docking (barnase-barstar) using bioinformatic predictions</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="defining-the-input-data">Defining the input data</h3>
+
+<p>Here we will illustrate setting a docking run for the antibody-antigen complex for which we defined restraints in the previous section.
+We will need to define the two input PDB files (the renumbered clean antibody PDB file <code class="highlighter-rouge">4G6K-clean.pdb</code>, the antigen PDB file <code class="highlighter-rouge">4I1B.pdb</code>, the AIR restraint file <code class="highlighter-rouge">antibody-antigen-ambig.tbl</code> and since the antibody consists of two non-covalently linked chains, an addition unambiguous distance restraint file to keep those together <code class="highlighter-rouge">antibody-antigen-unambig.tbl</code> which we generated when <a href="#dealing-with-multi-chain-proteins">preparing the antibody PDB file for docking</a>.</p>
+
+<p>The generic format of the <code class="highlighter-rouge">run.param</code> file for such an case would be:</p>
+
+<pre style="background-color:#DAE4E7">
+AMBIG_TBL=antibody-antigen-ambig.tbl
+HADDOCK_DIR=PATH/TO/HADDOCK/INSTALLATIONDIR/haddock2.4
+N_COMP=2
+PDB_FILE1=4G6K-clean.pdb
+PDB_FILE2=4I1B.pdb
+PROJECT_DIR=./
+PROT_SEGID_1=A
+PROT_SEGID_2=B
+RUN_NUMBER=1
+UNAMBIG_TBL=antibody-antigen-unambig.tbl
+</pre>
+
+<p><em>N_COMP</em> defines the number of molecules to dock
+<em>RUN_NUMBER</em> defined the number (or name - can be a string) of the run
+<em>PROT_SEGID_1</em> and <em>PROT_SEGID_2</em> are the chain or rather segIDs use by HADDOCK to identify the two molecules. It is important that those match what has been used in defining the distance restraints!</p>
+
+<p>Once this file has been created (use one example <code class="highlighter-rouge">run.param</code> file from the <code class="highlighter-rouge">haddock2.4/examples</code> directory as template and edit as needed), start HADDOCK by typing in the same directory where the file has been created:</p>
+
+<p><a class="prompt prompt-cmd">
+  haddock2.4
+</a></p>
+
+<p>HADDOCK parses the file and generates a directory structure, copying all the input files and various required files for the docking into it. In this case the newly created directory will be called <code class="highlighter-rouge">run1</code>. It contains a number of sub-directories:</p>
+
+<ul>
+  <li><strong>begin/</strong> - This is where the all atom generated topologies and PDB structures for your input models will be created</li>
+  <li><strong>begin-aa/</strong> - This is where the all atom generated topologies and PDB structures for your input models will be created in case coarse-grained docking is used</li>
+  <li><strong>data/</strong> - This is where all your input data (restraints / models) are copies</li>
+  <li><strong>packages/</strong> - This directory is only used for grid submission by our webserver</li>
+  <li><strong>protocols/</strong> - This directory contains all the CNS scripts required to run HADDOCK</li>
+  <li><strong>structures/</strong> - This is where the docked models will be found, for rigid-body docking (<code class="highlighter-rouge">it0</code>), semi-flexible refinement (<code class="highlighter-rouge">it1</code>) and final solvated refinement (<code class="highlighter-rouge">it1/water</code>), together with analysis directories (<code class="highlighter-rouge">it1/analysis</code> and <code class="highlighter-rouge">it1/water/analysis</code>)</li>
+  <li><strong>tools/</strong> - This directory contains a number of scripts and tools required for analysis, e.g. the clustering scripts</li>
+  <li><strong>toppar/</strong> - This directory contains the force field data</li>
+</ul>
+
+<p>The run directory is thus a self-contained archive of your run containing all original data, the generated models, the force field and the protocols.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="customizing-the-docking-parameters">Customizing the docking parameters</h3>
+
+<p>The next step consists of editing the <code class="highlighter-rouge">run.cns</code> file in the generated run directory to customize the docking run.
+This involves mainly:</p>
+
+<ul>
+  <li>Defining the protonation state of Histidines</li>
+  <li>Defining symmetry restraints if needed</li>
+  <li>Inputing restraint-specific parameters (e.g. for NMR RDC restraints)</li>
+  <li>Changing the number of models to be generated</li>
+  <li>Changing the protonation states of chain termini (by default uncharged)</li>
+  <li>Changing analysis settings (e.g. clustering settings)</li>
+</ul>
+
+<p>For this example we will limit ourselves to defining the Histidine protonation state and reducing the number of models generated in order to get results in a reasonable time. For a real run, considering we are targeting the entire surface of the antigen, we should rather increase the sampling.</p>
+
+<p>Edit <code class="highlighter-rouge">run.cns</code> using your favorite editor. Take the time to look a bit at its content. There is a very large number of variables defined that you can change (provided you know what you are doing…). Some of these are explained in our <a href="software/haddock2.2/run/">HADDOCK2.2 online manual</a></p>
+
+<h4 id="defining-the-protonation-state-of-histidines">Defining the protonation state of Histidines</h4>
+
+<p>By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use <a href="http://www.propka.org">PROPKA</a>. The HADDOCK webservers defines the protonation state of Histidine using <a href="http://molprobity.biochem.duke.edu" title="MolProbity" target="_blank">MolProbity</a>. This is what we are going to demonstrate here. For this we will make use of the <code class="highlighter-rouge">reduce</code> executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based.</p>
+
+<p>Our <code class="highlighter-rouge">haddock-tools</code> contain a script that will run <code class="highlighter-rouge">reduce</code> and extract the protonation state information (<code class="highlighter-rouge">reduce</code> must be in your path for the script to work):</p>
+
+<p><a class="prompt prompt-cmd">
+  molprobity.py 4G6K-clean.pdb
+</a></p>
+
+<p>It returns the following output:</p>
+<pre style="background-color:#DAE4E7">
+## Executing Reduce to assign histidine protonation states
+## Input PDB: 4G6K-clean.pdb
+HIS ( 689 )	--&gt;	HISD
+HIS ( 52 )	--&gt;	HISE
+HIS ( 171 )	--&gt;	HISE
+HIS ( 207 )	--&gt;	HISE
+HIS ( 555 )	--&gt;	HISE
+HIS ( 698 )	--&gt;	HISE
+</pre>
+<p>We will have to define alternative protonation states for five histidine in the antibody.</p>
+
+<p>and creates a new optimized PDB file with all hydrogens and possibly some side-chain groups swapped (e.g. ASN and GLN side-chains). You could also use this optimized PDB as input for HADDOCK (which means in this case editing the <code class="highlighter-rouge">run.param</code> file and regenerating the run directory).</p>
+
+<p>For the antigen the output is:</p>
+<pre style="background-color:#DAE4E7">
+## Executing Reduce to assign histidine protonation states
+## Input PDB: 4I1B.pdb
+HIS ( 30 )	--&gt;	HIS+
+</pre>
+
+<p>In this case, since the only Histidine is protonated there is no need to change <code class="highlighter-rouge">run.cns</code> for that molecule.</p>
+
+<p><a class="prompt prompt-info">
+Now edit run.cns to define the histidines protonation state
+</a></p>
+
+<p>Locate the following section in <code class="highlighter-rouge">run.cns</code></p>
+
+<pre style="background-color:#DAE4E7">
+{==================== histidine patches =====================}
+{* Patch to change doubly protonated HIS to singly protonated histidine (HD1) *}
+{* just give the residue number of the histidines for the HISD patch, set them to zero if you don't want them *}
+
+{* Number of HISD for molecule 1 *}
+{===&gt;} numhisd_1=0;
+...
+</pre>
+
+<p>For the first molecule we have 1 HISD and 5 HISE as defined by MolProbity. Edit accordingly the respective entries.
+The result should be:</p>
+
+<pre style="background-color:#DAE4E7">
+{* Number of HISD for molecule 1 *}
+{===&gt;} numhisd_1=1;
+
+{===&gt;} hisd_1_1=689;
+{===&gt;} hisd_1_2=0;
+...
+</pre>
+
+<p>and</p>
+
+<pre style="background-color:#DAE4E7">
+{* Patch to change doubly protonated HIS to singly protonated histidine (HE1) *}
+{* just give the residue number of the histidines for the HISD patch, set them to zero if you don't want them *}
+
+{* Number of HISE for molecule 1 *}
+{===&gt;} numhise_1=5;
+
+{===&gt;} hise_1_1=52;
+{===&gt;} hise_1_2=171;
+{===&gt;} hise_1_3=207;
+{===&gt;} hise_1_4=555;
+{===&gt;} hise_1_5=698;
+{===&gt;} hise_1_6=0;
+...
+</pre>
+
+<h4 id="changing-the-number-of-models-to-be-generated">Changing the number of models to be generated</h4>
+
+<p>In order to be able to generate models in a reasonable time on limited CPU resources, we will decrease by a factor 20 the number of models generated, i.e. from 1000/200/200 for <code class="highlighter-rouge">it0</code>, <code class="highlighter-rouge">it1</code> and <code class="highlighter-rouge">water</code> to 50/10/10.</p>
+
+<p><a class="prompt prompt-info">
+Locate for this the following section in run.cns:
+</a></p>
+
+<pre style="background-color:#DAE4E7">
+{===================== Number of structures to dock =======================}
+{* Setting for the rigid-body (it0) and semi-flexible refinement (it1) *}
+...
+</pre>
+
+<p><a class="prompt prompt-info">
+And change the values for structures_0 and structures_1 (the number of models for water refinement and analysis will be automatically reduced.
+</a></p>
+
+<pre style="background-color:#DAE4E7">
+{===================== Number of structures to dock =======================}
+{* Setting for the rigid-body (it0) and semi-flexible refinement (it1) *}
+
+{* number of structures for rigid body docking *}
+{===&gt;} structures_0=50;
+       keepstruct_0=&structures_0;
+{* number of structures for refinement *}
+{===&gt;} structures_1=10;
+       keepstruct_1=&structures_1;
+       keepstruct_2=&structures_1;
+{* number of structures to be analysed*}
+{===&gt;} anastruc_1=10;
+       anastruc_0=&anastruc_1;
+       anastruc_2=&anastruc_1;
+...
+</pre>
+
+<p>To run this example, these are the only changes required. We are ready to dock!
+Launch HADDOCK again from the <code class="highlighter-rouge">run1</code> directory:</p>
+
+<p><a class="prompt prompt-cmd">
+  haddock2.4
+</a></p>
+
+<p>You will see text appearing indicating the progression of your run. It is a good idea to redirect the output to a file which allows you to run in background and even close the terminal session. E.g.:</p>
+
+<p><a class="prompt prompt-cmd">
+  haddock2.4 &gt;&amp;haddock.out &amp;
+</a></p>
+
+<hr />
+
+<hr />
+
+<h2 id="analysing-the-docking-results">Analysing the docking results</h2>
+
+<p>HADDOCK will perform various analysis of the resulting models, both after <code class="highlighter-rouge">it1</code> and <code class="highlighter-rouge">water</code>. For details see the online <a href="http://www.bonvinlab.org/software/haddock2.2/analysis/">HADDOCK manual</a>.
+While the web server will present you with cluster statistics, in the local version you will need to perform this analysis manually.</p>
+
+<p>There are various steps that can be performed:</p>
+
+<ul>
+  <li>Gathering single structure statistics</li>
+  <li>Performing cluster analysis</li>
+  <li>Rerunning the analysis for a single cluster</li>
+</ul>
+
+<p>In order to work with real data, we have performed full runs on this system. Download and unpack the following <a href="https://surfdrive.surf.nl/files/index.php/s/sf2FUVau1Iasocd">gzipped tar archive</a>.</p>
+
+<p><a class="prompt prompt-cmd">
+  tar xfz antibody-antigen.tgz
+</a></p>
+
+<p>It will create a new directory called <code class="highlighter-rouge">antibody-antigen</code> that contained the various files we created previously in this tutorial, 
+together with data from a full run corresponding to the run we just set up (<code class="highlighter-rouge">antibody-antigen-run-1xl</code>) and an additional run in which two cross links 
+were defined (<code class="highlighter-rouge">antibody-antigen-run-2xl</code>)</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="haddock-scoring">HADDOCK scoring</h3>
+
+<p>The ranking of single models and clusters is based on the HADDOCK score calculated as: 
+as:</p>
+<pre style="background-color:#DAE4E7">
+      HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 0.1 * Eair
+</pre>
+<p>where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents 
+an empirical desolvation energy term adapted from Fernandez-Recio <em>et al.</em> J. Mol. Biol. 2004, and Eair the AIR energy.</p>
+
+<p>When performing cluster-based analysis, the score and ranking is based on the average score of the top 4 members of each cluster. 
+The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster.</p>
+
+<p>In case the scores of various clusters are within the standard deviation from each other, all should be considered as a 
+valid solution for the docking. Ideally, some additional independent experimental information should be available to 
+decide on the best solution.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="single-structure-analysis">Single structure analysis</h3>
+
+<p>In each directory containing docked model you will find a file called <code class="highlighter-rouge">file.list</code> which contains the sorted PDB models with their corresponding HADDOCK score, e.g.:</p>
+
+<pre style="background-color:#DAE4E7">
+"PREVIT:antibody-antigen_203w.pdb"  { -126.88945 }
+"PREVIT:antibody-antigen_78w.pdb"  { -117.76065 }
+"PREVIT:antibody-antigen_26w.pdb"  { -115.902035 }
+"PREVIT:antibody-antigen_227w.pdb"  { -109.66402 }
+"PREVIT:antibody-antigen_100w.pdb"  { -108.65817 }
+...
+</pre>
+
+<p>Each PDB model contains a header section with the various energy terms, e.g.:</p>
+
+<pre style="background-color:#DAE4E7">
+REMARK FILENAME="antibody-antigen_203w.pdb0"
+REMARK ===============================================================
+REMARK HADDOCK run for antibody-antigen
+REMARK initial structure: antibody-antigen_203.pdb
+REMARK final NOE weights: unambig 50 amb: 50
+REMARK ===============================================================
+REMARK            total,bonds,angles,improper,dihe,vdw,elec,air,cdih,coup,rdcs,vean,dani,xpcs,rg
+REMARK energies: -178.455, 0, 0, 0, 0, -62.989, -534.486, 419.02, 0, 0, 0, 0, 0, 0, 0
+REMARK ===============================================================
+REMARK            bonds,angles,impropers,dihe,air,cdih,coup,rdcs,vean,dani,xpcs
+REMARK rms-dev.: 0,0,0,0,3.97561,0,0, 0, 0, 0, 0
+REMARK ===============================================================
+REMARK               air,cdih,coup,rdcs,vean,dani,xpcs
+REMARK               &gt;0.3,&gt;5,&gt;1,&gt;0,&gt;5,&gt;0.2,&gt;0.2
+REMARK violations.: 8, 0, 0, 0, 0, 0, 0
+REMARK ===============================================================
+REMARK                        CVpartition#,violations,rms
+REMARK AIRs cross-validation: 2, 19, 5.64725
+REMARK ===============================================================
+REMARK NCS energy: 0
+REMARK ===============================================================
+REMARK Symmetry energy: 0
+REMARK ===============================================================
+REMARK Membrane restraining energy: 0
+REMARK ===============================================================
+REMARK Local cross-correlation:  0.0000
+REMARK ===============================================================
+REMARK Desolvation energy: 1.09475
+REMARK Internal energy free molecules: -23198.4
+REMARK Internal energy complex: -22506
+REMARK Binding energy: 96.0208
+REMARK ===============================================================
+REMARK buried surface area: 2079.75
+REMARK ===============================================================
+REMARK water - chain_1: 0 0 0
+REMARK water - chain_2: 0 0 0
+REMARK ===============================================================
+REMARK water - water: 0 0 0
+REMARK ===============================================================
+REMARK DATE:26-Apr-2018  13:44:49       created by user: abonvin
+REMARK VERSION:1.3U
+ATOM      1  N   GLN     1      -1.906  -0.593 -17.682  1.00 10.00      A
+ATOM      2  HN  GLN     1      -2.433  -1.413 -17.828  1.00 10.00      A
+ATOM      3  CA  GLN     1      -1.990   0.481 -18.666  1.00 10.00      A
+...
+</pre>
+
+<p>In order to extract stats from the various PDB files following the HADDOCK ranking, you can use the <code class="highlighter-rouge">ana_structures.csh</code> script provided in the HADDOCK <code class="highlighter-rouge">tools</code> directory:</p>
+
+<p><a class="prompt prompt-cmd">
+  $HADDOCKTOOLS/ana_structures.csh
+</a></p>
+
+<p>This generates a variety of data files, the most interesting one being <code class="highlighter-rouge">structures_haddock-sorted.stat</code> which lists the various terms following the HADDOCK sorting.
+For more details refer to the <a href="http://www.bonvinlab.org/software/haddock2.2/analysis/#anastruc">online manual</a>.</p>
+
+<pre style="background-color:#DAE4E7">
+#struc haddock-score rmsd_all Einter Enb Evdw+0.1Eelec Evdw Eelec Eair Ecdih Ecoup Esani Evean Edani #NOEviol #Dihedviol #Jviol #Saniviol #veanviol #Daniviol bsa dH Edesolv
+antibody-antigen_1w.pdb -91.3741 0.000 102.321 -244.053 -91.8445 -74.9325 -169.12 346.374 0 0 0 0 0 10 0 0 0 0 0 antibody-antigen_3w.pdb antibody-antigen_17w.pdb antibody-antigen_7w.pdb
+antibody-antigen_3w.pdb -89.63574 12.044 41.738 -351.468 -95.2768 -66.8111 -284.657 393.206 0 0 0 0 0 10 0 0 0 0 0 -5.21384
+antibody-antigen_12w.pdb -79.9501 7.974 95.5286 -446.773 -97.6146 -58.8192 -387.954 542.302 0 0 0 0 0 14 0 0 0 0 0 2.2297
+antibody-antigen_17w.pdb -79.1546 8.554 15.3915 -403.584 -98.1683 -64.2332 -339.351 418.976 0 0 0 0 0 11 0 0 0 0 0 11.0512
+antibody-antigen_2w.pdb -73.35884 12.458 93.8325 -347.032 -83.3448 -54.0462 -292.986 440.865 0 0 0 0 0 12 0 0 0 0 0 -4.80194
+...
+</pre>
+
+<p>The header in this file indicated the various terms reported. If PROFIT was installed, the third column will report the RMSD with respect to the lowest scoring model generated.</p>
+
+<p>You can generate an XMGrace plot with the following command:</p>
+
+<p><a class="prompt prompt-cmd">
+  $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_haddock-sorted.stat
+</a></p>
+
+<p>The first and second arguments are the column numbers and the last the data file to use. In the above example we will be plotting the HADDOCK score versus the RMSD from the best scoring model.
+The resulting file is called <code class="highlighter-rouge">ene_rmsd.xmgr</code> and can be visualized with xmgrace if installed:</p>
+
+<p><a class="prompt prompt-cmd">
+  xmgrace ene_rmsd.xmgr
+</a></p>
+
+<p>The resulting plot shows you a distribution of scores versus the RMSD from the best scoring model.</p>
+<details style="background-color:#DAE4E7"><summary><b>See plot:</b></summary><br />
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/run-1xl-haddock-vs-rmsd.png" />
+</figure>
+</details>
+<p><br /></p>
+
+<p><a class="prompt prompt-question">
+  Is there a well-defined unique solution (i.e. are the points clustering and forming a unique energy funnel?
+</a></p>
+
+<p><a class="prompt prompt-question">
+  By definition the best model has RMSD 0 (as it was chosen as reference). Are there many other models close to it or is it rather isolated?
+</a></p>
+
+<p>While such plots allow you to visualise the distribution of scores and RMSDs in your ensemble of model, we usually rather cluster the models, and score the resulting clusters, which will be described in the next section.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="cluster-based-analysis">Cluster-based analysis</h3>
+
+<p>One section of <code class="highlighter-rouge">run.cns</code> which we have not modified in this example specifies the clustering method and paramters:</p>
+
+<pre style="background-color:#DAE4E7">
+{* Clustering method (RMSD or Fraction of Common Contacts (FCC)) *}
+{+ choice: "RMSD" "FCC" +}
+{===&gt;} clust_meth="FCC";
+
+{* RMSD cutoff for clustering? (Recommended values: RMSD 7.5, FCC 0.60) *}
+{===&gt;} clust_cutoff=0.60;
+
+{* Minimum cluster size? *}
+{===&gt;} clust_size=4;
+
+{* Chain-Agnostic Algorithm (used for FCC clustering in symmetrical complexes) *}
+{+ choice: "true" "false" +}
+{===&gt;} fcc_ignc=false;
+</pre>
+
+<p>HADDOCK supports two different clustering methods:</p>
+
+<ul>
+  <li>One based on the fraction of common contacts between the molecules (FCC clustering) (for details see the <a href="/software/haddock2.2/analysis/#clusterrmsd" target="_blank">online manual</a>)</li>
+  <li>One based on the ligand interface RMSD (here the structures are first fitted on the interface of the first molecule and then the RMSD is calculated on the interface of the remaining molecules (for details see the <a href="/software/haddock2.2/analysis/#clusterfcc" target="_blank">online manual</a>)</li>
+</ul>
+
+<p>The default is <code class="highlighter-rouge">FCC</code> (also recommended for multimeric complexes). For small ligand and peptide docking we however recommend using the RMSD clustering option with reduced cutoffs of 2.0Å and 5.0Å, respectively.</p>
+
+<p>The minimum cluster size is set to 4, but in case the clustering fails, HADDOCK will automatically reduce it.</p>
+
+<p>The clustering output <code class="highlighter-rouge">cluster.out</code> can be found in the <code class="highlighter-rouge">analysis</code> directories, both in the <code class="highlighter-rouge">it1</code> and <code class="highlighter-rouge">water</code> directories. Unzip the file if necessary. For this particular example, its content should look like:</p>
+
+<pre style="background-color:#DAE4E7">
+Cluster 1 -&gt; 349 15 17 26 29 32 37 41 46 49 50 52 54 68 69 72 73 74 78 83 88 91 92 94 98 100 101 105 107 110 117 122 124 125 126 128 135 137 139 1
+41 145 146 152 153 154 155 157 158 159 161 163 164 167 169 177 182 183 184 185 189 192 193 196 197 200 205 210 211 214 217 219 220 225 227 230 234
+ 238 247 250 252 253 254 255 256 257 258 260 273 275 277 278 283 284 285 286 290 296 297 298 300 306 309 319 321 323 326 327 330 331 333 335 337 3
+39 344 345 348 355 357 358 359 364 366 367 375 377 378 387 388
+Cluster 2 -&gt; 320 8 11 21 22 23 24 27 30 31 36 39 40 51 53 55 59 60 61 62 64 65 66 67 70 75 80 81 85 87 89 90 93 99 111 112 114 119 120 127 131 132
+ 140 142 144 149 150 160 165 168 170 171 172 179 180 181 186 191 198 199 202 206 207 212 218 226 229 231 232 235 237 243 251 272 276 280 289 291 3
+04 313 314 318 322 334 343 352 356 362 392
+Cluster 3 -&gt; 242 63 82 84 97 116 130 134 162 190 216 267 270 301 312 338 346 347 351 363 380 397
+Cluster 4 -&gt; 368 195 203 262 268 299 311 329 350 361 376 382 384 386 389
+Cluster 5 -&gt; 294 71 77 178 224 259 279 293 295 305 308 317
+Cluster 6 -&gt; 187 28 38 118 121 174 213 240 264 328 342
+Cluster 7 -&gt; 310 7 25 79 96 102 138 147 188
+Cluster 8 -&gt; 353 47 95 104 109 113 115 340
+Cluster 9 -&gt; 315 57 263 303 336
+Cluster 10 -&gt; 266 14 20 44 143
+Cluster 11 -&gt; 244 48 136 201 204
+Cluster 12 -&gt; 194 236 302 324 325
+Cluster 13 -&gt; 173 34 58 108
+Cluster 14 -&gt; 5 1 2 4
+</pre>
+
+<p>The clusters are sorted and numbered in order of their size. The first number after the arrow corresponds to the cluster center. The number themselves correspond to the ranking of the models in the <code class="highlighter-rouge">it1</code> or <code class="highlighter-rouge">water</code> directories. For example, model 15 in this list corresponds to the 15th ranked model in the <code class="highlighter-rouge">water</code> directory, corresponding to <code class="highlighter-rouge">antibody-antigen_138w.pdb</code> (which can be found in <code class="highlighter-rouge">file.nam</code>). The PDB files present in the <code class="highlighter-rouge">analysis</code> directory have however been renumbered according to their rank.</p>
+
+<p>We will now perform a cluster-based analysis and ranking, calculating the average score (and other statistics) over each cluster. However to avoid having the size of the cluster affect its score, we rather consider a same number of models for each cluster, e.g. 4 (the minimum number of models defining a cluster). The perform this analysis, type in the <code class="highlighter-rouge">water</code> directory the following command:</p>
+
+<p><a class="prompt prompt-cmd">
+  $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster.out
+</a></p>
+
+<p>This generates a variety of data files, the most interesting one being <code class="highlighter-rouge">clusters_haddock-sorted.stats_best4</code> which lists the various terms following the clusters and their corresponding average score and other energy terms based on their average HADDOCK score. For details refer to the <a href="/software/haddock2.2/analysis/#anaclust">online manual</a>.</p>
+
+<pre style="background-color:#DAE4E7">
+#Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
+#Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean
+sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
+file.nam_clust14 -115.743 7.339 1.433 0.946 1.433 0.946 4 -110.79 70.50 -567.22 23.43 -114.59 2.56 -64.30 4.37 -502.92 26.99 456.43 49.82 0.00 0.0
+0 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.00 0.71 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 2021.175 41.803 0.000 0.000 3.495 1.749
+file.nam_clust2 -89.292 4.620 1.482 1.014 8.832 0.460 89 -32.63 47.83 -417.01 57.40 -94.60 2.26 -58.78 6.26 -358.23 63.22 384.38 26.04 0.00 0.00 0
+.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 8.25 0.83 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1783.680 115.230 0.000 0.000 2.697 3.510
+file.nam_clust1 -85.455 3.444 1.035 0.640 11.362 0.049 128 -47.75 63.27 -463.55 24.95 -91.90 2.15 -50.60 2.81 -412.95 26.82 415.81 77.45 0.00 0.00
+ 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 9.75 1.48 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.000 0.000 1665.472 51.602 0.000 0.000 6.159 2.172
+...
+</pre>
+
+<p>The first row indicates the various terms in the file. In this example we can see that the best cluster according to the HADDOCK score is <code class="highlighter-rouge">cluster 14</code> which has only 4 members.
+The RMSD from the best scoring model (<code class="highlighter-rouge">rmsd-Emin</code>) indicates that this cluster contains it. The first RMSD value reported corresponds to the average pairwise RMSD within the cluster.</p>
+
+<p>When comparing clusters it is also important to consider the standard deviations of the various scores.</p>
+
+<p><a class="prompt prompt-question">
+Considering the average HADDOCK scores and their standard deviations, would you say that the top ranked cluster is significantly better than the second cluster?
+</a></p>
+
+<p><br /><br />
+<a class="prompt prompt-info">
+Now try to locate the averge RMSD from the best model of the second (<em>cluster 2</em>) and third (<em>cluster 1</em>) ranked clusters. Those two clusters are the most populated.
+</a></p>
+
+<p><a class="prompt prompt-question">
+Looking at the plot of HADDOCK scores vs RMSD from the best model we generated above, can you locate those clusters?
+</a></p>
+
+<p><br /><br />
+<a class="prompt prompt-info">
+Try now to locate the column corresponding to the AIR energy (<em>Eair</em>) and the number of violations of the AIR restraints (<em>#AURviol</em>)
+</a></p>
+
+<p><a class="prompt prompt-question">
+Do the clusters satisfy all the restraints we defined?
+</a></p>
+
+<p>Between 8 and 9 restraints are violated on average in this example, out of the 28 AIR restraints we defined. 
+Remember that our definition of active residues in the antibody was based on predicted CDR loops and might not be perfect.</p>
+
+<p>In principle you could analyse which restraints are most often violated 
+But in this particular example we only performed the clustering since the following settings were defined in <code class="highlighter-rouge">run.cns</code>:</p>
+
+<pre style="background-color:#DAE4E7">
+* Full or limited analysis of results? *}
+{+ choice: "full" "cluster" "none" +}
+{===&gt;} runana="cluster";
+</pre>
+
+<p>To perform the full analysis, you would have to empty the <code class="highlighter-rouge">analysis</code> directory, change the setting in <code class="highlighter-rouge">run.cns</code> to <code class="highlighter-rouge">full</code> and restart HADDOCK.
+Note that a full analysis can take quite some time, up to a few hours depending on the number of models generated and the size of your complex.
+For details about violations analysis, please refer to the <a href="software/haddock2.2/analysis/#noes" target="_blank">online manual</a></p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="comparison-with-the-crystal-structure-of-this-antibody-antigen-complex">Comparison with the crystal structure of this antibody-antigen complex</h3>
+
+<p>The crystal structure of the complex we just modelled is available from the PDB database (PDB ID <code class="highlighter-rouge">4G6M</code>). 
+Let’s consider the top model of the top three clusters (#14, #2 and #1) and compare their structure with the crystal structure of this complex.
+We will use for that models from the analysis directory since those do contain a chainID which makes the comparison easier 
+(HADDOCK/CNS internally uses the segID to identify molecules). Using <code class="highlighter-rouge">cluster.out</code> identify the model number 
+which corresponds to the best scoring model for each of those three clusters and load these in PyMol with:</p>
+
+<p><a class="prompt prompt-cmd">
+  pymol antibody-antigenfit_1.pdb antibody-antigenfit_8.pdb antibody-antigenfit_15.pdb
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+show cartoon<br />
+hide lines<br />
+remove resn HOH<br />
+</a></p>
+
+<p><a class="prompt prompt-info">
+Then load the crystal structure:
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+fetch 4g6m<br />
+show cartoon<br />
+hide lines<br />
+remove resn HOH<br />
+util.cbc<br />
+</a></p>
+
+<p><a class="prompt prompt-info">
+Now align all models onto the crystal reference using the antibody as reference for fitting:
+</a></p>
+
+<p><a class="prompt prompt-pymol">
+select 4g6m and chain H+L<br />
+align antibody-antigenfit_1, sele<br />
+align antibody-antigenfit_8, sele<br />
+align antibody-antigenfit_15, sele<br />
+</a></p>
+
+<p><a class="prompt prompt-question">
+Can you identify a solution which is reasonably close to the crystal structure? (Turn on and off the models to better distinguish)
+</a></p>
+
+<p><a class="prompt prompt-question">
+Does it actually correspond to the best scored cluster representative?
+</a></p>
+
+<hr />
+
+<hr />
+
+<h2 id="congratulations">Congratulations!</h2>
+
+<p>You have now completed this tutorial! But if you are curious about the impact of adding a second cross-link restraint on the docking results, 
+consider repeating the analysis for another run provided with the data you downloaded (<code class="highlighter-rouge">antibody-antigen-run-2xl</code>).</p>
+
+<details style="background-color:#DAE4E7"><summary><b>See a preview of the results:</b></summary><br />
+The following plot shows the distribution of HADDOCK scores vs RMSD from the top ranked model for a run using two cross-link restraints.
+Compared to the run we just analysed, the distribution of points is quite different with a much larger population around the best model.
+This of course does not mean that that model is the correct one per se. Up to you to figure it out...
+<figure align="center">
+<img src="/education/HADDOCK-local-tutorial/run-2xl-haddock-vs-rmsd.png" />
+</figure>
+</details>
+<p><br />
+If you have any questions or suggestions, feel free to contact us via email, or post your question to 
+our <a href="http://ask.bioexcel.eu/c/haddock" target="_blank">HADDOCK forum</a> hosted by the 
+<a href="http://bioexcel.eu" target="_blank"><img width="70" src="/images/Bioexcel_logo.png" /></a> Center of Excellence for Computational Biomolecular Research.</p>
+
