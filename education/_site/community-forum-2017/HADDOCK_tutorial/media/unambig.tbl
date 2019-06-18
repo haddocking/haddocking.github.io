@@ -1,3 +1,0 @@
-assign (segid A and name SG and resi 25) (segid B and name C27 and resi 300) 1.8 0.1 0.1
-assign (segid A and name CB and resi 25) (segid B and name C27 and resi 300) 2.8 0.1 0.1
-
