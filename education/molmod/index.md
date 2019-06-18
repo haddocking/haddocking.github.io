@@ -25,9 +25,9 @@ installation of specific software packages: [GROMACS](http://www.gromacs.org),
 homology modelling part relies heavily on MODELLER, which is free for academic use but 
 nonetheless requires registration. The third module, data-driven docking, uses the 
 [HADDOCK web server](http://haddocking.org), which, like MODELLER, requires registration but is 
-free for academic users. The course material is available for free on 
-[GitHub](http://github.com/haddocking/molmod) and makes use of virtualization software 
-([Virtualbox](http://virtualbox.org)).
+free for academic users. The [course material](https://github.com/haddocking/molmod) as well
+as all the required [scripts](https://github.com/haddocking/molmod-data) are available for free
+on GitHub. The course makes use of virtualization software ([Virtualbox](http://virtualbox.org)).
 
 Each module has its separate set of web pages, but they all share the same conventions. Throughout 
 the material, colored text will be used to refer to questions or instructions, Linux and/or Pymol 
