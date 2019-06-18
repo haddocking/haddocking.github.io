@@ -490,7 +490,7 @@ The lower limit for the distance is calculated as: distance minus lower-bound co
 and the upper limit as: distance plus upper-bound correction.
 The syntax for the selections can combine information about chainID - `segid` keyword -, residue number - `resid`
 keyword -, atom name - `name` keyword.
-Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [CNS manual](/education/CNS-manual.pdf).
+Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/).
 
 We will shortly explain in this section how to generate both ambiguous interaction restraints (AIRs) and specific distance restraints for use in HADDOCK illustrating three scenarios:
 
