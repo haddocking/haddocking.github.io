@@ -112,7 +112,7 @@ the interface used in the calculation is automatically defined based on an analy
 <br>
 <hr>
 ### Downloading HADDOCK
-In this tutorial we will make use of the new HADDOCK2.4 version. You can download a gzipped archive from the following [link](https://surfdrive.surf.nl/files/index.php/s/ZKnfCWpnOjkl9Sg){:target="_blank"}.
+In this tutorial we will make use of the new HADDOCK2.4 version. You can download a gzipped archive from the following [link](https://surfdrive.surf.nl/files/index.php/s/KUgXp3js28YPICQ){:target="_blank"}.
 
 
 *Note* that this does require a password that will be provided to you during the tutorial (or upon request once you have filled the [HADDOCK license form]((http://www.bonvinlab.org/software/haddock2.2/download/){:target="_blank"} ).

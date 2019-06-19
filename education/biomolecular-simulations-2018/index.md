@@ -6,6 +6,10 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 
+<figure align="center">
+<a href="http://www.bioexcel.eu"><img src="/images/Bioexcel_logo.png"></a>
+</figure>
+
 On this page, you can find the links to the tutorials given during the BioExcel Summer School on Biomolecular Simulations 2018 in Pula, Italy.
 
 The first two tutorials ([**HADDOCK covalent binding**](/education/biomolecular-simulations-2018/HADDOCK_tutorial) and [**CPMD**](/education/biomolecular-simulations-2018/CPMD_tutorial)) are first attempts to setup a workflow between HADDOCK and CPMD for the **covalent docking** of a ligand into the active site of a protein.
@@ -19,15 +23,6 @@ You can actively contribute to the dedicated topic on [our forum](http://ask.bio
 All tutorials are an initiative of the Integrative Modelling and Hybrid Methodes Interest Groups,
 nested at the Centre of Excellence for Computational Biomolecular Research - BioExcel. Feedbacks/questions are more than welcome! 
 
-
-## User information
-
-In order to have a good idea of the audience and be able to provide you with tailor-made
-support, please fill in this very short survey:
-
-<https://goo.gl/forms/OtBHvhnIPGP2drP53>
-
-This should not take you more than a minute but will be very valuable for these two days.
 
 ## Tutorials
 
