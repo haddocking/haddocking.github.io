@@ -1,0 +1,6 @@
+ ! antibody inter-chain restraints
+ assign (segid A and resi 189 and name CA) (segid A and resi 693 and name CA) 21.023 0.0 0.0
+ assign (segid A and resi 116 and name CA) (segid A and resi 702 and name CA) 44.487 0.0 0.0
+ ! cross-link
+ assign (segid A and resid 66  and name CB) (segid B and resid 99  and name CB)  23 23 0
+

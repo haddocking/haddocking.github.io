@@ -16,13 +16,15 @@ image:
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu.
 [Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](http://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._ *59*, 1515–1528 (2019).
 
+* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin** and L.C. Xue. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1101/498584) _BioRxiv_ https://doi.org/10.1101/498584 (2018).
+
 * C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, and M. Winn. 
 [West-Life: A Virtual Research Environment for structural biology](https://doi.org/10.1016/j.yjsbx.2019.100006).
 _Journal of Structural Biology: X_, *1*, 100006 (2019).
 
 * M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
 
-* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin** and L.C. Xue. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ e1410 (2019).
+* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin**. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ e1410 (2019).
 
 * C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. [iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations](https://doi.org//10.1002/prot.25630).
   _Proteins: Struc. Funct. &amp; Bioinformatics_ *87*, 110-119  (2019).
@@ -34,8 +36,6 @@ _Journal of Structural Biology: X_, *1*, 100006 (2019).
 * A. Vangone#, J. Schaarschmidt, P. Koukos, C. Geng, N. Citro, M.E. Trellet, L.C. Xue and **A.M.J.J. Bonvin**. [Large-scale prediction of binding affinity in protein-small ligand complexes: the PRODIGY-LIG web server](https://doi.org/10.1093/bioinformatics/bty816). _Bioinformatics_, *35*, 1585–1587 (2019).
 
 ## 2018 
-
-* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin**. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1101/498584) _BioRxiv_ https://doi.org/10.1101/498584 (2018).
 
 * J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* 2018
 

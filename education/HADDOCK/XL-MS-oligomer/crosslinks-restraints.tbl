@@ -1,0 +1,8 @@
+assi (segid A and resid  40   and name  CA ) (not segid A and resid  252  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  90   and name  CA ) (not segid A and resid  176  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  135  and name  CA ) (not segid A and resid  158  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  161  and name  CA ) (not segid A and resid  132  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  252  and name  CA ) (not segid A and resid   40  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  176  and name  CA ) (not segid A and resid   90  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  158  and name  CA ) (not segid A and resid  135  and name  CA )  10.0 7.0 0.0
+assi (segid A and resid  132  and name  CA ) (not segid A and resid  161  and name  CA )  10.0 7.0 0.0

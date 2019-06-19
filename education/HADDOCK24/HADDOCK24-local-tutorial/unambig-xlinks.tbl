@@ -1,0 +1,7 @@
+assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
+assign (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
+assign (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
