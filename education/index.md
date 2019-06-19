@@ -31,3 +31,9 @@ We offer various [research projects](/education/research-projects/) to both bach
 * [**Tutorials for HADDOCK version 2.2**](/education/HADDOCK)
 
 * [**Tutorials for DisVis and Powerfit**](/education/Others)
+
+* [**2018 BioExcel summerschool metadynamics / HADDOCK / CPMD tutorials**](/education/biomolecular-simulations-2018)
+
+<!--
+* [**2019 BioExcel summerschool metadynamics / HADDOCK tutorial**](/education/biomolecular-simulations-2019)
+-->
