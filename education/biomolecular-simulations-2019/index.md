@@ -9,7 +9,7 @@ image:
 <a href="http://www.bioexcel.eu"><img src="/images/Bioexcel_logo.png"></a>
 </figure>
 
-On this page, you can find the links to the [**metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial) (using Gromacs) and [**HADDOCK**](/education/biomolecular-simulations-2019/HADDOCK_tutorial) tutorials given during the [BioExcel Summer School on Biomolecular Simulations 2019](https://bioexcel.eu/events/bioexcel-summer-school-on-biomolecular-simulations-2019/) in Pula, Italy. These illustrate how metadynamics can be used to sample conformation of a binding pocket, and those conformation are subsequently used for docking a covalent ligand using HADDOCK. The conformational sampling approach is following the EDES approach described in the following publications:
+On this page, you can find the links to the [**metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial) (using Gromacs) and [**HADDOCK**](/education/biomolecular-simulations-2019/HADDOCK_tutorial) tutorials given during the [BioExcel Summer School on Biomolecular Simulations 2019](https://bioexcel.eu/events/bioexcel-summer-school-on-biomolecular-simulations-2019/) in Pula, Italy. These illustrate how metadynamics can be used to sample conformation of a binding pocket, and those conformation are subsequently used for docking a covalent ligand using HADDOCK. The conformational sampling approach is following the EDES approach described in the following publication:
 
 * A. Basciu,  G. Malloci,  F. Pietrucci,  A.M.J.J. Bonvin and A.V. Vargiu.
 [Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](http://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._ *59*, 1515-1528 (2019).
