@@ -16,7 +16,8 @@ The first two tutorials ([**HADDOCK covalent binding**](/education/biomolecular-
 It shall not be seen, *yet*, as a well-established protocol for the modelling of covalently bound ligands but rather as a preliminary work to address this particular challenge in protein-small molecules docking, emphasizing the potential of [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/), coupled with [CPMD](http://cpmd.org/), to predict accurately the binding and get insights into the energetics of the covalent reaction.
 You can actively contribute to the dedicated topic on [our forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/)
 
-The last [**Metadynamics**](/education/biomolecular-simulations-2018/Metadynamics_tutorial) tutorial highlights the benefits of enhanced sampling using metadynamics to improve the predictive power of molecular docking for protein-small molecule targets, in the case of binding sites undergoing conformational changes. For this, we will first generate an ensemble of conformers for the target protein using [GROMACS](http://www.gromacs.org/) and [PLUMED](http://www.plumed.org/), before proceeding with the docking using [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/)
+The last [**Metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial) tutorial highlights the benefits of enhanced sampling using metadynamics to improve the predictive power of molecular docking for protein-small molecule targets, in the case of binding sites undergoing conformational changes. Note that we updated our protocols. Accordingly the current link will point you to the 2019 version of this tutorial. 
+In this tutorial, we will first generate an ensemble of conformers for the target protein using [GROMACS](http://www.gromacs.org/) and [PLUMED](http://www.plumed.org/), before proceeding with the docking using [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/)
 You can actively contribute to the dedicated topic on [our forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-enhanced-sampling-using-metadynamics-simulation-for-docking/)
 
 
@@ -32,5 +33,5 @@ nested at the Centre of Excellence for Computational Biomolecular Research - Bio
 * [**CPMD**](/education/biomolecular-simulations-2018/CPMD_tutorial):
   This tutorial shows how to run CPMD calculations to get the topology and parameters of a covalently bound protein-ligand complex.
 
-* [**Metadynamics**](/education/biomolecular-simulations-2018/Metadynamics_tutorial): 
+* [**Metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial): 
   This tutorial explains how to perform metadynamics simulations to enhance the comformational sampling of a binding site on a protein to improve molecular docking predictions.
