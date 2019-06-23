@@ -34,6 +34,5 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 * [**2018 BioExcel summerschool metadynamics / HADDOCK / CPMD tutorials**](/education/biomolecular-simulations-2018)
 
-<!--
 * [**2019 BioExcel summerschool metadynamics / HADDOCK tutorial**](/education/biomolecular-simulations-2019)
--->
+
