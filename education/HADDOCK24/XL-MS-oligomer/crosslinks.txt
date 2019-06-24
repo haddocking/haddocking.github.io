@@ -1,0 +1,12 @@
+# crosslinks
+A  40 CA B 252 CA 3.0 10.0
+A  90 CA B 176 CA 3.0 10.0
+A 135 CA B 158 CA 3.0 10.0
+A 161 CA B 132 CA 3.0 10.0
+#
+# symmetrical crosslinks 
+A 252 CA B  40 CA 3.0 10.0
+A 176 CA B  90 CA 3.0 10.0
+A 158 CA B 135 CA 3.0 10.0
+A 132 CA B 161 CA 3.0 10.0
+

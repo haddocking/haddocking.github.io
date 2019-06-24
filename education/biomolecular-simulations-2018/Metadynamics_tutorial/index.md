@@ -1125,7 +1125,7 @@ number of MD steps during first rigid body cooling stage -> 0
 Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run. 
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/submission.png">
+<img src="/education/HADDOCK/HADDOCK-protein-protein-basic/submission.png">
 </figure>
 
 We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
@@ -1151,13 +1151,13 @@ HaddockRunParameters (
 Click now on the link to the results page. While your input data are being validated and processed the page will show:
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/processing.png">
+<img src="/education/HADDOCK/HADDOCK-protein-protein-basic/processing.png">
 </figure>
 
 During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
 
 <figure align="center">
-<img src="/education/HADDOCK-protein-protein-basic/running.png">
+<img src="/education/HADDOCK/HADDOCK-protein-protein-basic/running.png">
 </figure>
 
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
