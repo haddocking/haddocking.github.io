@@ -5,11 +5,11 @@ tags: [GROMACS, HADDOCK, EDES, molecular dynamics, metadynamics, docking]
 image:
 feature: pages/banner_education-thin.jpg
 ---
- 
+
 
 This tutorial consists of the following sections:
 
-  
+
 * table of contents
 {:toc}
 
@@ -43,9 +43,9 @@ The following software packages will be used during the tutorial:
 
 * [R]([https://www.r-project.org/about.html](https://www.r-project.org/about.html)): a data analysis software, used here to perform the cluster analysis on the MD trajectory;
 
-* [HADDOCK2.2]([http://haddock.science.uu.nl/services/HADDOCK2.2/](http://haddock.science.uu.nl/services/HADDOCK2.2/)): The HADDOCK web portal which allows to perform information-driven flexible docking among macromolecules and between a chemical compound and a macromolecule.
+* [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/): The HADDOCK web portal which allows to perform information-driven flexible docking among macromolecules and between a chemical compound and a macromolecule.
 
-  
+
 The content of this tutorial follows the workflow presented [in our recently published work]( [https://pubs.acs.org/doi/10.1021/acs.jcim.8b00730](https://pubs.acs.org/doi/10.1021/acs.jcim.8b00730)):
 
 A. Basciu, G. Malloci, F. Pietrucci, A.M.J.J. Bonvin, A.V. Vargiu, **Holo-like and Druggable Protein Conformations from Enhanced Sampling of Binding Pocket Volume and Shape**,  *J. Chem. Inf. Model*, 2019, 59, 4, 1515-1528, https://doi.org/10.1021/acs.jcim.8b00730
@@ -79,8 +79,8 @@ wget https://files.rcsb.org/download/1JEJ.pdb</a>
 
 <details style="background-color:#DAE4E7">
 <summary>See solution:</summary>
-It is customary to check the pdb files for possible issues when running docking calculations. 
-In particular, one should check for missing residues (lines starting with the string “REMARK 465”) 
+It is customary to check the pdb files for possible issues when running docking calculations.
+In particular, one should check for missing residues (lines starting with the string “REMARK 465”)
 or missing atoms (lines starting with the string “REMARK 470”).
 </details><br>
 
@@ -155,7 +155,7 @@ Writing topology <br>
 </a>
 
 For the following steps you’ll need some input files and pre-calculated data, which can be found in the directory: `../tutorial_files`.
-  
+
 
 #### Plain MD simulations in explicit solvent
 
@@ -189,7 +189,7 @@ and type the following command to generate the tpr file needed to perform a stru
 
 The tool grompp checks on the fly the values given to the parameters present in the mdp file, and generates possible notes and warnings. By default, the program fails when some warnings are generated, but the user can change this behavior by setting the "-maxwarn" flag to values larger than 0 (clearly after ensuring that all the warnings raised are “safe”).
 
-Type now: 
+Type now:
 
 <a class="prompt prompt-cmd">gmx_mpi_d grompp -f em-pbc.mdp -c apo-solv-init.gro -o em-pbc.tpr -p apo-solv.top -maxwarn 2</a>  
 
@@ -304,7 +304,7 @@ involved in the structural transition of interest. Indeed, all the CV-based
 methods often exploit the use of multiple variables, which ideally should be
 orthogonal to each other so as to enhance the sampling along independent directions
 of the CV space. A clever method to enhance sampling across a virtually unlimited
-number of CVs is the so-called bias-exchange metadynamics [[16](#ref16)]. In bias-exchange metadynamics many simulations of the system at the same temperature are performed, biasing each replica with a time-dependent potential added to a different CV. 
+number of CVs is the so-called bias-exchange metadynamics [[16](#ref16)]. In bias-exchange metadynamics many simulations of the system at the same temperature are performed, biasing each replica with a time-dependent potential added to a different CV.
 Exchanges between the bias potentials in the different variables are
 periodically allowed according to a replica exchange scheme. Due to the
 efficaciously multidimensional nature of the bias, the method allows to
@@ -347,7 +347,7 @@ In this case we care going to define our BS on the hydrogenated holo structure (
 cp ../tutorial_files/apoMD/holo_GLUCO.pdb .
 </a>
 
-  
+
 
 Open the file with VMD again, and get the resid numbers of all aminoacids lining the BS:
 
@@ -451,7 +451,7 @@ In order to do that, we will use our home-made tcl script. The script, based on 
 
 4. We will end up having 6 different lists: 2 for each of the 3 spatial directions. These lists will be used to define the CIPs variables.
 
-  
+
 The script requires: (i) the list of residues lining the BS and (ii) the protein structure.
 
 In this case the BS residues list is already defined within the script, so you just have to run it. Open the apo structure of the protein ready to be simulated (in this case apo_GLUCO_Hs.pdb) with VMD and run our "divide_into_lists.tcl" script:
@@ -539,11 +539,11 @@ similar plot could be easily obtained also for the other CV chosen.
 
 <center> <i>Figure 2: The RoG of the structures sampled during the apoMD simulation.</i> </center>
 <br>
- 
+
 Despite that it is preferable to perform these analyses on longer trajectories,
 you can see already from this graph that the RoG did not change
-significantly and in particular did not get close to the holo value. 
-Thus, it seems it could be a good choice as CV to enhance the sampling trying 
+significantly and in particular did not get close to the holo value.
+Thus, it seems it could be a good choice as CV to enhance the sampling trying
 to generate conformations with a more closed pocket. A similar analysis could be performed on the other CVs selected for this work.
 
 It is customary to set the value of w to be between 1/4 and 1/2 of the average fluctuations (standard deviations) of a CV
@@ -832,7 +832,7 @@ Type 1 and the cluster analysis will start.<hr>
 <hr>
 ## Protein-ligand docking with HADDOCK
 
-Note that protein-ligand HADDOCKing typically requires fine-tuning a handful of parameters that requires the most advanced privilege on the web server. If you did not apply for the "guru" access level yet, it is time to apply for it via our [registration portal](https://nestor.science.uu.nl/auth/register/). Alternatively, you can use the course credentials that were provided to you during the summer school to submit your docking runs. Please, use the pre-calculated runs to move on with the analysis section.
+Note that protein-ligand HADDOCKing typically requires fine-tuning a handful of parameters that requires the most advanced privilege on the web server. For this register at our [registration portal](https://nestor.science.uu.nl/auth/register/). Alternatively, you can use the course credentials that were provided to you during the summer school to submit your docking runs. Please, use the pre-calculated runs to move on with the analysis section.
 
 
 #### Setting up a new docking run targeting the identified binding pocket
@@ -893,10 +893,11 @@ Compare the two generated files: what are the differences? How many restraints a
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 
-We will now launch the docking run. For this we will make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server:
+We will now launch the docking run. For this we will make us of the [HADDOCK 2.4 web server](https://wenmr.science.uu.nl/haddock2.4/submit/1
+):
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
+https://wenmr.science.uu.nl/haddock2.4/submit/1
 </a>
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
@@ -911,14 +912,13 @@ HADDOCK accepts ensembles of conformations as starting files, provided all the c
 
 <a class="prompt prompt-cmd">
 cd ../../tutorial_files/cluster_analysis/clusters_ready/<br>
-python ~/software/pdb-tools/pdb-join.py meta/*.pdb &gt; bemeta_ensemble.pdb<br>
-python ~/software/pdb-tools/pdb-join.py apo/*.pdb &gt; apoMD_ensemble.pdb
+python ~/software/pdb-tools/pdb_join.py meta/*.pdb &gt; bemeta_ensemble.pdb<br>
+python ~/software/pdb-tools/pdb_join.py apo/*.pdb &gt; apoMD_ensemble.pdb
 </a>
-
 
 * **Step3:** Input the protein PDB file. For this unfold the **Molecule definition menu**.
 
-  
+
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -943,8 +943,6 @@ Segment ID to use during docking -> A
 **Note:** The coordinates of the ligand atoms must be submitted as `HETATM` and the residue number set to 1.  You can download here the [ligand coordinates](./media/ligand_clean.pdb) if you want to proceed directly.
 
 
-Since the structure of the ligand is directly obrained from the reference crystal structure of the complex, we can disable the flexibility of the ligand to enforce the bound conformation of the ligand in our models.
-
 <a class="prompt prompt-info">
 Second molecule: where is the structure provided? -> "I am submitting it"
 </a>
@@ -961,13 +959,18 @@ PDB structure to submit -> Browse and select "ligand_clean.pdb"
 Segment ID to use during docking -> B
 </a>
 
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+
+* **Step 6:**  Define the ligand molecule as rigid. Since the structure of the ligand is directly obtained from the reference crystal structure of the complex, we can disable the flexibility of the ligand to enforce the bound conformation of the ligand in our models. This we do in *Molecule 2 parameters* menu in the **Input parameters** widow.
+
 <a class="prompt prompt-info">
-Unfold the menu "Semi-flexible segments"<br>
-How are the flexible segments defined -> none
+Unfold the menu "Semi-flexible segments"  <br>
+How are the flexible segments defined -> rigid
 </a>
 
+#### Defining the restraints to guide the docking
 
-* **Step 5:** Input the restraint files for docking. For this unfold the **Distance restraints menu**
+* **Step 7:**   Click on the "Next" button at the bottom left of the interface. Input the restraint files for docking. For this unfold the **Distance restraints menu** in the **Docking parameters** window.
 
 <a class="prompt prompt-info">
 Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Upload here the GLUCO-UDP-act-act.tbl
@@ -979,15 +982,15 @@ You can supply a HADDOCK restraints TBL file with restraints that will always be
 
 **Note:** HADDOCK deletes by default all hydrogens except those bonded to a polar atom (N, O). In the case of protein-ligand docking however, we typically keep the non-polar hydrogens.
 
-  
+
 <a class="prompt prompt-info">
 Remove non-polar hydrogens? -> FALSE (uncheck this option)
 </a>
 
 
-* **Step 6:** Change the clustering settings since we are dealing with a small molecule. For this unfold the **Clustering parameter menu**:
+* **Step 8:** Change the clustering settings since we are dealing with a small molecule. For this unfold the **Clustering parameter menu**:
 
-The default clustering method in the HADDOCK2.2 server is
+The default clustering method in the HADDOCK2.4 server is
 [fcc-based clustering](https://github.com/haddocking/fcc), which is a measure of similarity of interfaces based on
 pairwise residue contacts. This method outperforms RMSD-based clustering for large systems, both in term of accuracy
 and speed. However for ligand docking, interface-RMSD remains the method of choice. Change therefore the clustering method:
@@ -1001,23 +1004,22 @@ RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 1&Aring
 </a>
 
 
-* **Step 7:** Define when to use each of the two restraint files we are uploading: For this unfold the **Restraints energy constants menu**"
-
-<a class="prompt prompt-info">
-Unfold the menu "Energy constants for ambiguous restraints"<br>
-Last iteration (0-2) -> 0 (this defines that the ambiguous restraints (the act-act file) will only be used in iteration 0 (rigid-body docking)
-</a>
+* **Step 9:** Define when to use each of the two restraint files we are uploading: For this unfold the **Restraints energy constants menu**.
 
 
 <a class="prompt prompt-info">
 Unfold the menu "Energy constants for unambiguous restraints"<br>
-First iteration (0-2) -> 1 (this defines that the ambiguous restraints (the pass-act file) will only be used in iterations 1 and 2(flexible docking and water refinement)
+First iteration (it0-itw) -> it1 (this defines that the ambiguous restraints (the pass-act file) will only be used in iterations it1 and itw(flexible docking and water refinement)
 </a>
 
+<a class="prompt prompt-info">
+Unfold the menu "Energy constants for ambiguous restraints"<br>
+Last iteration (it0-itw) -> it0 (this defines that the ambiguous restraints (the act-act file) will only be used in iteration it0 (rigid-body docking)
+</a>
 
-* **Step 8:** Apply some ligand-specific scoring settings. For this unfold the **Scoring parameter menu**:
+* **Step 10:** Apply some ligand-specific scoring settings. For this unfold the **Scoring parameter menu**:
 
-Our recommended HADDOCK score settings for small ligands docking are the following: 
+Our recommended HADDOCK score settings for small ligands docking are the following:
 
 <pre>
 HADDOCKscore-it0 = 1.0 Evdw + 1.0 Eelec + 1.0 Edesol + 0.01 Eair - 0.01 BSA
@@ -1036,7 +1038,7 @@ Eelec 3 -> 0.1
 </a>
 
 
-* **Step 9:** Apply some ligand-specific sampling settings. For this unfold the **Advanced sampling parameter menu**:
+* **Step 11:** Apply some ligand-specific sampling settings. For this unfold the **Advanced sampling parameter menu**:
 
 
 <a class="prompt prompt-info">
@@ -1055,51 +1057,45 @@ number of MD steps for rigid body high temperature TAD -> 0
 number of MD steps during first rigid body cooling stage -> 0
 </a>
 
+#### Job submission
 
-* **Step 10:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
+* **Step 12:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
 
 
 Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run.
 
-<figure align="center">
-<img src="/education/HADDOCK/HADDOCK-protein-protein-basic/submission.png">
-</figure>
-
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+We strongly recommend to save this haddockparameter .json  file since it will allow you to repeat the run by simple upload into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
 
 <pre>
-HaddockRunParameters (
-runname = 'Cathepsin-ligand',
-auto_passive_radius = 6.5,
-create_narestraints = True,
-delenph = False,
-ranair = False,
-cmrest = False,
-kcont = 1.0,
-surfrest = False,
-ksurf = 1.0,
-noecv = True,
-ncvpart = 2.0,
-structures_0 = 1000,
-ntrials = 5,
-...
+{
+  "runname": "Cathepsin-ligand"
+  "auto_passive_radius": 6.5,
+  "create_narestraints": false,
+  "delenph": false,
+  "ranair": false,
+  "cmrest": false,
+  "kcont": 1.0,
+  "surfrest": false,
+  "ksurf": 1.0,
+  "noecv": true,
+  "ncvpart": 2.0,
+  "structures_0": 1000,
+  "ntrials": 5,
+...}
 </pre>
 
 
-Click now on the link to the results page. While your input data are being validated and processed the page will show:
+Click now on the link to the results page. The page will indicate that your job is first QUEUED, and then RUNNING:
 
 <figure align="center">
-<img src="/education/HADDOCK/HADDOCK-protein-protein-basic/processing.png">
+
+<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/running.png">
+
 </figure>
 
-During this stage the PDB and eventually provided restraint files are being validated. Further the server makes use of [Molprobity]() to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues. Once this has been successfully done, the page will indicated that your job is first QUEUED, and then RUNNING.
-
-<figure align="center">
-<img src="/education/HADDOCK/HADDOCK-protein-protein-basic/running.png">
-</figure>
 
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
-  
+
 
 #### Analysis of the results
 
@@ -1107,8 +1103,8 @@ Once your run has completed you will be presented with a result page showing the
 
 We already pre-calculated full docking run for both ensembles (we slightly increased the default number of models generated at each stage of HADDOCK: 4000 for rigid-body docking and 400 for semi-flexible and water refinement). Only the best (in term of HADDOCK score) 200 models generated at the water refinement stage of HADDOCK were further selected for analysis. The full runs for both "bemeta" and "apoMD" ensemble can be accessed at:
 
-- **bemeta_ensemble**: [View here the pre-calculated results](http://alcazar.science.uu.nl/services/HADDOCK2.2/Files/bemeta_ensemble_rigid/){:target="_blank"}
-- **apoMD_ensemble**: [View here the pre-calculated results](http://alcazar.science.uu.nl/services/HADDOCK2.2/Files/apo_ensemble_rigid/){:target="_blank"}
+- **bemeta_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/bemeta-ensemble){:target="_blank"}
+- **apoMD_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/%20apoMD_ensemble){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
 
@@ -1128,7 +1124,7 @@ where `Evdw` is the intermolecular van der Waals energy, `Eelec` the intermolecu
 
 In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution.
 
-  
+
 #### Visualisation of docked models
 
 Let's now visualise the various solutions!
@@ -1215,9 +1211,9 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 <summary>See solution:
 </summary>
 <pre>
-* bemeta cluster2_1 HADDOCKscore [a.u.] = -47.2 +/- 1.4 ligand-RMSD = 7.48&Aring;
+* bemeta cluster1_1 HADDOCKscore [a.u.] = -28.6 +/- 2.6 ligand-RMSD = 1.40 &Aring;
 
-* bemeta cluster1_1 HADDOCKscore [a.u.] = -44.1 +/- 2.2 ligand-RMSD = 0.79&Aring;
+* bemeta cluster2_1 HADDOCKscore [a.u.] =-28.2 +/- 0.4 ligand-RMSD = 4.58 &Aring;
 
 * apoMD cluster3_1  HADDOCKscore [a.u.] = -32.4 +/- 2.0 ligand-RMSD = 7.86&Aring;
 
