@@ -40,8 +40,6 @@ In order to run this tutorial you will need to have the following software insta
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this our [registration page](https://nestor.science.uu.nl/auth/register/){:target="_blank"}.
 
-> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}
-
 
 <hr>
 ## HADDOCK general concepts
@@ -294,7 +292,7 @@ or download it from [here](./media/unambig.tbl){:target="_blank"} for convenienc
 <hr>
 ## Submit your docking run
 
-**Note** before you start your docking run, it is necessary to register here: [registration portal](https://nestor.science.uu.nl/auth/register/){:target="_blank"} or use the workshop credentials you were given.
+**Note** that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the “guru” access level yet, it is time to apply for it on our [registration portal](https://nestor.science.uu.nl/auth/register/). If using workshop credentials, you will have “guru” access already.
 
 A problem when trying to "covalently dock" a small ligand is that the van der Waals interactions will typically prevent close proximity of the atoms involved in the covalent bond.
 To allow the distance restraint to be satisfied, we need to scale down the non-bonded interactions between the specific atoms involved in that covalent bond. For this purpose we created a special Cysteine residue (residue name: CYC), without hydrgogen atom on the sulfur and with significantly reduced VDW parameters for the sulfur atom (scaled down by a factor 10).
@@ -376,7 +374,7 @@ Clustering method (RMSD or Fraction of Common Contacts (FCC)) -> RMSD
 RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 1&Aring;
 </a>
 
-* **Step 7:** Apply some ligand-specific scoring setting. For this unfold the **Scoring parameter menu**:
+* **Step7:** Apply some ligand-specific scoring setting. For this unfold the **Scoring parameter menu**:
 
 Our recommended HADDOCK score settings for small ligands docking are the following:
 
@@ -415,7 +413,7 @@ number of MD steps during first rigid body cooling stage -> 0
 
 #### Job submission
 
-* **Step 9:** You are ready to submit!  Click on the "Submit" button at the bottom left of the interface.
+* **Step9:** You are ready to submit!  Click on the "Submit" button at the bottom left of the interface.
 
 
 Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run.
@@ -587,14 +585,14 @@ Is there any correlation between docking score and IC50s?
 </summary>
 
 <pre>
- * Cat K     IC50 =   6 nM      HADDOCKscore [a.u.] = -36.3 +/- 0.75
+ * Cat K     IC50 =   6 nM      HADDOCKscore [a.u.] = -36.3 +/- 0.7
  * Cat L     IC50 =  89 nM      HADDOCKscore [a.u.] = -36.1 +/- 1.1
  * Cat S     IC50 = 150 nM      HADDOCKscore [a.u.] = -33.4 +/- 0.2
 </pre>
 </details>
 <br>
 
-**Note** *that in general we should not interpret docking scores in terms of binding affinity values. So any correlation observed here does not mean this is generally applicable. In this particular case, considering that the ligand is the same and only rather minor changes are present between the different cathepsin sequences, we do observe a slight correlation. But again, this should not be taken as a rule. We have actually shown that for protein-protein complexes that there is no correlation between the various scoring functions using in docking and binding affinity.*
+**Note** *that in general we should not interpret docking scores in terms of binding affinity values. So any correlation observed here does not mean this is generally applicable. We have actually shown that for protein-protein complexes that there is no correlation between the various scoring functions using in docking and binding affinity.*
 
 See:
 
@@ -613,7 +611,7 @@ _J. Proteome Research_, *9*, 2216-2225 (2010).
 <hr>
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to post on the dedicated topic on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}.
+You have completed this tutorial. If you have any questions or suggestions, feel free to post on the BioExcel online [forum](http://ask.bioexcel.eu).
 
 
 
