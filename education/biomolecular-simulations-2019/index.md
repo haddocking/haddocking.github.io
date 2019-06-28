@@ -21,8 +21,11 @@ The [**HADDOCK covalent docking**](/education/biomolecular-simulations-2019/HADD
 
 ## Tutorials
 
-* [**Metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial): 
+* [**Metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial):
   This tutorial explains how to perform metadynamics simulations to enhance the comformational sampling of a binding site on a protein to improve molecular docking predictions.
-  
-* [**HADDOCK covalent binding**](/education/biomolecular-simulations-2019/HADDOCK_tutorial):
+
+* [**HADDOCK2.4 covalent binding**](/education/biomolecular-simulations-2019/HADDOCK_tutorial):
   This tutorial demonstrates how to use HADDOCK for the prediction of the three dimensional structure of a covalently bound ligand onto a receptor.
+
+* [**HADDOCK2.4 MS cross-links tutorial**](/education/HADDOCK24/HADDOCK24-Xlinks/):
+  This tutorial demonstrates the use of cross-linking data from mass spectrometry to guide the docking in HADDOCK. This tutorial builds on our DisVis tutorial and illustrates various scenarios of using cross-linking data in HADDOCK.
