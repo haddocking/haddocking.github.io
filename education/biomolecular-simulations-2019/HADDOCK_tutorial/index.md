@@ -141,9 +141,9 @@ their very high homology, we calculated a pairwise TC matrix (see fig. 4)
 
 We decided to choose the closest related templates based on their TC.
 
- * CatK -> PDB ID 3KW9  TC=0.25
- * CatL -> PDB ID 4AXM  TC=0.62
- * CatS -> PDB ID 3N4C  TC=0.56
+ * CatK -> PDB ID 3KW9  TC=0.41
+ * CatL -> PDB ID 4AXM  TC=0.30
+ * CatS -> PDB ID 3N4C  TC=0.20
 
 In the remaining of this tutorial we will work with Cathepsin K, but you are welcome to repeat all steps with Cathepsin L and S, respectively.
 
@@ -272,7 +272,7 @@ Let's now define the distance restraints to represent our covalent bond for dock
 The first one will be between the sulfur atom of the targeted cysteine and the reactive nitrile carbon of the ligand with a distance
 set to 1.8&Aring; &plusmn; 0.1&Aring;, consistent with the average length of a simple C-S bond.
 
-The second distance is defined between the CB of the cysteine and the atom adjacent to the reactive nitrile carbon and is meant to impose the proper angular geometry.
+The second distance is defined between the CB of the cysteine and the reactive nitrile carbon and is meant to impose the proper angular geometry.
 This distance is set to 2.8&Aring; &plusmn; 0.1&Aring;, (as measured in between the CG and CE atoms of a methionine side-chain as reference).
 
 For this we need to create the following distance restraint file:
