@@ -513,7 +513,7 @@ Segment ID to use during docking -> B
 
 #### Definition of restraints
 
-If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. Instead of specifying active and passive residues, you supply a HADDOCK restraints TBL file (ambiguous restraints). For this click on the "Next" button in the **Input parameters window**.
+If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. Instead of specifying active and passive residues, you supply a HADDOCK restraints TBL file (unambiguous restraints). For this click on the "Next" button in the **Input parameters window**.
 
 * **Step5:** Input the CA-CA distance restraints from PS-HomPPI.
 For this unfold the **Distance Restraint menu** of the **Docking Parameters window**.

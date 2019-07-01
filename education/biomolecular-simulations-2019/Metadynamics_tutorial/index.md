@@ -1103,7 +1103,7 @@ Once your run has completed you will be presented with a result page showing the
 We already pre-calculated full docking run for both ensembles (we slightly increased the default number of models generated at each stage of HADDOCK: 4000 for rigid-body docking and 400 for semi-flexible and water refinement). Only the best (in term of HADDOCK score) 200 models generated at the water refinement stage of HADDOCK were further selected for analysis. The full runs for both "bemeta" and "apoMD" ensemble can be accessed at:
 
 - **bemeta_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/bemeta-ensemble){:target="_blank"}
-- **apoMD_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/apoMD_ensemble1){:target="_blank"}
+- **apoMD_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/apomd_course){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
 
