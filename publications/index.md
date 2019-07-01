@@ -7,7 +7,7 @@ image:
 
 ## 2019 
 
-* L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase. _ACS Chemical Biology_ In Press (2019).
+* L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ Advanced Online Publication (2019).
 
 * F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Information-Driven Modelling of Antibody-Antigen Complexes](https://ssrn.com/abstract=3362436) SSRN:[https://ssrn.com/abstract=3362436](https://ssrn.com/abstract=3362436) (2019).
 
