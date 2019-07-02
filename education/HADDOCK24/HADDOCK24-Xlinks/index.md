@@ -424,7 +424,7 @@ Segment ID to use during docking -> B
 
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2.
 
-* **Step 5:** Instead of specifying active and passive residues, you supply a HADDOCK restraints TBL file (ambiguous restraints). For this click on the "Next" button at the bottom of the **Input parameters** window, which proceeds to the  **Distance Restraint menu**  menu of the **Docking Parameters** window.
+* **Step 5:** Instead of specifying active and passive residues, you supply a HADDOCK restraints TBL file (unambiguous restraints). For this click on the "Next" button at the bottom of the **Input parameters** window, which proceeds to the  **Distance Restraint menu**  menu of the **Docking Parameters** window.
 
 Input the cross-links distance restraints and turn on center-of-mass restraints.
 
@@ -784,7 +784,7 @@ Are all predicted interface residues from DisVis forming contacts?
 <summary>See solution:
 </summary>
 <figure align="center">
-  <img src="/education/HADDOCK/HADDOCK24-Xlinks/cluster1-crosslinks-surface.png">
+  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/cluster1-crosslinks-surface.png">
 </figure>
 <br>
 While the model is mostly satisfying the defined distance restraints, many residues identified as potential interface
@@ -807,7 +807,7 @@ Are all predicted interface residues from DisVis forming contacts?
 <summary>See solution for scenario 2:
 </summary>
 <figure align="center">
-  <img src="/education/HADDOCK/HADDOCK24-Xlinks/cluster10-interface-surface.png">
+  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/cluster10-interface-surface.png">
 </figure>
 <br>
 In this model some cross-links are severely violated with distances > 40Å. But the putative interface residues are
@@ -838,7 +838,7 @@ The corresponding PDB file is available in the downloaded tutorial data as `5l5a
 
 For each of the three docking scenarios we will visualize the top ranking model of each cluster
 and compare those to the crystal structure of the homologous complex. We will only illustrate this process for scenario 3,
-for which the top 10 clusters correspond to 1-9 and 11.
+for which 6 clusters were generated.
 
 <a class="prompt prompt-info">
 Open PyMOL and load the top ranking model of each cluster
