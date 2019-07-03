@@ -37,11 +37,11 @@ In this tutorial we will show how to further improve the predictive power of mol
 
 The following software packages will be used during the tutorial:
 
-* [GROMACS2019]([http://manual.gromacs.org/documentation/2019-beta1/index.html](http://manual.gromacs.org/documentation/2019-beta1/index.html)): a versatile package to perform molecular dynamics simulations and several related analyses;
+* [GROMACS2019](http://manual.gromacs.org/documentation/2019-beta1/index.html): a versatile package to perform molecular dynamics simulations and several related analyses;
 
-* [PLUMED 2.5]([https://www.plumed.org/doc-v2.5/user-doc/html/index.html](https://www.plumed.org/doc-v2.5/user-doc/html/index.html)): a package working with different MD simulation engines (such as GROMACS) used to implement different flavours of non-equilibrium MD simulations (among the others features), as well as for analysis purposes;
+* [PLUMED 2.5](https://www.plumed.org/doc-v2.5/user-doc/html/index.html): a package working with different MD simulation engines (such as GROMACS) used to implement different flavours of non-equilibrium MD simulations (among the others features), as well as for analysis purposes;
 
-* [R]([https://www.r-project.org/about.html](https://www.r-project.org/about.html)): a data analysis software, used here to perform the cluster analysis on the MD trajectory;
+* [R](https://www.r-project.org/about.html): a data analysis software, used here to perform the cluster analysis on the MD trajectory;
 
 * [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/): The HADDOCK web portal which allows to perform information-driven flexible docking among macromolecules and between a chemical compound and a macromolecule.
 
@@ -69,7 +69,7 @@ mkdir -p Xray MD/plain/analysis MD/meta</a>
 
 #### Setting up the simulation system
 
-First go to the Xray directory and download the pdb file of the apo-form of the T4 phage beta-glucosyltransferase (hereafter GLUCO) (PDB code: [1JEJ]([https://www.rcsb.org/structure/1JEJ](https://www.rcsb.org/structure/1JEJ))) or use the shell command *wget* to download it directly from the terminal:
+First go to the Xray directory and download the pdb file of the apo-form of the T4 phage beta-glucosyltransferase (hereafter GLUCO) (PDB code: [1JEJ](https://www.rcsb.org/structure/1JEJ)) or use the shell command *wget* to download it directly from the terminal:
 
 <a class="prompt prompt-cmd">
 cd Xray<br />
@@ -84,7 +84,7 @@ In particular, one should check for missing residues (lines starting with the st
 or missing atoms (lines starting with the string “REMARK 470”).
 </details><br>
 
-Fortunately, our structure contains all the residues present in the aminoacid sequence, as well as all the heavy atoms. For the sake of simplifying the subsequent analysis, we will generate a “clean” pdb file without crystallographic waters named `apo_GLUCO.pdb` and containing only the protein; you can use your favorite text editor or [VMD1.9.3]([http://www.ks.uiuc.edu/Research/vmd](http://www.ks.uiuc.edu/Research/vmd)) from the terminal:
+Fortunately, our structure contains all the residues present in the aminoacid sequence, as well as all the heavy atoms. For the sake of simplifying the subsequent analysis, we will generate a “clean” pdb file without crystallographic waters named `apo_GLUCO.pdb` and containing only the protein; you can use your favorite text editor or [VMD1.9.3](http://www.ks.uiuc.edu/Research/vmd) from the terminal:
 
 <a class="prompt prompt-cmd">vmd -dispdev none 1JEJ.pdb &lt;&lt;EOF <br>
 animate write pdb &#34;apo_GLUCO.pdb&#34; sel [atomselect top protein] <br>
@@ -97,7 +97,7 @@ If copying and pasting the previous commands in the terminal doesn't work, it ma
 
 Copying and pasting those commands should work, and you could find a clean pdb file (apo_GLUCO.pdb) in the directory <code class="highlighter-rouge">/home/utente/Tutorials/EDES-HADDOCK/tutorial_files/apoMD/</code>.
 
-Once we have the structure of our protein target, we can generate the files needed to run the MD simulations. In this case, we are going to use [GROMACS2019]([http://manual.gromacs.org/current/user-guide/index.html](http://manual.gromacs.org/current/user-guide/index.html)) [[11](#ref11)] and so we need the topology file (top extension) containing information about atom types, bonded and non-bonded interactions, etc., and the initial structure file in the native format of GROMACS2019 (gro extension). A typical simulation flowchart for GROMACS2019 is reported in the official [GROMACS manual]([http://manual.gromacs.org/documentation/2019/user-guide/flow.html](http://manual.gromacs.org/documentation/2019/user-guide/flow.html)).
+Once we have the structure of our protein target, we can generate the files needed to run the MD simulations. In this case, we are going to use [GROMACS2019](http://manual.gromacs.org/current/user-guide/index.html) [[11](#ref11)] and so we need the topology file (top extension) containing information about atom types, bonded and non-bonded interactions, etc., and the initial structure file in the native format of GROMACS2019 (gro extension). A typical simulation flowchart for GROMACS2019 is reported in the official [GROMACS manual](http://manual.gromacs.org/documentation/2019/user-guide/flow.html).
 
 GROMACS was installed in the directory `/usr/local/gromacs-2019-2/`, and in order to use it, first type:
 
@@ -321,7 +321,7 @@ well as the intramolecular contacts among the residues lining that site.
 To define the BS, we exploit the crystallographic structure of the GLUCO-UDP
 complex. Namely we define the BS as the site lined by all residues having at
 least one atom within 3.5 Å from UDP. From the RCBS pdb databank download
-PDB ID: [1JG6]([https://www.rcsb.org/structure/1JG6](https://www.rcsb.org/structure/1JG6)) in the
+PDB ID: [1JG6](https://www.rcsb.org/structure/1JG6) in the
 `Xray` directory, or use wget to download it from the terminal.
 So, if you were in the `MD/plain` directory, type:
 
@@ -341,7 +341,7 @@ As for the apo structure, if copying and pasting the previous commands in the te
 
 <a class="prompt prompt-cmd">cat /home/utente/Tutorials/EDES-HADDOCK/tutorial_files/apoMD/vmd_commands_holo<a/>
 
-In this case we care going to define our BS on the hydrogenated holo structure (which you can obtain with software such as [OpenBabel]([https://openbabel.org/docs/dev/index.html](https://openbabel.org/docs/dev/index.html))). Copy the hydrogenated holo we have already prepared for you from the `tutorial_files` folder:
+In this case we care going to define our BS on the hydrogenated holo structure (which you can obtain with software such as [OpenBabel](https://openbabel.org/docs/dev/index.html)). Copy the hydrogenated holo we have already prepared for you from the `tutorial_files` folder:
 
 <a class="prompt prompt-cmd">
 cp ../tutorial_files/apoMD/holo_GLUCO.pdb .
@@ -380,7 +380,7 @@ You will get the following list of residue numbers:
 
 And a similar list containing the atom numbers (serials) of BP's residues.
 
-However, for cases in which no holo structure with the co-crystallized ligand is available, of course a similar procedure will not be feasible. A possible solution could be the usage of binding-site dection softwares among the plaetora available. Examples of these softwares include [COACH]([https://zhanglab.ccmb.med.umich.edu/COACH/](https://zhanglab.ccmb.med.umich.edu/COACH/)), [RaptorX binding]([http://raptorx.uchicago.edu/BindingSite/](http://raptorx.uchicago.edu/BindingSite/)), [ConSurf]([http://consurf.tau.ac.il/2016/](http://consurf.tau.ac.il/2016/)).
+However, for cases in which no holo structure with the co-crystallized ligand is available, of course a similar procedure will not be feasible. A possible solution could be the usage of binding-site dection softwares among the plaetora available. Examples of these softwares include [COACH](https://zhanglab.ccmb.med.umich.edu/COACH/), [RaptorX binding](http://raptorx.uchicago.edu/BindingSite/), [ConSurf](http://consurf.tau.ac.il/2016/).
 
 In particular, in [[9](#ref09)] we show how the BP selection according to the COACH software is virtually identical to the one obtained by using the holo structure.
 
@@ -441,7 +441,7 @@ However if you compare the RoG of the apo with the one of the holo (8.75 &Aring;
 Before going on, we need to define the other three CVs that we are going to use to bias the simulation. They are three (pseudo)contacts across the inertia plane variables, each defined as the number of contacts between residues of the binding site on opposite sides of the corresponding inertia plane.
 The idea is that they represent a functional and computationally cheap way to induce fluctuations in the shape of the binding pocket along each of the three orthogonal spacial directions. For details see [[9](#ref9)].
 
-In order to do that, we will use our home-made tcl script. The script, based on the [&#34;Orient&#34; package for VMD]([https://www.ks.uiuc.edu/Research/vmd/script_library/scripts/orient/](https://www.ks.uiuc.edu/Research/vmd/script_library/scripts/orient/)), adopts the following procedure:
+In order to do that, we will use our home-made tcl script. The script, based on the [&#34;Orient&#34; package for VMD](https://www.ks.uiuc.edu/Research/vmd/script_library/scripts/orient/), adopts the following procedure:
 
 1. Calculates the principal axes of inertia (x,y,z) of the BS;
 
@@ -485,7 +485,7 @@ X_2 serials:  {280 282 294 295} {3122 3124 3144 3145} {3932 3934 3947 3948} {424
 </pre>
 
 
-So, for each of the three planes, the script gives the lists of residues and serials defining the groups of (heavy) atoms lying on opposite sides of each inertia plane. Refer to [Figure 2b-c]([https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0002.jpeg](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0002.jpeg)) in our work for a visual representation of inertia planes and of how residues are split into different groups to define each CIP variable.
+So, for each of the three planes, the script gives the lists of residues and serials defining the groups of (heavy) atoms lying on opposite sides of each inertia plane. Refer to [Figure 2b-c](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0002.jpeg) in our work for a visual representation of inertia planes and of how residues are split into different groups to define each CIP variable.
 
 In practical applications, please remember to:
 
@@ -500,15 +500,15 @@ After all the CVs have been defined, we need to set the parameters of the Gaussi
 <a class="prompt prompt-cmd">cp ../../tutorial_files/Driver/plumed_driver.dat analysis/ <br>
 cd analysis</a>
 
-Open the file with your favorite text editor to see how the CVs are defined. For further information on how the define the CVs the interested reader can refer to the [PLUMED manual]([https://www.plumed.org/doc-v2.5/user-doc/html/_colvar.html](https://www.plumed.org/doc-v2.5/user-doc/html/_colvar.html)). Now run the calculation with driver:
+Open the file with your favorite text editor to see how the CVs are defined. For further information on how the define the CVs the interested reader can refer to the [PLUMED manual](https://www.plumed.org/doc-v2.5/user-doc/html/_colvar.html). Now run the calculation with driver:
 
-<a class="prompt prompt-cmd">plumed driver &#8208;&#8208;mf_dcd ../../../tutorial_files/apoMD/apo_trajectory_500frames.dcd &#8208;&#8208;plumed plumed_driver.dat</a>
+<a class="prompt prompt-cmd">/usr/local/plumed driver &#8208;&#8208;mf_dcd ../../../tutorial_files/apoMD/apo_trajectory_500frames.dcd &#8208;&#8208;plumed plumed_driver.dat</a>
 
 Note: if you copied the previous command and it doesn't work, a possible solution is that you have to delete and write again (and not copy) the two minus signs before the &#34;mf_dcd&#34; and &#34;plumed&#34; flags.
 
 The output file COLVAR_apoMD contains the values of the CVs sampled along the unbiased trajectory (you can find a pre-calculated file in the `tutorial_files/Driver` folder). In this case the trajectory containts only 500 frames, as it serves as example for this tutorial. However remember that even if you run longer unbiased MD simulations, to assess how much the CVs changed during the unbiased MD simulation in order to define the sigma values for a metadynamics run, the calculation should be performed on a time-scale of the order of a few hundreds of ps at most.
 
-Now you can plot the CV values sampled during the unbiased run with your preferred graph viewer. Here we will use [xmgrace]([http://plasma-gate.weizmann.ac.il/Grace](http://plasma-gate.weizmann.ac.il/Grace)).
+Now you can plot the CV values sampled during the unbiased run with your preferred graph viewer. Here we will use [xmgrace](http://plasma-gate.weizmann.ac.il/Grace).
 For the sake of keeping things simple, here we will do the work only for 2 of the 4 CVs selected:
 
 <a class="prompt prompt-cmd">grep -v &#34;#&#34; COLVAR_apoMD | awk &#39;{print $2}&#39; > RoG.dat <br>
@@ -584,9 +584,9 @@ default of 10 and the height to 0.6 kcal/mol.
 
 More detailed information on how to run a metadynamics simulation can be found at the following webpages:
 
-- [General documentation on metadynamics with PLUMED]([https://plumed.github.io/doc-v2.4/user-doc/html/_m_e_t_a_d.html](https://plumed.github.io/doc-v2.4/user-doc/html/_m_e_t_a_d.html))
-- [Running metadynamics simulations with PLUMED]([https://plumed.github.io/doc-v2.4/user-doc/html/trieste-4.html](https://plumed.github.io/doc-v2.4/user-doc/html/trieste-4.html))
-- [Running Bias Exchange metadynamics simulations with PLUMED]([https://plumed.github.io/doc-v2.4/user-doc/html/cambridge.html#cambridge-exercise-2](https://plumed.github.io/doc-v2.4/user-doc/html/cambridge.html#cambridge-exercise-2))
+- [General documentation on metadynamics with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/_m_e_t_a_d.html)
+- [Running metadynamics simulations with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/trieste-4.html)
+- [Running Bias Exchange metadynamics simulations with PLUMED](https://plumed.github.io/doc-v2.4/user-doc/html/cambridge.html#cambridge-exercise-2)
 
 Next, copy the content of `~/Tutorials/EDES-HADDOCK/tutorial_files/meta` into the `~/Tutorials/EDES-HADDOCK/MD/meta` folder created at the beginning of the tutorial:
 
@@ -644,16 +644,16 @@ Despite the short simulation time, the method effectively enhanced the sampling 
 However, both shrunk and expanded conformations of the BS are sampled (this can be verified by looking to the profiles
 of the additional three CVs).
 To effectively guide the sampling towards a specific direction (e.g. to compress the BS) one could add soft restraints
-on some of the CVs (please have [here]([https://plumed.github.io/doc-v2.4/user-doc/html/_r_e_s_t_r_a_i_n_t.html](https://plumed.github.io/doc-v2.4/user-doc/html/_r_e_s_t_r_a_i_n_t.html)) if interested).
+on some of the CVs (please check [here](https://plumed.github.io/doc-v2.4/user-doc/html/_r_e_s_t_r_a_i_n_t.html) if interested).
 Following this scheme, in [[9](#ref9)], a "**windows approach**" was adopted to guide the sampling only towards the desired
 region of the conformational space. The idea is to run a set of metadynamics simulations each starting from a conformation
 corresponding to decreasing values of the RoG, using restraints on this CV in order to gently mimick the compression of the BS
 induced by substrate binding.
 
 You could have a look at
-[Figure 3a]([https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0003.jpeg](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0003.jpeg))
+[Figure 3a](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0003.jpeg)
 and
-[Figure 4a]([https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0004.jpeg](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0004.jpeg))
+[Figure 4a](https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jcisd8/2019/jcisd8.2019.59.issue-4/acs.jcim.8b00730/20190416/images/large/ci-2018-00730p_0004.jpeg)
 of our publication to get a taste of how this approach allows to reproduce the correct geometry of the BS almost independently on
 simulation details (in particular on the number of windows used).
 
@@ -667,7 +667,7 @@ To our purpose, it is important that the cluster analysis maximizes the diversit
 the BS, In this way, if conformations prone to host the ligand were sampled during MD
 simulations, some near-native structures should be included in the pool of cluster representatives selected.
 To achieve this goal, in [[9](#ref9)] we performed a multi-step cluster analysis on the CVs, using the data analysis
-software [R]([https://www.r-project.org/about.html](https://www.r-project.org/about.html)). This approach can be compared with a more standard cluster analysis using as metric the RMSD of the BS (this can be performed for instance with the `gmx cluster` command of the
+software [R](https://www.r-project.org/about.html). This approach can be compared with a more standard cluster analysis using as metric the RMSD of the BS (this can be performed for instance with the `gmx cluster` command of the
 GROMACS 2019 package - see [http://manual.gromacs.org/2019/onlinehelp/gmx-cluster.html](http://manual.gromacs.org/2019/onlinehelp/gmx-cluster.html))
 
 The performance of a cluster analysis depends on a number of parameters (such as the number of clusters, the cut-offs, etc.)
@@ -711,7 +711,7 @@ to the cluster analysis;
 * `hclust_4cvs_template.R`. This is a template file to perform hierarchical clustering with R;
 * `k-means-head.R` and `k-means-tail.R`. These are template files for the k-means clustering with R;
 
-From the terminal, go into the directory `tutorial_files/clustering_with_R` and type:
+From the terminal, go into the directory `~/Tutorials/EDES-HADDOCK/tutorial_files/clustering_with_R` and type:
 
 <a class="prompt prompt-cmd"> ./R_clustering.sh </a>
 
