@@ -502,7 +502,7 @@ cd analysis</a>
 
 Open the file with your favorite text editor to see how the CVs are defined. For further information on how the define the CVs the interested reader can refer to the [PLUMED manual](https://www.plumed.org/doc-v2.5/user-doc/html/_colvar.html). Now run the calculation with driver:
 
-<a class="prompt prompt-cmd">/usr/local/plumed driver &#8208;&#8208;mf_dcd ../../../tutorial_files/apoMD/apo_trajectory_500frames.dcd &#8208;&#8208;plumed plumed_driver.dat</a>
+<a class="prompt prompt-cmd">/usr/local/plumed-2.3.5/bin/plumed driver &#8208;&#8208;mf_dcd ../../../tutorial_files/apoMD/apo_trajectory_500frames.dcd &#8208;&#8208;plumed plumed_driver.dat</a>
 
 Note: if you copied the previous command and it doesn't work, a possible solution is that you have to delete and write again (and not copy) the two minus signs before the &#34;mf_dcd&#34; and &#34;plumed&#34; flags.
 
@@ -590,7 +590,7 @@ More detailed information on how to run a metadynamics simulation can be found a
 
 Next, copy the content of `~/Tutorials/EDES-HADDOCK/tutorial_files/meta` into the `~/Tutorials/EDES-HADDOCK/MD/meta` folder created at the beginning of the tutorial:
 
-<a class="prompt prompt-cmd">cp  ~/Tutorials/EDES-HADDOCK/tutorial_files/meta/* ~/Tutorials/EDES-HADDOCK/MD/meta/ <br></a>
+<a class="prompt prompt-cmd">cp -r ~/Tutorials/EDES-HADDOCK/tutorial_files/meta/* ~/Tutorials/EDES-HADDOCK/MD/meta/ <br></a>
 
 To run a multi-replica simulation, GROMACS2019 requires creating a folder for each of the replicas, containing all the files needed for running that specific simulation. Details can be found in the [GROMACS manual]( [http://manual.gromacs.org/2019-beta3/user-guide/mdrun-features.html](http://manual.gromacs.org/2019-beta3/user-guide/mdrun-features.html)).
 
