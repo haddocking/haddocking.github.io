@@ -71,7 +71,7 @@ The second stage of the docking protocol introduces flexibility to the interacti
 
   <details >
   <summary style="bold">
-  <b><i>See animation of semi-flexible simulated annealing (it0):</i></b>
+  <b><i>See animation of semi-flexible simulated annealing (it1):</i></b>
   </summary>
   <figure align="center">
     <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
@@ -412,7 +412,7 @@ This will align all clusters on chain A (E2A), maximizing the differences in the
 Examine the various clusters. How does the orientation of HPR differ between them?
 </a>
 
-**Note:** You can turn on and off a cluster by clicking on its name in the left panel of the PyMOL window.
+**Note:** You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
 
 Let's now check if the active residues which we defined are actually part of the interface. In the PyMOL command window type:
 
@@ -438,7 +438,7 @@ show spheres, histidines<br>
 util.cnc<br>
 </a>
 
-<a class="prompt prompt-question">First of all, has the phosphate group been poperly generated?</a>
+<a class="prompt prompt-question">First of all, has the phosphate group been properly generated?</a>
 
 **Note:** You can zoom on the phosphorylated histidine using the following PyMOL command:
 
@@ -457,7 +457,7 @@ zoom vis<br>
 </a>
 
 Now inspect each cluster in turn and check if histidine 90 of E2A is in close proximity to another histidine of HPR.
-To facilitate this analysis, view each cluster in turn (use the left panel to activate/desactivate the various clusters by clicking on their name).
+To facilitate this analysis, view each cluster in turn (use the right panel to activate/desactivate the various clusters by clicking on their name).
 
 <a class="prompt prompt-question">Based on this analysis, which cluster does satisfy best the biolocal information?</a>
 
