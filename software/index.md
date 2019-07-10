@@ -75,6 +75,8 @@ This page provide you links to software and software manuals of the computationa
 
 * HADDOCK refined models for the biological/crystallographic interfaces collected in the DC and MANY datasets: [https://doi.org/10.15785/SBGRID/566](https://doi.org/10.15785/SBGRID/566)
 
-* HADDOCK models of mutant protein complexes: [https://doi.org/10.15785/SBGRID/520](https://doi.org/10.15785/SBGRID/520)
+* HADDOCK models of mutant protein complexes: [https://doi.org/10.15785/SBGRID/651](https://doi.org/10.15785/SBGRID/651)
+
+* Docking models for Docking Benchmark 4, 5 and CAPRI score_set: [https://doi.org/10.15785/SBGRID/684](https://doi.org/10.15785/SBGRID/684)
 
 
