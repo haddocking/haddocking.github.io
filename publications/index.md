@@ -192,8 +192,6 @@ _FEBS Letters_, *589*, 3516-3526 (2015).
 [Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
 _J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
 
-* A. Vangone, **A.M.J.J. Bonvin**. "[HADDOCK docking models](https://doi.org/10.15785/SBGRID/131).", SBGrid Data Bank, V1, DOI: 10.15785/SBGRID/131 (2015).
-
 * T Vreven+, I.H. Moal+, A. Vangone+, B.G. Pierce, P.L. Kastritis, M. Torchala, R. Chaleil, B. Jiménez-García, P.A. Bates#, Juan Fernandez-Recio#, **A.M.J.J. Bonvin**# and Z. Weng#.
 [Updates to the integrated protein-protein interaction benchmarks: Docking benchmark version 5 and affinity benchmark version 2](https://doi.org/doi:10.1016/j.jmb.2015.07.016).
 _J. Mol. Biol._ *19*, 3031-3041 (2015).
