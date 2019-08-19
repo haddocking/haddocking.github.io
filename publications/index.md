@@ -7,24 +7,26 @@ image:
 
 ## 2019 
 
+* T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA. _Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2019).
+
 * P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1101/718122). BioRxiv 10.1101/718122v1 (2019).
 
 * J. Roel-Touris, C.G. Don, R.V. Honorato, J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**. [Less is more: Coarse-grained integrative modeling of large biomolecular assemblies with HADDOCK](https://doi.org/10.1101/715268). BioRxiv 10.1101/715268v1 (2019).
 
-* R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. Computational approaches to therapeutic antibody design: established methods and emerging trends. _Briefings in Bioinformatics_ In press (2019).
+* R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. Computational approaches to therapeutic antibody design: established methods and emerging trends. _Briefings in Bioinformatics_, In press (2019).
 
-* L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ Advanced Online Publication (2019).
+* L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ *14*, 1751-1759 (2019).
 
-* F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Information-Driven Modelling of Antibody-Antigen Complexes](https://ssrn.com/abstract=3362436) SSRN:[https://ssrn.com/abstract=3362436](https://ssrn.com/abstract=3362436) (2019).
+* F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Information-Driven Modelling of Antibody-Antigen Complexes](https://ssrn.com/abstract=3362436). _Structure_ ,In press SSRN:[https://ssrn.com/abstract=3362436](https://ssrn.com/abstract=3362436) (2019).
 
-* J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1101/595983). BioRxiv 10.1101/595983 (2019).
+* J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, Advanced Online Publication, btz642 (2019).
 
-* B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. [PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes](https://doi.org/10.1093/bioinformatics/btz437). _Bioinformatics_ Advanced Online Publication (2019).
+* B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. [PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes](https://doi.org/10.1093/bioinformatics/btz437). _Bioinformatics_, Advanced Online Publication, btz437 (2019).
 
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu.
-[Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](http://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._ *59*, 1515–1528 (2019).
+[Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](http://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._, *59*, 1515–1528 (2019).
 
-* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin** and L.C. Xue. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1093/bioinformatics/btz496) _Bioinformatics_ https://doi.org/10.1093/bioinformatics/btz496 Advanced Online Publication (2019).
+* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin** and L.C. Xue. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1093/bioinformatics/btz496) _Bioinformatics_ Advanced Online Publication, btz496 (2019).
 
 * C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, and M. Winn. 
 [West-Life: A Virtual Research Environment for structural biology](https://doi.org/10.1016/j.yjsbx.2019.100006).
@@ -32,7 +34,7 @@ _Journal of Structural Biology: X_, *1*, 100006 (2019).
 
 * M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
 
-* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin**. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ e1410 (2019).
+* C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin**. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ *9*, e1410 (2019).
 
 * C. Geng, A. Vangone, G.E. Folkers, L.C. Xue and **A.M.J.J. Bonvin**. [iSEE: Interface Structure, Evolution and Energy-based machine learning predictor of binding affinity changes upon mutations](https://doi.org//10.1002/prot.25630).
   _Proteins: Struc. Funct. &amp; Bioinformatics_ *87*, 110-119  (2019).
