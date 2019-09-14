@@ -7,11 +7,15 @@ image:
 
 ## 2019 
 
-* T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA. _Proteins: Struc. Funct. &amp; Bioinformatics_, In Press (2019).
+* R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. MARTINI-based protein-DNA coarse-grained HADDOCKing. _Frontiers in Molecular Biosciences_, In Press (2019).
+
+* Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019).
+
+* T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. [The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA](https://doi.org/10.1002/prot.25806). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019).
 
 * P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1101/718122). BioRxiv 10.1101/718122v1 (2019).
 
-* J. Roel-Touris, C.G. Don, R.V. Honorato, J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**. [Less is more: Coarse-grained integrative modeling of large biomolecular assemblies with HADDOCK](https://doi.org/10.1101/715268). BioRxiv 10.1101/715268v1 (2019).
+* J. Roel-Touris, C.G. Don, R.V. Honorato, J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**. [Less is more: Coarse-grained integrative modeling of large biomolecular assemblies with HADDOCK](https://doi.org/10.1101/715268). _J. Chem. Theo. and Comp._, In Press (2019).
 
 * R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. Computational approaches to therapeutic antibody design: established methods and emerging trends. _Briefings in Bioinformatics_, In press (2019).
 
