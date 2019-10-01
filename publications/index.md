@@ -7,7 +7,9 @@ image:
 
 ## 2019 
 
-* R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, Advanced Online Publication (2019).
+* M. Abraham, R. Apostolov, J. Barnoud, P. Bauer, C. Blau, **A.M.J.J. Bonvin**, M. Chavent, J. Chodera, K. Čondić-Jurkić, L. Delemotte, H. Grubmüller, R. Howard, E.J. Jordan, E. Lindal, O.H.S. Ollila, J. Selent, D. Smith, P. Stansfeld, J. Tiemann, M. Trellet, C. Woods and A. Zhmurov. [Sharing Data from Molecular Simulations](https://doi.org/10.1021/acs.jcim.9b00665). _J. Chem. Inf. and Model._ Advanced Online Publication (2019).
+
+* R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, *6*, 102 (2019).
 
 * Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019).
 
