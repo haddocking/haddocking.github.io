@@ -240,6 +240,15 @@ img.grayscale {
     cursor: default;
   }
 }
+.btn-assistant-professor {
+  background-color: $success;
+  color: $white;
+  border-color: $success;
+  &:hover {
+    color: $white;
+    cursor: default;
+  }
+}
 /* Well ================================================= */
 .well {
 	min-height: 20px;

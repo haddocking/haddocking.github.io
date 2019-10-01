@@ -18,11 +18,21 @@
     url: http://biochem.science.oregonstate.edu/content/victor-hsu
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
+    
+-   name: Li Xue
+    url: https://www.radboudumc.nl/en/people/li-xue
+    current: 'Radboud University Medical Center, the Netherlands'
+    status: 'postdoc,assistant-professor'
+    
+-   name: Attilio Vargiu
+    url: http://people.unica.it/attiliovargiu
+    current: 'University of Cagliari, Sardinia, Italy'
+    status: postdoc
 
 -   name: Adrien Melquiond 
     url: http://www.ubc.uu.nl    
     current: 'Utrecht Bioinformatic Center and University Medical Center Utrecht'
-    status: postdoc^2
+    status: postdoc
 
 -   name: Mikael Trellet
     url: http://www.fluigent.com
@@ -230,6 +240,9 @@
 
 -   name: Sevilay Gülesen
     current: 'Kadir Has University, Istanbul, Turkey'
+    status: student
+
+-   name: Raphaëlle Versini
     status: student
 
 -   name: Daan Sybrandi
