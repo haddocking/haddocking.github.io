@@ -162,6 +162,7 @@ After saving the molecule delete it from the Pymol window or close Pymol. You ca
 <a class="prompt prompt-pymol">
 delete 1F3G
 </a>
+
 <hr>
 ## Inspecting and preparing HPR for docking
 
