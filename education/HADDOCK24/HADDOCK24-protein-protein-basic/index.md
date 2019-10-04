@@ -135,7 +135,7 @@ We will now switch to a surface representation of the molecule and highlight the
 <a class="prompt prompt-pymol">
 color white, all<br>
 show surface<br>
-select e2a_active, (resi 38,40,45,46,69,71,78,80,94,96,141)<br>
+select e2a_active, (1F3G and resi 38,40,45,46,69,71,78,80,94,96,141)<br>
 color red, e2a_active<br>
 </a>
 
@@ -156,6 +156,12 @@ For this in the PyMOL menu on top select:
 <a class="prompt prompt-info">File -> Save molecule...</a>
 <a class="prompt prompt-info">Select 1F3G and click on the save button</a>
 <a class="prompt prompt-info">Name your file *e2a_1F3G.pdb* and note its location</a>
+
+After saving the molecule delete it from the Pymol window or close Pymol. You can remove the molecule by typing this into the command line window of PyMOL:
+
+<a class="prompt prompt-pymol">
+delete 1F3G
+</a>
 
 <hr>
 ## Inspecting and preparing HPR for docking
@@ -179,7 +185,7 @@ We will now switch to a surface representation of the molecule and highlight the
 <a class="prompt prompt-pymol">
 color white, all<br>
 show surface<br>
-select hpr_active, (resi 15,16,17,20,48,49,51,52,54,56)<br>
+select hpr_active, (1HDN and resi 15,16,17,20,48,49,51,52,54,56)<br>
 color red, hpr_active<br>
 </a>
 

@@ -5,7 +5,7 @@ tags: [MODELLER, GROMACS, HADDOCK, molecular dynamics, homology modelling, docki
 image:
   feature: pages/banner_education-thin.jpg
 ---
-In this page you can find links to tutorials on the usage of our software and webportal [HADDOCK 2.4](hhttps://wenmr.science.uu.nl/haddock2.4/).
+In this page you can find links to tutorials on the usage of our software and webportal [HADDOCK 2.4](https://wenmr.science.uu.nl/haddock2.4/).
 
 * [**HADDOCK2.4 local installation tutorial**](/education/HADDOCK24/HADDOCK24-local-tutorial):
   A tutorial demonstrating the installation and use of a local installation of HADDOCK2.4. It demonstrates various docking scenarios.
