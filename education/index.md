@@ -7,6 +7,10 @@ image:
 ---
 In this page you can find links to our educational material, namely tutorials on the usage of our software and material for courses we teach at Utrecht University.
 
+* table of contents
+{:toc}
+
+
 ## Courses
 
 * [**Structural Bioinformatics & Modelling**](/education/molmod/): A MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
@@ -23,6 +27,18 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 * [INSTRUCT practical course: Advanced methods for the integration of diverse structural data with NMR data - April 2016](/education/INSTRUCT-practical-course/)
 -->
+
+## Online lectures
+
+* Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
+  <ul>
+  <details>
+  <summary>View recorded lecture
+  </summary>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/KUbEwGv21n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
 
 ## Tutorials
 
