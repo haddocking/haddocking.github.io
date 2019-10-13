@@ -1,0 +1,149 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_software.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT> manual</H1> 
+
+<H2 align=right><FONT COLOR=RED>S</FONT>oftware <FONT COLOR=RED>L</FONT>inks</H2>
+
+<HR>
+HADDOCK consists of a collection of <u><A TARGET=new HREF="http://www.python.org">python</A></u> and
+<u><A TARGET=new HREF="http://cns.csb.yale.edu">CNS</A></u> scripts and some other additional programs and scripts 
+(csh, awk, perl, c++). 
+<ul>
+    <li><u><a href="#needed">Needed</a></u>
+    <li><u><a href="#recommended">Recommended</a></u>
+    <li><u><a href="#useful">Useful</a></u>
+    <li><u><a href="#scoring">Scoring-related</a></u>
+</ul>
+
+<a name="needed"><b>Needed</b></a>:
+<ul>
+     <li> <b><u><a target=new HREF="http://cns-online.org">CNS (http://cns-online.org)</a></u></b>:
+     MANDATORY to run HADDOCK, TO BE OBTAINED AND INSTALL SEPARATELY
+</ul>
+     <br>
+<a name="recommended"><b>Also recommended are:</b></a>
+<ul>
+<li> <b><u><A target=new HREF="http://wolf.bms.umist.ac.uk/naccess">NACCESS</a></u></b>:
+     Naccess is a stand alone program that calculates the accessible area 
+     of a molecule from a PDB  format file. It can calculate the atomic and
+     residue accessibilities for both proteins and nucleic acids, and is 
+     available for free of charge for researchers at academic and non 
+     profit-making institutions. We make use of NACCESS in HADDOCK to filter
+     active and passive residues based on their solvent accessible area (see
+     section <u><a href="/software/haddock2.2/generate_air_help">AIR restraints</a></u>).
+<p>
+<li> <b><u><a target=new href="http://www.bioinf.org.uk/software">ProFit</a></u></b>: ProFit is 
+     designed to be the ultimate protein least squares fitting program. Some of
+     the provided analysis tools in HADDOCK make use of Profit. Profit can
+     be obtained free of charge for academics at http://www.bioinf.org.uk/software
+<p>
+<li> <b><u><a target=new href="http://spin.niddk.nih.gov/bax/software/PALES/index.html">Pales</a></u></b>:
+     PALES is a software for analysis of residual dipolar couplings. Pales provides
+     features for analysis of experimental dipolar couplings and dipolar coupling tensors, 
+     such as best-fitting a dipolar coupling tensor to its corresponding 3D structure. 
+     Pales can thus be used to derive the tensor components (Dxx, Dyy, Dzz or Da and R)
+     needed for the use of dipolar couplings as restraints for docking.
+<p>
+<li> <b><u><a target=new href="http://www.ibs.fr/science-213/scientific-output/software/module/?lang=en">Module</a></u></b>: Modules is 
+     another useful software for analysis of residual dipolar couplings with a nice 
+     graphical interface. Modules allows the determination of alignment tensor 
+     parameters for individual or multiple domains in macromolecules from residual 
+     dipolar couplings and facilitates their manipulation to construct low-resolution 
+     models of macromolecular structure. 
+<p>
+<li> <b><u><a target=new href="http://www.ibs.fr/science-213/scientific-output/software/tensor/?lang=en">Tensor</a></u></b>: Tensor is 
+     another useful software for analysis of diffusion anisotropy data (NMR relaxation) with a nice 
+     graphical interface. Tensor2 allows the determination of alignment tensor 
+     parameters for individual or multiple domains in macromolecules from diffusion anisotropy data 
+     and facilitates their manipulation to construct low-resolution models of macromolecular structure. 
+<p>
+<li> <b><u><a target=new href="http://xdna.org">3DNA</a></u></b>: 3DNA is a versatile package for 
+     the analysis, rebuilding, and visualization of three-dimensional nucleic acid structures, based on a standard
+     reference frame (Olson <i>et al.</i>, <i>J. Mol. Biol.</i> <b>313</b>, 229-237, 2001). It is the software we 
+     are using to generate libraries of pre-bent DNA conformations for protein-DNA docking in 
+     our <u><a targets=new href="http://haddock.science.uu.nl/enmr/services/3DDART">3D-DART web server</a></u>.
+<p>
+</ul>
+
+<br>
+<a name="useful"><b>Here are a few links to other useful software:</b></a>
+<ul>
+<p>
+<li><b><u><a target=new href="https://nmr.le.ac.uk/icing/#file">iCING</a></u></b>:
+     The ultimate structure validation software suite... As a web portal. CING stands for 
+     Common Interface for NMR structure Generation and is known for structure and NMR data validation. 
+<p>
+<li><b><u><a target=new href="http://psvs-1_5-dev.nesg.org">PSVS</a></u></b>
+     Another nice structure validation server which integrates analyses from several widely-used structure quality evaluation tools, 
+     including RPF, PROCHECK, MolProbity, Verify3D, Prosa II, the PDB validation software, and various structure-validation tools.
+<p>
+<li><b><u><a target=new href="http://www.biochem.ucl.ac.uk/bsm/ligplot/ligplot.html">LIGPLOT</a></u></b>:
+     LIGPLOT is a program for automatically plotting protein-ligand interactions or protein-protein
+     interactions (use for that dimplot). It automatically generates schematic diagrams of protein-ligand 
+     interactions for a given PDB file. The interactions shown are those mediated by hydrogen bonds and by 
+     hydrophobic contacts. 
+<p>
+<li><b><u><a target=new href="http://www.ebi.ac.uk/thornton-srv/software/NUCPLOT">NUCPLOT</a></u></b>:
+     NUCPLOT is a program for automatically plotting protein-nucleic acid interactions. 
+     NUCPLOT can generate schematic diagrams automatically - directly from the 3D coordinates of the 
+     complex as found in a given PDB file. The program works for any single- or double-stranded protein-DNA, 
+     DNA-ligand and protein-RNA complexes.
+<p>
+<li><b><u><a target=new href="http://swift.cmbi.ru.nl/whatif">WhatIF</a></u></b> This is a program 
+     for protein structure analysis, validation and repair. It is available as a 
+     <u><a target=new href="http://swift.cmbi.ru.nl/servers/html/index.html">webserver</a></u>.
+<p>
+<li> <b><u><a target=new href="http://plasma-gate.weizmann.ac.il/Grace/">Xmgr/Grace</a></u></b>:
+     A very nice graphing tool for UNIX. 
+<p>
+<li> <b><u><a target=new href="http://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a></u></b> 
+     This molecular graphics program displays your PDB 
+     structures on screen using X graphics and enables you to rotate, display 
+     and color the structure in a number of ways. Very convenient for a Quick 
+     look at a structure. We use it for example to display, select and color
+     active and passive residues for HADDOCK (see 
+     section <u><a href="/software/haddock2.2/generate_air_help">AIR restraints</a></u>)
+<p>
+<li> <b><u><a target=new href="http://www.pymol.org/">Pymol</a></u></b> This is a very nice visualization (and much more)
+     program for high-quality display of 3D molecular structures</a></u>.
+<p>
+<li> <b><u><a target=new href="http://www.avatar.se/molscript/">Molscript</a></u></b> This is a 
+     script-driven program for high-quality display of molecular 3D structures 
+     in both schematic and detailed representations. You can get an academic 
+     license for free from <u><a target=new href="http://www.avatar.se/molscript/">Avatar</a></u>.
+<p>
+</ul>
+<br>
+<a name="scoring"><b>Here are a few links to scoring-related software:</b></a></u>
+<ul>
+<li> <b><u><a target=new href="http://molprobity.biochem.duke.edu/">MOLPROBITY</a></u></b>: MOLPROBITY can be used to 
+     assess the packing and hydrogen-bonding quality of an interface.
+<p>
+<li> <b><u><a target=new href="http://life.bsc.es/pid/ccharppi">CCHarPPI</a></u></b>: CCharPPI integrates many binding affinity 
+     and scoring functions into a single web server. It calculates up to 108 parameters, including models of electrostatics, 
+     desolvation and hydrogen bonding, as well as interface packing and complementarity scores, empirical potentials  
+     at various resolutions, docking potentials and composite scoring functions. 
+<p>
+<li> <b><u><a target=new href="http://structure.pitt.edu/software/FastContact">FastContact</a></u></b>: FastContact is a 
+     free energy scoring tool for protein-protein complex structures based on electrostatic and desolvation energies.
+<p>
+<li> <b><u><a target=new href="http://compbio.iupui.edu/group/4/pages/downloads">DComplex</a></u></b>: DComplex uses the 
+     DFIRE energy function for the prediction of binding affinities.
+<p>
+<li> <b><u><a target=new href="http://foldx.crg.es/">FoldX</a></u></b>: FoldX is a program for calculating the folding pathways of 
+     proteins and for calculating the effect of a point mutation on the stability of a protein.
+<p>
+<li> <b><u><a target=new href="http://www.ebi.ac.uk/msd-srv/prot_int/pistart.html">PISA</a></u></b>: PISA is an interactive tool for the 
+     exploration of macromolecular (protein, DNA/RNA and ligand) interfaces, prediction of probable quaternary structures 
+    (assemblies), database searches of structurally similar interfaces and assemblies, as well as searches on various 
+    assembly and PDB entry parameters.
+</ul>
+<hr>
+

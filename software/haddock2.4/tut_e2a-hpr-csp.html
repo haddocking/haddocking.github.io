@@ -1,0 +1,714 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_software.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT> manual</H1> </TD>
+
+<H2 align=right><FONT COLOR=RED>C</FONT>hemical <FONT COLOR=RED>S</FONT>hift-<FONT COLOR=RED>B</FONT>ased <FONT COLOR=RED>P</FONT>rotein <FONT COLOR=RED>D</FONT>ocking<FONT COLOR=RED>T</FONT>utorial</H2>
+
+<HR>
+In order to validate the HADDOCK program, we initially performed the docking on three 
+known complexes (see the 
+<a target=new href="http://pubs3.acs.org/acs/journals/doilookup?in_doi=10.1021/ja026939x">HADDOCK paper</a>. 
+We are providing in the <b>haddock/examples</b> directory the data for all three complexes.
+This tutorial deals however only with the E2A-HPr complex. The structures in the free 
+form<sup>1,2</sup> and NMR titration data<sup>3,4</sup> are available. The complex structure
+had been solved experimentally by NMR<sup>5</sup> (PDB entry 1GGR).
+<ul>
+	<b><i>Note</i></b> that the example uses the NMR solution structure
+           of HPr (entry 1HDN) to allow the docking from an ensemble of
+           conformations. Because of that, the definition of active and
+           passive residues might differ from the one in the HADDOCK
+           paper since the filtering is based on the average accessibilities
+           (see the <a target="new" href="/software/haddock2.2/generate_air_help#filter">AIR restraints</a> section).
+</ul>
+You should follow the following steps to run this tutorial:
+<ol>
+   <li> <a href="#setup">Setup</a>
+   <li> <a href="#AIRs">Defining the AIR restraints</a>
+   <li> <a href="#newproject">Setting up the project for HADDOCK</a>
+   <li> <a href="#parameters">Defining the parameters for the docking and running HADDOCK</a>
+   <li> <a href="#analysis">Analyzing the docking results</a>
+   <li> <a href="#rerunclust">Rerunning the HADDOCK analysis on a cluster basis</a>
+   <li> <a href="#compare">Comparing the clusters and the reference structure</a>
+</ol>
+<ul>
+   <li> <a href="#references">References</a>
+</ul>
+<hr>
+<BR>
+<B>1.</B> <a name="setup"><b><u>Setup</u></b></a>
+<BR><BR>
+To start this tutorial, first copy the <b>protein-protein</b> directory from the <b>haddock2.2/examples</b> directory:
+<pre>
+  cp -r $HADDOCK/examples/protein-protein .
+</pre>
+<ul>
+   <b>Note:</B> The <b>$HADDOCK</b> environment variable should be defined if haddock was
+                properly installed.
+</ul>
+Go into the <b>protein-protein</b> directory.
+<BR><BR>
+You will find in there the PDB files of the E2A and the HPr proteins:
+<pre>
+ - e2a_1F3G.pdb
+ - e2aP_1F3G.pdb  (with phosphorylated histidine)
+</pre>
+<BR>
+For HPr, we will use the first 10 conformations from the PDB entry 1HDN. These can be found
+in the <b>hpr></b> directory:
+<pre>
+ - hpr_1.pdb
+ - ...
+ - hpr_10.pdb
+</pre>
+<BR>
+The file containing the listing of those 10 structures for docking from an ensemble
+of structures is provided <b><i>(Note: edit it to modify the directory path!)</i></b>:
+<pre>
+ - hpr-files.list
+</pre>
+<BR>
+The PDB file of the reference complex can be found in the <b>ana_scripts</b> directory 
+and is called
+<pre>
+ - e2a-hpr_1GGR.pdb. 
+</pre>
+<BR>
+The (average) per residue solvent accessibilities calculated with 
+<A target="new" HREF="http://wolf.bms.umist.ac.uk/naccess"> NACCESS</a> 
+(see the <a target="new" href="generate_air_help#ensemble">AIR restraints</a> 
+section) are also provided for convenience
+<pre>
+ - e2a_1F3G.rsa
+ - hpr/hpr_rsa_ave.lis
+</pre>
+<BR>
+You also find a number of additional files containing the AIR restraints that we
+used for calculations,
+<pre>
+ - e2a-hpr_air.tbl
+</pre>
+<BR>
+a number of <a target="new" href="http://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a>
+scripts for visualization (see the "Defining AIRs" section) of the active and 
+passive residues for E2A and HPr,
+<pre>
+ - e2a_rasmol_active.script
+ - e2a_rasmol_active-passive.script
+ - hpr_rasmol_active.script
+ - hpr_rasmol_active-passive.script
+</pre>
+<BR>
+two example files for <a target="new" href="/software/haddock2.2/start_new">setting up a new project</a>
+<pre>
+ - new.html-refe
+</pre>
+<BR>
+and to define all the <a target="new" href="/software/haddock2.2/docking">parameters for docking</a>
+<pre>
+ - run.cns-refe
+</pre>
+<BR>
+(see the <a href="#parameters">Defining the parameters for the docking and running HADDOCK</a> 
+section for usage and parameter definitions)
+<BR><BR>
+Various analysis scripts can be found in the <b>ana_scripts</b> directory. They will allow you
+to calculate the interface RMSD (i-RMSD) (RMSD calculated on backbone atoms of all residues within 10A 
+from the partner molecule) and ligand RMSD (l-RMSD) (RMSD calculated on the smallest 
+component (hpr) after fitting on the largest component (e2a)). These are standard 
+<a href="http://capri.ebi.ac.uk">CAPRI</a> definitions. A script is also provided that allows 
+you to calculate the fraction of native contacts. For usage and details refer to the <i>README</i> file in the <b>ana_scripts</b> directory.
+<BR><BR>
+Finally, a script to copy data from an example HADDOCK run is provided as:
+<pre>
+ - copy_hadddock_files.csh
+</pre>
+<hr>
+<BR>
+<B>2.</B> <a name="AIRs"><b><u>Defining the AIR restraints</u></b></a>
+<BR><BR>
+Some general explanations about how to define the interface can be found 
+in the HADDOCK <a target="new" href="/software/haddock2.2/generate_air_help">AIR restraints</a> section.
+<BR><BR>
+For this particular example, based on the available NMR titration data<sup>3,4</sup>,
+and the relative solvent accessibilities, we defined 11 active residues for <b>E2A</b>:
+<ul>
+   <li><i>active</i>: D38, V40, I45, V46, K69, F71, S78, E80, D94, V96 and S141
+</ul>
+and 10 active residues for <b>HPr</b>:
+<ul>
+   <li><i>active</i>: H15, T16, R17, A20, F48, K49, Q51, T52, G54 and T56
+   <BR><BR>
+   <b><i>Note:</i></b> The active residues and the filtered ones
+         can be viewed in 
+	 <a target="new" href="http://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a>
+         using the provided Rasmol scripts, <i>e2a_rasmol_active.script</i> 
+         and <i>hpr_rasmol_active.script</i>. For example for E2A, start rasmol with
+<pre>
+    rasmol e2a_1F3G.pdb
+</pre>
+and then, at the rasmol prompt type:
+<pre>
+    RasMol> source e2a_rasmol_active.script
+</pre>
+The active residues are colored in red and the filtered-out active residues (if any) in yellow. 
+For Hpr, three active residues were filtered out because they are not solvent accessible. 
+These are residues 50,53 and 55.  Control in the <i>hpr_rsa_ave.lis</i> file giving the 
+relative solvent accessible surface area per residue for hpr that these three residues 
+are indeed not solvent accessible (The criteria used is <aveRSA>+SD > 50%).
+</ul>
+You will now have to <i><b>define the passive residues</i></b>. For this, for each structure 
+in turn (E2A and HPr), load a PDB file in Rasmol, highlight all active 
+residues (in Rasmol source the corresponding <i>e2a/hpr_rasmol_active.script</i>) and
+pick all neighbors of active residues. Filter then the selected residues with their
+solvent accessibility (see the <a target="new" href="/software/haddock2.2/generate_air_help#filter">
+filtering residues</a> or <a target="new" href="/software/haddock2.2/generate_air_help#ensemble">filtering
+from an ensemble of structures</a> sections).
+<BR>
+<ul><b>Note:</b> Rasmol scripts containing all the active and passive 
+                 residues that we defined for E2A and HPr are provided for 
+		 comparison (<i>e2a_rasmol_active-passive.script</i> and
+		 <i>hpr_rasmol_active-passive.script</i>.
+
+		 For both <b>E2A</b> and <b>HPr</b> we defined 9 passives residues:
+		 <BR><BR>
+		 <ul>
+		    <li> <i>E2A passive</i>: P37, V39, E43 G68, E72, E97, E109 and K132
+		    <BR><BR>
+		    <li> <i>HPr passive</i>: P11, N12, Q21, K24, K40, S41, L47, Q57 and E85
+		 </ul>
+</ul>
+Having defined active and passive residues for both molecules, you can now <i><b>generate the
+AIR restraint file</b></i> for use in HADDOCK. For this go to the HADDOCK 
+<a target="new" href="/software/haddock2.2/haddock-start">project setup</a> section, click on 
+<b>"generate AIR restraint file"</b> and follow the instructions.
+<BR>
+<hr>
+<BR>
+<B>3.</B> <a name="newproject"><b><u>Setup a new project for HADDOCK</u></b></a>
+<BR><BR>
+To start a new project in HADDOCK you have to define a number of files such as
+input PDB files for both molecules, various restraint files and the path and name
+of the project. For this, go again to the
+<a target="new" href="/software/haddock2.2/haddock-start">project setup</a> page, click on
+<b>"start a new project"</b> and follow the instructions.
+<BR><BR>
+After saving the <b><i>new.html</i></b> file to disk, type <i>haddock2.2</i>
+in the same directory. This will generate a run directory containing all necessary
+information to run haddock. See the <a target="new" href="/software/haddock2.2/start_new_help">"a new project"</a>
+section on the HADDOCK home page for more information and for a description of the
+content and organization of the generated run directory.
+<BR>
+<pre>
+milou.abonvin.examples/protein-protein> haddock2.2
+
+##############################################################################
+#                                                                            #
+# starting HADDOCK                                                           #
+# Author: Alexandre Bonvin, Utrecht University                               #
+#                                                                            #
+#         N-components version of HADDOCK (current maximum is 6)             #
+#                                                                            #
+##############################################################################
+    
+Starting HADDOCK on: 2014-09-18 11:59:09
+ 
+HADDOCK version:   2.2
+Python version: 2.7.2 (default, Apr  4 2012, 13:50:40) 
+[GCC 4.1.2 20080704 (Red Hat 4.1.2-51)]
+PYTHONPATH system variable contains:
+['/home/abonvin/haddock_git/haddock2.2/Haddock', '/home/software/software/python2.7/lib/python2.7/site-packages/setuptools-0.9.8-py2.7.egg', '/home/software/software/python2.7/lib/python2.7/site-packages/argparse-1.2.1-py2.7.egg', '/home/software/software/modeller_v9.11/lib/x86_64-intel8', '/home/software/software/modeller_v9.11/modlib', '/home/software/software/numpy_stable/lib/python', '/home/software/software/scipy/lib/python', '/home/software/software/biopython/build/lib.linux-x86_64-2.7', '/home/software/software/nose/lib/python', '/home/enmr/services/HADDOCK/spyder', '/home/software/software/cython/build/lib.linux-x86_64-2.7', '/home/software/software/matplotlib/lib/python2.7/site-packages', '/home/software/software/moderna_source_1.7.1/build/lib', '/home/abonvin/haddock_git/haddock2.2', '/home/software/software/python2.7/lib/python27.zip', '/home/software/software/python2.7/lib/python2.7', '/home/software/software/python2.7/lib/python2.7/plat-linux2', '/home/software/software/python2.7/lib/python2.7/lib-tk', '/home/software/software/python2.7/lib/python2.7/lib-old', '/home/software/software/python2.7/lib/python2.7/lib-dynload', '/home/software/software/python2.7/lib/python2.7/site-packages']
+reading parameters from the file ./new.html
+  setting some variables:
+  submit_save set to: Save updated parameters
+  N_COMP set to: 2
+  PROJECT_DIR set to: .
+  HADDOCK_DIR set to: ../..
+  DANI1_FILE set to: ./dani.tbl
+  RUN_NUMBER set to: 1
+  PROT_SEGID_2 set to: B
+  PROT_SEGID_1 set to: A
+  PDB_FILE1 set to: ./e2aP_1F3G.pdb
+  AMBIG_TBL set to: ./e2a-hpr_air.tbl
+  PDB_LIST2 set to: ./hpr-files.list
+  PDB_FILE2 set to: ./hpr/hpr_1.pdb
+project /home/abonvin/haddock_git/haddock2.2/examples/protein-protein exists, run 1 does not exist
+create the new run 1
+  copying ./dani.tbl 
+    to /home/abonvin/haddock_git/haddock2.2/examples/protein-protein/run1/data/dani/dani1.tbl
+   ./e2aP_1F3G.pdb  copied to  /home/abonvin/haddock_git/haddock2.2/examples/protein-protein/run1/data/sequence after removing the chain and segIDs
+   ./hpr/hpr_1.pdb  copied to  /home/abonvin/haddock_git/haddock2.2/examples/protein-protein/run1/data/sequence after removing the chain and segIDs
+editing run.cns: setting the default values
+copying new.html to /home/abonvin/haddock_git/haddock2.2/examples/protein-protein/run1/data/new.html
+created new run1 for the project /home/abonvin/haddock_git/haddock2.2/examples/protein-protein
+  copying AIR restraint data to ./run1/data/distances/ambig.tbl
+  copying AIR restraint data to ./run1/structures/it0/ambig.tbl
+  copying AIR restraint data to ./run1/structures/it1/ambig.tbl
+  copying PDB file list of molecule  2  to  ./run1/data/sequence/file_B.list
+  copying PDB files of the list of molecule  2  to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_1.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_2.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_3.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_4.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_5.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_6.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_7.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_8.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_9.pdb  of list to  ./run1/data/ensemble-models/
+  removing chain and segIDs and copying PDB file  ./hpr/hpr_10.pdb  of list to  ./run1/data/ensemble-models/
+  Enforcing PDB file absolute path for ./run1/data/ensemble-models/
+new project . has been set up.
+Now you have to edit run.cns in ./run1
+##############################################################################
+Finishing HADDOCK on:  2014-09-18 11:59:09
+</pre>
+<ul>
+<b><i>Note:</i></b>An example of a <i>new.html</i> 
+              file can be found in the <b>haddock/examples/protein-protein</b> 
+              directory as 
+	      <a target=new href="../examples/protein-protein/new.html-example">new.html-refe</a>.
+</ul>
+<hr>
+<BR>
+<B>4.</B> <a name="parameters"><b><u>Defining the parameters for the docking and running HADDOCK</u></b></a>
+<BR><BR>
+The next step consists in editing the various parameters that will govern the
+docking process in the <b><i>run.cns</i></b> file in the newly generated run directory. 
+For this, again go to the <a target="new" href="/software/haddock2.2/haddock-start">project setup</a> page, 
+enter the path of the <b><i>run.cns</i></b> file and click on <b>"edit</b>.
+Refer to the <a target="new" href="/software/haddock2.2/run">run.cns</a> section for a description
+of the various parameters.
+<BR>
+<ul><b>Note:</b> Most of the parameters in <i><b>run.cns</b></i> are set by default
+                 for the e2a-hpr example and you will only need to modify a few of those.
+		 <BR><BR>
+		 <li> Check the various paths to your project directory and the filenames
+		 to be used (<a target="new" href="/software/haddock2.2/run#names">"Filenames"</a> section)
+		 <BR><BR>
+		 <li> Check the definition of the semi-flexible interface 
+		 (<a target="new" href="/software/haddock2.2/run#interface">"Definition of the interface"</a> 
+		 section). The default in HADDOCK2.2 is -1, meaning that the semi-flexible
+		 interface will be automatically defined by HADDOCK from a contact analysis.
+		 <BR><BR>
+		 <li> Check the number of structures to generate at the various steps
+		 and decrease those if needed (strongly recommended if you are going
+		 to run all the structure calculations on a single processor).
+		 (<a target="new" href="/software/haddock2.2/run#numstruc">"Number of structures to dock"</a> section)
+		 <BR><BR>
+		 For the present tutorial, keep the default parameters (1000 structures
+		 for the rigid body docking stage and 200 afterwards). You will not perform
+		 a complete HADDOCK run but simply copy the data from the provided example
+		 run directory and move on with the analysis of the results
+		 <BR><BR>
+		 <li> Check the queue commands for running the jobs, the location of the
+		 cns executable and the number of jobs to run simultaneously.
+		 (<a target="new" href="/software/haddock2.2/run#jobs">"Parallel jobs"</a> section)
+		 <BR><BR>
+		 For the present tutorial, use <i>csh</i> as queue command and 1 as number
+		 of jobs. The CNS executable path should be properly set.
+		 <BR><BR>
+</ul>
+
+Once you have properly set all parameters, save the modified <b><i>run.cns</i></b> 
+file to disk. 
+<BR>
+<ul>
+<b><i>Note:</i></b>An example of a <i>run.cns</i> 
+              file can be found in the <b>haddock/examples/protein-protein</b> 
+              directory as 
+	      <a target=new href="../examples/protein-protein/run.cns-refe">run.cns-refe</a>.
+</ul>
+You would now be ready to run HADDOCK by simply typing <i>haddock2.2</i>
+in the same directory and the docking will start.
+<BR><BR>
+A description of what happens in the various HADDOCK steps can be found in the
+<a target="new" href="/software/haddock2.2/docking"><i>the docking</i></a> section of the
+online HADDOCK manual.
+<BR><BR>
+Examine now the content of the various directories. The generated structures of the
+complex can be found in:
+<ul>
+   <li><i><b>structures/it0</i></b>: structures after rigid-body docking
+   <li><i><b>structures/it1</i></b>: structures after semi-flexible simulated annealing
+   <li><i><b>structures/it1/water</i></b>: structures after water refinement
+</ul>
+In each of these directories you will also find three files containing the list
+of sorted structures in various format for use by CNS and HADDOCK:
+<ul>
+   <li><i><b>file.nam</b></i>: list of PDB filenames only
+   <li><i><b>file.list</b></i>: list of PDB filenames for use in CNS with the 
+                                <a href="/software/haddock2.2/run#scoring">haddock 
+                                score</a> that has been used for sorting
+   <li><i><b>file.cns</b></i>: list of pdb filenames in yet another cns format.
+</ul>
+<hr>
+<BR>
+<b>5.</b> <a name="analysis"><b><u>analyzing the docking results</u></b></a>
+<BR><BR>
+in <i><b>structures/it1</b></i> and <i><b>structures/it1/water</b></i> you will find an
+<i><b>analysis</b></i> directory containing the results of the analysis automatically 
+performed by haddock. refer to the <a target="new" href="/software/haddock2.2/analysis"><i>analysis</i></a>
+section of the online haddock manual for a description of the various analysis performed
+and inspect the content of some of the described files (mainly those with extensions <i>.disp</i>
+and <i>.lis</i>.
+<BR><BR>
+An important part come now: <b>the manual analysis of the results</b> (see also the 
+related <a target="new" href="/software/haddock2.2/analysis#manual">manual analysis</a> section of 
+the online haddock manual). since typically the restraints used to drive the docking 
+are highly ambiguous, several solutions will be generated. clustering the solutions 
+and performing a manual analysis is therefore required. a number of scripts are 
+provided in the <b><i>tools</i></b> directory for this purpose. 
+you can either copy them to the directory into which you will run the manual analysis or
+call them using:
+<pre>
+  $HADDOCKTOOLS/script_name
+</pre>
+a first typical step is to gather various energetics violation and rmsd from lowest energy
+structure statistics. the <i>ana_structures.csh</i> script can be used for this purpose. it makes
+use of <a href="http://www.bioinf.org.uk/software">profit</a></b> for rmsd calculations if
+present and defined.
+<BR><BR>
+go into the <b><i>structures/it1/water</i></b> directory and run the analysis:
+<pre>
+  cd structures/it1/water
+  $HADDOCKTOOLS/ana_structures.csh 
+</pre>
+the csh script will extract information from the headers of the pdb files and
+calculate the backbone rmsd from the lowest energy structure. it generates a number
+of files, <i>file.nam_bsa</i>, <i>file.nam_ener</i>, <i>file.nam_rmsd</i> and 
+<i>file.nam_viol</i> containing respectively the buried surface area, various energy terms,
+the backbone rmsd from the lowest energy structure and the violations statistics.
+<BR><BR>
+the generated files are combined into one file called
+<ul>
+   <li><i>structures_haddock-sorted.stat</i>
+</ul>
+that keeps the pdb file order defined in <i>file.nam</i>. a number of additional files 
+are then generated with various sorting schemes:
+<ul>
+   <li><i>structures_air-sorted.stat</i>: sorting based on distance restraint energy
+   <li><i>structures_airviol-sorted.stat</i>: sorting based on number of distance violations
+   <li><i>structures_bsa-sorted.stat</i>: sorting based on buried surface area
+   <li><i>structures_Edesolv-sorted.stat</i>: sorting based on the empirical desolvation energy
+   <li><i>structures_dh-sorted.stat</i>: sorting based on total "binding" energy (sum of the 
+          total energies (both bonded and non-bonded terms) of the individual molecules - total
+	  energy of the complex)
+   <li><i>structures_ene-sorted.stat</i>: sorting based on total energy (sum of various
+    restraints energies and intermolecular van der waals and electrostatic energies)
+   <li><i>structures_nb-sorted.stat</i>: sorting based on non-bonded intermolecular energy
+   <li><i>structures_nbw-sorted.stat</i>: sorting based on weighted non-bonded intermolecular energy ( 1*evdw + 0.1*eelec)
+   <li><i>structures_rmsd-sorted.stat</i>: sorting based on rmsd from lowest haddock score structure
+   <BR>
+</ul>
+These files are useful to generate various plots such as for example intermolecular
+energy versus rmsd from the lowest energy structure to visualize the clusters. The
+graphic program <b><a href="http://plasma-gate.weizmann.ac.il/Grace/">Xmgr/Grace</a></b>
+can be used for this purpose. To facilitate things, we are providing a csh script that
+will generate a xmgrace file called <i>ene_rmsd.xmgr</i> by specifying an input file 
+and the column numbers to be plotted:
+<pre>
+   $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_haddock-sorted.stat
+</pre>
+Columns 2 and 3 correspond to the HADDOCK score and backbone rmsds from the lowest 
+HADDOCK score structure, respectively. You can then visualize it with:
+<pre>
+   xmgrace ene_rmsd.xmgr
+</pre>
+<font color=red>
+<ul><b>Question:</b>Considering the plot of the HADDOCK scores versus rmsds from the lowest HADDOCK score structure,
+how many clusters do you expect?
+</font color=red>
+</ul>
+You could in a similar manner make plots of other terms. The first line of the
+<i>structures_....stat</i> files gives a description of the various columns. 
+You could also repeat this kind of analysis after rigid-body docking (<b><i>it0</i></b>)
+and after semi-flexible annealing (<b><i>it1</i></b>). Note that the rmsd calculations 
+for the rigid-body solutions might take a while considering that 1000 structures
+where calculated at that stage.
+<BR><BR>
+The next step consists in clustering the solutions based on the backbone rmsd
+matrix calculated by HADDOCK in the analysis directory. The RMSDs are calculated by
+first superimposing the structures on the flexible interface backbone atoms of molecule A 
+and calculating the RMSD on the flexible interface backbone atoms of the other molecules. 
+This RMSD can be termed: "ligand interface RMSD". The matrix (half of it) is stored in the
+analysis directory in a file called <i>fileroot_rmsd.disp</i> where <i>fileroot</i>
+is the root name used for HADDOCK and defined in the <i>run.cns</i> file.
+<BR><BR>
+Go into the <b><i>water/analysis</i></b>, locate that file and perform the clustering
+with the <i>cluster_struc</i> program provided with HADDOCK. 
+<pre>
+   $HADDOCKTOOLS/cluster_struc e2a-hpr_rmsd.disp 7.5 4
+</pre>
+<i>e2a-hpr_rmsd.disp</i> is the file containing the rmsd matrix, 7.5 the rmsd distance cutoff 
+in Angstrom and 4 the minimum number of members to define a cluster. See also the 
+<a href="/software/haddock2.2/analysis#rmsd">pairwise RMSD matrix</a> section of the analysis manual page.
+<BR><BR>
+The output looks like:
+<pre>
+Cluster 1 -> 3 1 2 4 5 6 7 8 10 11 12 13 14 17 19 20 21 22 23 25 26 27 28 29 30 36 37 38 42 43 45 47 53 54 55 56 57 58 60 61 63 67 68 69 70 71 72 73 75 76 77 78 79 81 83 84 86 88 89 90 93 94 95 96 97 98 100 101 102 103 104 105 106 108 110 115 116 119 121 122 123 125 126 127 129 130 131 133 134 135 136 137 138 139 141 142 143 146 147 148 149 151 152 153 156 157 158 161 162 163 164 165 166 167 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 188 189 190 192 193 194 195 197 199 200
+Cluster 2 -> 15 16 18 31 32 39 40 41 46 48 49 50 51 62 65 66 74 80 82 92 107 109 111 117 145 154 159 196
+Cluster 3 -> 114 9 24 44 52 59 112 113 120 124 140 155
+Cluster 4 -> 33 34 35 85 91 99 132 150 168
+Cluster 5 -> 144 87 118 187 191 198
+</pre>
+where the structure numbers in the clusters correspond to the position of the PDB file
+in the <i>file.nam</i> file (or directly to the number of the structures in the 
+<b><i>analysis</i></b> directory.
+<BR><BR>
+Try different cutoffs and compare the results. With a too small cutoff no clusters or only
+very small clusters are found. When increasing the cutoff, the clusters will grow and some
+might merge. There is no ideal value. It depends on the degree of flexibility present in
+the structure, the restraints used for docking and, therefore should be optimized for
+each system. A common cutoff value we are using is 7.5A. For more details see the <a href="/software/haddock2.2/analysis#cluster">clustering</a> section of the analysis manual page.
+<ul>
+    <b>Note:</b> When searching for a proper cutoff, it is a good idea to check how many
+                 structures do fall into a cluster. This number can be obtained for example
+		 by executing the following command and substract 3 times the number of lines,
+	         e.g.:
+<br>
+<pre>
+   $HADDOCKTOOLS/cluster_struc e2a-hpr_rmsd.disp 7.5 4 | wc
+      5     210     738
+</pre>
+                 The first number give the number of lines and second number corresponds to 
+		 the numbers of words. This means in this example that 210-(3*5)=195 structures 
+		 do cluster. Ideally, you would like a large number of structures to cluster
+		 (at least 50%). The structure numbers correspond to the rank of the 
+		 HADDOCK-sorted structure. It is also advised to check if the best structures do
+		 appear in one cluster.
+</ul>
+<BR>
+Once you have found a proper cutoff, repeat the clustering, saving this time the
+output to a file, e.g.:
+<br>
+<pre>
+   $HADDOCKTOOLS/cluster_struc e2a-hpr_rmsd.disp 7.5 4 >cluster7.5.out
+</pre>
+<BR>
+This file can now be used to analyze the solutions on a cluster basis and obtain cluster
+average values for the various energy terms, violations, ... For this, go back into
+the <b>water</b> directory and use yet another provided analysis script called 
+<i>ana_clusters.csh</i>:
+<pre>
+   ana_clusters.csh: calculates average energies and RMSDs on a cluster basis
+ 
+     usage: ana_clusters.csh [-best num] clustering_file_output
+ 
+     The -best option allows to specify how many structures are being used to
+     to calculate the average cluster values. If specified, additional files with
+     extension .stat_best_num will be created.
+</pre>
+<BR>
+Run the analysis, specifying how many of the best (lowest energy) structures are
+being used to calculate cluster averages and the path and name of the file containing
+the output of the cluster_struc program:
+<pre>
+   $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster7.5.out
+</pre>
+<BR>
+This script generates a number of files containing for each cluster the average
+backbone rmsd from the lowest energy structure of the cluster, the average backbone
+rmsd from the overall lowest energy structure, the number of members of the cluster,
+the various average energies, violations, buried surface area with the respective 
+standard deviations:
+<ul>
+  <li><i>clusters_haddock-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the HADDOCK score
+  <li><i>clusters_ene-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the intermolecular energy  (restraints+vdw+elec)
+  <li><i>clusters_dH-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the binding energy (sum of the total energies (both bonded and 
+	 non-bonded terms) of the individual molecules - total energy of the complex)
+  <li><i>clusters_Edesolv-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the empirical desolvation energy
+  <li><i>clusters_nb-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the intermolecular non-bonded energy  (vdw+elec)
+  <li><i>clusters_nbw-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the weighted intermolecular non-bonded energy  (vdw+0.1*elec)
+  <li><i>clusters_air-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the AIR energy  
+  <li><i>clusters_bsa-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the buried surface area
+  <li><i>clusters_sani-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly RDC (direct, SANI) restraint energy
+  <li><i>clusters_vean-sorted.stat</i> contains the various cluster averages, sorted
+         accordingly to the RDC (intervector projection angles, VEAN) restraint energy
+</ul>
+and for each cluster, the three files used by CNS and HADDOCK containing the
+energy sorted cluster members:
+<ul>
+   <li><i>file.nam_clust#</i>
+   <li><i>file.list_clust#</i>
+   <li><i>file.cns_clust#</i>
+</ul>
+If the <i>-best</i> option is used additional files are produced with <i>_best#num</i>
+as extension containing the average values and the PDB filenames for the #num best
+structures of each cluster.
+<BR>
+<ul><font color=red><b>Question:</b>
+Perform the cluster analysis and look at the HADDOCK-sorted results. What we would consider
+the best solution would be the cluster with the lowest HADDOCK score. Since clusters typically
+differ in size, it is best to compare the results of the cluster averages obtained from the XX 
+best structures only (so that a similar number of structures are considered per cluster).
+Which cluster would be the best? How many members does it count?
+</font color=red>
+</ul>
+<hr>
+<BR>
+<B>6.</B> <a name="rerunclust"><b><u>Rerunning the HADDOCK analysis on a cluster basis</u></b></a>
+<BR><BR>
+Having performed the cluster analysis, you can now rerun the HADDOCK analysis for the
+best structures of each cluster to obtain various statistics on a "cluster bests" basis.
+One needs for this the cluster-specific <i>file.nam_clust#</i>, <i>file.list_clust#</i> 
+and <i>file.cns_clust#</i> files.  A csh script called <i>make_links.csh</i> is provided 
+that will move the original <i>file.nam</i>, <i>file.list</i> and <i>file.cns</i> files
+to <i>file.nam_all</i>, <i>file.list_all</i>, <i>file.cns_all</i> and the same with the
+<b><i>analysis</i></b> directory. It will then create links to the appropriate files 
+(<i>file.nam_clust#</i>,...) and to a new <i><b>analysis_clust#</b></i> directory.
+<BR><BR>
+For example, to rerun the analysis for the best 10 structures of the first cluster type
+in the water directory:
+<pre>
+   $HADDOCKTOOLS/make_links.csh clust1_best4
+   cd ../../..
+   haddock2.2
+</pre>
+The <i>cd</i> command brings you back into the main <i><b>run</b></i> directory
+from where you start again HADDOCK. Only the analysis of the best 4 structures
+of the first cluster in the <b><i>water</i></b> will be run. Once finished, go to 
+the respective analysis directory and inspect the various files.
+The rmsd from the average structures should now be low (check <i>rmsave.disp</i>).
+<BR><BR>
+Repeat this analysis for the second cluster.
+<br>
+<hr>
+<BR>
+<B>7.</B> <a name="compare"><b><u>Comparing the clusters and the reference structure</u></b></a>
+<BR><BR>
+Having run the HADDOCK analysis on a cluster basis you should now have two new directories
+in the <b><i>water</i></b> directory:
+<ul>
+   <li><b><i>analysis_clust1_best4</i></b>
+   <li><b><i>analysis_clust2_best4</i></b>
+</ul>
+Each analysis directory contains now cluster specific statistics. You can also visualize
+the clusters. For Rasmol, use first the <i>joinpdb</i> perl script to concatenate the
+various PDb files into one singe file:
+<pre>
+   $HADDOCKTOOLS/joinpdb -o e2a-hpr_clust1.pdb e2a-hprfit_*.pdb
+</pre>
+and then start Rasmol with:
+<pre>
+   rasmol -nmrpdb e2a-hpr_clust1.pdb
+</pre>
+Use <i>Display</i> <i>Backbone</i> to display only the backbone trace and
+<i>Colours</i> <i>Group</i> for a color coding from N- to C-terminus.
+<BR><BR>
+From the average cluster HADDOCK score, cluster 1 is clearly the best. 
+<BR><BR>
+It can however happen that the difference in score is small. Since the AIR restraints 
+defined from NMR chemical shift perturbation data (or other sources) are highly ambiguous, 
+they are typically easily satisfied and might not discriminate well between various orientations, 
+e.g. a 180 degree rotation of one protein with respect to the other around an axis 
+perpendicular to the interface. Some degree of asymmetry either in the interface 
+(electrostatic, shape) or in additional experimental data is thus required, or even better, 
+additional experimental information could be used to discriminate between clusters (e.g.
+mutagenesis or conservation data).
+<BR><BR>
+<ul><font color=red>
+Inspect in Rasmol or any graphic program the best solution of each cluster (it is the
+first one in the respective analysis directories, <i>e2a-hprfit_1.pdb</i>) and try to
+figure out the differences between them. Check in particular the relative orientation
+of the two protein.</font color=red>
+</ul>
+<br>
+For this particular test case, the reference structure is known and has been solved 
+by NMR<sup>5</sup>. In order to compare our docking solutions with the reference
+structure we are providing csh scripts called <i>i-rmsd_to_target.csh</i> for interface RMSD 
+calculation and <i>l-rmsd_to_target.csh</i> for ligand RMSD calculations. These can be found in the
+<i><b>e2a-hpr/ana_scripts</b></i> directory. These script takes as arguments PDB filenames and 
+calculates various rmsd values from the reference structure using ProFit.
+<BR><BR>
+Copy the script in the clusters respective analysis directories and run them with as argument 
+<i>*.pdb</i>:
+<pre>
+   ./i-rmsd_to_target.csh *.pdb
+   ./l-rmsd_to_target.csh *.pdb
+</pre>
+Four files will be created:
+<ul>
+   <li><i>i-RMSD.disp</i>: inteface RMSD for the PDB files in the same order as passed as arguments
+   <li><i>i-RMSD-sorted.disp</i>: interface RMSD sorted from smallest to largest
+   <li><i>l-RMSD.disp</i>: ligand RMSD for the PDB files in the same order as passed as arguments
+   <li><i>l-RMSD-sorted.disp</i>: ligand RMSD sorted from smallest to largest
+</ul>
+<ul><font color=red><b>Question:</b>
+Which one of the two clusters is the closest to the target?
+</font color=red>
+</ul>
+According to <a href="http://capri.ebi.ac.uk">CAPRI</a> criteria, a docking model with i-RMSD or l-RMSD below 1A can be considered as a
+high accuracy predition. A medium quality prediction will have a i-RMSD below 2A and/or l-RMSD below 5A.
+Acceptable predictions should have i-RMSD below 4A or l-RMSD below 10A.
+<ul>
+    <b>Note</b> that you can also run those scripts for it0, it1 or water structures. Copy the scripts
+                in the respective directories and type:
+<pre>
+./i-rmsd_to_target.csh `cat file.nam`
+</pre>
+The i-RMSD.disp file will now be sorted in according to the HADDOCK score.
+</ul>
+<br>
+Another measure of quality defined in <a href="http://capri.ebi.ac.uk">CAPRI</a> is the fraction of
+native contacts. Native contacts are defined as intermolecular contact between residues 
+within 5A from each other. A script to calculate the fraction of native contacts is provided in the
+<b>e2a-hpr/ana_scripts</b> directory: <i>fraction-native.csh</i>. It takes as arguments a list of PDB
+files in the same manner as the RMSD scripts described above. For example, to calculate the fraction 
+of native contacts of the water-refined structures, copy this script in the <b>water</b> directory 
+and type:
+<pre>
+./fraction-native.csh `cat file.nam`
+</pre>
+This will generate a file called <i>file.nam_fnat</i> containing the fraction of native contacts.
+<BR><BR>
+<br>
+Finally, there is one additional piece of information that we did not use for the docking
+and that could help in discriminating further the clusters:
+<ul><font color=blue>
+   E2A stands for phosphotransferase enzyme II and HPr for histidine-containing
+   phosphocarrier protein. There is thus transfer of a phosphate group between two
+   histidines of those two proteins!
+</ul></font color=blue>
+<br>
+<font color=red><b>Question:</b>
+Inspect again graphically the best solution of each cluster and find out if, in one 
+of them, there are two histidines (one from each protein) at reasonable proximity from
+each other?
+<BR><BR>
+<b>Question:</b>Which cluster is consistent with this additional information?
+<BR><BR>
+<b>Question:</b>To improve the docking results, how would you incorporate this information in HADDOCK
+(the phosphate group is transfered between two imino groups of histidines)?
+</font color=red>
+<br>
+<hr>
+<BR>
+<a name="references"><b><u>References</u></b></a>
+<BR>
+<ol>
+<li> van Nuland N.A. <i>et al.</i> (1994) <i>J Mol Biol</i> <b>237</b>, 544.
+<br>
+<li> Worthylake D. <i>et al.</i> (1991) <i>Proc Natl Acad Sci US</i> <b>88</b>, 10382.
+<br>
+<li> van Nuland N.A. <i>et al.</i> (1995) <i>J Mol Biol</i> <b>246</b>, 180.
+<br>
+<li> Chen Y. <i>et al.</i> (1993) <i>Biochemistry</i> <b>32</b>, 32.
+<br>
+<li> Wang G. <i>et al</i> (2000) <i>Embo J</i> <b>19</b>, 5635.
+</ol>
+<hr>

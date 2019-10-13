@@ -1,0 +1,247 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_software.jpg
+---
+
+<H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED></H1>
+
+<H2 align=right><FONT COLOR=RED>S</FONT>tart a
+		<FONT COLOR=RED>N</FONT>ew
+		<FONT COLOR=RED>P</FONT>roject
+</H2>
+
+<HR>
+You have to specify <B>absolute</B> paths for all files and directories.
+Unused fields should be <B>blank</B>. You need to specify at least one PDB file (although this
+will not be called "docking"...).
+<BR>
+<BR>
+<!-- <form action="http://localhost/cgi-bin/start_haddock_project.cgi" method="POST"> -->
+<!-- <form action="http://www.nmr.chem.uu.nl/cgi-bin/start_haddock_project.cgi" method="POST"> -->
+<form action="http://milou.science.uu.nl/cgi/servicesdevel/HADDOCK2.2/start_haddock_project.cgi" method="POST">
+<TABLE BORDER=1 CELLPADDING=5>
+<TR rowspan=1 align="center">
+	<TD colspan=2 align="left"><B>HADDOCK and project setup:</B></TD>
+<TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Current HADDOCK program directory:</TD>
+	<TD colspan=1 align="left"><input type="text" name="HADDOCK_DIR"  value="/home/software/haddock2.2" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Path of the new project:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROJECT_DIR"  value="/home/software/haddock2.2/examples/protein-protein" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Run number:</TD>
+	<TD colspan=1 align="left"><input type="text" name="RUN_NUMBER"   value="1" size=3></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Number of molecules for docking (max. 6):</TD>
+	<TD colspan=1 align="left"><input type="text" name="N_COMP"   value="2" size=3></TD>
+</TR>
+<TR> <TD colspan=2> </TD> </TR>
+<TR rowspan=1 align="center">
+	<TD colspan=2 align="left"><B>Define the various molecules for docking:</B></TD>
+<TR>
+<TR> <TD colspan=2> </TD> </TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PDB file of 1st molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PDB_FILE1"    value="/home/software/haddock2.2/examples/protein-protein/e2a_1F3G.pdb" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PDB file of 2nd molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PDB_FILE2"    value="/home/software/haddock2.2/examples/protein-protein/hpr_1.pdb" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PDB file of 3rd molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PDB_FILE3"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PDB file of 4th molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PDB_FILE4"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PDB file of 5th molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PDB_FILE5"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PDB file of 6th molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PDB_FILE6"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Segid of 1st molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROT_SEGID_1" value="A" size=4></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Segid of 2nd molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROT_SEGID_2" value="B" size=4></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Segid of 3rd molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROT_SEGID_3" value="C" size=4></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Segid of 4th molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROT_SEGID_4" value="D" size=4></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Segid of 5th molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROT_SEGID_5" value="E" size=4></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Segid of 6th molecule:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PROT_SEGID_6" value="F" size=4></TD>
+<TR rowspan=2> <TD colspan=1> </TD> </TR>
+<TR rowspan=1 align="center">
+<TD colspan=2 align="left">
+<i>The next six entries are optional and only required to run HADDOCK from ensemble of structures.
+The list files should contain the full path and each filename (including path) should be
+between quotes.</i>
+
+<TR rowspan=2>  <TD colspan=1> </TD></TR>
+<TR rowspan=1 align="center">
+<TD colspan=1 align="left">file list for 1st molecule (opt.):</TD>
+<TD colspan=1 align="left"><input type="text" name="PDB_LIST1"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+<TD colspan=1 align="left">file list for 2nd molecule (opt.):</TD>
+<TD colspan=1 align="left"><input type="text" name="PDB_LIST2"    value="/home/software/haddock2.2/examples/protein-protein/hpr-files.list" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+<TD colspan=1 align="left">file list for 3rd molecule (opt.):</TD>
+<TD colspan=1 align="left"><input type="text" name="PDB_LIST3"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+<TD colspan=1 align="left">file list for 4th molecule (opt.):</TD>
+<TD colspan=1 align="left"><input type="text" name="PDB_LIST4"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+<TD colspan=1 align="left">file list for 5th molecule (opt.):</TD>
+<TD colspan=1 align="left"><input type="text" name="PDB_LIST5"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+<TD colspan=1 align="left">file list for 6th molecule (opt.):</TD>
+<TD colspan=1 align="left"><input type="text" name="PDB_LIST6"    value="" size=60></TD>
+</TR>
+<TR> <TD colspan=2> </TD> </TR>
+<TR rowspan=1 align="center">
+	<TD colspan=2 align="left"><B>Define the various restraint files:</B></TD>
+<TR>
+<TR> <TD colspan=1> </TD> </TR>
+<TR rowspan=1> <TD colspan=2> </TD></TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">AIR restraints:</TD>
+	<TD colspan=1 align="left"><input type="text" name="AMBIG_TBL"    value="/home/software/haddock2.2/examples/protein-protein/e2a-hpr_air.tbl" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">distance restraints:</TD>
+	<TD colspan=1 align="left"><input type="text" name="UNAMBIG_TBL"  value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Dihedral angle restraints:</TD>
+	<TD colspan=1 align="left"><input type="text" name="DIHED_FILE"   value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Hbonds restraints:</TD>
+	<TD colspan=1 align="left"><input type="text" name="HBOND_FILE"   value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Residual dipolar couplings 1:</TD>
+	<TD colspan=1 align="left"><input type="text" name="RDC1_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Residual dipolar couplings 2:</TD>
+	<TD colspan=1 align="left"><input type="text" name="RDC2_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Residual dipolar couplings 3:</TD>
+	<TD colspan=1 align="left"><input type="text" name="RDC3_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Residual dipolar couplings 4:</TD>
+	<TD colspan=1 align="left"><input type="text" name="RDC4_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Residual dipolar couplings 5:</TD>
+	<TD colspan=1 align="left"><input type="text" name="RDC5_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 1:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS1_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 2:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS2_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 3:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS3_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 4:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS4_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 5:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS5_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 6:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS6_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 7:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS7_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 8:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS8_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 9:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS9_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS restraints 10:</TD>
+	<TD colspan=1 align="left"><input type="text" name="PCS10_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">PCS tensor distance restraints file:</TD>
+	<TD colspan=1 align="left"><input type="text" name="TENSOR_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Diffusion anisotropy restraints 1:</TD>
+	<TD colspan=1 align="left"><input type="text" name="DANI1_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Diffusion anisotropy restraints 2:</TD>
+	<TD colspan=1 align="left"><input type="text" name="DANI2_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Diffusion anisotropy restraints 3:</TD>
+	<TD colspan=1 align="left"><input type="text" name="DANI3_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Diffusion anisotropy restraints 4:</TD>
+	<TD colspan=1 align="left"><input type="text" name="DANI4_FILE"    value="" size=60></TD>
+</TR>
+<TR rowspan=1 align="center">
+	<TD colspan=1 align="left">Diffusion anisotropy restraints 5:</TD>
+	<TD colspan=1 align="left"><input type="text" name="DANI5_FILE"    value="" size=60></TD>
+</TR>
+</TABLE>
+<BR>
+<B><I>Save the updated parameters somewhere in a directory as <b><i>new.html</i></B> <BR>
+(use your browser <i>save as</i> menu if necessary).
+<BR>
+<BR>
+<INPUT TYPE=SUBMIT NAME="submit_save" VALUE="Save updated parameters"> 
+<INPUT TYPE=RESET VALUE="Reset">
+<BR>
+<HR>
+<BR> Type <b>haddock2.2</b> on the UNIX command line in the directory where you have saved your <i>new.html</i> file.</p>
+<HR>

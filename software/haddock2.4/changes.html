@@ -1,0 +1,79 @@
+---
+layout: page
+tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
+modified: 2014-08-08T20:53:07.573882-04:00
+comments: false
+image:
+  feature: pages/banner_software.jpg
+---
+
+<TD colspan=2 align="left"> <H1><FONT COLOR=RED>HADDOCK2.2</FONT COLOR=RED> manual</H1> </TD>
+<TD colspan=2 align="right"><H2><FONT SIZE=+3 COLOR=RED>C</FONT SIZE+3>hanges with respect to version 2.1</FONT SIZE=+3 COLOR=RED></H2></TD>
+
+<p>
+HADDOCK2.2 has been made compatible with CNS version 1.3. Because of changes in CNS1.3, 
+the linkage files in the toppar directory do no longer contain wild cards. All linkages are 
+specified explicitely.
+<p>
+Also, only three character residue names are now used:
+<ul>
+    <li> WAT and HOH added as water residues (same param as TIP3P)
+    <li> GLUH changed to GLH
+    <li> ASPH changed to ASH
+</ul>
+Accordingly, all protocol files have been modified to make use of WAT, HOH and TIP3.
+<p>
+<p>
+For use with CNS version 1.3, the 5.4 version of the protein topology and parameter files MUST be used:
+<ul>
+    <li> topallhdg5.4.pro 
+    <li> parallhdg5.4.pro
+    <li> topallhdg5.4.pep
+    <li> topallhdg5.4.pep-noCter
+    <li> topallhdg5.4.pep-noNter
+    <li> topallhdg5.4.pep-noter
+    <li> topallhdg5.4.sol 
+    <li> parallhdg5.4.sol
+</ul>
+And for DNA:
+<ul>
+    <li> dna-rna-allatom-hj-opls-1.3.param
+    <li> dna-rna-allatom-hj-opls-1.3.top
+    <li> dna-rna-1.3.link
+    <li> dna-rna-pho-1.3.link
+</ul>
+<p>
+A CNS version check has been build in the parameter files.
+<p>
+<p>
+Other main changes with respect to version 2.1 are listed in the following:
+<ul>
+   <li> It is now possible to mix molecule types within one molecule as long as there is no overlap in residue numbering. This this enables for example the docking of a protein onto a protein-DNA complex.
+   <li> New S3 and C4 symmetry restraints 
+
+   <li> Radius of gyration restraint
+
+   <li> Option to automatically define dihedral angle restraints from the input structures
+
+   <li> Pseudo contact shift restraints
+
+   <li> Interaction matrix to scale down or turn off interactions between specific molecules
+
+   <li> Water-mediated contact probabilities option based on Kyte-Doolittle hydrophobic scale
+
+   <li> DNA-specific fraction of water to keep for solvated docking
+
+   <li> Fraction of common contact (FCC) clustering option
+
+   <li> Default setup (parameters/topology files) for CNS1.3 
+
+   <li> Removed analysis options (procheck, prosa)
+
+   <li> Added examples for various docking scenarios (see the example directory)
+
+</ul>
+</TD>
+<HR>
+<FONT SIZE=-1>Please send any suggestions or enquiries to Alexandre Bonvin</A></FONT SIZE=-1>
+
+
