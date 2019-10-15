@@ -430,107 +430,124 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
   </pre>
 
   The **ana_clusters.csh** script analyzes the clusters in a similar way as the **ana_structures.csh** script, but in addition generates average values over the structures belonging to one cluster. It creates a number of files for each cluster containing the cluster number _clustX_ in the name:
-  *   _file.cns_clustX_
+  *   _file.cns_clustX_<br/>
+     contains the name of all the pdb files that belong to the cluster X (CNS format)
 
-  *   _file.nam_clustX_
+  *   _file.nam_clustX_ <br/>
+    contains the name of all the pdb files that belong to the cluster X
 
-  *   _file.list_clustX_
+  *   _file.list_clustX_<br/>
+    contains the name of all the pdb files that belong to the cluster X (list format)
+
 
       And in addition if the option _-best Y_ is used:  
 
-  *   _file.cns_clustX_bestY_
+  *   _file.cns_clustX_bestY_<br/>
+    contains the name of the best Y pdb files that belong to the cluster X (CNS format)
 
-  *   _file.nam_clustX_bestY_
+  *   _file.nam_clustX_bestY_<br/>
+    contains the name of the best Y pdb files that belong to the cluster X
 
-  *   _file.list_clustX_bestY_
+  *   _file.list_clustX_bestY_<br/>
+    contains the name of the best Y pdb files that belong to the cluster X (list format)
 
       **_Note9:_** Those files can be used to repeat the HADDOCK analysis for a single cluster (see below).  
 
-  *   _file.nam_clustX_bsa_
+  *   _file.nam_clustX_bsa_<br/>
+    contains the buried surface area of each structure of cluster X
 
-  *   _file.nam_clustX_dH_
+  *   _file.nam_clustX_dH_<br/>
+    contains the total energy difference calculated as total energy of the complex - Sum of total energies of the individual components
 
-  *   _file.nam_clustX_Edesol_
+  *   _file.nam_clustX_Edesol_<br/>
+    contains the desolvation energy calculated using the empirical atomic solvation parameters from Fernandez-Recio _et al._ _JMB_ **335**:843(2004)
 
-      _et al._
+  *   _file.nam_clustX_ener_<br/>
+  contains all the energy terms (intermolecular, Van der Waals, electrostatic and AIR) for each structures of cluster X
 
-      _JMB_
+  *   _file.nam_clustX_haddock-score_<br/>
+  contains the combined [haddock score](/software/haddock2.2/run#scoring)
 
-      **335**
+  *   _file.nam_clustX_rmsd_<br/>
+  contains the RMSD of each structure of cluster X from the best (lowest) HADDOCK score structure of cluster X.
 
-  *   _file.nam_clustX_ener_
+  *   _file.nam_clustX_rmsd-Emin_<br/>
+  contains the RMSD of each structure of cluster X from the best (lowest) HADDOCK score structure of all calculated structures
 
-  *   _file.nam_clustX_haddock-score_
-
-      [haddock score](/software/haddock2.2/run#scoring)
-
-  *   _file.nam_clustX_rmsd_
-
-  *   _file.nam_clustX_rmsd-Emin_
-
-  *   _file.nam_clustX_viol_
+  *   _file.nam_clustX_viol_<br/>
+  contains the number of AIR and dihedral violations per structure
 
       **_Note10:_** The ordering of the structures in those files follows the HADDOCK score ranking.  
 
       Eight files containing various averages over clusters are created:
-  *   _cluster_bsa.txt_
 
-  *   _cluster_dH.txt_
+  *   _cluster_bsa.txt_<br/>
+  contains the average buried surface area of each cluster and the standard deviation
 
-  *   _cluster_Edesolv.txt_
+  *   _cluster_dH.txt_<br/>
+contains the average total energy difference calculated as total energy of the complex - Sum of total energies of the individual components
+  *   _cluster_Edesolv.txt_<br/>
+contains the average desolvation energy calculated using the empirical atomic solvation parameters from Fernandez-Recio _et al._ _JMB_ **335**:843(2004)
 
-      _et al._
+  *   _cluster_ener.txt_<br/>
+  contains the average energy terms of each cluster and the standard deviations
 
-      _JMB_
+  *   _cluster_haddock.txt_<br/>
+  contains the average combined [haddock score](/software/haddock2.4/run#scoring)
 
-      **335**
+  *   _cluster_rmsd.txt_<br/>
+contains the average RMSD and standard deviation from the best (lowest) HADDOCK score structure of cluster of the structures belonging to that cluster
 
-  *   _cluster_ener.txt_
+  *   _cluster_rmsd-Emin.txt_<br/>
+contains the average RMSD and standard deviation of the clusters from the best (lowest) HADDOCK score structure of all calculated structures
 
-  *   _cluster_haddock.txt_
+  *   _cluster_viol.txt_<br/>
+  contains the average AIR and dihedral violations for each cluster and the standard deviations
 
-      [haddock score](/software/haddock2.2/run#scoring)
-  *   _cluster_rmsd.txt_
 
-  *   _cluster_rmsd-Emin.txt_
+and twelve files combining all the above information and sorted based on various criteria:
 
-  *   _cluster_viol.txt_
-      and twelve files combining all the above information and sorted based on various criteria:
   *   **_clusters_haddock-sorted.stat_**
+  contains the various cluster averages sorted as a function of the combined [haddock score](/software/haddock2.4/run#scoring)
 
-      [haddock score](/software/haddock2.2/run#scoring)
-  *   _clusters.stat_
+  *   _clusters.stat_<br/>
+  contains the various cluster averages sorted as a function of the cluster number
 
-  *   _clusters_air-sorted.stat_
+  *   _clusters_air-sorted.stat_<br/>
+  contains the various cluster averages sorted accordingly to the AIR energy
 
-  *   _clusters_bsa-sorted.stat_
+  *   _clusters_bsa-sorted.stat_<br/>
+  contains the various cluster averages accordingly to the buried surface area
 
-  *   _clusters_dani-sorted.stat_
+  *   _clusters_dani-sorted.stat_<br/>
+contains the various cluster averages accordingly to the diffusion anisotropy restraint energy
 
-  *   _clusters_dH-sorted.stat_
+  *   _clusters_dH-sorted.stat_<br/>
+contains the various cluster averages accordingly to the total energy difference calculated as total energy of the complex - Sum of total energies of the individual components
 
-  *   _clusters_Edesolv-sorted.stat_
+  *   _clusters_Edesolv-sorted.stat_<br/>
+contains the various cluster averages accordingly to the desolvation energy calculated using the empirical atomic solvation parameters from Fernandez-Recio  _et al._ _JMB_ **335**:843(2004)
 
-      _et al._
+  *   _clusters_ene-sorted.stat_<br/>
+contains the various cluster averages accordingly to the intermolecular energy (restraints+vdw+elec)
 
-      _JMB_
+  *   _clusters_nb-sorted.stat_<br/>
+contains the various cluster averagesd accordingly to the intermolecular non-bonded energy (vdw+elec)
 
-      **335**
+  *   _clusters_nbw-sorted.stat_<br/>
+contains the various cluster averages accordingly to the weighted intermolecular non-bonded energy (vdw+0.1*elec)
 
-  *   _clusters_ene-sorted.stat_
+  *   _clusters_sani-sorted.stat_<br/>
+contains the various cluster averages accordingly to the RDC (direct, SANI) restraint energy
 
-  *   _clusters_nb-sorted.stat_
+  *   _clusters_vean-sorted.stat_<br/>
+contains the various cluster averages accordingly to the RDC (intervector projection angles, VEAN) restraint energy
 
-  *   _clusters_nbw-sorted.stat_
-
-  *   _clusters_sani-sorted.stat_
-
-  *   _clusters_vean-sorted.stat_
       If the option **-best** is given with a number of structures, additional files with as extension **_best#** will be created containing the average values over the best # structures.  
 
   You can plot the HADDOCK score of the clusters as a function of their RMSD from the lowest energy structure (using [xmgr/xmgrace](http://plasma-gate.weizmann.ac.il/Grace/) for example).  
 
-  ![graph](/software/haddock2.2/haddock-score_vs_rmsd.png)  
+<img width="500" src="/software/haddock2.4/haddock-score_vs_rmsd.png"  >
 
   The gray circles correspond to the individual structures and the filled circles correspond to the cluster averages with the standard deviation indicated by bars.  
 
