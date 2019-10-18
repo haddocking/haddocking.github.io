@@ -29,8 +29,6 @@ image:
 
 ### Analysis and scoring
 * [Analysis](/software/haddock2.4/analysis)
-* [Chemical shift scoring](https://www.wenmr.eu/wenmr/CS-HADDOCK)
-* [SAXS scoring](https://www.wenmr.eu/wenmr/haddock-saxs-scoring)
 
 ### Download and Software links
 * [Obtaining HADDOCK](/software/haddock2.4/download)

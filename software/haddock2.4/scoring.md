@@ -36,7 +36,7 @@ The default scoring function settings of HADDOCK are for protein-protein complex
 * HADDOCKscore-water =  1.0 Evdw + 0.2 Eelec + 1.0 Edesol +  0.1 Eair
 </pre>
 
-**Note:** Additional terms are used if other types of experimental restraints are used. Refer to values defined in `run.cns` (and accessible at the guru level of the [HADDOCK2.4 portal](https://wenmr.science.uu.nl/haddock2.4/submit/1) for their default settings.
+**Note:** Additional terms are used if other types of experimental restraints are used. Refer to values defined in `run.cns` (and accessible at the guru level of the [HADDOCK2.4 portal](https://wenmr.science.uu.nl/haddock2.4/) for their default settings.
 
 **Note:** For protein-ligand (small molecule) docking we recommend to change the weight of Evdw(it0) to 1.0 and Eelec(water) to 0.1.
 

@@ -150,7 +150,7 @@ A new option in HADDOCK 2.x allows to systematically sample 180 degree rotated s
 
 The ***refine.inp*** CNS script is used for this step.
 
-*   *fileroot_1.pdb, fileroot_2.pdb_, ...* written in the ***structures/it0*** directory
+*   *fileroot_1.pdb, fileroot_2.pdb, ...* written in the ***structures/it0*** directory
 
 ***Note1:*** If solvated docking is turned on (*waterdock=true* in [*run.cns*](/software/haddock2.4/run#iter), additional output pdb files will be written to disk containing the water (*fileroot_1_water.pdbw* ,...).
 
@@ -219,7 +219,7 @@ The temperatures and number of steps for the various stages are defined in the [
 
 The ***refine.inp*** CNS script is used for this step.
 
-*   *fileroot_1.pdb, fileroot_2.pdb_, ... written in the ***structures/it1*** directory  
+*   *fileroot_1.pdb, fileroot_2.pdb, ... written in the ***structures/it1*** directory  
 
 ***Note1:*** If solvated docking is turned on (*waterdock=true* in [*run.cns*](/software/haddock2.4/run#iter)), additional output pdb files will be written to disk containing the water (*fileroot_1_water.pdbw* ,...).  
 
@@ -275,7 +275,7 @@ The ***refine.inp*** CNS script is used for this step.
 *   *scale_inter_only.cns*
 *   *symmultimer.cns*
 *   *read_noes.cns*
-*   *dna-rna_restraints.def
+*   *dna-rna_restraints.def*
 *   *print_coorheader.cns*
 *   *waterdock_out1.cns*
 
@@ -290,7 +290,7 @@ In this final step, the structures obtained after the semi-flexible simulated an
 
 The ***re_h2o.inp*** or ***re_dmso.inp*** CNS script is used for this step.
 
-*   *fileroot_1w.pdb, fileroot_2w.pdb_, ... written in the ***structures/it1/water*** directory  
+*   *fileroot_1w.pdb, fileroot_2w.pdb, ... written in the ***structures/it1/water*** directory  
 
 ***Note1:*** The numbering of the structures from it1 is kept.  
 

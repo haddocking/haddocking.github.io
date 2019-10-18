@@ -13,7 +13,7 @@ feature: pages/banner_software.jpg
 
 * * *
 
-The analysis of the docking results are performed after the [semi-flexible simulated annealing step](/software/haddock2.2/docking#sa) and after the [explicit solvent refinement](/software/haddock2.2/docking#water). A number of [standard CNS analysis](#auto) scripts are automatically run by HADDOCK and the results are placed in the **analysis** directory in **runX/structures/it1** and **runX/structures/it1/water**, respectively. Some of the generated output files are parsed automatically by HADDOCK to generate for example violations statistics (see [violation analysis](#viol)). Another important step consists in a [manual analysis](#manual) of the generated structures and their clusters. This is the critical step for the classification of the docking solutions and the identification of the best(s) cluster(s).  
+The analysis of the docking results are performed after the [semi-flexible simulated annealing step](/software/haddock2.4/docking#sa) and after the [explicit solvent refinement](/software/haddock2.4/docking#water). A number of [standard CNS analysis](#auto) scripts are automatically run by HADDOCK and the results are placed in the **analysis** directory in **runX/structures/it1** and **runX/structures/it1/water**, respectively. Some of the generated output files are parsed automatically by HADDOCK to generate for example violations statistics (see [violation analysis](#viol)). Another important step consists in a [manual analysis](#manual) of the generated structures and their clusters. This is the critical step for the classification of the docking solutions and the identification of the best(s) cluster(s).  
 
 <u>Topics:</u>
 
@@ -68,9 +68,11 @@ The following CNS analysis scripts are automatically run by HADDOCK:
 
 * * *
 
-*   <a name="average">**<u>get_average.inp</u>** </a>: This script will calculate an average structure by superimposing the structures on the backbone atoms of the flexible interface defined in the [run.cns](/software/haddock2.2/run#flex) parameter file.  
+*   <a name="average">**<u>get_average.inp</u>** </a>: This script will calculate an average structure by superimposing the structures on the backbone atoms of the flexible interface defined in the [run.cns](/software/haddock2.4/run#flex) parameter file.  
 
-**_Note1:_** If less than three atoms are selected when using the defined semi-flexible segments, then the entire backbone will used. If still less than three atoms are selected, then all heavy atoms will be used for the fitting. This makes sure that at least three atoms are selected for any molecule, including small ligands.
+  **_Note1:_** If less than three atoms are selected when using the defined semi-flexible segments, then the entire backbone will used. If still less than three atoms are selected, then all heavy atoms will be used for the fitting. This makes sure that at least three atoms are selected for any molecule, including small ligands.
+
+
 The structures are fitted onto the average structures and written to disk in the **analysis** directory. Various average rmsds calculated over the ensemble of structure and rmsds from the average for each structure are output to file.  
 
 Output files:
@@ -102,7 +104,7 @@ Output files:
 
   *   _fileroot_rmsd.disp_: this file contains the pairwise RMSD matrix with on each line three number: the structure numbers of the two structures being compared and the corresponding RMSD value.  
 
-      **_Note5:_** The numbering of the structures corresponds to the position of the structure in the sorted _file.list_ file.  
+      **_Note3:_** The numbering of the structures corresponds to the position of the structure in the sorted _file.list_ file.  
 
       This file is used as input for the RMSD [clustering](#clusterrmsd).
 
@@ -110,7 +112,7 @@ Output files:
 
   *   <a name="ener">**<u>energy.inp</u>**</a> : this script performs the analysis of bonded and non-bonded energies per structure and averaged over the ensemble. Various energy terms are calculated:
   *   over the entire complex
-  *   over the flexible interface only (as defined in the [run.cns](/software/haddock2.2/run#flex) parameter file)
+  *   over the flexible interface only (as defined in the [run.cns](/software/haddock2.4/run#flex) parameter file)
   *   only the intermolecular energies (vdw and elec)In addition, the buried surface area is also reported. The buried surface area is calculated by taking the difference between the sum of the solvent accessible surface area for each molecule separately and the solvent accessible area of the complex. The solvent accessible area is calculated using a 1.4A water probe radius and an accuracy of 0.075A (in case of memory problems for very large complexes increase this value, e.g. 0.1 or higher).  
 
   Output files:
@@ -137,7 +139,8 @@ Output files:
 
       Example:
 
-  <pre>    #Residue ASP 38 A - intermolecular energies
+  <pre style="background-color:#DAE4E7" >   
+      #Residue ASP 38 A - intermolecular energies
       #file Etot Evdw Eelec
       # PREVIT:e2a-hpr_161.pdb -16.7601 -3.41526 -13.3448
       # PREVIT:e2a-hpr_189.pdb -42.4061 -1.83788 -40.5682
@@ -151,7 +154,8 @@ Output files:
 
   The average per-residue values can be easily extracted from this file and sorted in decreasing contribution with the following command:
 
-  <pre>grep ": Evdw" ene-residue.disp |sort -gk7
+  <pre style="background-color:#DAE4E7" >
+  grep ": Evdw" ene-residue.disp |sort -gk7
   grep ": Eele" ene-residue.disp |sort -gk7
   grep ": Etot" ene-residue.disp |sort -gk7
   </pre>
@@ -186,7 +190,7 @@ Output files:
 
   *   _print_dist_hbonds.out_: this file contains the violation listing for the hydrogen bond distance restraints.  
 
-      **_Note6:_** The above five files (print_....out) are parsed automatically by HADDOCK to generate statistics on a restraint basis over all structures in the ensemble using the **ana_noe_viol.csh** script provided in the **tools** directory (see violation analysis).
+      **_Note4:_** The above five files (print_....out) are parsed automatically by HADDOCK to generate statistics on a restraint basis over all structures in the ensemble using the **ana_noe_viol.csh** script provided in the **tools** directory (see violation analysis).
 
       [violation analysis](#viol)
 
@@ -201,7 +205,7 @@ Output files:
 
   * * *
 
-  *   <a name="sani">**<u>print_sani.inp</u>** </a>: this script performs the analysis of [dipolar coupling restraint](/software/haddock2.2/RDC_help) violations, listing per structure the average rms violations and the number of violations above 1.0, 0.5 and 0.2 Hz, respectively. It also reports the average rms violation over the entire ensemble.  
+  *   <a name="sani">**<u>print_sani.inp</u>** </a>: this script performs the analysis of [dipolar coupling restraint](/software/haddock2.4/RDC_help) violations, listing per structure the average rms violations and the number of violations above 1.0, 0.5 and 0.2 Hz, respectively. It also reports the average rms violation over the entire ensemble.  
 
   Output files:
   *   _sani.disp_: this file contains the number of dipolar coupling violations per structure and averaged over the ensemble.  
@@ -210,7 +214,7 @@ Output files:
 
   * * *
 
-  *   <a name="vean">**<u>print_vean.inp</u>**</a> : this script performs the analysis of [intervector projection angle restraint](/software/haddock2.2/RDC_help#vean) violations, listing per structure the violations above 5 degrees. It also reports the average rms violation over the entire ensemble.  
+  *   <a name="vean">**<u>print_vean.inp</u>**</a> : this script performs the analysis of [intervector projection angle restraint](/software/haddock2.4/RDC_help#vean) violations, listing per structure the violations above 5 degrees. It also reports the average rms violation over the entire ensemble.  
 
   Output files:
   *   _vean.disp_: this file contains the number of intervector projection angle restraints violations per structure and averaged over the ensemble.  
@@ -219,7 +223,7 @@ Output files:
 
   * * *
 
-  *   <a name="dani">**<u>print_dani.inp</u>**</a> : this script performs the analysis of [diffusion anisotropy restraint](/software/haddock2.2/DANI_help) violations, listing per structure the average rms violations and the number of violations above 1.0, 0.5 and 0.2, respectively. It also reports the average rms violation over the entire ensemble.  
+  *   <a name="dani">**<u>print_dani.inp</u>**</a> : this script performs the analysis of [diffusion anisotropy restraint](/software/haddock2.4/DANI_help) violations, listing per structure the average rms violations and the number of violations above 1.0, 0.5 and 0.2, respectively. It also reports the average rms violation over the entire ensemble.  
 
   Output files:
   *   _dani.disp_: this file contains the number of diffision anisotropy violations per structure and averaged over the ensemble.  
@@ -228,26 +232,26 @@ Output files:
 
   * * *
 
-  *   <a name="hb">**<u>print_hbonds.inp</u>**</a> : this script performs the analysis of intermolecular hydrogen bonds. The definition of an hydrogen bond is however a crude one since it is only based on the proton-acceptor distance. This distance can be specified in the [run.cns](/software/haddock2.2/run#hbnb) parameter file (default is 2.5A).  
+  *   <a name="hb">**<u>print_hbonds.inp</u>**</a> : this script performs the analysis of intermolecular hydrogen bonds. The definition of an hydrogen bond is however a crude one since it is only based on the proton-acceptor distance. This distance can be specified in the [run.cns](/software/haddock2.4/run#hbnb) parameter file (default is 2.5A).  
 
   Output files:
   *   _hbonds.disp_: this file contains a listing of all intermolecular hydrogen bonds over the ensemble of structures. It is automatically parsed by HADDOCK using the _ana_hbonds.csh_ script located in the **tools** directory. This scripts generate a listing (_ana_hbonds.lis_) of intermolecular hydrogen bonds including the number of occurrences and the average hydrogen bond distance.  
 
-      **_Note7:_**  The _ana_hbonds.csh_ can also be run manually. For this simply copy the _ana_hbonds.csh_ and _count_hbonds.awk_ scripts from the **tool** directory into the analysis directory and type:
+      **_Note5:_**  The _ana_hbonds.csh_ can also be run manually. For this simply copy the _ana_hbonds.csh_ and _count_hbonds.awk_ scripts from the **tool** directory into the analysis directory and type:
 
-  <pre>          ./ana_hbonds.csh hbonds.disp
+  <pre style="background-color:#DAE4E7" >          ./ana_hbonds.csh hbonds.disp
   </pre>
 
   * * *
 
-  *   <a name="nb">**<u>print_nb.inp</u>**</a> : this script performs the analysis of intermolecular hydrophobic contacts. An hydrophobic contact is identified when two carbon atoms are at less than a user-defined distance, typically 3.9A. This distance cut-off can be specified in the [run.cns](/software/haddock2.2/run#anal) parameter file (default is 3.9A).  
+  *   <a name="nb">**<u>print_nb.inp</u>**</a> : this script performs the analysis of intermolecular hydrophobic contacts. An hydrophobic contact is identified when two carbon atoms are at less than a user-defined distance, typically 3.9A. This distance cut-off can be specified in the [run.cns](/software/haddock2.4/run#anal) parameter file (default is 3.9A).  
 
   Output files:
   *   _nbcontacts.disp_: this file contains a listing of all intermolecular hydrophobic contacts over the ensemble of structures. It is automatically parsed by HADDOCK using the _ana_hbonds.csh_ script located in the **tools** directory. This scripts generate a listing (_ana_nbconbtacts.lis_) of intermolecular hydrophobic contacts including the number of occurrences and the average C-C distance.  
 
-      **_Note8:_** The _ana_hbonds.csh_ script can also be run manually. For this simply copy the _ana_hbonds.csh_ and _count_hbonds.awk_ scripts from the  **tool** directory into the analysis directory and type:
+      **_Note6:_** The _ana_hbonds.csh_ script can also be run manually. For this simply copy the _ana_hbonds.csh_ and _count_hbonds.awk_ scripts from the  **tool** directory into the analysis directory and type:
 
-  <pre>          ./ana_hbonds.csh nbcontacts.disp
+  <pre style="background-color:#DAE4E7" >          ./ana_hbonds.csh nbcontacts.disp
   </pre>
 
   * * *
@@ -270,7 +274,7 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   Example:
 
-  <pre> <font size="-1">Rexp=   2.000 Rave=   4.739 Viol=  -2.739 #viol=  200 (    B    36   HIS     N ...
+  <pre style="background-color:#DAE4E7" > <font size="-1">Rexp=   2.000 Rave=   4.739 Viol=  -2.739 #viol=  200 (    B    36   HIS     N ...
       Rexp=   2.000 Rave=   4.626 Viol=  -2.626 #viol=  200 (    B    65   ASP     N ...
       Rexp=   2.000 Rave=   4.345 Viol=  -2.345 #viol=  200 (    B    33   GLN     N ...
       Rexp=   2.000 Rave=   4.037 Viol=  -2.037 #viol=    1 (    B    92   GLY     N ...
@@ -297,49 +301,50 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   * * *
 
-  *   <a name="anastruc">**<u>ana_structures.csh</u>**</a>:  This script should run once the _file.list_ file has been created. It extracts from the header of the PDB files various energy terms, violation statistics and buried surface area and calculates the RMSD of each structure compared to the lowest energy one (if the location of ProFit is defined (see [installation](/software/haddock2.2/installation) and [software links](/software/haddock2.2/software))).  
+  *   <a name="anastruc">**<u>ana_structures.csh</u>**</a>:  This script should run once the _file.list_ file has been created. It extracts from the header of the PDB files various energy terms, violation statistics and buried surface area and calculates the RMSD of each structure compared to the lowest energy one (if the location of ProFit is defined (see [installation](/software/haddock2.4/installation) and [software links](/software/haddock2.4/software))).  
 
   To run it type:
 
-  <pre>   $HADDOCKTOOLS/ana_structures.csh
+  <pre style="background-color:#DAE4E7" >   $HADDOCKTOOLS/ana_structures.csh
      </pre>
 
   in the directory where _file.list_ has been created (e.g. _**structures/it1**_ or _**structures/it1/water**_).  
 
   Ten files are created:
-  *   _**structures_haddock-sorted.stat**_
+  *   _**structures_haddock-sorted.stat**_ </br>
+  sorting based on [haddock score](/software/haddock2.4/run#scoring) (as in _file.list_)
 
-      [haddock score](/software/haddock2.2/run#scoring)
+  *   _structures_air-sorted.stat_<br/>
+sorting based on distance restraint energy
 
-      _file.list_
+  *   _structures_airviol-sorted.stat_ <br/>
+sorting based on number of distance violations
 
-  *   _structures_air-sorted.stat_
+  *   _structures_bsa-sorted.stat_<br/>
+  sorting based on buried surface area
 
-  *   _structures_airviol-sorted.stat_
+  *   _structures_dH-sorted.stat_<br/>
+sorting based on total energy difference calculated as total energy of the complex - Sum of total energies of the individual components
 
-  *   _structures_bsa-sorted.stat_
+  *   _structures_Edesolv-sorted.stat_<br/>
+sorting based on desolvation energy calculated using the empirical atomic solvation parameters from Fernandez-Recio _et al._ _JMB_ **335**:843 (2004)
 
-  *   _structures_dH-sorted.stat_
+  *   _structures_ene-sorted.stat_<br/>
+  sorting based on total energy (only intermolecular components for vdw and elec energies) structures_nb-sorted.stat
 
-  *   _structures_Edesolv-sorted.stat_
+  *   _structures_nb-sorted.stat_<br/>
+sorting based on non-bonded intermolecular energy
 
-      _et al._
+  *   _structures_nbw-sorted.stat_<br/>
+sorting based on weighted non-bonded intermolecular energy ( 1*vdw + 0.1*elec)
 
-      _JMB_
+  *   _structures_rmsd-sorted.stat_<br/>
+  sorting based on RMSD from best (lowest) HADDOCK score structure
 
-      **335**
-
-  *   _structures_ene-sorted.stat_
-
-  *   _structures_nb-sorted.stat_
-
-  *   _structures_nbw-sorted.stat_
-
-  *   _structures_rmsd-sorted.stat_
 
       These files looks like:
 
-  <pre> <font size="-1">#struc haddock-score RMSD-Emin Einter Enb Evdw+0.1Eelec Evdw Eelec Eair Ecdih Ecoup Esani Evean Edani #NOEviol #Dihedviol #Jviol #Saniviol #veanviol #Daniviol bsa dH Edesolv
+  <pre style="background-color:#DAE4E7" > <font size="-1">#struc haddock-score RMSD-Emin Einter Enb Evdw+0.1Eelec Evdw Eelec Eair Ecdih Ecoup Esani Evean Edani #NOEviol #Dihedviol #Jviol #Saniviol #veanviol #Daniviol bsa dH Edesolv
   e2a-hpr_71w.pdb -164.13017 0.000 -629.446 -635.908 -107.853 -49.1804 -586.728 6.4629 0 0 0 0 0 0 0 0 0 0 0 1613.82 -8593.04 1.74954
   e2a-hpr_171w.pdb -156.04058 0.748 -613.411 -624.683 -103.675 -45.7858 -578.897 11.2722 0 0 0 0 0 0 0 0 0 0 0 1663.99 -8501.99 4.3974
   e2a-hpr_38w.pdb -150.756688 0.624 -574.337 -587.378 -97.1234 -42.6507 -544.727 13.0407 0 0 0 0 0 0 0 0 0 0 0 1688.07 -8600.72 -0.464658
@@ -351,19 +356,19 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   A simple script called _make_ene-rmsd_graph.csh_ is provided in $HADDOCKTOOLS which allows you to generate an input file for [Xmgr/XmGrace](http://plasma-gate.weizmann.ac.il/Grace/). Simply specify two columns to extract data from and a filename:
 
-  <pre>  $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_unsorted.stat
+  <pre style="background-color:#DAE4E7" >  $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_unsorted.stat
   </pre>
 
   This will generate a file called _ene_rmsd.xmgr_ which you can display with xmgr or xmgrace:
 
-  <pre>  xmgrace ene_rmsd.xmgr
+  <pre style="background-color:#DAE4E7" >  xmgrace ene_rmsd.xmgr
   </pre>
 
   * * *
 
-  *   <a name="clusterrmsd">**<u>RMSD-based clustering of solutions using cluster_struc</u>**</a>:  The clustering is run automatically by HADDOCK in _**it1/analysis**_ and _**it1/water/analysis**_ based on the criteria defined in the [run.cns](/software/haddock2.2/run#clust) file. In case RMSD-based clustering has been selected, a reasonable cutoff value to start with for protein-protein complexes is 7.5A. We recommend however that you try using different cut-offs for the clustering since it is difficult to know a priori the best cut-off. This will depend on the system under study and the number of experimental restraints used to drive the docking. If only a small fraction of the structures cluster, try increasing the cut-off.  
+*  <a name="cluster"> **RMSD-based clustering of solutions using cluster_struc**</a>:  The clustering is run automatically by HADDOCK in _**it1/analysis**_ and _**it1/water/analysis**_ based on the criteria defined in the [run.cns](/software/haddock2.4/run#clust) file. In case RMSD-based clustering has been selected, a reasonable cutoff value to start with for protein-protein complexes is 7.5A. We recommend however that you try using different cut-offs for the clustering since it is difficult to know a priori the best cut-off. This will depend on the system under study and the number of experimental restraints used to drive the docking. If only a small fraction of the structures cluster, try increasing the cut-off.  
 
-  **cluster_struc** is a simple C++ program provided in the _**tools**_ directory that read the [_fileroot_rmsd.disp_](#rmsd) file containing the pairwise rmsd matrix and generates clusters. This program should have been compiled for your system during [installation](/software/haddock2.2/installation).  
+  **cluster_struc** is a simple C++ program provided in the _**tools**_ directory that read the [_fileroot_rmsd.disp_](#rmsd) file containing the pairwise rmsd matrix and generates clusters. This program should have been compiled for your system during [installation](/software/haddock2.4/installation).  
 
   Two clustering algorithms are implemented:
   1.  using an algorithm as described in Daura et al. _Angew. Chem. Int. Ed._ **38**:236-240 (1999): count number of neighbors using cut-off, take structure with largest number of neighbors with all its neighbors as cluster and eliminate it from the pool of clusters. Repeat for remaining structures in pool.  
@@ -372,17 +377,17 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   The usage is:
 
-  <pre> <font size="-1">cluster_struc [-f]  fileroot_rmsd.disp cut-off  min_cluster_size >cluster.out</font> </pre>
+  <pre style="background-color:#DAE4E7" > <font size="-1">cluster_struc [-f]  fileroot_rmsd.disp cut-off  min_cluster_size >cluster.out</font> </pre>
 
   Example for its use:
 
-  <pre> <font size="-1">cluster_struc e2a-hpr_rmsd.disp 7.5 4 >cluster.out</font> </pre>
+  <pre style="background-color:#DAE4E7" > <font size="-1">cluster_struc e2a-hpr_rmsd.disp 7.5 4 >cluster.out</font> </pre>
 
   will create clusters using a 7.5 A RMSD cut-off requiring a minimum of four structures per cluster.  
 
   The output looks like:
 
-  <pre>    Cluster 1 -> <font color="RED">8</font> 1 2 3 5 6 7 9 10 11 12 13 14 15 ...
+  <pre style="background-color:#DAE4E7" >    Cluster 1 -> <font color="RED">8</font> 1 2 3 5 6 7 9 10 11 12 13 14 15 ...
       Cluster 2 -> 23 25 26 29 39 62 66 67 72 74 78 ...
       Cluster 3 -> 153 4 32 43 96 131 147 158 163 ..
   </pre>
@@ -391,13 +396,13 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   * * *
 
-  *   <a name="clusterfcc">**<u>Contact-based clustering of solutions using cluster_fcc.py</u>**</a>:  The clustering is run automatically by HADDOCK in _**it1/analysis**_ and _**it1/water/analysis**_ based on the criteria defined in the [run.cns](/software/haddock2.2/run#clust) file. In case FCC clustering has been chosen (which means clustering based on the fraction of common contacts), a reasonable cutoff value to start with for protein-protein complexes is 0.75. We recommend however that you try using different cut-offs for the clustering since it is difficult to know a priori the best cut-off. This will depend on the system under study and the number of experimental restraints used to drive the docking. If only a small fraction of the structures cluster, try decreasing the cut-off.  
+  *   <a name="clusterfcc">**<u>Contact-based clustering of solutions using cluster_fcc.py</u>**</a>:  The clustering is run automatically by HADDOCK in _**it1/analysis**_ and _**it1/water/analysis**_ based on the criteria defined in the [run.cns](/software/haddock2.4/run#clust) file. In case FCC clustering has been chosen (which means clustering based on the fraction of common contacts), a reasonable cutoff value to start with for protein-protein complexes is 0.75. We recommend however that you try using different cut-offs for the clustering since it is difficult to know a priori the best cut-off. This will depend on the system under study and the number of experimental restraints used to drive the docking. If only a small fraction of the structures cluster, try decreasing the cut-off.  
 
   **cluster_fcc.py** is a python code provided in the _**tools**_ directory that read the _fileroot_fcc.disp_ file containing the pairwise fraction of common contact matrix and generates clusters. The clustering algorithm is described in Rodrigues et al. [_Proteins: Struc. Funct. & Bioinformatic_, **80** 1810-1817 (2012)](https://doi.org/doi:10.1002/prot.24078).  
 
   The usage is:
 
-  <pre> <font size="-1">
+  <pre style="background-color:#DAE4E7" > <font size="-1">
   Usage: cluster_fcc.py <matrix file=""> <threshold [float]="">[options]
 
   Options:
@@ -409,7 +414,7 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   Example for its use:
 
-  <pre> <font size="-1">python cluster_fcc.py e2a-hpr_fcc.disp 0.75 -c 4 >cluster.out</font> </pre>
+  <pre style="background-color:#DAE4E7" > <font size="-1">python cluster_fcc.py e2a-hpr_fcc.disp 0.75 -c 4 >cluster.out</font> </pre>
 
   will create clusters using a 0.75 FCC cut-off requiring a minimum of four structures per cluster.  
 
@@ -417,16 +422,16 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
 
   * * *
 
-  *   <a name="anaclust">**<u>ana_clusters.csh</u>**</a>:  This script takes the output of **cluster_struc** to perform an analysis of the various clusters, calculating average energies, RMSDs and buried surface area per cluster.  
+  *   <a name="anaclust">**ana_clusters.csh**</a>:  This script takes the output of **cluster_struc** to perform an analysis of the various clusters, calculating average energies, RMSDs and buried surface area per cluster.  
 
   To run it, type with as argument the output file of the clustering, e.g.:
 
-  <pre>   $HADDOCKTOOLS/ana_clusters.csh [-best #] analysis/cluster.out
+  <pre style="background-color:#DAE4E7" >   $HADDOCKTOOLS/ana_clusters.csh [-best #] analysis/cluster.out
   </pre>
 
-  The **[-best #]** is an optional (but recommended!) argument to generate additional files with cluster averages calculated only on the best **#** structures of a cluster. The best structures are selected based on the HADDOCK score defined in [run.cns](/software/haddock2.2/run#iter), i.e. the sorting found in _file.list_. This allows to remove the dependency of the cluster averages upon the size of the respective clusters. The following example will calculate cluster averages over the best 45 structures.
+  The **[-best #]** is an optional (but recommended!) argument to generate additional files with cluster averages calculated only on the best **#** structures of a cluster. The best structures are selected based on the HADDOCK score defined in [run.cns](/software/haddock2.4/run#iter), i.e. the sorting found in _file.list_. This allows to remove the dependency of the cluster averages upon the size of the respective clusters. The following example will calculate cluster averages over the best 45 structures.
 
-  <pre>   $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster.out
+  <pre style="background-color:#DAE4E7" >   $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster.out
   </pre>
 
   The **ana_clusters.csh** script analyzes the clusters in a similar way as the **ana_structures.csh** script, but in addition generates average values over the structures belonging to one cluster. It creates a number of files for each cluster containing the cluster number _clustX_ in the name:
@@ -451,7 +456,7 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
   *   _file.list_clustX_bestY_<br/>
     contains the name of the best Y pdb files that belong to the cluster X (list format)
 
-      **_Note9:_** Those files can be used to repeat the HADDOCK analysis for a single cluster (see below).  
+      **_Note7:_** Those files can be used to repeat the HADDOCK analysis for a single cluster (see below).  
 
   *   _file.nam_clustX_bsa_<br/>
     contains the buried surface area of each structure of cluster X
@@ -466,7 +471,7 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
   contains all the energy terms (intermolecular, Van der Waals, electrostatic and AIR) for each structures of cluster X
 
   *   _file.nam_clustX_haddock-score_<br/>
-  contains the combined [haddock score](/software/haddock2.2/run#scoring)
+  contains the combined [haddock score](/software/haddock2.4/run#scoring)
 
   *   _file.nam_clustX_rmsd_<br/>
   contains the RMSD of each structure of cluster X from the best (lowest) HADDOCK score structure of cluster X.
@@ -477,7 +482,7 @@ HADDOCK performs automatically a number of violations analysis, generating a lis
   *   _file.nam_clustX_viol_<br/>
   contains the number of AIR and dihedral violations per structure
 
-      **_Note10:_** The ordering of the structures in those files follows the HADDOCK score ranking.  
+      **_Note8:_** The ordering of the structures in those files follows the HADDOCK score ranking.  
 
       Eight files containing various averages over clusters are created:
 
@@ -567,12 +572,12 @@ contains the various cluster averages accordingly to the RDC (intervector projec
 
   To simplify this entire procedure, we are providing a csh script named **make_links.csh** in the **tools** directory (defined by the environment variable $HADDOCKTOOLS). To make the links type:
 
-  <pre>    $HADDOCKTOOLS/make_links.csh clust1
+  <pre style="background-color:#DAE4E7" >    $HADDOCKTOOLS/make_links.csh clust1
   </pre>
 
   This will automatically move the original files (_file.cns_, _file.list_ and _file.nam_) and rename the **analysis** directory. A new analysis directory called **analysis_clust1** will be created and a link to it will be created as **analysis**. Similarly, links will be created for the three listing files:  
 
-  <pre>   file.cns  -> file.cns_clust1
+  <pre style="background-color:#DAE4E7" >   file.cns  -> file.cns_clust1
      file.list -> file.list_clust1
      file.nam  -> file.nam_clust1
   </pre>
@@ -581,7 +586,7 @@ contains the various cluster averages accordingly to the RDC (intervector projec
 
   **_Warning:_** In case you wish to experiment with different [clustering cut-offs](#cluster) restore first the original files containing the information for all calculated structures with the command:
 
-  <pre>   $HADDOCKTOOLS/make_links.csh all
+  <pre style="background-color:#DAE4E7" >   $HADDOCKTOOLS/make_links.csh all
      </pre>
 
   * * *

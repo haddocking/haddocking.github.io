@@ -19,9 +19,7 @@ This page provide you links to software and software manuals of the computationa
 
   * [**HADDOCK2.2 software**](/software/haddock2.2/)
 
-  * [**HADDOCK2.4 software**](/software/haddock2.4/)
-
-  * [**HADDOCK2.4 software old**](/software/haddock2.4-html/)
+  <!---* [**HADDOCK2.4 software**](/software/haddock2.4/)-->
 
   * [**HADDOCK web server**](http://haddock.science.uu.nl/services/HADDOCK)
 

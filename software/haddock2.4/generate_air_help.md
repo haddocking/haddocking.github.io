@@ -21,7 +21,7 @@ image:
 *   [Use of NMR chemical shift perturbation data](#CSP)  
 
 
-    **General**
+    <a name="predictions">**General:**</a>  
 
     Before starting HADDOCK, <font color="RED">A</font>mbiguous <font color="RED">I</font>nteraction <font color="RED">R</font>estraints (<font color="RED">AIR</font>s) should be generated. For this, it is important to define the residues at the interface for each molecule based on NMR chemical shift perturbation data, mutagenesis data or any kind of data that provides information on the interaction interface.  
     In the definition of those residues, one distinguishes between ***"active"*** and ***"passive"*** residues.  
@@ -30,6 +30,7 @@ image:
     **Note**
 
     *   The ***"passive"*** residues are all solvent accessible surface neighbors of active residues.  
+
     **Note** that the active and passive residues have to be defined by the users based on their own interpretation of the experimental data, especially in the case of NMR titration data. One way to interpret the significance of the shift is to calculate the average perturbation and to consider that all perturbations higher than the average are significant.  
 
     Once you have defined your active and passive residues,

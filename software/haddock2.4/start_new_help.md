@@ -17,7 +17,7 @@ Using your web browser, go to the [HADDOCK home-page](/software/haddock2.4), cho
 
 * * *
 
-**First enter some general HADDOCK parameters:** [![(screenshot)](/software/haddock2.4/camera.png)](/software/haddock2.4/haddock_setup.png)  
+**First enter some general HADDOCK parameters:** [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/haddock_setup.png)  
 
 *   Enter the location of the directory where HADDOCK has been installed (if needed), e.g.
 
@@ -49,9 +49,9 @@ Using your web browser, go to the [HADDOCK home-page](/software/haddock2.4), cho
 
 * * *
 
-**Next define the PDB files of each molecule:** [![(screenshot)](/software/haddock2.4/camera.png)](/software/haddock2.4/setup_pdbs.png)  
+**Next define the PDB files of each molecule:** [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/setup_pdbs.png)  
 
-You should provide here the name (including full directory path) of the PDB files of the various molecules, define the SEGIDs used to identify the chains in CNS and, if performing docking from an ensemble of structures, files containing the names including full directory path of the various PDB structures to used for docking [![(screenshot)](/software/haddock2.4/camera.png)](/software/haddock2.4/setup_listfiles.png). Leave the fields unused blank.  
+You should provide here the name (including full directory path) of the PDB files of the various molecules, define the SEGIDs used to identify the chains in CNS and, if performing docking from an ensemble of structures, files containing the names including full directory path of the various PDB structures to used for docking [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/setup_listfiles.png). Leave the fields unused blank.  
 
 *   Enter one PDB file for each molecule specifying the absolute path, _e.g._
 
@@ -88,7 +88,7 @@ In this example, we use an ensemble of starting conformations only for hpr. The 
 
 * * *
 
-Define finally the **<font color="RED">A</font>mbiguous <font color="RED">I</font>nteraction <font color="RED">R</font>estraints (<font color="RED">AIR</font>s)** restraints if available, _e.g._ [![(screenshot)](/software/haddock2.4/camera.png)](/software/haddock2.4/setup_restraints.png)  
+Define finally the **<font color="RED">A</font>mbiguous <font color="RED">I</font>nteraction <font color="RED">R</font>estraints (<font color="RED">AIR</font>s)** restraints if available, _e.g._ [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/setup_restraints.png)  
 
 <pre style="background-color:#DAE4E7">
    AIR restraints: /home/tintin/e2a-hpr/e2a-hpr_air.tbl

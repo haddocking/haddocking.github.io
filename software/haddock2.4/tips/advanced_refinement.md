@@ -8,18 +8,18 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-HADDOCK2.2 provides a dedicated web interface to run a refinement on a molecular complex. This nice feature is accessible 
-via the [refinement interface][refinement_page] of HADDOCK2.2 and required a [registered account][register_page] with 
+HADDOCK2.2 provides a dedicated web interface to run a refinement on a molecular complex. This nice feature is accessible
+via the [refinement interface][refinement_page] of HADDOCK2.2 and required a [registered account][register_page] with
 Expert level access.
 
-As input, only a PDB file for each partner of the complex (for a unique PDB file, you need to specify two different chain 
-IDs). You can optionally change the weight of the different energy terms used in the HADDOCK score to assess the 
+As input, only a PDB file for each partner of the complex (for a unique PDB file, you need to specify two different chain
+IDs). You can optionally change the weight of the different energy terms used in the HADDOCK score to assess the
 quality of your models.
 A fine-tuned set of parameters will be then used by HADDOCK to perform the water refinement.
 
 However, it is sometimes interesting to tune this default set of parameters to cope with particular cases like unusual histidine
 protonation states, multibody docking, ensemble and/or cross-docking, etc.
-To do so, it is possible to use the HADDOCK [Guru interface][guru_page] (needs Guru access level) and change few parameters to only 
+To do so, it is possible to use the HADDOCK [Guru interface][guru_page] (needs Guru access level) and change few parameters to only
 use the refinement capability of HADDOCK:
 
 In the **"Distance Restraints"** section:

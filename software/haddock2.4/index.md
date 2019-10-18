@@ -13,9 +13,9 @@ image:
 
 **based on biochemical and/or biophysical information.**  
 
-![Structure + Binformatic/Biophysical Data => Complex](HADDOCK2.2.png)  
+![Structure + Binformatic/Biophysical Data => Complex](HADDOCK2.4.png)  
 
-_Version:_ 2.2 (March, 2015) ([changes](/software/haddock2.2/changes))  
+_Version:_ 2.4 (?, 2019) ([changes](/software/haddock2.4/changes))  
 
 _Authors:_ Alexandre Bonvin and members of the computational structural biology group, Utrecht University  
 
@@ -40,9 +40,9 @@ Fax: +31-30-2537623
 
 **HADDOCK webserver**:  [http://haddock.science.uu.nl/services/HADDOCK2.4](http://haddock.science.uu.nl/services/HADDOCK2.4)   
 
-**HADDOCK grid-enabled webserver**:  [http://haddock.science.uu.nl/enmr/services/HADDOCK2.2](http://haddock.science.uu.nl/enmr/services/HADDOCK2.2)   
+**HADDOCK grid-enabled webserver**:  [http://haddock.science.uu.nl/enmr/services/HADDOCK2.4](http://haddock.science.uu.nl/enmr/services/HADDOCK2.4)   
 
-**Getting the software**:  [license form](/software/haddock2.2/download)   
+**Getting the software**:  [license form](/software/haddock2.4/download)   
 
 **Questions about HADDOCK or looking for support?**  [Ask BioExcel](http://ask.bioexcel.eu)   
 

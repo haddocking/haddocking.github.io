@@ -70,6 +70,6 @@ The error on the R2/R1 values is set by default to 0.2\. This can be overruled b
 <pre style="background-color:#DAE4E7" >    $HADDOCK/DANItools/generate_dani ERR=0.5 dani_data_file
 </pre>
 
-The 2.4 version of HADDOCK supports up to 5 different DANI restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-995\. You can edit and modify the _generate_dani_ script to change the tensor number. To use DANI restraints in HADDOCK, use _DANI_ in [run.cns](/software/haddock2.4/run.html#dani) in the diffusion anisotropy section and define the proper tensor parameters that are output by the _calc_tens.csh_ script. The DANI restraints are first used in the [rigid body energy minimization step](/software/haddock2.4/docking.html#mini) using as force constant the value defined for the hot phase.
+The 2.4 version of HADDOCK supports up to 5 different DANI restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-995\. You can edit and modify the _generate_dani_ script to change the tensor number. To use DANI restraints in HADDOCK, use _DANI_ in [run.cns](/software/haddock2.4/run.html#dani) in the diffusion anisotropy section and define the proper tensor parameters that are output by the _calc_tens.csh_ script. The DANI restraints are first used in the [rigid body energy minimization step](/software/haddock2.4/docking#mini) using as force constant the value defined for the hot phase.
 
 * * *

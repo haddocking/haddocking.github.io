@@ -11,6 +11,9 @@ In this page you can find links to tutorials on the usage of our software and we
   A tutorial demonstrating the installation and use of a local installation of HADDOCK2.4. It demonstrates various docking scenarios.
   You will need for this a valid license of HADDOCK2.4.
 
+* [**HADDOCK2.4 local basic protein-protein docking tutorial**](/education/HADDOCK24/HADDOCK24-e2a-hpr-local):
+  A tutorial demonstrating the use of the local version of HADDOCK2.4 to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data. You will need for this a valid license of HADDOCK2.4.
+
 * [**HADDOCK2.4 basic protein-protein docking tutorial**](/education/HADDOCK24/HADDOCK24-protein-protein-basic):
   A tutorial demonstrating the use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.
   This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](http://www.pymol.org) for visualisation/analysis.

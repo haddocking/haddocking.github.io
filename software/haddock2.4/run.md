@@ -203,7 +203,7 @@ Define here if you want to use hydrogen bond restraints. The restraint file shou
 
 _<u>Random interaction restraints definition</u>_
 
-Define here if you want to randomly define interaction restraints (AIRs) from solvent accessible residues. The sampling will be done from the defined [semi-flexible segments](#interface). To sample the entire surface, define the entire sequence as semi-flexible and use the [automated semi-flexible segment](/software/haddock2.4/run.cns#interface) definition to limit the amount of flexibility to the interface region. For more details see the [AIR restraints](/software/haddock2.4/generate_air_help#ranair) section of the online manual.
+Define here if you want to randomly define interaction restraints (AIRs) from solvent accessible residues. The sampling will be done from the defined [semi-flexible segments](#interface). To sample the entire surface, define the entire sequence as semi-flexible and use the [automated semi-flexible segment](/software/haddock2.4/run#interface) definition to limit the amount of flexibility to the interface region. For more details see the [AIR restraints](/software/haddock2.4/generate_air_help#ranair) section of the online manual.
 
 Random AIRs are only active during the rigid body stage of the [docking](/software/haddock2.4/docking) protocol. For the [semi-flexible refinement](/software/haddock2.4/docking#sa), one AIR will be automatically defined between all residues within 5A from another molecule. No AIRs will be active during the final [explicit solvent refinement](/software/haddock2.4/docking#water).
 
@@ -293,7 +293,7 @@ If pseudo contact shift data are available and have been defined in the **new.ht
 *   _cool2_: second slow cooling SA with flexible side-chains at interface
 *   _cool3_: third slow cooling SA with flexible side-chains and backbone at interfaceand the tensor parameters R and D.
 
-For more information on using diffusion anisotropy as restraints for docking see also the [PCS restraints](/software/haddock2.4/PCS_help)section of the online HADDOCK manual. Refer to the following publication for details of the implementation in HADDOCK:
+For more information on using diffusion anisotropy as restraints for docking see also the [PCS restraints](/software/haddock2.4/PCS_help) section of the online HADDOCK manual. Refer to the following publication for details of the implementation in HADDOCK:
 
 C. Schmitz and A.M.J.J. Bonvin, [Protein-Protein HADDocking using exclusively Pseudocontact Shifts.](https://doi.org/doi:10.1007/s10858-011-9514-4), *J. Biomol. NMR*, **50**,  263-266 (2011).
 
@@ -374,7 +374,7 @@ The docking process is performed in three distinct steps:
 
 _<u>Sampling of 180 degrees-rotated solutions</u>_
 
-This is a new option in HADDOCK 2.X that allows sampling of 180 degrees-rotated solutions at both the [rigid-body](/software/haddock2.4/docking#rigid) and [semi-flexible](/software/haddock2.4/docking#sa) docking stages. If turned on (default for rigid-body stage), for each model generated, a 180 degree rotated solution will be generated automatically by HADDOCK and either energy minimized (rigid-body) or submitted to the semi-flexible refinement protocol (it1). The rotation axis is automatically defined from the vector connecting the center of masses of the two interfaces, each interface being defined by all residues forming intermolecular contacts within 5A (this cutoff is defined in the *rotation180.cns* CNS script in the ***protocols*** directory.
+This is a new option in HADDOCK 2.X that allows sampling of 180 degrees-rotated solutions at both the [rigid-body](/software/haddock2.4/docking#mini) and [semi-flexible](/software/haddock2.4/docking#sa) docking stages. If turned on (default for rigid-body stage), for each model generated, a 180 degree rotated solution will be generated automatically by HADDOCK and either energy minimized (rigid-body) or submitted to the semi-flexible refinement protocol (it1). The rotation axis is automatically defined from the vector connecting the center of masses of the two interfaces, each interface being defined by all residues forming intermolecular contacts within 5A (this cutoff is defined in the *rotation180.cns* CNS script in the ***protocols*** directory.
 
 Sampling of 180 degree rotated solutions in the rigid-body stage clearly improve the docking performance (unpublished data). If turned on during the semi-flexible refinement, both refined solutions will be written to disk, doubling the effective number of structures.
 
@@ -447,7 +447,7 @@ In this section you can define if the final [explicit solvent refinement](/softw
 
 You can also specify here the number of MD integration steps for the heating, sampling and cooling phases of the explicit solvent refinement.
 
-You can also specify to keep the solvent, in which case an additional PDB file will be created in the ***structures/it1/water*** directory with a __h2o.pdb_ extension containing both your complex and the solvent molecules.
+You can also specify to keep the solvent, in which case an additional PDB file will be created in the ***structures/it1/water*** directory with a _h2o.pdb_ extension containing both your complex and the solvent molecules.
 
 * * *
 
@@ -498,7 +498,7 @@ For example, if skip=1 and 200 structures should be refined in the semi-flexible
 
 * * *
 
-<a name="anal">**22\. _<u>Analysis and clustering</u>**</a> [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/analysis.png)
+<a name="anal">**22\. <u>Analysis and clustering</u>**</a> [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/analysis.png)
 
 When performing the [analysis](/software/haddock2.4/analysis), HADDOCK will check [intermolecular hydrogen bonds](/software/haddock2.4/analysis#hb) and [intermolecular hydrophobic contacts](/software/haddock2.4/analysis#nb).
 
@@ -519,13 +519,13 @@ The new FCC clustering offers the option to ignore chains when dealing with symm
 
 * * *
 
-<a name="clean">**23\. _<u>Cleaning</u>**</a>
+<a name="clean">**23\. <u>Cleaning</u>**</a>
 
 Since HADDOCK does generate a lot of data and output files, we now built in a cleaning option. If turned on (default) all (except for the first structure of each stage) job, input and output files for the rigid-body, semi-flexible refinement and final explicit solvent refinement will be removed automatically upon completion. This saves a significant amount of space.
 
 * * *
 
-<a name="jobs">**25\. _<u>Parallels jobs</u>**</a> [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/jobs.gif)
+<a name="jobs">**25\. <u>Parallels jobs</u>**</a> [![(screenshot)](/software/haddock2.4/photo.png)](/software/haddock2.4/jobs.gif)
 
 In this section you can define the way the structure calculation will be run, and the location of the [CNS](http://cns.csb.yale.edu) executable. Currently 10 nodes or queues can be specified.
 
