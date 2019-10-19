@@ -19,7 +19,11 @@ This page provide you links to software and software manuals of the computationa
 
   * [**HADDOCK2.2 software**](/software/haddock2.2/)
 
+  <!---* [**HADDOCK2.4 software**](/software/haddock2.4/)-->
+
   * [**HADDOCK web server**](http://haddock.science.uu.nl/services/HADDOCK)
+
+  * [**HADDOCK 2.4  web server**](https://wenmr.science.uu.nl/haddock2.4/)
 
   * [**HADDOCK grid-enabled web server**](http://haddock.science.uu.nl/enmr/services/HADDOCK)
 <HR>
@@ -78,5 +82,3 @@ This page provide you links to software and software manuals of the computationa
 * HADDOCK models of mutant protein complexes: [https://doi.org/10.15785/SBGRID/651](https://doi.org/10.15785/SBGRID/651)
 
 * Docking models for Docking Benchmark 4, 5 and CAPRI score_set: [https://doi.org/10.15785/SBGRID/684](https://doi.org/10.15785/SBGRID/684)
-
-

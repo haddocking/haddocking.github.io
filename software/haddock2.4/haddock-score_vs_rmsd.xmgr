@@ -1,0 +1,555 @@
+# Grace project file
+#
+@version 50118
+@page size 842, 595
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 8 to "Courier", "Courier"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 12 to "Symbol", "Symbol"
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (255, 0, 0), "red"
+@map color 3 to (0, 255, 0), "green"
+@map color 4 to (0, 0, 255), "blue"
+@map color 5 to (255, 255, 0), "yellow"
+@map color 6 to (188, 143, 143), "brown"
+@map color 7 to (220, 220, 220), "grey"
+@map color 8 to (148, 0, 211), "violet"
+@map color 9 to (0, 255, 255), "cyan"
+@map color 10 to (255, 0, 255), "magenta"
+@map color 11 to (255, 165, 0), "orange"
+@map color 12 to (114, 33, 188), "indigo"
+@map color 13 to (103, 7, 72), "maroon"
+@map color 14 to (64, 224, 208), "turquoise"
+@map color 15 to (0, 139, 0), "green4"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 1.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Fri Jan  5 21:22:50 2007"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world 0, -200, 12, -40
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.150000, 0.150000, 1.150000, 0.850000
+@    title ""
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle ""
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 1.0
+@    xaxis  label "RMSD from best (lowest HADDOCK score) [Å]"
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.250000
+@    xaxis  label font 2
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 2
+@    xaxis  tick minor ticks 3
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 2.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 2.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.000000
+@    xaxis  ticklabel font 2
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 1.0
+@    yaxis  label "HADDOCK score [a.u.]"
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.250000
+@    yaxis  label font 2
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 20
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 2.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 2.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format general
+@    yaxis  ticklabel prec 5
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.000000
+@    yaxis  ticklabel font 2
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  off
+@    altyaxis  off
+@    legend on
+@    legend loctype view
+@    legend 0.85, 0.8
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 2.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 2.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 0
+@    frame background pattern 0
+@    s0 hidden false
+@    s0 type xydxdy
+@    s0 symbol 1
+@    s0 symbol size 1.000000
+@    s0 symbol color 1
+@    s0 symbol pattern 1
+@    s0 symbol fill color 1
+@    s0 symbol fill pattern 5
+@    s0 symbol linewidth 2.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 0
+@    s0 line linestyle 1
+@    s0 line linewidth 2.0
+@    s0 line color 1
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 1
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 2.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 2.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "/Users/abonvin/haddock2.0/examples/e2a-hpr-run-data/run1-refe/structures/it1/water/haddock-rmsd.dat"
+@    s0 legend  ""
+@    s1 hidden false
+@    s1 type xydxdy
+@    s1 symbol 1
+@    s1 symbol size 1.000000
+@    s1 symbol color 2
+@    s1 symbol pattern 1
+@    s1 symbol fill color 2
+@    s1 symbol fill pattern 1
+@    s1 symbol linewidth 2.0
+@    s1 symbol linestyle 1
+@    s1 symbol char 65
+@    s1 symbol char font 0
+@    s1 symbol skip 0
+@    s1 line type 0
+@    s1 line linestyle 1
+@    s1 line linewidth 1.0
+@    s1 line color 2
+@    s1 line pattern 1
+@    s1 baseline type 0
+@    s1 baseline off
+@    s1 dropline off
+@    s1 fill type 0
+@    s1 fill rule 0
+@    s1 fill color 1
+@    s1 fill pattern 1
+@    s1 avalue off
+@    s1 avalue type 2
+@    s1 avalue char size 1.000000
+@    s1 avalue font 0
+@    s1 avalue color 1
+@    s1 avalue rot 0
+@    s1 avalue format general
+@    s1 avalue prec 3
+@    s1 avalue prepend ""
+@    s1 avalue append ""
+@    s1 avalue offset 0.000000 , 0.000000
+@    s1 errorbar on
+@    s1 errorbar place both
+@    s1 errorbar color 2
+@    s1 errorbar pattern 1
+@    s1 errorbar size 1.000000
+@    s1 errorbar linewidth 2.0
+@    s1 errorbar linestyle 1
+@    s1 errorbar riser linewidth 2.0
+@    s1 errorbar riser linestyle 1
+@    s1 errorbar riser clip off
+@    s1 errorbar riser clip length 0.100000
+@    s1 comment "ene-rmsd2.xmgr"
+@    s1 legend  ""
+@target G0.S0
+@type xydxdy
+0 -177.8627 0 0
+0.75 -168.62549 0 0
+2.161 -162.52406 0 0
+9.184 -159.06861 0 0
+3.376 -158.24577 0 0
+1.295 -156.37617 0 0
+1.639 -152.9252 0 0
+2.567 -147.78963 0 0
+1.514 -147.18517 0 0
+3.255 -143.96303 0 0
+1.631 -142.4889 0 0
+0.978 -140.70745 0 0
+1.156 -140.51877 0 0
+3.006 -140.28213 0 0
+5.585 -139.86177 0 0
+3.736 -139.84417 0 0
+2.816 -137.7471 0 0
+6.341 -137.08846 0 0
+1.475 -136.99846 0 0
+1.311 -136.82759 0 0
+2.323 -135.41908 0 0
+0.92 -135.34134 0 0
+9.345 -133.71405 0 0
+2.567 -132.54744 0 0
+9.137 -131.77638 0 0
+9.496 -130.89835 0 0
+2.707 -130.78084 0 0
+2.473 -130.76883 0 0
+9.192 -130.20294 0 0
+2.302 -129.97056 0 0
+2.323 -129.69623 0 0
+8.739 -128.54752 0 0
+2.384 -128.41246 0 0
+1.789 -128.35056 0 0
+2.501 -128.32785 0 0
+4.917 -127.73898 0 0
+3.576 -127.58703 0 0
+1.345 -126.40208 0 0
+9.924 -126.14736 0 0
+2.433 -126.06882 0 0
+1.24 -125.96764 0 0
+2.652 -125.96387 0 0
+8.565 -125.84865 0 0
+1.67 -125.73144 0 0
+3.434 -125.40757 0 0
+1.889 -125.22835 0 0
+1.888 -123.72167 0 0
+1.661 -123.22194 0 0
+1.564 -122.15049 0 0
+1.469 -121.92316 0 0
+2.317 -121.89233 0 0
+1.308 -121.69941 0 0
+2.54 -120.96547 0 0
+1.714 -120.90798 0 0
+5.317 -120.84134 0 0
+8.137 -120.68093 0 0
+2.194 -120.55117 0 0
+2.633 -120.17639 0 0
+0.936 -119.75156 0 0
+2.753 -119.74446 0 0
+2.579 -119.33236 0 0
+9.258 -119.11872 0 0
+2.454 -118.54614 0 0
+1.379 -118.45291 0 0
+8.435 -117.47693 0 0
+9.96 -117.05582 0 0
+9.224 -116.64339 0 0
+2.741 -116.33354 0 0
+1.912 -116.17517 0 0
+3.261 -115.97267 0 0
+2.704 -115.1937 0 0
+9.753 -115.09732 0 0
+1.903 -114.98102 0 0
+9.12 -114.79443 0 0
+1.626 -114.413 0 0
+1.653 -113.62477 0 0
+6.383 -113.27114 0 0
+9.604 -112.84639 0 0
+9.869 -112.58357 0 0
+2.317 -111.42629 0 0
+9.446 -111.35286 0 0
+2.051 -111.31716 0 0
+2.596 -111.306 0 0
+2.063 -111.27749 0 0
+1.567 -109.73904 0 0
+2.306 -109.4715 0 0
+9.636 -109.18448 0 0
+2.293 -109.18136 0 0
+2.272 -108.48936 0 0
+9.644 -108.47513 0 0
+2.724 -107.95799 0 0
+2.503 -107.5107 0 0
+2.831 -107.12905 0 0
+1.101 -106.97153 0 0
+2.309 -106.89963 0 0
+9.272 -106.45454 0 0
+2.384 -105.44368 0 0
+2.167 -105.32328 0 0
+2.323 -105.19814 0 0
+2.284 -105.05117 0 0
+1.414 -104.65445 0 0
+2.78 -104.58211 0 0
+2.124 -104.29264 0 0
+5.379 -103.30755 0 0
+4.989 -102.61064 0 0
+5.78 -102.5422 0 0
+1.468 -102.48145 0 0
+2.735 -102.45462 0 0
+2.008 -102.05574 0 0
+3.344 -101.86494 0 0
+6.817 -101.59616 0 0
+10.06 -101.25061 0 0
+2.172 -101.19215 0 0
+2.413 -101.06578 0 0
+2.186 -100.98953 0 0
+8.32 -100.9769 0 0
+7.151 -100.73561 0 0
+2.526 -100.05954 0 0
+9.385 -99.18224 0 0
+1.619 -98.981267 0 0
+2.354 -98.59557 0 0
+10.373 -98.4991 0 0
+2.331 -98.13199 0 0
+2.03 -98.08013 0 0
+2.417 -97.3241 0 0
+2.193 -97.156733 0 0
+2.22 -97.1311 0 0
+9.831 -96.13527 0 0
+3.421 -96.045642 0 0
+1.382 -95.66745 0 0
+11.152 -95.197634 0 0
+9.482 -95.002532 0 0
+1.328 -94.70259 0 0
+2.778 -94.668301 0 0
+3.145 -94.31786 0 0
+9.63 -94.14436 0 0
+2.794 -93.94037 0 0
+1.956 -93.6275 0 0
+2.085 -93.195251 0 0
+8.978 -93.15704 0 0
+2.508 -93.040209 0 0
+2.09 -92.63728 0 0
+9.581 -92.605571 0 0
+2.283 -92.36464 0 0
+2.129 -92.30558 0 0
+9.657 -91.959951 0 0
+10.179 -91.466613 0 0
+6.575 -91.09247 0 0
+2.111 -91.06318 0 0
+3.519 -90.939171 0 0
+2.007 -89.99266 0 0
+2.562 -89.49099 0 0
+10.35 -89.386553 0 0
+3.14 -89.276407 0 0
+2.177 -88.83976 0 0
+1.519 -88.61623 0 0
+2.699 -88.579179 0 0
+10.534 -88.454644 0 0
+2.117 -87.643418 0 0
+1.971 -87.24451 0 0
+2.056 -86.82068 0 0
+1.578 -86.41044 0 0
+10.781 -85.421676 0 0
+2.276 -85.24222 0 0
+3.349 -85.1944 0 0
+10.199 -84.180802 0 0
+2.339 -83.95276 0 0
+2.408 -83.83063 0 0
+2.474 -83.311211 0 0
+3.004 -82.68127 0 0
+9.566 -82.67179 0 0
+2.531 -81.60157 0 0
+2.45 -81.5457 0 0
+2.643 -80.34147 0 0
+2.317 -79.7581 0 0
+3.302 -78.90695 0 0
+9.404 -78.76974 0 0
+2.096 -78.4568 0 0
+4.837 -77.17998 0 0
+10.734 -76.48183 0 0
+3.164 -76.471442 0 0
+2.174 -76.16477 0 0
+10.986 -75.442457 0 0
+8.34 -74.76196 0 0
+10.045 -74.533184 0 0
+3.905 -74.46003 0 0
+9.68 -73.96772 0 0
+7.062 -73.83365 0 0
+3.687 -73.530994 0 0
+2.991 -72.16511 0 0
+2.882 -71.222861 0 0
+2.022 -70.27369 0 0
+9.052 -69.681 0 0
+2.476 -68.091436 0 0
+1.737 -67.78872 0 0
+2.881 -65.68432 0 0
+2.699 -62.68538 0 0
+2.706 -60.18164 0 0
+2.109 -57.04351 0 0
+3.056 -44.73778 0 0
+&
+@target G0.S1
+@type xydxdy
+1.573 -166.815 1.299 7.368
+9.311 -131.648 0.14 1.317
+5.55 -131.383 0.521 7.564
+10.213 -100.397 0.894 16.457
+8.551 -90.724 0.302 19.484
+&
