@@ -7,6 +7,8 @@ image:
 
 ## 2019 
 
+* H.M. Berman, P,D. Adams, **A.M.J.J. Bonvin**, S.K. Burley, B. Carragher, W. Chiu, F. DiMaio, T.E. Ferrin, M.J. Gabanyi, T.D. Goddard, P.R. Griffin, J. Haas, C.A. Hanke, J.C. Hoch, G. Hummer, G. Kurisu, C.L. Lawson, A. Leitner, J.L. Markley, J. Meiler, G.T. Montelione, G.N. Phillips Jr., T. Prisner, J. Rappsilber, D.C. Schriemer, T. Schwede, C.A.M. Seidel, T.S. Strutzenberg, D.I. Svergun, E. Tajkhorshid, J. Trewhella, B. Vallat, S. Velankar, G.W. Vuister, B. Webb, J.D. Westbrook, K.L. White, A. Sali. Federating Sructural Models and Data: Outcomes from a Workshop on Archiving Integrative Structures. _Structure_ In Press (2019).
+
 * M. Abraham, R. Apostolov, J. Barnoud, P. Bauer, C. Blau, **A.M.J.J. Bonvin**, M. Chavent, J. Chodera, K. Čondić-Jurkić, L. Delemotte, H. Grubmüller, R. Howard, E.J. Jordan, E. Lindal, O.H.S. Ollila, J. Selent, D. Smith, P. Stansfeld, J. Tiemann, M. Trellet, C. Woods and A. Zhmurov. [Sharing Data from Molecular Simulations](https://doi.org/10.1021/acs.jcim.9b00665). _J. Chem. Inf. and Model._ Advanced Online Publication (2019).
 
 * R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, *6*, 102 (2019).
@@ -19,7 +21,7 @@ image:
 
 * J. Roel-Touris, C.G. Don, R.V. Honorato, J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**. [Less is more: Coarse-grained integrative modeling of large biomolecular assemblies with HADDOCK](https://doi.org/10.1021/acs.jctc.9b00310). _J. Chem. Theo. and Comp._, Advanced Online Publication (2019).
 
-* R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. Computational approaches to therapeutic antibody design: established methods and emerging trends. _Briefings in Bioinformatics_, In press (2019).
+* R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. [Computational approaches to therapeutic antibody design: established methods and emerging trends](https://doi.org/10.1093/bib/bbz095). _Briefings in Bioinformatics_, bbz095, Advanced Online Publication (2019).
 
 * L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ *14*, 1751-1759 (2019).
 
