@@ -7,6 +7,9 @@ image:
 
 ## 2019 
 
+* M.F. Lensink, G. Brysbaert  N. Nadzirin, S. Velankar, R.A.G. Chaleil,  T, Gerguri,  P.A. Bates,  E. Laine,  A. Carbone,  S. Grudinin,  R. Kong,  R. Liu, X. Xu,  H, Shi, S. Chang,  M. Eisenstein,  A.a Karczynska,  C. Czaplewski, E. Lubecka, A. Lipska, P. Krupa, M. Mozolewska, L. Golon, S. Samsonov, A. Liwo, S. Crivelli, G. Pagès, M. Karasikov, M. Kadukova, Y. Yan, S. Huang, M. Rosell, L.A. Rodríguez‐Lumbreras, M. Romero‐Durana, L. Díaz‐Bueno, J. Fernandez‐Recio, C. Christoffer, G. Terashi, W. Shin, T. Aderinwale, S. Raghavendra Maddhuri Venkata Subraman, D. Kihara, D. Kozakov, S. Vajda, K. Porter, D. Padhorny, I. Desta, D. Beglov, M. Ignatov, S. Kotelnikov, I.H. Moal, D.W. Ritchie, I. Chauvot de Beauchêne, B. Maigret, M. Devignes, M.E. Ruiz Echartea, D, Barradas‐Bautista, Z. Cao, L. Cavallo, R. Oliva, Y. Cao, Y. Shen, M. Baek, T. Park, H. Woo, C. Seok, M. Braitbard, L. Bitton, D. Scheidman‐Duhovny, J. Dapkūnas, K. Olechnovič, Č. Venclovas, P.J. Kundrotas, S. Belkin, D. Chakravarty, V.D. Badal, I.A. Vakser, T.Vreven, S. Vangaveti, T. Borrman, Z. Weng, J.D. Guest, R. Gowthaman, B.G. Pierce, X. Xu, R. Duan, L. Qiu, J. Hou, B. Ryan Merideth, Z. Ma, J. Cheng, X. Zou, P.I. Koukos, J. Roel‐Touris, . Ambrosetti, C. Geng. J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L. Xue, B. Jiménez‐Garcí, C.W. van Noort, R.V. Honorato, **A.M.J.J. Bonvin**, S.J. Wodak. [Blind prediction of homo‐ and hetero‐protein complexes: The CASP13‐CAPRI experiment](https://doi.org/10.1002/prot.25838).
+_Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019)
+
 * H.M. Berman, P,D. Adams, **A.M.J.J. Bonvin**, S.K. Burley, B. Carragher, W. Chiu, F. DiMaio, T.E. Ferrin, M.J. Gabanyi, T.D. Goddard, P.R. Griffin, J. Haas, C.A. Hanke, J.C. Hoch, G. Hummer, G. Kurisu, C.L. Lawson, A. Leitner, J.L. Markley, J. Meiler, G.T. Montelione, G.N. Phillips Jr., T. Prisner, J. Rappsilber, D.C. Schriemer, T. Schwede, C.A.M. Seidel, T.S. Strutzenberg, D.I. Svergun, E. Tajkhorshid, J. Trewhella, B. Vallat, S. Velankar, G.W. Vuister, B. Webb, J.D. Westbrook, K.L. White, A. Sali. Federating Sructural Models and Data: Outcomes from a Workshop on Archiving Integrative Structures. _Structure_ In Press (2019).
 
 * M. Abraham, R. Apostolov, J. Barnoud, P. Bauer, C. Blau, **A.M.J.J. Bonvin**, M. Chavent, J. Chodera, K. Čondić-Jurkić, L. Delemotte, H. Grubmüller, R. Howard, E.J. Jordan, E. Lindal, O.H.S. Ollila, J. Selent, D. Smith, P. Stansfeld, J. Tiemann, M. Trellet, C. Woods and A. Zhmurov. [Sharing Data from Molecular Simulations](https://doi.org/10.1021/acs.jcim.9b00665). _J. Chem. Inf. and Model._ Advanced Online Publication (2019).
@@ -87,6 +90,8 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_ *86(S1)*, 51-66 (2018).
 
 ## 2017 
 <hr />
+* A. Vangone and **A.M.J.J. Bonvin**. [PRODIGY: A Contact-based Predictor of Binding Affinity in Protein-protein Complexes](https://bio-protocol.org/e2124). _Bio-protocol_ *7*, e2124, DOI:10.21769/BioProtoc.2124 (2017)
+
 * E. Karaca, J.P.G.L.M. Rodrigues, A. Graziadei, **A.M.J.J. Bonvin** and T. Carlomagno. [An Integrative Framework for Structure Determination of Molecular Machines](https://doi.org/10.1038/nmeth.4392). _Nature Methods_ *14*, 897-902 (2017).
 
 * I.S. Moreira, P.I. Koukos, R. Melo, J.G. Almeida, A.J. Preto, J. Schaarschmidt, M. Trellet, Z.H. Gümüş, J. Costa and **A.M.J.J. Bonvin**. [SpotOn: High Accuracy Identification of Protein-Protein Interface Hot-Spots](https://doi.org/10.1038/s41598-017-08321-2). _Sci. Reports_. *7*:8007 (2017).
