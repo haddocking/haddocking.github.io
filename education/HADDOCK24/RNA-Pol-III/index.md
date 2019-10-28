@@ -685,6 +685,16 @@ the solutions for various measures (HADDOCK score, van der Waals energy, ...) as
 generated model (the best scoring model). The plots are interactive and you can zoom into selected areas. You also turn on and off
 specific clusters.
 
+<figure align="center">
+<img src="/education/HADDOCK24/RNA-Pol-III/graphical-analysis.png">
+<p> Graphical view of the docking results</p>
+</figure>
+
+<figure align="center">
+<img src="/education/HADDOCK24/RNA-Pol-III/cluster-analysis.png">
+<p> HADDOCK score components distributions per cluster</p>
+</figure>
+
 You can also quickly visualize a specific structure by clicking on the "eye" icon next to a structure.
 
 
