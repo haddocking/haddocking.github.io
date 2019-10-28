@@ -716,9 +716,9 @@ The cluster numbering reflects the size of the cluster, with cluster 1 being the
 The various components of the HADDOCK score are also reported for each cluster on the results web page.
 
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
-<a class="prompt prompt-question">Is the top ranked significantly better than the second one? (This is also
-reflected in the z-score).</a>
-<a class="prompt prompt-question">Which cluster satisties the experimental restraints best?</a>
+<a class="prompt prompt-question">Is the top ranked significantly better than the second one?</a>
+<a class="prompt prompt-question">Which energy terms are playing a dominant role in the ranking of top clusters?</a>
+<a class="prompt prompt-question">Which cluster satisfies the experimental restraints best?</a>
 
 In case the scores of various clusters are within the standard deviation from each other, all should be considered as a
 valid solution for the docking. Ideally, some additional independent experimental information should be available to
@@ -741,7 +741,14 @@ Start PyMOL and load each cluster representative (`clusterX_1.pdb`):
 
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster10_1.pdb</a>
 
-Repeat this for each cluster. Once all files have been loaded, type in the PyMOL command window:
+Repeat this for each cluster. 
+
+__Note:__ If using the command line, all clusters can be loaded easily in one command:
+
+<a class="prompt prompt-cmd">pymol cluster*_1.pdb</a>
+
+
+Once all files have been loaded, type in the PyMOL command window:
 
 <a class="prompt prompt-pymol">
 show cartoon<br>
@@ -759,6 +766,15 @@ align cluster2_1, sele
 <a class="prompt prompt-info">
 Repeat the align command for each cluster representative.
 </a>
+
+Alternatively, you can superimpose all models on the selection, by:
+<a class="prompt prompt-info">
+Find the sele entry in the menu listing all molecules on the right side of the PyMol window.
+</a>
+<a class="prompt prompt-info">
+Click on the A button next to it -> align -> all to this (*/CA).
+</a>
+
 
 This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains.
 
@@ -779,39 +795,35 @@ Which domain is the best defined over the various clusters?
 Which domain is the worst defined over the various clusters?
 </a>
 
+### Satisfaction of cross-link restraints
+
 Let's now check if the solutions actually fit the cross-links we defined.
 Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
 ranking cluster `cluster10_1.pdb.
 
-Let's start with looking at the cross-links defining the position of the C82 domain.
+#### Analysing the cross-links defining the position of the C82 domain
+
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
 show cartoon<br>
 util.cbc<br>
 hide lines<br>
-distance d1-30A, chain A and resid 27 and name CA, chain B and resid 18 and name CA<br>
-distance d2-30A, chain A and resid 122 and name CA, chain B and resid 125 and name CA<br>
-distance d3-30A, chain A and resid 122 and name CA, chain B and resid 128 and name CA<br>
-distance d4-30A, chain A and resid 122 and name CA, chain B and resid 127 and name CA<br>
-distance d5-30A, chain A and resid 55 and name CA, chain B and resid 169 and name CA<br>
-distance d6-30A, chain A and resid 55 and name CA, chain B and resid 179 and name CA<br>
-distance d7-30A, chain A and resid 54 and name CA, chain B and resid 179 and name CA<br>
+distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
+distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d04-30A, chain B and resid 520 and name CB, chain D and resid  135 and name CB<br>
+distance C82-d05-30A, chain B and resid 520 and name CB, chain D and resid  138 and name CB<br>
+distance C82-d06-30A, chain B and resid 520 and name CB, chain D and resid  141 and name CB<br>
+distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
+distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
+distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
+distance C82-d10-30A, chain B and resid 612 and name CB, chain F and resid  111 and name CB<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
 Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
 
-<details style="background-color:#DAE4E7">
-<summary>See solution:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/PRE5-PUP2-crosslinks.png">
-</figure>
-<br>
-</details>
-
-<br>
 <a class="prompt prompt-info">
 Inspect the various cross-link distances.
 </a>
@@ -820,140 +832,126 @@ Inspect the various cross-link distances.
 Is the model satisfying the cross-link restraints?
 </a>
 
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
 __Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
 surface of the molecule which might results in a longer effective distance. A proper comparison would required
 calculating the surface distance instead. Such an analysis can be done with the [XWalk sofware][link-xwalk].
 
+#### Analysing the cross-links defining the position of the C34_wHTH1 domain
 
-<details style="background-color:#DAE4E7">
-<summary>See solution:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/cluster1-crosslinks-surface.png">
-</figure>
-<br>
+You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
+Or alternatively delete them in PyMol by typing:
 
+<a class="prompt prompt-pymol">delete C82*</a>
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+distance C34-1-d1-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-1-d2-30A, chain C and resid 62 and name CB, chain D and resid   82 and name CB<br>
+distance C34-1-d3-30A, chain C and resid 62 and name CB, chain D and resid   83 and name CB<br>
+distance C34-1-d4-30A, chain C and resid 62 and name CB, chain D and resid  123 and name CB<br>
+distance C34-1-d5-30A, chain C and resid 65 and name CB, chain D and resid   82 and name CB<br>
+distance C34-1-d6-30A, chain C and resid 65 and name CB, chain D and resid  123 and name CB<br>
+distance C34-1-d7-30A, chain C and resid 65 and name CB, chain D and resid  126 and name CB<br>
+distance C34-1-d8-30A, chain C and resid 65 and name CB, chain D and resid  135 and name CB<br>
+</a>
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
 
 <a class="prompt prompt-question">
 Is the model satisfying the cross-link restraints?
 </a>
 
-
-<hr>
-## Comparison with the crystal structure of an homologous complex
-
-In order to check if any of the docking models we obtained using the various scenarios makes sense,
-we will compare them to a recently published [article](https://doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue
-of the 26S proteasome (from *S. cerevisiae*). This structure has been solved by X-ray crystallography at 2.4Å resolution (PDBid
-[5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}).
-We will only use the two chains that are of interest, namely chains **D** and **C** corresponding to **PRE5** and **PUP2** respectively.
-The corresponding PDB file is available in the downloaded tutorial data as `5l5a_CD.pdb`.
-
-For each of the three docking scenarios we will visualize the top ranking model of each cluster
-and compare those to the crystal structure of the homologous complex. We will only illustrate this process for scenario 3,
-for which 6 clusters were generated.
-
-<a class="prompt prompt-info">
-Open PyMOL and load the top ranking model of each cluster
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
 </a>
 
-<a class="prompt prompt-info">
-Also load the structure of the homologous complex -> *5l5a_CD.pdb*
-</a>
+#### Analysing the cross-links defining the position of the C34_wHTH2 domain
 
-In PyMOL type the following commands (the last two lines are for removing water from the crystal structure):
+You can first hide the distances shown for C34_wHTH1 by unselecting them in the menu on the right side of the window.
+Or alternatively delete them in PyMol by typing:
+
+<a class="prompt prompt-pymol">delete C34-1*</a>
+
+In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-show cartoon<br>
-util.cbc<br>
-hide lines<br>
-select 5l5a_CD and resn HOH<br>
-remove sele<br>
+distance C34-2-d01-30A, chain D and resid  82 and name CB, chain C and resid   62 and name CB<br>
+distance C34-2-d02-30A, chain D and resid  82 and name CB, chain C and resid   62 and name CB<br>
+distance C34-2-d03-30A, chain D and resid  82 and name CB, chain C and resid   65 and name CB<br>
+distance C34-2-d04-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-2-d05-30A, chain D and resid 123 and name CB, chain C and resid   62 and name CB<br>
+distance C34-2-d06-30A, chain D and resid 123 and name CB, chain C and resid   65 and name CB<br>
+distance C34-2-d07-30A, chain D and resid 126 and name CB, chain C and resid   65 and name CB<br>
+distance C34-2-d08-30A, chain D and resid 126 and name CB, chain F and resid  196 and name CB<br>
+distance C34-2-d09-30A, chain D and resid 135 and name CB, chain C and resid   65 and name CB<br>
+distance C34-2-d10-30A, chain D and resid 135 and name CB, chain D and resid  520 and name CB<br>
+distance C34-2-d11-30A, chain D and resid 138 and name CB, chain D and resid  520 and name CB<br>
+distance C34-2-d12-30A, chain D and resid 141 and name CB, chain D and resid  520 and name CB<br>
 </a>
 
-Let's now superimpose all models onto the crystal structure, using PRE5 to emphasize the difference in the orientation of PUP2.
-For this we need to superimpose chain A of our models onto chain D of the homologous crystal structure.
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
+
+#### Analysing the cross-links defining the position of the C31 domain
+
+You can first hide the distances shown for C34_wHTH2 by unselecting them in the menu on the right side of the window.
+Or alternatively delete them in PyMol by typing:
+
+<a class="prompt prompt-pymol">delete C34-2*</a>
+
+In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-select refe, 5l5a_CD and chain D<br>
-align cluster1_1 and chain A, refe <br>
-align cluster2_1 and chain A, refe <br>
-align cluster3_1 and chain A, refe <br>
-align cluster4_1 and chain A, refe <br>
-align cluster5_1 and chain A, refe <br>
-align cluster6_1 and chain A, refe <br>
-align cluster7_1 and chain A, refe <br>
-align cluster8_1 and chain A, refe <br>
-align cluster9_1 and chain A, refe <br>
-align cluster11_1 and chain A, refe <br>
-zoom vis<br>
+distance C31-d01-30A, chain F and resid  57 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d02-30A, chain F and resid  66 and name CB, chain B and resid  604 and name CB<br>
+distance C31-d03-30A,  chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d04-30A,  chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
+distance C31-d06-30A,  chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
+distance C31-d07-30A,  chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
+distance C31-d08-30A,  chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
+distance C31-d09-30A,  chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
+distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
+distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d12-30A,  chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
+distance C31-d13-30A,  chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d14-30A,  chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
+distance C31-d15-30A, chain F and resid 196 and name CB, chain D and resid  126 and name CB<br>
 </a>
 
-You now see all models superimposed on the the crystal structure of the homologous complex (shown in yellow and magenta).
-Turn on and off models (by clicking on the name in the right panel).
-
-<a class="prompt prompt-question">
-Can you identify any cluster that resembles the crystal structure?<br>
-</a>
-<a class="prompt prompt-question">
-If this is the case, what is the rank of that cluster in the HADDOCK ranking?<br>
-</a>
-
-__Note__ that the cluster number does not indicate its rank.
-The clusters are listed in the HADDOCK result page in the order of their ranking.
-The cluster number only reflects the size of the cluster, with cluster1 being the most populated.
-
-
-<details style="background-color:#DAE4E7">
-<summary>See solution for scenario 3:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/crosslinks-interface-vs-xray.png">
-</figure>
-<br>
-Cluster1 of the scenario 3 docking run using both cross-links and the interfaces predicted by DisVis nicely matches the crystal structure.
-This is also the top-ranking cluster according to HADDOCK.
-
-</details>
-
-<br>
 <a class="prompt prompt-info">
-Now repeat this analysis, but for the other two scenarios<br>
+Inspect the various cross-link distances.
 </a>
 
 <a class="prompt prompt-question">
-Does the docking using only the cross-links as distance restraints generate any reasonable models?<br>
+Is the model satisfying the cross-link restraints?
 </a>
-<details style="background-color:#DAE4E7">
-<summary>See solution for scenario 1:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/crosslinks-vs-xray.png">
-</figure>
-<br>
-No single cluster matches the crystal structure in this case.
-</details>
 
-<br>
 <a class="prompt prompt-question">
-Does the docking using only the predicted interfaces from the DisVis interaction analysis generate any reasonable models?<br>
+If not, which ones are not satistified?
 </a>
-<details style="background-color:#DAE4E7">
-<summary>See solution for scenario 2:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/interface-vs-xray.png">
-</figure>
-<br>
-Cluster10 of the scenario 2 docking run using the interfaces predicted by DisVis nicely matches the crystal structure.
-Cluster10 in this case is the third-ranking cluster. Its score (-73.0 +/- 6.5) is higher (the lower the score the better) than
-the top-ranking cluster (-112.8 +/- 7.0). This is a nice example that scoring remains a challenge. We therefore always recommend
-to look at multiple solutions and possibly cross-validate with additional data.
 
-</details>
 
-<br>
+<hr><hr>
+## Fitting the docking models into low resolution cryo-EM maps
 
+TODO
 
 <hr>
 ## Conclusions
