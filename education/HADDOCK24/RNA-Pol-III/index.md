@@ -687,19 +687,18 @@ specific clusters.
 
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/graphical-analysis.png">
-<p> Graphical view of the docking results</p>
+<p> <i>Graphical view of the docking results</i></p>
 </figure>
 
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/cluster-analysis.png">
-<p> HADDOCK score components distributions per cluster</p>
+<p> <i>HADDOCK score components distributions per cluster</i></p>
 </figure>
 
 You can also quickly visualize a specific structure by clicking on the "eye" icon next to a structure.
 
-
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III/HADDOCK-result-graph.png">
+<img src="/education/HADDOCK24/RNA-Pol-III/online-visualisation.png">
 </figure>
 
 
@@ -717,6 +716,7 @@ components of the HADDOCK score are also reported for each cluster on the result
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
 <a class="prompt prompt-question">Is the top ranked significantly better than the second one? (This is also
 reflected in the z-score).</a>
+<a class="prompt prompt-question">Which cluster satisties the experimental restraints best?</a>
 
 In case the scores of various clusters are within the standard deviation from each other, all should be considered as a
 valid solution for the docking. Ideally, some additional independent experimental information should be available to
