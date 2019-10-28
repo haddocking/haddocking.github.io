@@ -696,6 +696,7 @@ specific clusters.
 </figure>
 
 You can also quickly visualize a specific structure by clicking on the "eye" icon next to a structure.
+While in the “eye” mode, you can use the middle mouse to zoom in/out.
 
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/online-visualisation.png">
@@ -710,8 +711,9 @@ as:
 </pre>
 where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents
 an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR energy.
-The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. The various
-components of the HADDOCK score are also reported for each cluster on the results web page.
+
+The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. 
+The various components of the HADDOCK score are also reported for each cluster on the results web page.
 
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
 <a class="prompt prompt-question">Is the top ranked significantly better than the second one? (This is also
@@ -722,19 +724,22 @@ In case the scores of various clusters are within the standard deviation from ea
 valid solution for the docking. Ideally, some additional independent experimental information should be available to
 decide on the best solution.
 
+
 <hr>
 ## Visualisation of docked models
 
+Let's now visualize the various clusters. The result page allows to download individual models, but it also has an option to download 
+all clusters at once. Look for the following sentence, just above the cluster statistics:
 
-Let's now visualize the various clusters
+<pre>
+You can also download all cluster files (best X of the top 10 cluster(s)).
+</pre>
 
-<a class="prompt prompt-info">Download and save to disk the first model of each cluster (create a subdirectory for each
-scenario to avoid mixing models</a>
+<a class="prompt prompt-info">Download the archive by clicking on the link and unpack it</a>
 
-We illustrate the procedure using the results from scenario 1. You can repeat it for the other scenarios.
-Start PyMOL and load each cluster representative:
+Start PyMOL and load each cluster representative (`clusterX_1.pdb`):
 
-<a class="prompt prompt-pymol">File menu -> Open -> select cluster1_1.pdb</a>
+<a class="prompt prompt-pymol">File menu -> Open -> select cluster10_1.pdb</a>
 
 Repeat this for each cluster. Once all files have been loaded, type in the PyMOL command window:
 
@@ -755,30 +760,43 @@ align cluster2_1, sele
 Repeat the align command for each cluster representative.
 </a>
 
-This will align all clusters on chain A (PRE5), maximizing the differences in the orientation of chain B (PUP2).
+This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains.
 
 <a class="prompt prompt-question">
-Examine the various clusters. How does the orientation of PUP2 differ between them?
+Examine the various clusters. Compare the orientation of each domain (C82,C34_wHTH1, C34_wHTH2 and C31). How does their orientation differ between the various clusters?
 </a>
 
 __Note:__ You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
 
+__Reminder:__ ChainA corresponds to PolIII-core, B to C82, C to C34_wHTH1, D to C34_wHTH2 and F to C31.
+
+
+<a class="prompt prompt-question">
+Which domain is the best defined over the various clusters?
+</a>
+
+<a class="prompt prompt-question">
+Which domain is the worst defined over the various clusters?
+</a>
+
 Let's now check if the solutions actually fit the cross-links we defined.
 Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
-ranking cluster `cluster1_1.pdb` for scenario 1.
+ranking cluster `cluster10_1.pdb.
+
+Let's start with looking at the cross-links defining the position of the C82 domain.
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
 show cartoon<br>
 util.cbc<br>
 hide lines<br>
-distance d1-23A, chain A and resid 27 and name CA, chain B and resid 18 and name CA<br>
-distance d2-23A, chain A and resid 122 and name CA, chain B and resid 125 and name CA<br>
-distance d3-23A, chain A and resid 122 and name CA, chain B and resid 128 and name CA<br>
-distance d4-23A, chain A and resid 122 and name CA, chain B and resid 127 and name CA<br>
-distance d5-26A, chain A and resid 55 and name CA, chain B and resid 169 and name CA<br>
-distance d6-26A, chain A and resid 55 and name CA, chain B and resid 179 and name CA<br>
-distance d7-26A, chain A and resid 54 and name CA, chain B and resid 179 and name CA<br>
+distance d1-30A, chain A and resid 27 and name CA, chain B and resid 18 and name CA<br>
+distance d2-30A, chain A and resid 122 and name CA, chain B and resid 125 and name CA<br>
+distance d3-30A, chain A and resid 122 and name CA, chain B and resid 128 and name CA<br>
+distance d4-30A, chain A and resid 122 and name CA, chain B and resid 127 and name CA<br>
+distance d5-30A, chain A and resid 55 and name CA, chain B and resid 169 and name CA<br>
+distance d6-30A, chain A and resid 55 and name CA, chain B and resid 179 and name CA<br>
+distance d7-30A, chain A and resid 54 and name CA, chain B and resid 179 and name CA<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
@@ -807,24 +825,6 @@ surface of the molecule which might results in a longer effective distance. A pr
 calculating the surface distance instead. Such an analysis can be done with the [XWalk sofware][link-xwalk].
 
 
-We can also visualize the interface residues identified from the DisVis interaction analysis.
-For this type in the PyMOL command window:
-
-<a class="prompt prompt-pymol">
-color orange, chain A and resid 7+10+13+15+55+58+60+82+83+125+126+127+128+129+131+133<br>
-color pink, chain B and resid 1+2+3+5+8+11+13+15+16+17+114+121+122+123+124+140+152+154+177<br>
-</a>
-
-For better visualization turn on the surface representation:
-
-<a class="prompt prompt-pymol">
-show surface<br>
-</a>
-
-<a class="prompt prompt-question">
-Are all predicted interface residues from DisVis forming contacts?
-</a>
-
 <details style="background-color:#DAE4E7">
 <summary>See solution:
 </summary>
@@ -832,43 +832,11 @@ Are all predicted interface residues from DisVis forming contacts?
   <img src="/education/HADDOCK24/HADDOCK24-Xlinks/cluster1-crosslinks-surface.png">
 </figure>
 <br>
-While the model is mostly satisfying the defined distance restraints, many residues identified as potential interface
-by DisVis are not forming contacts.
-</details>
 
-<br>
-<a class="prompt prompt-info">
-Now repeat this analysis for the top ranking model of scenario 2 and 3.
-</a>
 
 <a class="prompt prompt-question">
 Is the model satisfying the cross-link restraints?
 </a>
-<a class="prompt prompt-question">
-Are all predicted interface residues from DisVis forming contacts?
-</a>
-
-<details style="background-color:#DAE4E7">
-<summary>See solution for scenario 2:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/cluster10-interface-surface.png">
-</figure>
-<br>
-In this model some cross-links are severely violated with distances > 40Å. But the putative interface residues are
-mostly forming contacts.
-</details>
-<br>
-<details style="background-color:#DAE4E7">
-<summary>See solution for scenario 3:
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-Xlinks/cluster1-crosslinks-interface-surface.png">
-</figure>
-<br>
-This model nicely satisfies both the cross-links and the predicted interface residues from the DisVis interaction
-analysis.
-</details>
 
 
 <hr>
