@@ -1026,7 +1026,7 @@ This generate a 9Å map from the PDB model we uploaded with ID #3.
 The next command then performs the fit of this map onto the experimental cryo-EM map:
 
 <a class="prompt prompt-pymol">
-fitmap #1 #3 search 100
+fitmap #1 #3 search 100<br>
 close #3
 </a>
 
@@ -1041,20 +1041,15 @@ In case you upload multiple models simultaneously, make sure to use the correct 
 ## Conclusions
 
 We have demonstrated the use of cross-linking data from mass spectrometry for guiding the docking process in HADDOCK.
-Because of the rather low precision of the detected cross-links (meaning here their rather large distance range),
-using them alone to guide docking in HADDOCK might not be the best scenario.
+The results show that it is not straight-forward to satisty all cross-links, even when false positives are first identified with DisVis.
+Even in the original work of [Kerber et al. 2016](https://www.nature.com/articles/nmeth.3838) from which the cross-links were taken, many 
+cross-links remained violated. See for example check Suppl Table 5 in  the corresponding [supplementary material])https://media.nature.com/original/nature-assets/nmeth/journal/v13/n6/extref/nmeth.3838-S1.pdf). The cross-linking experiments might have captured transient or non-native interactions.
 
-Additional information on the putative interfaces can be extracted by performing an interaction analysis in our [DisVis web portal][link-disvis].
-By performing an exhaustive search of all geometrically feasible complexes consistent with the cross-linking data, DisVis can
-extract key interacting residues. This is additional information that might be beneficial to guide the docking as demonstrated here.
-
-We should also note that the modeling was done from models of PRE5 and PUP2, with their limitations.
-If better, higher accuracy structures are available the results might well be different. Still, from this analysis, the recommended scenario
-for docking using our HADDOCK software would be the combination of distance restraints representing the cross-links with interface information
-extracted from the DisVis interaction analysis.
+Further our modelling here was based on homology models, which brings another level of complexity. Also clearly some domains show much
+more variability in their position (e.g. C34_wHTH1), which might explain why they are not see in the cryo-EM density.
 
 
-<hr>
+<hr><hr>
 ## Congratulations!
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to
