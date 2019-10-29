@@ -1034,6 +1034,7 @@ When the fit completes, a window will appear showing the fit results in terms of
 Note the value for the cluster you selected.
 
 You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
+In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
 
 
 <hr><hr>
