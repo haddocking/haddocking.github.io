@@ -951,9 +951,92 @@ If not, which ones are not satistified?
 <hr><hr>
 ## Fitting the docking models into low resolution cryo-EM maps
 
-TODO
+We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
+For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
 
-<hr>
+For this open the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory) and the PDB file of the cluster you want to fit.
+
+<a class="prompt prompt-info">
+  UCSF Chimera Menu → File → Open... → Select the file
+</a>
+
+Repeat this for each file. Chimera will automatically guess their type.
+
+
+If you want to use the Chimera command-line instead, you need to first display it:
+
+<a class="prompt prompt-info">
+  UCSF Chimera Menu → Favorites → Command Line
+</a>
+
+and type:
+
+<a class="prompt prompt-pymol">
+  open /path/to/PolIII_9A.mrc
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/clusterX_1.pdb
+</a>
+
+
+In the `Volume Viewer` window, the middle slide bar provides control on the
+value at which the isosurface of the density is shown. At high values, the
+envelope will shrink while lower values might even display the noise in the map.
+In the same window, you can click on `Center` to center the view on all visible molecules and the density.
+
+We will first make the density transparent, in order to be able to see the fitted structure inside:
+
+<a class="prompt prompt-info">
+  Within the Volume Viewer window click on the gray box next to Color
+</a>
+
+This opens the`Color Editor` window.
+
+<a class="prompt prompt-info">
+Check the Opacity box.
+</a>
+
+An extra slider bar appears in the box called A, for the alpha channel.
+
+<a class="prompt prompt-info">
+Set the alpha channel value to around 0.6.
+</a>
+
+
+In order to perform the fit, we will use the Command Line more:
+
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Favorites → Command Line
+</a>
+
+Also open the Model Panel to know the ID of the various files within Chimera:
+
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Favorites → Model Panel
+</a>
+
+Note the number of the cluster model you upload and of the cryo-EM map (e.g. if you loaded first the PDB file, it must have model #0 and the map is #1).
+Then, in the Command Line interface type:
+
+<a class="prompt prompt-pymol">
+molmap #0 9 modelId 3    
+</a>
+
+This generate a 9Å map from the PDB model we uploaded with ID #3.
+The next command then performs the fit of this map onto the experimental cryo-EM map:
+
+<a class="prompt prompt-pymol">
+fitmap #1 #3 search 100
+close #3
+</a>
+
+When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
+Note the value for the cluster you selected.
+
+You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
+
+
+<hr><hr>
 ## Conclusions
 
 We have demonstrated the use of cross-linking data from mass spectrometry for guiding the docking process in HADDOCK.
@@ -978,6 +1061,7 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 [<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
 [link-cns]: http://cns-online.org "CNS online"
+[link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
 [link-disvis-web]: http://haddock.science.uu.nl/services/DISVIS/ "DisVis web server"
