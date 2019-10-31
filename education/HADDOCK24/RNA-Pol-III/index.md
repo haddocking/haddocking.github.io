@@ -58,7 +58,7 @@ In order to follow this tutorial you only need a **web browser**, a **text edito
 (freely available for most operating systems) on your computer in order to visualize the input and output data. 
 We will however also be describing the use of our PBD-tools to pre-process PDB files for HADDOCK. This part will require access to a Linux command shell.
 It is however to required to complete the tutorial as pre-processed, ready to dock models are provided as part of the material for this tutorial. 
-The required data to run this tutorial should be downloaded from [**here**][link-data]{:target="_blank"}.
+The required data to run this tutorial should be downloaded from [**here**](/education/HADDOCK24/RNA-Pol-III/RNA-Pol-III.tgz){:target="_blank"}.
 Once downloaded, make sure to unpack/unzip the archive.
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://nestor.science.uu.nl/auth/register/haddock](https://nestor.science.uu.nl/auth/register/haddock).
@@ -1139,7 +1139,6 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 
 [link-cns]: http://cns-online.org "CNS online"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
-[link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
 [link-disvis-web]: http://haddock.science.uu.nl/services/DISVIS/ "DisVis web server"
 [link-disvis-submit]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/submit "DisVis submission"
