@@ -1125,7 +1125,7 @@ more variability in their position (e.g. C34_wHTH1), which might explain why the
 
 1) Instead of using the dummy Lysines residues for C31, you could repeat the docking using the full C31 iTasser model and compare the results.
 Compare in particular the position of the various domains and the retraint energy indicating how well the cross-links are satistified. 
-We have already performed such a run the results are accessible [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31model){:target="_blank"}.
+We have already performed such a run the results are accessible [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/Pol-III-core-C82-C34-C31model){:target="_blank"}.
 
 2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. Repeat the docking and check if this affects the position of the various domains.
 
