@@ -17,7 +17,7 @@ This tutorial consists of the following sections:
 ## Introduction
 
 This tutorial will demonstrate the use of DISVIS and HADDOCK for predicting the structure of a large biomolecular assembly from MS cross-linking data.
-The case we will be investigating is the apo form of the RNA Polymerase-III (Pol-III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits. D
+The case we will be investigating is the apo form of the Saccharomyces Cerevisiae RNA Polymerase-III (Pol-III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits. D
 <ul>
 <figure align="center">
   <img src="/education/HADDOCK24/RNA-Pol-III/Pol-III-architecture.png">
@@ -141,6 +141,8 @@ Let us first inspect the available data, namely the various structures (or homol
 the information from MS we have at hand to guide the docking. After unpacking the archive provided for this tutorial (see [Setup](#setuprequirements) above),
 you should see a directory called RNA-Pol-III with the following subdirectories in it:
 
+  * __cryo-EM__: This directory contains a 9Å cryo-EM map of the RNA Pol-III
+  
   * __disvis__: This directory contains text files called `xlinks-all-X-Y.txt` describing the cross-links between the various domains (X and Y).
 These files are in the format required to run DISVIS.
 
@@ -152,11 +154,14 @@ These files are in the format required to run DISVIS.
     * `C_C34_wHTH1-2DK8A.pdb`: The first helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain C)
     * `D_C34_wHTH2-2DK8A.pdb`: The second helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain D)
     * `E_C34_wHTH3-1KDDA.pdb`: The third helix-turn-helix domain of C34, homology modelled on PDB entry 1KDD-chainA (named as chain E)
-    * `D_C31_model.pdb`: A de novo model from I-TASSER, conformation very uncertain (named as chain F)
- 	
+    * `D_C31_model.pdb`: A de novo model from I-TASSER, conformation very uncertain (named as chain F)    
+    * `C31_LYS91_F.pdb`: Lysine 91 from C31 (named as chain F) - for use instead of the iTasser model
+    * `C31_LYS111_G.pdb`: Lysine 111 from C31 (named as chain G) - for use instead of the iTasser model
+
   * __restraints__:
     * `xlink-all-inter.tbl`: This file contains all cross-links between the various domains (using the full C31 model)
     * `xlink-all-inter-disvis-filtered.tbl`: This file contains the disvis-filtered cross-links between the various domains (using the full C31 model)
+    * `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl`: This file contains the disvis-filtered cross-links between the various domains (using the C31 single Lysines as dummies)
 
 From MS, we have experimentally determined cross-links between the various domains. We have only kept  here  the inter-domain cross-links relevant for  this tutorial.
 The cross-links are taken from ([Kerber et al. 2016](https://www.nature.com/articles/nmeth.3838). These are the files present in the `disvis` directory. As an example here
@@ -445,8 +450,9 @@ The correspondong pre-generated CNS/HADDOCK formatted restraints files are provi
 
   * `xlinks-all-inter.tbl`
   * `xlinks-all-inter-disvis-filtered.tbl`
-
-Inspect the `xlinks-all-inter.tbl` file (open it as a text file)
+  * `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl` (for use with the dummy Lysines of C31)
+  
+Inspect the `xlinks-all-inter-disvis-filtered.tbl` file (open it as a text file)
 
 <a class="prompt prompt-question">
 We used CB atoms to define the restraints in the disvis restraint file. Can you find those is this file?
@@ -459,7 +465,7 @@ Additional atoms are included in the distance restraints definitions: SC* . Thes
 </details>
 <br>
 
-In the restraints directory provided, there is one additional restraint file provided: `C34-connectivity.tbl`.
+In the restraints directory provided, there are additional restraint file provided, e.g.: `C34-connectivity.tbl`.
 Inspect its content.
 
 <a class="prompt prompt-question">
@@ -473,13 +479,32 @@ The defined restraints impose upper limits to the distance between the C- and N-
 </details>
 <br>
 
+_Note_: You should notice that the restraints are duplicated (actually 4 times). This is a way to tell HADDOCK to give more weight to those restraints.
+
 
 
 <hr><hr>
 ## Setting up the docking with cross-links
 
 We only have cross-links for two of the three domains of C34. Will will therefore not include C34_wHTH3 into the modelling.
-We will therefore be setting up a five-body docking using the PolIII-core, C82, C34_wHTH1, C34_wHTH2 and C31 structures/models.
+Further we have the choice to trust or not the C31 iTasser model. Docking with unreliable models might do more harm than good.
+But excluding completely C31 would mean loosing quite some information from the cross-links it forms with the other domains.
+
+
+An alternative solution is to include only the separate Lysine residues to which cross-links are defined. In this case there
+are two lysine with multiple cross-links each: Lys91 and Lys111. Instead of using the full C31 model we can include those two Lysines,
+each being defined as a separate molecule.
+
+We will therefore be setting up a sic-body docking using the PolIII-core, C82, C34_wHTH1, C34_wHTH2 and C31-Lys91 and C31-Lys111 structures/models:
+
+* 1st molecule - chainA: PolIII-core
+* 2nd molecule - chainB: C82 homology model
+* 3rd molecule - chainC: C34 wHTH1 domain homology model
+* 4th molecule - chainD: C34 wHTH2 domain homology model
+* 5th molecule - chainF: C31 Lys91
+* 6th molecule - chainG: C31 Lys111
+
+_Note_: ChainE is reserved for the 3rd C34 wHTH domain (not used here since no cross-links defining its position).
 
 
 <hr>
@@ -498,7 +523,7 @@ We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddo
 
 * **Step 1:** Define a name for your docking run, e.g. *RNA-Pol-III-xlinks*.
 
-* **Step 2:** Define the number of components, i.e. *5*.
+* **Step 2:** Define the number of components, i.e. *6*.
 
 * **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 input menu**.
 
@@ -549,42 +574,53 @@ Segment ID to use during docking -> D
 * **Step 7:** Input the fifth protein PDB files.
 
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *B_C82-2XUBA.pdb*
+PDB structure to submit -> Browse and select *F_C31_LYS91.pdb*
 </a>
 <a class="prompt prompt-info">
 Segment ID to use during docking -> F
 </a>
 
-===> _Make sure to change the Segmend ID to F otherwise the restraints for C31 won't be used!_ <===
+===> _Make sure to change the Segmend ID to F otherwise the restraints for C31-Lys91 won't be used!_ <===
 
-* **Step 8:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 8:** Input the sixth protein PDB files.
+
+<a class="prompt prompt-info">
+PDB structure to submit -> Browse and select *G_C31_LYS111.pdb*
+</a>
+<a class="prompt prompt-info">
+Segment ID to use during docking -> G
+</a>
+
+===> _Make sure to change the Segmend ID to G otherwise the restraints for C31-Lys111 won't be used!_ <===
+
+* **Step 9:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 #### Definition of restraints
 
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2.
 
-* **Step 9:** Instead of specifying active and passive residues, we will supply restraint files to HADDOCK. 
+* **Step 10:** Instead of specifying active and passive residues, we will supply restraint files to HADDOCK. 
 No further action is required in this page, so click on the "Next" button at the bottom of the **Input parameters** window, 
 which proceeds to the  **Distance Restraint menu**  menu of the **Docking Parameters** window.
 
-* **Step 10:** Upload the cross-link restraints file to the ambiguous restraints category
+* **Step 11:** Upload the cross-link restraints file to the ambiguous restraints category
 
 <a class="prompt prompt-info">
-Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Browse and select *xlinks-all-inter-disvis-filtered.tbl*
+Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Browse and select *xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl*
 </a>
 
 **Note:** Although the name points to ambiguous restraints, any type of distance restraints can be uploaded here. The only thing to remember
           is that by default 50% of the ambiguous restraints will be randomly discarded for each docking model generated. This option can be
           turned off -something we will do below since we have a limited amount of cross-links and already checked them with DisVis.
 
-* **Step 11:** Upload the C34 connectivity restraints file to the unambiguous restraints category
+* **Step 12:** Upload the C31+C34 connectivity restraints file to the unambiguous restraints category
 
 <a class="prompt prompt-info">
-You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Browse and select *C34-connectivity.tbl*
+You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Browse and select *C31-C34-connectivities.tbl*
 </a>
 
-* **Step 12:** Turn off random removal of restraints
+* **Step 13:** Turn off random removal of restraints
 
 <a class="prompt prompt-info">
 Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
@@ -594,30 +630,17 @@ Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
 
 In  the same page as where restraints are provided you can modify a large number of docking settings.
 
-* **Step 11:** Unfold the **sampling parameters menu.
+* **Step 14:** Unfold the **sampling parameters menu.
 
-Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits it is recommended to increase the sampling, e.g. to 10000/400/400 (at the cost of longer computations). For this tutorial we will keep the default settings. 
+Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits it is recommended to increase the sampling, e.g. to 10000/400/400 (at the cost of longer computations). For this tutorial we might use 2000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
+
+
 When docking only with  interface information (i.e. no specific distances), we systematically sampling the 180 degrees rotated solutions for each interface, mimimizing the rotated solution and keeping the best of the two in terms of HADDOCK score. Since here we are using rather specific distance restraints, we can turn off this option to save time.
 
 <a class="prompt prompt-info">
 Sample 180 degrees rotated solutions during rigid body EM -> turn off
 </a>
 
-
-* **Step 12:** Unfold the **clustering parameters** menu. 
-
-Cluster of multibody assemblies is non trivial. We are using here the default clustering based on the fraction of common contacts between subunits.
-To make the clustering more sensitive to the many interfaces we will increase the cutoff to 75%.
-
-<a class="prompt prompt-info">
-RMSD Cutoff for clustering (recommended: 7.5A for RMSD, 0.60 for FCC)   (AIRs) -> 0.75
-</a>
-
-And we will also reduce the minimum cluster size to 20
-
-<a class="prompt prompt-info">
-Minimum cluster size -> 2
-</a>
 
 We are now ready to submit the docking run.
 
@@ -642,7 +665,7 @@ This file contains all parameters and input data of your run, including the uplo
 Can you locate the distance restraints in this file?
 </a>
 
-* **Step 13:** Click on the "Submit" button at the bottom left of the interface.
+* **Step 15:** Click on the "Submit" button at the bottom left of the interface.
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
@@ -665,10 +688,8 @@ representation of the data (and if registered, you will also be notified by emai
 provided to you, the number of models generated will have been decreased to allow the runs to complete within a
 reasonable amount of time. Because of that, the results might not be very good.
 
-We already pre-calculated full docking runs (meaning that the default number of models has been generated: 1000 for
-rigid-body docking and 200 for semi-flexible and water refinement). The full run can be accessed at:
-
-[https://wenmr.science.uu.nl/haddock2.4/run/4242424242/PRE5-PUP2-MS-crosslinks](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/PRE5-PUP2-MS-crosslinks)
+We have already performed a full docking runs (with 2000/400/400 models generate for the
+rigid-body docking, semi-flexible and water refinement stage). The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}.
 
 
 <figure align="center">
@@ -682,18 +703,25 @@ rigid-body docking and 200 for semi-flexible and water refinement). The full run
 
 __Note:__ The bottom of the page gives you some graphical representations of the results, showing the distribution of
 the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the RMSD from the best
-generated model (the best scoring model). The plots are interactive and you can zoom into selected areas. You also turn on and off
-specific clusters.
+generated model (the best scoring model). The plots are interactive and you can zoom into selected areas, move the graph, select specific points, all of it by clicking on the icons on the top of each graph. You can also turn on and off specific clusters.
 
+<details style="background-color:#DAE4E7"><summary><b>See graphical analysis view:</b>
+</summary>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/graphical-analysis.png">
 <p> <i>Graphical view of the docking results</i></p>
 </figure>
+</details>
+<br>
 
+<details style="background-color:#DAE4E7"><summary><b>See cluster analysis view:</b>
+</summary>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/cluster-analysis.png">
 <p> <i>HADDOCK score components distributions per cluster</i></p>
 </figure>
+</details>
+<br>
 
 You can also quickly visualize a specific structure by clicking on the "eye" icon next to a structure.
 While in the “eye” mode, you can use the middle mouse to zoom in/out.
@@ -701,7 +729,6 @@ While in the “eye” mode, you can use the middle mouse to zoom in/out.
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/online-visualisation.png">
 </figure>
-
 
 
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated
@@ -778,14 +805,30 @@ Click on the A button next to it -> align -> all to this (*/CA).
 
 This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains.
 
+To facilitate viewing the single Lysines of C31, change their representation to sphere:
+
+<a class="prompt prompt-pymol">
+show spheres, chain F+G
+</a>
+
 <a class="prompt prompt-question">
-Examine the various clusters. Compare the orientation of each domain (C82,C34_wHTH1, C34_wHTH2 and C31). How does their orientation differ between the various clusters?
+Examine the various clusters. Compare the orientation of each domain (C82,C34_wHTH1, C34_wHTH2, C31-Lys91 and C31-Lys111). 
+How does their orientation differ between the various clusters?
 </a>
 
 __Note:__ You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
 
-__Reminder:__ ChainA corresponds to PolIII-core, B to C82, C to C34_wHTH1, D to C34_wHTH2 and F to C31.
+__Reminder:__ ChainA corresponds to PolIII-core, B to C82, C to C34_wHTH1, D to C34_wHTH2, F to C31-Lys91 and G to C31-Lys111.
 
+<details style="background-color:#DAE4E7"><summary><b>See PyMol view:</b>
+</summary>
+<figure align="center">
+<img src="/education/HADDOCK24/RNA-Pol-III/clusters-pymol.png">
+<p> <i>PyMol view of the various clusters, superimposed on PolIII core</i></p>
+</figure>
+</details>
+<br>
+<br>
 
 <a class="prompt prompt-question">
 Which domain is the best defined over the various clusters?
@@ -793,6 +836,10 @@ Which domain is the best defined over the various clusters?
 
 <a class="prompt prompt-question">
 Which domain is the worst defined over the various clusters?
+</a>
+
+<a class="prompt prompt-question">
+Based on the C31 Lysines positions, can you identify the most likely position of C31?
 </a>
 
 ### Satisfaction of cross-link restraints
@@ -818,7 +865,7 @@ distance C82-d06-30A, chain B and resid 520 and name CB, chain D and resid  141 
 distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
 distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
 distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
-distance C82-d10-30A, chain B and resid 612 and name CB, chain F and resid  111 and name CB<br>
+distance C82-d10-30A, chain B and resid 612 and name CB, chain G and resid  111 and name CB<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
@@ -838,7 +885,7 @@ If not, which ones are not satistified?
 
 __Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
 surface of the molecule which might results in a longer effective distance. A proper comparison would required
-calculating the surface distance instead. Such an analysis can be done with the [XWalk sofware][link-xwalk].
+calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](http://jwalk.ismb.lon.ac.uk/jwalk/) software.
 
 #### Analysing the cross-links defining the position of the C34_wHTH1 domain
 
@@ -889,7 +936,7 @@ distance C34-2-d04-30A, chain D and resid 123 and name CB, chain A and resid 539
 distance C34-2-d05-30A, chain D and resid 123 and name CB, chain C and resid   62 and name CB<br>
 distance C34-2-d06-30A, chain D and resid 123 and name CB, chain C and resid   65 and name CB<br>
 distance C34-2-d07-30A, chain D and resid 126 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d08-30A, chain D and resid 126 and name CB, chain F and resid  196 and name CB<br>
+distance C34-2-d08-30A, chain D and resid 126 and name CB, chain I and resid  196 and name CB<br>
 distance C34-2-d09-30A, chain D and resid 135 and name CB, chain C and resid   65 and name CB<br>
 distance C34-2-d10-30A, chain D and resid 135 and name CB, chain D and resid  520 and name CB<br>
 distance C34-2-d11-30A, chain D and resid 138 and name CB, chain D and resid  520 and name CB<br>
@@ -921,18 +968,18 @@ In the PyMOL command window type:
 <a class="prompt prompt-pymol">
 distance C31-d01-30A, chain F and resid  57 and name CB, chain B and resid  612 and name CB<br>
 distance C31-d02-30A, chain F and resid  66 and name CB, chain B and resid  604 and name CB<br>
-distance C31-d03-30A,  chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d04-30A,  chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
-distance C31-d06-30A,  chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
-distance C31-d07-30A,  chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
-distance C31-d08-30A,  chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
-distance C31-d09-30A,  chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
+distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
+distance C31-d06-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
+distance C31-d07-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
+distance C31-d08-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
+distance C31-d09-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
 distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
-distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d12-30A,  chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
-distance C31-d13-30A,  chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d14-30A,  chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
-distance C31-d15-30A, chain F and resid 196 and name CB, chain D and resid  126 and name CB<br>
+distance C31-d11-30A, chain G and resid 111 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d12-30A, chain G and resid 111 and name CB, chain A and resid 3514 and name CB<br>
+distance C31-d13-30A, chain G and resid 111 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d14-30A, chain H and resid 179 and name CB, chain A and resid  143 and name CB<br>
+distance C31-d15-30A, chain I and resid 196 and name CB, chain D and resid  126 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1002,6 +1049,12 @@ An extra slider bar appears in the box called A, for the alpha channel.
 Set the alpha channel value to around 0.6.
 </a>
 
+In order to distinguish the various chains we can color the structure by chain. For this:
+<a class="prompt prompt-info">
+Chimera menu -> Tools -> Depiction -> Rainbow
+Select the option to color by chain and click the Apply button
+</a>
+
 
 In order to perform the fit, we will use the Command Line more:
 
@@ -1033,6 +1086,25 @@ close #3
 When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
 Note the value for the cluster you selected.
 
+You also try to improve further the fit:
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
+</a>
+
+<a class="prompt prompt-info">
+Click the Options button
+</a>
+<a class="prompt prompt-info">
+Select the Use map simulated from atoms and set the Resolution to 9
+</a>
+<a class="prompt prompt-info">
+Click on Update and not the correlation value
+</a>
+<a class="prompt prompt-info">
+Click on Fit and check if the correlation does improve
+</a>
+
+
 You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
 In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
 
@@ -1042,11 +1114,19 @@ In case you upload multiple models simultaneously, make sure to use the correct 
 
 We have demonstrated the use of cross-linking data from mass spectrometry for guiding the docking process in HADDOCK.
 The results show that it is not straight-forward to satisty all cross-links, even when false positives are first identified with DisVis.
-Even in the original work of [Kerber et al. 2016](https://www.nature.com/articles/nmeth.3838) from which the cross-links were taken, many 
-cross-links remained violated. See for example check Suppl Table 5 in  the corresponding [supplementary material])https://media.nature.com/original/nature-assets/nmeth/journal/v13/n6/extref/nmeth.3838-S1.pdf). The cross-linking experiments might have captured transient or non-native interactions.
+Even in the original work of [Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838) from which the cross-links were taken, many 
+cross-links remained violated. See for example check Suppl Table 5 in  the corresponding [supplementary material](https://media.nature.com/original/nature-assets/nmeth/journal/v13/n6/extref/nmeth.3838-S1.pdf). The cross-linking experiments might have captured transient or non-native interactions.
 
 Further our modelling here was based on homology models, which brings another level of complexity. Also clearly some domains show much
 more variability in their position (e.g. C34_wHTH1), which might explain why they are not see in the cryo-EM density.
+
+<hr><hr>
+## Alternative runs
+
+1) Instead of using the dummy Lysines residues for C31, you could repeat the docking using the full C31 iTasser model and compare the results.
+Compare in particular the position of the various domains and the retraint energy indicating how well the cross-links are satistified.
+
+2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. Repeat the docking and check if this affects the position of the various domains.
 
 
 <hr><hr>
