@@ -1118,7 +1118,7 @@ Even in the original work of [Ferber et al. 2016](https://www.nature.com/article
 cross-links remained violated. See for example check Suppl Table 5 in  the corresponding [supplementary material](https://media.nature.com/original/nature-assets/nmeth/journal/v13/n6/extref/nmeth.3838-S1.pdf){:target="_blank"} . The cross-linking experiments might have captured transient or non-native interactions.
 
 Further our modelling here was based on homology models, which brings another level of complexity. Also clearly some domains show much
-more variability in their position (e.g. C34_wHTH1), which might explain why they are not see in the cryo-EM density.
+more variability in their position (e.g. C34_wHTH1), which might explain why they are not seen in the cryo-EM density.
 
 <hr><hr>
 ## Alternative runs
