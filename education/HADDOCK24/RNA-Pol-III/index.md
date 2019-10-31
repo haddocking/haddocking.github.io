@@ -411,7 +411,7 @@ B322(CB)-F179(CB)
 
 Before setting up the docking we need first to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
+be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -512,14 +512,14 @@ _Note_: ChainE is reserved for the 3rd C34 wHTH domain (not used here since no c
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://nestor.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://nestor.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 If running this tutorial in the context of a course/workshop, you will be provided with course credentials.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
 #### Submission and validation of structures
 
-We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server.
+We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 * **Step 1:** Define a name for your docking run, e.g. *RNA-Pol-III-xlinks*.
 
@@ -593,7 +593,7 @@ Segment ID to use during docking -> G
 
 ===> _Make sure to change the Segmend ID to G otherwise the restraints for C31-Lys111 won't be used!_ <===
 
-* **Step 9:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 9:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 #### Definition of restraints
@@ -644,7 +644,7 @@ Sample 180 degrees rotated solutions during rigid body EM -> turn off
 
 We are now ready to submit the docking run.
 
-The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 <pre>
 {
@@ -885,7 +885,7 @@ If not, which ones are not satistified?
 
 __Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
 surface of the molecule which might results in a longer effective distance. A proper comparison would required
-calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](http://jwalk.ismb.lon.ac.uk/jwalk/) software.
+calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](http://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"}  software.
 
 #### Analysing the cross-links defining the position of the C34_wHTH1 domain
 
@@ -1114,8 +1114,8 @@ In case you upload multiple models simultaneously, make sure to use the correct 
 
 We have demonstrated the use of cross-linking data from mass spectrometry for guiding the docking process in HADDOCK.
 The results show that it is not straight-forward to satisty all cross-links, even when false positives are first identified with DisVis.
-Even in the original work of [Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838) from which the cross-links were taken, many 
-cross-links remained violated. See for example check Suppl Table 5 in  the corresponding [supplementary material](https://media.nature.com/original/nature-assets/nmeth/journal/v13/n6/extref/nmeth.3838-S1.pdf). The cross-linking experiments might have captured transient or non-native interactions.
+Even in the original work of [Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838){:target="_blank"}  from which the cross-links were taken, many 
+cross-links remained violated. See for example check Suppl Table 5 in  the corresponding [supplementary material](https://media.nature.com/original/nature-assets/nmeth/journal/v13/n6/extref/nmeth.3838-S1.pdf){:target="_blank"} . The cross-linking experiments might have captured transient or non-native interactions.
 
 Further our modelling here was based on homology models, which brings another level of complexity. Also clearly some domains show much
 more variability in their position (e.g. C34_wHTH1), which might explain why they are not see in the cryo-EM density.
@@ -1124,7 +1124,8 @@ more variability in their position (e.g. C34_wHTH1), which might explain why the
 ## Alternative runs
 
 1) Instead of using the dummy Lysines residues for C31, you could repeat the docking using the full C31 iTasser model and compare the results.
-Compare in particular the position of the various domains and the retraint energy indicating how well the cross-links are satistified.
+Compare in particular the position of the various domains and the retraint energy indicating how well the cross-links are satistified. 
+We have already performed such a run the results are accessible [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31model){:target="_blank"}.
 
 2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. Repeat the docking and check if this affects the position of the various domains.
 
