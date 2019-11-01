@@ -452,7 +452,7 @@ file provided with the data for this tutorial by giving the following command (o
 cat xlinks-all-inter-disvis-filtered.disvis| awk '{if (NF == 8) {print "assi (segid ",$1," and resid ",$2," and name ",$3,") (segid ",$4," and resid ",$5," and name ",$6,") ",$8,$8,$7}}' > xlinks-all-inter-disvis-filtered.tbl
 </a>
 
-The correspondong pre-generated CNS/HADDOCK formatted restraints files are provided in the `haddock` directory as:
+The correspondong pre-generated CNS/HADDOCK formatted restraints files are provided in the `restraints` directory as:
 
   * `xlinks-all-inter.tbl`
   * `xlinks-all-inter-disvis-filtered.tbl`
@@ -761,7 +761,7 @@ You can also download all cluster files (best X of the top 10 cluster(s)).
 
 Start PyMOL and load each cluster representative (`clusterX_1.pdb`):
 
-<a class="prompt prompt-pymol">File menu -> Open -> select cluster10_1.pdb</a>
+<a class="prompt prompt-pymol">File menu -> Open -> select cluster12_1.pdb</a>
 
 Repeat this for each cluster. 
 
