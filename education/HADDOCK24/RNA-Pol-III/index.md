@@ -1525,11 +1525,10 @@ Download the clustered models, and visualize them in PyMol as described above, l
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-<p>C34 wHTH1 (in pink) is the less defined domain. This also illustrate that clustering large assemblies is non-trivial. 
-e used here a 60% cutoff in the fraction of common contacts for clustering. Increasing the cutoff might help in discriminating better the different solutions.</p>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/PolIII-cryoEM-C34-C31.png">
 </figure>
+<p>C34 wHTH1 (in pink) is clearly the less defined domain</p>
 </details>
 <br>
 <br>
@@ -1552,11 +1551,10 @@ Finally, perform the fitting into the 9Å cryo-EM map as described above.
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.937). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 domains are found in regions of the map where unaccounted density appear when playing with the level at which the map is represented. As for C31 (see right panel in the figure below) it is positioned in a region of low density, probably indicating disorder.</p>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/strategy2-EMfit.png">
 </figure>
-<p></p>
+<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.937). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 domains are found in regions of the map where unaccounted density appear when playing with the level at which the map is represented. As for C31 (see right panel in the figure below) it is positioned in a region of low density, probably indicating disorder.</p>
 </details>
 <br>
 <br>
