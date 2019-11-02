@@ -1330,7 +1330,7 @@ Sample 180 degrees rotated solutions during rigid body EM -> off
 </a>
 
 
-* **Step 9:** Unfold the **sampling parameters** menu.
+* **Step 9:** Unfold the **advanced sampling parameters** menu.
 
 We will here turn off the first rigid body docking and semi-flexible refinement stages:
 <a class="prompt prompt-info">
@@ -1357,7 +1357,7 @@ Number of MD steps during third cooling stage with fully flexible interface -> 0
 
 We are now ready to submit the docking run.
 
-If you don't want to wait for your results, ability precalculated refinement run is available [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolII-core-C82-powerfit-chimera-refine){:target="_blank"}
+If you don't want to wait for your results, ability precalculated refinement run is available [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-refine){:target="_blank"}
 
 <a class="prompt prompt-question">
 Inspect the results page: Are the intermolecular energies favorable?
@@ -1482,7 +1482,7 @@ You can supply a HADDOCK restraints TBL file with restraints that will always be
 Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
 </a>
 
-* **Step 13:** Unfold the **sampling parameters menu.
+* **Step 13:** Unfold the **sampling parameters** menu.
 
 Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits it is recommended to increase the sampling, e.g. to 10000/400/400 (at the cost of longer computations). For this tutorial we might use 2000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
 
