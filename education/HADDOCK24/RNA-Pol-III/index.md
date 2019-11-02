@@ -1482,7 +1482,16 @@ You can supply a HADDOCK restraints TBL file with restraints that will always be
 Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
 </a>
 
-* **Step 13:** Unfold the **sampling parameters** menu.
+* **Step 13:** Unfold the **clustering parameters** menu.
+
+Since the largest interface between PolIII core and C82 is fixed, we can increase the clustering cutoff to 0.75 
+to better discriminate between various orientations of the smaller C34 and C31 domains.
+
+<a class="prompt prompt-info">
+RMSD Cutoff for clustering (recommended: 7.5A for RMSD, 0.60 for FCC) -> 0.75
+</a>
+
+* **Step 14:** Unfold the **sampling parameters** menu.
 
 Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits it is recommended to increase the sampling, e.g. to 10000/400/400 (at the cost of longer computations). For this tutorial we might use 2000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
 
@@ -1499,7 +1508,7 @@ We are now ready to submit the docking run!
 <hr>
 ### Analysis of the docking results
 
-Once you run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [link](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolII-core-C82-EMfit-C34-C31-xlinks){:target="_blank"}
+Once you run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [link](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-EMfit-C34-C31-xlinks){:target="_blank"}
 
 <a class="prompt prompt-info">
 Inspect the results page
@@ -1509,7 +1518,7 @@ Inspect the results page
 <a class="prompt prompt-question">How different are the clustering results compared to the cross-links only setup described in the first part of this tutorial?</a>
 
 <a class="prompt prompt-info">
-Download the clustered models, and visualize them in PyMol as described previously.
+Download the clustered models, and visualize them in PyMol as described above, loading the top model of each cluster in PyMol.
 </a>
 
 <a class="prompt prompt-question">Which domain is the least well defined?</a>
@@ -1534,7 +1543,7 @@ Now repeat the cross-links analysis in PyMol as described previsously.
 
 
 <a class="prompt prompt-info">
-Finally, perform the fitting into the 9Å cryo-EM map as described [above](#fittingthedockingmodelsintolowresolutioncryo-EMmaps).
+Finally, perform the fitting into the 9Å cryo-EM map as described above.
 </a>
 
 
@@ -1543,7 +1552,7 @@ Finally, perform the fitting into the 9Å cryo-EM map as described [above](#fitt
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.935). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 domains are found in regions of the map where unaccounted density appear when playing with the level at which the map is represented. As for C31 (see right panel in the figure below) it is positioned in a region of low density, probably indicating disorder.</p>
+<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.937). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 domains are found in regions of the map where unaccounted density appear when playing with the level at which the map is represented. As for C31 (see right panel in the figure below) it is positioned in a region of low density, probably indicating disorder.</p>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III/strategy2-EMfit.png">
 </figure>
