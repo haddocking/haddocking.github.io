@@ -243,12 +243,14 @@ To run DisVis, go to
 
 On this page, you will find the most relevant information about the server, as well as the links to the local and grid versions of the portal's submission page.
 
-#### Step1: Register to the server
+#### Step1: Register to the server (if needed) or login
 
 [Register][link-disvis-register]{:target="_blank"} for getting access to the web server (or use the credentials provided in case of a workshop).
 
 You can click on the "**Register**" menu from any DisVis page and fill the required information.
 Registration is not automatic but is usually processed within 12h, so be patient.
+
+If you already have credential, simply login in the upper right corner of the [disvis input form][link-disvis-submit]{:target="_blank"}
 
 
 #### Step2: Define the input files and parameters and submit
@@ -297,7 +299,7 @@ This number can of course be changed when using the local version of DisVis.
 Once your job has completed, and provided that you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification).
 
-If you don't want to wait for your run to complete, you can access the pre-calculated results [here](https://bianca.science.uu.nl/disvis/run/few_3AOlFUSu){:target="_blank"}.
+If you don't want to wait for your run to complete, you can access the pre-calculated results [here](https://bianca.science.uu.nl/disvis/tutorial/3){:target="_blank"}.
 
 The results page presents a summary split into several sections:
 
@@ -350,12 +352,10 @@ You will find in the archive the following files:
 * `accessible_complexes.out`: A text file containing the number of complexes consistent with a number of restraints.
 * `accessible_interaction_space.mrc`: A density file in MRC format. The density represents the space where the center of mass of the
 scanning chain can be placed while satisfying the consistent restraints.
-* `disvis.log`: A log file showing all the parameters used, together with date and time indications.
 * `violations.out`: A text file showing how often a specific restraint is violated for each number of consistent restraints.
 * `z-score.out`: A text file giving the z-score for each restraint. The higher the score, the more likely the restraint
 is a false positive.
 * `run_parameters.json`: A text file containing the parameters of your run.
-* `result.html`: A reduced version of the results page for viewing the results offline or after the data is deleted from our servers.
 
 _Note_: Results for the different pair combinations are available from the tutorial data directory in the `disvis` directory as `disvis-results-X-Y`.
 
@@ -413,7 +413,7 @@ B322(CB)-F179(CB)
 
 Before setting up the docking, we need to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as its computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
+be found in our [Nature Protocols](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
