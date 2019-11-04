@@ -1585,7 +1585,11 @@ In that case you should setup a six-body docking run using:
 
 and as restraint files: `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl` for the cross-links and `C31-C34-connectivities.tbl` as connectivity restraints.
 
-The results of such a run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}
+The results of such a run using exclusively cross-links (strategy 1) can be accessed 
+[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}
+
+The results of such a run using the cryo-EM fitted core and C82 domains with cross-links (strategy 2) can be accessed 
+[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/Pol-III-core-C82-EMfit-C34-C31dummies){:target="_blank"}
 
 
 2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. 
