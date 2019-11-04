@@ -159,9 +159,9 @@ These files are in the format required to run DISVIS. The directory also contain
     * `C_C34_wHTH1-2DK8A.pdb`: The first helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain C)
     * `D_C34_wHTH2-2DK8A.pdb`: The second helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain D)
     * `E_C34_wHTH3-1KDDA.pdb`: The third helix-turn-helix domain of C34, homology modelled on PDB entry 1KDD-chainA (named as chain E)
-    * `D_C31_model.pdb`: A de novo model from I-TASSER, conformation very uncertain (named as chain F)    
-    * `C31_LYS91_F.pdb`: Lysine 91 from C31 (named as chain F) - for use instead of the iTasser model
-    * `C31_LYS111_G.pdb`: Lysine 111 from C31 (named as chain G) - for use instead of the iTasser model
+    * `F_C31_iTasser.pdb`: A de novo model from I-TASSER, conformation very uncertain (named as chain F)    
+    * `F_C31_LYS91.pdb`: Lysine 91 from C31 (named as chain F) - for use instead of the iTasser model
+    * `F_C31_LYS111.pdb`: Lysine 111 from C31 (named as chain G) - for use instead of the iTasser model
 
   * __restraints__:
     * `xlink-all-inter.tbl`: This file contains all cross-links between the various domains (using the full C31 model)
@@ -1606,19 +1606,19 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 [link-cns]: http://cns-online.org "CNS online"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: http://haddock.science.uu.nl/services/DISVIS/ "DisVis web server"
-[link-disvis-submit]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/submit "DisVis submission"
-[link-disvis-register]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/register "DisVis registration"
+[link-disvis-web]: hhttps://bianca.science.uu.nl/disvis "DisVis web server"
+[link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
+[link-disvis-register]: https://nestor.science.uu.nl/auth/register "DisVis registration"
 [link-pymol]: http://www.pymol.org/ "PyMOL"
 [link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
 [link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
 [link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
-[link-haddock-register]: http://haddock.science.uu.nl/services/HADDOCK2.2/register.html "HADDOCK web server registration"
+[link-haddock-register]: https://nestor.science.uu.nl/auth/register/"HADDOCK web server registration"
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/register "PowerFit registration"
+[link-powerfit-register]: https://nestor.science.uu.nl/auth/register  "PowerFit registration"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-powerfit-help]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
 [link-xwalk]: http://www.xwalk.org
