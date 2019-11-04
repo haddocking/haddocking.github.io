@@ -17,20 +17,20 @@ This tutorial consists of the following sections:
 ## Introduction
 
 This tutorial will demonstrate the use of our DISVIS, POWERFIT and HADDOCK web servers for predicting the structure of a large biomolecular assembly from MS cross-linking data and low resolution cryo-EM data.
-The case we will be investigating is the apo form of the Saccharomyces Cerevisiae RNA Polymerase-III (Pol-III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits.
+The case we will be investigating is the apo form of the Saccharomyces Cerevisiae RNA Polymerase-III (Pol III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits.
 <ul>
 <figure align="center">
   <img src="/education/HADDOCK24/RNA-Pol-III/Pol-III-architecture.png">
 </figure>
-<b>Figure 1:</b> Pol III subunits are shown as rectangular bars except for C160 and C128, which are shown as ovals for the sake of clarity. Inter-links are shown as lines connecting the protein bars, while intra-links are shown as curves. Inter-links to C31 are colored yellow, to C34 - gold, to C37 – violet, to C53 - cyan. The remaining inter-links are colored gray. Domains of C82 and C34 discussed in this work are explicitely represented. Regions missing in crystal structures or homology models are colored in black. The figure was created with xiNET. Figure reproduced from <a target="_blank" href="​https://www.nature.com/articles/nmeth.3838">​https://www.nature.com/articles/nmeth.3838</a>.
+<b>Figure 1:</b> Pol III subunits are shown as rectangular bars except for C160 and C128, which are shown as ovals for the sake of clarity. Inter-links are shown as lines connecting the protein bars, while intra-links are shown as curves. Inter-links to C31 are colored yellow, to C34 - gold, to C37 – violet, to C53 - cyan. The remaining inter-links are colored gray. Domains of C82 and C34 discussed in this work are explicitely represented. Regions missing in crystal structures or homology models are colored in black. The figure was created with xiNET. Figure reproduced from <a href="https://www.nature.com/articles/nmeth.3838" target="_blank">Ferber et al, 2016</a>.
 <br>
 <br>
 </ul>
 
-During this tutorial, we pretend that the structure of the Pol 3 core (14 subunits) is known and thus we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol-III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
+During this tutorial, we pretend that the structure of the Pol 3 core (14 subunits) is known and thus we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
 
 We will be making use of i) our [DISVIS server](https://bianca.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the new coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
-As an alternative strategy, we will use our [PowerFIt server][link-powerfit] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as starting point for the modelling of the remaining components.
+As an alternative strategy, we will use our [PowerFIt server][link-powerfit-web] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as starting point for the modelling of the remaining components.
 
 A description of our the previous version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
 
@@ -141,9 +141,9 @@ which is based on a four-to-one mapping of atoms on coarse-grained beads.
 
 Let us first inspect the available data, namely the various structures (or homology models) as well as
 the information from MS we have at hand to guide the docking. After unpacking the archive provided for this tutorial (see [Setup](#setuprequirements) above),
-you should see a directory called RNA-Pol-III with the following subdirectories in it:
+you should see a directory called `RNA-Pol-III` with the following subdirectories in it:
 
-  * __cryo-EM__: This directory contains a 9Å cryo-EM map of the RNA Pol-III.
+  * __cryo-EM__: This directory contains a 9Å cryo-EM map of the RNA Pol III.
   
   * __disvis__: This directory contains text files called `xlinks-all-X-Y.disvis` describing the cross-links between the various domains (X and Y).
 These files are in the format required to run DISVIS. The directory also containts the results of DISVIS analysis of the variour domain pairs as directories named `disvis-results-X-Y`
@@ -154,7 +154,7 @@ These files are in the format required to run DISVIS. The directory also contain
     * `run-PolIII-core-C82-EMfit-C34-C31-xlinks.json`: Docking following the 2nd scenario described in this tutorial
   
   * __input-pdbs__: This directory contains the HADDOCK-ready input PDB files for the various domains
-    * `A_5fja-core.pdb`: The core region of Pol-III with non-overlapping residue numbering (named as chain A)
+    * `A_5fja-core.pdb`: The core region of Pol III with non-overlapping residue numbering (named as chain A)
     * `B_C82-2XUBA.pdb`: The C82 structure, homology modelled on PDB entry 2XUB excluding the disordered long loops (named as chain B)
     * `C_C34_wHTH1-2DK8A.pdb`: The first helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain C)
     * `D_C34_wHTH2-2DK8A.pdb`: The second helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain D)
@@ -172,7 +172,7 @@ These files are in the format required to run DISVIS. The directory also contain
 
 From MS, we have experimentally determined cross-links between the various domains. We have only kept  here  the inter-domain cross-links relevant for  this tutorial.
 The cross-links are taken from ([Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838){:target="_blank"}. These are the files present in the `disvis` directory. As an example here
-are the cross-links identified between the Pol-III core (chain A here) and C31 (chain F):
+are the cross-links identified between the Pol III core (chain A here) and C31 (chain F):
 
 <pre style="background-color:#DAE4E7">
 A  143 CB F 179 CB 0.0 30.0
@@ -228,14 +228,14 @@ _J. Mol. Biol._. *429(3)*, 399-407 (2016).
   _Bioinformatics_ *31*, 3222-3224 (2015).
 
 <hr>
-### Analysing the Pol-III domain-domain interactions with DISVIS
+### Analysing the Pol III domain-domain interactions with DISVIS
 
-Before modelling Pol-III, we will first run DisVis using the cross-links for the various pairs of domains to both 
+Before modelling Pol III, we will first run DisVis using the cross-links for the various pairs of domains to both 
 assess the information content of the cross-links and detect possible false positives. For the latter, please note that DisVis does not account for
 conformational changes. As such, a cross-link flagged as possible false positive might also simply reflect a conformational change occuring upon binding.
 
 We have cross-links available for 8 pairs of domains (see the `disvis` directory from the downloaded data). As an illustration of running DisVis, we will here
-setup the analysis for the Pol-III core (chain A) - C31 (chain F) pair.
+setup the analysis for the Pol III core (chain A) - C31 (chain F) pair.
 
 To run DisVis, go to
 
