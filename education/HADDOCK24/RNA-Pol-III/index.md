@@ -1121,7 +1121,7 @@ developments in the software, based on a stable and tested workflow. Next to pro
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
 of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
 
-For more details about PowerFit and its usage we refer to a related [online tutorial](/education/Other/powerfit-webserver){:target="_blank"}.
+For more details about PowerFit and its usage we refer to a related [online tutorial](/education/Others/powerfit-webserver){:target="_blank"}.
 
 <hr>
 ### Fitting PolIII-core and C82 into the 9Å cryo-EM map
@@ -1586,11 +1586,10 @@ In that case you should setup a six-body docking run using:
 and as restraint files: `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl` for the cross-links and `C31-C34-connectivities.tbl` as connectivity restraints.
 
 The results of such a run using exclusively cross-links (strategy 1) can be accessed 
-[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}
+[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}.
 
 The results of such a run using the cryo-EM fitted core and C82 domains with cross-links (strategy 2) can be accessed 
-[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/Pol-III-core-C82-EMfit-C34-C31dummies){:target="_blank"}
-
+[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/Pol-III-core-C82-EMfit-C34-C31dummies){:target="_blank"}.
 
 2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. 
 Repeat the docking and check if this affects the position of the various domains.
