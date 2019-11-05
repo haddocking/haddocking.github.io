@@ -1319,7 +1319,7 @@ In the same page where the restraints are provided you can modify a large number
 For refinement purposes a limited number of models is sufficient:
 
 <a class="prompt prompt-info">
-Decrease all number of models to 20
+Decrease thee number of models to 20 for all stages (rigid body, semi-flexible refinement and water refinement)
 </a>
 <a class="prompt prompt-info">
 Number of trials for rigid body minimisation -> 1
@@ -1515,6 +1515,8 @@ Inspect the results page
 
 <a class="prompt prompt-question">How many clusters are generated?</a>
 <a class="prompt prompt-question">How different are the clustering results compared to the cross-links only setup described in the first part of this tutorial?</a>
+
+<a class="prompt prompt-question">Compare the score and the various energy terms of the best cluster and the best cluster obtained using Strategy 1) using only cross-links. Which strategy leads to better scores/energies?</a>
 
 <a class="prompt prompt-info">
 Download the clustered models, and visualize them in PyMol as described above, loading the top model of each cluster in PyMol.
