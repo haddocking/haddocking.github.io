@@ -984,7 +984,7 @@ If not, which ones are not satistified?
 We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
 For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
 
-For this open the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory) and the PDB file of the cluster you want to fit.
+For this open the PDB file of the cluster you want to fit and the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory).
 
 <a class="prompt prompt-info">
   UCSF Chimera Menu → File → Open... → Select the file
@@ -1002,10 +1002,10 @@ If you want to use the Chimera command-line instead, you need to first display i
 and type:
 
 <a class="prompt prompt-pymol">
-  open /path/to/PolIII_9A.mrc
+  open /path/to/clusterX_1.pdb
 </a>
 <a class="prompt prompt-pymol">
-  open /path/to/clusterX_1.pdb
+  open /path/to/PolIII_9A.mrc
 </a>
 
 
@@ -1157,7 +1157,10 @@ using `Chimera` with its `Volume -> Fit in Map` tool (see instructions above).
 
 
 Repeat the above procedure, but this time for the C82 domain. 
-Pre-calculated results are available in the `cryo-EM/powerfit-PolIII-C82` directory.
+Pre-calculated results are available in the `cryo-EM/powerfit-PolIII-C82` directory and also online:
+
+* Pol III core domain [powerfit results](https://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/example/4){:target="_blank"}
+* Pol III C82 domain [powerfit results](https://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/example/5){:target="_blank"}
 
 
 <hr>
