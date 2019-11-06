@@ -468,11 +468,11 @@ set to 1 and the sampling of 180 degrees rotated solutions during rigid body EM 
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://nestor.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 #### Submission and validation of structures
 
-We have now all the required information to setup our targeted docking run. We will again make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using expert or guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level) [here](https://nestor.science.uu.nl/auth/register/).
+We have now all the required information to setup our targeted docking run. We will again make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using expert or guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level) [here](https://bianca.science.uu.nl/auth/register/).
 
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left

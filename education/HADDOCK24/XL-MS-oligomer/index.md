@@ -353,7 +353,7 @@ Let's now setup the docking run!
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://nestor.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
@@ -556,5 +556,5 @@ Make sure to write your name and student number at the top of your report.
 [link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK2.4 webserver"
 [link-haddock-multi]: https://wenmr.science.uu.nl/haddock2.4/submit/1 "HADDOCK2.4 docking interface"
-[link-haddock-register]: https://nestor.science.uu.nl/auth/register/ "HADDOCK2.4 registration"
+[link-haddock-register]: https://bianca.science.uu.nl/auth/register/ "HADDOCK2.4 registration"
 [link-haddock-tutorial]: http://bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic "HADDOCK2.4 webserver tutorial"

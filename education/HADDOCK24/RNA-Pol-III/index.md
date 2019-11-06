@@ -63,7 +63,7 @@ Ready to dock models are provided as part of the material for this tutorial.
 The required data to run this tutorial should be downloaded from [**here**](/education/HADDOCK24/RNA-Pol-III/RNA-Pol-III.tgz){:target="_blank"}.
 Once downloaded, make sure to unpack/unzip the archive.
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://nestor.science.uu.nl/auth/register/haddock](https://nestor.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 <hr><hr>
 ## HADDOCK general concepts
@@ -1612,17 +1612,17 @@ our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted b
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
 [link-disvis-web]: hhttps://bianca.science.uu.nl/disvis "DisVis web server"
 [link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
-[link-disvis-register]: https://nestor.science.uu.nl/auth/register "DisVis registration"
+[link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
 [link-pymol]: http://www.pymol.org/ "PyMOL"
 [link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
 [link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
 [link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
-[link-haddock-register]: https://nestor.science.uu.nl/auth/register/"HADDOCK web server registration"
+[link-haddock-register]: https://bianca.science.uu.nl/auth/register/"HADDOCK web server registration"
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: https://nestor.science.uu.nl/auth/register  "PowerFit registration"
+[link-powerfit-register]: https://bianca.science.uu.nl/auth/register  "PowerFit registration"
 [link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-powerfit-help]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
 [link-xwalk]: http://www.xwalk.org

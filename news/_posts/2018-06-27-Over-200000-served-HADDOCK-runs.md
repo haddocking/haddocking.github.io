@@ -20,7 +20,7 @@ HADDOCK is one of the flagship software in the H2020 EU Center of Excellence pro
 Our HADDOCK portal now counts over 11'000 registered users from over 95 different countries worldwide.
 
 <figure>
-        <a href="https://nestor.science.uu.nl/user_map"><img align="center" src="/images/posts/HADDOCK-worldmap-06-2018.png"></a>
+        <a href="https://bianca.science.uu.nl/user_map"><img align="center" src="/images/posts/HADDOCK-worldmap-06-2018.png"></a>
 </figure>
 
 
