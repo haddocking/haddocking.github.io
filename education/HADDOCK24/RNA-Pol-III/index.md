@@ -60,8 +60,8 @@ In order to follow this tutorial you will need a **web browser**, a **text edito
 We used our [**pdb-tools**](https://github.com/haddocking/pdb-tools){:target="_blank"} to pre-process PDB files for HADDOCK, 
 renumbering the core domains to avoid overlap in their residue numbering.
 Ready to dock models are provided as part of the material for this tutorial. 
-The required data to run this tutorial should be downloaded from [**here**](/education/HADDOCK24/RNA-Pol-III/RNA-Pol-III.tgz){:target="_blank"}.
-Once downloaded, make sure to unpack/unzip the archive.
+The required data to run this tutorial should be downloaded from [**here**](/education/HADDOCK24/RNA-Pol-III/RNA-Pol-III.zip){:target="_blank"}.
+Once downloaded, make sure to unpack/unzip the archive (for Windows system you can install the [7-zip](https://www.7-zip.org){:target="_blank"} software if needed to unpack tar archives).
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
@@ -148,11 +148,13 @@ you should see a directory called `RNA-Pol-III` with the following subdirectorie
   * __disvis__: This directory contains text files called `xlinks-all-X-Y.disvis` describing the cross-links between the various domains (X and Y).
 These files are in the format required to run DISVIS. The directory also containts the results of DISVIS analysis of the various domain pairs as directories named `disvis-results-X-Y`
 
-  * __docking__: This directory contains json files containing all the parameters and input data for HADDOCK. These are reference files of the docking setup and allow to repeat the modelling using the `Submit File` option of the HADDOCK2.4 web server:
+  * __docking__: This directory contains json files containing all the parameters and input data for HADDOCK. Those are reference files of the docking setup and allow to repeat the modelling using the `Submit File` option of the HADDOCK2.4 web server:
     * `run-PolIII-C82-C34-C31model-xlinks.json`: Docking following the 1st scenario described in this tutorial
     * `run-PolIII-C82-C34-C31dummyLYS-xlinks.json`: Docking following the 1st scenario, but using dummy lysines for the C31 domain
     * `run-PolIII-core-C82-EMfit-C34-C31-xlinks.json`: Docking following the 2nd scenario described in this tutorial
-  
+    * `run-PolIII-core-C82-EMfit-C34-C31dummyLYS-xlinks.json`: Docking following the 2nd scenario described in this tutorial, but using dummy lysines for the C31 domain
+    * `run-PolIII-core-C82-refine.json`: Refinement of the core and C82 models fitted into the cryo-EM map with PowerFit
+    
   * __input-pdbs__: This directory contains the HADDOCK-ready input PDB files for the various domains
     * `A_5fja-core.pdb`: The core region of Pol III with non-overlapping residue numbering (named as chain A)
     * `B_C82-2XUBA.pdb`: The C82 structure, homology modelled on PDB entry 2XUB excluding the disordered long loops (named as chain B)
@@ -169,6 +171,7 @@ These files are in the format required to run DISVIS. The directory also contain
     * `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl`: This file contains the disvis-filtered cross-links between the various domains (using the C31 single Lysines as dummies)
     * `C34-connectivity.tbl`: Connectivity restraints between the two C34 domains
     * `C31-Lys91-Lys111.tbl`: Connectivity restraints between the two lysines of C31 for docking using those as dummies
+    * `C31-C34-connectivities.tbl`: The combination of the two previous files
 
 From MS, we have experimentally determined cross-links between the various domains. We have only kept  here  the inter-domain cross-links relevant for  this tutorial.
 The cross-links are taken from ([Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838){:target="_blank"}. These are the files present in the `disvis` directory. As an example here
