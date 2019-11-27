@@ -7,7 +7,7 @@ image:
 
 ## 2019 
 
-* P.I. Koukos and **A.M.J.J. Bonvin**. Integrative modelling of biomolecular complexes. _J. Mol.  Biol._ In  press (2019)
+* P.I. Koukos and **A.M.J.J. Bonvin**. [Integrative modelling of biomolecular complexes](https://doi.org/10.1016/j.jmb.2019.11.009). _J. Mol.  Biol._ Advanced Online Publication (2019)
 
 * A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ Advanced Online Publication (2019)
 
