@@ -464,7 +464,7 @@ using distance restraints to model the covalent bond, we would expect that even 
 We already pre-calculated full docking run for all three cathepsins (meaning that the default number of models has been generated: 1000 for
 rigid-body docking and 200 for semi-flexible and water refinement). The full runs for the three cathepsins can be accessed at:
 
-- **CatK**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/CatK-ligand2){:target="_blank"}
+- **CatK**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/CatK-ligand){:target="_blank"}
 - **CatL**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/CatL-ligand){:target="_blank"}
 - **CatS**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/CatS-ligand){:target="_blank"}
 

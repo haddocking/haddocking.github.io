@@ -401,7 +401,7 @@ number of MD steps during first rigid body cooling stage -> 0
 
 Once your run has completed (this can take quite some time considering the size of the receptor) you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface).
 
-Instead, you can also use the precalculated run. Simply unpack the archive (see the [Setup](#setup) section for downloading the archives), go into the directory and open with your favorite web browser the index.html file to view the results page.
+From that result page you can download the full archive of the run. Simply unpack the archive (see the [Setup](#setup) section for downloading the archives), go into the directory and open with your favorite web browser the index.html file to view the results page. Note that the `index.html` page provided in the archive gives only a limited view of the results. It is better to refer to the online webpage.
 
 Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the minimum number of structures per cluster will have automatically reduced to 2 or even 1 in order to produce a result page. If 1, then the clusters reported on the web page will correspond to the top10 ranked models.
 
@@ -893,8 +893,9 @@ Again, pre-calculated runs are provided if you have executed the ```download-run
 <hr>
 ## Analysis of the targeted docking results
 
-Once your run has completed  you will be presented with a result page showing the cluster statistics and some graphical representation of the data.
-Instead, you can also use the precalculated run. Simply unpack the archive, go into the directory and open with your favorite web browser the index.html file to view the results page.
+Once your run has completed (this can take quite some time considering the size of the receptor) you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-pocket).
+
+From that result page you can download the full archive of the run. Simply unpack the archive (see the [Setup](#setup) section for downloading the archives), go into the directory and open with your favorite web browser the index.html file to view the results page. Note that the `index.html` page provided in the archive gives only a limited view of the results. It is better to refer to the online webpage.
 
 <a class="prompt prompt-question">
 How many clusters have been generated?

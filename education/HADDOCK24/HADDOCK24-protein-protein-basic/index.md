@@ -349,7 +349,7 @@ The page will automatically refresh and the results will appear upon completions
 <hr>
 ## Analysing the results
 
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/basic) in case you don't want to wait for the results of your docking run.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/E2A-HPR) in case you don't want to wait for the results of your docking run.
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/HADDOCK-result-page.png">
