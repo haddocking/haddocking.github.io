@@ -15,7 +15,7 @@ image:
 
 ![Structure + Binformatic/Biophysical Data => Complex](HADDOCK2.4.png)  
 
-_Version:_ 2.4 (?, 2019) ([changes](/software/haddock2.4/changes))  
+_Version:_ 2.4 (November, 2019) ([changes](/software/haddock2.4/changes))  
 
 _Authors:_ Alexandre Bonvin and members of the computational structural biology group, Utrecht University  
 
@@ -34,19 +34,25 @@ Fax: +31-30-2537623
 
 * * *
 
-**HADDOCK online** (setup your run): [http://www.bonvinlab.org/software/haddock2.4/haddock-start](/software/haddock2.4/haddock-start)
-
 **HADDOCK manual**: [http://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
 
-**HADDOCK webserver**:  [http://haddock.science.uu.nl/services/HADDOCK2.4](http://haddock.science.uu.nl/services/HADDOCK2.4)   
-
-**HADDOCK grid-enabled webserver**:  [http://haddock.science.uu.nl/enmr/services/HADDOCK2.4](http://haddock.science.uu.nl/enmr/services/HADDOCK2.4)   
+**HADDOCK webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
 
 **Getting the software**:  [license form](/software/haddock2.4/download)   
 
 **Questions about HADDOCK or looking for support?**  [Ask BioExcel](http://ask.bioexcel.eu)   
 
 **A short introduction:** View the [BioExcel CoE](http://www.bioexcel.eu)  [webinar about HADDOCK](https://www.youtube.com/watch?v=Dbv6Jvge0Zk&index=1&list=FLmVRUOHM_0Nsh7DrMpTHtQQ)   
+
+**A lecture about HADDOCK:** Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
+  <ul>
+  <details>
+  <summary>View recorded lecture
+  </summary>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/KUbEwGv21n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
 
 * * *
 

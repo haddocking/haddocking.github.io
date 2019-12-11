@@ -21,9 +21,11 @@ For each set of PCS restraints used, a tensor must be defined. Its axial (D) and
 
 For pseudo contact shifts, R and D this can be obtained using for example the [Numbat](http://www.nmr.chem.uu.nl/~christophe/numbat.html) software (Schmitz C, Stanton-Cook MJ, Su XC, Otting G, Huber T (2008) Numbat: an interactive software tool for fitting delta chi-tensors to molecular coordinates using pseudocontact shifts. _J Biomol NMR_ **41**:179-189).  
 
-The position of the tensor also needs to be defined by specifying distance restraints with respect to the protein to which it is attached. These restraints are defined in the TENSOR_FILE when performing a docking run setup using the html inteface. In the generated new.html file the entry looks like:  
+The position of the tensor also needs to be defined by specifying distance restraints with respect to the protein to which it is attached. These restraints should be defined by the TENSOR_FILE in the `run.param` file used to setup a run. The entry in `run.param` looks like:  
 
-<pre style="background-color:#DAE4E7">     TENSOR_FILE=tensor_basic.tbl</pre>
+<pre style="background-color:#DAE4E7">
+  TENSOR_FILE=tensor_basic.tbl
+</pre>
 
 and this tensor restraint file contains distance restraints. For example, if the tensor is attached to a metal ion in the case of a metallo-protein (as in the protein-protein-pcs example in HADDOCK2.4) it looks like:  
 
@@ -52,10 +54,26 @@ The proper format for PCS restraints is the following:
 
 where the last two numbers are the PCS value and its associated error.  
 
+
 The 2.4 version of HADDOCK supports up to 10 differentPCS restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-990\. For each class you can specify the first and last stage at which the various RDCs will be used:
 
 *   0: rigid body EM (it0)
 *   1: semi-flexible simulated annealing (SA) (it1)
 *   2: explicit solvent refinement (water)
+
+
+The PCS restraints should be defined by the __PCSX_FILE__ parameter in the `run.param` file used to setup a run, with X being the number of the restraint set. An example entry in `run.param` would be:  
+
+<pre style="background-color:#DAE4E7">
+  PCS1_FILE=./DATA/Dy_eps_HOT_0.15_.tbl
+  PCS2_FILE=./DATA/Er_eps_HOT_0.15_.tbl
+  PCS3_FILE=./DATA/Tb_eps_HOT_0.15_.tbl
+  TENSOR_FILE=./DATA/tensor_basic.tbl
+</pre>
+
+
+Example taken from the `protein-protein-pcs` example provided with HADDOCK2.4.
+
+
 
 * * *

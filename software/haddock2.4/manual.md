@@ -4,6 +4,7 @@ title: "HADDOCK2.4 manual"
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: HADDOCK2.4 manual
 image:
   feature: pages/banner_software.jpg
 ---
@@ -12,16 +13,18 @@ image:
 
 ### Input files and restraints
 * [Preparing PDB files for docking](/software/haddock2.4/pdb)
-* [Defining ambiguous interaction restraints](/software/haddock2.4/generate_air_help)
-* [Using residual dipolar coupling restraints](/software/haddock2.4/RDC_help)
-* [Using pseudo contact shift restraints](/software/haddock2.4/PCS_help)
-* [Using diffusion anisotropy restraints](/software/haddock2.4/DANI_help)
+* [Coarse graining PDB files for docking](/software/haddock2.4/pdb-cg)
+* [Defining ambiguous interaction restraints](/software/haddock2.4/airs)
+* [Using residual dipolar coupling restraints](/software/haddock2.4/RDC)
+* [Using pseudo contact shift restraints](/software/haddock2.4/PCS)
+* [Using diffusion anisotropy restraints](/software/haddock2.4/DANI)
+* [Using cryo-EM restraints](/software/haddock2.4/cryoEM)
+* [Using a radius of gyration restraint](/software/haddock2.4/Rg)
 
 ### Project setup and parameters
-* [The docking](/software/haddock2.4/docking)
-* [Setting up a new project](/software/haddock2.4/start_new_help)
+* [Docking protocol](/software/haddock2.4/protocol)
+* [Setting up the docking](/software/haddock2.4/docking)
 * [HADDOCK parameters and settings (run.cns)](/software/haddock2.4/run)
-* [Editing online the run.cns parameter file](/software/haddock2.4/haddock-start)
 * [FAQ](/software/haddock2.4/faq)
 
 ### HADDOCK scoring
