@@ -6,6 +6,8 @@ image:
 ---
 ## 2020
 
+* P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1002/prot.25869). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
+
 * F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
 
 * Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 292-306 (2020).
@@ -27,8 +29,6 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_, *87*, 1200-1221 (2019)
 * M. Abraham, R. Apostolov, J. Barnoud, P. Bauer, C. Blau, **A.M.J.J. Bonvin**, M. Chavent, J. Chodera, K. Čondić-Jurkić, L. Delemotte, H. Grubmüller, R. Howard, E.J. Jordan, E. Lindal, O.H.S. Ollila, J. Selent, D. Smith, P. Stansfeld, J. Tiemann, M. Trellet, C. Woods and A. Zhmurov. [Sharing Data from Molecular Simulations](https://doi.org/10.1021/acs.jcim.9b00665). _J. Chem. Inf. and Model._ *59*, 4093-4099 (2019).
 
 * R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, *6*, 102 (2019).
-
-* P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1101/718122). BioRxiv 10.1101/718122v1 (2019).
 
 * J. Roel-Touris, C.G. Don, R.V. Honorato, J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**. [Less is more: Coarse-grained integrative modeling of large biomolecular assemblies with HADDOCK](https://doi.org/10.1021/acs.jctc.9b00310). _J. Chem. Theo. and Comp._, *15*, 6358-6367 (2019).
 
