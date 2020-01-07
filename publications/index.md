@@ -4,6 +4,14 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2020
+
+* F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
+
+* Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 292-306 (2020).
+
+* T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. [The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA](https://doi.org/10.1002/prot.25806). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 319-326 (2020).
+
 
 ## 2019 
 
@@ -12,27 +20,21 @@ image:
 * A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ Advanced Online Publication (2019)
 
 * M.F. Lensink, G. Brysbaert  N. Nadzirin, S. Velankar, R.A.G. Chaleil,  T, Gerguri,  P.A. Bates,  E. Laine,  A. Carbone,  S. Grudinin,  R. Kong,  R. Liu, X. Xu,  H, Shi, S. Chang,  M. Eisenstein,  A.a Karczynska,  C. Czaplewski, E. Lubecka, A. Lipska, P. Krupa, M. Mozolewska, L. Golon, S. Samsonov, A. Liwo, S. Crivelli, G. Pagès, M. Karasikov, M. Kadukova, Y. Yan, S. Huang, M. Rosell, L.A. Rodríguez‐Lumbreras, M. Romero‐Durana, L. Díaz‐Bueno, J. Fernandez‐Recio, C. Christoffer, G. Terashi, W. Shin, T. Aderinwale, S. Raghavendra Maddhuri Venkata Subraman, D. Kihara, D. Kozakov, S. Vajda, K. Porter, D. Padhorny, I. Desta, D. Beglov, M. Ignatov, S. Kotelnikov, I.H. Moal, D.W. Ritchie, I. Chauvot de Beauchêne, B. Maigret, M. Devignes, M.E. Ruiz Echartea, D, Barradas‐Bautista, Z. Cao, L. Cavallo, R. Oliva, Y. Cao, Y. Shen, M. Baek, T. Park, H. Woo, C. Seok, M. Braitbard, L. Bitton, D. Scheidman‐Duhovny, J. Dapkūnas, K. Olechnovič, Č. Venclovas, P.J. Kundrotas, S. Belkin, D. Chakravarty, V.D. Badal, I.A. Vakser, T.Vreven, S. Vangaveti, T. Borrman, Z. Weng, J.D. Guest, R. Gowthaman, B.G. Pierce, X. Xu, R. Duan, L. Qiu, J. Hou, B. Ryan Merideth, Z. Ma, J. Cheng, X. Zou, P.I. Koukos, J. Roel‐Touris, . Ambrosetti, C. Geng. J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L. Xue, B. Jiménez‐Garcí, C.W. van Noort, R.V. Honorato, **A.M.J.J. Bonvin**, S.J. Wodak. [Blind prediction of homo‐ and hetero‐protein complexes: The CASP13‐CAPRI experiment](https://doi.org/10.1002/prot.25838).
-_Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019)
+_Proteins: Struc. Funct. &amp; Bioinformatics_, *87*, 1200-1221 (2019)
 
-* H.M. Berman, P,D. Adams, **A.M.J.J. Bonvin**, S.K. Burley, B. Carragher, W. Chiu, F. DiMaio, T.E. Ferrin, M.J. Gabanyi, T.D. Goddard, P.R. Griffin, J. Haas, C.A. Hanke, J.C. Hoch, G. Hummer, G. Kurisu, C.L. Lawson, A. Leitner, J.L. Markley, J. Meiler, G.T. Montelione, G.N. Phillips Jr., T. Prisner, J. Rappsilber, D.C. Schriemer, T. Schwede, C.A.M. Seidel, T.S. Strutzenberg, D.I. Svergun, E. Tajkhorshid, J. Trewhella, B. Vallat, S. Velankar, G.W. Vuister, B. Webb, J.D. Westbrook, K.L. White, A. Sali. Federating Sructural Models and Data: Outcomes from a Workshop on Archiving Integrative Structures. _Structure_ In Press (2019).
+* H.M. Berman, P,D. Adams, **A.M.J.J. Bonvin**, S.K. Burley, B. Carragher, W. Chiu, F. DiMaio, T.E. Ferrin, M.J. Gabanyi, T.D. Goddard, P.R. Griffin, J. Haas, C.A. Hanke, J.C. Hoch, G. Hummer, G. Kurisu, C.L. Lawson, A. Leitner, J.L. Markley, J. Meiler, G.T. Montelione, G.N. Phillips Jr., T. Prisner, J. Rappsilber, D.C. Schriemer, T. Schwede, C.A.M. Seidel, T.S. Strutzenberg, D.I. Svergun, E. Tajkhorshid, J. Trewhella, B. Vallat, S. Velankar, G.W. Vuister, B. Webb, J.D. Westbrook, K.L. White, A. Sali. [Federating Sructural Models and Data: Outcomes from a Workshop on Archiving Integrative Structures](https://doi.org/10.1016/j.str.2019.11.002). _Structure_ *27*, 1745-1759 (2019).
 
-* M. Abraham, R. Apostolov, J. Barnoud, P. Bauer, C. Blau, **A.M.J.J. Bonvin**, M. Chavent, J. Chodera, K. Čondić-Jurkić, L. Delemotte, H. Grubmüller, R. Howard, E.J. Jordan, E. Lindal, O.H.S. Ollila, J. Selent, D. Smith, P. Stansfeld, J. Tiemann, M. Trellet, C. Woods and A. Zhmurov. [Sharing Data from Molecular Simulations](https://doi.org/10.1021/acs.jcim.9b00665). _J. Chem. Inf. and Model._ Advanced Online Publication (2019).
+* M. Abraham, R. Apostolov, J. Barnoud, P. Bauer, C. Blau, **A.M.J.J. Bonvin**, M. Chavent, J. Chodera, K. Čondić-Jurkić, L. Delemotte, H. Grubmüller, R. Howard, E.J. Jordan, E. Lindal, O.H.S. Ollila, J. Selent, D. Smith, P. Stansfeld, J. Tiemann, M. Trellet, C. Woods and A. Zhmurov. [Sharing Data from Molecular Simulations](https://doi.org/10.1021/acs.jcim.9b00665). _J. Chem. Inf. and Model._ *59*, 4093-4099 (2019).
 
 * R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, *6*, 102 (2019).
-
-* Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019).
-
-* T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. [The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA](https://doi.org/10.1002/prot.25806). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2019).
 
 * P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1101/718122). BioRxiv 10.1101/718122v1 (2019).
 
 * J. Roel-Touris, C.G. Don, R.V. Honorato, J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**. [Less is more: Coarse-grained integrative modeling of large biomolecular assemblies with HADDOCK](https://doi.org/10.1021/acs.jctc.9b00310). _J. Chem. Theo. and Comp._, *15*, 6358-6367 (2019).
 
-* R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. [Computational approaches to therapeutic antibody design: established methods and emerging trends](https://doi.org/10.1093/bib/bbz095). _Briefings in Bioinformatics_, bbz095, Advanced Online Publication (2019).
+* R.A. Norman, F. Ambrosetti, **A.M.J.J. Bonvin**, L.J. Colwell, S. Kelm, S. Kumar and K. Krawczyk. [Computational approaches to therapeutic antibody design: established methods and emerging trends](https://doi.org/10.1093/bib/bbz095). _Briefings in Bioinformatics_, bbz095 (2019).
 
 * L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ *14*, 1751-1759 (2019).
-
-* F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_ , Advanced Online Publication (2019). Preprint freely available from [here}(https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
 
 * J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, Advanced Online Publication, btz642 (2019).
 

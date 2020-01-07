@@ -68,6 +68,8 @@ The proper format for RDC restraints is the following:
      ( resid   20 and name HN and segid A )   2.981   0.200
 </pre>
 
+
+
 Given a file containing _residue_number RDC_value_ and _Segid_ a RDC restraint file in CNS format can be generated with the gawk script _generate_sani_ provided in the **HADDOCK/RDCtools** directory:
 
 <pre style="background-color:#DAE4E7">    $HADDOCK/RDCtools/generate_sani rdc_data_file
@@ -80,9 +82,23 @@ The error on the RDCs is set by default to 0.2 Hz. This can be overruled by givi
 
 The 2.4 version of HADDOCK supports up to 5 different SANI restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-995\. You can edit and modify the _generate_sani_ script to change the tensor number. To use RDC restraints in HADDOCK, use _SANI_ in [run.cns](/software/haddock2.4/run#dipo) in the dipolar coupling section and define the proper Da and R parameters (R=Dr/Da). The RDC restraints are first used in the [rigid body energy minimization step](/software/haddock2.4/docking#mini) using as force constant the value defined for the hot phase. Keep this value small (the current default is 0.02) to keep a proper balance between the AIR and SANI energy terms.  
 
+
+The RDC restraints should be defined by the __RDCX_FILE__ parameter in the `run.param` file used to setup a run, with X being the number of the restraint set. An example entry in `run.param` would be:  
+
+<pre style="background-color:#DAE4E7">
+  RDC1_FILE=./restraints/ubiDP_vean_inter.tbl
+  RDC2_FILE=./restraints/ubiDP_vean_intra.tbl
+  RDC3_FILE=./restraints/ubiDP_sani.tbl
+</pre>
+
+Here the two first restraint sets corresponds to [VEAN restraints](#vean) and the third one to SANI restraints (example take from the `protein-protein-rdc` example provided with HADDOCK2.4).
+
+
+
 ***Note 1:*** Only one set (corresponding to one alignment tensor) of dipolar couplings can be used as direct restraints (SANI) in HADDOCK since currently only one alignment tensor is supported. Multiple sets can however be used as intervector projection angle restraints (see below).
 
 ***Note 2:*** For proper docking results, dipolar couplings restraints of the various molecules should be input as one set (and thus not split in separate sets for each molecule). The assumption here is that the RDCs of the various components share one common alignment tensor.
+
 
 * * *
 
@@ -111,5 +127,20 @@ To select for example all inter- and intra-molecular restraint excluding more th
 </pre>
 
 To use intervector projection angle restraints in HADDOCK, use _VANGLE_ in [run.cns](/software/haddock2.4/run#dipo) in the dipolar coupling section. The VANGLE restraints are introduced in the [rigid body energy minimization step](/software/haddock2.4/docking#mini) using as initial force constants the value defined for the hot phase. The restraints are activated in the second rotational minimization phase (thus earlier than the SANI restraints!)
+
+
+The VEAN RDC restraints should be defined by the __RDCX_FILE__ parameter in the `run.param` file used to setup a run, with X being the number of the restraint set. An example entry in `run.param` would be:  
+
+<pre style="background-color:#DAE4E7">
+  RDC1_FILE=./restraints/ubiDP_vean_inter.tbl
+  RDC2_FILE=./restraints/ubiDP_vean_intra.tbl
+  RDC3_FILE=./restraints/ubiDP_sani.tbl
+</pre>
+
+Here the two first restraint sets corresponds to VEAN restraints and the third one to [SANI restraints](#sani) (example taken from the `protein-protein-rdc` example provided with HADDOCK2.4).
+
+
+
+
 
 * * *

@@ -13,8 +13,8 @@ To ensure whatever you create/change appears as faithfully as possible after pus
 1. Install [RVM](https://rvm.io) (optional, to manage your Ruby installations)
 ```bash
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
-rvm install ruby-2.1.7
-rvm --default use ruby-2.1.7
+rvm install ruby-2.6.3
+rvm --default use ruby-2.6.3
 ```
 
 2. Install Bundler
@@ -42,7 +42,7 @@ incremental: true # This will be disabled by Github, but is useful for testing c
 
 To preview changes, which you should always do before committing anything or making any pull requests, run the web server locally using the following:
 
-```bash
+```bash --login
     $ bundle exec jekyll serve
 ```
 
