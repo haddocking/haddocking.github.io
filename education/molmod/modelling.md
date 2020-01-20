@@ -126,7 +126,7 @@ the Uniprot page to find an answer.
 Browsing further down the page, the "Sequences" tab lists the several isoforms of this particular
 protein as they have been observed. One of these is classified as "canonical" while others are
 products of splicing events or mutations. The notes on isoform MDM2-p76 reveal that it lacks the
-first 47 amino acids and that it does _not_ bind p53. The interaction occurs then through the
+first 49 amino acids and that it does _not_ bind p53. The interaction occurs then through the
 N-terminal of MDM2. Linking this information with that of the domain organization hints that the
 first region (positions 1-110) is very likely our modeling target. This selection can be further
 refined by choosing only the region comprising the SWIB domain (positions 27-107). Choose either
@@ -165,7 +165,7 @@ sequence. Although there is not a strictly enforced character limit, it is custo
 sequence into multiple lines of 80 characters each. This limit, as many others based on character
 length, is a legacy from the old days when screen resolutions were small or terminals the only way
 of interfacing with the computer. Nevertheless, some programs will complain, or even worse,
-truncate, sequences longer than these 80 characters, so it is wise to respect this limit!
+truncate, lines longer than these 80 characters, so it is wise to respect this limit!
 
 <a class="prompt prompt-info">
   Copy the FASTA-formatted sequence to a text file and save it under an appropriate name (e.g.
