@@ -415,7 +415,7 @@ the minimization?
 </a>
 <a class="prompt prompt-cmd">
   gmx grompp -v -f $MOLMOD_DATA/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o
-peptide-EM-vacuum.tpr
+peptide-EM-vacuum.tpr -maxwarn 1
 </a>
 
 <a class="prompt prompt-info">
@@ -523,7 +523,7 @@ allowed to neutralize the charge of the system, if there is any.
   Add counter ions to the simulation box at a concentration of 0.15M.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  -maxwarn 1  
   gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL-
 </a>
 <a class="prompt prompt-question">
@@ -599,7 +599,7 @@ date).
 </a>
 <a class="prompt prompt-cmd">
   cp $MOLMOD_DATA/mdp/03_nvt_pr1000_PME.mdp ~/  
-  gmx grompp -v -f ~/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr  
+  gmx grompp -v -f ~/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -r peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NVT-PR1000
 </a>
 
@@ -652,7 +652,7 @@ $$).
 </a>
 
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -r peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR1000  
   gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
   xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
@@ -694,14 +694,14 @@ under NPT.
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.1000 # Make a backup of the original file  
   sed -i -e \'s/1000&nbsp;&nbsp;1000&nbsp;&nbsp;1000/&nbsp;100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/g\' posre.itp  
-  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR1000.gro -r  peptide-NPT-PR1000.gro -p peptide.top -o peptide-NPT-PR100.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR100  
 </a>
 
 <a class="prompt prompt-cmd">
   cp posre.itp posrest.itp.100  
   sed -i -e \'s/100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10/g\' posre.itp  
-  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
+  gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NPT-PR100.gro -r peptide-NPT-PR100.gro -p peptide.top -o peptide-NPT-PR10.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR10  
 </a>
 
