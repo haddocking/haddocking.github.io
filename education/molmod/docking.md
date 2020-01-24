@@ -139,7 +139,7 @@ inspect which residues are highly conserved.
 
 <a class="prompt prompt-cmd">
     cat MDM2_MOUSE.fasta psa.fasta > MDM2_family.fasta  
-    clustalo -i MDM2_family.fasta --dealign -o MDM2_family.aln  
+    clustalo -i MDM2_family.fasta \-\-dealign -o MDM2_family.aln  
 </a>
 
 <a class="prompt prompt-info">
