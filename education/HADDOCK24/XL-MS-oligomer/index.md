@@ -184,7 +184,7 @@ A 132 CA B 161 CA 3.0 10.0
 
 We have all input data required to run DisVis. To launch the run go to:
 
-<a class="prompt prompt-info" href="https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis" target="_blank">https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis</a>
+<a class="prompt prompt-info" href="https://bianca.science.uu.nl/disvis" target="_blank">https://bianca.science.uu.nl/disvis</a>
 
 On this page, you will find the most relevant information about the server.
 
@@ -544,10 +544,10 @@ Make sure to write your name and student number at the top of your report.
 
 [link-cns]: http://cns-online.org "CNS online"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: http://haddock.science.uu.nl/services/DISVIS/ "DisVis web server"
-[link-disvis-submit]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/submit "DisVis submission"
-[link-disvis-register]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/register "DisVis registration"
-[link-data]: http://milou.science.uu.nl/cgi/services/HADDOCK2.2/disvis/disvis-tutorial.tgz "DisVis tutorial data"
+[link-disvis-web]: http://bianca.science.uu.nl/disvis "DisVis web server"
+[link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
+[link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
+[link-data]: http://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip "DisVis tutorial data"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-chimera-distance]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera distance command"
 [link-chimera-atomspec]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera atom specification"
