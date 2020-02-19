@@ -188,7 +188,7 @@ We have all input data required to run DisVis. To launch the run go to:
 
 On this page, you will find the most relevant information about the server.
 
-* **Step1:** Register to the se
+* **Step1:** Register to the server
 
 [Register][link-disvis-register]{:target="_blank"} for getting access to the web server (or use the credentials provided to you).
 
