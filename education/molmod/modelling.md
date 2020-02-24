@@ -92,7 +92,6 @@ annotations for mouse MDM2?
 </a>
 
 Besides reporting on experimental structures, Uniprot links to portals such as the
-[ProteinModelPortal](http://www.proteinmodelportal.org/),
 [SWISS-MODEL Repository](http://swissmodel.expasy.org/), and
 [ModBase](http://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi), which regularly cross-reference
 sequence and structure databases in order to build homology models. These automated protocols are
