@@ -603,8 +603,9 @@ Q20: Explain the concept of NMR chemical shift perturbation data? How are these 
 </a>
 
 <a class="prompt prompt-question">
-Q21: Referring to the article describing the NMR structure of this complex [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract), next to chemical shift perturbation data, what are the other types of NMR restraints that have been used to calculate the structure of the complex?
+Q21: Referring to the article describing the NMR structure of this complex (Wang et al. 2000), next to chemical shift perturbation data, what are the other types of NMR restraints that have been used to calculate the structure of the complex?
 </a>
+[Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract)
 
 <a class="prompt prompt-question">
 Q22: Which optimization techniques discussed in the MolMod lectures are used by HADDOCK?
