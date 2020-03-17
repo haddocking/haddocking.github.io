@@ -113,7 +113,7 @@ show sticks, resn HIS<br>
 You should see a backbone representation of the protein with only the histidine side-chains visible.
 Try to locate the histidines in this structure.
 
-<a class="prompt prompt-question">Q1: Is there any phosphate group present in the E2A structure? (PDB code: 1F3G). If so, state the residue name and the residue numbero</a>
+<a class="prompt prompt-question">Q1: Is there any phosphate group present in the E2A structure? (PDB code: 1F3G). If so, state the residue name and the residue number.</a>
 
 Note that you can zoom on the histidines by typing in PyMOL:
 
@@ -334,7 +334,7 @@ Once your run has completed you will be presented with a result page showing the
 <a class="prompt prompt-info">Inspect the result page</a>
 <a class="prompt prompt-question">Q6: How many clusters are generated?</a>
 <a class="prompt prompt-question">Q7: Which is the metric used to sort the clusters?</a>
-<a class="prompt prompt-question">Q8: Look at the cluster names (cluster1, cluster2,...). Can you figure out on which basis is the cluster numnber assigned (i.e. which which displayed metric (various energies, size, ...) does it correlate?</a>
+<a class="prompt prompt-question">Q8: Look at the cluster names (cluster1, cluster2,...). Can you figure out on which basis is the cluster number assigned (i.e. which displayed metric (various energies, size, ...) does it correlate?</a>
 
 **Note:** The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model). The graphs are interactive and you can turn on and off specific clusters, but also zoom in on specific areas of the plot.
 
@@ -482,7 +482,7 @@ Repeat the align command for each cluster representative.
 </a>
 
 <a class="prompt prompt-question">
-Q17: Does any of the cluster representatives ressemble the reference NMR structure (PDB code: 1GGR) NMR structure? If so, what is its cluster rank??
+Q17: Does any of the cluster representatives ressemble the reference NMR structure (PDB code: 1GGR) NMR structure? If so, what is its cluster rank?
 </a>
 
 
@@ -521,7 +521,7 @@ You have completed this computer practical. If you have any questions or suggest
 For this practical you should write a report answering all questions above. For your convenience these are again listed here:
 
 <a class="prompt prompt-question">
-Q1: Is there any phosphate group present in the E2A structure? (PDB code: 1F3G). If so, state the residue name and the residue numbero
+Q1: Is there any phosphate group present in the E2A structure? (PDB code: 1F3G). If so, state the residue name and the residue number.
 </a>
 
 <a class="prompt prompt-question">
@@ -549,7 +549,7 @@ Q7: Which is the metric used to sort the clusters?
 </a>
 
 <a class="prompt prompt-question">
-Q8: Look at the cluster names (cluster1, cluster2,...). Can you figure out on which basis is the cluster numnber assigned (i.e. which which displayed metric (various energies, size, ...) does it correlate?
+Q8: Look at the cluster names (cluster1, cluster2,...). Can you figure out on which basis is the cluster number assigned (i.e. which displayed metric (various energies, size, ...) does it correlate?
 </a>
 
 <a class="prompt prompt-question">
@@ -581,7 +581,7 @@ Q16:Is this cluster also the best ranked one? If not what is its rank?
 </a>
 
 <a class="prompt prompt-question">
-Q17: Does any of the cluster representatives ressemble the reference NMR structure (PDB code: 1GGR) NMR structure? If so, what is its cluster rank??
+Q17: Does any of the cluster representatives ressemble the reference NMR structure (PDB code: 1GGR) NMR structure? If so, what is its cluster rank?
 </a>
 
 <a class="prompt prompt-question">
@@ -614,6 +614,12 @@ Q22: Which optimization techniques discussed in the MolMod lectures are used by 
 <a class="prompt prompt-question">
 Q23: Referring to the desciption of the last stage of HADDOCK (final refinement in Cartesian space with explicit solvent), does HADDOCK uses the concept of period boundary conditions (motivate your answer)?
 </a>
+
+
+## Submitting your report
+
+Your report should be submitted in the form of a PDF file at the latest on Friday April 3rd before midnight. 
+Submission should be done via Blackboard (assignments).
 
 
 [link-pymol]: http://www.pymol.org/ "PyMOL"
