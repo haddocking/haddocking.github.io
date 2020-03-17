@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "NMR & Molecular Modelling practical - HADDOCK2.4 protein-protein docking"
+title: "NMR and Molecular Modelling practical - HADDOCK2.4 protein-protein docking"
 excerpt: "A small tutorial on predicting a protein-protein complex using interface residues identified from NMR chemical shift perturbation experiments"
 tags: [HADDOCK, NMR, docking, dimer, chemical shifts]
 image:
