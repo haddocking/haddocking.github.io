@@ -6,11 +6,13 @@ image:
 ---
 ## 2020
 
+* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1). BioRxiv, DOI:10.1101/2020.03.18.967828 (2020).
+
 * C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](https://www.surf.nl/files/2020-03/white-paper-dl4hpc-.pdf). Whitepaper (2020).
 
 * K. Elez, **A.M.J.J. Bonvin**#, Anna Vangone#. [Biological vs crystallographic protein interfaces: An overview of computational approaches for their classification](https://doi.org/10.3390/cryst10020114 ). _Crystals_, *10*, 114 (2020).
 
-* P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1002/prot.25869). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
+* P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangone and **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1002/prot.25869). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
 
 * F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
 
