@@ -6,6 +6,8 @@ image:
 ---
 ## 2020
 
+* C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](https://www.surf.nl/files/2020-03/white-paper-dl4hpc-.pdf). Whitepaper (2020).
+
 * K. Elez, **A.M.J.J. Bonvin**#, Anna Vangone#. [Biological vs crystallographic protein interfaces: An overview of computational approaches for their classification](https://doi.org/10.3390/cryst10020114 ). _Crystals_, *10*, 114 (2020).
 
 * P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangoneand **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1002/prot.25869). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
