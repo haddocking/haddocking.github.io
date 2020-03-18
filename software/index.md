@@ -43,7 +43,8 @@ This page provide you links to software and software manuals of the computationa
   A collection of useful scripts related to HADDOCK
 
   * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
-  A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files
+  A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files.
+  For documentation refer to [http://www.bonvinlab.org/pdb-tools/](http://www.bonvinlab.org/pdb-tools/)
 
   * [**PowerFit**](https://github.com/haddocking/powerfit):
   PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities.
