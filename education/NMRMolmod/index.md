@@ -561,6 +561,11 @@ Q10: The z-scores are calculated based on the HADDOCK scores. What does a z-scor
 </a>
 
 <a class="prompt prompt-question">
+Q11: Examine the various clusters (the top model from the top 10 clusters). How does the orientation of HPR differ between them? 
+Do attach a picture that supports your answer.
+</a>
+
+<a class="prompt prompt-question">
 Q12: Are the active residues in the interface? Do attach a picture that supports your answer.
 </a>
 
