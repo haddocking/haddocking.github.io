@@ -399,6 +399,7 @@ Do attach a picture that supports your answer.
 </a>
 
 **Note:** You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
+
 **Note:** If you aligned correctly the clusters with the commands described above, all clusters shoud be well aligned on E2A, which makes it easier to see differences in the orientation of HPR. Use for example the alpha helix of HpR as a reference to compare orientations.
 
 Let's now check if the active residues which we defined are actually part of the interface. In the PyMOL command window type:
