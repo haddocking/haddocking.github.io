@@ -6,9 +6,11 @@ image:
 ---
 ## 2020
 
-* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1). BioRxiv, DOI:10.1101/2020.03.18.967828 (2020).
+* N. Renault, Y. Jung, V. Honavar, C. Geng, **A.M.J.J. Bonvin**  and L. Xue. iScore: an MPI supported software for ranking protein-protein docking models based on a random walk graph kernel and support vector machines. _SoftwareX_, In Press (2020).
 
-* C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](https://www.surf.nl/files/2020-03/white-paper-dl4hpc-.pdf). Whitepaper (2020).
+* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1). _BioRxiv_, DOI:10.1101/2020.03.18.967828 (2020).
+
+* C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](http://arxiv.org/abs/2004.03454). _Whitepaper_ (2020).
 
 * K. Elez, **A.M.J.J. Bonvin**#, Anna Vangone#. [Biological vs crystallographic protein interfaces: An overview of computational approaches for their classification](https://doi.org/10.3390/cryst10020114 ). _Crystals_, *10*, 114 (2020).
 
