@@ -25,7 +25,7 @@ for human use.
 Proteins that are crucial for the survival and replication of the virus
 are the most attractive targets for such studies. Here we have focused on
 the SARS-CoV-2 main protease (3CLpro) that plays an essential role in the
-virus replication process by screening ~2000 compounds against this particular
+virus replication process by screening ~2000 approved drugs against this particular
 protein. We used for that [HADDOCK2.4](/software){:target="_blank"}, following a shape-based strategy adapted from
 our successful participation to the [D3R Grand Challanges](https://drugdesigndata.org{:target="_blank"})
 and described in the following paper:
