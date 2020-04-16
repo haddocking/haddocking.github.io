@@ -25,7 +25,8 @@ for human use.
 Proteins that are crucial for the survival and replication of the virus
 are the most attractive targets for such studies. Here we have focused on
 the SARS-CoV-2 main protease (3CLpro) that plays an essential role in the
-virus replication process by screening ~2000 approved drugs (and 6 experimental ones) against this particular
+virus replication process by screening ~2000 approved drugs (and 6 experimental ones - these
+ can be identified by searching the tables using the term 'Investigational') against this particular
 protein. We used for that [HADDOCK2.4](/software){:target="_blank"}, following a shape-based strategy adapted from
 our successful participation to the [D3R Grand Challanges](https://drugdesigndata.org{:target="_blank"})
 and described in the following paper:
@@ -49,8 +50,7 @@ where:
 
 The plots show one data point per compound. In total there are 1974 compounds, grouped into one of four categories 'Protease Inhibitors', 'Antivirals', 'Antiinfectives' and 'Other'. The first is made up compounds that are known to inhibit proteases, the second antiviral medications, the third general antiinfectives and the last everything else. The 'NA' group corresponds to compounds that have no specific associations - these tend to be things like dietary supplements, aminoacid residues, etc... These are not shown in the plots but are listed in the tables. 
 
-The compounds were obtained from [Drugbank](https://www.drugbank.ca){:target="_blank"} and pre-processed using the [OpenEye](https://www.eyesopen.com/omega){:target="_blank"} Omega software (Hawkins _et al_. J. Chem. Inf. Model. *50* 572-584 (2010)).
-
+The compounds were obtained from [Drugbank](https://www.drugbank.ca){:target="_blank"} and pre-processed using the [OpenEye](https://www.eyesopen.com/omega){:target="_blank"} Omega software (Hawkins _et al_. J. Chem. Inf. Model. *50* 572-584 (2010)). For the protease we used PDB entry [6Y2F](https://www.rcsb.org/structure/6y2f) ([Zhang et al. _Science_, 2020](https://doi.org/10.1126/science.abb3405)).
 
 #### Relevance
 
