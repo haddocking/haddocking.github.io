@@ -47,9 +47,19 @@ where:
 * _Edesol_ is an empirical desolvation energy term.
 
 
-The plots show one data point per compound. In total there are 1966 compounds, grouped into one of four categories 'Protease Inhibitors', 'Antivirals', 'Antiinfectives' and 'Other'. The first is made up compounds that are known to inhibit proteases, the second antiviral medications, the third general antiinfectives and the last everything else. The 'NA' group corresponds to compounds that have no specific associations - these tend to be things like dietary supplements, aminoacid residues, etc... These are not shown in the plots but are listed in the tables. 
+The plots show one data point per compound. In total there are 1974 compounds, grouped into one of four categories 'Protease Inhibitors', 'Antivirals', 'Antiinfectives' and 'Other'. The first is made up compounds that are known to inhibit proteases, the second antiviral medications, the third general antiinfectives and the last everything else. The 'NA' group corresponds to compounds that have no specific associations - these tend to be things like dietary supplements, aminoacid residues, etc... These are not shown in the plots but are listed in the tables. 
 
 The compounds were obtained from [Drugbank](https://www.drugbank.ca) and pre-processed using the [OpenEye](https://www.eyesopen.com/omega) Omega software (Hawkins _et al_. J. Chem. Inf. Model. *50* 572-584 (2010)).
+
+
+#### Relevance
+
+In total, 6 molecules of the HADDOCK Top 100 drugs (and two of the top10 - ranks 2 and 8) are under clinical trials in Europe as reported in the European Union Drug Regulating Authorities Clinical Trials Database (EudraCT) [https://www.clinicaltrialsregister.eu/ctr-search/search?query=covid-19](https://www.clinicaltrialsregister.eu/ctr-search/search?query=covid-19):
+
+* 1 kinase targeting antitumor drug: Imatinib
+* 1 antiviral drug: Lopinavir
+* 3 antiinfective drugs: Azithromycin, ceftriaxone, erythromycin
+* 1 angiotensin II receptor antagonist: Telmisartan
 
 
 #### Acknowledgments
