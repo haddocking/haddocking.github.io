@@ -49,6 +49,13 @@ where:
 
 The plots show one data point per compound. In total there are 1966 compounds, grouped into one of four categories 'Protease Inhibitors', 'Antivirals', 'Antiinfectives' and 'Other'. The first is made up compounds that are known to inhibit proteases, the second antiviral medications, the third general antiinfectives and the last everything else. The 'NA' group corresponds to compounds that have no specific associations - these tend to be things like dietary supplements, aminoacid residues, etc... These are not shown in the plots but are listed in the tables. 
 
+The compounds were obtained from [Drugbank](https://www.drugbank.ca) and pre-processed using the [OpenEye](https://www.eyesopen.com/omega) Omega software (Hawkins _et al_. J. Chem. Inf. Model. *50* 572-584 (2010)).
+
+
+#### Acknowledgments
+Our group efforts have been led in major part by Dr. Panagiotis Koukos and Dr. Manon Réau. Dr. Er Moret from the Pharmacy Department at Utrecht University has provided valuable expertise on the compounds and their relevance.
+
+<hr>
 
 The plots are zoomable and clickable and groups can be hidden by clicking on them in the legend.
 Hovering over points in the plot will reveal the name of the compounds.
@@ -59,5 +66,7 @@ The tables are sorted based on the HADDOCK score. They are also dynamic, sortabl
 
 (If the tables and/or plots are not visible you can access them directly by
 following [this link](http://131.211.55.120:8080)).
+
+
 
 <iframe seamless frameborder="0" width="1200" height="2200" src="http://131.211.55.120:8080"></iframe>
