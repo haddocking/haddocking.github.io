@@ -9,6 +9,6 @@ image:
 
 ## COVID-19 related research projects from the CSB group
 
-### Screening of approaved drugs agains the Sars-Cov2 protease
+### Screening of approved drugs against the SARS-CoV-2 protease
 
 <iframe seamless frameborder="0" width="1200" height="2200" src="http://131.211.55.120:8080"></iframe>
