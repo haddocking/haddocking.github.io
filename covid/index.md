@@ -8,7 +8,7 @@ image:
 ---
 
 <style type="text/css">
-  .article {
+  article.people {
     margin: 0 auto !important;
     display: block;
     width: 52%;
