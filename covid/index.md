@@ -1,5 +1,5 @@
 ---
-layout: full-page
+layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 
 comments: false
