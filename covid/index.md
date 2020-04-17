@@ -63,7 +63,7 @@ In total, 6 molecules of the HADDOCK Top 100 drugs (and two of the top10 - ranks
 
 
 #### Acknowledgments
-Our group efforts have been led in major part by Dr. Panagiotis Koukos and Dr. Manon Réau. Dr. Er Moret from the Department of Pharmaceutical Sciences at Utrecht University has provided valuable expertise on the compounds and their relevance.
+Our group efforts have been led in major part by Dr. Panagiotis Koukos and Dr. Manon Réau. Dr. Ed Moret from the Department of Pharmaceutical Sciences at Utrecht University has provided valuable expertise on the compounds and their relevance.
 
 <hr>
 
