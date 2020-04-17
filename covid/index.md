@@ -74,9 +74,5 @@ Hovering over points in the plot will reveal the name of the compounds.
 The tables are sorted based on the HADDOCK score. They are also dynamic, sortable and searchable.
 
 
-(If the tables and/or plots are not visible you can access them directly by
-following [this link](http://131.211.55.120:8080){:target="_blank"}).
 
-
-
-<iframe seamless frameborder="0" width="1200" height="2200" src="http://131.211.55.120:8080"></iframe>
+<iframe seamless frameborder="0" width="1100" height="2400" src="./covid_mpro_tanimoto.html"></iframe>
