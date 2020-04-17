@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: full-page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 
 comments: false
@@ -75,4 +75,4 @@ The tables are sorted based on the HADDOCK score. They are also dynamic, sortabl
 
 
 
-<iframe seamless frameborder="0" width="1100" height="2400" src="./covid_mpro_tanimoto.html"></iframe>
+<iframe seamless frameborder="0" width="1200" height="2400" src="./covid_mpro_tanimoto.html"></iframe>
