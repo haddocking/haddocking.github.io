@@ -7,16 +7,6 @@ image:
   feature: pages/banner_research-mini.jpg
 ---
 
-<style type="text/css">
-  article .people {
-    margin: 0 auto !important;
-    display: block;
-    width: 52%;
-    float: none;
-    width: 80% !important;
-  }
-</style>
-
 ## COVID-19 related research projects from the CSB group
 
 The novel coronavirus (SARS-CoV-2) that has emerged from Wuhan, China in
