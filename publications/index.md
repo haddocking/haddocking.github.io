@@ -6,7 +6,9 @@ image:
 ---
 ## 2020
 
-* N. Renault, Y. Jung, V. Honavar, C. Geng, **A.M.J.J. Bonvin**  and L. Xue. iScore: an MPI supported software for ranking protein-protein docking models based on a random walk graph kernel and support vector machines. _SoftwareX_, In Press (2020).
+* C. Orengo, S. Velankar, S. Wodak, V. Zoete, **A.M.J.J. Bonvin**, A. Elofsson, K.A Feen.stra, D.L. Gerloff, T. Hamelryck, J.M. Hancock, M. Helmer-Citterich, A. Hospital, M. Orozco, A. Perrakis, M. Rarey, C. Soares, J.L. Sussman, J.M. Thornton, P. Tuffery, G. Tusnady, R. Wierenga, T. Salminen, B. Schneider. [A community proposal to integrate structural bioinformatics activities in ELIXIR (3D-Bioinfo Community)](https://f1000research.com/articles/9-278/v1). _F1000 Research_, Awaiting peer review (2020).
+
+* N. Renault, Y. Jung, V. Honavar, C. Geng, **A.M.J.J. Bonvin**  and L. Xue. [iScore: an MPI supported software for ranking protein-protein docking models based on a random walk graph kernel and support vector machines](https://doi.org/10.1016/j.softx.2020.100462). _SoftwareX_, *11*, 100462 (2020).
 
 * F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1). _BioRxiv_, DOI:10.1101/2020.03.18.967828 (2020).
 
