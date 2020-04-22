@@ -39,10 +39,6 @@
     position: Ph.D Candidate
     avatar: /images/people/Charlotte.jpg
 
--   name: Sam de Vos
-    position: M.Sc Student
-    avatar: /images/people/Sam-deVos.jpeg
-
 -   name: Greg Kafetzopoulos
     position: M.Sc Student
     avatar: /images/people/Greg-Kafetzopoulos.png
@@ -54,4 +50,9 @@
 -   name: Etjen Ahmic
     position: M.Sc Student
     avatar: /images/people/Etjen-Ahmic.png
+
+-   name: Nikolaos Glentis
+    position: M.Sc Student
+    avatar: /images/people/Nikolaos-Glentis.png
+
 
