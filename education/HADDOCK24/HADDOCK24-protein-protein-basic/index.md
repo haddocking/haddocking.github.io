@@ -153,8 +153,9 @@ The answer to the last question should be no: We can observe residue in the cent
 As final step save the molecule as a new PDB file which we will call: *e2a_1F3G.pdb*<br>
 For this in the PyMOL menu on top select:
 
-<a class="prompt prompt-info">File -> Save molecule...</a>
-<a class="prompt prompt-info">Select 1F3G and click on the save button</a>
+<a class="prompt prompt-info">File -> Export molecule...</a>
+<a class="prompt prompt-info">Click on the save button</a>
+<a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
 <a class="prompt prompt-info">Name your file *e2a_1F3G.pdb* and note its location</a>
 
 After saving the molecule delete it from the Pymol window or close Pymol. You can remove the molecule by typing this into the command line window of PyMOL:
@@ -221,8 +222,10 @@ You should be able to see the amount of conformational space sampled by those su
 As final step, save the molecule as a new PDB file which we will call: *hpr-ensemble.pdb*
 For this in the PyMOL menu select:
 
-<a class="prompt prompt-info">File -> Save molecule...</a>
-<a class="prompt prompt-info">Select 1HDN and click on the save button</a>
+<<a class="prompt prompt-info">File -> Export molecule...</a>
+<a class="prompt prompt-info"Select as State 0 (all states)</a>
+<a class="prompt prompt-info"Click on Save...</a>
+<a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
 <a class="prompt prompt-info">Name your file *hpr-ensemble.pdb* and note its location</a>
 
 <hr>
@@ -377,6 +380,10 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 <a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
 
 In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: the phosphate transfer mechanism (see [Biological insights](#biological-insights) below).
+
+
+**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu) high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the [example output page](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/E2A-HPR). That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
+
 
 
 <hr>
