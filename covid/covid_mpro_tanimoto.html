@@ -44591,15 +44591,26 @@
       $('#table_cluster-completed').DataTable({
         bAutoWidth: false, 
         aoColumns : [
-          { sWidth: '10%' },
-          { sWidth: '15%' },
-          { sWidth: '10%' },
-          { sWidth: '15%' },
-          { sWidth: '15%' },
-          { sWidth: '10%' },
-          { sWidth: '10%' },
           { sWidth: '5%' },
+          { sWidth: '20%' },
+          { sWidth: '5%' },
+          { sWidth: '15%' },
+          { sWidth: '15%' },
+          { sWidth: '10%' },
+          { sWidth: '10%' },
+          { sWidth: '10%' },
           { sWidth: '10%' }
+        ],
+        columnDefs: [
+            {
+                targets: [3, 4, 5],
+                type: 'html-num-fmt'
+            },
+            {
+                targets: [3, 4, 5],
+                render:
+                $.fn.dataTable.render.number( ',', '.', 3, '' )
+            }
         ]
       });
     });
@@ -44607,15 +44618,26 @@
       $('#table_single-completed').DataTable({
         bAutoWidth: false, 
         aoColumns : [
-          { sWidth: '10%' },
-          { sWidth: '15%' },
-          { sWidth: '10%' },
-          { sWidth: '15%' },
-          { sWidth: '15%' },
-          { sWidth: '10%' },
-          { sWidth: '10%' },
           { sWidth: '5%' },
+          { sWidth: '20%' },
+          { sWidth: '5%' },
+          { sWidth: '15%' },
+          { sWidth: '15%' },
+          { sWidth: '10%' },
+          { sWidth: '10%' },
+          { sWidth: '10%' },
           { sWidth: '10%' }
+        ],
+        columnDefs: [
+            {
+                targets: [3, 4, 5],
+                type: 'html-num-fmt'
+            },
+            {
+                targets: [3, 4, 5],
+                render:
+                $.fn.dataTable.render.number( ',', '.', 3, '' )
+            }
         ]
       });
     });
