@@ -54,10 +54,10 @@ The compounds were obtained from [Drugbank](https://www.drugbank.ca){:target="_b
 
 #### Relevance
 
-In total, 6 molecules of the HADDOCK Top 100 drugs (and two of the top10 - ranks 2 and 8) are under clinical trials in Europe as reported in the European Union Drug Regulating Authorities Clinical Trials Database (EudraCT) [https://www.clinicaltrialsregister.eu/ctr-search/search?query=covid-19](https://www.clinicaltrialsregister.eu/ctr-search/search?query=covid-19){:target="_blank"}:
+In total, 7 molecules of the HADDOCK Top 100 drugs (and two of the top10 - ranks 2 and 8) are under clinical trials in Europe as reported in the European Union Drug Regulating Authorities Clinical Trials Database (EudraCT) [https://www.clinicaltrialsregister.eu/ctr-search/search?query=covid-19](https://www.clinicaltrialsregister.eu/ctr-search/search?query=covid-19){:target="_blank"}:
 
 * 1 kinase targeting antitumor drug: Imatinib
-* 1 antiviral drug: Lopinavir
+* 2 antiviral drugs: Lopinavir, Remdesivir
 * 3 antiinfective drugs: Azithromycin, ceftriaxone, erythromycin
 * 1 angiotensin II receptor antagonist: Telmisartan
 
