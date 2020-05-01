@@ -6,6 +6,8 @@ image:
 ---
 ## 2020
 
+* R. Shukla, J. Medeiros-Silva, A. Parmar, B.J.A. Vermeulen, S. Das, A. Paioni, S. Jekhmane, J. Lorent, **A.M.J.J. Bonvin**, M. Baldus, M. Lelli, E.J.A. Veldhuizen, E. Breukink, I. Singh and M. Weingarth. Mode of action of teixobactins in cellular conditions. _Nature Communications_, In Press (2020).
+
 * C. Orengo, S. Velankar, S. Wodak, V. Zoete, **A.M.J.J. Bonvin**, A. Elofsson, K.A Feen.stra, D.L. Gerloff, T. Hamelryck, J.M. Hancock, M. Helmer-Citterich, A. Hospital, M. Orozco, A. Perrakis, M. Rarey, C. Soares, J.L. Sussman, J.M. Thornton, P. Tuffery, G. Tusnady, R. Wierenga, T. Salminen, B. Schneider. [A community proposal to integrate structural bioinformatics activities in ELIXIR (3D-Bioinfo Community)](https://f1000research.com/articles/9-278/v1). _F1000 Research_, Awaiting peer review (2020).
 
 * N. Renault, Y. Jung, V. Honavar, C. Geng, **A.M.J.J. Bonvin**  and L. Xue. [iScore: an MPI supported software for ranking protein-protein docking models based on a random walk graph kernel and support vector machines](https://doi.org/10.1016/j.softx.2020.100462). _SoftwareX_, *11*, 100462 (2020).
@@ -26,6 +28,11 @@ image:
 
 * A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ *34*, 149-162 (2020)
 
+* J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, *36*, 950–952 (2020).
+
+* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11). In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020).
+
+
 ## 2019 
 
 * P.I. Koukos and **A.M.J.J. Bonvin**. [Integrative modelling of biomolecular complexes](https://doi.org/10.1016/j.jmb.2019.11.009). _J. Mol.  Biol._ Advanced Online Publication (2019)
@@ -45,8 +52,6 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_, *87*, 1200-1221 (2019)
 
 * L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ *14*, 1751-1759 (2019).
 
-* J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, Advanced Online Publication, btz642 (2019).
-
 * B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. [PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes](https://doi.org/10.1093/bioinformatics/btz437). _Bioinformatics_, Advanced Online Publication, btz437 (2019).
 
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu.
@@ -57,8 +62,6 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_, *87*, 1200-1221 (2019)
 * C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, and M. Winn. 
 [West-Life: A Virtual Research Environment for structural biology](https://doi.org/10.1016/j.yjsbx.2019.100006).
 _Journal of Structural Biology: X_, *1*, 100006 (2019).
-
-* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. Protein-protein modelling using cryo-EM restraints. In: _Methods in Molecular Biology: Protein NMR_ Humana Press, New York, NY, In Press (2019).
 
 * C. Geng. Li  J. Roel-Touris and **A.M.J.J. Bonvin**. [Finding the ∆∆G spot: Are predictors of binding affinity changes upon mutations in protein-protein interactions ready for it?](https://onlinelibrary.wiley.com/doi/full/10.1002/wcms.1410) _WIREs Computational Molecular Science_ *9*, e1410 (2019).
 
