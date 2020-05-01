@@ -1,5 +1,6 @@
 ---
 layout: full-page
+title: COVID-19 related research projects from the CSB group
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 
 comments: false
@@ -7,7 +8,10 @@ image:
   feature: pages/banner_research-mini.jpg
 ---
 
-## COVID-19 related research projects from the CSB group
+* table of contents
+{:toc}
+
+<hr>
 
 The novel coronavirus (SARS-CoV-2) that has emerged from Wuhan, China in
 December 2019 has spread to almost all countries in the World causing a
@@ -67,6 +71,8 @@ Our group efforts have been led in major part by Dr. Panagiotis Koukos and Dr. M
 
 <hr>
 
+#### Screening results
+
 The plots are zoomable and clickable and groups can be hidden by clicking on them in the legend.
 Hovering over points in the plot will reveal the name of the compounds.
 
@@ -90,4 +96,4 @@ The rational behind HADDOCK docking is to make use of experimental information t
 We identified one crystallographic template to be used for the docking of every target compound in the virtual library. For the selection, we calculated the Tanimoto coefficient computed over the Maximum Common Substructure (MCS) between target and template compounds and selected the template with the highest Tanimoto coefficient. After superimposing all templates we transformed the heavy atoms of their compounds into shape beads and defined restraints between the beads and heavy atoms of the target compound to guide it in the binding pocket.
 
 ##### Pharmacophore based docking - HADDOCK 
-Similarly, each coumpound in the virtual library was associated to the most similar crystallographic template in terms of 2D pharmacophore description. To do so, we calculated the pairwise Tanimoto coefficient between the 2D pharmacophore fingerprints of the compounds from the virtual library and tha template compounds. The binding information of the template compound was then used to build a shape in the 3CLpro binding site consisting of one bead per atom, each bead being associated to a pharmacophore feature (or no feature) as computed with RDKIT. Docking restraints were imposed to orient the pharmacophore features of the drugs and active metabolites towards the corresponding feature of their associated shape.
+Similarly, each coumpound in the virtual library was associated to the most similar crystallographic template in terms of 2D pharmacophore description. To do so, we calculated the pairwise Tanimoto coefficient between the 2D pharmacophore fingerprints of the compounds from the virtual library and the template compounds. The binding information of the template compound was then used to build a shape in the 3CLpro binding site consisting of one bead per atom, each bead being associated to a pharmacophore feature (or no feature) as computed with RDKIT. Docking restraints were imposed to orient the pharmacophore features of the drugs and active metabolites towards the corresponding feature of their associated shape.
