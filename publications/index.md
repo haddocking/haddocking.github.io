@@ -30,7 +30,7 @@ image:
 
 * J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, *36*, 950–952 (2020).
 
-* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11). In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020).
+* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11). In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](http://arxiv.org/abs/2005.00435).
 
 
 ## 2019 
