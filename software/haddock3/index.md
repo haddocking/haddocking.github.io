@@ -49,7 +49,7 @@ This evaluation was done using the true interface of each complex of (3.9 Å) an
 
 ## HADDOCK3 distribution download
 
-HADDOCK v3.0 can be freely downloaded upon completion of the following [form](https://forms.gle/xKEg3oeLiK2Sta8W8).
+HADDOCK v3.0 can be freely downloaded by completing the following [form](https://forms.gle/xKEg3oeLiK2Sta8W8).
 
 
 <hr>
