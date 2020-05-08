@@ -6,6 +6,10 @@ image:
 ---
 ## 2020
 
+* F. Ambrosetti, Zuzana Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](http://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
+
+* J. Roel-Touris and **A.M.J.J. Bonvin**. Coarse-Grained (Hybrid) Integrative Modeling of Biomolecular Interactions. _Comp. Struct. Biotech. J._, In Press (2020).
+
 * R. Shukla, J. Medeiros-Silva, A. Parmar, B.J.A. Vermeulen, S. Das, A. Paioni, S. Jekhmane, J. Lorent, **A.M.J.J. Bonvin**, M. Baldus, M. Lelli, E.J.A. Veldhuizen, E. Breukink, I. Singh and M. Weingarth. Mode of action of teixobactins in cellular conditions. _Nature Communications_, In Press (2020).
 
 * C. Orengo, S. Velankar, S. Wodak, V. Zoete, **A.M.J.J. Bonvin**, A. Elofsson, K.A Feen.stra, D.L. Gerloff, T. Hamelryck, J.M. Hancock, M. Helmer-Citterich, A. Hospital, M. Orozco, A. Perrakis, M. Rarey, C. Soares, J.L. Sussman, J.M. Thornton, P. Tuffery, G. Tusnady, R. Wierenga, T. Salminen, B. Schneider. [A community proposal to integrate structural bioinformatics activities in ELIXIR (3D-Bioinfo Community)](https://f1000research.com/articles/9-278/v1). _F1000 Research_, Awaiting peer review (2020).
