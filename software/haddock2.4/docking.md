@@ -12,7 +12,7 @@ image:
 {:toc}
 
 
-**Note:** Refer also to our online [HADDOCK local installation tutorial](/education/HADDOCK-local-tutorial) for detailed examples of setting up a docking run.
+**Note:** Refer also to our online [HADDOCK local installation tutorial](/education/HADDOCK24/HADDOCK24-local-tutorial){:target="_blank"} for detailed examples of setting up a docking run.
 
 
 <hr>
@@ -100,7 +100,7 @@ And the corresponding ensemble list file would look like:
 
 #### Defining input coarse grained PDBs
 
-Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](link MARTINI page) force field with an average 4:1 ratio of all atoms to coarse grained particules.
+Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](link MARTINI page){:target="_blank"} force field with an average 4:1 ratio of all atoms to coarse grained particules.
 To use coarse graining in HADDOCK you will need to define additional keywords **CGPDN_FILEX** for each input PDB.
 In addition, for the final transformation from coarse grained to all atom models, you will need to define one additional restraint file that contains distance restraints between each coarse grained particle and the atoms that belong to it. This file is specified by the **CGTOAA_TBL** keywork. 
 
@@ -155,7 +155,7 @@ Once the `run.param` file has been properly defined, simply call haddock2.4 (def
    haddock2.4
 </pre>
 
-Make sure that the PYTHONPATH system variable contains the path of the HADDOCK installation (see [installation](/software/haddock2.4/installation)).  
+Make sure that the PYTHONPATH system variable contains the path of the HADDOCK installation (see [installation](/software/haddock2.4/installation){:target="_blank"}).  
 
 HADDOCK will create a directory **runX** (where X is the run number defined in the `run.param` file - note that this can also contain characters, e.g. `1-test`). In this directory, a **run.cns** file will be created. You will have to edit this file to start the docking (see "[Defining the docking parameters](#definingthedockingparameters)" section).  
 
@@ -209,7 +209,7 @@ Having created the run directory for your docking run, you should now edit the *
 
 Many of those have default values which you do not need to change.  
 
-For a description of the various parameters in **run.cns**, refer to the [run.cns file](/software/haddock2.4/run) section.  
+For a description of the various parameters in **run.cns**, refer to the [run.cns file](/software/haddock2.4/run){:target="_blank"} section.  
 
 **Note:** If you have turned on the use of DNA/RNA restraints in **run.cns** HADDOCK expects to find a file called **dna-rna_restraints.def** in the **data/sequence** directory. This files allows you to define standard A-, B- or custom restraints for DNA such as base-pairing, puckering and backbone dihedral angles. You can edit a template file that can be found in the **protocols** directory and save it as **dna-rna_restraint.def** into the **data/sequence** directory. 
 
@@ -238,7 +238,7 @@ The entire protocol consists of five stages:
 4.  Final refinement (optionally in explicit solvent (water or DMSO))
 5.  Post-processing / analysis  
 
-For details refer to the [Docking protocol](/software/haddock2.4/protocol) section of the online manual.
+For details refer to the [Docking protocol](/software/haddock2.4/protocol){:target="_blank"} section of the online manual.
 
 <hr>
 
@@ -254,12 +254,12 @@ A few typical problems are:
 
 * **Failure to submit to your batch system**: If you are using a queueing/batch system, make sure that the queue command defined in `run.cns` by the `queue_1=` parameter is correct.
 
-* **Failure to generate the topologies**: It can be that the generation of the starting PDBs and associated topologies is failing. This is for example the case when hetero atoms are defined in the starting PDBs (as HETATM) for which no topologies and parameters are provided (refer to our [FAQ section](/software/haddock2.4/faq.md) when docking small ligands). There could also be missing paramters for a particular molecule.
+* **Failure to generate the topologies**: It can be that the generation of the starting PDBs and associated topologies is failing. This is for example the case when hetero atoms are defined in the starting PDBs (as HETATM) for which no topologies and parameters are provided (refer to our [FAQ section](/software/haddock2.4/faq.md){:target="_blank"} when docking small ligands). There could also be missing paramters for a particular molecule.
 Always check in such a case the content of the generated `.out` files in the `begin` directory. Start looking at the bottom of the file for error messages.
 
 * **Failure in the rigid body docking stage (it0)**: A possible reason for failure at this stage is a wrong definition of the restraints. Check for error messages the output files created in the run directory with a name matching `*it0_refine_X.out.gz` where `X` is the model number. Search for error messages starting from the bottom of the file. Error are often reported by CNS with an `ERR` string.
 
-* **Failure in the semi flexible refinement stage (it1)**: While bad restraints can be the potential cause of failures, often the quality of the starting models can also be the problem. While in the ridig body docking the intramolecular interactions are not calculated (the molecules are treated as rigid bodies), these are calculated in it1. Bad internal geometries, with clashes between atoms, can cause the system to 'explode'. Check again for error messages the output files created in the run directory with a name matching `*it1_refine_X.out.gz` . Search for error messages starting from the bottom of the file. Error are often reported by CNS with an `ERR` string. Possible solutions for this problem are to reduce the temperature for the simulated annealing, or remove the high temperature parts by setting the correspdonding number of steps to 0 (refer for this to the [run.cns file](/software/haddock2.4/run) section).
+* **Failure in the semi flexible refinement stage (it1)**: While bad restraints can be the potential cause of failures, often the quality of the starting models can also be the problem. While in the ridig body docking the intramolecular interactions are not calculated (the molecules are treated as rigid bodies), these are calculated in it1. Bad internal geometries, with clashes between atoms, can cause the system to 'explode'. Check again for error messages the output files created in the run directory with a name matching `*it1_refine_X.out.gz` . Search for error messages starting from the bottom of the file. Error are often reported by CNS with an `ERR` string. Possible solutions for this problem are to reduce the temperature for the simulated annealing, or remove the high temperature parts by setting the correspdonding number of steps to 0 (refer for this to the [run.cns file](/software/haddock2.4/run){:target="_blank"} section).
 
 
 <hr>

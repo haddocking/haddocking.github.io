@@ -80,5 +80,5 @@ The ongoing development of HADDOCK is the result of a team effort and in particu
 
 * * *
 
-<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> [![Haddock](haddock.gif)](http://en.wikipedia.org/wiki/Captain_Haddock)  
+<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> [![Haddock](/software/haddock2.2/haddock.gif)](http://en.wikipedia.org/wiki/Captain_Haddock)  
 <font size="-2">Copyright © Hergé Moulinsart 2003</font>

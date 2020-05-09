@@ -69,7 +69,7 @@ Such restraints can be useful in multi-body (N>2) docking to ensure that all mol
 
 
 <hr>
-##Center of mass restraints 
+## Center of mass restraints 
 
 Center of mass restraints between the various molecules can be automatically defined in HADDOCK 2.x (_cmrest=true_ in [`run.cns`](/software/haddock2.4/run){:target="_blank"}). These restraints are defined in the `cm-restraint.cns` CNS script. This option is fully compatible with all other types of restraints.
 
@@ -150,13 +150,7 @@ By combining the experimental data (mutagenesis or chemical shift perturbation) 
 
 The passive residues are all solvent accessible surface neighbors of active residues. To define them you can display your molecule in space-filling model using your favorite visualisation software and color the active residues for example in red and manually select the neighbours.
 
-
-|<img src="/software/haddock2.4/hpr-csp-filtered.gif"  width="250"> |  Then, filter out the residues having a low solvent accessibility (colored yellow in the figure). |
-|<img src="/software/haddock2.4/hpr-passive-filtered.gif"  width="250">| Select then all surface neighbors to define the passive residues (colored green in the figure). |
-|<img src="/software/haddock2.4/hpr-passive.gif" width="250">|  and filter them with the solvent accessibility criterion (see above).|
-
-
-**Note:** If you are using an ensemble of structures as the starting point, you should use the average solvent accessibility to filter your active and passive residues (see [below](#ensemble)).  
+**Note:** If you are using an ensemble of structures as the starting point, you should use the average solvent accessibility to filter your active and passive residues (see below).  
 
 
 ### Residue filtering from an ensemble of structures
@@ -166,7 +160,7 @@ If you perform the docking from an ensemble of structures, the solvent accessibi
 **ASAav + SD > 40%**
 
 where SD corresponds to the standard deviation.  
-We are providing in the $HADDOCKTOOLS directory a csh script called `calc_ave_asa.csh` that will allow you to calculate the average accessibilities from an ensemble of structures using [NACCESS](http://wolf.bms.umist.ac.uk/naccess).  
+We are providing in the $HADDOCKTOOLS directory a csh script called `calc_ave_asa.csh` that will allow you to calculate the average accessibilities from an ensemble of structures using [NACCESS](http://wolf.bms.umist.ac.uk/naccess){:target="_blank"}.  
 To do so, you should split your pdb file into different files containing each one structure and then use calc_ave_rsa.csh:
 
 <pre style="background-color:#DAE4E7" >

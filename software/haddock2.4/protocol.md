@@ -220,17 +220,17 @@ The CNS scripts called in sequential order for the rigid body EM are (depending 
 *   *__symmultimer.cns__*:		Defines symmetry restraints
 *   *__read_noes.cns__*:		Reads again the distance restraints
 *   *__scale_inter_final.cns__*:	Turns on only intermolecular interactions and apply final scaling factor
-*   *__scale_intra_only.cns__*:		Defines only intremolecular interactions
+*   *__scale_intra_only.cns__*:		Defines only intermolecular interactions (if only 1 molecule)
 *   *__print_coorheader.cns__*:	Defines the remarks with energy statistics for the output PDB files
 *   *__waterdock_out0.cns__*:	Writes output PDB files for water in case of solvated docking
 
 
-When all structures have been generated (typically in the order of 1000 to 10000 depending on the number of starting conformations, the protocol settings and your CPU resources), HADDOCK will sort them accordingly to the criterion defined in the [*run.cns*](/software/haddock2.4/run) parameter file and write the sorted PDB filenames into *file.cns, file.list* and *file.nam* in the ***structures/it0*** directory. These will be used for the next step (semi-flexible simulated annealing).  
+When all structures have been generated (typically in the order of 1000 to 10000 depending on the number of starting conformations, the protocol settings and your CPU resources), HADDOCK will sort them accordingly to the criterion defined in the [*run.cns*](/software/haddock2.4/run#scoring) parameter file and write the sorted PDB filenames into *file.cns, file.list* and *file.nam* in the ***structures/it0*** directory. These will be used for the next step (semi-flexible simulated annealing).  
 
 
 <hr>
 
-### Semi-flexible simulated annealing  
+## Semi-flexible simulated annealing  
 
 The best XXX structures after rigid body docking (typically 200, but this is left to the user's choice (see the [run.cns file](/software/haddock2.4/run) section)) will be subjected to a semi-flexible simulated annealing (SA) in torsion angle space. This semi-flexible annealing consists of several stages:  
 
@@ -284,130 +284,109 @@ The ***refine.inp*** CNS script is used for this step and the CNS scripts called
 *   *__zrestrainting.cns__*: 	Defines harmonic Z-restraints
 *   *__cm-restraints.cns__*: 	Defines center-of-mass distance restraints
 *   *__contactairs.cns__*:	Defines ambiguous distance restraints between contacting surfaces instead of surface resrtaints if defined
-*   *__protein-ss-restraints-all.def__:	Defines secondary structure restraints for all residues if defined
-*   *__protein-ss-restraints-alpha.def__:	Defines secondary structure restraints for alpha helices if defined
-*   *__protein-ss-restraints-alpha-beta.def__:	Defines secondary structure restraints for alpha helices and beta sheets if defined
-
-TODO
-
-*   *__bestener.cns__*:		Keeps track of the best generated model so far
-*   *__rotation180.cns__*:	Performs a 180 rotation around a vector perpendicular to the interface and minimize the complex again
-*   *__em_orien_search.cns__*:	Performs a search to orient the complex properly in the EM density
-*   *__bestener.cns__*:			Keeps track of the best generated model so far
-*   *__scale_inter_only.cns__*:	Turns on only intermolecular interactions
+*   *__dna-rna_restraints.def__*:	Defines DNA/RNA specific restraints
+*   *__protein-ss-restraints-all.def__*:	Defines secondary structure restraints for all residues if defined
+*   *__protein-ss-restraints-alpha.def__*:	Defines secondary structure restraints for alpha helices if defined
+*   *__protein-ss-restraints-alpha-beta.def__*:	Defines secondary structure restraints for alpha helices and beta sheets if defined
+*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
 *   *__mini_tensor.cns__*:		Optimizes the tensor orientation for RDC restraints
 *   *__mini_tensor_para.cns__*: Optimizes the tensor orientation for PCS restraints
 *   *__mini_tensor_dani.cns__*: Optimizes the tensor orientation for diffusion anisotropy restraints
-*   *__scale_intra_only.cns__*:	Defines only intremolecular interactions
-*   *__read_noes.cns__*:		Reads again the distance restraints
+*   *__scale_inter_only.cns__*:	Turns on only intermolecular interactions
+*   *__setflags.cns__*:		Defines the active energy terms
+*   *__flex_segment_back.cns__*: Define flexible interface for initial energy minimization
+*   *__torsiontop.cns__* :	Generate topology for torsion angle MD
+*   *__sa_ltad_hightemp.cns__*: Runs high temperature torsion angle molecular dynamics (TAD) stage (rigid bodies)
+	*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+	*   *__scale_inter.cns__*:	Scaling of intermolecular interactions
+*   *__sa_ltad_cool1.cns__*:	Runs first slow cooling simulated annealing TAD stage (rigid bodies)
+	*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+	*   *__scale_inter.cns__*:	Scaling of intermolecular interactions
+*   *__torsiontop_flex.cns__* :	Generate topology for semi-flexible side-chains torsion angle MD
+*   *__sa_ltad_cool2.cns__*:	Runs second slow cooling simulated annealing TAD stage (flexible side-chains at interface)
+	*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+	*   *__scale_inter.cns__*:	Scaling of intermolecular interactions
+*   *__torsiontop_flex_back.cns__* :	Generate topology for semi-flexible side-chains and backbone torsion angle MD
+*   *__sa_ltad_cool3.cns__*:	Runs third slow cooling simulated annealing TAD stage (flexible side-chains and backbone at interface)
+	*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+	*   *__scale_inter.cns__*:	Scaling of intermolecular interactions
+*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+*   *__flex_segment_back.cns__*: Define flexible interface for final energy minimization
+*   *__calc_free-ene.cns__*:	Calculate the total energy of each molecule in isolation
+*   *__scale_intra_only.cns__*:		Defines only interemolecular interactions
+*   *__scale_inter_final.cns__*:	Turns on only intermolecular interactions and apply final scaling factor
+*   *__scale_intra_only.cns__*:		Defines only intermolecular interactions (if only 1 molecule)
 *   *__symmultimer.cns__*:		Defines symmetry restraints
 *   *__read_noes.cns__*:		Reads again the distance restraints
-*   *__scale_inter_final.cns__*:	Turns on only intermolecular interactions and apply final scaling factor
-*   *__scale_intra_only.cns__*:		Defines only intremolecular interactions
+*   *__dna-rna_restraints.def__*:	Defines DNA/RNA specific restraints
+*   *__em_calc_lcc.cns__*:	Calculate the local EM cross-correlation
 *   *__print_coorheader.cns__*:	Defines the remarks with energy statistics for the output PDB files
-*   *__waterdock_out0.cns__*:	Writes output PDB files for water in case of solvated docking
+*   *__waterdock_out1.cns__*:	Writes output PDB files for water in case of solvated docking
 
 
 
-
-*  *initialize.cns*
-*   *iterations*
-*   *run.cns*
-*   *read_struc.cns*
-*   *covalions.cns*
-*   *flags_new.cns*
-*   *read_data.cns*
-*   *calc_free-ene.cns*
-*   *read_water1.cns*
-*   *water_rest.cns*
-*   *flags_new.cns*
-*   *contactairs.cns*
-*   *water_rest.cns*
-*   *symmultimer.cns*
-*   *cm-restraints.cns*
-*   *surf-restraints.cns*
-*   *dna-rna_restraints.def
-*   *set_noe_scale.cns*
-*   *mini_tensor.cns*
-*   *mini_tensor_dani.cns*
-*   *scale_inter_only.cns*
-*   *rotation180.cns*
-*   *flags_new.cns*
-*   *flex_segment_back.cns*
-*   *torsiontop.cns*  
-*   *sa_ltad_hightemp.cns*
-    - *set_noe_scale.cns*
-    - *scale_inter.cns*
-*   *sa_ltad_cool1.cns*
-    - *set_noe_scale.cns*
-    - *scale_inter.cns*
-*   *torsiontop_flex.cns*
-    - *flex_segment_side.cns*
-    - *numtrees.cns*
-*   *sa_ltad_cool2.cns*
-    - *set_noe_scale.cns*
-    - *scale_inter.cns*
-*   *torsiontop_flex_back.cns*
-    - *flex_segment_back.cns*
-    - *numtrees.cns*
-*   *sa_ltad_cool3.cns*
-    - *set_noe_scale.cns*
-    - *scale_inter.cns*
-*   *set_noe_scale.cns*
-*   *flex_segment_back.cns*
-*   *scale_intra_only.cns*
-*   *scale_inter_only.cns*
-*   *symmultimer.cns*
-*   *read_noes.cns*
-*   *dna-rna_restraints.def*
-*   *print_coorheader.cns*
-*   *waterdock_out1.cns*
-
-At the end of the calculation, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run#iter) parameter file.  
+At the end of the calculation, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run#scoring) parameter file.  
 At the end of this stage, the structures are analyzed and the results are placed in the ***structures/it1/analysis*** directory (see the [analysis](/software/haddock2.4/analysis) section).  
 
-* * *
 
-<a name="water">**4\. <u>Flexible explicit solvent refinement</u>**</a>  
+<hr>
 
-In this final step, the structures obtained after the semi-flexible simulated annealing are refined in an explicit solvent layer (8A for water, 12.5A for DMSO). In this step, no spectacular changes are expected, however, the scoring of the various structures is improved.  
+## Flexible final refinement
+  
+In this final step, the structures obtained after the semi-flexible simulated annealing are refined. The default in HADDOCK2.4 is to perform only a final energy minimiztion. But it is also possible to perform a short MD refinement in an explicit solvent layer (8A for water, 12.5A for DMSO). In this step, no spectacular changes are expected, however, the scoring of the various structures is improved.  
 
-The ***re_h2o.inp*** or ***re_dmso.inp*** CNS script is used for this step.
+The generated output files are:
 
-*   *fileroot_1w.pdb, fileroot_2w.pdb, ... written in the ***structures/it1/water*** directory  
+*   *fileroot_1w.pdb, fileroot_2w.pdb*, ... written in the ***structures/it1/water*** directory  
+*   *fileroot_runX_1w.out*, ... written in the run directory
+
 
 ***Note1:*** The numbering of the structures from it1 is kept.  
 
-***Note2:*** If *keepwater* is set to true in [*run.cns*](/software/haddock2.4/run#iter), additional output pdb files will be written to disk containing the water (*fileroot_1_h2o.pdb* ,...).
-
-*   *initialize.cns*
-*   *iterations.cns*
-*   *run.cns*
-*   *read_struc.cns*
-*   *flags_new.cns*
-*   *calc_free-solv-ene.cns*
-*   *calc_free-ene.cns*
-*   *read_water1.cns*
-*   *generate_water.cns (or generate_dmso.cns*)
-*   *water_rest.cns*
-*   *symmultimer.cns*
-*   *set_noe_scale.cns*
-*   *dna-rna_restraints.def*
-*   *mini_tensor.cns*
-*   *mini_tensor_dani.cns*
-*   *flex_segment_side.cns*
-*   *set_noe_scale.cns*
-*   *flex_segment_back.cns*
-*   *set_noe_scale.cns*
-*   *scale_intra_only.cns*
-*   *scale_inter_only.cns*
-*   *symmultimer.cns*
-*   *read_noes.cns*
-*   *dna-rna_restraints.def*
-*   *print_coorheader.cns*
+***Note2:*** If *keepwater* is set to true in [*run.cns*](/software/haddock2.4/run#iter), two additional output pdb files will be written to disk containing the the entire water shell (*fileroot_1_h2o-all.pdb*) and only the intermolecular water molecules (*fileroot_1_h2o-inter.pdb* ,...).
 
 
-At the end of the explicit solvent refinement, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run#iter) parameter file.  
+The ***re_h2o.inp*** or ***re_dmso.inp*** are used for this step and the CNS scripts called in sequential order for this final stage are (depending on the options selected):
+
+
+*   *__initialize.cns__*: 	Initialize the iteration variable
+*   *__iterations.cns__*: 	Defines the iteration variable
+*   *__run.cns__*: 			Reads in all parameter settings for the run
+*   *__read_struc.cns__*:	Reads in the topologies and parameters
+*   *__read_struc-cg.cns__*:	Reads in the coarse grained topologies and parameters
+*   *__cg-to-aa.cns__*:	Performs the morphing of the all-atoms model onto the CG model
+*   *__read_water1.cns__*	Reads water coordinates for solvated docking
+*   *__generate_water.cns__* (or *__generate_dmso.cns__*):	Generates the solvent shell
+*   *__read_data.cns__*:	Reads the various restraints
+*   *__em_read_data.cns__*:	Reads the EM restraints
+*   *__water_rest.cns__*	Define restraints between interfacial waters and highly solvated amino acids
+*   *__setflags.cns__*:		Defines the active energy terms
+*   *__water_rest.cns__*	Define restraints between interfacial waters and highly solvated amino acids
+*   *__symmultimer.cns__*:	Defines symmetry restraints
+*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+*   *__dna-rna_restraints.def__*:	Defines DNA/RNA specific restraints
+*   *__mini_tensor.cns__*:		Optimizes the tensor orientation for RDC restraints
+*   *__mini_tensor_para.cns__*: Optimizes the tensor orientation for PCS restraints
+*   *__mini_tensor_dani.cns__*: Optimizes the tensor orientation for diffusion anisotropy restraints
+*   *__protein-ss-restraints-all.def__*:	Defines secondary structure restraints for all residues if defined
+*   *__protein-ss-restraints-alpha.def__*:	Defines secondary structure restraints for alpha helices if defined
+*   *__protein-ss-restraints-alpha-beta.def__*:	Defines secondary structure restraints for alpha helices and beta sheets if defined
+*   *__flex_segment_side.cns__*: Define flexible interface side-chains for initial energy minimization
+*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+*   *__flex_segment_back.cns__*: Define flexible interface for final energy minimization
+*   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
+*   *__calc_free-ene.cns__*:	Calculate the total energy of each molecule in isolation
+*   *__scale_intra_only.cns__*:		Defines only interemolecular interactions
+*   *__scale_inter_final.cns__*:	Turns on only intermolecular interactions and apply final scaling factor
+*   *__scale_intra_only.cns__*:		Defines only intermolecular interactions (if only 1 molecule)
+*   *__symmultimer.cns__*:		Defines symmetry restraints
+*   *__read_noes.cns__*:		Reads again the distance restraints
+*   *__dna-rna_restraints.def__*:	Defines DNA/RNA specific restraints
+*   *__em_calc_lcc.cns__*:	Calculate the local EM cross-correlation
+*   *__print_coorheader.cns__*:	Defines the remarks with energy statistics for the output PDB files
+
+
+At the end of the explicit solvent refinement, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run#scoring) parameter file.  
 
 Finally, the structures are analyzed and the results are placed in the ***structures/it1/water/analysis*** directory (see the [analysis](/software/haddock2.4/analysis) section).  
 
