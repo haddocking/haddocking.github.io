@@ -3,15 +3,11 @@ layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: HADDOCK2.4 manual - Diffusion Anisotropy Restraints
 image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> manual
-
-## <font color="RED">U</font>sing <font color="RED">D</font>iffusion <font color="RED">A</font>nisotropy <font color="RED">D</font>ata
-
-* * *
 
 Diffusion anisotropy data (relaxation data) can provide useful information on the orientation of the molecules to be docked (comparable to RDCs). They can be introduced in HADDOCK as direct restraints (DANI statement in CNS).  
 For this, the tensor components need first to be determined. In the case of complexes, this can be easily done by using the known structures of the single domains. The software [Tensor2](https://www.ibs.fr/research/scientific-output/software/tensor/){:target="_blank"} (Dosset, Marion and Blackledge (2000). _J. Biomol. NMR_ **16**, 23-28) can be used for this purpose.  
@@ -48,7 +44,8 @@ Where dx, dy and dz are the values from the file _tensor2_fit.lis_. The output o
 
 Check the values in tensor2_fit.lis to make sure they match (e.g. same sign) before averaging them. Also make sure that an anisotropic model is in accordance with your data.  
 
-<a name="dani">**<u>Use of relaxation data as restraints for docking</u>**</a>  
+
+### Use of relaxation data as restraints for docking  
 
 The proper format for DANI restraints is the following:  
 

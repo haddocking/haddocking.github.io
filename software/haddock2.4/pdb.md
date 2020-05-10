@@ -24,11 +24,11 @@ In order to run HADDOCK you need to have the structures of the molecules (or fra
 
 *   HADDOCK can deal with ions. You will have however to make sure that the ion naming is consistent with the ion topologies provided in HADDOCK (check for this the **_ion.top_** file in the **toppar** directory. For example, a CA heteroatom with residue name CA will be interpreted as a neutral calcium atom. A doubly charged calcium ion should be name CA+2 with as residue name CA2 to be properly recognized by HADDOCK.
 
-    (See also the [FAQ](/software/haddock2.4/faq#ions){:target="_blank"} for docking in the presence of ions).
+    (See also the [FAQ](/software/haddock2.4/faq/#what-about-ions){:target="_blank"} for docking in the presence of ions).
 
 A list of supported modified amino acids and ions is available online on the [haddock2.4](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"} web server page.
 <hr>
 
-**Note:** Most of the tasks mentioned above can also be performed using our PDB-tools python scripts ([Rodrigues et al. F1000 Research](https://doi.org/10.12688/f1000research.17456.1){:target="_blank"}) to manipulate PDB files, select and rename chains and segids, renumber residues... and much more! See for this our [GitHub repository](https://github.com/haddocking/pdb-tools){:target="_blank"}. Some examples are also provided in the [HADDOCK2.4 local installation](/education/HADDOCK24/HADDOCK24-local-tutorial/#preparing-pdb-files-for-docking){:target="_blank"} tutorial.
+**Note:** Most of the tasks mentioned above can also be performed using our PDB-tools python scripts ([Rodrigues et al. F1000 Research](https://doi.org/10.12688/f1000research.17456.1){:target="_blank"}) to manipulate PDB files, select and rename chains and segids, renumber residues... and much more! See for this our [GitHub repository](https://github.com/haddocking/pdb-tools){:target="_blank"}. Alternatively you can also make use of our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} . Some examples are also provided in the [HADDOCK2.4 local installation](/education/HADDOCK24/HADDOCK24-local-tutorial/#preparing-pdb-files-for-docking){:target="_blank"} tutorial.
 
 

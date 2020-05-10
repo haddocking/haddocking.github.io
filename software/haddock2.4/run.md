@@ -3,15 +3,10 @@ layout: page
 ags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified:
 comments: false
+title: HADDOCK2.4 manual - run.cns parameters
 image:
   feature: pages/banner_software.jpg
 ---
-
-# <font color="RED">HADDOCK2.4</font> manual
-
-## <font color="RED">R</font>un.cns
-
-* * *
 
 The **run.cns** file contains all the parameters to run the docking. You need to edit this file to define a number of project-specific parameters such as the number of structures to generate at the various stages, which restraints to use for docking and various parameters governing the docking and scoring. Many parameters have default values which you do not need to change unless you want to experiment with parameters (and know what you are doing).
 
@@ -504,7 +499,7 @@ For example to limit it to chains B and C define: "(segid B or segid C)".
 To activate this type of restraints set *rgrest=true* and specify the radius of gyration and the selection to which it applies.
 
 
-<pre style="background-color:#DAE4E7"> 
+<pre style="background-color:#D2AE4E7"> 
 {=========================== radius of gyration restraint  ============}
 {* Turn on/off and energy constants for Rg restraints *}
 {* Do you want to define a radius of gyration restraint (e.g. from SAXS)? *}
@@ -521,7 +516,7 @@ To activate this type of restraints set *rgrest=true* and specify the radius of 
 {===>} krg_cool3=100.0;
 
 {* Atom selections for the radius of gyration restraint *}
-{===>} rgsele="all";</pre>
+{===>} rgsele="all";
 </pre>
 
 
@@ -785,7 +780,7 @@ To use explicitely the cryo-EM density as a restraint in HADDOCK set *em_rest=tr
 </pre>
 
 
-For more information on using diffusion anisotropy as restraints for docking see also the [cryoEM restraints](/software/haddock2.4/cryoEM) section of the online HADDOCK manual. Their implementation and use in HADDOCK is described in:
+For more information on using a cryo-EM map as restraints for docking see also the [cryoEM restraints](/software/haddock2.4/cryoEM) section of the online HADDOCK manual. Their implementation and use in HADDOCK is described in:
 
 
 * M.E. Trellet, G. van Zundert and A.M.J.J. Bonvin. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11){:target="_blank"}. In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](http://arxiv.org/abs/2005.00435){:target="_blank"}.

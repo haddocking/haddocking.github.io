@@ -3,20 +3,13 @@ layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: Obtaining HADDOCK
 image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> licensing
+HADDOCK consists of a collection of [python](http://www.python.org) and [CNS](http://cns-online.org) scripts and other additional scripts and programs (csh, awk, perl, c++). The HADDOCK distribution can be obtained free of charge for non commercial users by providing the required information below.
 
-## <font size="+2" color="RED">G</font>etting the software
+Upon verification on your non-profit status you will get an email with instructions on how to download the HADDOCK2.4 distribution.
 
-HADDOCK consists of a collection of [python](http://www.python.org) and [CNS](http://cns-online.org) scripts and other additional scripts and programs (csh, awk, perl, c++). The HADDOCK distribution can be obtained free of charge for non commercial users by completing and returning (via email) the [license agreement form](/software/haddock2.4/haddock_lic) to:
-
-The HADDOCK2.4 distribution amounts to approximately 10MB (gzipped tar file) and will be distributed by email unless otherwise required. The additional software and licenses required to run HADDOCK (e.g. CNS) should be obtained directly from the distribution sites. (see the [software links](/software/haddock2.4/software)).  
-
-**_Commercial users should contact us for enquiries._**
-
-* * *
-
-<font size="-1">Please send any suggestions or enquiries to Alexandre Bonvin</font>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScWODgOREhHa2ED_K6fIPKkANJ5k3uBY64fmzyVc9z8q0pFng/viewform?embedded=true" width="640" height="1123" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
