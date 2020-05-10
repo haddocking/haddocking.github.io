@@ -34,9 +34,9 @@ Fax: +31-30-2537623
 
 * * *
 
-**HADDOCK manual**: [http://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
+**HADDOCK2.4 manual**: [http://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
 
-**HADDOCK webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
+**HADDOCK2.4 webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
 
 **Getting the software**:  [license form](/software/haddock2.4/download)   
 
