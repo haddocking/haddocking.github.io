@@ -113,12 +113,12 @@ the interface used in the calculation is automatically defined based on an analy
 <hr>
 ### Downloading HADDOCK
 In this tutorial we will make use of the new HADDOCK2.4 version.  
-To obtain HADDOCK2.4 fill and return the [HADDOCK license form]((http://www.bonvinlab.org/software/haddock2.2/download/){:target="_blank"} ).
+To obtain HADDOCK2.4 fill the [HADDOCK license form](software/haddock2.4/download/).
 
 <br>
 <hr>
 ### Downloading CNS
-The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23). For this tutorial you can download pre-compiled executables for Linux and OSX from the following [link](https://surfdrive.surf.nl/files/index.php/s/Wcv67D5IX0DuZK5){:target="_blank"} (again password-protected).
+The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23).
 
 Untar the archive in the `software` directory.
 
@@ -223,15 +223,19 @@ This configuration file should contain the following information:
 
 `NUMJOB` defining the number of concurrent jobs executed (or submitted).
 
+`QUEUESUB` defining the HADDOCK python script used to run the jobs (the default _QueueSubmit_concat.py_ should do in most cases).
+
 
 And example configuration file for running on local resources assuming a 4 core system would be:
 <pre style="background-color:#DAE4E7">
-  set CNSTMP=/home/abonvin/software/cns/cns_solve-1.31-UU-Linux64bits.exe
+  set CNSTMP=/home/software/cns/cns_solve-1.31-UU-Linux64bits.exe
   set QUEUETMP=/bin/csh
   set NUMJOB=4
+  set QUEUESUB=QueueSubmit_concat.py
 </pre>
 
-For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found [here](http://www.bonvinlab.org/software/haddock2.2/faq/#batchqueue).
+
+For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found [here](software/haddock2.4/faq).
 
 In order to configure HADDOCK, call the `install.csh` script with as argument the configuration script you just created:
 
@@ -247,12 +251,12 @@ To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat
 </a>
 
 <pre style="background-color:#DAE4E7">
-jobmax["it0"] = 10
-jobmax["it1"] = 2
-jobmax["water"]= 1
+jobconcat["0"] = 5
+jobconcat["1"] = 1
+jobconcat["2"] = 1
 </pre>
 
-In our case, if running on local system, change all values to 1.
+If running on local system, change all values to 1.
 
 One last command to source the HADDOCK environment (under bash) (for csh, replace `.sh` by `.csh`):
 

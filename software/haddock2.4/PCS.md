@@ -3,15 +3,11 @@ layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: HADDOCK2.4 manual - Pseudo Contact Shifts
 image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> manual
-
-## <font color="RED">U</font>sing <font color="RED">P</font>seudo <font color="RED">C</font>ontact <font color="RED">S</font>hifts
-
-* * *
 
 Pseudo contact shifts (PCS) can provide useful information on both the distances and the orientation of the molecules to be docked. They can be used directly as restraints in HADDOCK using the XPCS energy term in CNS. Note that for this the standard CNS version needs to be recompiled with the files provided in the cns1.3 directory in the HADDOCK distribution.  
 
