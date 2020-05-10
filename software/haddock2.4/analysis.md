@@ -285,7 +285,7 @@ A number of scripts are provided for this purpose in the **runX/tools** director
 
 * * *
 
-#### Collection of single structures statitistics
+#### Collection of single structures statistics
 
 This can be done by executing the ***ana_structures.csh** script once the _file.list_ file has been created. It extracts from the header of the PDB files various energy terms, violation statistics and buried surface area and calculates the RMSD of each structure compared to the lowest energy one (if the location of ProFit is defined (see [installation](/software/haddock2.4/installation){:target="_blank"} and [software links](/software/haddock2.4/software){:target="_blank"})).  
 
