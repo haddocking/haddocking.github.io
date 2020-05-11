@@ -20,11 +20,11 @@ The entire docking protocol in HADDOCK consists of five stages:
 
 #### Generation of all atoms topologies and coordinates for each molecule separately
 
-The first step in HADDOCK in the generation of the CNS topologies and coordinates files for the various molecules and for the complex from the input PDB files. HADDOCK should automatically recognize chain breaks, disulphide bonds, cis-prolines, d-amino acids and even ions provided they are named as defined in the ion.top topology file located in the ***toppar*** directory. A number of modified amino acids is also supported. Those should be defined with the proper residue naming in the input PDB files. Refer for the list of supported modified amino acids to the [online page](ADD LINK) on the HADDOCK2.4 webserver.
+The first step in HADDOCK in the generation of the CNS topologies and coordinates files for the various molecules and for the complex from the input PDB files. HADDOCK should automatically recognize chain breaks, disulphide bonds, cis-prolines, d-amino acids and even ions provided they are named as defined in the ion.top topology file located in the ***toppar*** directory. A number of modified amino acids is also supported. Those should be defined with the proper residue naming in the input PDB files. Refer for the list of supported modified amino acids to the [online page](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"} on the HADDOCK2.4 webserver.
 
 First the topologies will be generated for each molecule separately and all missing atoms in the input PDB files will be generated. For each input structure
 
-Job files will be generated in the ***run*** directory and the topologies, structures and output files will be generated in the ***begin*** directory. HADDOCK will use the fileroot names specified in the [*run.cns*](/software/haddock2.4/run) file by the `prot_root_molX` variable for each molecule and `fileroot` for the complex.  
+Job files will be generated in the ***run*** directory and the topologies, structures and output files will be generated in the ***begin*** directory. HADDOCK will use the fileroot names specified in the [*run.cns*](/software/haddock2.4/run){:target="_blank"} file by the `prot_root_molX` variable for each molecule and `fileroot` for the complex.  
 
 The following scripts will be run:  
 
@@ -122,7 +122,7 @@ In case of problems (*and in general to make sure that everything is OK*) look i
 
 The first docking step in HADDOCK is a rigid body energy minimization.  
 
-First the molecules are separated by a minimum of 25Å and rotated randomly around their center of mass. This randomization step can be turned off in the [*run.cns*](/software/haddock2.4/run) parameter file. If you wish to decrease (or increase) the separation distance between the two molecules, edit in the ***protocols*** directory the ***separate.cns*** CNS script and change the value of the *$minispacing* parameter.  
+First the molecules are separated by a minimum of 25Å and rotated randomly around their center of mass. This randomization step can be turned off in the [*run.cns*](/software/haddock2.4/run){:target="_blank"} parameter file. If you wish to decrease (or increase) the separation distance between the two molecules, edit in the ***protocols*** directory the ***separate.cns*** CNS script and change the value of the *$minispacing* parameter.  
 The rigid body minimization is performed in multiple steps:  
 
 *   four cycles of rotational minimization in which each molecule (molecule+associated solvent in case of solvated docking) is allowed to rotate in turn  
@@ -156,18 +156,18 @@ For details of the solvated docking protocol refer to:
 If ***RDC, PCS or diffusion anisotropy restraints are used*** two additional minimization steps are carried out to optimize the orientation of the molecules with respect to the alignment tensor(s).  
 
 
-For each starting structure combination, the rigid body minimisation step is repeated a number of times (given by the *Ntrials* parameter in the *[run.cns](/software/haddock2.4/run)* parameter file. In addition, 180 degree rotated solutions are systematically sampled if the *rotate180_0* parameter in the *[run.cns](/software/haddock2.4/run)* parameter file is set to *true* (default behavior). Only the best solution from these docking trials is written to disk.  
+For each starting structure combination, the rigid body minimisation step is repeated a number of times (given by the *Ntrials* parameter in the *[run.cns](/software/haddock2.4/run){:target="_blank"}* parameter file. In addition, 180 degree rotated solutions are systematically sampled if the *rotate180_0* parameter in the *[run.cns](/software/haddock2.4/run){:target="_blank"}* parameter file is set to *true* (default behavior). Only the best solution from these docking trials is written to disk.  
 
 
-**Note:** The translational minimization can be turned off in *[run.cns](/software/haddock2.4/run)* by setting `rigidmini` to `false` (default is `true`). This option can be useful for example for small flexible molecules to perform the docking during the simulated annealing stage allowing conformational changes to take place during the docking process. The number of steps in the first two stages of the simulated annealing should then be increased by at least a factor four to allow the molecules to approach each other.  
+**Note:** The translational minimization can be turned off in *[run.cns](/software/haddock2.4/run){:target="_blank"}* by setting `rigidmini` to `false` (default is `true`). This option can be useful for example for small flexible molecules to perform the docking during the simulated annealing stage allowing conformational changes to take place during the docking process. The number of steps in the first two stages of the simulated annealing should then be increased by at least a factor four to allow the molecules to approach each other.  
 
 The ***refine.inp*** CNS script is used for the rigid body minimisation step and the resulting models are written as *fileroot_1.pdb, fileroot_2.pdb, ...* in the ***structures/it0*** directory
 
-***Note1:*** If solvated docking is turned on (`waterdock=true` in [*run.cns*](/software/haddock2.4/run#iter), additional output pdb files will be written to disk containing the water (*fileroot_1_water.pdbw* ,...).
+***Note1:*** If solvated docking is turned on (`waterdock=true` in [*run.cns*](/software/haddock2.4/run){:target="_blank"}, additional output pdb files will be written to disk containing the water (*fileroot_1_water.pdbw* ,...).
 
-***Note2:*** If random removal of restraints is turned on (`noecv=true` in [*run.cns*](/software/haddock2.4/run#iter)), additional files will be written to disk containing the random number seed (*fileroot_1.seed* ,...). This seed is used in the refinement to make sure that the same restraints are removed.
+***Note2:*** If random removal of restraints is turned on (`noecv=true` in [*run.cns*](/software/haddock2.4/run){:target="_blank"}), additional files will be written to disk containing the random number seed (*fileroot_1.seed* ,...). This seed is used in the refinement to make sure that the same restraints are removed.
 
-***Note3:*** If random AIR definition is turned on (`ranair=true` in [*run.cns*](/software/haddock2.4/run#iter)), additional files will be written to disk containing the list of residues selected for the AIR definition (*fileroot_1.disp* ,...)..
+***Note3:*** If random AIR definition is turned on (`ranair=true` in [*run.cns*](/software/haddock2.4/run){:target="_blank"}), additional files will be written to disk containing the list of residues selected for the AIR definition (*fileroot_1.disp* ,...)..
 
 
 The CNS scripts called in sequential order for the rigid body EM are (depending on the options selected):
@@ -225,27 +225,27 @@ The CNS scripts called in sequential order for the rigid body EM are (depending 
 *   *__waterdock_out0.cns__*:	Writes output PDB files for water in case of solvated docking
 
 
-When all structures have been generated (typically in the order of 1000 to 10000 depending on the number of starting conformations, the protocol settings and your CPU resources), HADDOCK will sort them accordingly to the criterion defined in the [*run.cns*](/software/haddock2.4/run#scoring) parameter file and write the sorted PDB filenames into *file.cns, file.list* and *file.nam* in the ***structures/it0*** directory. These will be used for the next step (semi-flexible simulated annealing).  
+When all structures have been generated (typically in the order of 1000 to 10000 depending on the number of starting conformations, the protocol settings and your CPU resources), HADDOCK will sort them accordingly to the criterion defined in the [*run.cns*](/software/haddock2.4/run){:target="_blank"} parameter file and write the sorted PDB filenames into *file.cns, file.list* and *file.nam* in the ***structures/it0*** directory. These will be used for the next step (semi-flexible simulated annealing).  
 
 
 <hr>
 
 ## Semi-flexible simulated annealing  
 
-The best XXX structures after rigid body docking (typically 200, but this is left to the user's choice (see the [run.cns file](/software/haddock2.4/run) section)) will be subjected to a semi-flexible simulated annealing (SA) in torsion angle space. This semi-flexible annealing consists of several stages:  
+The best XXX structures after rigid body docking (typically 200, but this is left to the user's choice (see the [run.cns file](/software/haddock2.4/run){:target="_blank"} section)) will be subjected to a semi-flexible simulated annealing (SA) in torsion angle space. This semi-flexible annealing consists of several stages:  
 
 *   High temperature rigid body search
 *   Rigid body SA
 *   Semi-flexible SA with flexible side-chains at the interface
 *   Semi-flexible SA with fully flexible interface (both backbone and side-chains)  
 
-The temperatures and number of steps for the various stages are defined in the [*run.cns*](/software/haddock2.4/run) parameter file.  
+The temperatures and number of steps for the various stages are defined in the [*run.cns*](/software/haddock2.4/run){:target="_blank"} parameter file.  
 
 
-HADDOCK allows to automatically define the semi-flexible regions by considering all residues within 5A of another molecule. To use this option, set *nseg_X* to -1 in [run.cns](/software/haddock2.4/run) (or another negative number if you still want to define manually segments for [random AIRs](/software/haddock2.4/generate_air_help#ranair) definition from a limited region of the surface). This can be set for each molecule separately.  
+HADDOCK allows to automatically define the semi-flexible regions by considering all residues within 5A of another molecule. To use this option, set *nseg_X* to -1 in [run.cns](/software/haddock2.4/run) (or another negative number if you still want to define manually segments for [random AIRs](/software/haddock2.4/airs/#random-air-definition-ab-initio-mode){:target="_blank"} definition from a limited region of the surface). This can be set for each molecule separately.  
 
 
-HADDOCK also allows the definition of fully flexible regions (defined by the *nfle_X* parameter in [run.cns](/software/haddock2.4/run)). Those remain fully flexible throughout all four stages. This should be useful for cases where part of a structure are disordered or unstructured or when docking small flexible ligands or peptides onto a protein. This option also allows the use of HADDOCK for structure calculations of complexes when classical NMR restraints are available to drive the folding.  
+HADDOCK also allows the definition of fully flexible regions (defined by the *nfle_X* parameter in [run.cns](/software/haddock2.4/run){:target="_blank"}). Those remain fully flexible throughout all four stages. This should be useful for cases where part of a structure are disordered or unstructured or when docking small flexible ligands or peptides onto a protein. This option also allows the use of HADDOCK for structure calculations of complexes when classical NMR restraints are available to drive the folding.  
 
 
 The generated output files are:
@@ -253,9 +253,9 @@ The generated output files are:
 *   *fileroot_1.pdb, fileroot_2.pdb, ... written in the ***structures/it1*** directory  
 *   *fileroot_runX_it1_refine_1.out, ... written in the run directory
 
-***Note1:*** If solvated docking is turned on (*waterdock=true* in [*run.cns*](/software/haddock2.4/run#iter)), additional output pdb files will be written to disk containing the water (*fileroot_1_water.pdbw* ,...).  
+***Note1:*** If solvated docking is turned on (*waterdock=true* in [*run.cns*](/software/haddock2.4/run){:target="_blank"}), additional output pdb files will be written to disk containing the water (*fileroot_1_water.pdbw* ,...).  
 
-***Note2:*** If random removal of restraints is turned on (*noecv=true* in [*run.cns*](/software/haddock2.4/run#iter)), additional files will be written to disk containing the random seed number (*fileroot_1.seed* ,...). This seed is used in the explicit solvent refinement to make sure that the same restraints are removed.
+***Note2:*** If random removal of restraints is turned on (*noecv=true* in [*run.cns*](/software/haddock2.4/run){:target="_blank"}), additional files will be written to disk containing the random seed number (*fileroot_1.seed* ,...). This seed is used in the explicit solvent refinement to make sure that the same restraints are removed.
 
 
 The ***refine.inp*** CNS script is used for this step and the CNS scripts called in sequential order for this semi-flexible refinement stage are (depending on the options selected):
@@ -325,8 +325,8 @@ The ***refine.inp*** CNS script is used for this step and the CNS scripts called
 
 
 
-At the end of the calculation, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run#scoring) parameter file.  
-At the end of this stage, the structures are analyzed and the results are placed in the ***structures/it1/analysis*** directory (see the [analysis](/software/haddock2.4/analysis) section).  
+At the end of the calculation, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run){:target="_blank"} parameter file.  
+At the end of this stage, the structures are analyzed and the results are placed in the ***structures/it1/analysis*** directory (see the [analysis](/software/haddock2.4/analysis){:target="_blank"} section).  
 
 
 <hr>
@@ -343,7 +343,7 @@ The generated output files are:
 
 ***Note1:*** The numbering of the structures from it1 is kept.  
 
-***Note2:*** If *keepwater* is set to true in [*run.cns*](/software/haddock2.4/run#iter), two additional output pdb files will be written to disk containing the the entire water shell (*fileroot_1_h2o-all.pdb*) and only the intermolecular water molecules (*fileroot_1_h2o-inter.pdb* ,...).
+***Note2:*** If *keepwater* is set to true in [*run.cns*](/software/haddock2.4/run){:target="_blank"}, two additional output pdb files will be written to disk containing the the entire water shell (*fileroot_1_h2o-all.pdb*) and only the intermolecular water molecules (*fileroot_1_h2o-inter.pdb* ,...).
 
 
 The ***re_h2o.inp*** or ***re_dmso.inp*** are used for this step and the CNS scripts called in sequential order for this final stage are (depending on the options selected):
@@ -386,8 +386,8 @@ The ***re_h2o.inp*** or ***re_dmso.inp*** are used for this step and the CNS scr
 *   *__print_coorheader.cns__*:	Defines the remarks with energy statistics for the output PDB files
 
 
-At the end of the explicit solvent refinement, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run#scoring) parameter file.  
+At the end of the explicit solvent refinement, HADDOCK generates the *file.cns, file.list* and *file.nam* files containing the filenames of the generated structures sorted accordingly to the criterion defined in the [run.cns](/software/haddock2.4/run){:target="_blank"} parameter file.  
 
-Finally, the structures are analyzed and the results are placed in the ***structures/it1/water/analysis*** directory (see the [analysis](/software/haddock2.4/analysis) section).  
+Finally, the structures are analyzed and the results are placed in the ***structures/it1/water/analysis*** directory (see the [analysis](/software/haddock2.4/analysis){:target="_blank"} section).  
 
 * * *

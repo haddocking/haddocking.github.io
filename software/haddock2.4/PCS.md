@@ -51,7 +51,7 @@ The proper format for PCS restraints is the following:
 where the last two numbers are the PCS value and its associated error.  
 
 
-The 2.4 version of HADDOCK supports up to 10 differentPCS restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-990. For each class you can specify the first and last stage at which the various RDCs will be used:
+The 2.4 version of HADDOCK supports up to 10 different PCS restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-990. For each class you can specify the first and last stage at which the various RDCs will be used:
 
 *   0: rigid body EM (it0)
 *   1: semi-flexible simulated annealing (SA) (it1)

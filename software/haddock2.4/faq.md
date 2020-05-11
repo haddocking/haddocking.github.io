@@ -255,8 +255,6 @@ It's possible to dock small ligands using HADDOCK but for that topology and para
 *   the Automated Topology Builder (ATB) and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [http://compbio.biosci.uq.edu.au/atb](http://compbio.biosci.uq.edu.au/atb)  
     **Note**: we did not yet test those parameters in HADDOCK.
 
-*   the **HIC-Up** database maintained by Gerard Kleywegt at Uppsalla University: [http://xray.bmc.uu.se/hicup](http://xray.bmc.uu.se/hicup/)  
-    One problem with those files for use in docking is that typically all partial charges are set to zero, <u>meaning that the electrostatic interaction energies will thus be zero unless you change the partial charges</u>. Still, the HIC-Up topology and parameter files provide a good starting point.
 
 For docking small ligand with HADDOCK using custom-made topology and parameter files and perform the following steps:
 
