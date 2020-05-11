@@ -19,13 +19,12 @@ This page provide you links to software and software manuals of the computationa
 
   * [**HADDOCK2.2 software**](/software/haddock2.2/)
 
-  <!---* [**HADDOCK2.4 software**](/software/haddock2.4/)-->
+  * [**HADDOCK2.4 software**](/software/haddock2.4/)
 
-  * [**HADDOCK web server**](http://haddock.science.uu.nl/services/HADDOCK)
+  * [**HADDOCK2.2  web server**](http://haddock.science.uu.nl/services-enmr/HADDOCK)
 
-  * [**HADDOCK 2.4  web server**](https://wenmr.science.uu.nl/haddock2.4/)
+  * [**HADDOCK2.4  web server**](https://wenmr.science.uu.nl/haddock2.4/)
 
-  * [**HADDOCK grid-enabled web server**](http://haddock.science.uu.nl/enmr/services/HADDOCK)
 <HR>
 ### [HADDOCKING GitHub repository](http://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
@@ -44,7 +43,8 @@ This page provide you links to software and software manuals of the computationa
 
   * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
   A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files.
-  For documentation refer to [http://www.bonvinlab.org/pdb-tools/](http://www.bonvinlab.org/pdb-tools/)
+  For documentation refer to [http://www.bonvinlab.org/pdb-tools/](http://www.bonvinlab.org/pdb-tools/).
+  And now also available as [web portal](https://wenmr.science.uu.nl/pdbtools)!
 
   * [**PowerFit**](https://github.com/haddocking/powerfit):
   PowerFit is a Python package and simple command-line program to automatically fit high-resolution atomic structures in cryo-EM densities.
