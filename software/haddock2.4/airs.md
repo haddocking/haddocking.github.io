@@ -29,7 +29,7 @@ In the definition of those residues, one distinguishes between ***"active"*** an
 <hr>
 ## Use of bioinformatic interface predictions  
 
-In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction softwares called [WHISCY](http://bianca.science.uu.nl/whiscy){:target="_blank"} and [CPORT](http://haddock.science.uu.nl/services/CPORT){:target="_blank"}. They has been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. Many others such predictors do exist!
+In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction software called [WHISCY](http://bianca.science.uu.nl/whiscy){:target="_blank"} and [CPORT](http://haddock.science.uu.nl/services/CPORT){:target="_blank"}. They have been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. Many others such predictors do exist!
 
 For more information refer to:  
 

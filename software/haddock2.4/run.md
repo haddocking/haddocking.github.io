@@ -78,7 +78,7 @@ HADDOCK2.4 has a number of new options:
 * *__cg_molX__*:	Defines if a molecule is coarse-grained (should already be defined in the ***run.param*** file)
 
 
-At the end of this section there is also a paramater that defines if non-polar protons should be kept or not:
+At the end of this section there is also a parameter that defines if non-polar protons should be kept or not:
 
 <pre style="background-color:#DAE4E7">{* Remove non-polar hydrogens? *}
 {+ choice: true false +}
@@ -354,9 +354,9 @@ To activate this type of restraints set *sym_on=true* and define the number of t
 
 ### Distance restraints
 
-#### Ambiguous (AIRs) and unambigous distance restraints
+#### Ambiguous (AIRs) and unambiguous distance restraints
 
-Ambiguous (AIRs) and unambigous distance restraints specified in [*run.param*](/software/haddock2.4/docking/#defining-restraints){:target="_blank"} will always be read. In this section, however, you can specify the stage of the docking protocol at which a given type of distance restraint will be used for the first and last time:
+Ambiguous (AIRs) and unambiguous distance restraints specified in [*run.param*](/software/haddock2.4/docking/#defining-restraints){:target="_blank"} will always be read. In this section, however, you can specify the stage of the docking protocol at which a given type of distance restraint will be used for the first and last time:
 *   0: rigid body EM (it0)
 *   1: semi-flexible simulated annealing (SA) (it1)
 *   2: explicit solvent refinement (water)
@@ -447,7 +447,7 @@ To activate this type of restraints set *ranair=true*.
 Random AIRs are only active during the rigid body stage of the [docking](/software/haddock2.4/protocol){:target="_blank"} protocol. For the semi-flexible refinement, one AIR will be automatically defined between all residues within 5A from another molecule. No AIRs will be active during the final explicit solvent refinement.
 
 
-**Note:**  Random AIRs are exclusive with ambiguous, unambigous and hydrogen bond restraints defined in new.html. They can however be combined with surface and center of mass restraints (see below).
+**Note:**  Random AIRs are exclusive with ambiguous, unambiguous and hydrogen bond restraints defined in new.html. They can however be combined with surface and center of mass restraints (see below).
 
 
 #### Center of mass restraints
@@ -639,7 +639,7 @@ If pseudo contact shift data are available and have been defined in the [*run.pa
 *   _hot_: high temperature rigid body dynamics
 *   _cool1_: first rigid body slow cooling SA
 *   _cool2_: second slow cooling SA with flexible side-chains at interface
-*   _cool3_: third slow cooling SA with flexible side-chains and backbone at interfaceand the tensor parameters R and D.
+*   _cool3_: third slow cooling SA with flexible side-chains and backbone at interface and the tensor parameters R and D.
 
 For each set of PCS restraints used, a tensor must be defined. Its axial (D) (*pcs_d_X*) and rhombic (R) (*pcs_rd_X*) components must be defined. The proper units for use in HADDOCK should be: 10<sup>-28</sup> / (12*pi) m<sup>3</sup> (which gives a scaling factor of 265.26 compared to values expressed in 10<sup>-32</sup> m<sup>3</sup>.
 
@@ -719,7 +719,7 @@ For more information on using diffusion anisotropy as restraints for docking see
 
 If [cryoEM restraints](/software/haddock2.4/cryoEM){:target="_blank"} are available and have been defined in the [*run.param*](/software/haddock2.4/docking/#defining-restraints){:target="_blank"} file, you can define them in this section. HADDOCK relies on the concept of centroids to guide the initial docking and only uses the cryo-EM map once the molecules have been docked using the centroid restraints. The centroids define the most likely position of the center of mass of a molecule into the density. Their positions (x,y,z coordinates) must be defined in this section (the *xcom_X, ycom_X, zcom_X* parameters. Those positions can be for example obtained using our [PowerFit webserver](https://mhaddock.science.uu.nlservices/POWERFIT){:target="_blank"}.
 
-If it is unclear which centroid corresponds to which molecule, it is possible to define those as ambigous by setting *ambi_X=true*. Otherwise define them specifically for each molecule.
+If it is unclear which centroid corresponds to which molecule, it is possible to define those as ambiguous by setting *ambi_X=true*. Otherwise define them specifically for each molecule.
 If centroids are used, the current implementation expect as many centroids to be defined as there are molecules.
 
 
@@ -745,7 +745,7 @@ If centroids are used, the current implementation expect as many centroids to be
 </pre>
 
 
-To use explicitely the cryo-EM density as a restraint in HADDOCK set *em_rest=true* and define the resolution, number of voxels in each dimension, the length of each dimension.
+To use explicitly the cryo-EM density as a restraint in HADDOCK set *em_rest=true* and define the resolution, number of voxels in each dimension, the length of each dimension.
 
 <pre style="background-color:#DAE4E7"> 
 {* Density/XREF restraints *}
@@ -826,7 +826,7 @@ See for this the _topallhdg.hemes_ and _parallhdg.hemes_ files. Those are read b
 
 Parameter and topology files for small ligands should be provided by the user and place in the ***toppar*** directory or each run (see also the [FAQ](/software/haddock2.4/faq) section of the online manual). Those files are also read by default.
 
-Ions should be automatically recognized provided their naming is consistent with what is defined in the _ion.top_ topology file in the ***toppar*** directory. For the torsion angle dynamics part of the [docking protocol](/software/haddock2.4/docking){:target="_blank"} (it1), a covalent bond will be automatically defined to the closest ligand atom (only for cations). This is done in the _covalions.cns_ CNS script in the ***protocols*** directory. The list of suppored ions can be found [here](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}.
+Ions should be automatically recognized provided their naming is consistent with what is defined in the _ion.top_ topology file in the ***toppar*** directory. For the torsion angle dynamics part of the [docking protocol](/software/haddock2.4/docking){:target="_blank"} (it1), a covalent bond will be automatically defined to the closest ligand atom (only for cations). This is done in the _covalions.cns_ CNS script in the ***protocols*** directory. The list of supported ions can be found [here](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}.
 
 
 * * *
@@ -961,7 +961,7 @@ This option in HADDOCK2.4 allows to scale down or turn off interactions between 
 </pre>
 
 
-This option has been applied for example in ensemble-averaged docking of a peptide using PRE-derived distance restaints. See:
+This option has been applied for example in ensemble-averaged docking of a peptide using PRE-derived distance restraints. See:
 
 E. Escobar-Cabrera, Okon, D.K.W. Lau, C.F. Dart, A.M.J.J. Bonvin and L.P. McIntosh, [Characterizing the N- and C-terminal SUMO interacting motifs of the scaffold protein DAXX.](https://doi.org/doi:10.1074/jbc.M111.231647){:target="_blank"}, *J. Biol. Chem.*, **286**, 19816-19829 (2011).
 
@@ -1036,7 +1036,7 @@ This section allows you to control various starting setting:
 
 * How the various starting models are combined (*crossdock*) in the case when an ensemble of conformations is given to HADDOCK (should be turned off for example if you only want to perform water refinement of a preformed complex)
 * Randomization of the starting orientations or not (*randorien*)
-* Expansion of the initial complex (to be used only for refinment purposes) (*expand*). This is a new option in HADDOCK2.4, which will take a complex, and expand it by translating each molecule along the axis defined by its center of mass and the overall center of mass of the complex. The amount of translation is expressed in a percentage (*expansion*). A random rotation can also be applied to each molecule (*ranangle*).
+* Expansion of the initial complex (to be used only for refinement purposes) (*expand*). This is a new option in HADDOCK2.4, which will take a complex, and expand it by translating each molecule along the axis defined by its center of mass and the overall center of mass of the complex. The amount of translation is expressed in a percentage (*expansion*). A random rotation can also be applied to each molecule (*ranangle*).
 * Rebuilding of missing side-chains in the context of the complex (*rebuildcplx*) (only for refinement of an existing complex)
 
 **Note** that the expansion refinement protocol is still experimental and as such has not been thoroughly tested.
@@ -1476,7 +1476,7 @@ Since HADDOCK generates a lot of data and output files, there is a cleaning opti
 ### Parallels jobs
 
 In this section you can define the way the structure calculation will be run, and the location of the [CNS](http://cns.csb.yale.edu){:target="_blank"} executable. 
-10 nodes or queues can be specifie, but typically only one set of parameters is required.
+10 nodes or queues can be specified, but typically only one set of parameters is required.
 
 <pre style="background-color:#DAE4E7">
 {============================ parallel jobs ===============================}

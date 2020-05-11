@@ -11,7 +11,7 @@ image:
 
 ## <font size="+3" color="RED">C</font>hanges with respect to version 2.2
 
-HADDOCK2.4 has been made compatible with CNS version 1.3\. Because of changes in CNS1.3, the linkage files in the toppar directory do no longer contain wild cards. All linkages are specified explicitely.
+HADDOCK2.4 has been made compatible with CNS version 1.3\. Because of changes in CNS1.3, the linkage files in the toppar directory do no longer contain wild cards. All linkages are specified explicitly.
 
 Also, only three character residue names are now used:
 

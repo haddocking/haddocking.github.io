@@ -31,7 +31,7 @@ The following software are required in order to be able to run this script (see 
 * BioPython 1.72
 * DSSP (dssp should be in your path)
 
-The DSSP software is required to define the secondary structure, which is encoded in the B-factor field of the CG model. This information is used by HADDOCK to select the proper secondary stucture-dependent Martini parameters for the backone .
+The DSSP software is required to define the secondary structure, which is encoded in the B-factor field of the CG model. This information is used by HADDOCK to select the proper secondary structure-dependent Martini parameters for the backbone.
 
 Before converting your PDB files, make sure that they contain the chainID information you are going to use for the docking. This is important in order to generate correct distance restraints for the back-mapping. You can easily add or modify a chainID using the `pdb_chain.py` script from our [pdb-tools](/software/haddock2.4/installation/#pdb-tools){:target="_blank"}, or instead using our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
@@ -42,10 +42,10 @@ Before converting your PDB files, make sure that they contain the chainID inform
 As an illustration of converting PDB files to a Martini coarse grained representation we will use here the `protein-tetramer-CG` example distributed with HADDOCK.
 
 <pre style="background-color:#DAE4E7">
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainA.pdb
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainB.pdb
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainC.pdb
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainD.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainA.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainB.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainC.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainD.pdb
 </pre>
 
 This will generate for each model two new files:

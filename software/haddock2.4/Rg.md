@@ -36,6 +36,6 @@ To activate this type of restraints set *rgrest=true* in [*run.cns*](/software/h
 </pre>
 
 
-A radius of gyration could be derived from SAXS data for example. This type of restraint, which has not been thorougly tested, does not seem to add much to the docking results.
+A radius of gyration could be derived from SAXS data for example. This type of restraint, which has not been thoroughly tested, does not seem to add much to the docking results.
 
 * * *

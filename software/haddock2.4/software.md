@@ -56,7 +56,7 @@ HADDOCK consists of a collection of  [python](https://www.python.org){:target="_
 
 #### FreeSASA
 
-[FreeSASA](http://freesasa.github.io){:target="_blank"} offers the same functionality as NACCESS and can be installed without any license requiremetns.
+[FreeSASA](http://freesasa.github.io){:target="_blank"} offers the same functionality as NACCESS and can be installed without any license requirements.
 
 
 #### ProFit

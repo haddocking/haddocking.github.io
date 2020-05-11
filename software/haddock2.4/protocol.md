@@ -45,7 +45,7 @@ CNS scripts called (depending on the options defined):
     *   *__iterations.cns__*: 	Defines the iteration variable
     *   *__run.cns__*: 			Reads in all parameter settings for the run
     *   *__build-missing.cns__*: Builds all missing atoms
-    	*	*__flex_segment_back.cns__*: Defines semi-flexbible segments
+    	*	*__flex_segment_back.cns__*: Defines semi-flexible segments
     *   *__prot_break.cns__*: 	Detects chain breaks in the protein
     *   *__dna_break.cns__*: 	Detects chain breaks in nucleic acids
     *   *__covalheme.cns__*: 	Detects covalent bonds for heme groups
@@ -131,11 +131,11 @@ The rigid body minimization is performed in multiple steps:
 
 If ***solvated docking is turned on*** the following additional steps will be performed:  
 
-  *   rotational and translational rigid bogy minimization with each molecule and water molecule treated as separate rigid bodies
+  *   rotational and translational rigid body minimization with each molecule and water molecule treated as separate rigid bodies
 
   *   Biased Monte Carlo removal of water molecules based on propensity of finding a water mediated contact until a user-defined percentage of water molecules remains
 
-  *   rotational and translational rigid bogy minimization with each molecule and water molecule treated as separate rigid bodies
+  *   rotational and translational rigid body minimization with each molecule and water molecule treated as separate rigid bodies
 
 
 For details of the solvated docking protocol refer to:
@@ -283,7 +283,7 @@ The ***refine.inp*** CNS script is used for this step and the CNS scripts called
 *   *__symmultimer.cns__*:	Defines symmetry restraints
 *   *__zrestrainting.cns__*: 	Defines harmonic Z-restraints
 *   *__cm-restraints.cns__*: 	Defines center-of-mass distance restraints
-*   *__contactairs.cns__*:	Defines ambiguous distance restraints between contacting surfaces instead of surface resrtaints if defined
+*   *__contactairs.cns__*:	Defines ambiguous distance restraints between contacting surfaces instead of surface restraints if defined
 *   *__dna-rna_restraints.def__*:	Defines DNA/RNA specific restraints
 *   *__protein-ss-restraints-all.def__*:	Defines secondary structure restraints for all residues if defined
 *   *__protein-ss-restraints-alpha.def__*:	Defines secondary structure restraints for alpha helices if defined
@@ -313,7 +313,7 @@ The ***refine.inp*** CNS script is used for this step and the CNS scripts called
 *   *__set_noe_scale.cns__*:	Define the weight of distance restraints in case of automatic scaling
 *   *__flex_segment_back.cns__*: Define flexible interface for final energy minimization
 *   *__calc_free-ene.cns__*:	Calculate the total energy of each molecule in isolation
-*   *__scale_intra_only.cns__*:		Defines only interemolecular interactions
+*   *__scale_intra_only.cns__*:		Defines only intermolecular interactions
 *   *__scale_inter_final.cns__*:	Turns on only intermolecular interactions and apply final scaling factor
 *   *__scale_intra_only.cns__*:		Defines only intermolecular interactions (if only 1 molecule)
 *   *__symmultimer.cns__*:		Defines symmetry restraints
@@ -333,7 +333,7 @@ At the end of this stage, the structures are analyzed and the results are placed
 
 ## Flexible final refinement
   
-In this final step, the structures obtained after the semi-flexible simulated annealing are refined. The default in HADDOCK2.4 is to perform only a final energy minimiztion. But it is also possible to perform a short MD refinement in an explicit solvent layer (8A for water, 12.5A for DMSO). In this step, no spectacular changes are expected, however, the scoring of the various structures is improved.  
+In this final step, the structures obtained after the semi-flexible simulated annealing are refined. The default in HADDOCK2.4 is to perform only a final energy minimization. But it is also possible to perform a short MD refinement in an explicit solvent layer (8A for water, 12.5A for DMSO). In this step, no spectacular changes are expected, however, the scoring of the various structures is improved.  
 
 The generated output files are:
 
