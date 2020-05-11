@@ -30,7 +30,7 @@ image:
 
 * T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. [The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA](https://doi.org/10.1002/prot.25806). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 319-326 (2020).
 
-* A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ *34*, 149-162 (2020)
+* A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ *34*, 149-162 (2020). A preprint can be downloaded from [here](http://arxiv.org/abs/2005.04142).
 
 * J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, *36*, 950–952 (2020).
 
