@@ -19,7 +19,7 @@ image:
 
 ### Downloading HADDOCK
 
-To obtain HADDOCK2.4 fill the [HADDOCK license form]((http://www.bonvinlab.org/software/haddock2.4/download/){:target="_blank"} ).
+To obtain HADDOCK2.4 fill the [HADDOCK license form]((http://www.bonvinlab.org/software/haddock2.4/download){:target="_blank"} ).
 
 
 * * *
@@ -82,7 +82,7 @@ In case git is not installed on your system, go the GitHub site given in the com
 
 #### MolProbity
 
-[MolProbity][link-molprobity]{:target="_blank"} is a structure validation software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely downloaded from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity). You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
+[MolProbity][link-molprobity]{:target="_blank"} is a structure validation software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely downloaded from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity){:target="_blank"}. You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
 
 Put the executable for example in `~software/bin` or some other software insallation directory in your path, 
 rename it to `reduce` if needed and make sure it is executable (e.g. `chmod +x ~/software/bin/reduce`).
@@ -107,7 +107,7 @@ In case git is not installed on your system, go the GitHub site given in the com
 
 #### PyMol
 
-[PyMol][link-pymol]{:target="_blank"} is a visualisation software. It is used throughout our [tutorials](/eductions).
+[PyMol][link-pymol]{:target="_blank"} is a visualisation software. It is used throughout our [tutorials](/education).
 
 
 * * *
@@ -143,7 +143,7 @@ And example configuration file for running on local resources assuming a 4 core 
   set QUEUESUB=QueueSubmit_concat.py
 </pre>
 
-For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found [here](software/haddock2.4/faq).
+For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found [here](/software/haddock2.4/faq){:target="_blank"}.
 
 In order to configure HADDOCK, call the `install.csh` script with as argument the configuration script you just created:
 
