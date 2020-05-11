@@ -63,14 +63,14 @@ It can be a relative or absolute path, e.g.:
 #### Defining input PDBs
 
 The current version of HADDOCK supports the docking of up to 20 different molecules.
-Each molecule is defined by its own **PDB_FILEX** keywork where `X` corresponds to the molecule numnber. The paths to the files on disk can be absolute or relative.
+Each molecule is defined by its own **PDB_FILEX** keyword where `X` corresponds to the molecule number. The paths to the files on disk can be absolute or relative.
 
-For each molecule you can also associate a segmend ID to be used for the docking.
+For each molecule you can also associate a segment ID to be used for the docking.
 These are specified in the **PROT_SEGID_X** keywords.
 
 Further HADDOCK supports docking from an ensemble of conformations. To enable this option, an additional keyword **PDB_LISTX** must be defined pointing to a text file containing a list of PDB files to be used.
 
-An example of the correponding keywords (taken from the `protein-protein` example in haddock2.4) is:
+An example of the corresponding keywords (taken from the `protein-protein` example in haddock2.4) is:
 
 <pre style="background-color:#DAE4E7">
   PDB_FILE1=./e2aP_1F3G.pdb
@@ -100,9 +100,9 @@ And the corresponding ensemble list file would look like:
 
 #### Defining input coarse grained PDBs
 
-Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](link MARTINI page){:target="_blank"} force field with an average 4:1 ratio of all atoms to coarse grained particules.
+Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](link MARTINI page){:target="_blank"} force field with an average 4:1 ratio of all atoms to coarse grained particles.
 To use coarse graining in HADDOCK you will need to define additional keywords **CGPDN_FILEX** for each input PDB.
-In addition, for the final transformation from coarse grained to all atom models, you will need to define one additional restraint file that contains distance restraints between each coarse grained particle and the atoms that belong to it. This file is specified by the **CGTOAA_TBL** keywork. 
+In addition, for the final transformation from coarse grained to all atom models, you will need to define one additional restraint file that contains distance restraints between each coarse grained particle and the atoms that belong to it. This file is specified by the **CGTOAA_TBL** keyword. 
 
 An example entry (taken from the `protein-tetramer-CG` example in haddock2.4) is:
 
@@ -128,7 +128,7 @@ The following type of restraints with their associated keywords can be defined:
 
 * Unambiguous distance restraints **UNAMBIG_TBL**: The corresponding restraint file should contain distance restraints. Those can be ambiguous and/or unambiguous. Those will always be used.
 
-* Hydrogen bond distance restraints **HBOND_FILE**: The corresponding restraint file can contain in principle any type of distance restratints. Those will however not be used in it0. Typically we use this type of restraints to specify intramolecular restraints.
+* Hydrogen bond distance restraints **HBOND_FILE**: The corresponding restraint file can contain in principle any type of distance restraints. Those will however not be used in it0. Typically we use this type of restraints to specify intramolecular restraints.
 
 * CG to AA distance restraints **CGTOAA_TBL**: This file should contain the distance restraints to transform back the CG model into an all atom model.
 
@@ -224,7 +224,7 @@ When all necessary files and parameters have been properly edited and saved then
     haddock2.4
 </pre>
 
-You can also redirect the output of HADDOCK to a file and send the process in backgroun by typing instead:
+You can also redirect the output of HADDOCK to a file and send the process in background by typing instead:
 
 <pre style="background-color:#DAE4E7" >
     haddock2.4 >&haddock2.4.out &
@@ -245,7 +245,7 @@ For details refer to the [Docking protocol](/software/haddock2.4/protocol){:targ
 
 ## Monitoring your docking run
 
-As the docking proceeds HADDOCK will output information about the status of the run, telling you which models are currently being calculated. The process can get however stuck if some stages are failing. There are mechanisms built in to detect failures but we can not garantee to catch all problems. 
+As the docking proceeds HADDOCK will output information about the status of the run, telling you which models are currently being calculated. The process can get however stuck if some stages are failing. There are mechanisms built in to detect failures but we can not guarantee to catch all problems. 
 
 Note that errors can sometimes be caused by missing quotes or punctuations in the edited `run.cns` file.
 
@@ -254,12 +254,12 @@ A few typical problems are:
 
 * **Failure to submit to your batch system**: If you are using a queueing/batch system, make sure that the queue command defined in `run.cns` by the `queue_1=` parameter is correct.
 
-* **Failure to generate the topologies**: It can be that the generation of the starting PDBs and associated topologies is failing. This is for example the case when hetero atoms are defined in the starting PDBs (as HETATM) for which no topologies and parameters are provided (refer to our [FAQ section](/software/haddock2.4/faq.md){:target="_blank"} when docking small ligands). There could also be missing paramters for a particular molecule.
+* **Failure to generate the topologies**: It can be that the generation of the starting PDBs and associated topologies is failing. This is for example the case when hetero atoms are defined in the starting PDBs (as HETATM) for which no topologies and parameters are provided (refer to our [FAQ section](/software/haddock2.4/faq.md){:target="_blank"} when docking small ligands). There could also be missing parameters for a particular molecule.
 Always check in such a case the content of the generated `.out` files in the `begin` directory. Start looking at the bottom of the file for error messages.
 
 * **Failure in the rigid body docking stage (it0)**: A possible reason for failure at this stage is a wrong definition of the restraints. Check for error messages the output files created in the run directory with a name matching `*it0_refine_X.out.gz` where `X` is the model number. Search for error messages starting from the bottom of the file. Error are often reported by CNS with an `ERR` string.
 
-* **Failure in the semi flexible refinement stage (it1)**: While bad restraints can be the potential cause of failures, often the quality of the starting models can also be the problem. While in the ridig body docking the intramolecular interactions are not calculated (the molecules are treated as rigid bodies), these are calculated in it1. Bad internal geometries, with clashes between atoms, can cause the system to 'explode'. Check again for error messages the output files created in the run directory with a name matching `*it1_refine_X.out.gz` . Search for error messages starting from the bottom of the file. Error are often reported by CNS with an `ERR` string. Possible solutions for this problem are to reduce the temperature for the simulated annealing, or remove the high temperature parts by setting the correspdonding number of steps to 0 (refer for this to the [run.cns file](/software/haddock2.4/run){:target="_blank"} section).
+* **Failure in the semi flexible refinement stage (it1)**: While bad restraints can be the potential cause of failures, often the quality of the starting models can also be the problem. While in the ridig body docking the intramolecular interactions are not calculated (the molecules are treated as rigid bodies), these are calculated in it1. Bad internal geometries, with clashes between atoms, can cause the system to 'explode'. Check again for error messages the output files created in the run directory with a name matching `*it1_refine_X.out.gz` . Search for error messages starting from the bottom of the file. Error are often reported by CNS with an `ERR` string. Possible solutions for this problem are to reduce the temperature for the simulated annealing, or remove the high temperature parts by setting the corresponding number of steps to 0 (refer for this to the [run.cns file](/software/haddock2.4/run){:target="_blank"} section).
 
 
 <hr>

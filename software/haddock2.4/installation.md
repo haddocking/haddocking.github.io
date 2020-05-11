@@ -84,7 +84,7 @@ In case git is not installed on your system, go the GitHub site given in the com
 
 [MolProbity][link-molprobity]{:target="_blank"} is a structure validation software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely downloaded from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity). You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
 
-Put the executable for example in `~software/bin` or some other software insallation directory in your path, 
+Put the executable for example in `~software/bin` or some other software installation directory in your path, 
 rename it to `reduce` if needed and make sure it is executable (e.g. `chmod +x ~/software/bin/reduce`).
 
 

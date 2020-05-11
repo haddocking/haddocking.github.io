@@ -31,7 +31,7 @@ The following software are required in order to be able to run this script (see 
 * BioPython 1.72
 * DSSP (dssp should be in your path)
 
-The DSSP software is required to define the secondary structure, which is encoded in the B-factor field of the CG model. This information is used by HADDOCK to select the proper secondary stucture-dependent Martini parameters for the backone .
+The DSSP software is required to define the secondary structure, which is encoded in the B-factor field of the CG model. This information is used by HADDOCK to select the proper secondary structure-dependent Martini parameters for the backbone.
 
 Before converting your PDB files, make sure that they contain the chainID information you are going to use for the docking. This is important in order to generate correct distance restraints for the back-mapping. You can easily add or modify a chainID using our [pdb-tools](/software/haddock2.4/installation/#pdb-tools){:target="_blank"}, or instead using our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
