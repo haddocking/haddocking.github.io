@@ -33,6 +33,8 @@ Fax: +31-30-2537623
 **ATTENTION: This new version is under heavy development and will change abruptly and without warning.**
 
 
+* * *
+
 ## Description
 
 HADDOCK v3.0 is a bottom-up reimagination of the long standing time-proven [HADDOCK](/software/haddock2.2) used for integrative modeling of biomolecular complexes.
@@ -44,15 +46,21 @@ However it is able to take full advantage of the ambiguous interaction restraint
 It was evaluated using the [Protein-Protein Docking Benchmark 5](https://github.com/haddocking/BM5-clean) and compared with the live version (v2.4).
 This evaluation was done using the true interface of each complex of (3.9 Å) and is expressed in terms of success rate; the amount of BM5 targets that have at least one docking solution below the specified threshold within a specified subset of solutions ranked by HADDOCK-score.
 
-![BM5](/software/haddock3/haddock3-0-0-alpha2-BM5.png)
+![BM5](/software/haddock3/haddock3-0-0-alpha2-BM5_v1.png)
 
+
+* * *
 
 ## HADDOCK3 distribution download
 
-HADDOCK v3.0 can be freely downloaded by completing the following [form](https://forms.gle/xKEg3oeLiK2Sta8W8).
+HADDOCK v3.0 can be freely downloaded by completing the following form (see our [privacy](https://wenmr.science.uu.nl/privacy){:target="_blank"} statement regarding the use of our portals):
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w/viewform?embedded=true" width="640" height="1252" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+
 
 
 <hr>
 
-<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> [![Haddock](/software/haddock2.2/haddock.gif)](http://en.wikipedia.org/wiki/Captain_Haddock)  
+<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> <a href="http://en.wikipedia.org/wiki/Captain_Haddock" style="border-bottom: none;"><img src="/software/haddock2.2/haddock.gif" alt="Haddock"></a>  
 <font size="-2">Copyright © Hergé Moulinsart 2003</font>
