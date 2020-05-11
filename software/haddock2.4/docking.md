@@ -63,7 +63,7 @@ It can be a relative or absolute path, e.g.:
 #### Defining input PDBs
 
 The current version of HADDOCK supports the docking of up to 20 different molecules.
-Each molecule is defined by its own **PDB_FILEX** keywork where `X` corresponds to the molecule numnber. The paths to the files on disk can be absolute or relative.
+Each molecule is defined by its own **PDB_FILEX** keyword where `X` corresponds to the molecule numnber. The paths to the files on disk can be absolute or relative.
 
 For each molecule you can also associate a segmend ID to be used for the docking.
 These are specified in the **PROT_SEGID_X** keywords.
@@ -102,7 +102,7 @@ And the corresponding ensemble list file would look like:
 
 Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](link MARTINI page){:target="_blank"} force field with an average 4:1 ratio of all atoms to coarse grained particules.
 To use coarse graining in HADDOCK you will need to define additional keywords **CGPDN_FILEX** for each input PDB.
-In addition, for the final transformation from coarse grained to all atom models, you will need to define one additional restraint file that contains distance restraints between each coarse grained particle and the atoms that belong to it. This file is specified by the **CGTOAA_TBL** keywork. 
+In addition, for the final transformation from coarse grained to all atom models, you will need to define one additional restraint file that contains distance restraints between each coarse grained particle and the atoms that belong to it. This file is specified by the **CGTOAA_TBL** keyword. 
 
 An example entry (taken from the `protein-tetramer-CG` example in haddock2.4) is:
 
