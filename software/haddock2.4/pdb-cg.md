@@ -42,10 +42,10 @@ Before converting your PDB files, make sure that they contain the chainID inform
 As an illustration of converting PDB files to a Martini coarse grained representation we will use here the `protein-tetramer-CG` example distributed with HADDOCK.
 
 <pre style="background-color:#DAE4E7">
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainA.pdb
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainB.pdb
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainC.pdb
-python2.7 $HADDOCK/CGtools/aa2cg-prot_xna.py chainD.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainA.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainB.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainC.pdb
+python2.7 $HADDOCK/CGtools/aa2cg.py chainD.pdb
 </pre>
 
 This will generate for each model two new files:
