@@ -18,7 +18,7 @@ This tutorial consists of the following sections:
 
 This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from MS cross-linking data. 
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
-(UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)). 
+(UniProtKB: [O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)). 
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
 ([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DisVis tutorial](/education/Others/disvis-webserver)
 to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DisVis is,
@@ -26,7 +26,7 @@ that it allows to identify the surface residues that are most often contacted in
 satisfying the cross-links. This is an additional information which might be useful to guide the docking.
 
 We will thus be making use of the results of the [DisVis tutorial](/education/Others/disvis-webserver) to setup various 
-docking runs using our [HADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2).
+docking runs using our [HADDOCK2.2 webserver](https://haddock.science.uu.nl/services/HADDOCK2.2).
 
 A description of our web server can be found in the following publications:
 
@@ -35,8 +35,8 @@ A description of our web server can be found in the following publications:
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 Throughout the tutorial, colored text will be used to refer to questions or 
 instructions, and/or PyMOL commands.
@@ -53,16 +53,16 @@ instructions, and/or PyMOL commands.
 In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**PyMOL**][link-pymol]{:target="_blank"} 
 (freely available for most operating systems) on your computer in order to visualize the input and output data.  
 Further, the required data to run this tutorial are the same as for the [DisVis tutorial](/education/Others/disvis-webserver) 
-and should be downloaded from [**here**][link-data]{:target="_blank"}.
+and should be downloaded from [**here**](/education/disvis-webserver/disvis-tutorial.zip).
 Once downloaded, make sure to unpack the archive.
 
 
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2)) 
-is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the 
-power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure 
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2)) 
+is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the 
+power of CNS (Crystallography and NMR System – [http://cns-online.org](https://cns-online.org)) for structure 
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside 
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the 
@@ -132,7 +132,7 @@ Let us first inspect the available data, namely the two individual structures (o
 the information from MS we have at hand to guide the docking. 
 
 In the data you downloaded you will find two PDB files for PRE5 (UniProtKB: 
-[O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)), 
+[O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)), 
 the components of the complex we are modeling. If you click on the UniProtLB entries and search for the available 
 structural information you will see that no experimental structures are available for those. What we will be using here 
 are homology models obtained from [SwissModel](https://swissmodel.expasy.org/repository) (this can also be seen in the 
@@ -178,7 +178,7 @@ PUP2 predicted interface residues:
 </pre>
 
 These correspond to the interface residues identified by DisVis using a cutoff of 0.5 for the average number of 
-interactions as obtained from the following [DisVis run](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2). 
+interactions as obtained from the following [DisVis run](https://wenmr.science.uu.nl/disvis/tutorial/2). 
 
 __Note__ _that this cutoff is not a hard limit. However, in the context of using this information to drive the docking 
 in HADDOCK, it is better to be too generous in the definition of the interface rather than too restrictive. Better 
@@ -313,7 +313,7 @@ HADDOCK server for scenarios 1 and 3 and the [easy interface][link-haddock-easy]
 
 Before setting up the docking we need first to generate the distance restraint file for the cross-links in a format suitable for HADDOCK. 
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
+be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -385,7 +385,7 @@ We will now launch the docking run. For this scenario we will make us of the [ex
 of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
+https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
 </a>
 
 __Note:__ _The blue bars on the server can be folded/unfolded by clicking on the arrow on the right._
@@ -450,7 +450,7 @@ containing all settings and input data of your run.
 </figure>
 
 We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simply uploading it into the 
-[file upload interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
+[file upload interface](https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
 It can thus serve as input reference for the run. This file can also be edited to change a few parameters, 
 for example increasing the number of models generated. 
 
@@ -502,7 +502,7 @@ job has successfully completed.
 For this scenario we will make us of the [easy interface][link-haddock-easy]{:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
+https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
 </a>
 
 * **Step1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-interface*.
@@ -557,7 +557,7 @@ __Remember__ _to save the haddockparameter file for reference._
 For this scenario we will make us of the [expert interface][link-haddock-expert]{:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
+https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
 </a>
 
 * **Step1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-crosslinks-interface*.
@@ -628,16 +628,13 @@ rigid-body docking and 200 for semi-flexible and water refinement). The full run
 above can be accessed at:
 
 1. **Scenario 1**: 
-[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/](http://milou.science.uu.nl/services/HADD
-OCK2.2/Files/PRE5-PUP2-MS-crosslinks/)
+[https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks/)
 
 2. **Scenario 2**: 
-[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-interface/](http://milou.science.uu.nl/services/HADD
-OCK2.2/Files/PRE5-PUP2-MS-interface/)
+[https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-interface/](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-interface/)
 
 3. **Scenario 3**: 
-[http://milou.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks-interface/](http://milou.science.uu.nl/services/HADD
-OCK2.2/Files/PRE5-PUP2-MS-crosslinks-interface/)
+[https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks-interface/](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/PRE5-PUP2-MS-crosslinks-interface/)
 
 
 <figure align="center">
@@ -835,7 +832,7 @@ analysis.
 In order to check if any of the docking models we obtained using the various scenarios makes sense,
 we will compare them to a recently published [article](https://doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue 
 of the 26S proteasome (from *S. cerevisiae*). This structure has been solved by X-ray crystallography at 2.4Å resolution (PDBid 
-[5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}). 
+[5L5A](https://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}). 
 We will only use the two chains that are of interest, namely chains **D** and **C** corresponding to **PRE5** and **PUP2** respectively. 
 The corresponding PDB file is available in the downloaded tutorial data as `5l5a_CD.pdb`.
 
@@ -965,17 +962,16 @@ extracted from the DisVis interaction analysis.
 ## Congratulations!
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to 
-our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
-[<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
+our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
+[<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
 [link-cns]: http://cns-online.org "CNS online"
-[link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link-disvis]: http://milou.science.uu.nl/services/DISVIS "DisVis webserver"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK2.2"
-[link-haddock-web]: http://haddock.science.uu.nl/services/HADDOCK2.2 "HADDOCK2.2 webserver"
-[link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
-[link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
-[link-haddock-register]: http://haddock.science.uu.nl/services/HADDOCK2.2/register.html "HADDOCK web server registration"
-[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
-[link-xwalk]: http://www.xwalk.org
+[link-disvis]: https://wenmr.science.uu.nl/disvis "DisVis webserver"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK2.2"
+[link-haddock-web]: https://haddock.science.uu.nl/services/HADDOCK2.2 "HADDOCK2.2 webserver"
+[link-haddock-easy]: https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
+[link-haddock-expert]: https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
+[link-haddock-register]: https://wenmr.science.uu.nl/auth/register/ "HADDOCK web server registration"
+[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
+[link-xwalk]: https://www.xwalk.org
