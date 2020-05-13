@@ -17,13 +17,15 @@ This page provide you links to software and software manuals of the computationa
 ### HADDOCK
   Software package for integrative modelling of biomolecular complexes
 
-  * [**HADDOCK2.2 software**](/software/haddock2.2/)
+  * [**HADDOCK2.2 software**](/software/haddock2.2/) - Official 2.2 production version
+  
+  * [**HADDOCK2.2 web server**](http://haddock.science.uu.nl/services-enmr/HADDOCK) -  Production version (might get discontinued in 2021).
 
-  * [**HADDOCK2.4 software**](/software/haddock2.4/)
+  * [**HADDOCK2.4 software**](/software/haddock2.4/) - New, official 2.4 production version
 
-  * [**HADDOCK2.2  web server**](http://haddock.science.uu.nl/services-enmr/HADDOCK)
-
-  * [**HADDOCK2.4  web server**](https://wenmr.science.uu.nl/haddock2.4/)
+  * [**HADDOCK2.4 web server**](https://wenmr.science.uu.nl/haddock2.4/) - New production version
+  
+  * [**HADDOCK3 software**](/software/haddock3) - A new, very experimental [BioExcel](https://www.bioexcel.eu) redesign of HADDOCK in a modular code. Use it at your own risk!
 
 <HR>
 ### [HADDOCKING GitHub repository](http://github.com/haddocking)
