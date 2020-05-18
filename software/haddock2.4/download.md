@@ -14,5 +14,6 @@ Upon verification on your non-profit status you will get an email with instructi
 
 See our [privacy](https://wenmr.science.uu.nl/privacy){:target="_blank"} statement regarding the use of our portals.
 
+(if the registration form doesn't appear below, try this [link](https://forms.gle/WwhwbENsdxcdEWCNA).)
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScWODgOREhHa2ED_K6fIPKkANJ5k3uBY64fmzyVc9z8q0pFng/viewform?embedded=true" width="640" height="1123" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
