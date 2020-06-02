@@ -3,26 +3,28 @@ layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: HADDOCK2.4 manual - Residual Dipolar Couplings
 image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> manual
-
-## <font color="RED">U</font>sing <font color="RED">R</font>esidual <font color="RED">D</font>ipolar <font color="RED">C</font>ouplings
-
-* * *
+* table of contents
+{:toc}
 
 Residual dipolar couplings (RDCs) can provide useful information on the orientation of the molecules to be docked. They can be introduced in HADDOCK in two ways:
 
-*   Directly as [RDC restraints](#sani) (SANI statement in CNS)
-*   Indirectly by defining [intervector projection angle restraints](#vean) (VEAN statement in CNS)
+*   Directly as RDC restraints (SANI statement in CNS)
+*   Indirectly by defining intervector projection angle restraints (VEAN statement in CNS)
 
-From our experience, both approaches give good results for docking. The use of intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract)) avoids the burden of working with a tensor in the structure calculations. Another advantage is that one can distinguish between inter- and intra-molecular restraints. Considering that part of the system will typically be kept rigid during docking, the use of intra-molecular restraints might not make much sense anyway.  
+From our experience, both approaches give good results for docking. The use of intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"}) avoids the burden of working with a tensor in the structure calculations. Another advantage is that one can distinguish between inter- and intra-molecular restraints. Considering that part of the system will typically be kept rigid during docking, the use of intra-molecular restraints might not make much sense anyway.  
 
-For both, the tensor components need first to be determined. In the case of complexes, this can be easily done by using the known structures of the single domains. The software [Pales](http://spin.niddk.nih.gov/bax/software/PALES/index.html) (Zweckstetter & Bax (2000). _J. Am. Chem. Soc._ **122**, 3791-3792) can be used for this purpose.  
+* * *
 
-You need for this to generate a [Pales input file](http://spin.niddk.nih.gov/bax/software/PALES/index.html#DF) containing your residual dipolar couplings.  
+### Determining the alignment tensor components
+
+For using RDC restraints, the tensor components need first to be determined. In the case of complexes, this can be easily done by using the known structures of the single domains. The software [Pales](http://spin.niddk.nih.gov/bax/software/PALES/index.html){:target="_blank"} (Zweckstetter & Bax (2000). _J. Am. Chem. Soc._ **122**, 3791-3792) can be used for this purpose.  
+
+You need for this to generate a [Pales input file](http://spin.niddk.nih.gov/bax/software/PALES/index.html#DF){:target="_blank"} containing your residual dipolar couplings.  
 
 A csh script called _ana_pdb_Q-factor.csh_ is provided in the **haddock/tools** directory that will calculate from the experimental dipolar coupling the tensor parameters for all PDB files present in the current directory by best-fitting the dipolar coupling tensor to the corresponding 3D structures.  
 
@@ -56,7 +58,7 @@ Similarly, the axial (Da) and rhombic (Dr) components can be extracted from the 
 
 * * *
 
-<a name="sani">**<u>Direct use of RDCs as restraints for docking</u>**</a>  
+### Direct use of RDCs as restraints for docking 
 
 The proper format for RDC restraints is the following:
 
@@ -80,7 +82,7 @@ The error on the RDCs is set by default to 0.2 Hz. This can be overruled by givi
 <pre style="background-color:#DAE4E7">    $HADDOCK/RDCtools/generate_sani ERR=0.4 rdc_data_file
 </pre>
 
-The 2.4 version of HADDOCK supports up to 5 different SANI restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-995\. You can edit and modify the _generate_sani_ script to change the tensor number. To use RDC restraints in HADDOCK, use _SANI_ in [run.cns](/software/haddock2.4/run#dipo) in the dipolar coupling section and define the proper Da and R parameters (R=Dr/Da). The RDC restraints are first used in the [rigid body energy minimization step](/software/haddock2.4/docking#mini) using as force constant the value defined for the hot phase. Keep this value small (the current default is 0.02) to keep a proper balance between the AIR and SANI energy terms.  
+The 2.4 version of HADDOCK supports up to 5 different SANI restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-995\. You can edit and modify the _generate_sani_ script to change the tensor number. To use RDC restraints in HADDOCK, use _SANI_ in [run.cns](/software/haddock2.4/run) in the dipolar coupling section and define the proper Da and R parameters (R=Dr/Da). The RDC restraints are first used in the [rigid body energy minimization step](/software/haddock2.4/protocol) using as force constant the value defined for the hot phase. Keep this value small (the current default is 0.02) to keep a proper balance between the AIR and SANI energy terms.  
 
 
 The RDC restraints should be defined by the __RDCX_FILE__ parameter in the `run.param` file used to setup a run, with X being the number of the restraint set. An example entry in `run.param` would be:  
@@ -102,9 +104,9 @@ Here the two first restraint sets corresponds to [VEAN restraints](#vean) and th
 
 * * *
 
-<a name="vean">**<u>Intervector projection angle restraints for docking</u>**</a>  
+### Intervector projection angle restraints for docking  
 
-Intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract)) are obtained by taking pairs of residual dipolar couplings and generating intervector projection angle restraints (somewhat equivalent to dihedral angle restraints). These restraints have the advantage that they do no longer depend on the orientation of the dipole vector with respect to the alignment tensor. Instead they restrain the angle between two dipolar vectors, allowing for two minima. Two force constants must be therefore defined: one for the border potential function and one for the central part (e.g. between the two minima).
+Intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"}) are obtained by taking pairs of residual dipolar couplings and generating intervector projection angle restraints (somewhat equivalent to dihedral angle restraints). These restraints have the advantage that they do no longer depend on the orientation of the dipole vector with respect to the alignment tensor. Instead they restrain the angle between two dipolar vectors, allowing for two minima. Two force constants must be therefore defined: one for the border potential function and one for the central part (e.g. between the two minima).
 
 Thanks to Helen Mott and Wayne Boucher from Cambridge University we are providing in the **HADDOCK/RDCtools** a python script, _dipole_segid.py_ that allows the generation of such restraints from RDC data. To use it, you need to have your RDC data in a tab separated file containing _residue_number, RDC_value_ and _Segid_ and provide the tensor components Dxx, Dyy and Dzz (in Hertz). For NH couplings, these components are equal to 21700 times the eigenvalues of the Saupe matrix given by Pales.
 
@@ -126,7 +128,7 @@ To select for example all inter- and intra-molecular restraint excluding more th
     awk '{if ($27 != $9 && $44 > 0.25) {print $0}}' vean_output_file >vean_inter_25.tbl
 </pre>
 
-To use intervector projection angle restraints in HADDOCK, use _VANGLE_ in [run.cns](/software/haddock2.4/run#dipo) in the dipolar coupling section. The VANGLE restraints are introduced in the [rigid body energy minimization step](/software/haddock2.4/docking#mini) using as initial force constants the value defined for the hot phase. The restraints are activated in the second rotational minimization phase (thus earlier than the SANI restraints!)
+To use intervector projection angle restraints in HADDOCK, use _VANGLE_ in [run.cns](/software/haddock2.4/run) in the dipolar coupling section. The VANGLE restraints are introduced in the [rigid body energy minimization step](/software/haddock2.4/protocol) using as initial force constants the value defined for the hot phase. The restraints are activated in the second rotational minimization phase (thus earlier than the SANI restraints!)
 
 
 The VEAN RDC restraints should be defined by the __RDCX_FILE__ parameter in the `run.param` file used to setup a run, with X being the number of the restraint set. An example entry in `run.param` would be:  
@@ -137,10 +139,7 @@ The VEAN RDC restraints should be defined by the __RDCX_FILE__ parameter in the 
   RDC3_FILE=./restraints/ubiDP_sani.tbl
 </pre>
 
-Here the two first restraint sets corresponds to VEAN restraints and the third one to [SANI restraints](#sani) (example taken from the `protein-protein-rdc` example provided with HADDOCK2.4).
-
-
-
+Here the two first restraint sets corresponds to VEAN restraints and the third one to SANI restraints (example taken from the `protein-protein-rdc` example provided with HADDOCK2.4).
 
 
 * * *

@@ -3,15 +3,11 @@ layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: HADDOCK2.4 manual - Pseudo Contact Shifts
 image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> manual
-
-## <font color="RED">U</font>sing <font color="RED">P</font>seudo <font color="RED">C</font>ontact <font color="RED">S</font>hifts
-
-* * *
 
 Pseudo contact shifts (PCS) can provide useful information on both the distances and the orientation of the molecules to be docked. They can be used directly as restraints in HADDOCK using the XPCS energy term in CNS. Note that for this the standard CNS version needs to be recompiled with the files provided in the cns1.3 directory in the HADDOCK distribution.  
 
@@ -19,7 +15,7 @@ For each set of PCS restraints used, a tensor must be defined. Its axial (D) and
 
 **Note** that the proper units for use in HADDOCK should be: 10<sup>-28</sup> / (12*pi) m<sup>3</sup> (which gives a scaling factor of 265.26 compared to values expressed in 10<sup>-32</sup> m<sup>3</sup>)
 
-For pseudo contact shifts, R and D this can be obtained using for example the [Numbat](http://www.nmr.chem.uu.nl/~christophe/numbat.html) software (Schmitz C, Stanton-Cook MJ, Su XC, Otting G, Huber T (2008) Numbat: an interactive software tool for fitting delta chi-tensors to molecular coordinates using pseudocontact shifts. _J Biomol NMR_ **41**:179-189).  
+For pseudo contact shifts, R and D this can be obtained using for example the [Numbat](http://www.nmr.chem.uu.nl/~christophe/numbat.html){:target="_blank"} software (Schmitz C, Stanton-Cook MJ, Su XC, Otting G, Huber T (2008) Numbat: an interactive software tool for fitting delta chi-tensors to molecular coordinates using pseudocontact shifts. _J Biomol NMR_ **41**:179-189).  
 
 The position of the tensor also needs to be defined by specifying distance restraints with respect to the protein to which it is attached. These restraints should be defined by the TENSOR_FILE in the `run.param` file used to setup a run. The entry in `run.param` looks like:  
 
@@ -55,7 +51,7 @@ The proper format for PCS restraints is the following:
 where the last two numbers are the PCS value and its associated error.  
 
 
-The 2.4 version of HADDOCK supports up to 10 differentPCS restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-990\. For each class you can specify the first and last stage at which the various RDCs will be used:
+The 2.4 version of HADDOCK supports up to 10 different PCS restraints sets. Each can have a separate tensor. The tensor residue number should be in the range 999-990. For each class you can specify the first and last stage at which the various RDCs will be used:
 
 *   0: rigid body EM (it0)
 *   1: semi-flexible simulated annealing (SA) (it1)

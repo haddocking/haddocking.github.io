@@ -19,29 +19,25 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Siri.png
 
+-   name: Manon Réau
+    position: Postdoctoral Researcher
+    avatar: /images/people/Manon.png
+
+-   name: Francesco Ambrosetti
+    position: Postdoctoral Researcher
+    avatar: /images/people/Francesco.jpg
+
 -   name: Panagiotis Koukos
-    position: Ph.D Candidate
+    position: Postdoctoral Researcher
     avatar: /images/people/PanosK.jpg
 
 -   name: Jorge Roel
     position: Ph.D Candidate
     avatar: /images/people/Jorge.png
 
--   name: Francesco Ambrosetti
-    position: Ph.D Candidate
-    avatar: /images/people/Francesco.jpg
-
 -   name: Charlotte van Noort
     position: Ph.D Candidate
     avatar: /images/people/Charlotte.jpg
-
--   name: Farzaneh Meimandi Parizi
-    position: Visiting Ph.D Candidate
-    avatar: /images/people/Farzaneh.jpg
-
--   name: Sam de Vos
-    position: M.Sc Student
-    avatar: /images/people/Sam-deVos.jpeg
 
 -   name: Greg Kafetzopoulos
     position: M.Sc Student
@@ -54,4 +50,8 @@
 -   name: Etjen Ahmic
     position: M.Sc Student
     avatar: /images/people/Etjen-Ahmic.png
+
+-   name: Nikolaos Glentis
+    position: M.Sc Student
+    avatar: /images/people/Nikolaos-Glentis.jpg
 

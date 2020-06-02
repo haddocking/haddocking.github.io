@@ -29,7 +29,7 @@ In the definition of those residues, one distinguishes between ***"active"*** an
 <hr>
 ## Use of bioinformatic interface predictions  
 
-In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction softwares called [WHISCY](http://bianca.science.uu.nl/whiscy){:target="_blank"} and [CPORT](http://haddock.science.uu.nl/services/CPORT){:target="_blank"}. They has been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. Many others such predictors do exist!
+In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction software called [WHISCY](http://bianca.science.uu.nl/whiscy){:target="_blank"} and [CPORT](http://haddock.science.uu.nl/services/CPORT){:target="_blank"}. They have been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. Many others such predictors do exist!
 
 For more information refer to:  
 
@@ -51,7 +51,7 @@ The random AIRs are defined (in the `randomairs.cns` CNS script) as follow (only
     3.  AIRs are defined between each residue selected from molecule A (Ai + 5A neighbors) and the first residue randomly selected from molecule B and all its surface neighbors within a 7.5A cutoff (Bi + 7.5A neighbors)
     4.  AIRs are defined between each residue selected from molecule B (Bi + 5A neighbors) and the first residue randomly selected from molecule A and all its surface neighbors within a 7.5A cutoff (Ai + 7.5A neighbors)AIRs are thus defined from a 5A radius patch randomly selected from one molecule to a 7.5A radius patch randomly selected on the second molecule and vice-versa. The selected residues are written to disk in _**structures/it0**_ as _fileroot_1.disp,..._.  
 
-For the semi-flexible refinement stage, contact AIRs are automatically defined between all residues within 5A across the interface. In the final explicit solvent refinement, no AIR restraints will be defined.
+For the semi-flexible refinement stage, contact AIRs are automatically defined between all residues within 5A across the interface. In the final refinement, no AIRs will be defined.
 
    **Note1:** To ensure a thorough sampling of the surface, the number of structures generated at the rigid-body stage (it0) should be increased (e.g. 10000), depending on the extent of the surface to be sampled.   
 
@@ -69,7 +69,7 @@ Such restraints can be useful in multi-body (N>2) docking to ensure that all mol
 
 
 <hr>
-##Center of mass restraints 
+## Center of mass restraints 
 
 Center of mass restraints between the various molecules can be automatically defined in HADDOCK 2.x (_cmrest=true_ in [`run.cns`](/software/haddock2.4/run){:target="_blank"}). These restraints are defined in the `cm-restraint.cns` CNS script. This option is fully compatible with all other types of restraints.
 
@@ -150,13 +150,7 @@ By combining the experimental data (mutagenesis or chemical shift perturbation) 
 
 The passive residues are all solvent accessible surface neighbors of active residues. To define them you can display your molecule in space-filling model using your favorite visualisation software and color the active residues for example in red and manually select the neighbours.
 
-
-|<img src="/software/haddock2.4/hpr-csp-filtered.gif"  width="250"> |  Then, filter out the residues having a low solvent accessibility (colored yellow in the figure). |
-|<img src="/software/haddock2.4/hpr-passive-filtered.gif"  width="250">| Select then all surface neighbors to define the passive residues (colored green in the figure). |
-|<img src="/software/haddock2.4/hpr-passive.gif" width="250">|  and filter them with the solvent accessibility criterion (see above).|
-
-
-**Note:** If you are using an ensemble of structures as the starting point, you should use the average solvent accessibility to filter your active and passive residues (see [below](#ensemble)).  
+**Note:** If you are using an ensemble of structures as the starting point, you should use the average solvent accessibility to filter your active and passive residues (see below).  
 
 
 ### Residue filtering from an ensemble of structures
@@ -166,7 +160,7 @@ If you perform the docking from an ensemble of structures, the solvent accessibi
 **ASAav + SD > 40%**
 
 where SD corresponds to the standard deviation.  
-We are providing in the $HADDOCKTOOLS directory a csh script called `calc_ave_asa.csh` that will allow you to calculate the average accessibilities from an ensemble of structures using [NACCESS](http://wolf.bms.umist.ac.uk/naccess).  
+We are providing in the $HADDOCKTOOLS directory a csh script called `calc_ave_asa.csh` that will allow you to calculate the average accessibilities from an ensemble of structures using [NACCESS](http://wolf.bms.umist.ac.uk/naccess){:target="_blank"}.  
 To do so, you should split your pdb file into different files containing each one structure and then use calc_ave_rsa.csh:
 
 <pre style="background-color:#DAE4E7" >

@@ -34,9 +34,9 @@ Fax: +31-30-2537623
 
 * * *
 
-**HADDOCK manual**: [http://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
+**HADDOCK2.4 manual**: [http://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
 
-**HADDOCK webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
+**HADDOCK2.4 webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
 
 **Getting the software**:  [license form](/software/haddock2.4/download)   
 
@@ -80,5 +80,5 @@ The ongoing development of HADDOCK is the result of a team effort and in particu
 
 * * *
 
-<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> [![Haddock](haddock.gif)](http://en.wikipedia.org/wiki/Captain_Haddock)  
+<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> <a href="http://en.wikipedia.org/wiki/Captain_Haddock" style="border-bottom: none;"><img src="/software/haddock2.2/haddock.gif" alt="Haddock"></a>  
 <font size="-2">Copyright © Hergé Moulinsart 2003</font>

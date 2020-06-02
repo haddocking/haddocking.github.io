@@ -19,7 +19,7 @@ A number of tutorial examples are provided in the example directory of HADDOCK 2
 protein-ligand           : protein-ligand docking (Neuraminidase)
 protein-peptide-ensemble : example of ensemble-averaged PRE restraints
                            docking with two copies of a peptide not seeing
-                           eachother (multiple binding modes) (sumo-daxx-simc system)
+                           each other (multiple binding modes) (sumo-daxx-simc system)
 protein-peptide          : protein-peptide docking from an ensemble of three
                            peptide conformations with increased flexibility
 protein-protein          : protein-protein docking from an ensemble of NMR structure

@@ -68,7 +68,7 @@ Chimera command line prompt!</a>
 
 In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF Chimera**][link-chimera]{:target="_blank"}
 (freely available for most operating systems) on your computer in order to visualise the input and output data.  
-Further, the required data to run this tutorial should be downloaded from [**here**][link-data]{:target="_blank"}.
+Further, the required data to run this tutorial should be downloaded from [**here**](/education/disvis-webserver/disvis-tutorial.zip).
 Once downloaded, make sure to unpack the archive.
 
 
@@ -146,7 +146,7 @@ DisVis requires three input files: two high-resolution atomic structures of the 
 This is also the minimal required input for the web server in order to setup a run.  
 To run DisVis, go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/DISVIS" target="_blank">http://haddock.science.uu.nl/services/DISVIS</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
 On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
@@ -182,7 +182,7 @@ pre- and post-processing steps might substantially increase the time until the r
 
 While the calculations are running, open a second tab and go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/DISVIS" target="_blank">http://haddock.science.uu.nl/services/DISVIS</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
 Then click on the "**Help/Manual**" menu.
 
@@ -209,7 +209,7 @@ Once your job has completed, and provided you did not close the status page, you
 page (you will also receive an email notification).
 
 If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input [here](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/1){:target="_blank"}.
+with the same input [here](https://wenmr.science.uu.nl/disvis/tutorial){:target="_blank"}.
 
 The results page presents a summary split into several sections:
 
@@ -307,7 +307,7 @@ are most contacted in the solutions consistent with the provided distance restra
 
 Go to:
 
-<a class="prompt prompt-info" href="https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/submit" target="_blank">https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/submit</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis/submit" target="_blank">https://wenmr.science.uu.nl/disvis/submit</a>
 
 We will use the same input as for the first run of DisVis, but removing this time the false positive
 crosslinks identified at the previous step. The new set of restraints can be found in
@@ -339,7 +339,7 @@ Then click on the **Submit** button to start the run.
 
 Once your job has completed, the results page will be displayed.
 If you don't want to wait for your run to complete, you can see the results of a pre-calculated run
-<a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>.
+<a href="https://wenmr.science.uu.nl/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>.
 
 <a class="prompt prompt-question">
 Did the number of satisfied restraints change in comparison to the first quick scanning run?
@@ -374,7 +374,7 @@ and <b>PUP2</b>:<br><br>
  PUP2 active residues: 1, 2, 3, 5, 8, 11, 13, 15, 16, 17, 114, 121, 122, 123, 124, 140, 152, 154, 177<br><br>
 
 
-You can see the results <a href="http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>
+You can see the results <a href="https://wenmr.science.uu.nl/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>
 </details><br>
 
 In order to check if those residues are indeed important for the interaction, we will highlight them in Chimera and use a
@@ -564,15 +564,14 @@ for computational biomolecular research.
 
 
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: http://haddock.science.uu.nl/services/DISVIS/ "DisVis web server"
-[link-disvis-submit]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/submit "DisVis submission"
-[link-disvis-register]: https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/register "DisVis registration"
-[link-disvis-tutorial]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/tutorial "DisVis Tutorial"
-[link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
+[link-disvis-web]: https://wenmr.science.uu.nl/disvis "DisVis web server"
+[link-disvis-submit]: https://wenmr.science.uu.nl/disvis/submit "DisVis submission"
+[link-disvis-register]: https://wenmr.science.uu.nl/auth/register/ "DisVis registration"
+[link-disvis-tutorial]: https://wenmr.science.uu.nl/disvis/tutorial "DisVis Tutorial"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-chimera-distance]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera distance command"
 [link-chimera-atomspec]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera atom specification"
 [naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK"
+[link-haddock]: http://bonvinlab.org/software/haddock2.4 "HADDOCK"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4 "HADDOCK2.4 webserver"
 [link-haddock-tutorial]: http://bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic "HADDOCK2.4 webserver tutorial"
