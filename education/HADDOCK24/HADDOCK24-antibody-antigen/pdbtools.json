@@ -1,0 +1,54 @@
+{
+  "pipeline": [
+    {
+      "id": "pdb_delhetatm_1",
+      "tool": "pdb_delhetatm",
+      "args": []
+    },
+    {
+      "id": "pdb_chain_2",
+      "tool": "pdb_chain",
+      "args": [
+        {
+          "field": "chain_id_2_text",
+          "value": "A"
+        }
+      ]
+    },
+    {
+      "id": "pdb_tidy_3",
+      "tool": "pdb_tidy",
+      "args": []
+    },
+    {
+      "id": "pdb_reres_4",
+      "tool": "pdb_reres",
+      "args": [
+        {
+          "field": "starting_4_text",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "pdb_selres_5",
+      "tool": "pdb_selres",
+      "args": [
+        {
+          "field": "selection_5_text",
+          "value": "1:120,221:327"
+        }
+      ]
+    },
+    {
+      "id": "pdb_reres_6",
+      "tool": "pdb_reres",
+      "args": [
+        {
+          "field": "starting_6_text",
+          "value": "1"
+        }
+      ]
+    }
+  ]
+}
