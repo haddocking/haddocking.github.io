@@ -21,9 +21,7 @@ that are already installed on your machine and that are directly available at th
 module load &lt;Module name to load&gt;
 </a>
 
-Most of the input/output files mentioned in this tutorial can be found in the folder of your laptop:
-
-`~/Tutorials/CPMD/3-Covalent_Binding_OLD_QMMM_Interface`
+Most of the input/output files mentioned in this tutorial can be downloaded from [here](https://fz-juelich.sciebo.de/s/1hMqNMQFpIbuzXI) (~20GB of data).
 
 <a class="prompt prompt-question">Some questions displayed in orange are supposed to be answered by the reader.</a>
 
