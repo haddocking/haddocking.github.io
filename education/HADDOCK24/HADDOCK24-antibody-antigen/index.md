@@ -163,7 +163,7 @@ One can find the explanation of the commands by hovering over them with the mous
 
 On the result page we can see two output files, each corresponding to one chain of the protein, and a command one could with the local version of PDB-tools. 
 
-Save *output_1_0.fasta* as heavy_chain.fasta and *output_1_1.fasta* as ligh_chain.fasta .
+Save *output_1_0.fasta* as heavy_chain.fasta and *output_1_1.fasta* as ligh_chain.fasta . If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
 
 
 #### Using ProABC-2 to identify the paratope
@@ -265,7 +265,7 @@ The final command should look like:
 
 One can also download the complete pipeline [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/pdbtools.json).  
 
-Save *output_1.pdb* as 4G6K_fv.pdb . 
+Save *output_1.pdb* as 4G6K_fv.pdb . If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
 
 
 ### Using HADDOCK to dock antibody to antigen
