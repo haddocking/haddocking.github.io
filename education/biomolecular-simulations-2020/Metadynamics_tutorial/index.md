@@ -873,15 +873,29 @@ https://wenmr.science.uu.nl/haddock2.4/submit/1
 
 HADDOCK accepts ensembles of conformations as starting files, provided all the coordinates are concatenated in one single PDB file and all the conformations contain **EXACTLY** the same atoms (same number, same names, same chain/segid, ...). And easy way to prepare the "bemeta" and "apoMD" ensembles from the clusters files provided in the folder `../../tutorial_files/cluster_analysis/clusters_ready/` is to use [pdb-tools](https://github.com/haddocking/pdb-tools).
 
+To select a smaller ensemble of e.g. 50 models use:
+
 <a class="prompt prompt-cmd">
-cd ../../tutorial_files/cluster_analysis/clusters_ready/<br>
-python ~/software/pdb-tools/pdb_join.py meta/\*.pdb &gt; bemeta_ensemble.pdb <br>
-python ~/software/pdb-tools/pdb_join.py apo/\*.pdb &gt; apoMD_ensemble.pdb
+cd tutorial_files/cluster_analysis/clusters_ready/<br>
+pdb_mkensemble apo/\*0.pdb | sed -e \'s/HIE/HIS/\' -e \'s/HID/HIS/\' &gt; apoMD-ensemble-small.pdb <br>
+pdb_mkensemble meta/\*0.pdb | sed -e \'s/HIE/HIS/\' -e \'s/HID/HIS/\' &gt; metaMD-ensemble-small.pdb <br>
 </a>
+
+For the full ensemble of 500 models:
+
+<a class="prompt prompt-cmd">
+pdb_mkensemble apo/\*.pdb | sed -e \'s/HIE/HIS/\' -e \'s/HID/HIS/\' &gt; apoMD-ensemble.pdb <br>
+pdb_mkensemble meta/\*.pdb | sed -e \'s/HIE/HIS/\' -e \'s/HID/HIS/\' &gt; metaMD-ensemble.pdb <br>
+</a>
+
+
+**Note:** The `sed` commands above are to correct the naming of Histines to standard amino acid names.
+
+For convenience, two prepared ensembles of conformations for the apo and metadynamics MD simulations can be found in the `tutorial_files/docking-ready` folder.
 
 * **Step3:** Input the protein PDB file. For this unfold the **Molecule definition menu**.
 
-
+**Note:** For saving computational time we recommend here to use rather the small ensembles of 50 models. 
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -924,6 +938,10 @@ Segment ID to use during docking -> B
 
 * **Step5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
+
+**Note:** With such a large ensemble the pre-processing at this step will take quite some time for this example - using a smaller ensemble would speed up the processsing. 
+
+
 * **Step6:**  Define the ligand molecule as rigid. Since the structure of the ligand is directly obtained from the reference crystal structure of the complex, we can disable the flexibility of the ligand to enforce the bound conformation of the ligand in our models. This we do in the **Molecule 2 parameters menu**  in the **Input parameters** widow.
 
 <a class="prompt prompt-info">
@@ -953,6 +971,9 @@ Remove non-polar hydrogens? -> FALSE (uncheck this option)
 
 * **Step 8:** Since we are using a large ensemble of starting conformations for the receptor we do need to increase the sampling. For this unfold the **Sampling parameters menu**:
 
+
+**Note:** If using the small ensembles of 50 models leave the following parameters to their default
+
 <a class="prompt prompt-info">
 Number of structures for rigid body docking -> 10000
 </a>
@@ -976,7 +997,7 @@ Clustering method (RMSD or Fraction of Common Contacts (FCC)) -> RMSD
 </a>
 
 <a class="prompt prompt-info">
-RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 1&Aring;
+RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 1.5&Aring;
 </a>
 
 
@@ -993,7 +1014,22 @@ Unfold the menu "Energy constants for ambiguous restraints"<br>
 Last iteration (it0-itw) -> it0 (this defines that the ambiguous restraints (the act-act file) will only be used in iteration it0 (rigid-body docking)
 </a>
 
-* **Step11:** Apply some ligand-specific scoring settings. For this unfold the **Scoring parameter menu**:
+* **Step11:** Apply some ligand-specific scoring settings. For this unfold the **Energy and interaction parameters menu**:
+
+<a class="prompt prompt-info">
+Use constant (cdie) or distance-dependent (rdie) dielectric in it0 -> cdie
+</a>
+
+<a class="prompt prompt-info">
+Use constant (cdie) or distance-dependent (rdie) dielectric in it1 -> cdie
+</a>
+
+<a class="prompt prompt-info">
+Epsilon constant for the electrostatic energy term in it1 -> 10.0
+</a>
+
+
+* **Step12:** Apply some ligand-specific scoring settings. For this unfold the **Scoring parameter menu**:
 
 Our recommended HADDOCK score settings for small ligands docking are the following:
 
@@ -1014,7 +1050,7 @@ Eelec 3 -> 0.1
 </a>
 
 
-* **Step12:** Apply some ligand-specific sampling settings. For this unfold the **Advanced sampling parameter menu**:
+* **Step13:** Apply some ligand-specific sampling settings. For this unfold the **Advanced sampling parameter menu**:
 
 
 <a class="prompt prompt-info">
@@ -1033,10 +1069,20 @@ number of MD steps for rigid body high temperature TAD -> 0
 number of MD steps during first rigid body cooling stage -> 0
 </a>
 
+
+
+* **Step14:** Increase the number of models to be analysed. For this unfold the **Analysis parameter menu**:
+
+**Note:** If using the small ensembles of 50 models leave the following parameter to its default
+
+<a class="prompt prompt-info">
+Number of structures to analyze -> 400
+</a>
+
+
 #### Job submission
 
-* **Step13:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
-
+* **Step15:** You are ready to submit! Enter your username and password (or the course credentials provided to you). Remember that for this interface you do need guru access.
 
 Upon submission you will first be presented with a web page containing a link to the results page, but also an importantly a link to a haddockparameter file (simple text format) containing all settings and input data of your run.
 
@@ -1065,7 +1111,7 @@ Click now on the link to the results page. The page will indicate that your job 
 </figure>
 
 
-The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed. For this particular case, if docking the full ensemble of 500 conformations with the settings described above the full run might even take a few days. No need to wait though since we are providing pre-calculated results (see below).
 
 
 #### Analysis of the results
@@ -1074,8 +1120,12 @@ Once your run has completed you will be presented with a result page showing the
 
 We already pre-calculated full docking run for both ensembles (we slightly increased the default number of models generated at each stage of HADDOCK: 4000 for rigid-body docking and 400 for semi-flexible and water refinement). Only the best (in term of HADDOCK score) 200 models generated at the water refinement stage of HADDOCK were further selected for analysis. The full runs for both "bemeta" and "apoMD" ensemble can be accessed at:
 
-- **bemeta_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/bemeta-ensemble){:target="_blank"}
-- **apoMD_ensemble**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/apoMD-ensemble){:target="_blank"}
+- **meta-ensemble** (full run): [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/meta-ensemble){:target="_blank"}
+- **apo-ensemble** (full run): [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/apo-ensemble){:target="_blank"}
+
+- **meta-ensemble-small**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/meta-ensemble-small){:target="_blank"}
+- **apo-ensemble-small**: [View here the pre-calculated results](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/apo-ensemble-small){:target="_blank"}
+
 
 <a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
 
@@ -1182,21 +1232,15 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 <summary>See solution:
 </summary>
 <pre>
-* apoMD cluster1_1  HADDOCKscore [a.u.] = -31.0 +/- 0.8 ligand-RMSD = 1.92&Aring;
+* apoMD cluster1_1  HADDOCKscore [a.u.] = -60.5 +/- 3.6 ligand-RMSD = 5.13&Aring;
 
-* apoMD cluster4_1  HADDOCKscore [a.u.] = -30.2 +/- 1.3 ligand-RMSD = 4.16&Aring;
+* TO BE UPDATED...
 
-* apoMD cluster2_1  HADDOCKscore [a.u.] = -29.6 +/- 1.1 ligand-RMSD = 2.17&Aring;
 
 * bemeta cluster1_1 HADDOCKscore [a.u.] = -28.6 +/- 2.6 ligand-RMSD = 1.40&Aring;
 
-* bemeta cluster2_1 HADDOCKscore [a.u.] = -28.2 +/- 0.4 ligand-RMSD = 4.58&Aring;
+* TO BE UPDATED...
 
-* bemeta cluster3_1 HADDOCKscore [a.u.] = -28.0 +/- 2.3 ligand-RMSD = 1.94&Aring;
-
-* bemeta cluster4_1 HADDOCKscore [a.u.] = -27.6 +/- 2.3 ligand-RMSD = 1.75&Aring;
-
-* apoMD cluster3_1  HADDOCKscore [a.u.] = -27.1 +/- 1.0 ligand-RMSD = 4.88&Aring;
 </pre>
 <br>
 </details>
