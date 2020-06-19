@@ -38,3 +38,9 @@ In this page you can find links to tutorials on the usage of our software and we
   A tutorial demonstrating the use of HADDOCK in ab-initio mode to screen for potential ligand binding sites.
   The information from the ab-initio run is then used to setup a binding pocket-targeted protein-ligand docking run.
   We use as example the multidrug exporter AcrB.
+  
+* [**HADDOCK2.4 antibody-antigen docking tutorial**](/education/HADDOCK24/HADDOCK24-antibody-antigen):
+  This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex using information 
+  about the hypervariable loops of the antibody and either the entire surface of the antigen or a loose definition of the epitope.
+  This tutorial does not require any Linux expertise and only makes use of our web servers and [PyMol](http://www.pymol.org) for visualisation/analysis.
+

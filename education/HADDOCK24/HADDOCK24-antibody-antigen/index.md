@@ -15,44 +15,45 @@ This tutorial consists of the following sections:
 <hr>
 ## Introduction
 
-This tutorial will demonstrate the use of HADDOCK for predicting the structure of a antibody-antigen complex using a newly developed [webserver PDB-tools](https://bianca.science.uu.nl/pdbtools/) and [ProABC-2](https://bianca.science.uu.nl/proabc2/). Here we will be following the protocol of [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283). An antibody is a large protein that generally works by attaching itself to an antigen, which is a unique site of the pathogen and harnessing the immune system to directly attack and destroy it. Antibodies can be highly specific while showing low immunogenicity, which is achieved by their unique structure. **The fragment crystallizable region (Fc region**) activates the immune response and is species specific, i.e. human Fc region should not evoke an immune response in humans.  **The fragment antigen-binding region (Fab region**) needs to be highly variable to be able to bind to antigens of various nature (high specificity). In this tutorial we will create the terminal **variable domain (Fv**) of the Fab region. 
+This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex. It also includes our newly developed [PDB-tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} and [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"} webservers. We will be following the protocol described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283){:target="_blank"}. 
+
+An antibody is a large protein that generally works by attaching itself to an antigen, which is a unique site of the pathogen. The binding harnesses the immune system to directly attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity, which is achieved by their unique structure. **The fragment crystallizable region (Fc region**) activates the immune response and is species specific, i.e. human Fc region should not evoke an immune response in humans.  **The fragment antigen-binding region (Fab region**) needs to be highly variable to be able to bind to antigens of various nature (high specificity). In this tutorial we will concentrate on the terminal **variable domain (Fv**) of the Fab region. 
  
 
- <figure align="center">
+<figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/antibody_described.png">
 </figure>
 
-The small part of the Fab region that binds antigen is called **paratope**. The part of the antigen that binds to an antibody is called **epitope**. Paratope consists of six highly flexible loops, known as **complementarity-determining regions (CDRs)** or hypervariable loops that alter their sequence and conformation to complement different antigens. CDRs are shown in red in the figure below: 
+The small part of the Fab region that binds the antigen is called **paratope**. The part of the antigen that binds to an antibody is called **epitope**. The paratope consists of six highly flexible loops, known as **complementarity-determining regions (CDRs)** or hypervariable loops whose sequence and conformation are altered to bind to different antigens. CDRs are shown in red in the figure below: 
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/CDRs.png">
 </figure>
 
-In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I1B](https://www.rcsb.org/structure/4i1b)))  acting as an antigen and its highly specific monoclonal antibody gevokizumab (PDB code [4G6K](https://www.rcsb.org/structure/4g6k)) (PDB code of the complex [4G6M](https://www.rcsb.org/structure/4g6m)).  
+In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I1B](https://www.rcsb.org/structure/4i1b){:target="_blank"})) as an antigen and its highly specific monoclonal antibody gevokizumab (PDB code [4G6K](https://www.rcsb.org/structure/4g6k){:target="_blank"}) (PDB code of the complex [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}).  
 
 <hr>
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://haddock.science.uu.nl/services/HADDOCK2.4), [ProABC-2](https://bianca.science.uu.nl/proabc2/) and [PDB-tools webserver](https://bianca.science.uu.nl/pdbtools/).
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
 
-A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
+A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"} can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
+_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version [here](https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html){:target="_blank"}.
 
 
 ProABC-2 is described here:
-* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and A.M.J.J. Bonvin. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1). *BioRxiv*, DOI:10.1101/2020.03.18.967828 (2020).
+* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and A.M.J.J. Bonvin. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1){:target="_blank"}. *BioRxiv*, DOI:10.1101/2020.03.18.967828 (2020).
 
 PDB-tools are described here:
-
-* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and A.M.J.J. Bonvin. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). *F1000Research*, 7:1961 2018
+* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and A.M.J.J. Bonvin. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1){:target="_blank"}. *F1000Research*, 7:1961 2018
  
-The local version of PDB-tools can also be found [here](https://github.com/haddocking/pdb-tools).
+The local version of PDB-tools can also be found [here](https://github.com/haddocking/pdb-tools){:target="_blank"}.
 
 
 
@@ -62,17 +63,19 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
 <a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
 
+
 <hr>
 ## Setup
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
+
 
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/](http://www.bonvinlab.org/software/haddock2.2/)) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
 A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall under two categories: active and passive. Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.
 The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and different chemical environments, and it can be divided in three different stages, each with a defined goal and characteristics:
@@ -120,26 +123,33 @@ The second stage of the docking protocol introduces flexibility to the interacti
 
 
 The performance of this protocol of course depends on the number of models generated at each step. Few models are less probable to capture the correct binding pose, while an exaggerated number will become computationally unreasonable. The standard HADDOCK protocol generates 1000 models in the rigid body minimization stage, and then refines the best 200 – regarding the energy function - in both it1 and water. Note, however, that while 1000 models are generated by default in it0, they are the result of five minimization trials and for each of these the 180º symmetrical solution is also sampled. Effectively, the 1000 models written to disk are thus the results of the sampling of 10.000 docking solutions.
-The final models are automatically clustered based on a specific similarity measure - either the *positional interface ligand RMSD* (iL-RMSD) that captures conformational changes about the interface by fitting on the interface of the receptor (the first molecule) and calculating the RMSDs on the interface of the smaller partner, or the *fraction of common contacts* (current default) that measures the similarity of the intermolecular contacts. For RMSD clustering, the interface used in the calculation is automatically defined based on an analysis of all contacts made in all models.
+
+
+The final models are automatically clustered based on a specific similarity measure - either the *positional interface ligand RMSD* (iL-RMSD) that captures conformational changes about the interface by fitting on the interface of the receptor (the first molecule) and calculating the RMSDs on the interface of the smaller partner, or the *fraction of common contacts* (FCC) (current default) that measures the similarity of the intermolecular contacts. For RMSD clustering, the interface used in the calculation is automatically defined based on an analysis of all contacts made in all models.
+
+
 
 <hr>
-### Extracting antibody amino acid sequence to gain information about the paratope
+<hr>
+## Extracting antibody amino acid sequence to gain information about the paratope
 
-Nowadays there are several computational tools that can identify paratope from the provided sequence, in our tutorial we will use the one developed in our group [ProABC-2](https://bianca.science.uu.nl/proabc2/). ProABC-2 uses convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* BioRxiv, 2020](https://www.biorxiv.org/content/10.1101/2020.03.18.967828v1).
+Nowadays there are several computational tools that can identify the paratope from the provided antibody sequence. In this tutorial we will use the one developed in our group [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* BioRxiv, 2020](https://www.biorxiv.org/content/10.1101/2020.03.18.967828v1){:target="_blank"}.
 
-#### Using PDB tools to extract the amino acid sequence 
 
-In this step we will make use of the [PDB-tools webserver](https://bianca.science.uu.nl/pdbtools/). PDB-tools webserver is a powerful tool that enables you to edit pdbs quickly and painlessly without any scripting knowledge. It does not require registration and individual commands can be joined together into a pipeline which can be saved for future use.
+### Using PDB tools to extract the amino acid sequence 
 
-First open your web browser to go to [https://bianca.science.uu.nl/pdbtools/](https://bianca.science.uu.nl/pdbtools/) and choose **Submit a pipeline**.  
+In this step we will make use of the [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}. PDB-tools webserver is a powerful tool that enables you to edit pdbs quickly and painlessly without any scripting knowledge. It does not require registration and individual commands can be joined together into a pipeline which can be saved for future use.
+
+First open your web browser to go to [https://wenmr.science.uu.nl/pdbtools/](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} and choose **Submit a pipeline**.  
 
 Here, we fetch the antibody structure directly by typing *4G6K* in the **PDB Code** field. 
 
-<a class="prompt prompt-info">PDB Code -> 4G6K ↓ Fetch</a>
-
-Check the field for **biounit**, which represents the functional form of the molecule.
+Check the field for **biounit**, to download the functional form of the molecule.
 
 <a class="prompt prompt-info">biounit -> check</a>
+
+<a class="prompt prompt-info">PDB Code -> 4G6K ↓ Fetch</a>
+
 
 After the structure is fetched properly, we can see that it contains two chains: H (heavy chain) and L (light chain). When we click on the **eye** icon we visualise the full Fab part of gevokizumab, with heavy chain in red and light chain in blue. Waters are shown as pink spheres and can be shown/hidden by selectin the **Water** button.
 
@@ -147,7 +157,7 @@ After the structure is fetched properly, we can see that it contains two chains:
 <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/pdbtools_start.png">
 </figure>
 
-Now we split our antibody into two (ligh and heavy) chains, to prepare the input for ProABC-2.
+Now we will split our antibody into two (ligh and heavy) chains, to prepare the input for ProABC-2.
 
 <a class="prompt prompt-info"> Choose 'pdb_splitchain' and click on +Add a new block.</a>
 
@@ -159,20 +169,29 @@ Finally we convert this structural PDB file into a fasta sequence file.
 
 <a class="prompt prompt-info"> Choose 'pdb_tofasta' and click on +Add a new block</a>
 
-One can find the explanation of the commands by hovering over them with the mouse. Once we have all commands in our pipeline click on **Run this**. 
+One can find the explanation of the commands by hovering over them with the mouse. 
 
-On the result page we can see two output files, each corresponding to one chain of the protein, and a command one could with the local version of PDB-tools. 
+<a class="prompt prompt-info"> Once you have all commands in our pipeline click on **Run this**.</a>
 
-Save *output_1_0.fasta* as heavy_chain.fasta and *output_1_1.fasta* as ligh_chain.fasta . If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
+On the result page we can see two output files, each corresponding to one chain of the protein. For each the command used to run PBD-tools is also given. 
+
+<a class="prompt prompt-info"> Save *output_1_0.fasta* as heavy_chain.fasta and *output_1_1.fasta* as light_chain.fasta.</a> 
+
+If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
 
 
-#### Using ProABC-2 to identify the paratope
+### Using ProABC-2 to identify the paratope
 
-Once you have downloaded the sequence fasta files of both chains, open your browser to go to [ProABC-2](https://bianca.science.uu.nl/proabc2/). Open the downloaded fasta files with a text editor and enter the sequences into corresponding fields in ProABC-2 interface. 
+Once you have downloaded the sequence fasta files of both chains, open your browser to go to [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. 
 
-Press **Sumbit** to let the webserver process your sequence. The calculation takes only a few seconds and the result graph shows the probabilities that a residue is a part of the paratope. Note that the graphs are interactive, i.e. the three features (pt-probability, hb-hydrophobic, hy-hydrophilic) can be toggled. Detail values per each residues are shown upon hovering over it with the mouse.  
+<a class="prompt prompt-info"> Open the downloaded fasta files with a text editor and enter the sequences into corresponding fields in ProABC-2 interface.</a>
 
-**Note:** ProABC-2 uses the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib) for antibodies and shows results for only the antibody Fv domains.  Insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly, thus renumbering is necessary before starting docking. Extracting active residues corresponding to this renumbered structures can be done locally as described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283). For time reasons it is already done for you in this tutorial.
+<a class="prompt prompt-info"> Press **Sumbit** to let the webserver process your sequence.</a>
+
+The calculation takes only a few seconds and the result graph shows the probabilities that a residue is a part of the paratope. Note that the graphs are interactive, i.e. the three features (pt-probability, hb-hydrophobic, hy-hydrophilic) can be toggled. Detail values per each residues are shown upon hovering over it with the mouse.  
+
+**Note:** ProABC-2 uses the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} for antibodies and only shows results for the antibody Fv domains. Insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly and renumbering is necessary before starting the docking. Extracting active residues corresponding to this renumbered structures can be done locally as described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283){:target="_blank"}. For simplicity we have already done this for you in this tutorial.
+
 
 <a class="prompt prompt-question">Which residues have higher probabilities of being a part of the paratope? Are these interactions rather hydrophobic or hydrophilic? How many more "higher probability groups" do you see? </a>
 
@@ -187,20 +206,23 @@ Press **Sumbit** to let the webserver process your sequence. The calculation tak
  <br>
 
 
-### Inspecting and preparing the antibody for docking
+
+<hr>
+<hr>
+## Inspecting and preparing the antibody for docking
 
 
-#### Using PDB tools to renumber the antibody and to extract the variable domain (Fv)
+### Using PDB tools to renumber the antibody and to extract the variable domain (Fv)
 
-In this step we repeat first two steps as in the step one and add additional commands to extract the variable region of the antibody.
+In this step we again use the [PDB-Tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} web server to fetch the PDB file, repeating the first two steps shown above to extract the variable region of the antibody.
 
-Here, we again fetch the antibody structure directly by typing *4G6K* in the **PDB Code** field. 
+
+Check the field for **biounit**, to download the functional form of the molecule.
+
+<a class="prompt prompt-info">biounit -> check</a>
 
 <a class="prompt prompt-info">PDB Code -> 4G6K ↓ Fetch</a>
 
-Check the field for **biounit**, which represents the functional form of the molecule.  
-
-<a class="prompt prompt-info">biounit -> check</a>
 
 <hr>
 
@@ -228,7 +250,7 @@ Res. Inserts:	False
 </pre>
 <hr>
 
-In docking we are mostly not interested in any atoms that are not relevant for binding or parts of the proteins, thus we remove them with:
+For docking, we should remove all non-relevant atoms, e.g. crystallised waters and other small molecules that might originate from the crystalliation buffer. This can be done in PBD-Tools with:
 
 <a class="prompt prompt-info"> Choose 'pdb_delhetatm' and click on +Add a new block.</a>
 
@@ -268,26 +290,31 @@ One can also download the complete pipeline [here](/education/HADDOCK24/HADDOCK2
 Save *output_1.pdb* as 4G6K_fv.pdb . If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
 
 
-### Using HADDOCK to dock antibody to antigen
-
-
 <hr>
-### Setting up the docking run
+<hr>
+## Using HADDOCK to model the antibody-antigen complex
 
-#### Registration / Login
 
 
-In order to start the submission, go to [https://bianca.science.uu.nl/haddock2.4/](https://bianca.science.uu.nl/haddock2.4/) and click on **Register**.  To start the submission process, we are prompted for our login credentials. You can skip this step if you were provided with course credentials. After successful validation of our credentials we can proceed to the structure upload under **Submit a new job**.
+### Registration / Login
+
+
+If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
+
+
+To start the submission process, you are prompted for our login credentials. After successful validation of the credentials you can proceed to the structure upload under **Submit a new job**.
+
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
-### Scenario 1) No information about the epitope is available 
+<hr>
+### Scenario 1: No information about the epitope is available 
 
-In previous steps we defined paratope residues of the antibody, which will be now used to guide the docking. The second part of the puzzle is information about the antigen interface, which if often not available. This scenario will be simulated here. We will treat the entire surface of the antigen as potential interface. In order to cover all possible binding poses, we need to increase the sampling.
+In previous steps we have identified the paratope residues of the antibody. Those can now used to guide the docking. The second part of the puzzle is the information about the antigen interface, which if often not available. In this this scenario, we assume nothing is known about the epitope. Therefore we will treat the entire surface of the antigen as potential interface. Since we have to sample the entire surface of the antigen, we need to increase the sampling.
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server.
+For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the antibody structure we previously prepared with PDB-tools and the IL-1β structure.
 
@@ -322,7 +349,7 @@ Which chain to be used? -> All (for this particular case)
 PDB structure to submit -> Browse and select *4I1B-matched.pdb* (the file you saved)
 </a>
 
-* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -345,7 +372,9 @@ Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,3
 In the entry “If you specified that surface residues will be defined automatically as passive, selection will use the following RSA (relative solvent accessibility) cutoff” leave 0.40 as cutoff. Leave the other options to their default parameters.
 
 #### Increasing sampling
+
  * **Step 8:** Click on the **Next** button on the bottom of the page.
+ 
  * **Step 9:** Since we have not defined concrete epitope o but selected the entire surface of the antigen we  need to increase the sampling. For this unfold the **Sampling parameters menu**:
 
 <a class="prompt prompt-info">
@@ -360,7 +389,7 @@ Number of structures for the explicit solvent refinement -> 400
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 
 * **Step 10:** Click on the **Submit** button at the bottom left of the interface.
@@ -368,13 +397,15 @@ This interface allows us to modify many parameters that control the behaviour of
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 
-### Scenario 2) Epitope is known 
+<hr>
+### Scenario 2: A loose definition of the epitope is known
 
-Additionally to the CDR residues of the antibody, epitope residues of the antigen will be used to guide the docking.  In this case there is a crystal structure of the complex known (pdb code [4G6M](https://www.rcsb.org/structure/4g6m)). Here, antigen passive residues represent all of the antigen residues within 9Å from the antibody in the complex reference structure (4G6M), filtered by their relative solvent accessibility (≥0.40) upon the removal of the antibody.
+In this scenario, additionally to the CDR residues of the antibody, a loose definiton of the epitope residues of the antigen will be used to guide the docking. Here, we define the epitope on the antigen as all residues within 9Å from the antibody in the complex reference structure (pdb code [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}), filtered by their relative solvent accessibility (≥0.40) upon the removal of the antibody. This is of course an artificial scenario. In a real case the epitope might have been identified for example from NMR titration experiments, H/D exchange experiments, ...
+
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server.
+We again make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the structures we previously prepared with PyMOL.
 
@@ -409,7 +440,7 @@ Which chain to be used? -> All (for this particular case)
 PDB structure to submit -> Browse and select *4I1B-matched.pdb* (the file you saved)
 </a>
 
-* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -432,7 +463,7 @@ Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,3
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 
 * **Step 9:** Click on the **Submit** button at the bottom left of the interface.
@@ -440,29 +471,33 @@ This interface allows us to modify many parameters that control the behaviour of
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 
+<hr>
+<hr>
 ## Analysing the results
  
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). If using course credentials 
-provided to you, the number of models generated will have been decreased to allow the runs to complete within a 
+provided to you, the number of models generated will have been decreased (250/50/50) to allow the runs to complete within a 
 reasonable amount of time.
 
 In case you don't want to wait for your runs to be finished, precalculated runs can be found here: 
-**Scenario 1:** [4G6M-Ab-Ag-surface](https://bianca.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface)  
-**Scenario 2:** [4G6M-Ab-Ag](https://bianca.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag)
+
+* **Scenario 1:** [4G6M-Ab-Ag-surface](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface){:target="_blank"}  
+* **Scenario 2:** [4G6M-Ab-Ag](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag){:target="_blank"}
 
 
 
 <a class="prompt prompt-question">Inspect the result page</a>
+
 <a class="prompt prompt-question">How many clusters are generated?</a>
 
 In the figure below you can see different parts of the result page. 
 
-**A** The result page reports the number of clusters and for the top 10 clusters also the related statistics (HADDOCK score, Size, RMSD, Energies, BSA and Z-score).
+**In A** the result page reports the number of clusters and for the top 10 clusters also the related statistics (HADDOCK score, Size, RMSD, Energies, BSA and Z-score).
 While the name of the clusters is defined by their size (cluster 1 is the largest, followed by cluster 2 etc..) the top 10 clusters are selected and sorted according to the average HADDOCK score of the best 4 models of each cluster, from the lowest (best) HADDOCK score to the highest (worst). 
 
-**B** The various models can be directly visualized online by clicking on the **eye** icon, or downloaded for further analysis.
+**In B** the visualiztion option of the various models is shown. You can visualize online a model by clicking on the **eye** icon, or download those for further analysis.
 
-**C** The bottom of the page under **Model analysis** gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model). The points-models are color coded by the cluster they belong to and you can turn on and off specific clusters, but also zoom in on specific areas of the plot.
+**In C** a view of some graphical representation of the results shown at the bottom of the page under **Model analysis** is shown. Distribution of various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model) are shown. The models are color-coded by the cluster they belong to. You can turn on and off specific clusters, but also zoom in on specific areas of the plot.
 
 The bottom graphs in **Cluster analysis** show you the distribution of components of the HADDOCK score (Evdw, Eelec and Edesol) for the various clusters.
 
@@ -482,21 +517,28 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: crystal structure of the complex.
 
 
-**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu) high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the example output pages. That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
+**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu){:target="_blank"} high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the example output pages. That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
 
+<hr>
 <hr>
 ## Visualisation
 
-In the CAPRI (Critical Prediction of Interactions) [Méndez et al. 2003](https://doi.org/10.1002/prot.10393) experiment, one of the parameters
-used is the Ligand root-mean-square deviation (l-RMSD) which is calculated by superimposing the structures onto the backbone atoms of the receptor (the antibody in this case) and
-calculating the RMSD on the backbone residues of the ligand (the antigen). To calculate the l-RMSD it is possible to either use the software [Profit](http://www.bioinf.org.uk/software/profit/) or [Pymol](https://pymol.org/2/).
+In the CAPRI (Critical Prediction of Interactions) [Méndez et al. 2003](https://doi.org/10.1002/prot.10393){:target="_blank"} 
+experiment, one of the parameters used is the Ligand root-mean-square deviation (l-RMSD) which is calculated by superimposing 
+the structures onto the backbone atoms of the receptor (the antibody in this case) and calculating the RMSD on the backbone 
+residues of the ligand (the antigen). To calculate the l-RMSD it is possible to either use the software 
+[Profit](https://www.bioinf.org.uk/software/profit/){:target="_blank"} or [Pymol](https://pymol.org/2/){:target="_blank"}.
 For the sake of convenience we provide you with a renumbered reference structure 4G6M-matched.pdb
 
-### Scenario 1) No information about the epitope is available 
 
-In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface).
+### Scenario 1: No information about the epitope is available 
+
+In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface){:target="_blank"}.
 
 <a class="prompt prompt-info">Download and save to disk the first model of each cluster (use the PDB format)</a>
+
+**Note** that you can download all cluster models at once by clicking on _download all cluster files_ just above the first cluster statistics.
+
 
 Then start PyMOL and load each cluster representative:
 
@@ -558,9 +600,9 @@ Are the passive residues at the interface in different clusters? How is it shown
 
 <hr>
 
-### Scenario 2) Epitope is known 
+### Scenario 2: A loose definition of the epitope is known 
 
-In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag).
+In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag){:target="_blank"}.
 
 
 Now we can compare our docking without any information about the epitope with a run where the epitope was defined. 
@@ -599,8 +641,8 @@ We have demonstrated the antibody-antigen docking guided with and without the kn
 <hr>
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](http://ask.bioexcel.eu).
+You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
 
 And check also our [education](/education) web page where you will find more tutorials!
 
-[link-pymol]: http://www.pymol.org/ "PyMOL"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
