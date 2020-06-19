@@ -556,7 +556,7 @@ Let's then superimpose all models on chain A (receptor) of the first reference s
 
 
 <a class="prompt prompt-pymol">
-alter all, seg =' ' <br>
+alter all, segi = ' ' <br>
 align cluster4_1 and chain A, 4G6M-matched and chain A, cycles=0 <br>
 rms_cur cluster4_1 and chain B, 4G6M-matched <br>
 </a>
