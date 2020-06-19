@@ -528,7 +528,7 @@ experiment, one of the parameters used is the Ligand root-mean-square deviation 
 the structures onto the backbone atoms of the receptor (the antibody in this case) and calculating the RMSD on the backbone 
 residues of the ligand (the antigen). To calculate the l-RMSD it is possible to either use the software 
 [Profit](https://www.bioinf.org.uk/software/profit/){:target="_blank"} or [Pymol](https://pymol.org/2/){:target="_blank"}.
-For the sake of convenience we provide you with a renumbered reference structure 4G6M-matched.pdb
+For the sake of convenience we provide you with a renumbered reference structure 4G6M-matched.pdb, which can be downloaded [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/4G6M-matched.pdb).
 
 
 ### Scenario 1: No information about the epitope is available 
@@ -554,8 +554,9 @@ hide lines<br>
 
 Let's then superimpose all models on chain A (receptor) of the first reference structure and calculate RMSD of chain B (ligand):
 
+
 <a class="prompt prompt-pymol">
-alter all, segi=' '<br>
+alter all, segi = ' ' <br>
 align cluster4_1 and chain A, 4G6M-matched and chain A, cycles=0 <br>
 rms_cur cluster4_1 and chain B, 4G6M-matched <br>
 </a>
@@ -616,9 +617,39 @@ Has the L-RMSD value decreased and the CAPRI quality improved? Are the passive r
 </a>
 
 Since interacting residues were defined in both binding partners, the docking positions these residues at the interface. fulfilling these restraints.
+Here you can see an overlay of model 1 of the best cluster (in our case cluster 4) with the crystal structure of the complex (4G6M-matched.pdb).
+
+<figure align="center">
+<img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/cluster4_4G6M.png">
+</figure>
 
 
+<hr>
+ <details >
+ <summary style="bold">
+ <b><i>See the L-RMSDs for clusters in both scenarios:</i></b>
+ </summary>
+<pre>
+* 4G6M-Ab-Ag cluster2_1  HADDOCKscore [a.u.] = -110.9 +/- 11.4 ligand-RMSD = 24.77&Aring;
+* 4G6M-Ab-Ag cluster4_1  HADDOCKscore [a.u.] = -103.9 +/- 9.2 ligand-RMSD = 2.97&Aring;
+* 4G6M-Ab-Ag cluster5_1  HADDOCKscore [a.u.] = -94.9 +/- 17.7 ligand-RMSD = 6.65&Aring;
+* 4G6M-Ab-Ag cluster3_1  HADDOCKscore [a.u.] = -91.9 +/- 2.3 ligand-RMSD = 11.85&Aring;
+* 4G6M-Ab-Ag cluster1_1  HADDOCKscore [a.u.] = -74.5 +/- 0.3 ligand-RMSD = 16.99&Aring;
 
+* 4G6M-Ab-Ag-surface cluster3_1 HADDOCKscore [a.u.] = -107.0 +/- 3.7 ligand-RMSD = 18.71&Aring;
+* 4G6M-Ab-Ag-surface cluster6_1 HADDOCKscore [a.u.] = -103.5 +/- 13.1 ligand-RMSD = 23.43&Aring;
+* 4G6M-Ab-Ag-surface cluster2_1 HADDOCKscore [a.u.] = -91.4 +/- 5.7 ligand-RMSD = 24.69&Aring;
+* 4G6M-Ab-Ag-surface cluster1_1 HADDOCKscore [a.u.] = -86.2 +/- 2.0 ligand-RMSD = 20.79&Aring;
+* 4G6M-Ab-Ag-surface cluster9_1 HADDOCKscore [a.u.] = -83.3 +/- 7.8 ligand-RMSD = 27.42&Aring;
+* 4G6M-Ab-Ag-surface cluster4_1 HADDOCKscore [a.u.] = -79.2 +/- 1.2 ligand-RMSD = 20.52&Aring;
+* 4G6M-Ab-Ag-surface cluster14_1 HADDOCKscore [a.u.] = -79.2 +/- 8.0 ligand-RMSD = 23.77&Aring;
+* 4G6M-Ab-Ag-surface cluster10_1 HADDOCKscore [a.u.] = -74.7 +/- 4.5 ligand-RMSD = 22.57&Aring;
+* 4G6M-Ab-Ag-surface cluster13_1 HADDOCKscore [a.u.] = -73.6 +/- 7.4 ligand-RMSD = 23.85&Aring;
+* 4G6M-Ab-Ag-surface cluster7_1 HADDOCKscore [a.u.] = -72.7 +/- 2.7 ligand-RMSD = 24.73&Aring;
+</pre>
+<br>
+</details>
+<hr>
  <details >
  <summary style="bold">
  <b><i>See the overlayed clusters for different scenarios:</i></b>
@@ -628,10 +659,7 @@ Since interacting residues were defined in both binding partners, the docking po
  </figure>
  </details>
  <br>
-
-
 <hr>
-
 ## Conclusion
 
 We have demonstrated the antibody-antigen docking guided with and without the knowledge about epitope. Always check and compare multiple clusters, don't blindly trust the cluster with the best HADDOCK score! This tutorial is a nice example that the more reliable information is used, the better the results of docking will be.
