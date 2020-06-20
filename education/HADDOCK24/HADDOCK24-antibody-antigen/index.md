@@ -633,6 +633,7 @@ Has the L-RMSD value decreased and the CAPRI quality improved? Are the passive r
 </a>
 
 Since interacting residues were defined in both binding partners, the docking positions these residues at the interface. fulfilling these restraints.
+
 Here you can see an overlay of model 1 of the best cluster (in our case cluster 4) with the crystal structure of the complex (4G6M-matched.pdb).
 
 <figure align="center">
