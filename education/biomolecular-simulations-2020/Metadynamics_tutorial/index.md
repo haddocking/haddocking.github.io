@@ -866,7 +866,7 @@ https://wenmr.science.uu.nl/haddock2.4/submit/1
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
 
 
-* **Step1:** Define a name for your docking run, e.g. *bemeta-ensemble* or *apoMD_ensemble*.
+* **Step1:** Define a name for your docking run, e.g. *metaMD-ensemble* or *apoMD_ensemble*.
 
 
 * **Step2:** Prepare the ensemble of 10 conformations that you will provide as starting structure for the protein.
@@ -1243,14 +1243,14 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 * apoMD-small cluster8_1  HADDOCKscore [a.u.] = -18.3 +/- 4.4 ligand-RMSD = 4.78&Aring;
 
 
-* metaMD-small cluster2_1 HADDOCKscore [a.u.] = -38.3 +/- 0.6 ligand-RMSD = 2.98&Aring;
-* metaMD-small cluster6_1 HADDOCKscore [a.u.] = -34.9 +/- 2.9 ligand-RMSD = 7.49&Aring;
+* metaMD-small cluster2_1  HADDOCKscore [a.u.] = -38.3 +/- 0.6 ligand-RMSD = 2.98&Aring;
+* metaMD-small cluster6_1  HADDOCKscore [a.u.] = -34.9 +/- 2.9 ligand-RMSD = 7.49&Aring;
 * metaMD-small cluster10_1 HADDOCKscore [a.u.] = -33.5 +/- 4.3 ligand-RMSD = 4.01&Aring;
-* metaMD-small cluster5_1 HADDOCKscore [a.u.] = -33.3 +/- 4.5 ligand-RMSD = 5.27&Aring;
-* metaMD-small cluster3_1 HADDOCKscore [a.u.] = -32.4 +/- 1.7 ligand-RMSD = 3.89&Aring;
-* metaMD-small cluster1_1 HADDOCKscore [a.u.] = -31.6 +/- 0.8 ligand-RMSD = 8.67&Aring;
-* metaMD-small cluster4_1 HADDOCKscore [a.u.] = -31.5 +/- 4.1 ligand-RMSD = 9.29&Aring;
-* metaMD-small cluster7_1 HADDOCKscore [a.u.] = -28.6 +/- 2.2 ligand-RMSD = 8.61&Aring;
+* metaMD-small cluster5_1  HADDOCKscore [a.u.] = -33.3 +/- 4.5 ligand-RMSD = 5.27&Aring;
+* metaMD-small cluster3_1  HADDOCKscore [a.u.] = -32.4 +/- 1.7 ligand-RMSD = 3.89&Aring;
+* metaMD-small cluster1_1  HADDOCKscore [a.u.] = -31.6 +/- 0.8 ligand-RMSD = 8.67&Aring;
+* metaMD-small cluster4_1  HADDOCKscore [a.u.] = -31.5 +/- 4.1 ligand-RMSD = 9.29&Aring;
+* metaMD-small cluster7_1  HADDOCKscore [a.u.] = -28.6 +/- 2.2 ligand-RMSD = 8.61&Aring;
 * metaMD-small cluster11_1 HADDOCKscore [a.u.] = -27.8 +/- 1.5 ligand-RMSD = 7.51&Aring;
 * metaMD-small cluster12_1 HADDOCKscore [a.u.] = -27.4 +/- 3.0 ligand-RMSD = 8.65&Aring;
 
@@ -1259,32 +1259,34 @@ Does the best cluster ranked by HADDOCK also correspond to the best (smallest) l
 </details>
 
 
+
 <details style="background-color:#DAE4E7">
 
 <summary>See solution for the full ensembles:
 </summary>
 <pre>
-* apoMD-small cluster1_1  HADDOCKscore [a.u.] = -38.4 +/- 0.5 ligand-RMSD = 5.59&Aring;
-* apoMD-small cluster2_1  HADDOCKscore [a.u.] = -35.7 +/- 1.8 ligand-RMSD = 9.45&Aring;
-* apoMD-small cluster4_1  HADDOCKscore [a.u.] = -32.5 +/- 0.9 ligand-RMSD = 9.04&Aring;
-* apoMD-small cluster3_1  HADDOCKscore [a.u.] = -32.1 +/- 2.0 ligand-RMSD = 7.88&Aring;
-* apoMD-small cluster5_1  HADDOCKscore [a.u.] = -31.1 +/- 1.9 ligand-RMSD = 5.57&Aring;
-* apoMD-small cluster7_1  HADDOCKscore [a.u.] = -25.5 +/- 2.1 ligand-RMSD = 6.48&Aring;
-* apoMD-small cluster6_1  HADDOCKscore [a.u.] = -24.5 +/- 4.0 ligand-RMSD = 3.69&Aring;
-* apoMD-small cluster9_1  HADDOCKscore [a.u.] = -22.9 +/- 5.0 ligand-RMSD = 5.04&Aring;
-* apoMD-small cluster8_1  HADDOCKscore [a.u.] = -18.3 +/- 4.4 ligand-RMSD = 4.78&Aring;
+* apoMD cluster1_1   HADDOCKscore [a.u.] = -41.9 +/- 1.6 ligand-RMSD = 5.37&Aring;
+* apoMD cluster3_1   HADDOCKscore [a.u.] = -40.6 +/- 0.5 ligand-RMSD = 5.71&Aring;
+* apoMD cluster6_1   HADDOCKscore [a.u.] = -37.5 +/- 0.7 ligand-RMSD = 7.19&Aring;
+* apoMD cluster4_1   HADDOCKscore [a.u.] = -36.6 +/- 2.4 ligand-RMSD = 8.12&Aring;
+* apoMD cluster9_1   HADDOCKscore [a.u.] = -36.1 +/- 4.3 ligand-RMSD = 8.97&Aring;
+* apoMD cluster2_1   HADDOCKscore [a.u.] = -35.4 +/- 0.8 ligand-RMSD = 8.41&Aring;
+* apoMD cluster10_1  HADDOCKscore [a.u.] = -35.3 +/- 2.1 ligand-RMSD = 3.47&Aring;
+* apoMD cluster5_1   HADDOCKscore [a.u.] = -34.3 +/- 1.3 ligand-RMSD = 8.58&Aring;
+* apoMD cluster8_1   HADDOCKscore [a.u.] = -33.5 +/- 1.6 ligand-RMSD = 7.65&Aring;
+* apoMD cluster11_1  HADDOCKscore [a.u.] = -33.5 +/- 1.5 ligand-RMSD = 5.14&Aring;
 
 
-* metaMD-small cluster2_1 HADDOCKscore [a.u.] = -38.3 +/- 0.6 ligand-RMSD = 2.98&Aring;
-* metaMD-small cluster6_1 HADDOCKscore [a.u.] = -34.9 +/- 2.9 ligand-RMSD = 7.49&Aring;
-* metaMD-small cluster10_1 HADDOCKscore [a.u.] = -33.5 +/- 4.3 ligand-RMSD = 4.01&Aring;
-* metaMD-small cluster5_1 HADDOCKscore [a.u.] = -33.3 +/- 4.5 ligand-RMSD = 5.27&Aring;
-* metaMD-small cluster3_1 HADDOCKscore [a.u.] = -32.4 +/- 1.7 ligand-RMSD = 3.89&Aring;
-* metaMD-small cluster1_1 HADDOCKscore [a.u.] = -31.6 +/- 0.8 ligand-RMSD = 8.67&Aring;
-* metaMD-small cluster4_1 HADDOCKscore [a.u.] = -31.5 +/- 4.1 ligand-RMSD = 9.29&Aring;
-* metaMD-small cluster7_1 HADDOCKscore [a.u.] = -28.6 +/- 2.2 ligand-RMSD = 8.61&Aring;
-* metaMD-small cluster11_1 HADDOCKscore [a.u.] = -27.8 +/- 1.5 ligand-RMSD = 7.51&Aring;
-* metaMD-small cluster12_1 HADDOCKscore [a.u.] = -27.4 +/- 3.0 ligand-RMSD = 8.65&Aring;
+* metaMD cluster3_1  HADDOCKscore [a.u.] = -47.9 +/- 0.9 ligand-RMSD = 5.02&Aring;
+* metaMD cluster2_1  HADDOCKscore [a.u.] = -43.4 +/- 3.2 ligand-RMSD = 2.65&Aring;
+* metaMD cluster1_1  HADDOCKscore [a.u.] = -42.0 +/- 2.5 ligand-RMSD = 4.14&Aring;
+* metaMD cluster13_1 HADDOCKscore [a.u.] = -40.1 +/- 2.8 ligand-RMSD = 4.43&Aring;
+* metaMD cluster8_1  HADDOCKscore [a.u.] = -39.6 +/- 5.3 ligand-RMSD = 3.87&Aring;
+* metaMD cluster4_1  HADDOCKscore [a.u.] = -39.1 +/- 1.7 ligand-RMSD = 2.70&Aring;
+* metaMD cluster6_1  HADDOCKscore [a.u.] = -38.8 +/- 2.4 ligand-RMSD = 5.17&Aring;
+* metaMD cluster7_1  HADDOCKscore [a.u.] = -38.5 +/- 1.7 ligand-RMSD = 8.22&Aring;
+* metaMD cluster10_1 HADDOCKscore [a.u.] = -38.4 +/- 2.6 ligand-RMSD = 4.49&Aring;
+* metaMD cluster11_1 HADDOCKscore [a.u.] = -38.3 +/- 6.4 ligand-RMSD = 4.81&Aring;
 
 </pre>
 <br>
