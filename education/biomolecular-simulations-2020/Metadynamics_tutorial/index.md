@@ -23,16 +23,16 @@ In this tutorial we will exploit enhanced sampling molecular dynamics, namely me
 * The ranking of all generated poses, according to a given _scoring function_ which should reproduce at best the free energy of binding of the complex. In some cases, however, scoring functions do not aim to estimate the free energy of binding but they are just used to sort the poses in a way to distinguish the most stable ones from unstable complex conformations.
 
 
-Docking is also the main computational method used in virtual screening (VS) campaigns aiming to the identification of putative drug candidates *in silico* [[3](#ref03),[4](#ref04),[5](#ref05)]. Clearly, a docking calculation should correctly rank native-like poses of virtually any compound as the top ones, thus assigning them the highest score (i.e. the lowest binding free energy). While the above tasks i) and ii) can be implemented in different ways, however, they are both subject to failures due to the intrinsic limitations of docking algorithms. Examples of these limitations include the lack of protein flexibility (unability to sample bound-like conformations of the binding site) and problems in correctly accounting for entropic and de-solvation contributions to the scoring functions [[3](#ref03),[4](#ref04),[6](#ref06)].
+Docking is also the main computational method used in virtual screening (VS) campaigns aiming to the identification of putative drug candidates *in silico* [[3](#ref03),[4](#ref04),[5](#ref05)]. Clearly, a docking calculation should correctly rank native-like poses of virtually any compound as the top ones, thus assigning them the highest score (i.e. the lowest binding free energy). While the above tasks i) and ii) can be implemented in different ways, they are both subject to failures due to the intrinsic limitations of docking algorithms. Examples of these limitations include the lack of protein flexibility (unability to sample bound-like conformations of the binding site) and problems in correctly accounting for entropic and de-solvation contributions to the scoring functions [[3](#ref03),[4](#ref04),[6](#ref06)].
 
 
-The sampling problem, which is the focus of the present tutorial, is a crucial issue in presence of significant structural changes of the protein receptor due to the interaction with ligands (a mechanism known as induced fit [[7](#ref07)]), which induces at least changes in the orientation of side chains and more generally in the shape of the binding site. This is particularly relevant in the search for new drug candidates, for which experimental information regarding their complexes with the target protein is not always available.
+The sampling problem, which is the focus of the present tutorial, is a crucial issue in presence of significant structural changes of the receptor due to the interaction with ligands (a mechanism known as induced fit [[7](#ref07)]), which induces at least changes in the orientation of side chains and more generally in the shape of the binding site. This is particularly relevant in the search for new drug candidates, for which experimental information regarding their complexes with the target protein is not always available.
 
 
 Several methods were developed in the past decades to deal with this issue, but a general and successful approach is still missing [[6](#ref06),[8](#ref08)]. Among the existing approaches, the ensemble-docking method was developed with the aim to account for the plasticity of the receptor by performing docking calculations on multiple conformations (of the receptor) obtained by experimental or computational means. The advantage of using multiple conformations is the increased probability to have in the pool of structures at least one featuring a bound-like conformation of the binding site, suitable to optimally dock the correct ligand(s). This approach was shown to improve the outcome of docking and VS calculations [[2](#ref02),[3](#ref03),[5](#ref05)].
 
 
-In this tutorial we will show you how to run a metadynamics simulation with the aim of enhancing the sampling of different conformations of a protein. Those conformations can then be used to further improve the predictive power of molecular docking in cases where even a long unbiased MD simulation is unable to generate bound-like conformations of the target under study. This is usually the case of proteins undergoing large-scale conformational changes, often involving transitions between states separed by high free energy (compared to thermal energy) barriers. The target protein we will focus on during the tutorial, the [T4 phage beta-glucosyltransferase](https://www.sciencedirect.com/science/article/abs/pii/S0022283601949058?via%3Dihub), belongs to this category, as shown by the large distortion at the binding site (BS) upon binding of its substrate uridine diposphate (RMSD<sub>BS</sub>  = 2.8 A between unbound and bound structures). In this tutorial, we will generate different conformations of the protein generated by enhanced-sampling MD simulations. 
+In this tutorial we will show you how to run a metadynamics simulation with the aim of enhancing the sampling of different conformations of a protein. Those conformations can then be used to further improve the predictive power of molecular docking in cases where even a long unbiased MD simulation is unable to generate bound-like conformations of the target under study. This is usually the case of proteins undergoing large-scale conformational changes, often involving transitions between states separed by high free energy barriers (compared to thermal energy). The target protein we will focus on during the tutorial, the [T4 phage beta-glucosyltransferase](https://www.sciencedirect.com/science/article/abs/pii/S0022283601949058?via%3Dihub), belongs to this category, as shown by the large distortion at the binding site (BS) upon binding of its substrate uridine diposphate (RMSD<sub>BS</sub>  = 2.8 A between unbound and bound structures). In  
 
 
 The content of this tutorial follows the workflow presented [in our recently published work](https://pubs.acs.org/doi/10.1021/acs.jcim.8b00730):
@@ -59,7 +59,7 @@ The following software packages will be used during the tutorial:
 * [R](https://www.r-project.org/about.html): a data analysis software, used here to perform the cluster analysis on the MD trajectory;
 
 
-In order to run the tutorial during the BioExcel Summer School 2020 you already have all the materials and scripts you need in the machine you are using. If you wish to re-do the tutorial in future you can download from [here](https://www.dropbox.com/s/bid6a2euhhn54nm/EDES2020_tutorial.tar.gz?dl=0) an archive containing the `tutorial_files` directory used here.
+In order to run the tutorial during the BioExcel Summer School 2020 you already have all the materials and scripts you need in the machine you are using. If you wish to re-do the tutorial in future you can download from [here](https://www.dropbox.com/s/woovhdma90cmzyc/EDES2020_tutorial_files.tar.gz?dl=0) an archive containing the `tutorial_files` directory used here.
 
 
 
@@ -151,9 +151,9 @@ Select option **3**, as in our case we previously removed all crystallographic w
 </a>
 
 So, in case you got the error, run again the previous command after the pdb file has been fixed.
-However, also a WARNING message might pop you, warning you that "HISE" has been used as atom type for certain residues (such as resid 148, 168, etc.). This means that GROMACS has automatically chosen a specific protonation state for that residue. Although it doesn't make a difference for this tutorial, for real applications remember to choose carefully the protonation state of residues, as it might have an impact in docking calculations, in particular if those residues located in proximity oft the binding region.
+However, also a WARNING message might pop you, warning you that "HISE" has been used as atom type for certain residues (such as resid 148, 168, etc.). This means that GROMACS has automatically chosen a specific protonation state for that residue. Although it doesn't make a difference for this tutorial, for real applications remember to choose carefully the protonation state of residues, as it might have an impact in docking calculations, in particular if those residues located in proximity of the binding region.
 
- If you didn't get any error message, you can just look at the output, where you will see a lot of information and warnings. Please note, in particular, that the total charge, amounting to 6e:
+ If you didn't get any error message, you can just look at the output, where you will see a lot of information and warnings. Please note, in particular, that the total charge, amounting to +6e:
 
 <a class="prompt prompt-info">...<br>
 There are 2656 dihedrals, 1883 impropers, 5543 angles <br>
@@ -187,7 +187,7 @@ You can now check the topology file with your preferred text editor (e.g. `vim a
 <a class="prompt prompt-info">; Include water topology<br />
 \#include &#34;gromos54a7.ff/spc.itp&#34;<br /></a>
 
-We are now ready to generate the GROMACS input file (tpr extension), a binary file containing all the information needed to perform the requested calculations on the system of interest. This is done with the `grompp` command, which needs both the structure and the topology files and also an input file (mdp extension) containing the instructions to run the simulation (such as simulation type, pressure and temperature control flags, treatment of long-range interaction flags, flags related to the information to be printed and so on). The file em-pbc.mdp (available in the folder `tutorial_files/apoMD`) sets the typical parameters needed to run a structural relaxation of the system, which allows to (partially) remove the steric hindrance due to clashing contacts between atoms of the protein and/or solvent.
+We are now ready to generate the GROMACS input file (tpr extension), a binary file containing all the information needed to perform the calculations on the system of interest. This is done with the `grompp` command, which needs both the structure and the topology files and also an input file (mdp extension) containing the instructions to run the simulation (such as simulation type, pressure and temperature control flags, treatment of long-range interaction flags, flags related to the information to be printed and so on). The file em-pbc.mdp (available in the folder `tutorial_files/apoMD`) sets the typical parameters needed to run a structural relaxation of the system, which allows to (partially) remove the steric hindrance due to clashing contacts between atoms of the protein and/or solvent.
 
 Copy the mdp file:
 
@@ -242,7 +242,7 @@ Run again the grompp command to generate the tpr file including ions:
 
 As already pointed out, remember you might need to use the '-maxwarn' flag.
 
-We can now generate the ndx file, an index file containing groups of molecules and which can be customized according to the user needs. In the following we will only generate the file without changing anything with respect to the default settings. We will use it when performing the cluster analysis with GROMOS.
+We can now generate the ndx file, an index file containing groups of molecules and which can be customized according to the user needs. In the following we will only generate the file without changing anything with respect to the default settings.
 
 From your current directory, type:
 
@@ -252,7 +252,7 @@ You could have a look to this file with your preferred text editor. It consists 
 
 <a class="prompt prompt-cmd">nohup gmx mdrun -v -deffnm em-pbc &</a>
 
-This run will run for about one minute. Let it finish and check the output file em-pbc.log to understand if your run was successful.
+Let the run finish (about one minute) and check the output file em-pbc.log to understand if your run was successful.
 
 The next step after structural relaxation is to perform a MD simulation slowly heating the system up to the desired temperature. To save time here we will set the temperature to 300 K quite abruptly. The file equil-pbc.mdp (available in the folder `tutorial_files/apoMD`) contains the directives on how to heat up the system and perform the MD simulation with explicit water and under periodic boundary conditions.
 
@@ -261,11 +261,7 @@ Generate now the input file (tpr extension) needed to run the actual simulation:
 <a class="prompt prompt-cmd">cp ../../tutorial_files/apoMD/equil-pbc.mdp .<br>
 gmx grompp -f equil-pbc.mdp -c em-pbc.gro -p apo-solv.top -n apo-solv.ndx -o equil-pbc.tpr</a>
 
-As you see, in order to generate the tpr file for the actual MD simulation, you will need the energy minimized structure coming from the previous step. If you were not successful in running it, you can copy the "em-pbc.gro" by typing:
-
-<a class="prompt prompt-cmd">cp ../../tutorial_files/apoMD/em-pbc.gro .<br /></a>
-
-And then use again the previous command to generate the tpr file.
+As you see, in order to generate the tpr file for the actual MD simulation, you will need the energy minimized structure coming from the previous step. 
 Remember that while using the previous commands, you might need again to use the "-maxwarn" flag.
 
 After you generated the 'equil-pbc.tpr' file you can start the simulation by typing the following command:
@@ -311,7 +307,7 @@ so-called "Well Tempered Metadynamics" [[16](#ref16)], that represents an improv
 over the original algorithm thanks to the possibility of controlling the
 regions of the free energy surface that are physically meaningful to explore.
 
-Often a single CV is not sufficient to catch the relevant slow modes
+Often a single CV is not sufficient to catch the relevant slow motions
 involved in the structural transition of interest. Indeed, all the CV-based
 methods often exploit the use of multiple variables, which ideally should be
 orthogonal to each other so as to enhance the sampling along independent directions
@@ -353,7 +349,7 @@ As for the apo structure, if copying and pasting the previous commands in the te
 
 <a class="prompt prompt-cmd">cat /home/training/Tutorials/EDES/tutorial_files/apoMD/vmd_commands_holo<a/>
 
-In this case we are going to define our binding site on the hydrogenated holo structure (which you can obtain with software such as [OpenBabel](https://openbabel.org/docs/dev/index.html)). Using the hydrogenated structure is not compulsory, and according to the specific problem you are addressing, different choices can be made.
+In this case we are going to define our binding site on the hydrogenated holo structure (which you can obtain with specific software such as [OpenBabel](https://openbabel.org/docs/dev/index.html)). Using the hydrogenated structure it is not compulsory, and according to the specific problem you are addressing, different choices can be made.
 Copy the hydrogenated holo from the `tutorial_files` folder:
 
 <a class="prompt prompt-cmd">
@@ -426,7 +422,7 @@ You will get the value (in &Aring;) corresponding to the RoG of the BP. You shou
  Now you can close VMD.
 
 As you will see below, PLUMED [[18](#ref18)] needs atomic serial numbers as input (and not residue IDs) to define the collective variables. Thus, to perform the simulation, we should get the list of serial numbers defining the BP. We thus load the apo protein ready to be simulated into VMD and use the residue list obtained previously to print the list of serials defining
-the BS. We already extracted the serials of BS' residues from the holo structure. However, remember that to run a metadynamics the serials you will use to define the collective variables need to refer to the system you are simulating (so the apo structure already solvated, etc.). To extract the serial numbers you can use for example a gro file or a pdb file, as long as the topology matches the one of the system you are going to simulate! Go to the `../MD/plain` directory and copy there the `apo_GLUCO_Hs.pdb` file from the `tutorial_files` folder. Now open it on VMD.
+the BS. We already extracted the serials of BS' residues from the holo structure. However, remember that to run a metadynamics, the serials you will use to define the collective variables need to refer to the system you are simulating (so the apo structure already solvated, etc.). To extract the serial numbers you can use for example a gro file or a pdb file, as long as the topology matches the one of the system you are going to simulate! Go to the `../MD/plain` directory and copy there the `apo_GLUCO_Hs.pdb` file from the `tutorial_files` folder. Now open it on VMD.
 
 <a class="prompt prompt-cmd">cd ../MD/plain<br>
 cp ../../tutorial_files/apoMD/apo_GLUCO_Hs.pdb .<br>
@@ -477,6 +473,22 @@ From VMD open the Tk console and run the script by typing:
 
 <a class="prompt prompt-cmd">source ~/Tutorials/EDES/tutorial_files/scripts/divide_into_lists.tcl</a>
 
+If typing the previous command tells you that the package "Orient" can't be found, you need to change the path inside the tcl script.
+Open a new terminal or pause VMD, then open the "divide_into_lists.tcl" with your favourite text editor, e.g:
+
+<a class="prompt prompt-cmd">emacs -nw ~/Tutorials/EDES/tutorial_files/scripts/divide_into_lists.tcl</a>
+
+and make sure that the first two lines definining the path to the "Orient" and "la1.0" packages looks like the following one:
+
+<pre style="background-color:#DAE4E7">
+lappend auto_path ~/Tutorials/EDES/tutorial_files/scripts/orient
+lappend auto_path ~/Tutorials/EDES/tutorial_files/scripts/la1.0
+</pre>
+
+You might need to change "EDES-HADDOCK" to "EDES" in the path.
+
+Then save the modified file and re-run the previous command (source ~/Tutorials/EDES/tutorial_files/scripts/divide_into_lists.tcl) from VMD Tk console.
+
 The output, which you can see from the Tk console window, should be:
 
 <pre style="background-color:#DAE4E7">
@@ -506,7 +518,7 @@ In practical applications, please remember to:
 
 1. Cross-check that the topology file used to extract the serial number is identical to the one of the protein to be simulated. This is to avoid mismatching between the serial numbering that can very well happen between, for example, an hydrogenated structure and a not-hydrogenated one;
 
-2. Visually inspect (for example with VMD or Pymol) how the residues are distributed within the BS to eventually optimize by hand the definition of the CIPs. For example, it is a good idea to avoid that residues belonging to the same secondary-structure element and are very close in space are associated to different lists.
+2. Visually inspect (for example with VMD or Pymol) how the residues are distributed within the BS to possibly optimize by hand the definition of the CIPs. For example, it is a good idea to avoid that residues belonging to the same secondary-structure element and are very close in space are associated to different lists.
 
 In this example the topology file used and the definition of the different lists have been already checked and no further inspection is necessary. You can now close VMD.
 
@@ -517,20 +529,19 @@ cd analysis</a>
 
 Open the file with your favorite text editor to see how the CVs are defined. For further information on how to define the CVs the interested reader can refer to the [PLUMED manual](https://www.plumed.org/doc-v2.5/user-doc/html/_colvar.html). Now run the calculation with driver:
 
-<a class="prompt prompt-cmd">/usr/local/plumed-2.3.5/bin/plumed driver \-–mf_dcd ../../../tutorial_files/apoMD/apo_trajectory_500frames.dcd \--plumed plumed_driver.dat</a>
+<a class="prompt prompt-cmd">plumed driver \-–mf_dcd ../../../tutorial_files/apoMD/apo_trajectory_500frames.dcd \--plumed plumed_driver.dat</a>
 
-Note: if you copied the previous command and it doesn't work, a possible solution is that you have to delete and write again (and not copy) the two minus signs before the "mf_dcd" and "plumed"; flags.
+Note: if you copied the previous command and it doesn't work, a possible solution is that you have to delete and write again (and not copy) the two minus signs before the "mf_dcd" and "plumed" flags.
 
 The output file COLVAR_apoMD contains the values of the CVs sampled along the unbiased trajectory (you can find a pre-calculated file in the `tutorial_files/Driver` folder). In this case the trajectory containts only 500 frames, as it serves as example for this tutorial. However remember that to assess how much the CVs changed during the unbiased MD simulation in order to define the sigma (width of the Gaussian hills) values for a metadynamics run, the calculation should be performed on a time-scale of the order of a few hundreds of ps at most.
 
 Now you can plot the CV values sampled during the unbiased run with your preferred graph viewer. Here we will use [xmgrace](http://plasma-gate.weizmann.ac.il/Grace).
 For the sake of keeping things simple, here we will do the work only for 2 of the 4 CVs selected:
 
-<a class="prompt prompt-cmd"> grep -v "#" COLVAR_apoMD | awk '{print $2}' > RoG.dat
- grep -v "#" COLVAR_apoMD | awk '{print $3}' > CIP1.dat </a>
+<a class="prompt prompt-cmd"> grep -v \"#\" COLVAR_apoMD | awk \'{print $2}\' > RoG.dat | grep -v \"#\" COLVAR_apoMD | awk \'{print $3}\' > CIP1.dat </a>
 
 These commands print the columns corresponding to the RoG and to the CIP1
-into two separate files and get rid of the first line which is not correctly interpreted by xmgrace. For the sake of the comparison with the experimental RoG values for the apo and holo X-ray structures let's create a simple text file containing these values. Open `ref.dat` in your current folder with your preferred
+into two separate files and get rid of the first line which is not correctly interpreted by xmgrace. Before going on, make sure the first line in the RoG.dat and CIP1.dat files are actuallynumbers and not other characters (such as the word "FIELD"). You can check simply opening those files with your favourite text editor. If you see the first lines of those files being not numbers, you can safely remove them and save the edited files. Now, for the sake of the comparison with the experimental RoG values for the apo and holo X-ray structures let's create a simple text file containing these values. Open `ref.dat` in your current folder with your preferred
 editor and type (the brackets < , > should not be included!)
 
 <a class="prompt prompt-info"> 0 &lt;insert the RoG value for the apo structure&gt; <br>
@@ -572,7 +583,7 @@ our CVs. The script takes as input the name of the file containing the
 values of the CVs, the column corresponding to the CV, the first and last
 rows delimiting the size of the data, and the stride parameter to consider
 one row every stride. As output, you will see on the terminal the average
-and standard deviation of the CV corresponding to the column you chose. To perform the analysis described above, type:
+and standard deviation of the CV corresponding to the column you chose. To perform the analysis described above, type the following commands (one at the time):
 
 <a class="prompt prompt-cmd">
 chmod +x ~/Tutorials/EDES/tutorial_files/scripts/av_std-sel-region-column.sh
@@ -614,13 +625,11 @@ To run a multi-replica simulation, GROMACS2019 requires creating a folder for ea
 
 Go into the `meta` folder: you will see 4 sub-folders (`rep0`, `rep1`, `rep2`, `rep3`), one for each of the 4 replicas, containing the plumed and tpr files for each run. Go into the `rep0` sub-folder, and read the `plumed-common.dat` and `plumed.0.dat` files to understand the instructions contained.
 
-You can see the list of the atom serial numbers in the `plumed-common.dat`. Open the file `plumed.0.dat` and insert the appropriate value of the sigma parameter where needed. You should have calculated the w parameter (sigma) values in the previous section of this
-
-tutorial using the av_std-sel-region-column.sh script. The file already contains a value for sigma, but you can change it according to previous prescription and change it if you wish to. Also keep in mind that smaller values of the sigma parameters are associated to a finer and safer sampling, but also to a longer simulation time to fill up free energy minima and allow the system to efficiently explore the conformational space. Repeat the above steps for the remaining 3 plumed files (`plumed.1.dat`, `plumed.2.dat`, `plumed.3.dat`) within the sub-directories `meta/rep1`, `meta/rep2`, `meta/rep3`.
+You can see the list of the atom serial numbers in the `plumed-common.dat`. Open the file `plumed.0.dat` and insert the appropriate value of the sigma parameter where needed. You should have calculated the w parameter (sigma) values in the previous section of this tutorial using the av_std-sel-region-column.sh script. The file already contains a value for sigma, but you can change it according to previous prescription and change it if you wish to. Also keep in mind that smaller values of the sigma parameters are associated to a finer and safer sampling, but also to a longer simulation time to fill up free energy minima and allow the system to efficiently explore the conformational space. Repeat the above steps for the remaining 3 plumed files (`plumed.1.dat`, `plumed.2.dat`, `plumed.3.dat`) within the sub-directories `meta/rep1`, `meta/rep2`, `meta/rep3`.
 
 You are now ready to run the simulation:
 
-<a class="prompt prompt-cmd">nohup mpirun -np 4 gmx mdrun -multidir rep0 rep1 rep2 rep3 -s topol -deffnm BE_GLUCO -append -cpi BE_GLUCO.cpt -plumed plumed.dat -dlb yes  -replex 10000 -nsteps 500000000 &</a>
+<a class="prompt prompt-cmd">nohup mpirun -np 4 gmx_mpi mdrun -multidir rep0 rep1 rep2 rep3 -s topol -deffnm BE_GLUCO -append -cpi BE_GLUCO.cpt -plumed plumed.dat -dlb yes  -replex 10000 -nsteps 500000000 &</a>
 
 Where the flag "-replex" is used to specify the frequency of attempts to exchange the bias
 between two replicas.
@@ -628,6 +637,7 @@ between two replicas.
 Since it could take up to 10 minutes before the files (`COLVAR.X` and `HILLS.X` within the `meta/repX` folder) are written, in the following you can use pre-generated files to analyze the trajectory. Among them, the
 most important ones are the files `COLVAR.X`, reporting the
 values of the CVs sampled by the system during the simulation. Thus, this file allows to assess to what extent the sampling was enhanced within the CVs space.
+Also in case you are unable to start the run don't worry. It might depend on the specific setup of your machine. From now on you will however use pre-calculated data.
 
 In this section, we will analyze
 the MD trajectories mainly in terms of structural variation of the BS compared to the
@@ -638,12 +648,10 @@ Again, there is no time to wait for completion of the run, so copy the `COLVAR_B
 folder `tutorial_files/plumed` (each corresponding to 500 saved values) to your working folder:
 
 <a class="prompt prompt-cmd">cp ../../tutorial_files/plumed/COLVAR_BEMETA_rep* ../../tutorial_files/apoMD/ref.dat .<br>
-
-
-grep -v "#" COLVAR_BEMETA_rep0 | awk '{print $2}' > RoG0.dat<br>
-grep -v "#" COLVAR_BEMETA_rep1 | awk '{print $2}' > RoG1.dat<br>
-grep -v "#" COLVAR_BEMETA_rep2 | awk '{print $2}' > RoG2.dat<br>
-grep -v "#" COLVAR_BEMETA_rep3 | awk '{print $2}' > RoG3.dat<br>
+grep -v \"#\" COLVAR_BEMETA_rep0 | awk \'{print $2}\' > RoG0.dat<br>
+grep -v \"#\" COLVAR_BEMETA_rep1 | awk \'{print $2}\' > RoG1.dat<br>
+grep -v \"#\" COLVAR_BEMETA_rep2 | awk \'{print $2}\' > RoG2.dat<br>
+grep -v \"#\" COLVAR_BEMETA_rep3 | awk \'{print $2}\' > RoG3.dat<br>
 </a>
 
 To plot the profiles of the RoG across the 4 replicas, we use xmgrace:
