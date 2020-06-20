@@ -34,7 +34,7 @@ In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I
 
 <hr>
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
 
 A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"} can be found in the following publications:
 
@@ -69,7 +69,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 
 <hr>
@@ -299,7 +299,7 @@ Save *output_1.pdb* as 4G6K_fv.pdb . If you wish to save the pipeline after this
 ### Registration / Login
 
 
-If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
+If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://bianca.science.uu.nl/haddock2.4/](https://bianca.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
 
 
 To start the submission process, you are prompted for our login credentials. After successful validation of the credentials you can proceed to the structure upload under **Submit a new job**.
@@ -314,7 +314,7 @@ In previous steps we have identified the paratope residues of the antibody. Thos
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+For this we will make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the antibody structure we previously prepared with PDB-tools and the IL-1β structure.
 
@@ -359,10 +359,13 @@ If everything went well, the interface window should have updated itself and it 
 Here fill in the residues of CDR loops that we extracted beforehand for you follwogin the local version of the protocol. Note that the numbers are similar (not identical) to the results of ProABC-2.  
 
 <a class="prompt prompt-info">
-Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,33,34,55,56,57,101,102,103,104,105,106,107,108,146,147,148,149,150,151,152,170,171,172,211,212,213,214,215,216
+Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
 </a>
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)
 </a>
+
+**Note** that in this list of active residues from the HV loops we have filtered out the residues that are not or poorly solvent accessible. We used for this the relative solvent accessibility as calculated by [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. 
+
 
 * **Step 7:** Specify the active residues for the second molecule. For this unfold the "Molecule 2 - parameters" if it isn't already unfolded.
 
@@ -387,12 +390,18 @@ Number of structures for semi-flexible refinement -> 400
 Number of structures for the explicit solvent refinement -> 400
 </a>
 
+ * **Step 10:** Increase the number of models to analyse to 400. For this open the **Analysis parameter menu**:
+
+<a class="prompt prompt-info">
+Number of structures to analyze -> 400
+</a>
+
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 
-* **Step 10:** Click on the **Submit** button at the bottom left of the interface.
+* **Step 11:** Click on the **Submit** button at the bottom left of the interface.
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
@@ -400,12 +409,12 @@ Upon submission you will be presented with a web page which also contains a link
 <hr>
 ### Scenario 2: A loose definition of the epitope is known
 
-In this scenario, additionally to the CDR residues of the antibody, a loose definiton of the epitope residues of the antigen will be used to guide the docking. Here, we define the epitope on the antigen as all residues within 9Å from the antibody in the complex reference structure (pdb code [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}), filtered by their relative solvent accessibility (≥0.40) upon the removal of the antibody. This is of course an artificial scenario. In a real case the epitope might have been identified for example from NMR titration experiments, H/D exchange experiments, ...
+In this scenario, additionally to the CDR residues of the antibody, a loose definiton of the epitope residues of the antigen will be used to guide the docking. Here, we define the epitope on the antigen as all residues within 9Å from the antibody in the complex reference structure (pdb code [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}), filtered by their relative solvent accessibility (≥0.40) upon the removal of the antibody. This is of course an artificial scenario. In a real case the epitope might have been identified for example from NMR titration experiments (see Bonus below), H/D exchange experiments, ...
 
 
 #### Submission and validation of structures
 
-We again make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+We again make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the structures we previously prepared with PyMOL.
 
@@ -449,21 +458,28 @@ If everything went well, the interface window should have updated itself and it 
 * **Step 6:** Specify the active residues for the first molecule. For this unfold the "Molecule 1 - parameters" if it isn't already unfolded.
 
 <a class="prompt prompt-info">
-Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,33,34,55,56,57,101,102,103,104,105,106,107,108,146,147,148,149,150,151,152,170,171,172,211,212,213,214,215,216
+Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
 </a>
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)
 </a>
 
-* **Step 7:** Specify the active residues for the second molecule. For this unfold the "Molecule 2 - parameters" if it isn't already unfolded.
+**Note** that in this list of active residues from the HV loops we have filtered out the residues that are not or poorly solvent accessible. We used for this the relative solvent accessibility as calculated by [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. 
+
+**Note:** The web interface allows you to visualize the selected active residues.
+
+
+* **Step 7:** Specify the residues for the second molecule. For this unfold the "Molecule 2 - parameters" if it isn't already unfolded.
+
+Since we have a rather loose definition of the interface, we will input the corresponding residues in this case as passive, which means they will not be penalized if not making contacts.
 
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)</a>
 <a class="prompt prompt-info">Passive residues (surrounding surface residues) -> 22,46,47,48,64,71,72,73,74,75,82,84,85,86,87,91,92,95,114,116,117</a>
 
-* **Step 8:** Click on the **Next** button on the bottom of the page. Since we have defined interface on both interaction partners, we can keep the default smapling parameters.
+* **Step 8:** Click on the **Next** button on the bottom of the page. Since we have defined interface on both interaction partners, we can keep the default sampling parameters.
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 
 * **Step 9:** Click on the **Submit** button at the bottom left of the interface.
@@ -481,8 +497,8 @@ reasonable amount of time.
 
 In case you don't want to wait for your runs to be finished, precalculated runs can be found here: 
 
-* **Scenario 1:** [4G6M-Ab-Ag-surface](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface){:target="_blank"}  
-* **Scenario 2:** [4G6M-Ab-Ag](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag){:target="_blank"}
+* **Scenario 1:** [4G6M-Ab-Ag-surface](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface-sas-filtered){:target="_blank"}
+* **Scenario 2:** [4G6M-Ab-Ag](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-sas-filtered){:target="_blank"}
 
 
 
@@ -533,7 +549,7 @@ For the sake of convenience we provide you with a renumbered reference structure
 
 ### Scenario 1: No information about the epitope is available 
 
-In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface){:target="_blank"}.
+In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-surface-sas-filtered){:target="_blank"}.
 
 <a class="prompt prompt-info">Download and save to disk the first model of each cluster (use the PDB format)</a>
 
@@ -556,7 +572,7 @@ Let's then superimpose all models on chain A (receptor) of the first reference s
 
 
 <a class="prompt prompt-pymol">
-alter all, segi = ' ' <br>
+alter all, segi = \' \' <br>
 align cluster4_1 and chain A, 4G6M-matched and chain A, cycles=0 <br>
 rms_cur cluster4_1 and chain B, 4G6M-matched <br>
 </a>
@@ -586,7 +602,7 @@ What is the quality of these models? Did any model pass the acceptable threshold
 Let’s now check if the active and passive residues which we defined are actually part of the interface. In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-select Ab_active, (resi 26,27,28,29,30,31,32,33,34,55,56,57,101,102,103,104,105,106,107,108,146,147,148,149,150,151,152,170,171,172,211,212,213,214,215,216) and chain A<br>
+select Ab_active, (resi 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215) and chain A<br>
 select Ag_passive, (resi 22,46,47,48,64,71,72,73,74,75,82,84,85,86,87,91,92,95,114,116,117) and chain B<br>
 color red, Ab_active,<br>
 color orange, Ag_passive<br>
@@ -603,7 +619,7 @@ Are the passive residues at the interface in different clusters? How is it shown
 
 ### Scenario 2: A loose definition of the epitope is known 
 
-In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag){:target="_blank"}.
+In case you do not want to wait for the run to be finished, you can have a look at the completed run [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-sas-filtered){:target="_blank"}.
 
 
 Now we can compare our docking without any information about the epitope with a run where the epitope was defined. 
@@ -625,30 +641,31 @@ Here you can see an overlay of model 1 of the best cluster (in our case cluster 
 
 
 <hr>
- <details >
- <summary style="bold">
- <b><i>See the L-RMSDs for clusters in both scenarios:</i></b>
- </summary>
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<b><i>See the L-RMSDs for clusters in both scenarios:</i></b>
+</summary>
 <pre>
-* 4G6M-Ab-Ag cluster2_1  HADDOCKscore [a.u.] = -110.9 +/- 11.4 ligand-RMSD = 24.77&Aring;
-* 4G6M-Ab-Ag cluster4_1  HADDOCKscore [a.u.] = -103.9 +/- 9.2 ligand-RMSD = 2.97&Aring;
-* 4G6M-Ab-Ag cluster5_1  HADDOCKscore [a.u.] = -94.9 +/- 17.7 ligand-RMSD = 6.65&Aring;
-* 4G6M-Ab-Ag cluster3_1  HADDOCKscore [a.u.] = -91.9 +/- 2.3 ligand-RMSD = 11.85&Aring;
-* 4G6M-Ab-Ag cluster1_1  HADDOCKscore [a.u.] = -74.5 +/- 0.3 ligand-RMSD = 16.99&Aring;
+* 4G6M-Ab-Ag cluster4_1  HADDOCKscore [a.u.] = -112.8 +/- 4.5 ligand-RMSD =  1.86&Aring;
+* 4G6M-Ab-Ag cluster5_1  HADDOCKscore [a.u.] = -105.0 +/- 3.8 ligand-RMSD =  9.23&Aring;
+* 4G6M-Ab-Ag cluster3_1  HADDOCKscore [a.u.] = -101.0 +/- 2.8 ligand-RMSD = 24.23&Aring;
+* 4G6M-Ab-Ag cluster1_1  HADDOCKscore [a.u.] =  -85.9 +/- 2.0 ligand-RMSD = 12.15&Aring;
+* 4G6M-Ab-Ag cluster2_1  HADDOCKscore [a.u.] =  -73.4 +/- 1.5 ligand-RMSD = 17.01&Aring;
 
-* 4G6M-Ab-Ag-surface cluster3_1 HADDOCKscore [a.u.] = -107.0 +/- 3.7 ligand-RMSD = 18.71&Aring;
-* 4G6M-Ab-Ag-surface cluster6_1 HADDOCKscore [a.u.] = -103.5 +/- 13.1 ligand-RMSD = 23.43&Aring;
-* 4G6M-Ab-Ag-surface cluster2_1 HADDOCKscore [a.u.] = -91.4 +/- 5.7 ligand-RMSD = 24.69&Aring;
-* 4G6M-Ab-Ag-surface cluster1_1 HADDOCKscore [a.u.] = -86.2 +/- 2.0 ligand-RMSD = 20.79&Aring;
-* 4G6M-Ab-Ag-surface cluster9_1 HADDOCKscore [a.u.] = -83.3 +/- 7.8 ligand-RMSD = 27.42&Aring;
-* 4G6M-Ab-Ag-surface cluster4_1 HADDOCKscore [a.u.] = -79.2 +/- 1.2 ligand-RMSD = 20.52&Aring;
-* 4G6M-Ab-Ag-surface cluster14_1 HADDOCKscore [a.u.] = -79.2 +/- 8.0 ligand-RMSD = 23.77&Aring;
-* 4G6M-Ab-Ag-surface cluster10_1 HADDOCKscore [a.u.] = -74.7 +/- 4.5 ligand-RMSD = 22.57&Aring;
-* 4G6M-Ab-Ag-surface cluster13_1 HADDOCKscore [a.u.] = -73.6 +/- 7.4 ligand-RMSD = 23.85&Aring;
-* 4G6M-Ab-Ag-surface cluster7_1 HADDOCKscore [a.u.] = -72.7 +/- 2.7 ligand-RMSD = 24.73&Aring;
+* 4G6M-Ab-Ag-surface cluster3_1  HADDOCKscore [a.u.] = -107.0 +/-  3.7 ligand-RMSD = 18.71&Aring;
+* 4G6M-Ab-Ag-surface cluster6_1  HADDOCKscore [a.u.] = -103.5 +/- 13.1 ligand-RMSD = 23.43&Aring;
+* 4G6M-Ab-Ag-surface cluster2_1  HADDOCKscore [a.u.] =  -91.4 +/-  5.7 ligand-RMSD = 24.69&Aring;
+* 4G6M-Ab-Ag-surface cluster1_1  HADDOCKscore [a.u.] =  -86.2 +/-  2.0 ligand-RMSD = 20.79&Aring;
+* 4G6M-Ab-Ag-surface cluster9_1  HADDOCKscore [a.u.] =  -83.3 +/-  7.8 ligand-RMSD = 27.42&Aring;
+* 4G6M-Ab-Ag-surface cluster4_1  HADDOCKscore [a.u.] =  -79.2 +/-  1.2 ligand-RMSD = 20.52&Aring;
+* 4G6M-Ab-Ag-surface cluster14_1 HADDOCKscore [a.u.] =  -79.2 +/-  8.0 ligand-RMSD = 23.77&Aring;
+* 4G6M-Ab-Ag-surface cluster10_1 HADDOCKscore [a.u.] =  -74.7 +/-  4.5 ligand-RMSD = 22.57&Aring;
+* 4G6M-Ab-Ag-surface cluster13_1 HADDOCKscore [a.u.] =  -73.6 +/-  7.4 ligand-RMSD = 23.85&Aring;
+* 4G6M-Ab-Ag-surface cluster7_1  HADDOCKscore [a.u.] =  -72.7 +/-  2.7 ligand-RMSD = 24.73&Aring;
 </pre>
-<br>
 </details>
+
+
 <hr>
  <details >
  <summary style="bold">
@@ -659,13 +676,66 @@ Here you can see an overlay of model 1 of the best cluster (in our case cluster 
  </figure>
  </details>
  <br>
+
+
 <hr>
-## Conclusion
+<hr>
+## Bonus - using NMR titration data to guide the docking
+
+The article describing the crystal structure of the antibody-antigen complex we modelled also reports on experimental NMR chemical shift titration experiments to map the binding site of the antibody on Interleukin-1β. The residues affected by binding are listed in Table 5 of [Blech et al. JMB 2013](https://dx.doi.org/10.1016/j.jmb.2012.09.021){:target="_blank"}:
+
+ <figure align="center">
+   <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/Table5-Blech.png">
+ </figure>
+ 
+These residues could be used as active residues for Interleukin-1β, leaving HADDOCK define automatically the passive residues around them. Note that the structure we are using for the docking has a numbering shifted by -2. The list of active residues to give to HADDOCK would thus become:
+
+<pre style="background-color:#DAE4E7">
+     70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115
+</pre>
+
+The results of such a docking run can be found [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-NMR-sas-filtered){:target="_blank"}.
+
+<a class="prompt prompt-info">
+Inspect the results.
+</a>
+
+<a class="prompt prompt-question">
+How do the scores compare with those of scenario 2 above? 
+</a>
+
+<a class="prompt prompt-question">
+Does the top cluster have a score significantly lower than the second best? 
+</a>
+
+<a class="prompt prompt-question">
+Does it contain near native models (l-RMSD <10Å)? (Use PyMol for this analysis) 
+</a>
+
+<hr>
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<b><i>See the L-RMSDs for the NMR-based clusters:</i></b>
+</summary>
+<pre>
+* 4G6M-Ab-Ag-NMR cluster3_1  HADDOCKscore [a.u.] = -130.2 +/-  3.6 ligand-RMSD =  2.73&Aring;
+* 4G6M-Ab-Ag-NMR cluster5_1  HADDOCKscore [a.u.] = -119.8 +/- 14.7 ligand-RMSD =  7.61&Aring;
+* 4G6M-Ab-Ag-NMR cluster2_1  HADDOCKscore [a.u.] = -109.4 +/-  2.5 ligand-RMSD = 24.26&Aring;
+* 4G6M-Ab-Ag-NMR cluster1_1  HADDOCKscore [a.u.] =  -90.8 +/-  1.4 ligand-RMSD = 11.71&Aring;
+* 4G6M-Ab-Ag-NMR cluster4_1  HADDOCKscore [a.u.] =  -75.5 +/-  4.4 ligand-RMSD = 17.70&Aring;
+* 4G6M-Ab-Ag-NMR cluster6_1  HADDOCKscore [a.u.] =  -73.4 +/-  7.1 ligand-RMSD = 22.74&Aring;
+</pre>
+</details>
+
+
+<hr>
+<hr>
+## Conclusions
 
 We have demonstrated the antibody-antigen docking guided with and without the knowledge about epitope. Always check and compare multiple clusters, don't blindly trust the cluster with the best HADDOCK score! This tutorial is a nice example that the more reliable information is used, the better the results of docking will be.
 
- 
 
+<hr>
 <hr>
 ## Congratulations!
 
@@ -674,3 +744,6 @@ You have completed this tutorial. If you have any questions or suggestions, feel
 And check also our [education](/education) web page where you will find more tutorials!
 
 [link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
+[link-freesasa]: http://freesasa.github.io "FreeSASA"
+
