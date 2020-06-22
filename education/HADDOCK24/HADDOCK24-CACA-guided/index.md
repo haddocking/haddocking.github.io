@@ -538,7 +538,7 @@ Sample 180 degrees rotated solutions during rigid body EM -> Uncheck
 Number of structures for semi-flexible refinement -> 50
 </a>
 <a class="prompt prompt-info">
-Number of structures for the explicit solvent refinement -> 50
+Number of structures for water refinement -> 50
 </a>
 
 #### Job submission
