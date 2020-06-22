@@ -633,6 +633,7 @@ Has the L-RMSD value decreased and the CAPRI quality improved? Are the passive r
 </a>
 
 Since interacting residues were defined in both binding partners, the docking positions these residues at the interface. fulfilling these restraints.
+
 Here you can see an overlay of model 1 of the best cluster (in our case cluster 4) with the crystal structure of the complex (4G6M-matched.pdb).
 
 <figure align="center">
@@ -652,16 +653,16 @@ Here you can see an overlay of model 1 of the best cluster (in our case cluster 
 * 4G6M-Ab-Ag cluster1_1  HADDOCKscore [a.u.] =  -85.9 +/- 2.0 ligand-RMSD = 12.15&Aring;
 * 4G6M-Ab-Ag cluster2_1  HADDOCKscore [a.u.] =  -73.4 +/- 1.5 ligand-RMSD = 17.01&Aring;
 
-* 4G6M-Ab-Ag-surface cluster3_1  HADDOCKscore [a.u.] = -107.0 +/-  3.7 ligand-RMSD = 18.71&Aring;
-* 4G6M-Ab-Ag-surface cluster6_1  HADDOCKscore [a.u.] = -103.5 +/- 13.1 ligand-RMSD = 23.43&Aring;
-* 4G6M-Ab-Ag-surface cluster2_1  HADDOCKscore [a.u.] =  -91.4 +/-  5.7 ligand-RMSD = 24.69&Aring;
-* 4G6M-Ab-Ag-surface cluster1_1  HADDOCKscore [a.u.] =  -86.2 +/-  2.0 ligand-RMSD = 20.79&Aring;
-* 4G6M-Ab-Ag-surface cluster9_1  HADDOCKscore [a.u.] =  -83.3 +/-  7.8 ligand-RMSD = 27.42&Aring;
-* 4G6M-Ab-Ag-surface cluster4_1  HADDOCKscore [a.u.] =  -79.2 +/-  1.2 ligand-RMSD = 20.52&Aring;
-* 4G6M-Ab-Ag-surface cluster14_1 HADDOCKscore [a.u.] =  -79.2 +/-  8.0 ligand-RMSD = 23.77&Aring;
-* 4G6M-Ab-Ag-surface cluster10_1 HADDOCKscore [a.u.] =  -74.7 +/-  4.5 ligand-RMSD = 22.57&Aring;
-* 4G6M-Ab-Ag-surface cluster13_1 HADDOCKscore [a.u.] =  -73.6 +/-  7.4 ligand-RMSD = 23.85&Aring;
-* 4G6M-Ab-Ag-surface cluster7_1  HADDOCKscore [a.u.] =  -72.7 +/-  2.7 ligand-RMSD = 24.73&Aring;
+* 4G6M-Ab-Ag-surface cluster6_1   HADDOCKscore [a.u.] = -101.1 +/-  4.3 ligand-RMSD = 22.92&Aring;
+* 4G6M-Ab-Ag-surface cluster8_1   HADDOCKscore [a.u.] =  -99.0 +/-  1.9 ligand-RMSD = 18.78&Aring;
+* 4G6M-Ab-Ag-surface cluster7_1   HADDOCKscore [a.u.] =  -97.6 +/-  1.7 ligand-RMSD = 26.59&Aring;
+* 4G6M-Ab-Ag-surface cluster13_1  HADDOCKscore [a.u.] =  -86.2 +/-  4.0 ligand-RMSD = 27.59&Aring;
+* 4G6M-Ab-Ag-surface cluster2_1   HADDOCKscore [a.u.] =  -84.8 +/-  2.4 ligand-RMSD = 25.01&Aring;
+* 4G6M-Ab-Ag-surface cluster5_1   HADDOCKscore [a.u.] =  -84.7 +/-  4.7 ligand-RMSD = 21.39&Aring;
+* 4G6M-Ab-Ag-surface cluster22_1  HADDOCKscore [a.u.] =  -84.4 +/-  6.7 ligand-RMSD = 23.90&Aring;
+* 4G6M-Ab-Ag-surface cluster15_1  HADDOCKscore [a.u.] =  -72.0 +/-  8.8 ligand-RMSD = 23.60&Aring;
+* 4G6M-Ab-Ag-surface cluster10_1  HADDOCKscore [a.u.] =  -71.3 +/-  2.7 ligand-RMSD = 24.33&Aring;
+* 4G6M-Ab-Ag-surface cluster21_1  HADDOCKscore [a.u.] =  -70.4 +/-  7.5 ligand-RMSD = 25.10&Aring;
 </pre>
 </details>
 
