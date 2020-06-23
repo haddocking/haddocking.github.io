@@ -32,7 +32,7 @@ The sampling problem, which is the focus of the present tutorial, is a crucial i
 Several methods were developed in the past decades to deal with this issue, but a general and successful approach is still missing [[6](#ref06),[8](#ref08)]. Among the existing approaches, the ensemble-docking method was developed with the aim to account for the plasticity of the receptor by performing docking calculations on multiple conformations (of the receptor) obtained by experimental or computational means. The advantage of using multiple conformations is the increased probability to have in the pool of structures at least one featuring a bound-like conformation of the binding site, suitable to optimally dock the correct ligand(s). This approach was shown to improve the outcome of docking and VS calculations [[2](#ref02),[3](#ref03),[5](#ref05)].
 
 
-In this tutorial we will show you how to run a metadynamics simulation with the aim of enhancing the sampling of different conformations of a protein. Those conformations can then be used to further improve the predictive power of molecular docking in cases where even a long unbiased MD simulation is unable to generate bound-like conformations of the target under study. This is usually the case of proteins undergoing large-scale conformational changes, often involving transitions between states separed by high free energy barriers (compared to thermal energy). The target protein we will focus on during the tutorial, the [T4 phage beta-glucosyltransferase](https://www.sciencedirect.com/science/article/abs/pii/S0022283601949058?via%3Dihub), belongs to this category, as shown by the large distortion at the binding site (BS) upon binding of its substrate uridine diposphate (RMSD<sub>BS</sub>  = 2.8 A between unbound and bound structures). In  
+In this tutorial we will show you how to run a metadynamics simulation with the aim of enhancing the sampling of different conformations of a protein. Those conformations can then be used to further improve the predictive power of molecular docking in cases where even a long unbiased MD simulation is unable to generate bound-like conformations of the target under study. This is usually the case of proteins undergoing large-scale conformational changes, often involving transitions between states separed by high free energy barriers (compared to thermal energy). The target protein we will focus on during the tutorial, the [T4 phage beta-glucosyltransferase](https://www.sciencedirect.com/science/article/abs/pii/S0022283601949058?via%3Dihub), belongs to this category, as shown by the large distortion at the binding site (BS) upon binding of its substrate uridine diposphate (RMSD<sub>BS</sub>  = 2.8 &Aring; between unbound and bound structures). 
 
 
 The content of this tutorial follows the workflow presented [in our recently published work](https://pubs.acs.org/doi/10.1021/acs.jcim.8b00730):
@@ -59,7 +59,7 @@ The following software packages will be used during the tutorial:
 * [R](https://www.r-project.org/about.html): a data analysis software, used here to perform the cluster analysis on the MD trajectory;
 
 
-In order to run the tutorial during the BioExcel Summer School 2020 you already have all the materials and scripts you need in the machine you are using. If you wish to re-do the tutorial in future you can download from [here](https://www.dropbox.com/s/woovhdma90cmzyc/EDES2020_tutorial_files.tar.gz?dl=0) an archive containing the `tutorial_files` directory used here.
+In order to run the tutorial during the BioExcel Summer School 2020 you already have all the materials and scripts you need in the machine you are using. If you wish to re-do the tutorial in future you can download from [here](https://www.dropbox.com/s/j9y4nkzi5h03jcd/tutorial_files.zip?dl=0) an archive containing the `tutorial_files` directory used here (about 250 MB of compressed archive).
 
 
 
@@ -76,7 +76,7 @@ mkdir -p Xray MD/plain/analysis MD/meta</a>
 
 #### Setting up the simulation system
 
-First go to the Xray directory and download the pdb file of the apo-form of the T4 phage beta-glucosyltransferase (hereafter GLUCO) (PDB code: [1JEJ](https://www.rcsb.org/structure/1JEJ)) or use the shell command *wget* to download it directly from the terminal:
+First go to the Xray directory and download the pdb file of the apo (unbound) form of the T4 phage beta-glucosyltransferase (hereafter GLUCO) (PDB code: [1JEJ](https://www.rcsb.org/structure/1JEJ)) or use the shell command *wget* to download it directly from the terminal:
 
 <a class="prompt prompt-cmd">
 cd Xray<br />
@@ -151,9 +151,9 @@ Select option **3**, as in our case we previously removed all crystallographic w
 </a>
 
 So, in case you got the error, run again the previous command after the pdb file has been fixed.
-However, also a WARNING message might pop you, warning you that "HISE" has been used as atom type for certain residues (such as resid 148, 168, etc.). This means that GROMACS has automatically chosen a specific protonation state for that residue. Although it doesn't make a difference for this tutorial, for real applications remember to choose carefully the protonation state of residues, as it might have an impact in docking calculations, in particular if those residues located in proximity of the binding region.
+However, also a WARNING message might pop you, warning you that "HISE" has been used as atom type for certain residues (such as resid 148, 168, etc.). This means that GROMACS has automatically chosen a specific protonation state for that residue. Although it doesn't make a difference for this tutorial, for real applications remember to choose carefully the protonation state of residues, as it might have an impact in docking calculations, in particular if those residues are located in proximity of the binding region.
 
- If you didn't get any error message, you can just look at the output, where you will see a lot of information and warnings. Please note, in particular, that the total charge, amounting to +6e:
+ If you didn't get any error message, you can just look at the output, where you will see a lot of information and warnings. Please note, in particular, the total charge, amounting to +6e:
 
 <a class="prompt prompt-info">...<br>
 There are 2656 dihedrals, 1883 impropers, 5543 angles <br>
@@ -289,7 +289,7 @@ atoms) which identify the relevant motions to be enhanced in order to steer the
 sampling of otherwise rarerly reachable conformations. The exploration of the CVs phase
 space (which _drags_ the system towards atomic conformations otherwise
 rarely visited) is forced through the deposition of _hills_, namely
-Gaussian-like potentials, added every nG steps of the simulation to the CVs
+Gaussian-like potentials, added every N steps of the simulation to the CVs
 space at the point corresponding to the system's state. These Gaussian hills
 will generate a repulsive force which is transmitted to the real atoms of
 the system thus enhancing the conformational sampling. Clearly, a good CV
@@ -328,7 +328,7 @@ well as the intramolecular contacts among the residues lining that site.
 
 To define the BS, we exploit the crystallographic structure of the GLUCO-UDP
 complex. Namely we define the BS as the site lined by all residues having at
-least one atom within 3.5 A from UDP. From the RCBS pdb databank download
+least one atom within 3.5 &Aring; from UDP. From the RCBS pdb databank download
 PDB ID: [1JG6](https://www.rcsb.org/structure/1JG6) in the
 `Xray` directory, or use wget to download it from the terminal.
 So, if you are in the `MD/plain` directory, type:
@@ -389,7 +389,7 @@ You will get the following list of residue numbers:
 
 And a similar list containing the atom numbers (serials) of BP's residues.
 
-So, if you look at how we defined the residues of our binding sites, you will notice we selected all the residues with at least one atom within 3.5 A from the experimental ligand in the holo structure.
+So, if you look at how we defined the residues of our binding sites, you will notice we selected all the residues with at least one atom within 3.5 &Aring; from the experimental ligand in the holo structure.
 However, for cases in which no holo structure with the co-crystallized ligand is available, of course a similar procedure will not be feasible. A possible solution could be the usage of binding-site dection softwares among the plaetora available (such as [COACH](https://zhanglab.ccmb.med.umich.edu/COACH/), [RaptorX binding](http://raptorx.uchicago.edu/BindingSite/), [ConSurf](http://consurf.tau.ac.il/2016/)).
 
 In particular, in [[9](#ref09)] we show how the BP selection according to the COACH software is virtually identical to the one obtained by using the holo structure.
@@ -422,7 +422,7 @@ You will get the value (in &Aring;) corresponding to the RoG of the BP. You shou
  Now you can close VMD.
 
 As you will see below, PLUMED [[18](#ref18)] needs atomic serial numbers as input (and not residue IDs) to define the collective variables. Thus, to perform the simulation, we should get the list of serial numbers defining the BP. We thus load the apo protein ready to be simulated into VMD and use the residue list obtained previously to print the list of serials defining
-the BS. We already extracted the serials of BS' residues from the holo structure. However, remember that to run a metadynamics, the serials you will use to define the collective variables need to refer to the system you are simulating (so the apo structure already solvated, etc.). To extract the serial numbers you can use for example a gro file or a pdb file, as long as the topology matches the one of the system you are going to simulate! Go to the `../MD/plain` directory and copy there the `apo_GLUCO_Hs.pdb` file from the `tutorial_files` folder. Now open it on VMD.
+the BS. We already extracted the serials of BS' residues from the holo structure in a previous. However, remember that to run a metadynamics, the serials you will use to define the collective variables need to refer to the system you are simulating (so, in this case, the apo structure already solvated, etc.). To extract the serial numbers you can use for example a gro file or a pdb file, as long as the topology matches the one of the system you are going to simulate! Go to the `../MD/plain` directory and copy there the `apo_GLUCO_Hs.pdb` file from the `tutorial_files` folder. Now open it on VMD.
 
 <a class="prompt prompt-cmd">cd ../MD/plain<br>
 cp ../../tutorial_files/apoMD/apo_GLUCO_Hs.pdb .<br>
@@ -474,7 +474,7 @@ From VMD open the Tk console and run the script by typing:
 <a class="prompt prompt-cmd">source ~/Tutorials/EDES/tutorial_files/scripts/divide_into_lists.tcl</a>
 
 If typing the previous command tells you that the package "Orient" can't be found, you need to change the path inside the tcl script.
-Open a new terminal or pause VMD, then open the "divide_into_lists.tcl" with your favourite text editor, e.g:
+Open a new terminal or pause VMD, then open the "divide_into_lists.tcl" script with your favourite text editor, e.g:
 
 <a class="prompt prompt-cmd">emacs -nw ~/Tutorials/EDES/tutorial_files/scripts/divide_into_lists.tcl</a>
 
@@ -625,7 +625,7 @@ To run a multi-replica simulation, GROMACS2019 requires creating a folder for ea
 
 Go into the `meta` folder: you will see 4 sub-folders (`rep0`, `rep1`, `rep2`, `rep3`), one for each of the 4 replicas, containing the plumed and tpr files for each run. Go into the `rep0` sub-folder, and read the `plumed-common.dat` and `plumed.0.dat` files to understand the instructions contained.
 
-You can see the list of the atom serial numbers in the `plumed-common.dat`. Open the file `plumed.0.dat` and insert the appropriate value of the sigma parameter where needed. You should have calculated the w parameter (sigma) values in the previous section of this tutorial using the av_std-sel-region-column.sh script. The file already contains a value for sigma, but you can change it according to previous prescription and change it if you wish to. Also keep in mind that smaller values of the sigma parameters are associated to a finer and safer sampling, but also to a longer simulation time to fill up free energy minima and allow the system to efficiently explore the conformational space. Repeat the above steps for the remaining 3 plumed files (`plumed.1.dat`, `plumed.2.dat`, `plumed.3.dat`) within the sub-directories `meta/rep1`, `meta/rep2`, `meta/rep3`.
+You can see the list of the atom serial numbers in the `plumed-common.dat`. Open the file `plumed.0.dat` and insert the appropriate value of the sigma parameter where needed. You should have calculated the w parameter (sigma) values in the previous section of this tutorial using the av_std-sel-region-column.sh script. The file already contains a value for sigma, but you can change it according to previous prescriptions if you wish to. Also keep in mind that smaller values of the sigma parameters are associated to a finer and safer sampling, but also to a longer simulation time to fill up free energy minima and allow the system to efficiently explore the conformational space. Repeat the above steps for the remaining 3 plumed files (`plumed.1.dat`, `plumed.2.dat`, `plumed.3.dat`) within the sub-directories `meta/rep1`, `meta/rep2`, `meta/rep3`.
 
 You are now ready to run the simulation:
 
@@ -669,11 +669,11 @@ plotted against the experimental values corrsponding to the apo and holo structu
 <br>
 
 Despite the short simulation time, you can see from the plot that the method effectively enhanced the sampling of different conformations of the BS.
-However, both shrunk (smaller RoG of the apo, and close to the holo value) and expanded (larger RoG of the apo)  conformations of the BS are sampled (this can be verified by looking to the profiles
+However, both shrunk (smaller RoG than the apo, and close to the holo value) and expanded (larger RoG than the apo)  conformations of the BS are sampled (this can be verified by looking to the profiles
 of the additional three CVs). 
 To effectively guide the sampling towards a specific direction (e.g. to compress the BS) one could add soft restraints
 on some of the CVs (please check [here](https://plumed.github.io/doc-v2.4/user-doc/html/_r_e_s_t_r_a_i_n_t.html) if interested).
-Following this scheme, in [[9](#ref9)], a "**windows approach**" was adopted to guide the sampling only towards the desired
+Following this scheme, in [[9](#ref9)] a "**windows approach**" was adopted to guide the sampling only towards the desired
 region of the conformational space. The idea is to run a set of metadynamics simulations each starting from a conformation
 corresponding to decreasing values of the RoG, using restraints on this CV in order to gently mimick the compression of the BS
 induced by substrate binding.
@@ -708,7 +708,7 @@ does not depend on the way the trajectory was generated).
 To follow the protocol in [[9](#ref9)] we will use in-house bash scripts interfacing with the R software, according to the
 following scheme:
 
-1. The RoG distribution of your trajectory is binned into a pre-defined number (10) of equally-wide slices. This is achieved by
+1. The RoG distribution of your trajectory is binned into a pre-defined number (in this case 30, but the number of highly customizable) of equally-wide slices. This is achieved by
 giving in input to the script the desired width (in Angstrom) of each slice;
 
 2. The script needs in input also the desired number of clusters. Note that the number of clusters extracted from each slice is
@@ -723,7 +723,7 @@ The representative of each cluster is selected as the one closest to the center,
 5. The clusters extracted from the previous step are selected for ensemble-docking calculations.
 
 Note that in order to perform the cluster analysis outlined above we only need the file containing the CVs values, not the trajectory.
-These values are contained in the COLVAR file, which can be obtained from the trajectory by running plumed as standalone software.
+These values are contained in the COLVAR file, which can be obtained from the trajectory by running plumed as standalone software (and in particular the "driver" plugin that we already used to extract the COLVAR values from the unbiased run).
 Here we will use the following files, already formatted in a convenient manner for our analyses:
 
 * `CVS_clustering.dat`, which contains, for each frame (i.e. for each structure), the number (starting from 1) of the frame, the values of all of the CVs
@@ -738,17 +738,23 @@ to the cluster analysis;
 * `hclust_4cvs_template.R`. This is a template file to perform hierarchical clustering with R;
 * `k-means-head.R` and `k-means-tail.R`. These are template files for the k-means clustering with R;
 
-From the terminal, go into the directory `~/Tutorials/EDES/tutorial_files/clustering_with_R` and type:
+From the terminal, go into the directory `~/Tutorials/EDES/tutorial_files/clustering_with_R` and download there the updated version of the "R_clustering.sh" from [here](https://www.dropbox.com/s/2998x6y3svt1n9h/R_clustering_tutorial.tar.gz?dl=0):
 
+<a class="prompt prompt-cmd"> wget https://www.dropbox.com/s/2998x6y3svt1n9h/R_clustering_tutorial.tar.gz?dl=0 </a>
+<a class="prompt prompt-cmd"> tar xvzf R_clustering_tutorial.tar.gz?dl=0 </a>
+<a class="prompt prompt-cmd"> cp R_clustering_tutorial/R_clustering.sh . </a>
 <a class="prompt prompt-cmd"> chmod +x R_clustering.sh </a>
+
+Then you can use it with:
+
 <a class="prompt prompt-cmd"> ./R_clustering.sh </a>
 
 The script will read the file `index_RoGBS.dat` and output a suitable value for	RoG slices. Now run again the command specifying the desired number of clusters (e.g. 100),
 and the sigma (slice width) value. For the sigma value you can use the suggested one or a different one, according to your specific problem. In this case, you can type:
 
-<a class="prompt prompt-cmd">./R_clustering.sh 100 0.1 </a>
+<a class="prompt prompt-cmd">./R_clustering.sh 100 0.037  </a>
 
-The first part of your output should look like:
+The first part of your output should look like the following lines (in your case you'll have 30 slices instead of 10):
 
 <pre style="background-color:#DAE4E7">
 Number of clusters for each slice:
@@ -778,12 +784,11 @@ Total number of clusters: 100
 </pre>
 
 Thus, the script prints the number of structures contained in each RoG slice, as well as the number of clusters extracted from each of them.
-Note that the slices corresponding to the tail of the RoG distribution (namely slice 1 and 10) are poorly populated, thus only one cluster
-is being extracted from them. Two possibile solutions to this problem would be:
+Note that the slices corresponding to the tail of the RoG distribution are poorly populated, thus in general expect a very small number of clustersto be extracted from them. Two possibile solutions to this problem would be:
 
 1. To increase the total number of clusters;
-2. To require a minimum number of clusters from each RoG slice. This solution is actually already implemented in the script `R_clustering.sh`,
-where we set the minimum number of clusters extracted from each slide will be 1. So also poorly populated slices will contribute with at least one cluster.
+2. To require a minimum number of clusters from each RoG slice and/or to change the width of each slice. The first of the two possibility is actually already implemented in the script `R_clustering.sh`,
+where we set the minimum number of clusters extracted from each slide will be 2. So also poorly populated slices (containing at least two structures) will contribute with at least two clusters.
 Without this option, it might have happened that no clusters would have been extracted from those slices. According to your specific problem, you could in principle increase the minimum number of extracted clusters (i.e. if you think the relevant conformations of your protein will be in a poorly populated RoG slice).
 
 Note also that, since RoG profiles are also descriptors of the overall flexibility of the protein, experimental information on this parameter
@@ -797,9 +802,10 @@ The list of selected clusters is written in the file `matrix_k-means-init-center
 You will see a list of numbers indicating the frames selected from your MD run.
 You can now save those frames for instance using the software [CATDCD](https://www.ks.uiuc.edu/Research/vmd/plugins/catdcd/).
 
-You can find a set containing 500 clusters coming from a 10 microsecond-long unbiased MD trajectory and 500 coming from a 1.6 microsecond-long
+You can find a set containing 500 clusters coming from a few microsecond-long unbiased MD and 500 coming from a microsecond-long metadynamics trajectories.
 metadynamics run in `../../tutorial_files/cluster_analysis/clusters_ready/`.
 If you have time you can now open the clusters with VMD and try, for example, to calculate their RoG (as explained above).
+Otherwise, you can go to the next section of this tutorial, where These clusters will be used as starting protein conformations for ensemble-docking calculations with HADDOCK.
 
 <hr>
 ## Protein-ligand docking with HADDOCK
