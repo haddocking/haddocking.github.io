@@ -802,7 +802,7 @@ The list of selected clusters is written in the file `matrix_k-means-init-center
 You will see a list of numbers indicating the frames selected from your MD run.
 You can now save those frames for instance using the software [CATDCD](https://www.ks.uiuc.edu/Research/vmd/plugins/catdcd/).
 
-You can find a set containing 500 clusters coming from a few microsecond-long unbiased MD and 500 coming from a microsecond-long metadynamics trajectories.
+You can find a set containing 500 clusters coming from a few microsecond-long unbiased MD and 500 coming from a microsecond-long metadynamics trajectory.
 metadynamics run in `../../tutorial_files/cluster_analysis/clusters_ready/`.
 If you have time you can now open the clusters with VMD and try, for example, to calculate their RoG (as explained above).
 Otherwise, you can go to the next section of this tutorial, where These clusters will be used as starting protein conformations for ensemble-docking calculations with HADDOCK.
