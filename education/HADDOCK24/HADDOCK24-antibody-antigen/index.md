@@ -387,7 +387,7 @@ Number of structures for rigid body docking -> 10000
 Number of structures for semi-flexible refinement -> 400
 </a>
 <a class="prompt prompt-info">
-Number of structures for water refinement -> 400
+Number of structures for the final refinement -> 400
 </a>
 
  * **Step 10:** Increase the number of models to analyse to 400. For this open the **Analysis parameter menu**:

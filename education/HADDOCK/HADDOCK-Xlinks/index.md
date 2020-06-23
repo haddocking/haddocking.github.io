@@ -624,7 +624,7 @@ provided to you, the number of models generated will have been decreased to allo
 reasonable amount of time. Because of that, the results might not be very good.
 
 We already pre-calculated full docking runs (meaning that the default number of models has been generated: 1000 for 
-rigid-body docking and 200 for semi-flexible and water refinement). The full runs for the three scenarios described 
+rigid-body docking and 200 for semi-flexible and the final refinement). The full runs for the three scenarios described 
 above can be accessed at:
 
 1. **Scenario 1**: 

@@ -181,7 +181,7 @@ Number of structures for rigid body docking -> 10000
 Number of structures for semi-flexible refinement -> 400
 </a>
 <a class="prompt prompt-info">
-Number of structures for water refinement -> 400
+Number of structures for the final refinement -> 400
 </a>
 
 
@@ -273,7 +273,7 @@ $WDIR/run_all.csh *my-run-directory*
 **Note**: If you use the pre-calculated runs, this analysis has already been performed and you can skip the above step.
 
 
-Be patient since this might take some time depending on whether you are analysing a full or reduced run. The script will calculate CAPRI statistics for all generated models (rigid-body (it0) - semi-flexible refinement (it1) - water refinement (water)). Those can be found in the unpacked run directory under `structures/it0`, `structures/it1` and `structures/it1/water` directories, respectively.
+Be patient since this might take some time depending on whether you are analysing a full or reduced run. The script will calculate CAPRI statistics for all generated models (rigid-body (it0) - semi-flexible refinement (it1) - final refinement (water)). Those can be found in the unpacked run directory under `structures/it0`, `structures/it1` and `structures/it1/water` directories, respectively.
 
 Once the analysis script has completed you can get a first glimpse of the number of acceptable models or better using the following command:
 
@@ -301,7 +301,7 @@ T70-tetramer
 **Note**: To get the proper stats in case of a reduced sampling run, use instead `check_runs_i-rmsd-reduced.csh`.
 
 <a class="prompt prompt-question">
-Are there any acceptable models after water refinement?
+Are there any acceptable models after the final refinement?
 </a>
 
 <a class="prompt prompt-question">
@@ -346,7 +346,7 @@ The above results show three clusters with medium quality (around 1.3Å i-RMSD).
 Check also the ranking of the clusters. Did the HADDOCK score do a good job are ranking at the top acceptable clusters?
 </a>
 
-In case there is no single acceptable cluster, but the `check_runs_i-rmasd.csh` script did report some acceptable models at water refinement, do check the ranking of those single structure. For this go into the *my-docking-run*`/structures/it1/water` directory and inspect the `i-RMSD.dat` file. This file contains the i-RMSD values sorted according to the HADDOCK score.
+In case there is no single acceptable cluster, but the `check_runs_i-rmasd.csh` script did report some acceptable models at the final refinement, do check the ranking of those single structure. For this go into the *my-docking-run*`/structures/it1/water` directory and inspect the `i-RMSD.dat` file. This file contains the i-RMSD values sorted according to the HADDOCK score.
 
 <a class="prompt prompt-linux">
 cd *my-docking-run*/structures/it1/water<br>

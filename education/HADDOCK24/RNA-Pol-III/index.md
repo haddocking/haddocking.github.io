@@ -682,7 +682,7 @@ representation of the data. If you are using course credentials the number of mo
 to allow the runs to complete within a reasonable amount of time. Because of that, the results might not be very good.
 
 We have already performed a full docking runs (with 2000/400/400 models generated for the
-rigid-body docking, semi-flexible and water refinement stages). 
+rigid-body docking, semi-flexible and final refinement stages). 
 The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-C82-C34-C31model-xlinks){:target="_blank"}.
 
 
@@ -1322,7 +1322,7 @@ In the same page where the restraints are provided you can modify a large number
 For refinement purposes a limited number of models is sufficient:
 
 <a class="prompt prompt-info">
-Decrease thee number of models to 20 for all stages (rigid body, semi-flexible refinement and water refinement)
+Decrease thee number of models to 20 for all stages (rigid body, semi-flexible refinement and final refinement)
 </a>
 <a class="prompt prompt-info">
 Number of trials for rigid body minimisation -> 1
