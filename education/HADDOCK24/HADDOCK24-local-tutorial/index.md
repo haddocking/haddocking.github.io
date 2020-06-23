@@ -244,7 +244,7 @@ In order to configure HADDOCK, call the `install.csh` script with as argument th
 </a>
 
 There is one more file that should be manually edited to define the number of models to concatenate within one job (useful when submitting to a batch system to ensure jobs are not too short in queue).
-Depending on the size of your system, a typical run time for rigid body docking would be a few tens of seconds per model written to disk (which effectively correspond to 10 docking trials internally), and a few minutes per model for the flexible refinement and water refinement. But this can increase a lot depending on the complexity of your system and the number of molecules to dock.
+Depending on the size of your system, a typical run time for rigid body docking would be a few tens of seconds per model written to disk (which effectively correspond to 10 docking trials internally), and a few minutes per model for the flexible refinement and the final refinement. But this can increase a lot depending on the complexity of your system and the number of molecules to dock.
 
 <a class="prompt prompt-info">
 To define the number of concatenated models edit Haddock/Main/QueueSubmit_concat.py located in the haddock2.4 installation directory and change the values as required:
@@ -827,7 +827,7 @@ The first step in setting up the docking is to create a `run.param` file contain
 * _protein-protein-em_       : protein-protein docking into a cryo-EM map
 * _protein-protein-pcs_      : protein-protein docking using NMR PCS restraints (eps-hot_pcs system)
 * _protein-protein-rdc_      : protein-protein docking using NMR RDC restraints (di-ubiquitin system)
-* _protein-refine-pcs_       : example of single structure water refinement with NMR PCS restraints
+* _protein-refine-pcs_       : example of single structure final refinement with NMR PCS restraints
 * _protein-tetramer-CG_      : multi-body docking of a C4 tetramer with a coarse grained representation
 * _protein-trimer_           : three body docking of a homotrimer using bioinformatic predictions (pdb1qu9)
 * _refine-complex_           : refinement of a complex in water (it0 and it1 skipped)
@@ -993,7 +993,7 @@ Locate for this the following section in run.cns:
 </pre>
 
 <a class="prompt prompt-info">
-And change the values for structures_0 and structures_1 (the number of models for water refinement and analysis will be automatically reduced.
+And change the values for structures_0 and structures_1 (the number of models for the final refinement and analysis will be automatically reduced.
 </a>
 
 <pre style="background-color:#DAE4E7">

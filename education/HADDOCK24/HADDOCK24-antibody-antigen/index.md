@@ -188,7 +188,7 @@ Once you have downloaded the sequence fasta files of both chains, open your brow
 
 <a class="prompt prompt-info"> Press **Sumbit** to let the webserver process your sequence.</a>
 
-The calculation takes only a few seconds and the result graph shows the probabilities that a residue is a part of the paratope. Note that the graphs are interactive, i.e. the three features (pt-probability, hb-hydrophobic, hy-hydrophilic) can be toggled. Detail values per each residues are shown upon hovering over it with the mouse.  
+The calculation takes only a few seconds and the result graph shows the probabilities that a residue is a part of the paratope. Note that the graphs are interactive, i.e. the three features (pt-probability, hb-hydrophobic, hy-hydrophilic) can be toggled. Detail values per each residue are shown upon hovering over it with the mouse.  
 
 **Note:** ProABC-2 uses the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} for antibodies and only shows results for the antibody Fv domains. Insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly and renumbering is necessary before starting the docking. Extracting active residues corresponding to this renumbered structures can be done locally as described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283){:target="_blank"}. For simplicity we have already done this for you in this tutorial.
 
@@ -226,7 +226,7 @@ Check the field for **biounit**, to download the functional form of the molecule
 
 <hr>
 
- ***Tip:*** After fetching/uploading a pdb one cas use a very useful command *pdb_wc*. If we run only this command upon splitting the chains (*pdb_splitchain*), we get all essential information about the number of chains, residues or atoms in your pdb.  Here is the result of running *pdb_splitchain* and *pdb_wc* for 4G6K.
+ ***Tip:*** After fetching/uploading a pdb one can use a very useful command *pdb_wc*. If we run only this command upon splitting the chains (*pdb_splitchain*), we get all essential information about the number of chains, residues or atoms in your pdb.  Here is the result of running *pdb_splitchain* and *pdb_wc* for 4G6K.
 
 Output for parsed_1_H.pdb
 <pre>
@@ -310,7 +310,7 @@ To start the submission process, you are prompted for our login credentials. Aft
 <hr>
 ### Scenario 1: No information about the epitope is available 
 
-In previous steps we have identified the paratope residues of the antibody. Those can now used to guide the docking. The second part of the puzzle is the information about the antigen interface, which if often not available. In this this scenario, we assume nothing is known about the epitope. Therefore we will treat the entire surface of the antigen as potential interface. Since we have to sample the entire surface of the antigen, we need to increase the sampling.
+In previous steps we have identified the paratope residues of the antibody. Those can now be used to guide the docking. The second part of the puzzle is the information about the antigen interface, which is often not available. In this this scenario, we assume nothing is known about the epitope. Therefore, we will treat the entire surface of the antigen as potential interface. Since we have to sample the entire surface of the antigen, we need to increase the sampling.
 
 #### Submission and validation of structures
 
@@ -356,7 +356,7 @@ PDB structure to submit -> Browse and select *4I1B-matched.pdb* (the file you sa
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. We will be making use of the text boxes below the residue sequence of every molecule to specify the list of active residues to be used for the docking run.
 
 * **Step 6:** Specify the active residues for the first molecule. For this unfold the "Molecule 1 - parameters" if it isn't already unfolded.
-Here fill in the residues of CDR loops that we extracted beforehand for you follwogin the local version of the protocol. Note that the numbers are similar (not identical) to the results of ProABC-2.  
+Here fill in the residues of CDR loops that we extracted beforehand for you following the local version of the protocol. Note that the numbers are similar (not identical) to the results of ProABC-2.  
 
 <a class="prompt prompt-info">
 Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
@@ -387,7 +387,7 @@ Number of structures for rigid body docking -> 10000
 Number of structures for semi-flexible refinement -> 400
 </a>
 <a class="prompt prompt-info">
-Number of structures for the explicit solvent refinement -> 400
+Number of structures for the final refinement -> 400
 </a>
 
  * **Step 10:** Increase the number of models to analyse to 400. For this open the **Analysis parameter menu**:
@@ -398,7 +398,7 @@ Number of structures to analyze -> 400
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
 
 
 * **Step 11:** Click on the **Submit** button at the bottom left of the interface.
@@ -409,7 +409,7 @@ Upon submission you will be presented with a web page which also contains a link
 <hr>
 ### Scenario 2: A loose definition of the epitope is known
 
-In this scenario, additionally to the CDR residues of the antibody, a loose definiton of the epitope residues of the antigen will be used to guide the docking. Here, we define the epitope on the antigen as all residues within 9Å from the antibody in the complex reference structure (pdb code [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}), filtered by their relative solvent accessibility (≥0.40) upon the removal of the antibody. This is of course an artificial scenario. In a real case the epitope might have been identified for example from NMR titration experiments (see Bonus below), H/D exchange experiments, ...
+In this scenario, additionally to the CDR residues of the antibody, a loose definition of the epitope residues of the antigen will be used to guide the docking. Here, we define the epitope on the antigen as all residues within 9Å from the antibody in the complex reference structure (pdb code [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}), filtered by their relative solvent accessibility (≥0.40) upon the removal of the antibody. This is of course an artificial scenario. In a real case the epitope might have been identified for example from NMR titration experiments (see Bonus below), H/D exchange experiments, ...
 
 
 #### Submission and validation of structures
@@ -479,7 +479,7 @@ Since we have a rather loose definition of the interface, we will input the corr
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 
 * **Step 9:** Click on the **Submit** button at the bottom left of the interface.
@@ -511,7 +511,7 @@ In the figure below you can see different parts of the result page.
 **In A** the result page reports the number of clusters and for the top 10 clusters also the related statistics (HADDOCK score, Size, RMSD, Energies, BSA and Z-score).
 While the name of the clusters is defined by their size (cluster 1 is the largest, followed by cluster 2 etc..) the top 10 clusters are selected and sorted according to the average HADDOCK score of the best 4 models of each cluster, from the lowest (best) HADDOCK score to the highest (worst). 
 
-**In B** the visualiztion option of the various models is shown. You can visualize online a model by clicking on the **eye** icon, or download those for further analysis.
+**In B** the visualization option of the various models is shown. You can visualize online a model by clicking on the **eye** icon, or download those for further analysis.
 
 **In C** a view of some graphical representation of the results shown at the bottom of the page under **Model analysis** is shown. Distribution of various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model) are shown. The models are color-coded by the cluster they belong to. You can turn on and off specific clusters, but also zoom in on specific areas of the plot.
 
@@ -530,7 +530,7 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 <a class="prompt prompt-question">Consider the cluster scores and their standard  deviations.</a>
 <a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
 
-In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: crystal structure of the complex.
+In case the scores of various clusters are within standard deviation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: crystal structure of the complex.
 
 
 **Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu){:target="_blank"} high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the example output pages. That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
@@ -670,7 +670,7 @@ Here you can see an overlay of model 1 of the best cluster (in our case cluster 
 <hr>
  <details >
  <summary style="bold">
- <b><i>See the overlayed clusters for different scenarios:</i></b>
+ <b><i>See the overlaid clusters for different scenarios:</i></b>
  </summary>
  <figure align="center">
    <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/results.png">

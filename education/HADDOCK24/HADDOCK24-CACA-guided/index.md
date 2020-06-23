@@ -538,7 +538,7 @@ Sample 180 degrees rotated solutions during rigid body EM -> Uncheck
 Number of structures for semi-flexible refinement -> 50
 </a>
 <a class="prompt prompt-info">
-Number of structures for the explicit solvent refinement -> 50
+Number of structures for the final refinement -> 50
 </a>
 
 #### Job submission
@@ -976,7 +976,7 @@ This clash analysis clearly shows that models obtained by superimposition need t
 ## Additional/optional questions
 
 **1)** If you are curious, try refining the superimposed models through it and see if the clashes are removed to the same extend of the CA-CA docked model and if the l-RMSD improves of not.
-One option to do that is to make use of the HADDOCK refinement interface available from [https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html](https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html). It will only perform the water refinement stage of HADDOCK.
+One option to do that is to make use of the HADDOCK refinement interface available from [https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html](https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html). It will only perform the final refinement stage of HADDOCK.
 
 __Note:__ _A refinement run might fail if too severe clashes are present in the initial models._
 
