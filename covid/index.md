@@ -102,7 +102,7 @@ for the docking and the same compound conformers as for the Mpro screening.
 
 In addition the screening against the main protease we docked the virtual
 libray against the RNA dependent RNA polymerase (RdRp) as well. We used a
-truncated from of PDB 3entry [1R4L](https://www.rcsb.org/structure/1R4L)
+truncated from of PDB entry [1R4L](https://www.rcsb.org/structure/1R4L)
 for the docking and the same compound conformers as for the Mpro screening.
 
 #### Screening results
