@@ -98,6 +98,17 @@ for the docking and the same compound conformers as for the Mpro screening.
 
 <hr>
 
+### Screening of approved drugs against the ACE2 receptor
+
+In addition the screening against the main protease we docked the virtual
+libray against the RNA dependent RNA polymerase (RdRp) as well. We used a
+truncated from of PDB 3entry [1R4L](https://www.rcsb.org/structure/1R4L)
+for the docking and the same compound conformers as for the Mpro screening.
+
+#### Screening results
+
+<iframe seamless frameborder="0" width="1200" height="2400" src="./covid_ace2_unambig.html"></iframe>
+
 ### Protocol
 #### Virtual library
 We considered approved drugs from the DrugBank dataset with molecular weight < 750 g/mol and > 5 heavy atoms. Some of these drugs act as prodrugs, i.e. they are inactive compounds that are metabolized into their active form after administration. When the data was available we collected the active form of the documented prodrugs, referred here as « Active Metabolites », from the PubChem database. We ended up with 1977 drugs and 50 active metabolites and we generated up to 500 conformers per compound using OpenEye.
@@ -114,10 +125,17 @@ We identified one crystallographic template to be used for the docking of every 
 Similarly, each coumpound in the virtual library was associated to the most similar crystallographic template in terms of 2D pharmacophore description. To do so, we calculated the pairwise Tanimoto coefficient between the 2D pharmacophore fingerprints of the compounds from the virtual library and the template compounds. The binding information of the template compound was then used to build a shape in the 3CLpro binding site consisting of one bead per atom, each bead being associated to a pharmacophore feature (or no feature) as computed with RDKIT. Docking restraints were imposed to orient the pharmacophore features of the drugs and active metabolites towards the corresponding feature of their associated shape.
 
 #### Distance restraint-based protocol
+
+##### RdRp screening
 We used a protocol based on the definition of distance restraints for the screenign of the virtual
 library against RdRp. The definition of the binding site was extracted from pdb entry [7BV2](https://www.rcsb.org/structure/7BV2),
 after calculating atomic contacts between the bound compound (remdesivir monophosphate) and the protein,
 using a distance cutoff of 5A. None of the restraints were discarded during the simulation. We lowered
 the scaling constant of the intermolecular energies to a thousandth of their original value to allow
 the compounds to more effectively penetrate into the buried binding pocket. Sampling was the same as
-for the main protease.
+for the main protease. We only took intermolecular vdW and electrostatics energies and desolvation potential
+into account for ranking the compounds.
+
+##### ACE2 screening
+The protocol we followed was identical to the one described above (see RdRp screening) with the exception
+of using pdb entry [1R4L](https://www.rcsb.org/structure/1R4L) as the receptor template.
