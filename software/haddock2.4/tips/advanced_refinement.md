@@ -31,6 +31,7 @@ In then **"Sampling parameters"** section:
 * _Number of structures for rigid body docking (it0)_ → Same as the number of models you want HADDOCK to generate in water
 * _Number of structures for rigid body docking (it1)_ → Same as the number of models you want HADDOCK to generate in water
 * _Sample 180 degrees rotated solutions during rigid body EM_ → **False**
+*_Refine with short molecular dynamics in explicit solvent?  _ -> **True**
 
 In then **"Advanced Sampling Parameters"** section:
 
