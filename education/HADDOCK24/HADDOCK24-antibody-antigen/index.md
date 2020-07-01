@@ -268,7 +268,7 @@ Until now each chain of the pdb starts with residue number 1. This can be confus
 <a class="prompt prompt-info"> Choose 'pdb_reres' and click on +Add a new block</a>
 <a class="prompt prompt-info"> Type *1* into the starting field</a>
 
-Now we extract the variable domain of the antibody. From the results of ProABC-2 we see that the variable domains of both light and heavy chain represent roughly the first 115-120 residues of each chain. Since we know that the first-heavy chain contains 220 residues, the second chain starts with 221.
+Now we extract the variable domain of the antibody. From the results of ProABC-2 we see that the variable domains of both light and heavy chain represent roughly the first 110-120 residues of each chain. Since we know that the first-heavy chain contains 220 residues, the second chain starts with 221.
 
 <a class="prompt prompt-info"> Choose 'pdb_selres' and click on +Add a new block</a>
 <a class="prompt prompt-info"> Type *1:120,221:327* into the selection field </a>
