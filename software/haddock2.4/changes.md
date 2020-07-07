@@ -7,8 +7,6 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> manual
-
 ### Lastest changes - version July 2020
 
 - Added support for glycosylated proteins
