@@ -72,6 +72,8 @@ This page provide you links to software and software manuals of the computationa
 <HR>
 ### Benchmarks and datasets
 
+* [Protein-DNA Coarse-grain benchmark](https://zenodo.org/record/3941636)
+
 * [Protein-DNA docking benchmark](https://github.com/haddocking/Prot-DNABenchmark)
 
 * Docking benchmark of membrane protein complexes ([GitHub](https://github.com/haddocking/MemCplxDB)) and associated decoy dataset [ https://doi.org/10.15785/SBGRID/618]( https://doi.org/10.15785/SBGRID/618)
