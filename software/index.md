@@ -72,7 +72,7 @@ This page provide you links to software and software manuals of the computationa
 <HR>
 ### Benchmarks and datasets
 
-* [Protein-DNA Coarse-grain benchmark](https://zenodo.org/record/3941636)
+* All-atom and Coarse-grained HADDOCK docking models for Protein-DNA complexes: [https://zenodo.org/record/3941636](https://zenodo.org/record/3941636)
 
 * [Protein-DNA docking benchmark](https://github.com/haddocking/Prot-DNABenchmark)
 
