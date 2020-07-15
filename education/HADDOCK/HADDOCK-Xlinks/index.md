@@ -366,7 +366,7 @@ __Note:__ Under Linux (or OSX), this file could be generated automatically from 
  file provided with the data for this tutorial by giving the following command (one line) in a terminal window:_
 
 <a class="prompt prompt-linux">
-cat restraints_filtered.txt | awk '{if (NF == 8) {print "assi (segid ",$1," and resid ",$2," and name ",$3,") (segid ",$4," and resid ",$5," and name ",$6,") ",$8,$8,$7}}' > restraints_filtered.tbl
+cat restraints_filtered.txt | awk \'{if ( NF == 8 ) {print \"assi ( segid \",$1,\" and resid \",$2,\" and name \",$3,\" ) ( segid \",$4,\" and resid \",$5,\" and name \",$6,\" ) \",$8,$8,$7}}\' > restraints_filtered.tbl
 </a>
 
 <hr>
