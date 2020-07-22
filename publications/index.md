@@ -6,6 +6,10 @@ image:
 ---
 ## 2020
 
+* J.L. Roel-Touris,  B. Jiménez-García and **A.M.J.J. Bonvin**. [Integrative Modeling of Membrane-associated Protein Assemblies](https://doi.org/10.1101/2020.07.20.211987). _BioRxiv_ 10.1101/2020.07.20.211987 (2020).
+ 
+* H.H. Rabouw, L.J. Visser, T.C. Passchier, M.A. Langereis, F. Liu, P. Giansanti, A.L.W. van Vliet, J.G. Dekker, S.G. van der Grein, J.G. Saucedo, A.A. Anand, M.E. Trellet, **A.M.J.J. Bonvin**, P. Walter, A.J.R. Heck, R.J. de Groot and F.J.M. van Kuppeveld. [Inhibition of the integrated stress response by viral proteins that block p-eIF2–eIF2B association](https://doi.org/10.1038/s41564-020-0759-0). _Nature Microbiology_, 10.1038/s41564-020-0759-0 (2020).
+
 * A. Leitner, **A.M.J.J. Bonvin**, C.H. Borchers, R.J. Chalkley, . Chamot-Rooke, C.W. Combe, J. Cox, M. Dong, L. Fischer, M. Götze, F.C. Gozzo, A.J.R. Heck, M.R. Hoopmann, L. Huang, Y. Ishihama, A.R. Jones, N. Kalisman, O. Kohlbacher, K. Mechtler, R.L. Moritz, E. Netz, P.r Novak, E. Petrotchenko, A. Sali, R.A. Scheltema, C. Schmidt, D. Schriemer, A. Sinz, F. Sobott, F. Stengel, K. Thalassinos, H. Urlaub, R. Viner, J.A. Vizcaino, M. R. Wilkins, J. Rappsilber. [Towards Increased Reliability, Transparency and Accessibility in Crosslinking Mass Spectrometry](https://arxiv.org/abs/2007.00383) _ArXiv_, 2007.00383 (2020).
 
 * F. Ambrosetti, Zuzana Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](http://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
@@ -24,7 +28,7 @@ image:
 
 * K. Elez, **A.M.J.J. Bonvin**#, Anna Vangone#. [Biological vs crystallographic protein interfaces: An overview of computational approaches for their classification](https://doi.org/10.3390/cryst10020114 ). _Crystals_, *10*, 114 (2020).
 
-* P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangone and **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1002/prot.25869). _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
+* P.I. Koukos, J. Roel-Touris, F. Ambrosetti, C. Geng, J. Schaarschmidt, M.E. Trellet, A.S.J. Melquiond, L.C. Xue, R.V. Honorato, I. Moreira, Z. Kurkcuoglu, A. Vangone and **A.M.J.J. Bonvin**. [An overview of data-driven HADDOCK strategies in CAPRI rounds 38-45](https://doi.org/10.1002/prot.25869). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 1029-1036 (2020).
 
 * F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and **A.M.J.J. Bonvin**. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
 
