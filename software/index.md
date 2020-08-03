@@ -19,7 +19,7 @@ This page provide you links to software and software manuals of the computationa
 
   * [**HADDOCK2.2 software**](/software/haddock2.2/) - Official 2.2 production version
   
-  * [**HADDOCK2.2 web server**](http://haddock.science.uu.nl/services-enmr/HADDOCK) -  Production version (might get discontinued in 2021).
+  * [**HADDOCK2.2 web server**](http://haddock.science.uu.nl/enmr/services/HADDOCK) -  Production version (might get discontinued in 2021).
 
   * [**HADDOCK2.4 software**](/software/haddock2.4/) - New, official 2.4 production version
 
