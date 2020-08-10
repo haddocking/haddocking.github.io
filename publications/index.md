@@ -6,6 +6,8 @@ image:
 ---
 ## 2020
 
+* V. Tozzini , G. Palermo , **A.M.J.J. Bonvin** , M. Dal Peraro and R.E. Amaro. [Editorial: Multiscale Modeling from Macromolecules to Cell: Opportunities and Challenges of Biomolecular Simulations](https://www.frontiersin.org/articles/10.3389/fmolb.2020.00194/full). _Front. Mol. Biosci._ 10.3389/fmolb.2020.00194 (2020).
+
 * B. Jiménez-García, J.M.C. Teixeira, M.E. Trellet, J.P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**. [PDB-Tools Web: A user-friendly interface for the manipulation of PDB files](https://doi.org/10.22541/au.159662521.16200914) _Authorea_ 10.22541/au.159662521.16200914 (2020).
 
 * J.L. Roel-Touris,  B. Jiménez-García and **A.M.J.J. Bonvin**. [Integrative Modeling of Membrane-associated Protein Assemblies](https://doi.org/10.1101/2020.07.20.211987). _BioRxiv_ 10.1101/2020.07.20.211987 (2020).
