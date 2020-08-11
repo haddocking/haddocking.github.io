@@ -9,8 +9,7 @@ image:
 ---
 
 The HADDOCK2.4 server provides a dedicated web interface to run a refinement on a molecular complex (still experimental). This nice feature is accessible
-via the [_Submit File_](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} interface of the HADDOCK2.4 portal and required a [registered account][register_page] with
-Expert level access.
+via the [_Submit File_](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} interface of the HADDOCK2.4 portal and requires a [registered account][register_page] with Expert level access.
 
 As input, only a PDB file for each partner of the complex (for a unique PDB file, you need to specify two different chain
 IDs). You can optionally change the weight of the different energy terms used in the HADDOCK score to assess the
@@ -28,8 +27,8 @@ In the **"Distance Restraints"** section:
 
 In then **"Sampling parameters"** section:
 
-* _Number of structures for rigid body docking (it0)_ → Same as the number of models you want HADDOCK to generate in water
-* _Number of structures for rigid body docking (it1)_ → Same as the number of models you want HADDOCK to generate in water
+* _Number of structures for rigid body docking_ → Same as the number of models you want HADDOCK to generate in water
+* _Number of structures for semi-flexible refinement_ → Same as the number of models you want HADDOCK to generate in water
 * _Sample 180 degrees rotated solutions during rigid body EM_ → **False**
 * _Refine with short molecular dynamics in explicit solvent?_ -> **True**
 

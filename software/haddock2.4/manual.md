@@ -40,6 +40,7 @@ image:
 
 ### Tips & tricks
 * [Advanced model refinement](/software/haddock2.4/tips/advanced_refinement)
+* [Settings for use with bioinformatics predictions](/software/haddock2.4/tips/bioinformatics-prediction-mode)
 
 ### [HADDOCK-related publications](/software/haddock2.4/publications)
 
