@@ -41,9 +41,9 @@ We will provide you links to download the various required software and data.
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2))
-is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the
-power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org)) for structure
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2))
+is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the
+power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
@@ -118,7 +118,7 @@ To obtain HADDOCK2.4 fill the [HADDOCK license form](software/haddock2.4/downloa
 <br>
 <hr>
 ### Downloading CNS
-The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23).
+The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23).
 
 Untar the archive in the `software` directory.
 
@@ -480,7 +480,7 @@ This is the file you should save as `unambig.tbl` and pass to HADDOCK.
 
 Before setting up the docking we need first to generate distance restraint files in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
+be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -492,7 +492,7 @@ The lower limit for the distance is calculated as: distance minus lower-bound co
 and the upper limit as: distance plus upper-bound correction.
 The syntax for the selections can combine information about chainID - `segid` keyword -, residue number - `resid`
 keyword -, atom name - `name` keyword.
-Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/).
+Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/).
 
 We will shortly explain in this section how to generate both ambiguous interaction restraints (AIRs) and specific distance restraints for use in HADDOCK illustrating three scenarios:
 
@@ -500,13 +500,13 @@ We will shortly explain in this section how to generate both ambiguous interacti
 * **Specific distance restraints** (e.g. cross-links detected by MS)
 * **Interface mapping on one side, full surface on the other**
 
-Information about various types of distance restraints in HADDOCK can also be found in our [online manual](http://www.bonvinlab.org/software/haddock2.2/generate_air_help/) pages.
+Information about various types of distance restraints in HADDOCK can also be found in our [online manual](https://www.bonvinlab.org/software/haddock2.2/generate_air_help/) pages.
 
 <br>
 <hr>
 ### Defining AIRs from interface mapping
 
-We will use as example here the NMR chemical shift perturbations from the E2A-HPR complex used in our [HADDOCK 2.4 webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/). The following residues of E2A were identified by [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract){:target="_blank"} as having significant chemical shift perturbations:
+We will use as example here the NMR chemical shift perturbations from the E2A-HPR complex used in our [HADDOCK 2.4 webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/). The following residues of E2A were identified by [Wang *et al*, EMBO J (2000)](https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract){:target="_blank"} as having significant chemical shift perturbations:
 
 <a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a>
 
@@ -589,7 +589,7 @@ The following command will return all residues with a relative SASA for either t
 </a>
 
 Once you have defined your active and passive residues for both molecules, you can proceed with the generation of the AIR restraint file for HADDOCK.
-For this you can either make use of our online [GenTBL](https://milou.science.uu.nl/services/GenTBL/){:target="_blank"} webserver, entering the list of active and passive residues for each molecule, and saving the resulting restraint list to a text file, or use another `haddock-tools` script.
+For this you can either make use of our online [GenTBL](https://alcazar.science.uu.nl/services/GenTBL/){:target="_blank"} webserver, entering the list of active and passive residues for each molecule, and saving the resulting restraint list to a text file, or use another `haddock-tools` script.
 
 To use our `haddock-tools` `active-passive-to-ambig.py` script you need to create for each molecule a file containing two lines:
 * The first line corresponds to the list of active residues (numbers separated by spaces)
@@ -631,7 +631,7 @@ No output means that your TBL file is valid. You can also find TBL file examples
 <hr>
 ### Defining specific distance restraints
 
-You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our [HADDOCK cross-links tutorial](/education/HADDOCK24/HADDOCK24-Xlinks) obtained for the complex between PRE5 (UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250){:target="_blank"}) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97){:target="_blank"}). From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111){:target="_blank"}), which we will define as CA-CA distance restraints ([restraints.txt](/education/HADDOCK24/HADDOCK24-local-tutorial/restraints.txt){:target="_blank"}):
+You can define in HADDOCK unambiguous distance restraints between specific pairs of atoms to define restraints coming for example from MS cross-linking experiments or DEER experiments. As an illustration we will use cross-links from our [HADDOCK cross-links tutorial](/education/HADDOCK24/HADDOCK24-Xlinks) obtained for the complex between PRE5 (UniProtKB: [O14250](https://www.uniprot.org/uniprot/O14250){:target="_blank"}) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97){:target="_blank"}). From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL) ([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111){:target="_blank"}), which we will define as CA-CA distance restraints ([restraints.txt](/education/HADDOCK24/HADDOCK24-local-tutorial/restraints.txt){:target="_blank"}):
 
 <pre style="background-color:#DAE4E7">
 # ADH crosslinks
@@ -646,7 +646,7 @@ A 55 CA B 179 CA 0 26
 A 54 CA B 179 CA 0 26
 </pre>
 
-This is the format used by our [DisVis portal](https://haddock.science.uu.nl/services/DISVIS) to represent the cross-links. Each cross-link definition consists of eight fields:
+This is the format used by our [DisVis portal](https://wenmr.science.uu.nl/disvis) to represent the cross-links. Each cross-link definition consists of eight fields:
 
 * chainID of the 1st molecule
 * residue number
@@ -688,7 +688,7 @@ and the upper limit as: distance plus upper-bound correction.
 <hr>
 ### Defining AIRs from interface mapping on one side, full surface on the other
 
-To illustrate such a case, we will define restraints between the CDR loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](http://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
+To illustrate such a case, we will define restraints between the CDR loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](https://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
 <pre style="background-color:#DAE4E7">
 >paratome_8633_pdbChain_H (heavy chain)
 QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQV
@@ -899,7 +899,7 @@ Edit `run.cns` using your favorite editor. Take the time to look a bit at its co
 
 #### Defining the protonation state of Histidines
 
-By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use [PROPKA](http://www.propka.org). The HADDOCK webservers defines the protonation state of Histidine using [MolProbity][link-molprobity]{:target="_blank"}. This is what we are going to demonstrate here. For this we will make use of the `reduce` executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based.
+By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use [PROPKA](https://www.propka.org). The HADDOCK webservers defines the protonation state of Histidine using [MolProbity][link-molprobity]{:target="_blank"}. This is what we are going to demonstrate here. For this we will make use of the `reduce` executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based.
 
 Our `haddock-tools` contain a script that will run `reduce` and extract the protonation state information (`reduce` must be in your path for the script to work):
 
@@ -1032,7 +1032,7 @@ You will see text appearing indicating the progression of your run. It is a good
 <hr>
 ## Analysing the docking results
 
-HADDOCK will perform various analysis of the resulting models, both after `it1` and `water`. For details see the online [HADDOCK manual](http://www.bonvinlab.org/software/haddock2.2/analysis/).
+HADDOCK will perform various analysis of the resulting models, both after `it1` and `water`. For details see the online [HADDOCK manual](https://www.bonvinlab.org/software/haddock2.2/analysis/).
 While the web server will present you with cluster statistics, in the local version you will need to perform this analysis manually.
 
 There are various steps that can be performed:
@@ -1143,7 +1143,7 @@ In order to extract stats from the various PDB files following the HADDOCK ranki
 </a>
 
 This generates a variety of data files, the most interesting one being `structures_haddock-sorted.stat` which lists the various terms following the HADDOCK sorting.
-For more details refer to the [online manual](http://www.bonvinlab.org/software/haddock2.2/analysis/#anastruc).
+For more details refer to the [online manual](https://www.bonvinlab.org/software/haddock2.2/analysis/#anastruc).
 
 
 <pre style="background-color:#DAE4E7">
@@ -1382,20 +1382,19 @@ This of course does not mean that that model is the correct one per se. Up to yo
 </details>
 <br>
 If you have any questions or suggestions, feel free to contact us via email, or post your question to
-our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
-[<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
+our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
+[<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
 
 [link-cns]:CNS_manual.pdf "CNS online"
-[link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
-[link-manual]: http://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
-[link-forum]: http://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
-[link-naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
-[link-freesasa]: http://freesasa.github.io "FreeSASA"
-[link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
-[link-pdbtools]: http://github.com/haddocking/pdb-tools "PDB-Tools"
-[link-haddocktools]: http://github.com/haddocking/haddock-tools "HADDOCK-Tools"
+[link]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
+[link-manual]: https://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
+[link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
+[link-naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
+[link-freesasa]: https://freesasa.github.io "FreeSASA"
+[link-profit]: https://www.bioinf.org.uk/software/profit/index.html "ProFit"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
+[link-pdbtools]: https://github.com/haddocking/pdb-tools "PDB-Tools"
+[link-haddocktools]: https://github.com/haddocking/haddock-tools "HADDOCK-Tools"
