@@ -5,13 +5,18 @@ tags: [HADDOCK, docking, biomolecular complexes, interactions, binding affinity,
 image:
   feature: pages/banner_education-thin.jpg
 ---
-## Dissecting and predicting biomolecular complexes
+
+* table of contents
+{:toc}
+
+**Dissecting and predicting biomolecular complexes**
 
 A structural bioinformatics and modelling project from the Computational Structural Biology Research group.
 
 Contact person: 	Prof. Dr. A.M.J.J. Bonvin (a.m.j.j.bonvin@uu.nl)
 			Bloembergen NMR building, room 1.22,  phone: 030-2533859
 
+<hr>
 ### Introduction
 The fact that an entire genome can nowadays be sequenced for less than $10000 led to a boom in genetic information, which in turn attracted particular attention to biomolecular interactions. It is estimated that a human cell is regulated by over 300000 protein interactions, but only a small fraction of these have been structurally characterized by experimental methods such as x-ray crystallography or NMR. Other biochemical and biophysical methods can, however, obtain partial structural information on these interactions, while bioinformatics analysis of the can also contribute important evolutionary data. Combining these predictions and/or partial experimental information with methods for structure prediction of interactions – docking – allows the generation of atomic structural models that complement the experimental techniques.
 
@@ -31,7 +36,7 @@ Do you want to get a feeling of our HADDOCK portal? Check the live demo given at
 </details>
 <br>
 
-
+<hr>
 ### Possible projects
 
 We are looking for motivated students to help us further develop HADDOCK. Examples of possible projects are:
