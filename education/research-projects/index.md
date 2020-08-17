@@ -18,16 +18,16 @@ Contact person: 	Prof. Dr. A.M.J.J. Bonvin (a.m.j.j.bonvin@uu.nl)
 
 <hr>
 ### Introduction
-The fact that an entire genome can nowadays be sequenced for less than $10000 led to a boom in genetic information, which in turn attracted particular attention to biomolecular interactions. It is estimated that a human cell is regulated by over 300000 protein interactions, but only a small fraction of these have been structurally characterized by experimental methods such as x-ray crystallography or NMR. Other biochemical and biophysical methods can, however, obtain partial structural information on these interactions, while bioinformatics analysis of the can also contribute important evolutionary data. Combining these predictions and/or partial experimental information with methods for structure prediction of interactions – docking – allows the generation of atomic structural models that complement the experimental techniques.
+The fact that an entire genome can nowadays be sequenced for less than $10,000 led to a boom in genetic information, which in turn attracted particular attention to biomolecular interactions. It is estimated that a human cell is regulated by over 300,000 protein interactions, but only a small fraction of these have been structurally characterized by experimental methods such as X-ray crystallography or Nuclear Magnetic Resonance (NMR) spectroscopy. Other biochemical and biophysical methods can, however, obtain partial structural information on these interactions, while bioinformatics analysis of the can also contribute important evolutionary data. Combining these predictions and/or partial experimental information with methods for structure prediction of interactions – docking – allows the generation of atomic structural models that complement the experimental techniques.
 
-All docking methods share three common elements: first, three-dimensional (3D) structural models of the individual components must be available; second, they must explore the conformational landscape of the interaction and generate candidate structural models of the complex, what is called sampling; finally, they must assess the generated models and select those that are more likely to be representatives of the native complex, what is called scoring.  We have developed for this purpose an information-driven docking approach called HADDOCK  ([https://www.bonvinlab.org](https://www.bonvinlab.org/software/haddock2.4)). HADDOCK is also available as a [webserver](https://bianca.science.uu.nl), together with several other services operated by our group. The server is used by more than 18'500 users [worldwide](https://bianca.science.uu.nl/user_map). It currently one of the best docking method in the world as assessed in a blind international competition. HADDOCK is unique because it can use external information to bias the calculations towards the ‘right’ answer. Nevertheless, there are still many challenges open related to describing larger and more complex systems, improving our protocols to handle different types of molecules, improving our scoring functions and assessing the impact of a variety of data and energy functions on the prediction performance.
+All docking methods share three common elements: first, three-dimensional (3D) structural models of the individual components must be available; second, they must explore the conformational landscape of the interaction and generate candidate structural models of the complex, what is called sampling; finally, they must assess the generated models and select those that are more likely to be representatives of the native complex, what is called scoring.  We have developed for this purpose an information-driven docking approach called HADDOCK  ([https://www.bonvinlab.org](https://www.bonvinlab.org/software/haddock2.4)). HADDOCK is also available as a [webserver](https://bianca.science.uu.nl), together with several other services operated by our group. The server is used by more than 18,500 users [worldwide](https://bianca.science.uu.nl/user_map). It currently is one of the best docking methods in the world as assessed in a blind international competition. HADDOCK is unique because it can use external information to bias the sampling towards the ‘right’ answer. Nevertheless, there are still many challenges related to describing larger and more complex systems, improving our protocols to handle different types of molecules, improving our scoring functions and assessing the impact of a variety of data and energy functions on the prediction performance.
 
 <figure align="center">
     <img src="/images/haddock-overview.png">
 </figure>
 
 
-Do you want to get a feeling of our HADDOCK portal? Check the live demo given at the [EOSC-Hub week 2020 conference](https://www.eosc-hub.eu/events/eosc-hub-week-2020-goes-virtual) shows in particular how to setup a refinement run in HADDOCK2.4 to assess the impact of a mutation, using the interaction between SARS-CoV2 RBD domain and a peptide extracted from the ACE2 receptor as an example.
+Do you want to get a feeling of our HADDOCK portal? Check the live demo given at the [EOSC-Hub week 2020 conference](https://www.eosc-hub.eu/events/eosc-hub-week-2020-goes-virtual), where we show in particular how to setup a refinement run in HADDOCK2.4 to assess the impact of a mutation, using the interaction between SARS-CoV2 RBD domain and a peptide extracted from the ACE2 receptor as an example.
 
 <details>
   <summary>View demo
@@ -57,8 +57,8 @@ You will work independently - although with guidance - on your own project, whic
 * Molecular modelling / integrative modelling
 * Molecular graphics
 * Bioinformatics
-* Linux and scripting 
-* Programming (e.g. python)
+* Linux and scripting
+* Programming (e.g. Python)
 * Data analysis, machine learning
 * High performance/throughput computing
 * General biomolecular structural biology knowledge
