@@ -37,9 +37,9 @@ This tutorial consists of the following sections:
 * [Setting up a new docking run targeting the identified binding pocket](#setting-up-a-new-docking-run-targeting-the-identified-binding-pocket)
 * [Analysis of the targeted docking results](#analysis-of-the-targeted-docking-results)
 
-In the first part of this tutorial you will learn to clean and manipulate PDB files in preparation for docking. Then we will setup an ab-initio docking run in HADDOCK using surface restraints randomly selected from all accessible residues in order to sample the entire surface of the receptor (the so-called *[surface contact restraints](http://www.bonvinlab.org/software/haddock2.2/run/#disre)* in HADDOCK). A statistical analysis of the docking models in terms of most contacted residues will then be performed to identify and visualize putative binding sites. Finally, the results from this statistical analysis will be used to setup a protein-ligand docking run targeting the predicted binding sites.
+In the first part of this tutorial you will learn to clean and manipulate PDB files in preparation for docking. Then we will setup an ab-initio docking run in HADDOCK using surface restraints randomly selected from all accessible residues in order to sample the entire surface of the receptor (the so-called *[surface contact restraints](https://www.bonvinlab.org/software/haddock2.2/run/#disre)* in HADDOCK). A statistical analysis of the docking models in terms of most contacted residues will then be performed to identify and visualize putative binding sites. Finally, the results from this statistical analysis will be used to setup a protein-ligand docking run targeting the predicted binding sites.
 
-For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2).
+For this tutorial we will make use of the H[ADDOCK2.2 webserver](https://alcazar.science.uu.nl/services/HADDOCK2.2).
 A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
@@ -47,8 +47,8 @@ A description of our web server can be found in the following publications:
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).  Download an open version <a href="https://dspace.library.uu.nl/bitstream/handle/1874/202588/The_HADDOCK_web_server_for_data.pdf?sequence=4&isAllowed=y">here</a>.
 
 
 Throughout the tutorial, coloured text will be used to refer to questions or 
@@ -125,7 +125,7 @@ Or to download two full docking runs, one for the random sampling of the surface
 Let us first inspect the various files provided with this tutorial. 
 You will see three directories and one file:
 
-* **HADDOCK-runfiles**: this directory contains the reference HADDOCK parameter files for various docking runs described in this tutorial. These can be used to reproduce the docking using the file [upload interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK server.
+* **HADDOCK-runfiles**: this directory contains the reference HADDOCK parameter files for various docking runs described in this tutorial. These can be used to reproduce the docking using the file [upload interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK server.
 
 * **ana_scripts**: this directory contains various analysis scripts to analyse the results of the docking, including the statistical contact analysis.
 
@@ -139,7 +139,7 @@ You will see three directories and one file:
 <hr>
 ## Preparing PDB files of the receptor for docking
 
-One requirement of HADDOCK is that there should not be any overlap in residue numbering. The structure of the apo form of our target receptor, the multidrug efflux pump [AcrB](http://www.uniprot.org/uniprot/P31224) from Escherichia coli, is available from the Protein Data Bank under PDB ID [2J8S](http://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S). You can download it directly from the PDB using the ```pdb_fetch.py``` script from our ```pdb-tools``` utilities:
+One requirement of HADDOCK is that there should not be any overlap in residue numbering. The structure of the apo form of our target receptor, the multidrug efflux pump [AcrB](https://www.uniprot.org/uniprot/P31224) from Escherichia coli, is available from the Protein Data Bank under PDB ID [2J8S](https://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S). You can download it directly from the PDB using the ```pdb_fetch.py``` script from our ```pdb-tools``` utilities:
 
 <a class="prompt prompt-cmd">
   pdb_fetch.py 2J8S >2J8S.pdb
@@ -166,7 +166,7 @@ Take some time to inspect the 3D structure. Each chain should have a different c
 How many chains can you identify?
 </a>
 
-If you look at the desciption of this structure on the [PDB website](http://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S), it states *"DRUG EXPORT PATHWAY OF MULTIDRUG EXPORTER ACRB REVEALED BY DARPIN INHIBITORS"*. 
+If you look at the desciption of this structure on the [PDB website](https://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S), it states *"DRUG EXPORT PATHWAY OF MULTIDRUG EXPORTER ACRB REVEALED BY DARPIN INHIBITORS"*. 
 You should be able to identify the two darpins (they have chainIDs D and E in the structure). Let's remove them in pymol:
 
 <a class="prompt prompt-pymol">
@@ -216,10 +216,10 @@ This will report formatting issues.
 <hr>
 ## Preparing PDB files of the ligands for docking
 
-Several small molecules are known to bind to this receptor, among which [rifampicin](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP) and [minocycline](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/MIY). A crystal structure of the complex with both ligands is also available from the PDB website ([PBD entry 3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod)). Those ligands are binding to [two different sites](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/ligands) on the receptor. 
+Several small molecules are known to bind to this receptor, among which [rifampicin](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP) and [minocycline](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/MIY). A crystal structure of the complex with both ligands is also available from the PDB website ([PBD entry 3AOD](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod)). Those ligands are binding to [two different sites](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod/ligands) on the receptor. 
 
 For docking we need coordinates of those ligands in PDB format with line starting with HETATM.
-After downloading the corresponding PDB entry [3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod) extract the ligands from it with the following commands:
+After downloading the corresponding PDB entry [3AOD](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod) extract the ligands from it with the following commands:
 
 For rifampicin (called RFP in the PDB file):
 
@@ -241,10 +241,10 @@ For minocycline (called MIY in the PDB file):
 ## Ab-initio surface-based docking with HADDOCK
 
 We will launch here a docking run using the apo form of the receptor (the renumbered PDB we just prepared) and rifampicin as potential ligand.
-For this we will make use of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
+For this we will make use of the [guru interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
+https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
 </a>
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
@@ -369,7 +369,7 @@ number of MD steps during first rigid body cooling stage -> 0
 <hr>
 ## First analysis of the results
 
-Once your run has completed (this can take quite some time considering the size of the receptor) you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html). 
+Once your run has completed (this can take quite some time considering the size of the receptor) you will be presented with a result page showing the cluster statistics and some graphical representation of the data. Such an example output page can be found [here](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/E2A-HPr-demo/index.html). 
 
 Instead, you can also use the precalculated run. Simply unpack the archive (see the [Setup](#setup) section for downloading the archives), go into the directory and open with your favorite web browser the index.html file to view the results page.
 
@@ -535,7 +535,7 @@ With this knowledgle at hand, try to identify in which chain we find a binding p
 The original paper by [Sennhauser *et al*](https://doi.org/doi:10.1371/journal.pbio.0050007) indicates that the three chains are locked in different conformations.
 They report in particular that chain B has the largest channel opening in their structure:
 
-*"The three AcrB subunits are bound in three different conformations, revealing three distinct channels ([**Figure 3**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). The width of these channels is sufficient for the passage of typical AcrB substrates. In subunit A, a channel is observed, extending from the external depression through the large periplasmic domain reaching almost the central funnel at the top of the protein ([**Figure 4A**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). Here the side chains of residues Gln124, Gln125, and Tyr758 form a gate, closing the channel and therefore preventing direct access to the central funnel. ... A similar channel, although a little wider, is present in subunit B ([**Figure 4B**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). In addition, the channel is open not only to the periplasm but also to the membrane bilayer at the periphery of the TM domain. In subunit C, the channel entrances are closed due to movements of PC2 and PN1 ([**Figure 4C**](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004))."*
+*"The three AcrB subunits are bound in three different conformations, revealing three distinct channels ([**Figure 3**](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). The width of these channels is sufficient for the passage of typical AcrB substrates. In subunit A, a channel is observed, extending from the external depression through the large periplasmic domain reaching almost the central funnel at the top of the protein ([**Figure 4A**](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). Here the side chains of residues Gln124, Gln125, and Tyr758 form a gate, closing the channel and therefore preventing direct access to the central funnel. ... A similar channel, although a little wider, is present in subunit B ([**Figure 4B**](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004)). In addition, the channel is open not only to the periplasm but also to the membrane bilayer at the periphery of the TM domain. In subunit C, the channel entrances are closed due to movements of PC2 and PN1 ([**Figure 4C**](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g004))."*
 
 <a class="prompt prompt-question">
 To which one of the three channels/subunit do we observe preferential contacts on docking models?.
@@ -649,7 +649,7 @@ show mesh<br>
 spectrum b, blue_white_red, minimum=1, maximum=100<br>
 </a>
 
-You should now be looking only at highly contacted regions of chain B. There is a clear binding pocket visible in the chainB corresponding to the entrance of the channel as described by [Sennhauser *et al*](https://doi.org/doi:10.1371/journal.pbio.0050007) (see [Figure 3](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). This is the left view in the figure below. A second highly contacted region seems to be in the inside of the trimer (right picture below).
+You should now be looking only at highly contacted regions of chain B. There is a clear binding pocket visible in the chainB corresponding to the entrance of the channel as described by [Sennhauser *et al*](https://doi.org/doi:10.1371/journal.pbio.0050007) (see [Figure 3](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0050007#pbio-0050007-g003)). This is the left view in the figure below. A second highly contacted region seems to be in the inside of the trimer (right picture below).
 
 <figure align="center">
     <img src="/education/HADDOCK/HADDOCK-binding-sites/AcrB-rifampicin-contacts.png">
@@ -686,7 +686,7 @@ This will ensure that the ligand is properly drawn inside the binding pocket.
 2. For the subsequent flexible refinement stages, we define the binding pocket only as passive and the ligand as active. 
 This ensures that the ligand can explore the binding pocket.
 
-In order to create those two restraint files, use the HADDOCK server tool to generate AIR restraints: [http://haddock.science.uu.nl/services/GenTBL/](http://haddock.science.uu.nl/services/GenTBL/) (unfold the *Residue selection* menu):
+In order to create those two restraint files, use the HADDOCK server tool to generate AIR restraints: [https://alcazar.science.uu.nl/services/GenTBL/](https://alcazar.science.uu.nl/services/GenTBL/) (unfold the *Residue selection* menu):
 
 <a class="prompt prompt-info">
 Selection 1: Active residues (directly involved in the interaction) -> enter here the list of residues defining the binding site (see above)
@@ -725,15 +725,15 @@ Compare the two generated files: what are the differences? How many restraints a
 **Note:** A description of the restraints format can be found in Box 4 of our Nature Protocol 2010 server paper:
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).  Download an open version <a href="https://dspace.library.uu.nl/bitstream/handle/1874/202588/The_HADDOCK_web_server_for_data.pdf?sequence=4&isAllowed=y">here</a>.
 
 
 
-We have now all the required information to setup our targeted docking run. We will again make use of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
+We have now all the required information to setup our targeted docking run. We will again make use of the [guru interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html) of the HADDOCK web server, which does require guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level):
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
+https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
 </a>
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
@@ -866,7 +866,7 @@ What is the score difference between the various clusters? Is the top one signif
 Visualize and compare the various clusters (use all what you have learned about Pymol in this tutorial to visualize the binding site).
 </a>
 
-You can also compare the orientation of the ligand in our models with the orientation of the same ligand in the crystal structure with rifampicin bound in chain C (remember that chain C of that structure corresponds to chain A in the nomemclature of Sennhauser et al.) ([3AOD](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP)), corresponding to a channel slightly narrower than for chain A (our current chain B in Sennhauser). Or simply use the renumbered 3AOD structure provided in the ```pdbs``` directory called ```3AOD-renumbered-BCA.pdb``` to compare the structures in Pymol. In this renumbered structure, we changed the chain IDs such as that the chain binding rifampicin corresponds to chain B of 2J8S which we targeted.
+You can also compare the orientation of the ligand in our models with the orientation of the same ligand in the crystal structure with rifampicin bound in chain C (remember that chain C of that structure corresponds to chain A in the nomemclature of Sennhauser et al.) ([3AOD](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod/bound/RFP)), corresponding to a channel slightly narrower than for chain A (our current chain B in Sennhauser). Or simply use the renumbered 3AOD structure provided in the ```pdbs``` directory called ```3AOD-renumbered-BCA.pdb``` to compare the structures in Pymol. In this renumbered structure, we changed the chain IDs such as that the chain binding rifampicin corresponds to chain B of 2J8S which we targeted.
 
 <a class="prompt prompt-cmd">
 pymol cluster*_1.pdb $WDIR/../pdbs/3AOD-renumbered-BCA.pdb
@@ -888,15 +888,15 @@ color red, sele<BR>
 </a>
 
 
-**Note:** You should realize that the crystal structure has a limited resolution (3.3Å) and its quality is also limited (see the "[Experiments and Validation](http://www.ebi.ac.uk/pdbe/entry/pdb/3aod/experiment)" page provided by the PDBe for this structure). In general for modelling purposes, it might also be worth considering the recalculated structure from [PDB_REDO](http://www.cmbi.ru.nl/pdb_redo/), the database of updated and optimized X-ray structure models.
+**Note:** You should realize that the crystal structure has a limited resolution (3.3Å) and its quality is also limited (see the "[Experiments and Validation](https://www.ebi.ac.uk/pdbe/entry/pdb/3aod/experiment)" page provided by the PDBe for this structure). In general for modelling purposes, it might also be worth considering the recalculated structure from [PDB_REDO](https://www.cmbi.ru.nl/pdb_redo/), the database of updated and optimized X-ray structure models.
 
 <hr>
 ## Congratulations!
 
 You have completed this tutorial. If you have any questions or 
 suggestions, feel free to contact us via email or by submitting an issue in the 
-appropriate [Github repository][link-data] or asking a question through our [support center](http://ask.bioexcel.eu).
+appropriate [Github repository][link-data] or asking a question through our [support center](https://ask.bioexcel.eu).
 
-[link-pymol]: http://www.pymol.org/ "Pymol"
+[link-pymol]: https://www.pymol.org/ "Pymol"
 [link-data]: https://github.com/haddocking/HADDOCK-binding-sites-tutorial "HADDOCK binding site tutorial data"
 [link-pdb-tools]: https://github.com/haddocking/pdb-tools "PDB tools"
