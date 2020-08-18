@@ -8,11 +8,11 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-The previous version of the HADDOCK server (2.2) had a dedicated interface with custom settings for use with bioinformatics predictions. In order to replicate those settings in the HADDOCK2.4 [submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} changes manually the following parameters (needs Expert access level):
+The previous version of the HADDOCK server (2.2) had a dedicated interface with custom settings for use with bioinformatics predictions. In HADDOCK2.4 [submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} this is presented as an option in Step 2 (needs Expert access level). When selecting this option the following changes will automatically be applied:
 
 In the **"Distance Restraints"** section:
 
-* _Number of partitions for random exclusion_ → **1.14285714286**
+* _Number of partitions for random exclusion_ → **1.1428**
 
 In the **"Sampling parameters"** section:
 
