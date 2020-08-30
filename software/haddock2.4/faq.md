@@ -161,7 +161,7 @@ Then, in the run.cns file, we define our "queues" like:
 etc - one "queue" for each compute node to be included in this haddock run.  
 
 If rsh is blocked, you can use instead ssh, but for this to work you need to set up ssh such as no password is needed. See for that:  
-[http://xeny.net/Passwordless_S_S_H](http://xeny.net/Passwordless_S_S_H)  
+[https://xeny.net/Passwordless_S_S_H](https://xeny.net/Passwordless_S_S_H)  
 (Thanks to Andrea Spitaleri)  
 
 
@@ -236,7 +236,7 @@ jobconcat["2"] = 1
 
 It's possible to dock small ligands using HADDOCK but for that topology and parameter files for the ligand should be provided in CNS format. Several sources exist to find such files:
 
-*   the **PRODGR** server maintained by Daan van Aalten at Dundee University: [http://prodrg2.dyndns.org](http://prodrg2.dyndns.org)  
+*   the **PRODGR** server maintained by Daan van Aalten at Dundee University: [https://prodrg2.dyndns.org](https://prodrg2.dyndns.org)  
     This server allows you to draw your molecule or paste coordinates and will return topologies and parameter files in various format, including CNS. You should turn on the electrostatic to obtain partial charges. Save the resulting PDB file and the corresponding CNS parameter and topology files to use in HADDOCK.  
 
     **Important:** The generated parameter file contains a CNS NBONds statement which should be removed prior to use in HADDOCK. Look in the parameter file for:  
@@ -252,7 +252,7 @@ It's possible to dock small ligands using HADDOCK but for that topology and para
 
     and remove or comment it out (by adding ! before each line).  
 
-*   the Automated Topology Builder (ATB) and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [http://compbio.biosci.uq.edu.au/atb](http://compbio.biosci.uq.edu.au/atb)  
+*   the Automated Topology Builder (ATB) and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://compbio.biosci.uq.edu.au/atb](https://compbio.biosci.uq.edu.au/atb)  
     **Note**: we did not yet test those parameters in HADDOCK.
 
 

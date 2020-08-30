@@ -32,14 +32,14 @@ During this tutorial, we pretend that the structure of the Pol 3 core (14 subuni
 We will be making use of i) our [DISVIS server](https://bianca.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the new coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
 As an alternative strategy, we will use our [PowerFIt server][link-powerfit-web] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as starting point for the modelling of the remaining components.
 
-A description of our the previous version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
+A description of our the previous version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
 _Nature Protocols_, *5*, 883-897 (2010).
 
 Throughout the tutorial, colored text will be used to refer to questions or
@@ -68,8 +68,8 @@ Also, if not provided with special workshop credentials to use the HADDOCK porta
 <hr><hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr){:target="_blank"}) that harness the
-power of CNS (Crystallography and NMR System, [http://cns-online.org](http://cns-online.org){:target="_blank"}) for structure
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the
+power of CNS (Crystallography and NMR System, [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
@@ -416,7 +416,7 @@ B322(CB)-F179(CB)
 
 Before setting up the docking, we need to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as its computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocols](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
+be found in our [Nature Protocols](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -587,7 +587,7 @@ Segment ID to use during docking -> F
 ===> _Make sure to change the Segmend ID to F otherwise the restraints for C31 won't be used!_ <===
 
 
-* **Step 8:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 8:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 #### Definition of restraints
@@ -871,7 +871,7 @@ If not, which ones are not satistified?
 
 __Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
 surface of the molecule which might results in a longer effective distance. A proper comparison would require
-calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](http://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
+calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
 
 #### Analysing the cross-links defining the position of the C34_wHTH1 domain
 
@@ -1119,7 +1119,7 @@ It is open-source and available for download from our [Github repository][link-p
 To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
 The server makes use of either local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
-[EGI](http://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
+[EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software, based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
 of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
@@ -1131,7 +1131,7 @@ For more details about PowerFit and its usage we refer to a related [online tuto
 
 To run PowerFit, go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT" target="_blank">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
 
 On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
@@ -1162,8 +1162,8 @@ using `Chimera` with its `Volume -> Fit in Map` tool (see instructions above).
 Repeat the above procedure, but this time for the C82 domain. 
 Pre-calculated results are available in the `cryo-EM/powerfit-PolIII-C82` directory and also online:
 
-* Pol III core domain [powerfit results](https://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/example/4){:target="_blank"}
-* Pol III C82 domain [powerfit results](https://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/example/5){:target="_blank"}
+* Pol III core domain [powerfit results](https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/example/4){:target="_blank"}
+* Pol III C82 domain [powerfit results](https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/example/5){:target="_blank"}
 
 
 <hr>
@@ -1302,7 +1302,7 @@ Segment ID to use during docking -> B
 </a>
 
 
-* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2.
 
@@ -1607,25 +1607,25 @@ Repeat the docking and check if this affects the position of the various domains
 ## Congratulations!
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to
-our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
-[<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
+our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
+[<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
-[link-cns]: http://cns-online.org "CNS online"
+[link-cns]: https://cns-online.org "CNS online"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
 [link-disvis-web]: hhttps://bianca.science.uu.nl/disvis "DisVis web server"
 [link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
 [link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
-[link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
-[link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
+[link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
+[link-haddock-expert]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
 [link-haddock-register]: https://bianca.science.uu.nl/auth/register/"HADDOCK web server registration"
-[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
+[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
-[link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
+[link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
 [link-powerfit-register]: https://bianca.science.uu.nl/auth/register  "PowerFit registration"
-[link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
-[link-powerfit-help]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
-[link-xwalk]: http://www.xwalk.org
+[link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
+[link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
+[link-xwalk]: https://www.xwalk.org

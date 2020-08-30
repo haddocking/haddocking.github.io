@@ -38,6 +38,6 @@ solvated-docking         : solvated protein-protein docking (barnase-barstar) us
 
 A step by step description of the basic protein-protein docking example (E2A-HPR) can be found [here](/education/HADDOCK24/HADDOCK24-local-tutorial).  
 
-Refer also to the [Bonvin lab website](http://www.bonvinlab.org/education/HADDOCK24/) that contains several HADDOCK-related tutorials and material.
+Refer also to the [Bonvin lab website](https://www.bonvinlab.org/education/HADDOCK24/) that contains several HADDOCK-related tutorials and material.
 
 * * *

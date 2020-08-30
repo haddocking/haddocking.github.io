@@ -22,7 +22,7 @@ When using cryo-EM data, however, HADDOCK needs to first convert the information
 
 ### Extracting centroids information
 
-HADDOCK relies on the concept of centroids to guide the initial docking and only uses the cryo-EM map once the molecules have been docked using the centroid restraints. The centroids define the most likely position of the center of mass of a molecule into the density. Their positions (x,y,z coordinates) must be defined [run.cns](/software/haddock2.4/run){:target="_blank"}. Those positions can be for example obtained using our [PowerFit webserver](https://haddock.science.uu.nlservices/POWERFIT){:target="_blank"}.
+HADDOCK relies on the concept of centroids to guide the initial docking and only uses the cryo-EM map once the molecules have been docked using the centroid restraints. The centroids define the most likely position of the center of mass of a molecule into the density. Their positions (x,y,z coordinates) must be defined [run.cns](/software/haddock2.4/run){:target="_blank"}. Those positions can be for example obtained using our [PowerFit webserver](https://alcazar.science.uu.nl/services/POWERFIT){:target="_blank"}.
 
 PowerFit fits atomic structures into density maps by performing a full-exhaustive 6-dimensional cross-correlation search between the atomic structure and the density. It takes as input an atomic structure in PDB- or mmCIF-format and a cryo-EM density with its resolution, and outputs positions and rotations of the atomic structure corresponding to high correlation values and the top 10 best scoring rigid poses. PowerFit uses the local cross-correlation function as its base score. The score is by default enhanced with an optional Laplace pre-filter, and a core-weighted version that minimizes the effect overlapping densities from neighboring subunits.
 From the fitted structure one can extract the 3D coordinates of the centroids (their center of mass position into the map), an information required by HADDOCK-EM. This information is provided as one of PowerFit's output.
@@ -98,7 +98,7 @@ For the meaning of the other terms refer to the [scoring](/software/haddock2.4/s
 
 A detailed protocol to use cryo-EM restraint with the HADDOCK2.4 web portal is described in:
 
-* M.E. Trellet, G. van Zundert and A.M.J.J. Bonvin. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11){:target="_blank"}. In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](http://arxiv.org/abs/2005.00435){:target="_blank"}.
+* M.E. Trellet, G. van Zundert and A.M.J.J. Bonvin. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11){:target="_blank"}. In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](https://arxiv.org/abs/2005.00435){:target="_blank"}.
 
 The implementation and use of cryo-EM restraints in HADDOCK is described in:
 

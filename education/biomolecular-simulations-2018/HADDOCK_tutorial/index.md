@@ -13,15 +13,15 @@ This tutorial consists of the following sections:
 
 <hr>
 ## Introduction
-This use-case is a first attempt to blur different software and take on the challenge of "covalent docking", an important part of pharceutical chemistry that has been barely touched upon by the integrative modelling community. For this tutorial we will make use of the H[ADDOCK2.2 webserver](http://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"} to predict the three dimensional structures of a covalently bound ligand to cathepsin proteins. A description of our web server can be found in the following publications:
+This use-case is a first attempt to blur different software and take on the challenge of "covalent docking", an important part of pharceutical chemistry that has been barely touched upon by the integrative modelling community. For this tutorial we will make use of the H[ADDOCK2.2 webserver](https://alcazar.science.uu.nl/services/HADDOCK2.2){:target="_blank"} to predict the three dimensional structures of a covalently bound ligand to cathepsin proteins. A description of our web server can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
+_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 Throughout the tutorial, coloured text will be used to refer to questions or 
 instructions and/or PyMOL commands.
@@ -39,13 +39,13 @@ In order to run this tutorial you will need to have the following software insta
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this our [registration page](https://bianca.science.uu.nl/auth/register/){:target="_blank"}.
 
-> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}
+> If you have questions, feedbacks or recommendations, either during the course of after, please post them on the dedicated topic we created on our [interest group forum](https://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}
 
 
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2/haddock.html](http://www.bonvinlab.org/software/haddock2.2/haddock.html){:target="_blank"}) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr){:target="_blank"}) that harness the power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. 
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. 
 
 A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall under two categories: active and passive. Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking. 
 
@@ -85,7 +85,7 @@ We will use HADDOCK to predict the covalent binding of a small ligand on a prote
 **Figure 1**: *Purine nitrile derived inhibitor cocrystallized in the cathepsin K active site. PDB code is 1u9v.*
 
 
-One important feature of this inhibitor (PDBeChem code: [IHE](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"}) is that it can bind three highly homologous cathepsin proteins, with a remarkable affinity:
+One important feature of this inhibitor (PDBeChem code: [IHE](https://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"}) is that it can bind three highly homologous cathepsin proteins, with a remarkable affinity:
 
  * **Cat K**    6 nM IC50
  * **Cat L**   89 nM IC50
@@ -192,12 +192,12 @@ For this in the PyMOL menu on top select:
 <hr>
 ## Inspecting and preparing the ligand for docking
 
-For the ligand, some programs like [PRODRG](http://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg){:target="_blank"} allow you to generate a 
+For the ligand, some programs like [PRODRG](https://davapc1.bioch.dundee.ac.uk/cgi-bin/prodrg){:target="_blank"} allow you to generate a 
 structure for a chemical directly from a simple sketch in a text editor. However, whenever possible, we advise you to 
 use SMILES or MOL files for the ligand when the atomic coordinates are not available. To illustrate the difficulty of 
 ligand modelling, there is no strict consensus in the algorithms that generate the SMILES strings and each of them 
 choose only one of the main possible strings. For instance, open the PDBeChem page for 
-our [cathepsin K inhibitor](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"} and look for the SMILES 
+our [cathepsin K inhibitor](https://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"} and look for the SMILES 
 provided (ACDLabs, CACTVS, OpenEye).
 
 <a class="prompt prompt-question"> What can you say about the consistency between the different SMILES sequences? 
@@ -206,7 +206,7 @@ Can you recognise the different structural groups in the ligand based on the SMI
 Generating and sampling suitable ligand conformations for docking is an art in itself, which we will not cover in this tutorial
 From our participation to the [D3R](https://drugdesigndata.org/){:target="_blank"} challenges, we have good experience with the [OpenEye](https://www.eyesopen.com){:target="_blank"} Scientific Software suite for which it is possible to request an academic license.
 
-For this tutorial we could download a representive PDB file of our ligand from the [PDBeChem database](http://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"}.
+For this tutorial we could download a representive PDB file of our ligand from the [PDBeChem database](https://www.ebi.ac.uk/pdbe-srv/pdbechem/chemicalCompound/show/IHE){:target="_blank"}.
 This representative conformation is actually the bound form of the ligand from the `1U9V` PDB entry we are aiming at reproducing. 
 This means that effectively in the docking we are going to perform the ligand is in an ideal conformation already.
 
@@ -240,7 +240,7 @@ save IHE.pdb, resn IHE<br>
 
 Before setting up the docking we need first to generate the distance restraint file for defining the "covalent bond" in a format suitable for HADDOCK. 
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
+be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -308,10 +308,10 @@ You can do it with your favorite text editor, or using the following command in 
 </a>
 
 
-We will now launch the docking run. For this we will make us of the [guru interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html){:target="_blank"} of the HADDOCK web server:
+We will now launch the docking run. For this we will make us of the [guru interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html){:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
+https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html
 </a>
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the right
@@ -414,7 +414,7 @@ Upon submission you will first be presented with a web page containing a link to
 <img src="/education/HADDOCK/HADDOCK-protein-protein-basic/submission.png">
 </figure>
 
-We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
+We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simple upload into the [file upload inteface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for examples. An excerpt of this file is shown here:
 
 <pre>
 HaddockRunParameters (
@@ -457,9 +457,9 @@ using distance restraints to model the covalent bond, we would expect that even 
 We already pre-calculated full docking run for all three cathepsins (meaning that the default number of models has been generated: 1000 for 
 rigid-body docking and 200 for semi-flexible and water refinement). The full runs for the three cathepsins can be accessed at:
 
-- **CatK**: [View here the pre-calculated results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/CatK-IHE){:target="_blank"}
-- **CatL**: [View here the pre-calculated results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/CatL-IHE){:target="_blank"}
-- **CatS**: [View here the pre-calculated results](http://haddock.science.uu.nl/services/HADDOCK2.2/Files/CatS-IHE){:target="_blank"}
+- **CatK**: [View here the pre-calculated results](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/CatK-IHE){:target="_blank"}
+- **CatL**: [View here the pre-calculated results](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/CatL-IHE){:target="_blank"}
+- **CatS**: [View here the pre-calculated results](https://alcazar.science.uu.nl/services/HADDOCK2.2/Files/CatS-IHE){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the result pages. How many clusters are generated?</a>
 
@@ -603,10 +603,10 @@ _J. Proteome Research_, *9*, 2216-2225 (2010).
 <hr>
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to post on the dedicated topic on our [interest group forum](http://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}.
+You have completed this tutorial. If you have any questions or suggestions, feel free to post on the dedicated topic on our [interest group forum](https://ask.bioexcel.eu/t/bioexcel-summer-school-2018-modelling-of-a-covalent-inhibitor-using-haddock-and-cpmd/){:target="_blank"}.
 
 
 
-[link-cns]: http://cns-online.org "CNS online"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
+[link-cns]: https://cns-online.org "CNS online"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"

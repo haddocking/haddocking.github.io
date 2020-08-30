@@ -44,6 +44,6 @@ image:
 
 ### [HADDOCK-related publications](/software/haddock2.4/publications)
 
-### [Online lectures](http://www.youtube.com/user/WeNMRchannel)
+### [Online lectures](https://www.youtube.com/user/WeNMRchannel)
 
 ### [Tutorials](/software/haddock2.4/tutorials)

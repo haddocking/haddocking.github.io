@@ -15,22 +15,22 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-Our information-driven docking approach [HADDOCK](http://www.bonvinlab.org/software/haddock2.2) is a consistent top predictor and scorer since the start of its participation in the [CAPRI](http://www.ebi.ac.uk/msd-srv/capri) community-wide experiment. This sustained performance is due, in part, to its ability to integrate experimental data and/or bioinformatics information into the modelling process, and also to the overall robustness of the scoring function used to assess and rank the predictions.
+Our information-driven docking approach [HADDOCK](https://www.bonvinlab.org/software/haddock2.2) is a consistent top predictor and scorer since the start of its participation in the [CAPRI](https://www.ebi.ac.uk/msd-srv/capri) community-wide experiment. This sustained performance is due, in part, to its ability to integrate experimental data and/or bioinformatics information into the modelling process, and also to the overall robustness of the scoring function used to assess and rank the predictions.
 
-This tutorial will demonstrate the use of HADDOCK for predicting target70 of the CASP-CAPRI experiment. This target was given to the CAPRI community as a tetramer, but there has been discussions whether the biological unit is a dimer or a tetramer. We will use this target to illustrate the ab-initio docking mode of HADDOCK, using a combination of [center-of-mass restraints](http://www.bonvinlab.org/software/haddock2.2/run/#disre) to bring the subunits together and [symmetry restraints](http://www.bonvinlab.org/software/haddock2.2/run/#sym) to define the symmetry of the assembly.
+This tutorial will demonstrate the use of HADDOCK for predicting target70 of the CASP-CAPRI experiment. This target was given to the CAPRI community as a tetramer, but there has been discussions whether the biological unit is a dimer or a tetramer. We will use this target to illustrate the ab-initio docking mode of HADDOCK, using a combination of [center-of-mass restraints](https://www.bonvinlab.org/software/haddock2.2/run/#disre) to bring the subunits together and [symmetry restraints](https://www.bonvinlab.org/software/haddock2.2/run/#sym) to define the symmetry of the assembly.
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](http://haddock.science.uu.nl/services/HADDOCK2.4).
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
 
 
-A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
+A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 Further, multi-body docking and the use of symmetry restraints is described in the following paper:
 
@@ -50,7 +50,7 @@ Pymol command line prompt!</a>
 <a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the
 terminal!</a>
 
-The case we will be investigating is target70 from the CASP-CAPRI experiment, which corresponds to PDB entry [4PWU](http://www.ebi.ac.uk/pdbe/entry/search/index?text:4PWU).
+The case we will be investigating is target70 from the CASP-CAPRI experiment, which corresponds to PDB entry [4PWU](https://www.ebi.ac.uk/pdbe/entry/search/index?text:4PWU).
 
 
 <hr>
@@ -158,7 +158,7 @@ The C-terminus of your protein is negatively charged -> Switch off
 
 * **Steps 4X:** Repeat step 2 to define the other three molecules, using the same input protein file and assigning segment IDs as B,C and D.
 
-* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -399,8 +399,8 @@ Is dimer docking as successful as tetramer docking?
 
 You have completed this tutorial. If you have any questions or
 suggestions, feel free to contact us via email or by submitting an issue in the
-appropriate [Github repository](https://github.com/haddocking/CASP-CAPRI-T70-tutorial) or asking a question through our [support center](http://ask.bioexcel.eu).
+appropriate [Github repository](https://github.com/haddocking/CASP-CAPRI-T70-tutorial) or asking a question through our [support center](https://ask.bioexcel.eu).
 
-[link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
-[link-pymol]: http://www.pymol.org/ "Pymol"
+[link-profit]: https://www.bioinf.org.uk/software/profit/index.html "ProFit"
+[link-pymol]: https://www.pymol.org/ "Pymol"
 [link-data]: https://github.com/haddocking/CASP-CAPRI-T70-tutorial "CASP-CAPRI tutorial data"

@@ -16,7 +16,7 @@ image:
 
 * A. Leitner, **A.M.J.J. Bonvin**, C.H. Borchers, R.J. Chalkley, . Chamot-Rooke, C.W. Combe, J. Cox, M. Dong, L. Fischer, M. Götze, F.C. Gozzo, A.J.R. Heck, M.R. Hoopmann, L. Huang, Y. Ishihama, A.R. Jones, N. Kalisman, O. Kohlbacher, K. Mechtler, R.L. Moritz, E. Netz, P.r Novak, E. Petrotchenko, A. Sali, R.A. Scheltema, C. Schmidt, D. Schriemer, A. Sinz, F. Sobott, F. Stengel, K. Thalassinos, H. Urlaub, R. Viner, J.A. Vizcaino, M. R. Wilkins, J. Rappsilber. [Towards Increased Reliability, Transparency and Accessibility in Crosslinking Mass Spectrometry](https://arxiv.org/abs/2007.00383) _ArXiv_, 2007.00383 (2020).
 
-* F. Ambrosetti, Zuzana Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](http://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
+* F. Ambrosetti, Zuzana Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
 
 * J. Roel-Touris and **A.M.J.J. Bonvin**. [Coarse-Grained (Hybrid) Integrative Modeling of Biomolecular Interactions](https://doi.org/10.1016/j.csbj.2020.05.002). _Comp. Struct. Biotech. J._, *18*, 1182-1190 (2020).
 
@@ -28,7 +28,7 @@ image:
 
 * F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1). _BioRxiv_, DOI:10.1101/2020.03.18.967828 (2020).
 
-* C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](http://arxiv.org/abs/2004.03454). _Whitepaper_ (2020).
+* C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](https://arxiv.org/abs/2004.03454). _Whitepaper_ (2020).
 
 * K. Elez, **A.M.J.J. Bonvin**#, Anna Vangone#. [Biological vs crystallographic protein interfaces: An overview of computational approaches for their classification](https://doi.org/10.3390/cryst10020114 ). _Crystals_, *10*, 114 (2020).
 
@@ -40,11 +40,11 @@ image:
 
 * T. Lawson, S. El-Kamand, D. Boucher, D. Cong Duong, R. Kariawasam, **A.M.J.J. Bonvin**, D.J. Richard, R. Gamsjaeger1 and Liza Cubeddu. [The structural details of the interaction of single-stranded DNA binding protein hSSB2 (NABP1/OBFC2A) with UV-damaged DNA](https://doi.org/10.1002/prot.25806). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 319-326 (2020).
 
-* A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ *34*, 149-162 (2020). A preprint can be downloaded from [here](http://arxiv.org/abs/2005.04142).
+* A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ *34*, 149-162 (2020). A preprint can be downloaded from [here](https://arxiv.org/abs/2005.04142).
 
 * J.L. Roel Touris, **A.M.J.J. Bonvin** and B. Jimenez-Garcia. [LightDock goes information-driven](https://doi.org/10.1093/bioinformatics/btz642). _Bioinformatics_, *36*, 950–952 (2020).
 
-* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11). In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](http://arxiv.org/abs/2005.00435).
+* M.E. Trellet, G. van Zundert and **A.M.J.J. Bonvin**. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11). In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](https://arxiv.org/abs/2005.00435).
 
 * P.I. Koukos and **A.M.J.J. Bonvin**. [Integrative modelling of biomolecular complexes](https://doi.org/10.1016/j.jmb.2019.11.009). _J. Mol.  Biol._ *432*, 2861-2881 (2020)
 
@@ -69,7 +69,7 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_, *87*, 1200-1221 (2019)
 * B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. [PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes](https://doi.org/10.1093/bioinformatics/btz437). _Bioinformatics_, Advanced Online Publication, btz437 (2019).
 
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu.
-[Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](http://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._, *59*, 1515–1528 (2019).
+[Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](https://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._, *59*, 1515–1528 (2019).
 
 * C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin** and L.C. Xue. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1093/bioinformatics/btz496) _Bioinformatics_ Advanced Online Publication, btz496 (2019).
 
@@ -132,7 +132,7 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_ *86(S1)*, 51-66 (2018).
 
 * K.M. Visscher, J. Medeiros-Silva, D. Mance, J.P.G.L.M. Rodrigues, M. Daniëls, **A.M.J.J. Bonvin**, M. Baldus, and M. Weingarth. [A study on the supramolecular organization of K+ channel clusters in membranes](https://doi.org/10.1002/anie.201705723). _Angew. Chem. Intl._ *56*, 13222-13227 (2017).
 
-* A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. [Prediction of Biomolecular Complexes](http://link.springer.com/chapter/10.1007/978-94-024-1069-3_8).
+* A. Vangone, R. Oliva, L. Cavallo and **A.M.J.J. Bonvin**. [Prediction of Biomolecular Complexes](https://link.springer.com/chapter/10.1007/978-94-024-1069-3_8).
 In: _From Protein Structure to Function with Bioinformatics._ Ed. Daniel John Rigden, Springer, 160-167 (2017).
 
 * C. Geng, S. Narasimhan, J. P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**.
@@ -153,7 +153,7 @@ _J. Mol. Biol._, *429*, 399-407 (2017).
 ## 2016
 <hr />
 * A. Vangone, J.P.G.L.M. Rodrigues, L.C. Xue, G.C.P. van Zundert, C. Geng, Z. Kurkcuoglu, M. Nellen, S. Narasimhan, E. Karaca, M. van Dijk, A.S.J. Melquiond, K.M. Visscher, M. Trellet, P.L. Kastritis and **A.M.J.J. Bonvin**.
-[Sense and Simplicity in HADDOCK Scoring: Lessons from CASP-CAPRI Round 1](http://onlinelibrary.wiley.com/doi/10.1002/prot.25198/full).
+[Sense and Simplicity in HADDOCK Scoring: Lessons from CASP-CAPRI Round 1](https://onlinelibrary.wiley.com/doi/10.1002/prot.25198/full).
 _Proteins: Struc. Funct. &amp; Bioinformatics_, *85*, 417-423 (2016). See also erratum: [https://doi.org/10.1002/prot.25339](https://doi.org/10.1002/prot.25339)
 
 * D. Walker, R. Grinter, I. Josts, K. Mosbahi, A. Roszak, R. Cogdell, **A.M.J.J. Bonvin**, J. Milner, S. Kelly, O. Byron and B. Smith.
@@ -171,7 +171,7 @@ _Nature Communications_, *7*, 13228 (2016).
 [Integrative modelling goes HPC/HTC](https://doi.org/10.7490/f1000research.1113051.1). _F1000Research_, *5*:2216 (poster) (2016).
 
 * A.D. Spiliotopoulos, P.L. Kastritis, A.S.J. Melquiond, **A.M.J.J. Bonvin**, G. Musco, W. Rocchia and A. Spitaleri.
-[dMM-PBSA: a new HADDOCK scoring function for protein-peptide docking](http://journal.frontiersin.org/article/10.3389/fmolb.2016.00046/full).
+[dMM-PBSA: a new HADDOCK scoring function for protein-peptide docking](https://journal.frontiersin.org/article/10.3389/fmolb.2016.00046/full).
 _Frontiers in Molecular Biosciences_, *3*:46 doi:10.3389/fmolb.2016.00046 (2016).
 
 * L.C. Xue, J.P.G.L.M. Rodrigues, P.L. Kastritis, **A.M.J.J. Bonvin**# and A. Vangone#.
@@ -219,7 +219,7 @@ _J. Chem. Inf. and Model._ *56*, 127-138 (2016).
 _Biochemistry and Molecular Biology Education_, *44*, 160-167 (2016).
 
 * R. Zhang, T. Eckert, T. Lutteke, S. Hanstein, A. Scheidig, **A.M.J.J. Bonvin**, N.E. Nifantiev, T. Kozar, R. Schauer, M. Abdulaziz Enani and H.C. Siebert.
-[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](http://europepmc.org/abstract/med/26139116).
+[Structure-function relationship of antimicrobial peptides and proteins in respect to contact-molecules on pathogen surfaces](https://europepmc.org/abstract/med/26139116).
 _Current Topics in Medicinal Chemistry_. *16*, 89-98 (2016).
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
@@ -235,14 +235,14 @@ _Int. J. Mol. Sci._ *22*, doi:10.3390/ijms17010022 (2015).
 
 * **A.M.J.J. Bonvin** and O. Keskin. 
 [Editorial overview: Protein-Protein Interactions.](https://doi.org/10.1016/j.sbi.2015.11.004)
-_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](http://authors.elsevier.com/a/1SBy1,LqAqxhW8))
+_Curr. Opin. Struct. Biol._ *35*, vii-ix (2015). ([free PDF download](https://authors.elsevier.com/a/1SBy1,LqAqxhW8))
 
 * L.C. Xue, D. Dobbs. **A.M.J.J. Bonvin** and V. Honavar
 [Computational Prediction of Protein Interfaces: A Review of Data Driven Methods](https://doi.org/10.1016/j.febslet.2015.10.003).
 _FEBS Letters_, *589*, 3516-3526 (2015).
 
 * F. Marino, M. Bern, G.P.M. Mommen, A.C. Leney, J.A.M. van Gaans-van den Brink, **A.M.J.J. Bonvin**, C. Becker, C.A.C.M. van Els and A.J.R. Heck.
-[Extended O-GlcNAc on HLA Class-I-Bound Peptides](http://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
+[Extended O-GlcNAc on HLA Class-I-Bound Peptides](https://pubs.acs.org/doi/abs/10.1021/jacs.5b06586).
 _J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
 
 * T Vreven+, I.H. Moal+, A. Vangone+, B.G. Pierce, P.L. Kastritis, M. Torchala, R. Chaleil, B. Jiménez-García, P.A. Bates#, Juan Fernandez-Recio#, **A.M.J.J. Bonvin**# and Z. Weng#.
@@ -250,11 +250,11 @@ _J. Am. Chem. Soc._ *137*, 10922-10925 (2015).
 _J. Mol. Biol._ *19*, 3031-3041 (2015).
 
 * A Vangone and **A.M.J.J. Bonvin**.
-[Contacts-based prediction of binding affinity in protein-protein complexes](http://elifesciences.org/content/4/e07454).
+[Contacts-based prediction of binding affinity in protein-protein complexes](https://elifesciences.org/content/4/e07454).
 _eLife_, *4*, e07454 (2015).
 
 * M. Rad-Malekshahi, K. Visscher, J.P.G.L.M. Rodrigues, R. De Vries, W. Hennink, M. Baldus, **A.M.J.J. Bonvin**#, E. Mastrobattista# and M. Weingarth#.
-[The supramolecular organization of a peptide-based nanocarrier at high molecular detail](http://pubs.acs.org/doi/abs/10.1021/jacs.5b02919).
+[The supramolecular organization of a peptide-based nanocarrier at high molecular detail](https://pubs.acs.org/doi/abs/10.1021/jacs.5b02919).
 _J. Am. Chem. Soc._ *137*, 7775-7784 (2015).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**. 
@@ -262,7 +262,7 @@ _J. Am. Chem. Soc._ *137*, 7775-7784 (2015).
 _Bioinformatics_. *31*, 3222-3224 (2015).
 
 * F. Psomopoulos, Af.M. Duarte, C. Blanchet, **A.M.J.J. Bonvin**, M. Corpas, A. Franc, R.C. Jimenez, J. Marco de Lucas, T. Nyrönen, G. Sipos and S.B. Suhr.
-[Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](http://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
+[Future opportunities and future trends for e-infrastructures and life sciences: going beyond grid to enable life science data analysis](https://journal.frontiersin.org/article/10.3389/fgene.2015.00197).
 _Frontiers in Genetics_. *6:197*, doi:10.3389/fgene.2015.00197 (2015).
 
 * A. Sali, H.M. Berman, T. Schwede, J. Trewhella, G. Kleywegt, S.K. Burley, J. Markley, H. Nakamura, P. Adams, **A.M.J.J. Bonvin**, W. Chiu, M. Dal Peraro, F. Di Maio, T.E. Ferrin, K. Grünewald, A. Gutmanas, R. Henderson, G. Hummer, K. Iwasaki, G. Johnson, C.L. Lawson, J. Meiler, M.A. Marti-Renom, G.T. Montelione, M. Nilges, R. Nussinov, A. Patwardhan, J. Rappsilber, R.J. Read, H. Saibil, G.F. Schröder, C. Schwieters, C.A.M. Seidel, D. Svergun, M. Topf, E.L. Ulrich, S. Velankar, and J.D. Westbrook.
@@ -298,15 +298,15 @@ _Nature Methods._ *12*, 649-652 (2015).
 _Proteins: Struc. Funct. &amp; Bioinformatics_ *83*, 445-458 (2015).
 
 * M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
-[Information-driven modelling of protein-peptide complexes.](http://link.springer.com/protocol/10.1007/978-1-4939-2285-7_10)
+[Information-driven modelling of protein-peptide complexes.](https://link.springer.com/protocol/10.1007/978-1-4939-2285-7_10)
 _Methods in Molecular Biology._ Ed. Peng Zhou. Humana Press Inc. 221-239 (2015)
 
 * J.P.G.L.M Rodrigues, E. Karaca and **A.M.J.J. Bonvin**.
-[Information-driven structural modelling of protein-protein interactions.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18)
+[Information-driven structural modelling of protein-protein interactions.](https://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18)
 _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 399-424 (2015).
 
 * W.F. Vranken, G.W. Vuister and **A.M.J.J. Bonvin**.
-[NMR-based modelling and refinement of protein 3D structures.](http://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16)
+[NMR-based modelling and refinement of protein 3D structures.](https://link.springer.com/protocol/10.1007/978-1-4939-1465-4_16)
 _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 351-380 (2015).
 
 
@@ -317,7 +317,7 @@ _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kok
 _Biochemistry._ *53*, 6706-6716 (2014).
 
 * T.A. Hopf#, C.P.I. Sch&auml;rfe#, J.P.G.L.M. Rodrigues#, A.G. Green, O. Kohlbacher, C. Sander\*, **A.M.J.J. Bonvin\*** and D.S. Marks\*.
-[Sequence co-evolution gives 3D contacts and structures of protein complexes.](http://elifesciences.org/content/3/e03430)
+[Sequence co-evolution gives 3D contacts and structures of protein complexes.](https://elifesciences.org/content/3/e03430)
 _eLife._ *3* e03430 (2014)
 
 * M. Rey, V. Sarpe, K. Burns, J. Buse, Ch.A.H. Baker, M. van Dijk, L. Wordeman, **A.M.J.J. Bonvin** and D. Schriemer.
@@ -326,14 +326,14 @@ _Structure._ *22*, 1538-1548 (2014).
 
 * P.L. Kastritis, J.P.G.L.M Rodrigues, G.E. Folkers, R. Boelens and **A.M.J.J. Bonvin**.
 [Proteins feel more than they see: Fine-tuning of binding affinity by properties of the non-interacting surface.](https://doi.org/10.1016/j.jmb.2014.04.017)
-_J. Mol. Biol._ *426*, 2632-2652 (2014). <a href="http://f1000.com/prime/718363743?bd=1&amp;ui=155629" target="_blank"><img src="http://cdn.f1000.com.s3.amazonaws.com/images/badges/badgef1000.gif" alt="Access the recommendation on F1000Prime" id="bg" name="bg"></a>
+_J. Mol. Biol._ *426*, 2632-2652 (2014). <a href="https://f1000.com/prime/718363743?bd=1&amp;ui=155629" target="_blank"><img src="https://cdn.f1000.com.s3.amazonaws.com/images/badges/badgef1000.gif" alt="Access the recommendation on F1000Prime" id="bg" name="bg"></a>
 
 * J.P.G.L.M Rodrigues and **A.M.J.J. Bonvin**
 [Integrative computational modeling of protein interactions.](https://doi.org/doi:10.1111/febs.12771)
 _FEBS J._, *281*, 1988-2003 (2014).
 
 * P.L. Kastritis, J.P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**
-[HADDOCK2P2I: A robust biophysical model for predicting the binding affinity of protein-protein interaction inhibitors](http://pubs.acs.org/doi/abs/10.1021/ci4005332)
+[HADDOCK2P2I: A robust biophysical model for predicting the binding affinity of protein-protein interaction inhibitors](https://pubs.acs.org/doi/abs/10.1021/ci4005332)
 _J. Chem. Info. Model._ *54*, 826-836 (2014).
 
 * H. van Ingen and **A.M.J.J. Bonvin**
@@ -341,11 +341,11 @@ _J. Chem. Info. Model._ *54*, 826-836 (2014).
 _J. Magn. Reson._ *241*, 103-114 (2014).
 
 * J. Snijder, R.J. Burnley, A. Wiegard, A.S.J. Melquiond, **A.M.J.J. Bonvin**, I.M. Axmann, A.J.R. Heck
-[Insight into cyanobacterial circadian timing from structural details of the KaiB-KaiC interaction.](http://www.pnas.org/content/111/4/1379.short)
+[Insight into cyanobacterial circadian timing from structural details of the KaiB-KaiC interaction.](https://www.pnas.org/content/111/4/1379.short)
 _Proc. Natl. Acad. Sci. USA._ *111*, 1379-1383 (2014).
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
-[Modeling protein-protein complexes using the HADDOCK webserver.](http://link.springer.com/protocol/10.1007/978-1-4939-0366-5_12)
+[Modeling protein-protein complexes using the HADDOCK webserver.](https://link.springer.com/protocol/10.1007/978-1-4939-0366-5_12)
 _Methods in Molecular Biology: Protein Structure Prediction._ Ed. Daisuke Kihara. Humana Press Inc., 163-179 (2014).
 
 * M.F. Lensink, I.H. Moal, P.A. Bates, P.L. Kastritis, A.S.J. Melquiond, E. Karaca, C. Schmitz, M. van Dijk, **A.M.J.J. Bonvin**, M. Eisenstein, B. Jimenez-Garcia, S. Grosdidier, S.A Solernou, L. Perez-Cano, C. Pallara, J. Fernandez-Recio, J. Xu, P. Muthu, K. Praneeth Kilambi, J.J. Gray, S. Grudinin, G. Derevyanko, J.C. Mitchell, J. Wieting, E. Kanamori, Y. Tsuchiya, Y. Murakami, J. Sarmiento, D.M. Standley, M. Shirota, K. Kinoshita, H. Nakamura M. Chavent, D.W. Ritchie, H. Park, J. Ko, H. Lee, C. Seok, Y. Shen, D. Kozakov, S. Vajda, P. J. Kundrotas, I.A. Vakser, B.G. Pierce, H. Hwang, T. Vreven, Z. Weng, I. Buch, E. Farkash, H.J. Wolfson, M. Zacharias, S. Qin, H.-X. Zhou, S.-Y. Huang, X. Zou, J.A. Wojdyla, C. Kleanthous and S.J. Wodak.
@@ -357,7 +357,7 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_ *82*, 620-632 (2014).
 <hr />
 
 * K.M. Varney#, **A.M.J.J. Bonvin**#, M. Pazgier#, J. Malin#, W. Yu#, E. Ateh, T. Oashi, J. Huang, W. Lu, M. Diepeveen-de Buin, J. Bryant, E. Breukink, A.D. MacKerell Jr. and E.P.H. de Leeuw
-[Turning Defense into Offense: Development of Defensin Mimetics as Novel Antibiotics targeting Lipid II.](http://www.plospathogens.org/article/info:doi/10.1371/journal.ppat.1003732)
+[Turning Defense into Offense: Development of Defensin Mimetics as Novel Antibiotics targeting Lipid II.](https://www.plospathogens.org/article/info:doi/10.1371/journal.ppat.1003732)
 _PloS Pathogens_, *9*, e1003732. doi:10.1371/journal.ppat.1003732 (2013).
 
 * G. van der Schot, Z. Zhang, R. Vernon, Y. Shen, W.F. Vranken, D. Baker, **A.M.J.J. Bonvin\*** and O.F. Lange\*
@@ -413,7 +413,7 @@ _Mol. Cell. Biol._, *33*, 1303-1316 (2013).
 _PloS Pathogens_, *9*, e1003202 (2013).
 
 * M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
-[A Unified Conformational Selection and Induced Fit Approach to Protein-Peptide Docking](http://dx.plos.org/10.1371/journal.pone.0058769)
+[A Unified Conformational Selection and Induced Fit Approach to Protein-Peptide Docking](https://dx.plos.org/10.1371/journal.pone.0058769)
 _PLoS ONE_, *8(3)* e58769 (2013). --> [**ERRATUM**](https://milou.science.uu.nl/Files/ERRATUM_unified_conformational_selection.pdf)
 
 * R. Dagil, C O'Shea, A. Nykaer, **A.M.J.J. Bonvin** and B.B. Kragelund
@@ -429,7 +429,7 @@ _Methods_, *59*, 372-381 (2013).
 _J. R. Soc. Interface_, *10*, doi: 10.1098/rsif.2012.0835 (2013).
 
 * **A.M.J.J. Bonvin**, M. van Dijk, E. Karaca, P.L. Kastritis, A.S.J. Melquiond, C. Schmitz and S.J. de Vries
-[HADDOCK](http://www.springer.com/life+sciences/biochemistry+%26+biophysics/book/978-3-642-16711-9)
+[HADDOCK](https://www.springer.com/life+sciences/biochemistry+%26+biophysics/book/978-3-642-16711-9)
 In Encyclopedia of Biophysics, Ed. G.C.K. Roberts, Springer-Verlag Berlin Heidelberg (2013).
 
 * P.L. Kastritis, K.M. Visscher, A.D.J. van Dijk and **A.M.J.J. Bonvin**
@@ -449,11 +449,11 @@ _J. Biomol. NMR_, *54*, 377-387 (2012).
 _BMC Struc. Biol._, *12*, 29 (2012).
 
 * S.J.L. van Wijk, A.S.J. Melquiond, S.J. de Vries, H.Th.M Timmers and **A.M.J.J. Bonvin**
-[Dynamic control of selectivity in E2-E3 interactions via a salt-bridge network revealed by an ASP to GLU substitution.](http://www.ploscompbiol.org/article/info:doi/10.1371/journal.pcbi.1002754)
+[Dynamic control of selectivity in E2-E3 interactions via a salt-bridge network revealed by an ASP to GLU substitution.](https://www.ploscompbiol.org/article/info:doi/10.1371/journal.pcbi.1002754)
 _PLoS Comp. Biol._, *8(11)*, e1002754 (2012).
 
 * T.A. Wassenaar, M. van Dijk, N. Loureiro-Ferreira, G. van der Schot, S.J. de Vries, C. Schmitz, J. van der Zwan, R. Boelens, A. Giachetti, L. Ferella, A. Rosato, I. Bertini, T. Herrmann, H.R.A. Jonker, A. Bagaria, V. Jaravine, P. Guntert, H. Schwalbe, W.F. Vranken, J.F. Doreleijers, G. Vriend, G.W. Vuister, D. Franke, A. Kikhney, D.I. Svergun, R. Fogh, J. Ionides, E.D. Laue, C. Spronk, S. Jurka, M. Verlato, S. Badoer, S. Dal Pra, M. Mazzucato, E. Frizziero and **A.M.J.J. Bonvin**
-[WeNMR: Structural Biology on the Grid.](http://link.springer.com/article/10.1007%2Fs10723-012-9246-z)
+[WeNMR: Structural Biology on the Grid.](https://link.springer.com/article/10.1007%2Fs10723-012-9246-z)
 _J. Grid. Comp._, *10*, 743-767 (2012).
 
 * T.A. Wassenaar, S.J.L. de Vries, H. Bekker and **A.M.J.J. Bonvin**
@@ -465,7 +465,7 @@ _J. Chem. Theo. Comput._, *8*, 3618-3627 (2012).
 _J. Chem. Theo. Comput._, *8*, 3463-3472 (2012).
 
 * P.L. Kastritis and **A.M.J.J. Bonvin**
-[Predicting and Dissecting High-order Molecular Complexity by Information-driven Biomolecular Docking](http://bookshop.cabi.org/?site=191&amp;page=2633&amp;pid=2443)
+[Predicting and Dissecting High-order Molecular Complexity by Information-driven Biomolecular Docking](https://bookshop.cabi.org/?site=191&amp;page=2633&amp;pid=2443)
 In: <i>Antimicrobial Drug Discovery. Emerging Strategies</i> Adv. Mol. Cell. Microbiol., Eds G. Tegos and E. Mylokanis, CABI, *22*, 232-246 (2012).
 
 * M. Weingarth, C. Ader, A.S.J. Melquiond, D. Nand, O. Pongs, S. Becker, **A.M.J.J. Bonvin** and M. Baldus.
@@ -478,7 +478,7 @@ _Proteins: Struc. Funct. &amp; Bioinformatic_, *80*, 1810-1817 (2012).
 
 * C. Schmitz, A.S.J. Melquiond, S.J. de Vries, E. Karaca, M. van Dijk, P.L. Kastritis and **A.M.J.J. Bonvin**
 Protein-protein docking with HADDOCK
-In: <a href="http://eu.wiley.com/WileyCDA/WileyTitle/productCd-3527328505,subjectCd-CH17.html">NMR in Mechanistic Systems Biology</a>. Ed. I. Bertini, K.S. McGreevy and G. Parigi, Wiley-Blackwell, 512-535.
+In: <a href="https://eu.wiley.com/WileyCDA/WileyTitle/productCd-3527328505,subjectCd-CH17.html">NMR in Mechanistic Systems Biology</a>. Ed. I. Bertini, K.S. McGreevy and G. Parigi, Wiley-Blackwell, 512-535.
 
 * A. Rosato, J. M. Aramini, C. Arrowsmith, A. Bagaria, D. Baker, A. Cavalli, J.F. Doreleijers, A. Eletsky, A. Giachetti, P. Guerry, A. Gutmanas, P. Guntert, Y. He, T. Herrmann, Y.J. Huang, V. Jaravine, H.R.A. Jonker, M.A. Kennedy, O.F. Lange, G. Liu, T.E. Malliavin, R. Mani, B. Mao, G.T. Montelione, M. Nilges, P. Rossi, G. van der Schot, H. Schwalbe, T.A. Szyperski, M. Vendruscolo, R. Vernon, W.F. Vranken, S.J. de Vries, G.W. Vuister, B. Wu, Y. Yang and **A.M.J.J. Bonvin**
 [Blind testing of routine, fully automated determination of protein structures from NMR data.](https://doi.org/doi:10.1016/j.str.2012.01.002)
@@ -489,11 +489,11 @@ _Structure_, *20*, 227-236 (2012).
 _Methods in Molecular Biology_ *819*, Part 5, 355-374 (2012)
 
 * A.S.J. Melquiond, E. Karaca, P.L. Kastritis and **A.M.J.J. Bonvin**
-[Next challenges in protein-protein docking: From proteome to interactome and beyond.](http://onlinelibrary.wiley.com/doi/10.1002/wcms.91/full)
+[Next challenges in protein-protein docking: From proteome to interactome and beyond.](https://onlinelibrary.wiley.com/doi/10.1002/wcms.91/full)
 _WIREs Computational Molecular Science_, *2*, 642-651 (2012).
 
 * T.A. Wassenaar, M. van Dijk, N. Loureiro-Ferreira, G. van der Schot, S.J. de Vries, C. Schmitz, J. van der Zwan, R. Boelens, A. Giachetti, L. Ferella, A. Rosato, I. Bertini, T. Herrmann, H.R.A. Jonker, A. Bagaria, V. Jaravine, P. Guntert, H. Schwalbe, W.F. Vranken, J.F. Doreleijers, G. Vriend, G.W. Vuister, D. Franke, A. Kikhney, D.I. Svergun, R. Fogh, J. Ionides, E.D. Laue, C. Spronk, M. Verlato, S. Badoer, S. Dal Pra, M. Mazzucato, E. Frizziero and **A.M.J.J. Bonvin**
-[WeNMR: Structural Biology on the Grid.](http://ceur-ws.org/Vol-819/)
+[WeNMR: Structural Biology on the Grid.](https://ceur-ws.org/Vol-819/)
 In: <i>IWSG-Life 2011: Science Gateways for Life Sciences 2011</i>. Proceedings of the 3rd International Workshop on Science Gateways for Life Sciences London, United Kingdom. June 8-10, 2011. Eds G. Terstyanszky and T. Kiss. urn:nbn:de:0074-819-5
 
 
@@ -521,7 +521,7 @@ _Proteins: Struc. Funct. &amp; Bioinformatic_, *79*, 2662-2670 (2011).
 _J. Biol. Chem._, *286*, 19816-19829 (2011).
 
 * Y.C. Fiamegos, P.L. Kastritis, V. Exarchou, H. Han, **A.M.J.J. Bonvin**, J. Vervoort, K. Lewis, M.R. Hamblin and G.P. Tegos
-[Antimicrobial and efflux pump inhibitory activity of caffeoylquinic acids from Artemisia absinthium against Gram-positive pathogenic bacteria.](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0018127)
+[Antimicrobial and efflux pump inhibitory activity of caffeoylquinic acids from Artemisia absinthium against Gram-positive pathogenic bacteria.](https://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0018127)
 _PlosONE_, *6* e18127 (2011).
 
 * S.J. de Vries and **A.M.J.J. Bonvin**
@@ -566,10 +566,10 @@ _Proteins: Struc. Funct. &amp; Bioinformatic_, *78*, 3242-3249 (2010).
 
 * T. Schneider, Th. Kruse, R. Wimmer, I. Wiedemann, V. Sass, U. Pag, A. Jansen, A.K. Nielsen, P.H. Mygind, D.S. Raventos, S. Neve, B. Ravn, **A.M.J.J. Bonvin**, L. De Maria, L. Kamenova, H.-G. Sahl and H.-H. Kristensen
 [Plectasin, a fungal defensin antibiotic peptide, targets the bacterial cell wall precursor Lipid II.](https://doi.org/doi:10.1126/science.1185723)
-_Science_, *328*, 1168-1172 (2010). Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200259/UUindex.html">here</a>.
+_Science_, *328*, 1168-1172 (2010). Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200259/UUindex.html">here</a>.
 
 * A.S.J. Melquiond and **A.M.J.J. Bonvin**
-[Data-driven docking: using external information to spark the biomolecular rendez-vous.](http://www.icpress.co.uk/lifesci/p618.html)
+[Data-driven docking: using external information to spark the biomolecular rendez-vous.](https://www.icpress.co.uk/lifesci/p618.html)
 In: Protein-protein complexes: analysis, modelling and drug design. Edited by M. Zacharrias, Imperial College Press, 2010. p 183-209.
 
 * P. Kastritis and **A.M.J.J. Bonvin**
@@ -578,7 +578,7 @@ _J. Proteome Research_, *9*, 2216-2225 (2010).  See also the <a href="https://do
 
 * E. Karaca, A.S.J. Melquiond, S.J. de Vries, P.L. Kastritis and **A.M.J.J. Bonvin**
 [Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](https://doi.org/doi:10.1074/mcp.M000051-MCP201)
-_Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
+_Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
 
 * M. van Dijk and **A.M.J.J. Bonvin**
 [Pushing the limits of what is achievable in protein-DNA docking. Benchmarking HADDOCK's performance.](https://doi.org/doi:10.1093/nar/gkq222)
@@ -589,11 +589,11 @@ _Nucl. Acid Res._, *38*, 5634-5647 (2010).
 _J. Struct. Funct. Genomics_, *11*, 1-8 (2010).
 
 * S.J. de Vries, M. van Dijk and **A.M.J.J. Bonvin**
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
 _Nature Protocols_, *5*, 883-897 (2010).
 
 * M. Krzeminski, K. Loth, R. Boelens and **A.M.J.J. Bonvin**
-[SAMPLEX: Automatic mapping of perturbed and unperturbed regions of proteins and complexes.](http://www.biomedcentral.com/1471-2105/11/51)
+[SAMPLEX: Automatic mapping of perturbed and unperturbed regions of proteins and complexes.](https://www.biomedcentral.com/1471-2105/11/51)
 _BMC Bioinformatics_, *11*, 51 (2010).
 
 * M. Kobayashi, E. AB, **A.M.J.J. Bonvin** and G. Siegal
@@ -609,7 +609,7 @@ _J. Biol. Chem._, *285*, 10087-10097 (2010).
 _Nature Methods_, *6*, 625-626 (2009).
 
 * S.J. de Vries, M. van Dijk and **A.M.J.J. Bonvin**
-[The Prediction of Macromolecular Complexes by Docking.](http://onlinelibrary.wiley.com/doi/10.1002/9780470741894.ch9/summary)
+[The Prediction of Macromolecular Complexes by Docking.](https://onlinelibrary.wiley.com/doi/10.1002/9780470741894.ch9/summary)
 In: Prediction of Protein Structures, Functions, and Interactions (ed J. M. Bujnicki), John Wiley &amp; Sons, Ltd, Chichester, UK (2009).
 
 * D. Eggink, J.P.M. Langedijk, **A.M.J.J. Bonvin**, Y. Deng, M. Lu, B. Berkhout and R.W. Sanders
@@ -665,7 +665,7 @@ _Mol. Biol. Cell_, *19*, 4707-4716 (2008).
 _Nucl. Acids Res._ (2008), *36*, e88, doi: 10.1093/nar/gkn386.
 
 * S. de Vries and **A.M.J.J. Bonvin**
-[How proteins get in touch: Interface prediction in the study of biomolecular complexes.](http://www.bentham-direct.org/pages/content.php?CPPS/2008/00000009/00000004/0005K.SGM)
+[How proteins get in touch: Interface prediction in the study of biomolecular complexes.](https://www.bentham-direct.org/pages/content.php?CPPS/2008/00000009/00000004/0005K.SGM)
 _Curr. Pept. and Prot. Research_, *9*, 394-406 (2008).
 
 * F. Correa, R. Kopke Salinas, **A.M.J.J. Bonvin** and C.S. Farah
@@ -673,7 +673,7 @@ _Curr. Pept. and Prot. Research_, *9*, 394-406 (2008).
 _Proteins: Struc. Funct. &amp; Bioinformatic_, *73*, 902-917 (2008).
 
 * G. Fuentes, A.D.J. van Dijk and **A.M.J.J. Bonvin**
-[NMR-based modelling and refinement of protein 3D structures and their complexes.](http://www.springer.com/humana+press/book/978-1-58829-864-5)
+[NMR-based modelling and refinement of protein 3D structures and their complexes.](https://www.springer.com/humana+press/book/978-1-58829-864-5)
 In: _Methods in Molecular Biology 443: Molecular Modelling of Proteins_. A. Kukol Ed., Humana Press, pp. 175-186 (2008).
 
 
@@ -681,7 +681,7 @@ In: _Methods in Molecular Biology 443: Molecular Modelling of Proteins_. A. Kuko
 <hr />
 
 * I. Gelis, **A. M. J. J. Bonvin**, D. Keramisanou, M. Koukaki, G. Gouridis, S. Karamanou, A. Economou and C.G. Kalodimos
-[Structural basis for signal sequence recognition by the translocase motor SecA determined by NMR](http://www.cell.com/content/article/abstract?uid=PIIS009286740701269X)
+[Structural basis for signal sequence recognition by the translocase motor SecA determined by NMR](https://www.cell.com/content/article/abstract?uid=PIIS009286740701269X)
 _Cell_, *131*, 756-769 (2007).
 
 * S.J. de Vries, A.D.J. van Dijk, M. Krzeminski, M. van Dijk, A. Thureau, V. Hsu, T. Wassenaar and **A. M. J. J. Bonvin**
@@ -837,7 +837,7 @@ _Nature Struc. &amp; Mol. Biol._, *11*, 963-967 (2004).
 _Eur. J. Biochem._,*271*, 3399-3413 (2004).
 
 * C.G. Kalodimos, N. Biris,**A.M.J.J. Bonvin**, M.M. Levandoski, M. Guennuegues, R. Boelens, R. Kaptein
-[Structure and flexibility adaptation between nonspecific and specific protein-DNA complexes.](http://www.sciencemag.org/cgi/content/abstract/305/5682/386)
+[Structure and flexibility adaptation between nonspecific and specific protein-DNA complexes.](https://www.sciencemag.org/cgi/content/abstract/305/5682/386)
 _Science_, *205* 386-389 (2004).
 
 * S.B. Nabuurs, A.J. Nederveen, W. Wranken, J.F. Doreleijers, **A.M.J.J. Bonvin**, G.W.Vuister, G. Vriend and C.A.E.M. Spronk
@@ -877,7 +877,7 @@ _J. Magn. Reson._, *163*, 228-235 (2003).
 _J. Mol. Biol._, *328*, 1083-1089 (2003).
 
 * S.-T. D. Hsu, E. Breukink, G. Bierbaum, H.-G. Sahl, D. de Kruijff, R. Kaptein, N.A.J. van Nuland and **A.M.J.J. Bonvin**
-[NMR study of mersacidin and lipid II interaction in dodecylphosphocholine micelles. Conformational changes are a key to antimicrobial activity.](http://www.jbc.org/cgi/content/abstract/278/15/13110)
+[NMR study of mersacidin and lipid II interaction in dodecylphosphocholine micelles. Conformational changes are a key to antimicrobial activity.](https://www.jbc.org/cgi/content/abstract/278/15/13110)
 _J. Biol. Chem._, *278*, 13110-13117 (2003).
 
 * T. Stockner, H. Sterk, R. Kaptein and **A.M.J.J. Bonvin**
@@ -885,15 +885,15 @@ _J. Biol. Chem._, *278*, 13110-13117 (2003).
 _J. Mol. Biol._, *328*, 325-334 (2003).
 
 * A.G. Tzakos, **A.M.J.J. Bonvin**, A. Troganis, P. Cordopatis, M.L. Amzel, I.P. Gerothanassis and N.A.J. van Nuland
-[On the molecular basis of the recognition of angiotensin II (AII): NMR structure of AII in solution versus the X-ray structure of AII bound to the monoclonal antibody Fab131.](http://www.ejbiochem.org/cgi/content/abstract/270/5/849)
+[On the molecular basis of the recognition of angiotensin II (AII): NMR structure of AII in solution versus the X-ray structure of AII bound to the monoclonal antibody Fab131.](https://www.ejbiochem.org/cgi/content/abstract/270/5/849)
 _Eur. J. Biochem._, *270*, 849-860 (2003).
 
 * C. Dominguez, R. Boelens and **A.M.J.J. Bonvin**
-[HADDOCK: A protein-protein docking approach based on biochemical or biophysical information.](http://pubs.acs.org/doi/abs/10.1021/ja026939x)
+[HADDOCK: A protein-protein docking approach based on biochemical or biophysical information.](https://pubs.acs.org/doi/abs/10.1021/ja026939x)
 _J. Am. Chem. Soc._, *125*, 1731-1737 (2003).
 
 * J. Linge, M.A. Williams, C.A.E.M. Spronk, **A.M.J.J. Bonvin**<sup>\*</sup> and M. Nilges<sup>\*</sup>
-[Refinement of protein structures in explicit solvent.](http://www3.interscience.wiley.com/cgi-bin/abstract/102523901/START)
+[Refinement of protein structures in explicit solvent.](https://www3.interscience.wiley.com/cgi-bin/abstract/102523901/START)
 _PROTEINS: Struct. Funct. &amp; Genetics_ *50*, 496-506 (2003).
 
 * C.A.E.M. Spronk, S.B. Nabuurs, **A.M.J.J. Bonvin**, E. Krieger, G.W. Vuister and G. Vriend
@@ -905,19 +905,19 @@ _J. Biomol. NMR_ *25*, 225-234 (2003).
 <hr />
 
 * C.G. Kalodimos, **A.M.J.J. Bonvin**, R.K. Salinas, R. Wechselberger, R. Boelens and R. Kaptein
-[Plasticity in protein-DNA recognition: lac repressor interacts with its natural operator O1 through alternative conformations of its DNA-binding domain.](http://emboj.oupjournals.org/cgi/content/abstract/21/12/2866)
+[Plasticity in protein-DNA recognition: lac repressor interacts with its natural operator O1 through alternative conformations of its DNA-binding domain.](https://emboj.oupjournals.org/cgi/content/abstract/21/12/2866)
 _EMBO J._ *21*, 2866-2876 (2002).
 
 * S.-T. Hsu, E. Breukink, B. de Kruiff, R. Kaptein, **A.M.J.J. Bonvin** and N. van Nuland
-[Mapping the targeted membrane pore formation mechanism by solution NMR: the nisin Z and lipid II interaction in SDS micelles.](http://pubs.acs.org:80/journals/bichaw/abstract.cgi/bichaw/2002/41/i24/abs/bi025679t.html)
+[Mapping the targeted membrane pore formation mechanism by solution NMR: the nisin Z and lipid II interaction in SDS micelles.](https://pubs.acs.org:80/journals/bichaw/abstract.cgi/bichaw/2002/41/i24/abs/bi025679t.html)
 _Biochemistry_ *41*, 7670-7676 (2002).
 
 * S. Singh, G.E. Folkers, **A.M.J.J. Bonvin**, R. Boelens, R. Wechselberger, A. Niztayev and R. Kaptein
-[Solution structure and DNA binding properties fo the C-terminal domain of UvrC from <i>E-coli</i>.](http://emboj.oupjournals.org/cgi/content/abstract/21/22/6257)
+[Solution structure and DNA binding properties fo the C-terminal domain of UvrC from <i>E-coli</i>.](https://emboj.oupjournals.org/cgi/content/abstract/21/22/6257)
 _EMBO J._, *21*, 6257-6266 (2002).
 
 * N. D'Amelio, **A.M.J.J Bonvin**, M. Czisch, P. Barker and R. Kaptein
-[The C terminus of apocytocrome b562 undergoes fast motions and slow exchange among ordered conformations resembling the folded state](http://pubs.acs.org:80/journals/bichaw/abstract.cgi/bichaw/2002/41/i17/abs/bi011863n.html)
+[The C terminus of apocytocrome b562 undergoes fast motions and slow exchange among ordered conformations resembling the folded state](https://pubs.acs.org:80/journals/bichaw/abstract.cgi/bichaw/2002/41/i17/abs/bi011863n.html)
 _Biochemistry_, *41*, 5505-5514 (2002).
 
 
@@ -925,7 +925,7 @@ _Biochemistry_, *41*, 5505-5514 (2002).
 <hr />
 
 * **A.M.J.J. Bonvin**, K. Houben, M. Guenneugues, R. Kaptein and R. Boelens
-[Rapid protein fold determination using secondary chemical shifts and cross-hydrogen bond 15N-13C' scalar couplings (<sup>3hb</sup>J<sub>NC'</sub>).](http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=11775739&amp;dopt=Abstract)
+[Rapid protein fold determination using secondary chemical shifts and cross-hydrogen bond 15N-13C' scalar couplings (<sup>3hb</sup>J<sub>NC'</sub>).](https://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=11775739&amp;dopt=Abstract)
 _J. Biomol. NMR_, *21*, 221-233 (2001).
 
 
@@ -933,24 +933,24 @@ _J. Biomol. NMR_, *21*, 221-233 (2001).
 <hr />
 
 * M. van Beest, D. Dooijes, M. van Wetering, S. Kjaerulff, **A.M.J.J. Bonvin**, O. Nielsen and H. Clevers
-[Sequence-specific HMG box factors recognize 10-12 base pair minor groove motifs.](http://www.jbc.org/cgi/content/abstract/M004102200v1)
+[Sequence-specific HMG box factors recognize 10-12 base pair minor groove motifs.](https://www.jbc.org/cgi/content/abstract/M004102200v1)
 _J. Biol. Chem._ *275*, 27266-27273 (2000).
 
 * G. Melacini, **A.M.J.J. Bonvin**, M. Goodman, R. Boelens and R. Kaptein
-[Hydration dynamics of the collagen triple-helix by NMR.](http://www.idealibrary.com/links/doi/10.1006/jmbi.2000.3919)
+[Hydration dynamics of the collagen triple-helix by NMR.](https://www.idealibrary.com/links/doi/10.1006/jmbi.2000.3919)
 _J. Mol. Biol._ *300*, 1041-1049 (2000).
 
 * P.J.A. van Tilborg, M. Czisch, F.A.A. Mulder, G.E. Folkers, **A.M.J.J. Bonvin**, M. Nair, R. Boelens and R. Kaptein
-[Changes in dynamical behaviour of the retinoid X receptor DNA-binding domain upon binding to 14 base pair DNA half site.](http://pubs.acs.org/CHECKCCIP-1016438394/isubscribe/journals/alljournals/jtext.cgi?bichaw/39/i30/abs/bi991550g)
+[Changes in dynamical behaviour of the retinoid X receptor DNA-binding domain upon binding to 14 base pair DNA half site.](https://pubs.acs.org/CHECKCCIP-1016438394/isubscribe/journals/alljournals/jtext.cgi?bichaw/39/i30/abs/bi991550g)
 _Biochemistry_ *39*, 8747-8757 (2000).
 
 * **A.M.J.J. Bonvin**, A.E. Mark and W.F. van Gunsteren
-[The GROMOS96 benchmarks for molecular simulation.](http://www.elsevier.nl/gej-ng/10/15/40/58/27/26/abstract.html)
+[The GROMOS96 benchmarks for molecular simulation.](https://www.elsevier.nl/gej-ng/10/15/40/58/27/26/abstract.html)
 _Comput. Phys. Commun._ *128*, 550-557 (2000).
 
 * **A.M.J.J. Bonvin**
-[Localisation and dynamics of sodium counterions around DNA in solution from molecular dynamics simulations.](http://link.springer.de/link/service/journals/00249/bibs/0029001/00290057.htm)
-_Eur. Biophys. J._ *29*, 57-60 (2000).  (<a href="http://link.springer.de/link/service/journals/00249/supp/2000/061/061.htm">Supplementary material</a>)
+[Localisation and dynamics of sodium counterions around DNA in solution from molecular dynamics simulations.](https://link.springer.de/link/service/journals/00249/bibs/0029001/00290057.htm)
+_Eur. Biophys. J._ *29*, 57-60 (2000).  (<a href="https://link.springer.de/link/service/journals/00249/supp/2000/061/061.htm">Supplementary material</a>)
 
 * **A.M.J.J. Bonvin** and W.F. van Gunsteren
 [b-hairpin stability and folding: Molecular dynamics studies of the first b-hairpin of tendamistat.](https://doi.org/doi:10.1006/jmbi.1999.3446)

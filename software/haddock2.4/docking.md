@@ -102,7 +102,7 @@ And the corresponding ensemble list file would look like:
 #### Defining input coarse grained PDBs
 
 
-Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](http://cgmartini.nl){:target="_blank"} force field with an average 4:1 ratio of all atoms to coarse grained particules.
+Version 2.4 of HADDOCK supports the use of coarse grained models for the docking. Those are based on the [MARTINI2.2p](https://cgmartini.nl){:target="_blank"} force field with an average 4:1 ratio of all atoms to coarse grained particules.
 
 To use coarse graining in HADDOCK you will need to define additional keywords **CGPDB_FILEX** for each input PDB.
 In addition, for the final transformation from coarse grained to all atom models, you will need to define one additional restraint file that contains distance restraints between each coarse grained particle and the atoms that belong to it. This file is specified by the **CGTOAA_TBL** keyword. 

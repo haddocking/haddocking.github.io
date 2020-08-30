@@ -19,8 +19,8 @@ interactions.
 
 ### HADDOCK
 
-[HADDOCK](/software/haddock2.2) is a pioneer software in data-driven (or integrative) modelling of protein interactions and our flagship project. 
-Developed since 2003 in our lab, it has been cited ca. 1000 times. A [user-friendly web server](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php)
+[HADDOCK](/software/haddock2.4) is a pioneer software in data-driven (or integrative) modelling of protein interactions and our flagship project. 
+Developed since 2003 in our lab, it has been cited more than 1500 times. A [user-friendly web server](https://wenmr.science.uu.nl/haddock2.4)
 is also available. HADDOCK is well-known for its ability to integrate data in the modelling calculations, such as:
 
 * *Nuclear Magnetic Resonance*: H/D Exchange, CSPs, RDCs (SANI, VEAN), PREs, PCSs, NOEs, Relaxation data (DANI)
@@ -50,7 +50,7 @@ that can be derived from their structures (or models).
 
 ### CAPRI
 
-The Bonvin lab participates in the Critical Assessment of Prediction of Interactions ([CAPRI](http://www.ebi.ac.uk/msd-srv/capri/)).
+The Bonvin lab participates in the Critical Assessment of Prediction of Interactions ([CAPRI](https://www.ebi.ac.uk/msd-srv/capri/)).
 This is a fun experiment in which research groups are given the sequence (and sometimes partial structures) of an unknown biomolecular complex (e.g. protein-protein, protein-DNA, ...)
 and are tasked with modelling it using their software. The results are then compared to the unreleased structures that only the CAPRI committee holds (and their authors obviously).
 This serves not only as a perfect playground for HADDOCK but also as a medium for improvement and development of new features.
