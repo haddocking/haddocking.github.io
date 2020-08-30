@@ -32,9 +32,9 @@ and imposing symmetry restraints to generate the proper homomeric complex. Those
   A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
 
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](http://haddock.science.uu.nl/services/HADDOCK2.4).
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
 
-A description of DisVis and the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
+A description of DisVis and the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
 [The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](https://doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
@@ -49,7 +49,7 @@ _J. Mol. Biol._. *429(3)*, 399-407 (2016).
 _J. Mol. Biol._ *428(4)*, 720-725 (2016).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
 _Nature Protocols_, *5*, 883-897 (2010).
 
 Further, multi-body docking and the use of symmetry restraints is described in the following paper:
@@ -231,7 +231,7 @@ Once your job has completed, and provided you did not close the status page, you
 page (you will also receive an email notification).
 
 If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input and complete scanning [here](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/3){:target="_blank"}.
+with the same input and complete scanning [here](https://wenmr.science.uu.nl/disvis/tutorial/3){:target="_blank"}.
 
 The results page presents a summary split into several sections:
 
@@ -281,8 +281,8 @@ The next step in this tutorial will be to model the complex based on the cross-l
 ## Modelling the symmetrical homomeric complex using HADDOCK
 
 
-Our information-driven docking approach [HADDOCK](http://www.bonvinlab.org/software/haddock2.2) has been a
-consistent top predictor and scorer since the start of its participation in the [CAPRI](http://www.ebi.ac.uk/msd-srv/capri)
+Our information-driven docking approach [HADDOCK](https://www.bonvinlab.org/software/haddock2.4) has been a
+consistent top predictor and scorer since the start of its participation in the [CAPRI](https://www.ebi.ac.uk/msd-srv/capri)
 community-wide blind docking experiment. This sustained performance is due, in part, to its ability to integrate experimental data and/or
 bioinformatics information into the modelling process, and also to the overall robustness of the scoring function used to assess and rank the predictions.
 
@@ -290,8 +290,8 @@ Here we will use HADDOCK in order to model the symmetrical oligomeric state of t
 
 1. Knowledge of the stochiometry of the complex (from your above analysis of DisVis results), i.e. how many monomers should we dock?
 1. Distance restraints based on MS cross-links
-2. [Center-of-mass restraints](http://www.bonvinlab.org/software/haddock2.2/run/#disre) to bring the subunits together and ensure compact solutions
-3. [Symmetry restraints](http://www.bonvinlab.org/software/haddock2.2/run/#sym) to define the symmetry of the assembly.
+2. [Center-of-mass restraints](https://www.bonvinlab.org/software/haddock2.4/airs/#center-of-mass-restraints) to bring the subunits together and ensure compact solutions
+3. [Symmetry restraints](https://www.bonvinlab.org/software/haddock2.4/run/#symmetry-restraints) to define the symmetry of the assembly.
 
 For this you will make use of the [docking interface][link-haddock-multi]{:target="_blank"} of our
 [HADDOCK web portal][link-haddock-web]{:target="_blank"}. This does require guru level access (provided with course credentials if given to you,
@@ -300,7 +300,7 @@ otherwise [register][link-haddock-register]{:target="_blank"} to the server and 
 
 Before setting up the docking we need first to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
+be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
 
 Distance restraints are defined as follows:
 
@@ -411,7 +411,7 @@ Segment ID to use during docking -> X (where X is C,D or E)
 </a>
 
 
-* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -461,7 +461,7 @@ Eair 3	 -> 1.0<br>
 
 Once you docking run has completed you will be presented with a result page (and in case you registered for the server an email will be sent to you).
 HADDOCK returns statistics for the top10 clusters, which are averages over the top4 members of each cluster.
-The ranking of the clusters is based on the HADDOCK score. Consult the online [HADDOCK manual](http://www.bonvinlab.org/software/haddock2.2/run/#scoring)
+The ranking of the clusters is based on the HADDOCK score. Consult the online [HADDOCK manual](https://www.bonvinlab.org/software/haddock2.4/scoring/)
 pages for an explanation of the scoring scheme and the default weights used at various stages.
 Remember that we have increased the weight of the distance restraints for our runs since we wanted to put more weight on the cross-links which we considered highly reliable.
 
@@ -542,19 +542,19 @@ Make sure to write your name and student number at the top of your report.
 
 
 
-[link-cns]: http://cns-online.org "CNS online"
+[link-cns]: https://cns-online.org "CNS online"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: http://bianca.science.uu.nl/disvis "DisVis web server"
+[link-disvis-web]: https://bianca.science.uu.nl/disvis "DisVis web server"
 [link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
 [link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
-[link-data]: http://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip "DisVis tutorial data"
+[link-data]: https://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip "DisVis tutorial data"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-chimera-distance]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera distance command"
 [link-chimera-atomspec]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera atom specification"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK2.2"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
+[link-haddock]: https://bonvinlab.org/software/haddock2.4 "HADDOCK2.4"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK2.4 webserver"
 [link-haddock-multi]: https://wenmr.science.uu.nl/haddock2.4/submit/1 "HADDOCK2.4 docking interface"
 [link-haddock-register]: https://bianca.science.uu.nl/auth/register/ "HADDOCK2.4 registration"
-[link-haddock-tutorial]: http://bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic "HADDOCK2.4 webserver tutorial"
+[link-haddock-tutorial]: https://bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic "HADDOCK2.4 webserver tutorial"

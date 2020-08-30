@@ -19,13 +19,13 @@ image:
 
 ### Downloading HADDOCK
 
-To obtain HADDOCK2.4 fill the [HADDOCK license form]((http://www.bonvinlab.org/software/haddock2.4/download){:target="_blank"} ).
+To obtain HADDOCK2.4 fill the [HADDOCK license form]((https://www.bonvinlab.org/software/haddock2.4/download){:target="_blank"} ).
 
 
 * * *
 
 ### Downloading CNS
-The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](http://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23){:target="_blank"}.
+The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23){:target="_blank"}.
 
 Untar the archive in your target installation directory.
 
@@ -179,15 +179,15 @@ At this stage you should be ready to use HADDOCK2.4!
 
 
 [link-cns]:CNS_manual.pdf "CNS online"
-[link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
-[link-manual]: http://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
-[link-forum]: http://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
-[link-naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
-[link-freesasa]: http://freesasa.github.io "FreeSASA"
-[link-profit]: http://www.bioinf.org.uk/software/profit/index.html "ProFit"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
-[link-pdbtools]: http://github.com/haddocking/pdb-tools "PDB-Tools"
-[link-haddocktools]: http://github.com/haddocking/haddock-tools "HADDOCK-Tools"
+[link-data]: https://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
+[link]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
+[link-manual]: https://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
+[link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
+[link-naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
+[link-freesasa]: https://freesasa.github.io "FreeSASA"
+[link-profit]: https://www.bioinf.org.uk/software/profit/index.html "ProFit"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
+[link-pdbtools]: https://github.com/haddocking/pdb-tools "PDB-Tools"
+[link-haddocktools]: https://github.com/haddocking/haddock-tools "HADDOCK-Tools"

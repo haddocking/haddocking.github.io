@@ -18,7 +18,7 @@ This tutorial consists of the following sections:
 
 This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from MS cross-linking data.
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5
-(UniProtKB: [O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)).
+(UniProtKB: [O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)).
 For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available
 ([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DisVis tutorial](/education/Others/disvis-webserver)
 to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DisVis is,
@@ -26,17 +26,17 @@ that it allows to identify the surface residues that are most often contacted in
 satisfying the cross-links. This is an additional information which might be useful to guide the docking.
 
 We will thus be making use of the results of the [DisVis tutorial](/education/Others/disvis-webserver) to setup various
-docking runs using our [HADDOCK2.4 webserver](http://haddock.science.uu.nl/services/HADDOCK2.4).
+docking runs using our [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
 
-A description of our the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
+A description of our the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 Throughout the tutorial, colored text will be used to refer to questions or
 instructions, and/or PyMOL commands.
@@ -62,8 +62,8 @@ Also, if not provided with special workshop credentials to use the HADDOCK porta
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2)) is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr)) that harness the
-power of CNS (Crystallography and NMR System, [http://cns-online.org](http://cns-online.org)) for structure
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2)) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the
+power of CNS (Crystallography and NMR System, [https://cns-online.org](https://cns-online.org)) for structure
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
@@ -133,7 +133,7 @@ Let us first inspect the available data, namely the two individual structures (o
 the information from MS we have at hand to guide the docking.
 
 In the data you downloaded you will find two PDB files for PRE5 (UniProtKB:
-[O14250](http://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](http://www.uniprot.org/uniprot/Q9UT97)),
+[O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)),
 the components of the complex we are modeling. If you click on the UniProtLB entries and search for the available
 structural information you will see that no experimental structures are available for those. What we will be using here
 are homology models obtained from [SwissModel](https://swissmodel.expasy.org/repository) (this can also be seen in the
@@ -167,7 +167,7 @@ This is the format used by DisVis to represent the cross-links. Each cross-link 
 * lower distance limit
 * upper distance limit
 
-In addition to those, the [DisVis interaction analysis](http://www.bonvinlab.org/education/Others/disvis-webserver/#interaction-analysis)
+In addition to those, the [DisVis interaction analysis](https://www.bonvinlab.org/education/Others/disvis-webserver/#interaction-analysis)
 provided us with a list of putative interface residues for each molecule:
 
 <pre style="background-color:#DAE4E7">
@@ -179,7 +179,7 @@ PUP2 predicted interface residues:
 </pre>
 
 These correspond to the interface residues identified by DisVis using a cutoff of 0.5 for the average number of
-interactions as obtained from the following [DisVis run](http://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/tutorial/2).
+interactions as obtained from the following [DisVis run](https://wenmr.science.uu.nl/disvis/tutorial/2).
 
 __Note__ that this cutoff is not a hard limit. However, in the context of using this information to drive the docking
 in HADDOCK, it is better to be too generous in the definition of the interface rather than too restrictive. Better
@@ -314,7 +314,7 @@ HADDOCK server for scenarios 1 and 3 and the easy access level for scenario 2.
 
 Before setting up the docking we need first to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
+be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -418,7 +418,7 @@ Segment ID to use during docking -> B
 </a>
 
 
-* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -510,7 +510,7 @@ Which chain to be used? -> All (for this particular case)
 PDB structure to submit -> Browse and select *PUP2.pdb*
 </a>
 
-* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -573,7 +573,7 @@ Which chain to be used? -> All (for this particular case)
 <a class="prompt prompt-info">
 PDB structure to submit -> Browse and select *PUP2.pdb*
 
-* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -832,7 +832,7 @@ analysis.
 In order to check if any of the docking models we obtained using the various scenarios makes sense,
 we will compare them to a recently published [article](https://doi.org/10.15252/embj.201695222){:target="_blank"} (November 2016) structure of a homologue
 of the 26S proteasome (from *S. cerevisiae*). This structure has been solved by X-ray crystallography at 2.4Å resolution (PDBid
-[5L5A](http://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}).
+[5L5A](https://www.rcsb.org/pdb/explore/explore.do?structureId=5L5A){:target="_blank"}).
 We will only use the two chains that are of interest, namely chains **D** and **C** corresponding to **PRE5** and **PUP2** respectively.
 The corresponding PDB file is available in the downloaded tutorial data as `5l5a_CD.pdb`.
 
@@ -963,17 +963,17 @@ extracted from the DisVis interaction analysis.
 ## Congratulations!
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to
-our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
-[<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
+our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
+[<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
-[link-cns]: http://cns-online.org "CNS online"
-[link-data]: http://milou.science.uu.nl/cgi/services/DISVIS/disvis/disvis-tutorial.tgz "DisVis tutorial data"
-[link-disvis]:https://milou.science.uu.nl/cgi/enmr/services/DISVIS/disvis/ "DisVis webserver"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
+[link-cns]: https://cns-online.org "CNS online"
+[link-data]: https://alcazar.science.uu.nl/services/DISVIS/disvis-tutorial.tgz "DisVis tutorial data"
+[link-disvis]:https://wenmr.science.uu.nl/disvis/ "DisVis webserver"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
-[link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
-[link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
-[link-haddock-register]: http://haddock.science.uu.nl/services/HADDOCK2.2/register.html "HADDOCK web server registration"
-[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
-[link-xwalk]: http://www.xwalk.org
+[link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
+[link-haddock-expert]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
+[link-haddock-register]: https://alcazar.science.uu.nl/services/HADDOCK2.2/register.html "HADDOCK web server registration"
+[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
+[link-xwalk]: https://www.xwalk.org

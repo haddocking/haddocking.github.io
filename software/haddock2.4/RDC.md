@@ -16,15 +16,15 @@ Residual dipolar couplings (RDCs) can provide useful information on the orientat
 *   Directly as RDC restraints (SANI statement in CNS)
 *   Indirectly by defining intervector projection angle restraints (VEAN statement in CNS)
 
-From our experience, both approaches give good results for docking. The use of intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"}) avoids the burden of working with a tensor in the structure calculations. Another advantage is that one can distinguish between inter- and intra-molecular restraints. Considering that part of the system will typically be kept rigid during docking, the use of intra-molecular restraints might not make much sense anyway.  
+From our experience, both approaches give good results for docking. The use of intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"}) avoids the burden of working with a tensor in the structure calculations. Another advantage is that one can distinguish between inter- and intra-molecular restraints. Considering that part of the system will typically be kept rigid during docking, the use of intra-molecular restraints might not make much sense anyway.  
 
 * * *
 
 ### Determining the alignment tensor components
 
-For using RDC restraints, the tensor components need first to be determined. In the case of complexes, this can be easily done by using the known structures of the single domains. The software [Pales](http://spin.niddk.nih.gov/bax/software/PALES/index.html){:target="_blank"} (Zweckstetter & Bax (2000). _J. Am. Chem. Soc._ **122**, 3791-3792) can be used for this purpose.  
+For using RDC restraints, the tensor components need first to be determined. In the case of complexes, this can be easily done by using the known structures of the single domains. The software [Pales](https://spin.niddk.nih.gov/bax/software/PALES/index.html){:target="_blank"} (Zweckstetter & Bax (2000). _J. Am. Chem. Soc._ **122**, 3791-3792) can be used for this purpose.  
 
-You need for this to generate a [Pales input file](http://spin.niddk.nih.gov/bax/software/PALES/index.html#DF){:target="_blank"} containing your residual dipolar couplings.  
+You need for this to generate a [Pales input file](https://spin.niddk.nih.gov/bax/software/PALES/index.html#DF){:target="_blank"} containing your residual dipolar couplings.  
 
 A csh script called _ana_pdb_Q-factor.csh_ is provided in the **haddock/tools** directory that will calculate from the experimental dipolar coupling the tensor parameters for all PDB files present in the current directory by best-fitting the dipolar coupling tensor to the corresponding 3D structures.  
 
@@ -106,7 +106,7 @@ Here the two first restraint sets corresponds to [VEAN restraints](#vean) and th
 
 ### Intervector projection angle restraints for docking  
 
-Intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"}) are obtained by taking pairs of residual dipolar couplings and generating intervector projection angle restraints (somewhat equivalent to dihedral angle restraints). These restraints have the advantage that they do no longer depend on the orientation of the dipole vector with respect to the alignment tensor. Instead they restrain the angle between two dipolar vectors, allowing for two minima. Two force constants must be therefore defined: one for the border potential function and one for the central part (e.g. between the two minima).
+Intervector projection angle restraints ( [Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"}) are obtained by taking pairs of residual dipolar couplings and generating intervector projection angle restraints (somewhat equivalent to dihedral angle restraints). These restraints have the advantage that they do no longer depend on the orientation of the dipole vector with respect to the alignment tensor. Instead they restrain the angle between two dipolar vectors, allowing for two minima. Two force constants must be therefore defined: one for the border potential function and one for the central part (e.g. between the two minima).
 
 Thanks to Helen Mott and Wayne Boucher from Cambridge University we are providing in the **HADDOCK/RDCtools** a python script, _dipole_segid.py_ that allows the generation of such restraints from RDC data. To use it, you need to have your RDC data in a tab separated file containing _residue_number, RDC_value_ and _Segid_ and provide the tensor components Dxx, Dyy and Dzz (in Hertz). For NH couplings, these components are equal to 21700 times the eigenvalues of the Saupe matrix given by Pales.
 

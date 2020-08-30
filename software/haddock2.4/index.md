@@ -27,22 +27,22 @@ Email: a.m.j.j.bonvin@uu.nl<BR>
 Phone: +31-30-2533859
 Fax: +31-30-2537623
 
-**HADDOCK is one of the flagship software in the EU H2020 [BioExcel](http://www.bioexcel.eu) Center of Excellence for Biomolecular Research [<figure >
-<img src="/images/posts/Logo_bioexcel.png" width="100"> </figure> ](http://www.bioexcel.eu)**
+**HADDOCK is one of the flagship software in the EU H2020 [BioExcel](https://www.bioexcel.eu) Center of Excellence for Biomolecular Research [<figure >
+<img src="/images/posts/Logo_bioexcel.png" width="100"> </figure> ](https://www.bioexcel.eu)**
 
 
 
 * * *
 
-**HADDOCK2.4 manual**: [http://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
+**HADDOCK2.4 manual**: [https://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
 
 **HADDOCK2.4 webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
 
 **Getting the software**:  [license form](/software/haddock2.4/download)   
 
-**Questions about HADDOCK or looking for support?**  [Ask BioExcel](http://ask.bioexcel.eu)   
+**Questions about HADDOCK or looking for support?**  [Ask BioExcel](https://ask.bioexcel.eu)   
 
-**A short introduction:** View the [BioExcel CoE](http://www.bioexcel.eu)  [webinar about HADDOCK](https://www.youtube.com/watch?v=Dbv6Jvge0Zk&index=1&list=FLmVRUOHM_0Nsh7DrMpTHtQQ)   
+**A short introduction:** View the [BioExcel CoE](https://www.bioexcel.eu)  [webinar about HADDOCK](https://www.youtube.com/watch?v=Dbv6Jvge0Zk&index=1&list=FLmVRUOHM_0Nsh7DrMpTHtQQ)   
 
 **A lecture about HADDOCK:** Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
   <ul>
@@ -72,13 +72,13 @@ Fax: +31-30-2537623
 
 ### Acknowledgments:
 
-HADDOCK is derived from [ARIA](http://aria.pasteur.fr) scripts by Michael Nilges and Jens Linge.
+HADDOCK is derived from [ARIA](https://aria.pasteur.fr) scripts by Michael Nilges and Jens Linge.
 
-*   J.P. Linge, M. Habeck, W. Rieping and M. Nilges (2003). [ARIA: automated NOE assignment and NMR structure calculation.](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12538267&dopt=Abstract) _Bioinformatics_ **19**, 315-316.
+*   J.P. Linge, M. Habeck, W. Rieping and M. Nilges (2003). [ARIA: automated NOE assignment and NMR structure calculation.](https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12538267&dopt=Abstract) _Bioinformatics_ **19**, 315-316.
 
 The ongoing development of HADDOCK is the result of a team effort and in particular contributions from _**Cyril Dominguez, Aalt-Jan van Dijk, Sjoerd de Vries, Marc van Dijk, Ezgi Karaca, Panagiotis Kastritis, Adrien Melquiond, Mikael Trellet, Gydo van Zundert and Joao Rodrigues**_ are acknowledged.
 
 * * *
 
-<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> <a href="http://en.wikipedia.org/wiki/Captain_Haddock" style="border-bottom: none;"><img src="/software/haddock2.2/haddock.gif" alt="Haddock"></a>  
+<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> <a href="https://en.wikipedia.org/wiki/Captain_Haddock" style="border-bottom: none;"><img src="/software/haddock2.2/haddock.gif" alt="Haddock"></a>  
 <font size="-2">Copyright © Hergé Moulinsart 2003</font>

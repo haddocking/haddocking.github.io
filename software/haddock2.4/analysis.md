@@ -323,7 +323,7 @@ The first line of those files gives the description of the columns, e.g. the fir
 
 You can generated a plot of the HADDOCK score as a function of the RMSD (using XmGrac for example).  
 
-A simple script called _make_ene-rmsd_graph.csh_ is provided in $HADDOCKTOOLS which allows you to generate an input file for [Xmgr/XmGrace](http://plasma-gate.weizmann.ac.il/Grace/){:target="_blank"}. Simply specify two columns to extract data from and a filename:
+A simple script called _make_ene-rmsd_graph.csh_ is provided in $HADDOCKTOOLS which allows you to generate an input file for [Xmgr/XmGrace](https://plasma-gate.weizmann.ac.il/Grace/){:target="_blank"}. Simply specify two columns to extract data from and a filename:
 
 <pre style="background-color:#DAE4E7" >
 $HADDOCKTOOLS/make_ene-rmsd_graph.csh 3 2 structures_unsorted.stat
@@ -478,7 +478,7 @@ and twelve files combining all the above information and sorted based on various
 
       If the option **-best** is given with a number of structures, additional files with as extension **_best#** will be created containing the average values over the best # structures.  
 
-You can plot the HADDOCK score of the clusters as a function of their RMSD from the lowest energy structure (using [xmgr/xmgrace](http://plasma-gate.weizmann.ac.il/Grace/){:target="_blank"} for example).  
+You can plot the HADDOCK score of the clusters as a function of their RMSD from the lowest energy structure (using [xmgr/xmgrace](https://plasma-gate.weizmann.ac.il/Grace/){:target="_blank"} for example).  
 
 <img width="500" src="/software/haddock2.4/haddock-score_vs_rmsd.png"  >
 
