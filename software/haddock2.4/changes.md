@@ -7,7 +7,16 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-### Lastest changes - version July 2020
+### Latest changes - version September 2020
+
+	- Added beta sialic acid (SIB), and additional linkages between glycans
+	- Added modified DNA baseJ (DJ)
+	- Corrected issue with automatic his protonation state
+	- Added automatic definition of restraints to maintain ions in their coordination sphere.
+	- Modified analysis scripts to work with a single ligand molecule
+
+
+### Changes - version July 2020
 
 - Added support for glycosylated proteins
 - Improved diagnostics
