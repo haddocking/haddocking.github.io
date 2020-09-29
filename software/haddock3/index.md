@@ -26,8 +26,8 @@ Email: a.m.j.j.bonvin@uu.nl<BR>
 Phone: +31-30-2533859
 Fax: +31-30-2537623
 
-**HADDOCK is one of the flagship software in the EU H2020 [BioExcel](http://www.bioexcel.eu) Center of Excellence for Biomolecular Research [<figure >
-<img src="/images/posts/Logo_bioexcel.png" width="200"> </figure> ](http://www.bioexcel.eu)**
+**HADDOCK is one of the flagship software in the EU H2020 [BioExcel](https://www.bioexcel.eu) Center of Excellence for Biomolecular Research [<figure >
+<img src="/images/posts/Logo_bioexcel.png" width="200"> </figure> ](https://www.bioexcel.eu)**
 
 
 **ATTENTION: This new version is under heavy development and will change abruptly and without warning.**
@@ -62,5 +62,5 @@ HADDOCK v3.0 can be freely downloaded by completing the following form (see our 
 
 <hr>
 
-<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> <a href="http://en.wikipedia.org/wiki/Captain_Haddock" style="border-bottom: none;"><img src="/software/haddock2.2/haddock.gif" alt="Haddock"></a>  
+<font size="-1">... more than fish or software..., discover the "capitaine" ...</font> <a href="https://en.wikipedia.org/wiki/Captain_Haddock" style="border-bottom: none;"><img src="/software/haddock2.2/haddock.gif" alt="Haddock"></a>  
 <font size="-2">Copyright © Hergé Moulinsart 2003</font>

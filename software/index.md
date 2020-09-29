@@ -19,7 +19,7 @@ This page provide you links to software and software manuals of the computationa
 
   * [**HADDOCK2.2 software**](/software/haddock2.2/) - Official 2.2 production version
   
-  * [**HADDOCK2.2 web server**](http://haddock.science.uu.nl/services-enmr/HADDOCK) -  Production version (might get discontinued in 2021).
+  * [**HADDOCK2.2 web server**](https://alcazar.science.uu.nl/enmr/services/HADDOCK2.2) -  Production version (might get discontinued in 2021).
 
   * [**HADDOCK2.4 software**](/software/haddock2.4/) - New, official 2.4 production version
 
@@ -28,7 +28,7 @@ This page provide you links to software and software manuals of the computationa
   * [**HADDOCK3 software**](/software/haddock3) - A new, very experimental [BioExcel](https://www.bioexcel.eu) redesign of HADDOCK in a modular code. Use it at your own risk!
 
 <HR>
-### [HADDOCKING GitHub repository](http://github.com/haddocking)
+### [HADDOCKING GitHub repository](https://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
 
   * [**Binding_affinity: PRODIGY**](https://github.com/haddocking/binding_affinity):
@@ -37,15 +37,15 @@ This page provide you links to software and software manuals of the computationa
   * [**DisVis**](https://github.com/haddocking/disvis):
   A Python package and command-line tool to quantify and visualize the accessible interaction space of distance-restrained biomolecular complexes.
 
-  * [**Fraction of common contact clustering**](http://github.com/haddocking/fcc):
+  * [**Fraction of common contact clustering**](https://github.com/haddocking/fcc):
   Clustering of biomolecular complexes based on the fraction of common contacts
 
-  * [**HADDOCK-tools**](http://github.com/haddocking/haddock-tools):
+  * [**HADDOCK-tools**](https://github.com/haddocking/haddock-tools):
   A collection of useful scripts related to HADDOCK
 
-  * [**PDB-tools**](http://github.com/haddocking/pdb-tools):
+  * [**PDB-tools**](https://github.com/haddocking/pdb-tools):
   A collection of Python scripts for the manipulation (renumbering, changing chain and segIDs...) of PDB files.
-  For documentation refer to [http://www.bonvinlab.org/pdb-tools/](http://www.bonvinlab.org/pdb-tools/).
+  For documentation refer to [https://www.bonvinlab.org/pdb-tools/](https://www.bonvinlab.org/pdb-tools/).
   And now also available as [web portal](https://wenmr.science.uu.nl/pdbtools)!
 
   * [**PowerFit**](https://github.com/haddocking/powerfit):
@@ -58,19 +58,21 @@ This page provide you links to software and software manuals of the computationa
 ### 3D-DART DNA modelling
   3D-DART provides a convenient means of generating custom structural models of DNA.
 
-  * [**3D-DART server**](http://haddock.science.uu.nl/enmr/services/3DDART)
+  * [**3D-DART server**](https://alcazar.science.uu.nl/enmr/services/3DDART)
 
-  * [**User manual**](http://haddock.science.uu.nl/enmr/services/3DDART/DARTusage.html)
+  * [**User manual**](https://alcazar.science.uu.nl/enmr/services/3DDART/DARTusage.html)
 <HR>
 ### Bioinformatics interface predictors
 
-  * [**WHISCY**](http://nmr.chem.uu.nl/Software/whiscy/index.html)
+  * [**WHISCY**](https://nmr.chem.uu.nl/Software/whiscy/index.html)
   WHISCY is a program to predict protein-protein interfaces. It is primarily based on conservation, but it also takes into account structural information.
 
-  * [**CPORT**](http://haddock.science.uu.nl/services/CPORT)
+  * [**CPORT**](https://alcazar.science.uu.nl/services/CPORT)
   CPORT is an algorithm for the prediction of protein-protein interface residues. It combines six interface prediction methods into a consensus predictor
 <HR>
 ### Benchmarks and datasets
+
+* All-atom and Coarse-grained HADDOCK docking models for Protein-DNA complexes: [https://zenodo.org/record/3941636](https://zenodo.org/record/3941636)
 
 * [Protein-DNA docking benchmark](https://github.com/haddocking/Prot-DNABenchmark)
 

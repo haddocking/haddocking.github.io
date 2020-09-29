@@ -52,7 +52,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 The following software packages will be used during the tutorial:
 
-* [GROMACS2019](http://manual.gromacs.org/documentation/2019-beta1/index.html): a versatile package to perform molecular dynamics simulations and several related analyses;
+* [GROMACS2019](https://manual.gromacs.org/documentation/2019-beta1/index.html): a versatile package to perform molecular dynamics simulations and several related analyses;
 
 * [PLUMED 2.5](https://www.plumed.org/doc-v2.5/user-doc/html/index.html): a package working with different MD simulation engines (such as GROMACS) used to implement different flavours of non-equilibrium MD simulations (among the others features), as well as for analysis purposes;
 
@@ -92,7 +92,7 @@ In particular, one should check for missing residues (lines starting with the st
 or missing atoms (lines starting with the string `REMARK 470`).
 </details><br>
 
-Fortunately, our structure contains all the residues present in the aminoacid sequence, as well as all the heavy atoms. For the sake of simplifying the subsequent analysis, we will generate a _clean_ pdb file without crystallographic waters named `apo_GLUCO.pdb` and containing only the protein; you can use your favorite text editor or [VMD1.9.3](http://www.ks.uiuc.edu/Research/vmd) from the terminal:
+Fortunately, our structure contains all the residues present in the aminoacid sequence, as well as all the heavy atoms. For the sake of simplifying the subsequent analysis, we will generate a _clean_ pdb file without crystallographic waters named `apo_GLUCO.pdb` and containing only the protein; you can use your favorite text editor or [VMD1.9.3](https://www.ks.uiuc.edu/Research/vmd) from the terminal:
 
 <a class="prompt prompt-cmd">vmd -dispdev none 1JEJ.pdb &lt;&lt;EOF <br>
 animate write pdb &#34;apo_GLUCO.pdb&#34; sel [atomselect top protein] <br>
@@ -105,7 +105,7 @@ If copying and pasting the previous commands in the terminal doesn't work, it ma
 
 Copying and pasting those commands should work, and you could find a clean pdb file (apo_GLUCO.pdb) in the directory <code class="highlighter-rouge">/home/utente/Tutorials/EDES-HADDOCK/tutorial_files/apoMD/</code>.
 
-Once we have the structure of our protein target, we can generate the files needed to run the MD simulations. In this case, we are going to use [GROMACS2019](http://manual.gromacs.org/current/user-guide/index.html) [[11](#ref11)] and so we need the topology file (top extension) containing information about atom types, bonded and non-bonded interactions, etc., and the initial structure file in the native format of GROMACS2019 (gro extension). A typical simulation flowchart for GROMACS2019 is reported in the official [GROMACS manual](http://manual.gromacs.org/documentation/2019/user-guide/flow.html).
+Once we have the structure of our protein target, we can generate the files needed to run the MD simulations. In this case, we are going to use [GROMACS2019](https://manual.gromacs.org/current/user-guide/index.html) [[11](#ref11)] and so we need the topology file (top extension) containing information about atom types, bonded and non-bonded interactions, etc., and the initial structure file in the native format of GROMACS2019 (gro extension). A typical simulation flowchart for GROMACS2019 is reported in the official [GROMACS manual](https://manual.gromacs.org/documentation/2019/user-guide/flow.html).
 
 GROMACS was installed in the directory `/usr/local/gromacs-2019-2/`, and in order to use it, first type:
 
@@ -275,7 +275,7 @@ Let the simulation go or kill the job (kill -9 &lt;PID&gt;; when needed, you cou
 <hr>
 ## Metadynamics simulations
 
-We are going to perform metadynamics simulations using [GROMACS 2019]( [http://manual.gromacs.org/documentation/2019/reference-manual/index.html](http://manual.gromacs.org/documentation/2019/reference-manual/index.html)) and [PLUMED2.5]( [https://www.plumed.org/doc-v2.5/user-doc/html/index.html](https://www.plumed.org/doc-v2.5/user-doc/html/index.html)),
+We are going to perform metadynamics simulations using [GROMACS 2019]( [https://manual.gromacs.org/documentation/2019/reference-manual/index.html](https://manual.gromacs.org/documentation/2019/reference-manual/index.html)) and [PLUMED2.5]( [https://www.plumed.org/doc-v2.5/user-doc/html/index.html](https://www.plumed.org/doc-v2.5/user-doc/html/index.html)),
 a plugin facilitating the implementation of different kinds of enhanced sampling
 techniques (and not only) in several simulation packages, using the same
 syntax independently of the specific engine used. Briefly, metadynamics is a method
@@ -388,7 +388,7 @@ You will get the following list of residue numbers:
 
 And a similar list containing the atom numbers (serials) of BP's residues.
 
-However, for cases in which no holo structure with the co-crystallized ligand is available, of course a similar procedure will not be feasible. A possible solution could be the usage of binding-site dection softwares among the plaetora available. Examples of these softwares include [COACH](https://zhanglab.ccmb.med.umich.edu/COACH/), [RaptorX binding](http://raptorx.uchicago.edu/BindingSite/), [ConSurf](http://consurf.tau.ac.il/2016/).
+However, for cases in which no holo structure with the co-crystallized ligand is available, of course a similar procedure will not be feasible. A possible solution could be the usage of binding-site dection softwares among the plaetora available. Examples of these softwares include [COACH](https://zhanglab.ccmb.med.umich.edu/COACH/), [RaptorX binding](https://raptorx.uchicago.edu/BindingSite/), [ConSurf](https://consurf.tau.ac.il/2016/).
 
 In particular, in [[9](#ref09)] we show how the BP selection according to the COACH software is virtually identical to the one obtained by using the holo structure.
 
@@ -516,7 +516,7 @@ Note: if you copied the previous command and it doesn't work, a possible solutio
 
 The output file COLVAR_apoMD contains the values of the CVs sampled along the unbiased trajectory (you can find a pre-calculated file in the `tutorial_files/Driver` folder). In this case the trajectory containts only 500 frames, as it serves as example for this tutorial. However remember that even if you run longer unbiased MD simulations, to assess how much the CVs changed during the unbiased MD simulation in order to define the sigma values for a metadynamics run, the calculation should be performed on a time-scale of the order of a few hundreds of ps at most.
 
-Now you can plot the CV values sampled during the unbiased run with your preferred graph viewer. Here we will use [xmgrace](http://plasma-gate.weizmann.ac.il/Grace).
+Now you can plot the CV values sampled during the unbiased run with your preferred graph viewer. Here we will use [xmgrace](https://plasma-gate.weizmann.ac.il/Grace).
 For the sake of keeping things simple, here we will do the work only for 2 of the 4 CVs selected:
 
 <a class="prompt prompt-cmd">grep -v education/HADDOCK/HADDOCK COLVAR_apoMD | awk '{print $2}' > RoG.dat <br>
@@ -600,7 +600,7 @@ Next, copy the content of `~/Tutorials/EDES-HADDOCK/tutorial_files/meta` into th
 
 <a class="prompt prompt-cmd">cp -r ~/Tutorials/EDES-HADDOCK/tutorial_files/meta/* ~/Tutorials/EDES-HADDOCK/MD/meta/ <br></a>
 
-To run a multi-replica simulation, GROMACS2019 requires creating a folder for each of the replicas, containing all the files needed for running that specific simulation. Details can be found in the [GROMACS manual]( [http://manual.gromacs.org/2019-beta3/user-guide/mdrun-features.html](http://manual.gromacs.org/2019-beta3/user-guide/mdrun-features.html)).
+To run a multi-replica simulation, GROMACS2019 requires creating a folder for each of the replicas, containing all the files needed for running that specific simulation. Details can be found in the [GROMACS manual]( [https://manual.gromacs.org/2019-beta3/user-guide/mdrun-features.html](https://manual.gromacs.org/2019-beta3/user-guide/mdrun-features.html)).
 
 Go into the `meta` folder: you will see 4 sub-folders (`rep0`, `rep1`, `rep2`, `rep3`), one for each of the 4 replicas, containing the plumed and tpr files for each run. Go into the `rep0` sub-folder, and read the `plumed-common.dat` and `plumed.0.dat` files to understand the instructions contained.
 
@@ -676,7 +676,7 @@ the BS, In this way, if conformations prone to host the ligand were sampled duri
 simulations, some near-native structures should be included in the pool of cluster representatives selected.
 To achieve this goal, in [[9](#ref9)] we performed a multi-step cluster analysis on the CVs, using the data analysis
 software [R](https://www.r-project.org/about.html). This approach can be compared with a more standard cluster analysis using as metric the RMSD of the BS (this can be performed for instance with the `gmx cluster` command of the
-GROMACS 2019 package - see [http://manual.gromacs.org/2019/onlinehelp/gmx-cluster.html](http://manual.gromacs.org/2019/onlinehelp/gmx-cluster.html))
+GROMACS 2019 package - see [https://manual.gromacs.org/2019/onlinehelp/gmx-cluster.html](https://manual.gromacs.org/2019/onlinehelp/gmx-cluster.html))
 
 The performance of a cluster analysis depends on a number of parameters (such as the number of clusters, the cut-offs, etc.)
 that in principle should be as general and system-independent as possible. In addition, several methods were developed to
@@ -783,7 +783,7 @@ metadynamics run in `../../tutorial_files/cluster_analysis/clusters_ready/`.
 ### Standard clustering approach
 
 Another way to perform the cluster analysis is e.g. to use the method `gromos` from the GROMACS 2019 software
-(see [http://manual.gromacs.org/documentation/2019/onlinehelp/gmx-cluster.html](http://manual.gromacs.org/documentation/2019/onlinehelp/gmx-cluster.html)) using the RMSD of the BS as metric.
+(see [https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-cluster.html](https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-cluster.html)) using the RMSD of the BS as metric.
 That is to say, the most similar structures with respect to the RMSD metrics will be merged together in a single cluster,
 generating a set of clusters with the lowest within-cluster RMSD.
 
@@ -853,7 +853,7 @@ This will ensure that the ligand is properly drawn inside the binding pocket.
 2. For the subsequent flexible refinement stages, we define the binding pocket only as passive and the ligand as active.
 This ensures that the ligand can explore the binding pocket.
 
-In order to create those two restraint files, use the HADDOCK server tool to generate AIR restraints: [http://haddock.science.uu.nl/services/GenTBL/](http://haddock.science.uu.nl/services/GenTBL/) (unfold the *Residue selection* menu):
+In order to create those two restraint files, use the HADDOCK server tool to generate AIR restraints: [https://alcazar.science.uu.nl/services/GenTBL/](https://alcazar.science.uu.nl/services/GenTBL/) (unfold the *Residue selection* menu):
 
 <a class="prompt prompt-info">
 Selection 1: Active residues (directly involved in the interaction) -> enter here the list of residues defining the binding site:
@@ -896,8 +896,8 @@ Compare the two generated files: what are the differences? How many restraints a
 **Note:** A description of the restraints format can be found in Box 4 of our Nature Protocol 2010 server paper:
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="http://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+_Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 
 We will now launch the docking run. For this we will make us of the [HADDOCK 2.4 web server](https://wenmr.science.uu.nl/haddock2.4/submit/1
@@ -966,7 +966,7 @@ PDB structure to submit -> Browse and select "ligand_clean.pdb"
 Segment ID to use during docking -> B
 </a>
 
-* **Step5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 * **Step6:**  Define the ligand molecule as rigid. Since the structure of the ligand is directly obtained from the reference crystal structure of the complex, we can disable the flexibility of the ligand to enforce the bound conformation of the ligand in our models. This we do in the **Molecule 2 parameters menu**  in the **Input parameters** widow.
 
@@ -1254,7 +1254,7 @@ If you want to take a look at the best solution generated by HADDOCK, unfold the
 <hr>
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to post on the BioExcel online [forum](http://ask.bioexcel.eu).
+You have completed this tutorial. If you have any questions or suggestions, feel free to post on the BioExcel online [forum](https://ask.bioexcel.eu).
 
 
 <hr>

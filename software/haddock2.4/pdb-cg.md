@@ -10,7 +10,7 @@ image:
 
 ### Introduction
 
-In order to use the [Martini](http://cgmartini.nl){:target="_blank"} coarse graining option of HADDOCK2.4 you first have to convert your atomistic PDB structures into coarse grained versions and also generate the distance restraint files that will allow HADDOCK to convert back the models to atomistic ones in the final refinement stage.
+In order to use the [Martini](https://cgmartini.nl){:target="_blank"} coarse graining option of HADDOCK2.4 you first have to convert your atomistic PDB structures into coarse grained versions and also generate the distance restraint files that will allow HADDOCK to convert back the models to atomistic ones in the final refinement stage.
 
 For this purpose a script is provided in the HADDOCK ***CGtools*** directory, called *aa2cg-prot_xna.py*.
 

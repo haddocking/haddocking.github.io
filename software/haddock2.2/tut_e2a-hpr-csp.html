@@ -14,7 +14,7 @@ image:
 <HR>
 In order to validate the HADDOCK program, we initially performed the docking on three 
 known complexes (see the 
-<a target=new href="http://pubs3.acs.org/acs/journals/doilookup?in_doi=10.1021/ja026939x">HADDOCK paper</a>. 
+<a target=new href="https://pubs3.acs.org/acs/journals/doilookup?in_doi=10.1021/ja026939x">HADDOCK paper</a>. 
 We are providing in the <b>haddock/examples</b> directory the data for all three complexes.
 This tutorial deals however only with the E2A-HPr complex. The structures in the free 
 form<sup>1,2</sup> and NMR titration data<sup>3,4</sup> are available. The complex structure
@@ -81,7 +81,7 @@ and is called
 </pre>
 <BR>
 The (average) per residue solvent accessibilities calculated with 
-<A target="new" HREF="http://wolf.bms.umist.ac.uk/naccess"> NACCESS</a> 
+<A target="new" HREF="https://wolf.bms.umist.ac.uk/naccess"> NACCESS</a> 
 (see the <a target="new" href="generate_air_help#ensemble">AIR restraints</a> 
 section) are also provided for convenience
 <pre>
@@ -95,7 +95,7 @@ used for calculations,
  - e2a-hpr_air.tbl
 </pre>
 <BR>
-a number of <a target="new" href="http://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a>
+a number of <a target="new" href="https://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a>
 scripts for visualization (see the "Defining AIRs" section) of the active and 
 passive residues for E2A and HPr,
 <pre>
@@ -122,7 +122,7 @@ Various analysis scripts can be found in the <b>ana_scripts</b> directory. They 
 to calculate the interface RMSD (i-RMSD) (RMSD calculated on backbone atoms of all residues within 10A 
 from the partner molecule) and ligand RMSD (l-RMSD) (RMSD calculated on the smallest 
 component (hpr) after fitting on the largest component (e2a)). These are standard 
-<a href="http://capri.ebi.ac.uk">CAPRI</a> definitions. A script is also provided that allows 
+<a href="https://capri.ebi.ac.uk">CAPRI</a> definitions. A script is also provided that allows 
 you to calculate the fraction of native contacts. For usage and details refer to the <i>README</i> file in the <b>ana_scripts</b> directory.
 <BR><BR>
 Finally, a script to copy data from an example HADDOCK run is provided as:
@@ -147,7 +147,7 @@ and 10 active residues for <b>HPr</b>:
    <BR><BR>
    <b><i>Note:</i></b> The active residues and the filtered ones
          can be viewed in 
-	 <a target="new" href="http://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a>
+	 <a target="new" href="https://www.umass.edu/microbio/rasmol/index2.htm">Rasmol</a>
          using the provided Rasmol scripts, <i>e2a_rasmol_active.script</i> 
          and <i>hpr_rasmol_active.script</i>. For example for E2A, start rasmol with
 <pre>
@@ -371,7 +371,7 @@ call them using:
 </pre>
 a first typical step is to gather various energetics violation and rmsd from lowest energy
 structure statistics. the <i>ana_structures.csh</i> script can be used for this purpose. it makes
-use of <a href="http://www.bioinf.org.uk/software">profit</a></b> for rmsd calculations if
+use of <a href="https://www.bioinf.org.uk/software">profit</a></b> for rmsd calculations if
 present and defined.
 <BR><BR>
 go into the <b><i>structures/it1/water</i></b> directory and run the analysis:
@@ -408,7 +408,7 @@ are then generated with various sorting schemes:
 </ul>
 These files are useful to generate various plots such as for example intermolecular
 energy versus rmsd from the lowest energy structure to visualize the clusters. The
-graphic program <b><a href="http://plasma-gate.weizmann.ac.il/Grace/">Xmgr/Grace</a></b>
+graphic program <b><a href="https://plasma-gate.weizmann.ac.il/Grace/">Xmgr/Grace</a></b>
 can be used for this purpose. To facilitate things, we are providing a csh script that
 will generate a xmgrace file called <i>ene_rmsd.xmgr</i> by specifying an input file 
 and the column numbers to be plotted:
@@ -652,7 +652,7 @@ Four files will be created:
 Which one of the two clusters is the closest to the target?
 </font color=red>
 </ul>
-According to <a href="http://capri.ebi.ac.uk">CAPRI</a> criteria, a docking model with i-RMSD or l-RMSD below 1A can be considered as a
+According to <a href="https://capri.ebi.ac.uk">CAPRI</a> criteria, a docking model with i-RMSD or l-RMSD below 1A can be considered as a
 high accuracy predition. A medium quality prediction will have a i-RMSD below 2A and/or l-RMSD below 5A.
 Acceptable predictions should have i-RMSD below 4A or l-RMSD below 10A.
 <ul>
@@ -664,7 +664,7 @@ Acceptable predictions should have i-RMSD below 4A or l-RMSD below 10A.
 The i-RMSD.disp file will now be sorted in according to the HADDOCK score.
 </ul>
 <br>
-Another measure of quality defined in <a href="http://capri.ebi.ac.uk">CAPRI</a> is the fraction of
+Another measure of quality defined in <a href="https://capri.ebi.ac.uk">CAPRI</a> is the fraction of
 native contacts. Native contacts are defined as intermolecular contact between residues 
 within 5A from each other. A script to calculate the fraction of native contacts is provided in the
 <b>e2a-hpr/ana_scripts</b> directory: <i>fraction-native.csh</i>. It takes as arguments a list of PDB

@@ -36,7 +36,7 @@ In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I
 
 For this tutorial we will make use of the [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
 
-A description of the previous major version of our web server [HADDOCK2.2](https://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"} can be found in the following publications:
+A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2){:target="_blank"} can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
@@ -745,6 +745,6 @@ You have completed this tutorial. If you have any questions or suggestions, feel
 And check also our [education](/education) web page where you will find more tutorials!
 
 [link-pymol]: https://www.pymol.org/ "PyMOL"
-[link-naccess]: http://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
-[link-freesasa]: http://freesasa.github.io "FreeSASA"
+[link-naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
+[link-freesasa]: https://freesasa.github.io "FreeSASA"
 

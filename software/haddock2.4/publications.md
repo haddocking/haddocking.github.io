@@ -15,7 +15,7 @@ This page lists haddock development articles.
 
 The original JACS paper, together with an introduction to the study of biomolecular complexes and an application to the UbcH5-CNOT4 complex can be found online in Cyril Dominguez's Ph.D. thesis:
 
-*   ["NMR-based docking of protein-protein complexes: the human UbcH5b-CNOT4 ubiquitination complex"](http://www.library.uu.nl/digiarchief/dip/diss/2004-0616-081333/inhoud.htm),<br>
+*   ["NMR-based docking of protein-protein complexes: the human UbcH5b-CNOT4 ubiquitination complex"](https://www.library.uu.nl/digiarchief/dip/diss/2004-0616-081333/inhoud.htm),<br>
       Cyril Dominguez, Ph.D. Thesis, June 2004, ISBN 90-393-3721-7.
 
 **_When using HADDOCK cite:_**
@@ -62,7 +62,7 @@ The _quantitative use of chemical shifts to score HADDOCK models_ is described i
 _Protein-peptide docking_ with HADDOCK is described in:  
 
 *   M. Trellet, A.S.J. Melquiond and **A.M.J.J. Bonvin**. .  
-    "[A Unified Conformational Selection and Induced Fit Approach to Protein-Peptide Docking.](http://dx.plos.org/10.1371/journal.pone.0058769)  
+    "[A Unified Conformational Selection and Induced Fit Approach to Protein-Peptide Docking.](https://dx.plos.org/10.1371/journal.pone.0058769)  
     _PLoS ONE_, **8(3)** e58769 (2013).
 
 _Solvated protein-protein docking_ using HADDOCK is described in:  
@@ -103,7 +103,7 @@ _(Flexible) multibody docking_ using HADDOCK is described in:
     "[Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](https://doi.org/doi:10.1074/mcp.M000051-MCP201)"  
     _Mol. Cell. Proteomics_, **9**, 1784-1794 (2010).
 
-_Our results in [CAPRI](http://capri.ebi.ac.uk)_, the blind docking experiment, are described in (Note that entire issues of Protein are dedicated to CAPRI):  
+_Our results in [CAPRI](https://capri.ebi.ac.uk)_, the blind docking experiment, are described in (Note that entire issues of Protein are dedicated to CAPRI):  
 
 *   J.P.G.L.M. Rodrigues, A.S.J. Melquiond, E. Karaca, M. Trellet, M. Van Dijk, G.C.P. Van Zundert, C. Schmitz, S.J. de Vries, A. Bordogna, L. Bonati, P.L. Kastritis and **A.M.J.J. Bonvin**.   
     "[Defining the limits of homology modelling in information-driven protein docking](https://doi.org/doi:10.1002/prot.24382)"  
@@ -136,11 +136,11 @@ Reviews on data-driven docking:
     _Methods_, **59**, 372-381 (2013).  
 
 *   P.L. Kastritis and **A.M.J.J. Bonvin**.   
-    "[Predicting and Dissecting High-order Molecular Complexity by Information-driven Biomolecular Docking](http://bookshop.cabi.org/?site=191&page=2633&pid=2443)"  
+    "[Predicting and Dissecting High-order Molecular Complexity by Information-driven Biomolecular Docking](https://bookshop.cabi.org/?site=191&page=2633&pid=2443)"  
     In: _Antimicrobial Drug Discovery. Emerging Strategies_ Adv. Mol. Cell. Microbiol., Eds G. Tegos and E. Mylokanis, CABI, **22**, 232-246 (2012).  
 
 *   A.S.J. Melquiond, E. Karaca, P.L. Kastritis and **A.M.J.J. Bonvin**.   
-    "[Next challenges in protein-protein docking: From proteome to interactome and beyond.](http://onlinelibrary.wiley.com/doi/10.1002/wcms.91/full)"  
+    "[Next challenges in protein-protein docking: From proteome to interactome and beyond.](https://onlinelibrary.wiley.com/doi/10.1002/wcms.91/full)"  
     _WIREs Computational Molecular Science_, **2**, 642-651 (2012).  
 
 *   Aalt D.J. van Dijk, Rolf Boelens and **A.M.J.J. Bonvin** (2005). "[Data-driven docking for the study of biomolecular complexes.](https://doi.org/doi:10.1111/j.1742-4658.2004.04473.x)"  

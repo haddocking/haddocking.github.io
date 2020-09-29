@@ -48,6 +48,6 @@ in the [guru interface][guru_page].
 
 
 
-[refinement_page]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html "HADDOCK refinement interface"
-[guru_page]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html "HADDOCK guru interface"
-[register_page]: http://haddock.science.uu.nl/services/HADDOCK2.2/signup.html "HADDOCK registration page"
+[refinement_page]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html "HADDOCK refinement interface"
+[guru_page]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-guru.html "HADDOCK guru interface"
+[register_page]: https://wenmr.science.uu.nl/auth/register"HADDOCK registration page"

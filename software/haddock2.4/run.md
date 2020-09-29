@@ -573,7 +573,7 @@ HADDOCK2.4 offer a new option to automatically dihedral angle restraints from th
 If RDC data are available and have been defined in the [*run.param*](/software/haddock2.4/docking/#defining-restraints){:target="_blank"} file, you can define them in this section. Five classes are supported. For each class you can specify the type of restraining energy function:
 *   SANI: direct refinement against the dipolar couplings (a tensor will be included in the structures calculations)
 *   VANGLE: refinement using intervector projection angle restraints
-([Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"})
+([Meiler et al. _J. Biomol. NMR_ **17**, 185 (2000)](https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10805131&dopt=Abstract){:target="_blank"})
 
 You can specify the first and last stage at which the various RDCs will be used.
 *   0: rigid body EM (it0)
@@ -717,7 +717,7 @@ For more information on using diffusion anisotropy as restraints for docking see
 
 ### Cryo-EM restraints
 
-If [cryoEM restraints](/software/haddock2.4/cryoEM){:target="_blank"} are available and have been defined in the [*run.param*](/software/haddock2.4/docking/#defining-restraints){:target="_blank"} file, you can define them in this section. HADDOCK relies on the concept of centroids to guide the initial docking and only uses the cryo-EM map once the molecules have been docked using the centroid restraints. The centroids define the most likely position of the center of mass of a molecule into the density. Their positions (x,y,z coordinates) must be defined in this section (the *xcom_X, ycom_X, zcom_X* parameters. Those positions can be for example obtained using our [PowerFit webserver](https://mhaddock.science.uu.nlservices/POWERFIT){:target="_blank"}.
+If [cryoEM restraints](/software/haddock2.4/cryoEM){:target="_blank"} are available and have been defined in the [*run.param*](/software/haddock2.4/docking/#defining-restraints){:target="_blank"} file, you can define them in this section. HADDOCK relies on the concept of centroids to guide the initial docking and only uses the cryo-EM map once the molecules have been docked using the centroid restraints. The centroids define the most likely position of the center of mass of a molecule into the density. Their positions (x,y,z coordinates) must be defined in this section (the *xcom_X, ycom_X, zcom_X* parameters. Those positions can be for example obtained using our [PowerFit webserver](https://alcazar.science.uu.nlservices/POWERFIT){:target="_blank"}.
 
 If it is unclear which centroid corresponds to which molecule, it is possible to define those as ambiguous by setting *ambi_X=true*. Otherwise define them specifically for each molecule.
 If centroids are used, the current implementation expect as many centroids to be defined as there are molecules.
@@ -783,7 +783,7 @@ To use explicitly the cryo-EM density as a restraint in HADDOCK set *em_rest=tru
 For more information on using a cryo-EM map as restraints for docking see also the [cryoEM restraints](/software/haddock2.4/cryoEM) section of the online HADDOCK manual. Their implementation and use in HADDOCK is described in:
 
 
-* M.E. Trellet, G. van Zundert and A.M.J.J. Bonvin. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11){:target="_blank"}. In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](http://arxiv.org/abs/2005.00435){:target="_blank"}.
+* M.E. Trellet, G. van Zundert and A.M.J.J. Bonvin. [Protein-protein modelling using cryo-EM restraints](https://dx.doi.org/10.1007/978-1-0716-0270-6_11){:target="_blank"}. In:  _Structural Bioinformatics. Methods in Molecular Biology_, vol 2112. Humana, New York, NY, (2020). A preprint is available [here](https://arxiv.org/abs/2005.00435){:target="_blank"}.
 
 * G.C.P. van Zundert, A.S.J. Melquiond and A.M.J.J. Bonvin.
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](https://doi.org/10.1016/j.str.2015.03.014){:target="_blank"}
@@ -794,7 +794,7 @@ _Structure._ *23*, 949-960 (2015).
 
 ### Topology and parameters files
 
-In this section the topology, linkage and parameter files are specified for each molecule. The default values are for proteins using the improved parameters of [Linge et al. 2003](http://www3.interscience.wiley.com/cgi-bin/abstract/102523901/START){:target="_blank"} and OPLSX non-bonded parameters.
+In this section the topology, linkage and parameter files are specified for each molecule. The default values are for proteins using the improved parameters of [Linge et al. 2003](https://www3.interscience.wiley.com/cgi-bin/abstract/102523901/START){:target="_blank"} and OPLSX non-bonded parameters.
 
 For DNA and RNA use instead the _dna-rna-allatom-hj-opls-1.3.top_, _dna-rna-allatom-hj-opls-1.3_ and _dna-rna-1.3_ files in the **toppar** directory.
 
@@ -833,7 +833,7 @@ Ions should be automatically recognized provided their naming is consistent with
 
 ### Coarse grained topology and parameters files
 
-In this section the topology, linkage and parameter files are specified in case coarse graining is used. The implementation is based on the [Martini](http://cgmartini.nl){:target="_blank"} force field.
+In this section the topology, linkage and parameter files are specified in case coarse graining is used. The implementation is based on the [Martini](https://cgmartini.nl){:target="_blank"} force field.
 
 For DNA and RNA use instead the _dna-rna-CG-MARTINI-2-1p.top_, _dna-rna-CG-MARTINI-2-1p_ and _dna-rna-CG-MARTINI-2-1p_ files in the **toppar** directory.
 
@@ -1475,7 +1475,7 @@ Since HADDOCK generates a lot of data and output files, there is a cleaning opti
 
 ### Parallels jobs
 
-In this section you can define the way the structure calculation will be run, and the location of the [CNS](http://cns.csb.yale.edu){:target="_blank"} executable. 
+In this section you can define the way the structure calculation will be run, and the location of the [CNS](https://cns.csb.yale.edu){:target="_blank"} executable. 
 10 nodes or queues can be specified, but typically only one set of parameters is required.
 
 <pre style="background-color:#DAE4E7">

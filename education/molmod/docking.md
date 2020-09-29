@@ -37,9 +37,9 @@ of its native constituents.
 This tutorial will introduce HADDOCK (High Ambiguity Driven DOCKing) as a method to predict the
 three-dimensional structure of protein-protein complexes in silico using a variety of sources of
 information to guide the docking process and score the predicted models.
-[HADDOCK](http://www.bonvinlab.org/software/haddock2.2/) is a collection of python
-scripts derived from [ARIA](http://aria.pasteur.fr) that harness the power of
-[CNS](http://cns-online.org) (Crystallography and NMR System) for structure calculation of
+[HADDOCK](https://www.bonvinlab.org/software/haddock2.2/) is a collection of python
+scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of
+[CNS](https://cns-online.org) (Crystallography and NMR System) for structure calculation of
 molecular complexes. What distinguishes HADDOCK from other docking software is its ability,
 inherited from CNS, to incorporate experimental data as restraints and use these to guide the
 docking process alongside traditional energetics and shape complementarity. Moreover, the intimate
@@ -121,7 +121,7 @@ putative interfaces on a protein surface. Since the homology modeling module cre
 homologues of mouse MDM2, it is possible to assess which residues are more conserved.
 
 The assess sequence conservation, the homologous sequences have first to be aligned using a
-multiple sequence alignment algorithm, such as [Clustal](http://www.clustal.org/). HMMER calculates
+multiple sequence alignment algorithm, such as [Clustal](https://www.clustal.org/). HMMER calculates
 *pairwise* sequence alignments between the query and all the hits. In the homology modeling
 module, these alignments were converted to a FASTA format and stored in the `psa.fasta` file. All
 it takes to build a multiple sequence alignment is then to combine the original `MDM2_MOUSE.fasta`
@@ -129,7 +129,7 @@ file with this other FASTA file and submit it to Clustal Omega. To visualize the
 which positions are more conserved, the easiest way is to generate a sequence *logo*. For each
 position in the sequence, the logo identifies the most frequently occurring residues and scales its
 one-letter code according to a conservation score. We will be using the
-[weblogo server](http://weblogo.threeplusone.com/create.cgi), in order the generate the sequence
+[weblogo server](https://weblogo.threeplusone.com/create.cgi), in order the generate the sequence
 logo for the alignment produced by `clustalo`.
 
 <a class="prompt prompt-info">
@@ -168,8 +168,8 @@ structures. For example, certain residues tend to be overrepresented at protein-
 This information, combined with evolutionary conservation and with a surface clustering algorithm
 that finds groups of surface residues meeting both the previous criteria results in reasonably
 accurate predictions. This is the basis of the
-[WHISCY](http://www.nmr.chem.uu.nl/Software/whiscy/startpage.htm) algorithm. A more advanced
-predictor, the [CPORT](http://milou.science.uu.nl/services/CPORT/) web server, judiciously
+[WHISCY](https://www.nmr.chem.uu.nl/Software/whiscy/startpage.htm) algorithm. A more advanced
+predictor, the [CPORT](https://alcazar.science.uu.nl/services/CPORT/) web server, judiciously
 combines (up to) 6 different predictors to provide a consensus prediction that is more robust and
 more reliable than any of the individual predictors alone. CPORT was designed to provide
 predictions for HADDOCK. The server also returns a PDB file of the
@@ -249,12 +249,12 @@ credentials. Otherwise, please register for an account (free for academics).
 
 Having prepared the initial structures and constructed a list of putative interface residues, it is
 time to submit the docking calculation using the
-[HADDOCK web server interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddock.php). Under the
+[HADDOCK web server interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddock.php). Under the
 header *HADDOCK Webserver* there are links to all the interfaces: Easy, Expert, Guru, Prediction,
 Multibody, and File Upload. It also lists both the
-[default settings of the webserver](http://haddock.science.uu.nl/services/HADDOCK2.2/settings.html),
+[default settings of the webserver](https://alcazar.science.uu.nl/services/HADDOCK2.2/settings.html),
 which are important to understand how restraints for example are handled, as well as a
-[listing of supported modified amino acids](http://haddock.science.uu.nl/services/HADDOCK2.2/library.html).
+[listing of supported modified amino acids](https://alcazar.science.uu.nl/services/HADDOCK2.2/library.html).
 Proceed to the *Guru* interface by clicking on the appropriate link.
 
 The *Guru* interface presents several foldable tabs and text input fields for a custom run name,
@@ -350,8 +350,8 @@ The definition of restraints does require some thoughts. Active residues in HADD
 *might* be at the interface. Ambiguous Interaction Restraints, or AIRs, are created
 between each active residue of a partner and the combination of active and passive residues of the other partner.
 An active residue which is not at the interface will cause an energy penalty while this is not the case for passive residues.
-For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](http://haddock.science.uu.nl/services/CPORT) predictions,
-while the peptide is only defined as passive. This follows the recipe published in our [Structure 2013](http://dx.plos.org/10.1371/journal.pone.0058769) paper
+For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](https://alcazar.science.uu.nl/services/CPORT) predictions,
+while the peptide is only defined as passive. This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769) paper
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have
 all to make contacts per se.
 
@@ -360,7 +360,7 @@ all to make contacts per se.
 
 For this unfold the **Distance restraints menu**.
 
-Since we have used [CPORT](http://milou.science.uu.nl/services/CPORT) to define the putative interface
+Since we have used [CPORT](https://alcazar.science.uu.nl/services/CPORT) to define the putative interface
 on MDM2 it is recommended to increase the fraction of restraints
 randomly deleted for each docking trial. By default this is 50%. In CPORT, however, we rather overpredict than underpredict
 to make sure that the binding site is covered by our predictions. Because of this overprediction it is therefore recommended to
@@ -410,7 +410,7 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 For this unfold the **Parameters for clustering menu**.
 
 HADDOCK offers two different clustering algorithms.
-Refer to the [online manual](http://www.bonvinlab.org/software/haddock2.2/run/#anal) for more details.
+Refer to the [online manual](https://www.bonvinlab.org/software/haddock2.2/run/#anal) for more details.
 For peptide and small molecules we recommend the use of RMSD clustering.
 The clustering algorithm must also be adjusted to accommodate the small size of the peptide. The
 default cutoff of 7.5Å (interface-ligand RMSD) was optimized for protein-protein docking and is

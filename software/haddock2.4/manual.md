@@ -40,9 +40,10 @@ image:
 
 ### Tips & tricks
 * [Advanced model refinement](/software/haddock2.4/tips/advanced_refinement)
+* [Settings for use with bioinformatics predictions](/software/haddock2.4/tips/bioinformatics-prediction-mode)
 
 ### [HADDOCK-related publications](/software/haddock2.4/publications)
 
-### [Online lectures](http://www.youtube.com/user/WeNMRchannel)
+### [Online lectures](https://www.youtube.com/user/WeNMRchannel)
 
 ### [Tutorials](/software/haddock2.4/tutorials)

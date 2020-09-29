@@ -29,7 +29,7 @@ In the definition of those residues, one distinguishes between ***"active"*** an
 <hr>
 ## Use of bioinformatic interface predictions  
 
-In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction software called [WHISCY](http://bianca.science.uu.nl/whiscy){:target="_blank"} and [CPORT](http://haddock.science.uu.nl/services/CPORT){:target="_blank"}. They have been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. Many others such predictors do exist!
+In absence of any experimental information on the interaction surfaces, you might want to try to predict them based on sequence conservation and other properties. We have developed for this purpose interface prediction software called [WHISCY](https://bianca.science.uu.nl/whiscy){:target="_blank"} and [CPORT](https://alcazar.science.uu.nl/services/CPORT){:target="_blank"}. They have been designed to provide an easy interface to HADDOCK and will output, among others, lists of active and passive residues for HADDOCK. CPORT is a meta predictor that integrates results from various other servers. Many others such predictors do exist!
 
 For more information refer to:  
 
@@ -115,7 +115,7 @@ The next step consists of filtering those residues according to their solvent ac
 
 ### Filtering active residues with solvent accessibility
 
-An important parameter in defining AIRs consists of the relative residue solvent accessibility. It can be calculated with the program [NACCESS](http://wolf.bms.umist.ac.uk/naccess){:target="_blank"} or [FreeSASA](http://freesasa.github.io/){:target="_blank"} (see [software links](/software/haddock2.4/software){:target="_blank"}).
+An important parameter in defining AIRs consists of the relative residue solvent accessibility. It can be calculated with the program [NACCESS](https://wolf.bms.umist.ac.uk/naccess){:target="_blank"} or [FreeSASA](https://freesasa.github.io/){:target="_blank"} (see [software links](/software/haddock2.4/software){:target="_blank"}).
 
 Both software will output a file with extension _.rsa_ containing the per- residue solvent accessibilities divided into various classes:
 
@@ -160,7 +160,7 @@ If you perform the docking from an ensemble of structures, the solvent accessibi
 **ASAav + SD > 40%**
 
 where SD corresponds to the standard deviation.  
-We are providing in the $HADDOCKTOOLS directory a csh script called `calc_ave_asa.csh` that will allow you to calculate the average accessibilities from an ensemble of structures using [NACCESS](http://wolf.bms.umist.ac.uk/naccess){:target="_blank"}.  
+We are providing in the $HADDOCKTOOLS directory a csh script called `calc_ave_asa.csh` that will allow you to calculate the average accessibilities from an ensemble of structures using [NACCESS](https://wolf.bms.umist.ac.uk/naccess){:target="_blank"}.  
 To do so, you should split your pdb file into different files containing each one structure and then use calc_ave_rsa.csh:
 
 <pre style="background-color:#DAE4E7" >

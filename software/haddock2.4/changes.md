@@ -7,31 +7,52 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-# <font color="RED">HADDOCK2.4</font> manual
+### Latest changes - version September 2020
 
-## <font size="+3" color="RED">C</font>hanges with respect to version 2.2
+	- Added beta sialic acid (SIB), and additional linkages between glycans
+	- Added modified DNA baseJ (DJ)
+	- Corrected issue with automatic his protonation state
+	- Added automatic definition of restraints to maintain ions in their coordination sphere.
+	- Modified analysis scripts to work with a single ligand molecule
 
-HADDOCK2.4 has been made compatible with CNS version 1.3\. Because of changes in CNS1.3, the linkage files in the toppar directory do no longer contain wild cards. All linkages are specified explicitly.
 
-Also, only three character residue names are now used:
+### Changes - version July 2020
 
-*   to be added
+- Added support for glycosylated proteins
+- Improved diagnostics
+- Minor fixes and code cleaning
+ 
 
-Accordingly, all protocol files have been modified to make use of WAT, HOH and TIP3.
+### Changes - version June 2020
 
-For use with CNS version 1.3, the 5.4 version of the protein topology and parameter files MUST be used:
+- Adapted the CG-to-AA conversion script to allow to morph larger conformational changes
+  and use secondary structure restraints
+- Corrected an issue in automatic secondary structure definition leading failures for very large systems
+- Exposed a new parameter in run.cns (flcut_nb) that allows to control the distance cutoff to automatically
+  define semi-flexible regions
 
-*   to be added
 
-And for DNA:
+	
+### Changes with respect to version 2.2
 
-*   to be added
-
-A CNS version check has been build in the parameter files.
-
-Other main changes with respect to version 2.1 are listed in the following:
-
-*   to be added
+- Extension to up to 20 molecules docking
+- Coarse grained docking implemented based on the Martini force field v2.2
+  for both proteins and nucleic acids
+- Z-restraining potential as implicit membrane restraining potential
+- Cryo-EM restraints implementation
+- Added option to turn off (partially) analysis (speeds up the overall running time)
+  Default settings only perform clustering
+- For refinement (randorien=false), missing atoms are now rebuilt in the context of the complex
+- Added automatic identification of cyclic peptides
+- Added automatic idenfification of D-amino acids
+- Added support for C6 symmetry
+- Added support for shapes
+- Added option to automatically define HIS protonation states based on electrostatic energy
+- Changed default dielectric treatment to distance dependent dielectric with eps=10 for it0 and 1 for it1
+  (Note should not be used for nucleic acids and coarse graining)
+- Turn off by default explicit solvent final refinement (only EM performed)
+- Switched nucleic acid support to use 1/2 letter code for RNA/DNA
+- Added option to fix molecules in their original position
 
 
 * * *

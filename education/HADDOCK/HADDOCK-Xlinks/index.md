@@ -26,7 +26,7 @@ that it allows to identify the surface residues that are most often contacted in
 satisfying the cross-links. This is an additional information which might be useful to guide the docking.
 
 We will thus be making use of the results of the [DisVis tutorial](/education/Others/disvis-webserver) to setup various 
-docking runs using our [HADDOCK2.2 webserver](https://haddock.science.uu.nl/services/HADDOCK2.2).
+docking runs using our [HADDOCK2.2 webserver](https://alcazar.science.uu.nl/services/HADDOCK2.2).
 
 A description of our web server can be found in the following publications:
 
@@ -62,7 +62,7 @@ Once downloaded, make sure to unpack the archive.
 
 HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2)) 
 is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the 
-power of CNS (Crystallography and NMR System – [http://cns-online.org](https://cns-online.org)) for structure 
+power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure 
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside 
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the 
@@ -366,7 +366,7 @@ __Note:__ Under Linux (or OSX), this file could be generated automatically from 
  file provided with the data for this tutorial by giving the following command (one line) in a terminal window:_
 
 <a class="prompt prompt-linux">
-cat restraints_filtered.txt | awk '{if (NF == 8) {print "assi (segid ",$1," and resid ",$2," and name ",$3,") (segid ",$4," and resid ",$5," and name ",$6,") ",$8,$8,$7}}' > restraints_filtered.tbl
+cat restraints_filtered.txt | awk \'{if ( NF == 8 ) {print \"assi ( segid \",$1,\" and resid \",$2,\" and name \",$3,\" ) ( segid \",$4,\" and resid \",$5,\" and name \",$6,\" ) \",$8,$8,$7}}\' > restraints_filtered.tbl
 </a>
 
 <hr>
@@ -385,7 +385,7 @@ We will now launch the docking run. For this scenario we will make us of the [ex
 of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
+https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
 </a>
 
 __Note:__ _The blue bars on the server can be folded/unfolded by clicking on the arrow on the right._
@@ -450,7 +450,7 @@ containing all settings and input data of your run.
 </figure>
 
 We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simply uploading it into the 
-[file upload interface](https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
+[file upload interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
 It can thus serve as input reference for the run. This file can also be edited to change a few parameters, 
 for example increasing the number of models generated. 
 
@@ -502,7 +502,7 @@ job has successfully completed.
 For this scenario we will make us of the [easy interface][link-haddock-easy]{:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
+https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
 </a>
 
 * **Step1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-interface*.
@@ -557,7 +557,7 @@ __Remember__ _to save the haddockparameter file for reference._
 For this scenario we will make us of the [expert interface][link-haddock-expert]{:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
+https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
 </a>
 
 * **Step1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-crosslinks-interface*.
@@ -965,13 +965,13 @@ Thank you for following this tutorial. If you have any questions or suggestions,
 our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
 [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
-[link-cns]: http://cns-online.org "CNS online"
+[link-cns]: https://cns-online.org "CNS online"
 [link-disvis]: https://wenmr.science.uu.nl/disvis "DisVis webserver"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK2.2"
-[link-haddock-web]: https://haddock.science.uu.nl/services/HADDOCK2.2 "HADDOCK2.2 webserver"
-[link-haddock-easy]: https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
-[link-haddock-expert]: https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
+[link-haddock-web]: https://alcazar.science.uu.nl/services/HADDOCK2.2 "HADDOCK2.2 webserver"
+[link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
+[link-haddock-expert]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
 [link-haddock-register]: https://wenmr.science.uu.nl/auth/register/ "HADDOCK web server registration"
 [link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
 [link-xwalk]: https://www.xwalk.org

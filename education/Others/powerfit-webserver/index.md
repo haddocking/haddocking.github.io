@@ -21,7 +21,7 @@ To facilitate its use, we have developed a [web portal][link-powerfit-web]{:targ
 
 This tutorial demonstrates the use of the PowerFit web server. The server makes use of either
 local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
-[EGI](http://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
+[EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
 of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
@@ -153,7 +153,7 @@ density map (`9.8`). This is also the minimal required input for the web server 
 
 To run PowerFit, go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT" target="_blank">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
 
 On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
@@ -192,7 +192,7 @@ pre- and post-processing steps might substantially increase the time until the r
 
 While the calculations are running, open a second tab and go to
 
-<a class="prompt prompt-info" href="http://haddock.science.uu.nl/services/POWERFIT" target="_blank">http://haddock.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
 
 Then click on the "**Help/Manual**" menu.
 
@@ -409,19 +409,19 @@ This is demonstrated in the [command line version][link-haddock-tuto]{:target="_
 _Structure._ *23*, 949-960 (2015).
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to
-our [PowerFit forum](http://ask.bioexcel.eu/c/powerfit){:target="_blank"} hosted by the [<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} center of excellence
+our [PowerFit forum](https://ask.bioexcel.eu/c/powerfit){:target="_blank"} hosted by the [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} center of excellence
 for computational biomolecular research.
 
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
-[link-powerfit-web]: http://haddock.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/register "PowerFit registration"
-[link-powerfit-submit]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
-[link-powerfit-help]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
+[link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
+[link-powerfit-register]: https://wenmr.science.uu.nl/auth/register/powerfit"PowerFit registration"
+[link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
+[link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
-[link-data]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
+[link-data]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-1884 "Ribosome RsgA density"
-[link-pdb]: http://www.rcsb.org/pdb/explore/explore.do?structureId=2YKR "PDBid 2YKR"
-[link-haddock-tuto]: http://bonvinlab.org/education/Others/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
-[link-powerfit-tuto]: http://bonvinlab.org/education/Others/powerfit "Powerfit command-line tutorial"
-[link-powerfit-tutorial]: http://milou.science.uu.nl/cgi/services/POWERFIT/powerfit/example "Powerfit tutorial results page"
+[link-pdb]: https://www.rcsb.org/pdb/explore/explore.do?structureId=2YKR "PDBid 2YKR"
+[link-haddock-tuto]: https://bonvinlab.org/education/Others/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
+[link-powerfit-tuto]: https://bonvinlab.org/education/Others/powerfit "Powerfit command-line tutorial"
+[link-powerfit-tutorial]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/example "Powerfit tutorial results page"

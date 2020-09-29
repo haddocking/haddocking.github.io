@@ -22,9 +22,9 @@ The case we will be investigating is the complex between bonvine chymotrypsinoge
 
 For this tutorial we will make use the following web servers:
 
-* [PS-HomPPI v2.0](http://ailab1.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"}: A partner-specific homology based protein-protein interface predictor. We use PS-HomPPI to search structural templates from the PDB databank, cluster them and calculate one set of distance restraints from the interfaces of each template cluster.
+* [PS-HomPPI v2.0](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"}: A partner-specific homology based protein-protein interface predictor. We use PS-HomPPI to search structural templates from the PDB databank, cluster them and calculate one set of distance restraints from the interfaces of each template cluster.
 
-* [HADDOCK2.2](http://haddock.science.uu.nl/services/HADDOCK2.2){:target="_blank"}: The HADDOCK web portal which allows to model 3D structures of the query complex using distance restraints derived by PS-HomPPI v2.0 to guide the docking. 
+* [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2){:target="_blank"}: The HADDOCK web portal which allows to model 3D structures of the query complex using distance restraints derived by PS-HomPPI v2.0 to guide the docking. 
 
 
 References:
@@ -32,7 +32,7 @@ References:
 * Li C Xue, João P G L M Rodrigues, Drena Dobbs, Vasant Honavar, Alexandre M J J Bonvin. [Template-based protein–protein docking exploiting pairwise interfacial residue restraints.](https://academic.oup.com/bib/article/18/3/458/2562753){:target="_blank"} _Briefings in bioinformatics_ *18*, 458-466 (2017).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](http://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} _Nature Protocols_, *5*, 883-897 (2010).
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} _Nature Protocols_, *5*, 883-897 (2010).
 
 Throughout the tutorial, colored text will be used to refer to questions or 
 instructions, and/or PyMOL commands.
@@ -59,17 +59,17 @@ reliable methods. Although many proteins interact with high specificity, the
 majority of the template-based methods failed to consider interaction partner
 information. 
 
-[PS-HomPPI v2.0](http://ailab1.ist.psu.edu/PSHOMPPIv2.0/) is a partner-specific 
+[PS-HomPPI v2.0](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/) is a partner-specific 
 structural template based interface predictor. It is a member of [HomPPI](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-244), a suite
 of homology-based interface predictors: 1)
-[NPS-HomPPI](http://ailab1.ist.psu.edu/NPSHOMPPI/) (Non partner-specific HomPPI), which can be used to predict
+[NPS-HomPPI](https://ailab1.ist.psu.edu/NPSHOMPPI/) (Non partner-specific HomPPI), which can be used to predict
 interface residues of a query protein in the absence of knowledge of the
-interaction partner; and (ii) [PS-HomPPI](http://ailab1.ist.psu.edu/PSHOMPPIv2.0/) (Partner-specific HomPPI), which can be
+interaction partner; and (ii) [PS-HomPPI](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/) (Partner-specific HomPPI), which can be
 used to predict the interface residues of a query protein with a specific
 target protein. 
 
-[PS-HomPPI v2.0](http://ailab1.ist.psu.edu/PSHOMPPIv2.0/) is an improved
-version of [PS-HomPPI v1.3](http://ailab1.ist.psu.edu/PSHOMPPIv1.3/), which has been used to predict pairwise contacts, 
+[PS-HomPPI v2.0](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/) is an improved
+version of [PS-HomPPI v1.3](https://ailab1.ist.psu.edu/PSHOMPPIv1.3/), which has been used to predict pairwise contacts, 
 to reliably rank docked models and to guide flexible docking. However, the
 major limiting factor for all the template-based methods (including PS-HomPPI)
 is the availability of the templates. To increase the sensitivity of the
@@ -105,9 +105,9 @@ PS-HomPPI v2.0 makes pairwise interface predictions with the following steps:
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [http://www.bonvinlab.org/software/haddock2.2](http://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) 
-is a collection of python scripts derived from ARIA ([http://aria.pasteur.fr](http://aria.pasteur.fr){:target="_blank"}) that harness the 
-power of CNS (Crystallography and NMR System – [http://cns-online.org](http://cns-online.org){:target="_blank"}) for structure 
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) 
+is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the 
+power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure 
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside 
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the 
@@ -183,7 +183,7 @@ Data for this tutorial can be downloaded from [here](/education/HADDOCK/HADDOCK-
     *  CA-CA distance restraints file (`cluster1_restraints.tbl`). Theses are the ones generated by PS-HomPPI that will be used as input of HADDOCK to guide the docking. 
     *  The unbound structures of the two individual proteins (`A.pdb`, `B.pdb`)
     *  The reference PDB file of the complex (`1ACB_target.pdb`) 
-    *  A reference `haddockparam.web` file that contains all the input data and settings to run the docking using the [File upload] interface](https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html){:target="_blank"}  of the HADDOCK web server.
+    *  A reference `haddockparam.web` file that contains all the input data and settings to run the docking using the [File upload] interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html){:target="_blank"}  of the HADDOCK web server.
 
 3.  _OUTPUT data from PS-HomPPI and HADDOCK_ (under `1ACB/PSHomPPI/output` and `1ACB/HADDOCK/output`)
     *   Predicted pairwise interfacial residues (CA-CA distances) by PS-HomPPI
@@ -206,10 +206,10 @@ We will start by using PS-HomPPI v2.0 to
 
 ### Submitting the query to PS-HomPPI
 
-Connect to the the [PS-HomPPI](http://ailab1.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"} web server.
+Connect to the the [PS-HomPPI](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"} web server.
 
 <a class="prompt prompt-info">
-http://ailab1.ist.psu.edu/PSHOMPPIv2.0/
+https://ailab1.ist.psu.edu/PSHOMPPIv2.0/
 </a>
 
 * **Step1:** Enter your email and give a name to the job
@@ -247,7 +247,7 @@ _Note: The structures of the individual proteins are optional but **recommended*
 Paste the deletion file (optional) -> A:B=>1acb\*
 </a>
 
-__Note:__ _For more details of the format for the deletion file, see [the overview page of the PS-HomPPI 2.0 web server](http://ailab1.ist.psu.edu/PSHOMPPIv2.0/overview.html){:target="_blank"}._
+__Note:__ _For more details of the format for the deletion file, see [the overview page of the PS-HomPPI 2.0 web server](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/overview.html){:target="_blank"}._
 
 * **Step6:** Define the distance cutoff to create the “CA-CA (Alpha carbon-Alpha carbon) distance restraints. We will leave it to the default of **15 Å**. 
 
@@ -290,7 +290,7 @@ Once finished, PS-HomPPI will send a result email to your email address. It typi
 From links provided in the email, you can download the predicted CA-CA distances for your query proteins A and B (the `cluster1_Ca_Ca_distance.txt` file). This file is already provided in the tutorial data you downloaded under `1ACB/PSHomPPI/output`):
 
 <pre style="background-color:#DAE4E7">
-Prediction results of Partner-specific interface residues by PS-HomPPI (http://ailab1.ist.psu.edu/PSHOMPPIv2.0).
+Prediction results of Partner-specific interface residues by PS-HomPPI (https://ailab1.ist.psu.edu/PSHOMPPIv2.0).
 
 Notations:
         1. A|A:B: the interface residues of protein A that interact with protein B.
@@ -468,7 +468,7 @@ set to 1 and the sampling of 180 degrees rotated solutions during rigid body EM 
 
 We will now launch the docking run. In order to define distance restraints to guide the docking, we will make us of the
 expert interface of the HADDOCK web server: 
-[http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html){:target="_blank"}
+[https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html){:target="_blank"}
 
 __Note:__ _The blue bars on the server can be folded/unfolded by clicking on the arrow on the right._
 
@@ -549,7 +549,7 @@ containing all settings and input data of your run.
 </figure>
 
 **We strongly recommend to save this haddockparameter file** since it will allow you to repeat the run by simply uploading it into the 
-[file upload interface](http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
+[file upload interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
 It can thus serve as input reference for the run. This file can also be edited to change a few parameters, 
 for example, increasing the number of models generated. 
 
@@ -814,7 +814,7 @@ We can clearly see that the inhibitory loop is moving toward the bound conformat
 ### Quantitative analysis by l-RMSDs (ligand RMSD) calculation
 
 In order to have a more quantitative view of the quality of the models we will calculate ligand RMSDs (l-RMSDs).
-These are used in the blind protein-protein prediction experiment [CAPRI](http://capri.ebi.ac.uk/) (Critical PRediction of Interactions)
+These are used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions)
  as a measure of the quality of a model. The l-RMSD is calculated by fitting on the backbone atoms the receptor (first molecule) and
 calculating the RMSD on the backbone atoms of the ligand (second molecule).
 
@@ -890,7 +890,7 @@ models, we can see that the CA-CA models have smaller l-RMSDs.
 __Note:__ _In CAPRI another measure of quality is also used, the interface RMSD (i-RMSD). It is calculated on
 the backbone atoms of all residues within 10Å from the the other molecule._
 
-Since it is not possible to calculate i-RMSDs easily in PyMol (we use [ProFit](http://www.bioinf.org.uk/programs/profit/) for this), we pre-calculated those values for the various models. The i-RMSD emphasises the differences at the interface as can be seen in the following values:
+Since it is not possible to calculate i-RMSDs easily in PyMol (we use [ProFit](https://www.bioinf.org.uk/programs/profit/) for this), we pre-calculated those values for the various models. The i-RMSD emphasises the differences at the interface as can be seen in the following values:
 
 <pre>
 cluster1_1.pdb 1.759
@@ -981,7 +981,7 @@ This clash analysis clearly shows that models obtained by superimposition need t
 ## Additional/optional questions
 
 **1)** If you are curious, try refining the superimposed models through it and see if the clashes are removed to the same extend of the CA-CA docked model and if the l-RMSD improves of not.
-One option to do that is to make use of the HADDOCK refinement interface available from [https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html](https://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html). It will only perform the water refinement stage of HADDOCK.
+One option to do that is to make use of the HADDOCK refinement interface available from [https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html). It will only perform the water refinement stage of HADDOCK.
 
 __Note:__ _A refinement run might fail if too severe clashes are present in the initial models._
 
@@ -1000,14 +1000,14 @@ We have shown that CA-CA guided flexible docking is able to induce conformationa
 ## Congratulations!
 
 Thank you for following this tutorial. If you have any questions or suggestions, feel free to contact us via email, or post your question to 
-our [HADDOCK forum](http://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
-[<img width="70" src="/images/Bioexcel_logo.png">](http://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
+our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the 
+[<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
-[link-cns]: http://cns-online.org "CNS online"
-[link-pymol]: http://www.pymol.org/ "PyMOL"
-[link-haddock]: http://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
-[link-haddock-web]: http://haddock.science.uu.nl/services/HADDOCK2.2 "HADDOCK 2.2 webserver"
-[link-haddock-easy]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
-[link-haddock-expert]: http://haddock.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
-[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
+[link-cns]: https://cns-online.org "CNS online"
+[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
+[link-haddock-web]: https://alcazar.science.uu.nl/services/HADDOCK2.2 "HADDOCK 2.2 webserver"
+[link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
+[link-haddock-expert]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
+[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
 
