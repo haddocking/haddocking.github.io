@@ -25,7 +25,7 @@ HADDOCK is a powerful tool, however we reach its full potential only when we use
          title="Structures preparation">
          <center><img src="pdb.png" class="col-table" ></center></a>
 
-### 2.) [How to use information about the interaction in HADDOCK?](/software/bpg/restraints/)
+### 2.) [How to use information about interactions in HADDOCK?](/software/bpg/restraints/)
  <a href="restraints"
          title="Restraints preparation">
         <center> <img src="restraints.png" class="col-table" ></center></a>
