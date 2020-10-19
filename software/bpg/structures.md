@@ -7,6 +7,7 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
+[_Back to main best practice page_](/software/bpg)
 
 <p align="right">
   <img src="/software/bpg/pdb_1.png" />
@@ -91,7 +92,7 @@ Homology modeling using these tools is described in our tutorial here:
 * [RDKit](https://www.rdkit.org)
 	- open source chemoinformatics and machine learning software 
 
-<center><img src="/software/bpg/ligand.png"></center>
+<center><img width="300" src="/software/bpg/ligand.png"></center>
 
 * to prepare topology and parameter files for the ligand in CNS format one can use:
 
