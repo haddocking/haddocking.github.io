@@ -48,7 +48,7 @@ In case when there is no experimental structure available for molecules of prote
 
 * [HMMER](https://www.ebi.ac.uk/Tools/hmmer/search/phmmer)
 
-Once one finds the protein homologues, some freely available softwares for **homology model building** are here:
+Once one finds the protein homologues, some freely available software for **homology model building** are here:
 
 * [SWISS-MODEL](https://swissmodel.expasy.org/interactive)
 	- this online tool can both look for homologous proteins and build a protein model   
