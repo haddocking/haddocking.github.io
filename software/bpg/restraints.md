@@ -85,7 +85,7 @@ HADDOCK can utilize plenty of experimental information. Here we describe other t
 ## 2.)  Information about the interface is not available
 
 
-If there is no direct information about the interacting residues available, one can still browse throguh the available literature or employ bionformatic prediction to gain some information about the potential complex. HADDOCK offers a plethora of ways for these scenarios.   
+If there is no direct information about the interacting residues available, one can still browse through the available literature or employ bionformatic prediction to gain some information about the potential complex. HADDOCK offers a plethora of ways for these scenarios.   
 
 
 
@@ -199,7 +199,7 @@ table, th, td {
 
 <HR>
 
-#  Complimentary softwares related to restraints for HADDOCK
+#  Complimentary software related to restraints for HADDOCK
 
 In bonvinlab a number of complementary webservers have been developed to help users to reevaluate restraints. 
 
