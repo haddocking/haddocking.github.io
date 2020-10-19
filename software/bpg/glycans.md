@@ -7,6 +7,7 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
+[_Back to main best practice page_](/software/bpg)
 <p align="right">
   <img src="/software/bpg/bound_glycan.png" />
 </p>

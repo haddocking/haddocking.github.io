@@ -6,6 +6,8 @@ image:
 ---
 ## 2020
 
+* C.Y.L. Lau, F, Fontana, L, Mandemaker, D, Wezendonk, B, Vermeer, **A.M.J.J. Bonvin**, R. de Vries, H. Zhang, K. Remaut, J. van den Dikkenberg, J. Silva, A. Hassan, B. Perrone, R. Kuemmerle, F. Gelain, W. Hennink, M. Weingarth, and E. Mastrobattista. Control over the fibrillization yield by varying the oligomeric nucleation propensities of self-assembling peptides. _Comm. Chem._ In Press (2020).
+
 * V. Tozzini , G. Palermo , **A.M.J.J. Bonvin** , M. Dal Peraro and R.E. Amaro. [Editorial: Multiscale Modeling from Macromolecules to Cell: Opportunities and Challenges of Biomolecular Simulations](https://www.frontiersin.org/articles/10.3389/fmolb.2020.00194/full). _Front. Mol. Biosci._ 10.3389/fmolb.2020.00194 (2020).
 
 * B. Jiménez-García, J.M.C. Teixeira, M.E. Trellet, J.P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**. [PDB-Tools Web: A user-friendly interface for the manipulation of PDB files](https://doi.org/10.22541/au.159662521.16200914) _Authorea_ 10.22541/au.159662521.16200914 (2020).
@@ -90,7 +92,7 @@ _Journal of Structural Biology: X_, *1*, 100006 (2019).
 
 ## 2018 
 
-* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* 2018
+* J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* (2018)
 
 * P.I. Koukos, I. Faro, C.W. van Noort and **A.M.J.J. Bonvin**. [A membrane protein complex docking benchmark](https://doi.org/10.1016/j.jmb.2018.11.005). _J. Mol. Biol._ *430*, 5246-‌5256 (2018).
 
