@@ -45,7 +45,7 @@ table, th, td {
     <td><center><b><p style="font-size:20px"><a href="glycans" alt="Docking of glycans" title="Docking of glycans">Glycans</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="peptides" alt="Docking of peptides" title="Docking of peptides">Peptide</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="dna" alt="Docking of nucleotides" title="Docking of small molecules">Nucleotides</a></p></b></center></td>
-    <td><center><b><p style="font-size:20px"><a href="dna" alt="Docking of proteins" title="Docking of protein">Proteins</a></p></b></center></td>
+    <td><center><b><p style="font-size:20px"><a href="proteins" alt="Docking of proteins" title="Docking of protein">Proteins</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="cg" alt="Docking of coarse grained molecules" title="Docking of coarse grained molecules ">Coarse grain</a></p></b></center></td>
   </tr>
   <tr>
