@@ -68,6 +68,8 @@ Homology modeling using these tools is described in our tutorial here:
 
 * **Point-mutations in HADDOCK**
  are handled by changing the amino acid name and HADDOCK will fill the missing side chains atoms. This step is further described [here](/software/haddock2.4/faq/#what-about-point-mutations) and can be done using the *pdb_mutate.py* tool in [***haddock-tools***](https://github.com/haddocking/haddock-tools).
+ 
+**Note** that *pdb_mutate.py* will not create the new side-chain atoms (this is handled by HADDOCK). But if you prefer to have control of the side-chain conformation rather use tools like [Pymol](https://pymol.org/2/) to introduce the mutation. This is even **recommended in the case of a mutation to Histidine** as the server can not automatically guess the protonation state if the side-chain is missing.
 
 * [Pymol](https://pymol.org/2/) is an almost irreplaceable tool in every-day life of a computational chemist. Pymol is often used in a number of HADDOCK tutorials for structure preparations as well as analysis of docking results. 
 	* Pymol offers a lot of handy plugins which extend its usability, for example peptide-building ,some of them can be found here:  
@@ -100,7 +102,7 @@ Homology modeling using these tools is described in our tutorial here:
 	* the **PRODGR** server maintained by Daan van Aalten at Dundee University: [https://prodrg2.dyndns.org](https://prodrg2.dyndns.org)  
     This server allows you to draw your molecule or paste coordinates and will return topologies and parameter files in various format, including CNS. You should turn on the electrostatic to obtain partial charges.
 
-	* the **Automated Topology Builder (ATB)** and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://compbio.biosci.uq.edu.au/atb](https://compbio.biosci.uq.edu.au/atb)  
+	* the **Automated Topology Builder (ATB)** and Repository developed in the group of Prof. Alan Mark at the University of Queensland in Brisbane: [https://compbio.biosci.uq.edu.au/atb](https://compbio.biosci.uq.edu.au/atb)  
    
 Preparation of small molecules for docking is further described in the [frequently asked questions page](/software/haddock2.4/faq/#small-ligand-docking-with-haddock).
 
@@ -129,6 +131,8 @@ Examples of using MD for HADDOCK are shown here:
 * [Tutorial EDES / HADDOCK for ligand-protein docking](/education/biomolecular-simulations-2019/Metadynamics_tutorial/)
 
 
+<HR>
+
 ## Editing pdb files
 
 Upon acquiring the input structures provided you might want to modify in one way or the other. This might not be very straightforward since pdb files have to meet strict formatting requirements and are rather lengthy to edit manually. The HADDOCK group has therefore developed a pipeline called PDB-Tools where pdb files can be submitted and edited it as needed. PDB-tools are available here:
@@ -146,6 +150,7 @@ Tutorials:
 
 * [Tutorial explaining use of the local version of PDB-Tools](/education/HADDOCK24/HADDOCK24-local-tutorial/#preparing-pdb-files-for-docking)
 
+
 <HR>
 
 ## Getting structures HADDOCK-ready
@@ -162,6 +167,7 @@ Tutorials:
 * [Haddock tools](https://github.com/haddocking/haddock-tools) are a bunch of useful tools available on [Github](https://github.com/haddocking/haddock-tools for use with local version of HADDOCK) that can be used to modify pdb or restraint files.
 
 * A list of modified amino acids and another molecule types supported by HADDOCK can be found [here](https://wenmr.science.uu.nl/haddock2.4/library).
+
 
 <HR>
 
@@ -181,7 +187,7 @@ table, th, td {
 | edit pdb files in Word, OpenOffice or LibreOffice editor |edit pdb files in an ASCII text editor |
 | use residues with multiple occupancies (e.g. 124A, 124B) | use *pdb_selaltloc.py* to choose only one residue occupancy |
 | use residues with overlapping numbering | use *pdb_reres.py* to renumber residues |
-| use atoms with identical atom names | edit your molecule with an ASCII text editor to make all atom names unique |
+| use atoms with identical atom names | edit your molecule with an ASCII text editor to make all atom names unique or use [*pdb_uniqname.py*](https://github.com/haddocking/pdb-tools/blob/master/pdbtools/pdb_uniqname.py) from our PDB-tools|
 | use a pdb file with incorrect formatting | pdb formatting is very strict, check your file with *pdb_validate.py* and reload and export the file in Pymol if necessary |
 
 

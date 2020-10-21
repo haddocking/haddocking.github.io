@@ -23,12 +23,6 @@ HADDOCK can perform docking of nucleic acids. Currently there are no tutorials f
 
 <HR>
 
-## [Tutorials](/education/)
-
-
-
-<HR>
-
 ## [Publications](/publications/)
 
 * Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 292-306 (2020).
