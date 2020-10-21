@@ -42,6 +42,8 @@ Fax: +31-30-2537623
 
 **Questions about HADDOCK or looking for support?**  [Ask BioExcel](https://ask.bioexcel.eu)   
 
+[**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
+  
 **A short introduction:** View the [BioExcel CoE](https://www.bioexcel.eu)  [webinar about HADDOCK](https://www.youtube.com/watch?v=Dbv6Jvge0Zk&index=1&list=FLmVRUOHM_0Nsh7DrMpTHtQQ)   
 
 **A lecture about HADDOCK:** Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
