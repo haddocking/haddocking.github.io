@@ -39,6 +39,7 @@ image:
 * [Software links](/software/haddock2.4/software)
 
 ### Tips & tricks
+* [HADDOCK best practice guide](/software/bpg) - A must read when starting to use our software!
 * [Advanced model refinement](/software/haddock2.4/tips/advanced_refinement)
 * [Settings for use with bioinformatics predictions](/software/haddock2.4/tips/bioinformatics-prediction-mode)
 
