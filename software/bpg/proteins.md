@@ -7,14 +7,14 @@ title: "Protein-protein docking"
 image:
   feature: pages/banner_software.jpg
 ---
-
+[_Back to main best practice page_](/software/bpg)
 <p align="right">
   <img src="/software/bpg/bound_protein.png" />
 </p>
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
-As the name **HADDOCK** (**H**igh **A**mbiguity **D**riven protein-protein **DOCK**ing) suggests, HADDOCK was originally developed for docking of proteins.  Nowadays HADDOCK belongs to the state-of-the-art softwares in the protein-protein docking field, thus protein-protein documentation is the most comprehensive one. You can read more about protein-protein docking in following sections:
+As the name **HADDOCK** (**H**igh **A**mbiguity **D**riven protein-protein **DOCK**ing) suggests, HADDOCK was originally developed for docking of proteins.  Nowadays HADDOCK belongs to the state-of-the-art software in the protein-protein docking field, thus protein-protein documentation is the most comprehensive one. You can read more about protein-protein docking in following sections:
 
 
 * table of contents

@@ -3,6 +3,7 @@ layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
+title: ""
 image:
   feature: pages/banner_software.jpg
 ---
@@ -14,22 +15,18 @@ HADDOCK is a powerful tool, however we reach its full potential only when we use
 * table of contents
 {:toc}
 
-<HR>
 
+<HR>
 ## Before docking
 
-### 1.) [How to prepare structures for HADDOCK?](/software/bpg/structures/) 
+### [How to prepare structures for HADDOCK?](/software/bpg/structures/) 
+  <a href="structures" title="Structures preparation"><center><img width="300" src="pdb.png" class="col-table" ></center></a>
+  
+### [How to use information about interactions in HADDOCK?](/software/bpg/restraints/)
+ <a href="restraints" title="Restraints preparation"> <center> <img width="300" src="restraints.png" class="col-table" ></center></a>
 
 
-  <a href="structures"
-         title="Structures preparation">
-         <center><img src="pdb.png" class="col-table" ></center></a>
-
-### 2.) [How to use information about interactions in HADDOCK?](/software/bpg/restraints/)
- <a href="restraints"
-         title="Restraints preparation">
-        <center> <img src="restraints.png" class="col-table" ></center></a>
-
+<HR>
 ##  Docking with HADDOCK
 
 <style>
@@ -48,7 +45,7 @@ table, th, td {
     <td><center><b><p style="font-size:20px"><a href="glycans" alt="Docking of glycans" title="Docking of glycans">Glycans</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="peptides" alt="Docking of peptides" title="Docking of peptides">Peptide</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="dna" alt="Docking of nucleotides" title="Docking of small molecules">Nucleotides</a></p></b></center></td>
-    <td><center><b><p style="font-size:20px"><a href="dna" alt="Docking of proteins" title="Docking of protein">Proteins</a></p></b></center></td>
+    <td><center><b><p style="font-size:20px"><a href="proteins" alt="Docking of proteins" title="Docking of protein">Proteins</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="cg" alt="Docking of coarse grained molecules" title="Docking of coarse grained molecules ">Coarse grain</a></p></b></center></td>
   </tr>
   <tr>
@@ -102,9 +99,14 @@ table, th, td {
   </tr>
  </table>
 
+
+<HR>
 ##  [After docking: How to analyse docking results from HADDOCK or refine models?](/software/bpg/analysis/)
 
 
 <a href="analysis"
          title="Analysis">
-        <center> <img src="analysis.png" class="col-table" ></center></a>
+        <center> <img width="300" src="analysis.png" class="col-table" ></center></a>
+
+
+<HR>

@@ -7,13 +7,17 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
+[_Back to main best practice page_](/software/bpg)
 <p align="right">
   <img src="/software/bpg/analysis_1.png" />
 </p>
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
+* table of contents
+{:toc}
+<HR>
 
-## Protein-protein docking
+## Comparing your docking results to a known reference structure
 
 
 There are various way how can your docking run be compared to a reference structure:
@@ -31,18 +35,43 @@ There are various way how can your docking run be compared to a reference struct
    	DockQ can be found on Github in both [python](https://github.com/bjornwallner/DockQ) or [fortran](https://github.com/nemo8130/DockQ-fortran-code).
 
 
+<HR>
 
-## Manual
+## Analysis manual
 
 
 Analysis of docking results are described in the [HADDOCK2.4 manual](/software/haddock2.4/analysis/) and more about parameters in the *run.cns* file is written [here](/software/haddock2.4/run/#analysis-and-clustering).
 
 
+<HR>
+
 ## Clustering and scoring
 
-A short section about key analysis parameters is written [here](https://wenmr.science.uu.nl/haddock2.4/settings).
+The HADDOCK scoring function is explained [here](/software/haddock2.4/scoring/).
+
+The cluster-based HADDOCK analysis is explained [here](/software/haddock2.4/analysis/#cluster-based-analysis).
+
+A short section about key default analysis parameters is provided [here](https://wenmr.science.uu.nl/haddock2.4/settings).
 
 
+<HR>
+
+## Dos and Don'ts
+
+<style>
+table, th, td {
+    padding: 5px;
+  table-layout: fixed ;
+  width: 100% ;
+}
+</style>
+
+| <font size="10" color="RED">Don't</font> | <font size="10" color="GREEN">Do instead</font> |
+|:---:|:---:|
+| take blindly the first ranked model/cluster | consider/examine multiple models/clusters, especially if they overlap within standard deviations in their score|
+| do not consider the size of the cluster as an indication of its quality | use the cluster score and not its size for selecting best solutions (of course it is nice if the largest cluster is also the best scoring one) |
+| do not only consider/look at the best model of a cluster | within one cluster, do visualise and compare several models (e.g. the top4) to get an idea of the precision and make sure the clustering worked properly |
+| take scores as proxies of binding affinity to compare different complexes | compare scores only within the same system/complex (i.e. to distinguish models for one docking run), or in the case of mutations |
 
 <HR>
 

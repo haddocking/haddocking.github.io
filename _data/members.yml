@@ -23,10 +23,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Manon.png
 
--   name: Francesco Ambrosetti
-    position: Postdoctoral Researcher
-    avatar: /images/people/Francesco.jpg
-
 -   name: Panagiotis Koukos
     position: Postdoctoral Researcher
     avatar: /images/people/PanosK.jpg
@@ -43,10 +39,6 @@
     position: M.Sc Student
     avatar: /images/people/Greg-Kafetzopoulos.png
     
--   name: Tim Neijenhuis
-    position: M.Sc Student
-    avatar: /images/people/Tim-Neijenhuis.png
-    
 -   name: Etjen Ahmic
     position: M.Sc Student
     avatar: /images/people/Etjen-Ahmic.png
@@ -55,3 +47,6 @@
     position: M.Sc Student
     avatar: /images/people/Nikolaos-Glentis.jpg
 
+-   name: Andreas Palazi
+    position: M.Sc Student
+    avatar: /images/people/Andreas-Palazi.png

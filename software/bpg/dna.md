@@ -7,7 +7,7 @@ title: "Nucleic acids docking"
 image:
   feature: pages/banner_software.jpg
 ---
-
+[_Back to main best practice page_](/software/bpg)
 <p align="right">
   <img src="/software/bpg/bound_dna.png" />
 </p>
@@ -23,17 +23,11 @@ HADDOCK can perform docking of nucleic acids. Currently there are no tutorials f
 
 <HR>
 
-## [Tutorials](/education/)
-
-
-
-<HR>
-
 ## [Publications](/publications/)
 
 * Z. Kurkcuoglu and **A.M.J.J. Bonvin**. [Pre- and post-docking sampling of conformational changes using ClustENM and HADDOCK for protein-protein and protein-DNA systems](https://doi.org/10.1002/prot.25802). _Proteins: Struc. Funct. &amp; Bioinformatics_, *88*, 292-306 (2020).
 
-* R.V. Honorato, Jfi you for**A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, *6*, 102 (2019).  
+* R.V. Honorato, J. Roel-Touris and **A.M.J.J. Bonvin**. [MARTINI-based protein-DNA coarse-grained HADDOCKing](https://doi.org/10.3389/fmolb.2019.00102). _Frontiers in Molecular Biosciences_, *6*, 102 (2019).
 
 * M. van Dijk, K. Visscher, P.L. Kastritis and **A.M.J.J. Bonvin**.
 [Solvated protein-DNA docking using HADDOCK.](https://doi.org/doi:10.1007/s10858-013-9734-x)

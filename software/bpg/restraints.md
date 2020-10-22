@@ -7,7 +7,7 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
-
+[_Back to main best practice page_](/software/bpg)
 <p align="right">
   <img src="/software/bpg/restraints_1.png" />
 </p>
@@ -85,7 +85,7 @@ HADDOCK can utilize plenty of experimental information. Here we describe other t
 ## 2.)  Information about the interface is not available
 
 
-If there is no direct information about the interacting residues available, one can still browse throguh the available literature or employ bionformatic prediction to gain some information about the potential complex. HADDOCK offers a plethora of ways for these scenarios.   
+If there is no direct information about the interacting residues available, one can still browse through the available literature or employ bionformatic prediction to gain some information about the potential complex. HADDOCK offers a plethora of ways for these scenarios.   
 
 
 
@@ -107,7 +107,7 @@ Ab-initio multi-body docking with NCS restraints is described [here](/education/
 
 #### [Membrane Z-positioning restraints](/software/haddock2.4/run/#membrane-z-positioning-restraints)
 
-These restraints don't deal with symmetry, but can be useful in guiding the docking of membrane proteins. This type of restraints is used to keep segments within or outside of a defined Z-coordinate range. They can be used for docking of membrane proteins but can be use generically as well.
+These restraints do not deal with symmetry, but can be useful in guiding the docking of membrane proteins. This type of restraints is used to keep segments within or outside of a defined Z-coordinate range. They can be used for docking of membrane proteins but can be use generically as well.
 
 They are described in the HADDOCK manual [here](/software/haddock2.4/run/#membrane-z-positioning-restraints).
 
@@ -154,6 +154,8 @@ table, th, td {
 |**Number of structures for the final refinement (itw)**|<code>waterrefine</code>| 200 |**400**|
 |**Number of structures to analyze**|<code>anastruc_1</code> | 200| **400**|
 
+**IMPORTANT NOTE**: The non-integer value of `ncvpart` can only be used in the web server. What the server is then doing is to pre-generate `ambig.tbl_XXX` files, where `XXX` indicated the model number. Those are then placed into the `structures/it0` directory and `noecv` is set to false.
+When such files are present, they will be read instead of the regular `ambig.tbl`.  The automatic partioning into sets of restraints in CNS can only handle an integer number, meaning that the largest possible random removal is 50% (`ncvpart=2`). For more than 50% random removal custom `ambig.tbl_XXX` files must be generated prior to docking.
 
 
 More about optimal settings for different docking scenarios can be found [here](https://wenmr.science.uu.nl/haddock2.4/settings#bioinfo).
@@ -199,7 +201,7 @@ table, th, td {
 
 <HR>
 
-#  Complimentary softwares related to restraints for HADDOCK
+#  Complimentary software related to restraints for HADDOCK
 
 In bonvinlab a number of complementary webservers have been developed to help users to reevaluate restraints. 
 

@@ -19,15 +19,15 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
     
+-   name: Francesco Ambrosetti
+    current: 'Novartis, Switzerland'
+    status: 'postdoc,phd'
+
 -   name: Li Xue
     url: https://www.radboudumc.nl/en/people/li-xue
     current: 'Radboud University Medical Center, the Netherlands'
-    status: 'postdoc,assistant-professor'
+    status: 'assistant-professor,postdoc'
 
--   name: Farzaneh Meimandi Parizi
-    current: 'University of Nijmegen, Netherlands'
-    status: 'visiting PhD student'
-    
 -   name: Attilio Vargiu
     url: http://people.unica.it/attiliovargiu
     current: 'University of Cagliari, Sardinia, Italy'
@@ -41,15 +41,15 @@
 -   name: Mikael Trellet
     url: http://www.fluigent.com
     current: 'Fluigent Smart Mircrofluidic, Paris, France'
-    status: 'student,postdoc'
+    status: 'postdoc,student'
 
 -   name: Cunliang Geng
-    status: 'phd,postdoc'
+    status: 'postdoc,phd'
 
 -   name: Cristina Paissoni
     url: http://sites.unimi.it/camilloni/
     current: 'University of Milano, Italy'
-    status: visiting postdoc
+    status: visiting-postdoc
 
 -   name: Joerg Schaarschmidt
     url:  http://www.kit.edu/english/
@@ -74,17 +74,17 @@
 -   name: Gydo van Zundert
     url: https://github.com/latrocinia
     current: 'Schrödinger Inc., NY - Stanford University - UCSF, CA, USA'
-    status: 'phd,postdoc'
+    status: 'postdoc,phd'
 
 -   name: Joao Rodrigues
     url: http://github.com/JoaoRodrigues
     current: 'Stanford University, School of Medicine'
-    status: 'student,phd,postdoc'
+    status: 'postdoc,phd,student'
     
 -   name: Marc van Dijk
     url: http://www.aimms.vu.nl/en/people/d/marc-van-dijk.asp
     current: 'VU, Amsterdam'
-    status: 'student,phd,postdoc'
+    status: 'postdoc,phd,student'
     
 -   name: Christophe Schmitz
     url: http://nl.linkedin.com/in/cpfschmitz/en
@@ -139,12 +139,12 @@
 -   name: Panagiotis Kastritis
     url: https://www.uni-halle.de
     current: 'Martin-Luther Universität Halle-Wittenberg, Germany'
-    status: 'phd,postdoc'
+    status: 'postdoc,phd'
 
 -   name: Sjoerd de Vries
     url: http://www.mti.univ-paris-diderot.fr/en/
     current: 'Université Paris-Diderot, Paris'
-    status: 'student,phd'
+    status: 'phd,student'
     
 -   name: Mickaël Krzeminski
     url: https://www.linkedin.com/in/mkrzemin
@@ -170,6 +170,10 @@
     url: http://www.meduniwien.ac.at/pharmakologie/stockner
     current: 'Medical University of Vienna, Austria'
     status: phd
+    
+-   name: Farzaneh Meimandi Parizi
+    current: 'University of Nijmegen, Netherlands'
+    status: visiting-phd
     
 -   name: Andrea Basciu
     current: 'University of Cagliari, Italy'
@@ -281,6 +285,10 @@
     status: student
 
 -   name: Sam de Vos
+    current: M.Sc Student UU
+    status: student
+
+-   name: Tim Neijenhuis
     current: M.Sc Student UU
     status: student
 
