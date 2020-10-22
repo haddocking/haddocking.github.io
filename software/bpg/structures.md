@@ -114,7 +114,7 @@ Proteins are not rock-solid and HADDOCK can handle flexibility of the interface 
 
 * [GROMACS](http://www.gromacs.org)
 
-* [GROMOS](https://ambermd.org)
+* [GROMOS](http://www.gromos.net)
 
 * [AMBER](https://ambermd.org)
 

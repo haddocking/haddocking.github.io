@@ -69,8 +69,8 @@ table, th, td {
 | <font size="10" color="RED">Don't</font> | <font size="10" color="GREEN">Do instead</font> |
 |:---:|:---:|
 | take blindly the first ranked model/cluster | consider/examine multiple models/clusters, especially if they overlap within standard deviations in their score|
-| do not consider the size of the cluster as an indication of its quality | use the cluster score and not its size for selecting best solutions (of course it is nice if the largest cluster is also the best scoring one) |
-| do not only consider/look at the best model of a cluster | within one cluster, do visualise and compare several models (e.g. the top4) to get an idea of the precision and make sure the clustering worked properly |
+| consider the size of the cluster as an indication of its quality | use the cluster score and not its size for selecting best solutions (of course it is nice if the largest cluster is also the best scoring one) |
+| consider/look only at the best model of a cluster | within one cluster, do visualise and compare several models (e.g. the top4) to get an idea of the precision and make sure the clustering worked properly |
 | take scores as proxies of binding affinity to compare different complexes | compare scores only within the same system/complex (i.e. to distinguish models for one docking run), or in the case of mutations |
 
 <HR>
