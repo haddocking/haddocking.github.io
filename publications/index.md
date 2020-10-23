@@ -6,6 +6,8 @@ image:
 ---
 ## 2020
 
+* M. Schwarz, P. Skrinjar, M.J. Fink, S. Kronister, T. Mechtler, P.I. Koukos, **A.M.J.J. Bonvin**, D. Kasper and H. Mikula. A click-flipped enzyme substrate boosts the performance of the diagnostic screening for Hunter syndrome. _Chem. Sci._, In Press (2020).
+
 * C.Y.L. Lau, F, Fontana, L, Mandemaker, D, Wezendonk, B, Vermeer, **A.M.J.J. Bonvin**, R. de Vries, H. Zhang, K. Remaut, J. van den Dikkenberg, J. Silva, A. Hassan, B. Perrone, R. Kuemmerle, F. Gelain, W. Hennink, M. Weingarth, and E. Mastrobattista. Control over the fibrillization yield by varying the oligomeric nucleation propensities of self-assembling peptides. _Comm. Chem._ In Press (2020).
 
 * V. Tozzini , G. Palermo , **A.M.J.J. Bonvin** , M. Dal Peraro and R.E. Amaro. [Editorial: Multiscale Modeling from Macromolecules to Cell: Opportunities and Challenges of Biomolecular Simulations](https://www.frontiersin.org/articles/10.3389/fmolb.2020.00194/full). _Front. Mol. Biosci._ 10.3389/fmolb.2020.00194 (2020).
