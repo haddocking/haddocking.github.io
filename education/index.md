@@ -33,11 +33,40 @@ We offer various [research projects](/education/research-projects/) to both bach
 ## Online lectures
 
 * Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
+
   <ul>
   <details>
-  <summary>View recorded lecture
+  <summary>View recorded lecture (108 min.)
   </summary>
    <iframe width="560" height="315" src="https://www.youtube.com/embed/KUbEwGv21n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
+  
+* Recordings of the [BioExcel](https://www.bioexcel.eu) summerschool HADDOCK lectures by Prof. Bonvin (June 22nd, 2020):
+
+  <ul>
+  <details>
+  <summary>View recorded lecture Part I (40 min.)
+  </summary>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/AULTBI3BqRY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  <details>
+  <summary>View recorded lecture Part II (45 min.)
+  </summary>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/yXKZusQKYOM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
+  
+* Recording of a [CCPBioSim](https://www.ccpbiosim.ac.uk/events/workshop-course-material/eventdetail/127/-/training-week-2020) lecture by Prof. Bonvin on the topic of binding affinity (Oct. 7th, 2020):
+
+  <ul>
+  <details>
+  <summary>View recorded lecture (27 min.)
+  </summary>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/wHb63DC59Ns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </details>
   <br>
   </ul>
