@@ -274,12 +274,16 @@ Since we truncated the antibody, the numbering is no longer sequential. Let's ad
 <a class="prompt prompt-info"> Choose 'pdb_reres' and click on +Add a new block</a>
 <a class="prompt prompt-info"> Type *1* into the starting field</a>
 
+<a class="prompt prompt-info"> Check the box for Tidy</a>
+
+Checking this box "cleans up" the pdb and removes any irrelevant lines that could disturb following residue renumbering.
+
 Note that one can download or upload an existing pipeline which can be used repeatedly. 
 
 Once we have all commands in our pipeline click on **Run this**. 
 
 The final command should look like:
-<pre >$ cat parsed_1.pdb | pdb_delhetatm.py | pdb_chain.py -A | pdb_reres.py -1 | pdb_selres.py -1:120,221:327 | pdb_reres.py -1 </pre>  
+<pre >$ cat parsed_1.pdb | pdb_delhetatm.py | pdb_chain.py -A | pdb_reres.py -1 | pdb_selres.py -1:120,221:327 | pdb_reres.py -1 | pdb_tidy.py </pre>  
 
 One can also download the complete pipeline [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/pdbtools.json).  
 
