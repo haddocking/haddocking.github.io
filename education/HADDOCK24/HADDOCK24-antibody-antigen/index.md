@@ -280,7 +280,7 @@ Checking this box "cleans up" the pdb and removes any irrelevant lines that coul
 
 Note that one can download or upload an existing pipeline which can be used repeatedly. 
 
-Once we have all commands in our pipeline click on **Run this**. 
+<a class="prompt prompt-info"> Once you have all commands in our pipeline click on **Run this**.</a>
 
 The final command should look like:
 <pre >$ cat parsed_1.pdb | pdb_delhetatm.py | pdb_chain.py -A | pdb_reres.py -1 | pdb_selres.py -1:120,221:327 | pdb_reres.py -1 | pdb_tidy.py </pre>  
