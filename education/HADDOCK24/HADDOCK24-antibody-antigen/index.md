@@ -141,7 +141,7 @@ Nowadays there are several computational tools that can identify the paratope fr
 In this step we will make use of the [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}. PDB-tools webserver is a powerful tool that enables you to edit pdbs quickly and painlessly without any scripting knowledge. It does not require registration and individual commands can be joined together into a pipeline which can be saved for future use.
 
 First open your web browser to go to [https://wenmr.science.uu.nl/pdbtools/](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} and choose **Submit a pipeline**.  
-
+me
 Here, we fetch the antibody structure directly by typing *4G6K* in the **PDB Code** field. 
 
 Check the field for **biounit**, to download the functional form of the molecule.
@@ -159,7 +159,7 @@ After the structure is fetched properly, we can see that it contains two chains:
 
 Now we will split our antibody into two (ligh and heavy) chains, to prepare the input for ProABC-2.
 
-<a class="prompt prompt-info"> Choose 'pdb_splitchain' and click on +Add a new block.</a>
+<a class="prompt prompt-info"> Choose 'pdb_splitchain' from the **Pre-processing** panel and click on +Add a new block.</a>
 
 Then we need to clean our pdb structure by removing all water, ion or other non-protein atoms as a result from the crystallisation process.  
 
@@ -259,10 +259,6 @@ For docking, we should remove all non-relevant atoms, e.g. crystallised waters a
 <a class="prompt prompt-info"> Choose 'pdb_chain' and click on +Add a new block.</a>
 <a class="prompt prompt-info"> Type *A* into the starting field</a>
 
-In the next step we need to "clean up" the pdb. *pdb_tidy* removes any irrelevant lines in the pdb that could disturb following residue renumbering.
-
-<a class="prompt prompt-info"> Choose 'pdb_tidy' and click on +Add a new block</a>
-
 Until now each chain of the pdb starts with residue number 1. This can be confusing and cannot be processed by HADDOCK. In next step we renumber the antibody so that each residue has its unique number.
 
 <a class="prompt prompt-info"> Choose 'pdb_reres' and click on +Add a new block</a>
@@ -283,7 +279,7 @@ Note that one can download or upload an existing pipeline which can be used repe
 Once we have all commands in our pipeline click on **Run this**. 
 
 The final command should look like:
-<pre >$ cat parsed_1.pdb | pdb_delhetatm.py | pdb_chain.py -A | pdb_tidy.py | pdb_reres.py -1 | pdb_selres.py -1:120,221:327 | pdb_reres.py -1 </pre>  
+<pre >$ cat parsed_1.pdb | pdb_delhetatm.py | pdb_chain.py -A | pdb_reres.py -1 | pdb_selres.py -1:120,221:327 | pdb_reres.py -1 </pre>  
 
 One can also download the complete pipeline [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/pdbtools.json).  
 
