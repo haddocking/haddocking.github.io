@@ -14,9 +14,9 @@ image:
 
 * B. Jiménez-García, J.M.C. Teixeira, M.E. Trellet, J.P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**. [PDB-Tools Web: A user-friendly interface for the manipulation of PDB files](http://dx.doi.org/10.1002/prot.26018) _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
 
-* J.L. Roel-Touris,  B. Jiménez-García and **A.M.J.J. Bonvin**. [Integrative Modeling of Membrane-associated Protein Assemblies](https://doi.org/10.1101/2020.07.20.211987). _BioRxiv_ 10.1101/2020.07.20.211987 (2020).
+* J.L. Roel-Touris,  B. Jiménez-García and **A.M.J.J. Bonvin**. [Integrative Modeling of Membrane-associated Protein Assemblies](https://doi.org/10.1038/s41467-020-20076-5). _Nature Comm._, *11*, 6210 (2020).
  
-* H.H. Rabouw, L.J. Visser, T.C. Passchier, M.A. Langereis, F. Liu, P. Giansanti, A.L.W. van Vliet, J.G. Dekker, S.G. van der Grein, J.G. Saucedo, A.A. Anand, M.E. Trellet, **A.M.J.J. Bonvin**, P. Walter, A.J.R. Heck, R.J. de Groot and F.J.M. van Kuppeveld. [Inhibition of the integrated stress response by viral proteins that block p-eIF2–eIF2B association](https://doi.org/10.1038/s41564-020-0759-0). _Nature Microbiology_, 10.1038/s41564-020-0759-0 (2020).
+* H.H. Rabouw, L.J. Visser, T.C. Passchier, M.A. Langereis, F. Liu, P. Giansanti, A.L.W. van Vliet, J.G. Dekker, S.G. van der Grein, J.G. Saucedo, A.A. Anand, M.E. Trellet, **A.M.J.J. Bonvin**, P. Walter, A.J.R. Heck, R.J. de Groot and F.J.M. van Kuppeveld. [Inhibition of the integrated stress response by viral proteins that block p-eIF2–eIF2B association](https://doi.org/10.1038/s41564-020-0759-0). _Nature Microbiology_, *58*, 1361-1373 (2020).
 
 * A. Leitner, **A.M.J.J. Bonvin**, C.H. Borchers, R.J. Chalkley, . Chamot-Rooke, C.W. Combe, J. Cox, M. Dong, L. Fischer, M. Götze, F.C. Gozzo, A.J.R. Heck, M.R. Hoopmann, L. Huang, Y. Ishihama, A.R. Jones, N. Kalisman, O. Kohlbacher, K. Mechtler, R.L. Moritz, E. Netz, P.r Novak, E. Petrotchenko, A. Sali, R.A. Scheltema, C. Schmidt, D. Schriemer, A. Sinz, F. Sobott, F. Stengel, K. Thalassinos, H. Urlaub, R. Viner, J.A. Vizcaino, M. R. Wilkins, J. Rappsilber. [Towards Increased Reliability, Transparency and Accessibility in Crosslinking Mass Spectrometry](https://doi.org/10.1016/j.str.2020.09.011) _Structure_, _28_, 1259-1268 (2020).
 

@@ -58,11 +58,10 @@ This page provide you links to software and software manuals of the computationa
 
 <HR>
 ### 3D-DART DNA modelling
-  3D-DART provides a convenient means of generating custom structural models of DNA.
+  3D-DART provides a convenient means of generating custom structural models of DNA. Our server is no longer in operation because of security issues, but you can run it yourself from a docker container. Visit for this our GitHub repo below.
 
-  * [**3D-DART server**](https://alcazar.science.uu.nl/enmr/services/3DDART)
+  * [**3D-DART**](https://github.com/haddocking/3D-DART-server/)
 
-  * [**User manual**](https://alcazar.science.uu.nl/enmr/services/3DDART/DARTusage.html)
 <HR>
 ### Bioinformatics interface predictors
 
