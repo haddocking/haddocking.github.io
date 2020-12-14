@@ -253,6 +253,13 @@
 -   name: Raphaëlle Versini
     status: student
 
+-   name: Rosanna Denis
+    status: student
+
+-   name: Carlos Barreto
+    current: 'University of Coimbra, Portugal'
+    status: student
+
 -   name: Daan Sybrandi
     status: student
 
@@ -269,34 +276,24 @@
     status: student
 
 -   name: Leander Goldbach
-    current: M.Sc Student UU
     status: student
 
 -   name: Bastiaan de Graaf
-    current: M.Sc Student UU
     status: student
 
 -   name: Sofia Rosback
-    current: M.Sc Student UU
     status: student
 
 -   name: Adrian Gondra Gogorza
-    current: M.Sc Student UU
     status: student
 
 -   name: Sam de Vos
-    current: M.Sc Student UU
     status: student
 
 -   name: Tim Neijenhuis
-    current: M.Sc Student UU
     status: student
 
--   name: Rosanna Denis
-    status: student
-
--   name: Carlos Barreto
-    current: 'University of Coimbra, Portugal'
+-   name: Greg Kafetzopoulos
     status: student
 
 
