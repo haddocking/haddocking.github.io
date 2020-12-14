@@ -19,7 +19,7 @@ image:
 
 ### Downloading HADDOCK
 
-To obtain HADDOCK2.4 fill the [HADDOCK license form]((https://www.bonvinlab.org/software/haddock2.4/download){:target="_blank"} ).
+To obtain HADDOCK2.4 fill the [HADDOCK license form](https://www.bonvinlab.org/software/haddock2.4/download){:target="_blank"} ).
 
 
 * * *
