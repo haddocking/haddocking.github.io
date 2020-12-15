@@ -1,6 +1,6 @@
 ---
 layout: news
-title: HPC innovation award for deep learnign work
+title: HPC innovation award for deep learning work
 date: 2020-12-15
 excerpt:
 tags: [HADDOCK, Utrecht University, Alexandre Bonvin, Docking]
