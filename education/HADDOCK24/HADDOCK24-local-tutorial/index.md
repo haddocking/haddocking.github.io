@@ -113,7 +113,7 @@ the interface used in the calculation is automatically defined based on an analy
 <hr>
 ### Downloading HADDOCK
 In this tutorial we will make use of the new HADDOCK2.4 version.  
-To obtain HADDOCK2.4 fill the [HADDOCK license form](software/haddock2.4/download/).
+To obtain HADDOCK2.4 fill the [HADDOCK license form](/software/haddock2.4/download/).
 
 <br>
 <hr>
