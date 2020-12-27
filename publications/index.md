@@ -4,6 +4,12 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2021
+
+* O.M.H. Salo-Ahen#, I. Alanko, R. Bhadane, **A.M.J.J. Bonvin**#, R. Vargas Honorato, S. Hossain, A.H. Juffer, A. Kabedev, M. Lahtela-Kakkonen, A. Støttrup Larsen, E. Lescrinier, P. Marimuthu, M.. Mirza, G. Mustafa, A. Nunes-Alves#, T. Pantsar, A. Saadabadi, K. Singaravelu, M. Vanmeert. Molecular dynamics simulations in drug discovery and pharmaceutical 
+development. _Processes_. In press (2021).
+
+
 ## 2020
 
 * M. Schwarz, P. Skrinjar, M.J. Fink, S. Kronister, T. Mechtler, P.I. Koukos, **A.M.J.J. Bonvin**, D. Kasper and H. Mikula. [A click-flipped enzyme substrate boosts the performance of the diagnostic screening for Hunter syndrome](https://doi.org/10.1039/D0SC04696E). _Chem. Sci._, 10.1039/D0SC04696E (2020).
