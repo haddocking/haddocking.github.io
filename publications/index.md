@@ -6,8 +6,7 @@ image:
 ---
 ## 2021
 
-* O.M.H. Salo-Ahen#, I. Alanko, R. Bhadane, **A.M.J.J. Bonvin**#, R. Vargas Honorato, S. Hossain, A.H. Juffer, A. Kabedev, M. Lahtela-Kakkonen, A. Støttrup Larsen, E. Lescrinier, P. Marimuthu, M.. Mirza, G. Mustafa, A. Nunes-Alves#, T. Pantsar, A. Saadabadi, K. Singaravelu, M. Vanmeert. Molecular dynamics simulations in drug discovery and pharmaceutical 
-development. _Processes_. In press (2021).
+* O.M.H. Salo-Ahen#, I. Alanko, R. Bhadane, **A.M.J.J. Bonvin**#, R. Vargas Honorato, S. Hossain, A.H. Juffer, A. Kabedev, M. Lahtela-Kakkonen, A. Støttrup Larsen, E. Lescrinier, P. Marimuthu, M.. Mirza, G. Mustafa, A. Nunes-Alves#, T. Pantsar, A. Saadabadi, K. Singaravelu, M. Vanmeert. [Molecular dynamics simulations in drug discovery and pharmaceutical development](https://doi.org/10.3390/pr9010071 ). _Processes_. *9*, 71 (2021).
 
 
 ## 2020
@@ -36,7 +35,7 @@ development. _Processes_. In press (2021).
 
 * N. Renault, Y. Jung, V. Honavar, C. Geng, **A.M.J.J. Bonvin**  and L. Xue. [iScore: an MPI supported software for ranking protein-protein docking models based on a random walk graph kernel and support vector machines](https://doi.org/10.1016/j.softx.2020.100462). _SoftwareX_, *11*, 100462 (2020).
 
-* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://doi.org/10.1093/bioinformatics/btaa644). _Bioinformatics_, Advanced Online Publication (2020).
+* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://doi.org/10.1093/bioinformatics/btaa644). _Bioinformatics_, *36*, 5107–5108 (2020).
 
 * C. van Leeuwen, D. Podareanu, V. Codreanu, M. Cai, A. Berg, S. Portegies Zwart, R. Stoffer, M. Veerman, C. van Heerwaarden, S. Otten, S. Caron, C. Geng, F. Ambrosetti, A.M.J.J. Bonvin. [Deep-learning enhancement of large scale numerical simulations](https://arxiv.org/abs/2004.03454). _Whitepaper_ (2020).
 
@@ -58,6 +57,8 @@ development. _Processes_. In press (2021).
 
 * P.I. Koukos and **A.M.J.J. Bonvin**. [Integrative modelling of biomolecular complexes](https://doi.org/10.1016/j.jmb.2019.11.009). _J. Mol.  Biol._ *432*, 2861-2881 (2020)
 
+* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin** and L.C. Xue. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1093/bioinformatics/btz496) _Bioinformatics_ *36*, 112–121 (2020).
+
 
 ## 2019 
 
@@ -76,12 +77,10 @@ _Proteins: Struc. Funct. &amp; Bioinformatics_, *87*, 1200-1221 (2019)
 
 * L. Goldbach, B. Vermeulen, S. Caner, M. Liu, C.Tysoe, L. van Gijzel, R. Yoshisada, M.E. Trellet, H. van Ingen, G. Brayer, **A.M.J.J. Bonvin** and S. Jongkees. [Folding Then Binding vs. Folding Through Binding in Macrocyclic Peptide Inhibitors of Human Pancreatic alpha-Amylase](https://pubs.acs.org/doi/abs/10.1021/acschembio.9b00290). _ACS Chemical Biology_ *14*, 1751-1759 (2019).
 
-* B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. [PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes](https://doi.org/10.1093/bioinformatics/btz437). _Bioinformatics_, Advanced Online Publication, btz437 (2019).
+* B. Jiménez-García, K. Elez, P.I. Koukos, **A.M.J.J. Bonvin** and A. Vangone. [PRODIGY-crystal: a web-tool for classification of biological interfaces in protein complexes](https://doi.org/10.1093/bioinformatics/btz437). _Bioinformatics_, *35*, 4821–4823 (2019).
 
 * A. Basciu,  G. Malloci,  F. Pietrucci,  **A.M.J.J. Bonvin** and A.V. Vargiu.
 [Holo-like and druggable protein conformations from enhanced-sampling of binding pocket shape](https://dx.doi.org/10.1021/acs.jcim.8b00730). _J. Chem. Inf. and Mod._, *59*, 1515–1528 (2019).
-
-* C. Geng,  Y. Jung, N. Renaud,  V. Honavar, **A.M.J.J. Bonvin** and L.C. Xue. [iScore: A novel graph kernel-based function for scoring protein-protein docking models](https://doi.org/10.1093/bioinformatics/btz496) _Bioinformatics_ Advanced Online Publication, btz496 (2019).
 
 * C. Morris, P. Andreetto, L. Banci, **A.M.J.J. Bonvin**, G.G. Chojnowski, L. del Cano, J.M. Carazo; P. Conesa, S. Daenke, G. Damaskos, A. Giachetti, N. Haley, M. Hekkelman, P. Heuser, R. Joosten, D. Kouřil, A. Křenek, T. Kulhánek, V. Lamzin, N. Nadzirin, A. Perrakis, A. Rosato, F. Sanderson, J. Segura, J. Schaarschmidt, E. Sobolev, S. Traldi, M.E. Trellet, S, Velankar, M. Verlato, and M. Winn. 
 [West-Life: A Virtual Research Environment for structural biology](https://doi.org/10.1016/j.yjsbx.2019.100006).
