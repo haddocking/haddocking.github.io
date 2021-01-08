@@ -19,10 +19,10 @@ procedure:
 ## A bite of theory
 The last decades of scientific advances in the fields of protein biology revealed the extent of both
 the protein sequence and structure universes. Protein sequences databases currently hold tens of
-millions of entries ([source](http://www.uniprot.org/statistics/)) and are foreseen to continue
+millions of entries ([source](https://www.uniprot.org/statistics/){:target="_blank"}) and are foreseen to continue
 growing exponentially, driven by high-throughput sequencing efforts. On the other hand, the number
 of experimental protein structures is two orders of magnitude smaller
-([source](http://www.rcsb.org/pdb/static.do?p=general_information/pdb_statistics/index.html)), and
+([source](https://www.rcsb.org/pdb/static.do?p=general_information/pdb_statistics/index.html){:target="_blank"}), and
 that of unique folds has remained virtually unchanged since 2008. This apparent stagnation of the
 protein structure universe is a boon for structure prediction enthusiasts, as finding a sequence
 without a structurally characterized close homologue is, nowadays, quite rare.
@@ -43,7 +43,7 @@ There are many methods for predicting the three-dimensional structure of protein
 sequence,
 most of which fall in one of three broad categories. Of this triumvirate, homology modeling is the
 most reliable class of methods, with an estimated accuracy close to a low-resolution experimental
-structure ([source](http://salilab.org/modeller/downloads/marc-bozi.pdf)). The two others, molecular
+structure ([source](https://salilab.org/modeller/downloads/marc-bozi.pdf){:target="_blank"}). The two others, molecular
 threading and _ab initio_ modeling, are usually of interest only if homology modeling is not an
 option.
 
@@ -54,7 +54,7 @@ crystallography became routine in the 1980s, researchers started analyzing and c
 high-resolution structures. In doing so, they quickly realized that evolutionarily related proteins
 shared common structural features and that the extent of this structural similarity directly
 correlated with the sequence similarity
-([source](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1166865/)).
+([source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1166865/){:target="_blank"}).
 To maintain structure and function, certain amino acids in the protein sequence suffer a stronger
 selective pressure, evolving either slower than expected or within specific constraints, such as
 chemical similarity. Combining these and other observations, early computational structural
@@ -64,12 +64,14 @@ biologists created the first homology modeling algorithms in the late 1980s/earl
 Your goal is to create a model of the MDM2 mouse protein, in particular of its N-terminal region
 that binds the p53 trans-activation domain. So, where to start?
 
-The [Uniprot](http://www.uniprot.org) database is an online resource offering access to _all_ known
+The [Uniprot](https://www.uniprot.org){:target="_blank"} database is an online resource offering access to _all_ known
 protein sequences. Besides raw sequence data, Uniprot aggregates information from several other
-databases such as [RCSB PDB](http://www.rcsb.org) and its [European](http://www.ebi.ac.uk/pdbe) and
-[Japanese](http://www.pdbj.org) mirrors, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/),
-[KEGG](http://www.genome.jp/kegg/), [Pfam](http://pfam.xfam.org/), and many others. This set of
-features makes Uniprot an obvious go-to resource when looking for information on any protein. There
+databases such as the The [Worldwide PDB](https://www.wwpdb.org){:target="_blank"} (wwPDB) that archives information 
+about the 3D structures of proteins, nucleic acids, and complex assemblies and ensures that the PDB 
+is freely and publicly available to the global community, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/){:target="_blank"},
+[KEGG](https://www.genome.jp/kegg/){:target="_blank"}, [Pfam](https://pfam.xfam.org/){:target="_blank"}, and many others. 
+The wwPDB itself consists of several sites that all provide access in their own way to the wwPBD core database together with various associated services: The Research Collaboratory for Structural Bioinformatics PDB ([RCSB](https://www.rcsb.org){:target="_blank"}), PDB Europe ([PDBe](https://www.pdbe.org){:target="_blank"}) and PDB Japan ([PDBj](https://www.pdbj.org){:target="_blank"}), together with the Biological Magnetic Resonance Data Bank ([BMRB](https://bmrb.io/){:target="_blank"}) that collects NMR data. 
+These features of Uniprot makes it an obvious go-to resource when looking for information on any protein. There
 are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision,
 and TrEMBL, where the annotation is unsupervised. Consequently, if the entry for a particular
 protein of interest belongs to Swiss-Prot, it will be marked by a golden star/icon meaning its
@@ -87,7 +89,7 @@ already published experimental structures for mouse MDM2. Fortunately, there are
 this tutorial would end here.
 
 
-Similarly as man, no protein is an island, entire of itself, every protein is a piece of the cell, a part of the main. Thus if we imagine the cytoplasm as a thick molecular soup, proteins are constantly in contact, interacting and exchanging information. To predict the entire cell interactome is close to impossible, however UniProt offers us a possibility to see experimentally confirmed interaction partners of proteins.  Under **Interaction** you can see the available information about the interaction partners of MDM2. The 'Binary Interaction' subsection shows which is taken and regularly updated from the [InAct Database](https://www.ebi.ac.uk/intact/). These interactions represent only those binary interactions, which were proven by more than one experiment. The complete IntAct set can be accessed using the link in the *Cross-references* section.
+Similarly as man, no protein is an island, entire of itself, every protein is a piece of the cell, a part of the main. Thus if we imagine the cytoplasm as a thick molecular soup, proteins are constantly in contact, interacting and exchanging information. To predict the entire cell interactome is close to impossible, however UniProt offers us a possibility to see experimentally confirmed interaction partners of proteins.  Under **Interaction** you can see the available information about the interaction partners of MDM2. The 'Binary Interaction' subsection shows which is taken and regularly updated from the [InAct Database](https://www.ebi.ac.uk/intact/){:target="_blank"}. These interactions represent only those binary interactions, which were proven by more than one experiment. The complete IntAct set can be accessed using the link in the *Cross-references* section.
 
 <a class="prompt prompt-question">
   Which proteins does MDM2 interact with and which interaction was most frequently confirmed?  Where does the interaction with p53 take place?
@@ -105,8 +107,8 @@ annotations for mouse MDM2?
 </a>
 
 Besides reporting on experimental structures, Uniprot links to portals such as the
-[SWISS-MODEL Repository](http://swissmodel.expasy.org/), and
-[ModBase](http://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi), which regularly cross-reference
+[SWISS-MODEL Repository](https://swissmodel.expasy.org/){:target="_blank"}, and
+[ModBase](https://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi){:target="_blank"}, which regularly cross-reference
 sequence and structure databases in order to build homology models. These automated protocols are
 configured to create models only under certain conditions, such as sufficient sequence identity and
 coverage. Still, the template identification, target/template alignment, and modeling options are
@@ -190,7 +192,7 @@ MDM2_MOUSE.fasta).
 
 Now that you have a sequence, the following step is to find a suitable homolog to use in the
 modeling protocol. The several homology modeling methods available online, such as the
-[HHpred web server](https://toolkit.tuebingen.mpg.de/tools/hhpred), need only this sequence to start the
+[HHpred web server](https://toolkit.tuebingen.mpg.de/tools/hhpred){:target="_blank"}, need only this sequence to start the
 entire procedure. After a few minutes or hours, depending on the protocol, these servers produce
 models and a set of quality criteria to help the user make a choice. The downside of using a web
 server is that, usually, the modeling protocol is a 'black box'. It is impossible to control
@@ -201,7 +203,7 @@ templates, build the models, and evaluate their quality.
 
 ## Finding homologues of known structure using SWISS-MODEL
 
-In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://SWISS-MODEL.expasy.org), which can conveniently perform above mentioned tasks and visualize both templates and created models. 
+In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://SWISS-MODEL.expasy.org){:target="_blank"}, which can conveniently perform above mentioned tasks and visualize both templates and created models. 
 
 The _template_ is the structurally-resolved homolog that serves as a basis for the modeling. The
 _query_, on the other hand, is the sequence being modelled.  This standard nomenclature is used by
@@ -209,12 +211,12 @@ several web servers, software programs, and literature in the field of structure
 first step in any modeling protocol is, therefore, to find a suitable template for the query.
 
 As mentioned before, there are computational methods that perform similarity searches against
-databases of known sequences. [BLAST](http://blast.ncbi.nlm.nih.gov/Blast.cgi) is the most popular
+databases of known sequences. [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi){:target="_blank"} is the most popular
 of such methods, and probably the most popular bioinformatics algorithm, with two of its versions
 in the top 20 of the most cited papers in history
-([source](http://www.nature.com/news/the-top-100-papers-1.16224)). It works by finding fragments of
+([source](https://www.nature.com/news/the-top-100-papers-1.16224){:target="_blank"}). It works by finding fragments of
 the query that are similar to fragments of sequences in a database and then merging them into full
-alignments ([source](http://www.ncbi.nlm.nih.gov/pubmed/23749753)). Another class of similarity
+alignments ([source](https://www.ncbi.nlm.nih.gov/pubmed/23749753){:target="_blank"}). Another class of similarity
 search methods uses the query sequence to seed a general _profile sequence_ that summarises
 significant features in those sequences, such as the most conserved amino acids. This profile
 sequence is then used to search the database for homologues. 
@@ -242,15 +244,15 @@ score and a very small E-value is an assurance that the alignment is indeed sign
 this hit is likely a true homologue of the query sequence.
 
 Our goal is to search for homologues in a sequence database containing exclusively proteins of
-known structure, such as [RCSB PDB](http://www.rcsb.org). This database is available in text format
+known structure, such as [RCSB PDB](https://www.rcsb.org){:target="_blank"} and [PDBe](https://www.pdbe.org){:target="_blank"}. This database is available in text format
 at the RCSB website and as a selection in most of the homology search web servers. Given the rather
 small size of these databases (~100k sequences), for reasonably sized sequences, searches take only
 a few seconds on a laptop.
 
-[SWISS-MODEL](https://doi.org/10.1093/nar/gky427) is an online automated homology modelling tool available at [https://swissmodel.expasy.org](https://swissmodel.expasy.org). On top of template search and homology modeling, the newest version of the software can now tackle the stoichiometry and the overall structure of a complex of multiple proteins based on the amino acid sequence of one or more interacting proteins. SWISS-MODEL has been available on the Internet since 1996 and uses ProMod3 as its modeling engine.  
+[SWISS-MODEL](https://doi.org/10.1093/nar/gky427){:target="_blank"} is an online automated homology modelling tool available at [https://swissmodel.expasy.org](https://swissmodel.expasy.org){:target="_blank"}. On top of template search and homology modeling, the newest version of the software can now tackle the stoichiometry and the overall structure of a complex of multiple proteins based on the amino acid sequence of one or more interacting proteins. SWISS-MODEL has been available on the Internet since 1996 and uses ProMod3 as its modeling engine.  
 
 
-Working with SWISS-MODEL is very easy and straightforward. First you will need to visit [https://swissmodel.expasy.org](https://swissmodel.expasy.org) and click on **Start Modelling**.
+Working with SWISS-MODEL is very easy and straightforward. First you will need to visit [https://swissmodel.expasy.org](https://swissmodel.expasy.org){:target="_blank"} and click on **Start Modelling**.
 
 ### 1. Input data
 On the first page you will see **Start a New Modelling Project** title. SWISS-MODEL can use multiple formats as  input: protein sequence as plain text, FASTA, Clustal format or UniProtKB accession code. Clustal format is usually used for multiple sequence alignment with highlighting similarities and differences in sequences. Each aligned residue pair is marked with symbols:
@@ -306,15 +308,15 @@ SWISS-MODEL offers you the possibility to submit your own template too. This is 
 ### 2. Template search
 
 After you inserted the amino acid sequence, which serves as query for template search, on the next page there will be all found templates listed. 
-SWISS-MODEL uses its own database [STML](http://www.ncbi.nlm.nih.gov/pubmed/24782522) to search against when looking for related protein structure for this query. STML [https://swissmodel.expasy.org/templates/]((https://swissmodel.expasy.org/templates/)) is a curated template library updated regularly with the new PDB release, containing templates for more than 115000 unique protein sequences.
+SWISS-MODEL uses its own database [STML](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} to search against when looking for related protein structure for this query. STML [https://swissmodel.expasy.org/templates/]((https://swissmodel.expasy.org/templates/){:target="_blank"}) is a curated template library updated regularly with the new PDB release, containing templates for more than 115000 unique protein sequences.
 
-SWISS-MODEL uses two databases to search through: fast and accurate [BLAST](http://www.ncbi.nlm.nih.gov/pubmed/9254694) , mostly used for closely related templates and more sensitive and time consuming [HHblits](http://www.ncbi.nlm.nih.gov/pubmed/22198341), in cases of remote homology.
+SWISS-MODEL uses two databases to search through: fast and accurate [BLAST](https://www.ncbi.nlm.nih.gov/pubmed/9254694){:target="_blank"} , mostly used for closely related templates and more sensitive and time consuming [HHblits](https://www.ncbi.nlm.nih.gov/pubmed/22198341){:target="_blank"}, in cases of remote homology.
 
 After you submitted your template search, you can see a log of individual steps and engines being used.
 
-More about these steps and SWISS-MODEL publications are listed [here](https://swissmodel.expasy.org/docs/references). For example two most recent and relevant ones:
-* [SWISS-MODEL Repository](https://dx.doi.org/10.1093/nar/gkw1132)
-* [SWISS-MODEL Workspace/ GMQE](https://doi.org/10.1093/nar/gky427).
+More about these steps and SWISS-MODEL publications are listed [here](https://swissmodel.expasy.org/docs/references){:target="_blank"}. For example two most recent and relevant ones:
+* [SWISS-MODEL Repository](https://dx.doi.org/10.1093/nar/gkw1132){:target="_blank"}
+* [SWISS-MODEL Workspace/ GMQE](https://doi.org/10.1093/nar/gky427){:target="_blank"}.
 
 
 ### 3. Template selection
@@ -322,7 +324,7 @@ More about these steps and SWISS-MODEL publications are listed [here](https://sw
 
 
 Once the template search is finished, template quality is estimated by two methods.
-These are [Global Model Quality Estimate (GMQE)](http://www.ncbi.nlm.nih.gov/pubmed/24782522) and [Quaternary Structure Quality Estimate (QSQE)](https://www.nature.com/articles/s41598-017-09654-8). **GMQE** combines properties from the target–template alignment and the template structure and expresses the expected accuracy or reliability of the model. GMQE ranges between 0 and 1 with 1 being the highest accuracy and 0 the lowest. The **QSQE** score also ranges between 0 and 1, however it is only computed on the top ranked templates if there is a possibility to build an oligomer. A value above 0.7 is considered reliable.
+These are [Global Model Quality Estimate (GMQE)](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} and [Quaternary Structure Quality Estimate (QSQE)](https://www.nature.com/articles/s41598-017-09654-8){:target="_blank"}. **GMQE** combines properties from the target–template alignment and the template structure and expresses the expected accuracy or reliability of the model. GMQE ranges between 0 and 1 with 1 being the highest accuracy and 0 the lowest. The **QSQE** score also ranges between 0 and 1, however it is only computed on the top ranked templates if there is a possibility to build an oligomer. A value above 0.7 is considered reliable.
 
 
 #### Template Results
@@ -342,7 +344,7 @@ The **oligomeric state** is predicted for each template and user can modify it m
 As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution higher than 2.2Å as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures deterimned by X-ray crystallography are preferred over averaged NMR structures and structures determined with electron microscopy, as the latter determines the overall shape of the molecule not individual atoms locations.
 
 
- **Sequence similarity**  between the sequence and the template is calculated from a normalized [BLOSUM62](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC50453/) substitution matrix and similarly as the QSQE score, it ranged between 0 and 1 with 1 as 100% sequence similarity and vice versa. Gaps are not taken into account while calculating the sequence similarity.
+ **Sequence similarity**  between the sequence and the template is calculated from a normalized [BLOSUM62](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC50453/){:target="_blank"} substitution matrix and similarly as the QSQE score, it ranged between 0 and 1 with 1 as 100% sequence similarity and vice versa. Gaps are not taken into account while calculating the sequence similarity.
 
 
 A cogwheel icon `⚙` on the left side of the sequence alignment or in the NGL viewer indicates additional options for sequence and structure coloring and format. One can select the type of secondary structure assignment algorithm: DSSP, PSIPRED, SSpro. Notice how the secondary structure changes between different algorithms. Another option one can choose between is color scheme based on the residue properties.
@@ -359,7 +361,7 @@ How do the residues properties change depending on the position in the protein? 
 
 <img src="/education/molmod_online/SM_colors.png">   
 
-Color scheme explanations taken from: [https://swissmodel.expasy.org/docs/help](https://swissmodel.expasy.org/docs/help#colour_schemes)
+Color scheme explanations taken from: [https://swissmodel.expasy.org/docs/help](https://swissmodel.expasy.org/docs/help#colour_schemes){:target="_blank"}
 
 Except for a list of templates, one can find their **Quaternary structure, Sequence Similarity comparison and Alignment of Selected Templates** tabs on the top.
 
@@ -389,7 +391,7 @@ Select appropriate templates based on the properties described above. Visually i
 ### 4. Model building
 
 
-This step might take a bit longer than previous steps, since we are actually creating new models. To build a model from a selected template, first the identical atom coordinates are transferred, insertions and non-conserved amino acid sidechains are modelled in. This step is performed by the ProMod3 modelling engine which is based on the [OpenStructure computational structural biology framework](https://pubmed.ncbi.nlm.nih.gov/23633579/). ProMod3 extracts structural information from an aligned template structure in Cartesian space and if no suitable fragments are found, Monte Carlo sampling is employed to perform a conformational space search.  The new sidechain conformations, which cannot be found in the template are modelled based on the backbone dependent [rotamer library](https://pubmed.ncbi.nlm.nih.gov/21645855/). In the final stage, small structural distortions or steric clashes are resolved by a short energy minimization using the [CHARMM27](https://pubmed.ncbi.nlm.nih.gov/15185334/) forcefield.
+This step might take a bit longer than previous steps, since we are actually creating new models. To build a model from a selected template, first the identical atom coordinates are transferred, insertions and non-conserved amino acid sidechains are modelled in. This step is performed by the ProMod3 modelling engine which is based on the [OpenStructure computational structural biology framework](https://pubmed.ncbi.nlm.nih.gov/23633579/){:target="_blank"}. ProMod3 extracts structural information from an aligned template structure in Cartesian space and if no suitable fragments are found, Monte Carlo sampling is employed to perform a conformational space search.  The new sidechain conformations, which cannot be found in the template are modelled based on the backbone dependent [rotamer library](https://pubmed.ncbi.nlm.nih.gov/21645855/){:target="_blank"}. In the final stage, small structural distortions or steric clashes are resolved by a short energy minimization using the [CHARMM27](https://pubmed.ncbi.nlm.nih.gov/15185334/) forcefield.
 
 ### 5. Model estimation
 
@@ -401,13 +403,13 @@ After clicking on individual models, you can examine their quality in multiple w
 
 The Global Quality Estimate consists of four individual terms:  Cβ atoms only, all atoms, the solvation potential and the torsion angle potential. Here again, the lower values indicate that the models scores lower than the experimental structure (red) and higher values indicate, that the model scores higher than the experimental structure (blue).
 
-SWISS-MODELl uses another method **[QMEAN](https://pubmed.ncbi.nlm.nih.gov/21134891/)** to estimate the quality of freshly built models. QMEAN quantifies model accuracy as well as modelling errors per residues and globally - for the entire model. This is done using statistical potentials of mean force.
+SWISS-MODELl uses another method **[QMEAN](https://pubmed.ncbi.nlm.nih.gov/21134891/){:target="_blank"}** to estimate the quality of freshly built models. QMEAN quantifies model accuracy as well as modelling errors per residues and globally - for the entire model. This is done using statistical potentials of mean force.
 
 
 The QMEAN Z-score or the normalized QMEAN score shows the "degree of nativeness", which indicates how the model is comparable to an experimental structure of similar size. QMEAN Z-score around 0 indicates good agreement, while score below -4.0 are given to models of low quality. This is also turned into the "thumbs-up" or "thumbs-down" symbol next to the QMEAN value.
 
  
-QMEAN score per residue is shown in the *Local Quality Estimate* plot. The **[QMEANDisCo](https://doi.org/10.1093/bioinformatics/btz828)** method is used in this step. QMEANDisCo compares interatomic distances in the model with ensemble information extracted from experimentally determined protein structures of target sequence homologues.  The score shows similarity of the residues to the experimental structure and if it drops below 0.6, modelled residues are in general of low quality.
+QMEAN score per residue is shown in the *Local Quality Estimate* plot. The **[QMEANDisCo](https://doi.org/10.1093/bioinformatics/btz828){:target="_blank"}** method is used in this step. QMEANDisCo compares interatomic distances in the model with ensemble information extracted from experimentally determined protein structures of target sequence homologues.  The score shows similarity of the residues to the experimental structure and if it drops below 0.6, modelled residues are in general of low quality.
 Different chains are showed in different colours and the residue modelling-quality can be viewed in 3D by selecting QMEAN as the coloring method in the NGL viewer.
 
 The Comparison plot shows the QMEAN score of our model (red star) within all QMEAN scores of experimentally determined structures compared to their size (number of residues). Here the Z-score is equivalent to the standard deviation of the mean.
@@ -419,13 +421,13 @@ Which models show the highest quality? It is worth to consider the sequence cove
 </a>
 
 
-For more detailed structure information, one can click on the **Structure Assessment** button. This feature can be used also as a separate interface [https://swissmodel.expasy.org/assess](https://swissmodel.expasy.org/assess) where one can upload their PDB structure and this will be assessed. 
+For more detailed structure information, one can click on the **Structure Assessment** button. This feature can be used also as a separate interface [https://swissmodel.expasy.org/assess](https://swissmodel.expasy.org/assess){:target="_blank"} where one can upload their PDB structure and this will be assessed. 
 
  <a class="prompt prompt-info">
 Investigate a selected model and its structure properties. What is the ratio of Ramachandran favoured residues?
 </a>
 
-A Ramachandran plot is a way to visualize backbone dihedral angles of amino acid residues in the model against energetically favored regions of dihedrals of amino acids in general. These favored regions were obtained from more than 12000 experimental structures from [PISCES](https://pubmed.ncbi.nlm.nih.gov/12912846/). Moreover the model is validated by [Molprobity](http://molprobity.biochem.duke.edu) both locally and globally. The quality of the structure is then expressed in Molprobity score, which should be as low as possible and *Ramachandran Favoured* residues, ideally above 98%. Clash score, outliers and bad angles and bonds should be as well as low as possible. More about structure assessment can be found in its [documentation](https://swissmodel.expasy.org/assess/help). Examples of Ramachadran plots for all residues below:
+A Ramachandran plot is a way to visualize backbone dihedral angles of amino acid residues in the model against energetically favored regions of dihedrals of amino acids in general. These favored regions were obtained from more than 12000 experimental structures from [PISCES](https://pubmed.ncbi.nlm.nih.gov/12912846/){:target="_blank"}. Moreover the model is validated by [Molprobity](https://molprobity.biochem.duke.edu){:target="_blank"} both locally and globally. The quality of the structure is then expressed in Molprobity score, which should be as low as possible and *Ramachandran Favoured* residues, ideally above 98%. Clash score, outliers and bad angles and bonds should be as well as low as possible. More about structure assessment can be found in its [documentation](https://swissmodel.expasy.org/assess/help){:target="_blank"}. Examples of Ramachadran plots for all residues below:
 
 <img src="/education/molmod_online/ramachandran.png">   
 
@@ -445,7 +447,7 @@ Notice how the selected residues are highlighted simultaneously in all plots, i.
 
 The *Ensemble variance* assesses the consistency of interatomic distances in the full ensemble. Only distances up to 15 Å are considered to reduce the effect of domain movement events.
 
-Note that all figures can be downloaded by clicking on the *Download* icon. More information about the comparison page can be found on [https://swissmodel.expasy.org/comparison/help](https://swissmodel.expasy.org/comparison/help).
+Note that all figures can be downloaded by clicking on the *Download* icon. More information about the comparison page can be found on [https://swissmodel.expasy.org/comparison/help](https://swissmodel.expasy.org/comparison/help){:target="_blank"}.
 
 
 

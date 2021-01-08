@@ -9,8 +9,8 @@ image:
 
 ## About this course
 The Structural Bioinformatics & Modelling course, created and maintained by the
-[Computational Structural Biology group](http://bonvinlab.org) of
-[Utrecht University](http://www.uu.nl), is aimed
+[Computational Structural Biology group](https://bonvinlab.org){:target="_blank"} of
+[Utrecht University](https://www.uu.nl){:target="_blank"}, is aimed
 at those interested in learning homology modelling, molecular simulation, and docking of biological
 molecules. The course material requires a solid understanding of molecular biology, namely of
 protein sequence and structure, as well as familiarity with basic chemistry concepts. Experience
@@ -21,15 +21,15 @@ The course is divided into three modules, each covering a particular modelling m
 goal is to combine the three methods to answer a biological problem, each module can be followed
 independently. Due to the unfortunate COVID-19 reasons, this course has been updated to a fully online version, which can be easily followed remotely.
 
-In the first part we will be using SWISS-MODEL [https://swissmodel.expasy.org](https://swissmodel.expasy.org) online modelling tool to perform all stages of homology modelling: Template Search, Template selection, Model building and Model estimation. 
+In the first part we will be using SWISS-MODEL [https://swissmodel.expasy.org](https://swissmodel.expasy.org){:target="_blank"} online modelling tool to perform all stages of homology modelling: Template Search, Template selection, Model building and Model estimation. 
 
-Molecular dynamics module requires installation of specific software packages: [GROMACS](http://www.gromacs.org). GROMACS is installed on the virtual machines, which students can access via [NMRbox](https://nmrbox.org)). Early registration before the course start is necessary [https://nmrbox.org/signup](https://nmrbox.org/signup).
-Another software we will be using throughout the course is molecular visualization software [Pymol](https://pymol.org/2/). Pymol can be downloaded for free or used via NMRbox. 
+Molecular dynamics module requires installation of specific software packages: [GROMACS](https://www.gromacs.org){:target="_blank"}. GROMACS is installed on the virtual machines, which students can access via [NMRbox](https://nmrbox.org){:target="_blank"}). Early registration before the course start is necessary [https://nmrbox.org/signup](https://nmrbox.org/signup){:target="_blank"}.
+Another software we will be using throughout the course is molecular visualization software [Pymol](https://pymol.org/2/){:target="_blank"}. Pymol can be downloaded for free or used via NMRbox. 
 
 The third module, data-driven docking, uses the
-[HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/), which requires registration but is
-free for academic users. The [course material](https://github.com/haddocking/molmod-online) as well
-as all the required [scripts](https://github.com/haddocking/molmod-data) are available for free
+[HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}, which requires registration but is
+free for academic users. The [course material](https://github.com/haddocking/molmod-online){:target="_blank"} as well
+as all the required [scripts](https://github.com/haddocking/molmod-data){:target="_blank"} are available for free
 on GitHub. 
 
 
