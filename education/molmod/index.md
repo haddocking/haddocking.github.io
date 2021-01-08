@@ -9,8 +9,8 @@ image:
 
 ## About this course
 The Structural Bioinformatics & Modelling course, created and maintained by the
-[Computational Structural Biology group](http://bonvinlab.org) of
-[Utrecht University](http://www.uu.nl), is aimed
+[Computational Structural Biology group](https://bonvinlab.org) of
+[Utrecht University](https://www.uu.nl), is aimed
 at those interested in learning homology modelling, molecular simulation, and docking of biological
 molecules. The course material requires a solid understanding of molecular biology, namely of
 protein sequence and structure, as well as familiarity with basic chemistry concepts. Experience
@@ -20,14 +20,14 @@ modelling concepts and the biology.
 The course is divided into three modules, each covering a particular modelling method. While the
 goal is to combine the three methods to answer a biological problem, each module can be followed
 independently. The two first modules, molecular dynamics and homology modelling, require
-installation of specific software packages: [GROMACS](http://www.gromacs.org),
-[MODELLER](https://salilab.org/modeller), and [HMMER](http://hmmer.janelia.org). Further, the
+installation of specific software packages: [GROMACS](https://www.gromacs.org),
+[MODELLER](https://salilab.org/modeller), and [HMMER](https://hmmer.janelia.org). Further, the
 homology modelling part relies heavily on MODELLER, which is free for academic use but
 nonetheless requires registration. The third module, data-driven docking, uses the
 [HADDOCK web server](https://wenmr.science.uu.nl/haddock2.4/), which, like MODELLER, requires registration but is
 free for academic users. The [course material](https://github.com/haddocking/molmod) as well
 as all the required [scripts](https://github.com/haddocking/molmod-data) are available for free
-on GitHub. The course makes use of virtualization software ([Virtualbox](http://virtualbox.org)).
+on GitHub. The course makes use of virtualization software ([Virtualbox](https://virtualbox.org)).
 
 Each module has its separate set of web pages, but they all share the same conventions. Throughout
 the material, colored text will be used to refer to questions or instructions, Linux and/or Pymol

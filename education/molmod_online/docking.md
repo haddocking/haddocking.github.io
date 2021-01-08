@@ -37,9 +37,9 @@ of its native constituents.
 This tutorial will introduce HADDOCK (High Ambiguity Driven DOCKing) as a method to predict the
 three-dimensional structure of protein-protein complexes in silico using a variety of sources of
 information to guide the docking process and score the predicted models.
-[HADDOCK](https://www.bonvinlab.org/software/haddock2.4/) is a collection of python
-scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of
-[CNS](https://cns-online.org) (Crystallography and NMR System) for structure calculation of
+[HADDOCK](https://www.bonvinlab.org/software/haddock2.4/){:target="_blank"} is a collection of python
+scripts derived from [ARIA](https://aria.pasteur.fr){:target="_blank"} that harness the power of
+[CNS](https://cns-online.org){:target="_blank"} (Crystallography and NMR System) for structure calculation of
 molecular complexes. What distinguishes HADDOCK from other docking software is its ability,
 inherited from CNS, to incorporate experimental data as restraints and use these to guide the
 docking process alongside traditional energetics and shape complementarity. Moreover, the intimate
@@ -131,7 +131,7 @@ putative interfaces on a protein surface. Since the homology modeling module cre
 homologues of mouse MDM2, it is possible to assess which residues are more conserved.
 
 
-First we need to find sequence homologues again. This time we will be running a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) search using UniProt. We can come back to the entry from the homology modelling part where we looked up mouse MDM2 in [Uniprot](https://www.uniprot.org).
+First we need to find sequence homologues again. This time we will be running a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi){:target="_blank"} search using UniProt. We can come back to the entry from the homology modelling part where we looked up mouse MDM2 in [Uniprot](https://www.uniprot.org){:target="_blank"}.
 
 <a class="prompt prompt-info">
 Search for 'MDM2' in Uniprot and choose the mouse isoform.
@@ -143,7 +143,7 @@ A familiar page should appear with all the previously described information. Go 
 Select 'BLAST' next to the canonical sequence and press 'GO'.
 </a>
 
-Next, a new [window](https://www.uniprot.org/blast/) will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier. 
+Next, a new [window](https://www.uniprot.org/blast/){:target="_blank"} will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier. 
 
 <a class="prompt prompt-info">
 Since we are already have the UniProt ID in the field, we can click on **Run BLAST**. Change the number of sequences to 100.
@@ -165,7 +165,7 @@ Click on 'Align' in the **Alignments** section. Once the run is completed downlo
 To visualize the alignment, and which positions are more conserved, the easiest way is to generate a sequence *logo*. For each
 position in the sequence, the logo identifies the most frequently occurring residues and scales its
 one-letter code according to a conservation score. We will be using the
-[weblogo server](http://weblogo.threeplusone.com/create.cgi), in order the generate the sequence
+[weblogo server](https://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
 logo for the alignment produced by BLAST.
 
 
@@ -200,8 +200,8 @@ structures. For example, certain residues tend to be overrepresented at protein-
 This information, combined with evolutionary conservation and with a surface clustering algorithm
 that finds groups of surface residues meeting both the previous criteria results in reasonably
 accurate predictions. This is the basis of the
-[WHISCY](https://www.nmr.chem.uu.nl/Software/whiscy/startpage.htm) algorithm. A more advanced
-predictor, the [CPORT](https://alcazar.science.uu.nl/services/CPORT/) web server, judiciously
+[WHISCY](https://wenmr.science.uu.nl/whiscy/){:target="_blank"} server. A more advanced
+predictor, the [CPORT](https://alcazar.science.uu.nl/services/CPORT/){:target="_blank"} web server, judiciously
 combines (up to) 6 different predictors to provide a consensus prediction that is more robust and
 more reliable than any of the individual predictors alone. CPORT was designed to provide
 predictions for HADDOCK. The server also returns a PDB file of the
@@ -262,15 +262,15 @@ If you are following the Molecular Modeling course, ask the instructors for the 
 credentials. Otherwise, please register for an account (free for academics).
 </a>
 
-To get an HADDOCK account go to [https://bianca.science.uu.nl/haddock2.4/](https://bianca.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
+To get an HADDOCK account go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
 
 
 Having prepared the initial structures and constructed a list of putative interface residues, it is
-time to submit the docking calculation using the [HADDOCK 2.4 web server interface](https://bianca.science.uu.nl/haddock2.4/).
+time to submit the docking calculation using the [HADDOCK 2.4 web server interface](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
 
-Here, you can useful information for example a link to the new [HADDOCK best practice guide](https://www.bonvinlab.org/software/bpg/), which comprises settings for different docking scenarios. 
-Under Server information you can find [default settings of the webserver](https://bianca.science.uu.nl/haddock2.4/settings),
-which are important to understand how restraints for example are handled, as well as a [listing of supported modified amino acids](https://bianca.science.uu.nl/haddock2.4/library) and the current HADDOCK version.
+Here, you can useful information for example a link to the new [HADDOCK best practice guide](https://www.bonvinlab.org/software/bpg/){:target="_blank"}, which comprises settings for different docking scenarios. 
+Under Server information you can find [default settings of the webserver](https://wenmr.science.uu.nl/haddock2.4/settings){:target="_blank"},
+which are important to understand how restraints for example are handled, as well as a [listing of supported modified amino acids](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"} and the current HADDOCK version.
 
 To start the job submission, click on **Submit  a new job**.
 
@@ -280,7 +280,7 @@ To start the job submission, click on **Submit  a new job**.
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 
 
@@ -331,8 +331,8 @@ The definition of restraints does require some thoughts. Active residues in HADD
 *might* be at the interface. Ambiguous Interaction Restraints, or AIRs, are created
 between each active residue of a partner and the combination of active and passive residues of the other partner.
 An active residue which is not at the interface will cause an energy penalty while this is not the case for passive residues.
-For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](https://alcazar.science.uu.nl/services/CPORT) predictions,
-while the peptide is only defined as passive. This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769) paper.
+For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](https://alcazar.science.uu.nl/services/CPORT){:target="_blank"} predictions,
+while the peptide is only defined as passive. This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769){:target="_blank"} paper.
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have
 all to make contacts per se.
 
@@ -367,7 +367,7 @@ Here you can also simply select the entire peptide sequence again. This will cau
 
 If we don't fully trust our information about binding, it is safer to increase sampling to consider more solutions. 
 
-* **Step 9:**  This can be done in one simple step by choosing the bioinformatics predictions settings described [here](https://bianca.science.uu.nl/haddock2.4/settings#bioinfo).
+* **Step 9:**  This can be done in one simple step by choosing the bioinformatics predictions settings described [here](https://wenmr.science.uu.nl/haddock2.4/settings#bioinfo){:target="_blank"}.
 
 <a class="prompt prompt-info"> Optimize run for bioinformatics predictions  -> **check**</a>
 
@@ -421,7 +421,7 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 For this unfold the **Parameters for clustering menu**.
 
 HADDOCK offers two different clustering algorithms.
-Refer to the [online manual](https://www.bonvinlab.org/software/haddock2.4/run/#anal) for more details.
+Refer to the [online manual](https://www.bonvinlab.org/software/haddock2.4/run/#anal){:target="_blank"} for more details.
 For peptide and small molecules we recommend the use of RMSD clustering.
 The clustering algorithm must also be adjusted to accommodate the small size of the peptide. The
 default cutoff of 7.5Å (interface-ligand RMSD) was optimized for protein-protein docking and is
@@ -472,7 +472,7 @@ Double the number of steps for all four stages of the semi-flexible refinement:
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
+This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
 
 
 * **Step 14:** Click on the **Submit** button at the bottom left of the interface.
@@ -545,7 +545,7 @@ and open them in Pymol. If there is only one cluster, open the top four best mod
 MDM2? Can you identify key residues that might be "hotspots" of this interaction?
 </a>
 
-The best way to validate your docking is to compare your solution to an experimental structure. Luckily for us, there is a human MDM2 bound to the transactivation domain of p53 under PDB code: [1YCR](http://www.rcsb.org/structure/1YCR). One can download this complex or simply fetch it with Pymol. 
+The best way to validate your docking is to compare your solution to an experimental structure. Luckily for us, there is a human MDM2 bound to the transactivation domain of p53 under PDB code: [1YCR](https://www.rcsb.org/structure/1YCR){:target="_blank"}. One can download this complex or simply fetch it with Pymol. 
 
 <a class="prompt prompt-question">
  Does your docking solution resemble the complex of human MDM2 and p53?  Was the active site identified correctly by CPORT?

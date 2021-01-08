@@ -9,23 +9,23 @@ image:
 
 ## Use of virtual machines (VMs)
 
-In this course we will be using [**NMR**box](https://nmrbox.org). NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance). NMRbox users can choose from 226 software packages that focus on research topics as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding. One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software).
+In this course we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}. NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance). NMRbox users can choose from 226 software packages that focus on research topics as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding. One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
 
 ### Register 
-To use virtual machines through NMRbox, one needs to register, preferably with their institutional account [here](https://nmrbox.org/signup). Since the registration has to be manually validated and it can take up to two business days, we strongly encourage students to do so before the course starts. After a successful validation you will receive an e-mail with your NMRbox username and password that you will be using while accessing your virtual machine.
+To use virtual machines through NMRbox, one needs to register, preferably with their institutional account [here](https://nmrbox.org/signup){:target="_blank"}. Since the registration has to be manually validated and it can take up to two business days, we strongly encourage students to do so before the course starts. After a successful validation you will receive an e-mail with your NMRbox username and password that you will be using while accessing your virtual machine.
 
 ### Accessing NMRbox
-To run the virtual machine on a local computer, one needs to install [VNCviewer](https://www.realvnc.com/en/connect/download/vnc/). With the RealVNC client connects your computer to the NMRbox servers with a virtual desktop - graphical interface. More information about the VNC viewer is in the [FAQ of NMRbox](https://nmrbox.org/faqs/vnc-client).
-To connect to NMRbox, launch RealVNC and enter `username.nmrbox.org` with your unique NMRbox username and then your password when prompted. For more details follow the quick start guide for using NMRbox with VNC viewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf).
+To run the virtual machine on a local computer, one needs to install [VNCviewer](https://www.realvnc.com/en/connect/download/vnc/){:target="_blank"}. With the RealVNC client connects your computer to the NMRbox servers with a virtual desktop - graphical interface. More information about the VNC viewer is in the [FAQ of NMRbox](https://nmrbox.org/faqs/vnc-client){:target="_blank"}.
+To connect to NMRbox, launch RealVNC and enter `username.nmrbox.org` with your unique NMRbox username and then your password when prompted. For more details follow the quick start guide for using NMRbox with VNC viewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
 
 
-If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including Pymol. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer).
+If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including Pymol. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer){:target="_blank"}.
 
 In this course we will be working with the command line. For those of you who are not familiar with it, a lot of useful tutorials and documentation can be found [here](https://nmrbox.org/faqs/terminal-help). To find the terminal, look for a black icon with a `$_` symbol on it. Once you are familiar with the command line, we can start the Molecular Dynamics tutorial. 
 
-Further NMRbox documentation can be found [here](https://nmrbox.org/pages/documentation).
+Further NMRbox documentation can be found [here](https://nmrbox.org/pages/documentation){:target="_blank"}.
 
-Once you are done using your VM for the day just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be).
+Once you are done using your VM for the day just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
 
 
 ## General Overview
@@ -113,7 +113,7 @@ light on principles underlying biological function and fuel the formulation of n
 
 ## Introduction and Outline
 The aim of this tutorial is to simulate and analyze the conformational dynamics of a small peptide
-using molecular dynamics algorithms as implemented in the [GROMACS](http://www.gromacs.org)
+using molecular dynamics algorithms as implemented in the [GROMACS](https://www.gromacs.org){:target="_blank"}
 software. The following sections outline several preparation steps and analyses. These instructions
 do not apply to all molecular systems. Take your time to know your system and what particularities
 its simulation entails.
@@ -166,7 +166,7 @@ possible, and plausible, to generate structures of the peptide in three ideal co
 helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the
 peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating
 backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and
-available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/) if necessary.
+available [here](https://pldserver1.biochem.queensu.ca/~rlc/work/pymol/){:target="_blank"} if necessary.
 
 The instructions shown in this tutorial refer only to the helical peptide, for simplicity. The
 successful completion of the tutorial requires, however, all three conformations to be simulated.
@@ -221,10 +221,10 @@ simulation. The refinement process in structure determination does not always yi
 orientation of some side-chains, such as glutamine and asparagine, given the difficulty in
 distinguishing nitrogen and oxygen atoms in the density mesh. Also, the protonation state of
 several residues depends on the pH and can influence the protein's hydrogen bonding network. For
-crystal structures, the [PDB_REDO](http://xtal.nki.nl/PDB_REDO/) database contains refined versions
+crystal structures, the [PDB_REDO](https://xtal.nki.nl/PDB_REDO/){:target="_blank"} database contains refined versions
 of structures deposited in the RCSB PDB, which address some of these problems. Alternatively, there
 are web servers that allow these and other problems to be detected and corrected, such as
-[WHATIF](http://swift.cmbi.ru.nl/).
+[WHATIF](https://swift.cmbi.ru.nl/){:target="_blank"}.
 
 Since the initial structure of the p53 peptide was generated using Pymol and ideal geometries,
 there is no need to proceed with such checks.
@@ -243,7 +243,7 @@ Pubmed that assess the quality and appropriateness of each force field and their
 Some are well-known for their artifacts, such as a biased propensity for alpha-helical
 conformations. Here, in this tutorial, we use the AMBER99SB-ILDN force field, which is widely used
 in sampling and folding simulations and has been shown to reproduce fairly well experimental data
-([source](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131)). Another, more
+([source](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131){:target="_blank"}). Another, more
 practical, reason behind this choice is the availability of this force field in GROMACS.
 
 Since the simulation takes place in a solvated environment, i.e. a box of water molecules, we have
@@ -430,7 +430,7 @@ intermediate calculations to prepare the system are comfortably small to run on 
 
 The simulation parameters are contained in a separate file, usually with the *.mdp* extension. For
 simplicity, we provide these files in our [GitHub
-repository](https://github.com/haddocking/molmod-data)) and also already in our virtual image,
+repository](https://github.com/haddocking/molmod-data){:target="_blank"}) and also already in our virtual image,
 if you are using it (see `$MOLMOD_DATA/mdp/`). These parameters specify, for example, the cutoffs
 used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each
 atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the
@@ -440,7 +440,7 @@ Finally, they describe also the frequency with which GROMACS should write to dis
 and energy values. Depending on the aim of the simulation, this writing frequency can be increased
 to have a higher temporal resolution at a cost of some computational efficiency (writing takes
 time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS
-manual](http://manual.gromacs.org/2019-current/user-guide/mdp-options.html).
+manual](https://manual.gromacs.org/2019-current/user-guide/mdp-options.html){:target="_blank"}.
 
 <a class="prompt prompt-info">
   Browse through the *01_em_vac_PME* file, which contains the parameters for an energy minimization
@@ -660,7 +660,7 @@ into tabular files that can then be turned into plots. Select the terms of inter
 numbers sequentially followed by `Enter`. To quit, type `0` and `Enter`. Use the `xvg_plot.py`
 utility to plot the resulting *.xvg* file, passing the `-i` flag to have an interactive session
 open. If you want to change the colors of the plot, run the script with the `-h` flag and refer to
-[this page for the available color maps](http://matplotlib.org/examples/color/colormaps_reference.html).
+[this page for the available color maps](https://matplotlib.org/examples/color/colormaps_reference.html){:target="_blank"}.
 
 <a class="prompt prompt-info">
   Extract and plot the temperature, potential, kinetic, and total energy of the system.
@@ -1055,7 +1055,7 @@ rigid or most flexible, and check the side chain conformations (`show sticks`). 
 some (CPU) time on making an nice image, using `ray` and `png`. Do mind that scenes that are too
 complex may cause the built-in ray-tracer of Pymol to crash, so in that case you can only get the
 image as you have it on screen using `png` directly. Check out the
-[Pymol Gallery](https://pymolwiki.org/index.php/Gallery) for inspiration, or ask your instructors for tips. If you
+[Pymol Gallery](https://pymolwiki.org/index.php/Gallery){:target="_blank"} for inspiration, or ask your instructors for tips. If you
 have **really** a lot of time to waste, you can also make a movie of the trajectory, although this
 is probably best done outside the virtual machine of the course, for performance reasons. You might
 need to extract more frames from the simulation to make a sizable movie, depending on the frame
@@ -1362,7 +1362,7 @@ simulation?
 Among the most common parameters to analyse protein structure is the assignment of secondary
 structure elements, such as α-helices and β-sheets. One of the most popular tools for this purpose
 is the `dssp` software. Although not part of the GROMACS distribution, `dssp` can be freely
-obtained online at the [CMBI website](http://swift.cmbi.ru.nl/gv/dssp/), and integrated in many of
+obtained online at the [CMBI website](https://swift.cmbi.ru.nl/gv/dssp/){:target="_blank"}, and integrated in many of
 its analysis tools. Specifically, the `do_dssp` tool produces a plot of the different secondary
 structure elements of each residue in the peptide as a function of time. This matrix, in *.xpm*
 format, can be converted into a Postscript file using the `gmx xpm2ps` tool, and then into a PDF
@@ -1533,7 +1533,7 @@ By the end of this tutorial, you have (we hope!) learned how to setup a molecula
 simulation of a small peptide and how to critically interpret and validate your results. This is no
 small feat. The analyses we show here are just the tip of the iceberg of what you can extract from
 your trajectory. If you are serious about MD simulations, be sure to read the
-[documentation for your version of GROMACS](http://manual.gromacs.org/documentation/)
+[documentation for your version of GROMACS](https://manual.gromacs.org/documentation/){:target="_blank"}
 and get acquainted with the tools it offers.
 
 You might want to use the representatives you just selected in the tutorial for

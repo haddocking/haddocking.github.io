@@ -19,10 +19,10 @@ procedure:
 ## A bite of theory
 The last decades of scientific advances in the fields of protein biology revealed the extent of both
 the protein sequence and structure universes. Protein sequences databases currently hold tens of
-millions of entries ([source](http://www.uniprot.org/statistics/)) and are foreseen to continue
+millions of entries ([source](https://www.uniprot.org/statistics/)) and are foreseen to continue
 growing exponentially, driven by high-throughput sequencing efforts. On the other hand, the number
 of experimental protein structures is two orders of magnitude smaller
-([source](http://www.rcsb.org/pdb/static.do?p=general_information/pdb_statistics/index.html)), and
+([source](https://www.rcsb.org/pdb/static.do?p=general_information/pdb_statistics/index.html)), and
 that of unique folds has remained virtually unchanged since 2008. This apparent stagnation of the
 protein structure universe is a boon for structure prediction enthusiasts, as finding a sequence
 without a structurally characterized close homologue is, nowadays, quite rare.
@@ -43,7 +43,7 @@ There are many methods for predicting the three-dimensional structure of protein
 sequence,
 most of which fall in one of three broad categories. Of this triumvirate, homology modeling is the
 most reliable class of methods, with an estimated accuracy close to a low-resolution experimental
-structure ([source](http://salilab.org/modeller/downloads/marc-bozi.pdf)). The two others, molecular
+structure ([source](https://salilab.org/modeller/downloads/marc-bozi.pdf)). The two others, molecular
 threading and _ab initio_ modeling, are usually of interest only if homology modeling is not an
 option.
 
@@ -54,7 +54,7 @@ crystallography became routine in the 1980s, researchers started analyzing and c
 high-resolution structures. In doing so, they quickly realized that evolutionarily related proteins
 shared common structural features and that the extent of this structural similarity directly
 correlated with the sequence similarity
-([source](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1166865/)).
+([source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1166865/)).
 To maintain structure and function, certain amino acids in the protein sequence suffer a stronger
 selective pressure, evolving either slower than expected or within specific constraints, such as
 chemical similarity. Combining these and other observations, early computational structural
@@ -64,12 +64,14 @@ biologists created the first homology modeling algorithms in the late 1980s/earl
 Your goal is to create a model of the MDM2 mouse protein, in particular of its N-terminal region
 that binds the p53 trans-activation domain. So, where to start?
 
-The [Uniprot](http://www.uniprot.org) database is an online resource offering access to _all_ known
+The [Uniprot](https://www.uniprot.org) database is an online resource offering access to _all_ known
 protein sequences. Besides raw sequence data, Uniprot aggregates information from several other
-databases such as [RCSB PDB](http://www.rcsb.org) and its [European](http://www.ebi.ac.uk/pdbe) and
-[Japanese](http://www.pdbj.org) mirrors, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/),
-[KEGG](http://www.genome.jp/kegg/), [Pfam](http://pfam.xfam.org/), and many others. This set of
-features makes Uniprot an obvious go-to resource when looking for information on any protein. There
+databases such as the The [Worldwide PDB](https://www.wwpdb.org) (wwPDB) that archives information 
+about the 3D structures of proteins, nucleic acids, and complex assemblies and ensures that the PDB 
+is freely and publicly available to the global community, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/),
+[KEGG](https://www.genome.jp/kegg/), [Pfam](https://pfam.xfam.org/), and many others. 
+The wwPDB itself consists of several sites that all provide access in their own way to the wwPBD core database together with various associated services: The Research Collaboratory for Structural Bioinformatics PDB ([RCSB](https://www.rcsb.org)), PDB Europe ([PDBe](https://www.ebi.ac.uk/pdbe)) and PDB Japan ([PDBj](https://www.pdbj.org)), together with the Biological Magnetic Resonance Data Bank ([BMRB](https://bmrb.io/)) that collects NMR data. 
+These features of Uniprot makes it an obvious go-to resource when looking for information on any protein. There
 are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision,
 and TrEMBL, where the annotation is unsupervised. Consequently, if the entry for a particular
 protein of interest belongs to Swiss-Prot, it will be marked by a golden star/icon meaning its
@@ -92,8 +94,8 @@ annotations for mouse MDM2?
 </a>
 
 Besides reporting on experimental structures, Uniprot links to portals such as the
-[SWISS-MODEL Repository](http://swissmodel.expasy.org/), and
-[ModBase](http://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi), which regularly cross-reference
+[SWISS-MODEL Repository](https://swissmodel.expasy.org/), and
+[ModBase](https://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi), which regularly cross-reference
 sequence and structure databases in order to build homology models. These automated protocols are
 configured to create models only under certain conditions, such as sufficient sequence identity and
 coverage. Still, the template identification, target/template alignment, and modeling options are
@@ -192,16 +194,16 @@ several web servers, software programs, and literature in the field of structure
 first step in any modeling protocol is, therefore, to find a suitable template for the query.
 
 As mentioned before, there are computational methods that perform similarity searches against
-databases of known sequences. [BLAST](http://blast.ncbi.nlm.nih.gov/Blast.cgi) is the most popular
+databases of known sequences. [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) is the most popular
 of such methods, and probably the most popular bioinformatics algorithm, with two of its versions
 in the top 20 of the most cited papers in history
-([source](http://www.nature.com/news/the-top-100-papers-1.16224)). It works by finding fragments of
+([source](https://www.nature.com/news/the-top-100-papers-1.16224)). It works by finding fragments of
 the query that are similar to fragments of sequences in a database and then merging them into full
-alignments ([source](http://www.ncbi.nlm.nih.gov/pubmed/23749753)). Another class of similarity
+alignments ([source](https://www.ncbi.nlm.nih.gov/pubmed/23749753)). Another class of similarity
 search methods uses the query sequence to seed a general _profile sequence_ that summarises
 significant features in those sequences, such as the most conserved amino acids. This profile
 sequence is then used to search the database for homologues. This approach used in PSI-BLAST, an
-iterative version of BLAST, and also in [HMMER](http://hmmer.janelia.org), which employs an
+iterative version of BLAST, and also in [HMMER](https://hmmer.janelia.org), which employs an
 entirely different statistical framework.
 
 <a class="prompt prompt-question">
@@ -227,7 +229,7 @@ score and a very small E-value is an assurance that the alignment is indeed sign
 this hit is likely a true homologue of the query sequence.
 
 Our goal is to search for homologues in a sequence database containing exclusively proteins of
-known structure, such as [RCSB PDB](http://www.rcsb.org). This database is available in text format
+known structure, such as [RCSB PDB](https://www.rcsb.org). This database is available in text format
 at the RCSB website and as a selection in most of the homology search web servers. Given the rather
 small size of these databases (~100k sequences), for reasonably sized sequences, searches take only
 a few seconds on a laptop.
@@ -245,7 +247,7 @@ Assuming the Uniprot sequence file is in the Downloads folder, copy it to the ne
 and launch a `phmmer` search against the RCSB PDB sequence database. `phmmer` is part of the HMMER
 suite and searches a query protein sequence against a database. Behind the scenes, it builds a
 profile HMM from the query sequence and uses this profile to search the database for homologs
-([source](http://eddylab.org/software/hmmer/Userguide.pdf)).
+([source](https://eddylab.org/software/hmmer/Userguide.pdf)).
 
 <a class="prompt prompt-cmd">
   cp $HOME/Downloads/MDM2_MOUSE.fasta .  
@@ -272,7 +274,7 @@ execution of the command and its input/output. This tutorial will use the ampers
 redirection (`>`) symbols repeatedly. The first runs a program in the background and prevents the
 terminal session from being blocked while the second redirects the output of the command to a file.
 For more information, refer to a generic tutorial on command-line usage
-([example](http://www.ee.surrey.ac.uk/Teaching/Unix/)).
+([example](https://www.ee.surrey.ac.uk/Teaching/Unix/)).
 
 Back to the homology modeling, depending on which MDM2 sequence HMMER used to seed the search, the
 results will vary.
@@ -346,7 +348,7 @@ process.
 
 Unlike BLAST or the HMMER web server, the local version of HMMER does not provide any sequence
 identity or similarity scores. Since these are crucial statistics for deciding on a template for
-the modeling, we provide a Python script based on the [Biopython](http://biopython.org) library to
+the modeling, we provide a Python script based on the [Biopython](https://biopython.org) library to
 parse the sequences and calculate identities. Additionally, the script calculates how much of the
 query sequence the hit is matching, also known as coverage. Run the script on the `psa.out` file
 and save the results in a separate `psa.info` file using the `-o` option.
@@ -378,7 +380,7 @@ to the query sequence, which is the best possible for modeling. Nevertheless, pr
 are surprisingly robust to changes in sequence. Major structural characteristics are conserved even
 at _low_ sequence identities (~30%). As a rule of thumb, any sequence above 30-35% sequence
 _similarity_ can be used to build a somewhat
-reliable model ([source](http://peds.oxfordjournals.org/content/12/2/85.long)). It is still
+reliable model ([source](https://peds.oxfordjournals.org/content/12/2/85.long)). It is still
 possible to model a sequence on a template with 20-30% sequence similarity, the so-called twilight
 zone, but there must be extreme care in choosing a proper template. Below 20%, in the danger zone,
 there is no guarantee that there is any sequence-structure correlation. Note, though, that all
@@ -395,7 +397,7 @@ principle is biological. The tertiary structure of a protein defines its functio
 folds should be conserved across functionally similar proteins. Consequently, it _always_ pays off
 to consider the biological function of both the query and the templates and make sure that there
 is, if possible, a match. Otherwise, nature might have a trick left up in her sleeve
-([example](http://www.pnas.org/content/104/29/11963.full)). In the case of mouse MDM2, most of the
+([example](https://www.pnas.org/content/104/29/11963.full)). In the case of mouse MDM2, most of the
 hits belong to the E3 ubiquitin ligase family,  and several of them are MDM2 proteins of other
 organisms. It seems then that it is very much possible and straightforward to model mouse MDM2.
 Finally, the coverage metric also shows that there are very few gaps in the alignment, but it is
@@ -454,7 +456,7 @@ coverage. The question is thus, which of them should be used to model mouse MDM2
 modeling methods, including MODELLER, can use either one or multiple templates to build the
 models. Using several different templates is only really advantageous, however, in the case where
 they provide a better coverage of the query sequence
-([source](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2386743/)). If one template matches the first
+([source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2386743/)). If one template matches the first
 half of the sequence and another the second half, then both can and should be used to build the
 full model. Otherwise, a single template with large enough coverage is sufficient to build a
 high-quality model. Since the N-terminal region of MDM2 that interacts with p53 seems to be a
@@ -476,7 +478,7 @@ with which atoms fit into the electron density map. Ultra-high resolution struct
 below 1Å. The R-free value reflects the agreement of the final structure with a part of the
 diffraction data left aside for validation, i.e. a cross-validation measure. An average structure
 has an R-free value of 0.26, and the lower, the better
-([source](http://www.rcsb.org/pdb/101/static101.do?p=education_discussion/Looking-at-Structures/resolution.html)).
+([source](https://www.rcsb.org/pdb/101/static101.do?p=education_discussion/Looking-at-Structures/resolution.html)).
 This preference is of course relative. Between two equally good structures, that
 determined by crystallography is likely best; however, if the NMR structure is far better in terms
 of sequence identity, for example, it becomes the obvious template. In this latter case, it might
@@ -495,7 +497,7 @@ in different conformations and are, therefore, worthy of particular attention wh
 structure.
 
 To gain some insight on the structural quality of the templates suggested after the HMMER search,
-use the [RCSB PDB](http://www.rcsb.org) database. The first column of the `psa.info` file contains
+use the [RCSB PDB](https://www.rcsb.org) database. The first column of the `psa.info` file contains
 the PDB ID and the PDB chain belonging to the hit sequence. The ID is a four-character
 alphanumerical code (e.g. `1z1m`) that is unique to each structure, much like the accession code is
 for an Uniprot entry. The last character, usually a letter, identifies the chain within the
@@ -520,7 +522,7 @@ conditions. The only difference is the co-factor that is bound to the protein. T
 should be, therefore, virtually identical as well.
 
 There are several programs that allow a user to download, visualize, and (quantitatively) compare
-structures. If possible, use [PyMOL](http://pymol.org/), a free and open-source molecular
+structures. If possible, use [PyMOL](https://pymol.org/), a free and open-source molecular
 visualization software that runs on Windows, MacOS X, and Linux. For any help with the commands,
 visit first the [community-maintained Wiki](https://pymolwiki.org/index.php/Main_Page) and then use Google; chances are
 that someone else already posted that same problem in the PyMOL mailing-list.
@@ -665,7 +667,7 @@ multi-domain protein, for example, or when a single domain is not complete in an
 wise to use multiple templates simultaneously to build the model. Some also defend that using
 multiple templates for a single domain might help eliminating errors from the crystal structures,
 although this is disputed. Regardless, this is beyond the scope of this course.
-[Have a look here](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2386743/) if you want to explore
+[Have a look here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2386743/) if you want to explore
 this issue further.
 
 ## Modeling mouse MDM2 using MODELLER
@@ -968,8 +970,8 @@ extremely important part of the modeling exercise, particularly before handing o
 collaborators or using it to draw any functional/biological conclusions. Besides the DOPE profiles,
 there are other dedicated validation protocols that analyze the quality of the models based on many
 different criteria. Many of these are available as web servers, such as
-[QMEAN](https://swissmodel.expasy.org/qmean/), [PSVS](http://psvs-1_5-dev.nesg.org/)
-and [Molprobity](http://molprobity.biochem.duke.edu/). These servers report on both the overall
+[QMEAN](https://swissmodel.expasy.org/qmean/), [PSVS](https://psvs-1_5-dev.nesg.org/)
+and [Molprobity](https://molprobity.biochem.duke.edu/). These servers report on both the overall
 quality of the model and per-residue profiles, using metrics based on statistical comparisons to
 existing high-resolution crystal structures. For instance, they calculate all bond lengths and
 angles in the model and compare the distribution with that found in experimental structures. Using

@@ -15,7 +15,7 @@ In this page you can find links to our educational material, namely tutorials on
 
 * [**NMR & Molecular Modelling**](/education/NMRMolmod/): A bachelor course dealing with both NMR and modelling. This link will bring you the computer practical for this course in which you will be modelling a protein-protein complex based on NMR chemical shift data.
 
-* [**Structural Bioinformatics & Modelling**](/education/molmod/): A MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
+* [**Structural Bioinformatics & Modelling**](/education/molmod_online/): A MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
 
 
 ## Research projects
@@ -43,7 +43,7 @@ We offer various [research projects](/education/research-projects/) to both bach
   <br>
   </ul>
   
-* Recordings of the [BioExcel](https://www.bioexcel.eu) summerschool HADDOCK lectures by Prof. Bonvin (June 22nd, 2020):
+* Recordings of the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool HADDOCK lectures by Prof. Bonvin (June 22nd, 2020):
 
   <ul>
   <details>
@@ -60,7 +60,7 @@ We offer various [research projects](/education/research-projects/) to both bach
   <br>
   </ul>
   
-* Recording of a [CCPBioSim](https://www.ccpbiosim.ac.uk/events/workshop-course-material/eventdetail/127/-/training-week-2020) lecture by Prof. Bonvin on the topic of binding affinity (Oct. 7th, 2020):
+* Recording of a [CCPBioSim](https://www.ccpbiosim.ac.uk/events/workshop-course-material/eventdetail/127/-/training-week-2020){:target="_blank"} lecture by Prof. Bonvin on the topic of binding affinity (Oct. 7th, 2020):
 
   <ul>
   <details>
@@ -71,7 +71,7 @@ We offer various [research projects](/education/research-projects/) to both bach
   <br>
   </ul>
   
-* Live demo of the [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4) thematic service. This demo given at the [EOSC-Hub week 2020 conference](https://www.eosc-hub.eu/events/eosc-hub-week-2020-goes-virtual) shows in particular how to setup a refinement run in HADDOCK2.4 to assess the impact of a mutation, using the interaction between SARS-CoV2 RBD domain and a peptide extracted from the ACE2 receptor as an example.
+* Live demo of the [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"} thematic service. This demo given at the [EOSC-Hub week 2020 conference](https://www.eosc-hub.eu/events/eosc-hub-week-2020-goes-virtual){:target="_blank"} shows in particular how to setup a refinement run in HADDOCK2.4 to assess the impact of a mutation, using the interaction between SARS-CoV2 RBD domain and a peptide extracted from the ACE2 receptor as an example.
 
   <ul>
   <details>
