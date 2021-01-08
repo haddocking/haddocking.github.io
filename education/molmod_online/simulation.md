@@ -6,6 +6,18 @@ tags: [MODELLER, GROMACS, HADDOCK, molecular dynamics, homology modelling, docki
 image:
   feature: pages/banner_education-thin.jpg
 ---
+## General Overview
+{:.no_toc}
+
+This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The simulation protocol
+can be used as a starting point for the investigation of protein dynamics, provided your system
+does not contain non-standard groups. By the end of this tutorial, you should know the steps
+involved in setting up, running, and analyzing a simulation, including critically assessing the
+choices made at the different steps.
+
+* table of contents
+{:toc}
+
 
 ## Use of virtual machines (VMs)
 
@@ -28,20 +40,7 @@ Further NMRbox documentation can be found [here](https://nmrbox.org/pages/docume
 Once you are done using your VM for the day just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
 
 
-## General Overview
-This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The simulation protocol
-can be used as a starting point for the investigation of protein dynamics, provided your system
-does not contain non-standard groups. By the end of this tutorial, you should know the steps
-involved in setting up, running, and analyzing a simulation, including critically assessing the
-choices made at the different steps.
-
-- [A bite of theory](#a-bite-of-theory)  
-- [Introduction and Outline](#introduction-and-outline)  
-- [Preparing the System](#preparing-the-system)  
-- [Production Simulation](#production-simulation)
-- [Analysis of the Molecular Dynamics Simulation](#analysis-of-the-molecular-dynamics-simulation)
-- [Picking representatives of the simulation](#picking-representatives-of-the-simulation)
-
+<hr>
 ## A bite of theory
 Molecular Dynamics generate successive configurations of a given molecular system, by integrating
 the classical laws of motion as described by Newton. Generally, the end product is a *trajectory*
@@ -111,6 +110,8 @@ that there are a minimum of variables under study. If carried out properly, thes
 remain an unparalleled method in terms of spatial and temporal resolution that are able to shed
 light on principles underlying biological function and fuel the formulation of new hypotheses.
 
+
+<hr>
 ## Introduction and Outline
 The aim of this tutorial is to simulate and analyze the conformational dynamics of a small peptide
 using molecular dynamics algorithms as implemented in the [GROMACS](https://www.gromacs.org){:target="_blank"}
@@ -141,6 +142,8 @@ Before we start, we should make sure that we use the proper programs and paths f
 /public/groups/molmod/share/molmod/setup.sh 
 </a>
 
+
+<hr>
 ## Preparing the System
 The preparation of the system is the heart of the simulation. Neglecting this stage can lead to
 artifacts or instability during the simulation. Each simulation must be prepared carefully, taking
@@ -763,6 +766,8 @@ property.
   Is the system ready to be simulated?
 </a>
 
+
+<hr>
 ## Production Simulation
 Despite all these efforts, the system is unlikely to be in equilibrium already. The first few
 nanoseconds of a simulation, depending on the system, are in fact an equilibration period that
@@ -811,6 +816,8 @@ the command to a text processor such as `less` or `more` (Linux joke) to paginat
   gmx dump -s p53_helix_CAH.tpr | more
 </a>
 
+
+<hr>
 ## Analysis of the Molecular Dynamics Simulation
 The production run is only the beginning of the real work behind molecular dynamics simulations.
 The analysis of a simulation can be divided in several parts and varies substantially depending on
@@ -1002,6 +1009,8 @@ Finished mdrun on rank 0 Thu Jul 16 21:58:00 2015
 time? How much time would it need, assuming this speed, to simulate a full second?
 </a>
 
+
+<hr>
 ## Visually inspecting the simulation
 Although most of the analysis comes down to extracting data and plotting them, molecular dynamics
 is first and foremost about *dynamical*. As such, it is possible to extract the frames from the
@@ -1075,6 +1084,8 @@ Then, in the command-line interface, assuming you are in the directory where Pym
   convert -delay 1 -loop 0 -dispose Background frame\_\*.png dynamics.gif
 </a>
 
+
+<hr>
 ## Quantitative Quality Assurance
 After a first visual inspection of the trajectory, assuming the simulation went smoothly, it is
 time to perform additional and more thorough checks regarding the quality of the simulation. This
@@ -1280,6 +1291,9 @@ structures at 10Å can be very different. For this reason, the RMSD with respect
 structure is likely to offer a better perspective of the evolution of structural changes throughout
 the simulation.
 
+
+
+<hr>
 ## Structural Analysis
 
 <a class="prompt prompt-attention">
@@ -1386,6 +1400,8 @@ short sequences, as well as a `-rainbow` flag that controls the coloring of the 
 conformations.
 </a>
 
+
+<hr>
 ## Analysis of time-averaged properties
 This simulation considers only one conformation. To obtain proper sampling of the peptide
 conformational landscape, 50 nanoseconds do not suffice. However, trajectories starting from
@@ -1516,6 +1532,8 @@ these clusters are meaningful, i.e. contain only similar structures?
   Are there any meaningful differences between the largest clusters?
 </a>
 
+
+<hr>
 ## Picking representatives of the simulation
 The aim of this simulation exercise was the sample the conformational landscape of the p53
 N-terminal transactivation peptide, in order to extract representatives that could be used to
@@ -1528,6 +1546,8 @@ clusters) and are likely good candidates for seeding the docking calculations.
 PDB files using Pymol.
 </a>
 
+
+<hr>
 ## Congratulations!
 By the end of this tutorial, you have (we hope!) learned how to setup a molecular dynamics
 simulation of a small peptide and how to critically interpret and validate your results. This is no

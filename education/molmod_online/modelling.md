@@ -7,15 +7,16 @@ image:
   feature: pages/banner_education-thin.jpg
 ---
 ## General Overview
-This tutorial is divided in 5 sections, each representing (roughly) a step of the homology modeling
-procedure:  
+{:.no_toc}
 
-- [A bite of theory](#a-bite-of-theory)  
-- [Using Uniprot to retrieve sequence information](#using-uniprot-to-retrieve-sequence-information)  
-- [Finding homologues of known structure using HMMER](#finding-homologues-of-known-structure-using-hmmer)  
-- [Choosing a template from the list of homologues](#choosing-a-template-from-the-list-of-homologues)
-- [Modeling mouse MDM2 using MODELLER](#modeling-mouse-mdm2-using-modeller)
+This tutorial is divided into various sections, each representing (roughly) a step of the homology modeling
+procedure.  
 
+* table of contents
+{:toc}
+
+
+<hr>
 ## A bite of theory
 The last decades of scientific advances in the fields of protein biology revealed the extent of both
 the protein sequence and structure universes. Protein sequences databases currently hold tens of
@@ -60,6 +61,8 @@ selective pressure, evolving either slower than expected or within specific cons
 chemical similarity. Combining these and other observations, early computational structural
 biologists created the first homology modeling algorithms in the late 1980s/early 1990s.
 
+
+<hr>
 ## Using Uniprot to retrieve sequence information
 Your goal is to create a model of the MDM2 mouse protein, in particular of its N-terminal region
 that binds the p53 trans-activation domain. So, where to start?
@@ -201,6 +204,8 @@ is happening behind the scenes, to make conscious choices and grasp the limitati
 and model. Therefore, this tutorial uses a set of locally installed programs to search for
 templates, build the models, and evaluate their quality.
 
+
+<hr>
 ## Finding homologues of known structure using SWISS-MODEL
 
 In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://SWISS-MODEL.expasy.org){:target="_blank"}, which can conveniently perform above mentioned tasks and visualize both templates and created models. 
@@ -464,6 +469,7 @@ Select the model that is in your opinion of highest quality, download it in the 
 
 Except for downloading the model in the PDB Format one can download a report that summarizes results for all models, suggest relevant publications and lists all possible templates. This is very useful to keep, however plain copy-pasting to your end report is strongly discouraged. Rather inspect all obtained results and select the relevant information and figures.
 
+<hr>
 ## Congratulations!
 You started with a sequence of a protein and went all the way from finding possible templates, to
 evaluating which to use, to building several models, assessing their quality, and finally selecting

@@ -17,6 +17,7 @@ interpret its results in terms of biological insights.
 * table of contents
 {:toc}
 
+<hr>
 ## A bite of theory
 
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation,
@@ -121,7 +122,7 @@ interface of the smaller partner. The interface used in this calculation is auto
 based on an analysis of all contacts made in all models.
 
 
-
+<hr>
 ## Predicting the interface of p53 on Mdm2
 
 HADDOCK excels at predicting the structure of the protein complexes given there is some sort of
@@ -224,7 +225,7 @@ in Pymol.
 </a>
 
 
-
+<hr>
 ## Preparing the structures for the docking calculation
 
 In order to perform a docking calculation with HADDOCK, the initial structures of both MDM2 and p53
@@ -251,7 +252,7 @@ structure.
 </a>
 
 
-
+<hr>
 ## Setting up the docking calculation using the HADDOCK web server
 
 
@@ -278,7 +279,7 @@ To start the job submission, click on **Submit  a new job**.
 
 
 
-#### Submission and validation of structures
+### Submission and validation of structures
 
 For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
@@ -323,7 +324,7 @@ Since our homology model and peptide do not correspond to the full sequence it i
 
 
 
-#### Definition of restraints
+### Definition of restraints
 
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. We will be making use of the text boxes below the residue sequence of every molecule to specify the list of active residues to be used for the docking run.
 The definition of restraints does require some thoughts. Active residues in HADDOCK are those that are
@@ -353,7 +354,7 @@ In this stage we will make use of the active residues returned by CPORT for MDM2
 
 ***Note:*** Notice that instead of typing all residues manually, you can now select them from the sequence above. Secondary structure is depicted in different colors. 
 
-#### Definition of fully flexible segments
+### Definition of fully flexible segments
 
 * **Step 8:** Since peptides are highly flexible we will give more flexibility to the peptide to allow for larger conformational changes. For this unfold the **Fully flexible segments tab** for molecule 2 and enter:
 
@@ -363,7 +364,7 @@ In this stage we will make use of the active residues returned by CPORT for MDM2
 Here you can also simply select the entire peptide sequence again. This will cause HADDOCK to consider the peptide residues as fully flexible during all stages of the simulated annealing refinement stage and therefore increase sampling.
 
 
-#### Increased sampling
+### Increased sampling
 
 If we don't fully trust our information about binding, it is safer to increase sampling to consider more solutions. 
 
@@ -415,7 +416,7 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 
 
 
-#### Clustering parameters
+### Clustering parameters
 
 * **Step 11:**
 For this unfold the **Parameters for clustering menu**.
@@ -436,7 +437,7 @@ likely generate very large and diverse clusters. We should therefore reduce the 
 </a>
 
 
-#### Automatic restraining of secondary structure elements
+### Automatic restraining of secondary structure elements
 
 * **Step 12:** For this unfold the **Dihedral and hydrogen bonds restraints menu**.
 
@@ -450,7 +451,7 @@ as fully flexible, it is recommended to turn on this option.
 </a>
 
 
-#### Advanced sampling parameters
+### Advanced sampling parameters
 
 * **Step 13:** Adjust the number of flexible refinement steps to increase the sampling of peptide conformations in **Advanced sampling parameters menu**.
 
@@ -470,7 +471,7 @@ Double the number of steps for all four stages of the semi-flexible refinement:
   number of MD steps during third cooling stage with fully flexible interface --> 2000
 </a>
 
-#### Job submission
+### Job submission
 
 This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
 
@@ -489,7 +490,7 @@ account. In case of errors, this e-mail also offers additional details on the ca
 students, since all accounts are pre-configured, the email notification is turned off.
 
 
-
+<hr>
 ## Analyzing the docking calculation results
 
 After the simulation is complete, the results page is generated and a notification email sent to
@@ -510,7 +511,7 @@ answer of which conformation is more likely to be realistic?
 </a>
 
 
-
+<hr>
 ## Visual inspection of the cluster representatives
 
 Any molecular simulation, docking included, lacks the accuracy to produce one single good model.
@@ -552,6 +553,7 @@ The best way to validate your docking is to compare your solution to an experime
 </a>
 
 
+<hr>
 ## Congratulations!
 The docking calculation of MDM2 and the p53 N-terminal transactivation peptide was the culmination
 of a three-stage computational exercise that involved the three major methods in the repertoire of
