@@ -21,7 +21,7 @@ choices made at the different steps.
 
 ## Use of virtual machines (VMs)
 
-In this course we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}. NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance). NMRbox users can choose from 226 software packages that focus on research topics as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding. One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
+For this module of the course we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}. NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance). NMRbox users can choose from 226 software packages that focus on research topics as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding. One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
 
 ### Register 
 To use virtual machines through NMRbox, one needs to register, preferably with their institutional account [here](https://nmrbox.org/signup){:target="_blank"}. Since the registration has to be manually validated and it can take up to two business days, we strongly encourage students to do so before the course starts. After a successful validation you will receive an e-mail with your NMRbox username and password that you will be using while accessing your virtual machine.
