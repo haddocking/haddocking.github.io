@@ -73,7 +73,7 @@ databases such as the The [Worldwide PDB](https://www.wwpdb.org){:target="_blank
 about the 3D structures of proteins, nucleic acids, and complex assemblies and ensures that the PDB 
 is freely and publicly available to the global community, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/){:target="_blank"},
 [KEGG](https://www.genome.jp/kegg/){:target="_blank"}, [Pfam](https://pfam.xfam.org/){:target="_blank"}, and many others. 
-The wwPDB itself consists of several sites that all provide access in their own way to the wwPBD core database together with various associated services: The Research Collaboratory for Structural Bioinformatics PDB ([RCSB](https://www.rcsb.org){:target="_blank"}), PDB Europe ([PDBe](https://www.pdbe.org){:target="_blank"}) and PDB Japan ([PDBj](https://www.pdbj.org){:target="_blank"}), together with the Biological Magnetic Resonance Data Bank ([BMRB](https://bmrb.io/){:target="_blank"}) that collects NMR data. 
+The wwPDB itself consists of several sites that all provide access in their own way to the wwPDB core database together with various associated services: The Research Collaboratory for Structural Bioinformatics PDB ([RCSB](https://www.rcsb.org){:target="_blank"}), PDB Europe ([PDBe](https://www.pdbe.org){:target="_blank"}) and PDB Japan ([PDBj](https://www.pdbj.org){:target="_blank"}), together with the Biological Magnetic Resonance Data Bank ([BMRB](https://bmrb.io/){:target="_blank"}) that collects NMR data. 
 These features of Uniprot makes it an obvious go-to resource when looking for information on any protein. There
 are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision,
 and TrEMBL, where the annotation is unsupervised. Consequently, if the entry for a particular

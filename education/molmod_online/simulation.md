@@ -167,7 +167,7 @@ remaining in a disordered state if free in solution. As such, the effort of usin
 method such as homology modeling for this peptide is very likely unwarranted. Instead, it is
 possible, and plausible, to generate structures of the peptide in three ideal conformations --
 helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the
-peptides deposited in the RCSB PDB. Generating these structures is a simple matter of manipulating
+peptides deposited in the PDB. Generating these structures is a simple matter of manipulating
 backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and
 available [here](https://pldserver1.biochem.queensu.ca/~rlc/work/pymol/){:target="_blank"} if necessary.
 
