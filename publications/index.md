@@ -6,6 +6,8 @@ image:
 ---
 ## 2021
 
+* S. Nizamuddin, S. Koidl, T. Bhuiyan, T.V. Werner, M.L. Biniossek, **A.M.J.J. Bonvin**, S. Lassmann and H.Th.M. Timmers. Integrating quantitative proteomics with accurate genome profiling of transcription factors by greenCUT&RUN. _Nucl. Acids Res._ In Press (2021).
+
 * O.M.H. Salo-Ahen#, I. Alanko, R. Bhadane, **A.M.J.J. Bonvin**#, R. Vargas Honorato, S. Hossain, A.H. Juffer, A. Kabedev, M. Lahtela-Kakkonen, A. Støttrup Larsen, E. Lescrinier, P. Marimuthu, M.. Mirza, G. Mustafa, A. Nunes-Alves#, T. Pantsar, A. Saadabadi, K. Singaravelu, M. Vanmeert. [Molecular dynamics simulations in drug discovery and pharmaceutical development](https://doi.org/10.3390/pr9010071 ). _Processes_. *9*, 71 (2021).
 
 
@@ -591,7 +593,7 @@ _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author versio
 
 * M. van Dijk and **A.M.J.J. Bonvin**
 [Pushing the limits of what is achievable in protein-DNA docking. Benchmarking HADDOCK's performance.](https://doi.org/doi:10.1093/nar/gkq222)
-_Nucl. Acid Res._, *38*, 5634-5647 (2010).
+_Nucl. Acids Res._, *38*, 5634-5647 (2010).
 
 * **A.M.J.J. Bonvin**, A. Rosato and T.A. Wassenaar
 [The eNMR platform for structural biology.](https://doi.org/doi:10.1007/s10969-010-9084-9)
@@ -635,7 +637,7 @@ _J. Mol. Biol._, *390*, 478-489 (2009).
 
 * M. van Dijk and **A.M.J.J. Bonvin**
 [3D-DART: a DNA structure modelling server.](https://doi.org/doi:10.1093/nar/gkp287)
-_Nucl. Adic Res._, *37*, W235-W239 (2009).
+_Nucl. Acids Res._, *37*, W235-W239 (2009).
 
 * L. Rutten, J.-P.B.A. Mannie, C.M. Stead, C.R.H. Raetz, C.M. Reynolds, **A.M.J.J. Bonvin**, J. Tommassen, M.R. Egmond, M.S. Trent and Piet Gros
 [Active site architecture and catalytic mechanism of the lipid A deacylase LpxR of Salmonella typhimurium.](https://doi.org/doi:10.1073/pnas.0813064106)
