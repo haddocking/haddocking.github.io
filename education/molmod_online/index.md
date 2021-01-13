@@ -62,8 +62,7 @@ Early registration before the course start is necessary [https://nmrbox.org/sign
 Another software we will be using throughout the course is molecular visualization software [Pymol](https://pymol.org/2/){:target="_blank"}. Pymol can be downloaded for free or used via NMRbox. 
 
 The third module, data-driven docking, uses the [HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}, which requires registration but is
-free for academic users. The [course material](https://github.com/haddocking/molmod-online){:target="_blank"} as well
-as all the required [scripts](https://github.com/haddocking/molmod-data){:target="_blank"} are available for free
+free for academic users. All the required [scripts and data](https://github.com/haddocking/molmod-data){:target="_blank"} are available for free
 on GitHub. 
 
 Modules 1 (homology modelling) and 3 (docking) can in principle be run from any computer, provided you have web access, and have also installed Pymol.
