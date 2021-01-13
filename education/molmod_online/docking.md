@@ -166,7 +166,7 @@ Click on 'Align' in the **Alignments** section. Once the run is completed downlo
 To visualize the alignment, and which positions are more conserved, the easiest way is to generate a sequence *logo*. For each
 position in the sequence, the logo identifies the most frequently occurring residues and scales its
 one-letter code according to a conservation score. We will be using the
-[weblogo server](https://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
+[weblogo server](http://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
 logo for the alignment produced by BLAST.
 
 
@@ -320,7 +320,7 @@ PDB structure to submit -> Browse and select *p53_ensemble.pdb* (the PDB file co
 
 Since our homology model and peptide do not correspond to the full sequence it is better to have uncharged termini.
 
-* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 

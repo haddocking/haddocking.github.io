@@ -23,7 +23,7 @@ the protein sequence and structure universes. Protein sequences databases curren
 millions of entries ([source](https://www.uniprot.org/statistics/){:target="_blank"}) and are foreseen to continue
 growing exponentially, driven by high-throughput sequencing efforts. On the other hand, the number
 of experimental protein structures is two orders of magnitude smaller
-([source](https://www.rcsb.org/pdb/static.do?p=general_information/pdb_statistics/index.html){:target="_blank"}), and
+([source](https://www.rcsb.org/stats/growth/growth-released-structures){:target="_blank"}), and
 that of unique folds has remained virtually unchanged since 2008. This apparent stagnation of the
 protein structure universe is a boon for structure prediction enthusiasts, as finding a sequence
 without a structurally characterized close homologue is, nowadays, quite rare.
@@ -208,7 +208,7 @@ templates, build the models, and evaluate their quality.
 <hr>
 ## Finding homologues of known structure using SWISS-MODEL
 
-In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://SWISS-MODEL.expasy.org){:target="_blank"}, which can conveniently perform above mentioned tasks and visualize both templates and created models. 
+In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://swissmodel.expasy.org/){:target="_blank"}, which can conveniently perform above mentioned tasks and visualize both templates and created models. 
 
 The _template_ is the structurally-resolved homolog that serves as a basis for the modeling. The
 _query_, on the other hand, is the sequence being modelled.  This standard nomenclature is used by
@@ -313,7 +313,7 @@ SWISS-MODEL offers you the possibility to submit your own template too. This is 
 ### 2. Template search
 
 After you inserted the amino acid sequence, which serves as query for template search, on the next page there will be all found templates listed. 
-SWISS-MODEL uses its own database [STML](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} to search against when looking for related protein structure for this query. STML [https://swissmodel.expasy.org/templates/]((https://swissmodel.expasy.org/templates/){:target="_blank"}) is a curated template library updated regularly with the new PDB release, containing templates for more than 115000 unique protein sequences.
+SWISS-MODEL uses its own database [STML](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} to search against when looking for related protein structure for this query. STML [https://swissmodel.expasy.org/templates/](https://swissmodel.expasy.org/templates/){:target="_blank"} is a curated template library updated regularly with the new PDB release, containing templates for more than 115000 unique protein sequences.
 
 SWISS-MODEL uses two databases to search through: fast and accurate [BLAST](https://www.ncbi.nlm.nih.gov/pubmed/9254694){:target="_blank"} , mostly used for closely related templates and more sensitive and time consuming [HHblits](https://www.ncbi.nlm.nih.gov/pubmed/22198341){:target="_blank"}, in cases of remote homology.
 

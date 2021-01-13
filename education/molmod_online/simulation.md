@@ -169,7 +169,7 @@ possible, and plausible, to generate structures of the peptide in three ideal co
 helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the
 peptides deposited in the PDB. Generating these structures is a simple matter of manipulating
 backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and
-available [here](https://pldserver1.biochem.queensu.ca/~rlc/work/pymol/){:target="_blank"} if necessary.
+available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/){:target="_blank"} if necessary.
 
 The instructions shown in this tutorial refer only to the helical peptide, for simplicity. The
 successful completion of the tutorial requires, however, all three conformations to be simulated.
@@ -224,10 +224,10 @@ simulation. The refinement process in structure determination does not always yi
 orientation of some side-chains, such as glutamine and asparagine, given the difficulty in
 distinguishing nitrogen and oxygen atoms in the density mesh. Also, the protonation state of
 several residues depends on the pH and can influence the protein's hydrogen bonding network. For
-crystal structures, the [PDB_REDO](https://xtal.nki.nl/PDB_REDO/){:target="_blank"} database contains refined versions
+crystal structures, the [PDB_REDO](https://pdb-redo.eu){:target="_blank"} database contains refined versions
 of structures deposited in the RCSB PDB, which address some of these problems. Alternatively, there
 are web servers that allow these and other problems to be detected and corrected, such as
-[WHATIF](https://swift.cmbi.ru.nl/){:target="_blank"}.
+[WHATIF](https://swift.cmbi.umcn.nl/whatif/){:target="_blank"}.
 
 Since the initial structure of the p53 peptide was generated using Pymol and ideal geometries,
 there is no need to proceed with such checks.
