@@ -126,20 +126,23 @@ is likely to take far too long. In our hands, the simulations of this system tak
 </a>
 
 
-Once you log in into your VM, will have an account created with the *molmod* group. You can store your data in your *home* directory but for the MD part we advise you to go to your directory in the group directory. Here your username is the same as the NMRbox username. 
+After you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. You will find your own copy of the course material in `~/EVENTS/2021-UU-MD/molmod/` directory. You can store your data in your *home* directory but we recommend creating a new directory where you will store your data and work in. 
 
 <a class="prompt prompt-cmd">
-Open the terminal app and type: 
-cd /public/groups/molmod/username
+Open the terminal and create a directory where you will work in with name of your choice: 
+mkdir *directory_name*  
+</a>
+<a class="prompt prompt-cmd">
+cd *directory_name*
 </a>
 
  ***Tip:*** To simplify the work flow one can copy and paste commands to the virtual machine. In case you are not familiar with Linux, note that you can paste copied commands by clicking the middle button of your mouse. 
 
-Before we start, we should make sure that we use the proper programs and paths from our directory. This we do by running a setup file which contains basic information about which directories you will be taking your data and programs from. 
+Before we start, we should make sure that we use the proper programs and paths from our directory. This we do by running a setup file which contains basic information about which directories you will be taking your data and programs from.  
 
 
 <a class="prompt prompt-cmd">
-/public/groups/molmod/share/molmod/setup.sh 
+~/EVENTS/2021-UU-MD/molmod/setup.sh
 </a>
 
 
