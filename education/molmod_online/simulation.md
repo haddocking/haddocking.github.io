@@ -126,7 +126,7 @@ is likely to take far too long. In our hands, the simulations of this system tak
 </a>
 
 
-After you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. Every student has their own copy of the course material in `~/EVENTS/2021-UU-MD/molmod/` directory. You can store your data in your *home* directory but we recommend creating a new directory where you will store your data and work in. 
+After you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. You will find your own copy of the course material in `~/EVENTS/2021-UU-MD/molmod/` directory. You can store your data in your *home* directory but we recommend creating a new directory where you will store your data and work in. 
 
 <a class="prompt prompt-cmd">
 Open the terminal and create a directory where you will work in with name of your choice: 
