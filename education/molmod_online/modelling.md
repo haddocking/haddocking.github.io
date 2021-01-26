@@ -333,7 +333,7 @@ These are [Global Model Quality Estimate (GMQE)](https://www.ncbi.nlm.nih.gov/pu
 
 
 <a class="prompt prompt-info">
-Which oligomeric state is preferred for out future work? Be careful to select the right oligomeric state before building a model. Keep in mind that p53 binds to MDM2 in a 1:1 ratio. 
+Which oligomeric state is preferred for our future work? Be careful to select the right oligomeric state before building a model. Keep in mind that p53 binds to MDM2 in a 1:1 ratio. 
 </a>  
 
 #### Template Results
@@ -350,7 +350,7 @@ After clicking on the arrow `﹀` on the left a short preview of the template wi
 
 The **oligomeric state** is predicted for each template and user can modify it manually under "target prediction". A warning sign appears if the oligomeric state of the model doesn't exactly match the one of the template (for example not all chains of the biounit included in the model).
 
-As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution higher than 2.2Å as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures deterimned by X-ray crystallography are preferred over averaged NMR structures and structures determined with electron microscopy, as the latter determines the overall shape of the molecule not individual atoms locations.
+As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution higher than 2.2Å as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures deterimned by X-ray crystallography are preferred over averaged NMR structures and structures determined with electron microscopy, as the latter determines the overall shape of the molecule not individual atoms locations.
 
 
  **Sequence similarity**  between the sequence and the template is calculated from a normalized [BLOSUM62](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC50453/){:target="_blank"} substitution matrix and similarly as the QSQE score, it ranged between 0 and 1 with 1 as 100% sequence similarity and vice versa. Gaps are not taken into account while calculating the sequence similarity.
@@ -455,7 +455,7 @@ On this page we see the list of models, the *Consistency with Ensemble* plot, th
 
 Notice how the selected residues are highlighted simultaneously in all plots, i.e. if you point at the *Consistency with Ensemble* plot, you will see where the given residue is in the sequence as well as in the 3D structure. The lower the consistency value, the more flexible the region is. This can be a good tool to quickly evaluate which model is the most stable one and which regions to take into account for further modelling. The default coloring scheme in the molecular viewer is consistency, or local deviations of a protein from the 'consensus' extracted from other selected models.  
 
-The *Ensemble variance* assesses the consistency of interatomic distances in the full ensemble. Only distances up to 15 Å are considered to reduce the effect of domain movement events.
+The *Ensemble variance* assesses the consistency of interatomic distances in the full ensemble. Only distances up to 15 Å are considered to reduce the effect of domain movement events.
 
 Note that all figures can be downloaded by clicking on the *Download* icon. More information about the comparison page can be found on [https://swissmodel.expasy.org/comparison/help](https://swissmodel.expasy.org/comparison/help){:target="_blank"}.
 
