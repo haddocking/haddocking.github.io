@@ -329,8 +329,12 @@ More about these steps and SWISS-MODEL publications are listed [here](https://sw
 
 
 Once the template search is finished, template quality is estimated by two methods.
-These are [Global Model Quality Estimate (GMQE)](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} and [Quaternary Structure Quality Estimate (QSQE)](https://www.nature.com/articles/s41598-017-09654-8){:target="_blank"}. **GMQE** combines properties from the target–template alignment and the template structure and expresses the expected accuracy or reliability of the model. GMQE ranges between 0 and 1 with 1 being the highest accuracy and 0 the lowest. The **QSQE** score also ranges between 0 and 1, however it is only computed on the top ranked templates if there is a possibility to build an oligomer. A value above 0.7 is considered reliable.
+These are [Global Model Quality Estimate (GMQE)](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} and [Quaternary Structure Quality Estimate (QSQE)](https://www.nature.com/articles/s41598-017-09654-8){:target="_blank"}. **GMQE** combines properties from the target–template alignment and the template structure and expresses the expected accuracy or reliability of the model. GMQE ranges between 0 and 1 with 1 being the highest accuracy and 0 the lowest. The **QSQE** score also ranges between 0 and 1, however it is only computed on the top ranked templates if there is a possibility to build an oligomer. A value above 0.7 is considered reliable. 
 
+
+<a class="prompt prompt-info">
+Which oligomeric state is preferred for out future work? Be careful to select the right oligomeric state before building a model. Keep in mind that p53 binds to MDM2 in a 1:1 ratio. 
+</a>  
 
 #### Template Results
 
@@ -355,8 +359,9 @@ As a rule of thumb, in homology modelling it is recommended to use X-ray crystal
 A cogwheel icon `⚙` on the left side of the sequence alignment or in the NGL viewer indicates additional options for sequence and structure coloring and format. One can select the type of secondary structure assignment algorithm: DSSP, PSIPRED, SSpro. Notice how the secondary structure changes between different algorithms. Another option one can choose between is color scheme based on the residue properties.
 
 <a class="prompt prompt-info">
-Have a look at found templates and their properties.
+Have a look at found templates and their properties. 
 </a>  
+
 
 The NGL viewer offers an option to toggle between different protein representations as well as to create and save template figures. Notice how you can see residues names after you hover over them with your cursor.  One of the coloring options is by bValue Range. The B-value or the temperature factor refers to the displacement of atoms from their mean position in a crystal structure and reach the value between 0 and 1. It describes the local mobility of the macromolecule, with 0 being the most mobile parts, and in this case marked red.  
 
