@@ -675,7 +675,7 @@ open. If you want to change the colors of the plot, run the script with the `-h`
 
 <a class="prompt prompt-cmd">
   gmx energy -f peptide-NVT-PR1000.edr -o thermodynamics-NVT-PR1000.xvg  
-  xvg_plot.py -i thermodynamics-NVT-PR1000.xvg
+  $MOLMOD_BIN/xvg_plot.py -i thermodynamics-NVT-PR1000.xvg
 </a>
 
 <a class="prompt prompt-question">
@@ -703,7 +703,7 @@ $$).
   gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -r peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR1000  
   gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
-  xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
 </a>
 
 <a class="prompt prompt-question">
@@ -1114,7 +1114,7 @@ the interaction between specific residues.
 </a>
 <a class="prompt prompt-cmd">
   gmx energy -f p53_helix_CAH.edr -o md_temperature.xvg  
-  xvg_plot.py -i md_temperature.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_temperature.xvg  
 </a>
 <a class="prompt prompt-question">
   How does the temperature fluctuate? What is the average temperature of the simulation?
@@ -1169,7 +1169,7 @@ unphysical self-interactions and invalidate the results of the simulation.
 </a>
 <a class="prompt prompt-cmd">
   gmx mindist -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -od md_mindist.xvg -pi  
-  xvg_plot.py -i md_mindist.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_mindist.xvg  
 </a>
 <a class="prompt prompt-question">
   What was the minimal distance between periodic images and at what time did that occur?  
@@ -1215,7 +1215,7 @@ the experimentally obtainable hydrodynamic radius.
 </a>
 <a class="prompt prompt-cmd">
   gmx gyrate -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_radius-of-gyration.xvg  
-  xvg_plot.py -i md_radius-of-gyration.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_radius-of-gyration.xvg  
 </a>
 <a class="prompt prompt-question">
   How does the radius of gyration change with time? What does it mean if there is a prolonged
@@ -1243,7 +1243,7 @@ calculation of an average structure, which can be used for future analyses.
 </a>
 <a class="prompt prompt-cmd">
   gmx rmsf -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_rmsf.xvg -ox md_average.pdb -oq md_temperature-factors-residue.pdb -res  
-  xvg_plot.py -i md_rmsf.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_rmsf.xvg  
 </a>
 <a class="prompt prompt-question">
   Which regions of the peptide show the most flexibility?
