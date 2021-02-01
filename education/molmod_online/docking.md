@@ -10,7 +10,7 @@ image:
 {:.no_toc}
 
 This tutorial introduces protein-protein docking using the HADDOCK web server. It also introduces
-the CPORT web server for interface prediction, based on evolutionary conservation and other
+the CPORT web server for interface prediction, based on evolutifmergdfonary conservation and other
 biophysical properties. By the end of this tutorial, you should know how to setup a HADDOCK run and
 interpret its results in terms of biological insights.
 
@@ -238,7 +238,7 @@ requirement, so no action is necessary here.
 
 
 The structures of the p53 peptide originating from the molecular dynamics simulation can be
-submitted as a single ensemble to HADDOCK. The `pdb_join.py` utility of the `pdb-tools` set
+submitted as a single ensemble to HADDOCK. The `pdb_merge` utility of the `pdb-tools` set
 provides a quick way of building such an ensemble structure from isolated PDB files. It also adds
 the proper `END` statement to the PDB file. Finally, it has a built-in check for the integrity of
 the ensemble, i.e. that all members have exactly the same atomic constitution.
@@ -248,7 +248,7 @@ the ensemble, i.e. that all members have exactly the same atomic constitution.
 structure.
 </a>
 <a class="prompt prompt-cmd">
-  pdb_join.py p53_cluster_1.pdb p53_cluster_2.pdb p53_cluster_3.pdb > p53_ensemble.pdb
+  pdb_merge p53_cluster_1.pdb p53_cluster_2.pdb p53_cluster_3.pdb > p53_ensemble.pdb
 </a>
 
 
