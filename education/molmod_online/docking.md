@@ -159,7 +159,7 @@ Which organism shows the highest sequence similarity to the mouse MDM2? Is it su
 To be able to take information about conserved residues and utilize it in HADDOCK, we need to align selected sequences. An additional window with running alignment will open.
 
 <a class="prompt prompt-info">
-Click on 'Align' in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
+Select all sequences and click on 'Align' in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
 </a>
 
 
@@ -178,7 +178,7 @@ Since the other sequences might be longer than our query, specify conservancy of
 
 <a class="prompt prompt-info">In WebLogo 3 upload your alignment file and choose: </a>
 <a class="prompt prompt-info">Stacks per Line: 110 </a>
-<a class="prompt prompt-info">Logo range: 328 - 427</a>
+<a class="prompt prompt-info">Logo range: 14 - 123</a>
 
 
 
