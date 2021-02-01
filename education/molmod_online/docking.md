@@ -10,7 +10,7 @@ image:
 {:.no_toc}
 
 This tutorial introduces protein-protein docking using the HADDOCK web server. It also introduces
-the CPORT web server for interface prediction, based on evolutifmergdfonary conservation and other
+the CPORT web server for interface prediction, based on evolutionary conservation and other
 biophysical properties. By the end of this tutorial, you should know how to setup a HADDOCK run and
 interpret its results in terms of biological insights.
 
