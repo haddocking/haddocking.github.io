@@ -176,11 +176,9 @@ logo for the alignment produced by BLAST.
 
 Since the other sequences might be longer than our query, specify conservancy of which residues you are interested in.
 
-<a class="prompt prompt-info">In WebLogo 3 upload your alignment file and choose: </a>
-<a class="prompt prompt-info">Stacks per Line: 110 </a>
-<a class="prompt prompt-info">Logo range: 14 - 123</a>
+<a class="prompt prompt-info">In WebLogo 3 upload your alignment file </a>
 
-
+Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in Logo range.
 
 <a class="prompt prompt-question">
   Which regions of the sequence are highly conserved? And which are less conserved?
