@@ -1498,7 +1498,7 @@ with the centroids, or representatives, of each cluster.
 
 <a class="prompt prompt-info">
   Cluster the RMSD matrix using the GROMOS method to quantitatively extract representative
-structures of the simulation.
+structures of the simulation. Choose peptide backbone for fitting and all-atoms of peptide as output. This is important, since we have will use the output structures for docking.
 </a>
 
 <a class="prompt prompt-cmd">
