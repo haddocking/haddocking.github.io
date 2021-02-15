@@ -159,7 +159,7 @@ Which organism shows the highest sequence similarity to the mouse MDM2? Is it su
 To be able to take information about conserved residues and utilize it in HADDOCK, we need to align selected sequences. An additional window with running alignment will open.
 
 <a class="prompt prompt-info">
-Click on 'Align' in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
+Select all sequences and click on 'Align' in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
 </a>
 
 
@@ -176,11 +176,9 @@ logo for the alignment produced by BLAST.
 
 Since the other sequences might be longer than our query, specify conservancy of which residues you are interested in.
 
-<a class="prompt prompt-info">In WebLogo 3 upload your alignment file and choose: </a>
-<a class="prompt prompt-info">Stacks per Line: 110 </a>
-<a class="prompt prompt-info">Logo range: 328 - 427</a>
+<a class="prompt prompt-info">In WebLogo 3 upload your alignment file </a>
 
-
+Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in Logo range.
 
 <a class="prompt prompt-question">
   Which regions of the sequence are highly conserved? And which are less conserved?
@@ -238,7 +236,7 @@ requirement, so no action is necessary here.
 
 
 The structures of the p53 peptide originating from the molecular dynamics simulation can be
-submitted as a single ensemble to HADDOCK. The `pdb_join.py` utility of the `pdb-tools` set
+submitted as a single ensemble to HADDOCK. The `pdb_mkensemble` utility of the `pdb-tools` set
 provides a quick way of building such an ensemble structure from isolated PDB files. It also adds
 the proper `END` statement to the PDB file. Finally, it has a built-in check for the integrity of
 the ensemble, i.e. that all members have exactly the same atomic constitution.
@@ -248,7 +246,7 @@ the ensemble, i.e. that all members have exactly the same atomic constitution.
 structure.
 </a>
 <a class="prompt prompt-cmd">
-  pdb_join.py p53_cluster_1.pdb p53_cluster_2.pdb p53_cluster_3.pdb > p53_ensemble.pdb
+  pdb_mkensemble p53_cluster_1.pdb p53_cluster_2.pdb p53_cluster_3.pdb > p53_ensemble.pdb
 </a>
 
 

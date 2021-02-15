@@ -329,8 +329,12 @@ More about these steps and SWISS-MODEL publications are listed [here](https://sw
 
 
 Once the template search is finished, template quality is estimated by two methods.
-These are [Global Model Quality Estimate (GMQE)](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} and [Quaternary Structure Quality Estimate (QSQE)](https://www.nature.com/articles/s41598-017-09654-8){:target="_blank"}. **GMQE** combines properties from the target–template alignment and the template structure and expresses the expected accuracy or reliability of the model. GMQE ranges between 0 and 1 with 1 being the highest accuracy and 0 the lowest. The **QSQE** score also ranges between 0 and 1, however it is only computed on the top ranked templates if there is a possibility to build an oligomer. A value above 0.7 is considered reliable.
+These are [Global Model Quality Estimate (GMQE)](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} and [Quaternary Structure Quality Estimate (QSQE)](https://www.nature.com/articles/s41598-017-09654-8){:target="_blank"}. **GMQE** combines properties from the target–template alignment and the template structure and expresses the expected accuracy or reliability of the model. GMQE ranges between 0 and 1 with 1 being the highest accuracy and 0 the lowest. The **QSQE** score also ranges between 0 and 1, however it is only computed on the top ranked templates if there is a possibility to build an oligomer. A value above 0.7 is considered reliable. 
 
+
+<a class="prompt prompt-info">
+Which oligomeric state is preferred for our future work? Be careful to select the right oligomeric state before building a model. Keep in mind that p53 binds to MDM2 in a 1:1 ratio. 
+</a>  
 
 #### Template Results
 
@@ -346,7 +350,7 @@ After clicking on the arrow `﹀` on the left a short preview of the template wi
 
 The **oligomeric state** is predicted for each template and user can modify it manually under "target prediction". A warning sign appears if the oligomeric state of the model doesn't exactly match the one of the template (for example not all chains of the biounit included in the model).
 
-As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution higher than 2.2Å as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures deterimned by X-ray crystallography are preferred over averaged NMR structures and structures determined with electron microscopy, as the latter determines the overall shape of the molecule not individual atoms locations.
+As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution higher than 2.2Å as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures deterimned by X-ray crystallography are preferred over averaged NMR structures and structures determined with electron microscopy, as the latter determines the overall shape of the molecule not individual atoms locations.
 
 
  **Sequence similarity**  between the sequence and the template is calculated from a normalized [BLOSUM62](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC50453/){:target="_blank"} substitution matrix and similarly as the QSQE score, it ranged between 0 and 1 with 1 as 100% sequence similarity and vice versa. Gaps are not taken into account while calculating the sequence similarity.
@@ -355,8 +359,9 @@ As a rule of thumb, in homology modelling it is recommended to use X-ray crystal
 A cogwheel icon `⚙` on the left side of the sequence alignment or in the NGL viewer indicates additional options for sequence and structure coloring and format. One can select the type of secondary structure assignment algorithm: DSSP, PSIPRED, SSpro. Notice how the secondary structure changes between different algorithms. Another option one can choose between is color scheme based on the residue properties.
 
 <a class="prompt prompt-info">
-Have a look at found templates and their properties.
+Have a look at found templates and their properties. 
 </a>  
+
 
 The NGL viewer offers an option to toggle between different protein representations as well as to create and save template figures. Notice how you can see residues names after you hover over them with your cursor.  One of the coloring options is by bValue Range. The B-value or the temperature factor refers to the displacement of atoms from their mean position in a crystal structure and reach the value between 0 and 1. It describes the local mobility of the macromolecule, with 0 being the most mobile parts, and in this case marked red.  
 
@@ -450,7 +455,7 @@ On this page we see the list of models, the *Consistency with Ensemble* plot, th
 
 Notice how the selected residues are highlighted simultaneously in all plots, i.e. if you point at the *Consistency with Ensemble* plot, you will see where the given residue is in the sequence as well as in the 3D structure. The lower the consistency value, the more flexible the region is. This can be a good tool to quickly evaluate which model is the most stable one and which regions to take into account for further modelling. The default coloring scheme in the molecular viewer is consistency, or local deviations of a protein from the 'consensus' extracted from other selected models.  
 
-The *Ensemble variance* assesses the consistency of interatomic distances in the full ensemble. Only distances up to 15 Å are considered to reduce the effect of domain movement events.
+The *Ensemble variance* assesses the consistency of interatomic distances in the full ensemble. Only distances up to 15 Å are considered to reduce the effect of domain movement events.
 
 Note that all figures can be downloaded by clicking on the *Download* icon. More information about the comparison page can be found on [https://swissmodel.expasy.org/comparison/help](https://swissmodel.expasy.org/comparison/help){:target="_blank"}.
 

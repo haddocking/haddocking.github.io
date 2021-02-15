@@ -28,7 +28,8 @@ To use virtual machines through NMRbox, one needs to register, preferably with t
 
 ### Accessing NMRbox
 To run the virtual machine on a local computer, one needs to install [VNCviewer](https://www.realvnc.com/en/connect/download/vnc/){:target="_blank"}. With the RealVNC client connects your computer to the NMRbox servers with a virtual desktop - graphical interface. More information about the VNC viewer is in the [FAQ of NMRbox](https://nmrbox.org/faqs/vnc-client){:target="_blank"}.
-To connect to NMRbox, launch RealVNC and enter `username.nmrbox.org` with your unique NMRbox username and then your password when prompted. For more details follow the quick start guide for using NMRbox with VNC viewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
+
+To choose a virtual machine, first log into the user dashboard [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"}. Download the zip file with bookmarks for the production NMRbox virtual machines. Click *File -> Import* connections and select the downloaded zip file. After importing, you will see the current release virtual machines. You can use any available virtual machine. The user-dashboard provides information on machine capabilities and recent compute load, thus it is clever to choose a less occupied one. Double click on one of the VMs. An *“Authentication”* panel appears. Enter your NMRbox username and password. Click on the *“Remember password”* box to have RealVNC save your information. By default, your desktop remains running when you disconnect from it.  If you login to your VM repeatedly you will see a screen symbol next to the VM you connected to recently. For more details follow the quick start guide for using NMRbox with VNC viewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
 
 
 If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including Pymol. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer){:target="_blank"}.
@@ -126,20 +127,23 @@ is likely to take far too long. In our hands, the simulations of this system tak
 </a>
 
 
-Once you log in into your VM, will have an account created with the *molmod* group. You can store your data in your *home* directory but for the MD part we advise you to go to your directory in the group directory. Here your username is the same as the NMRbox username. 
+After you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. You will find your own copy of the course material in `~/EVENTS/2021-UU-MD/molmod/` directory. You can store your data in your *home* directory but we recommend creating a new directory where you will store your data and work in. 
 
 <a class="prompt prompt-cmd">
-Open the terminal app and type: 
-cd /public/groups/molmod/username
+Open the terminal and create a directory where you will work in with name of your choice: 
+mkdir *directory_name*  
+</a>
+<a class="prompt prompt-cmd">
+cd *directory_name*
 </a>
 
  ***Tip:*** To simplify the work flow one can copy and paste commands to the virtual machine. In case you are not familiar with Linux, note that you can paste copied commands by clicking the middle button of your mouse. 
 
-Before we start, we should make sure that we use the proper programs and paths from our directory. This we do by running a setup file which contains basic information about which directories you will be taking your data and programs from. 
+Before we start, we should make sure that we use the proper programs and paths from our directory. This we do by running a setup file which contains basic information about which directories you will be taking your data and programs from.  
 
 
 <a class="prompt prompt-cmd">
-/public/groups/molmod/share/molmod/setup.sh 
+~/EVENTS/2021-UU-MD/molmod/setup.sh
 </a>
 
 
@@ -671,7 +675,7 @@ open. If you want to change the colors of the plot, run the script with the `-h`
 
 <a class="prompt prompt-cmd">
   gmx energy -f peptide-NVT-PR1000.edr -o thermodynamics-NVT-PR1000.xvg  
-  xvg_plot.py -i thermodynamics-NVT-PR1000.xvg
+  $MOLMOD_BIN/xvg_plot.py -i thermodynamics-NVT-PR1000.xvg
 </a>
 
 <a class="prompt prompt-question">
@@ -699,7 +703,7 @@ $$).
   gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -r peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr  
   gmx mdrun -v -deffnm peptide-NPT-PR1000  
   gmx energy -f peptide-NPT-PR1000.edr -o thermodynamics-NPT-PR1000.xvg  
-  xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i thermodynamics-NPT-PR1000.xvg  
 </a>
 
 <a class="prompt prompt-question">
@@ -1110,7 +1114,7 @@ the interaction between specific residues.
 </a>
 <a class="prompt prompt-cmd">
   gmx energy -f p53_helix_CAH.edr -o md_temperature.xvg  
-  xvg_plot.py -i md_temperature.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_temperature.xvg  
 </a>
 <a class="prompt prompt-question">
   How does the temperature fluctuate? What is the average temperature of the simulation?
@@ -1165,7 +1169,7 @@ unphysical self-interactions and invalidate the results of the simulation.
 </a>
 <a class="prompt prompt-cmd">
   gmx mindist -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -od md_mindist.xvg -pi  
-  xvg_plot.py -i md_mindist.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_mindist.xvg  
 </a>
 <a class="prompt prompt-question">
   What was the minimal distance between periodic images and at what time did that occur?  
@@ -1211,7 +1215,7 @@ the experimentally obtainable hydrodynamic radius.
 </a>
 <a class="prompt prompt-cmd">
   gmx gyrate -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_radius-of-gyration.xvg  
-  xvg_plot.py -i md_radius-of-gyration.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_radius-of-gyration.xvg  
 </a>
 <a class="prompt prompt-question">
   How does the radius of gyration change with time? What does it mean if there is a prolonged
@@ -1239,7 +1243,7 @@ calculation of an average structure, which can be used for future analyses.
 </a>
 <a class="prompt prompt-cmd">
   gmx rmsf -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_rmsf.xvg -ox md_average.pdb -oq md_temperature-factors-residue.pdb -res  
-  xvg_plot.py -i md_rmsf.xvg  
+  $MOLMOD_BIN/xvg_plot.py -i md_rmsf.xvg  
 </a>
 <a class="prompt prompt-question">
   Which regions of the peptide show the most flexibility?
@@ -1494,7 +1498,7 @@ with the centroids, or representatives, of each cluster.
 
 <a class="prompt prompt-info">
   Cluster the RMSD matrix using the GROMOS method to quantitatively extract representative
-structures of the simulation.
+structures of the simulation. Choose peptide backbone for fitting and all-atoms of peptide as output. This is important, since we have will use the output structures for docking.
 </a>
 
 <a class="prompt prompt-cmd">
