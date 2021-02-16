@@ -6,9 +6,13 @@ image:
 ---
 ## 2021
 
-* S. Nizamuddin, S. Koidl, T. Bhuiyan, T.V. Werner, M.L. Biniossek, **A.M.J.J. Bonvin**, S. Lassmann and H.Th.M. Timmers. Integrating quantitative proteomics with accurate genome profiling of transcription factors by greenCUT&RUN. _Nucl. Acids Res._ In Press (2021).
+* N.Renaud, C. Geng, S. Georgievska, F. Ambrosetti, L. Ridder, D.F Marzella, **A.M.J.J. Bonvin** and L.C. Xue. [DeepRank: A deep learning framework for data mining 3D protein-protein interfaces](). _BioRxiv_ 10.1101/2021.01.29.425727 (2021)
+
+* S. Nizamuddin, S. Koidl, T. Bhuiyan, T.V. Werner, M.L. Biniossek, **A.M.J.J. Bonvin**, S. Lassmann and H.Th.M. Timmers. [Integrating quantitative proteomics with accurate genome profiling of transcription factors by greenCUT&RUN](https://doi.org/10.1093/nar/gkab038). _Nucl. Acids Res._ gkab038 (2021).
 
 * O.M.H. Salo-Ahen#, I. Alanko, R. Bhadane, **A.M.J.J. Bonvin**#, R. Vargas Honorato, S. Hossain, A.H. Juffer, A. Kabedev, M. Lahtela-Kakkonen, A. Støttrup Larsen, E. Lescrinier, P. Marimuthu, M.. Mirza, G. Mustafa, A. Nunes-Alves#, T. Pantsar, A. Saadabadi, K. Singaravelu, M. Vanmeert. [Molecular dynamics simulations in drug discovery and pharmaceutical development](https://doi.org/10.3390/pr9010071 ). _Processes_. *9*, 71 (2021).
+
+* B. Jiménez-García, J.M.C. Teixeira, M.E. Trellet, J.P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**. [PDB-Tools Web: A user-friendly interface for the manipulation of PDB files](http://dx.doi.org/10.1002/prot.26018) _Proteins: Struc. Funct. &amp; Bioinformatics_, *89*, 330-335 (2021).
 
 
 ## 2020
@@ -18,8 +22,6 @@ image:
 * C.Y.L. Lau, F, Fontana, L, Mandemaker, D, Wezendonk, B, Vermeer, **A.M.J.J. Bonvin**, R. de Vries, H. Zhang, K. Remaut, J. van den Dikkenberg, J. Silva, A. Hassan, B. Perrone, R. Kuemmerle, F. Gelain, W. Hennink, M. Weingarth, and E. Mastrobattista. [Control over the fibrillization yield by varying the oligomeric nucleation propensities of self-assembling peptides](https://doi.org/10.1038/s42004-020-00417-7). _Comm. Chem._ *3*, 164 (2020).
 
 * V. Tozzini , G. Palermo , **A.M.J.J. Bonvin** , M. Dal Peraro and R.E. Amaro. [Editorial: Multiscale Modeling from Macromolecules to Cell: Opportunities and Challenges of Biomolecular Simulations](https://www.frontiersin.org/articles/10.3389/fmolb.2020.00194/full). _Front. Mol. Biosci._ 10.3389/fmolb.2020.00194 (2020).
-
-* B. Jiménez-García, J.M.C. Teixeira, M.E. Trellet, J.P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**. [PDB-Tools Web: A user-friendly interface for the manipulation of PDB files](http://dx.doi.org/10.1002/prot.26018) _Proteins: Struc. Funct. &amp; Bioinformatics_, Advanced Online Publication (2020).
 
 * J.L. Roel-Touris,  B. Jiménez-García and **A.M.J.J. Bonvin**. [Integrative Modeling of Membrane-associated Protein Assemblies](https://doi.org/10.1038/s41467-020-20076-5). _Nature Comm._, *11*, 6210 (2020).
  
