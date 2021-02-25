@@ -17,7 +17,7 @@ This tutorial consists of the following sections:
 ## Introduction
 
 This tutorial will demonstrate the use of our DISVIS, POWERFIT and HADDOCK web servers for predicting the structure of a large biomolecular assembly from MS cross-linking data and low resolution cryo-EM data.
-The case we will be investigating is the apo form of the Saccharomyces Cerevisiae RNA Polymerase-III (Pol III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits.
+The case we will be investigating is the apo form of the <em>Saccharomyces cerevisiae</em> RNA Polymerase-III (Pol III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits.
 <ul>
 <figure align="center">
   <img src="/education/HADDOCK24/RNA-Pol-III/Pol-III-architecture.png">
