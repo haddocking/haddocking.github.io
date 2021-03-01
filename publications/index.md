@@ -6,6 +6,8 @@ image:
 ---
 ## 2021
 
+* P. Matos-Filipe, A.J. Preto, P.I. Koukos, J. Mourão, **A.M.J.J. Bonvin** and I.S. Moreira. MENSADB: A Thorough Structural Analysis of Membrane Protein Dimers. Database, In press (2021).
+
 * N.Renaud, C. Geng, S. Georgievska, F. Ambrosetti, L. Ridder, D.F Marzella, **A.M.J.J. Bonvin** and L.C. Xue. [DeepRank: A deep learning framework for data mining 3D protein-protein interfaces](). _BioRxiv_ 10.1101/2021.01.29.425727 (2021)
 
 * S. Nizamuddin, S. Koidl, T. Bhuiyan, T.V. Werner, M.L. Biniossek, **A.M.J.J. Bonvin**, S. Lassmann and H.Th.M. Timmers. [Integrating quantitative proteomics with accurate genome profiling of transcription factors by greenCUT&RUN](https://doi.org/10.1093/nar/gkab038). _Nucl. Acids Res._ gkab038 (2021).
