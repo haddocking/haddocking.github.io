@@ -44,3 +44,6 @@ In this page you can find links to tutorials on the usage of our software and we
   about the hypervariable loops of the antibody and either the entire surface of the antigen or a loose definition of the epitope.
   This tutorial does not require any Linux expertise and only makes use of our web servers and [PyMol](https://www.pymol.org) for visualisation/analysis.
 
+* [**LightDock+HADDOCK membrane proteins tutorial**](/education/HADDOCK24/LightDock-membrane-proteins):
+  This tutorial demonstrates the use of LightDock for predicting the structure of membrane receptor–soluble protein complex using the topological information provided by the membrane to guide the modelling process. The resulting LightDock models are then refined using HADDOCK.
+
