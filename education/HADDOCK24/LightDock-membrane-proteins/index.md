@@ -172,6 +172,89 @@ The last PyMOL command will save the aligned atomistic 3X29 receptor to the CG l
 
 ## 5. LightDock simulation
 
+### Simulation set up
+
+The fist step in any LightDock simulation is setup. We will make use of `lightdock3_setup.py` command to initialize our 3X29 membrane simulation and the required input data is:
+
+* <a href="/education/HADDOCK24/LightDock-membrane-proteins/3x29_receptor_membrane.pdb">Receptor structure PDB file</a>
+* <a href="/education/HADDOCK24/LightDock-membrane-proteins/3x29_ligand.pdb">Ligand structure PDB file</a>
+
+Use the `lightdock3_setup.py` command to set up the LightDock simulation:
+
+<a class="prompt prompt-cmd">
+lightdock3_setup.py 3x29_receptor_membrane.pdb 3x29_ligand.pdb --noxt --noh --membrane
+</a>
+
+In short, we are indicating to the setup command to use `3x29_receptor_membrane.pdb` as the receptor partner, `3x29_ligand.pdb` as the ligand, to skip `NOXT` and hydrogen atoms and to detect membrane beads with the `--membrane` flag. The output of the command should look similar to this:
+
+<pre style="background-color:#DAE4E7">
+[lightdock3_setup] INFO: Ignoring OXT atoms
+[lightdock3_setup] INFO: Ignoring Hydrogen atoms
+[lightdock3_setup] INFO: Reading structure from 3x29_receptor_membrane.pdb PDB file...
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue GLN.61
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue GLN.63
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LYS.65
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LEU.66
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue ASP.68
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue HIS.76
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue MET.95
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue MET.102
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LYS.103
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LYS.115
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue ARG.117
+[lightdock3_setup] INFO: 1608 atoms, 601 residues read.
+[lightdock3_setup] INFO: Ignoring OXT atoms
+[lightdock3_setup] INFO: Ignoring Hydrogen atoms
+[lightdock3_setup] INFO: Reading structure from 3x29_ligand.pdb PDB file...
+[lightdock3_setup] INFO: 933 atoms, 117 residues read.
+[lightdock3_setup] INFO: Calculating reference points for receptor 3x29_receptor_membrane.pdb...
+[lightdock3_setup] INFO: Reference points for receptor found, skipping
+[lightdock3_setup] INFO: Done.
+[lightdock3_setup] INFO: Calculating reference points for ligand 3x29_ligand.pdb...
+[lightdock3_setup] INFO: Reference points for ligand found, skipping
+[lightdock3_setup] INFO: Done.
+[lightdock3_setup] INFO: Saving processed structure to PDB file...
+[lightdock3_setup] INFO: Done.
+[lightdock3_setup] INFO: Saving processed structure to PDB file...
+[lightdock3_setup] INFO: Done.
+[lightdock3_setup] INFO: Calculating starting positions...
+[lightdock3_setup] INFO: Generated 62 positions files
+[lightdock3_setup] INFO: Done.
+[lightdock3_setup] INFO: Number of calculated swarms is 62
+[lightdock3_setup] INFO: Preparing environment
+[lightdock3_setup] INFO: Done.
+[lightdock3_setup] INFO: LightDock setup OK
+</pre>
+
+In previous versions of LightDock, the number of swarms of the simulated was given by the user (typically around 400), but since version `0.9.0`, the number of swarms of the simulation is automatically calculated depending on the surface area of the receptor structure. However, the number of swarms can be fixed by the user using the `-s` flag for reproducibility of old results purpose. Another difference with previous versions is that the number of glowworms is now default to 200. This value has been extensively tested on our previous work, but it may be defined by the user as well using the `-g` flag.
+
+A complete list of `lightdock3_setup.py` command options might be obtained executing the command without arguments or with the `--help` flag:
+
+<pre style="background-color:#DAE4E7">
+usage: lightdock3_setup [-h] [-s SWARMS] [-g GLOWWORMS] [--seed_points STARTING_POINTS_SEED] [--noxt] [--noh] [--verbose_parser] [-anm] [--seed_anm ANM_SEED] [-ar ANM_REC]
+                        [-al ANM_LIG] [-r restraints] [-membrane] [-transmembrane] [-sp] [-sd SURFACE_DENSITY] [-sr SWARM_RADIUS]
+                        receptor_pdb_file ligand_pdb_file
+lightdock3_setup: error: the following arguments are required: receptor_pdb_file, ligand_pdb_file
+</pre>
+
+The setup command has generated several files and directories:
+
+<a class="prompt prompt-question">What is the content of the **setup.json** file?</a>
+
+<a class="prompt prompt-question">What does the **init** directory contains?</a>
+
+We may visualize the distribution of swarms over the receptor:
+
+<a class="prompt prompt-cmd">
+pymol lightdock_3x29_receptor_membrane.pdb init/swarm_centers.pdb
+</a>
+
+### Running the simulation
+
+<a class="prompt prompt-cmd">
+lightdock3.py setup.json 100 -c 1 -s fastdfire -l 60
+</a>
+
 <hr>
 
 ## 6. HADDOCK Refinement
