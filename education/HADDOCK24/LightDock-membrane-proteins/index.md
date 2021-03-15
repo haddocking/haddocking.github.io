@@ -391,11 +391,14 @@ swarm_37_169.pdb  0.0       8.642   7.771  24.426
 swarm_37_83.pdb   0.0      16.334  15.516  24.133
 </pre>
 
-* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 10 models (we provide the generated [top10_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top10_ensemble.pdb) por your convenience):
+* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 10 models (we provide the generated [top10_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top10_ensemble.pdb) for your convenience):
 
 <a class="prompt prompt-cmd">
-pdb_mkensemble swarm_22_112.pdb swarm_37_11.pdb swarm_39_11.pdb swarm_60_115.pdb swarm_54_167.pdb swarm_37_34.pdb swarm_55_181.pdb swarm_60_42.pdb swarm_37_169.pdb swarm_37_83.pdb | pdb_delresname -MMB | pdb_chainxseg > top10_ensemble.pdb
+cd clustered; pdb_mkensemble swarm_22_112.pdb swarm_37_11.pdb swarm_39_11.pdb swarm_60_115.pdb swarm_54_167.pdb swarm_37_34.pdb swarm_55_181.pdb swarm_60_42.pdb swarm_37_169.pdb swarm_37_83.pdb | pdb_delresname -MMB | pdb_chainxseg > top10_ensemble.pdb
 </a>
+
+Please note that the structures are located inside the `clustered` directory.
+
 
 ### Submission
 
