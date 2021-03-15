@@ -19,7 +19,7 @@ This tutorial demonstrates the use of [LightDock](https://lightdock.org){:target
 
 Membrane proteins are among the most challenging systems to study with experimental structural biology techniques, thus computational techniques such as docking might offer invaluable insights on the modelling of those systems.
 
-<figure align="center">
+<figure style="text-align:center">
     <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_membrane.png">
     <figcaption style="text-align:center"><b>Fig.1</b> 3X29 complex in a lipid bilayer as simulated by <a href="http://memprotmd.bioch.ox.ac.uk/_ref/PDB/3x29" target="_blank">MemProtMD</a>.</figcaption>
 </figure>
@@ -67,7 +67,7 @@ LightDock is a macromolecular docking software written in the Python programming
 
 LightDock protocol is divided in two main steps: **setup** and **simulation**. On setup step, input PDB structures for receptor and ligand partners are parsed and prepared for the simulation. Moreoever, a set of _swarms_ is arranged around the receptor surface. Each of these swarms represents an independent simulation in LightDock where a fixed number of agents, called _glowworms_, encodes for a possible receptor-ligand pose. During the simulation step, each of these glowworms will sample a given region of the energetic landscape depending on its neighboring glowworms. 
 
-<figure align="center">
+<figure style="text-align:center">
     <img src="/education/HADDOCK24/LightDock-membrane-proteins/4g6m_restraints.png">
     <figcaption style="text-align:center"><b>Fig.2</b> A receptor surface showing only two swarms. Each swarm contains a set of glowworms representing a possible receptor-ligand pose.</figcaption>
 </figure>
@@ -80,7 +80,7 @@ For more information about LightDock, please visit the [tutorials section](https
 
 ## 3. Setup/Requirements
 
-In order to run this tutorial you will need to have the following software installed: [LightDock][link-lightdock] and [PyMOL][link-pymol].
+In order to run this tutorial you will need to have the following software installed: [LightDock][link-lightdock], [pdb-tools][link-pdbtools] and [PyMOL][link-pymol].
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://haddock.science.uu.nl/auth/register/haddock](https://haddock.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
@@ -118,6 +118,22 @@ Another option to use LightDock is through [Google Colaboratory](https://colab.r
 !pip install lightdock==0.9.0a2
 </a>
 
+### Installing PDB-Tools
+
+PDB-Tools is a set of Python scripts for manipulating PDB files following the philosophy of *one script, one task*. For different manipulating tasks on a PDB file, the procedure would be to *pipe* the different PDB-Tools scripts to accomplish the different tasks. 
+
+PDB-Tools is distributed as a PyPI package. To install it, simply:
+
+<a class="prompt prompt-info">
+pip install pdb-tools
+</a>
+
+or alternatively in a Google Colab notebook:
+
+<a class="prompt prompt-info">
+!pip install pdb-tools
+</a>
+
 <hr>
 
 ## 4. Data preparation
@@ -126,7 +142,7 @@ We will make use of the 3X29 complex simulated in a membrane lipid bilayer from 
 
 First, go to the [3X29 complex page](http://memprotmd.bioch.ox.ac.uk/_ref/PDB/3x29/_sim/3x29_default_dppc/) at MemProtMD. On the `Data Download` section, download the PDB file corresponding to the [Coarse-grained snapshot (MARTINI representation)](http://memprotmd.bioch.ox.ac.uk/data/memprotmd/simulations/3x29_default_dppc/files/structures/cg.pdb). This file in PDB format contains the [MARTINI](http://cgmartini.nl/) coarse-grained (CG) representation of the phospholipid bilayer membrane and the protein complex. We will use the phosphate beads as the boundary for the transmembrane region for filtering the sampling region of interest in LightDock.
 
-<figure align="center">
+<figure style="text-align:center">
     <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_cg.png">
     <figcaption style="text-align:center">
         <b>Fig.3</b> MARTINI Coarse-grained representation of the 3X29 complex in a lipid bilayer. Protein is depicted as <span style="color:dodgerblue">blue</span> surface, CG beads for phospholipids in white, except for NC3 beads in <span style="color:darkturquoise">turquoise</span> and PO4 beads in <span style="color:orange">orange</span>.
@@ -141,7 +157,7 @@ python3 prepare4lightdock.py 3x29_default_dppc-coarsegrained.pdb membrane_cg.pdb
 
 The output of this script is the <a href="/education/HADDOCK24/LightDock-membrane-proteins/membrane_cg.pdb">membrane_cg.pdb</a> PDB file (Figure 4).
 
-<figure align="center">
+<figure style="text-align:center">
     <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_mmb.png">
     <figcaption style="text-align:center">
         <b>Fig.4</b> Lipid bilayer membrane and protein after using the `prepare4lightdock.py` script. Protein is depicted as <span style="color:dodgerblue">blue</span> surface (only CA), membrane beads ready for LightDock in <span style="color:orange">orange</span>.
@@ -249,15 +265,149 @@ We may visualize the distribution of swarms over the receptor:
 pymol lightdock_3x29_receptor_membrane.pdb init/swarm_centers.pdb
 </a>
 
+<figure style="text-align:center">
+    <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_membrane_swarms.gif">
+    <figcaption style="text-align:center">
+        <b>Fig.5</b> Distribution of swarms of the current simulation.
+    </figcaption>
+</figure>
+
+<a class="prompt prompt-question">Is this a regid-body or a flexible simulation?</a>
+
 ### Running the simulation
+
+The simulation is ready to run at this point. The number of swarms after focusing on the cytosolic region of the membrane is of 62.
+
+LightDock optimization strategy (using the GSO algorithm) is agnostic of the scoring function (force-field). There are several scoring functions available at LightDock, from atomistic to coarse-grained. In this tutorial we will make use of `fastdfire`, which is the implementation of [DFIRE](https://doi.org/10.1110/ps.0217002) using the Python C API and the default if no scoring function is specified by the user. Find [here](https://lightdock.org/tutorials/basics#32-available-scoring-functions) a complete list of the current supported scoring functions by LightDock.
+
+Simulation is the most time-consuming part of the protocol. For that reason, we will only simulate one of the 62 total swarms. Pick a swarm number between [0..61] and use that id in the `-l` argument:
 
 <a class="prompt prompt-cmd">
 lightdock3.py setup.json 100 -c 1 -s fastdfire -l 60
 </a>
 
+In the command above, we specify the JSON file of the simulation (`setup.json`), the number of steps of the simulation (`100`), the number of CPU cores to use (`-c 1`), the scoring function (`-s fastdfire`). If no `-l` argument is provided, the protocol would simulate all the swarms.
+
+For your convenience, you can [download the full run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.tgz) as a compressed file (45MB).
+
+Once the simulation has finished, navigate to the `swarm_60` directory (or the one you have selected) and list the directory.
+
+<a class="prompt prompt-question">How many gso_* files have been generated? Which one corresponds to the last step of the simulation?</a>
+
+### Generating models
+
+Once the simulation has finished successfully, it is time to generate the predicted models. For each swarm, there is a `gso_100.out` file containing the information to generate as many models as `glowworms` were defined in the simulation (200 in this tutorial). The command in charge of generating the models is `lgd_generate_conformations.py`.
+
+Pick a swarm folder and generate the 200 models simulated as in step 100:
+
+<a class="prompt prompt-cmd">
+lgd_generate_conformations.py 3x29_receptor_membrane.pdb 3x29_ligand.pdb swarm_60/gso_100.out 200
+</a>
+
+You should see an output similar to this:
+
+<pre style="background-color:#DAE4E7">
+[generate_conformations] INFO: Reading ../lightdock_3x29_receptor_membrane.pdb receptor PDB file...
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue GLN.61
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue GLN.63
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LYS.65
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LEU.66
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue ASP.68
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue HIS.76
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue MET.95
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue MET.102
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LYS.103
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue LYS.115
+[pdb] WARNING: Possible problem: [SideChainError] Incomplete sidechain for residue ARG.117
+[generate_conformations] INFO: 1608 atoms, 601 residues read.
+[generate_conformations] INFO: Reading ../lightdock_3x29_ligand.pdb ligand PDB file...
+[generate_conformations] INFO: 933 atoms, 117 residues read.
+[generate_conformations] INFO: Read 200 coordinate lines
+[generate_conformations] INFO: Generated 200 conformations
+</pre>
+
+### Clustering models
+
+To remove very similar and redundant models in the same swarm, we will cluster the 200 generated models:
+
+<a class="prompt prompt-cmd">
+lgd_cluster_bsas.py swarm_60/gso_100.out
+</a>
+
+After a verbose output of the command above, a new file `cluster.repr` is generated inside the `swarm_60` folder. This file should look like this:
+
+<pre style="background-color:#DAE4E7">
+0:3:26.80832:115:lightdock_115.pdb
+1:9:24.45152:42:lightdock_42.pdb
+2:62:22.70320:37:lightdock_37.pdb
+3:35:20.35832:0:lightdock_0.pdb
+4:41:16.69347:38:lightdock_38.pdb
+5:3:15.71026:79:lightdock_79.pdb
+6:7:13.89057:72:lightdock_72.pdb
+7:7:11.84427:164:lightdock_164.pdb
+8:1: 8.69611:92:lightdock_92.pdb
+9:1: 2.92199:137:lightdock_137.pdb
+10:22:-0.00771:95:lightdock_95.pdb
+11:2:-24.59441:93:lightdock_93.pdb
+12:7:-31.35821:57:lightdock_57.pdb
+</pre>
+
+Each line represents a different cluster and lines are sorted from best to worst energy. For each line, there is information about the `clusted id`, the number of structures in the cluster, the best energy of the cluster, the `glowworm id` of the model with best energy and the PDB file name of the structure with best energy.
+
+Open the best predicted model for this swarm in PyMOL and have a look.
+
+<a class="prompt prompt-cmd">
+pymol swarm_60/lightdock_115.pdb
+</a>
+
+<a class="prompt prompt-question">How does this model look in general? What about the sidechains?</a>
+
 <hr>
 
 ## 6. HADDOCK Refinement
+
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4)) is a collection of python scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. **In this tutorial we will make use of the HADDOCK outstanding capabilities for refining innacurate protein models.**
+
+The HADDOCK2.4 online server provides a dedicated web interface to run a refinement on a molecular complex and can be accessed [here](https://haddock.science.uu.nl/haddock2.4/refinement).
+
+### Data preparation
+
+The first step to refine out top predicted models by LightDock will be to prepare an ensemble multi-model PDB file containing those top predicted models.
+
+* First, download and decompress the [provided complete run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.tgz).
+* There is a file `lgd_clustered_rank.list` with all the clustered structures from the simulation ranked by score and already analyzed in terms of fraction of native contacts (fnc), iterface RMSD (i-RMSD) and ligand RMSD (L-RMSD). See below the first ten structures:
+
+<pre style="background-color:#DAE4E7">
+# Structure        fnc     i-RMSD  L-RMSD  Score
+swarm_22_112.pdb  0.05333  12.807  12.627  28.735
+swarm_37_11.pdb   0.26667   4.250   4.146  28.152
+swarm_39_11.pdb   0.14667   4.262   3.699  26.893
+swarm_60_115.pdb  0.45333   1.868   2.285  26.808
+swarm_54_167.pdb  0.0      16.469  15.239  25.651
+swarm_37_34.pdb   0.02667  15.721  15.336  25.461
+swarm_55_181.pdb  0.0      13.723  12.603  25.272
+swarm_60_42.pdb   0.29333   4.312   4.216  24.452
+swarm_37_169.pdb  0.0       8.642   7.771  24.426
+swarm_37_83.pdb   0.0      16.334  15.516  24.133
+</pre>
+
+* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 10 models (we provide the generated [top10_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top10_ensemble.pdb) por your convenience):
+
+<a class="prompt prompt-cmd">
+pdb_mkensemble swarm_22_112.pdb swarm_37_11.pdb swarm_39_11.pdb swarm_60_115.pdb swarm_54_167.pdb swarm_37_34.pdb swarm_55_181.pdb swarm_60_42.pdb swarm_37_169.pdb swarm_37_83.pdb | pdb_delresname -MMB | pdb_chainxseg > top10_ensemble.pdb
+</a>
+
+### Submission
+
+The HADDOCK refinement interface is composed by two separate steps.
+
+* In the first step, provide a name for the project, for example *"3x29-top10-refinement"*. Then, select the file `top10_ensemble.pdb` containing the top 10 predicted models as a PDB multi-model ensemble file and click on *Next*.
+* In the second step, a summary of the chains found by the server will be displayed. On the clustering section, leave it as if. Click on *Submit* to submit your refinement job to the server queue.
+
+Depending on the server load, this step may take some time, but you will receive an email once the job has completed.
+
+For your convenience, we provide the refinement job already calculated for you:
+[https://wenmr.science.uu.nl/haddock2.4/run/4242424242/51589-3x29-top10-refinement ](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/51589-3x29-top10-refinement)
 
 <hr>
 
@@ -279,4 +429,5 @@ And check also our [education](/education) web page where you will find more tut
 
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-lightdock]: https://lightdock.org "LightDock"
+[link-pdbtools]: https://github.com/haddocking/pdb-tools/ "PDB-Tools"
 
