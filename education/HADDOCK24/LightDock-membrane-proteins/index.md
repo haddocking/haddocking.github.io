@@ -134,6 +134,10 @@ or alternatively in a Google Colab notebook:
 !pip install pdb-tools
 </a>
 
+### Tutorial Notebook
+
+We have prepared a Colab Notebook ready to be imported. Download it: [tutorial.ipynb](/education/HADDOCK24/LightDock-membrane-proteins/tutorial.ipynb)
+
 <hr>
 
 ## 4. Data preparation
@@ -198,7 +202,7 @@ The fist step in any LightDock simulation is setup. We will make use of `lightdo
 Use the `lightdock3_setup.py` command to set up the LightDock simulation:
 
 <a class="prompt prompt-cmd">
-lightdock3_setup.py 3x29_receptor_membrane.pdb 3x29_ligand.pdb --noxt --noh --membrane
+lightdock3_setup.py 3x29_receptor_membrane.pdb 3x29_ligand.pdb \-\-noxt \-\-noh \-\-membrane
 </a>
 
 In short, we are indicating to the setup command to use `3x29_receptor_membrane.pdb` as the receptor partner, `3x29_ligand.pdb` as the ligand, to skip `NOXT` and hydrogen atoms and to detect membrane beads with the `--membrane` flag. The output of the command should look similar to this:
