@@ -368,7 +368,6 @@ pymol swarm_60/lightdock_115.pdb
 
 HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4)) is a collection of python scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. **In this tutorial we will make use of the HADDOCK outstanding capabilities for refining inaccurate protein models.**
 
-The HADDOCK2.4 online server provides a dedicated web interface to run a refinement on a molecular complex and can be accessed [here](https://haddock.science.uu.nl/haddock2.4/refinement).
 
 ### Data preparation
 
@@ -391,10 +390,10 @@ swarm_37_169.pdb  0.0       8.642   7.771  24.426
 swarm_37_83.pdb   0.0      16.334  15.516  24.133
 </pre>
 
-* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 10 models (we provide the generated [top10_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top10_ensemble.pdb) for your convenience):
+* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 100 models (we provide the generated [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) for your convenience):
 
 <a class="prompt prompt-cmd">
-cd clustered; pdb_mkensemble swarm_22_112.pdb swarm_37_11.pdb swarm_39_11.pdb swarm_60_115.pdb swarm_54_167.pdb swarm_37_34.pdb swarm_55_181.pdb swarm_60_42.pdb swarm_37_169.pdb swarm_37_83.pdb | pdb_delresname -MMB | pdb_chainxseg > top10_ensemble.pdb
+cd clustered; pdb_mkensemble \`head -100 rank_clustered.list | awk \'{printf \"%s%s\",sep,$1; sep=\" \"} END{print \"\"}\'\` | pdb_delresname -MMB | pdb_chainxseg > top100_ensemble.pdb
 </a>
 
 Please note that the structures are located inside the `clustered` directory.
