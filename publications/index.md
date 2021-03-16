@@ -6,6 +6,8 @@ image:
 ---
 ## 2021
 
+* C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://arxiv.org/abs/2103.07508). arXiv:2103.07508 (2021).
+
 * P. Matos-Filipe, A.J. Preto, P.I. Koukos, J. Mourão, **A.M.J.J. Bonvin** and I.S. Moreira. MENSADB: A Thorough Structural Analysis of Membrane Protein Dimers. Database, In press (2021).
 
 * N.Renaud, C. Geng, S. Georgievska, F. Ambrosetti, L. Ridder, D.F Marzella, **A.M.J.J. Bonvin** and L.C. Xue. [DeepRank: A deep learning framework for data mining 3D protein-protein interfaces](). _BioRxiv_ 10.1101/2021.01.29.425727 (2021)
