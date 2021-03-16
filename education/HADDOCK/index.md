@@ -5,7 +5,7 @@ tags: [HADDOCK, docking, complexes, proteins, ligands, interactions]
 image:
   feature: pages/banner_education-thin.jpg
 ---
-In this page you can find links to tutorials on the usage of our software and webportal [HADDOCK 2.2](http://haddock.science.uu.nl/enmr/services/HADDOCK2.2/).
+In this page you can find links to tutorials on the usage of our software and webportal [HADDOCK 2.2](http://alcazar.science.uu.nl/enmr/services/HADDOCK2.2/).
 
 
 * [**HADDOCK basic protein-protein docking tutorial**](/education/HADDOCK/HADDOCK-protein-protein-basic):
