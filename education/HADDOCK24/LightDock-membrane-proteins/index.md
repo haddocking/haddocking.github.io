@@ -450,6 +450,10 @@ Depending on the server load, your refinement job may take some time, but you wi
 For your convenience, we provide the refinement job already calculated for you:
 [https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine)
 
+<a class="prompt prompt-question">Inspect the results page</a>
+
+<a class="prompt prompt-question">How many clusters are generated?</a>
+
 <hr>
 
 ## 7. Analysis
