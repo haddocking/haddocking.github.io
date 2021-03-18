@@ -375,24 +375,9 @@ HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinl
 
 ### Data preparation
 
-The first step to refine out top predicted models by LightDock will be to prepare an ensemble multi-model PDB file containing those top predicted models.
+The first step to refine out top predicted models by LightDock will be to prepare a multi-model ensemble PDB file containing those top predicted models.
 
 * First, download and decompress the [provided complete run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.tgz).
-* There is a file `lgd_clustered_rank.list` with all the clustered structures from the simulation ranked by score and already analyzed in terms of fraction of native contacts (fnc), interface RMSD (i-RMSD) and ligand RMSD (L-RMSD). See below the first ten structures:
-
-<pre style="background-color:#DAE4E7">
-# Structure        fnc     i-RMSD  L-RMSD  Score
-swarm_22_112.pdb  0.05333  12.807  12.627  28.735
-swarm_37_11.pdb   0.26667   4.250   4.146  28.152
-swarm_39_11.pdb   0.14667   4.262   3.699  26.893
-swarm_60_115.pdb  0.45333   1.868   2.285  26.808
-swarm_54_167.pdb  0.0      16.469  15.239  25.651
-swarm_37_34.pdb   0.02667  15.721  15.336  25.461
-swarm_55_181.pdb  0.0      13.723  12.603  25.272
-swarm_60_42.pdb   0.29333   4.312   4.216  24.452
-swarm_37_169.pdb  0.0       8.642   7.771  24.426
-swarm_37_83.pdb   0.0      16.334  15.516  24.133
-</pre>
 
 * Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 100 models (we provide the generated [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) for your convenience):
 
@@ -403,17 +388,67 @@ cd clustered; pdb_mkensemble \`head -100 rank_clustered.list | awk \'{printf \"%
 Please note that the structures are located inside the `clustered` directory.
 
 
-### Submission
+### HADDOCK2.4 web server
 
-The HADDOCK refinement interface is composed by two separate steps.
+We will make use of the HADDOCK2.4 web interface to set up the final refinement step of the membrane protocol. Please make sure you are already registered and authenticated on the HADDOCK2.4 server.
 
-* In the first step, provide a name for the project, for example *"3x29-top10-refinement"*. Then, select the file `top10_ensemble.pdb` containing the top 10 predicted models as a PDB multi-model ensemble file and click on *Next*.
-* In the second step, a summary of the chains found by the server will be displayed. On the clustering section, leave it as if. Click on *Submit* to submit your refinement job to the server queue.
+#### Input data
 
-Depending on the server load, this step may take some time, but you will receive an email once the job has completed.
+First, browse the first page, *Input data* tab at [https://wenmr.science.uu.nl/haddock2.4/submit](https://wenmr.science.uu.nl/haddock2.4/submit). In this first section, we will provide the input data required by the server.
+
+* In the **Job name** field provide an informative text for your job, for example `3x29-Lightdock-CG-refine`.
+* In **Molecule 1 - input** section, we will select `A` in the *Which chain of the structure must be used?* and select the file [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) in the *PDB structure to submit* field. Make sure you enable the option **Do you want to coarse-grain your molecule?**.
+* In **Molecule 2 - input** section, we will perform the same steps as for *Molecule 1*, but in this case selecting `B` for chain to be used.
+* Leave the rest of fields and options as default and click on **Next** (it will take some time for the server to process the 100 models uploaded, please be patient).
+
+<figure style="text-align:center">
+    <img src="/education/HADDOCK24/LightDock-membrane-proteins/step1.png">
+    <figcaption style="text-align:center">
+        <b>Fig.6</b> Refinement using the HADDOCK2.4 server, first step.
+    </figcaption>
+</figure>
+
+#### Input parameters
+
+Leave everything as if in this second step form and simply click on **Next**. This is a step intended for docking simulations. Ignore as well any warning about the protonation of the system if it is the case.
+
+#### Docking parameters
+
+In this third and final step, we will need to set several options on three main sections: *Distance restraints*, *Sampling parameters* and *Advanced sampling parameters*. Let's describe the individual options for each of these sections:
+
+##### Distance restraints
+
+* Turn **off** *Randomly exclude a fraction of the ambiguous restraints (AIRs)*
+* Turn **on** *Define surface contact restraints to enforce contact between the molecules*
+
+##### Sampling parameters
+
+* Number of structures for rigid body docking -> 500
+* Number of trials for rigid body minimisation -> 5
+* Number of structures for semi-flexible refinement -> 500
+* Number of structures for the final refinement -> 500
+* Number of structures to analyze -> 500
+
+##### Advanced sampling parameters
+
+* Turn **off** *Perform cross-docking*
+* Turn **off** *Randomize starting orientations*
+* Turn **off** *Perform initial rigid body minimisation*
+* Turn **off** *Allow translation in rigid body minimisation*
+* Number of MD steps for rigid body high temperature TAD -> 0
+* Number of MD steps during first rigid body cooling stage -> 0
+* Number of MD steps during second cooling stage with flexible side-chains at interface -> 0
+* Number of MD steps during third cooling stage with fully flexible interface -> 0
+
+Those are all the parameters to set, click on **Submit**, you will be redirected to the results page of your brand new CG refinement job!
+
+
+### Results
+
+Depending on the server load, your refinement job may take some time, but you will receive an email once the job has completed (and the results page will be automatically refreshed).
 
 For your convenience, we provide the refinement job already calculated for you:
-[https://wenmr.science.uu.nl/haddock2.4/run/4242424242/51589-3x29-top10-refinement ](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/51589-3x29-top10-refinement)
+[https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine)
 
 <hr>
 
