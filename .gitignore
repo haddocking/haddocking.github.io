@@ -11,3 +11,4 @@ images/molecules-raw
 .bundle
 .jekyll-metadata
 .markdownlint.json
+ruby/
