@@ -593,7 +593,9 @@ Once this last step has completed you will be presented with a result page showi
 
 ## Conclusions
 
-We have demonstrated the use of membrane information on a protein docking simulation and how to further refine predicted models.
+We have demonstrated the use of membrane information on a protein docking simulation and how to further refine predicted models using a coarse-grained protocol.
+
+It is of paramount importance not to blindly trust docking predictions and rankings. Always inspect the results and predictions and further assess their quality using more metrics and different criteria if possible. 
 
 <hr>
 
