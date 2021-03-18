@@ -411,10 +411,16 @@ We will make use of the HADDOCK2.4 web interface to set up the final refinement 
 
 First, browse the first page, *Input data* tab at [https://wenmr.science.uu.nl/haddock2.4/submit](https://wenmr.science.uu.nl/haddock2.4/submit){:target="_blank"}. In this first section, we will provide the input data required by the server.
 
-* In the **Job name** field provide an informative text for your job, for example `3x29-Lightdock-CG-refine`.
-* In **Molecule 1 - input** section, we will select `A` in the *Which chain of the structure must be used?* and select the file [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) in the *PDB structure to submit* field. Make sure you enable the option **Do you want to coarse-grain your molecule?**.
-* In **Molecule 2 - input** section, we will perform the same steps as for *Molecule 1*, but in this case selecting `B` for chain to be used.
-* Leave the rest of fields and options as default and click on **Next** (it will take some time for the server to process the 100 models uploaded, please be patient).
+<a class="prompt prompt-info">
+In the **Job name** field provide an informative text for your job, for example *3x29-Lightdock-CG-refine*.
+</a>
+<a class="prompt prompt-info">
+In **Molecule 1 - input** section, we will select **A** in the *Which chain of the structure must be used?* and select the file **top100_ensemble.pdb** in the *PDB structure to submit* field. Make sure you enable the option **Do you want to coarse-grain your molecule?**.
+</a>
+<a class="prompt prompt-info">
+In **Molecule 2 - input** section, we will perform the same steps as for *Molecule 1*, but in this case selecting **B** for chain to be used.
+</a>
+<a class="prompt prompt-info">Leave the rest of fields and options as default and click on **Next** (it will take some time for the server to process the 100 models uploaded, please be patient).</a>
 
 <figure style="text-align:center">
     <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/step1.png">
@@ -433,27 +439,27 @@ In this third and final step, we will need to set several options on three main 
 
 ##### Distance restraints
 
-* Turn **off** *Randomly exclude a fraction of the ambiguous restraints (AIRs)*
-* Turn **on** *Define surface contact restraints to enforce contact between the molecules*
+<a class="prompt prompt-info">Turn **off** *Randomly exclude a fraction of the ambiguous restraints (AIRs)*</a>
+<a class="prompt prompt-info">Turn **on** *Define surface contact restraints to enforce contact between the molecules*</a>
 
 ##### Sampling parameters
 
-* Number of structures for rigid body docking -> 500
-* Number of trials for rigid body minimisation -> 5
-* Number of structures for semi-flexible refinement -> 500
-* Number of structures for the final refinement -> 500
-* Number of structures to analyze -> 500
+<a class="prompt prompt-info">Number of structures for rigid body docking -> 500</a>
+<a class="prompt prompt-info">Number of trials for rigid body minimisation -> 5</a>
+<a class="prompt prompt-info">Number of structures for semi-flexible refinement -> 500</a>
+<a class="prompt prompt-info">Number of structures for the final refinement -> 500</a>
+<a class="prompt prompt-info">Number of structures to analyze -> 500</a>
 
 ##### Advanced sampling parameters
 
-* Turn **off** *Perform cross-docking*
-* Turn **off** *Randomize starting orientations*
-* Turn **off** *Perform initial rigid body minimisation*
-* Turn **off** *Allow translation in rigid body minimisation*
-* Number of MD steps for rigid body high temperature TAD -> 0
-* Number of MD steps during first rigid body cooling stage -> 0
-* Number of MD steps during second cooling stage with flexible side-chains at interface -> 0
-* Number of MD steps during third cooling stage with fully flexible interface -> 0
+<a class="prompt prompt-info">Turn **off** *Perform cross-docking*</a>
+<a class="prompt prompt-info">Turn **off** *Randomize starting orientations*</a>
+<a class="prompt prompt-info">Turn **off** *Perform initial rigid body minimisation*</a>
+<a class="prompt prompt-info">Turn **off** *Allow translation in rigid body minimisation*</a>
+<a class="prompt prompt-info">Number of MD steps for rigid body high temperature TAD -> 0</a>
+<a class="prompt prompt-info">Number of MD steps during first rigid body cooling stage -> 0</a>
+<a class="prompt prompt-info">Number of MD steps during second cooling stage with flexible side-chains at interface -> 0</a>
+<a class="prompt prompt-info">Number of MD steps during third cooling stage with fully flexible interface -> 0</a>
 
 Those are all the parameters to set, click on **Submit**, you will be redirected to the results page of your brand new CG refinement job!
 
