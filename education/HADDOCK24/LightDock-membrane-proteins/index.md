@@ -26,7 +26,7 @@ Membrane proteins are among the most challenging systems to study with experimen
 
 In this tutorial we will be working with the crystal structure  of _Mus musculus_ [Claudin-19](http://www.ebi.ac.uk/interpro/entry/InterPro/IPR006187/){:target="_blank"} transmembrane protein (PDB code [3X29](https://www.ebi.ac.uk/pdbe/entry/pdb/3x29){:target="_blank"}, chain A) in complex with the unbound C-terminal fragment of the _Clostridium perfringens_ [Enteroxin](http://www.ebi.ac.uk/interpro/entry/InterPro/IPR003897/){:target="_blank"} (PDB code [2QUO](https://www.ebi.ac.uk/pdbe/entry/pdb/2quo){:target="_blank"}, chain A). The PDB code of the complex is [3X29](https://www.ebi.ac.uk/pdbe/entry/pdb/3x29){:target="_blank"} (chains A and B).
 
-3X29 complex is one of the cases covered in the [MemCplxDB](https://github.com/haddocking/MemCplxDB) membrane protein complex benchmark ([Koukos _et al_, 2018](https://www.sciencedirect.com/science/article/pii/S0022283618308222)). Despite not being one of the most challenging cases covered in the benchmark in terms of flexibility, its relatively small size will help us describing the complete modeling protocol in the short time intended for a tutorial.
+3X29 complex is one of the cases covered in the [MemCplxDB](https://github.com/haddocking/MemCplxDB){:target="_blank"} membrane protein complex benchmark ([Koukos _et al_, 2018](https://www.sciencedirect.com/science/article/pii/S0022283618308222){:target="_blank"}). Despite not being one of the most challenging cases covered in the benchmark in terms of flexibility, its relatively small size will help us describing the complete modeling protocol in the short time intended for a tutorial.
 
 <hr>
 
@@ -63,7 +63,7 @@ Throughout the tutorial, colored text will be used to refer to questions or inst
 
 ## 2. LightDock general concepts
 
-LightDock is a macromolecular docking software written in the Python programming language, designed as a framework for rapid prototyping and test of scientific hypothesis in structural biology. It was designed to be easy extensible by users and scalable for high-throughput computing (HTC). LightDock is capable of modeling backbone flexibility of molecules using anisotropic model networks ([ANM](https://en.wikipedia.org/wiki/Anisotropic_Network_Model)) and the energetic minimization is based on the [Glowworm Swarm Optimization](https://dx.doi.org/10.1007/978-3-319-51595-3) (GSO) algorithm.
+LightDock is a macromolecular docking software written in the Python programming language, designed as a framework for rapid prototyping and test of scientific hypothesis in structural biology. It was designed to be easily extensible by users and scalable for high-throughput computing (HTC). LightDock is capable of modeling backbone flexibility of molecules using anisotropic model networks ([ANM](https://en.wikipedia.org/wiki/Anisotropic_Network_Model){:target="_blank"}) and the energetic minimization is based on the [Glowworm Swarm Optimization](https://dx.doi.org/10.1007/978-3-319-51595-3){:target="_blank"} (GSO) algorithm.
 
 LightDock protocol is divided in two main steps: **setup** and **simulation**. On setup step, input PDB structures for receptor and ligand partners are parsed and prepared for the simulation. Moreover, a set of _swarms_ is arranged around the receptor surface. Each of these swarms represents an independent simulation in LightDock where a fixed number of agents, called _glowworms_, encodes for a possible receptor-ligand pose. During the simulation step, each of these glowworms will sample a given region of the energetic landscape depending on its neighboring glowworms. 
 
@@ -74,7 +74,7 @@ LightDock protocol is divided in two main steps: **setup** and **simulation**. O
 
 Swarms on the receptor surface can be easily filtered according to regions of interest. Figure 2 shows an example where only two swarms have been calculated to focus on two residues of interest on the receptor partner (depicted in <span style="color:orange">orange</span>). **On this tutorial we will explore this capability in order to filter out incompatible transmembrane binding regions in membrane complex docking**.
 
-For more information about LightDock, please visit the [tutorials section](https://lightdock.org/tutorials/).
+For more information about LightDock, please visit the [tutorials section](https://lightdock.org/tutorials/){:target="_blank"}.
 
 <hr>
 
@@ -87,10 +87,10 @@ Also, if not provided with special workshop credentials to use the HADDOCK porta
 
 ### Installing LightDock
 
-LightDock is distributed as a Python package through the [Python Package Index](https://pypi.org/project/lightdock/) (PyPI) repository.
+LightDock is distributed as a Python package through the [Python Package Index](https://pypi.org/project/lightdock/){:target="_blank"} (PyPI) repository.
 
 #### Command line
-Installing LightDock is as simple as creating a virtual environment for **Python 3.6+** and running `pip` command (make sure your instances of `virtualenv` and `pip` are for Python 3.6+ versions). We will install the version _0.9.0a2_ of LightDock which is the first released version with support for the membrane protocol and execution in [Jupyter Notebooks](https://jupyter.org/) (see next section):
+Installing LightDock is as simple as creating a virtual environment for **Python 3.6+** and running `pip` command (make sure your instances of `virtualenv` and `pip` are for Python 3.6+ versions). We will install the version _0.9.0a2_ of LightDock which is the first released version with support for the membrane protocol and execution in [Jupyter Notebooks](https://jupyter.org/){:target="_blank"} (see next section):
 
 <a class="prompt prompt-cmd">
 virtualenv venv<br>
@@ -112,7 +112,7 @@ lightdock3 0.9.0a2
 
 #### Jupyter Notebook and Google Colab
 
-Another option to use LightDock is through [Google Colaboratory](https://colab.research.google.com) ("Colab" for short) which allows you to write and execute Python in the browser using _notebooks_. In case of choosing this option, simply execute in a new notebook in the first cell the following command:
+Another option to use LightDock is through [Google Colaboratory](https://colab.research.google.com){:target="_blank"} ("Colab" for short) which allows you to write and execute Python in the browser using _notebooks_. In case of choosing this option, simply execute in a new notebook in the first cell the following command:
 
 <a class="prompt prompt-info">
 !pip install lightdock==0.9.0a2
@@ -142,9 +142,9 @@ We have prepared a Colab Notebook ready to be imported. Download it: [tutorial.i
 
 ## 4. Data preparation
 
-We will make use of the 3X29 complex simulated in a membrane lipid bilayer from the MemProtMD database ([Newport _et al._, 2018](https://doi.org/10.1093/nar/gky1047)).
+We will make use of the 3X29 complex simulated in a membrane lipid bilayer from the MemProtMD database ([Newport _et al._, 2018](https://doi.org/10.1093/nar/gky1047){:target="_blank"}).
 
-First, browse the [3X29 complex page](http://memprotmd.bioch.ox.ac.uk/_ref/PDB/3x29/_sim/3x29_default_dppc/) at MemProtMD. On the `Data Download` section, download the PDB file corresponding to the [Coarse-grained snapshot (MARTINI representation)](http://memprotmd.bioch.ox.ac.uk/data/memprotmd/simulations/3x29_default_dppc/files/structures/cg.pdb). This file in PDB format contains the [MARTINI](http://cgmartini.nl/) coarse-grained (CG) representation of the phospholipid bilayer membrane and the protein complex. We will use the phosphate beads as the boundary for the transmembrane region for filtering the sampling region of interest in LightDock.
+First, browse the [3X29 complex page](http://memprotmd.bioch.ox.ac.uk/_ref/PDB/3x29/_sim/3x29_default_dppc/){:target="_blank"} at MemProtMD. On the `Data Download` section, download the PDB file corresponding to the [Coarse-grained snapshot (MARTINI representation)](http://memprotmd.bioch.ox.ac.uk/data/memprotmd/simulations/3x29_default_dppc/files/structures/cg.pdb){:target="_blank"}. This file in PDB format contains the [MARTINI](http://cgmartini.nl/){:target="_blank"} coarse-grained (CG) representation of the phospholipid bilayer membrane and the protein complex. We will use the phosphate beads as the boundary for the transmembrane region for filtering the sampling region of interest in LightDock.
 
 <figure style="text-align:center">
     <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_cg.png">
@@ -282,7 +282,7 @@ pymol lightdock_3x29_receptor_membrane.pdb init/swarm_centers.pdb
 
 The simulation is ready to run at this point. The number of swarms after focusing on the cytosolic region of the membrane is of 62.
 
-LightDock optimization strategy (using the GSO algorithm) is agnostic of the scoring function (force-field). There are several scoring functions available at LightDock, from atomistic to coarse-grained. In this tutorial we will make use of `fastdfire`, which is the implementation of [DFIRE](https://doi.org/10.1110/ps.0217002) using the Python C API and the default if no scoring function is specified by the user. Find [here](https://lightdock.org/tutorials/basics#32-available-scoring-functions) a complete list of the current supported scoring functions by LightDock.
+LightDock optimization strategy (using the GSO algorithm) is agnostic of the scoring function (force-field). There are several scoring functions available at LightDock, from atomistic to coarse-grained. In this tutorial we will make use of `fastdfire`, which is the implementation of [DFIRE](https://doi.org/10.1110/ps.0217002){:target="_blank"} using the Python C API and the default if no scoring function is specified by the user. Find [here](https://lightdock.org/tutorials/basics#32-available-scoring-functions){:target="_blank"} a complete list of the current supported scoring functions by LightDock.
 
 Simulation is the most time-consuming part of the protocol. For that reason, we will only simulate one of the 62 total swarms. Pick a swarm number between [0..61] and use that id in the `-l` argument:
 
@@ -370,7 +370,7 @@ pymol swarm_60/lightdock_115.pdb
 
 ## 6. HADDOCK Refinement
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4)) is a collection of python scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. **In this tutorial we will make use of the HADDOCK outstanding capabilities for refining inaccurate protein models.**
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"}) is a collection of python scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. **In this tutorial we will make use of the HADDOCK outstanding capabilities for refining inaccurate protein models.**
 
 
 ### Data preparation
@@ -394,7 +394,7 @@ We will make use of the HADDOCK2.4 web interface to set up the final refinement 
 
 #### Input data
 
-First, browse the first page, *Input data* tab at [https://wenmr.science.uu.nl/haddock2.4/submit](https://wenmr.science.uu.nl/haddock2.4/submit). In this first section, we will provide the input data required by the server.
+First, browse the first page, *Input data* tab at [https://wenmr.science.uu.nl/haddock2.4/submit](https://wenmr.science.uu.nl/haddock2.4/submit){:target="_blank"}. In this first section, we will provide the input data required by the server.
 
 * In the **Job name** field provide an informative text for your job, for example `3x29-Lightdock-CG-refine`.
 * In **Molecule 1 - input** section, we will select `A` in the *Which chain of the structure must be used?* and select the file [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) in the *PDB structure to submit* field. Make sure you enable the option **Do you want to coarse-grain your molecule?**.
@@ -448,7 +448,7 @@ Those are all the parameters to set, click on **Submit**, you will be redirected
 Depending on the server load, your refinement job may take some time, but you will receive an email once the job has completed (and the results page will be automatically refreshed).
 
 For your convenience, we provide the refinement job already calculated for you:
-[https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine)
+[https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the results page</a>
 
@@ -577,7 +577,7 @@ Have a close look at the interface of both models.
 
 We can use Molprobity to check for the quality of the models generated by LightDock and the refined ones by HADDOCK.
 
-Go to [http://molprobity.biochem.duke.edu/](http://molprobity.biochem.duke.edu/) and upload one of the models as PDB file. The process will require a number of steps:
+Go to [http://molprobity.biochem.duke.edu/](http://molprobity.biochem.duke.edu/){:target="_blank"} and upload one of the models as PDB file. The process will require a number of steps:
 
 * Choose file -> select the PDB file you want to validate -> click upload
 * Once the first stage has completed (with a warning the hydrogen atoms have been removed), click on continue
