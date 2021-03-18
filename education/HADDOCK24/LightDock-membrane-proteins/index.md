@@ -292,7 +292,7 @@ lightdock3.py setup.json 100 -c 1 -s fastdfire -l 60
 
 In the command above, we specify the JSON file of the simulation (`setup.json`), the number of steps of the simulation (`100`), the number of CPU cores to use (`-c 1`), the scoring function (`-s fastdfire`). If no `-l` argument is provided, the protocol would simulate all the swarms.
 
-For your convenience, you can [download the full run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.tgz) as a compressed file (45MB).
+For your convenience, you can [download the full run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.zip) as a compressed file (45MB).
 
 Once the simulation has finished, navigate to the `swarm_60` directory (or the one you have selected) and list the directory.
 
@@ -377,7 +377,7 @@ HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinl
 
 The first step to refine out top predicted models by LightDock will be to prepare a multi-model ensemble PDB file containing those top predicted models.
 
-* First, download and decompress the [provided complete run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.tgz).
+* First, download and decompress the [provided complete run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.zip).
 
 * Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 100 models (we provide the generated [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) for your convenience):
 
@@ -482,8 +482,8 @@ We will have a quick look at the top 10 models predicted by LightDock and the to
 
 You can also download as compressed files:
 
-* [LightDock docking top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10.tgz)
-* [HADDOCK refinement top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10.tgz)
+* [LightDock docking top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10.zip)
+* [HADDOCK refinement top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10.zip)
 
 ### Visualizing and aligning in PyMOL
 
