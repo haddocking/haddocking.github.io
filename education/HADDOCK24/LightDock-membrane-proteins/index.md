@@ -458,6 +458,137 @@ For your convenience, we provide the refinement job already calculated for you:
 
 ## 7. Analysis
 
+The results page for the refinement job displays a very useful summary of the energies of the top ranked clusters according to HADDOCK scoring energy. For each cluster, the mean and standard deviation of the HADDOCK score for this cluster is presented. The more the negative this score is, the better.
+The total energy (and the partial contributions from electrostatics, Van der Waals, desolvation, etc.) will give you a qualitative measure of the goodness of the models, but it is important to notice that the quality of the model does not guarantee it to be a near native solution.
+
+<a class="prompt prompt-question">Which metric to your knowledge might classify a model as a near native one?</a>
+
+In the CAPRI (Critical Prediction of Interactions) [Méndez et al. 2003](https://doi.org/10.1002/prot.10393){:target="_blank"} experiment, one of the parameters used is the **Ligand root-mean-square deviation** (L-RMSD) which is calculated by superimposing the structures onto the backbone atoms of the receptor and calculating the RMSD on the backbone residues of the ligand. To calculate the L-RMSD it is possible to either use the software [Profit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} or [Pymol](https://pymol.org/2/){:target="_blank"}.
+
+We will have a quick look at the top 10 models predicted by LightDock and the top 10 refined by the HADDOCK server and compare them with the [3X29 complex reference](/education/HADDOCK24/LightDock-membrane-proteins/3x29_reference.pdb). Below you will find a table with the top 10 models according to the LightDock and HADDOCK refinement ranking (click on a name to download):
+
+| Top  |  Docking (LightDock) | Refinement (HADDOCK) |
+| ---- | ------------- | ------------- |
+| 1 | [swarm_22_112.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_22_112.pdb) | [cluster86_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster86_1.pdb) | 
+| 2 | [swarm_37_11.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_11.pdb) | [cluster85_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster85_1.pdb) | 
+| 3 | [swarm_39_11.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_39_11.pdb) | [cluster4_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster4_1.pdb) | 
+| 4 | [swarm_60_115.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_60_115.pdb) | [cluster84_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster84_1.pdb) | 
+| 5 | [swarm_54_167.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_54_167.pdb) | [cluster83_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster83_1.pdb) | 
+| 6 | [swarm_37_34.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_34.pdb) | [cluster2_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster2_1.pdb) | 
+| 7 | [swarm_55_181.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_55_181.pdb) | [cluster82_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster82_1.pdb) | 
+| 8 | [swarm_60_42.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_60_42.pdb) | [cluster80_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster80_1.pdb) | 
+| 9 | [swarm_37_169.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_169.pdb) | [cluster81_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster81_1.pdb) | 
+| 10 | [swarm_37_83.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_83.pdb) | [cluster79_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster79_1.pdb) |
+
+You can also download as compressed files:
+
+* [LightDock docking top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10.tgz)
+* [HADDOCK refinement top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10.tgz)
+
+### Visualizing and aligning in PyMOL
+
+First, open the target and reference structures in PyMOL (in this case top 1 from LightDock ranking):
+
+<a class="prompt prompt-cmd">
+pymol swarm\_22\_112.pdb 3x29\_reference.pdb
+</a>
+
+Color by chain (and leave orange the membrane beads):
+<a class="prompt prompt-pymol">
+util.cbc
+color orange, swarm_22_112 and name BJ
+</a>
+
+Align both structures to the receptor partner (chain A):
+<a class="prompt prompt-pymol">
+align swarm\_22\_112 and chain A, 3x29\_reference and chain A
+</a>
+
+Center visualization:
+<a class="prompt prompt-pymol">
+z vis
+</a>
+
+
+### Calculating L-RMSD in PyMOL
+
+From the alignment of the previous section, we can easily calculate the L-RMSD in PyMOL:
+
+First, remove all `segid` information to let PyMOL correctly find the target chains:
+<a class="prompt prompt-pymol">
+alter all, segi = ' '  
+</a>
+
+And now calculate L-RMSD using `rms_cur` command:
+<a class="prompt prompt-pymol">
+rms_cur swarm\_22\_112 and chain B, 3x29\_reference and chain B
+</a>
+
+Which leaves a L-RMSD of 22.666Å.
+
+<figure style="text-align:center">
+    <img src="/education/HADDOCK24/LightDock-membrane-proteins/pymol_lrmsd.png">
+    <figcaption style="text-align:center">
+        <b>Fig.7</b> L-RMSD calculation in PyMOL of the top 1 model against the 3X29 reference structure.
+    </figcaption>
+</figure>
+
+<a class="prompt prompt-info">Repeat the same process for more structure on the top 10 ranking from LightDock and HADDOCK refinement</a>
+
+<a class="prompt prompt-question">Which is the best structure in terms of L-RMSD in the HADDOCK ranking? And in the LightDock ranking?</a>
+
+In CAPRI, the L-RMSD value defines the quality of a model:
+* incorrect model: L-RMSD>10Å
+* acceptable model: L-RMSD<10Å
+* medium quality model: L-RMSD<5Å
+* high quality model: L-RMSD<1Å
+
+<a class="prompt prompt-question">
+What is the quality of these models? Did any model pass the acceptable threshold? 
+</a>
+
+### A more in deep look
+
+The top models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster80_1.pdb` respectively.
+
+Open them in PyMOL, align both structures as explained before and compare both models qualitatively.
+
+<a class="prompt prompt-question">How similar do they look to you?</a> 
+
+Now use the lines visualization in PyMOL:
+
+<a class="prompt prompt-pymol">
+show lines
+</a>
+
+Have a close look at the interface of both models.
+
+<a class="prompt prompt-question">What is the best model in terms of clashes?</a> 
+
+<figure style="text-align:center">
+    <img src="/education/HADDOCK24/LightDock-membrane-proteins/interface.png">
+    <figcaption style="text-align:center">
+        <b>Fig.8</b> Detail of the interface (in yellow the HADDOCK refined model).
+    </figcaption>
+</figure>
+
+
+### Molprobity bonus
+
+We can use Molprobity to check for the quality of the models generated by LightDock and the refined ones by HADDOCK.
+
+Go to [http://molprobity.biochem.duke.edu/](http://molprobity.biochem.duke.edu/) and upload one of the models as PDB file. The process will require a number of steps:
+
+* Choose file -> select the PDB file you want to validate -> click upload
+* Once the first stage has completed (with a warning the hydrogen atoms have been removed), click on continue
+* Click on the "add hydrogens" option, keep the default settings and click on "Start adding H>"
+* Click on "Regenerate H, applying selected flips" (no need to save the PDB file when asked for)
+* Click on “continue”
+* In the presented result page, click then on "Analyse all atom contacts and geometry”
+* Keeping the default settings, click on "Run the selected programs to perform the analysis"
+
+Once this last step has completed you will be presented with a result page showing various quality statistics. You can find more details by clicking for example on "Multi- criterion chart" or visualize the structure quality using the "Multi-criterion Kineamage -> view in NGL".
+
 <hr>
 
 ## Conclusions
