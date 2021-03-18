@@ -13,14 +13,14 @@ This tutorial consists of the following sections:
 
 <hr>
 
-## 1. Introduction
+## Introduction
 
 This tutorial demonstrates the use of [LightDock](https://lightdock.org){:target="_blank"} for predicting the structure of membrane receptor–soluble protein complex using the topological information provided by the membrane to guide the modeling process. The resulting LightDock models are then refined using [HADDOCK2.4 webserver](https://haddock.science.uu.nl/haddock2.4/). We will be following the protocol described in [Roel-Touris *et al*, 2020](https://www.nature.com/articles/s41467-020-20076-5){:target="_blank"}.
 
 Membrane proteins are among the most challenging systems to study with experimental structural biology techniques, thus computational techniques such as docking might offer invaluable insights on the modeling of those systems.
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_membrane.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_membrane.png">
     <figcaption style="text-align:center"><b>Fig.1</b> 3X29 complex in a lipid bilayer as simulated by <a href="http://memprotmd.bioch.ox.ac.uk/_ref/PDB/3x29" target="_blank">MemProtMD</a>.</figcaption>
 </figure>
 
@@ -61,14 +61,14 @@ Throughout the tutorial, colored text will be used to refer to questions or inst
 
 <hr>
 
-## 2. LightDock general concepts
+## LightDock general concepts
 
 LightDock is a macromolecular docking software written in the Python programming language, designed as a framework for rapid prototyping and test of scientific hypothesis in structural biology. It was designed to be easily extensible by users and scalable for high-throughput computing (HTC). LightDock is capable of modeling backbone flexibility of molecules using anisotropic model networks ([ANM](https://en.wikipedia.org/wiki/Anisotropic_Network_Model){:target="_blank"}) and the energetic minimization is based on the [Glowworm Swarm Optimization](https://dx.doi.org/10.1007/978-3-319-51595-3){:target="_blank"} (GSO) algorithm.
 
 LightDock protocol is divided in two main steps: **setup** and **simulation**. On setup step, input PDB structures for receptor and ligand partners are parsed and prepared for the simulation. Moreover, a set of _swarms_ is arranged around the receptor surface. Each of these swarms represents an independent simulation in LightDock where a fixed number of agents, called _glowworms_, encodes for a possible receptor-ligand pose. During the simulation step, each of these glowworms will sample a given region of the energetic landscape depending on its neighboring glowworms. 
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/4g6m_restraints.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/4g6m_restraints.png">
     <figcaption style="text-align:center"><b>Fig.2</b> A receptor surface showing only two swarms. Each swarm contains a set of glowworms representing a possible receptor-ligand pose.</figcaption>
 </figure>
 
@@ -78,7 +78,7 @@ For more information about LightDock, please visit the [tutorials section](https
 
 <hr>
 
-## 3. Setup/Requirements
+## Setup/Requirements
 
 In order to run this tutorial you will need to have the following software installed: [LightDock][link-lightdock], [pdb-tools][link-pdbtools] and [PyMOL][link-pymol].
 
@@ -140,14 +140,14 @@ We have prepared a Colab Notebook ready to be imported. Download it: [tutorial.i
 
 <hr>
 
-## 4. Data preparation
+## Data preparation
 
 We will make use of the 3X29 complex simulated in a membrane lipid bilayer from the MemProtMD database ([Newport _et al._, 2018](https://doi.org/10.1093/nar/gky1047){:target="_blank"}).
 
 First, browse the [3X29 complex page](http://memprotmd.bioch.ox.ac.uk/_ref/PDB/3x29/_sim/3x29_default_dppc/){:target="_blank"} at MemProtMD. On the `Data Download` section, download the PDB file corresponding to the [Coarse-grained snapshot (MARTINI representation)](http://memprotmd.bioch.ox.ac.uk/data/memprotmd/simulations/3x29_default_dppc/files/structures/cg.pdb){:target="_blank"}. This file in PDB format contains the [MARTINI](http://cgmartini.nl/){:target="_blank"} coarse-grained (CG) representation of the phospholipid bilayer membrane and the protein complex. We will use the phosphate beads as the boundary for the transmembrane region for filtering the sampling region of interest in LightDock.
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_cg.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_cg.png">
     <figcaption style="text-align:center">
         <b>Fig.3</b> MARTINI Coarse-grained representation of the 3X29 complex in a lipid bilayer. Protein is depicted as <span style="color:dodgerblue">blue</span> surface, CG beads for phospholipids in white, except for NC3 beads in <span style="color:darkturquoise">turquoise</span> and PO4 beads in <span style="color:orange">orange</span>.
     </figcaption>
@@ -162,7 +162,7 @@ python3 prepare4lightdock.py 3x29_default_dppc-coarsegrained.pdb membrane_cg.pdb
 The output of this script is the <a href="/education/HADDOCK24/LightDock-membrane-proteins/membrane_cg.pdb">membrane_cg.pdb</a> PDB file (Figure 4).
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_mmb.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_mmb.png">
     <figcaption style="text-align:center">
         <b>Fig.4</b> Lipid bilayer membrane and protein after using the `prepare4lightdock.py` script. Protein is depicted as <span style="color:dodgerblue">blue</span> surface (only CA), membrane beads ready for LightDock in <span style="color:orange">orange</span>.
     </figcaption>
@@ -190,7 +190,7 @@ The last PyMOL command will save the aligned atomistic 3X29 receptor to the CG l
 
 <hr>
 
-## 5. LightDock simulation
+## LightDock simulation
 
 ### Simulation set up
 
@@ -278,6 +278,8 @@ pymol lightdock_3x29_receptor_membrane.pdb init/swarm_centers.pdb
 
 <a class="prompt prompt-question">Is this a regid-body or a flexible simulation?</a>
 
+<hr>
+
 ### Running the simulation
 
 The simulation is ready to run at this point. The number of swarms after focusing on the cytosolic region of the membrane is of 62.
@@ -297,6 +299,8 @@ For your convenience, you can [download the full run](/education/HADDOCK24/Light
 Once the simulation has finished, navigate to the `swarm_60` directory (or the one you have selected) and list the directory.
 
 <a class="prompt prompt-question">How many gso_* files have been generated? Which one corresponds to the last step of the simulation?</a>
+
+<hr>
 
 ### Generating models
 
@@ -329,6 +333,8 @@ You should see an output similar to this:
 [generate_conformations] INFO: Read 200 coordinate lines
 [generate_conformations] INFO: Generated 200 conformations
 </pre>
+
+<hr>
 
 ### Clustering models
 
@@ -368,10 +374,12 @@ pymol swarm_60/lightdock_115.pdb
 
 <hr>
 
-## 6. HADDOCK Refinement
+## HADDOCK Refinement
 
 HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"}) is a collection of python scripts derived from [ARIA](https://aria.pasteur.fr) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank. **In this tutorial we will make use of the HADDOCK outstanding capabilities for refining inaccurate protein models.**
 
+
+<hr>
 
 ### Data preparation
 
@@ -387,6 +395,7 @@ cd clustered; pdb_mkensemble \`head -100 rank_clustered.list | awk \'{printf \"%
 
 Please note that the structures are located inside the `clustered` directory.
 
+<hr>
 
 ### HADDOCK2.4 web server
 
@@ -402,7 +411,7 @@ First, browse the first page, *Input data* tab at [https://wenmr.science.uu.nl/h
 * Leave the rest of fields and options as default and click on **Next** (it will take some time for the server to process the 100 models uploaded, please be patient).
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/step1.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/step1.png">
     <figcaption style="text-align:center">
         <b>Fig.6</b> Refinement using the HADDOCK2.4 server, first step.
     </figcaption>
@@ -443,6 +452,8 @@ In this third and final step, we will need to set several options on three main 
 Those are all the parameters to set, click on **Submit**, you will be redirected to the results page of your brand new CG refinement job!
 
 
+<hr>
+
 ### Results
 
 Depending on the server load, your refinement job may take some time, but you will receive an email once the job has completed (and the results page will be automatically refreshed).
@@ -456,7 +467,7 @@ For your convenience, we provide the refinement job already calculated for you:
 
 <hr>
 
-## 7. Analysis
+## Analysis
 
 The results page for the refinement job displays a very useful summary of the energies of the top ranked clusters according to HADDOCK scoring energy. For each cluster, the mean and standard deviation of the HADDOCK score for this cluster is presented. The more the negative this score is, the better.
 The total energy (and the partial contributions from electrostatics, Van der Waals, desolvation, etc.) will give you a qualitative measure of the goodness of the models, but it is important to notice that the quality of the model does not guarantee it to be a near native solution.
@@ -485,6 +496,8 @@ You can also download as compressed files:
 * [LightDock docking top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10.zip)
 * [HADDOCK refinement top 10 models](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10.zip)
 
+<hr>
+
 ### Visualizing and aligning in PyMOL
 
 First, open the target and reference structures in PyMOL (in this case top 1 from LightDock ranking):
@@ -509,6 +522,7 @@ Center visualization:
 z vis
 </a>
 
+<hr>
 
 ### Calculating L-RMSD in PyMOL
 
@@ -524,10 +538,10 @@ And now calculate L-RMSD using `rms_cur` command:
 rms_cur swarm\_22\_112 and chain B, 3x29\_reference and chain B
 </a>
 
-Which leaves a L-RMSD of 22.666Å.
+Which leaves a L-RMSD of 22.7Å.
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/pymol_lrmsd.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/pymol_lrmsd.png">
     <figcaption style="text-align:center">
         <b>Fig.7</b> L-RMSD calculation in PyMOL of the top 1 model against the 3X29 reference structure.
     </figcaption>
@@ -546,6 +560,8 @@ In CAPRI, the L-RMSD value defines the quality of a model:
 <a class="prompt prompt-question">
 What is the quality of these models? Did any model pass the acceptable threshold? 
 </a>
+
+<hr>
 
 ### A more in deep look
 
@@ -566,7 +582,7 @@ Have a close look at the interface of both models.
 <a class="prompt prompt-question">What is the best model in terms of clashes?</a> 
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/interface.png">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/interface.png">
     <figcaption style="text-align:center">
         <b>Fig.8</b> Detail of the interface (in yellow the HADDOCK refined model).
     </figcaption>
