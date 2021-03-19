@@ -644,7 +644,7 @@ What is the quality of these models? Did any model pass the acceptable threshold
 
 ### A more in deep look
 
-The top 1 models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster10_1.pdb` respectively.
+The best models in terms of quality (L-RMSD) from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster10_1.pdb` respectively.
 
 Open them in PyMOL, align both structures as explained before and compare both models qualitatively.
 
