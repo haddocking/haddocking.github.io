@@ -628,6 +628,38 @@ Which leaves a L-RMSD of 22.7Å.
 
 <a class="prompt prompt-info">Repeat the same process for more structure on the top 10 ranking from LightDock and HADDOCK refinement</a>
 
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+See the calculated L-RMSDs:
+</summary>
+<pre>
+HADDOCK:
+cluster17_1.pdb  22.531&Aring;
+cluster2_1.pdb   13.404&Aring;
+cluster16_1.pdb  15.082&Aring;
+cluster15_1.pdb  24.945&Aring;
+cluster14_1.pdb  24.022&Aring;
+cluster10_1.pdb   6.082&Aring;
+cluster13_1.pdb  20.806&Aring;
+cluster11_1.pdb  15.325&Aring;
+cluster1_1.pdb   28.809&Aring;
+cluster9_1.pdb   25.826&Aring;
+
+LightDock:
+swarm_22_112.pdb 22.551&Aring;
+swarm_37_11.pdb  11.850&Aring;
+swarm_39_11.pdb  13.424&Aring;
+swarm_60_115.pdb  5.735&Aring;
+swarm_54_167.pdb 25.031&Aring;
+swarm_37_34.pdb  28.587&Aring;
+swarm_55_181.pdb 20.470&Aring;
+swarm_60_42.pdb  10.801&Aring;
+swarm_37_169.pdb 14.894&Aring;
+swarm_37_83.pdb  25.857&Aring;
+</pre>
+</details>
+<hr>
+
 <a class="prompt prompt-question">Which is the best structure in terms of L-RMSD in the HADDOCK ranking? And in the LightDock ranking?</a>
 
 In CAPRI, the L-RMSD value defines the quality of a model:
