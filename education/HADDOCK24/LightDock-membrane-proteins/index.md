@@ -144,7 +144,9 @@ In case of using the provided Colab notebook, go to the [Colab site](https://col
     <img src="/education/HADDOCK24/LightDock-membrane-proteins/colab.png">
 </figure>
 
-Once imported, import the required files as marked in (B) by the orange arrow. Then, run one by one each of the code cells as several libraries will be installed in the first code cells.
+Once imported, click on the icon pointed in (B) and upload the required files as marked in (C) by the orange arrow. The two required files ([3x29_receptor_membrane.pdb](/education/HADDOCK24/LightDock-membrane-proteins/3x29_receptor_membrane.pdb) and [3x29_ligand.pdb](/education/HADDOCK24/LightDock-membrane-proteins/3x29_ligand.pdb)) should appear now as in (D). 
+
+Then, run one by one each of the code cells as several libraries will be installed in the first code cells.
 
 <hr>
 
