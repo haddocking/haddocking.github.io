@@ -406,43 +406,63 @@ Please note that the structures are located inside the `clustered` directory.
 ### HADDOCK2.4 web server
 
 We will make use of the HADDOCK2.4 web interface to set up the final refinement step of the membrane protocol. Please make sure you are already registered and authenticated on the HADDOCK2.4 server.
+To start the submission select the *Input data* tab at [https://wenmr.science.uu.nl/haddock2.4/submit](https://wenmr.science.uu.nl/haddock2.4/submit){:target="_blank"}. 
+
 
 #### Input data
 
-First, browse the first page, *Input data* tab at [https://wenmr.science.uu.nl/haddock2.4/submit](https://wenmr.science.uu.nl/haddock2.4/submit){:target="_blank"}. In this first section, we will provide the input data required by the server.
+* **Step1:** Define a name for your docking run in the field "Job name", e.g. *3x29-Lightdock-CG-refine*.
+
+* **Step2:** Select the number of molecules to dock, in this case the default *2*.
+
+* **Step3:** Input the first protein PDB file. For this unfold the **Molecule 1 - input** if it isn't already unfolded.
 
 <a class="prompt prompt-info">
-In the **Job name** field provide an informative text for your job, for example *3x29-Lightdock-CG-refine*.
+First molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
-In **Molecule 1 - input** section, we will select **A** in the *Which chain of the structure must be used?* and select the file **top100_ensemble.pdb** in the *PDB structure to submit* field. Make sure you enable the option **Do you want to coarse-grain your molecule?**.
+Which chain to be used? -> A (for this particular case)
 </a>
 <a class="prompt prompt-info">
-In **Molecule 2 - input** section, we will perform the same steps as for *Molecule 1*, but in this case selecting **B** for chain to be used.
+PDB structure to submit -> Browse and select *top100_ensemble.pdb* (the file you edited to modify the histidine)
 </a>
-<a class="prompt prompt-info">Leave the rest of fields and options as default and click on **Next** (it will take some time for the server to process the 100 models uploaded, please be patient).</a>
+<a class="prompt prompt-info">
+Do you want to coarse-grain your molecule? -> Switch on
+</a>
 
-<figure style="text-align:center">
-    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/step1.png">
-    <figcaption style="text-align:center">
-        <b>Fig.6</b> Refinement using the HADDOCK2.4 server, first step.
-    </figcaption>
-</figure>
+**Note:** Leave all other options to their default values.
+
+* **Step4:** Input the second protein PDB file. For this unfold the **Molecule 2 - input** if it isn't already unfolded.
+
+<a class="prompt prompt-info">
+First molecule: where is the structure provided? -> "I am submitting it"
+</a>
+<a class="prompt prompt-info">
+Which chain to be used? -> B (for this particular case)
+</a>
+<a class="prompt prompt-info">
+PDB structure to submit -> Browse and select *top100_ensemble.pdb* (the file you saved)
+</a>
+
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+
 
 #### Input parameters
 
-Leave everything as if in this second step form and simply click on **Next**. This is a step intended for docking simulations. Ignore as well any warning about the protonation of the system if it is the case.
+* **Step 6:** Click on the "Next" button at the bottom left of the interface. Leave everything as if in this second step form and simply click on **Next**. This is a step intended for defining residues involved in binding for docking. Ignore as well any warning about the protonation of the system if it is the case.
+
 
 #### Docking parameters
 
-In this third and final step, we will need to set several options on three main sections: *Distance restraints*, *Sampling parameters* and *Advanced sampling parameters*. Let's describe the individual options for each of these sections:
+In this third and final step, we will need to set several options on three main sections: *Distance restraints*, *Sampling parameters* and *Advanced sampling parameters*. 
 
-##### Distance restraints
+* **Step 7:** Modify the *Distance restraints* settings (for this unfold the menu if it isn't already unfolded).
 
 <a class="prompt prompt-info">Turn **off** *Randomly exclude a fraction of the ambiguous restraints (AIRs)*</a>
 <a class="prompt prompt-info">Turn **on** *Define surface contact restraints to enforce contact between the molecules*</a>
 
-##### Sampling parameters
+
+* **Step 8:** Modify the *Sampling parameters* (for this unfold the menu if it isn't already unfolded).
 
 <a class="prompt prompt-info">Number of structures for rigid body docking -> 500</a>
 <a class="prompt prompt-info">Number of trials for rigid body minimisation -> 5</a>
@@ -450,7 +470,8 @@ In this third and final step, we will need to set several options on three main 
 <a class="prompt prompt-info">Number of structures for the final refinement -> 500</a>
 <a class="prompt prompt-info">Number of structures to analyze -> 500</a>
 
-##### Advanced sampling parameters
+
+* **Step 9:** Modify the *Advanced sampling parameters* (for this unfold the menu if it isn't already unfolded).
 
 <a class="prompt prompt-info">Turn **off** *Perform cross-docking*</a>
 <a class="prompt prompt-info">Turn **off** *Randomize starting orientations*</a>
@@ -461,7 +482,46 @@ In this third and final step, we will need to set several options on three main 
 <a class="prompt prompt-info">Number of MD steps during second cooling stage with flexible side-chains at interface -> 0</a>
 <a class="prompt prompt-info">Number of MD steps during third cooling stage with fully flexible interface -> 0</a>
 
-Those are all the parameters to set, click on **Submit**, you will be redirected to the results page of your brand new CG refinement job!
+
+#### Job submission
+
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case only the above changes are required and all other parameters can be left to their default values. 
+The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+
+<pre>
+{
+  "runname": "3x29-Lightdock-CG-refine",
+  "auto_passive_radius" : 6.5,
+  "create_narestraints" : true,
+  "delenph": true,
+  "ranair" : false,
+  "cmrest" : false,
+  "kcont" : 1.0,
+  "surfrest" : true,
+  "ksurf" : 1.0,
+  "noecv" : false,
+  "ncvpart" : 2.0,
+  "structures_0" : 500,
+  "ntrials" : 5,
+...
+</pre>
+
+* **Step 10:** Click on the "Submit" button at the bottom left of the interface.
+
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
+
+<figure align="center">
+<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/submission.png">
+</figure>
+
+Currently your run should be queued but eventually its status will change to "Running":
+
+<figure align="center">
+<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/running.png">
+</figure>
+
+The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+
 
 
 <hr>
