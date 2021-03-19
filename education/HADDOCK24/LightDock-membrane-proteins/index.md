@@ -636,7 +636,7 @@ What is the quality of these models? Did any model pass the acceptable threshold
 
 ### A more in deep look
 
-The top models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster17_1.pdb` respectively.
+The top models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster10_1.pdb` respectively.
 
 Open them in PyMOL, align both structures as explained before and compare both models qualitatively.
 
@@ -648,7 +648,11 @@ Now use the lines visualization in PyMOL:
 show lines
 </a>
 
-Have a close look at the interface of both models.
+Have a close look at the interface of both models. You may visualize atoms clashing in PyMOL:
+
+<a class="prompt prompt-pymol">
+show sphere, (chain A within 2.5 of chain B) or (chain B within 2.5 of chain A)
+</a
 
 <a class="prompt prompt-question">What is the best model in terms of clashes?</a> 
 
