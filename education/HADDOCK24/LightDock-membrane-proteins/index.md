@@ -393,10 +393,10 @@ The first step to refine out top predicted models by LightDock will be to prepar
 
 * First, download and decompress the [provided complete run](/education/HADDOCK24/LightDock-membrane-proteins/simulation.zip).
 
-* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 100 models (we provide the generated [top100_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top100_ensemble.pdb) for your convenience):
+* Using `pdb-tools`, we will remove `MMB` fake bead residues, copy the chain ID into the segid field and finally creating an ensemble of the top 20 models (we provide the generated [top20_ensemble.pdb](/education/HADDOCK24/LightDock-membrane-proteins/top20_ensemble.pdb) for your convenience):
 
 <a class="prompt prompt-cmd">
-cd clustered; pdb_mkensemble \`head -100 rank_clustered.list | awk \'{printf \"%s%s\",sep,$1; sep=\" \"} END{print \"\"}\'\` | pdb_delresname -MMB | pdb_chainxseg > top100_ensemble.pdb
+cd clustered; pdb_mkensemble \`head -20 rank_clustered.list | awk \'{printf \"%s%s\",sep,$1; sep=\" \"} END{print \"\"}\'\` | pdb_delresname -MMB | pdb_chainxseg > top20_ensemble.pdb
 </a>
 
 Please note that the structures are located inside the `clustered` directory.
@@ -424,7 +424,7 @@ First molecule: where is the structure provided? -> "I am submitting it"
 Which chain to be used? -> A (for this particular case)
 </a>
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *top100_ensemble.pdb* (the file you edited to modify the histidine)
+PDB structure to submit -> Browse and select *top20_ensemble.pdb* (the file you edited to modify the histidine)
 </a>
 <a class="prompt prompt-info">
 Do you want to coarse-grain your molecule? -> Switch on
@@ -441,10 +441,10 @@ First molecule: where is the structure provided? -> "I am submitting it"
 Which chain to be used? -> B (for this particular case)
 </a>
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *top100_ensemble.pdb* (the file you saved)
+PDB structure to submit -> Browse and select *top20_ensemble.pdb* (the file you saved)
 </a>
 
-* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 #### Input parameters
@@ -464,11 +464,11 @@ In this third and final step, we will need to set several options on three main 
 
 * **Step 8:** Modify the *Sampling parameters* (for this unfold the menu if it isn't already unfolded).
 
-<a class="prompt prompt-info">Number of structures for rigid body docking -> 500</a>
-<a class="prompt prompt-info">Number of trials for rigid body minimisation -> 5</a>
-<a class="prompt prompt-info">Number of structures for semi-flexible refinement -> 500</a>
-<a class="prompt prompt-info">Number of structures for the final refinement -> 500</a>
-<a class="prompt prompt-info">Number of structures to analyze -> 500</a>
+<a class="prompt prompt-info">Number of structures for rigid body docking -> 200</a>
+<a class="prompt prompt-info">Number of trials for rigid body minimisation -> 10</a>
+<a class="prompt prompt-info">Number of structures for semi-flexible refinement -> 200</a>
+<a class="prompt prompt-info">Number of structures for the final refinement -> 200</a>
+<a class="prompt prompt-info">Number of structures to analyze -> 200</a>
 
 
 * **Step 9:** Modify the *Advanced sampling parameters* (for this unfold the menu if it isn't already unfolded).
@@ -486,7 +486,7 @@ In this third and final step, we will need to set several options on three main 
 #### Job submission
 
 This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case only the above changes are required and all other parameters can be left to their default values. 
-The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload interface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+The interface also allows us to download the input structures of the docking run (in the form of a `tgz` archive) and a `haddockparameter` file which contains all the settings and input structures for our run (in `JSON` format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload interface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 <pre>
 {
@@ -503,12 +503,13 @@ The interface also allows us to download the input structures of the docking run
   "ncvpart" : 2.0,
   "structures_0" : 500,
   "ntrials" : 5,
-...
+  ...
+}
 </pre>
 
 * **Step 10:** Click on the "Submit" button at the bottom left of the interface.
 
-Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned `haddockparameter` file as well as some information about the status of the run.
 
 <figure align="center">
 <img width="600" src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/submission.png">
@@ -522,8 +523,6 @@ Currently your run should be queued but eventually its status will change to "Ru
 
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
 
-
-
 <hr>
 
 ### Results
@@ -531,7 +530,7 @@ The page will automatically refresh and the results will appear upon completions
 Depending on the server load, your refinement job may take some time, but you will receive an email once the job has completed (and the results page will be automatically refreshed).
 
 For your convenience, we provide the refinement job already calculated for you:
-[https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52303-3x29-Lightdock-CG-refine){:target="_blank"}
+[https://haddock.science.uu.nl/haddock2.4/run/4242424242/52544-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52544-3x29-Lightdock-CG-refine){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the results page</a>
 
@@ -552,16 +551,16 @@ We will have a quick look at the top 10 models predicted by LightDock and the to
 
 | Top  |  Docking (LightDock) | Refinement (HADDOCK) |
 | ---- | ------------- | ------------- |
-| 1 | [swarm_22_112.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_22_112.pdb) | [cluster86_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster86_1.pdb) | 
-| 2 | [swarm_37_11.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_11.pdb) | [cluster85_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster85_1.pdb) | 
-| 3 | [swarm_39_11.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_39_11.pdb) | [cluster4_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster4_1.pdb) | 
-| 4 | [swarm_60_115.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_60_115.pdb) | [cluster84_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster84_1.pdb) | 
-| 5 | [swarm_54_167.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_54_167.pdb) | [cluster83_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster83_1.pdb) | 
-| 6 | [swarm_37_34.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_34.pdb) | [cluster2_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster2_1.pdb) | 
-| 7 | [swarm_55_181.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_55_181.pdb) | [cluster82_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster82_1.pdb) | 
-| 8 | [swarm_60_42.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_60_42.pdb) | [cluster80_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster80_1.pdb) | 
-| 9 | [swarm_37_169.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_169.pdb) | [cluster81_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster81_1.pdb) | 
-| 10 | [swarm_37_83.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_83.pdb) | [cluster79_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster79_1.pdb) |
+| 1 | [swarm_22_112.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_22_112.pdb) | [cluster17_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster17_1.pdb) | 
+| 2 | [swarm_37_11.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_11.pdb) | [cluster2_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster2_1.pdb) | 
+| 3 | [swarm_39_11.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_39_11.pdb) | [cluster16_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster16_1.pdb) | 
+| 4 | [swarm_60_115.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_60_115.pdb) | [cluster15_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster15_1.pdb) | 
+| 5 | [swarm_54_167.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_54_167.pdb) | [cluster14_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster14_1.pdb) | 
+| 6 | [swarm_37_34.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_34.pdb) | [cluster10_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster10_1.pdb) | 
+| 7 | [swarm_55_181.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_55_181.pdb) | [cluster13_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster13_1.pdb) | 
+| 8 | [swarm_60_42.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_60_42.pdb) | [cluster11_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster11_1.pdb) | 
+| 9 | [swarm_37_169.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_169.pdb) | [cluster1_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster1_1.pdb) | 
+| 10 | [swarm_37_83.pdb](/education/HADDOCK24/LightDock-membrane-proteins/lightdock_top10/swarm_37_83.pdb) | [cluster9_1.pdb](/education/HADDOCK24/LightDock-membrane-proteins/haddock_top10/cluster9_1.pdb) |
 
 You can also download as compressed files:
 
@@ -637,7 +636,7 @@ What is the quality of these models? Did any model pass the acceptable threshold
 
 ### A more in deep look
 
-The top models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster80_1.pdb` respectively.
+The top models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster17_1.pdb` respectively.
 
 Open them in PyMOL, align both structures as explained before and compare both models qualitatively.
 
