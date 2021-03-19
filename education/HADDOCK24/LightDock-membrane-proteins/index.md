@@ -276,7 +276,7 @@ pymol lightdock_3x29_receptor_membrane.pdb init/swarm_centers.pdb
 </a>
 
 <figure style="text-align:center">
-    <img src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_membrane_swarms.gif">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/3x29_membrane_swarms.gif">
     <figcaption style="text-align:center">
         <b>Fig.5</b> Distribution of swarms in the current simulation.
     </figcaption>
@@ -485,8 +485,8 @@ In this third and final step, we will need to set several options on three main 
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case only the above changes are required and all other parameters can be left to their default values. 
-The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case only the above changes are required and all other parameters can be left to their default values. 
+The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload interface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 <pre>
 {
@@ -511,13 +511,13 @@ The interface also allows us to download the input structures of the docking run
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/submission.png">
+<img width="600" src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/submission.png">
 </figure>
 
 Currently your run should be queued but eventually its status will change to "Running":
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/running.png">
+<img width="600" src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/running.png">
 </figure>
 
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
