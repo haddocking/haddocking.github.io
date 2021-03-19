@@ -138,6 +138,14 @@ or alternatively in a Google Colab notebook:
 
 We have prepared a Colab Notebook ready to be imported. Download it: [tutorial.ipynb](/education/HADDOCK24/LightDock-membrane-proteins/tutorial.ipynb)
 
+In case of using the provided Colab notebook, go to the [Colab site](https://colab.research.google.com){:target="_blank"} and upload the provided notebook:
+
+<figure style="text-align:center">
+    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/colab_upload.png">
+</figure>
+
+Once imported, run one by one each of the code cells as several libraries will be installed in the first code cells.
+
 <hr>
 
 ## Data preparation
@@ -636,7 +644,7 @@ What is the quality of these models? Did any model pass the acceptable threshold
 
 ### A more in deep look
 
-The top models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster10_1.pdb` respectively.
+The top 1 models from the LightDock and HADDOCK rankings are `swarm_60_115.pdb` and `cluster10_1.pdb` respectively.
 
 Open them in PyMOL, align both structures as explained before and compare both models qualitatively.
 
