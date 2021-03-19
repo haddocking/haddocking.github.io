@@ -138,13 +138,13 @@ or alternatively in a Google Colab notebook:
 
 We have prepared a Colab Notebook ready to be imported. Download it: [tutorial.ipynb](/education/HADDOCK24/LightDock-membrane-proteins/tutorial.ipynb)
 
-In case of using the provided Colab notebook, go to the [Colab site](https://colab.research.google.com){:target="_blank"} and upload the provided notebook:
+In case of using the provided Colab notebook, go to the [Colab site](https://colab.research.google.com){:target="_blank"} and upload the provided notebook (see A):
 
 <figure style="text-align:center">
-    <img width="600" src="/education/HADDOCK24/LightDock-membrane-proteins/colab_upload.png">
+    <img src="/education/HADDOCK24/LightDock-membrane-proteins/colab.png">
 </figure>
 
-Once imported, run one by one each of the code cells as several libraries will be installed in the first code cells.
+Once imported, import the required files as marked in (B) by the orange arrow. Then, run one by one each of the code cells as several libraries will be installed in the first code cells.
 
 <hr>
 
