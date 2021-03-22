@@ -61,7 +61,7 @@ HADDOCK consists of a collection of  [python](https://www.python.org){:target="_
 
 #### ProFit
 
-[ProFit](https://www.bioinf.org.uk/software/profit/){:target="_blank"} is designed to be the ultimate protein least squares fitting program. Some of the provided analysis tools in HADDOCK make use of Profit. Profit can be obtained free of charge for academics.
+[ProFit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} is designed to be the ultimate protein least squares fitting program. Some of the provided analysis tools in HADDOCK make use of Profit. Profit can be obtained free of charge for academics.
 
 
 #### Pales

@@ -1393,7 +1393,7 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
 [link-freesasa]: https://freesasa.github.io "FreeSASA"
-[link-profit]: https://www.bioinf.org.uk/software/profit/index.html "ProFit"
+[link-profit]: http://www.bioinf.org.uk/software/profit/ "ProFit"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
 [link-pdbtools]: https://github.com/haddocking/pdb-tools "PDB-Tools"

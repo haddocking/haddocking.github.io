@@ -381,6 +381,6 @@ You have completed this tutorial. If you have any questions or
 suggestions, feel free to contact us via email or by submitting an issue in the 
 appropriate [Github repository](https://github.com/haddocking/CASP-CAPRI-T70-tutorial) or asking a question through our [support center](https://ask.bioexcel.eu).
 
-[link-profit]: https://www.bioinf.org.uk/software/profit/index.html "ProFit"
+[link-profit]: http://www.bioinf.org.uk/software/profit/ "ProFit"
 [link-pymol]: https://www.pymol.org/ "Pymol"
 [link-data]: https://github.com/haddocking/CASP-CAPRI-T70-tutorial "CASP-CAPRI tutorial data"
