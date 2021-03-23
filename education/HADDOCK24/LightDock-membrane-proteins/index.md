@@ -694,7 +694,7 @@ Have a close look at the interface of both models. You may visualize atoms clash
 
 <a class="prompt prompt-pymol">
 show sphere, (chain A within 2.5 of chain B) or (chain B within 2.5 of chain A)
-</a
+</a>
 
 <a class="prompt prompt-question">What is the best model in terms of clashes?</a> 
 
