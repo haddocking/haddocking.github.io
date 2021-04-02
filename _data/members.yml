@@ -11,10 +11,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Rodrigo.jpg
 
--   name: Zuzana Jandova
-    position: Postdoctoral Researcher
-    avatar: /images/people/Zuzana.jpg
-
 -   name: Siri van Keulen
     position: Postdoctoral Researcher
     avatar: /images/people/Siri.png
@@ -27,13 +23,13 @@
     position: Postdoctoral Researcher
     avatar: /images/people/PanosK.jpg
 
--   name: Jorge Roel
-    position: Ph.D Candidate
-    avatar: /images/people/Jorge.png
-
 -   name: Charlotte van Noort
     position: Ph.D Candidate
     avatar: /images/people/Charlotte.jpg
+
+-   name: René Monté
+    position: IT support
+    avatar: /images/people/Rene-Monte.png
 
 -   name: Nikolaos Glentis
     position: M.Sc Student

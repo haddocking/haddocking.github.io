@@ -18,7 +18,17 @@
     url: http://biochem.science.oregonstate.edu/content/victor-hsu
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
+
+-   name: Zuzana Jandova
+    url: https://www.boehringer-ingelheim.at/en
+    current: 'Boehringer Ingelheim, Vienna, Austria'
+    status: 'postdoc'
     
+-   name: Jorge Roel
+    url: https://www.ibmb.csic.es/en/department-of-structural-biology-dsb/protein-design-and-modeling
+    current: 'IBMB, Barcelona, Spain'
+    status: phd
+
 -   name: Francesco Ambrosetti
     current: 'Novartis, Switzerland'
     status: 'postdoc,phd'
