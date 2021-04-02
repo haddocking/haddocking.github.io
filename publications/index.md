@@ -6,6 +6,9 @@ image:
 ---
 ## 2021
 
+* Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1101/2021.04.02.438171
+). BioRxiv:10.1101/2021.04.02.438171 (2021).
+
 * C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://arxiv.org/abs/2103.07508). arXiv:2103.07508 (2021).
 
 * P. Matos-Filipe, A.J. Preto, P.I. Koukos, J. Mourão, **A.M.J.J. Bonvin** and I.S. Moreira. MENSADB: A Thorough Structural Analysis of Membrane Protein Dimers. Database, In press (2021).
