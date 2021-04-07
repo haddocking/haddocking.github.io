@@ -6,12 +6,14 @@ image:
 ---
 ## 2021
 
+* U.B. le Paige, S. Xiang, M.M.R.M. Hendrix, Y. Zhang., G.E. Folkers, M. Weingarth, **A.M.J.J. Bonvin**, T.G. Kutateladze, I.K.Voets, M. Baldus and H. van Ingen. Characterization of nucleosome sediments for protein interaction studies by solid-state NMR spectroscopy. _J. Biomol. NMR_, In Press (2021).
+
 * Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1101/2021.04.02.438171
 ). BioRxiv:10.1101/2021.04.02.438171 (2021).
 
 * C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://arxiv.org/abs/2103.07508). arXiv:2103.07508 (2021).
 
-* P. Matos-Filipe, A.J. Preto, P.I. Koukos, J. Mourão, **A.M.J.J. Bonvin** and I.S. Moreira. MENSADB: A Thorough Structural Analysis of Membrane Protein Dimers. Database, In press (2021).
+* P. Matos-Filipe, A.J. Preto, P.I. Koukos, J. Mourão, **A.M.J.J. Bonvin** and I.S. Moreira. [MENSADB: A Thorough Structural Analysis of Membrane Protein Dimers](https://doi.org/10.1093/database/baab013). _Database_, doi:10.1093/database/baab013, 1-10 (2021).
 
 * N.Renaud, C. Geng, S. Georgievska, F. Ambrosetti, L. Ridder, D.F Marzella, **A.M.J.J. Bonvin** and L.C. Xue. [DeepRank: A deep learning framework for data mining 3D protein-protein interfaces](). _BioRxiv_ 10.1101/2021.01.29.425727 (2021)
 
