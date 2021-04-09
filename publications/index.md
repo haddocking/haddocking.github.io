@@ -6,7 +6,7 @@ image:
 ---
 ## 2021
 
-* U.B. le Paige, S. Xiang, M.M.R.M. Hendrix, Y. Zhang., G.E. Folkers, M. Weingarth, **A.M.J.J. Bonvin**, T.G. Kutateladze, I.K.Voets, M. Baldus and H. van Ingen. Characterization of nucleosome sediments for protein interaction studies by solid-state NMR spectroscopy. _J. Biomol. NMR_, In Press (2021).
+* U.B. le Paige, S. Xiang, M.M.R.M. Hendrix, Y. Zhang., G.E. Folkers, M. Weingarth, **A.M.J.J. Bonvin**, T.G. Kutateladze, I.K.Voets, M. Baldus and H. van Ingen. [Characterization of nucleosome sediments for protein interaction studies by solid-state NMR spectroscopy](https://mr.copernicus.org/articles/2/105/2021/). _Magn. Reson._, *2*, 105-116 (2021).
 
 * Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1101/2021.04.02.438171
 ). BioRxiv:10.1101/2021.04.02.438171 (2021).
