@@ -7,7 +7,15 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-### Latest changes - version January 2021
+### Latest changes - version May 2021
+
+- Fixed issue with grid package submission for model-specific ambig files
+- Added carbohydrates to scoring scripts
+- Fixed clustering issue in case of single model runs
+- Improvements, optimizations and fixes to the internal scheduler subroutines
+
+
+### Changes - version January 2021
 
 - Added support ASN-BGC glycosilic linkage
 - Fixed an issue in which clustering would fail if complexes had too many chains
