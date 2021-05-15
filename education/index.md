@@ -84,6 +84,8 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 ## Tutorials
 
+* Consult our [**HADDOCK best practice guide**](/software/bpg/) - a must read before starting to use HADDOCK!
+
 * [**Tutorials for HADDOCK version 2.4**](/education/HADDOCK24): Various tutorials from basic protein-protein docking, to the use of cross-linking data, symmetry and homology informations to guide the docking, and advanced modelling of protein-ligand complexes.
 
 * [**Tutorials for HADDOCK version 2.2**](/education/HADDOCK):  Various tutorials from basic protein-protein docking, to the use of cross-linking data, symmetry and homology informations to guide the docking, and advanced modelling of protein-ligand complexes.
