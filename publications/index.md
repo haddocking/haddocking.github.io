@@ -23,7 +23,7 @@ image:
 
 * N.Renaud, C. Geng, S. Georgievska, F. Ambrosetti, L. Ridder, D.F Marzella, **A.M.J.J. Bonvin** and L.C. Xue. [DeepRank: A deep learning framework for data mining 3D protein-protein interfaces](https://www.biorxiv.org/content/10.1101/2021.01.29.425727v1). _BioRxiv_ 10.1101/2021.01.29.425727 (2021)
 
-* S. Nizamuddin, S. Koidl, T. Bhuiyan, T.V. Werner, M.L. Biniossek, **A.M.J.J. Bonvin**, S. Lassmann and H.Th.M. Timmers. [Integrating quantitative proteomics with accurate genome profiling of transcription factors by greenCUT&RUN](https://doi.org/10.1093/nar/gkab038). _Nucl. Acids Res._ gkab038 (2021).
+* S. Nizamuddin, S. Koidl, T. Bhuiyan, T.V. Werner, M.L. Biniossek, **A.M.J.J. Bonvin**, S. Lassmann and H.Th.M. Timmers. [Integrating quantitative proteomics with accurate genome profiling of transcription factors by greenCUT&RUN](https://doi.org/10.1093/nar/gkab038). _Nucl. Acids Res._ *49*, e49-‌e49 (2021).
 
 * O.M.H. Salo-Ahen#, I. Alanko, R. Bhadane, **A.M.J.J. Bonvin**#, R. Vargas Honorato, S. Hossain, A.H. Juffer, A. Kabedev, M. Lahtela-Kakkonen, A. Støttrup Larsen, E. Lescrinier, P. Marimuthu, M.. Mirza, G. Mustafa, A. Nunes-Alves#, T. Pantsar, A. Saadabadi, K. Singaravelu, M. Vanmeert. [Molecular dynamics simulations in drug discovery and pharmaceutical development](https://doi.org/10.3390/pr9010071 ). _Processes_. *9*, 71 (2021).
 
