@@ -32,6 +32,8 @@ image:
 
 ## 2020
 
+* A. Saponaro, V. Maione, **A.M.J.J. Bonvin** and F. Cantini. [Understanding Docking Complexes of Macromolecules Using HADDOCK: The Synergy between Experimental Data and Computations](https://doi.org/10.21769/BioProtoc.3793). _Bio-protocol_ *10*, e3793 (2020).
+
 * M. Schwarz, P. Skrinjar, M.J. Fink, S. Kronister, T. Mechtler, P.I. Koukos, **A.M.J.J. Bonvin**, D. Kasper and H. Mikula. [A click-flipped enzyme substrate boosts the performance of the diagnostic screening for Hunter syndrome](https://doi.org/10.1039/D0SC04696E). _Chem. Sci._, 10.1039/D0SC04696E (2020).
 
 * C.Y.L. Lau, F, Fontana, L, Mandemaker, D, Wezendonk, B, Vermeer, **A.M.J.J. Bonvin**, R. de Vries, H. Zhang, K. Remaut, J. van den Dikkenberg, J. Silva, A. Hassan, B. Perrone, R. Kuemmerle, F. Gelain, W. Hennink, M. Weingarth, and E. Mastrobattista. [Control over the fibrillization yield by varying the oligomeric nucleation propensities of self-assembling peptides](https://doi.org/10.1038/s42004-020-00417-7). _Comm. Chem._ *3*, 164 (2020).
