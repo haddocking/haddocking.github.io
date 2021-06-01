@@ -207,7 +207,7 @@ echo END \>\> 2J8S-renumbered.pdb<BR>
 The PDB file of our receptor should now be ready for docking. You can also check the file format with:
 
 <a class="prompt prompt-cmd">
-  pdb_format.py 2J8S-renumbered.pdb
+  pdb_validate.py 2J8S-renumbered.pdb
 </a>
 
 This will report formatting issues.
