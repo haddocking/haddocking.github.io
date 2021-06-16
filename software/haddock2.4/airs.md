@@ -55,7 +55,7 @@ For the semi-flexible refinement stage, contact AIRs are automatically defined b
 
    **Note1:** To ensure a thorough sampling of the surface, the number of structures generated at the rigid-body stage (it0) should be increased (e.g. 10000), depending on the extent of the surface to be sampled.   
 
-   **Note2:** The use of random AIRs is not compatible with other distance restraints (including unambiguous and hydrogen bond restraints).  
+   **Note2:** The use of random AIRs is not compatible with other distance restraints at the rigid body docking stage (it0) (including unambiguous and hydrogen bond restraints).  
 
 
 <hr>

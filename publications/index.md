@@ -19,7 +19,7 @@ image:
 * Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1101/2021.04.02.438171
 ). BioRxiv:10.1101/2021.04.02.438171 (2021).
 
-* C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://arxiv.org/abs/2103.07508).  _Curr. Opin. Struct. Biol._ In Press (2021).
+* C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://doi.org/10.1016/j.sbi.2021.05.003).  _Curr. Opin. Struct. Biol._ *70*, 70-77 (2021).
 
 * P. Matos-Filipe, A.J. Preto, P.I. Koukos, J. Mourão, **A.M.J.J. Bonvin** and I.S. Moreira. [MENSADB: A Thorough Structural Analysis of Membrane Protein Dimers](https://doi.org/10.1093/database/baab013). _Database_, doi:10.1093/database/baab013, 1-10 (2021).
 
