@@ -118,9 +118,10 @@ _Journal of Structural Biology: X_, *1*, 100006 (2019).
 
 * M.F. Broekema, M.P.G. Massink, C. Donato, J. de Ligt, J. Schaarschmidt, M.G. Schooneman, F.S. van Nierop, D. Melchers, M.N. Gerding, R. Houtman, **A.M.J.J. Bonvin**, A.R. Majithia, H. Monajemi, G.W. van Haaften, M.R. Soeters and E. Kalkhoven. [Natural helix 9 mutants of PPARγ differently affect its transcriptional activity](https://doi.org/10.1016/j.molmet.2018.12.005). _Molecular Metabolism_ *20*, 115-127 (209).
 
-* A. Vangone#, J. Schaarschmidt, P. Koukos, C. Geng, N. Citro, M.E. Trellet, L.C. Xue and **A.M.J.J. Bonvin**. [Large-scale prediction of binding affinity in protein-small ligand complexes: the PRODIGY-LIG web server](https://doi.org/10.1093/bioinformatics/bty816). _Bioinformatics_, *35*, 1585–1587 (2019).
 
 ## 2018 
+
+* A. Vangone#, J. Schaarschmidt, P. Koukos, C. Geng, N. Citro, M.E. Trellet, L.C. Xue and **A.M.J.J. Bonvin**. [Large-scale prediction of binding affinity in protein-small ligand complexes: the PRODIGY-LIG web server](https://doi.org/10.1093/bioinformatics/bty816). _Bioinformatics_, *35*, 1585–1587 (2018).
 
 * J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and **A.M.J.J. Bonvin**. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1). _F1000Research_, *7:1961* (2018)
 
