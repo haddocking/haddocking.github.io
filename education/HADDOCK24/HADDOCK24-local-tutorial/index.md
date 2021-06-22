@@ -364,7 +364,7 @@ You can also check if your PDB model has gaps in the structure. If gaps are dete
 </a>
 
 Another possible issue with the starting PDB structures can be double occupancy of some side-chains. This is quite common in high resolution crystal structures.
-For HADDOCK, you will have to remove those double occupancies (or create multiple models corresponding to various conformations). A simply way to get rid of double occupancies (only the first occurence of each side-chain will be kept) is to use our `pdb-tools` `pdb_delocc.py` script.
+For HADDOCK, you will have to remove those double occupancies (or create multiple models corresponding to various conformations). A simply way to get rid of double occupancies (only the first occurence of each side-chain will be kept) is to use our `pdb-tools` `pdb_selaltloc.py` script.
 
 
 <br>
