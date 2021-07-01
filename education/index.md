@@ -32,30 +32,21 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 ## Online lectures
 
-* Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
+* Recordings of the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool HADDOCK lectures by Prof. Bonvin (June 7th, 2021):
 
   <ul>
   <details>
-  <summary>View recorded lecture (108 min.)
+  <summary>View recorded lecture Part I (46 min.)
   </summary>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/KUbEwGv21n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/N2Sr4qtRKhs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
   </details>
   <br>
   </ul>
-  
-* Recordings of the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool HADDOCK lectures by Prof. Bonvin (June 22nd, 2020):
-
   <ul>
   <details>
-  <summary>View recorded lecture Part I (40 min.)
+  <summary>View recorded lecture Part II (43 min.)
   </summary>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/AULTBI3BqRY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </details>
-  <br>
-  <details>
-  <summary>View recorded lecture Part II (45 min.)
-  </summary>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/yXKZusQKYOM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/qpx6bQZhWrU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </details>
   <br>
   </ul>
