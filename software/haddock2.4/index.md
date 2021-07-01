@@ -44,14 +44,31 @@ Fax: +31-30-2537623
 
 [**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
   
-**A short introduction:** View the [BioExcel CoE](https://www.bioexcel.eu)  [webinar about HADDOCK](https://www.youtube.com/watch?v=Dbv6Jvge0Zk&index=1&list=FLmVRUOHM_0Nsh7DrMpTHtQQ)   
-
-**A lecture about HADDOCK:** Recording of a lecture of Prof. Bonvin at the CECAM BImMS 2019 workshop in Lugano (Oct. 7th, 2019):
+**An introduction to HADDOCK2.4:** View the [SBGrid](https://www.sbgrid.org)  [webinar]:
   <ul>
   <details>
   <summary>View recorded lecture
   </summary>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/KUbEwGv21n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/PDfFOUqdt5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+  </details>
+  <br>
+  </ul>
+
+
+(https://www.youtube.com/watch?v=PDfFOUqdt5I) (June 29th, 2021).
+
+**Two lectures about integrative modelling and HADDOCK:** Recording of a lecture by Prof. Bonvin at the 2021 [BioExcel](https://www.bioexcel.eu) summerschool:
+  <ul>
+  <details>
+  <summary>View recorded lecture Part I (46 min.)
+  </summary>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/N2Sr4qtRKhs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+  </details>
+  <br>
+  <details>
+  <summary>View recorded lecture Part II (43 min.)
+  </summary>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qpx6bQZhWrU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </details>
   <br>
   </ul>
