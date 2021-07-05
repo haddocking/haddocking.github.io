@@ -6,7 +6,9 @@ image:
 ---
 ## 2021
 
-* T Neijenhuis, S.C. van Keulen, Alexandre M.J.J. Bonvin. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1101/2021.06.22.449462). _bioRxiv_ doi:2021.06.22.449462 (2021).
+* R. Vargas Honorato, P.I. Koukos, B. Jimenez-Garcia, A. Tsaregorodtsev, M. Verlato, A. Giachetti, A. Rosato and **A.M.J.J. Bonvin**. [Structural biology in the clouds: The WeNMR-EOSC Ecosystem](http://arxiv.org/abs/2107.01056). _arXiv_ 2107.01056 (2021).
+
+* T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1101/2021.06.22.449462). _bioRxiv_ doi:2021.06.22.449462 (2021).
 
 * P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1101/2021.06.10.447890). _bioRxiv_ doi:10.1101/2021.06.10.447890 (2021).
 
