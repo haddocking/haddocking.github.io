@@ -47,3 +47,7 @@ In this page you can find links to tutorials on the usage of our software and we
 * [**LightDock+HADDOCK membrane proteins tutorial**](/education/HADDOCK24/LightDock-membrane-proteins):
   This tutorial demonstrates the use of LightDock for predicting the structure of membrane receptor–soluble protein complex using the topological information provided by the membrane to guide the modelling process. The resulting LightDock models are then refined using HADDOCK.
 
+# * [**HADDOCK2.4 shape-restrained protein-small molecule tutorial**](/education/HADDOCK24/shape-small-molecule):
+#   In this tutorial we make use of the shape-based modelling capabilities of HADDOCK to predict the structure of
+#   compounds bound to their cognate receptors. Additionaly, we also make use of open-source chemoinformatics
+#   toolkits such as [RDKit](https://www.rdkit.org/) to simulate a realistic workflow.
