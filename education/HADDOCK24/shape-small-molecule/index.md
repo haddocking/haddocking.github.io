@@ -476,7 +476,7 @@ SMILES can be converted into SDF files :
   obabel -ismi target.smi -osdf -O target.sdf --gen2D<br>
 </a>
 
-The generated `templates.sdf` file contain multiple molecule. It must be splitted in a way to have one file per molecule.
+The generated `templates.sdf` file contains multiple molecule. It must be splitted in a way to have one file per molecule.
 
 <a class="prompt prompt-cmd">
   mkdir templates target  <br>
