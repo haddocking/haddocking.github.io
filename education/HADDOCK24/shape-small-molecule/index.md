@@ -50,9 +50,27 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 In order to run this tutorial you will need to have the following software installed: [PyMOL][https://www.pymol.org/].
 Additionally, you will also need to run commands in a *nix terminal. If you are running this on a Mac or Linux system then
 appropriate shells are already part of the system. Windows users might have to install additional software or activate the
-[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). We consider this to be an advanced
+tutorial made with a specific application of HADDOCK in mind. Thus, it assumes familiarity with HADDOCK as well as the command
+line.
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
+Prior to getting started we need to setup our environment. The simplest way to do that would be to make use of `anaconda`.
+Assuming an existing installation of anaconda the following command should take care of all required python packages.
+
+<a class="prompt prompt-cmd">
+  conda create tutorial_env -c conda-forge rdkit openbabel pandas <br>
+  conda activate tutorial_env <br>
+</a>
+
+After activating the environment we also need to install the pdb-tools package which can be achieved with the following command:
+
+<a class="prompt prompt-cmd">
+  pip install pdb_tools <br>
+</a>
+
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be
+able to submit jobs. Use for this the following registration page:
+[https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
 
 <hr>
 
@@ -128,6 +146,7 @@ FMN -> dihydro-FMN.</i></b>
     <img src="/education/HADDOCK24/shape-small-molecule/binding_site.png">
 </figure>
 </details>
+<br>
 
 The nature of the binding site makes it clear that if we are to reproduce the chemical envirnoment of the target complex
 then the template we choose must also contain ORO and FMN in its binding site.
@@ -160,14 +179,38 @@ respectively) computed over the Maximum Common Substructure (MCS) as calculated 
 This metric can be computed in a time-efficient manner and most importantly without prior knowledge of the structure
 of the target compound and all that is required is the compound encoded in SMILES format (see `target.smi` and `templates.smi`).
 
-In the interest of time, these similarity values have been precalculated and can be seen in the `similarities.txt` file.
+The `templates.smi` file can be created from the following command:
+
+<a class="prompt prompt-cmd">
+  grep -v SMILES ligands_filtered.csv | awk '{print $3,$1"_"$2}' > templates.smi <br>
+</a>
+
+The `target.smi` file we create manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE).
+
+The next step involves computing the similarity values between our target (reference) compound and all template compounds
+we identified through the RCSB search portal. For this we will use an RDKit-based implementation of the MCS procedure described
+above. We provide a python-based implementation in the script `calc_mcs.py`. Usage of the script is straightforward:
+
+<a class="prompt prompt-cmd">
+  ./calc_mcs.py -te templates.smi -ta target.smi | awk '{print $2}' > tmp <br>
+</a>
+
+We choose to only keep the second column because we are only interested in the Tversky metric and the first column of the output
+is the Tanimoto metric. To create the similarities file:
+
+<a class="prompt prompt-cmd">
+  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 > similarities.txt <br>
+  rm tmp <br>
+</a>
+
+These similarity values have also been precalculated and can be seen in the `similarities.txt` file.
 The file has already been sorted according to similarity value meaning the compounds most similar to the target compound
 are near the top of the file. From this point on, the selection of the most suitable template becomes a process of filtering out
 the templates that are ill-suited for modelling (low quality, mutations near the binding site, missing density, etc...).
 A closer examination of the binding site of template `2PRH` reveals missing density close to the ORO cofactor meaning this
 template is not very well suited to our purposes. Thankfully, the next template on the list (`7K2U`) is a template of
 equally high quality but has no issues that could interfere with our modelling efforts and thus becomes our template of
-choice. The docking-ready file is available as `template.pdb` with all the crystallisation artifacts and double occupancies removed).
+choice.
 
 <details >
 <summary style="bold">
@@ -177,6 +220,16 @@ choice. The docking-ready file is available as `template.pdb` with all the cryst
     <img src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
 </figure>
 </details>
+<br>
+
+The docking-ready file is available as `template.pdb` with all the crystallisation artifacts and double occupancies removed).
+To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
+part of the pdb_tools package.
+
+<a class="prompt prompt-cmd">
+  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 > similarities.txt <br>
+  rm tmp <br>
+</a>
 
 The next step involves the creation of the shape (based on the template compound) that will be used for the docking. This
 process requires the transformation of all heavy atoms of the template compound into shape beads.
@@ -337,6 +390,7 @@ degree of accuracy, or at the very least yieliding useful biological insights in
     <img src="/education/HADDOCK24/shape-small-molecule/top1.png">
 </figure>
 </details>
+<br>
 
 With the following command we can load the top 10 models (sorted by HADDOCK score) along with the reference compound for
 closer examination.
@@ -373,9 +427,21 @@ And the following PyMOL commands allow us to get a better overview of the bindin
   util.cnc
 </a>
 
-Running the commands above reveals that the top 5 compounds are ont only close in terms of HADDOCK score but also in terms
+Running the commands above reveals that the top 5 compounds are not only close in terms of HADDOCK score but also in terms
 of the pose they obtain in the binding site. Moving to the bottom half of the top reveals an entirely different story with
 the models obtaining poses that are significantly different to the crystallographic one. In some cases, such as for model
 26, the compound has rotated 180 degrees along the long axis, a problem common to many biomolecular modelling scenarios.
 The top 5 poses however are all very close to the reference structure and capture all the details of the interaction with
 a high degree of accuracy which of course means that our modelling effort can be considered a success.
+
+As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. For example, for
+the top-scoring compound the following command can be used:
+
+<a class="prompt prompt-cmd">
+  profit -f izone 1d3g.pdb 72017-shape-based-small-molecule/structures/it1/complex_2.pdb <br>
+  grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
+  obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
+  rm tmp_ligand <br>
+</a>
+
+Revealing a ligand RMSD value of 0.94 indicating excellent agreement between model and reference structures.
