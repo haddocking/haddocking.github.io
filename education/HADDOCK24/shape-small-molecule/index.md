@@ -503,7 +503,7 @@ The script will return a file entitled `sim.Tc` containing all Tc values. The li
 </a>
 
 These similarity values have also been precalculated and can be seen in the `sim.Tc` file.
-A closer examination of the binding site of template `6cjf` reveals that the 2-chloro-6-methylpyridin group of `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the orientation A is associated to an occupancy factor of `0.66` against `0.34`for the conformation B.
+A closer examination of the binding site of template `6cjf` reveals that the 2-chloro-6-methylpyridin group of `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the orientation A is associated to an occupancy factor of `0.66` against `0.34` for the conformation B.
 
 Since the conformation A has been more observed than conformation B, we select it as our template of interest.
 
