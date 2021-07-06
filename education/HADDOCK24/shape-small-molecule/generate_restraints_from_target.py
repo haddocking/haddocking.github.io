@@ -35,6 +35,6 @@ for i in range(0, len(resid)):
         "assi (segid S and resid * and (attr q =={: 4.2f})) (segid B and name {}) 1.0 1.0 0.0".format(
             features[i], resid[i]
         ),
-        file=open('pharm.tbl', 'a')
+        file=open('target_pharm.tbl', 'a')
     )
 
