@@ -456,7 +456,7 @@ Revealing a ligand RMSD value of 0.94 indicating excellent agreement between mod
 
 The shape-based protocol described above can be adapted into a pharmacophore-based protocol in which the beads used to drive the docking are assigned pharmacophore properties.
 
-This protocol require modifications of the aforedescribed **Step 3**.
+This protocol requires modifications of the aforedescribed **Step 3** and **Step 4**.
 
 ### 3.pharm  Template selection and docking preparation
 
