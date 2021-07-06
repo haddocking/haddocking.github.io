@@ -472,7 +472,7 @@ The `target.smi` file we create manually by copying and pasting the SMILES strin
 
 SMILES can be converted into SDF files :
 <a class="prompt prompt-cmd">
-  obabel -ismi templates.smi -osdf -O templates.sdf --gen2D
+  obabel -ismi templates.smi -osdf -O templates.sdf --gen2D<br>
   obabel -ismi target.smi -osdf -O target.sdf --gen2D<br>
 </a>
 
@@ -503,9 +503,9 @@ The script will return a file entitled `sim.Tc` containing all Tc values. The li
 </a>
 
 These similarity values have also been precalculated and can be seen in the `sim.Tc` file.
-A closer examination of the binding site of template `6cjf` reveals that the 2-chloro-6-methylpyridin group of `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the orientation A is associated to an occupancy factor of `0.66` against `0.34` for the conformation B.
+A closer examination of the binding site of template `6cjf` reveals that the 2-chloro-6-methylpyridin group of `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the conformation A is associated to an occupancy factor of `0.66` against `0.34` for the conformation B.
 
-Since the conformation A has been more observed than conformation B, we select it as our template of interest.
+Since the conformation A has been observed more frequntly than conformation B, we select it as our template of interest.
 
 <a class="prompt prompt-cmd">
   grep 'F54' 6CJF.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
@@ -540,12 +540,13 @@ The pharmacophore information is encoded in the occupancy factor column of the P
 
 **Warnings**: Make sure that the atomic numbers of F54.pdb start at number 1. The provided `F54.pdb` has been renumbered.
 
-The pharmacophore features can be added to the template ligand with the followng script. This is an essential to create the pharmacophore shape.
+The pharmacophore features can be added to the template ligand with the following script. This is an essential to create the pharmacophore shape.
 <a class="prompt prompt-cmd">
   python add_atom_features.py templates/6CJF_F54.sdf F54.pdb  <br>
 </a>
 The created `F54_features.pdb` file contains pharmacophore information in the occupancy factor column.
 
+The template ligand can now be converted into a shape (`shape_pharm.pdb`) with the following script:
 <a class="prompt prompt-cmd">
   lig2shape.py F54_features.pdb <br>
 </a>
