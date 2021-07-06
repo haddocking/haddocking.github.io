@@ -130,7 +130,10 @@ Briefly, the main steps of this protocol are the following:
 4. Perform the docking.
 5. Analyse and visualise the results.
 
-### Target selection and template identification
+**Note:** The shape-based protocol can be declined into a pharmacophore-based protocol. Step 3 can be adapted accordingly as described in the last section of this tutorial.
+
+
+### 1. Target selection 
 
 We have chosen the complex with PDB id `1d3g` which is part of the [DUD-E dataset](http://dude.docking.org) as our target.
 This is a complex of an inhibitory brequinar analong bound to the human dihydroorotate dehydrogenase receptor.
@@ -148,7 +151,8 @@ FMN -> dihydro-FMN.</i></b>
 </details>
 <br>
 
-The nature of the binding site makes it clear that if we are to reproduce the chemical envirnoment of the target complex
+### 2. Template identification
+The nature of the binding site makes it clear that if we are to reproduce the chemical environment of the target complex
 then the template we choose must also contain ORO and FMN in its binding site.
 
 The first step requires we search one of the PDB portals (in our case we will make use of [RCSB](https://rcsb.org)) for
@@ -169,7 +173,7 @@ filtered out the unnecessary ligands from the original file (ie the compounds co
 and also all the crystallisation artifacts such as SO4) and only kept the PDB id, ligand id and SMILES string for all
 compounds.
 
-### Template selection and docking preparation
+### 3. Template selection and docking preparation
 
 As is the case for any template-based modelling approach, the more similar the template is to the target complex the
 higher the chance of a successful modelling outcome. In this protocol, we are emphasising ligand similarity over receptor
@@ -264,7 +268,7 @@ we will be using for docking. In order to make this tutorial as close as possibl
 protocol, instead of using a bound form of the compound (from this complex or a different one) we have pregenerated 3D
 conformers with RDKit using only the compound SMILES. The conformer ensemble can be found in the `conformers.pdb` file.
 
-### Docking
+### 4. Docking
 
 For the docking we will use the new portal of [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/). If you are already
 registered with HADDOCK or have been provided with course credential then you can proceed to job submission immediately.
@@ -359,7 +363,7 @@ Analysis parameters -> Full or limited analysis of results -> None
 After which you can click "Submit". If everything went well your docking run has been added to the queue and might take
 anywhere from a few hours to a few days to finish depending on the load on our servers.
 
-### Visualisation and analysis of results
+### 5. Visualisation and analysis of results
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
 same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/72017-shape-based-small-molecule.tgz)
@@ -445,3 +449,148 @@ the top-scoring compound the following command can be used:
 </a>
 
 Revealing a ligand RMSD value of 0.94 indicating excellent agreement between model and reference structures.
+
+
+
+## Pharmacophore-based protocol adaptation
+
+The shape-based protocol described above can be adapted into a pharmacophore-based protocol in which the beads used to drive the docking are assigned pharmacophore properties.
+
+This protocol require modifications of the aforedescribed **Step 3**.
+
+### 3.pharm  Template selection and docking preparation
+
+In this protocol, we want template molecules to be as similar as possible as the target ligand in terms of pharmacophore properties. The metric we have chosen is the [Tanimoto coefficient](https://en.wikipedia.org/wiki/Jaccard_index) (Tc) computed over the 2D pharmacophore fingerprints as computed with [RDKIT](https://www.rdkit.org/docs/source/rdkit.Chem.Pharm2D.Generate.html).
+
+To ensure correct 2D pharmacophore descriptor computation, we need to use SDF files as input files.
+
+The `templates.smi` file can be created from the following command:
+<a class="prompt prompt-cmd">
+  grep -v SMILES ligands_filtered.csv | awk '{print $3,$1"_"$2}' > templates.smi <br>
+</a>
+The `target.smi` file we create manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE).
+
+SMILES can be converted into SDF files :
+<a class="prompt prompt-cmd">
+  obabel -ismi templates.smi -osdf -O templates.sdf --gen2D
+  obabel -ismi target.smi -osdf -O target.sdf --gen2D<br>
+</a>
+
+The generated `templates.sdf` file contain multiple molecule. It must be splitted in a way to have one file per molecule.
+
+<a class="prompt prompt-cmd">
+  mkdir templates target  <br>
+  mv target.sdf target  <br>
+  mv templates.sdf templates  <br>
+  # split multi-sdf file  <br>
+  cd templates  <br>
+  python ../split_sdf.py templates.sdf  <br>
+  rm templates.sdf  <br>
+  cd ..  <br>
+   <br>
+</a>
+
+The next step involves computing the similarity values between our target (reference) compound and all template compounds we identified through the RCSB search portal. For this we will use an RDKit-based implementation of the 2D pharmacophore fingerprints computation. We provide a python-based implementation in the script `pharm2D_Tc.py`. Usage of the script is straightforward:
+
+<a class="prompt prompt-cmd">
+  python ./pharm2D_Tc.py target/ templates/<br>
+</a>
+
+The script will return a file entitled `sim.Tc` containing all Tc values. The line flagged with `best` highlights the most similar template.
+
+<a class="prompt prompt-cmd">
+  grep best sim.Tc<br>
+</a>
+
+These similarity values have also been precalculated and can be seen in the `sim.Tc` file.
+A closer examination of the binding site of template `6cjf` reveals that the 2-chloro-6-methylpyridin group of `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the orientation A is associated to an occupancy factor of `0.66` against `0.34`for the conformation B.
+
+Since the conformation A has been more observed than conformation B, we select it as our template of interest.
+
+<a class="prompt prompt-cmd">
+  grep 'F54' 6CJF.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
+</a>
+
+<details >
+<summary style="bold">
+<b><i>Comparison of the binding mode of the template F54 (6cjf) (in green) and the target ligand (in blue).</i></b>
+</summary>
+<figure align="center">
+    <img src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_6cjf.png">
+</figure>
+</details>
+<br>
+
+The docking-ready file is available as `template_pharm.pdb` with all the crystallisation artifacts and double occupancies removed).
+To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
+part of the pdb_tools package.
+
+The next step involves the creation of the **pharmacophore** shape (based on the template compound) that will be used for the docking. This
+process requires the addition of pharmacophore information into the PDB file and transformation of all heavy atoms of the template compound into pharmacophore beads.
+
+The pharmacophore information is encoded in the occupancy factor column of the PDB file : 
+- Donor: 0.10
+- Acceptor: 0.20
+- NegIonizable: 0.30
+- PosIonizable: 0.40
+- ZnBinder: 0.50
+- Aromatic: 0.60
+- Hydrophobe: 0.70
+- LumpedHydrophobe: 0.80
+
+**Warnings**: Make sure that the atomic numbers of F54.pdb start at number 1. The provided `F54.pdb` has been renumbered.
+
+The pharmacophore features can be added to the template ligand with the followng script. This is an essential to create the pharmacophore shape.
+<a class="prompt prompt-cmd">
+  python add_atom_features.py templates/6CJF_F54.sdf F54.pdb  <br>
+</a>
+The created `F54_features.pdb` file contains pharmacophore information in the occupancy factor column.
+
+<a class="prompt prompt-cmd">
+  lig2shape.py F54_features.pdb <br>
+</a>
+
+At the same time we also need to remove the compound present in the template structure since that space is now occupied by the shape we just created.
+
+<a class="prompt prompt-cmd">
+  grep -v F54 template_pharm.pdb > template-final_pharm.pdb <br>
+</a>
+
+We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the binding pocket. The pharmacophore restraints are defined from the target to the pharmacophore shape: 
+
+Ex: assi (segid S and resid * and (attr q == 0.60)) (segid B and name C2) 1.0 1.0 0.0
+The atom C2 from the target ligand should be guided toward an *Aromatic* bead from the shape
+
+Provided that you generated 3D conformers for your target ligand, stored them in a file called `conformers.pdb`, and added the pharmacophore features information (with the `add_atom_features.py` script), you can generate the pharmacophore restraints to guide the docking. As mentioned earlier, this file is provided in this tutorial for convenience (conformers were generated with RDKIT).
+
+<a class="prompt prompt-cmd">
+  python generate_restraints_from_target.py conformers.pdb <br>
+  mv conformers.tbl target.tbl
+</a>
+
+In addition to the restraints that are meant to drive the compound to the pharmacophore beads in the binding pocket we also need to define restraints
+between the cofactors and their coordinating residues to make sure they maintain their original geometry throughout the 
+simulation and don't drift away in the flexible stage.
+
+Those restraints are pre-calculated (`cofactor_restraints_pharm.tbl`).
+
+### 4.pharm  Docking
+The docking preparation is detailed in **Step 4**. You simply need to adapt the following parameters: 
+
+<a class="prompt prompt-info">
+Molecule 1 - input -> PDB structure to submit -> Upload the file named `template-final_pharm.pdb`
+</a>
+
+<a class="prompt prompt-info">
+Molecule 3 - input -> PDB structure to submit -> Upload the file named `shape_pharm.pdb`
+</a>
+
+On the page 3 of the submission process, you need to upload the restraints files of the pharmacophore-based protocol:
+
+<a class="prompt prompt-info">
+Distance restraints -> Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Upload the `target_pharm.tbl` file
+</a>
+
+<a class="prompt prompt-info">
+Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the `cofactor-restraints_pharm.tbl` file
+</a>
