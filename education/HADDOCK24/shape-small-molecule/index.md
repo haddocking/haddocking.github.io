@@ -468,6 +468,7 @@ The `templates.smi` file can be created from the following command:
 <a class="prompt prompt-cmd">
   grep -v SMILES ligands_filtered.csv | awk '{print $3,$1"_"$2}' > templates.smi <br>
 </a>
+
 The `target.smi` file we create manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE).
 
 SMILES can be converted into SDF files :
@@ -476,7 +477,7 @@ SMILES can be converted into SDF files :
   obabel -ismi target.smi -osdf -O target.sdf --gen2D<br>
 </a>
 
-The generated `templates.sdf` file contains multiple molecule. It must be splitted in a way to have one file per molecule.
+The generated `templates.sdf` file contains multiple molecules. It must be split in a way to have one file per molecule.
 
 <a class="prompt prompt-cmd">
   mkdir templates target  <br>
@@ -521,7 +522,7 @@ Since the conformation A has been observed more frequntly than conformation B, w
 </details>
 <br>
 
-The docking-ready file is available as `template_pharm.pdb` with all the crystallisation artifacts and double occupancies removed).
+The docking-ready file is available as `template_pharm.pdb` (with all the crystallisation artifacts and double occupancies removed).
 To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
 part of the pdb_tools package.
 
@@ -559,7 +560,7 @@ At the same time we also need to remove the compound present in the template str
 
 We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the binding pocket. The pharmacophore restraints are defined from the target to the pharmacophore shape: 
 
-Ex: assi (segid S and resid * and (attr q == 0.60)) (segid B and name C2) 1.0 1.0 0.0
+Ex: `assi (segid S and resid * and (attr q == 0.60)) (segid B and name C2) 1.0 1.0 0.0`
 The atom C2 from the target ligand should be guided toward an *Aromatic* bead from the shape
 
 Provided that you generated 3D conformers for your target ligand, stored them in a file called `conformers.pdb`, and added the pharmacophore features information (with the `add_atom_features.py` script), you can generate the pharmacophore restraints to guide the docking. As mentioned earlier, this file is provided in this tutorial for convenience (conformers were generated with RDKIT).
