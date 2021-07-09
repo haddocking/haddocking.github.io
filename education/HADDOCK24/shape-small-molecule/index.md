@@ -509,7 +509,7 @@ A closer examination of the binding site of template `6cjf` reveals that the 2-c
 Since the conformation A has been observed more frequntly than conformation B, we select it as our template of interest.
 
 <a class="prompt prompt-cmd">
-  grep 'F54' 6CJF.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
+  grep 'F54' 6cjf.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
 </a>
 
 <details >
@@ -559,6 +559,16 @@ At the same time we also need to remove the compound present in the template str
 <a class="prompt prompt-cmd">
   grep -v F54 template_pharm.pdb > template-final_pharm.pdb <br>
 </a>
+
+<details >
+<summary style="bold">
+<b><i>Pharmacophore shape used to guide the docking </i></b>
+</summary>
+<figure align="center">
+    <img src="/education/HADDOCK24/shape-small-molecule/pharm_shape.png">
+</figure>
+</details>
+<br>
 
 We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the binding pocket. The pharmacophore restraints are defined from the target to the pharmacophore shape: 
 
