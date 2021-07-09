@@ -608,4 +608,3 @@ Distance restraints -> Instead of specifying active and passive residues, you ca
 <a class="prompt prompt-info">
 Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the `cofactor-restraints_pharm.tbl` file
 </a>
-OBBB
