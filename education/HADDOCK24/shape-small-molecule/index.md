@@ -542,14 +542,16 @@ The pharmacophore information is encoded in the occupancy factor column of the P
 **Warnings**: Make sure that the atomic numbers of F54.pdb start at number 1. The provided `F54.pdb` has been renumbered.
 
 The pharmacophore features can be added to the template ligand with the following script. This is an essential to create the pharmacophore shape.
+Here again, it is important to deduce pharmacophore features from a SDF file that is better handled by RDKIT than PDB files. In order to have the same atom ordering in the SDF file and the PDB file that will be assigned feature, you can use openbabel to convert the PDB file into an SDF file.
 <a class="prompt prompt-cmd">
-  python add_atom_features.py templates/6CJF_F54.sdf F54.pdb  <br>
+  obabel -ipdb F54.pdb -osdf -O F54.sdf <br>
+  python add_atom_features.py F54.sdf F54.pdb  <br>
 </a>
 The created `F54_features.pdb` file contains pharmacophore information in the occupancy factor column.
 
 The template ligand can now be converted into a shape (`shape_pharm.pdb`) with the following script:
 <a class="prompt prompt-cmd">
-  lig2shape.py F54_features.pdb <br>
+   python lig2shape.py F54_features.pdb <br>
 </a>
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied by the shape we just created.
@@ -596,3 +598,4 @@ Distance restraints -> Instead of specifying active and passive residues, you ca
 <a class="prompt prompt-info">
 Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the `cofactor-restraints_pharm.tbl` file
 </a>
+OBBB
