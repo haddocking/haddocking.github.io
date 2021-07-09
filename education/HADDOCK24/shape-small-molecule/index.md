@@ -509,7 +509,7 @@ A closer examination of the binding site of template `6cjf` reveals that the 2-c
 Since the conformation A has been observed more frequntly than conformation B, we select it as our template of interest.
 
 <a class="prompt prompt-cmd">
-  grep 'F54' 6CJF.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
+  grep 'F54' 6cjf.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
 </a>
 
 <details >
@@ -542,14 +542,16 @@ The pharmacophore information is encoded in the occupancy factor column of the P
 **Warnings**: Make sure that the atomic numbers of F54.pdb start at number 1. The provided `F54.pdb` has been renumbered.
 
 The pharmacophore features can be added to the template ligand with the following script. This is an essential to create the pharmacophore shape.
+Here again, it is important to deduce pharmacophore features from a SDF file that is better handled by RDKIT than PDB files. In order to have the same atom ordering in the SDF file and the PDB file that will be assigned feature, you can use openbabel to convert the PDB file into an SDF file.
 <a class="prompt prompt-cmd">
-  python add_atom_features.py templates/6CJF_F54.sdf F54.pdb  <br>
+  obabel -ipdb F54.pdb -osdf -O F54.sdf <br>
+  python add_atom_features.py F54.sdf F54.pdb  <br>
 </a>
 The created `F54_features.pdb` file contains pharmacophore information in the occupancy factor column.
 
 The template ligand can now be converted into a shape (`shape_pharm.pdb`) with the following script:
 <a class="prompt prompt-cmd">
-  lig2shape.py F54_features.pdb <br>
+   python lig2shape.py F54_features.pdb <br>
 </a>
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied by the shape we just created.
@@ -557,6 +559,16 @@ At the same time we also need to remove the compound present in the template str
 <a class="prompt prompt-cmd">
   grep -v F54 template_pharm.pdb > template-final_pharm.pdb <br>
 </a>
+
+<details >
+<summary style="bold">
+<b><i>Pharmacophore shape used to guide the docking </i></b>
+</summary>
+<figure align="center">
+    <img src="/education/HADDOCK24/shape-small-molecule/pharm_shape.png">
+</figure>
+</details>
+<br>
 
 We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the binding pocket. The pharmacophore restraints are defined from the target to the pharmacophore shape: 
 
