@@ -589,7 +589,7 @@ simulation and don't drift away in the flexible stage.
 Those restraints are pre-calculated (`cofactor_restraints_pharm.tbl`).
 
 ### 4.pharm  Docking
-The docking preparation is detailed in **Step 4**. You simply need to adapt the following parameters: 
+The docking preparation is detailed in **Step 4** from the shape-based protocol. You simply need to adapt the following parameters: 
 
 <a class="prompt prompt-info">
 Molecule 1 - input -> PDB structure to submit -> Upload the file named `template-final_pharm.pdb`
@@ -620,16 +620,9 @@ archive
   tar xf 73078-tuto_pharm_summary.tgz <br>
 </a>
 
-Which will create the `73078-tuto_pharm_summary` directory in the current working directory. The final models can
-be found under the `structures/it1` subdirectory. There are 200 PDB files in total and their ranking along with their
-scores can be seen in the `file.list` file.
-
-<a class="prompt prompt-cmd">
-  head file.list <br>
-</a>
+Which will create the `73078-tuto_pharm_summary` directory in the current working directory. Since we did not apply any clustering here, the `73078-tuto_pharm_summary` contains the 10 top ranked models (i.e. associated to the lowest HADDOCK scores).
 
 Similarly to the shape-based protocol, the top 10 models have very similar scores.
-
 
 <details >
 <summary style="bold">
