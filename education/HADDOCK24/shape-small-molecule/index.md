@@ -613,15 +613,14 @@ Distance restraints -> You can supply a HADDOCK restraints TBL file with restrai
 ### 5.pharm Visualisation and analysis of results
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
-same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/72017-shape-based-small-molecule.tgz)
-and it is also part of the provided tutorial files. Using the following command we can expand the contents of the tgz
+same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/73078-tuto_pharm). The top10 models of that rank are provided in the tutorial (`73078-tuto_pharm.tgz`). Using the following command we can expand the contents of the tgz
 archive
 
 <a class="prompt prompt-cmd">
-  tar xf 72802-pharm_tuto.tgz <br>
+  tar xf 73078-tuto_pharm_summary.tgz <br>
 </a>
 
-Which will create the `72802-pharm_tuto` directory in the current working directory. The final models can
+Which will create the `73078-tuto_pharm_summary` directory in the current working directory. The final models can
 be found under the `structures/it1` subdirectory. There are 200 PDB files in total and their ranking along with their
 scores can be seen in the `file.list` file.
 
@@ -647,16 +646,16 @@ closer examination.
 
 <a class="prompt prompt-cmd">
   pymol 1d3g.pdb \ <br>
-  72802-pharm_tuto/structures/it1/complex_45.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_53.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_49.pdb \  <br> 
-  72802-pharm_tuto/structures/it1/complex_57.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_59.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_2.pdb  \  <br>
-  72802-pharm_tuto/structures/it1/complex_66.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_71.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_61.pdb \  <br>
-  72802-pharm_tuto/structures/it1/complex_73.pdb \  <br>
+  73078-tuto_pharm_summary/cluster1_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster2_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster3_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster4_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster5_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster6_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster7_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster8_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster9_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster10_1.pdb \  <br>
 </a>
 
 After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
@@ -682,7 +681,7 @@ The visual analysis reveals that the top 10 models not only have very similar HA
 As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. For example, for the top-scoring compound the following command can be used:
 
 <a class="prompt prompt-cmd">
-  profit -f izone 1d3g.pdb 72802-pharm_tuto/structures/it1/complex_45.pdb <br>
+  profit -f izone 1d3g.pdb 73078-tuto_pharm_summary/cluster1_1.pdb <br>
   grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
   obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
   rm tmp_ligand <br>
