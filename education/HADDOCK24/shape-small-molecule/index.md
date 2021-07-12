@@ -366,15 +366,15 @@ anywhere from a few hours to a few days to finish depending on the load on our s
 ### 5. Visualisation and analysis of results
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
-same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/72017-shape-based-small-molecule.tgz)
+same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule.tgz)
 and it is also part of the provided tutorial files. Using the following command we can expand the contents of the tgz
 archive
 
 <a class="prompt prompt-cmd">
-  tar xf 72017-shape-based-small-molecule.tgz <br>
+  tar xf 73074-shape-based-small-molecule.tgz <br>
 </a>
 
-Which will create the `72017-shape-based-small-molecule` directory in the current working directory. The final models can
+Which will create the `73074-shape-based-small-molecule` directory in the current working directory. The final models can
 be found under the `structures/it1` subdirectory. There are 200 PDB files in total and their ranking along with their
 scores can be seen in the `file.list` file.
 
@@ -401,16 +401,16 @@ closer examination.
 
 <a class="prompt prompt-cmd">
   pymol 1d3g.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_2.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_6.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_9.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_5.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_1.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_26.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_14.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_31.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_27.pdb \ <br>
-  72017-shape-based-small-molecule/structures/it1/complex_24.pdb <br>
+  73074-shape-based-small-molecule/structures/it1/complex_2.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_6.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_9.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_5.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_1.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_26.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_14.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_31.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_27.pdb \ <br>
+  73074-shape-based-small-molecule/structures/it1/complex_24.pdb <br>
 </a>
 
 After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
@@ -442,7 +442,7 @@ As part of the analysis we can also compute the symmetry-corrected ligand RMSD f
 the top-scoring compound the following command can be used:
 
 <a class="prompt prompt-cmd">
-  profit -f izone 1d3g.pdb 72017-shape-based-small-molecule/structures/it1/complex_2.pdb <br>
+  profit -f izone 1d3g.pdb 73074-shape-based-small-molecule/structures/it1/complex_2.pdb <br>
   grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
   obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
   rm tmp_ligand <br>
