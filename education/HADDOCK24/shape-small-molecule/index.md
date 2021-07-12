@@ -608,3 +608,83 @@ Distance restraints -> Instead of specifying active and passive residues, you ca
 <a class="prompt prompt-info">
 Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the `cofactor-restraints_pharm.tbl` file
 </a>
+
+
+### 5.pharm Visualisation and analysis of results
+
+While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
+same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/73078-tuto_pharm). The top10 models of that rank are provided in the tutorial (`73078-tuto_pharm.tgz`). Using the following command we can expand the contents of the tgz
+archive
+
+<a class="prompt prompt-cmd">
+  tar xf 73078-tuto_pharm_summary.tgz <br>
+</a>
+
+Which will create the `73078-tuto_pharm_summary` directory in the current working directory. The final models can
+be found under the `structures/it1` subdirectory. There are 200 PDB files in total and their ranking along with their
+scores can be seen in the `file.list` file.
+
+<a class="prompt prompt-cmd">
+  head file.list <br>
+</a>
+
+Similarly to the shape-based protocol, the top 10 models have very similar scores.
+
+
+<details >
+<summary style="bold">
+<b><i>Superimposition of the top10 scoring pose (in cyan) on the reference complex (in green).</i></b>
+</summary>
+<figure align="center">
+    <img src="/education/HADDOCK24/shape-small-molecule/top10_pharm.png">
+</figure>
+</details>
+<br>
+
+With the following command we can load the top 10 models (sorted by HADDOCK score) along with the reference compound for
+closer examination.
+
+<a class="prompt prompt-cmd">
+  pymol 1d3g.pdb \ <br>
+  73078-tuto_pharm_summary/cluster1_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster2_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster3_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster4_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster5_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster6_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster7_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster8_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster9_1.pdb \  <br>
+  73078-tuto_pharm_summary/cluster10_1.pdb \  <br>
+</a>
+
+After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
+the following PYMOL commands:
+
+<a class="prompt prompt-pymol">
+  remove resn hoh+so4+act+ddq <br>
+  alignto 1d3g and chain A
+</a>
+
+And the following PyMOL commands allow us to get a better overview of the binding site:
+
+<a class="prompt prompt-pymol">
+  remove hydro <br>
+  hide everything, resn sha <br>
+  util.cbc <br>
+  color white, 1d3g
+  util.cnc
+</a>
+
+The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores, they also adopt similar binding modes and are very close to the reference structure.
+
+As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. For example, for the top-scoring compound the following command can be used:
+
+<a class="prompt prompt-cmd">
+  profit -f izone 1d3g.pdb 73078-tuto_pharm_summary/cluster1_1.pdb <br>
+  grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
+  obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
+  rm tmp_ligand <br>
+</a>
+
+Revealing a ligand RMSD value of 1.06 indicating excellent agreement between model and reference structures.
