@@ -132,7 +132,6 @@ Briefly, the main steps of this protocol are the following:
 
 **Note:** The shape-based protocol can be declined into a pharmacophore-based protocol. Step 3 can be adapted accordingly as described in the last section of this tutorial.
 
-
 ### 1. Target selection 
 
 We have chosen the complex with PDB id `1d3g` which is part of the [DUD-E dataset](http://dude.docking.org) as our target.
@@ -152,6 +151,7 @@ FMN -> dihydro-FMN.</i></b>
 <br>
 
 ### 2. Template identification
+
 The nature of the binding site makes it clear that if we are to reproduce the chemical environment of the target complex
 then the template we choose must also contain ORO and FMN in its binding site.
 
@@ -366,25 +366,40 @@ anywhere from a few hours to a few days to finish depending on the load on our s
 ### 5. Visualisation and analysis of results
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
-same settings we used for our run). The compressed run directory can be downloaded from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule.tgz)
-and it is also part of the provided tutorial files. Using the following command we can expand the contents of the tgz
-archive
+same settings we used for our run). The precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule).
+Just glancing at the page tells us that our run has been a success both in terms of the actual run and the postprocessing
+that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 10 models in 10 different clusters,
+effectively performing only single structure analysis. This was expected since we specified no analysis when setting up the run.
+Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
+find that it conveys no measurable benefit for this type of modelling (protein-small molecule) and therefore we skip it.
+
+The very bottom of the page contains some plots of the HADDOCK score against the other parameterers it such as the vdW and
+electrostatics energy. Additionaly HADDOCK score is also plotted against two structural measures: The Fraction of Common
+Contacts (FCC) and the Interface-Ligand RMSD (IL-RMSD). These plots would be more meaningful if clustering was enabled as
+they would show the distribution of the various metrics in clusters instead of the single models they now show.
+
+A more consice way of looking at the breakdown of energetics per model is to look at the summary for each model which can be
+found immediately below the overall summary page. For example, for the top scoring model the HADDOCK score is -62.6 with a
+vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1. The HADDOCK
+score is the sum of the energetic terms and `-1/100 * BSA`. Also note how the restraint energy is 0 meaning the way we defined
+the restraints made sure that there was no "leftover" restraint energy in the system.
+
+For a closer look at the top models we can use the link just above the **Cluster 1** line, or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule_summary.tgz).
+
+Using the following command we can expand the contents of the tgz archive
 
 <a class="prompt prompt-cmd">
-  tar xf 73074-shape-based-small-molecule.tgz <br>
+  tar xf 73074-shape-based-small-molecule_summary.tgz <br>
 </a>
 
-Which will create the `73074-shape-based-small-molecule` directory in the current working directory. The final models can
-be found under the `structures/it1` subdirectory. There are 200 PDB files in total and their ranking along with their
-scores can be seen in the `file.list` file.
+Which will result in the creation of 10 PDB files in the current working directory. The files are named `cluster*_1.pdb` with
+the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
+with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
-<a class="prompt prompt-cmd">
-  head file.list <br>
-</a>
-
-The scores of the top 5 models are almost indistinguishable so we will be examining all top 10 models in the hope that
-one of them is a model of high quality, meaning it can reproduce the experimentally available structure with a high
-degree of accuracy, or at the very least yieliding useful biological insights in the nature of the binding pocket.
+Examining the scores available at the result webpage once again shows that the top 5 models are very close in terms of HADDOCK
+score while the bottom 5 score a bit worse. We can also examine the models structurally to see if the better scoring models
+are also of higher-quality compared to the worse scoring ones. Our expectation is that the high-scoring models (models 1-5)
+do a better job at reproducing the experimentally available structure compared to the worse-scoring ones (models 6-10).
 
 <details >
 <summary style="bold">
@@ -401,16 +416,16 @@ closer examination.
 
 <a class="prompt prompt-cmd">
   pymol 1d3g.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_2.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_6.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_9.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_5.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_1.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_26.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_14.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_31.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_27.pdb \ <br>
-  73074-shape-based-small-molecule/structures/it1/complex_24.pdb <br>
+  cluster1_1.pdb \ <br>
+  cluster2_1.pdb \ <br>
+  cluster3_1.pdb \ <br>
+  cluster4_1.pdb \ <br>
+  cluster5_1.pdb \ <br>
+  cluster6_1.pdb \ <br>
+  cluster7_1.pdb \ <br>
+  cluster8_1.pdb \ <br>
+  cluster9_1.pdb \ <br>
+  cluster10_1.pdb <br>
 </a>
 
 After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
@@ -419,6 +434,7 @@ the following PYMOL commands:
 <a class="prompt prompt-pymol">
   remove resn hoh+so4+act+ddq <br>
   alignto 1d3g and chain A
+  zoom
 </a>
 
 And the following PyMOL commands allow us to get a better overview of the binding site:
@@ -433,8 +449,8 @@ And the following PyMOL commands allow us to get a better overview of the bindin
 
 Running the commands above reveals that the top 5 compounds are not only close in terms of HADDOCK score but also in terms
 of the pose they obtain in the binding site. Moving to the bottom half of the top reveals an entirely different story with
-the models obtaining poses that are significantly different to the crystallographic one. In some cases, such as for model
-26, the compound has rotated 180 degrees along the long axis, a problem common to many biomolecular modelling scenarios.
+the models obtaining poses that are slightly or significantly different to the crystallographic one. In some cases, such as for models
+7, 9 and 10, the compound has rotated 180 degrees along the long axis, a problem common to many biomolecular modelling scenarios.
 The top 5 poses however are all very close to the reference structure and capture all the details of the interaction with
 a high degree of accuracy which of course means that our modelling effort can be considered a success.
 
@@ -442,15 +458,24 @@ As part of the analysis we can also compute the symmetry-corrected ligand RMSD f
 the top-scoring compound the following command can be used:
 
 <a class="prompt prompt-cmd">
-  profit -f izone 1d3g.pdb 73074-shape-based-small-molecule/structures/it1/complex_2.pdb <br>
+  profit -f izone 1d3g.pdb cluster1_1.pdb <br>
   grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
   obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
-  rm tmp_ligand <br>
+  rm tmp.pdb tmp_ligand.pdb <br>
 </a>
 
-Revealing a ligand RMSD value of 0.94 indicating excellent agreement between model and reference structures.
+Revealing a ligand RMSD value of 0.98 indicating excellent agreement between model and reference structures.
 
+If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule.tgz)
+and expand it using the same command as above. This will create the `73074-shape-based-small-molecule` directory in
+the current working directory. The final models can be found under the `structures/it1` subdirectory. There are 200
+PDB files in total and their ranking along with their scores can be seen in the `file.list` file.
 
+<a class="prompt prompt-cmd">
+  head file.list <br>
+</a>
+
+The above command should show the same HADDOCK scores as what we already saw for the top 10 models.
 
 ## Pharmacophore-based protocol adaptation
 
