@@ -31,10 +31,6 @@
     position: IT support
     avatar: /images/people/Rene-Monte.png
 
--   name: Andreas Palazi
-    position: M.Sc Student
-    avatar: /images/people/Andreas-Palazi.png
-
 -   name: Vicky Charitou
     position: M.Sc Student
     avatar: /images/people/Vicky-Charitou.jpg
@@ -50,3 +46,7 @@
 -   name: Angela Pelissou Ayuso
     position: M.Sc Student
     avatar: /images/people/Angela-Pelissou.jpg
+
+-   name: Rayan Hassaine
+    position: M.Sc Student
+    avatar: /images/people/Rayan.jpg
