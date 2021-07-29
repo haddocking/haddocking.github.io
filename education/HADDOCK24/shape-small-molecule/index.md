@@ -34,8 +34,6 @@ _J. Mol. Biol._, *428*, 720-725 (2015).
 [The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
-The current version of the webserver and standalone HADDOCK (v2.4) are under beta testing.
-
 Throughout the tutorial, coloured text will be used to refer to questions or instructions, and/or PyMOL or terminal commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
@@ -45,21 +43,31 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 <hr>
 
-## Setup
+## Requirements and Setup
 
-In order to run this tutorial you will need to have the following software installed: [PyMOL][https://www.pymol.org/].
+In order to run this tutorial you will need to have the following software installed: [PyMOL](https://www.pymol.org/){:target="_blank"}.
 Additionally, you will also need to run commands in a *nix terminal. If you are running this on a Mac or Linux system then
-appropriate shells are already part of the system. Windows users might have to install additional software or activate the
-[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). We consider this to be an advanced
+appropriate shells (all commands should work under `bash`) are already part of the system. Windows users might have to install additional software or activate the
+[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10){:target="_blank"}. We consider this to be an advanced
 tutorial made with a specific application of HADDOCK in mind. Thus, it assumes familiarity with HADDOCK as well as the command
 line.
 
-Prior to getting started we need to setup our environment. The simplest way to do that would be to make use of `anaconda`.
-Assuming an existing installation of anaconda the following command should take care of all required python packages.
+All files, scripts and data for running this tutorial can be downloaded as a gzipped tar archive from [here](/education/HADDOCK24/shape-small-molecule/shape-small-molecule.tgz). Extract the archive in the directory where you want to run the tutorial with the following command:
 
 <a class="prompt prompt-cmd">
-  conda create tutorial_env -c conda-forge rdkit openbabel pandas <br>
-  conda activate tutorial_env <br>
+  tar xfz shape-small-molecule.tgz <br>
+  cd shape-small-molecule <br>
+</a>
+
+This will create a `shape-small-molecule` directory where you will find various scripts and data.
+
+Prior to getting started we need to setup our environment. The simplest way to do that would be to make use of `anaconda`.
+If you are unfamiliar with `anaconda/conda` check the [nice introduction](https://github.com/JoaoRodrigues/intro-to-conda){:target="_blank"} by Joãa Rodrigues.
+Assuming an existing installation of anaconda, the following command should take care of all required python packages.
+
+<a class="prompt prompt-cmd">
+  conda env create \-\-file requirements.yml <br>
+  conda activate haddock-shape-tutorial_env <br>
 </a>
 
 After activating the environment we also need to install the pdb-tools package which can be achieved with the following command:
@@ -70,13 +78,13 @@ After activating the environment we also need to install the pdb-tools package w
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be
 able to submit jobs. Use for this the following registration page:
-[https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
+[https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 <hr>
 
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4/](https://www.bonvinlab.org/software/haddock2.4/)) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4/](https://www.bonvinlab.org/software/haddock2.4/){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
 A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall under two categories: active and passive. Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.
 The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and different chemical environments, and it can be divided in three different stages, each with a defined goal and characteristics:
@@ -120,155 +128,226 @@ The second stage of the docking protocol introduces flexibility to the interacti
 </details>
 <br>
 
-## Protocol outline
+
+<hr>
+
+## Our target for this tutorial 
+
+We have chosen the complex with PDB id `1d3g` which is part of the [DUD-E dataset](http://dude.docking.org){:target="_blank"} as our target.
+This is a complex of an inhibitory brequinar analong bound to the human dihydroorotate dehydrogenase receptor.
+
+__Binding site of the target complex (1d3g)__. *The receptor is shown in white cartoon, whereas the brequinar analog
+(BRE) in orange sticks. The binding site also contains Orotate (ORO - purple sticks) and Flavin Mononucleotide
+(FMN - light blue sticks). BRE acts as an inhibitor of the oxidation of Dihydro-ORO -> ORO and the reduction of
+FMN -> dihydro-FMN.*
+
+<figure align="center">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/binding_site.png">
+</figure>
+
+
+<hr>
+
+## Shape-restrained protocol outline
 
 Briefly, the main steps of this protocol are the following:
 
-1. Determine a target of interest.
-2. Identify and download potential templates of interest for our target of choice.
-3. Select one of the identified templates for the modelling of the complex.
+1. Identify and download potential templates of interest for our target of choice.
+2. Select one of the identified templates for the modelling of the complex.
+3. Prepare the input files for the docking.
 4. Perform the docking.
 5. Analyse and visualise the results.
 
-**Note:** The shape-based protocol can be declined into a pharmacophore-based protocol. Step 3 can be adapted accordingly as described in the last section of this tutorial.
+**Note:** The shape-based protocol can be adapted into a pharmacophore-based protocol. Steps 2 and 3 can be adapted accordingly as described in the last section of this tutorial.
 
-### 1. Target selection 
+<hr>
 
-We have chosen the complex with PDB id `1d3g` which is part of the [DUD-E dataset](http://dude.docking.org) as our target.
-This is a complex of an inhibitory brequinar analong bound to the human dihydroorotate dehydrogenase receptor.
 
-<details >
-<summary style="bold">
-<b><i>Binding site of target complex (1d3g). The receptor is shown in white cartoon, whereas the brequinar analog
-(BRE) in orange sticks. The binding site also contains Orotate (ORO - purple sticks) and Flavin Mononucleotide
-(FMN - light blue sticks). BRE acts as an inhibitor of the oxidation of Dihydro-ORO -> ORO and the reduction of
-FMN -> dihydro-FMN.</i></b>
-</summary>
-<figure align="center">
-    <img src="/education/HADDOCK24/shape-small-molecule/binding_site.png">
-</figure>
-</details>
-<br>
-
-### 2. Template identification
+### 1. Identifying suitable templates
 
 The nature of the binding site makes it clear that if we are to reproduce the chemical environment of the target complex
 then the template we choose must also contain ORO and FMN in its binding site.
 
-The first step requires we search one of the PDB portals (in our case we will make use of [RCSB](https://rcsb.org)) for
+The first step requires we search one of the PDB portals (in our case we will make use of [RCSB PDB portal](https://rcsb.org){:target="_blank"}) for
 templates to extract the shape information we will use throughout the docking. After landing on the homepage of the
-aforementioned RCSB portal we activate the advanced search functionality by clicking on the 'Advanced Search' link
+aforementioned RCSB portal we activate the advanced search functionality by clicking on the `Advanced Search` link
 immediately below the search bar.
 
 We will use the sequence of the receptor of our target complex as our primary search parameter. Clicking on the
 'Sequence' tab of the advanced search parameters we are provided with two options to load the query sequence. Either
 write/paste it manually using the large textbox or use a PDB id. We opt for the latter option. Writing `1d3g` in the
-'PDB ID' box and clicking on the prompt loads the sequence in the larger textbox above. We also specify an 'Identity
-Cutoff' of 100% to make sure we limit the results to only relevant hits.
+`PDB ID` box and clicking on the prompt loads the sequence in the larger textbox above. We also specify an `Identity
+Cutoff` of 100% to make sure we limit the results to only relevant hits. Once this is done click on the search button 
+at the bottom on the right. In case a prompt window pops up simply click on `ok`.
 
 Generating a tabular report using the "ligand" preset and saving it in CSV format allows us to gather all the data we
-need to select a template for docking. The report can be found in the pregenerated file `ligands.csv`. A filtered version
-of it with only the required data can be found in the `ligands_filtered.csv` file. To create the latter file we have
-filtered out the unnecessary ligands from the original file (ie the compounds common to all complexes such as ORO and FMN
-and also all the crystallisation artifacts such as SO4) and only kept the PDB id, ligand id and SMILES string for all
+need to select a template for docking. The a pre-generated file can be found in the `data` directory as `ligands.csv`. 
+
+
+**Note** that the file you create can differ from the pre-generated file provided as the PDB database is constantly updated.
+
+
+A filtered version of it with only the required data can be found in the same directory in the `ligands_filtered.csv` file. 
+To create the latter file we have filtered out the unnecessary ligands from the original file (ie the compounds common to all complexes such as ORO and FMN and also all the crystallisation artifacts such as SO4) and only kept the PDB id, ligand id and SMILES string for all
 compounds.
 
-### 3. Template selection and docking preparation
+
+<hr>
+
+### 2. Selecting the template
 
 As is the case for any template-based modelling approach, the more similar the template is to the target complex the
 higher the chance of a successful modelling outcome. In this protocol, we are emphasising ligand similarity over receptor
 similarity, meaning we want the template and target compounds to be as similar as possible. The metric we have chosen as
-our similarity measure is the [Tversky coefficient](https://en.wikipedia.org/wiki/Tversky_index) (with α, β = 0.2, 0.8,
-respectively) computed over the Maximum Common Substructure (MCS) as calculated by the [RDKit implementation](https://www.rdkit.org/docs/GettingStartedInPython.html#maximum-common-substructure).
+our similarity measure is the [Tversky coefficient](https://en.wikipedia.org/wiki/Tversky_index){:target="_blank"} (with α, β = 0.2, 0.8,
+respectively) computed over the Maximum Common Substructure (MCS) as calculated by the [RDKit implementation](https://www.rdkit.org/docs/GettingStartedInPython.html#maximum-common-substructure){:target="_blank"}.
 This metric can be computed in a time-efficient manner and most importantly without prior knowledge of the structure
 of the target compound and all that is required is the compound encoded in SMILES format (see `target.smi` and `templates.smi`).
 
 The `templates.smi` file can be created from the following command:
 
 <a class="prompt prompt-cmd">
-  grep -v SMILES ligands_filtered.csv | awk '{print $3,$1"_"$2}' > templates.smi <br>
+  grep \-v SMILES data/ligands_filtered.csv | awk \'{print $3,$1\"_\"$2}\' \> templates.smi <br>
 </a>
 
-The `target.smi` file we create manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE).
+The `target.smi` file (also present in the `data` directory) can be created manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE){:target="_blank"}.
 
 The next step involves computing the similarity values between our target (reference) compound and all template compounds
 we identified through the RCSB search portal. For this we will use an RDKit-based implementation of the MCS procedure described
 above. We provide a python-based implementation in the script `calc_mcs.py`. Usage of the script is straightforward:
 
 <a class="prompt prompt-cmd">
-  ./calc_mcs.py -te templates.smi -ta target.smi | awk '{print $2}' > tmp <br>
+  ./scripts/calc_mcs.py \-te templates.smi -ta data/target.smi | awk \'{print $2}\' \> tmp <br>
 </a>
 
+This command might takes a few tens of seconds to complete.
 We choose to only keep the second column because we are only interested in the Tversky metric and the first column of the output
 is the Tanimoto metric. To create the similarities file:
 
 <a class="prompt prompt-cmd">
-  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 > similarities.txt <br>
-  rm tmp <br>
+  paste templates.smi tmp | awk \'{print $2,$3}\' | sed -e \'s/_/\ /\' | sort -grk3 \> similarities.txt <br>
+  \rm tmp <br>
 </a>
 
-These similarity values have also been precalculated and can be seen in the `similarities.txt` file.
+These similarity values have also been precalculated and can be seen in the `data/similarities.txt` file.
 The file has already been sorted according to similarity value meaning the compounds most similar to the target compound
 are near the top of the file. From this point on, the selection of the most suitable template becomes a process of filtering out
 the templates that are ill-suited for modelling (low quality, mutations near the binding site, missing density, etc...).
-A closer examination of the binding site of template `2PRH` reveals missing density close to the ORO cofactor meaning this
-template is not very well suited to our purposes. Thankfully, the next template on the list (`7K2U`) is a template of
-equally high quality but has no issues that could interfere with our modelling efforts and thus becomes our template of
-choice.
 
-<details >
-<summary style="bold">
-<b><i>Comparison of the binding site for template 2prh (in green) and target complex (in orange).</i></b>
-</summary>
+A closer examination of the binding site of the most similar template, `2PRH`, reveals missing density close to the ORO cofactor meaning this
+template is not very well suited to our purposes. 
+
+
+__WOULD BE NICE TO SHOW THE 2PRH BINDING SITE AND POINT TO THE MISSING REGION__
+
+<details style="background-color:#DAE4E7">
+<summary><b>See binding site of 2PRH</b></summary>
+<br>
+<center>
+<i>View of the binding site for template 2PRH (in green) with the red arrow pointing to the missing region close to the ORO cofactor.</i>
+</center>
 <figure align="center">
-    <img src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
 </figure>
 </details>
 <br>
 
-The docking-ready file is available as `template.pdb` with all the crystallisation artifacts and double occupancies removed).
+
+Thankfully, the next template on the list (`7K2U`) is a template of
+equally high quality but has no issues that could interfere with our modelling efforts and thus becomes our template of
+choice.
+
+__THE IMAGE USED BELOW HAS IN ITS NAME 2prh - IS IT THE CORRECT ONE? SHOULD BE 7K2U__
+
+<details style="background-color:#DAE4E7">
+<summary><b>See binding site of 7K2U</b></summary>
+<br>
+<center>
+<i>Comparison of the binding site for template 2PRH (in green) and the target complex (in orange).</i>
+</center>
+<figure align="center">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
+</figure>
+</details>
+<br>
+
+
+<hr>
+
+### 3. Preparing input files for docking
+
+
+#### 3a. Preparing the receptor template and the shape PDB files
+
+The docking-ready file created from entry 2K2U is available as `data/template.pdb` with all the crystallisation artifacts and double occupancies removed).
 To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
 part of the pdb_tools package.
 
+__WRONG COMMAND BELOW - TO CORRECT__
 <a class="prompt prompt-cmd">
-  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 > similarities.txt <br>
+  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 \> similarities.txt <br>
   rm tmp <br>
 </a>
 
 The next step involves the creation of the shape (based on the template compound) that will be used for the docking. This
-process requires the transformation of all heavy atoms of the template compound into shape beads.
+process requires the transformation of all heavy atoms of the template compound into shape beads. The shape beads have all the same residue and atom names, namely `SHA` and their chainID for use in HADDOCK should be `S`.
 
 <a class="prompt prompt-cmd">
-  grep VU7 template.pdb | awk '{printf "ATOM   %4d  SHA SHA S %3d     %s  %s  %s  %s %s\n", NR, NR, $7, $8, $9, $10, $11}' > shape.pdb <br>
+  grep VU7 data/template.pdb | awk \'{printf \"ATOM   %4d  SHA SHA S %3d     %s  %s  %s  %s %s\n\", NR, NR, $7, $8, $9, $10, $11}\' \> shape.pdb <br>
+  echo END \>\>shape.pdb <br>
 </a>
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied
 by the shape we just created.
 
 <a class="prompt prompt-cmd">
-  grep -v VU7 template.pdb > template-final.pdb <br>
+  grep -v VU7 data/template.pdb > template-final.pdb <br>
 </a>
+
+<br>
+
+#### 3b. Generating an ensemble of conformations for the ligand to be docked
+
+
+__TO BE WRITTEN__
+
+<br>
+
+#### 3c. Generating shape restraints for the ligand to be docked
 
 We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the
-binding pocket.
+binding pocket. Since there are fewer atoms in the target compound than there are in the shape we are defining the restraints from the
+target compound to the shape. For this one distance restraint is defined from each ligand heavy atom to all shape atoms with an upper limit of 1Å. 
 
 <a class="prompt prompt-cmd">
-  for i in {1..27}; do echo "assi (segi B and resi ${i}) (segi S and resi *) 1.0 1.0 0.0"; done > shape_restraints.tbl <br>
+  grep HETATM data/ligand_model1.pdb | awk \'{print \"assi (segid B and name \"$3\") (segi S) 1.0 1.0 0.0\"}\' \> shape_restraints.tbl <br>
 </a>
-
-Since there are fewer atoms in the target compound than there are in the shape we are defining the restraints from the
-target compound to the shape.
 
 In addition to the restraints that are meant to drive the compound to the binding pocket we also need to define restraints
 between the cofactors and their coordinating residues to make sure they maintain their original geometry throughout the
-simulation and don't drift away in the flexible stage.
+simulation and don't drift away in the flexible stage. This can be done using the `restrain_ligand.py` script:
+
+<a class="prompt prompt-cmd">
+  ./scripts/restrain_ligand.py  template-final.pdb \-l ORO <br>
+  ./scripts/restrain_ligand.py  template-final.pdb \-l FMN <br>
+</a>
+
+And we concatenate the newly created restraint files into one with:
+
+
+<a class="prompt prompt-cmd">
+  cat template-final_ORO.tbl template-final_FMN.tbl \>cofactor_restraints.tbl <br>
+</a>
 
 This concludes the preparation steps required for the receptor. However, we still need to prepare the compound structures
 we will be using for docking. In order to make this tutorial as close as possible to a real-world application of this
 protocol, instead of using a bound form of the compound (from this complex or a different one) we have pregenerated 3D
 conformers with RDKit using only the compound SMILES. The conformer ensemble can be found in the `conformers.pdb` file.
 
-### 4. Docking
+
+<hr>
+
+### 4. Setting up the docking
 
 For the docking we will use the new portal of [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/). If you are already
 registered with HADDOCK or have been provided with course credential then you can proceed to job submission immediately.
@@ -362,6 +441,8 @@ Analysis parameters -> Full or limited analysis of results -> None
 
 After which you can click "Submit". If everything went well your docking run has been added to the queue and might take
 anywhere from a few hours to a few days to finish depending on the load on our servers.
+
+<hr>
 
 ### 5. Visualisation and analysis of results
 
@@ -477,13 +558,18 @@ PDB files in total and their ranking along with their scores can be seen in the 
 
 The above command should show the same HADDOCK scores as what we already saw for the top 10 models.
 
-## Pharmacophore-based protocol adaptation
+
+<hr>
+
+## Pharmacophore-based protocol
 
 The shape-based protocol described above can be adapted into a pharmacophore-based protocol in which the beads used to drive the docking are assigned pharmacophore properties.
 
-This protocol requires modifications of the aforedescribed **Step 3** and **Step 4**.
+This protocol requires modifications of the aforedescribed **Step 2** and **Step 3**.
 
-### 3.pharm  Template selection and docking preparation
+<BR>
+
+### 2.pharm template selection
 
 In this protocol, we want template molecules to be as similar as possible as the target ligand in terms of pharmacophore properties. The metric we have chosen is the [Tanimoto coefficient](https://en.wikipedia.org/wiki/Jaccard_index) (Tc) computed over the 2D pharmacophore fingerprints as computed with [RDKIT](https://www.rdkit.org/docs/source/rdkit.Chem.Pharm2D.Generate.html).
 
@@ -531,7 +617,7 @@ The script will return a file entitled `sim.Tc` containing all Tc values. The li
 These similarity values have also been precalculated and can be seen in the `sim.Tc` file.
 A closer examination of the binding site of template `6cjf` reveals that the 2-chloro-6-methylpyridin group of `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the conformation A is associated to an occupancy factor of `0.66` against `0.34` for the conformation B.
 
-Since the conformation A has been observed more frequntly than conformation B, we select it as our template of interest.
+Since the conformation A has been observed more frequently than conformation B, we select it as our template of interest.
 
 <a class="prompt prompt-cmd">
   grep 'F54' 6cjf.pdb | grep ' A '| grep -v 'BF54' | sed 's/AF54/ F54/g' > F54.pdb <br>
@@ -546,6 +632,12 @@ Since the conformation A has been observed more frequntly than conformation B, w
 </figure>
 </details>
 <br>
+
+<hr>
+
+### 3.pharm Preparing input files for docking
+
+#### 3a.pharm Preparing the receptor template and the pharmacophore shape
 
 The docking-ready file is available as `template_pharm.pdb` (with all the crystallisation artifacts and double occupancies removed).
 To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
@@ -595,6 +687,10 @@ At the same time we also need to remove the compound present in the template str
 </details>
 <br>
 
+<br>
+
+#### 3c.pharm Generating the pharmacophore shape restraints
+
 We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the binding pocket. The pharmacophore restraints are defined from the target to the pharmacophore shape: 
 
 Ex: `assi (segid S and resid * and (attr q == 0.60)) (segid B and name C2) 1.0 1.0 0.0`
@@ -613,7 +709,10 @@ simulation and don't drift away in the flexible stage.
 
 Those restraints are pre-calculated (`cofactor_restraints_pharm.tbl`).
 
-### 4.pharm  Docking
+<hr>
+
+### 4.pharm Setting up the pharmacophore-based docking
+
 The docking preparation is detailed in **Step 4** from the shape-based protocol. You simply need to adapt the following parameters: 
 
 <a class="prompt prompt-info">
