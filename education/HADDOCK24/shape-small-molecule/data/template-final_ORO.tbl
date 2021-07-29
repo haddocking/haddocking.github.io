@@ -1,0 +1,15 @@
+! Restraints to fix 'ORO' in its initial position
+assi (segi A    and resi  145 and name "OD1" )
+     (segi A    and resi  402 and name "N1"  )  2.856 1.0 1.0
+assi (segi A    and resi  284 and name "OD1" )
+     (segi A    and resi  402 and name "C2"  )  3.638 1.0 1.0
+assi (segi A    and resi  285 and name "OG1" )
+     (segi A    and resi  402 and name "O2"  )  2.814 1.0 1.0
+assi (segi A    and resi  215 and name "OG"  )
+     (segi A    and resi  402 and name "C4"  )  3.444 1.0 1.0
+assi (segi A    and resi  212 and name "ND2" )
+     (segi A    and resi  402 and name "O4"  )  2.798 1.0 1.0
+assi (segi A    and resi  148 and name "N"   )
+     (segi A    and resi  402 and name "C7"  )  3.525 1.0 1.0
+assi (segi A    and resi  149 and name "N"   )
+     (segi A    and resi  402 and name "O71" )  2.906 1.0 1.0
