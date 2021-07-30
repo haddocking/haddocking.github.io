@@ -184,7 +184,7 @@ Generating a tabular report using the "ligand" preset and saving it in CSV forma
 need to select a template for docking. The a pre-generated file can be found in the `data` directory as `ligands.csv`. 
 
 
-**Note** that the file you create can differ from the pre-generated file provided as the PDB database is constantly updated.
+**Note** _that the file you create can differ from the pre-generated file provided as the PDB database is constantly updated._
 
 
 A filtered version of it with only the required data can be found in the same directory in the `ligands_filtered.csv` file. 
@@ -234,39 +234,18 @@ The file has already been sorted according to similarity value meaning the compo
 are near the top of the file. From this point on, the selection of the most suitable template becomes a process of filtering out
 the templates that are ill-suited for modelling (low quality, mutations near the binding site, missing density, etc...).
 
-A closer examination of the binding site of the most similar template, `2PRH`, reveals missing density close to the ORO cofactor meaning this
-template is not very well suited to our purposes. 
-
-
-__WOULD BE NICE TO SHOW THE 2PRH BINDING SITE AND POINT TO THE MISSING REGION__
+Two templates are highly similar, `2PRH` and `7K2U` with Tversky coefficients of 0.956 and 0.942, respectively.
+A closer examination of the binding site of the most similar template, `2PRH`, reveals missing density close to the ORO cofactor (segment 227-225).
+Further this crystal structure has a lower resolution (2.4Å) than that of 7K2Y (1.72Å). For these reasons we select 7K2U for as template for the docking.
 
 <details style="background-color:#DAE4E7">
-<summary><b>See binding site of 2PRH</b></summary>
+<summary><b>See the comparison of 2PRH and 7K2U</b></summary>
 <br>
 <center>
-<i>View of the binding site for template 2PRH (in green) with the red arrow pointing to the missing region close to the ORO cofactor.</i>
+<i>2PRH (in cyan) and 7K2Y (in green). The red arrow on the right point to the missing region in 2PRH. The orange arrow on the left point to the ligand templates of interest.</i>
 </center>
 <figure align="center">
-    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
-</figure>
-</details>
-<br>
-
-
-Thankfully, the next template on the list (`7K2U`) is a template of
-equally high quality but has no issues that could interfere with our modelling efforts and thus becomes our template of
-choice.
-
-__THE IMAGE USED BELOW HAS IN ITS NAME 2prh - IS IT THE CORRECT ONE? SHOULD BE 7K2U__
-
-<details style="background-color:#DAE4E7">
-<summary><b>See binding site of 7K2U</b></summary>
-<br>
-<center>
-<i>Comparison of the binding site for template 2PRH (in green) and the target complex (in orange).</i>
-</center>
-<figure align="center">
-    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/2prh-vs-2k2u.png">
 </figure>
 </details>
 <br>
@@ -279,22 +258,19 @@ __THE IMAGE USED BELOW HAS IN ITS NAME 2prh - IS IT THE CORRECT ONE? SHOULD BE 7
 
 #### 3a. Preparing the receptor template and the shape PDB files
 
-The docking-ready file created from entry 2K2U is available as `data/template.pdb` with all the crystallisation artifacts and double occupancies removed).
-To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
-part of the pdb_tools package.
-
-__WRONG COMMAND BELOW - TO CORRECT__
-<a class="prompt prompt-cmd">
-  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 \> similarities.txt <br>
-  rm tmp <br>
-</a>
+The docking-ready file created from entry 7K2U is available as `data/template.pdb` with all the crystallisation artifacts (small molecules from the buffer), water and double occupancies removed).
+The removal of double occupancies can be done for example with the `pdb_selaltloc` utility which is part of the pdb_tools package.
 
 The next step involves the creation of the shape (based on the template compound) that will be used for the docking. This
-process requires the transformation of all heavy atoms of the template compound into shape beads. The shape beads have all the same residue and atom names, namely `SHA` and their chainID for use in HADDOCK should be `S`.
+process requires the transformation of all heavy atoms of the template compound (named VU7) into shape beads. 
+The shape beads have all the same residue and atom names, namely `SHA` and their chainID for use in HADDOCK should be `S`.
 
 <a class="prompt prompt-cmd">
-  python lig2shape.py shape F54.pdb > shape.pdb <br>
+  grep \" VU7 \" ./data/template.pdb > VU7.pdb <br>
+  python ./scripts/lig2shape.py shape VU7.pdb |pdb_reres |pdb_reatom> shape.pdb <br>
 </a>
+
+Note that we used `pdb_reres` and `pdb_reatom` to renumber the shape starting at 1.
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied
 by the shape we just created.
@@ -357,7 +333,7 @@ After logging in you are greeted with the first part of the submission portal. M
 run.
 
 
-* **Step1:** Define a name for your docking run in the field "Job name", e.g. *1D3G-shape-based*.
+* **Step1:** Define a name for your docking run in the field "Job name", e.g. *shape-based*.
 
 
 * **Step2:** Select the number of molecules to dock. Since this is a three-body docking between the template receptor, the template shape and the generated conformers so we should
@@ -490,6 +466,7 @@ anywhere from a few hours to a few days to finish depending on the load on our s
 
 
 **Note** that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a json file which contains all the settings and input structures for our run. We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run, and could be provided as supplementary material in a publication for example. This file can also be edited to change a few parameters for example. 
+The generated json file for this shape-based submission is provided as `job_params-shape.json` in the `data` directory.
 
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter json file as well as some information about the status of the run.
@@ -519,7 +496,7 @@ Once your run has completed you will be presented with a result page showing the
 #### 5a - Inspecting the result page
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
-same settings we used for our run). The precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76481-shape-based-small-molecule){:target="_blank"}.
+same settings we used for our run). _The precalculated run can be found_ [**here**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule){:target="_blank"}.
 Just glancing at the page tells us that our run has been a success both in terms of the actual run and the postprocessing
 that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 10 models in 10 different clusters,
 effectively performing only single structure analysis. This was expected since we specified no analysis when setting up the run.
@@ -545,20 +522,24 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 
 #### 5b - Visualisation of the models and comparison with the reference complex.
 
-For a closer look at the top models we can use the link just above the **Cluster 1** line to download the top10 models, 
-or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76481-shape-based-small-molecule_summary.tgz){:target="_blank"}.
+For a closer look at the top models we can use the link on results webpage just above the **Cluster 1** line to download the top10 models, 
+or simply click [**here**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule_summary.tgz){:target="_blank"}.
 
-Using the following command we can expand the contents of the tgz archive
+Using the following command expand the contents of the tgz archive in your working directory:
 
 <a class="prompt prompt-cmd">
-  tar xfz 76481-shape-based-small-molecule_summary.tgz <br>
+  tar xfz 76656-shape-based-small-molecule_summary.tgz <br>
 </a>
 
-Which will result in the creation of 10 PDB files in the current working directory. The files are named `cluster*_1.pdb` with
+This will result in the creation of 10 PDB files in the current working directory. The files are named `cluster*_1.pdb` with
 the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
 with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
-With the following command we can load the top 10 models (sorted by HADDOCK score) along with the reference compound for
+
+**Note** _that when clustering is performed, the best rank cluster might not be cluster1. In that case the cluster numbering follows the size of the clusters, with cluster1 being the most populated cluster, but not per se the top-ranked one. The order on the results webpage corresponds to the ranking._
+
+
+With the following command we can load the top 10 models into PyMol (sorted by HADDOCK score) along with the reference compound provided in the `data` directory for
 closer examination.
 
 <a class="prompt prompt-cmd">
@@ -585,7 +566,7 @@ And the following PyMOL commands allow us to get a better overview of the bindin
   zoom resn UNK <br>
 </a>
 
-The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores, they also adopt similar binding modes and are very close to the reference structure.
+The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores but they also adopt similar binding modes and are very close to the reference structure.
 
 <br>
 <center>
@@ -608,7 +589,7 @@ If installed in your system you can use the provided `data/izone` Profit script 
   obrms ./data/1d3g_ligand.pdb cluster1_ligand.pdb <br>
 </a>
 
-Revealing a ligand RMSD value of 0.73 indicating excellent agreement between model and reference structures.
+`obrms` reports a ligand RMSD value of 0.74 indicating excellent agreement between model and reference structures.
 
 If you don't have Profit installed you can use instead PyMol to write the aligned model. Assuming you still have PyMol open and have performed the above commands, 
 from the PyMOL menu select:
@@ -627,11 +608,11 @@ You can then calculate the ligand RMSD with:
   \rm tmp_ligand.pdb <br>
 </a>
 
-**Note** that this RMSD values will differ slightly from what you will get using Profit as the fitting is using the entire backbone in PyMol while only interface residues are defined in the `izone` script used with Profit. As such the Profit value might give a better indication of the quality of the docked model as it will not depend on conformational differences in remote parts of the receptor.
+**Note** _that this RMSD values will differ slightly from what you will get using Profit as the fitting is using the entire backbone in PyMol while only interface residues are defined in the `izone` script used with Profit. As such the Profit value might give a better indication of the quality of the docked model as it will not depend on conformational differences in remote parts of the receptor._
 
 
 
-If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76481-shape-based-small-molecule.tgz){:target="_blank"}
+If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule.tgz){:target="_blank"}
 and expand it using the same command as above. This will create the `76481-shape-based-small-molecule` directory in
 the current working directory. The final models can be found under the `structures/it1` subdirectory. There are 200
 PDB files in total and their ranking along with their scores can be seen in the `file.list` file.
