@@ -62,7 +62,7 @@ All files, scripts and data for running this tutorial can be downloaded as a gzi
 This will create a `shape-small-molecule` directory where you will find various scripts and data.
 
 Prior to getting started we need to setup our environment. The simplest way to do that would be to make use of `anaconda`.
-If you are unfamiliar with `anaconda/conda` check the [nice introduction](https://github.com/JoaoRodrigues/intro-to-conda){:target="_blank"} by Joãa Rodrigues.
+If you are unfamiliar with `anaconda/conda` check the [nice introduction](https://github.com/JoaoRodrigues/intro-to-conda){:target="_blank"} by João Rodrigues.
 Assuming an existing installation of anaconda, the following command should take care of all required python packages.
 
 <a class="prompt prompt-cmd">
@@ -210,7 +210,10 @@ The `templates.smi` file can be created from the following command:
   grep \-v SMILES data/ligands_filtered.csv | awk \'{print $3,$1\"_\"$2}\' \> templates.smi <br>
 </a>
 
-The `target.smi` file (also present in the `data` directory) can be created manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE){:target="_blank"}.
+The `target.smi` file has already been created and can be found in the `data` directory.
+In general if the compound one is interested in is part of a PDB structure then its SMILES
+string can be found in the PDB. ALternatively there's a plethora of computational chemistry
+tools that can generate SMILES strings.
 
 The next step involves computing the similarity values between our target (reference) compound and all template compounds
 we identified through the RCSB search portal. For this we will use an RDKit-based implementation of the MCS procedure described
@@ -238,8 +241,6 @@ A closer examination of the binding site of the most similar template, `2PRH`, r
 template is not very well suited to our purposes. 
 
 
-__WOULD BE NICE TO SHOW THE 2PRH BINDING SITE AND POINT TO THE MISSING REGION__
-
 <details style="background-color:#DAE4E7">
 <summary><b>See binding site of 2PRH</b></summary>
 <br>
@@ -257,16 +258,15 @@ Thankfully, the next template on the list (`7K2U`) is a template of
 equally high quality but has no issues that could interfere with our modelling efforts and thus becomes our template of
 choice.
 
-__THE IMAGE USED BELOW HAS IN ITS NAME 2prh - IS IT THE CORRECT ONE? SHOULD BE 7K2U__
 
 <details style="background-color:#DAE4E7">
 <summary><b>See binding site of 7K2U</b></summary>
 <br>
 <center>
-<i>Comparison of the binding site for template 2PRH (in green) and the target complex (in orange).</i>
+<i>Comparison of the binding site for template 7k2u (in green) and the target complex (in orange).</i>
 </center>
 <figure align="center">
-    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_2prh.png">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_7k2u.png">
 </figure>
 </details>
 <br>
@@ -279,28 +279,26 @@ __THE IMAGE USED BELOW HAS IN ITS NAME 2prh - IS IT THE CORRECT ONE? SHOULD BE 7
 
 #### 3a. Preparing the receptor template and the shape PDB files
 
-The docking-ready file created from entry 2K2U is available as `data/template.pdb` with all the crystallisation artifacts and double occupancies removed).
+The docking-ready file created from entry 7K2U is available as `data/template.pdb` with all the crystallisation artifacts and double occupancies removed).
 To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
 part of the pdb_tools package.
 
-__WRONG COMMAND BELOW - TO CORRECT__
 <a class="prompt prompt-cmd">
-  paste templates.smi tmp | awk '{print $2,$4}' | sed -e 's/_/ /' | sort -grk3 \> similarities.txt <br>
-  rm tmp <br>
+  pdb_selaltloc 7K2U.pdb | pdb_keepcoord | grep \-v ACT | grep \-v PGE | grep \-v SO4 | grep \-v GOL | grep \-v HOH \> template.pdb <br>
 </a>
 
 The next step involves the creation of the shape (based on the template compound) that will be used for the docking. This
 process requires the transformation of all heavy atoms of the template compound into shape beads. The shape beads have all the same residue and atom names, namely `SHA` and their chainID for use in HADDOCK should be `S`.
 
 <a class="prompt prompt-cmd">
-  python lig2shape.py shape F54.pdb > shape.pdb <br>
+  python lig2shape.py shape F54.pdb \> shape.pdb <br>
 </a>
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied
 by the shape we just created.
 
 <a class="prompt prompt-cmd">
-  grep -v VU7 data/template.pdb > template-final.pdb <br>
+  grep \-v VU7 data/template.pdb \> template-final.pdb <br>
 </a>
 
 <br>
@@ -308,7 +306,27 @@ by the shape we just created.
 #### 3b. Generating an ensemble of conformations for the ligand to be docked
 
 
-__TO BE WRITTEN__
+To make sure the tutorial we are presenting here sticks as closely as possible to a
+real-life modelling scenario we will be generating conformers starting from the SMILES
+string of the reference compound. For this, we will also use RDKit along with a predefined
+set of parameters that govern the behaviour of the program during the conformer generation.
+
+The script we will use can be found in the `scripts` subfolder and is named `generate_conformers.py`.
+
+Running it with the `-h` flag (short for `--help`) will list all possible options the script
+can be called with. We will run it with the options we found to yield the best results when
+this protocol was being benchmarked.
+
+<a class="prompt prompt-cmd">
+  ./scripts/generate_conformers.py \-i data/target.smi \-p 3sr \-m \-o conformers.pdb <br>
+</a>
+
+The above command will create the `conformers.pdb` file in the current working directory.
+We need to process the file to remove the redundant data in it and prepare it for docking.
+
+<a class="prompt prompt-cmd">
+  grep \-v CONECT conformers.pdb | sed \-e \'s\/UNL\/UNK\/\' | pdb_chain \-B \> t; mv t conformers.pdb <br>
+</a>
 
 <br>
 
