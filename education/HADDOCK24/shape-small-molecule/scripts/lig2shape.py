@@ -2,7 +2,6 @@ import sys
 
 def format_shape_pharm(lig):
     ligFile = open(lig, 'r')
-    outputFile = open('shape_pharm.pdb', 'w')
 
     for line in ligFile:
         if 'HETATM' in line or 'ATOM' in line:
@@ -11,14 +10,12 @@ def format_shape_pharm(lig):
             y = float(line.split( )[7])
             z = float(line.split( )[8])
             pharm_info = float(line.split( )[9])
-            print("ATOM   {: >4d}  SHA SHA S{: >4d}     {: 7.3f} {: 7.3f} {: 7.3f} {:5.2f}  0.00 ".format(resi, resi, x, y, z, pharm_info))
-
-    outputFile.close()
+            print("ATOM   {: >4d}  SHA SHA S{: >4d}     {: 7.3f} {: 7.3f} {: 7.3f} {:5.2f}  1.00 ".format(resi, resi, x, y, z, pharm_info))
+    print("END")
 
 
 def format_shape(lig):
     ligFile = open(lig, 'r')
-    outputFile = open('shape.pdb', 'w')
 
     for line in ligFile:
         if 'HETATM' in line or 'ATOM' in line:
@@ -26,8 +23,8 @@ def format_shape(lig):
             x = float(line.split( )[6])
             y = float(line.split( )[7])
             z = float(line.split( )[8])
-            print("ATOM   {: >4d}  SHA SHA S{: >4d}     {: 7.3f} {: 7.3f} {: 7.3f}  1.00  0.00 ".format(resi, resi, x, y, z))
-
+            print("ATOM   {: >4d}  SHA SHA S{: >4d}     {: 7.3f} {: 7.3f} {: 7.3f}  1.00  1.00 ".format(resi, resi, x, y, z))
+    print("END")
     
 if __name__ == "__main__":
     mode = sys.argv[1]
