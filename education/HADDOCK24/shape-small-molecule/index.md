@@ -409,7 +409,7 @@ Molecule 3 - input -> Segment ID to use during the docking -> S
 </a>
 
 
-* **Step 6:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 6:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 * **Step 7:** The second submission tab "Input Parameters" can be skipped entirely since we will
@@ -489,9 +489,34 @@ Analysis parameters -> Full or limited analysis of results -> None
 anywhere from a few hours to a few days to finish depending on the load on our servers.
 
 
+**Note** that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a json file which contains all the settings and input structures for our run. We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run, and could be provided as supplementary material in a publication for example. This file can also be edited to change a few parameters for example. 
+
+
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter json file as well as some information about the status of the run.
+
+<figure align="center">
+<img width="75%" src="/education/HADDOCK24/shape-small-molecule/submission.png">
+</figure>
+
+Currently your run should be queued but eventually its status will change to "Running":
+
+<figure align="center">
+<img width="75%" src="/education/HADDOCK24/shape-small-molecule/running.png">
+</figure>
+
+The page will automatically refresh giving you an update on the progress of your and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+
+
 <hr>
 
 ### 5. Visualisation and analysis of results
+
+
+Once your run has completed you will be presented with a result page showing the cluster statistics (in this case the statistics of the top10 single models) and some graphical representation of the data (and if registered, you will also be notified by email). 
+
+<br>
+
+#### 5a - Inspecting the result page
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
 same settings we used for our run). The precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule){:target="_blank"}.
@@ -501,34 +526,42 @@ effectively performing only single structure analysis. This was expected since w
 Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
 find that it conveys no measurable benefit for this type of modelling (protein-small molecule) and therefore we skip it.
 
-The very bottom of the page contains some plots of the HADDOCK score against the other parameterers it such as the vdW and
-electrostatics energy. Additionaly HADDOCK score is also plotted against two structural measures: The Fraction of Common
-Contacts (FCC) and the Interface-Ligand RMSD (IL-RMSD). These plots would be more meaningful if clustering was enabled as
-they would show the distribution of the various metrics in clusters instead of the single models they now show.
+The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model). The graphs are interactive and you can turn on and off specific clusters (single structures in this case), but also zoom in on specific areas of the plot.
+
 
 A more consice way of looking at the breakdown of energetics per model is to look at the summary for each model which can be
 found immediately below the overall summary page. For example, for the top scoring model the HADDOCK score is -62.6 with a
-vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1. The HADDOCK
-score is the sum of the energetic terms and `-1/100 * BSA`. Also note how the restraint energy is 0 meaning the way we defined
-the restraints made sure that there was no "leftover" restraint energy in the system.
+vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1. 
 
-For a closer look at the top models we can use the link just above the **Cluster 1** line, or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule_summary.tgz){:target="_blank"}.
+The HADDOCK score in this case corresponds to the it1 score (see for details the [online manual pages](https://www.bonvinlab.org/software/haddock2.4/scoring/){:target="_blank"}). It is defined as:
+
+<pre>
+      HADDOCK-it1-score = 1.0 * Evdw + 1.0 * Eelec + 1.0 * Edesol + 0.1 * Eair - 0.01 * BSA
+</pre>
+
+where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, Eair the distance restraint energy and BSA the buried surface area in Å. The various components of the HADDOCK score are also reported for each cluster on the results web page.
+
+
+
+<br>
+
+#### 5b - Visualisation of the models and comparison with the reference complex.
+
+For a closer look at the top models we can use the link just above the **Cluster 1** line to download the top10 models, 
+or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule_summary.tgz){:target="_blank"}.
 
 Using the following command we can expand the contents of the tgz archive
 
 <a class="prompt prompt-cmd">
-  tar xf 73074-shape-based-small-molecule_summary.tgz <br>
+  tar xfz 73074-shape-based-small-molecule_summary.tgz <br>
 </a>
 
 Which will result in the creation of 10 PDB files in the current working directory. The files are named `cluster*_1.pdb` with
 the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
 with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
-Examining the scores available at the result webpage once again shows that the top 5 models are very close in terms of HADDOCK
-score while the bottom 5 score a bit worse. We can also examine the models structurally to see if the better scoring models
-are also of higher-quality compared to the worse scoring ones. Our expectation is that the high-scoring models (models 1-5)
-do a better job at reproducing the experimentally available structure compared to the worse-scoring ones (models 6-10).
-
+Examining the scores available at the result webpage once again shows that all top 10 models are very close in terms of HADDOCK score. 
+We can also examine the models structurally how much difference there is between them. 
 <details >
 <summary style="bold">
 <b><i>Superimposition of the top scoring pose (in orange) on the reference complex (in white).</i></b>
@@ -543,7 +576,7 @@ With the following command we can load the top 10 models (sorted by HADDOCK scor
 closer examination.
 
 <a class="prompt prompt-cmd">
-  pymol 1d3g.pdb \ <br>
+  pymol data/1d3g.pdb \ <br>
   cluster1_1.pdb \ <br>
   cluster2_1.pdb \ <br>
   cluster3_1.pdb \ <br>
@@ -556,13 +589,14 @@ closer examination.
   cluster10_1.pdb <br>
 </a>
 
+
 After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
 the following PYMOL commands:
 
 <a class="prompt prompt-pymol">
   remove resn hoh+so4+act+ddq <br>
-  alignto 1d3g and chain A
-  zoom
+  alignto 1d3g and chain A <br>
+  zoom <br>
 </a>
 
 And the following PyMOL commands allow us to get a better overview of the binding site:
@@ -571,28 +605,47 @@ And the following PyMOL commands allow us to get a better overview of the bindin
   remove hydro <br>
   hide everything, resn sha <br>
   util.cbc <br>
-  color white, 1d3g
-  util.cnc
+  color white, 1d3g <br>
+  util.cnc <br>
+  zoom resn UNK <br>
 </a>
 
-Running the commands above reveals that the top 5 compounds are not only close in terms of HADDOCK score but also in terms
-of the pose they obtain in the binding site. Moving to the bottom half of the top reveals an entirely different story with
-the models obtaining poses that are slightly or significantly different to the crystallographic one. In some cases, such as for models
-7, 9 and 10, the compound has rotated 180 degrees along the long axis, a problem common to many biomolecular modelling scenarios.
-The top 5 poses however are all very close to the reference structure and capture all the details of the interaction with
-a high degree of accuracy which of course means that our modelling effort can be considered a success.
+The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores, they also adopt similar binding modes and are very close to the reference structure.
 
-As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. For example, for
-the top-scoring compound the following command can be used:
+As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. Before doing that we should make sure the models are aligned to the target.
+This can be done using for example the [Profit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
+
+If installed in your system you can use the provided `data/izone` Profit script to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
 
 <a class="prompt prompt-cmd">
-  profit -f izone 1d3g.pdb cluster1_1.pdb <br>
+  profit -f scripts/izone ./data/1d3g.pdb cluster1_1.pdb <br>
   grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
   obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
-  rm tmp.pdb tmp_ligand.pdb <br>
+  \rm tmp_ligand <br>
 </a>
 
-Revealing a ligand RMSD value of 0.98 indicating excellent agreement between model and reference structures.
+Revealing a ligand RMSD value of 0.73 indicating excellent agreement between model and reference structures.
+
+If you don't have Profit installed you can use instead PyMol to write the aligned model. Assuming you still have PyMol open and have performed the above commands, 
+from the PyMOL menu select:
+
+<a class="prompt prompt-info">File -> Export molecule...</a>
+<a class="prompt prompt-info">Selection -> cluster1_1</a>
+<a class="prompt prompt-info">Click on Save...</a>
+<a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
+<a class="prompt prompt-info">Name your file *tmp.pdb*, note its location and move it to your working directory</a>
+
+You can then calculate the ligand RMSD with:
+
+<a class="prompt prompt-cmd">
+  grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
+  obrms ./data/1d3g_ligand.pdb tmp_ligand.pdb <br>
+  \rm tmp_ligand.pdb <br>
+</a>
+
+**Note** that this RMSD values will differ slightly from what you will get using Profit as the fitting is using the entire backbone in PyMol while only interface residues are defined in the `izone` script used with Profit. As such the Profit value might give a better indication of the quality of the docked model as it will not depend on conformational differences in remote parts of the receptor.
+
+
 
 If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule.tgz){:target="_blank"}
 and expand it using the same command as above. This will create the `73074-shape-based-small-molecule` directory in
@@ -612,7 +665,7 @@ The above command should show the same HADDOCK scores as what we already saw for
 
 The shape-based protocol described above can be adapted into a pharmacophore-based protocol in which the beads used to drive the docking are assigned pharmacophore properties.
 
-This protocol requires modifications of the aforedescribed **Steps 2 and 3**.
+This protocol requires modifications of the aforedescribed **Steps 2 and 4**.
 
 <BR>
 
@@ -761,14 +814,14 @@ At the same time we also need to remove the compound present in the template str
 In order to account for the ligand flexibility during the docking, we will provide several conformations of the target ligand. We will use the conformers used in the shape based protocol and we will add pharmacophore features using the following commands:
 
 <a class="prompt prompt-cmd">
-mkdir tmp 
-cd tmp
-python ../scripts/split_pdb.py ../data/conformers.pdb 
-obabel -ipdb conformers_1.pdb -osdf -O BRE.sdf 
-for pdb in *pdb; do python ../scripts/add_atom_features.py BRE.sdf $pdb; done
-cat *features.pdb ../conformers.pdb
-cd ..
-rm tmp
+mkdir tmp <br>
+cd tmp <br>
+python ../scripts/split_pdb.py ../data/conformers.pdb <br>
+obabel -ipdb conformers_1.pdb -osdf -O BRE.sdf <br>
+for pdb in *pdb; do python ../scripts/add_atom_features.py BRE.sdf $pdb; done <br>
+cat *features.pdb ../conformers.pdb <br>
+cd .. <br>
+\rm -r tmp <br?
 </a>
 <br>
 
@@ -816,23 +869,25 @@ Those restraints are pre-calculated (`data/cofactor_restraints_pharm.tbl`).
 The docking preparation is detailed in **Step 4** from the shape-based protocol. You simply need to adapt the following parameters: 
 
 <a class="prompt prompt-info">
-Molecule 1 - input -> PDB structure to submit -> Upload the file named `template-final_pharm.pdb`
+Molecule 1 - input -> PDB structure to submit -> Upload the file named *template-final_pharm.pdb*
 </a>
 
 <a class="prompt prompt-info">
-Molecule 3 - input -> PDB structure to submit -> Upload the file named `shape_pharm.pdb`
+Molecule 3 - input -> PDB structure to submit -> Upload the file named *shape_pharm.pdb*
 </a>
 
 On the page 3 of the submission process, you need to upload the restraints files of the pharmacophore-based protocol:
 
 <a class="prompt prompt-info">
-Distance restraints -> Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Upload the `target_pharm.tbl` file
+Distance restraints -> Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Upload the *target_pharm.tbl* file
 </a>
 
 <a class="prompt prompt-info">
-Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the `cofactor-restraints_pharm.tbl` file
+Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the *cofactor-restraints_pharm.tbl* file
 </a>
 
+
+<hr>
 
 ### 5.pharm Visualisation and analysis of results
 
@@ -862,7 +917,7 @@ With the following command we can load the top 10 models (sorted by HADDOCK scor
 closer examination.
 
 <a class="prompt prompt-cmd">
-  pymol 1d3g.pdb \ <br>
+  pymol data/1d3g.pdb \ <br>
   73078-tuto_pharm_summary/cluster1_1.pdb \  <br>
   73078-tuto_pharm_summary/cluster2_1.pdb \  <br>
   73078-tuto_pharm_summary/cluster3_1.pdb \  <br>
@@ -880,7 +935,8 @@ the following PYMOL commands:
 
 <a class="prompt prompt-pymol">
   remove resn hoh+so4+act+ddq <br>
-  alignto 1d3g and chain A
+  alignto 1d3g and chain A <br>
+  zoom <br>
 </a>
 
 And the following PyMOL commands allow us to get a better overview of the binding site:
@@ -889,19 +945,51 @@ And the following PyMOL commands allow us to get a better overview of the bindin
   remove hydro <br>
   hide everything, resn sha <br>
   util.cbc <br>
-  color white, 1d3g
-  util.cnc
+  color white, 1d3g <br>
+  util.cnc <br>
+  zoom resn UNK <br>
 </a>
 
 The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores, they also adopt similar binding modes and are very close to the reference structure.
 
-As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. For example, for the top-scoring compound the following command can be used:
+As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. Before doing that we should make sure the models are aligned to the target.
+This can be done using for example the [Profit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
+
+If installed in your system you can use the provided `data/izone` Profit script to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
 
 <a class="prompt prompt-cmd">
-  profit -f izone 1d3g.pdb 73078-tuto_pharm_summary/cluster1_1.pdb <br>
+  profit -f scripts/izone ./data/1d3g.pdb cluster1_1.pdb <br>
   grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
   obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
-  rm tmp_ligand <br>
+  \rm tmp_ligand <br>
 </a>
 
 Revealing a ligand RMSD value of 1.06 indicating excellent agreement between model and reference structures.
+
+If you don't have Profit installed you can use instead PyMol to write the aligned model. Assuming you still have PyMol open and have performed the above commands, 
+from the PyMOL menu select:
+
+<a class="prompt prompt-info">File -> Export molecule...</a>
+<a class="prompt prompt-info">Selection -> cluster1_1</a>
+<a class="prompt prompt-info">Click on Save...</a>
+<a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
+<a class="prompt prompt-info">Name your file *tmp.pdb*, note its location and move it to your working directory</a>
+
+You can then calculate the ligand RMSD with:
+
+<a class="prompt prompt-cmd">
+  grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
+  obrms ./data/1d3g_ligand.pdb tmp_ligand.pdb <br>
+  \rm tmp_ligand.pdb <br>
+</a>
+
+**Note** that this RMSD values will differ slightly from what you will get using Profit as the fitting is using the entire backbone in PyMol while only interface residues are defined in the `izone` script used with Profit. As such the Profit value might give a better indication of the quality of the docked model as it will not depend on conformational differences in remote parts of the receptor.
+
+
+<hr>
+## Congratulations!
+
+You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu).
+
+
+And check also our [education](/education) web page where you will find more tutorials!
