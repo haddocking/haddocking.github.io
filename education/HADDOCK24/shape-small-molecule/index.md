@@ -293,8 +293,7 @@ The next step involves the creation of the shape (based on the template compound
 process requires the transformation of all heavy atoms of the template compound into shape beads. The shape beads have all the same residue and atom names, namely `SHA` and their chainID for use in HADDOCK should be `S`.
 
 <a class="prompt prompt-cmd">
-  grep VU7 data/template.pdb | awk \'{printf \"ATOM   %4d  SHA SHA S %3d     %s  %s  %s  %s %s\n\", NR, NR, $7, $8, $9, $10, $11}\' \> shape.pdb <br>
-  echo END \>\>shape.pdb <br>
+  python lig2shape.py shape F54.pdb > shape.pdb <br>
 </a>
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied
@@ -736,7 +735,7 @@ The created `F54_features.pdb` file contains pharmacophore information in the oc
 The template ligand can now be converted into a shape (`shape_pharm.pdb`) with the following script:
 
 <a class="prompt prompt-cmd">
-   python lig2shape.py F54_features.pdb <br>
+   python lig2shape.py pharm F54_features.pdb > shape_pharm.pdb <br>
 </a>
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied by the shape we just created.
