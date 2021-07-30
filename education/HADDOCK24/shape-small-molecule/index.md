@@ -759,8 +759,19 @@ At the same time we also need to remove the compound present in the template str
 #### 3b.pharm - Generating target ligand conformers and encoding the pharmacophore information
 
 
-__TO BE WRITTEN - CAN IN PRINCIPLE TAKE THE CONFORMERS FROM THE SHAPE PART OF THE PROTOCOL AND ONLY ADD THE PHARMACOPHORE FEATURES - SHOULD BE DESCRIBED__
+In order to account for the ligand flexibility during the docking, we will provide several conformations of the target ligand. We will use the conformers used in the shape based protocol and we will add pharmacophore features using the following commands:
 
+<a class="prompt prompt-cmd">
+mkdir tmp 
+cd tmp
+python ../scripts/split_pdb.py ../data/conformers.pdb 
+obabel -ipdb conformers_1.pdb -osdf -O BRE.sdf 
+for pdb in *pdb; do python ../scripts/add_atom_features.py BRE.sdf $pdb; done
+cat *features.pdb ../conformers.pdb
+cd ..
+rm tmp
+</a>
+<br>
 
 #### 3c.pharm - Generating the pharmacophore shape restraints
 
