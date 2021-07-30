@@ -78,6 +78,7 @@ def update_pdb(atomFeatures, fName, atomDict):
                     output.write('{}{: 4.2f}{}'.format(line[0:55], 0.00,  line[60:]))
 
     print("Features generated for : {}".format(fName))
+    output.write('END\n')
     output.close()
 
 
