@@ -357,31 +357,44 @@ have to request "guru" level access.
 After logging in you are greeted with the first part of the submission portal. Make sure to use an indicative name for the
 run.
 
-This is a three-body docking between the template receptor, the template shape and the generated conformers so we should
+
+* **Step1:** Define a name for your docking run in the field "Job name", e.g. *1D3G-shape-based*.
+
+
+* **Step2:** Select the number of molecules to dock. Since this is a three-body docking between the template receptor, the template shape and the generated conformers so we should
 set the number of molecules to 3.
 
 <a class="prompt prompt-info">
 Number of molecules -> 3
 </a>
 
+
+* **Step3:** Input the receptor protein PDB file. For this unfold the **Molecule 1 - input** if it isn't already unfolded.
+
 <a class="prompt prompt-info">
-Molecule 1 - input -> PDB structure to submit -> Upload the file named `template-final.pdb`
+Molecule 1 - input -> PDB structure to submit -> Upload the file named *template-final.pdb*
 </a>
 
 <a class="prompt prompt-info">
 Molecule 1 - input -> Fix molecule at its original position during it0? -> True
 </a>
 
+
+* **Step4:** Input the ensemble of ligand conformations PDB file. For this unfold the **Molecule 2 - input** if it isn't already unfolded.
+
 <a class="prompt prompt-info">
-Molecule 2 - input -> PDB structure to submit -> Upload the file named `conformers.pdb`
+Molecule 2 - input -> PDB structure to submit -> Upload the file named *conformers.pdb*
 </a>
 
 <a class="prompt prompt-info">
 Molecule 2 - input -> What kind of molecule are you docking? -> Ligand
 </a>
 
+
+* **Step5:** Input the shape PDB file. For this unfold the **Molecule 3 - input** if it isn't already unfolded.
+
 <a class="prompt prompt-info">
-Molecule 3 - input -> PDB structure to submit -> Upload the file named `shape.pdb`
+Molecule 3 - input -> PDB structure to submit -> Upload the file named *shape.pdb*
 </a>
 
 <a class="prompt prompt-info">
@@ -396,24 +409,40 @@ Molecule 3 - input -> What kind of molecule are you docking? -> Shape
 Molecule 3 - input -> Segment ID to use during the docking -> S
 </a>
 
-Then you can click "Next" to proceed to page 2 of the submission process. This part can be skipped entirely since we will
+
+* **Step 6:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+
+
+* **Step 7:** The second submission tab "Input Parameters" can be skipped entirely since we will
 be defining our restraints through tbl files instead of doing it through the interface. Click on "Next".
 
+
+* **Step 8:** Define the distance restraints (both to the shape and to maintain the co-factors in place). For this unfold the *Distance restraints* menu if not already unfolded
+
 <a class="prompt prompt-info">
-Distance restraints -> Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Upload the `shape-restraints.tbl` file
+Distance restraints -> Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Upload the *shape-restraints.tbl* file
 </a>
 
 <a class="prompt prompt-info">
-Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the `cofactor-restraints.tbl` file
+Distance restraints -> You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Upload the *cofactor-restraints.tbl* file
 </a>
+
+For protein-ligand docking we advise to keep all hydrogen atoms (non-polar hydrogens are deleted by default by the server)
 
 <a class="prompt prompt-info">
 Distance restraints -> Remove non-polar hydrogens? -> False
 </a>
 
+Further we want to make use of all shape restraints. For this we should turn off the random removal of restraints (only affects the ambig restraints):
+
 <a class="prompt prompt-info">
 Distance restraints -> Randomly exclude a fraction of the ambiguous restraints (AIRs) -> False
 </a>
+
+
+* **Step 9:** Change the sampling parameters. For this unfold the *Sampling parameters* menu if not already unfolded
+
+Since we have 32 conformations in the ligand ensembles, change the number of models to generate to 320 (10 per ligand conformation).
 
 <a class="prompt prompt-info">
 Sampling parameters -> Number of structures for rigid body docking -> 320
@@ -423,24 +452,43 @@ Sampling parameters -> Number of structures for rigid body docking -> 320
 Sampling parameters -> Sample 180 degrees rotated solutions during rigid body EM -> False
 </a>
 
+For small molecule docking we do not recommend to perform the final refinement, but instead use the models from the semi-flexible refinement stage (it1).
+
 <a class="prompt prompt-info">
 Sampling parameters -> Perform final refinement? -> False
 </a>
+
+
+* **Step 10:** Change the interaction parameters. For this unfold the *Energy and interaction parameter* menu if not already unfolded
+
+We scale down the interaction during rigid body docking (it0) to allow for better penetration of the ligand in possiblity buried binding sites.
 
 <a class="prompt prompt-info">
 Energy and interaction parameters -> Scaling of intermolecular interactions for rigid body EM -> 0.001
 </a>
 
+
+* **Step 10:** Change the scoring function. For this unfold the *Scoring parameter* menu if not already unfolded
+
+Because of the changes in **Step 9** which can result in clashes, we should set the weight of the van der Waals energy term to 0 for it0
+
 <a class="prompt prompt-info">
 Scoring parameters ->  Evdw 1 -> 0
 </a>
+
+
+* **Step 11:** Change the analysis parameters. For this unfold the *Analysis parameter* menu if not already unfolded
+
+For this docking scenario we recommend to take the ranking of single structure and do not perform clustering.
 
 <a class="prompt prompt-info">
 Analysis parameters -> Full or limited analysis of results -> None
 </a>
 
-After which you can click "Submit". If everything went well your docking run has been added to the queue and might take
+
+* **Step 12:** You are ready to dock! Click "Submit". If everything went well your docking run has been added to the queue and might take
 anywhere from a few hours to a few days to finish depending on the load on our servers.
+
 
 <hr>
 
