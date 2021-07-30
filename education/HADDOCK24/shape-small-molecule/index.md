@@ -318,7 +318,7 @@ can be called with. We will run it with the options we found to yield the best r
 this protocol was being benchmarked.
 
 <a class="prompt prompt-cmd">
-  ./scripts/generate_conformers.py \-i data/target.smi \-p 3sr \-m \-o conformers.pdb <br>
+  ./scripts/generate_conformers.py \-i data/target.smi \-p 3sr \-c 50 \-m \-o conformers.pdb <br>
 </a>
 
 The above command will create the `conformers.pdb` file in the current working directory.
