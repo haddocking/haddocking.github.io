@@ -519,7 +519,7 @@ Once your run has completed you will be presented with a result page showing the
 #### 5a - Inspecting the result page
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
-same settings we used for our run). The precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule){:target="_blank"}.
+same settings we used for our run). The precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76481-shape-based-small-molecule){:target="_blank"}.
 Just glancing at the page tells us that our run has been a success both in terms of the actual run and the postprocessing
 that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 10 models in 10 different clusters,
 effectively performing only single structure analysis. This was expected since we specified no analysis when setting up the run.
@@ -531,7 +531,7 @@ The bottom of the page gives you some graphical representations of the results, 
 
 A more consice way of looking at the breakdown of energetics per model is to look at the summary for each model which can be
 found immediately below the overall summary page. For example, for the top scoring model the HADDOCK score is -62.6 with a
-vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1. 
+vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1, respectively. 
 
 The HADDOCK score in this case corresponds to the it1 score (see for details the [online manual pages](https://www.bonvinlab.org/software/haddock2.4/scoring/){:target="_blank"}). It is defined as:
 
@@ -543,52 +543,27 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 
 
 
-<br>
-
 #### 5b - Visualisation of the models and comparison with the reference complex.
 
 For a closer look at the top models we can use the link just above the **Cluster 1** line to download the top10 models, 
-or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule_summary.tgz){:target="_blank"}.
+or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76481-shape-based-small-molecule_summary.tgz){:target="_blank"}.
 
 Using the following command we can expand the contents of the tgz archive
 
 <a class="prompt prompt-cmd">
-  tar xfz 73074-shape-based-small-molecule_summary.tgz <br>
+  tar xfz 76481-shape-based-small-molecule_summary.tgz <br>
 </a>
 
 Which will result in the creation of 10 PDB files in the current working directory. The files are named `cluster*_1.pdb` with
 the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
 with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
-Examining the scores available at the result webpage once again shows that all top 10 models are very close in terms of HADDOCK score. 
-We can also examine the models structurally how much difference there is between them. 
-<details >
-<summary style="bold">
-<b><i>Superimposition of the top scoring pose (in orange) on the reference complex (in white).</i></b>
-</summary>
-<figure align="center">
-    <img src="/education/HADDOCK24/shape-small-molecule/top1.png">
-</figure>
-</details>
-<br>
-
 With the following command we can load the top 10 models (sorted by HADDOCK score) along with the reference compound for
 closer examination.
 
 <a class="prompt prompt-cmd">
-  pymol data/1d3g.pdb \ <br>
-  cluster1_1.pdb \ <br>
-  cluster2_1.pdb \ <br>
-  cluster3_1.pdb \ <br>
-  cluster4_1.pdb \ <br>
-  cluster5_1.pdb \ <br>
-  cluster6_1.pdb \ <br>
-  cluster7_1.pdb \ <br>
-  cluster8_1.pdb \ <br>
-  cluster9_1.pdb \ <br>
-  cluster10_1.pdb <br>
+  pymol data/1d3g.pdb cluster[1-9]_1.pdb cluster10_1.pdb <br>
 </a>
-
 
 After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
 the following PYMOL commands:
@@ -612,6 +587,16 @@ And the following PyMOL commands allow us to get a better overview of the bindin
 
 The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores, they also adopt similar binding modes and are very close to the reference structure.
 
+<br>
+<center>
+<i>Superimposition of the top10 scoring pose onto the reference complex (in white). </i>
+</center>
+<br>
+<figure align="center">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/top10-shape-vs-1d3g.png">
+</figure>
+<br>
+
 As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. Before doing that we should make sure the models are aligned to the target.
 This can be done using for example the [Profit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
 
@@ -619,9 +604,8 @@ If installed in your system you can use the provided `data/izone` Profit script 
 
 <a class="prompt prompt-cmd">
   profit -f scripts/izone ./data/1d3g.pdb cluster1_1.pdb <br>
-  grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
-  obrms 1d3g_ligand.pdb tmp_ligand.pdb <br>
-  \rm tmp_ligand <br>
+  grep UNK tmp.pdb | pdb_element > cluster1_ligand.pdb <br>
+  obrms ./data/1d3g_ligand.pdb cluster1_ligand.pdb <br>
 </a>
 
 Revealing a ligand RMSD value of 0.73 indicating excellent agreement between model and reference structures.
@@ -647,8 +631,8 @@ You can then calculate the ligand RMSD with:
 
 
 
-If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule.tgz){:target="_blank"}
-and expand it using the same command as above. This will create the `73074-shape-based-small-molecule` directory in
+If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76481-shape-based-small-molecule.tgz){:target="_blank"}
+and expand it using the same command as above. This will create the `76481-shape-based-small-molecule` directory in
 the current working directory. The final models can be found under the `structures/it1` subdirectory. There are 200
 PDB files in total and their ranking along with their scores can be seen in the `file.list` file.
 
