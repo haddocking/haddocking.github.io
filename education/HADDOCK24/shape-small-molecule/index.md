@@ -620,8 +620,15 @@ If installed in your system you can use the provided `data/izone` Profit script 
 
 `obrms` reports a ligand RMSD value of 0.74 indicating excellent agreement between model and reference structures.
 
-If you don't have Profit installed you can use instead PyMol to write the aligned model. Assuming you still have PyMol open and have performed the above commands, 
-from the PyMOL menu select:
+If you don't have Profit installed you can use instead PyMol to fit the models on the binding site residues:
+Assuming you still have PyMol open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
+
+<a class="prompt prompt-pymol">
+  select binding_site, resi 38+42+43+46+47+50+51+52+55+56+59+62+63+67+68+98+111+134+136+143+356+359+360+363+364 <br>
+  align cluster1_1 and backbone and binding_site, 1d3g and backbone and binding_site, cycles=0 <br>
+</a>
+
+Then save the aligned cluster1_1 by selecting from the PyMOL menu:
 
 <a class="prompt prompt-info">File -> Export molecule...</a>
 <a class="prompt prompt-info">Selection -> cluster1_1</a>
