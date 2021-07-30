@@ -410,7 +410,7 @@ Molecule 3 - input -> Segment ID to use during the docking -> S
 </a>
 
 
-* **Step 6:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 6:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 * **Step 7:** The second submission tab "Input Parameters" can be skipped entirely since we will
@@ -490,9 +490,34 @@ Analysis parameters -> Full or limited analysis of results -> None
 anywhere from a few hours to a few days to finish depending on the load on our servers.
 
 
+**Note** that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a json file which contains all the settings and input structures for our run. We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run, and could be provided as supplementary material in a publication for example. This file can also be edited to change a few parameters for example. 
+
+
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter json file as well as some information about the status of the run.
+
+<figure align="center">
+<img width="75%" src="/education/HADDOCK24/shape-small-molecule/submission.png">
+</figure>
+
+Currently your run should be queued but eventually its status will change to "Running":
+
+<figure align="center">
+<img width="75%" src="/education/HADDOCK24/shape-small-molecule/running.png">
+</figure>
+
+The page will automatically refresh giving you an update on the progress of your and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+
+
 <hr>
 
 ### 5. Visualisation and analysis of results
+
+
+Once your run has completed you will be presented with a result page showing the cluster statistics (in this case the statistics of the top10 single models) and some graphical representation of the data (and if registered, you will also be notified by email). 
+
+<br>
+
+#### 5a - Inspecting the result page
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
 same settings we used for our run). The precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule){:target="_blank"}.
@@ -502,23 +527,34 @@ effectively performing only single structure analysis. This was expected since w
 Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
 find that it conveys no measurable benefit for this type of modelling (protein-small molecule) and therefore we skip it.
 
-The very bottom of the page contains some plots of the HADDOCK score against the other parameterers it such as the vdW and
-electrostatics energy. Additionaly HADDOCK score is also plotted against two structural measures: The Fraction of Common
-Contacts (FCC) and the Interface-Ligand RMSD (IL-RMSD). These plots would be more meaningful if clustering was enabled as
-they would show the distribution of the various metrics in clusters instead of the single models they now show.
+The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model). The graphs are interactive and you can turn on and off specific clusters (single structures in this case), but also zoom in on specific areas of the plot.
+
 
 A more consice way of looking at the breakdown of energetics per model is to look at the summary for each model which can be
 found immediately below the overall summary page. For example, for the top scoring model the HADDOCK score is -62.6 with a
-vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1. The HADDOCK
-score is the sum of the energetic terms and `-1/100 * BSA`. Also note how the restraint energy is 0 meaning the way we defined
-the restraints made sure that there was no "leftover" restraint energy in the system.
+vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1. 
 
-For a closer look at the top models we can use the link just above the **Cluster 1** line, or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule_summary.tgz){:target="_blank"}.
+The HADDOCK score in this case corresponds to the it1 score (see for details the [online manual pages](https://www.bonvinlab.org/software/haddock2.4/scoring/){:target="_blank"}). It is defined as:
+
+<pre>
+      HADDOCK-it1-score = 1.0 * Evdw + 1.0 * Eelec + 1.0 * Edesol + 0.1 * Eair - 0.01 * BSA
+</pre>
+
+where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, Eair the distance restraint energy and BSA the buried surface area in Å. The various components of the HADDOCK score are also reported for each cluster on the results web page.
+
+
+
+<br>
+
+#### 5b - Visualisation of the models and comparison with the reference complex.
+
+For a closer look at the top models we can use the link just above the **Cluster 1** line to download the top10 models, 
+or simply click [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/73074-shape-based-small-molecule_summary.tgz){:target="_blank"}.
 
 Using the following command we can expand the contents of the tgz archive
 
 <a class="prompt prompt-cmd">
-  tar xf 73074-shape-based-small-molecule_summary.tgz <br>
+  tar xfz 73074-shape-based-small-molecule_summary.tgz <br>
 </a>
 
 Which will result in the creation of 10 PDB files in the current working directory. The files are named `cluster*_1.pdb` with
@@ -544,7 +580,7 @@ With the following command we can load the top 10 models (sorted by HADDOCK scor
 closer examination.
 
 <a class="prompt prompt-cmd">
-  pymol 1d3g.pdb \ <br>
+  pymol data/1d3g.pdb \ <br>
   cluster1_1.pdb \ <br>
   cluster2_1.pdb \ <br>
   cluster3_1.pdb \ <br>
@@ -562,8 +598,8 @@ the following PYMOL commands:
 
 <a class="prompt prompt-pymol">
   remove resn hoh+so4+act+ddq <br>
-  alignto 1d3g and chain A
-  zoom
+  alignto 1d3g and chain A <br>
+  zoom <br>
 </a>
 
 And the following PyMOL commands allow us to get a better overview of the binding site:
@@ -572,8 +608,8 @@ And the following PyMOL commands allow us to get a better overview of the bindin
   remove hydro <br>
   hide everything, resn sha <br>
   util.cbc <br>
-  color white, 1d3g
-  util.cnc
+  color white, 1d3g <br>
+  util.cnc <br>
 </a>
 
 Running the commands above reveals that the top 5 compounds are not only close in terms of HADDOCK score but also in terms
