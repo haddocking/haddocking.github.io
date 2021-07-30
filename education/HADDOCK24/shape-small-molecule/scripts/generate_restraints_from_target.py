@@ -32,7 +32,7 @@ with open(sys.argv[1]) as in_file:
 for i in range(0, len(resid)):    
     
     print(
-        "assi (segid S and resid * and (attr q =={: 4.2f})) (segid B and name {}) 1.0 1.0 0.0".format(
+        "assi (segid S and (attr q =={: 4.2f})) (segid B and name {}) 1.0 1.0 0.0".format(
             features[i], resid[i]
         ),
         file=open('shape_restraints_pharm.tbl', 'a')
