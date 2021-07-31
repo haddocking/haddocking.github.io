@@ -1,0 +1,9 @@
+name: haddock-shape-tutorial_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - rdkit=2020.09.3
+  - openbabel
+  - pandas
+  - biopython
