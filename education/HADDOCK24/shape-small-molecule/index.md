@@ -46,11 +46,10 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 ## Requirements and Setup
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL](https://www.pymol.org/){:target="_blank"}.
-Additionally, you will also need to run commands in a *nix terminal. If you are running this on a Mac or Linux system then
+Additionally, you will also need to run commands in a Unix-like terminal. If you are running this on a Mac or Linux system then
 appropriate shells (all commands should work under `bash`) are already part of the system. Windows users might have to install additional software or activate the
 [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10){:target="_blank"}. We consider this to be an advanced
-tutorial made with a specific application of HADDOCK in mind. Thus, it assumes familiarity with HADDOCK as well as the command
-line.
+tutorial made with a specific application of HADDOCK in mind. Thus, it assumes familiarity with HADDOCK as well as with the command line and scripting tools such as `awk`, `sorted` and `grep`.
 
 All files, scripts and data for running this tutorial can be downloaded as a gzipped tar archive from [here](/education/HADDOCK24/shape-small-molecule/shape-small-molecule.tgz). Extract the archive in the directory where you want to run the tutorial with the following command:
 
@@ -66,14 +65,14 @@ If you are unfamiliar with `anaconda/conda` check the [nice introduction](https:
 Assuming an existing installation of anaconda, the following command should take care of all required python packages.
 
 <a class="prompt prompt-cmd">
-  conda env create \-\-file requirements.yml <br>
+  conda env create \-\-file scripts/requirements.yml <br>
   conda activate haddock-shape-tutorial_env <br>
 </a>
 
 After activating the environment we also need to install the pdb-tools package which can be achieved with the following command:
 
 <a class="prompt prompt-cmd">
-  pip install pdb_tools <br>
+  pip install pdb-tools <br>
 </a>
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be
@@ -92,9 +91,9 @@ The docking protocol of HADDOCK was designed so that the molecules experience va
 **1. Randomization of orientations and rigid-body minimization (it0)**
 In this initial stage, the interacting partners are treated as rigid bodies, meaning that all geometrical parameters such as bonds lengths, bond angles, and dihedral angles are frozen. The partners are separated in space and rotated randomly about their centres of mass. This is followed by a rigid body energy minimization step, where the partners are allowed to rotate and translate to optimize the interaction. The role of AIRs in this stage is of particular importance. Since they are included in the energy function being minimized, the resulting complexes will be biased towards them. For example, defining a very strict set of AIRs leads to a very narrow sampling of the conformational space, meaning that the generated poses will be very similar. Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions, displaying greater variability in the region of binding.
 
-<details >
-<summary style="bold">
-<b><i>See animation of rigid-body minimization (it0):</i></b>
+<details>
+<summary>
+<b>[ Click here to see animation of rigid-body minimization (it0) ]</b>
 </summary>
 <figure align="center">
     <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_mini.gif">
@@ -106,8 +105,8 @@ In this initial stage, the interacting partners are treated as rigid bodies, mea
 The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step molecular dynamics-based refinement in order to optimize interface packing. It is worth noting that flexibility in torsion angle space means that bond lengths and angles are still frozen. The interacting partners are first kept rigid and only their orientations are optimized. Flexibility is then introduced in the interface, which is automatically defined based on an analysis of intermolecular contacts within a 5Å cut-off. This allows different binding poses coming from it0 to have different flexible regions defined. Residues belonging to this interface region are then allowed to move their side-chains in a second refinement step. Finally, both backbone and side-chains of the flexible interface are granted freedom. The AIRs again play an important role at this stage since they might drive conformational changes.
 
 <details >
-<summary style="bold">
-<b><i>See animation of semi-flexible simulated annealing (it1):</i></b>
+<summary>
+<b>[ Click here to see animation of semi-flexible simulated annealing (it1) ]</b>
 </summary>
 <figure align="center">
     <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
@@ -118,9 +117,9 @@ The second stage of the docking protocol introduces flexibility to the interacti
 **3. Refinement in Cartesian space with explicit solvent (water)**
 **Note:** This stage was part of the standard HADDOCK protocol up to (and including) v2.2. As of v2.4 it is no longer performed by default but the user still has the option of enabling it. In its place, a short energy minimisation is performed instead. The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side chains to be optimized.
 
-<details >
-<summary style="bold">
-<b><i>See animation of refinement in explicit solvent (water):</i></b>
+<details>
+<summary>
+<b>[ Click here to see animation of refinement in explicit solvent (water) ]</b>
 </summary>
 <figure align="center">
     <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_water.gif">
@@ -133,16 +132,16 @@ The second stage of the docking protocol introduces flexibility to the interacti
 
 ## Our target for this tutorial 
 
-We have chosen the complex with PDB id `1d3g` which is part of the [DUD-E dataset](http://dude.docking.org){:target="_blank"} as our target.
+We have chosen the complex with PDB id `1D3G` which is part of the [DUD-E dataset](http://dude.docking.org){:target="_blank"} as our target.
 This is a complex of an inhibitory brequinar analong bound to the human dihydroorotate dehydrogenase receptor.
-
-__Binding site of the target complex (1d3g)__. *The receptor is shown in white cartoon, whereas the brequinar analog
-(BRE) in orange sticks. The binding site also contains Orotate (ORO - purple sticks) and Flavin Mononucleotide
-(FMN - light blue sticks). BRE acts as an inhibitor of the oxidation of Dihydro-ORO -> ORO and the reduction of
-FMN -> dihydro-FMN.*
 
 <figure align="center">
     <img width="75%" src="/education/HADDOCK24/shape-small-molecule/binding_site.png">
+    <br>
+    <b>Binding site of the target complex (1D3G)</b>: The receptor is shown in white cartoon, whereas the brequinar analog
+    (BRE) in orange sticks. The binding site also contains Orotate (ORO - purple sticks) and Flavin Mononucleotide
+    (FMN - light blue sticks). BRE acts as an inhibitor of the oxidation of Dihydro-ORO -> ORO and the reduction of
+    FMN -> dihydro-FMN.
 </figure>
 
 
@@ -166,29 +165,29 @@ Briefly, the main steps of this protocol are the following:
 ### 1. Identifying suitable templates
 
 The nature of the binding site makes it clear that if we are to reproduce the chemical environment of the target complex
-then the template we choose must also contain ORO and FMN in its binding site.
+then the template we choose must also contain `ORO` and `FMN` in its binding site.
 
 The first step requires we search one of the PDB portals (in our case we will make use of [RCSB PDB portal](https://rcsb.org){:target="_blank"}) for
 templates to extract the shape information we will use throughout the docking. After landing on the homepage of the
-aforementioned RCSB portal we activate the advanced search functionality by clicking on the `Advanced Search` link
+aforementioned RCSB portal we activate the advanced search functionality by clicking on the [`Advanced Search` link](https://www.rcsb.org/search/advanced){:target="_blank"}
 immediately below the search bar.
 
 We will use the sequence of the receptor of our target complex as our primary search parameter. Clicking on the
 'Sequence' tab of the advanced search parameters we are provided with two options to load the query sequence. Either
-write/paste it manually using the large textbox or use a PDB id. We opt for the latter option. Writing `1d3g` in the
-`PDB ID` box and clicking on the prompt loads the sequence in the larger textbox above. We also specify an `Identity
+write/paste it manually using the large textbox or use a PDB id. We opt for the latter option. Writing `1D3G` in the
+`PDB id` box and clicking on the prompt loads the sequence in the larger textbox above. We also specify an `Identity
 Cutoff` of 100% to make sure we limit the results to only relevant hits. Once this is done click on the search button 
 at the bottom on the right. In case a prompt window pops up simply click on `ok`.
 
-Generating a tabular report using the "ligand" preset and saving it in CSV format allows us to gather all the data we
-need to select a template for docking. The a pre-generated file can be found in the `data` directory as `ligands.csv`. 
+Generating a tabular report using the "ligand" preset and saving it in `.csv` format allows us to gather all the data we
+need to select a template for docking. The pre-generated file can be found in the provided data under `data/ligands.csv`. 
 
 
-**Note** _that the file you create can differ from the pre-generated file provided as the PDB database is constantly updated._
+<i><b>Note</b> that the file you create can differ from the pre-generated file provided as the PDB database is constantly updated.</i>
 
 
-A filtered version of it with only the required data can be found in the same directory in the `ligands_filtered.csv` file. 
-To create the latter file we have filtered out the unnecessary ligands from the original file (ie the compounds common to all complexes such as ORO and FMN and also all the crystallisation artifacts such as SO4) and only kept the PDB id, ligand id and SMILES string for all
+A filtered version of it with only the required data can be found in the `data/ligands_filtered.csv` file. 
+To create the latter file we have filtered out the unnecessary ligands from the original file (ie the compounds common to all complexes such as `ORO` and `FMN` and also all crystallisation artifacts) and only kept the PDB id, ligand id and SMILES string for all
 compounds.
 
 
@@ -199,10 +198,9 @@ compounds.
 As is the case for any template-based modelling approach, the more similar the template is to the target complex the
 higher the chance of a successful modelling outcome. In this protocol, we are emphasising ligand similarity over receptor
 similarity, meaning we want the template and target compounds to be as similar as possible. The metric we have chosen as
-our similarity measure is the [Tversky coefficient](https://en.wikipedia.org/wiki/Tversky_index){:target="_blank"} (with α, β = 0.2, 0.8,
-respectively) computed over the Maximum Common Substructure (MCS) as calculated by the [RDKit implementation](https://www.rdkit.org/docs/GettingStartedInPython.html#maximum-common-substructure){:target="_blank"}.
+our similarity measure is the [Tversky coefficient](https://en.wikipedia.org/wiki/Tversky_index){:target="_blank"} (with alpha=0.2, and beta=0.8) computed over the Maximum Common Substructure (MCS) as calculated by the [RDKit implementation](https://www.rdkit.org/docs/GettingStartedInPython.html#maximum-common-substructure){:target="_blank"}.
 This metric can be computed in a time-efficient manner and most importantly without prior knowledge of the structure
-of the target compound and all that is required is the compound encoded in SMILES format (see `target.smi` and `templates.smi`).
+of the target compound and all that is required is the compound encoded in SMILES format (see `data/target.smi` and `data/templates.smi`).
 
 The `templates.smi` file can be created from the following command:
 
@@ -210,20 +208,20 @@ The `templates.smi` file can be created from the following command:
   grep \-v SMILES data/ligands_filtered.csv | awk \'{print $3,$1\"_\"$2}\' \> templates.smi <br>
 </a>
 
-The `target.smi` file has already been created and can be found in the `data` directory.
-In general if the compound one is interested in is part of a PDB structure then its SMILES
-string can be found in the PDB. ALternatively there's a plethora of computational chemistry
+This file is provided at `data/target.smi`.
+In general if the compound one is interested is part of a PDB structure then its SMILES
+string can be found in the PDB database. Alternatively there are a plethora of computational chemistry
 tools that can generate SMILES strings.
 
 The next step involves computing the similarity values between our target (reference) compound and all template compounds
 we identified through the RCSB search portal. For this we will use an RDKit-based implementation of the MCS procedure described
-above. We provide a python-based implementation in the script `calc_mcs.py`. Usage of the script is straightforward:
+above. We provide a python-based implementation in the `scripts/calc_mcs.py`. Usage of the script is straightforward:
 
 <a class="prompt prompt-cmd">
   ./scripts/calc_mcs.py \-te templates.smi \-ta data/target.smi | awk \'{print $2}\' \> tmp <br>
 </a>
 
-This command might takes a few tens of seconds to complete.
+This command might takes a few seconds to complete.
 We choose to only keep the second column because we are only interested in the Tversky metric and the first column of the output
 is the Tanimoto metric. To create the similarities file:
 
@@ -233,20 +231,20 @@ is the Tanimoto metric. To create the similarities file:
 </a>
 
 These similarity values have also been precalculated and can be seen in the `data/similarities.txt` file.
-The file has already been sorted according to similarity value meaning the compounds most similar to the target compound
+The file is sorted according to the similarity value, meaning the compounds most similar to the target compound
 are near the top of the file. From this point on, the selection of the most suitable template becomes a process of filtering out
-the templates that are ill-suited for modelling (low quality, mutations near the binding site, missing density, etc...).
+the templates that are ill-suited for modelling (low quality, mutations near the binding site, missing density, etc.).
 
 Two templates are highly similar, `2PRH` and `7K2U` with Tversky coefficients of 0.956 and 0.942, respectively.
-A closer examination of the binding site of the most similar template, `2PRH`, reveals missing density close to the ORO cofactor (segment 227-225).
-Further this crystal structure has a lower resolution (2.4Å) than that of 7K2Y (1.72Å). For these reasons we select 7K2U for as template for the docking.
+A closer examination of the binding site of the most similar template, `2PRH`, reveals missing density close to the `ORO` cofactor (segment 227-225).
+Further `2PRH` has a lower resolution (2.4Å) than that of `7K2U` (1.72Å). For these reasons we select `7K2U` for as template for the docking.
 
 
 <details style="background-color:#DAE4E7">
-<summary><b>See the comparison of 2PRH and 7K2U</b></summary>
+<summary><b>[Click here to see the comparison of 2PRH and 7K2U]</b></summary>
 <br>
 <center>
-<i>2PRH (in cyan) and 7K2Y (in green). The red arrow on the right point to the missing region in 2PRH. The orange arrow on the left point to the ligand templates of interest.</i>
+<i>2PRH (in cyan) and 7K2U (in green). The red arrow on the right point to the missing region in 2PRH. The orange arrow on the left point to the ligand templates of interest.</i>
 </center>
 <figure align="center">
     <img width="75%" src="/education/HADDOCK24/shape-small-molecule/2prh-vs-7k2u.png">
@@ -262,16 +260,15 @@ Further this crystal structure has a lower resolution (2.4Å) than that of 7K2Y 
 
 #### 3a. Preparing the receptor template and the shape PDB files
 
-The docking-ready file created from entry 7K2U is available as `data/template.pdb` with all the crystallisation artifacts and double occupancies removed).
-To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
-part of the pdb_tools package.
+The docking-ready file created from entry `7K2U` is available as `data/template.pdb` with all the crystallisation artifacts and double occupancies removed).
+To achieve that we can use the following commands from `pdb-tools`; `pdb_selaltloc` and `pdb_keepcoord`.
 
 <a class="prompt prompt-cmd">
   pdb_selaltloc ./data/7K2U.pdb | pdb_keepcoord | grep \-v ACT | grep \-v PGE | grep \-v SO4 | grep \-v GOL | grep \-v HOH \> template.pdb <br>
 </a>
 
 The next step involves the creation of the shape (based on the template compound) that will be used for the docking. This
-process requires the transformation of all heavy atoms of the template compound (named VU7) into shape beads. 
+process requires the transformation of all heavy atoms of the template compound (named `VU7`) into shape beads. 
 The shape beads have all the same residue and atom names, namely `SHA` and their chainID for use in HADDOCK should be `S`.
 
 <a class="prompt prompt-cmd">
@@ -279,7 +276,7 @@ The shape beads have all the same residue and atom names, namely `SHA` and their
   python ./scripts/lig2shape.py shape VU7.pdb |pdb_reres |pdb_reatom> shape.pdb <br>
 </a>
 
-Note that we used `pdb_reres` and `pdb_reatom` to renumber the shape starting at 1.
+Note that we used `pdb_reres` and `pdb_reatom` to renumber the shape starting at number 1.
 
 At the same time we also need to remove the compound present in the template structure since that space is now occupied
 by the shape we just created.
@@ -298,17 +295,16 @@ real-life modelling scenario we will be generating conformers starting from the 
 string of the reference compound. For this, we will also use RDKit along with a predefined
 set of parameters that govern the behaviour of the program during the conformer generation.
 
-The script we will use can be found in the `scripts` subfolder and is named `generate_conformers.py`.
+The script we will use can be found in `scripts/generate_conformers.py`.
 
-Running it with the `-h` flag (short for `--help`) will list all possible options the script
-can be called with. We will run it with the options we found to yield the best results when
-this protocol was being benchmarked.
+Running it with the `-h` flag will list all possible options the script
+can be called with. We will run it with the optimal options that were estabilished during the benchmarking of this protocol benchmark.
 
 <a class="prompt prompt-cmd">
   ./scripts/generate_conformers.py \-i data/target.smi \-p 3sr \-c 50 \-m \-o conformers.pdb <br>
 </a>
 
-The above command will create the `conformers.pdb` file in the current working directory.
+The above command will create a `conformers.pdb` file in the current working directory.
 We need to process the file to remove the redundant data in it and prepare it for docking.
 
 <a class="prompt prompt-cmd">
@@ -320,8 +316,8 @@ We need to process the file to remove the redundant data in it and prepare it fo
 #### 3c. Generating shape restraints for the ligand to be docked
 
 We then need to create the restraints that will be used throughout the simulation to drive the generated compounds to the
-binding pocket. Since there are fewer atoms in the target compound than there are in the shape we are defining the restraints from the
-target compound to the shape. For this one distance restraint is defined from each ligand heavy atom to all shape atoms with an upper limit of 1Å. 
+binding pocket. Since there are fewer atoms in the target compound than there are in the shape, we are defining the restraints from the
+target compound to the shape. For this, one distance restraint is defined from each ligand heavy atom to all shape atoms with an upper bound limit of 1Å. 
 
 <a class="prompt prompt-cmd">
   grep HETATM data/ligand_model1.pdb | awk \'{print \"assi (segid B and name \"$3\") (segi S) 1.0 1.0 0.0\"}\' \> shape_restraints.tbl <br>
@@ -329,7 +325,7 @@ target compound to the shape. For this one distance restraint is defined from ea
 
 In addition to the restraints that are meant to drive the compound to the binding pocket we also need to define restraints
 between the cofactors and their coordinating residues to make sure they maintain their original geometry throughout the
-simulation and don't drift away in the flexible stage. This can be done using the `restrain_ligand.py` script:
+simulation and don't drift away in the flexible stage. This can be done with `scripts/restrain_ligand.py`:
 
 <a class="prompt prompt-cmd">
   ./scripts/restrain_ligand.py  template-final.pdb \-l ORO <br>
@@ -346,7 +342,7 @@ And we concatenate the newly created restraint files into one with:
 This concludes the preparation steps required for the receptor. However, we still need to prepare the compound structures
 we will be using for docking. In order to make this tutorial as close as possible to a real-world application of this
 protocol, instead of using a bound form of the compound (from this complex or a different one) we have pregenerated 3D
-conformers with RDKit using only the compound SMILES. The conformer ensemble can be found in the `conformers.pdb` file.
+conformers with RDKit using only the compound SMILES. The conformer ensemble can be found in the `data/conformers.pdb` file.
 
 
 <hr>
@@ -356,10 +352,9 @@ conformers with RDKit using only the compound SMILES. The conformer ensemble can
 For the docking we will use the new portal of [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}. If you are already
 registered with HADDOCK or have been provided with course credential then you can proceed to job submission immediately.
 Alternatively, you can request an account through the registration portal. Keep in mind that for this tutorial you will
-have to request "guru" level access.
+have to request `guru` level access, this is done by selecting the `Request Elevated Access` in your [user profile](https://wenmr.science.uu.nl/usr/){:target="_blank"}.
 
-After logging in you are greeted with the first part of the submission portal. Make sure to use an indicative name for the
-run.
+After logging in you are greeted with the first part of the submission portal. Make sure to use an informative name for the run.
 
 
 * **Step1:** Define a name for your docking run in the field "Job name", e.g. *shape-based-small-molecule*.
@@ -494,23 +489,23 @@ Analysis parameters -> Full or limited analysis of results -> None
 anywhere from a few hours to a few days to finish depending on the load on our servers.
 
 
-**Note** that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a json file which contains all the settings and input structures for our run. We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run, and could be provided as supplementary material in a publication for example. This file can also be edited to change a few parameters for example. 
-The generated json file for this shape-based submission is provided as `job_params-shape.json` in the `data` directory.
+<b>Note</b> <i>that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a `.json` file which contains all the settings and input structures for our run. We strongly recommend to download this file as it will allow you to repeat the run by using the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This `.json file` can serve as input reference for the run, and could be provided as supplementary material in a publication. This file can also be edited to change a few parameters for example. 
+The generated json file for this shape-based submission is provided at `data/job_params-shape.json`.</i>
 
 
-Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter json file as well as some information about the status of the run.
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned `.json` file as well as some information about the status of the run.
 
 <figure align="center">
 <img width="75%" src="/education/HADDOCK24/shape-small-molecule/submission.png">
 </figure>
 
-Currently your run should be queued but eventually its status will change to "Running":
+Currently your run should be queued but eventually its status will change to "Running" (the page is automatically refreshed):
 
 <figure align="center">
 <img width="75%" src="/education/HADDOCK24/shape-small-molecule/running.png">
 </figure>
 
-The page will automatically refresh giving you an update on the progress of your and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+The page will give you a progress update of your and the results will appear upon completions (which can take between 1-2 hours to several hours (and even days) depending on the size of your system and the load of the server). You will be notified by e-mail once your job has successfully completed. This page can be closed, you can access your submitted runs via the [Workspace page](https://wenmr.science.uu.nl/haddock2.4/workspace){:target="_blank"}
 
 
 <hr>
@@ -518,26 +513,24 @@ The page will automatically refresh giving you an update on the progress of your
 ### 5. Visualisation and analysis of results
 
 
-Once your run has completed you will be presented with a result page showing the cluster statistics (in this case the statistics of the top10 single models) and some graphical representation of the data (and if registered, you will also be notified by email). 
-
-<br>
+Once your run has completed you will be presented with a result page showing the cluster statistics (in this case the statistics of the top10 single models) and some graphical representation of the data (and if not using course credentials, you will also be notified by e-mail). 
 
 #### 5a - Inspecting the result page
 
-While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
-same settings we used for our run). _The precalculated run can be found_ [**here**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule){:target="_blank"}.
-Just glancing at the page tells us that our run has been a success both in terms of the actual run and the postprocessing
+While HADDOCK is running we can already start looking at precalculated results [**here**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule){:target="_blank"} (which have been derived using the exact
+same settings we used for our run).
+Just glancing at the page tells us that our run has been a success both in terms of the actual run and the post-processing
 that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 10 models in 10 different clusters,
 effectively performing only single structure analysis. This was expected since we specified no analysis when setting up the run.
 Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
-find that it conveys no measurable benefit for this type of modelling (protein-small molecule) and therefore we skip it.
+observed that it conveys no measurable benefit for this type of modelling (protein-small molecule) and therefore we skip it.
 
-The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model). The graphs are interactive and you can turn on and off specific clusters (single structures in this case), but also zoom in on specific areas of the plot.
+The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, Van der Waals energy, etc.) as a function of the Fraction of Common Contact (FCC) and also with interface-RMSD from the best scoring model. The graphs are interactive and you can turn on and off specific clusters (single structures in this case), but also zoom in on specific areas of the plot.
 
 
 A more consice way of looking at the breakdown of energetics per model is to look at the summary for each model which can be
 found immediately below the overall summary page. For example, for the top scoring model the HADDOCK score is -62.6 with a
-vdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1, respectively. 
+VdW, electrostatics, desolvation and Buried Surface Area (BSA) contribution of -42.1, -6.2, -6.6 and 771.1, respectively. 
 
 The HADDOCK score in this case corresponds to the it1 score (see for details the [online manual pages](https://www.bonvinlab.org/software/haddock2.4/scoring/){:target="_blank"}). It is defined as:
 
@@ -545,7 +538,7 @@ The HADDOCK score in this case corresponds to the it1 score (see for details the
       HADDOCK-it1-score = 1.0 * Evdw + 1.0 * Eelec + 1.0 * Edesol + 0.1 * Eair - 0.01 * BSA
 </pre>
 
-where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, Eair the distance restraint energy and BSA the buried surface area in Å. The various components of the HADDOCK score are also reported for each cluster on the results web page.
+where `Evdw` is the intermolecular Van der Waals energy, `Eelec` the intermolecular electrostatic energy, `Edesol` represents an empirical desolvation energy term adapted from [Fernandez-Recio *et al.* J. Mol. Biol. 2004](https://doi.org/10.1016/j.jmb.2003.10.069){:target="_blank"}, `Eair` the distance restraint energy and `BSA` the buried surface area in Å. The various components of the HADDOCK score are also reported for each cluster on the results web page.
 
 
 
@@ -564,11 +557,10 @@ This will result in the creation of 10 PDB files in the current working director
 the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
 with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
+<b>Important</b> <i>that the cluster number is not its ranking but a measure of how populated it is. Cluster 1 will always contain the most models, but it might not be the top ranking cluster. The order on the results webpage corresponds to the ranking. Please check the <b>[HADDOCK Manual](https://www.bonvinlab.org/software/haddock2.4/analysis/#cluster-based-analysis){:target="_blank"}</b> for more information.</i>
 
-**Note** _that when clustering is performed, the best rank cluster might not be cluster1. In that case the cluster numbering follows the size of the clusters, with cluster1 being the most populated cluster, but not per se the top-ranked one. The order on the results webpage corresponds to the ranking._
 
-
-With the following command we can load the top 10 models into PyMol (sorted by HADDOCK score) along with the reference compound provided in the `data` directory for
+With the following command we can load the top 10 models into PyMOL (sorted by HADDOCK score) along with the reference compound provided in the `data` directory for
 closer examination.
 
 <a class="prompt prompt-cmd">
@@ -595,22 +587,17 @@ And the following PyMOL commands allow us to get a better overview of the bindin
   zoom resn UNK <br>
 </a>
 
-The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores but they also adopt similar binding modes and are very close to the reference structure.
+The top 10 models have very similar HADDOCK scores (you need to download full run to access these values), and a visual analysis reveals that they also adopt similar binding modes and are very close to the reference structure.
 
-<br>
-<center>
-<i>Superimposition of the top10 scoring pose onto the reference complex (in white). </i>
-</center>
-<br>
 <figure align="center">
-    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/top10-shape-vs-1d3g.png">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/top10-shape-vs-1d3g.png"><br>
+    <i>Superimposition of the top10 scoring pose onto the reference complex (in white).</i>
 </figure>
-<br>
 
 As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. Before doing that we should make sure the models are aligned to the target.
-This can be done using for example the [Profit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
+This can be done using for example the [ProFit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
 
-If installed in your system you can use the provided `data/izone` Profit script to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
+If ProFit is installed in your system you can use the provided `scripts/izone` to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
 
 <a class="prompt prompt-cmd">
   profit -f scripts/izone ./data/1d3g.pdb cluster1_1.pdb <br>
@@ -618,10 +605,10 @@ If installed in your system you can use the provided `data/izone` Profit script 
   obrms ./data/1d3g_ligand.pdb cluster1_ligand.pdb <br>
 </a>
 
-`obrms` reports a ligand RMSD value of 0.74 indicating excellent agreement between model and reference structures.
+`obrms` (installed with Anaconda) reports a ligand RMSD value of 0.74 indicating excellent agreement between model and reference structures.
 
-If you don't have Profit installed you can use instead PyMol to fit the models on the binding site residues:
-Assuming you still have PyMol open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
+If you don't have ProFit installed you can use instead PyMOL to fit the models on the binding site residues:
+Assuming you still have PyMOL open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
 
 <a class="prompt prompt-pymol">
   select binding_site, resi 38+42+43+46+47+50+51+52+55+56+59+62+63+67+68+98+111+134+136+143+356+359+360+363+364 <br>
@@ -644,15 +631,13 @@ You can then calculate the ligand RMSD with:
   \rm tmp_ligand.pdb <br>
 </a>
 
-
-
-If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule.tgz){:target="_blank"}
-and expand it using the same command as above. This will create the `76481-shape-based-small-molecule` directory in
+If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76656-shape-based-small-molecule.tgz){:target="_blank"}. After extraction, this will create the `76481-shape-based-small-molecule` directory in
 the current working directory. The final models can be found under the `structures/it1` subdirectory. There are 200
 PDB files in total and their ranking along with their scores can be seen in the `file.list` file.
 
 <a class="prompt prompt-cmd">
-  head file.list <br>
+  tar xfz 76656-shape-based-small-molecule.tgz
+  head 76656-shape-based-small-molecule/structures/it1/file.list <br>
 </a>
 
 The above command should show the same HADDOCK scores as what we already saw for the top 10 models.
@@ -676,13 +661,13 @@ computed over the 2D pharmacophore fingerprints as computed with [RDKIT](https:/
 
 To ensure correct 2D pharmacophore descriptor computation, we need to use SDF files as input files.
 
-The `templates.smi` file can be created from the following command:
+The provided `data/templates.smi` file can be created from the following command:
 
 <a class="prompt prompt-cmd">
   grep \-v SMILES data/ligands_filtered.csv | awk \'{print $3,$1\"_\"$2}\' \> templates.smi <br>
 </a>
 
-The `target.smi` file we create manually by copying and pasting the SMILES string from its [RCSB page](https://www.rcsb.org/ligand/BRE){:target="_blank"}.
+The `target.smi` file we create manually by copying and pasting the SMILES string from its [PDB RCSB page](https://www.rcsb.org/ligand/BRE){:target="_blank"}.
 
 Both files are available from the `data` directory.
 
@@ -721,8 +706,8 @@ The script will return a file entitled `sim.Tc` containing all Tc values. The li
 </a>
 
 These similarity values have also been precalculated and can be seen in the `sim.Tc` file in the `data` directory.
-A closer examination of the binding site of template `6cjf` (provided in the `data` directory) reveals that the 2-chloro-6-methylpyridin group 
-of the `F54` ligand may adopt two distinct conformations. A thorough examination of the `6cjf` PDB file shows that the conformation A is associated 
+A closer examination of the binding site of template `6CJF` (provided in the `data` directory) reveals that the 2-chloro-6-methylpyridin group 
+of the `F54` ligand may adopt two distinct conformations. A thorough examination of the `6CJF` PDB file shows that the conformation A is associated 
 to an occupancy factor of `0.66` against `0.34` for the conformation B.
 
 Since the conformation A is more populated than conformation B, we will select it as our template of interest and renumber the atom starting from 1 (required for the pharmacophore features generation - see below).
@@ -732,10 +717,10 @@ Since the conformation A is more populated than conformation B, we will select i
 </a>
 
 <details style="background-color:#DAE4E7">
-<summary><b>See binding site details</b></summary>
+<summary><b>[Click here to see binding site details]</b></summary>
 <br>
 <center>
-<i>Comparison of the template F54 ligand (6cjf) (in green) and the target ligand (in blue).</i>
+<i>Comparison of the template F54 ligand (6CJF) (in green) and the target ligand (in blue).</i>
 </center>
 <figure align="center">
     <img width="75%" src="/education/HADDOCK24/shape-small-molecule/1d3g_vs_6cjf.png">
@@ -752,28 +737,27 @@ Since the conformation A is more populated than conformation B, we will select i
 
 The docking-ready receptor file is available as `data/template_pharm.pdb` (with all the crystallisation artifacts and double occupancies removed).
 To achieve that we can use the following command making use of the `pdb_selaltloc` and `pdb_keepcoord` utilities which are
-part of the pdb_tools package.
-
+part of the `pdb-tools` package.
 
 __TO ADD COMMAND__
 
 The next step involves the creation of the **pharmacophore** shape (based on the template compound) that will be used for the docking. This
 process requires the addition of pharmacophore information into the PDB file and transformation of all heavy atoms of the template compound into pharmacophore beads.
 
-The pharmacophore information is encoded in the occupancy factor column of the PDB file with different values corresponding to different pharmacophores : 
+The pharmacophore information is encoded in the occupancy factor column of the PDB file with different values corresponding to different pharmacophores: 
 
-- 0.10 -> Donor
-- 0.20 -> Acceptor
-- 0.30 -> NegIonizable
-- 0.40 -> PosIonizable0
-- 0.50 -> ZnBinder
-- 0.60 -> Aromatic
-- 0.70 -> Hydrophobe
-- 0.80 -> LumpedHydrophobe
+- 0.10 ➞ Donor
+- 0.20 ➞ Acceptor
+- 0.30 ➞ NegIonizable
+- 0.40 ➞ PosIonizable0
+- 0.50 ➞ ZnBinder
+- 0.60 ➞ Aromatic
+- 0.70 ➞ Hydrophobe
+- 0.80 ➞ LumpedHydrophobe
 
-**Warnings**: Make sure that the atomic numbers of F54.pdb start at number 1. The provided `data/F54.pdb` has been renumbered (this was be done using the `pdb_reatom`).
+<b>Warning</b> <i>make sure that the atomic numbers of F54.pdb start at number 1. The provided `data/F54.pdb` has been renumbered (this was done using `pdb_reatom`).</i>
 
-The pharmacophore features can be added to the template ligand with the `add_atom_features.py` script provided in the `scripts` directory. 
+The pharmacophore features can be added to the template ligand with `scripts/add_atom_features.py`. 
 This is an essential step to create the pharmacophore shape. Here again, it is important to deduce pharmacophore features from a SDF file, which is better handled by RDKIT than PDB files. 
 In order to have the same atom ordering in the SDF file and the PDB file to which features will be assigned, you can use openbabel to convert the PDB file into an SDF file.
 
@@ -797,12 +781,10 @@ At the same time we also need to remove the compound present in the template str
 </a>
 <br>
 
-<center>
-<i>Pharmacophore shape used to guide the docking </i>
-</center>
 <br>
 <figure align="center">
-    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/pharm_shape.png">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/pharm_shape.png"><br>
+    <i>Pharmacophore shape used to guide the docking.</i>
 </figure>
 
 <br>
@@ -839,14 +821,14 @@ will restrain the C2 atom of the ligand with segid B to be at proximity (within 
 Provided that you generated 3D conformers for your target ligand, stored them in a file called `conformers.pdb`, and added the pharmacophore features information (with the `add_atom_features.py` script), you can generate the pharmacophore restraints to guide the docking. As mentioned earlier, this file is provided in this tutorial for convenience (conformers were generated with RDKIT).
 
 <a class="prompt prompt-cmd">
-  python ./scripts/generate_restraints_from_target.py data/conformers.pdb <br>
+  ./scripts/generate_restraints_from_target.py data/conformers.pdb <br>
 </a>
 
 This command will create a distance restraints file named `shape_pharm_restraints.tbl` (also available in the `data` directory).
 
 In addition to the restraints that are meant to drive the compound to the binding pocket we also need to define restraints
 between the cofactors and their coordinating residues to make sure they maintain their original geometry throughout the
-simulation and don't drift away in the flexible stage. This can be done using the `restrain_ligand.py` script:
+simulation and don't drift away in the flexible stage. This can be done using `scripts/restrain_ligand.py`:
 
 <a class="prompt prompt-cmd">
   ./scripts/restrain_ligand.py  template-final_pharm.pdb \-l ORO <br>
@@ -859,7 +841,7 @@ And we concatenate the newly created restraint files into one with:
   cat template-final_pharm_ORO.tbl template-final_pharm_FMN.tbl \>cofactor_restraints_pharm.tbl <br>
 </a>
 
-Those restraints are pre-calculated (`data/cofactor_restraints_pharm.tbl`).
+The pre-calculated restraints are provided at `data/cofactor_restraints_pharm.tbl`.
 
 <hr>
 
@@ -890,7 +872,7 @@ Distance restraints -> You can supply a HADDOCK restraints TBL file with restrai
 </a>
 
 Make sure to change all other required parameters as previously explained and submit your run.
-As reference the json file generate for this tutorial is available under `data/job_params-pharm.json`
+As reference the `.json` file generate for this tutorial is available under `data/job_params-pharm.json`
 
 
 <hr>
@@ -899,18 +881,17 @@ As reference the json file generate for this tutorial is available under `data/j
 
 While HADDOCK is running we can already start looking at precalculated results (which have been derived using the exact
 same settings we used for our run). _The precalculated run can be found_ [**here**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76693-pharm-based-small-molecule){:target="_blank"}.
-Just glancing at the page tells us that our run has been a success both in terms of the actual run and the postprocessing
+Just glancing at the page tells us that our run has been a success both in terms of the actual run and the post-processing
 that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 10 models in 10 different clusters,
 effectively performing only single structure analysis. This was expected since we specified no analysis when setting up the run.
 Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
 find that it conveys no measurable benefit for this type of modelling (protein-small molecule) and therefore we skip it.
 
 
-
 For a closer look at the top models we can use the link on results webpage just above the **Cluster 1** line to download the top10 models, 
 or simply click [**here**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76693-pharm-based-small-molecule_summary.tgz){:target="_blank"}.
 
-Using the following command expand the contents of the tgz archive in your working directory:
+Using the following command expand the contents of the `.tgz` archive in your working directory:
 
 <a class="prompt prompt-cmd">
   tar xfz 76693-pharm-based-small-molecule_summary.tgz <br>
@@ -920,11 +901,10 @@ This will result in the creation of 10 PDB files in the current working director
 the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
 with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
+<b>Important</b> <i>that the cluster number is not its ranking but a measure of how populated it is. Cluster 1 will always contain the most models, but it might not be the top ranking cluster. The order on the results webpage corresponds to the ranking. Please check the <b>[HADDOCK Manual](https://www.bonvinlab.org/software/haddock2.4/analysis/#cluster-based-analysis){:target="_blank"}</b> for more information.</i>
 
-**Note** _that when clustering is performed, the best rank cluster might not be cluster1. In that case the cluster numbering follows the size of the clusters, with cluster1 being the most populated cluster, but not per se the top-ranked one. The order on the results webpage corresponds to the ranking._
 
-
-With the following command we can load the top 10 models into PyMol (sorted by HADDOCK score) along with the reference compound provided in the `data` directory for
+With the following command we can load the top 10 models into PyMOL (sorted by HADDOCK score) along with the reference compound provided in the `data` directory for
 closer examination.
 
 <a class="prompt prompt-cmd">
@@ -932,7 +912,7 @@ closer examination.
 </a>
 
 After PyMOL has finished loading, we can remove all artifacts and superimpose all models on the reference compound with
-the following PYMOL commands:
+the following PyMOL commands:
 
 <a class="prompt prompt-pymol">
   remove resn hoh+so4+act+ddq <br>
@@ -954,19 +934,16 @@ And the following PyMOL commands allow us to get a better overview of the bindin
 The visual analysis reveals that the top 10 models not only have very similar HADDOCK scores but they also adopt similar binding modes and are very close to the reference structure.
 
 <br>
-<center>
-<i>Superimposition of the top10 scoring pose onto the reference complex (in white). </i>
-</center>
-<br>
 <figure align="center">
-    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/top10-pharm-vs-1d3g.png">
+    <img width="75%" src="/education/HADDOCK24/shape-small-molecule/top10-pharm-vs-1d3g.png"><br>
+    <i>Superimposition of the top10 scoring pose onto the reference complex (in white). </i>
 </figure>
 <br>
 
 As part of the analysis we can also compute the symmetry-corrected ligand RMSD for our model of choice. Before doing that we should make sure the models are aligned to the target.
-This can be done using for example the [Profit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
+This can be done using for example the [ProFit](http://www.bioinf.org.uk/software/profit/){:target="_blank"} software.
 
-If installed in your system you can use the provided `data/izone` Profit script to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
+If installed in your system you can use the provided `data/izone` ProFit script to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
 
 <a class="prompt prompt-cmd">
   profit -f scripts/izone ./data/1d3g.pdb cluster1_1.pdb <br>
@@ -977,8 +954,8 @@ If installed in your system you can use the provided `data/izone` Profit script 
 `obrms` reports a ligand RMSD value of 1.09Å indicating again excellent agreement between model and reference structures for this adaptation of the shape-restrained docking protocol.
 
 
-If you don't have Profit installed you can use instead PyMol to fit the models on the binding site residues:
-Assuming you still have PyMol open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
+If you don't have ProFit installed you can use instead PyMOL to fit the models on the binding site residues:
+Assuming you still have PyMOL open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
 
 <a class="prompt prompt-pymol">
   select binding_site, resi 38+42+43+46+47+50+51+52+55+56+59+62+63+67+68+98+111+134+136+143+356+359+360+363+364 <br>
@@ -1002,24 +979,24 @@ You can then calculate the ligand RMSD with:
 </a>
 
 
-
-If we want to examine the run in greater detail then we can download the archive of the entire run from [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76693-shape-based-small-molecule.tgz){:target="_blank"}
-and expand it using the same command as above. This will create the `76693-shape-based-small-molecule` directory in
+If we want to examine the run in greater detail then we can download the archive of the entire run from [here]
+(https://wenmr.science.uu.nl/haddock2.4/run/4242424242/76693-pharm-based-small-molecule.tgz){:target="_blank"}
+and expand it using the same command as above. This will create the `76693-pharm-based-small-molecule` directory in
 the current working directory. The final models can be found under the `structures/it1` subdirectory. There are 200
 PDB files in total and their ranking along with their scores can be seen in the `file.list` file.
 
 <a class="prompt prompt-cmd">
-  head file.list <br>
+  tar xfz 76693-pharm-based-small-molecule.tgz
+  head 76693-pharm-based-small-molecule/structures/it1/file.list <br>
 </a>
 
 The above command should show the same HADDOCK scores as what we already saw for the top 10 models.
 
 
-
 <hr>
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu).
+You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via e-mail or asking a question through our [support center](https://ask.bioexcel.eu).
 
 
 And check also our [education](/education) web page where you will find more tutorials!
