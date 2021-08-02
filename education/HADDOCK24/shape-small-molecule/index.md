@@ -557,7 +557,7 @@ This will result in the creation of 10 PDB files in the current working director
 the values for * ranging between 1 and 10 reflecting the ranking of the top 10 models according to their haddock score,
 with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
 
-<b>Important:</b> <i>please note that the cluster number is not its ranking but a measure of how populated it is. Cluster 1 will always contain the most models, but it might not be the top ranking cluster. The order on the results webpage corresponds to the ranking. Please check the <b>[HADDOCK Manual](https://www.bonvinlab.org/software/haddock2.4/analysis/#cluster-based-analysis){:target="_blank"}</b> for more information.</i>
+<b>Important:</b> <i>Please note that the cluster number is not its ranking but a measure of how populated it is. Cluster 1 will always contain the most models, but it might not be the top ranking cluster. The order on the results webpage corresponds to the ranking. Please check the <b>[HADDOCK Manual](https://www.bonvinlab.org/software/haddock2.4/analysis/#cluster-based-analysis){:target="_blank"}</b> for more information.</i>
 
 
 With the following command we can load the top 10 models into PyMOL (sorted by HADDOCK score) along with the reference compound provided in the `data` directory for
