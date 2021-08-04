@@ -20,7 +20,7 @@ image:
 
 * U.B. le Paige, S. Xiang, M.M.R.M. Hendrix, Y. Zhang., G.E. Folkers, M. Weingarth, **A.M.J.J. Bonvin**, T.G. Kutateladze, I.K.Voets, M. Baldus and H. van Ingen. [Characterization of nucleosome sediments for protein interaction studies by solid-state NMR spectroscopy](https://mr.copernicus.org/articles/2/105/2021/). _Magn. Reson._, *2*, 105-116 (2021).
 
-* Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. Native or non-native protein-protein docking models? Molecular dynamics to the rescue. _J. Chem. Theo. and Comp._ *In press* (2021). [Preprint available on BioRxiv](https://doi.org/10.1101/2021.04.02.438171)
+* Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1021/acs.jctc.1c00336). _J. Chem. Theo. and Comp._  Advanced online publication (2021).
 
 * C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://doi.org/10.1016/j.sbi.2021.05.003).  _Curr. Opin. Struct. Biol._ *70*, 70-77 (2021).
 
