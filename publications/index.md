@@ -12,7 +12,7 @@ image:
 
 * T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1101/2021.06.22.449462). _bioRxiv_ doi:2021.06.22.449462 (2021).
 
-* P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1101/2021.06.10.447890). _J. Chem. Inf. and Mod._ In Press (2021). BioRxiv prepring available [here](https://doi.org/10.1101/2021.06.10.447890).
+* P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1021/acs.jcim.1c00796). _J. Chem. Inf. and Mod._ Advanced Online Publication (2021). BioRxiv prepring available [here](https://doi.org/10.1101/2021.06.10.447890).
 
 * G. Dudas,  S.L. Hong,  B.I. Potter,  S. Calvignac-Spencer, F.S. Niatou-Singa, T.B. Tombolomako, T. Fuh-Neba,  U. Vickos, M. Ulrich,  F.H. Leendertz, K. Khan,  A. Watts,  I. Olendraite,  J. Snijder,  K.N Wijnant,  **A.M.J.J. Bonvin**,  P. Martres,  S. Behillil,  A. Ayouba, M.F. Maidadi, D.M. Djomsi, C. Godwe, C. Butel, A. Simaitis,  M. Gabrielaite, M. Katenaite,  R. Norvilas, L. Raugaite, R. Jonikas, I. Nasvytiene, Z. Zemeckiene,  D. Gecys,  K. Tamusauskaite, M. Norkiene, E. Vasiliunaite, D. Ziogiene, A. Timinskas, M. Sukys, M. Sarauskas, G. Alzbutas, D. Juozapaite,  D. Naumovas,  A. Pautienius, A. Vitkauskiene,  R. Ugenskiene,  A. Gedvilaite, D. Cereskevicius,  V. Lesauskaite, L. Zemaitis, L. Griskevicius,  G. Baele. [Travel-driven emergence and spread of SARS-CoV-2 lineage B.1.620 with multiple VOC-like mutations and deletions in Europe](https://www.medrxiv.org/content/10.1101/2021.05.04.21256637v1). _medRxiv_ doi:10.1101/2021.05.04.21256637v1 (2021).
 
@@ -22,7 +22,7 @@ image:
 
 * U.B. le Paige, S. Xiang, M.M.R.M. Hendrix, Y. Zhang., G.E. Folkers, M. Weingarth, **A.M.J.J. Bonvin**, T.G. Kutateladze, I.K.Voets, M. Baldus and H. van Ingen. [Characterization of nucleosome sediments for protein interaction studies by solid-state NMR spectroscopy](https://mr.copernicus.org/articles/2/105/2021/). _Magn. Reson._, *2*, 105-116 (2021).
 
-* Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1021/acs.jctc.1c00336). _J. Chem. Theo. and Comp._  Advanced online publication (2021).
+* Z. Jandova, A.V. Vargiu and **A.M.J.J. Bonvin**. [Native or non-native protein-protein docking models? Molecular dynamics to the rescue](https://doi.org/10.1021/acs.jctc.1c00336). _J. Chem. Theo. and Comp._  *17*, 5944−5954 (2021).
 
 * C.W. van Noort, R.V. Honorato and **A.M.J.J. Bonvin**. [Information-Driven Modeling of Biomolecular Complexes](https://doi.org/10.1016/j.sbi.2021.05.003).  _Curr. Opin. Struct. Biol._ *70*, 70-77 (2021).
 
@@ -53,7 +53,7 @@ image:
 
 * A. Leitner, **A.M.J.J. Bonvin**, C.H. Borchers, R.J. Chalkley, . Chamot-Rooke, C.W. Combe, J. Cox, M. Dong, L. Fischer, M. Götze, F.C. Gozzo, A.J.R. Heck, M.R. Hoopmann, L. Huang, Y. Ishihama, A.R. Jones, N. Kalisman, O. Kohlbacher, K. Mechtler, R.L. Moritz, E. Netz, P.r Novak, E. Petrotchenko, A. Sali, R.A. Scheltema, C. Schmidt, D. Schriemer, A. Sinz, F. Sobott, F. Stengel, K. Thalassinos, H. Urlaub, R. Viner, J.A. Vizcaino, M. R. Wilkins, J. Rappsilber. [Towards Increased Reliability, Transparency and Accessibility in Crosslinking Mass Spectrometry](https://doi.org/10.1016/j.str.2020.09.011) _Structure_, _28_, 1259-1268 (2020).
 
-* F. Ambrosetti, Zuzana Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
+* F. Ambrosetti, Z. Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
 
 * J. Roel-Touris and **A.M.J.J. Bonvin**. [Coarse-Grained (Hybrid) Integrative Modeling of Biomolecular Interactions](https://doi.org/10.1016/j.csbj.2020.05.002). _Comp. Struct. Biotech. J._, *18*, 1182-1190 (2020).
 
