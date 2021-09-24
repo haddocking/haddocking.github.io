@@ -19,10 +19,6 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Manon.png
 
--   name: Panagiotis Koukos
-    position: Postdoctoral Researcher
-    avatar: /images/people/PanosK.jpg
-
 -   name: Charlotte van Noort
     position: Ph.D Candidate
     avatar: /images/people/Charlotte.jpg
@@ -39,10 +35,6 @@
     position: M.Sc Student
     avatar: /images/people/Nicky-Kromdijk.jpg
 
--   name: Lotte Manenschijn
-    position: M.Sc Student
-    avatar: /images/people/Lotte-Manenschijn.jpg
-
 -   name: Angela Pelissou Ayuso
     position: M.Sc Student
     avatar: /images/people/Angela-Pelissou.jpg
@@ -50,3 +42,8 @@
 -   name: Rayan Hassaine
     position: M.Sc Student
     avatar: /images/people/Rayan.jpg
+
+-   name: Ivar de Leeuw
+    position: M.Sc Student
+    avatar: /images/people/Ivar.jpg
+
