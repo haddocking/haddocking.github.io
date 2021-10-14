@@ -222,9 +222,9 @@ You should be able to see the amount of conformational space sampled by those su
 As final step, save the molecule as a new PDB file which we will call: *hpr-ensemble.pdb*
 For this in the PyMOL menu select:
 
-<<a class="prompt prompt-info">File -> Export molecule...</a>
-<a class="prompt prompt-info"Select as State 0 (all states)</a>
-<a class="prompt prompt-info"Click on Save...</a>
+<a class="prompt prompt-info">File -> Export molecule...</a>
+<a class="prompt prompt-info">Select as State 0 (all states)</a>
+<a class="prompt prompt-info">Click on Save...</a>
 <a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
 <a class="prompt prompt-info">Name your file *hpr-ensemble.pdb* and note its location</a>
 
