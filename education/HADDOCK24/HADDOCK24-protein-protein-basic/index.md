@@ -53,7 +53,7 @@ A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraint
 The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and different chemical environments, and it can be divided in three different stages, each with a defined goal and characteristics:
 
 
-**1. Randomization of orientations and rigid-body minimization (it0)**  
+**1. Randomization of orientations and rigid-body minimization (it0)**
 In this initial stage, the interacting partners are treated as rigid bodies, meaning that all geometrical parameters such as bonds lengths, bond angles, and dihedral angles are frozen. The partners are separated in space and rotated randomly about their centres of mass. This is followed by a rigid body energy minimization step, where the partners are allowed to rotate and translate to optimize the interaction. The role of AIRs in this stage is of particular importance. Since they are included in the energy function being minimized, the resulting complexes will be biased towards them. For example, defining a very strict set of AIRs leads to a very narrow sampling of the conformational space, meaning that the generated poses will be very similar. Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions, displaying greater variability in the region of binding.
 
 <details >
@@ -66,7 +66,7 @@ In this initial stage, the interacting partners are treated as rigid bodies, mea
 </details>
 <br>
 
-**2. Semi-flexible simulated annealing in torsion angle space (it1)**   
+**2. Semi-flexible simulated annealing in torsion angle space (it1)**
 The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step molecular dynamics-based refinement in order to optimize interface packing. It is worth noting that flexibility in torsion angle space means that bond lengths and angles are still frozen. The interacting partners are first kept rigid and only their orientations are optimized. Flexibility is then introduced in the interface, which is automatically defined based on an analysis of intermolecular contacts within a 5Å cut-off. This allows different binding poses coming from it0 to have different flexible regions defined. Residues belonging to this interface region are then allowed to move their side-chains in a second refinement step. Finally, both backbone and side-chains of the flexible interface are granted freedom. The AIRs again play an important role at this stage since they might drive conformational changes.
 
   <details >
@@ -79,7 +79,7 @@ The second stage of the docking protocol introduces flexibility to the interacti
   </details>
   <br>
 
- **3. Refinement in Cartesian space with explicit solvent (water)**   
+ **3. Refinement in Cartesian space with explicit solvent (water)**
  **Note:** This stage was part of the standard HADDOCK protocol up to (and including) v2.2. As of v2.4 it is no longer performed by default but the user still has the option of enabling it. In its place, a short energy minimisation is performed instead. The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side chains to be optimized.
 
  <details >
@@ -222,9 +222,9 @@ You should be able to see the amount of conformational space sampled by those su
 As final step, save the molecule as a new PDB file which we will call: *hpr-ensemble.pdb*
 For this in the PyMOL menu select:
 
-<<a class="prompt prompt-info">File -> Export molecule...</a>
-<a class="prompt prompt-info"Select as State 0 (all states)</a>
-<a class="prompt prompt-info"Click on Save...</a>
+<a class="prompt prompt-info">File -> Export molecule...</a>
+<a class="prompt prompt-info">Select as State 0 (all states)</a>
+<a class="prompt prompt-info">Click on Save...</a>
 <a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
 <a class="prompt prompt-info">Name your file *hpr-ensemble.pdb* and note its location</a>
 
