@@ -29,7 +29,6 @@ _J. Mol. Biol._, *428*, 720-725 (2015).
 [The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
-The current version of the webserver and standalone HADDOCK (v2.4) are under beta testing.
 
 Throughout the tutorial, coloured text will be used to refer to questions or instructions, and/or PyMOL commands.
 
