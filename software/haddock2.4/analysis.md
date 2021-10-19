@@ -37,7 +37,7 @@ Output files:
 
 *   _filerootfit_1.pdb, filerootfit_2.pdb, ..._: superimposed structures  
 
-  **_Note2:_** The numbering of the superimposed PDB files does not correspond with the numbering in the it1 or water directories, but to the position of the structure in the sorted file.list file, i.e. structure number 1 in the analysis directory is the first (best) in file.list and structure number 50 is at position 50 in that file. The numbering of the superimposed PDB files does not correspond with the numbering in the **it1** or **water** directories, but to the position of the structure in the sorted _file.list_ file, i.e. structure number 1 in the **analysis** directory is the first (best) in _file.list_ and structure number 50 is at position 50 in that file.  
+  **_Note2:_** The numbering of the superimposed PDB files does not correspond with the numbering in the **it1** or **water** directories, but to the position of the structure in the sorted _file.list_ file, i.e. structure number 1 in the **analysis** directory is the first (best) in _file.list_ and structure number 50 is at position 50 in that file.  
 
   *   _rmsave.disp_: contains the RMSD from the average structure for each structure and the average values over the ensemble. For this, the structures are superimposed on the backbone atoms of the flexible interface (see **_Note1_** above) and the following average RMSD values from the average structure are calculated and written to file:
       *   RMSD backbone interface of all molecules
