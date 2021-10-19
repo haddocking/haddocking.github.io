@@ -405,11 +405,7 @@ Let's then superimpose all models on chain A of the first cluster:
 
 <a class="prompt prompt-pymol">
 select cluster1_1 and chain A<br>
-align cluster2_1, sele<br>
-</a>
-
-<a class="prompt prompt-info">
-Repeat the align command for each cluster representative.
+alignto sele<br>
 </a>
 
 This will align all clusters on chain A (E2A), maximizing the differences in the orientation of chain B (HPR).
