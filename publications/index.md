@@ -14,7 +14,7 @@ image:
 
 * T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1101/2021.06.22.449462). _bioRxiv_ doi:2021.06.22.449462 (2021).
 
-* P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1021/acs.jcim.1c00796). _J. Chem. Inf. and Mod._ Advanced Online Publication (2021). BioRxiv prepring available [here](https://doi.org/10.1101/2021.06.10.447890).
+* P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1021/acs.jcim.1c00796). _J. Chem. Inf. and Mod._ *61*, 4807–4818 (2021). BioRxiv preprint available [here](https://doi.org/10.1101/2021.06.10.447890).
 
 * **A.M.J.J. Bonvin**. [50 years of PDB: A catalyst in structural biology](https://doi.org/10.1038/s41592-021-01138-y). _Nature Methods_ *18*, 448–449 (2021).
 
