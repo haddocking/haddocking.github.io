@@ -924,9 +924,9 @@ distance C34-2-d06-30A, chain D and resid 123 and name CB, chain C and resid   6
 distance C34-2-d07-30A, chain D and resid 126 and name CB, chain C and resid   65 and name CB<br>
 distance C34-2-d08-30A, chain D and resid 126 and name CB, chain F and resid  196 and name CB<br>
 distance C34-2-d09-30A, chain D and resid 135 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d10-30A, chain D and resid 135 and name CB, chain D and resid  520 and name CB<br>
-distance C34-2-d11-30A, chain D and resid 138 and name CB, chain D and resid  520 and name CB<br>
-distance C34-2-d12-30A, chain D and resid 141 and name CB, chain D and resid  520 and name CB<br>
+distance C34-2-d10-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d11-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d12-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
