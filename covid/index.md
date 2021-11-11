@@ -94,7 +94,7 @@ Two of the most promising compounds were imatinib and lapatinib, listed as #2 an
 ranking.
 
 <figure align="center">
-  <img src="imatinib_lapatinib_inhibition.png">
+  <img src="/covid/imatinib_lapatinib_inhibition.png">
 </figure>
 
 The infection assays, affinity measurements and toxicity assays were carried out in the groups of Frank Kuppeveld
