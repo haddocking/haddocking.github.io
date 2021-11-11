@@ -84,6 +84,22 @@ The tables are sorted based on the HADDOCK score. They are also dynamic, sortabl
 <iframe seamless frameborder="0" width="1200" height="2400" src="./covid_mpro_tanimoto.html"></iframe>
 
 
+#### Further experimental screening of promising compounds
+
+We reached out to collaborators in the CARE-IMI consortium to have our most promising compounds experimentally
+tested. The experiments yielded several compounds with activity against the protease in the micromolar range but
+subsequent testing revealed them to also be cytotoxic, rendering them less relevant for clinical applications.
+
+Two of the most promising compounds were imatinib and lapatinib, listed as #2 and #5, respectively in our cluster-based
+ranking.
+
+<figure align="center">
+  <img src="/covid/imatinib_lapatinib_inhibition.png">
+</figure>
+
+The infection assays, affinity measurements and toxicity assays were carried out in the groups of Frank Kuppeveld
+at Utrecht University and Johan Neyts at KU Leuven.
+
 ### Screening of approved drugs against the RNA dependent RNA polymerase
 
 In addition the screening against the main protease we docked the virtual libray against the RNA
