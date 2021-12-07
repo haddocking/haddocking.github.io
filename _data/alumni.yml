@@ -259,15 +259,12 @@
     status: student
 
 -   name: Marijne Schijns
-    current: M.Sc Student, Utrecht University
     status: student
 
 -   name: Nevia Citro
-    current: M.Sc Student, University of Salerno
     status: student
 
 -   name: Sevilay Gülesen
-    current: 'Kadir Has University, Istanbul, Turkey'
     status: student
 
 -   name: Raphaëlle Versini
@@ -327,6 +324,12 @@
 
 -   name: Lotte Manenschijn
     position: student
+
+-   name: Vicky Charitou
+    position: M.Sc Student
+
+-   name: Nicky Kromdijk
+    position: M.Sc Student
 
 
 
