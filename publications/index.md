@@ -8,7 +8,7 @@ image:
 
 ## 2021
 
-* M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1101/2021.12.08.471762). _BioRxix_ 10.1101/2021.12.08.471762 (2021).
+* M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1101/2021.12.08.471762). _BioRxiv_ 10.1101/2021.12.08.471762 (2021).
 
 * Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. [MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations](https://doi.org/10.1101/2021.10.06.463442). _BioRxix_ 10.1101/2021.10.06.463442 (2021).
 
