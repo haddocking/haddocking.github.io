@@ -160,7 +160,7 @@ The first step is obviously the selection of a starting structure. The aim of th
 simulate a peptide of the N-terminal sequence of the transactivation domain of p53. The sequence of
 this peptide is given below, in FASTA format:
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 >P53_MOUSE
 SQETFSGLWKLLPPE
 </pre>
@@ -325,7 +325,7 @@ in internal parameter libraries that are defined at the very top of the topology
   Open the *peptide.top* file in a text editor and browse through it.
 </a>
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 ; Include forcefield parameters
 #include "amber99sb-ildn.ff/forcefield.itp"
 
@@ -485,7 +485,7 @@ file name for *all* file options, both input and output, avoiding multiple indiv
 The `-v` flag tells `mdrun` to be verbose and in this case, print the potential energy of the
 system and the maximum force at each step of the minimization.
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 Steepest Descents:
    Tolerance (Fmax)   =  1.00000e+01
    Number of steps    =         5000
@@ -599,7 +599,7 @@ numbers!
   Manually backup the topology file, in case something goes awry.
 </a>
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 [ molecules ]
 ; Compound        #mols
 Protein             1
@@ -736,7 +736,7 @@ The strength of the restraints is defined in the `posre.itp` file, created by `p
 of the force constant defines how strictly the atom is restrained. As such, releasing the
 restraints is as simple as modifying the numbers on the file.
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 [ position_restraints ]
 ; atom  type	  fx	  fy	  fz
      1     1    1000  1000  1000
@@ -748,8 +748,6 @@ restraints is as simple as modifying the numbers on the file.
     14     1    1000  1000  1000
     17     1    1000  1000  1000
 </pre>
-
-<br>
 
 <a class="prompt prompt-info">
   Decrease the strength of the force constant of the position restraints and re-run the system
@@ -900,7 +898,7 @@ Another important source of information about the simulation and its successful 
 log file. Most of this file contains information on the energies at each step of the simulation. At
 the end, there are several tables with detailed information about the performance of the simulation.
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 Writing checkpoint, step 25000000 at Thu Jul 16 21:58:00 2015
 
 
@@ -1037,8 +1035,6 @@ On 18 MPI ranks
 Performance:       21.224        1.131
 Finished mdrun on rank 0 Thu Jul 16 21:58:00 2015
 </pre>
-
-<br>
 
 <a class="prompt prompt-question">
   What percentage of the total time did GROMACS spend on calculating forces?
@@ -1426,7 +1422,7 @@ single residues or stretches of residues. For example, it is possible to evaluat
 Assume you are working on a 14-residue long peptide. The syntax within `make_ndx` to create an
 index file to check for hydrogen bonds between the two halves is as follows:
 
-<pre style="background-color:#DAE4E7;padding:15px;margin:0px">
+<pre style="background-color:#DAE4E7;padding:15px">
 r 1-7
 name 19 half_1
 r 8-14
