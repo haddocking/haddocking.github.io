@@ -127,7 +127,7 @@ is likely to take far too long. In our hands, the simulations of this system tak
 </a>
 
 
-In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. You will find your own copy of the course material in `~/EVENTS/2021-UU-MD/molmod/` directory. You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
+In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. You will find your own copy of the course material in `~/EVENTS/2022-UU-MD/molmod/` directory. You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
 
 Open the terminal and create a directory where you will work in with name of your choice:
 <a class="prompt prompt-cmd">
@@ -143,7 +143,7 @@ Before we start, we should make sure that we use the proper programs and paths f
 
 
 <a class="prompt prompt-cmd">
-~/EVENTS/2022-UU-MD/molmod/setup.sh
+$MOLMOD_DATA/setup.sh
 </a>
 
 
@@ -181,27 +181,27 @@ successful completion of the tutorial requires, however, all three conformations
 
 <a class="prompt prompt-info">
   Generate an ideal structure for the peptide sequence using the build_seq script in Pymol
- (ss=helix/beta/polypro). If you have trouble with the build_seq script you could also resort to
- the built-in fab command to generate the helix (ss=1) and beta (ss=3) conformations. (The command
+ (`helix`/`polypro`/`beta`). If you have trouble with the build_seq script you could also resort to
+ the built-in fab command to generate the helix (`ss=1`) and beta (`ss=3`) conformations. (The command
  doesn't offer the polypro conformation)
 </a>
 
 <a class="prompt prompt-pymol">
-  build_seq peptide_helix, SQETFSGLWKLLPPE, ss=helix
+  build_seq peptide_helix, SQETFSGLWKLLPPE, ss=XXXX
+</a>
+<a class="prompt prompt-pymol">
   save p53_helix.pdb, peptide_helix
 </a>
 
 <a class="prompt prompt-attention">
-  Pay attention when typing the sequence! A missing or swapped amino acid will render your
-simulation **useless**!
-  Also carefully inspect the generated object whether it matches your expectations - you might
-e.g. want to adjust the residue numbers.
+  Pay attention when typing the sequence! A missing or swapped amino acid will render your simulation **useless**!
+  Also carefully inspect the generated object whether it matches your expectations - you might want to adjust the residue numbers.
 </a>
 
 To change residue numbers within Pymol take a look at the help message of the alter command:
 
 <a class="prompt prompt-pymol">
-help alter
+  help alter
 </a>
 
 ### Preparing the initial structure
@@ -271,7 +271,7 @@ solvent model.
   Generate a topology and matching structure for the p53 peptide with GROMACS.
 </a>
 <a class="prompt prompt-cmd">
-  gmx pdb2gmx -f peptide.pdb -o peptide.gro -p peptide.top -ignh -ter
+  gmx pdb2gmx -f p53_helix.pdb -o peptide.gro -p peptide.top -ignh -ter
 </a>
 <a class="prompt prompt-attention">
   Adjust the commands to whatever name you gave to the initial structure file.
@@ -385,9 +385,10 @@ head of the snake crosses a boundary of the screen, it re-appears on the diametr
 
 <div style="text-align: center;">
   <img src="/images/molmod/pbc-seb.png" style="margin-left: auto;margin-right:auto;width: 40%">
-<br>
-<span style="color:grey">Schematic representation of the idea of periodic boundary conditions (<a href="http://isaacs.sourceforge.net/phys/pbc.html" target="_blank">source</a>).</span>
+  <br>
+  <span style="color:grey">Schematic representation of the idea of periodic boundary conditions (<a href="http://isaacs.sourceforge.net/phys/pbc.html" target="_blank">source</a>).</span>
 </div>
+
 <br>
 
 The choice of the shape of the unit cell is also important, since this will define the volume in
@@ -453,7 +454,7 @@ Finally, they describe also the frequency with which GROMACS should write to dis
 and energy values. Depending on the aim of the simulation, this writing frequency can be increased
 to have a higher temporal resolution at a cost of some computational efficiency (writing takes
 time). MDP files support hundreds of parameter settings, all of which are detailed in the [GROMACS
-manual](https://manual.gromacs.org/2019-current/user-guide/mdp-options.html){:target="_blank"}.
+manual](https://manual.gromacs.org/2020.4/user-guide/mdp-options.html){:target="_blank"}.
 
 <a class="prompt prompt-info">
   Browse through the *01_em_vac_PME* file, which contains the parameters for an energy minimization
@@ -468,12 +469,11 @@ the minimization?
   Create a *.tpr* file to energy minimize the peptide structure in vacuum.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f $MOLMOD_DATA/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o
-peptide-EM-vacuum.tpr -maxwarn 1
+  gmx grompp -v -f $MOLMOD_DATA/mdp/01_em_vac_PME.mdp -c peptide-PBC.gro -p peptide.top -o peptide-EM-vacuum.tpr -maxwarn 1
 </a>
 
 <a class="prompt prompt-info">
-  Minimize the structure using the *.tpr* file created in the previous step.
+  Minimize the structure using the *.tpr* file created in the previous step, this will run for 5000 steps and it will take a few minutes.
 </a>
 <a class="prompt prompt-cmd">
   gmx mdrun -v -deffnm peptide-EM-vacuum
@@ -500,6 +500,7 @@ Step=    7, Dmax= 5.2e-03 nm, Epot=  8.98891e+02 Fmax= 2.73856e+03, atom= 56
 Step=    8, Dmax= 6.2e-03 nm, Epot=  8.39895e+02 Fmax= 4.76931e+03, atom= 56
 Step=    9, Dmax= 7.5e-03 nm, Epot=  8.05094e+02 Fmax= 5.81049e+03, atom= 56
 Step=   10, Dmax= 9.0e-03 nm, Epot=  7.77891e+02 Fmax= 5.97918e+03, atom= 56
+...
 </pre>
 
 The steepest descent algorithm used in this minimization calculates the gradient of the energy of
@@ -548,7 +549,7 @@ addition of the solvent.
 </a>
 
 GROMACS backs up the previous topology file before updating it. Generally, GROMACS *never*
-overwrites files, instead copying the previous one and renaming it with **#** symbols. At the end
+overwrites files, instead copying the previous one and renaming it with `#` symbols. At the end
 of the new topology file, there is an additional entry listing the number of water molecules that
 are now in the structure. It also added a definition that loads the water model parameters.
 
@@ -567,7 +568,7 @@ are now in the structure. It also added a definition that loads the water model 
 ### Addition of ions: counter charge and physiological concentration
 Besides water, the cellular environment contains a number of ions that maintain a certain chemical
 neutrality of the system. Adding some of these to the simulation box also increases the realism of
-the simulation. The GROMACS program `genion` performs this task, but requires as input a *.tpr*
+the simulation. The GROMACS program `genion` performs this task, but requires as input a `.tpr`
 file. The addition of ions is done by replacing certain atoms that are already in the simulation
 box. Since removing atoms of the peptide is not quite desired, pay attention to the group you
 select when running `genion`. The `-neutral` flag indicates that an excess of one ionic species is
@@ -577,35 +578,72 @@ allowed to neutralize the charge of the system, if there is any.
   Add counter ions to the simulation box at a concentration of 0.15M.
 </a>
 <a class="prompt prompt-cmd">
-  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr  -maxwarn 1
+  gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr -maxwarn 1
+</a>
+<a class="prompt prompt-info">
+  Select the group that contains SOL.
+</a>
+<a class="prompt prompt-cmd">
   gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL-
 </a>
 <a class="prompt prompt-question">
-  How many ions of each species were added to the box?
+  How many ions of each species were added to the box? Write this down, you will need this information in the next step!
 </a>
 
 Unfortunately, the topology is now incorrect. Neither program used in this step updates the number
 of solvent molecules nor that of sodium or chloride. To do so, edit the topology file manually and
-add the correct number of each ionic species to the `[molecules]` section. Name the ions after
-their element, i.e. do not include the charge. Finally, subtract the total number of ions added
-from the solvent (`SOL`) group. The excerpt below is an example of a correctly updated topology file.
-Note that the number of ions added varies from system to system, so do not blindly copy paste the
-numbers!
+add the correct number of each ionic species to the `[molecules]` section.
 
 <a class="prompt prompt-info">
   Edit the topology file to include the newly added ions and adjust the number of solvent molecules.
 </a>
 <a class="prompt prompt-attention">
-  Manually backup the topology file, in case something goes awry.
+  If something goes wrong with this file you need to start over..! Make a backup of the topology file, in case something goes awry.
+</a>
+<a class="prompt prompt-cmd">
+  cp peptide.top peptide.top.backup
+</a>
+<a class="prompt prompt-info">
+  Inspect how the current [molecules] section is defined
+</a>
+<a class="prompt prompt-cmd">
+  cat peptide.top
 </a>
 
+Name the ions after their element, i.e. do not include the charge. Finally, subtract the total number of ions added
+from the solvent (`SOL`) group. The excerpt below is an example of a correctly updated topology file.
+**Note that the number of ions added varies from system to system**, how many have been added to yours? Edit the topology accordingly!
+
+<a class="prompt prompt-info">
+  For this we could will use an old-school command-line text editor nano
+</a>
+
+<a class="prompt prompt-cmd">
+  nano peptide.top
+</a>
+
+
 <pre style="background-color:#DAE4E7;padding:15px">
+; ========
+; BEFORE
+; ========
 [ molecules ]
 ; Compound        #mols
 Protein             1
-SOL              1881
-NA                  5
-CL                  5
+SOL              3180
+</pre>
+
+
+<pre style="background-color:#DAE4E7;padding:15px">
+; ========
+; AFTER
+; ========
+[ molecules ]
+; Compound        #mols
+Protein             1
+SOL              3161
+NA                 10
+CL                  9
 </pre>
 
 ### Energy minimization of the solvated system
@@ -619,6 +657,8 @@ and equal charges placed too close together.
 </a>
 <a class="prompt prompt-cmd">
   gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-solvated.gro -p peptide.top -o peptide-EM-solvated.tpr
+<a class="prompt prompt-cmd">
+</a>
   gmx mdrun -v -deffnm peptide-EM-solvated
 </a>
 <a class="prompt prompt-question">
@@ -647,12 +687,14 @@ moving freely during the simulations.
   Relax the solvent and hydrogen positions through molecular dynamics under NVT conditions.
 </a>
 <a class="prompt prompt-attention">
-  Copy the the *.mdp* file to your home directory and change the temperature and the random seed
-used to generate initial velocities. Pick an unlikely number for the random seed (e.g. your birth
-date).
+  Copy the the *.mdp* file to your home directory and change the temperature (ref_t, in kelvin) and the random seed (gen_seed)
+used to generate initial velocities. Pick an unlikely number for the random seed (e.g. your birth date without symbols).
 </a>
 <a class="prompt prompt-cmd">
   cp $MOLMOD_DATA/mdp/03_nvt_pr1000_PME.mdp ~/
+</a>
+<a class="prompt prompt-cmd">
+  nano ~/03_nvt_pr1000_PME.mdp
 </a>
 <a class="prompt prompt-cmd">
   gmx grompp -v -f ~/03_nvt_pr1000_PME.mdp -c peptide-EM-solvated.gro -r peptide-EM-solvated.gro -p peptide.top -o peptide-NVT-PR1000.tpr
@@ -662,8 +704,7 @@ date).
 </a>
 
 <a class="prompt prompt-attention">
-  Which atoms are restrained during the simulation? What could be the purpose of using such
-restraints?
+  Which atoms are restrained during the simulation? What could be the purpose of using such restraints?
 </a>
 
 <a class="prompt prompt-question">
@@ -675,7 +716,7 @@ energy. This information is stored in an binary file format with extension `.edr
 read using the GROMACS utility `energy`. This utility extracts the information from the energy file
 into tabular files that can then be turned into plots. Select the terms of interest by typing their
 numbers sequentially followed by `Enter`. To quit, type `0` and `Enter`. Use the `xvg_plot.py`
-utility to plot the resulting *.xvg* file, passing the `-i` flag to have an interactive session
+utility to plot the resulting `.xvg` file, passing the `-i` flag to have an interactive session
 open. If you want to change the colors of the plot, run the script with the `-h` flag and refer to
 [this page for the available color maps](https://matplotlib.org/examples/color/colormaps_reference.html){:target="_blank"}.
 
@@ -705,7 +746,7 @@ the experimental conditions. While the temperature is controlled by adjusting th
 particles, the pressure is kept constant by varying the volume of the simulation box ($$PV = NRT$$).
 
 <a class="prompt prompt-info">
-  Equilibrate the system under NPT conditions and re-analyze the several thermodynamical variables.
+  Equilibrate the system under NPT conditions and re-analyze the several thermodynamical variables, there is no need to edit this file.
 </a>
 
 <a class="prompt prompt-cmd">
@@ -750,12 +791,11 @@ restraints is as simple as modifying the numbers on the file.
 </pre>
 
 <a class="prompt prompt-info">
-  Decrease the strength of the force constant of the position restraints and re-run the system
-under NPT.
+  Decrease the strength of the force constant of the position restraints and re-run the system under NPT.
 </a>
 
 <a class="prompt prompt-cmd">
-  cp posre.itp posrest.itp.1000 # Make a backup of the original file
+  cp posre.itp posrest.itp.1000.backup # Make a backup of the original file
 </a>
 <a class="prompt prompt-cmd">
   sed -i -e \'s/1000&nbsp;&nbsp;1000&nbsp;&nbsp;1000/&nbsp;100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/g\' posre.itp
@@ -768,7 +808,7 @@ under NPT.
 </a>
 
 <a class="prompt prompt-cmd">
-  cp posre.itp posrest.itp.100
+  cp posre.itp posrest.itp.100.backup
 </a>
 <a class="prompt prompt-cmd">
   sed -i -e \'s/100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10/g\' posre.itp
@@ -781,34 +821,34 @@ under NPT.
 </a>
 
 The final equilibration step is to completely remove the position restraints. This is done by
-removing the `-DPOSRES` definition at the beginning of the *.mdp* file, while maintaining all other
-parameters. For simplicity, we provide a further *.mdp* file without this definition.
+removing the `-DPOSRES` definition at the beginning of the `.mdp` file, while maintaining all other
+parameters. For simplicity, we provide a further `.mdp` file without this definition (you don't need to edit this file either).
 
 <a class="prompt prompt-cmd">
   gmx grompp -v -f $MOLMOD_DATA/mdp/05_npt_NOpr_PME.mdp -c peptide-NPT-PR10.gro -p peptide.top -o peptide-NPT-noPR.tpr
-  </a>
+</a>
 <a class="prompt prompt-cmd">
   gmx mdrun -v -deffnm peptide-NPT-noPR
 </a>
 
 <a class="prompt prompt-info">
-  Extract and plot the energies, temperature, and pressure. Zoom in the plot and analyse each
-property.
+  Extract and plot the energies, temperature, and pressure. Zoom in the plot and analyse each property.
 </a>
 <a class="prompt prompt-question">
-  Is the system ready to be simulated?
+  Is the system finally ready to be simulated?
 </a>
-
 
 <hr>
 ## Production Simulation
+
 Despite all these efforts, the system is unlikely to be in equilibrium already. The first few
 nanoseconds of a simulation, depending on the system, are in fact an equilibration period that
 should be discarded when performing any analysis on the properties of interest. To setup the
-simulation for production, all it takes it to generate a new *.tpr* file that contains the desired
+simulation for production, all it takes it to generate a new `.tpr` file that contains the desired
 parameters, namely the number of steps that defines the simulation length. At this stage, there are
 plenty of questions to address that have varying degrees of influence in the performance of the
 calculations:
+
 - At what time scale do the processes under study occur? How long should the simulation run for?
 - What is the temporal resolution necessary to answer the research questions?
 - Is there a need to store velocities and energies frequently?
@@ -822,29 +862,39 @@ are expected to work on the same peptide, using different random seeds and start
 initial conformations, we assume that individual simulations of 50 nanoseconds are informative
 enough.
 
-<a class="prompt prompt-question">
-  Copy the final *06_md_PME.mdp* file to your home directory and edit it to set the number of steps
-necessary to reach 50 ns.
-</a>
+The production run can be done in NMRBox, and we will run on the cluster over the next couple of days.
 
-The production run will run on our local cluster over the next couple of days. The only step
-missing is to generate a *.tpr* file containing the information for this simulation. Give this
-input file a clear name, combining the protein identifier (p53_helix, p53_extended, or p53_polypro)
+To run it in NMRBox, the only step missing is to generate a `.tpr` file containing the information for this simulation. Give this
+input file a clear name, combining the protein identifier (`p53_helix`, `p53_extended`, or `p53_polypro`)
 with your name or initials.
 
 <a class="prompt prompt-info">
   Generate the production *.tpr* file.
 </a>
+<a class="prompt prompt-question">
+  Copy the final *06_md_PME.mdp* file to your home directory and edit *nsteps* it to set the number of steps necessary to reach 50 ns. Note that 1 step is not the same as 1 ns.
+</a>
 <a class="prompt prompt-cmd">
   cp $MOLMOD_DATA/mdp/06_md_PME.mdp ~/06_md_PME.mdp
+</a>
+<a class="prompt prompt-cmd">
+  nano ~/06_md_PME.mdp
 </a>
 <a class="prompt prompt-cmd">
   gmx grompp -v -f ~/06_md_PME.mdp -c peptide-NPT-noPR.gro -p peptide.top -o p53_helix_CAH.tpr
 </a>
 
+<a class="prompt prompt-info">
+  Run the production MD! This will take a few hours to complete.
+</a>
+
+<a class="prompt prompt-cmd">
+  gmx mdrun -v -deffnm p53_helix_CAH
+</a>
+
 If you wish to inspect the contents of the `.tpr` file, use the `dump` utility of GROMACS, which,
 as the name indicates, outputs the entire contents of the file to the screen. Pipe the output of
-the command to a text processor such as `less` or `more` (Linux joke) to paginate the output. Press
+the command to a text processor such as `less` or `more` (Unix joke) to paginate the output. Press
 `q` to quit the program.
 
 <a class="prompt prompt-cmd">
@@ -854,6 +904,7 @@ the command to a text processor such as `less` or `more` (Linux joke) to paginat
 
 <hr>
 ## Analysis of the Molecular Dynamics Simulation
+
 The production run is only the beginning of the real work behind molecular dynamics simulations.
 The analysis of a simulation can be divided in several parts and varies substantially depending on
 the goal of the simulation and the research questions being asked. Generally, the first part of the
@@ -885,7 +936,7 @@ a simulation to crash, especially problems related to the force field (if you us
 parameters) or insufficient or deficient equilibration of the system.
 
 <a class="prompt prompt-info">
-  Check if the simulation finished properly. Verify it ran for 50 nanoseconds.
+  Check if the simulation finished properly. Verify that it ran for 50 nanoseconds.
 </a>
 <a class="prompt prompt-cmd">
   gmx check -f p53_helix_CAH.xtc
@@ -1064,23 +1115,23 @@ obscuring the real action!
 </a>
 <a class="prompt prompt-pymol">
   cartoon tube
-  </a>
-  <a class="prompt prompt-pymol">
+</a>
+<a class="prompt prompt-pymol">
   set cartoon_tube_radius, 1.5
-  </a>
-  <a class="prompt prompt-pymol">
+</a>
+<a class="prompt prompt-pymol">
   as cartoon
-  </a>
-  <a class="prompt prompt-pymol">
+</a>
+<a class="prompt prompt-pymol">
   spectrum count, rainbow, byres=1
-  </a>
-  <a class="prompt prompt-pymol">
+</a>
+<a class="prompt prompt-pymol">
   smooth # Optional, for less *jerky* movie
-  </a>
-  <a class="prompt prompt-pymol">
+</a>
+<a class="prompt prompt-pymol">
   unset movie_loop
-  </a>
-  <a class="prompt prompt-pymol">
+</a>
+<a class="prompt prompt-pymol">
   mplay
 </a>
 
@@ -1144,6 +1195,7 @@ Then, in the command-line interface, assuming you are in the directory where Pym
 
 <hr>
 ## Quantitative Quality Assurance
+
 After a first visual inspection of the trajectory, assuming the simulation went smoothly, it is
 time to perform additional and more thorough checks regarding the quality of the simulation. This
 analysis involves testing for the convergence of the thermodynamic parameters, such as temperature,
@@ -1289,6 +1341,7 @@ images? Why?
 </a>
 
 ### Conformational dynamics and stability II -- Root Mean Square Fluctuation (RMSF)
+
 The structure of the peptide changes throughout the simulation, but not equally. Some regions are
 more flexible than others, usually due to differences in the amino acid sequence. The root mean
 square fluctuations capture, for each atom, the fluctuation about its average position and often
@@ -1326,6 +1379,7 @@ inspect the flexible regions visually. Note the unphysical character of the aver
 </a>
 
 ### Conformational dynamics and stability III -- Root Mean Square Deviation (RMSD)
+
 As the calculation of the RMSF also produced an average structure, it is now possible to calculate
 the root mean square deviation of the entire trajectory. This metric is commonly used as an
 indicator of convergence of the structure towards an equilibrium state. The RMSD is a distance
@@ -1480,6 +1534,7 @@ short sequences, as well as a `-rainbow` flag that controls the coloring of the 
 
 <hr>
 ## Analysis of time-averaged properties
+
 This simulation considers only one conformation. To obtain proper sampling of the peptide
 conformational landscape, 50 nanoseconds do not suffice. However, trajectories starting from
 different initial structures or starting from the same structure with a different initial random
@@ -1492,6 +1547,7 @@ as possible regarding initial structures.
 </a>
 
 ### Preparation of a concatenated trajectory
+
 The first step is to trim the trajectories in order to remove the first 10 nanoseconds, which can
 be conservatively considered as equilibration. This operation is possible through `trjconv` and its
 `-b` flag, which allows the user to specify an offset previous to which the trajectory data is
@@ -1527,6 +1583,7 @@ which tells `trjcat` to append the next trajectory right after the last frame of
 </a>
 
 ### Root Mean Square Deviations -- Part II
+
 Although the root mean square deviation (RMSD) was already calculated to check for the convergence
 of the simulation, it can be used for a more advanced and in-depth analysis of conformational
 diversity. After all, the RMSD is a metric that compares structures. By performing an all-vs-all
@@ -1558,6 +1615,7 @@ only backbone atoms to fit and calculate the RMSD.
 </a>
 
 ### Cluster Analysis
+
 Using the all-vs-all RMSD matrix calculated in the previous step, it is possible to quantitatively
 establish the number of groups of similar structures that a trajectory (or concatenated
 trajectories) samples. Using an unsupervised classification algorithm, *clustering*, structures
@@ -1565,8 +1623,8 @@ that are similar to each other within a certain RMSD threshold are grouped toget
 cluster, the number of structures that belong to it, is also an indication of how favourable that
 particular region of the conformational landscape is in terms of free energy. GROMACS implements
 several clustering algorithms in the `cluster` program. Here, we will use the `gromos` clustering
-algorithm with a cutoff of 2 Å. Briefly, the algorithm first calculates how many frames are within
-2 Å of each particular frame, based on the RMSD matrix, and then selects the frame with the largest
+algorithm with a cutoff of $$2Å$$. Briefly, the algorithm first calculates how many frames are within
+$$2Å$$ of each particular frame, based on the RMSD matrix, and then selects the frame with the largest
 number of neighbors to form the first cluster. These structures are *removed* from the pool of
 available frames, and the calculation proceeds iteratively, until the next largest group is smaller
 than a pre-defined number. The `cluster` program produces a very large number of output files that
@@ -1626,6 +1684,7 @@ these clusters are meaningful, i.e. contain only similar structures?
 
 <hr>
 ## Picking representatives of the simulation
+
 The aim of this simulation exercise was the sample the conformational landscape of the p53
 N-terminal transactivation peptide, in order to extract representatives that could be used to
 generate models of its interaction with the MDM2 protein. The last step of clustering provides an
@@ -1644,7 +1703,7 @@ By the end of this tutorial, you have (we hope!) learned how to setup a molecula
 simulation of a small peptide and how to critically interpret and validate your results. This is no
 small feat. The analyses we show here are just the tip of the iceberg of what you can extract from
 your trajectory. If you are serious about MD simulations, be sure to read the
-[documentation for your version of GROMACS](https://manual.gromacs.org/documentation/){:target="_blank"}
+[GROMACS documentation](https://manual.gromacs.org/documentation/){:target="_blank"}
 and get acquainted with the tools it offers.
 
 You might want to use the representatives you just selected in the tutorial for
