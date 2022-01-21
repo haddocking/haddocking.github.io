@@ -6,8 +6,19 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
+### Latest changes - version January 2022
+- Minor changes in occupancy treatment for pharmacophore-based shape docking
+- Added support for 2-N-acetyl-beta-D-galactopyranose (NGA)
+- Added support for N-methylated Cter (NME residue)
+- Various changes to support DPP membranes
+- Made glycan rings rigid for torsion angle dynamics
+- Corrected issue with initialisation of contact probabilities for solvated docking
+- Corrected issue when using the DNA-RNA linkage file to keep the terminal 5'phosphate
+- Corrected issue with BSA calculation in the presence of tensors
+- Corrected issue with Rg energy in PDB output files
 
-### Latest changes - version May 2021
+
+### Changes - version May 2021
 
 - Fixed issue with grid package submission for model-specific ambig files
 - Added carbohydrates to scoring scripts
