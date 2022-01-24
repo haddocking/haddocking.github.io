@@ -22,7 +22,7 @@ interpret its results in terms of biological insights.
 
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation,
 proliferation, signal transduction, and cell death. Their structural characterization is however
-not always trivial, even with the constant developments in x-ray crystallography and nuclear
+not always trivial, even with the constant developments in X-ray crystallography and nuclear
 magnetic resonance spectroscopy. The culprits widely vary, ranging from the native environment of
 the complexes, which might make them hard to purify or crystallize, to the size of the system being
 too large for current methodologies to grasp. More importantly, homeostasis often depends on very
@@ -63,47 +63,50 @@ The docking protocol of HADDOCK was designed so that the molecules experience va
 flexibility and different chemical environments, and it can be divided in three different stages,
 each with a defined goal and characteristics:
 
-**1. Randomization of orientations and rigid-body minimization (it0)**   
+**1. Randomization of orientations and rigid-body minimization (it0)**
 
 In this initial stage, the interacting partners are treated as rigid bodies, meaning that all geometrical parameters such as bonds lengths, bond angles, and dihedral angles are frozen. The partners are separated in space and rotated randomly about their centres of mass. This is followed by a rigid body energy minimization step, where the partners are allowed to rotate and translate to optimize the interaction. The role of AIRs in this stage is of particular importance. Since they are included in the energy function being minimized, the resulting complexes will be biased towards them. For example, defining a very strict set of AIRs leads to a very narrow sampling of the conformational space, meaning that the generated poses will be very similar. Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions, displaying greater variability in the region of binding.
 
-<details >
-<summary style="bold">
-<b><i>See animation of rigid-body minimization (it0):</i></b>
-</summary>
-<figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_mini.gif">
-</figure>
-</details>
+<div style="text-align: center;">
+  <details>
+    <summary>
+      ▼ <span style="text-decoration:underline">Click here to see animation of rigid-body minimization (it0)</span> ▼
+    </summary>
+    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_mini.gif">
+  </details>
+</div>
 <br>
 
-**2. Semi-flexible simulated annealing in torsion angle space (it1)**    
+**2. Semi-flexible simulated annealing in torsion angle space (it1)**
 
 The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step molecular dynamics-based refinement in order to optimize interface packing. It is worth noting that flexibility in torsion angle space means that bond lengths and angles are still frozen. The interacting partners are first kept rigid and only their orientations are optimized. Flexibility is then introduced in the interface, which is automatically defined based on an analysis of intermolecular contacts within a 5Å cut-off. This allows different binding poses coming from it0 to have different flexible regions defined. Residues belonging to this interface region are then allowed to move their side-chains in a second refinement step. Finally, both backbone and side-chains of the flexible interface are granted freedom. The AIRs again play an important role at this stage since they might drive conformational changes.
 
-  <details >
-  <summary style="bold">
-  <b><i>See animation of semi-flexible simulated annealing (it1):</i></b>
-  </summary>
-  <figure align="center">
-    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
-  </figure>
-  </details>
-  <br>
 
- **3. Refinement in Cartesian space with explicit solvent (water)**   
+<div style="text-align: center;">
+  <details>
+    <summary>
+      ▼ <span style="text-decoration:underline">Click here to see animation of semi-flexible simulated annealing (it1)</span> ▼
+    </summary>
+    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
+  </details>
+</div>
+<br>
+
+
+ **3. Refinement in Cartesian space with explicit solvent (water)**
 
  ***Note:*** This stage was part of the standard HADDOCK protocol up to (and including) v2.2. As of v2.4 it is no longer performed by default but the user still has the option of enabling it. In its place, a short energy minimisation is performed instead. The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side chains to be optimized.
 
- <details >
- <summary style="bold">
- <b><i>See animation of refinement in explicit solvent (water):</i></b>
- </summary>
- <figure align="center">
-   <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_water.gif">
- </figure>
- </details>
- <br>
+
+<div style="text-align: center;">
+  <details>
+    <summary>
+      ▼ <span style="text-decoration:underline">Click here to see animation of refinement in explicit solvent (water)</span> ▼
+    </summary>
+    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_water.gif">
+  </details>
+</div>
+<br>
 
 
 The performance of this protocol of course depends on the number of models generated at each step.
@@ -132,25 +135,25 @@ putative interfaces on a protein surface. Since the homology modeling module cre
 homologues of mouse MDM2, it is possible to assess which residues are more conserved.
 
 
-First we need to find sequence homologues again. This time we will be running a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi){:target="_blank"} search using UniProt. We can come back to the entry from the homology modelling part where we looked up mouse MDM2 in [Uniprot](https://www.uniprot.org){:target="_blank"}.
+First we need to find sequence homologues again. This time we will be running a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi){:target="_blank"} search using Uniprot. We can come back to the entry from the homology modelling part where we looked up mouse MDM2 in [Uniprot](https://www.uniprot.org){:target="_blank"}.
 
 <a class="prompt prompt-info">
 Search for 'MDM2' in Uniprot and choose the mouse isoform.
 </a>
 
-A familiar page should appear with all the previously described information. Go directly to the **Sequences** section. The sequence that you see is a canonical sequence, which means that it is either the most prevalent, the most similar to orthologous sequences in other species or in absence of any information, the longest sequence. On the right side of the sequence there is a possibility to run a BLAST (Basic Local Alignment Search Tool) search. 
+A familiar page should appear with all the previously described information. Go directly to the **Sequences** section. The sequence that you see is a canonical sequence, which means that it is either the most prevalent, the most similar to orthologous sequences in other species or in absence of any information, the longest sequence. On the right side of the sequence there is a possibility to run a BLAST (Basic Local Alignment Search Tool) search.
 
 <a class="prompt prompt-info">
 Select 'BLAST' next to the canonical sequence and press 'GO'.
 </a>
 
-Next, a new [window](https://www.uniprot.org/blast/){:target="_blank"} will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier. 
+Next, a new [window](https://www.uniprot.org/blast/){:target="_blank"} will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier.
 
 <a class="prompt prompt-info">
-Since we are already have the UniProt ID in the field, we can click on **Run BLAST**. Change the number of sequences to 100.
+Since we are already have the UniProt ID in the field, we can click on `Run BLAST` and change the number of sequences to 100.
 </a>
 
-This step might take a few moments since our sequence is being compared to the UniProtKB reference proteomes plus SwissProt databases. Once the run is finished, we can see a list of orthologous sequences from different organisms ordered by sequence identity. 
+This step might take a few moments since our sequence is being compared to the UniProtKB reference proteomes plus SwissProt databases. Once the run is finished, we can see a list of orthologous sequences from different organisms ordered by sequence identity.
 
 <a class="prompt prompt-question">
 Which organism shows the highest sequence similarity to the mouse MDM2? Is it surprising?
@@ -159,26 +162,26 @@ Which organism shows the highest sequence similarity to the mouse MDM2? Is it su
 To be able to take information about conserved residues and utilize it in HADDOCK, we need to align selected sequences. An additional window with running alignment will open.
 
 <a class="prompt prompt-info">
-Select all sequences and click on 'Align' in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
+Select all sequences and click on `Align` in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
 </a>
 
 
 To visualize the alignment, and which positions are more conserved, the easiest way is to generate a sequence *logo*. For each
 position in the sequence, the logo identifies the most frequently occurring residues and scales its
 one-letter code according to a conservation score. We will be using the
-[weblogo server](http://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
+[WebLogo server](http://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
 logo for the alignment produced by BLAST.
 
 
 <a class="prompt prompt-info">
-  Create the sequence logo by submitting the BLAST alignment file to the weblogo server.  
+  Create the sequence logo by submitting the BLAST alignment file to the WebLogo server.
 </a>
 
 Since the other sequences might be longer than our query, specify conservancy of which residues you are interested in.
 
 <a class="prompt prompt-info">In WebLogo 3 upload your alignment file </a>
 
-Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in Logo range.
+Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in logo range.
 
 <a class="prompt prompt-question">
   Which regions of the sequence are highly conserved? And which are less conserved?
@@ -217,7 +220,6 @@ in Pymol.
 <a class="prompt prompt-question">
     Do the predictions highlight a particular region of the homology model?
 </a>
-
 <a class="prompt prompt-info">
   Note down the list of residues predicted by CPORT to be part of an interface.
 </a>
@@ -242,8 +244,7 @@ the proper `END` statement to the PDB file. Finally, it has a built-in check for
 the ensemble, i.e. that all members have exactly the same atomic constitution.
 
 <a class="prompt prompt-info">
-  Concatenate different representatives of the MD simulation of the p53 peptide into an ensemble
-structure.
+  Concatenate different representatives of the MD simulation of the p53 peptide into an ensemble structure.
 </a>
 <a class="prompt prompt-cmd">
   pdb_mkensemble p53_cluster_1.pdb p53_cluster_2.pdb p53_cluster_3.pdb > p53_ensemble.pdb
@@ -261,17 +262,17 @@ If you are following the Molecular Modeling course, ask the instructors for the 
 credentials. Otherwise, please register for an account (free for academics).
 </a>
 
-To get an HADDOCK account go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
+To get an HADDOCK account go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on `Register`.
 
 
 Having prepared the initial structures and constructed a list of putative interface residues, it is
-time to submit the docking calculation using the [HADDOCK 2.4 web server interface](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
+time to submit the docking calculation using the [HADDOCK 2.4 web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
 
-Here, you can useful information for example a link to the new [HADDOCK best practice guide](https://www.bonvinlab.org/software/bpg/){:target="_blank"}, which comprises settings for different docking scenarios. 
-Under Server information you can find [default settings of the webserver](https://wenmr.science.uu.nl/haddock2.4/settings){:target="_blank"},
-which are important to understand how restraints for example are handled, as well as a [listing of supported modified amino acids](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"} and the current HADDOCK version.
+Here, you can useful information for example a link to the new [HADDOCK best practice guide](https://www.bonvinlab.org/software/bpg/){:target="_blank"}, which comprises settings for different docking scenarios.
+Under the _Server Information_ section in the web page, you can find a link to the [default settings of the webserver](https://wenmr.science.uu.nl/haddock2.4/settings){:target="_blank"},
+which are important to understand how restraints for example are handled, as well as a [list of supported modified amino acids and co-factors](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"} and the current HADDOCK version.
 
-To start the job submission, click on **Submit  a new job**.
+To start the job submission, click on `Submit  a new job`.
 
 <hr>
 
@@ -279,21 +280,16 @@ To start the job submission, click on **Submit  a new job**.
 
 ### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+For this we will make us of the [HADDOCK 2.4 submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 
 
-
-
-* **Step 1:** Define a name for your docking run in the field "Job name", e.g. *MDM2-p53*.
+* **Step 1:** Define a name for your docking run in the field `Job name`, e.g. **MDM2-p53**.
 
 * **Step 2:** Select the number of molecules to dock, in this case the default *2*.
 
-* **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 - input** if it isn't already unfolded. 
+* **Step 3:** Input the first protein PDB file. For this unfold the `Molecule 1 - input` if it isn't already unfolded.
 
-<a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
-</a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
 </a>
@@ -303,12 +299,9 @@ PDB structure to submit -> Browse and select *modelx.pdb* (the homology model yo
 
 ***Note:*** Leave all other options to their default values.
 
-* **Step 4:** Input the second protein PDB file. This is the ensemble of three peptide conformations. For this unfold the **Molecule 2 - input** if it isn't already unfolded. 
+* **Step 4:** Input the second protein PDB file. This is the ensemble of three peptide conformations. For this unfold the `Molecule 2 - input` if it isn't already unfolded.
 
 
-<a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
-</a>
 <a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
 </a>
@@ -318,7 +311,7 @@ PDB structure to submit -> Browse and select *p53_ensemble.pdb* (the PDB file co
 
 Since our homology model and peptide do not correspond to the full sequence it is better to have uncharged termini.
 
-* **Step 5:** Click on the **Next** button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the `Next` button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 
@@ -335,28 +328,38 @@ while the peptide is only defined as passive. This follows the recipe published 
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have
 all to make contacts per se.
 
-* **Step 6:** Specify the active residues for the first molecule. For this unfold the **Molecule 1 - parameters** if it isn't already unfolded.
+* **Step 6:** Specify the active residues for the first molecule. For this unfold the `Molecule 1 - parameters` if it isn't already unfolded.
 In this stage we will make use of the active residues returned by CPORT for MDM2
 
-<a class="prompt prompt-info">Active residues (directly involved in the interaction) -> Input here the list of active residues returned by CPORT for MDM2</a>
-<a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (passive should only be defined if active residues are defined for the second molecule)</a>
-
-
-* **Step 7:** Specify the active residues for the second molecule. For this unfold the **Molecule 2 - parameters** if it isn't already unfolded.
-
-
-<a class="prompt prompt-info">Active residues (directly involved in the interaction) -> Leave blank (no active for the peptide in this case)</a>
-<a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)</a>
-<a class="prompt prompt-info">Passive residues (surrounding surface residues) -> Enter here all residues of the peptide as a comma-separated list
+<a class="prompt prompt-info">
+  Active residues (directly involved in the interaction) -> Input here the list of active residues returned by CPORT for MDM2
+</a>
+<a class="prompt prompt-info">
+  Automatically define passive residues around the active residues -> **uncheck** (passive should only be defined if active residues are defined for the second molecule)
 </a>
 
-***Note:*** Notice that instead of typing all residues manually, you can now select them from the sequence above. Secondary structure is depicted in different colors. 
+
+* **Step 7:** Specify the active residues for the second molecule. For this unfold the `Molecule 2 - parameters` if it isn't already unfolded.
+
+
+<a class="prompt prompt-info">
+  Active residues (directly involved in the interaction) -> Leave blank (no active for the peptide in this case)
+  </a>
+<a class="prompt prompt-info">
+  Automatically define passive residues around the active residues -> **uncheck** (checked by default)
+  </a>
+<a class="prompt prompt-info">
+  Passive residues (surrounding surface residues) -> Enter here all residues of the peptide as a comma-separated list
+</a>
+
+***Note:*** Notice that instead of typing all residues manually, you can select them from the sequence above. Secondary structure is represented in different colors.
 
 ### Definition of fully flexible segments
 
-* **Step 8:** Since peptides are highly flexible we will give more flexibility to the peptide to allow for larger conformational changes. For this unfold the **Fully flexible segments tab** for molecule 2 and enter:
+* **Step 8:** Since peptides are highly flexible we will give more flexibility to the peptide to allow for larger conformational changes. For this unfold the `Fully flexible segments tab` for molecule 2 and enter:
 
-<a class="prompt prompt-info">Fully flexible segments -> Enter here all residues of the peptide as a comma-separated list
+<a class="prompt prompt-info">
+  Fully flexible segments -> Enter here all residues of the peptide as a comma-separated list
 </a>
 
 Here you can also simply select the entire peptide sequence again. This will cause HADDOCK to consider the peptide residues as fully flexible during all stages of the simulated annealing refinement stage and therefore increase sampling.
@@ -364,32 +367,34 @@ Here you can also simply select the entire peptide sequence again. This will cau
 
 ### Increased sampling
 
-If we don't fully trust our information about binding, it is safer to increase sampling to consider more solutions. 
+If we don't fully trust our information about binding, it is safer to increase sampling to consider more solutions.
 
 * **Step 9:**  This can be done in one simple step by choosing the bioinformatics predictions settings described [here](https://wenmr.science.uu.nl/haddock2.4/settings#bioinfo){:target="_blank"}.
 
-<a class="prompt prompt-info"> Optimize run for bioinformatics predictions  -> **check**</a>
+<a class="prompt prompt-info">
+  Optimize run for bioinformatics predictions -> **check**
+</a>
 
 
-* **Step 10:** Click on the **Next** button on the bottom of the page.
- 
+* **Step 10:** Click on the `Next` button on the bottom of the page.
 
-Checking the bioinformatic prediction setting changes automatically sampling to these parameters:  
+
+Checking the bioinformatic prediction setting changes automatically sampling to these parameters:
 
 <a class="prompt prompt-info">
-Number of structures for rigid body docking -> 10000
+  Number of structures for rigid body docking -> 10000
 </a>
 <a class="prompt prompt-info">
-Number of structures for semi-flexible refinement -> 400
+  Number of structures for semi-flexible refinement -> 400
 </a>
 <a class="prompt prompt-info">
-Number of structures for the final refinement -> 400
+  Number of structures for the final refinement -> 400
 </a>
 <a class="prompt prompt-info">
-Number of trials for rigid body minimisation  -> 1
+  Number of trials for rigid body minimisation  -> 1
 </a>
 <a class="prompt prompt-info">
-Number of structures to analyze -> 400
+  Number of structures to analyze -> 400
 </a>
 
 
@@ -404,7 +409,7 @@ For this reason it is recommended to increase the number of structures generated
 the various stages of the docking protocol. As a rule of thumb, 1000 rigid-body models per member
 of the ensemble is a good number. The number of models selected to it1 and water can simply be
 doubled. The computational cost of these refinement stages does not allow a proportional increase.
-These numbers can be edited one by one in the **Sampling parameters** tab, but are done automatically when checking the **Bioinformatics predictions** setting.
+These numbers can be edited one by one in the `Sampling parameters` tab, but are done automatically when checking the `Bioinformatics predictions` setting.
 
 ***Note:*** Because of the decreased sampling per model in the case of an ensemble of starting structures,
 it is recommended to limit the number of conformations in the starting ensembles.
@@ -417,13 +422,13 @@ will only be sampled 100 times. Note that the server limits the number of it0 mo
 ### Clustering parameters
 
 * **Step 11:**
-For this unfold the **Parameters for clustering menu**.
+For this unfold the `Parameters for clustering menu`.
 
 HADDOCK offers two different clustering algorithms.
 Refer to the [online manual](https://www.bonvinlab.org/software/haddock2.4/run/#anal){:target="_blank"} for more details.
 For peptide and small molecules we recommend the use of RMSD clustering.
 The clustering algorithm must also be adjusted to accommodate the small size of the peptide. The
-default cutoff of 7.5Å (interface-ligand RMSD) was optimized for protein-protein docking and is
+default cutoff of $$7.5Å$$ (interface-ligand RMSD) was optimized for protein-protein docking and is
 very likely too large in the case of protein-peptide complexes. Clustering with this value would very
 likely generate very large and diverse clusters. We should therefore reduce the clustering cutoff:
 
@@ -437,7 +442,7 @@ likely generate very large and diverse clusters. We should therefore reduce the 
 
 ### Automatic restraining of secondary structure elements
 
-* **Step 12:** For this unfold the **Dihedral and hydrogen bonds restraints menu**.
+* **Step 12:** For this unfold the `Dihedral and hydrogen bonds restraints menu`.
 
 HADDOCK offers an option to automatically define dihedral angle restraints based on the input structure.
 This can be applied either to the entire sequence, or only to alpha helical segments or to alpha and beta segments.
@@ -451,7 +456,7 @@ as fully flexible, it is recommended to turn on this option.
 
 ### Advanced sampling parameters
 
-* **Step 13:** Adjust the number of flexible refinement steps to increase the sampling of peptide conformations in **Advanced sampling parameters menu**.
+* **Step 13:** Adjust the number of flexible refinement steps to increase the sampling of peptide conformations in `Advanced sampling parameters` menu.
 
 
 Double the number of steps for all four stages of the semi-flexible refinement:
@@ -471,18 +476,18 @@ Double the number of steps for all four stages of the semi-flexible refinement:
 
 ### Job submission
 
-This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
+This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a `.tgz` archive) and a parameter file which contains all the settings and input structures for our run (in `.json` format). We strongly recommend to download this file as it will allow you to repeat the run afterwards by uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK web server. It can serve as input reference for the run and added to the suplementary material of your publications. This file can also be manually edited.
 
 
-* **Step 14:** Click on the **Submit** button at the bottom left of the interface.
+* **Step 14:** Click on the `Submit` button at the bottom left of the interface.
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 
 The second link points to the results page of the simulation. Since a regular docking simulation lasts, on average, a couple of
-hours, this page displays its current status while not complete as PROCESSING, QUEUED, or RUNNING. In
+hours, this page displays its current status while not complete as `PROCESSING`, `QUEUED`, or `RUNNING`. In
 case a critical error prevents the simulation from continuing, whether because of problems with the
-input data, or problems during the simulation itself, the webpage displays an ERROR message. Most
+input data, or problems during the simulation itself, the webpage displays an `ERROR` message. Most
 of these status changes are accompanied by an e-mail that is sent to the address linked to the user
 account. In case of errors, this e-mail also offers additional details on the cause(s). For
 students, since all accounts are pre-configured, the email notification is turned off.
@@ -522,7 +527,7 @@ representative models of the simulation. Nevertheless, a careful visual inspecti
 importance and should always be the first step of any simulation analysis. To better visualize the
 differences between each cluster, superimpose all models onto the backbone of the largest partner,
 in this case the MDM2 molecule.  For this we have to select a *reference* model, which we
-arbitrarily define as that of cluster1_1.
+arbitrarily define as that of `cluster1_1`.
 
 
 <a class="prompt prompt-info">
@@ -530,10 +535,16 @@ arbitrarily define as that of cluster1_1.
 and open them in Pymol. If there is only one cluster, open the top four best models of that cluster.
 </a>
 <a class="prompt prompt-pymol">
-    select refe, cluster1_1 and chain A  
-    align cluster2_1, refe  
-    align cluster3_1, refe  
-    ...
+  select refe, cluster1_1 and chain A
+</a>
+<a class="prompt prompt-pymol">
+  align cluster2_1, refe
+</a>
+<a class="prompt prompt-pymol">
+  align cluster3_1, refe
+</a>
+<a class="prompt prompt-pymol">
+  ...
 </a>
 
 <a class="prompt prompt-question">
@@ -544,7 +555,7 @@ and open them in Pymol. If there is only one cluster, open the top four best mod
 MDM2? Can you identify key residues that might be "hotspots" of this interaction?
 </a>
 
-The best way to validate your docking is to compare your solution to an experimental structure. Luckily for us, there is a human MDM2 bound to the transactivation domain of p53 under PDB code: [1YCR](https://www.rcsb.org/structure/1YCR){:target="_blank"}. One can download this complex or simply fetch it with Pymol. 
+The best way to validate your docking is to compare your solution to an experimental structure. Luckily for us, there is a human MDM2 bound to the transactivation domain of p53 under PDB code: [1YCR](https://www.rcsb.org/structure/1YCR){:target="_blank"}. One can download this complex or simply fetch it with Pymol.
 
 <a class="prompt prompt-question">
  Does your docking solution resemble the complex of human MDM2 and p53?  Was the active site identified correctly by CPORT?
@@ -559,7 +570,7 @@ a Computational Structural Biologist. As you have seen, in modeling, there are r
 certainties and you must always operate with extreme care and a constant sense of (self-)criticism.
 Nevertheless, you started with only two sequences and have now three-dimensional models of
 interactions that can be put to the test in the lab. Who knows? Maybe one of your models is
-actually correct and it will help researchers to spare the life of a few of our mice friends!
+actually correct and it will help researchers to spare the life of a few of our mice friends! 🐁
 
 Thank you for following this tutorial. We welcome any feedback to improve it. For the students
 following the course Molecular Modeling and Simulation, please feel free to voice any criticism
