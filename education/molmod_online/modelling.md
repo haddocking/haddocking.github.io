@@ -392,7 +392,7 @@ If one selects multiple templates by checking the window in the **Templates** ta
 
 
 <a class="prompt prompt-info">
-Select appropriate templates based on the properties described above. Visually inspect the selected structures. Which one is the most complete one or show the highest resolution, identity or GMQE score? Once you are satisfied with your selection, click on `Build Models`.
+Select appropriate templates based on the properties described above. Visually inspect the selected structures. Which one is the most complete one or show the highest resolution, identity or GMQE score? Once you are satisfied with your selection, click on Build Models.
 </a>
 
 ***Tip:*** Select templates of varying quality and coverage now and compare models made from them in the following step.
