@@ -77,24 +77,16 @@ AlphaFold-Multimer's goal is to instead predict the structure of molecular compl
 
 In the picture (C) above you can see a predicted Protein-Peptide complex that is extremely similar to the experimental structure, the natural question is: could we have used AlphaFold to predict the MDM2-p53 complex?
 
-Accessibility is important for every computer software and the installation and setup of AlphaFold is not trivial, it required the download of a large database (2TB) and a lot of processing power, unfortunately is not something that can be executed in a laptop. To address this AlphaFold is available for "free" (since you need a google account) within the _Collab_ platform which: _"Allows you to write and execute Python in your browser, with. Zero configuration required. Free access to GPUs."_
+Accessibility is important for every computer software and the installation and setup of AlphaFold is not trivial, it required the download of a large database (2TB) and a lot of processing power, unfortunately is not something that can be executed in a laptop. To address this AlphaFold is available for "free" (since you need a google account) within the _Collab_ platform which: _"Allows you to write and execute Python in your browser, with. Zero configuration required. Free access to GPUs."_. The official AlphaFold Collab, has a limit on the minimum number of residues you can input. So we will use instead a community-made that is slightly tweaked but is sufficient for our protein-peptide study.
 
-[Click here to go to AlphaFold Collab](https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb){:target="_blank"}, read their description and head down to the `Making a prediction` section. Input the sequences (without the `>` header) of MDM2 as `sequence_1` and p53 peptide as `sequence_2`:
-
-
-<pre style="background-color:#DAE4E7;padding:15px">
->sp|P23804|1-110
-MCNTNMSVSTEGAASTSQIPASEQETLVRPKPLLLKLLKSVGAQNDTYTMKEIIFYIGQYIMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV
-</pre>
+[Click here to go to ColabFold](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"} read their description and input our sequences on `query_sequence`, you need to add `:` between the sequences:
 
 <pre style="background-color:#DAE4E7;padding:15px">
->P53_MOUSE
-SQETFSGLWKLLPPE
+MCNTNMSVSTEGAASTSQIPASEQETLVRPKPLLLKLLKSVGAQNDTYTMKEIIFYIGQYIMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV:SQETFSGLWKLLPPE
 </pre>
 
-In the top section of the Colab, click: `Runtime > Run All` (it may give a warning that this is not authored by google, ironically, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction you will be asked to download the complete a zip-archive with the results.
+In the top section of the Colab, click: `Runtime > Run All` (it may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction you will be asked to download the complete a zip-archive with the results.
 
-There are several other community-made Colabs that also run AlphaFold and they all have small tweaks for specific scenarios a notable example is [ColabFold](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"}.
 
 Now that you are quite literally on the edge of the computational structural biology field try to answer these questions:
 
