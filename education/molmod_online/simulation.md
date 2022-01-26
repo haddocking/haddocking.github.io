@@ -180,9 +180,8 @@ successful completion of the tutorial requires, however, all three conformations
 
 
 <a class="prompt prompt-info">
-  Generate an ideal structure for the peptide sequence using the build_seq script in Pymol
- (`helix`/`polypro`/`beta`). If you have trouble with the build_seq script you could also resort to
- the built-in fab command to generate the helix (`ss=1`) and beta (`ss=3`) conformations. (The command
+  Generate an ideal structure for the peptide sequence using the build_seq script in Pymol, _choose between helix/polypro/beta_. If you have trouble with the build_seq script you could also resort to
+ the built-in fab command to generate the helix (ss=1) and beta (ss=3) conformations. (The command
  doesn't offer the polypro conformation)
 </a>
 
