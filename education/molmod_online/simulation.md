@@ -143,7 +143,7 @@ Before we start, we should make sure that we use the proper programs and paths f
 
 
 <a class="prompt prompt-cmd">
-$MOLMOD_DATA/setup.sh
+$MOLMOD_DATA/setup_2022.sh
 </a>
 
 
@@ -180,13 +180,11 @@ successful completion of the tutorial requires, however, all three conformations
 
 
 <a class="prompt prompt-info">
-  Generate an ideal structure for the peptide sequence using the build_seq script in Pymol, _choose between helix/polypro/beta_. If you have trouble with the build_seq script you could also resort to
- the built-in fab command to generate the helix (ss=1) and beta (ss=3) conformations. (The command
- doesn't offer the polypro conformation)
+  Generate an ideal structure for the peptide sequence using the build_seq script in PyMol, choose between helix/polypro/beta.
 </a>
 
 <a class="prompt prompt-pymol">
-  build_seq peptide_helix, SQETFSGLWKLLPPE, ss=XXXX
+  build_seq peptide_helix, SQETFSGLWKLLPPE, ss=helix
 </a>
 <a class="prompt prompt-pymol">
   save p53_helix.pdb, peptide_helix
@@ -197,7 +195,7 @@ successful completion of the tutorial requires, however, all three conformations
   Also carefully inspect the generated object whether it matches your expectations - you might want to adjust the residue numbers.
 </a>
 
-To change residue numbers within Pymol take a look at the help message of the alter command:
+To change residue numbers within PyMol take a look at the help message of the alter command:
 
 <a class="prompt prompt-pymol">
   help alter
