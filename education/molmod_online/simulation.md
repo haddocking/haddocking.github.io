@@ -551,7 +551,7 @@ of the new topology file, there is an additional entry listing the number of wat
 are now in the structure. It also added a definition that loads the water model parameters.
 
 <a class="prompt prompt-info">
-  Convert the solvated structure to PDB using editconf and visualize the unit cell in Pymol.
+  Open the solvated structure in Pymol.
 </a>
 
 <a class="prompt prompt-pymol">
@@ -655,8 +655,7 @@ and equal charges placed too close together.
 <a class="prompt prompt-cmd">
   gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-solvated.gro -p peptide.top -o peptide-EM-solvated.tpr
 <a class="prompt prompt-cmd">
-</a>
-  gmx mdrun -v -deffnm peptide-EM-solvated
+gmx mdrun -v -deffnm peptide-EM-solvated
 </a>
 <a class="prompt prompt-question">
   How long did the minimization take? Why was it so much longer than the previous one?
