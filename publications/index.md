@@ -6,11 +6,16 @@ image:
 ---
 ## 2022
 
+* V. Charitou, S.C. van Keulen and **A.M.J.J. Bonvin**. [A Cyclisation and Docking Protocol for Cyclic Peptide-Protein Modelling using HADDOCK2.4](https://doi.org/10.1101/2022.01.21.477251). _BioRxiv_ 10.1101/2022.01.21.477251 (2022).
+
+* N. Rosário-Ferreir, **A.M.J.J. Bonvin** and Irina S. Moreira. Using machine-learning-driven approaches to boost hot-spot's knowledge _WIREs Comp. Mol. Sci._, in Press (2022).
+
+
 ## 2021
 
 * M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1101/2021.12.08.471762). _BioRxiv_ 10.1101/2021.12.08.471762 (2021).
 
-* Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. [MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations](https://doi.org/10.1101/2021.10.06.463442). _BioRxix_ 10.1101/2021.10.06.463442 (2021).
+* Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. [MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations](https://doi.org/10.1101/2021.10.06.463442). _BioRxiv_, 10.1101/2021.10.06.463442 (2021).
 
 * G. Dudas, S. Hong, B. Potter, S. Calvignac-Spencer, F. Niatou-Singa, T. Tombolomako, T. Fuh-Neba, U. Vickos, M. Ulrich, F. Leendertz, K. Khan, C. Huber, A. Watts, I. Olendraitė, J. Snijder, K. Wijnant, **A.M.J.J. Bonvin**, P. Martres, S. Behillil, A. Ayouba, M. Maidadi, D. Djomsi, C. Godwe, C. Butel, A. Šimaitis, M. Gabrielaite, M. Katėnaitė, R. Norvilas, L. Raugaitė, G. Koyaweda, J. Kaleb Kandou, R. Jonikas, I. Nasvytienė, Ž. Žemeckienė, D. Gečys, K. Tamušauskaitė, M. Norkienė, E. Vasiliūnaitė, D. Žiogienė, A. Timinskas, M. Šukys, M. Šarauskas, G. Alzbutas, A. Amuri, E. Lusamaki, J. Makangara, F. Muyembe, E. Lofiko, P. Mbala, J. Muyembe-Tamfum, M. Darnycka Belizaire, R. Essomba, M. Claire Assoumou, A. Mboringong, A. Baba Dieng, D. Juozapaitė, S. Hosch, J. Obama, M. Ondo'o Ayekaba, D. Naumovas, A. Pautienius, C. Rafaï, A. Vitkauskienė, R. Ugenskienė, A. Gedvilaitė, D. Čereškevičius, V. Lesauskaitė, L. Žemaitis, L. Griškevičius and G. Baele. [Emergence and spread of SARS-CoV-2 lineage B.1.620 with variant of concern-like mutations and deletion](https://doi.org/10.1038/s41467-021-26055-8). _Nature Comm._ *12*, 5769 (2021). Preprint available [here](https://www.medrxiv.org/content/10.1101/2021.05.04.21256637v1).
 
