@@ -28,7 +28,7 @@ In DeepMind's most recent effort, AlphaFold aims to tackle the challenging _prot
 
 Nature is extremely efficient at optimizing processes, and the solution of this paradox allowed complex life to exist, not all of the aforementioned 5x107 conformations would be _thermodynamically stable_ an biologically functional. Protein folding is mainly guided by hydrophobic interactions via the formation of a hydrogen bond network, then stabilized by van der Waals forces and electrostatic interactions and hence follow a _folding path_ which is not random - this is also known as the [Thermodynamic Hypothesis](https://www.pnas.org/content/47/9/1309){:target="\_blank"}. There are several experimental techniques to study protein folding such as fluorescence spectroscopy, circular dichroism and of course Nuclear Magnetic Resonance (NMR) spectroscopy. On the computational side of things, _ab initio_ (or _de novo_) protein structure prediction software may aim to obtain the folded state of a protein by simulating the protein dynamics via long molecular dynamics simulations, in a process analogous to what is observed in nature; this is a computationally expensive process usually tackled by large-scale computational projects such as [Rosetta@home](https://boinc.bakerlab.org/rosetta/){:target="_blank"} and [Folding@home](https://foldingathome.org/?lng=en){:target="_blank"}. Alternatively different heuristics can be applied, which commonly use information from structures that have been solved experimentally such as: fragment-based methods (Rosetta), evolutionary co-variation (EVFold) and protein threading (I-TASSER).
 
-## Machine-learning
+## Machine Learning
 
 According to the [Thermodynamic Hypothesis](https://www.pnas.org/content/47/9/1309){:target="_blank"}, all the information that governs how proteins fold is contained in their respective primary sequences, this paradigm was the catalyst for the development of several computational algorithms to score protein conformations in the search of the lowest free energy state (also named the \_native state_). The main issue with this energy-driven approach is that the search space size is a function of the protein's length. The common approach for protein structure prediction is to use intermediate simplified steps that reduce the complexity of the structure but retain information, this step is called Protein Structure Annotation (PSA). PSAs can be 2-dimensional (secondary structure elements) or 1-dimensional (solvent accessibility, contact maps and torsional angles). With steady growth of experimentally determined protein structures, an increasing number of PSAs are available. These annotations or can then be used in a variety of deep learning methods, such as AlphaFold.
 
@@ -58,18 +58,18 @@ Briefly put, DeepMind trained AlphaFold on more than 170 000 proteins available 
 
 <br>
 
-Given this introduction, what is the buzz all about? Many of us saw the news that AlphaFold **solved the folding problem**, which can be easily misinterpreted. The folding problem refers to the process, it refers to the _thermodynamic pathway_ that a protein takes to get to its _native state_ it is not simply the generation of a final structure. There have been discussions in the community that [current protein structure predictors do not produce meaningful folding pathways](https://www.biorxiv.org/content/10.1101/2021.09.20.461137v1.abstract){:target="_blank"}. However, indeed AlphaFold provided the necessary software to obtain the 3D structure of many proteins that would not feasible via _ab initio_ or comparative modelling techniques.
+Given this introduction, what is the buzz all about? Many of us saw the news that AlphaFold **solved the folding problem**, which can be easily misinterpreted. The folding problem refers to the process, it refers to the _thermodynamic pathway_ that a protein takes to get to its _native state_: it is not simply the generation of a final structure. There have been discussions in the community that [current protein structure predictors do not produce meaningful folding pathways](https://www.biorxiv.org/content/10.1101/2021.09.20.461137v1.abstract){:target="_blank"}. However, indeed AlphaFold provided the necessary software to obtain the 3D structure of many proteins that would not be feasible via _ab initio_ or comparative modelling techniques.
 
 This was demonstrated by the results obtained by AlphaFold on the Critical Assessment of protein Structure Prediction (CASP). This assessment  is a community-wide, worldwide experiment for protein structure prediction taking place every two years since 1994 and functions as a benchmark in the field of protein prediction. On every round, it provides research groups with one or more _targets_, which are the sequence of a protein that has been solved experimentally but that it is not yet available publicly. The research groups must then apply their methods to predict the structure of this protein and by the end of the round, their predictions are compared to the experimental structure.
 
-For two years in a row (2018 and 2020), DeepMind's AlphaFold was placed first in CASP and in the latter edition it made the best prediction for 88 out of the 97 targets. It achieved a median accuracy score of 92.4 (out of 100) in the global distance test, this level of accuracy is equivalent to experimental techniques...! During the 2020 CASP conference experimentalist groups working with particularly challenging complexes were contacted and it was suggested that they employ the protein structures predicted by AlphaFold to aid in the experimental determination (with a technique called _[molecular replacement](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2394790/){:target="_blank"}_). Surprisingly, by using the predictions the researchers were able to experimentally determine the structures; you can read their very enthusiastic responses in the [presentation slides](https://predictioncenter.org/casp14/doc/presentations/2020_11_30_ExperimentalistSession0_Kryshtafovych_intro.pdf){:target="_blank"}).
+For two years in a row (2018 and 2020), DeepMind's AlphaFold was placed first in CASP and in the latter edition it made the best prediction for 88 out of the 97 targets. It achieved a median accuracy score of 92.4 (out of 100) in the global distance test, a level of accuracy that is equivalent to experimental techniques...! During the 2020 CASP conference experimentalist groups working with particularly challenging complexes were contacted and it was suggested that they employ the protein structures predicted by AlphaFold to aid in the experimental determination (with a technique called _[molecular replacement](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2394790/){:target="_blank"}_). Surprisingly, by using the predictions the researchers were able to experimentally determine the structures; you can read their very enthusiastic responses in the [presentation slides](https://predictioncenter.org/casp14/doc/presentations/2020_11_30_ExperimentalistSession0_Kryshtafovych_intro.pdf){:target="_blank"}).
 
 
 ## Predicting the MDM2-p53 complex with AlphaFold
 
-In the previous modules you were guided trough the comparative modelling of MDM2, the generation and optimization of the p53 peptide and finally the molecular docking. As shown before, AlphaFold was mainly built for the prediction of monomers, however scientist enjoy pushing things to the limit and started testing several scenarios for which AlphaFold was not trained for, this resulted in a series of "spin-offs", the one more relevant here is [AlphaFold-Multimer](https://deepmind.com/research/publications/2021/protein-complex-prediction-with-alphafold-multimer){:target="_blank"} (not yet peer reviewed).
+In the previous modules you were guided trough the comparative modelling of MDM2, the generation and optimization of the p53 peptide and finally the molecular docking. As shown before, AlphaFold was mainly built for the prediction of monomers, however scientists enjoy pushing things to the limit and started testing several scenarios for which AlphaFold was not trained. This resulted in a series of "spin-offs", the one most relevant here is [AlphaFold-Multimer](https://deepmind.com/research/publications/2021/protein-complex-prediction-with-alphafold-multimer){:target="_blank"} (not yet peer reviewed).
 
-AlphaFold-Multimer's goal is to instead predict the structure of molecular complexes, it was tested on 4.443 complexes and for heteromeric interfaces successful predictions were obtained for 67% of cases and or homomeric interfaces 69% of cases.
+AlphaFold-Multimer's goal is to instead predict the structure of molecular complexes. It was tested on 4443 complexes and successful predictions were obtained for 67% of the cases with heteromeric interfaces and for 69% of cases with homomeric interfaces.
 
 <div style="text-align: center;">
   <img src="/images/molmod/alphagold_fig4.jpg" style="margin-left: auto;margin-right: auto">
@@ -79,34 +79,34 @@ AlphaFold-Multimer's goal is to instead predict the structure of molecular compl
 
 <br>
 
-In the picture above (c) you can see a predicted Protein-Peptide complex that is extremely similar to the experimental structure, the natural question is: could we have used AlphaFold to predict the MDM2-p53 complex?
+In the picture above (c) you can see a predicted Protein-Peptide complex that is extremely similar to the experimental structure. The natural question is: could we have used AlphaFold to predict the MDM2-p53 complex?
 
-Accessibility is important for every computer software and the installation and setup of AlphaFold is not trivial, it required the download of a large database (2TB) and a lot of processing power, unfortunately is not something that can be executed in a laptop. To address this AlphaFold is available for "free" (since you need a Google account) within the _Colab_ platform which: _"Allows you to write and execute Python in your browser, with. Zero configuration required. Free access to GPUs."_.
+Accessibility is important for every computer software and the installation and setup of AlphaFold is not trivial: it required the download of a large database (2TB) and a lot of processing power, unfortunately not something that can be executed in a laptop. To address this, AlphaFold is available for "free" (since you need a Google account) within the _Colab_ platform which _"Allows you to write and execute Python in your browser, with [z]ero configuration required, [f]ree access to GPUs."_.
 
-The official AlphaFold Colab, has a limit on the minimum number of residues you can input. So we will use instead a community-made that is slightly tweaked but is sufficient for our protein-peptide study.
+The official AlphaFold Colab has a limit on the minimum number of residues you can input, so we will use instead a community-made version that is slightly tweaked but is sufficient for our protein-peptide study.
 
-[Click here to go to ColabFold](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"} read their description and input our sequences on `query_sequence`, you need to add `:` between the sequences:
+[Click here to go to ColabFold](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"} read their description and input our sequences in `query_sequence`. You need to add `:` between the sequences:
 
 <pre style="background-color:#DAE4E7;padding:15px">
 MCNTNMSVSTEGAASTSQIPASEQETLVRPKPLLLKLLKSVGAQNDTYTMKEIIFYIGQYIMTKRLYDEKQQHIVYCSNDLLGDVFGVPSFSVKEHRKIYAMIYRNLVAV:SQETFSGLWKLLPPE
 </pre>
 
-In the top section of the Colab, click: `Runtime > Run All` (it may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction you will be asked to download the complete a zip-archive with the results.
+In the top section of the Colab, click: `Runtime > Run All` (it may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction you will be asked to download a zip-archive with the results.
 
 
-Now that you are quite literally on the edge of the computational structural biology field try to answer these (difficult) questions:
+Now that you are quite literally on the edge of the computational structural biology field, try to answer these (difficult) questions:
 
 <a class="prompt prompt-question">
     How do you interpret AlphaFold's prediction?
 </a>
 <a class="prompt prompt-question">
-    Open the prediction you made in this course and AlphaFold's, how do they compare and which one is "best"?
+    Open the prediction you made in this course and AlphaFold's. How do they compare and which one is "best"?
 </a>
 
-It might be frustrating realizing how easy and how fast it is to predict the MDM2-p53 complex with AlphaFold, this case is a very well studied complex so there is plenty of information about it to drive AlphaFold's algorithm, however this is not the case for all structures.
+It might be frustrating realizing how easy and how fast it is to predict the MDM2-p53 complex with AlphaFold. This case is a very well-studied complex so there is plenty of information about it to drive AlphaFold's algorithm, however this is not the case for all structures.
 
-While this is without the shadow of a doubt a major breakthrough, it is not a answer to all the modelling problems of the world (maybe to most..!). The knowledge of how to do _comparative modelling_, _molecular dynamics simulation_ and _docking_
-allows you do critically judge the predictions, understand its advantages and identify its limitations.
+While this is without the shadow of a doubt a major breakthrough, it is not an answer to all the modelling problems of the world (maybe to most..!). The knowledge of how to do _comparative modelling_, _molecular dynamics simulation_, and _docking_
+allows you do critically judge the predictions, understand its advantages, and identify its limitations.
 
 <hr>
 
