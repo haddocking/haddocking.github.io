@@ -128,11 +128,11 @@ Now that you are quite literally on the edge of the computational structural bio
 _Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq) and use that information to visualize the prediction confidence of the model in PyMol
 
 
-<details>
+<details style="background-color:#DAE4E7">
 <summary style="bold">
-<b><i>See tips on how to visualize it in PyMol</i></b>
+<i>See tips on how to visualize the prediction confidence in PyMol</i>
 </summary>
-
+<br>
 To color the complex by-chain and identify the position of the peptide:
 
 <a class="prompt prompt-pymol">
@@ -147,7 +147,7 @@ To color the model according to the pLDDT type in PyMol:
 </a>
 
 </details>
-
+<br>
 
 <a class="prompt prompt-info">
     Load in PyMol your prefered model obtained by docking, AlphaFold's prediction and the related human complex and superimpose them.
