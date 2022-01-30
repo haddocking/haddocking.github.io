@@ -150,7 +150,7 @@ Select 'BLAST' next to the canonical sequence and press 'GO'.
 Next, a new [window](https://www.uniprot.org/blast/){:target="_blank"} will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier.
 
 <a class="prompt prompt-info">
-Since we are already have the UniProt ID in the field, we can click on `Run BLAST` and change the number of sequences to 100.
+Since we are already have the UniProt ID in the field, we can click on Run BLAST and change the number of sequences to 100.
 </a>
 
 This step might take a few moments since our sequence is being compared to the UniProtKB reference proteomes plus SwissProt databases. Once the run is finished, we can see a list of orthologous sequences from different organisms ordered by sequence identity.
@@ -162,7 +162,7 @@ Which organism shows the highest sequence similarity to the mouse MDM2? Is it su
 To be able to take information about conserved residues and utilize it in HADDOCK, we need to align selected sequences. An additional window with running alignment will open.
 
 <a class="prompt prompt-info">
-Select all sequences and click on `Align` in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
+Select all sequences and click on Align in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
 </a>
 
 
