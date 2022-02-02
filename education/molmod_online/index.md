@@ -150,3 +150,23 @@ simulations and, while these run, have fun modelling MDM2.
     </td>
   </tr>
 </table>
+
+## Bonus!
+<table class="two-col-table">
+  <tr>
+    <td></td>
+    <td><center><i><b>AlphaFold 2</b></i></center></td>
+  </tr>
+  <tr>
+    <td style="padding-right: 20px" valign="top">
+      In this bonus module you will discover the power of artificial intelligence (AI) for structural biology. We will introduce AlphaFold 2 and use it to model the MDM2/p53 protein-peptide complex from sequence only.
+    </td>
+    <td style="width: 220px">
+      <a href="/education/molmod_online/alphafold"
+        alt="Modelling the MDM2/p53 complex using AlphaFold."
+        title="Modelling the MDM2/p53 complex using AlphaFold.">
+        <img src="/images/molmod/alphafold_link-cropped.png" class="col-table" style="border-radius: 50%;">
+      </a>
+    </td>
+  </tr>
+</table>
