@@ -369,17 +369,15 @@ Here you can also simply select the entire peptide sequence again. This will cau
 
 If we don't fully trust our information about binding, it is safer to increase sampling to consider more solutions.
 
-* **Step 9:**  This can be done in one simple step by choosing the bioinformatics predictions settings described [here](https://wenmr.science.uu.nl/haddock2.4/settings#bioinfo){:target="_blank"}.
+<!-- * **Step 9:**  This can be done in one simple step by choosing the bioinformatics predictions settings described [here](https://wenmr.science.uu.nl/haddock2.4/settings#bioinfo){:target="_blank"}.
 
 <a class="prompt prompt-info">
   Optimize run for bioinformatics predictions -> **check**
-</a>
+</a> -->
 
+* **Step 9:** Click on the `Next` button on the bottom of the page.
 
-* **Step 10:** Click on the `Next` button on the bottom of the page.
-
-
-Checking the bioinformatic prediction setting changes automatically sampling to these parameters:
+* **Step 10:**  Change the following parameters in the `Sampling parameters menu`:
 
 <a class="prompt prompt-info">
   Number of structures for rigid body docking -> 10000
@@ -397,6 +395,27 @@ Checking the bioinformatic prediction setting changes automatically sampling to 
   Number of structures to analyze -> 400
 </a>
 
+<!-- * **Step 10:** Click on the `Next` button on the bottom of the page. -->
+
+
+<!-- Checking the bioinformatic prediction setting changes automatically sampling to these parameters:
+
+<a class="prompt prompt-info">
+  Number of structures for rigid body docking -> 10000
+</a>
+<a class="prompt prompt-info">
+  Number of structures for semi-flexible refinement -> 400
+</a>
+<a class="prompt prompt-info">
+  Number of structures for the final refinement -> 400
+</a>
+<a class="prompt prompt-info">
+  Number of trials for rigid body minimisation  -> 1
+</a>
+<a class="prompt prompt-info">
+  Number of structures to analyze -> 400
+</a> -->
+
 
 
 The use of an ensemble of structures translates into a worse sampling per conformation at the rigid-body stage.
@@ -409,7 +428,8 @@ For this reason it is recommended to increase the number of structures generated
 the various stages of the docking protocol. As a rule of thumb, 1000 rigid-body models per member
 of the ensemble is a good number. The number of models selected to it1 and water can simply be
 doubled. The computational cost of these refinement stages does not allow a proportional increase.
-These numbers can be edited one by one in the `Sampling parameters` tab, but are done automatically when checking the `Bioinformatics predictions` setting.
+
+<!-- These numbers can be edited one by one in the `Sampling parameters` tab, but are done automatically when checking the `Bioinformatics predictions` setting. -->
 
 ***Note:*** Because of the decreased sampling per model in the case of an ensemble of starting structures,
 it is recommended to limit the number of conformations in the starting ensembles.
