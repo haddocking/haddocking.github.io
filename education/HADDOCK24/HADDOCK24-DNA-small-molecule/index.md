@@ -153,7 +153,7 @@ PS: You should observe no double occupancy in the 252d file, therefore the next 
 
 As a last step, we clean the PDB file to prepare the HADDOCK submission
 
-<a class="prompt prompt-cmd">pdb_reatom -1 252d_ready.pdb | sed 's/A D/  D/g' | pdb_chain -A | pdb_chainxseg | pdb_tidy > t; mv t 252d_ready.pdb</a>
+<a class="prompt prompt-cmd">pdb_reatom \-1 252d_ready.pdb | sed 's/A D/  D/g' | pdb_chain \-A | pdb_chainxseg | pdb_tidy > t; mv t 252d_ready.pdb</a>
 
 <hr>
 
@@ -339,11 +339,12 @@ Currently your run should be queued but eventually its status will change to "Ru
 The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
 
 <hr>
+
 ## Analysing the results
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/117344-netropsin_DNA) in case you don't want to wait for the results of your docking run.
 
-Just glancing at the page tells us that our run has been a success both in terms of the actual run and the post-processing that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 9 models in 2 different clusters, meaning that a very low percentage of the docking models have been considered for the analysis.
+Just glancing at the page tells us that our run has been a success both in terms of the actual run and the post-processing that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 9 models in 2 different clusters, meaning that a very low percentage (4%) of the docking models have been considered for the analysis.
 Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
 observed that it conveys no measurable benefit for this type of modelling (DNA-small molecule) and therefore we skip it.
 
@@ -535,7 +536,7 @@ If ProFit is installed in your system you can use the provided `scripts/lzone` t
   obrms ./data/261d_ligand.pdb complex_ligand.pdb <br>
 </a>
 
-`obrms` (installed with Anaconda) reports a ligand RMSD value of 0.74 indicating excellent agreement between model and reference structures.
+`obrms` (installed with Anaconda) reports a ligand RMSD value of 1.37 indicating excellent agreement between model and reference structures.
 
 If you don't have ProFit installed you can use instead PyMOL to fit the models on the binding site residues:
 Assuming you still have PyMOL open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
