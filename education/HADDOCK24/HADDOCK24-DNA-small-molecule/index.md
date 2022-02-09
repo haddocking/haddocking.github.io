@@ -473,7 +473,7 @@ Copy the top10 model to your current directory.
 
 Reapeat the command for the top 10 models.
 
-With the following command we can load the 8 models into PyMOL provided in the `data` directory for 
+With the following command we can load the 10 models into PyMOL along with the reference structure provided in the `data` directory for 
 closer examination.
 
 <a class="prompt prompt-cmd">
@@ -500,6 +500,8 @@ alignto sele<br>
 <a class="prompt prompt-question">
 Is there a model that better overlap with the reference structure? </a>
 </a>
+
+<a class="prompt prompt-question">What is the rank of this model based on its HADDOCK score ? </a>
 
 <figure align="center">
     <img width="75%" src="/education/HADDOCK24/HADDOCK24-DNA-small-molecule/superimposition_to_ref.png"><br>
