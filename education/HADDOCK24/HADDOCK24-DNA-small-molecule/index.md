@@ -17,20 +17,20 @@ This tutorial consists of the following sections:
 ## Introduction
 
 This tutorial will demonstrate the use of HADDOCK for *ab-initio* predicting the structure of a DNA-small molecule complex. Namely, we will dock the Netropsin and the DNA d(CGCAATTGCG). The Netropsin is a small molecule, first isolated from the actinobacterium Streptomyces, that exerts an antiviral and antibiotic activity. The Netropsin non-colvalently binds to DNA and prevent DNA replication and transcription by inhibiting polymerase reaction. Elucidating the binding mode of Netropsin with its target DNA sequences has helped developing candidate antibiotics and antitumor with similar mode of action.
-The d(GGCCAATTGG) structure in the free form have been determined using X-ray crystallography (PDB ID [252D](https://www.ebi.ac.uk/pdbe/entry/pdb/252d)). 
+The d(GGCCAATTGG) structure in the free form have been determined using X-ray crystallography (PDB ID [252D](https://www.ebi.ac.uk/pdbe/entry/pdb/252d){:target="_blank"}). 
 For this tutorial, we will predict the Netropsin/d(GGCCAATTGG) binding mode with no a-priori information on the nucleic acids involved in the interaction.
 
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}.
 
 A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
+[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}.
 _J. Mol. Biol._, *428*, 720-725 (2015).
 
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
+[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"}
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html">here</a>.
 
 
@@ -44,15 +44,15 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 ## Setup
 
-In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
+In order to run this tutorial you will need to have the following software installed: [PyMOL](https://www.pymol.org/){:target="_blank"}.
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 <hr>
 
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4/](https://www.bonvinlab.org/software/haddock2.4/)) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4/](https://www.bonvinlab.org/software/haddock2.4/){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
 A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance restraints that are incorporated in the energy function used in the calculations. AIRs are defined through a list of residues that fall under two categories: active and passive. Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.
 The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and different chemical environments, and it can be divided in three different stages, each with a defined goal and characteristics:
@@ -98,26 +98,20 @@ The quality of the final models is evaluated by computing the root mean square d
 
 We will now inspect the DNA structure. For this start PyMOL and in the command line window of PyMOL (indicated by PyMOL>) type:
 
-<a class="prompt prompt-pymol">
-fetch 252d<br> 
-show cartoon<br>
-</a>
+<a class="prompt prompt-pymol">fetch 252d</a>
+<a class="prompt prompt-pymol">show cartoon</a>
 
 You should see a backbone representation of the DNA and the stick representation of the small molecule.
 As a preparation step before docking, it is advised to remove any water and other small molecules (e.g. small molecules from the crystallisation buffer), however do leave relevant co-factors if present. Herein, the PDB file  contains water molecules and magnesium ions whose location may move upon small molecule. You can remove those in PyMOL 
 by typing:
 
-<a class="prompt prompt-pymol">
-remove resn HOH<br>
-remove name MG<br>
-</a>
+<a class="prompt prompt-pymol">remove resn HOH</a>
+<a class="prompt prompt-pymol">remove name MG</a>
 
 Make sure that there is no atom associated to multiple occupancy.
-<a class="prompt prompt-pymol">
-show lines<br>
-</a>
+<a class="prompt prompt-pymol">show lines</a>
 
-<a class="prompt prompt-question">Do you obeserve multiple occupancy atoms ? </a>
+<a class="prompt prompt-question">Do you obeserve multiple occupancy atoms ?</a>
 
 In this scenario, it is important to identify which of the multiple locations of the atom is the 
 most observed *in vitro*. This information is provided in the PDB file into *occupancy factor* 
@@ -160,16 +154,12 @@ The script we will use can be found in `scripts/generate_conformers.py`.
 Running it with the `-h` flag will list all possible options the script
 can be called with. We will run it with the optimal options that were estabilished during the benchmarking of this protocol benchmark.
 
-<a class="prompt prompt-cmd">
-  ./scripts/generate_conformers.py \-i data/netropsin.smi \-p 3sr \-c 50 \-m \-o conformers.pdb <br>
-</a>
+<a class="prompt prompt-cmd">./scripts/generate_conformers.py \-i data/netropsin.smi \-p 3sr \-c 50 \-m \-o conformers.pdb</a>
 
 The above command will create a `conformers.pdb` file in the current working directory.
 We need to process the file to remove the redundant data in it and prepare it for docking.
 
-<a class="prompt prompt-cmd">
-  grep \-v CONECT conformers.pdb | sed \-e \'s/UNL/UNK/\' | pdb_chain \-B \> t; mv t conformers.pdb <br>
-</a>
+<a class="prompt prompt-cmd">grep \-v CONECT conformers.pdb | sed \-e \'s/UNL/UNK/\' | pdb_chain \-B \> t; mv t conformers.pdb</a>
 
 <a class="prompt prompt-info">Open Pymol to observe the generated conformers</a>
 <a class="prompt prompt-question">How many conformers have been generated ?</a>
@@ -217,10 +207,7 @@ Molecule 2 - input -> What kind of molecule are you docking? -> Ligand
 
 * **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
-
-* **Step 6:** The second submission tab "Input Parameters" can be skipped entirely since we will
-be defining our restraints through tbl files instead of doing it through the interface. Click on "Next".
-
+* **Step 6:** The second submission tab "Input Parameters" can be skipped entirely since we will be defining our restraints through tbl files instead of doing it through the interface. Click on "Next".
 
 * **Step 7:** Define the center-of-mass restraints between the small molecule and the DNA and DNA restraints to maintain preserve its structure. For this unfold the *Distance restraints* menu if not already unfolded
 
@@ -309,7 +296,7 @@ Advanced Sampling Parameters ->  Number of MD steps during first rigid body cool
 * **Step 11:** You are ready to dock! Click "Submit". If everything went well your docking run has been added to the queue and might take anywhere from a few hours to a few days to finish depending on the load on our servers.
 
 
-<b>Note</b> <i>that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a `.json` file which contains all the settings and input structures for our run. We strongly recommend to download this file as it will allow you to repeat the run by using the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This `.json file` can serve as input reference for the run, and could be provided as supplementary material in a publication. This file can also be edited to change a few parameters for example. 
+<b>Note:</b> <i>that prior to submission you also have the option to download the processed data (in the form of a tgz archive) and a `.json` file which contains all the settings and input structures for our run. We strongly recommend to download this file as it will allow you to repeat the run by using the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This `.json file` can serve as input reference for the run, and could be provided as supplementary material in a publication. This file can also be edited to change a few parameters for example. 
 The generated json file for this shape-based submission is provided at `data/job_params.json`.</i>
 
 
@@ -332,7 +319,7 @@ The page will automatically refresh and the results will appear upon completions
 
 ## Analysing the results
 
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/117344-netropsin_DNA) in case you don't want to wait for the results of your docking run.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). Such an example output page can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/117344-netropsin_DNA){:target="_blank"} in case you don't want to wait for the results of your docking run.
 
 Just glancing at the page tells us that our run has been a success both in terms of the actual run and the post-processing that follows every run. Examining the summary page reveals that in total HADDOCK only clustered 9 models in 2 different clusters, meaning that a very low percentage (4%) of the docking models have been considered for the analysis.
 Usually, clustering is a very helpful step when performing protein-protein docking with well-defined interfaces but we
@@ -359,7 +346,7 @@ where `Evdw` is the intermolecular Van der Waals energy, `Eelec` the intermolecu
 
 In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: the phosphate transfer mechanism (see [Biological insights](#biological-insights) below).
 
-**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu) high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the [example output page](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/117344-netropsin_DNA). That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
+**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu){:target="_blank"}/[EOSC](https://www.eosc-hub.eu){:target="_blank"} high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the [example output page](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/117344-netropsin_DNA){:target="_blank"}. That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
 
 <hr>
 
@@ -375,9 +362,7 @@ For a closer look at the top models we can use the link on results webpage just 
 
 Using the following command expand the contents of the tgz archive in your working directory:
 
-<a class="prompt prompt-cmd">
-  tar xfz 117344-netropsin_DNA_summary.tgz <br>
-</a>
+<a class="prompt prompt-cmd">tar xfz 117344-netropsin_DNA_summary.tgz</a>
 
 This will result in the creation of 8 PDB files in the current working directory, corresponding to the top4 models
 of each cluster. The files are named `cluster*_*.pdb` with model `cluster1_1.pdb` being the model with the overall best HADDOCK score.
@@ -386,35 +371,25 @@ of each cluster. The files are named `cluster*_*.pdb` with model `cluster1_1.pdb
 
 With the following command we can load the 8 models into PyMOL  provided in the `data` directory for closer examination.
 
-<a class="prompt prompt-cmd">
-  pymol data/262d.pdb cluster*.pdb <br>
-</a>
+<a class="prompt prompt-cmd">pymol data/262d.pdb cluster*.pdb</a>
 
 Once all files have been loaded, type in the PyMOL command window:
 
-<a class="prompt prompt-pymol">
-show cartoon
-rm resn HOH<br>
-util.cbc<br>
-hide lines<br>
-</a>
+<a class="prompt prompt-pymol">show cartoon</a>
+<a class="prompt prompt-pymol">rm resn HOH</a>
+<a class="prompt prompt-pymol">util.cbc</a>
+<a class="prompt prompt-pymol">hide lines</a>
 
 Let's then superimpose all models on chain A of the first cluster:
 
-<a class="prompt prompt-pymol">
-select 262d and chain A<br>
-alignto sele<br>
-</a>
+<a class="prompt prompt-pymol">select 262d and chain A</a>
+<a class="prompt prompt-pymol">alignto sele</a>
 
 This will align all clusters on the DNA (d(CGCAATTGCG)), maximizing the differences in the orientation of chain B (Netropsin).
 
-<a class="prompt prompt-question">
-Examine the various clusters. How does the orientation of Netropsin differ between them?
-</a>
+<a class="prompt prompt-question">Examine the various clusters. How does the orientation of Netropsin differ between them?</a>
 
-<a class="prompt prompt-question">
-How well does the docked Netropsin overlap with the one of the reference (X-Ray) structure? </a>
-</a>
+<a class="prompt prompt-question">How well does the docked Netropsin overlap with the one of the reference (X-Ray) structure?</a>
 
 **Note:** You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
 
@@ -427,69 +402,50 @@ In this HADDOCK run, the clustered molecules represent a tiny percentage (4%) of
 To have access to all the generated models, download the full run available from the first link of the results page.
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-DNA-small-molecule/full_run_link.png">
+  <img src="/education/HADDOCK24/HADDOCK24-DNA-small-molecule/full_run_link.png">
 </figure>
 
 Using the following command expand the contents of the tgz archive in your working directory:
 
-<a class="prompt prompt-cmd">
-  tar xfz 117344-netropsin_DNA_summary.tgz <br>
-</a>
+<a class="prompt prompt-cmd">tar xfz 117344-netropsin_DNA_summary.tgz</a>
 
 Using the following command expand the contents of the tgz archive in your working directory:
 
-<a class="prompt prompt-cmd">
-  tar xfz 117344-netropsin_DNA.tgz <br>
-</a>
+<a class="prompt prompt-cmd">tar xfz 117344-netropsin_DNA.tgz</a>
 
 This will result in the creation folder (~150M) with all the data required by HADDOCK, the generated models and analysis of the docking models. 
 The `structures_haddock-sorted.stat` file provides a sorted list of the generated models based on the associated HADDOCK score.
 
-<a class="prompt prompt-info">
-  Get the list of the top 10 models from the `structures_haddock-sorted.stat` file <br>
-</a>
+<a class="prompt prompt-info">Get the list of the top 10 models from the structures_haddock-sorted.stat file</a>
 
-<a class="prompt prompt-cmd">
-  head -10 117344-netropsin_DNA/structures/it1/structures_haddock-sorted.stat  <br>
-</a>
+<a class="prompt prompt-cmd">head -10 117344-netropsin_DNA/structures/it1/structures_haddock-sorted.stat</a>
 
 Copy the top10 model to your current directory.
 
-<a class="prompt prompt-cmd">
-  cp 117344-netropsin_DNA/structures/it1/complex_2.pdb .  <br>
-  cp 117344-netropsin_DNA/structures/it1/complex_3.pdb .  <br>
-  cp 117344-netropsin_DNA/structures/it1/complex_28.pdb .  <br>
-</a>
+<a class="prompt prompt-cmd">cp 117344-netropsin_DNA/structures/it1/complex_2.pdb .</a>
+<a class="prompt prompt-cmd">cp 117344-netropsin_DNA/structures/it1/complex_3.pdb .</a>
+<a class="prompt prompt-cmd">cp 117344-netropsin_DNA/structures/it1/complex_28.pdb .</a>
 
 Reapeat the command for the top 10 models.
 
 With the following command we can load the 10 models into PyMOL along with the reference structure provided in the `data` directory for 
 closer examination.
 
-<a class="prompt prompt-cmd">
-  pymol data/262d.pdb complex*.pdb <br>
-</a>
+<a class="prompt prompt-cmd">pymol data/262d.pdb complex*.pdb</a>
 
 Once all files have been loaded, type in the PyMOL command window:
 
-<a class="prompt prompt-pymol">
-show cartoon
-rm resn HOH<br>
-util.cbc<br>
-hide lines<br>
-</a>
+<a class="prompt prompt-pymol">show cartoon</a>
+<a class="prompt prompt-pymol">rm resn HOH</a>
+<a class="prompt prompt-pymol">util.cbc</a>
+<a class="prompt prompt-pymol">hide lines</a>
 
 Let's then superimpose all models on chain A of the first cluster:
 
-<a class="prompt prompt-pymol">
-select 262d and chain A<br>
-alignto sele<br>
-</a>
+<a class="prompt prompt-pymol">select 262d and chain A</a>
+<a class="prompt prompt-pymol">alignto sele</a>
 
-
-<a class="prompt prompt-question">
-Is there a model that better overlap with the reference structure? </a>
-</a>
+<a class="prompt prompt-question">Is there a model that better overlap with the reference structure?</a>
 
 <a class="prompt prompt-question">What is the rank of this model based on its HADDOCK score ? </a>
 
@@ -505,13 +461,11 @@ Observe which DNA-groove is targetted by the small molecule.
 
 <a class="prompt prompt-info">Highlight the different nucleic acids.</a>
 
-<a class="prompt prompt-pymol">
-set cartoon_ring_mode, 1 <br>
-color palecyan, resn DA
-color lightpink, resn DT
-color lightblue, resn DC
-color paleyellow, resn DG
-</a>
+<a class="prompt prompt-pymol">set cartoon_ring_mode, 1</a>
+<a class="prompt prompt-pymol">color palecyan, resn DA</a>
+<a class="prompt prompt-pymol">color lightpink, resn DT</a>
+<a class="prompt prompt-pymol">color lightblue, resn DC</a>
+<a class="prompt prompt-pymol">color paleyellow, resn DG</a>
 
 <a class="prompt prompt-question">What DNA motif does the Netropsin bind to ? Cite the 4 main nucleic acids.</a>
 
@@ -522,21 +476,17 @@ This can be done using for example the [ProFit](http://www.bioinf.org.uk/softwar
 
 If ProFit is installed in your system you can use the provided `scripts/lzone` to align a model to the target on the protein interface residues. The script will write the aligned file as `tmp.pdb`. For the top-scoring compound the commands to use are:
 
-<a class="prompt prompt-cmd">
-  profit -f scripts/lzone ./data/261d.pdb complex_28.pdb <br>
-  grep UNK tmp.pdb | pdb_element > complex_ligand.pdb <br>
-  obrms ./data/261d_ligand.pdb complex_ligand.pdb <br>
-</a>
+<a class="prompt prompt-cmd">profit -f scripts/lzone ./data/261d.pdb complex_28.pdb</a>
+<a class="prompt prompt-cmd">grep UNK tmp.pdb | pdb_element > complex_ligand.pdb</a>
+<a class="prompt prompt-cmd">obrms ./data/261d_ligand.pdb complex_ligand.pdb</a>
 
 `obrms` (installed with Anaconda) reports a ligand RMSD value of 1.55 indicating excellent agreement between model and reference structures.
 
 If you don't have ProFit installed you can use instead PyMOL to fit the models on the binding site residues:
 Assuming you still have PyMOL open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
 
-<a class="prompt prompt-pymol">
-  select binding_site, resi 1:19 <br>
-  align complex_28 and backbone and binding_site, 261d and backbone and binding_site, cycles=0 <br>
-</a>
+<a class="prompt prompt-pymol">select binding_site, resi 1:19</a>
+<a class="prompt prompt-pymol">align complex_28 and backbone and binding_site, 261d and backbone and binding_site, cycles=0</a>
 
 Then save the aligned complex_28 by selecting from the PyMOL menu:
 
@@ -548,17 +498,15 @@ Then save the aligned complex_28 by selecting from the PyMOL menu:
 
 You can then calculate the ligand RMSD with:
 
-<a class="prompt prompt-cmd">
-  grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb <br>
-  obrms ./data/261d_ligand.pdb tmp_ligand.pdb <br>
-  \rm tmp_ligand.pdb <br>
-</a>
+<a class="prompt prompt-cmd">grep UNK tmp.pdb | pdb_element > tmp_ligand.pdb</a>
+<a class="prompt prompt-cmd">obrms ./data/261d_ligand.pdb tmp_ligand.pdb</a>
+<a class="prompt prompt-cmd">\rm tmp_ligand.pdb</a>
 
 <hr>
 
 ## Congratulations!
 
-You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu).
+You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
 
 <hr>
 
@@ -570,5 +518,3 @@ If you are curious and want learn more about HADDOCK and the impact of the input
 * Same run as above, but using only the first model of the HPR ensemble (edit the file to extract it)
 
 And check also our [education](/education) web page where you will find more tutorials!
-
-[link-pymol]: https://www.pymol.org/ "PyMOL"
