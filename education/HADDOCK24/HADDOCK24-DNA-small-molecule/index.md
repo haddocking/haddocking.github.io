@@ -536,7 +536,7 @@ If ProFit is installed in your system you can use the provided `scripts/lzone` t
   obrms ./data/261d_ligand.pdb complex_ligand.pdb <br>
 </a>
 
-`obrms` (installed with Anaconda) reports a ligand RMSD value of 1.37 indicating excellent agreement between model and reference structures.
+`obrms` (installed with Anaconda) reports a ligand RMSD value of 1.55 indicating excellent agreement between model and reference structures.
 
 If you don't have ProFit installed you can use instead PyMOL to fit the models on the binding site residues:
 Assuming you still have PyMOL open and have performed the above commands, do the following to fit the top model (cluster1) onto the binding site of the target:
