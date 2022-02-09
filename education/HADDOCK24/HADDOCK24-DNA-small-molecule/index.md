@@ -13,6 +13,7 @@ This tutorial consists of the following sections:
 
 
 <hr>
+
 ## Introduction
 
 This tutorial will demonstrate the use of HADDOCK for *ab-initio* predicting the structure of a DNA-small molecule complex. Namely, we will dock the Netropsin and the DNA d(CGCAATTGCG). The Netropsin is a small molecule, first isolated from the actinobacterium Streptomyces, that exerts an antiviral and antibiotic activity. The Netropsin non-colvalently binds to DNA and prevent DNA replication and transcription by inhibiting polymerase reaction. Elucidating the binding mode of Netropsin with its target DNA sequences has helped developing candidate antibiotics and antitumor with similar mode of action.
@@ -40,6 +41,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 <a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
 
 <hr>
+
 ## Setup
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
@@ -47,6 +49,7 @@ In order to run this tutorial you will need to have the following software insta
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
 
 <hr>
+
 ## HADDOCK general concepts
 
 HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4/](https://www.bonvinlab.org/software/haddock2.4/)) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
@@ -100,6 +103,7 @@ The performance of this protocol of course depends on the number of models gener
 The quality of the final models is evaluated by computing the root mean square deviation (RMSD) of the small molecule after superomposing the DNA strands of the docking model to the DNA strands of the reference structure. Herein, we make use of PROFit to superimpose the DNA structures and of the `obrms` module of OpenBabel to compute the symetry corrected RMSD of the small molecule.
 
 <hr>
+
 ## Inspecting and preparing the d(CGCAATTGCG) DNA helix for docking
 
 We will now inspect the DNA structure. For this start PyMOL and in the command line window of PyMOL (indicated by PyMOL>) type:
@@ -152,6 +156,7 @@ As a last step, we clean the PDB file to prepare the HADDOCK submission
 <a class="prompt prompt-cmd">pdb_reatom -1 252d_ready.pdb | sed 's/A D/  D/g' | pdb_chain -A | pdb_chainxseg | pdb_tidy > t; mv t 252d_ready.pdb</a>
 
 <hr>
+
 ## Preparing the Netropsin for docking
 
 We will now prepare the Netropsin for docking. 
@@ -181,7 +186,7 @@ We need to process the file to remove the redundant data in it and prepare it fo
 
 <br>
 
-### Setting up the docking
+## Setting up the docking
 
 For the docking we will use the new portal of [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}. If you are already
 registered with HADDOCK or have been provided with course credential then you can proceed to job submission immediately.
@@ -364,8 +369,6 @@ where `Evdw` is the intermolecular Van der Waals energy, `Eelec` the intermolecu
 In case the scores of various clusters are within standard devatiation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: the phosphate transfer mechanism (see [Biological insights](#biological-insights) below).
 
 **Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu) high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the [example output page](https://wenmr.science.uu.nl/haddock2.4/run/1667417750/117344-netropsin_DNA). That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
-
-
 
 <hr>
 
@@ -559,7 +562,6 @@ You can then calculate the ligand RMSD with:
 </a>
 
 <hr>
-
 
 ## Congratulations!
 
