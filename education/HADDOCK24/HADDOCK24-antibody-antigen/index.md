@@ -89,7 +89,7 @@ In this initial stage, the interacting partners are treated as rigid bodies, mea
 <b><i>See animation of rigid-body minimization (it0):</i></b>
 </summary>
 <figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_mini.gif">
+  <img src="/images/haddock_mini.gif">
 </figure>
 </details>
 <br>
@@ -102,7 +102,7 @@ The second stage of the docking protocol introduces flexibility to the interacti
   <b><i>See animation of semi-flexible simulated annealing (it1):</i></b>
   </summary>
   <figure align="center">
-    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
+    <img src="/images/haddock_sa.gif">
   </figure>
   </details>
   <br>
@@ -115,7 +115,7 @@ The second stage of the docking protocol introduces flexibility to the interacti
  <b><i>See animation of refinement in explicit solvent (water):</i></b>
  </summary>
  <figure align="center">
-   <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_water.gif">
+   <img src="/images/haddock_water.gif">
  </figure>
  </details>
  <br>
