@@ -19,10 +19,6 @@ This page provide you links to software and software manuals of the computationa
   
   * NEW! [**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
   
-  * [**HADDOCK2.2 software**](/software/haddock2.2/) - Old 2.2 version
-  
-  * [**HADDOCK2.2 web server**](https://alcazar.science.uu.nl/enmr/services/HADDOCK2.2) -  Old 2.2 production version (will be discontinued by the end of 2021).
-
   * [**HADDOCK2.4 software**](/software/haddock2.4/) - Official 2.4 production version
 
   * [**HADDOCK2.4 web server**](https://wenmr.science.uu.nl/haddock2.4/) - New production version

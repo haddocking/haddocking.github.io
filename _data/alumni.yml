@@ -19,6 +19,11 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Manon Réau
+    current: 'Qubit Pharmaceuticals, Paris, France'
+    url: https://qubit-pharmaceuticals.com
+    status: 'postdoc'
+
 -   name: Panagiotis Koukos
     url: http://www.drugdesign.gr
     current: 'Biomedical Research Foundation, Academy of Athens, Greece'
