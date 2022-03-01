@@ -18,8 +18,7 @@ This tutorial consists of the following sections:
 This tutorial will demonstrate the use of HADDOCK for the modelling of protein-small molecule complexes. We will make
 use of a recently developed protocol whose key element is the use of template-derived shapes to drive the modelling
 process. More details about the method and the performance of the protocol when benchmarked on a fully unbound dataset
-can be seen in a freely available [preprint](https://www.biorxiv.org/content/10.1101/2021.06.10.447890v1){:target="_blank"}
-(not peer-reviewed).
+can be seen in our freely-available [paper on JCIM](https://pubs.acs.org/doi/full/10.1021/acs.jcim.1c00796){:target="_blank"}
 
 For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}.
 
