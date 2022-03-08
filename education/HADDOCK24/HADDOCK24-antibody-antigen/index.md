@@ -48,7 +48,7 @@ _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version [her
 
 
 ProABC-2 is described here:
-* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and A.M.J.J. Bonvin. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://biorxiv.org/cgi/content/short/2020.03.18.967828v1){:target="_blank"}. *BioRxiv*, DOI:10.1101/2020.03.18.967828 (2020).
+* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and **A.M.J.J. Bonvin**. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593). _Bioinformatics_, *36*, 5107–5108 (2020).
 
 PDB-tools are described here:
 * J.P.G.L.M. Rodrigues, J.M.C. Teixeira, M.E. Trellet and A.M.J.J. Bonvin. [pdb-tools: a swiss army knife for molecular structures](https://doi.org/10.12688/f1000research.17456.1){:target="_blank"}. *F1000Research*, 7:1961 2018
