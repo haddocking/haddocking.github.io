@@ -314,7 +314,7 @@ In previous steps we have identified the paratope residues of the antibody. Thos
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+For this we will make use of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the antibody structure we previously prepared with PDB-tools and the IL-1β structure.
 
@@ -322,7 +322,7 @@ In this stage of the submission process we can upload the antibody structure we 
 
 * **Step 2:** Select the number of molecules to dock, in this case the default *2*.
 
-* **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 - input** if it isn't already unfolded. 
+* **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 - input** if not already unfolded. 
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -336,7 +336,7 @@ PDB structure to submit -> Browse and select *4G6K_fv.pdb* (the result file of t
 
 **Note:** Leave all other options to their default values.
 
-* **Step 4:** Input the second protein PDB file. For this unfold the **Molecule 2 - input** if it isn't already unfolded.
+* **Step 4:** Input the second protein PDB file. For this, unfold the **Molecule 2 - input** if not already unfolded.
 The structure of Interleukin-1β (IL-1β) is already prepared and can be downloaded [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/4I1B-matched.pdb).  
 
 <a class="prompt prompt-info">
@@ -355,7 +355,7 @@ PDB structure to submit -> Browse and select *4I1B-matched.pdb* (the file you sa
 
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. We will be making use of the text boxes below the residue sequence of every molecule to specify the list of active residues to be used for the docking run.
 
-* **Step 6:** Specify the active residues for the first molecule. For this unfold the "Molecule 1 - parameters" if it isn't already unfolded.
+* **Step 6:** Specify the active residues for the first molecule. For this, unfold the "Molecule 1 - parameters" if not already unfolded.
 Here fill in the residues of CDR loops that we extracted beforehand for you following the local version of the protocol. Note that the numbers are similar (not identical) to the results of ProABC-2.  
 
 <a class="prompt prompt-info">
@@ -367,7 +367,7 @@ Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,5
 **Note** that in this list of active residues from the HV loops we have filtered out the residues that are not or poorly solvent accessible. We used for this the relative solvent accessibility as calculated by [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. 
 
 
-* **Step 7:** Specify the active residues for the second molecule. For this unfold the "Molecule 2 - parameters" if it isn't already unfolded.
+* **Step 7:** Specify the active residues for the second molecule. For this, unfold the "Molecule 2 - parameters" if not already unfolded.
 
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)</a>
 <a class="prompt prompt-info">Automatically define surface residues as passive -> check  </a>
@@ -378,7 +378,7 @@ In the entry “If you specified that surface residues will be defined automatic
 
  * **Step 8:** Click on the **Next** button on the bottom of the page.
  
- * **Step 9:** Since we have not defined concrete epitope o but selected the entire surface of the antigen we  need to increase the sampling. For this unfold the **Sampling parameters menu**:
+ * **Step 9:** Because we have not defined concrete epitope but selected the entire surface of the antigen instead, we need to increase the sampling. For this, unfold the **Sampling parameters menu**:
 
 <a class="prompt prompt-info">
 Number of structures for rigid body docking -> 10000
@@ -398,7 +398,7 @@ Number of structures to analyze -> 400
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again.
 
 
 * **Step 11:** Click on the **Submit** button at the bottom left of the interface.
@@ -422,7 +422,7 @@ In this stage of the submission process we can upload the structures we previous
 
 * **Step 2:** Select the number of molecules to dock, in this case the default *2*.
 
-* **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 - input** if it isn't already unfolded.
+* **Step 3:** Input the first protein PDB file. For this, unfold the **Molecule 1 - input** if not already unfolded.
 
 <a class="prompt prompt-info">
 First molecule: where is the structure provided? -> "I am submitting it"
@@ -436,7 +436,7 @@ PDB structure to submit -> Browse and select *4G6K_fv.pdb* (the result file of t
 
 **Note:** Leave all other options to their default values.
 
-* **Step 4:** Input the second protein PDB file. For this unfold the **Molecule 2 - input** if it isn't already unfolded.
+* **Step 4:** Input the second protein PDB file. For this, unfold the **Molecule 2 - input** if not already unfolded.
 The structure of Interleukin-1β (IL-1β) is already prepared and can be downloaded [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/4I1B-matched.pdb).  
 
 <a class="prompt prompt-info">
@@ -455,7 +455,7 @@ PDB structure to submit -> Browse and select *4I1B-matched.pdb* (the file you sa
 
 If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2. We will be making use of the text boxes below the residue sequence of every molecule to specify the list of active residues to be used for the docking run.
 
-* **Step 6:** Specify the active residues for the first molecule. For this unfold the "Molecule 1 - parameters" if it isn't already unfolded.
+* **Step 6:** Specify the active residues for the first molecule. For this, unfold the "Molecule 1 - parameters" if not already unfolded.
 
 <a class="prompt prompt-info">
 Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
@@ -468,7 +468,7 @@ Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,5
 **Note:** The web interface allows you to visualize the selected active residues.
 
 
-* **Step 7:** Specify the residues for the second molecule. For this unfold the "Molecule 2 - parameters" if it isn't already unfolded.
+* **Step 7:** Specify the residues for the second molecule. For this, unfold the "Molecule 2 - parameters" if not already unfolded.
 
 Since we have a rather loose definition of the interface, we will input the corresponding residues in this case as passive, which means they will not be penalized if not making contacts.
 
@@ -479,12 +479,12 @@ Since we have a rather loose definition of the interface, we will input the corr
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
 
 
 * **Step 9:** Click on the **Submit** button at the bottom left of the interface.
 
-Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
+Upon submission, you will be presented with a web page which also contains a link to the previously mentioned *haddockparameter* file as well as some information about the status of the run.
 
 
 <hr>
