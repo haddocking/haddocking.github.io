@@ -133,7 +133,7 @@ The final models are automatically clustered based on a specific similarity meas
 <hr>
 ## Extracting antibody amino acid sequence to gain information about the paratope
 
-Nowadays there are several computational tools that can identify the paratope from the provided antibody sequence. In this tutorial we will use the one developed in our group [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* BioRxiv, 2020](https://www.biorxiv.org/content/10.1101/2020.03.18.967828v1){:target="_blank"}.
+Nowadays there are several computational tools that can identify the paratope from the provided antibody sequence. In this tutorial we will use the one developed in our group [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
 
 
 ### Using PDB tools to extract the amino acid sequence 
