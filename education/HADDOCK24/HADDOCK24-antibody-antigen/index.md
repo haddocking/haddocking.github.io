@@ -141,7 +141,7 @@ Nowadays there are several computational tools that can identify the paratope fr
 In this step we will make use of the [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}. PDB-tools webserver is a powerful tool that enables you to edit pdbs quickly and painlessly without any scripting knowledge. It does not require registration and individual commands can be joined together into a pipeline which can be saved for future use.
 
 First open your web browser to go to [https://wenmr.science.uu.nl/pdbtools/](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} and choose **Submit a pipeline**.  
-me
+
 Here, we fetch the antibody structure directly by typing *4G6K* in the **PDB Code** field. 
 
 Check the field for **biounit**, to download the functional form of the molecule.
