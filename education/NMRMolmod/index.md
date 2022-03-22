@@ -624,8 +624,8 @@ Q23: Referring to the desciption of the last stage of HADDOCK (final refinement 
 
 ## Submitting your report
 
-Your report should be submitted in the form of a PDF file at the latest on Friday April 3rd before midnight. 
-Submission should be done via Blackboard (assignments).
+Your report should be submitted in the form of a PDF file at the latest on Friday April 8rd before midnight. 
+Submission should be done via Blackboard (assignment in Docking Practical under Course Content).
 
 
 [link-pymol]: http://www.pymol.org/ "PyMOL"
