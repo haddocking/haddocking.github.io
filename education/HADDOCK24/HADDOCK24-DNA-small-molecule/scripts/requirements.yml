@@ -1,0 +1,9 @@
+name: DNA-small-molecule~
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - rdkit=2020.09.3
+  - openbabel
+  - pandas
+  - biopython
