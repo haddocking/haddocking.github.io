@@ -385,14 +385,14 @@ From that result page you can download the full archive of the run. Simply unpac
 
 Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the minimum number of structures per cluster will have automatically reduced to 2 or even 1 in order to produce a result page. If 1, then the clusters reported on the web page will correspond to the top10 ranked models.
 
-You can download the full run as a gzipped tar archive and inspect the results. Copy for the [results page URL](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface), add `.tar` to the end, and download the whole run files using the command:
+You can download the full run as a gzipped tar archive and inspect the results. Copy the [results page URL](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface) and add `.tar` to its end. Download the whole run files using the command:
 
 <a class="prompt prompt-linux">
-curl -L -O \<link\>
+curl -L -O \<URL + .tar\>
 </a>
 or
 <a class="prompt prompt-linux">
-wget \<link\>
+wget \<URL + .tar\>
 </a>
 
 Unpack the gzip file with:
