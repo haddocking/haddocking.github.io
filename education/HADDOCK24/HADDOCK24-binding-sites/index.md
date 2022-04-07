@@ -83,7 +83,7 @@ Instead, if you wish to install `pdb-tools` from its source:
 <a class="prompt prompt-cmd">
     git clone https://github.com/haddocking/pdb-tools
     cd pdb-tools
-    python setup.py install
+    python setup.py install --user
 </a>
 
 Download then the data to run this tutorial from our GitHub
