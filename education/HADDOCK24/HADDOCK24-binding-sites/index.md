@@ -72,21 +72,23 @@ You can of course use instead your favorite structure viewer, but the visualizat
 
 Further you should install our [PDB-tools][link-pdb-tools]. pdb-tools is a dependency-free package, so it is safe to
 be installed on any Python environment. If you are an advanced used, you might want to install pdb-tools from its
-source repository, but the version in PyPI is always the latest. The following would install pdb-tools only under your user account, which requires no extra previledges.
+source repository, but the version in PyPI is always the latest. Run the following command to install `pdb-tools`.
 
 <a class="prompt prompt-cmd">
-    pip install pdb-tools --user
+    pip install pdb-tools
 </a>
 
-Instead, if you wish to install `pdb-tools` from its source:
+ In case your user account does not have permissions to install the package, add the flag `--user` in front of the command. Instead, if you wish to install `pdb-tools` from its source:
 
 <a class="prompt prompt-cmd">
     git clone https://github.com/haddocking/pdb-tools
     cd pdb-tools
-    python setup.py install --user
+    python setup.py install
 </a>
 
-Download then the data to run this tutorial from our GitHub
+Again, use the `--user` flag in case you face permissions issues.
+
+After, download the data to run this tutorial from our GitHub
 data repository [here][link-data] or clone it from the command line:
 
 <a class="prompt prompt-cmd">
