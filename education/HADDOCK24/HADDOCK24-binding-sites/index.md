@@ -72,10 +72,18 @@ You can of course use instead your favorite structure viewer, but the visualizat
 
 Further you should install our [PDB-tools][link-pdb-tools]. pdb-tools is a dependency-free package, so it is safe to
 be installed on any Python environment. If you are an advanced used, you might want to install pdb-tools from its
-source repository, but the version in PyPI is always the latest.
+source repository, but the version in PyPI is always the latest. The following would install pdb-tools only under your user account, which requires no extra previledges.
 
 <a class="prompt prompt-cmd">
-    pip install pdb-tools
+    pip install pdb-tools --user
+</a>
+
+Instead, if you wish to install `pdb-tools` from its source:
+
+<a class="prompt prompt-cmd">
+    git clone https://github.com/haddocking/pdb-tools
+    cd pdb-tools
+    python setup.py install
 </a>
 
 Download then the data to run this tutorial from our GitHub
@@ -385,14 +393,14 @@ From that result page you can download the full archive of the run. Simply unpac
 
 Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the minimum number of structures per cluster will have automatically reduced to 2 or even 1 in order to produce a result page. If 1, then the clusters reported on the web page will correspond to the top10 ranked models.
 
-You can download the full run as a gzipped tar archive and inspect the results. Copy the [results page URL](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface) and add `.tar` to its end. Download the whole run files using the command:
+You can download the full run as a gzipped tar archive and inspect the results. Copy the [results page URL](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface) and add `.tgz` to its end. Download the whole run files using the command:
 
 <a class="prompt prompt-linux">
-curl -L -O \<URL + .tar\>
+curl -L -O \<URL + .tgz\>
 </a>
 or
 <a class="prompt prompt-linux">
-wget \<URL + .tar\>
+wget \<URL + .tgz\>
 </a>
 
 Unpack the gzip file with:
