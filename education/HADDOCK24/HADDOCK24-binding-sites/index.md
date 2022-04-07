@@ -70,32 +70,25 @@ terminal!</a>
 In order to run this tutorial you will need to have [Pymol][link-pymol] installed.
 You can of course use instead your favorite structure viewer, but the visualization commands described here are for Pymol.
 
-Further you should install our [PDB-tools][link-pdb-tools], or clone it from the command line:
+Further you should install our [PDB-tools][link-pdb-tools]. pdb-tools is a dependency-free package, so it is safe to
+be installed on any Python environment. If you are an advanced used, you might want to install pdb-tools from its
+source repository, but the version in PyPI is always the latest. Run the following command to install `pdb-tools`.
+
+<a class="prompt prompt-cmd">
+    pip install pdb-tools
+</a>
+
+ In case your user account does not have permissions to install the package, add the flag `--user` in front of the command. Instead, if you wish to install `pdb-tools` from its source:
 
 <a class="prompt prompt-cmd">
     git clone https://github.com/haddocking/pdb-tools
+    cd pdb-tools
+    python setup.py install
 </a>
 
-Make sure that the pdb-tools directory is in your search path. For this go into the ```pdb-tools``` directory and then if working under ```tsch``` type:
+Again, use the `--user` flag in case you face permissions issues.
 
-<a class="prompt prompt-cmd">
-    set path=($path \`pwd\`)
-</a>
-
-And for ```bash```:
-
-<a class="prompt prompt-cmd">
-    export PATH=${PATH}:\`pwd\`
-</a>
-
-It might be necessary to add  executable permissions to the pdb-tools:
-
-<a class="prompt prompt-cmd">
-    chmod +x *py
-</a>
-
-
-Download then the data to run this tutorial from our GitHub
+After, download the data to run this tutorial from our GitHub
 data repository [here][link-data] or clone it from the command line:
 
 <a class="prompt prompt-cmd">
@@ -155,10 +148,10 @@ You will see three directories and one file:
 <hr>
 ## Preparing PDB files of the receptor for docking
 
-One requirement of HADDOCK is that there should not be any overlap in residue numbering. The structure of the apo form of our target receptor, the multidrug efflux pump [AcrB](https://www.uniprot.org/uniprot/P31224) from Escherichia coli, is available from the Protein Data Bank under PDB ID [2J8S](https://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S). You can download it directly from the PDB using the ```pdb_fetch.py``` script from our ```pdb-tools``` utilities:
+One requirement of HADDOCK is that there should not be any overlap in residue numbering. The structure of the apo form of our target receptor, the multidrug efflux pump [AcrB](https://www.uniprot.org/uniprot/P31224) from Escherichia coli, is available from the Protein Data Bank under PDB ID [2J8S](https://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S). You can download it directly from the PDB using the ```pdb_fetch``` command-line from our ```pdb-tools``` utilities:
 
 <a class="prompt prompt-cmd">
-  pdb_fetch.py 2J8S >2J8S.pdb
+  pdb_fetch 2J8S > 2J8S.pdb
 </a>
 
 The file is also provided in the ```pdbs``` directory.
@@ -196,16 +189,16 @@ For this we will work at the terminal level and use our ```pbd-tools``` utilitie
 Let's find out what are the first and last residue numbers of the various chains, to check if there is any overlap in numbering:
 
 <a class="prompt prompt-cmd">
-pdb_selchain.py -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
-pdb_selchain.py -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
+  pdb_selchain -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
+  pdb_selchain -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
 </a>
 <a class="prompt prompt-cmd">
-pdb_selchain.py -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
-pdb_selchain.py -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
+  pdb_selchain -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
+  pdb_selchain -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
 </a>
 <a class="prompt prompt-cmd">
-pdb_selchain.py -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
-pdb_selchain.py -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
+  pdb_selchain -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
+  pdb_selchain -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
 </a>
 
 
@@ -214,18 +207,17 @@ Inspecting the results of those commands reveals that we are indeed dealing with
 For use in HADDOCK we have thus to renumber chain B and C. In order to easily match the residue numbers between chains it is advisable to shift the numbering by a round number, e.g. in this case since we have more than 1000 amino acids we can shift chain B and C by 2000 and 4000, respectively. We will use again our ```pdb-tools``` utilities to create a renumbered, clean PDB file (also removing all hetero atoms in the process by selection only ATOM records):
 
 <a class="prompt prompt-cmd">
-pdb_selchain.py -A 2J8S.pdb \| grep ATOM \> 2J8S-renumbered.pdb<BR>
-echo TER \>\> 2J8S-renumbered.pdb<BR>
-pdb_selchain.py -B 2J8S.pdb \| grep ATOM \| pdb_reres.py  -2001 \>\> 2J8S-renumbered.pdb<BR>
-echo TER \>\> 2J8S-renumbered.pdb<BR>
-pdb_selchain.py -C 2J8S.pdb \| grep ATOM \| pdb_reres.py -4001 \>\> 2J8S-renumbered.pdb<BR>
-echo END \>\> 2J8S-renumbered.pdb<BR>
+  pdb_selchain -A 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_tidy > tmp1.pdb
+  pdb_selchain -B 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -2001 | pdb_tidy > tmp2.pdb
+  pdb_selchain -C 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -4001 | pdb_tidy > tmp3.pdb
+  pdb_merge tmp1.pdb tmp2.pdb tmp3.pdb | pdb_reatom -1 | pdb_tidy > 2J8S-renumbered_new.pdb
+  rm tmp1.pdb tmp2.pdb tmp3.pdb
 </a>
 
 The PDB file of our receptor should now be ready for docking. You can also check the file format with:
 
 <a class="prompt prompt-cmd">
-  pdb_validate.py 2J8S-renumbered.pdb
+  pdb_validate 2J8S-renumbered.pdb
 </a>
 
 This will report formatting issues.
@@ -242,15 +234,13 @@ After downloading the corresponding PDB entry [3AOD](https://www.ebi.ac.uk/pdbe/
 For rifampicin (called RFP in the PDB file):
 
 <a class="prompt prompt-cmd">
-  grep RFP 3AOD.pdb \|grep HETATM \> rifampicin.pdb<BR>
-  echo END \>\> rifampicin.pdb<BR>
+  pdb_selresname -RFP 3AOD.pdb | pdb_keepcoord | pdb_tidy > rifampicin.pdb
 </a>
 
 For minocycline (called MIY in the PDB file):
 
 <a class="prompt prompt-cmd">
-  grep MIY 3AOD.pdb \|grep HETATM \> minocycline.pdb<BR>
-  echo END \>\> minocycline.pdb<BR>
+  pdb_selresname -MIY 3AOD.pdb | pdb_keepcoord | pdb_tidy > minocycline.pdb
 </a>
 
 
@@ -265,7 +255,7 @@ In order to start the submission, either click on "*here*" next to the submissio
 #### Submission and validation of structures
 
 Here we will launch a docking run using the apo form of the receptor (the renumbered PDB we just prepared) and rifampicin as potential ligand.
-For this we wills make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using the guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level [here](https://bianca.science.uu.nl/auth/register/).
+For this, we will make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using the *guru* level access (provided with course credentials if given to you, otherwise register to the server and request this access level [here](https://bianca.science.uu.nl/auth/register/).
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
@@ -345,7 +335,7 @@ Number of structures for the final refinement -> 400
 Clustering method (RMSD or Fraction of Common Contacts (FCC)) -> RMSD
 </a>
 <a class="prompt prompt-info">
-RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.75 for FCC) -> 2.0
+RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 2.0
 </a>
 
 
@@ -405,14 +395,14 @@ From that result page you can download the full archive of the run. Simply unpac
 
 Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the minimum number of structures per cluster will have automatically reduced to 2 or even 1 in order to produce a result page. If 1, then the clusters reported on the web page will correspond to the top10 ranked models.
 
-You can download the full run as a gzipped tar archive and inspect the results. Copy for this the link provided in the result page and download the archive with:
+You can download the full run as a gzipped tar archive and inspect the results. Copy the [results page URL](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface) and add `.tgz` to its end. Download the whole run files using the command:
 
 <a class="prompt prompt-linux">
-curl -L -O \<link\>
+curl -L -O \<URL + .tgz\>
 </a>
 or
 <a class="prompt prompt-linux">
-wget \<link\>
+wget \<URL + .tgz\>
 </a>
 
 Unpack the gzip file with:
@@ -420,6 +410,8 @@ Unpack the gzip file with:
 <a class="prompt prompt-linux">
 tar xzf \<archive\>.tgz
 </a>
+
+**Note:** You can use the same strategy to download the runs from your own research projects.
 
 **Note:** You can also view a result page from a downloaded pre-calculated docking run. For this go into the ```runs``` directory and then download the runs using:
 
@@ -510,7 +502,7 @@ Go into our example run directory, i.e. the run we downloaded from the HADDOCK s
 First let's put back the chainID information in one of the starting model taken from the ```begin``` directory and set all B-factors to 1:
 
 <a class="prompt prompt-cmd">
-pdb_segxchain.py begin/protein1.pdb \| pdb_b.py -1 \> AcrB_contacts.pdb
+pdb_segxchain begin/protein1.pdb \| pdb_b -1 \> AcrB_contacts.pdb
 </a>
 
 And then we will use this PDB file, together with the contacts statistics file just created in ```structures/it0``` to encode the contacts into the b-factor column of the PDB file with the following command:
@@ -663,7 +655,7 @@ awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \| head -n 
 We can now encode this information in a PDB file to visualize the defined binding site:
 
 <a class="prompt prompt-cmd">
-pdb_b.py -1 $WDIR/../pdbs/2J8S-renumbered.pdb \|pdb_chain.py -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
+pdb_b -1 $WDIR/../pdbs/2J8S-renumbered.pdb \|pdb_chain -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
 $WDIR/encode-contacts.csh AcrB-rifampicin-surface-full-contacts-top10.lis AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
 </a>
 
