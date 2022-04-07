@@ -28,7 +28,7 @@ def format_shape_pharm(lig):
         x = float(line[atom_x])
         y = float(line[atom_y])
         z = float(line[atom_z])
-        pharm_info = float(line[atom_temp])
+        pharm_info = float(line[atom_occ])
         print("ATOM   {: >4d}  SHA SHA S{: >4d}     {: 7.3f} {: 7.3f} {: 7.3f} {:5.2f}  1.00 ".format(resi, resi, x, y, z, pharm_info))
     print("END")
     ligFile.close()
