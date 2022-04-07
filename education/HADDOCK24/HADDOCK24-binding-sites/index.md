@@ -138,7 +138,7 @@ You will see three directories and one file:
 <hr>
 ## Preparing PDB files of the receptor for docking
 
-One requirement of HADDOCK is that there should not be any overlap in residue numbering. The structure of the apo form of our target receptor, the multidrug efflux pump [AcrB](https://www.uniprot.org/uniprot/P31224) from Escherichia coli, is available from the Protein Data Bank under PDB ID [2J8S](https://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S). You can download it directly from the PDB using the ```pdb_fetch.py``` script from our ```pdb-tools``` utilities:
+One requirement of HADDOCK is that there should not be any overlap in residue numbering. The structure of the apo form of our target receptor, the multidrug efflux pump [AcrB](https://www.uniprot.org/uniprot/P31224) from Escherichia coli, is available from the Protein Data Bank under PDB ID [2J8S](https://www.ebi.ac.uk/pdbe/entry/search/index?text:2J8S). You can download it directly from the PDB using the ```pdb_fetch``` command-line from our ```pdb-tools``` utilities:
 
 <a class="prompt prompt-cmd">
   pdb_fetch 2J8S > 2J8S.pdb
@@ -245,7 +245,7 @@ In order to start the submission, either click on "*here*" next to the submissio
 #### Submission and validation of structures
 
 Here we will launch a docking run using the apo form of the receptor (the renumbered PDB we just prepared) and rifampicin as potential ligand.
-For this we wills make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using the guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level [here](https://bianca.science.uu.nl/auth/register/).
+For this, we will make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using the *guru* level access (provided with course credentials if given to you, otherwise register to the server and request this access level [here](https://bianca.science.uu.nl/auth/register/).
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
@@ -325,7 +325,7 @@ Number of structures for the final refinement -> 400
 Clustering method (RMSD or Fraction of Common Contacts (FCC)) -> RMSD
 </a>
 <a class="prompt prompt-info">
-RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.75 for FCC) -> 2.0
+RMSD Cutoff for clustering (Recommended: 7.5A for RMSD, 0.60 for FCC) -> 2.0
 </a>
 
 
@@ -385,7 +385,7 @@ From that result page you can download the full archive of the run. Simply unpac
 
 Considering the size of the receptor we are targeting, at this stage it is rather unlikey that any sensible results will be obtained. If you performed the docking with course credentials, most likely the run will have completed but the minimum number of structures per cluster will have automatically reduced to 2 or even 1 in order to produce a result page. If 1, then the clusters reported on the web page will correspond to the top10 ranked models.
 
-You can download the full run as a gzipped tar archive and inspect the results. Copy for this the link provided in the result page and download the archive with:
+You can download the full run as a gzipped tar archive and inspect the results. Copy for the [results page URL](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/AcrB-rifampicin-surface), add `.tar` to the end, and download the whole run files using the command:
 
 <a class="prompt prompt-linux">
 curl -L -O \<link\>
@@ -400,6 +400,8 @@ Unpack the gzip file with:
 <a class="prompt prompt-linux">
 tar xzf \<archive\>.tgz
 </a>
+
+**Note:** You can use the same strategy to download the runs from your own research projects.
 
 **Note:** You can also view a result page from a downloaded pre-calculated docking run. For this go into the ```runs``` directory and then download the runs using:
 
@@ -490,7 +492,7 @@ Go into our example run directory, i.e. the run we downloaded from the HADDOCK s
 First let's put back the chainID information in one of the starting model taken from the ```begin``` directory and set all B-factors to 1:
 
 <a class="prompt prompt-cmd">
-pdb_segxchain.py begin/protein1.pdb \| pdb_b.py -1 \> AcrB_contacts.pdb
+pdb_segxchain begin/protein1.pdb \| pdb_b -1 \> AcrB_contacts.pdb
 </a>
 
 And then we will use this PDB file, together with the contacts statistics file just created in ```structures/it0``` to encode the contacts into the b-factor column of the PDB file with the following command:
@@ -643,7 +645,7 @@ awk \'$2>2000 && $2<4000\' AcrB-rifampicin-surface-full-contacts.lis \| head -n 
 We can now encode this information in a PDB file to visualize the defined binding site:
 
 <a class="prompt prompt-cmd">
-pdb_b.py -1 $WDIR/../pdbs/2J8S-renumbered.pdb \|pdb_chain.py -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
+pdb_b -1 $WDIR/../pdbs/2J8S-renumbered.pdb \|pdb_chain -A > AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
 $WDIR/encode-contacts.csh AcrB-rifampicin-surface-full-contacts-top10.lis AcrB-rifampicin-surface-full-contacts-top10.pdb<BR>
 </a>
 
