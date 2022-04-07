@@ -179,16 +179,16 @@ For this we will work at the terminal level and use our ```pbd-tools``` utilitie
 Let's find out what are the first and last residue numbers of the various chains, to check if there is any overlap in numbering:
 
 <a class="prompt prompt-cmd">
-pdb_selchain -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
-pdb_selchain -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
+  pdb_selchain -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
+  pdb_selchain -A 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
 </a>
 <a class="prompt prompt-cmd">
-pdb_selchain -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
-pdb_selchain -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
+  pdb_selchain -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
+  pdb_selchain -B 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
 </a>
 <a class="prompt prompt-cmd">
-pdb_selchain -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
-pdb_selchain -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
+  pdb_selchain -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| head -5<BR>
+  pdb_selchain -C 2J8S.pdb \| grep \' CA \' \| grep ATOM \| tail -5<BR>
 </a>
 
 
@@ -197,11 +197,11 @@ Inspecting the results of those commands reveals that we are indeed dealing with
 For use in HADDOCK we have thus to renumber chain B and C. In order to easily match the residue numbers between chains it is advisable to shift the numbering by a round number, e.g. in this case since we have more than 1000 amino acids we can shift chain B and C by 2000 and 4000, respectively. We will use again our ```pdb-tools``` utilities to create a renumbered, clean PDB file (also removing all hetero atoms in the process by selection only ATOM records):
 
 <a class="prompt prompt-cmd">
-pdb_selchain -A 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_tidy > tmp1.pdb
-pdb_selchain -B 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -2001 | pdb_tidy > tmp2.pdb
-pdb_selchain -C 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -4001 | pdb_tidy > tmp3.pdb
-pdb_merge tmp1.pdb tmp2.pdb tmp3.pdb | pdb_reatom -1 | pdb_tidy > 2J8S-renumbered_new.pdb
-rm tmp1.pdb tmp2.pdb tmp3.pdb
+  pdb_selchain -A 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_tidy > tmp1.pdb
+  pdb_selchain -B 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -2001 | pdb_tidy > tmp2.pdb
+  pdb_selchain -C 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -4001 | pdb_tidy > tmp3.pdb
+  pdb_merge tmp1.pdb tmp2.pdb tmp3.pdb | pdb_reatom -1 | pdb_tidy > 2J8S-renumbered_new.pdb
+  rm tmp1.pdb tmp2.pdb tmp3.pdb
 </a>
 
 The PDB file of our receptor should now be ready for docking. You can also check the file format with:
@@ -224,15 +224,13 @@ After downloading the corresponding PDB entry [3AOD](https://www.ebi.ac.uk/pdbe/
 For rifampicin (called RFP in the PDB file):
 
 <a class="prompt prompt-cmd">
-  grep RFP 3AOD.pdb \|grep HETATM \> rifampicin.pdb<BR>
-  echo END \>\> rifampicin.pdb<BR>
+  pdb_selresname -RFP 3AOD.pdb | pdb_keepcoord | pdb_tidy > rifampicin.pdb
 </a>
 
 For minocycline (called MIY in the PDB file):
 
 <a class="prompt prompt-cmd">
-  grep MIY 3AOD.pdb \|grep HETATM \> minocycline.pdb<BR>
-  echo END \>\> minocycline.pdb<BR>
+  pdb_selresname -MIY 3AOD.pdb | pdb_keepcoord | pdb_tidy > minocycline.pdb
 </a>
 
 
