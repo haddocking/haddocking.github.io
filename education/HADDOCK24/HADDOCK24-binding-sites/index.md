@@ -207,11 +207,11 @@ Inspecting the results of those commands reveals that we are indeed dealing with
 For use in HADDOCK we have thus to renumber chain B and C. In order to easily match the residue numbers between chains it is advisable to shift the numbering by a round number, e.g. in this case since we have more than 1000 amino acids we can shift chain B and C by 2000 and 4000, respectively. We will use again our ```pdb-tools``` utilities to create a renumbered, clean PDB file (also removing all hetero atoms in the process by selection only ATOM records):
 
 <a class="prompt prompt-cmd">
-  pdb_selchain -A 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_tidy > tmp1.pdb
-  pdb_selchain -B 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -2001 | pdb_tidy > tmp2.pdb
-  pdb_selchain -C 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -4001 | pdb_tidy > tmp3.pdb
-  pdb_merge tmp1.pdb tmp2.pdb tmp3.pdb | pdb_reatom -1 | pdb_tidy > 2J8S-renumbered_new.pdb
-  rm tmp1.pdb tmp2.pdb tmp3.pdb
+  pdb_selchain -A 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_tidy > tmp1.pdb<BR>
+  pdb_selchain -B 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -2001 | pdb_tidy > tmp2.pdb<BR>
+  pdb_selchain -C 2J8S.pdb | pdb_keepcoord | pdb_delhetatm | pdb_reres -4001 | pdb_tidy > tmp3.pdb<BR>
+  pdb_merge tmp1.pdb tmp2.pdb tmp3.pdb | pdb_reatom -1 | pdb_tidy > 2J8S-renumbered_new.pdb<BR>
+  rm tmp1.pdb tmp2.pdb tmp3.pdb<BR>
 </a>
 
 The PDB file of our receptor should now be ready for docking. You can also check the file format with:
@@ -544,7 +544,7 @@ Inspect the surface: Are there any highly contacted regions close to the actual 
 </a>
 
 Remember here that the receptor consists of three identical chains. For the docking we renumbered the chain to avoid overlap and gave them a unique segid (A).
-You can distinguish the various chains by the corresponding resisude numbering:
+You can distinguish the various chains by the corresponding residue numbering:
 
 * Chain A starts at residue number 1
 * Chain B starts at residue number 2001
