@@ -28,7 +28,7 @@ For this tutorial we will make use the following web servers:
 * [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}: The HADDOCK web portal which allows to model 3D structures of the query complex using distance restraints derived by PS-HomPPI v2.0 to guide the docking.
 
 
-A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
+A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
 
 * Li C Xue, João P G L M Rodrigues, Drena Dobbs, Vasant Honavar, Alexandre M J J Bonvin. [Template-based protein–protein docking exploiting pairwise interfacial residue restraints.](https://academic.oup.com/bib/article/18/3/458/2562753){:target="_blank"} _Briefings in bioinformatics_ *18*, 458-466 (2017).
 
@@ -41,6 +41,7 @@ instructions, and/or PyMOL commands.
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
 <a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
+<a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
 
 <hr>
@@ -60,23 +61,21 @@ reliable methods. Although many proteins interact with high specificity, the
 majority of the template-based methods failed to consider interaction partner
 information.
 
-[PS-HomPPI v2.0](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/) is a partner-specific
-structural template based interface predictor. It is a member of [HomPPI](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-244), a suite
-of homology-based interface predictors: 1)
-[NPS-HomPPI](https://ailab1.ist.psu.edu/NPSHOMPPI/) (Non partner-specific HomPPI), which can be used to predict
+[PS-HomPPI v2.0](http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0/index.html){:target="_blank"} is a partner-specific
+structural template based interface predictor. It is a member of [HomPPI](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-244){:target="_blank"}, a suite of homology-based interface predictors: 1)
+NPS-HomPPI (Non partner-specific HomPPI), which can be used to predict
 interface residues of a query protein in the absence of knowledge of the
-interaction partner; and (ii) [PS-HomPPI](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/) (Partner-specific HomPPI), which can be
-used to predict the interface residues of a query protein with a specific
+interaction partner; and (ii) [PS-HomPPI](http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"} (Partner-specific HomPPI), which can be used to predict the interface residues of a query protein with a specific
 target protein.
 
-[PS-HomPPI v2.0](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/) is an improved
-version of [PS-HomPPI v1.3](https://ailab1.ist.psu.edu/PSHOMPPIv1.3/), which has been used to predict pairwise contacts,
+[PS-HomPPI v2.0](http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0/index.html){:target="_blank"} is an improved
+version of [PS-HomPPI v1.3](http://ailab-projects2.ist.psu.edu/PSHOMPPIv1.3/){:target="_blank"}, which has been used to predict pairwise contacts,
 to reliably rank docked models and to guide flexible docking. However, the
 major limiting factor for all the template-based methods (including PS-HomPPI)
 is the availability of the templates. To increase the sensitivity of the
 PS-HomPPI v1.3 web server, we replaced the BLAST homology search with a Hidden
 Markov Model based search tool, the
-[HH-suite](https://github.com/soedinglab/hh-suite/tree/master/scripts/hhpred). Additionally, reliably scoring
+[HH-suite](https://github.com/soedinglab/hh-suite/tree/master/scripts/hhpred){:target="_blank"}. Additionally, reliably scoring
 available templates based on their alignments to the query is also an important
 factor for the prediction accuracy. To improve this part, v2.0 replaced the
 multiple linear regression (MLR) model used in v1.3 with a random forest (RF)
@@ -86,7 +85,7 @@ scoring.
 
 PS-HomPPI v2.0 makes pairwise interface predictions with the following steps:
 
-* **1. Search for structural templates.** Given queries A and B (assuming A and B interact with each other), PS-HomPPI v2.0 searches the [PDB](https://www.rcsb.org/structure/) database for structural homologs (as templates) using hhpred.
+* **1. Search for structural templates.** Given queries A and B (assuming A and B interact with each other), PS-HomPPI v2.0 searches the [PDB](https://www.rcsb.org/structure/){:target="_blank"} database for structural homologs (as templates) using hhpred.
 * **2. Score each templates and select those with highest assigned ranks for
   predicting the interface of the query.** The resulting candidate
   templates are ranked by a RF-based template scroing function based on the similarity (i.e.,
@@ -207,10 +206,10 @@ We will start by using PS-HomPPI v2.0 to
 
 ### Submitting the query to PS-HomPPI
 
-Connect to the the [PS-HomPPI](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"} web server.
+Connect to the the [PS-HomPPI](http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0/){:target="_blank"} web server.
 
 <a class="prompt prompt-info">
-https://ailab1.ist.psu.edu/PSHOMPPIv2.0/
+http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0/
 </a>
 
 * **Step1:** Enter your email and give a name to the job
@@ -248,7 +247,7 @@ _Note: The structures of the individual proteins are optional but **recommended*
 Paste the deletion file (optional) -> A:B=>1acb\*
 </a>
 
-__Note:__ _For more details of the format for the deletion file, see [the overview page of the PS-HomPPI 2.0 web server](https://ailab1.ist.psu.edu/PSHOMPPIv2.0/overview.html){:target="_blank"}._
+__Note:__ _For more details of the format for the deletion file, see [the overview page of the PS-HomPPI 2.0 web server](http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0/overview.html){:target="_blank"}.
 
 * **Step6:** Define the distance cutoff to create the “CA-CA (Alpha carbon-Alpha carbon) distance restraints. We will leave it to the default of **15 Å**.
 
@@ -291,7 +290,7 @@ Once finished, PS-HomPPI will send a result email to your email address. It typi
 From links provided in the email, you can download the predicted CA-CA distances for your query proteins A and B (the `cluster1_Ca_Ca_distance.txt` file). This file is already provided in the tutorial data you downloaded under `1ACB/PSHomPPI/output`):
 
 <pre style="background-color:#DAE4E7">
-Prediction results of Partner-specific interface residues by PS-HomPPI (https://ailab1.ist.psu.edu/PSHOMPPIv2.0).
+Prediction results of Partner-specific interface residues by PS-HomPPI (http://ailab-projects2.ist.psu.edu/PSHOMPPIv2.0){:target="_blank"}.
 
 Notations:
         1. A|A:B: the interface residues of protein A that interact with protein B.
@@ -339,7 +338,7 @@ Distance restraints for use in HADDOCK are defined as (following the [CNS][link-
     assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
-The lower limit for the distance is calculated as: distance minus lower-bound correction, and the upper limit as: distance plus upper-bound correction. There is often confusion about this definition of lower and upper distance bounds, something we addressed in a recent correspondence to [Nature Protocols](https://www.nature.com/articles/s41596-018-0017-6).
+The lower limit for the distance is calculated as: distance minus lower-bound correction, and the upper limit as: distance plus upper-bound correction. There is often confusion about this definition of lower and upper distance bounds, something we addressed in a recent correspondence to [Nature Protocols](https://www.nature.com/articles/s41596-018-0017-6){:target="_blank"}.
 
 Here would be an example of a distance restraint between the alpha carbons (CAs) of residues 128 and 21 in chains A and B with an allowed distance range between 13.263 (= 13.999-0.736) and 14.708 (= 13.999+0.709) Å:
 
@@ -468,11 +467,11 @@ set to 1 and the sampling of 180 degrees rotated solutions during rigid body EM 
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 #### Submission and validation of structures
 
-We have now all the required information to setup our targeted docking run. We will again make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1), using expert or guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level) [here](https://bianca.science.uu.nl/auth/register/).
+We have now all the required information to setup our targeted docking run. We will again make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"}, using expert or guru level access (provided with course credentials if given to you, otherwise register to the server and request this access level) [here](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}.
 
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
@@ -509,7 +508,7 @@ PDB structure to submit -> Browse and select from the _1ACB/HADDOCK/input_ direc
 Segment ID to use during docking -> B
 </a>
 
-* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -519,20 +518,20 @@ If everything went well, the interface window should have updated itself and it 
 For this unfold the **Distance Restraint menu** of the **Docking Parameters window**.
 
 <a class="prompt prompt-info">
-Upload the CA-CA distance restraints file from the _1ACB/HADDOCK/input_ directory called _cluster1_restraints.tbl_ under the unambiguous distance restraints.
+Upload the CA-CA distance restraints file from the _1ACB/HADDOCK/input_ directory called _cluster1_restraints.tbl_ under the ambiguous distance restraints.
 </a>
 
 * **Step5:** Change the sampling parameters to reduce the docking time.
 For this unfold the **Sampling Parameter menu**.
 
 <a class="prompt prompt-info">
-Number of structures for rigid body docking _cluster1_restraints.tbl -> 50
-</a>
-<a class="prompt prompt-info">
-Number of trials for rigid body minimisation -> 1
+Number of structures for rigid body docking _cluster1_restraints.tbl -> 200
 </a>
 <a class="prompt prompt-info">
 Sample 180 degrees rotated solutions during rigid body EM -> Uncheck
+</a>
+<a class="prompt prompt-info">
+Refine with short molecular dynamics in explicit solvent? -> Check
 </a>
 <a class="prompt prompt-info">
 Number of structures for semi-flexible refinement -> 50
@@ -543,7 +542,7 @@ Number of structures for the final refinement -> 50
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 <pre>
 {
@@ -563,19 +562,23 @@ This file contains all parameters and input data of your run, including the uplo
 Can you locate the distance restraints in this file?
 </a>
 
-* **Step 6:** You are ready to submit!  Click on the "Submit" button at the bottom left of the interface.
+* **Step 6:** You are ready to submit!  
+
+<a class="prompt prompt-info">
+Click on the "Submit" button at the bottom left of the interface.
+</a>
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/submission.png">
+<img src="/education/HADDOCK24/HADDOCK24-CACA-guided/submission.png">
 </figure>
 
 Currently your run should be queued but eventually its status will change to “Running”:
 
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/running.png">
+<img src="/education/HADDOCK24/HADDOCK24-CACA-guided/running.png">
 </figure>
 
 
@@ -585,11 +588,12 @@ several hours depending on the size of your system and the load of the server). 
 job has successfully completed.
 
 
+
 ### First analysis of the docking results
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email).
 
-In case you don't want to wait for your results, you can find it [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/CA-CA-docking). The result page should look like:
+In case you don't want to wait for your results, you can find it [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/133892-CA-CA-docking){:target="_blank"}. The result page should look like:
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-CACA-guided/haddock_result-page.png">
@@ -615,6 +619,7 @@ Let's now visualize the top 4 models and compare those to the crystal structure
 of the target structure (PDB ID: 1ACB).
 
 <a class="prompt prompt-info">Download and save to disk the top 4 members of the cluster</a>
+
 
 Then start PyMOL and load each cluster representative:
 
@@ -701,7 +706,7 @@ In contrast, the CA-CA guided docking protocol treats the interface as flexible 
 for flexibility at the interface during the simulated annealing stage and final refinement in explicit solvent.
 This allows some optimization of the conformation of the backbone and sidechains of the docked
 interface. But don't expect miracles! The amount of conformational changes modelled in that way will still be limited.
-In [Xue et al. 2017](https://academic.oup.com/bib/article/18/3/458/2562753), we have shown
+In [Xue et al. 2017](https://academic.oup.com/bib/article/18/3/458/2562753){:target="_blank"}, we have shown
 that our CA-CA guided docking protocol is superior to simple superimposition for cases with medium to large conformations upon
 binding.
 
@@ -736,10 +741,10 @@ These only report on the RMSD to chain A of the reference complex. Which modelli
 </summary>
 PyMol reports the following RMSDs:
 <pre>
-cluster1_1           RMSD =    1.488 (232 atoms)
-cluster1_2           RMSD =    1.492 (232 atoms)
-cluster1_3           RMSD =    1.488 (232 atoms)
-cluster1_4           RMSD =    1.553 (232 atoms)
+cluster1_1           RMSD =    1.787 (232 atoms)
+cluster1_2           RMSD =    1.785 (232 atoms)
+cluster1_3           RMSD =    1.720 (232 atoms)
+cluster1_4           RMSD =    1.736 (232 atoms)
 1ACB                 RMSD =    0.000 (240 atoms)
 model1-4b2aA_4b2aB   RMSD =    1.814 (232 atoms)
 model2-4b2aC_4b2aD   RMSD =    1.814 (232 atoms)
@@ -748,7 +753,7 @@ model4-3rdzB_3rdzD   RMSD =    1.814 (232 atoms)
 model5-3rdzA_3rdzC   RMSD =    1.814 (232 atoms)
 </pre>
 <br>
-We can see that the CA-CA docked models have moved closer to the reference.
+We can see that the CA-CA docked models have moved slightly closer (0.1Å) to the reference.
 </details>
 <br>
 
@@ -773,10 +778,10 @@ Which of the two chains undergoes larger conformational changes?
 </summary>
 PyMol reports the following RMSDs:
 <pre>
-cluster1_1           RMSD =    1.157 (56 atoms)
-cluster1_2           RMSD =    1.150 (56 atoms)
-cluster1_3           RMSD =    1.185 (56 atoms)
-cluster1_4           RMSD =    1.343 (56 atoms)
+cluster1_1           RMSD =    1.142 (56 atoms)
+cluster1_2           RMSD =    0.755 (56 atoms)
+cluster1_3           RMSD =    1.174 (56 atoms)
+cluster1_4           RMSD =    0.782 (56 atoms)
 1acb                 RMSD =    0.000 (56 atoms)
 model1-4b2aA_4b2aB   RMSD =    1.551 (56 atoms)
 model2-4b2aC_4b2aD   RMSD =    1.550 (56 atoms)
@@ -786,7 +791,7 @@ model5-3rdzA_3rdzC   RMSD =    1.550 (56 atoms)
 
 </pre>
 <br>
-We can see again that the CA-CA docked models have moved closer to the reference and in this case conformational changes up to 0.5Å are observed.
+We can see here that the CA-CA docked models have moved closer to the reference and in this case conformational changes up to 0.8Å are observed.
 </details>
 <br>
 
@@ -809,7 +814,7 @@ We can clearly see that the inhibitory loop is moving toward the bound conformat
 ### Quantitative analysis by l-RMSDs (ligand RMSD) calculation
 
 In order to have a more quantitative view of the quality of the models we will calculate ligand RMSDs (l-RMSDs).
-These are used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions)
+These are used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/){:target="_blank"} (Critical PRediction of Interactions)
  as a measure of the quality of a model. The l-RMSD is calculated by fitting on the backbone atoms the receptor (first molecule) and
 calculating the RMSD on the backbone atoms of the ligand (second molecule).
 
@@ -860,10 +865,10 @@ rms_cur model5-3rdzA_3rdzC and chain B and name CA+C+N+O, 1ACB and chain B, cycl
 <summary>See the pre-calculated l-RMSD values:
 </summary>
 <pre>
-cluster1_1 -> Executive: RMSD = 1.664 (252 to 252 atoms)
-cluster1_2 -> Executive: RMSD = 1.472 (252 to 252 atoms)
-cluster1_3 -> Executive: RMSD = 1.432 (252 to 252 atoms)
-cluster1_4 -> Executive: RMSD = 1.695 (252 to 252 atoms)
+cluster1_1 -> Executive: RMSD = 1.541 (252 to 252 atoms)
+cluster1_2 -> Executive: RMSD = 1.288 (252 to 252 atoms)
+cluster1_3 -> Executive: RMSD = 2.130 (252 to 252 atoms)
+cluster1_4 -> Executive: RMSD = 1.399 (252 to 252 atoms)
 
 model1-4b2aA_4b2aB -> Executive: RMSD = 2.224 (252 to 252 atoms)
 model2-4b2aC_4b2aD -> Executive: RMSD = 1.828 (252 to 252 atoms)
@@ -883,102 +888,41 @@ By comparing the l-RMSDs of CA-CA models and those of superimposed
 models, we can see that the CA-CA models have smaller l-RMSDs.
 
 __Note:__ _In CAPRI another measure of quality is also used, the interface RMSD (i-RMSD). It is calculated on
-the backbone atoms of all residues within 10Å from the the other molecule._
+the backbone atoms of all residues within 10Å from the the other molecule. It is not possible to calculate i-RMSDs easily in PyMol (we usually use [ProFit](https://www.bioinf.org.uk/programs/profit/) for this).
 
-Since it is not possible to calculate i-RMSDs easily in PyMol (we use [ProFit](https://www.bioinf.org.uk/programs/profit/) for this), we pre-calculated those values for the various models. The i-RMSD emphasises the differences at the interface as can be seen in the following values:
-
-<pre>
-cluster1_1.pdb 1.759
-cluster1_2.pdb 1.767
-cluster1_3.pdb 1.742
-cluster1_4.pdb 1.851
-
-model1-4b2aA_4b2aB.pdb 2.288
-model2-4b2aC_4b2aD.pdb 2.282
-model3-4h4fA_4h4fB.pdb 2.616
-model4-3rdzB_3rdzD.pdb 2.316
-model5-3rdzA_3rdzC.pdb 2.288
-</pre>
-
-
-Again we can see quite some different in quality between the two sets of models.
 
 
 ### Clash analysis
 
 We have previously mentioned the issue of clashes when generating models by simple superimposition.
-We can check if this is indeed true by running a validation server of the models. Let us select the best l-RMSD model from the CA-CA docking and the superimposition (these should be `cluster1_3` and `model4-3rdzB_3rdzD`, respectively).
+We can check if this is indeed true by running for example a validation server on the models. 
+Here we provide a simple C++ program that calculates the contacts between chains for a given distance cutoff.
+We can use a 2.5Å cutoff to detect clashes.
 
-To check the clashes (or bumps) we will make use of the online WHATIF web server available from:
+Call the contact program located in the 1ACB/scripts directory that was created when you unpacked the downloaded archive (make sure to run first `Make` in the script directory to compile the program).
 
-[https://swift.cmbi.umcn.nl/servers/html/index.html](https://swift.cmbi.umcn.nl/servers/html/index.html){:target="_blank"}
-
-
-<a class="prompt prompt-info">
-Connect to the WHATIF server and from the list of options on the left select _Atomic contacts_
+<a class="prompt prompt-cmd">
+    \<path\>/1ACB/scripts/contact-chainID \<pdb-file\> 2.5 | wc | awk '{print $1}'
 </a>
 
-<a class="prompt prompt-info">
-Select then the first option, "interatomic bumps", and upload the best model of each set.
-</a>
+Let us select the best l-RMSD model from the CA-CA docking and the superimposition (these should be `cluster1_2` and `model4-3rdzB_3rdzD`, respectively).
 
-Once completed (fast), look at the results for both models. A list of bumps is returned by the server. Scroll to the end of the page where you will find a summary.
-
-<a class="prompt prompt-question">
-Which model has the smallest number of bumps as reported by WHATIF?
-</a>
-
-<details style="background-color:#DAE4E7">
-<summary>See the solution:
-</summary>
-For the CA-CA guided HADDOCK model "cluster1_3.pdb" the reported number of bumps is:
-<pre>
-The bumps have been binned in 5 categories ranging from 'please look at'
-till 'must fix'. Additionally, the integrated sum of all bumps, the squared
-sum of all bumps, and these latter two values normalized by the number of
-contacts are listed too for comparison purposes between, for example, small
-and large proteins.
-
-Total bump value: 7.295
-Total bump value per residue: 0.244
-Total number of bumps: 77
-Total squared bump value: 1.232
-Total number of bumps in the mildest bin: 73
-Total number of bumps in the second bin: 4
-Total number of bumps in the middle bin: 0
-Total number of bumps in the fourth bin: 0
-Total number of bumps in the worst bin: 0
-</pre>
-<br>
-And for the superimposed model "model4-3rdzB_3rdzD.pdb":
-<pre>
-Total bump value: 103.050
-Total bump value per residue: 0.540
-Total number of bumps: 170
-Total squared bump value: 122.161
-Total number of bumps in the mildest bin: 63
-Total number of bumps in the second bin: 28
-Total number of bumps in the middle bin: 25
-Total number of bumps in the fourth bin: 14
-Total number of bumps in the worst bin: 40
-</pre>
-<br>
-Only one intermolecular clash is found in the HADDOCK CA-CA docked model while
-there is clearly a much larger number of clashes in the superimposed model, 40 of which are classified in the worst bin.
-</details>
-<br>
-
-
-This clash analysis clearly shows that models obtained by superimposition need to be refined.
+The reported number of bumps (short contacts <2.5A) are:
+ - for the CA-CA guided HADDOCK model -> 0 
+ - for the superimposed template      -> 72
+ 
+This clearly demonstrates that the CA-CA docking protocol not only leads to better ligand RMSDs, but also a better quality of the interface.
+Models obtained by superimposition only need thus to be refined.
 
 
 <hr>
 ## Additional/optional questions
 
 **1)** If you are curious, try refining the superimposed models through it and see if the clashes are removed to the same extend of the CA-CA docked model and if the l-RMSD improves of not.
-One option to do that is to make use of the HADDOCK refinement interface available from [https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-refinement.html). It will only perform the final refinement stage of HADDOCK.
+One option to do that is to make use of the HADDOCK2.4 refinement interface available from [https://wenmr.science.uu.nl/haddock2.4/refinement/1](https://wenmr.science.uu.nl/haddock2.4/refinement/1){:target="_blank"}. Several refinement protocols are provided. For details on their performance refer to our recent Structure paper:
 
-__Note:__ _A refinement run might fail if too severe clashes are present in the initial models._
+* T Neijenhuis, S.C. van Keulen and A.M.J.J. Bonvin. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1016/j.str.2022.02.001). _Structure_ *30*, 476-484 (2022).
+
 
 **2)** You could repeat this tutorial changing the “CA-CA (Alpha carbon-Alphacarbon) distance Threshold” parameter of PS-HomPPI v2.0 from 15 Å to 8.5 Å.
 Check then how this impacts the quality of the docking models.
