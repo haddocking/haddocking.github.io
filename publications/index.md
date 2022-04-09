@@ -12,6 +12,8 @@ image:
 
 * N. Rosário-Ferreir, **A.M.J.J. Bonvin** and Irina S. Moreira. [Using machine-learning-driven approaches to boost hot-spot's knowledge.](http://doi.org/10.1002/wcms.1602) _WIREs Comp. Mol. Sci._, Advanced Online Publication (2022).
 
+* T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1016/j.str.2022.02.001). _Structure_ *30*, 476-484 (2022).
+
 
 ## 2021
 
@@ -24,8 +26,6 @@ image:
 * M.F. Lensink, G. Brysbaert, T. Mauri, N. Nadzirin, S. Velankar, R.A.G. Chaleil, T. Clarence, P.A. Bates, R. Kong, B. Liu, G. Yang, M. Liu, H. Shi, X. Lu, S. Chang, R.S. Roy, F. Quadir, J. Liu, J. Cheng, A. Antoniak, C. Czaplewski, A. Giełdoń, M. Kogut, A.G. Lipska, A. Liwo, E.A. Lubecka, M. Maszota-Zieleniak, A.K. Sieradzan, R. Ślusarz, P.A. Wesołowski, K. Zięba, C.A. Del Carpio Muñoz, E. Ichiishi, A. Harmalkar, J.J. Gray, **A.M.J.J. Bonvin**, F. Ambrosetti, R. Vargas Honorato, Z. Jandova, B. Jiménez-García, P.I. Koukos, S. Van Keulen, C.W. Van Noort, M. Réau, J. Roel-Touris, S. Kotelnikov, D. Padhorny, K.A. Porter, A. Alekseenko, M. Ignatov, I. Desta, R. Ashizawa, Z. Sun, U. Ghani, N. Hashemi, S. Vajda, D. Kozakov, M. Rosell, L.A. Rodríguez-Lumbreras, J. Fernandez-Recio, A. Karczynska, S. Grudinin, Y. Yan, H. Li, P. Lin, S. Huang, C. Christoffer, G. Terashi, J. Verburgt, D. Sarkar, T. Aderinwale, X. Wang, D. Kihara, T. Nakamura, Y. Hanazono, R. Gowthaman, J.D. Guest, R. Yin, G. Taherzadeh, B.G. Pierce, D. Barradas-Bautista, Z. Cao, L. Cavallo, R. Oliva, Y. Sun, S. Zhu, Y. Shen, T. Park, H. Woo, J. Yang, S. Kwon, J. Won, C. Seok, Y. Kiyota, S. Kobayashi, Y. Harada, M. Takeda-Shitaka, P.J. Kundrotas, A. Singh, I.A. Vakser, J. Dapkūnas, . Olechnovič, Č. Venclovas, R. Duan, L. Qiu, X. Xu, S. Zhang, X. Zou, S.J. Wodak. [Prediction of protein assemblies, the next frontier: The CASP14-CAPRI experiment](http://doi.org/10.1002/prot.26222). _Proteins: Struc. Funct. &amp; Bioinformatics_, *89*, 1800-1823 (2021).
 
 * R. Vargas Honorato, P.I. Koukos, B. Jimenez-Garcia, A. Tsaregorodtsev, M. Verlato, A. Giachetti, A. Rosato and **A.M.J.J. Bonvin**. [Structural biology in the clouds: The WeNMR-EOSC Ecosystem](https://doi.org/10.3389/fmolb.2021.729513). _Frontiers Mol. Biosci._ *8*, fmolb.2021.729513 (2021).
-
-* T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1101/2021.06.22.449462). _bioRxiv_ doi:2021.06.22.449462 (2021).
 
 * P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1021/acs.jcim.1c00796). _J. Chem. Inf. and Mod._ *61*, 4807–4818 (2021). BioRxiv preprint available [here](https://doi.org/10.1101/2021.06.10.447890).
 
