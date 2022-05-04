@@ -66,6 +66,16 @@ This page provide you links to software and software manuals of the computationa
 
   * [**CPORT**](https://alcazar.science.uu.nl/services/CPORT)
   CPORT is an algorithm for the prediction of protein-protein interface residues. It combines six interface prediction methods into a consensus predictor
+
+<HR>
+### Deep learning protein interactions
+
+  * [**DeepRank**](https://github.com/DeepRank/deeprank)
+  DeepRank is a general, configurable deep learning framework for data mining protein-protein interactions (PPIs) using 3D convolutional neural networks (CNNs).
+  
+  * [**DeepRank-GNN**](https://github.com/DeepRank/Deeprank-GNN)
+  DeepRank-GNN is a general, configurable deep learning framework for data mining protein-protein interactions (PPIs) using graph convolutional neural networks (CNNs).
+
 <HR>
 ### Benchmarks and datasets
 

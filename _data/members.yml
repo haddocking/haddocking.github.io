@@ -27,14 +27,6 @@
     position: IT support
     avatar: /images/people/Rene-Monte.png
 
--   name: Angela Pelissou Ayuso
-    position: M.Sc Student
-    avatar: /images/people/Angela-Pelissou.jpg
-
--   name: Rayan Hassaine
-    position: M.Sc Student
-    avatar: /images/people/Rayan.jpg
-
 -   name: Ivar de Leeuw
     position: M.Sc Student
     avatar: /images/people/Ivar.jpg
@@ -50,3 +42,7 @@
 -   name: Rafaella Buzatu
     position: M.Sc Student
     avatar: /images/people/Rafaella-Buzatu.jpg
+
+-   name: Aldo van den Nieuwendijk
+    position: M.Sc Student
+    avatar: /images/people/Aldo-vandenNieuwendijk.png

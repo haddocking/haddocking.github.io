@@ -328,14 +328,19 @@
     status: student
 
 -   name: Lotte Manenschijn
-    position: student
+    status: student
 
 -   name: Vicky Charitou
-    position: M.Sc Student
+    status: student
 
 -   name: Nicky Kromdijk
-    position: M.Sc Student
+    status: student
 
+-   name: Angela Pelissou Ayuso
+    status: student
+
+-   name: Rayan Hassaine
+    status: student
 
 
 
