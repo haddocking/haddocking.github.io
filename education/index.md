@@ -79,8 +79,6 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 * [**Tutorials for HADDOCK version 2.4**](/education/HADDOCK24): Various tutorials from basic protein-protein docking, to the use of cross-linking data, symmetry and homology informations to guide the docking, and advanced modelling of protein-ligand complexes.
 
-* [**Tutorials for HADDOCK version 2.2**](/education/HADDOCK):  Various tutorials from basic protein-protein docking, to the use of cross-linking data, symmetry and homology informations to guide the docking, and advanced modelling of protein-ligand complexes.
-
 * [**Tutorials for DisVis and Powerfit**](/education/Others): Tutorials about rigid-body fitting into cryo-EM maps and assessing the information content of cross-linking data.
 
 * [**Integrative modelling of the RNA polymerase III apo complex**](/education/HADDOCK24/RNA-Pol-III): A combination of our DISVIS, POWERFIT and HADDOCK2.4 portals using cross-links and cryo-EM data to model a large macromolecular assembly.
