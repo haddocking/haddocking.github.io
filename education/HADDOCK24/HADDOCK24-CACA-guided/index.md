@@ -888,7 +888,7 @@ By comparing the l-RMSDs of CA-CA models and those of superimposed
 models, we can see that the CA-CA models have smaller l-RMSDs.
 
 __Note:__ _In CAPRI another measure of quality is also used, the interface RMSD (i-RMSD). It is calculated on
-the backbone atoms of all residues within 10Å from the the other molecule. It is not possible to calculate i-RMSDs easily in PyMol (we usually use [ProFit](https://www.bioinf.org.uk/programs/profit/) for this).
+the backbone atoms of all residues within 10Å from the the other molecule. It is not possible to calculate i-RMSDs easily in PyMol (we usually use [ProFit](http://www.bioinf.org.uk/software/profit/) for this).
 
 
 

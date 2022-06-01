@@ -19,6 +19,11 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Siri van Keulen
+    current: 'Aqemia, Paris, France'
+    url: https://www.aqemia.com
+    status: 'postdoc'
+
 -   name: Manon Réau
     current: 'Qubit Pharmaceuticals, Paris, France'
     url: https://qubit-pharmaceuticals.com
@@ -340,6 +345,9 @@
     status: student
 
 -   name: Rayan Hassaine
+    status: student
+
+-   name: Camilla Guccione
     status: student
 
 

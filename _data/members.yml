@@ -15,17 +15,9 @@
     position: Postdoctoral Researcher
     avatar: /images/people/Rodrigo.jpg
 
--   name: Siri van Keulen
-    position: Postdoctoral Researcher
-    avatar: /images/people/Siri.png
-
 -   name: Charlotte van Noort
     position: Ph.D Candidate
     avatar: /images/people/Charlotte.jpg
-
--   name: René Monté
-    position: IT support
-    avatar: /images/people/Rene-Monte.png
 
 -   name: Ivar de Leeuw
     position: M.Sc Student
@@ -46,3 +38,7 @@
 -   name: Aldo van den Nieuwendijk
     position: M.Sc Student
     avatar: /images/people/Aldo-vandenNieuwendijk.png
+
+-   name: Filippo
+    position: Erasmus M.Sc Student
+    avatar: /images/people/Filippo-Baldessari.png

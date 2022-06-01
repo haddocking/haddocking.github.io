@@ -79,18 +79,20 @@ This page provide you links to software and software manuals of the computationa
 <HR>
 ### Benchmarks and datasets
 
-* All-atom and Coarse-grained HADDOCK docking models for Protein-DNA complexes: [https://zenodo.org/record/3941636](https://zenodo.org/record/3941636)
-
-* [Protein-DNA docking benchmark](https://github.com/haddocking/Prot-DNABenchmark)
-
 * Docking benchmark of membrane protein complexes ([GitHub](https://github.com/haddocking/MemCplxDB)) and associated decoy dataset [ https://doi.org/10.15785/SBGRID/618]( https://doi.org/10.15785/SBGRID/618)
 
 * Cleaned Docking Benchmark 5 dataset, HADDOCK-ready, with unbound and bound structures matched: [https://github.com/haddocking/BM5-clean](https://github.com/haddocking/BM5-clean)
 
 * HADDOCK docking decoys for the new entries (55) of the protein-protein Docking Benchmark5: [https://data.sbgrid.org/dataset/131/](https://data.sbgrid.org/dataset/131/)
 
+* Docking models for Docking Benchmark 4, 5 and CAPRI score_set: [https://doi.org/10.15785/SBGRID/684](https://doi.org/10.15785/SBGRID/684)
+
 * HADDOCK refined models for the biological/crystallographic interfaces collected in the DC and MANY datasets: [https://doi.org/10.15785/SBGRID/566](https://doi.org/10.15785/SBGRID/566)
 
 * HADDOCK models of mutant protein complexes: [https://doi.org/10.15785/SBGRID/651](https://doi.org/10.15785/SBGRID/651)
 
-* Docking models for Docking Benchmark 4, 5 and CAPRI score_set: [https://doi.org/10.15785/SBGRID/684](https://doi.org/10.15785/SBGRID/684)
+* [Protein-DNA docking benchmark](https://github.com/haddocking/Prot-DNABenchmark)
+
+* [Protein-cyclic peptide docking benchmark](https://github.com/haddocking/cyclic-peptides) and associated models dataset [https://data.sbgrid.org/dataset/912](https://data.sbgrid.org/dataset/912)
+
+* All-atom and Coarse-grained HADDOCK docking models for Protein-DNA complexes: [https://zenodo.org/record/3941636](https://zenodo.org/record/3941636)
