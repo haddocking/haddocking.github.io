@@ -543,7 +543,7 @@ In the CAPRI (Critical Prediction of Interactions) [Méndez et al. 2003](https:/
 experiment, one of the parameters used is the Ligand root-mean-square deviation (l-RMSD) which is calculated by superimposing 
 the structures onto the backbone atoms of the receptor (the antibody in this case) and calculating the RMSD on the backbone 
 residues of the ligand (the antigen). To calculate the l-RMSD it is possible to either use the software 
-[Profit](https://www.bioinf.org.uk/software/profit/){:target="_blank"} or [Pymol](https://pymol.org/2/){:target="_blank"}.
+[Profit](http://www.bioinf.org.uk/software/profit){:target="_blank"} or [Pymol](https://pymol.org/2/){:target="_blank"}.
 For the sake of convenience we provide you with a renumbered reference structure 4G6M-matched.pdb, which can be downloaded [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/4G6M-matched.pdb).
 
 
