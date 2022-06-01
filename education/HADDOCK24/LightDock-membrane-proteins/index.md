@@ -90,12 +90,12 @@ Also, if not provided with special workshop credentials to use the HADDOCK porta
 LightDock is distributed as a Python package through the [Python Package Index](https://pypi.org/project/lightdock/){:target="_blank"} (PyPI) repository.
 
 #### Command line
-Installing LightDock is as simple as creating a virtual environment for **Python 3.6+** and running `pip` command (make sure your instances of `virtualenv` and `pip` are for Python 3.6+ versions). We will install the version _0.9.0a2_ of LightDock which is the first released version with support for the membrane protocol and execution in [Jupyter Notebooks](https://jupyter.org/){:target="_blank"} (see next section):
+Installing LightDock is as simple as creating a virtual environment for **Python 3.6+** and running `pip` command (make sure your instances of `virtualenv` and `pip` are for Python 3.6+ versions). We will install the version _0.9.2post1_ of LightDock which is the first released version with support for the membrane protocol and execution in [Jupyter Notebooks](https://jupyter.org/){:target="_blank"} (see next section):
 
 <a class="prompt prompt-cmd">
 virtualenv venv<br>
 source venv/bin/activate<br>
-pip install numpy && pip install lightdock==0.9.0a2<br>
+pip install numpy && pip install lightdock==0.9.2post1<br>
 </a>
 
 If the installation finished without errors, you should be able to execute LightDock in the terminal:
@@ -107,7 +107,7 @@ lightdock3.py -v
 and to see an output similar to this:
 
 <pre style="background-color:#DAE4E7">
-lightdock3 0.9.0a2
+lightdock3 0.9.2post1
 </pre>
 
 #### Jupyter Notebook and Google Colab
@@ -115,7 +115,7 @@ lightdock3 0.9.0a2
 Another option to use LightDock is through [Google Colaboratory](https://colab.research.google.com){:target="_blank"} ("Colab" for short) which allows you to write and execute Python in the browser using _notebooks_. In case of choosing this option, simply execute in a new notebook in the first cell the following command:
 
 <a class="prompt prompt-info">
-!pip install lightdock==0.9.0a2
+!pip install lightdock==0.9.2post1
 </a>
 
 ### Installing PDB-Tools
@@ -540,7 +540,7 @@ The page will automatically refresh and the results will appear upon completions
 Depending on the server load, your refinement job may take some time, but you will receive an email once the job has completed (and the results page will be automatically refreshed).
 
 For your convenience, we provide the refinement job already calculated for you:
-[https://haddock.science.uu.nl/haddock2.4/run/4242424242/52544-3x29-Lightdock-CG-refine](https://haddock.science.uu.nl/haddock2.4/run/4242424242/52544-3x29-Lightdock-CG-refine){:target="_blank"}
+[https://wenmr.science.uu.nl/haddock2.4/run/4242424242/52544-3x29-Lightdock-CG-refine](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/52544-3x29-Lightdock-CG-refine){:target="_blank"}
 
 <a class="prompt prompt-question">Inspect the results page</a>
 
