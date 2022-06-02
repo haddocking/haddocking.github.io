@@ -6,7 +6,7 @@ image:
 ---
 ## 2022
 
-* V. Charitou, S.C. van Keulen and **A.M.J.J. Bonvin**. [A Cyclisation and Docking Protocol for Cyclic Peptide-Protein Modelling using HADDOCK2.4](https://doi.org/10.1101/2022.01.21.477251). _BioRxiv_ 10.1101/2022.01.21.477251 (2022).
+* V. Charitou, S.C. van Keulen and **A.M.J.J. Bonvin**. [A Cyclisation and Docking Protocol for Cyclic Peptide-Protein Modelling using HADDOCK2.4](https://doi.org/10.1021/acs.jctc.2c00075). _J. Chem. Theory Comput._ Advanced Online Publication (2022).
 
 * B. Garofalo, **A.M.J.J. Bonvin**, A. Bosin, F.P. Di Giorgio, R. Ombrato and A.V. Vargiu. [Molecular Insights Into Binding and Activation of the Human KCNQ2 Channel by Retigabine](https://doi.org/10.3389/fmolb.2022.839249). _Frontiers Mol. Biosci._ *9*, 839249 (2022).
 
