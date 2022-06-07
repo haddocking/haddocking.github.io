@@ -36,8 +36,9 @@
   <div class="article-wrap">
     {{ content }}
   </div><!-- /.article-wrap -->
+  <!-- News Section -->
   <h3><a href="{{ site.url}}/news/">Recent News</a></h3>
-  {% for post in site.categories.news limit:5 %}    
+  {% for post in site.categories.news limit:2 %}
   <article>
     {% if post.link %}
       <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
@@ -47,6 +48,12 @@
     {% endif %}
   </article>
   {% endfor %}
+  <!-- Twitter list -->
+  <hr>
+  <a class="twitter-timeline" href="https://twitter.com/HonoratoRv/lists/1534093517626216448?ref_src=twsrc%5Etfw">
+    For an updated news feed, check this <u>Twitter List of the BonvinLab members</u>
+  </a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div><!-- /#index -->
 
 <div class="footer-wrap">
@@ -56,6 +63,6 @@
 </div><!-- /.footer-wrap -->
 
 {% include _scripts.html %}
-  
+
 </body>
 </html>
