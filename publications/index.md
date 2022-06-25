@@ -6,6 +6,8 @@ image:
 ---
 ## 2022
 
+* C.J. Buchanan, B. Gaunt, P.J. Harrison, Y. Yang, J. Liu, A. Khan, A.M. Giltrap, A. Le Bas, P.N. Ward, K. Gupta, M. Dumoux, T.K. Tan, L. Schimaski, S. Daga, N. Picchiotti, M. Baldassarri, E. Benetti, C. Fallerini, F. Fava, A. Giliberti, P.I. Koukos, M.J. Davy, A. Lakshminarayanan, X. Xue, G. Papadakis, L.P. Deimel, V. Casablancas-Antràs, T.D.W. Claridge, **A.M.J.J. Bonvin**, Q.J. Sattentau, S. Furini, M. Gori, J.Huo, R.J. Owens, C. Schaffitzel, I. Berger, A. Renieri, GEN-COVID Multicenter Study, J.H. Naismith, A. Baldwin, B.G. Davis. [Pathogen-sugar interactions revealed by universal saturation transfer analysis](https://www.science.org/doi/10.1126/science.abm3125). _Science_ doi:10.1126/science.abm3125 (2022).
+
 * V. Charitou, S.C. van Keulen and **A.M.J.J. Bonvin**. [A Cyclisation and Docking Protocol for Cyclic Peptide-Protein Modelling using HADDOCK2.4](https://doi.org/10.1021/acs.jctc.2c00075). _J. Chem. Theory Comput._ Advanced Online Publication (2022).
 
 * B. Garofalo, **A.M.J.J. Bonvin**, A. Bosin, F.P. Di Giorgio, R. Ombrato and A.V. Vargiu. [Molecular Insights Into Binding and Activation of the Human KCNQ2 Channel by Retigabine](https://doi.org/10.3389/fmolb.2022.839249). _Frontiers Mol. Biosci._ *9*, 839249 (2022).
@@ -30,8 +32,6 @@ image:
 * P.I. Koukos, M.F. Reau and **A.M.J.J. Bonvin**. [Shape-restrained modelling of protein-small molecule complexes with HADDOCK](https://doi.org/10.1021/acs.jcim.1c00796). _J. Chem. Inf. and Mod._ *61*, 4807–4818 (2021). BioRxiv preprint available [here](https://doi.org/10.1101/2021.06.10.447890).
 
 * **A.M.J.J. Bonvin**. [50 years of PDB: A catalyst in structural biology](https://doi.org/10.1038/s41592-021-01138-y). _Nature Methods_ *18*, 448–449 (2021).
-
-* C.J. Buchanan, B. Gaunt, P.J. Harrison, A. Le Bas, A. Khan, A.M. Giltrap, P.N. Ward, M. Dumoux, S. Daga, N. Picchiotti, M. Baldassarri, E. Benetti, C. Fallerini, F. Fava, A. Giliberti, P.I. Koukos, A. Lakshminarayanan, X. Xue, G. Papadakis, L.P. Deimel, V. Casablancas-Antràs, T.D.W. Claridge, **A.M.J.J. Bonvin**, Q.J. Sattentau, S. Furini, M. Gori, J.Huo, R.J. Owens, A. Renieri, GEN-COVID Multicenter Study, J.H. Naismith, A. Baldwin, B.G. Davis. [Cryptic SARS-CoV2-spike-with-sugar interactions revealed by ‘universal’ saturation transfer analysis](https://doi.org/10.1101/2021.04.14.439284). _bioRxiv_ doi:2021.04.14.439284 (2021).
 
 * U.B. le Paige, S. Xiang, M.M.R.M. Hendrix, Y. Zhang., G.E. Folkers, M. Weingarth, **A.M.J.J. Bonvin**, T.G. Kutateladze, I.K.Voets, M. Baldus and H. van Ingen. [Characterization of nucleosome sediments for protein interaction studies by solid-state NMR spectroscopy](https://mr.copernicus.org/articles/2/105/2021/). _Magn. Reson._, *2*, 105-116 (2021).
 
