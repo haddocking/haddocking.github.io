@@ -3,6 +3,10 @@
     url: http://www.uu.nl/staff/amjjbonvin
     avatar: /images/people/Bonvin-2020-12.jpg
 
+-   name: Rodrigo Vargas Honorato
+    position: IT-Researcher (Software Development and Operations)
+    avatar: /images/people/Rodrigo.jpg
+
 -   name: Marco Giulini
     position: Postdoctoral Researcher
     avatar: /images/people/Marco-Giulini.jpeg
@@ -10,10 +14,6 @@
 -   name: João Teixeira
     position: Postdoctoral Researcher
     avatar: /images/people/Joao-Teixeira.jpeg
-
--   name: Rodrigo Vargas Honorato
-    position: Postdoctoral Researcher
-    avatar: /images/people/Rodrigo.jpg
 
 -   name: Charlotte van Noort
     position: Ph.D Candidate
