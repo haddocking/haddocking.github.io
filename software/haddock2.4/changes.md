@@ -6,7 +6,14 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
-### Latest changes - version January 2022
+### Latest changes - version August 2022
+- Added support for 3-Hydroxyproline (HY3 residue)
+- Added improper to tensor topology
+- Extended support for 10 RDC restraint sets
+- Implemented move of RDC and DANI tensors after it1 for numerical stability
+
+
+### changes - version January 2022
 - Minor changes in occupancy treatment for pharmacophore-based shape docking
 - Added support for 2-N-acetyl-beta-D-galactopyranose (NGA)
 - Added support for N-methylated Cter (NME residue)
@@ -19,7 +26,6 @@ image:
 
 
 ### Changes - version May 2021
-
 - Fixed issue with grid package submission for model-specific ambig files
 - Added carbohydrates to scoring scripts
 - Fixed clustering issue in case of single model runs
@@ -27,7 +33,6 @@ image:
 
 
 ### Changes - version January 2021
-
 - Added support ASN-BGC glycosilic linkage
 - Fixed an issue in which clustering would fail if complexes had too many chains
 - Added an extra check for solvated docking and waterdock
@@ -36,7 +41,6 @@ image:
 
 
 ### Changes - version September 2020
-
 - Added beta sialic acid (SIB), and additional linkages between glycans
 - Added modified DNA baseJ (DJ)
 - Corrected issue with automatic his protonation state
@@ -45,24 +49,20 @@ image:
 
 
 ### Changes - version July 2020
-
 - Added support for glycosylated proteins
 - Improved diagnostics
 - Minor fixes and code cleaning
  
 
 ### Changes - version June 2020
-
 - Adapted the CG-to-AA conversion script to allow to morph larger conformational changes
   and use secondary structure restraints
 - Corrected an issue in automatic secondary structure definition leading failures for very large systems
 - Exposed a new parameter in run.cns (flcut_nb) that allows to control the distance cutoff to automatically
   define semi-flexible regions
 
-
 	
 ### Changes with respect to version 2.2
-
 - Extension to up to 20 molecules docking
 - Coarse grained docking implemented based on the Martini force field v2.2
   for both proteins and nucleic acids
