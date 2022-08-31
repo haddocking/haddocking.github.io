@@ -195,6 +195,10 @@ TODO: add installation for haddock-tools
 -->
 
 <!--
+TODO: add installation for profit?
+-->
+
+<!--
 TODO - explain the job batch system
 Or maybe in a later section.
 -->
@@ -477,7 +481,181 @@ TODO: confirm the above examples with unambig work
 Note that the values differ from HADDOCK2 to the example in HADDOCK3 docking-antibody-antigen/data/unambig.tbl
 -->
 
+You can visit this example in the `examples/docking-antibody-antigen` folder.
 
+## Defining restraints for docking
+
+Before setting up the docking we need first to generate distance restraint files
+in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns] as computational
+engine. A description of the format for the various restraint types supported by
+HADDOCK can be found in our [Nature Protocol][nat_prot] paper, Box 4.
+
+Distance restraints are defined as:
+
+<pre style="background-color:#DAE4E7">
+  assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+</pre>
+
+The lower limit for the distance is calculated as: distance minus lower-bound
+correction and the upper limit as: distance plus upper-bound correction.  The
+syntax for the selections can combine information about chainID - `segid`
+keyword -, residue number - `resid` keyword -, atom name - `name` keyword.
+Other keywords can be used in various combinations of OR and AND statements.
+Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/).
+
+We will shortly explain in this section how to generate both ambiguous
+interaction restraints (AIRs) and specific distance restraints for use in
+HADDOCK illustrating three scenarios:
+
+* **Interface mapping on both side** (e.g. from NMR chemical shift perturbation data)
+* **Specific distance restraints** (e.g. cross-links detected by MS)
+* **Interface mapping on one side, full surface on the other**
+
+Information about various types of distance restraints in HADDOCK can also be
+found in our [online manual][air-help] pages.
+
+### Defining AIRs from interface mapping
+
+We will use as example here the NMR chemical shift perturbations from the
+E2A-HPR complex used in our [HADDOCK 2.4 webserver basic protein-protein docking
+tutorial][haddock24protein]. The following residues of E2A were identified by
+[Wang *et al*, EMBO J (2000)][wang2000] as having significant chemical shift
+perturbations:
+
+<a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a>
+
+Let's visualize them in PyMOL using the clean PDB file we created in the
+[Cleaning PDB files prior to docking](#cleaning-pdb-files-prior-to-docking)
+section of this tutorial:
+
+<a class="prompt prompt-cmd">
+  pymol e2a_1F3G-clean.pdb
+</a>
+
+<a class="prompt prompt-pymol">
+color white, all<br>
+show surface<br>
+select e2a_active, (resi 38,40,45,46,69,71,78,80,94,96,141)<br>
+color red, e2a_active<br>
+</a>
+
+<figure align="center">
+<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/e2a-surface-airs.png">
+</figure>
+
+Inspect the surface.
+
+
+<a class="prompt prompt-question">
+    Do the identified residues form a well defined patch on the surface?
+</a>
+
+<a class="prompt prompt-question">
+    Do they form a contiguous surface?
+</a>
+
+The answer to the last question should be **no**: We can observe residue in the
+center of the patch that do not seem significantly affected while still being in
+the middle of the defined interface. This is the reason why in HADDOCK we also
+define "*passive*" residues that correspond to surface neighbors of active
+residues. These should be selected manually, filtering for solvent accessible
+residues (the HADDOCK server will do it for you).
+
+<!-- TODO: describe behaviour in HADDOCK3 -->
+<!-- TODO: add the list of residues -->
+
+In the same PyMol session as before you can visualize them with:
+
+<a class="prompt prompt-pymol">
+select e2a_passive, (resi 35,37,39,42,43,44,47,48,64,66,68,72,73,74,82,83,84,86,97,99,100,105,109,110,112,131,132,133,143,144)<br>
+color green, e2a_passive<br>
+</a>
+
+<figure align="center">
+<img src="/education/HADDOCK24/HADDOCK24-local-tutorial/e2a-active-passive.png">
+</figure>
+
+In general it is better to be too generous rather than too strict in the
+definition of passive residues.
+
+And important aspect is to filter both the active (the residues identified from
+your mapping experiment) and passive residues by their solvent accessibility.
+Our webserver uses a default relative accessibility of 15% as cutoff. This is
+not a hard limit. You might consider including even more buried residues if some
+important chemical group seems solvent accessible from a visual inspection.
+
+We can use `freesasa` to calculate the solvent accessibility for the different
+residues:
+
+<a class="prompt prompt-cmd">
+  freesasa e2a_1F3G.pdb \-\-format=rsa >e2a_1F3G.rsa
+</a>
+
+The results is file similar to the output of `naccess` containing the per
+residue solvent accessibility, both absolute and relative values, and also
+distinguishing between backbone and side-chains:
+
+<pre style="background-color:#DAE4E7">
+REM  FreeSASA 2.0.3
+REM  Absolute and relative SASAs for e2a_1F3G.pdb
+REM  Atomic radii and reference values for relative SASA: ProtOr
+REM  Chains: A
+REM  Algorithm: Lee & Richards
+REM  Probe-radius: 1.40
+REM  Slices: 20
+REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
+REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
+RES THR A  19   125.49  89.3  59.11  59.9  66.38 158.2  33.47  45.0  92.02 139.1
+RES ILE A  20    29.18  16.6  23.16  17.3   6.02  14.5  29.18  21.0   0.00   0.0
+RES GLU A  21    63.92  36.7  50.29  38.0  13.63  32.5  13.71  26.5  50.21  41.0
+RES ILE A  22     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES ILE A  23    25.26  14.4  25.26  18.8   0.00   0.0  25.26  18.2   0.00   0.0
+...
+</pre>
+
+The following command will return all residues with a relative SASA for either
+the backbone or the side-chain > 15%:
+
+<a class="prompt prompt-cmd">
+  awk \'{if (NF==13 && $5>40) print $0; if (NF==14 && $6>40) print $0}\' e2a_1F3G.rsa
+</a>
+
+Once you have defined your active and passive residues for both molecules, you
+can proceed with the generation of the AIR restraint file for HADDOCK.  For this
+you can either make use of our online [GenTBL][gentbl] webserver, entering the
+list of active and passive residues for each molecule, and saving the resulting
+restraint list to a text file, or use the relevant `haddock-tools` script.
+
+To use our `haddock-tools` `active-passive-to-ambig.py` script you need to
+create for each molecule a file containing two lines:
+
+* The first line corresponds to the list of active residues (numbers separated by spaces)
+* The second line corresponds to the list of passive residues.
+
+For our E2A-HPR example this would be:
+
+* For E2A (a file called [e2a-act-pass.list](/education/HADDOCK24/HADDOCK24-local-tutorial/e2a-act-pass.list)):
+<pre style="background-color:#DAE4E7">
+38 40 45 46 69 71 78 80 94 96 141
+35 37 39 42 43 44 47 48 64 66 68 72 73 74 82 83 84 86 97 99 100 105 109 110 112 131 132 133 143 144
+</pre>
+
+* and for HPR (a file called [hpr-act-pass.list](/education/HADDOCK24/HADDOCK24-local-tutorial/hpr-act-pass.list)):
+<pre style="background-color:#DAE4E7">
+15 16 17 20 48 49 51 52 54 56
+9 10 11 12 21 24 25 34 37 38 40 41 43 45 46 47 53 55 57 58 59 60 84 85
+</pre>
+
+Using those two files, we can generate the CNS-formatted AIR restraint files
+with the following command:
+
+<a class="prompt prompt-cmd">
+  active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list > e2a-hpr-ambig.tbl
+</a>
+
+[gentbl]: https://alcazar.science.uu.nl/services/GenTBL/ "GenTBL"
+[haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
+[wang2000]: https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract "Wang 2000"
 [haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK 3 GitHub"
 [installation]: https://www.bonvinlab.org/haddock3/INSTALL.html "Installation"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
@@ -487,3 +665,5 @@ Note that the values differ from HADDOCK2 to the example in HADDOCK3 docking-ant
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [overview]: https://www.bonvinlab.org/haddock3/intro.html "A brief introduction to HADDOCK3"
 [hpr-ensemble]: https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-protein/data/hpr_ensemble.pdb "HPR ensemble"
+[nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
+[air-help]: https://www.bonvinlab.org/software/haddock2.2/generate_air_help/ "AIRs help"
