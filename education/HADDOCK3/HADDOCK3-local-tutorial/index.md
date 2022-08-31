@@ -653,6 +653,102 @@ with the following command:
   active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list > e2a-hpr-ambig.tbl
 </a>
 
+This generates a file called `e2a-hpr-ambig.tbl` that contains the AIR
+restraints. The default distance range for those is between 0 and 2Å, which
+might seem short but makes senses because of the 1/r^6 summation in the AIR
+energy function that makes the effective distance be significantly shorter than
+the shortest distance entering the sum.
+
+The effective distance is calculated as the SUM over all pairwise atom-atom
+distance combinations between an active residue and all the active+passive on
+the other molecule: SUM[1/r^6]^(-1/6).
+
+If you modify this file, it is possible to quickly check if the format is valid.
+To do so, you can find in the `haddock-tools` repository a folder named
+`haddock_tbl_validation` that contains a script called `validate_tbl.py`. To use
+it, run:
+
+<a class="prompt prompt-cmd">
+  python ~/software/haddock-tools/haddock_tbl_validation/validate_tbl.py --silent e2a-hpr-ambig.tbl
+</a>
+
+No output means that your TBL file is valid. You can also find TBL file examples
+for different types of restraints in the `haddock-tools/haddock_tbl_validation/`
+directory, [or here online][tbl-examples].
+
+### Defining specific distance restraints
+
+You can define in HADDOCK unambiguous distance restraints between specific pairs
+of atoms to define restraints coming for example from MS cross-linking
+experiments or DEER experiments. As an illustration we will use cross-links from
+our [HADDOCK cross-links tutorial](/education/HADDOCK24/HADDOCK24-Xlinks)
+obtained for the complex between PRE5 (UniProtKB:
+[O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2
+(UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)).
+From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL)
+([Leitner et al.,
+2014](https://doi.org/10.1073/pnas.1320298111)), which we will
+define as CA-CA distance restraints
+([restraints.txt](/education/HADDOCK24/HADDOCK24-local-tutorial/restraints.txt)):
+
+<pre style="background-color:#DAE4E7">
+# ADH crosslinks
+A  27 CA B  18 CA 0 23
+A 122 CA B 125 CA 0 23
+A 122 CA B 128 CA 0 23
+A 122 CA B 127 CA 0 23
+
+# ZL crosslinks
+A 55 CA B 169 CA 0 26
+A 55 CA B 179 CA 0 26
+A 54 CA B 179 CA 0 26
+</pre>
+
+This is the format used by our [DisVis portal](https://wenmr.science.uu.nl/disvis)
+to represent the cross-links. Each cross-link definition consists of eight
+fields:
+
+1. chainID of the 1st molecule
+1. residue number
+1. atom name
+1. chainID of the 2nd molecule
+1. residue number
+1. atom name
+1. lower distance limit
+1. upper distance limit
+
+The corresponding CNS-formatted HADDOCK restraint file for those would be
+([unambig-xlinks.tbl](/education/HADDOCK24/HADDOCK24-local-tutorial/unambig-xlinks.tbl)):
+
+<pre style="background-color:#DAE4E7">
+assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
+assign (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
+assign (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
+</pre>
+
+As a reminder, distance restraints are defined as:
+
+<pre style="background-color:#DAE4E7">
+    assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+</pre>
+
+Where the lower limit for the distance is calculated as the distance minus
+lower-bound correction and the upper limit as the distance plus upper-bound
+correction.
+
+**Note:** Under Linux (or OSX), this file could be generated automatically from
+a text file containing the DisVis restraints with the following command (one
+line) in a terminal window:
+
+<a class="prompt prompt-linux">
+  cat restraints.txt | awk \'{if (NF == 8) {print \"assi (segid \",$1,\" and resid \",$2,\" and name \",$3,\") (segid \",$4,\" and resid \",$5,\" and name \",$6,\") \",$8,$8,$7}}\' > pre5-pup2-Xlinks.tbl
+</a>
+
+[tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
 [gentbl]: https://alcazar.science.uu.nl/services/GenTBL/ "GenTBL"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
 [wang2000]: https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract "Wang 2000"
