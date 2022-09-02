@@ -19,6 +19,11 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: João Teixeira
+    current: 'University of Padova, Italy'
+    url: https://fuxreiterlab.github.io/index.html
+    status: 'postdoc'
+
 -   name: Siri van Keulen
     current: 'Aqemia, Paris, France'
     url: https://www.aqemia.com
@@ -349,6 +354,13 @@
 
 -   name: Camilla Guccione
     status: student
+
+-   name: Douwe chulte
+    status: student
+
+-   name: Filippo Baldessari
+    status: student
+
 
 
 
