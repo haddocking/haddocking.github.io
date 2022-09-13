@@ -6,13 +6,15 @@ image:
 ---
 ## 2022
 
+* R. Shukla, F. Lavore, So. Maity, M.G.N. Derks, C.R. Jones4, B.J.A. Vermeulen, A. Melcrová, M.A. Morris, L.M. Becker, X. Wang, R. Kumar, J. Medeiros-Silva, R.A.M. van Beekveld, **A.M.J.J. Bonvin**, J. Lorent, M. Lelli, J. Nowick, H.D. MacGillavry, A.J. Peoples, A.L. Spoering, L.L. Ling, D.E. Hughes, W.H. Roos, E. Breukink, K. Lewis and M. Weingarth. [Teixobactin kills bacteria by a two-pronged attack on the cell envelope](https://www.nature.com/articles/s41586-022-05019-y). _Nature_ *608*, 390-396 (2022)
+
 * C.J. Buchanan, B. Gaunt, P.J. Harrison, Y. Yang, J. Liu, A. Khan, A.M. Giltrap, A. Le Bas, P.N. Ward, K. Gupta, M. Dumoux, T.K. Tan, L. Schimaski, S. Daga, N. Picchiotti, M. Baldassarri, E. Benetti, C. Fallerini, F. Fava, A. Giliberti, P.I. Koukos, M.J. Davy, A. Lakshminarayanan, X. Xue, G. Papadakis, L.P. Deimel, V. Casablancas-Antràs, T.D.W. Claridge, **A.M.J.J. Bonvin**, Q.J. Sattentau, S. Furini, M. Gori, J.Huo, R.J. Owens, C. Schaffitzel, I. Berger, A. Renieri, GEN-COVID Multicenter Study, J.H. Naismith, A. Baldwin, B.G. Davis. [Pathogen-sugar interactions revealed by universal saturation transfer analysis](https://www.science.org/doi/10.1126/science.abm3125). _Science_ doi:10.1126/science.abm3125 (2022).
 
 * V. Charitou, S.C. van Keulen and **A.M.J.J. Bonvin**. [A Cyclisation and Docking Protocol for Cyclic Peptide-Protein Modelling using HADDOCK2.4](https://doi.org/10.1021/acs.jctc.2c00075). _J. Chem. Theory Comput._ Advanced Online Publication (2022).
 
 * B. Garofalo, **A.M.J.J. Bonvin**, A. Bosin, F.P. Di Giorgio, R. Ombrato and A.V. Vargiu. [Molecular Insights Into Binding and Activation of the Human KCNQ2 Channel by Retigabine](https://doi.org/10.3389/fmolb.2022.839249). _Frontiers Mol. Biosci._ *9*, 839249 (2022).
 
-* N. Rosário-Ferreir, **A.M.J.J. Bonvin** and Irina S. Moreira. [Using machine-learning-driven approaches to boost hot-spot's knowledge.](http://doi.org/10.1002/wcms.1602) _WIREs Comp. Mol. Sci._, Advanced Online Publication (2022).
+* N. Rosário-Ferreir, **A.M.J.J. Bonvin** and Irina S. Moreira. [Using machine-learning-driven approaches to boost hot-spot's knowledge.](http://doi.org/10.1002/wcms.1602) _WIREs Comp. Mol. Sci._, *12*, e1602 (2022).
 
 * T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1016/j.str.2022.02.001). _Structure_ *30*, 476-484 (2022).
 
