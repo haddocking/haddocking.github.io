@@ -41,13 +41,11 @@ Do you want to get a feeling of our HADDOCK portal? Check the [live demo](https:
 
 We are looking for motivated students to help us further develop HADDOCK. Examples of possible projects are:
 
-* Apply machine learning techniques to improve HADDOCK’s scoring function and design complex type-specific functions.
-* Measure the impact of the electrostatics treatment on the docking performance for various types of complexes.
 * Develop protocols and assess how well HADDOCK can predict protein-oligosaccharide complexes.
-* Develop protocols and assess how well HADDOCK can predict protein-cyclic peptide complexes.
 * Develop protocols and assess how well HADDOCK can predict protein-RNA complexes.
 * Develop protocols and assess how well HADDOCK can predict RNA-RNA complexes.
-* Work on structure-based prediction of binding affinity and specificity.
+* Explore antibody design with HADDOCK3.
+* AI-based scoring of protein-protein models (combine HADDOCK and AlphaFold or related)
 
 You will work independently - although with guidance - on your own project, which will involve basic computer skills (can be learned on the job), and biochemistry/biophysics knowledge of biomolecular structures. And you will make a real-world impact in structural biology research considering the large and worldwide user base of HADDOCK!
 
