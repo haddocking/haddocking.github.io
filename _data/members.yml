@@ -33,10 +33,6 @@
     position: M.Sc Student
     avatar: /images/people/Ivar.jpg
 
--   name: Jesús Lopez Rivera
-    position: M.Sc Student
-    avatar: /images/people/Jesus.jpg
-
 -   name: Rafaella Buzatu
     position: M.Sc Student
     avatar: /images/people/Rafaella-Buzatu.jpg
@@ -52,3 +48,8 @@
 -   name: Padraic Hughes
     position: M.Sc Student
     avatar: /images/people/Padraic-Hughes.jpg
+
+-   name: Daphne van Oosten
+    position: M.Sc Student
+    avatar: /images/people/Daphne-vanOosten.png
+
