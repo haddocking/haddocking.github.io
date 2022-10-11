@@ -1397,10 +1397,10 @@ If not, which ones are not satistified?
 
 #### Analysing the cross-links defining the position of the C31 domain
 
-You can first hide the distances shown for C34_wHTH2 by unselecting them in the menu on the right side of the window.
+You can first hide the distances shown for C34 by unselecting them in the menu on the right side of the window.
 Alternatively delete them in PyMol by typing:
 
-<a class="prompt prompt-pymol">delete C34-2*</a>
+<a class="prompt prompt-pymol">delete C34*</a>
 
 In the PyMOL command window type:
 
