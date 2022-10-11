@@ -787,24 +787,10 @@ hide lines<br>
 Let's then superimpose all models on chain A of the first cluster:
 
 <a class="prompt prompt-pymol">
-select cluster1_1 and chain A<br>
-align cluster2_1, sele
+alignto cluster1_1 and chain A<br>
 </a>
 
-<a class="prompt prompt-info">
-Repeat the align command for each cluster representative.
-</a>
-
-Alternatively, you can superimpose all models on the selection, by:
-<a class="prompt prompt-info">
-Find the sele entry in the menu listing all molecules on the right side of the PyMol window.
-</a>
-<a class="prompt prompt-info">
-Click on the A button next to it -> align -> all to this (*/CA).
-</a>
-
-
-This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains.
+This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains. Be patient as given the size of the system this might take a bit of time...
 
 
 <a class="prompt prompt-question">
@@ -988,8 +974,7 @@ If not, which ones are not satistified?
 </a>
 
 
-<hr><hr>
-## Fitting the docking models into low resolution cryo-EM maps
+### Fitting the docking models into low resolution cryo-EM maps
 
 We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
 For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
@@ -1288,27 +1273,14 @@ util.cbc<br>
 hide lines<br>
 </a>
 
+
 Let's then superimpose all models on chain A of the first cluster:
 
 <a class="prompt prompt-pymol">
-select cluster1_1 and chain A<br>
-align cluster2_1, sele
+alignto cluster1_1 and chain A<br>
 </a>
 
-<a class="prompt prompt-info">
-Repeat the align command for each cluster representative.
-</a>
-
-Alternatively, you can superimpose all models on the selection, by:
-<a class="prompt prompt-info">
-Find the sele entry in the menu listing all molecules on the right side of the PyMol window.
-</a>
-<a class="prompt prompt-info">
-Click on the A button next to it -> align -> all to this (*/CA).
-</a>
-
-
-This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains.
+This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains. Be patient as given the size of the system this might take a bit of time...
 
 
 <a class="prompt prompt-question">
