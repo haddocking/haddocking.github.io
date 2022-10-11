@@ -1086,6 +1086,14 @@ Click on Fit and check if the correlation does improve
 You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
 In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
 
+<a class="prompt prompt-question">
+Which model gives the best fit to the EM map?
+</a>
+
+<a class="prompt prompt-question">
+What is the best correlation coefficient obtained?
+</a>
+
 
 
 <hr><hr>
@@ -1284,7 +1292,7 @@ This will align all clusters on chain A (PolIII-core), maximizing the difference
 
 
 <a class="prompt prompt-question">
-Examine the various clusters. Compare the orientation of each domain (C82,C34_wHTH1, C34_wHTH2 and C31). 
+Examine the various clusters. Compare the orientation of each domain (C82,C34 and C31). 
 How does their orientation differ between the various clusters?
 </a>
 
@@ -1328,9 +1336,9 @@ hide lines<br>
 distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
 distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
 distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d04-30A, chain B and resid 520 and name CB, chain D and resid  135 and name CB<br>
-distance C82-d05-30A, chain B and resid 520 and name CB, chain D and resid  138 and name CB<br>
-distance C82-d06-30A, chain B and resid 520 and name CB, chain D and resid  141 and name CB<br>
+distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
+distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
+distance C82-d06-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
 distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
 distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
 distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
@@ -1356,7 +1364,7 @@ __Note__ that the reported distances are Euclidian distances. In reality, the cr
 surface of the molecule which might results in a longer effective distance. A proper comparison would require
 calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
 
-#### Analysing the cross-links defining the position of the C34_wHTH1 domain
+#### Analysing the cross-links defining the position of the C34 domain
 
 You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
 Alternatively delete them in PyMol by typing:
@@ -1367,49 +1375,11 @@ In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
 distance C34-1-d1-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-1-d2-30A, chain C and resid 62 and name CB, chain D and resid   82 and name CB<br>
-distance C34-1-d3-30A, chain C and resid 62 and name CB, chain D and resid   83 and name CB<br>
-distance C34-1-d4-30A, chain C and resid 62 and name CB, chain D and resid  123 and name CB<br>
-distance C34-1-d5-30A, chain C and resid 65 and name CB, chain D and resid   82 and name CB<br>
-distance C34-1-d6-30A, chain C and resid 65 and name CB, chain D and resid  123 and name CB<br>
-distance C34-1-d7-30A, chain C and resid 65 and name CB, chain D and resid  126 and name CB<br>
-distance C34-1-d8-30A, chain C and resid 65 and name CB, chain D and resid  135 and name CB<br>
-</a>
-
-<a class="prompt prompt-info">
-Inspect the various cross-link distances.
-</a>
-
-<a class="prompt prompt-question">
-Is the model satisfying the cross-link restraints?
-</a>
-
-<a class="prompt prompt-question">
-If not, which ones are not satistified?
-</a>
-
-#### Analysing the cross-links defining the position of the C34_wHTH2 domain
-
-You can first hide the distances shown for C34_wHTH1 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
-
-<a class="prompt prompt-pymol">delete C34-1*</a>
-
-In the PyMOL command window type:
-
-<a class="prompt prompt-pymol">
-distance C34-2-d01-30A, chain D and resid  82 and name CB, chain C and resid   62 and name CB<br>
-distance C34-2-d02-30A, chain D and resid  82 and name CB, chain C and resid   62 and name CB<br>
-distance C34-2-d03-30A, chain D and resid  82 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d04-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d05-30A, chain D and resid 123 and name CB, chain C and resid   62 and name CB<br>
-distance C34-2-d06-30A, chain D and resid 123 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d07-30A, chain D and resid 126 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d08-30A, chain D and resid 126 and name CB, chain F and resid  196 and name CB<br>
-distance C34-2-d09-30A, chain D and resid 135 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d10-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d11-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d12-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d2-30A, chain C and resid 123 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-2-d3-30A, chain C and resid 126 and name CB, chain F and resid  196 and name CB<br>
+distance C34-2-d4-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d5-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d6-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1448,7 +1418,7 @@ distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 
 distance C31-d12-30A, chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
 distance C31-d13-30A, chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
 distance C31-d14-30A, chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
-distance C31-d15-30A, chain F and resid 196 and name CB, chain D and resid  126 and name CB<br>
+distance C31-d15-30A, chain F and resid 196 and name CB, chain C and resid  126 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1461,6 +1431,127 @@ Is the model satisfying the cross-link restraints?
 
 <a class="prompt prompt-question">
 If not, which ones are not satistified?
+</a>
+
+
+### Fitting the docking models into low resolution cryo-EM maps
+
+We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
+For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
+
+For this open the PDB file of the cluster you want to fit and the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory).
+
+<a class="prompt prompt-info">
+  UCSF Chimera Menu → File → Open... → Select the file
+</a>
+
+Repeat this for each file. Chimera will automatically guess their type.
+
+
+If you want to use the Chimera command-line instead, you need to first display it:
+
+<a class="prompt prompt-info">
+  UCSF Chimera Menu → Favorites → Command Line
+</a>
+
+and type:
+
+<a class="prompt prompt-pymol">
+  open /path/to/clusterX_1.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/PolIII_9A.mrc
+</a>
+
+
+In the `Volume Viewer` window, the middle slide bar provides control on the
+value at which the isosurface of the density is shown. At high values, the
+envelope will shrink while lower values might even display the noise in the map.
+In the same window, you can click on `Center` to center the view on all visible molecules and the density.
+
+We will first make the density transparent, in order to be able to see the fitted structure inside:
+
+<a class="prompt prompt-info">
+  Within the Volume Viewer window click on the gray box next to Color
+</a>
+
+This opens the`Color Editor` window.
+
+<a class="prompt prompt-info">
+Check the Opacity box.
+</a>
+
+An extra slider bar appears in the box called A, for the alpha channel.
+
+<a class="prompt prompt-info">
+Set the alpha channel value to around 0.6.
+</a>
+
+In order to distinguish the various chains we can color the structure by chain. For this:
+<a class="prompt prompt-info">
+Chimera menu -> Tools -> Depiction -> Rainbow
+Select the option to color by chain and click the Apply button
+</a>
+
+
+In order to perform the fit, we will use the Command Line more:
+
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Favorites → Command Line
+</a>
+
+Also open the Model Panel to know the ID of the various files within Chimera:
+
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Favorites → Model Panel
+</a>
+
+Note the number of the cluster model you upload and of the cryo-EM map (e.g. if you loaded first the PDB file, it must have model #0 and the map is #1).
+Then, in the Command Line interface type:
+
+<a class="prompt prompt-pymol">
+molmap #0 9 modelId 3    
+</a>
+
+This generate a 9Å map from the PDB model we uploaded with ID #3.
+The next command then performs the fit of this map onto the experimental cryo-EM map:
+
+<a class="prompt prompt-pymol">
+fitmap #1 #3 search 100<br>
+close #3
+</a>
+
+When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
+Note the value for the cluster you selected.
+
+You also try to improve further the fit:
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
+</a>
+
+<a class="prompt prompt-info">
+Click the Options button
+</a>
+<a class="prompt prompt-info">
+Select the Use map simulated from atoms and set the Resolution to 9
+</a>
+<a class="prompt prompt-info">
+Click on Update and note the correlation value
+</a>
+<a class="prompt prompt-info">
+Click on Fit and check if the correlation does improve
+</a>
+
+
+You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
+In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
+
+<a class="prompt prompt-question">
+Which model from Strategy 1 and Strategy 1A gives the best fit to the EM map?
+</a>
+
+<a class="prompt prompt-question">
+What is the best correlation coefficient obtained?
 </a>
 
 
