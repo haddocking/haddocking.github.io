@@ -281,8 +281,8 @@ The next step in this tutorial will be to model the complex based on the cross-l
 ## Modelling the symmetrical homomeric complex using HADDOCK
 
 
-Our information-driven docking approach [HADDOCK](https://www.bonvinlab.org/software/haddock2.4) has been a
-consistent top predictor and scorer since the start of its participation in the [CAPRI](https://www.ebi.ac.uk/msd-srv/capri)
+Our information-driven docking approach [HADDOCK](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"} has been a
+consistent top predictor and scorer since the start of its participation in the [CAPRI](https://www.ebi.ac.uk/msd-srv/capri){:target="_blank"}
 community-wide blind docking experiment. This sustained performance is due, in part, to its ability to integrate experimental data and/or
 bioinformatics information into the modelling process, and also to the overall robustness of the scoring function used to assess and rank the predictions.
 
@@ -290,8 +290,8 @@ Here we will use HADDOCK in order to model the symmetrical oligomeric state of t
 
 1. Knowledge of the stochiometry of the complex (from your above analysis of DisVis results), i.e. how many monomers should we dock?
 1. Distance restraints based on MS cross-links
-2. [Center-of-mass restraints](https://www.bonvinlab.org/software/haddock2.4/airs/#center-of-mass-restraints) to bring the subunits together and ensure compact solutions
-3. [Symmetry restraints](https://www.bonvinlab.org/software/haddock2.4/run/#symmetry-restraints) to define the symmetry of the assembly.
+2. [Center-of-mass restraints](https://www.bonvinlab.org/software/haddock2.4/airs/#center-of-mass-restraints){:target="_blank"} to bring the subunits together and ensure compact solutions
+3. [Symmetry restraints](https://www.bonvinlab.org/software/haddock2.4/run/#symmetry-restraints){:target="_blank"} to define the symmetry of the assembly.
 
 For this you will make use of the [docking interface][link-haddock-multi]{:target="_blank"} of our
 [HADDOCK web portal][link-haddock-web]{:target="_blank"}. This does require guru level access (provided with course credentials if given to you,
@@ -300,7 +300,7 @@ otherwise [register][link-haddock-register]{:target="_blank"} to the server and 
 
 Before setting up the docking we need first to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
-be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) paper, Box 4.
+be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as follows:
 
@@ -353,13 +353,13 @@ Let's now setup the docking run!
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server
+For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server
 
 * **Step 1:** Define a name for your docking run, e.g. *XL-MS-XXmer*.
 
@@ -411,7 +411,7 @@ Segment ID to use during docking -> X (where X is C,D or E)
 </a>
 
 
-* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/) to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -461,16 +461,16 @@ Eair 3	 -> 1.0<br>
 
 Once you docking run has completed you will be presented with a result page (and in case you registered for the server an email will be sent to you).
 HADDOCK returns statistics for the top10 clusters, which are averages over the top4 members of each cluster.
-The ranking of the clusters is based on the HADDOCK score. Consult the online [HADDOCK manual](https://www.bonvinlab.org/software/haddock2.4/scoring/)
+The ranking of the clusters is based on the HADDOCK score. Consult the online [HADDOCK manual](https://www.bonvinlab.org/software/haddock2.4/scoring/){:target="_blank"}
 pages for an explanation of the scoring scheme and the default weights used at various stages.
 Remember that we have increased the weight of the distance restraints for our runs since we wanted to put more weight on the cross-links which we considered highly reliable.
 
 Don't want to wait for your results?  
 
-The completed dimer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-dimer).  
-The completed trimer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-trimer).  
-The completed tetramer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-tetramer).  
-The completed pentamer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-pentamer).    
+The completed dimer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-dimer){:target="_blank"}.  
+The completed trimer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-trimer){:target="_blank"}.  
+The completed tetramer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-tetramer){:target="_blank"}.  
+The completed pentamer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-pentamer){:target="_blank"}.    
 <br>
 
 Answer the following questions:
@@ -521,7 +521,7 @@ In that case compare their HADDOCK scores. Remember that the HADDOCK score is ca
 So when comparing the scores of runs from different numbers of monomers, take the number of interfaces in your complex into account when comparing two runs to make your choice
 (for example by dividing the HADDOCK score of each run by the number of interfaces).
 
-Another way of thinking about your choice is to apply Occam's razor (see [Wikipedia](https://en.wikipedia.org/wiki/Occam%27s_razor) page):
+Another way of thinking about your choice is to apply Occam's razor (see [Wikipedia](https://en.wikipedia.org/wiki/Occam%27s_razor){:target="_blank"} page):
 
 _"Occam's razor (also Ockham's razor; Latin: lex parsimoniae "law of parsimony") is a problem-solving principle that, when presented with competing hypothetical answers to a problem, one should select the one that makes the fewest assumptions."_
 
@@ -539,7 +539,128 @@ Congratulations! You should have completed this assignment. For your report we e
 
 Make sure to write your name and student number at the top of your report.
 
+<br>
+<hr>
+## Bonus: Predicting the oligomeric state with AlphaFold2
 
+With the advent of Artificial Intelligence (AI) and AlphaFold you could also try to predict with AlphaFolf the oligomeric state of this protein.
+For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
+
+To predict different oligomeric states of our system, we are going to use the AlphaFold2 from Deepmind Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"} and the Google Colob CLOUD resources.
+
+Start the AlphaFold2 Deepmind notebook on Colab by clicking [here](https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb){:target="_blank"}
+
+_Note_ that the bottom part of the notebook contains instructions on how to use it. 
+
+
+<br>
+### Setting up the homomeric complex prediction with AlphaFold2
+
+
+The sequence of our protein is the following:
+
+<pre>
+QAFWKAVTAEFLAMLIFVLLSLGSTINWGGTEKPLPVDMVLISLCFGLSIATMVQCFGHISGGHINPAVTVAMVCTRKISIAKSVFYIAAQCLGAIIGAGILYLVTPPSVVGGLGVTMVHGNLTAGHGLLVELIITFQLVFTIFASCDSKRTDVTGSIALAIGFSVAIGHLFAINYTGASMNPARSFGPAVIMGNWENHWIYWVGPIIGAVLAGGLYEYVFCP
+</pre>
+
+
+To use AlphaFold2 to predict e.g. the pentamer follow the following steps:
+
+<a class="prompt prompt-info">
+Copy and paste the sequence in the _query_sequence_ field
+</a>
+
+To define a multimer, simply paste the sequence as many times as needed, added a `:` in between them.
+
+<a class="prompt prompt-info">
+Define the _jobname_, e.g. pentamer</a>
+</a>
+
+<a class="prompt prompt-info">
+In the top section of the Colab, click: _Runtime > Run All_
+</a>
+
+(It may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction complete you will be asked to download a zip-archive with the results.
+
+<br><br>
+Time to grap a cup of tea or a coffee!
+And while waiting try to answer the following questions:
+
+<a class="prompt prompt-question">
+    How do you interpret AlphaFold's predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
+</a>
+
+_Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}
+
+
+Pre-calculated AlphFold2 predictions are provided here. The corresponding zip files contains the fives predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
+
+* AlphaFold2 prediction of a dimer
+* AlphaFold2 prediction of a trimer
+* AlphaFold2 prediction of a tetramer
+* [AlphaFold2 prediction of a pentamer](/education/HADDOCK24/XL-MS-oligomer/AF2_pentamer_results.zip)
+
+
+<br>
+### Analysis of the generated models
+
+While the notebook is running models will appear first under the `Run Prediction` section, colored both by chain and by pLDDT.
+
+The best model will then be displayed under the `Display 3D structure` section. This is an interactive 3D viewer that allows you to rotate the molecule and zoom in or out.
+
+Take time to look at the model and the arrangment of the various monomers. When submitting our prediction we only defined the number monomers, but not the symmetry.
+
+<a class="prompt prompt-question">
+    Does AlphaFold2 generates symmetrical solutions? Compare results from different oligomeric states.
+</a>
+
+Now consider the pLDDT of the various oligomeric states (assuming that you run the notebook with different oligomeric states).
+Here the higher the pLDDT the more reliable the model. 
+
+<a class="prompt prompt-question">
+    Which oligomeric state results in the highest pLDDT?
+</a>
+
+While the pLDDT score is an overall measure, you can also focus on the interface score reported in the `iptm` score (value between 0 and 1).
+
+<a class="prompt prompt-question">
+    Which oligomeric state results in the highest iptm score?
+</a>
+
+Another usefull way of looking at the model accuracy is to check the Predicted Alignmed Error plots (PAE) (also refered to as Domain position confidence).
+The PAE gives a distance error for every pair of residues. It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
+Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and color at each pixel indicating PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your homomeric complex, the diagonal block will indicate the PAE of each domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
+
+<a class="prompt prompt-question">
+    Which oligomeric state shows the highest confidence in the domain (monomer) - domain positions?
+</a>
+
+If you download the results, you can visualize the prediction confidence in PyMol by coloring the model by B-factor.
+
+<details style="background-color:#DAE4E7">
+
+  <summary style="font-weight: bold">
+    <i>See tips on how to visualize the prediction confidence in PyMol</i>
+  </summary>
+
+  <br>
+  To color the complex by-chain and identify the position of the peptide:
+
+  <a class="prompt prompt-pymol">
+    util.cbc
+  </a>
+
+  When looking at the structures generated by AlphaFold in PyMol, the pLDDT is encoded as the B-factor. Analyze what is the pLDDT of prediction around the interaction interface.
+  To color the model according to the pLDDT type in PyMol:
+
+  <a class="prompt prompt-pymol">
+    spectrum b
+  </a>
+
+</details>
+
+
+<hr>
 
 
 [link-cns]: https://cns-online.org "CNS online"
