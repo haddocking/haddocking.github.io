@@ -597,7 +597,7 @@ Pre-calculated AlphFold2 predictions are provided here. The corresponding zip fi
 
 * [AlphaFold2 prediction of a dimer](/education/HADDOCK24/XL-MS-oligomer/AF2_dimer_results.zip)
 * [AlphaFold2 prediction of a trimer](/education/HADDOCK24/XL-MS-oligomer/AF2_trimer_results.zip)
-* AlphaFold2 prediction of a tetramer
+* [AlphaFold2 prediction of a tetrame](/education/HADDOCK24/XL-MS-oligomer/AF2_tetramer_results.zip)
 * [AlphaFold2 prediction of a pentamer](/education/HADDOCK24/XL-MS-oligomer/AF2_pentamer_results.zip)
 
 
