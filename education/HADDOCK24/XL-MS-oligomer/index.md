@@ -546,9 +546,9 @@ Make sure to write your name and student number at the top of your report.
 With the advent of Artificial Intelligence (AI) and AlphaFold you could also try to predict with AlphaFolf the oligomeric state of this protein.
 For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
-To predict different oligomeric states of our system, we are going to use the AlphaFold2 from Deepmind Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"} and the Google Colob CLOUD resources.
+To predict different oligomeric states of our system, we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"} and the Google Colob CLOUD resources.
 
-Start the AlphaFold2 Deepmind notebook on Colab by clicking [here](https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb){:target="_blank"}
+Start the AlphaFold2 notebook on Colab by clicking [here](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"}
 
 _Note_ that the bottom part of the notebook contains instructions on how to use it. 
 
@@ -570,10 +570,10 @@ To use AlphaFold2 to predict e.g. the pentamer follow the following steps:
 Copy and paste the sequence in the _query_sequence_ field
 </a>
 
-To define a multimer, simply paste the sequence as many times as needed, added a `:` in between them.
+To define a multimer, simply paste the sequence as many times as needed, adding a `:` in between the sequences.
 
 <a class="prompt prompt-info">
-Define the _jobname_, e.g. pentamer</a>
+Define the _jobname_, e.g. pentamer
 </a>
 
 <a class="prompt prompt-info">
