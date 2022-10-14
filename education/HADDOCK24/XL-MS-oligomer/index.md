@@ -595,7 +595,7 @@ _Tip_: Try to find information about the prediction confidence at [https://alpha
 
 Pre-calculated AlphFold2 predictions are provided here. The corresponding zip files contains the fives predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
 
-* AlphaFold2 prediction of a dimer
+* [AlphaFold2 prediction of a dimer](/education/HADDOCK24/XL-MS-oligomer/AF2_dimer_results.zip)
 * AlphaFold2 prediction of a trimer
 * AlphaFold2 prediction of a tetramer
 * [AlphaFold2 prediction of a pentamer](/education/HADDOCK24/XL-MS-oligomer/AF2_pentamer_results.zip)
