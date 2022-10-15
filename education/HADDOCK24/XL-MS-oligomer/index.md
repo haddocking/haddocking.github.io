@@ -627,6 +627,22 @@ While the pLDDT score is an overall measure, you can also focus on the interface
     Which oligomeric state results in the highest iptm score?
 </a>
 
+<details style="background-color:#DAE4E7">
+
+  <summary style="font-weight: bold">
+    <i>View the AlphaFold scores of the best model of each predicted oligomeric state from the above links</i>
+  </summary>
+
+<pre>
+Dimer:     pLDDT 97.5, ptmscore 0.952 and iptm 0.937
+Trimer:    pLDDT 98.0, ptmscore 0.968 and iptm 0.962
+Tetramer:  pLDDT 98.2, ptmscore 0.975 and iptm 0.972
+Pentamer:  pLDDT 97.9, ptmscore 0.970 and iptm 0.970
+</pre>
+
+</details>
+<br>
+
 Another usefull way of looking at the model accuracy is to check the Predicted Alignmed Error plots (PAE) (also refered to as Domain position confidence).
 The PAE gives a distance error for every pair of residues. It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
 Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and color at each pixel indicating PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your homomeric complex, the diagonal block will indicate the PAE of each domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
