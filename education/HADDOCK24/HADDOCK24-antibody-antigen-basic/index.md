@@ -544,6 +544,10 @@ Define the _jobname_, e.g. antibody-antigen
 </a>
 
 <a class="prompt prompt-info">
+In the _Advanced settings_ block you can check the option to save the results to your Google Drive (if you have an account)
+</a>
+
+<a class="prompt prompt-info">
 In the top section of the Colab, click: _Runtime > Run All_
 </a>
 
@@ -570,17 +574,18 @@ While the notebook is running models will appear first under the `Run Prediction
 
 The best model will then be displayed under the `Display 3D structure` section. This is an interactive 3D viewer that allows you to rotate the molecule and zoom in or out.
 
-Take time to look at the model and the arrangment of the various monomers. When submitting our prediction we only defined the number monomers, but not the symmetry.
+**Note** that you can change the model displayed with the _rank_num_ option. After changing it execute the cell by clicking on the run cell icon on the left of it.
+
 
 <a class="prompt prompt-question">
-    Does AlphaFold2 generates symmetrical solutions? Compare results from different oligomeric states.
+    How similar are the five models genrated by AF2? Compare results from different oligomeric states.
 </a>
 
-Now consider the pLDDT of the various oligomeric states (assuming that you run the notebook with different oligomeric states).
-Here the higher the pLDDT the more reliable the model. 
+
+Consider the pLDDT of the various models (the higher the pLDDT the more reliable the model). 
 
 <a class="prompt prompt-question">
-    Which oligomeric state results in the highest pLDDT?
+    What is the confidence of those predictions? (check again the FAQ page of the Alphafold database provided above for pLDDT values)
 </a>
 
 While the pLDDT score is an overall measure, you can also focus on the interface score reported in the `iptm` score (value between 0 and 1).
@@ -590,8 +595,15 @@ Another usefull way of looking at the model accuracy is to check the Predicted A
 The PAE gives a distance error for every pair of residues. It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
 Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and color at each pixel indicating PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your homomeric complex, the diagonal block will indicate the PAE of each domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
 
+
+Our complex consists of three interfaces:
+
+* The interface between the heavy and light chain of the antibody
+* The interface between the heavy chain of the antibody and the antigen
+* The interface between the light chain of the antibody and the antigen
+
 <a class="prompt prompt-question">
-    Which oligomeric state shows the highest confidence in the domain (monomer) - domain positions?
+    Based on the PAE plots, which interfaces can be considered reliable, unreliable?
 </a>
 
 If you download the results, you can visualize the prediction confidence in PyMol by coloring the model by B-factor.
