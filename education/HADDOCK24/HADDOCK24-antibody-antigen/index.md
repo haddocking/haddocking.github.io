@@ -30,7 +30,7 @@ The small part of the Fab region that binds the antigen is called **paratope**. 
 <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/CDRs.png">
 </figure>
 
-In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I1B](https://www.rcsb.org/structure/4i1b){:target="_blank"})) as an antigen and its highly specific monoclonal antibody gevokizumab (PDB code [4G6K](https://www.rcsb.org/structure/4g6k){:target="_blank"}) (PDB code of the complex [4G6M](https://www.rcsb.org/structure/4g6m){:target="_blank"}).  
+In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"})) as an antigen and its highly specific monoclonal antibody gevokizumab (PDB code [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}) (PDB code of the complex [4G6M](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6m){:target="_blank"}). 
 
 <hr>
 

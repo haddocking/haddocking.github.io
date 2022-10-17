@@ -543,7 +543,7 @@ Make sure to write your name and student number at the top of your report.
 <hr>
 ## Bonus: Predicting the oligomeric state with AlphaFold2
 
-With the advent of Artificial Intelligence (AI) and AlphaFold you could also try to predict with AlphaFolf the oligomeric state of this protein.
+With the advent of Artificial Intelligence (AI) and AlphaFold you could also try to predict with AlphaFold the oligomeric state of this protein.
 For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
 To predict different oligomeric states of our system, we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"} and the Google Colob CLOUD resources.
@@ -637,7 +637,7 @@ While the pLDDT score is an overall measure, you can also focus on the interface
 Dimer:     pLDDT 97.5, ptmscore 0.952 and iptm 0.937
 Trimer:    pLDDT 98.0, ptmscore 0.968 and iptm 0.962
 Tetramer:  pLDDT 98.2, ptmscore 0.975 and iptm 0.972
-Pentamer:  pLDDT 97.9, ptmscore 0.970 and iptm 0.970
+Pentamer:  pLDDT 97.9, ptmscore 0.968 and iptm 0.964
 </pre>
 
 </details>
