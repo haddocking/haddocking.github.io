@@ -15,6 +15,12 @@ In this page you can find links to tutorials on the usage of our software and we
   A tutorial demonstrating the use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.
   This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](https://www.pymol.org) for visualisation/analysis.
 
+* [**HADDOCK2.4 basic antibody-antigen docking tutorial**](/education/HADDOCK24/HADDOCK24-antibody-antigen-basic):
+  This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex using information 
+  about the hypervariable loops of the antibody and NMR data identifying the epitope.
+  This tutorial does not require any Linux expertise and only makes use of our web servers and [PyMol](https://www.pymol.org) for visualisation/analysis.
+  The complex is also modelled using AlphaFold2 and the results compared those obtained with HADDOCK.
+
 * [**HADDOCK2.4 MS cross-links tutorial**](/education/HADDOCK24/HADDOCK24-Xlinks):
   A tutorial demonstrating the use of cross-linking data from mass spectrometry to guide the docking in HADDOCK.
   This tutorial builds on our [DisVis tutorial](/education/Others/disvis-webserver/) and illustrates various scenarios of using
@@ -48,6 +54,7 @@ In this page you can find links to tutorials on the usage of our software and we
   In this tutorial you will have to solve an oligomer puzzle, namely predicting the correct oligomeric state
   of a symmetrical homomer complex based on a few (artificial) cross-links.
   The tutorial does not require any Linux expertise and only makes use of the DISVIS and HADDOCK web servers and [PyMol](https://www.pymol.org) for visualisation/analysis.
+  It now also includes a part describing the modelling of these homomeric complexes using AlphaFold2.
 
 * [**LightDock+HADDOCK membrane proteins tutorial**](/education/HADDOCK24/LightDock-membrane-proteins):
   This tutorial demonstrates the use of LightDock for predicting the structure of membrane receptor–soluble protein complex using the topological information 
