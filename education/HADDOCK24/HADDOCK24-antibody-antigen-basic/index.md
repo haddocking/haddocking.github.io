@@ -569,10 +569,10 @@ And while waiting try to answer the following questions:_
     How do you interpret AlphaFold's predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
 </a>
 
-_Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}
+_Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}.
 
 
-Pre-calculated AlphFold2 predictions are provided [here](){:target="\_blank"}. The corresponding zip files contains the fives predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
+Pre-calculated AlphFold2 predictions are provided [here](Ab-Ag-AF2.zip){:target="\_blank"}. This archive contains the fives predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
 
 
 <br>
@@ -586,7 +586,7 @@ The best model will then be displayed under the `Display 3D structure` section. 
 
 
 <a class="prompt prompt-question">
-    How similar are the five models genrated by AF2? Compare results from different oligomeric states.
+    How similar are the five models genrated by AF2?
 </a>
 
 
@@ -620,20 +620,21 @@ While the pLDDT score is an overall measure, you can also focus on the interface
     Based on the iptm scores, would you qualify those models as reliable?
 </a>
 
+**Note** that in this case the iptm score reports on all interfaces, i.e. both the interface between the two chains of the antibody, and the antibody-antigen interface
 
 Another usefull way of looking at the model accuracy is to check the Predicted Alignmed Error plots (PAE) (also refered to as Domain position confidence).
-The PAE gives a distance error for every pair of residues. It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
-Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and color at each pixel indicating PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your homomeric complex, the diagonal block will indicate the PAE of each domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
+The PAE gives a distance error for every pair of residues: It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
+Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
 
 
-Our complex consists of three interfaces:
+Our antibody-antigen complex consists of three interfaces:
 
-* The interface between the heavy and light chain of the antibody
+* The interface between the heavy and light chains of the antibody
 * The interface between the heavy chain of the antibody and the antigen
 * The interface between the light chain of the antibody and the antigen
 
+<br>
 <details style="background-color:#DAE4E7">
-
   <summary style="font-weight: bold">
     <i>See the PAE plots for the five generated models</i>
   <br>
@@ -641,7 +642,6 @@ Our complex consists of three interfaces:
   <figure align="center">
    <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/AF2-PAE-plots.png">
   </figure>
-  <br>
 </details>
 <br>
 
