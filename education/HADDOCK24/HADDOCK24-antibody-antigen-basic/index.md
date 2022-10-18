@@ -50,13 +50,13 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
-<a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
+<a class="prompt prompt-PyMOL">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
 
 
 <hr>
 ## Setup
 
-In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
+In order to run this tutorial you will need to have the following software installed: [PyMOL][link-PyMOL].
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
@@ -141,12 +141,12 @@ The list of of predicted paratope residues (matching the numbering of the HADDOC
 
 We will now inspect the antibody structure. For this start PyMOL and load the HADDOCK-ready PDB file of the antibody:
 
-<a class="prompt prompt-pymol">File menu -> Open -> select 4G6K_fv.pdb</a>
+<a class="prompt prompt-PyMOL">File menu -> Open -> select 4G6K_fv.pdb</a>
 
 
 We will now highlight the predicted paratope. In PyMOL type the following commands:
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 color white, all<br>
 select paratope, (resi 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215)<br>
 color red, paratope<br>
@@ -156,7 +156,7 @@ color red, paratope<br>
 
 Let's now switch to a surface representation to inspect the predicted binding site.
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 show surface<br>
 </a>
 
@@ -195,9 +195,9 @@ The list of binding site (epitope) residues identified by NMR (corrected for the
 
 We will now visualize the epitope on Interleukin-1β.  For this start PyMOL and from the PyMOL File menu open the provided PDB file of the antigen.
 
-<a class="prompt prompt-pymol">File menu -> Open -> select 4I1B-matched.pdb</a>
+<a class="prompt prompt-PyMOL">File menu -> Open -> select 4I1B-matched.pdb</a>
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 color white, all<br>
 show surface<br>
 select epitope, (resi 70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115)<br>
@@ -395,7 +395,7 @@ In the CAPRI (Critical Prediction of Interactions) [Méndez et al. 2003](https:/
 experiment, one of the parameters used is the Ligand root-mean-square deviation (l-RMSD) which is calculated by superimposing 
 the structures onto the backbone atoms of the receptor (the antibody in this case) and calculating the RMSD on the backbone 
 residues of the ligand (the antigen). To calculate the l-RMSD it is possible to either use the software 
-[Profit](http://www.bioinf.org.uk/software/profit){:target="_blank"} or [Pymol](https://pymol.org/2/){:target="_blank"}.
+[Profit](http://www.bioinf.org.uk/software/profit){:target="_blank"} or [PyMOL](https://PyMOL.org/2/){:target="_blank"}.
 For the sake of convenience we have provided you with a renumbered reference structure `4G6M-matched.pdb` (in the zip archive you downloaded (see Setup)).
 
 
@@ -405,11 +405,11 @@ For the sake of convenience we have provided you with a renumbered reference str
 
 Then start PyMOL and load each cluster representative, e.g.:
 
-<a class="prompt prompt-pymol">File menu -> Open -> select cluster5_1.pdb</a>
+<a class="prompt prompt-PyMOL">File menu -> Open -> select cluster5_1.pdb</a>
 
 Repeat this for the best model (`clusterX_1.pdb`) of each cluster and 4G6M-matched.pdb. Once all files have been loaded, type in the PyMOL command window:
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 show cartoon<br>
 util.cbc<br>
 hide lines<br>
@@ -419,7 +419,7 @@ color yellow, 4G6M-matched<br>
 Let's then superimpose all models on chain A (receptor) of the first model and calculate RMSD of chain B (ligand):
 
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 alter all, segi = \' \' <br>
 align cluster5_1 and chain A, 4G6M-matched and chain A, cycles=0 <br>
 rms_cur cluster5_1 and chain B, 4G6M-matched <br>
@@ -444,7 +444,7 @@ Repeat the align and rms commands for each cluster representative and take note 
 <br>
 
 <a class="prompt prompt-question">
-Consider the RMSD values you just calculated with Pymol: Which cluster is the most similar to the reference (the lowest L-RMSD value)?
+Consider the RMSD values you just calculated with PyMOL: Which cluster is the most similar to the reference (the lowest L-RMSD value)?
 </a>
 
 In CAPRI, the L-RMSD value defines the quality of a model:
@@ -468,7 +468,7 @@ What are the rankings of the acceptable or better clusters? Did HADDOCK do a goo
 
 Let’s now check if the active residues which we have defined (the paratope and epitope) are actually part of the interface. In the PyMOL command window type:
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 select paratope, (resi 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215) and chain A<br>
 select epitope, (resi 70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115) and chain B<br>
 color red, paratope,<br>
@@ -654,17 +654,17 @@ Our antibody-antigen complex consists of three interfaces:
 ### Visualization of the generated AF2 models
 
 
-Let's now visualize the models in PyMol. For this save your predictions to disk or download the precalculated AlphaFold2 model from [here](Ab-Ag-AF2.zip){:target="\_blank"}.
+Let's now visualize the models in PyMOL. For this save your predictions to disk or download the precalculated AlphaFold2 model from [here](Ab-Ag-AF2.zip){:target="\_blank"}.
 
-Start PyMol and load via the File menu all five AF2 models (or use the command line to start PyMOL loading all models directly).
+Start PyMOL and load via the File menu all five AF2 models (or use the command line to start PyMOL loading all models directly).
 
-<a class="prompt prompt-pymol">File menu -> Open -> select Ab_Ag_unrelaxed_rank_1_model_2.pdb</a>
+<a class="prompt prompt-PyMOL">File menu -> Open -> select Ab_Ag_unrelaxed_rank_1_model_2.pdb</a>
 
-Repeat this for each model (`Ab_Ag_unrelaxed_rank_X_model_Y.pdb`). 
+Repeat this for each model (`Ab_Ag_unrelaxed_rank_X_model_Y.pdb` or whatever the naming of your model is). 
 
 Let's superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains B and C):
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 util.cbc<br>
 select Ab_Ag_unrelaxed_rank_1_model_2 and chain B+C<br>
 alignto sele<br>
@@ -681,13 +681,13 @@ Examine the various models. How does the orientation of the antigen differ betwe
 <details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
-    <i>See tips on how to visualize the prediction confidence in PyMol</i>
+    <i>See tips on how to visualize the prediction confidence in PyMOL</i>
   </summary>
 
-  When looking at the structures generated by AlphaFold in PyMol, the pLDDT is encoded as the B-factor. <br>
-  To color the model according to the pLDDT type in PyMol:
+  When looking at the structures generated by AlphaFold in PyMOL, the pLDDT is encoded as the B-factor. <br>
+  To color the model according to the pLDDT type in PyMOL:
   <br>
-  <a class="prompt prompt-pymol">
+  <a class="prompt prompt-PyMOL">
     spectrum b
   </a>
 
@@ -697,7 +697,8 @@ Examine the various models. How does the orientation of the antigen differ betwe
 Since we do have NMR chemical shift perturbation data for the antigen, let's check if the perturbed residues are at the interface in the AF2 models.
 Note that there is a shift in numnbering of 2 residues between the AF2 and the HADDOCK models. 
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
+util.cbc
 select epitope, (resi 72,73,74,75,83,84,89,90,92,94,96,97,98,115,116,117) and chain D<br>
 color orange, epitope<br>
 </a>
@@ -725,7 +726,7 @@ To further make that clear we can compare the models to the crystal structure of
 
 For this download and superimpose the models onto the crystal structure in PyMOL with the following commands:
 
-<a class="prompt prompt-pymol">
+<a class="prompt prompt-PyMOL">
 fetch 4G6M<br>
 remove resn HOH<br>
 color yellow, 4G6M<br>
@@ -750,8 +751,10 @@ alignto sele
 <hr>
 ## Conclusions
 
-We have demonstrated antibody-antigen docking guided with knowledge of the paratope and epitope. Always check and compare multiple clusters, don't blindly trust the cluster with the best HADDOCK score! 
-Also this example illustrates that (for the time-being) AI-based prediction methods like AlphaFold2 still have issues with predicting this particular type of complexes. This should not come as a surprise as co-evolution (residues co-evolving at conserved locations) is an important source of information for AlphaFold2 and the antibody hypervariable loops are by definition not conserved and fastly mutating.
+We have demonstrated the modelling with HADDOCK of an antibody-antigen complex guided by knowledge of the paratope and epitope. 
+Always check and compare multiple clusters, don't blindly trust the cluster with the best HADDOCK score! 
+
+This example also illustrates that (for the time-being) AI-based prediction methods like AlphaFold2 still have issues with predicting this particular type of complexes. This should not come as a surprise as co-evolution (residues co-evolving at conserved locations) is an important source of information for AlphaFold2 and the antibody hypervariable loops are by definition not conserved and fastly mutating.
 
 
 <hr>
@@ -761,5 +764,5 @@ You have completed this tutorial. If you have any questions or suggestions, feel
 
 And check also our [education](/education) web page where you will find more tutorials!
 
-[link-pymol]: https://www.pymol.org/ "PyMOL"
+[link-PyMOL]: https://www.PyMOL.org/ "PyMOL"
 
