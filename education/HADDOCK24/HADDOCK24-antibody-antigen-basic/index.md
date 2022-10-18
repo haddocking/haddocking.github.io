@@ -15,9 +15,9 @@ This tutorial consists of the following sections:
 <hr>
 ## Introduction
 
-This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex using as information to guide the docking the knowledge of the hypervariable loops of the antibody and NMR chemical shift perturbation data pinpointing the binding site on the antigen.
+This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex using NMR chemical shift perturbation data for the antigen and the knowledge of the hypervariable loops on the antibody as information to guide the docking.
 
-An antibody is a large protein that generally works by attaching itself to an antigen, which is a unique site of the pathogen. The binding harnesses the immune system to directly attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity, which is achieved by their unique structure. **The fragment crystallizable region (Fc region**) activates the immune response and is species specific, i.e. human Fc region should not evoke an immune response in humans.  **The fragment antigen-binding region (Fab region**) needs to be highly variable to be able to bind to antigens of various nature (high specificity). In this tutorial we will concentrate on the terminal **variable domain (Fv**) of the Fab region. 
+An antibody is a large protein that generally works by attaching itself to an antigen, which is a unique site of the pathogen. The binding harnesses the immune system to directly attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity, which is achieved by their unique structure. **The fragment crystallizable region (Fc region**) activates the immune response and is species-specific, i.e. the human Fc region should not induce an immune response in humans.  **The fragment antigen-binding region (Fab region**) needs to be highly variable to be able to bind to antigens of various nature (high specificity). In this tutorial we will concentrate on the terminal **variable domain (Fv**) of the Fab region. 
  
 
 <figure align="center">
@@ -60,7 +60,7 @@ In order to run this tutorial you will need to have the following software insta
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
-Further we are providing pre-processed PDB files for docking and analysis. There have been processed (see below) to facilitate their use in HADDOCK and for allowing comparison with the known reference structure of the complex. For this download and unzip the following [zip archive](input-data.zip) and note the location of the extracted PDB files in your system. You should find the following three files:
+Further we are providing pre-processed PDB files for docking and analysis. They have been processed (see below) to facilitate their use in HADDOCK and for allowing comparison with the known reference structure of the complex. For this download and unzip the following [zip archive](input-data.zip) and note the location of the extracted PDB files in your system. You should find the following three files:
 
 * `4G6K_fv.pdb`: The PDB file of the unbound(free) form of the antibody with the two chains defined as a single chain and with residues renumbered to avoid overlap in numbering between the chains. The structure was further truncated to only keep the two domains involved in binding (to save computational time).
 * `4I1B-matched.pdb`: The PDB file of the unbound(free) form of the antigen, renumbered to match the numbering of the reference complex.
@@ -136,7 +136,7 @@ The list of of predicted paratope residues (matching the numbering of the HADDOC
 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
 </pre>
 
-**Note**: Antibodies consist of two chains (the Heavy and Light chains, with corresponding chainID (H/L). They also have the peculiarity that some residues in the hypervariable loops are denotated as insertions, meaning by that that they have the same residue number as another residue, but with an additional A, B, ... letter to the residue number to denote the insertion. For use in HADDOCK, these insertions must be removed, i.e. renumbered to have a sequential numbering of residues. Further, the two chains should be treated as a single chain with non-overlapping residue numbering. For this tutorial we are providing a HADDOCK-ready file where this has already been done. To see details on how to preprocess an antibody structure for use in HADDOCK refer to our more [advanced antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-antibody-antigen/#inspecting-and-preparing-the-antibody-for-docking){:target="_blank"}. In case of insertions, `pdb_fixinsert` from [PDB-Tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} can be used.
+**Note**: Antibodies consist of two chains (the Heavy and Light chains, with corresponding chainID (H/L). They also have the peculiarity that some residues in the hypervariable loops are denotated as insertions, meaning that they have the same residue number as another residue, but with an additional A, B, ... letter to the residue number to denote the insertion. For use in HADDOCK, these insertions must be removed, i.e. renumbered to have a sequential numbering of residues. Further, the two chains should be treated as a single chain with non-overlapping residue numbering. For this tutorial we are providing a HADDOCK-ready file where this has already been done. To see details on how to preprocess an antibody structure for use in HADDOCK refer to our more [advanced antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-antibody-antigen/#inspecting-and-preparing-the-antibody-for-docking){:target="_blank"}. In case of insertions, `pdb_fixinsert` from [PDB-Tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} can be used.
 
 
 We will now inspect the antibody structure. For this start PyMOL and load the HADDOCK-ready PDB file of the antibody:
@@ -303,8 +303,6 @@ Then uncheck the option to automatically define passive residues as for the anti
 
 * **Step 7:** Specify the residues for the second molecule. For this, unfold the "Molecule 2 - parameters" if not already unfolded.
 
-Since we have a rather loose definition of the interface, we will input the corresponding residues in this case as passive, which means they will not be penalized if not making contacts.
-
 <a class="prompt prompt-info">Active residues -> 70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115</a>
 
 * **Step 8:** Click on the **Next** button on the bottom of the page. Since we have defined interface on both interaction partners, we can keep the default sampling parameters.
@@ -312,7 +310,7 @@ Since we have a rather loose definition of the interface, we will input the corr
 
 ### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *job_params* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *job_params* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *job_params* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload interface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *job_params* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
 
 It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
@@ -678,7 +676,7 @@ Examine the various models. How does the orientation of the antigen differ betwe
 
 **Note:** You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.
 
-<details style="background-color:#DAE4E7">
+<details>
 
   <summary style="font-weight: bold">
     <i>See tips on how to visualize the prediction confidence in PyMOL</i>
@@ -691,14 +689,15 @@ Examine the various models. How does the orientation of the antigen differ betwe
     spectrum b
   </a>
 
+  **Note** that the scale in the B-factor field is the inverse of the color coding in the PAE plots: i.e. red mean reliable (high pLDDT) and blue unreliable (low pLDDT))
 </details>
 <br>
 
 Since we do have NMR chemical shift perturbation data for the antigen, let's check if the perturbed residues are at the interface in the AF2 models.
-Note that there is a shift in numnbering of 2 residues between the AF2 and the HADDOCK models. 
+Note that there is a shift in numbering of 2 residues between the AF2 and the HADDOCK models. 
 
 <a class="prompt prompt-PyMOL">
-util.cbc
+util.cbc<br>
 select epitope, (resi 72,73,74,75,83,84,89,90,92,94,96,97,98,115,116,117) and chain D<br>
 color orange, epitope<br>
 </a>
