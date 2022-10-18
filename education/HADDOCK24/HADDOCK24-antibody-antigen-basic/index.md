@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "HADDOCK2.4 Antibody - Antigen tutorial using PDB-tools webserver"
-excerpt: "A small tutorial on predicting a protein-protein complex using interface residues identified from NMR chemical shift perturbation experiments"
-tags: [HADDOCK, NMR, docking, dimer, chemical shifts]
+title: "HADDOCK2.4 basic Antibody - Antigen tutorial including a comparison with AlphaFold"
+excerpt: "A small tutorial on predicting with HADDOCK a protein-protein complex using interface residues identified from NMR chemical shift perturbation experiments and comparing the results with predictions from AlphaFold2"
+tags: [HADDOCK, NMR, docking, chemical shifts, AlphaFold]
 image:
   feature: pages/banner_education-thin.jpg
 ---
