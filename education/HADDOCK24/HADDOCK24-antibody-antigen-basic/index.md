@@ -60,7 +60,7 @@ In order to run this tutorial you will need to have the following software insta
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
-Further we are providing pre-processed PDB files for docking and analysis. There have been processed (see below) to facilitate their use in HADDOCK and for allowing comparison with the known reference structure of the complex. For this dwnload and unzip the following [zip archive](input-data.zip) and note the location of the extracted PDB files in your system. You should find the following three files:
+Further we are providing pre-processed PDB files for docking and analysis. There have been processed (see below) to facilitate their use in HADDOCK and for allowing comparison with the known reference structure of the complex. For this download and unzip the following [zip archive](input-data.zip) and note the location of the extracted PDB files in your system. You should find the following three files:
 
 * `4G6K_fv.pdb`: The PDB file of the unbound(free) form of the antibody with the two chains defined as a single chain and with residues renumbered to avoid overlap in numbering between the chains. The structure was further truncated to only keep the two domains involved in binding (to save computational time).
 * `4I1B-matched.pdb`: The PDB file of the unbound(free) form of the antigen, renumbered to match the numbering of the reference complex.
@@ -128,7 +128,7 @@ The final models are automatically clustered based on a specific similarity meas
 ## Inspecting the antibody and the identified paratope
 
 
-Nowadays there are several computational tools that can identify the paratope (the residues of the hypervariable loops involved in the interaction) from the provided antibody sequence. In this tutorial we will use data obtained withn the [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"} server developed in our group. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}. Details on how to run ProABC-2 for the antibody in this tutorial can be found [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/#extracting-antibody-amino-acid-sequence-to-gain-information-about-the-paratope){:target="_blank"}.
+Nowadays there are several computational tools that can identify the paratope (the residues of the hypervariable loops involved in the interaction) from the provided antibody sequence. In this tutorial we will use data obtained with the [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"} server developed in our group. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}. Details on how to run ProABC-2 for the antibody in this tutorial can be found [here](/education/HADDOCK24/HADDOCK24-antibody-antigen/#extracting-antibody-amino-acid-sequence-to-gain-information-about-the-paratope){:target="_blank"}.
 
 The list of of predicted paratope residues (matching the numbering of the HADDOCK-ready PDB file) is:
 
@@ -136,10 +136,12 @@ The list of of predicted paratope residues (matching the numbering of the HADDOC
 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
 </pre>
 
-**Note**: Antibodies consist of two chains (the Heavy and Light chains, with corresponding chainID (H/L). They also have the peculiarity that some residues in the hypervariable loops are denotated as insertions, meaning by that that the have the same residue number as another residue, but with additional A, B, ... to denote the insertion. For use in HADDOCK, these insertions must be removed, i.e. renumbered to have a sequential numbering of residues. Further, the two chains should be treated as a single chain with non-overlapping residue numbering. For this tutorial we are providing a HADDOCK-ready file where this has already been done. To see details on how to preprocess an antibody structure for use in HADDOCK refer to our more [advanced antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-antibody-antigen/#inspecting-and-preparing-the-antibody-for-docking){:target="_blank"}. In case of insertions, `pdb_fixinsert` from [PDB-Tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} can be used.
+**Note**: Antibodies consist of two chains (the Heavy and Light chains, with corresponding chainID (H/L). They also have the peculiarity that some residues in the hypervariable loops are denotated as insertions, meaning by that that they have the same residue number as another residue, but with an additional A, B, ... letter to the residue number to denote the insertion. For use in HADDOCK, these insertions must be removed, i.e. renumbered to have a sequential numbering of residues. Further, the two chains should be treated as a single chain with non-overlapping residue numbering. For this tutorial we are providing a HADDOCK-ready file where this has already been done. To see details on how to preprocess an antibody structure for use in HADDOCK refer to our more [advanced antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-antibody-antigen/#inspecting-and-preparing-the-antibody-for-docking){:target="_blank"}. In case of insertions, `pdb_fixinsert` from [PDB-Tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} can be used.
 
 
-We will now inspect the antibody structure. For this start PyMOL and from the PyMOL File menu open the provided `4G6K_fv.pdb` PDB file.
+We will now inspect the antibody structure. For this start PyMOL and load the HADDOCK-ready PDB file of the antibody:
+
+<a class="prompt prompt-pymol">File menu -> Open -> select 4G6K_fv.pdb</a>
 
 
 We will now highlight the predicted paratope. In PyMOL type the following commands:
@@ -163,7 +165,7 @@ Inspect the surface.
 <a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
 
 
-<details >
+<details style="background-color:#DAE4E7">
 <summary style="bold">
 <b><i>See surface view of the paratope:</i></b>
  </summary>
@@ -184,14 +186,16 @@ The article describing the crystal structure of the antibody-antigen complex we 
    <img width="50%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
 </figure>
  
-Note that the structure we are using for the docking has a numbering shifted by -2. 
+Note that the structure we are using for the docking has its residue numbering shifted by -2. 
 The list of binding site (epitope) residues identified by NMR (corrected for the shift in numbering) is:
 
 <pre style="background-color:#DAE4E7">
      70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115
 </pre>
 
-We will now visualize the epitope on Interleukin-1β.  For this start PyMOL and from the PyMOL File menu open the provided `4I1B-matched.pdb` PDB file.
+We will now visualize the epitope on Interleukin-1β.  For this start PyMOL and from the PyMOL File menu open the provided PDB file of the antigen.
+
+<a class="prompt prompt-pymol">File menu -> Open -> select 4I1B-matched.pdb</a>
 
 <a class="prompt prompt-pymol">
 color white, all<br>
@@ -206,7 +210,7 @@ Inspect the surface.
 
 The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding (there are some white spots around/in the red surface. 
 
-<details >
+<details style="background-color:#DAE4E7">
 <summary style="bold">
 <b><i>See surface view of the epitope identified by NMR</i></b>
  </summary>
@@ -217,7 +221,7 @@ The answer to that question should be yes, but we can see some residues not colo
 <br>
 
 
-**Note** that on HADDOCK we are dealing with potentially uncomplete binding sites by defining surface neighbours as `passive` residues. These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined (default - this can be turned off).
+**Note** that in HADDOCK we are dealing with potentially uncomplete binding sites by defining surface neighbours as `passive` residues. These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined (default option - this can be turned off).
 
 
 
@@ -268,7 +272,7 @@ PDB structure to submit -> Browse and select *4G6K_fv.pdb*
 First molecule: where is the structure provided? -> "I am submitting it"
 </a>
 <a class="prompt prompt-info">
-Which chain to be used? -> All (for this particular case)
+Which chain to be used? -> All
 </a>
 <a class="prompt prompt-info">
 PDB structure to submit -> Browse and select *4I1B-matched.pdb* (the file you saved)
@@ -286,6 +290,9 @@ If everything went well, the interface window should have updated itself and it 
 <a class="prompt prompt-info">
 Active residues (directly involved in the interaction) -> 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215
 </a>
+
+Then uncheck the option to automatically define passive residues as for the antibody hypervariable loops this is not required.
+
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)
 </a>
 
@@ -305,7 +312,7 @@ Since we have a rather loose definition of the interface, we will input the corr
 
 ### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *job_params* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *job_params* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
 
 It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
@@ -336,13 +343,13 @@ Currently your run should be queued but eventually its status will change to "Ru
 <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/running.png">
 </figure>
 
-The page will automatically refresh and the results will appear upon completions (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
+The page will automatically refresh and the results will appear upon completion of the run (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
 
 
 <hr>
 ## Analysing the results
  
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). If using course credentials were provided to you, the number of models generated will have been decreased (250/50/50) to allow the runs to complete within a reasonable amount of time.
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email). When special course credentials, the number of models generated will have been automatically decreased (250/50/50) to allow the runs to complete within a reasonable amount of time.
 
 In case you don't want to wait for your runs to be finished, a precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/184871-4G6M-Ab-Ag-NMR-Ab-no-passive){:target="_blank"}.
 
@@ -375,10 +382,10 @@ where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular 
 <a class="prompt prompt-question">Consider the cluster scores and their standard  deviations.</a>
 <a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
 
-In case the scores of various clusters are within standard deviation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution. In this case we do have such a piece of information: crystal structure of the complex.
+In case the scores of various clusters are within standard deviation from each other, all should be considered as a valid solution for the docking. Ideally, some additional independent experimental information should be available to decide on the best solution.
 
 
-**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results if you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu){:target="_blank"} high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the example output pages. That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
+**Note:** The type of calculations performed by HADDOCK does have some chaotic nature, meaning that you will only get exactly the same results unless you are running on the same hardware, operating system and using the same executable. The HADDOCK server makes use of [EGI](https://www.egi.eu)/[EOSC](https://www.eosc-hub.eu){:target="_blank"} high throughput computing (HTC) resources to distribute the jobs over a wide grid of computers worldwide. As such, your results might look slightly different from what is presented in the example output pages. That run was run on our local cluster. Small differences in scores are to be expected, but the overall picture should be consistent.
 
 
 <hr>
@@ -392,7 +399,7 @@ residues of the ligand (the antigen). To calculate the l-RMSD it is possible to 
 For the sake of convenience we have provided you with a renumbered reference structure `4G6M-matched.pdb` (in the zip archive you downloaded (see Setup)).
 
 
-<a class="prompt prompt-info">From your completed (or pre-calculated) result page, use the option to _download all cluster files_ and uncompress the archive (alternatively download for each cluster the Nr. 1 best mode).
+<a class="prompt prompt-info">From your completed (or pre-calculated) result page, use the option to _download all cluster files_ and uncompress the archive (alternatively download for each cluster the Nr. 1 best model).
 </a>
 
 
@@ -409,7 +416,7 @@ hide lines<br>
 color yellow, 4G6M-matched<br>
 </a>
 
-Let's then superimpose all models on chain A (receptor) of the first reference structure and calculate RMSD of chain B (ligand):
+Let's then superimpose all models on chain A (receptor) of the first model and calculate RMSD of chain B (ligand):
 
 
 <a class="prompt prompt-pymol">
@@ -421,6 +428,20 @@ rms_cur cluster5_1 and chain B, 4G6M-matched <br>
 <a class="prompt prompt-info">
 Repeat the align and rms commands for each cluster representative and take note of the reported RMSD value.
 </a>
+
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<b><i>See the L-RMSDs for clusters in both scenarios:</i></b>
+</summary>
+<pre>
+* 4G6M-Ab-Ag cluster5_1  HADDOCKscore [a.u.] = -132.4 +/- 12.9 ligand-RMSD =  7.26&Aring;
+* 4G6M-Ab-Ag cluster2_1  HADDOCKscore [a.u.] = -131.5 +/-  1.7 ligand-RMSD =  2.19&Aring;
+* 4G6M-Ab-Ag cluster3_1  HADDOCKscore [a.u.] = -110.4 +/-  3.0 ligand-RMSD = 24.69&Aring;
+* 4G6M-Ab-Ag cluster1_1  HADDOCKscore [a.u.] =  -91.1 +/-  1.2 ligand-RMSD = 11.38&Aring;
+* 4G6M-Ab-Ag cluster4_1  HADDOCKscore [a.u.] =  -68.5 +/-  1.2 ligand-RMSD = 17.72&Aring;
+</pre>
+</details>
+<br>
 
 <a class="prompt prompt-question">
 Consider the RMSD values you just calculated with Pymol: Which cluster is the most similar to the reference (the lowest L-RMSD value)?
@@ -445,21 +466,7 @@ Are there more clusters of acceptable or better quality?
 What are the rankings of the acceptable or better clusters? Did HADDOCK do a good job at ranking them in the top? 
 </a>
 
-<details style="background-color:#DAE4E7">
-<summary style="bold">
-<b><i>See the L-RMSDs for clusters in both scenarios:</i></b>
-</summary>
-<pre>
-* 4G6M-Ab-Ag cluster5_1  HADDOCKscore [a.u.] = -132.4 +/- 12.9 ligand-RMSD =  7.26&Aring;
-* 4G6M-Ab-Ag cluster2_1  HADDOCKscore [a.u.] = -131.5 +/-  1.7 ligand-RMSD =  2.19&Aring;
-* 4G6M-Ab-Ag cluster3_1  HADDOCKscore [a.u.] = -110.4 +/-  3.0 ligand-RMSD = 24.69&Aring;
-* 4G6M-Ab-Ag cluster1_1  HADDOCKscore [a.u.] =  -91.1 +/-  1.2 ligand-RMSD = 11.38&Aring;
-* 4G6M-Ab-Ag cluster4_1  HADDOCKscore [a.u.] =  -68.5 +/-  1.2 ligand-RMSD = 17.72&Aring;
-</pre>
-</details>
-<br>
-
-Let’s now check if the active and passive residues which we defined are actually part of the interface. In the PyMOL command window type:
+Let’s now check if the active residues which we have defined (the paratope and epitope) are actually part of the interface. In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
 select paratope, (resi 26,27,28,29,30,31,32,55,56,57,101,102,103,106,108,146,147,148,150,151,152,170,172,212,213,214,215) and chain A<br>
@@ -469,7 +476,7 @@ color orange, epitope<br>
 </a>
 
 <a class="prompt prompt-question">
-Are the passive residues at the interface in different clusters? How is it shown in the HADDOCK score? 
+Are the active residues at the interface in the different clusters? How is the reflected in the energetics presented in the result page? 
 </a>
 
 **Note:** You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
@@ -488,7 +495,8 @@ Are the passive residues at the interface in different clusters? How is it shown
  <br>
 </details>
 
-
+<br>
+<br>
 <hr>
 ## Modelling the antibody-antigen complex with AlphaFold2 - does it work?
 
