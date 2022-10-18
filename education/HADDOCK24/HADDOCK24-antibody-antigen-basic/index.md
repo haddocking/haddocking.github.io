@@ -500,21 +500,21 @@ Are the active residues at the interface in the different clusters? How is the r
 <hr>
 ## Modelling the antibody-antigen complex with AlphaFold2 - does it work?
 
-With the advent of Artificial Intelligence (AI) and AlphaFold you could also try to predict with AlphaFold this antibody-antigen complex.
+With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict with AlphaFold this antibody-antigen complex.
 For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
-To predict our complex, we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"} and the Google Colob CLOUD resources.
+To predict our complex, we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"}, making use of the Google Colab CLOUD resources.
 
-Start the AlphaFold2 notebook on Colab by clicking [here](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"}
+Start the AlphaFold2 notebook on Colab by clicking [here](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"}.
 
-_Note_ that the bottom part of the notebook contains instructions on how to use it. 
+**Note**: The bottom part of the notebook contains instructions on how to use it. 
 
 
 <br>
 ### Setting up the antibody-antigen complex prediction with AlphaFold2
 
 
-To setup the prediction we need to provide the sequence of the heavy and light chain of the antibody and the sequence of the antigen.
+To setup the prediction we need to provide the sequence of the heavy and light chains of the antibody and the sequence of the antigen.
 These are respectively
 
 * Antibody heavy chain:
@@ -544,11 +544,11 @@ YISTSQAENMPVFLGGTKGGQDITDFTMQFVSS
 To use AlphaFold2 to predict e.g. the pentamer follow the following steps:
 
 <a class="prompt prompt-info">
-Copy and paste each of the above sequence in the _query_sequence_ field, adding a `:` in between the sequences.
+Copy and paste each of the above sequence in the _query_sequence_ field, adding a colon `:` in between the sequences.
 </a>
 
 <a class="prompt prompt-info">
-Define the _jobname_, e.g. antibody-antigen
+Define the _jobname_, e.g. Ab_Ag
 </a>
 
 <a class="prompt prompt-info">
@@ -559,11 +559,11 @@ In the _Advanced settings_ block you can check the option to save the results to
 In the top section of the Colab, click: _Runtime > Run All_
 </a>
 
-(It may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction complete you will be asked to download a zip-archive with the results.
+(It may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction complete you will be asked to download a zip-archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).
 
-<br><br>
-Time to grap a cup of tea or a coffee!
-And while waiting try to answer the following questions:
+<br>
+_Time to grap a cup of tea or a coffee!
+And while waiting try to answer the following questions:_
 
 <a class="prompt prompt-question">
     How do you interpret AlphaFold's predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
