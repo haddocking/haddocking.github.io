@@ -806,7 +806,7 @@ to allow the runs to complete within a reasonable amount of time. Because of tha
 
 We have already performed a full docking runs (with 4000/400/400 models generated for the
 rigid-body docking, semi-flexible and final refinement stages). 
-The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/187915-RNA-PolIII-C82-C34-xlinks){:target="_blank"}.
+The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/187929-RNA-PolIII-C82-C34-xlinks){:target="_blank"}.
 
 
 <a class="prompt prompt-question">Inspect the result page.</a>
@@ -1084,7 +1084,7 @@ What is the best correlation coefficient obtained?
 
 
 <hr><hr>
-## Strategy 1A): Modelling the complex (core+C82+C34+C31 peptides) by docking with cross-links
+## Strategy 1B): Modelling the complex (core+C82+C34+C31 peptides) by docking with cross-links
 
 
 We will use the core domain of RNA-PolIII together with the trimmed AlphaFold models of C82 and C34, and two peptides extracted from the C31 model in order to be able to include additional cross-link restraints.
@@ -1117,7 +1117,7 @@ If running this tutorial in the context of a course/workshop, you will be provid
 
 We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
-* **Step 1:** Define a name for your docking run, e.g. *PolIII-C82-C34-C31model-xlinks*.
+* **Step 1:** Define a name for your docking run, e.g. *PolIII-core-C82-C34-C31-xlinks*.
 
 * **Step 2:** Define the number of components, i.e. *5*.
 
@@ -1135,49 +1135,41 @@ PDB structure to submit -> Browse and select *A_PolIII-5fja-core.pdb*
 <a class="prompt prompt-info">
 Do you want to coarse-grain your molecule? -> turn on
 </a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> A
-</a>
 
 * **Step 4:** Input the second protein PDB files.
 
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *B_C82-2XUBA.pdb*
+PDB structure to submit -> Browse and select *B_C82-alphafold-trimmed.pdb*
 </a>
 Since we do not allow to mix all-atom and coarse grained models, the option to coarse grain this molecule is already turned on.
-<a class="prompt prompt-info">
-Segment ID to use during docking -> B
-</a>
 
 * **Step 5:** Input the third protein PDB files.
 
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *C_C34_wHTH1-2DK8A.pdb*
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> C
+PDB structure to submit -> Browse and select *C_C34-alphafold-trimmed.pdb*
 </a>
 
 * **Step 6:** Input the fourth protein PDB files.
 
 <a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *D_C34_wHTH2-2DK8A.pdb*
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> D
-</a>
-
-* **Step 7:** Input the fifth protein PDB files.
-
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *F_C31_iTasser.pdb*
+PDB structure to submit -> Browse and select *F_C31_alphafold-K91-peptide.pdb*
 </a>
 <a class="prompt prompt-info">
 Segment ID to use during docking -> F
 </a>
 
-===> _Make sure to change the Segmend ID to F otherwise the restraints for C31 won't be used!_ <===
+===> _Make sure to change the Segmend ID to F otherwise the restraints for C31 K91 won't be used!_ <===
 
+* **Step 7:** Input the fifth protein PDB files.
+
+<a class="prompt prompt-info">
+PDB structure to submit -> Browse and select *G_C31_alphafold-K111-peptide.pdb*
+</a>
+<a class="prompt prompt-info">
+Segment ID to use during docking -> G
+</a>
+
+===> _Make sure to change the Segmend ID to G otherwise the restraints for C31 K111 won't be used!_ <===
 
 * **Step 8:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
@@ -1191,27 +1183,13 @@ If everything went well, the interface window should have updated itself and it 
 No further action is required in this page, so click on the "Next" button at the bottom of the **Input parameters** window, 
 which proceeds to the  **Distance Restraint** menu  of the **Docking Parameters** window.
 
-* **Step 10:** Upload the cross-link restraints file to the ambiguous restraints category
+* **Step 10:** Upload the cross-link restraints file
 
 <a class="prompt prompt-info">
-Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Browse and select *xlinks-all-inter-disvis-filtered.tbl*
+Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Browse and select *restraints-strategy-1B.tbl*
 </a>
 
-**Note:** Although the name points to ambiguous restraints, any type of distance restraints can be uploaded here. The only thing to remember
-          is that by default 50% of the ambiguous restraints will be randomly discarded for each docking model generated. This option can be
-          turned off -something we will do below since we have a limited amount of cross-links and already checked them with DisVis.
-
-* **Step 11:** Upload the C34 connectivity restraints file to the unambiguous restraints category
-
-<a class="prompt prompt-info">
-You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints) -> Browse and select *C34-connectivities.tbl*
-</a>
-
-* **Step 12:** Turn off random removal of restraints
-
-<a class="prompt prompt-info">
-Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
-</a>
+**Note:** This restraint file contains both the cross-links distance restraints and one distance restraint between the two peptide fragements of C31  defining their maximum distance based on the sequence separation (see *C34-connectivity.tbl*).
 
 
 <br>
@@ -1219,10 +1197,25 @@ Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
 
 In  the same page as where restraints are provided you can modify a large number of docking settings.
 
-* **Step 13:** Unfold the **sampling parameters** menu.
+* **Step 11:** Unfold the **sampling parameters** menu.
 
-Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits it is recommended to increase the sampling, e.g. to 10000/400/400 (at the cost of longer computations). For this tutorial we might use 2000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
+Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits, depending on the amount of information available to guide the docking, it is recommended to increase the sampling. For this tutorial we will use 4000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
 
+<a class="prompt prompt-info">
+Number of structures for rigid body docking -> 4000
+</a>
+
+<a class="prompt prompt-info">
+Number of structures for semi-flexible refinement -> 400
+</a>
+
+<a class="prompt prompt-info">
+Number of structures for the final refinement -> 400
+</a>
+
+<a class="prompt prompt-info">
+Number of structures to analyze -> 400
+</a>
 
 When docking only with  interface information (i.e. no specific distances), we are systematically sampling the 180 degrees rotated solutions for each interface, minimizing the rotated solution and keeping the best of the two in terms of HADDOCK score. Since here we are using rather specific distance restraints, we can turn off this option to save time.
 
@@ -1230,38 +1223,30 @@ When docking only with  interface information (i.e. no specific distances), we a
 Sample 180 degrees rotated solutions during rigid body EM -> turn off
 </a>
 
+* **Step 12:** Unfold the **clustering parameters** menu.
 
-We are now ready to submit the docking run.
+The default clustering methods in Fraction of Native Contacts (FCC). Since we are dealing with multiple interfaces, to have a better discrimination of solutions we will increase the cutoff to 0.75.
 
-The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading  it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This file, which provides a reference input of your run, can also be edited to change a few parameters for example. An excerpt of this file is shown here:
-
-<pre>
-{
-    "runname": "RNA-Pol-III-xlinks",
-    "amb_cool1": 10.0,
-    "amb_cool2": 50.0,
-    "amb_cool3": 50.0,
-    "amb_firstit": 0,
-    "amb_hot": 10.0,
-    "amb_lastit": 2,
-    "anastruc_1": 200,
-...
-</pre>
-
-This file contains all parameters and input data of your run, including the uploaded PDB files and the restraints.
-
-<a class="prompt prompt-question">
-Can you locate the distance restraints in this file?
+<a class="prompt prompt-info">
+Cutoff for clustering -> 0.75
 </a>
 
-* **Step 14:** Click on the "Submit" button at the bottom left of the interface.
+
+* **Step 13:** Submission.
+
+We are now ready to submit the docking run. Scroll to the bottom of the page.
+
+<a class="prompt prompt-info">
+Click on the "Submit" button at the bottom left of the interface.
+</a>
+
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
-Your run will be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
+
+Your run will first be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
 The page will automatically refresh and the results will appear upon completion (which can take between 1/2 hour to
 several hours depending on the size of your system and the load of the server). Since we are dealing here with a large complex, 
 the docking will take quite some time (probably 1/2 day). So be patient. You will be notified by email once your job has successfully completed.
-
 
 
 <hr>
@@ -1273,7 +1258,7 @@ to allow the runs to complete within a reasonable amount of time. Because of tha
 
 We have already performed a full docking runs (with 2000/400/400 models generated for the
 rigid-body docking, semi-flexible and final refinement stages). 
-The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-C82-C34-C31model-xlinks){:target="_blank"}.
+The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/187928-RNA-PolIII-core-C82-C34-C31pept){:target="_blank"}.
 
 
 <figure align="center">
@@ -1283,57 +1268,6 @@ The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/
 
 <a class="prompt prompt-question">Inspect the result page.</a>
 <a class="prompt prompt-question">How many clusters are generated?</a>
-
-
-__Note:__ The bottom of the page gives you some graphical representations of the results, showing the distribution of
-the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the RMSD from the best
-generated model (the best scoring model). The plots are interactive and you can zoom into selected areas, move the graph, select specific points, all of it by clicking on the icons on the top of each graph. You can also turn on and off specific clusters.
-
-<details style="background-color:#DAE4E7"><summary><b>See graphical analysis view:</b>
-</summary>
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/graphical-analysis.png">
-<p> <i>Graphical view of the docking results</i></p>
-</figure>
-</details>
-<br>
-
-<details style="background-color:#DAE4E7"><summary><b>See cluster analysis view:</b>
-</summary>
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/cluster-analysis.png">
-<p> <i>HADDOCK score components distributions per cluster</i></p>
-</figure>
-</details>
-<br>
-
-You can also quickly visualize a specific structure by clicking on the "eye" icon next to a structure.
-While in the “eye” mode, you can use the middle mouse to zoom in/out.
-
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/online-visualisation.png">
-</figure>
-
-
-The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated
-as:
-<pre>
-      HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 0.1 * Eair
-</pre>
-where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents
-an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR energy.
-
-The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. 
-The various components of the HADDOCK score are also reported for each cluster on the results web page.
-
-<a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
-<a class="prompt prompt-question">Is the top ranked significantly better than the second one?</a>
-<a class="prompt prompt-question">Which energy terms are playing a dominant role in the ranking of top clusters?</a>
-<a class="prompt prompt-question">Which cluster satisfies the experimental restraints best?</a>
-
-In case the scores of various clusters are within the standard deviation from each other, all should be considered as a
-valid solution for the docking. Ideally, some additional independent experimental information should be available to
-decide on the best solution.
 
 
 <hr>
@@ -1423,13 +1357,11 @@ hide lines<br>
 distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
 distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
 distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d04-30A, chain B and resid 520 and name CB, chain D and resid  135 and name CB<br>
-distance C82-d05-30A, chain B and resid 520 and name CB, chain D and resid  138 and name CB<br>
-distance C82-d06-30A, chain B and resid 520 and name CB, chain D and resid  141 and name CB<br>
-distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
+distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
+distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
+distance C82-d06-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
 distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
-distance C82-d10-30A, chain B and resid 612 and name CB, chain F and resid  111 and name CB<br>
+distance C82-d10-30A, chain B and resid 612 and name CB, chain G and resid  111 and name CB<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
@@ -1453,7 +1385,7 @@ calculating the surface distance instead. Such an analysis can be done with the 
 
 
 <br>
-#### Analysing the cross-links defining the position of the C34_wHTH1 domain
+#### Analysing the cross-links defining the position of the C34 domain
 
 You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
 Alternatively delete them in PyMol by typing:
@@ -1463,52 +1395,11 @@ Alternatively delete them in PyMol by typing:
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-distance C34-1-d1-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-1-d2-30A, chain C and resid 62 and name CB, chain D and resid   82 and name CB<br>
-distance C34-1-d3-30A, chain C and resid 62 and name CB, chain D and resid   83 and name CB<br>
-distance C34-1-d4-30A, chain C and resid 62 and name CB, chain D and resid  123 and name CB<br>
-distance C34-1-d5-30A, chain C and resid 65 and name CB, chain D and resid   82 and name CB<br>
-distance C34-1-d6-30A, chain C and resid 65 and name CB, chain D and resid  123 and name CB<br>
-distance C34-1-d7-30A, chain C and resid 65 and name CB, chain D and resid  126 and name CB<br>
-distance C34-1-d8-30A, chain C and resid 65 and name CB, chain D and resid  135 and name CB<br>
-</a>
-
-<a class="prompt prompt-info">
-Inspect the various cross-link distances.
-</a>
-
-<a class="prompt prompt-question">
-Is the model satisfying the cross-link restraints?
-</a>
-
-<a class="prompt prompt-question">
-If not, which ones are not satistified?
-</a>
-
-
-<br>
-#### Analysing the cross-links defining the position of the C34_wHTH2 domain
-
-You can first hide the distances shown for C34_wHTH1 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
-
-<a class="prompt prompt-pymol">delete C34-1*</a>
-
-In the PyMOL command window type:
-
-<a class="prompt prompt-pymol">
-distance C34-2-d01-30A, chain D and resid  82 and name CB, chain C and resid   62 and name CB<br>
-distance C34-2-d02-30A, chain D and resid  82 and name CB, chain C and resid   62 and name CB<br>
-distance C34-2-d03-30A, chain D and resid  82 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d04-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d05-30A, chain D and resid 123 and name CB, chain C and resid   62 and name CB<br>
-distance C34-2-d06-30A, chain D and resid 123 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d07-30A, chain D and resid 126 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d08-30A, chain D and resid 126 and name CB, chain F and resid  196 and name CB<br>
-distance C34-2-d09-30A, chain D and resid 135 and name CB, chain C and resid   65 and name CB<br>
-distance C34-2-d10-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d11-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d12-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
+distance C34-1-d01-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-2-d04-30A, chain C and resid 123 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-2-d10-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d11-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d12-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1527,16 +1418,14 @@ If not, which ones are not satistified?
 <br>
 #### Analysing the cross-links defining the position of the C31 domain
 
-You can first hide the distances shown for C34_wHTH2 by unselecting them in the menu on the right side of the window.
+You can first hide the distances shown for C34 by unselecting them in the menu on the right side of the window.
 Alternatively delete them in PyMol by typing:
 
-<a class="prompt prompt-pymol">delete C34-2*</a>
+<a class="prompt prompt-pymol">delete C34*</a>
 
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-distance C31-d01-30A, chain F and resid  57 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d02-30A, chain F and resid  66 and name CB, chain B and resid  604 and name CB<br>
 distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
 distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
 distance C31-d06-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
@@ -1544,11 +1433,9 @@ distance C31-d07-30A, chain F and resid  91 and name CB, chain A and resid 4359 
 distance C31-d08-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
 distance C31-d09-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
 distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
-distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d12-30A, chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
-distance C31-d13-30A, chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d14-30A, chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
-distance C31-d15-30A, chain F and resid 196 and name CB, chain D and resid  126 and name CB<br>
+distance C31-d11-30A, chain G and resid 111 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d13-30A, chain G and resid 111 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d12-30A, chain G and resid 111 and name CB, chain A and resid 3514 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
