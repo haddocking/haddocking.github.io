@@ -436,10 +436,6 @@ If you already have credential, simply login in the upper right corner of the [d
 
 Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:target="_blank"}.
 
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/disvis-submission.png">
-</figure>
-
 From the `input-pdbs` directory select:
 <a class="prompt prompt-info">Fixed chain → A_PolIII-5fja-core.pdb</a>
 <a class="prompt prompt-info">Scanning chain → C_C34-alphafold-trimmed.pdb</a>
@@ -862,18 +858,18 @@ This will align all clusters on chain A (PolIII-core), maximizing the difference
 
 
 <a class="prompt prompt-question">
-Examine the various clusters. Compare the orientation of each domain (C82,C34 and C31). 
+Examine the various clusters. Compare the orientation of each domain (C82,C34). 
 How does their orientation differ between the various clusters?
 </a>
 
 __Note:__ You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
 
-__Reminder:__ ChainA corresponds to PolIII-core, B to C82, C to C34_wHTH1, D to C34_wHTH2, F to C31.
+__Reminder:__ ChainA corresponds to PolIII-core, B to C82 and C to C34.
 
 <details style="background-color:#DAE4E7"><summary><b>See PyMol view:</b>
 </summary>
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/clusters-pymol.png">
+<img src="/education/HADDOCK24/RNA-Pol-III-2022/strategy-1A-clusters-pymol.png">
 <p> <i>PyMol view of the various clusters, superimposed on PolIII core</i></p>
 </figure>
 </details>
@@ -889,12 +885,15 @@ Which domain is the worst defined over the various clusters?
 </a>
 
 
+<hr>
 ### Satisfaction of cross-link restraints
 
 Let's now check if the solutions actually fit the cross-links we defined.
 Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
 ranking cluster, `cluster12_1.pdb`.
 
+
+<br>
 #### Analysing the cross-links defining the position of the C82 domain
 
 In the PyMOL command window type:
@@ -903,16 +902,11 @@ In the PyMOL command window type:
 show cartoon<br>
 util.cbc<br>
 hide lines<br>
-distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
-distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
-distance C82-d06-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
-distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
-distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
-distance C82-d10-30A, chain B and resid 612 and name CB, chain F and resid  111 and name CB<br>
+distance C82-d01-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d02-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d03-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
+distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
+distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
@@ -934,6 +928,8 @@ __Note__ that the reported distances are Euclidian distances. In reality, the cr
 surface of the molecule which might results in a longer effective distance. A proper comparison would require
 calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
 
+
+<br>
 #### Analysing the cross-links defining the position of the C34 domain
 
 You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
@@ -946,10 +942,9 @@ In the PyMOL command window type:
 <a class="prompt prompt-pymol">
 distance C34-1-d1-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
 distance C34-2-d2-30A, chain C and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d3-30A, chain C and resid 126 and name CB, chain F and resid  196 and name CB<br>
-distance C34-2-d4-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d5-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d6-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d3-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d4-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d5-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -965,45 +960,7 @@ If not, which ones are not satistified?
 </a>
 
 
-#### Analysing the cross-links defining the position of the C31 domain
-
-You can first hide the distances shown for C34 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
-
-<a class="prompt prompt-pymol">delete C34*</a>
-
-In the PyMOL command window type:
-
-<a class="prompt prompt-pymol">
-distance C31-d01-30A, chain F and resid  57 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d02-30A, chain F and resid  66 and name CB, chain B and resid  604 and name CB<br>
-distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
-distance C31-d06-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
-distance C31-d07-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
-distance C31-d08-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
-distance C31-d09-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
-distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
-distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d12-30A, chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
-distance C31-d13-30A, chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d14-30A, chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
-distance C31-d15-30A, chain F and resid 196 and name CB, chain C and resid  126 and name CB<br>
-</a>
-
-<a class="prompt prompt-info">
-Inspect the various cross-link distances.
-</a>
-
-<a class="prompt prompt-question">
-Is the model satisfying the cross-link restraints?
-</a>
-
-<a class="prompt prompt-question">
-If not, which ones are not satistified?
-</a>
-
-
+<hr>
 ### Fitting the docking models into low resolution cryo-EM maps
 
 We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
@@ -1146,6 +1103,7 @@ _Note_: Chains D and E are reserved in case we would setup the docking with the 
 <hr>
 ### Setting up the docking with cross-links using the full C31
 
+<br>
 #### Registration / Login
 
 To start the submission, click [here](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"}. You will be prompted for our login credentials. 
@@ -1154,6 +1112,7 @@ If running this tutorial in the context of a course/workshop, you will be provid
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left.
 
+<br>
 #### Submission and validation of structures
 
 We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
@@ -1223,6 +1182,7 @@ Segment ID to use during docking -> F
 * **Step 8:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
+<br>
 #### Definition of restraints
 
 If everything went well, the interface window should have updated itself and it should show the list of residues for molecules 1 and 2.
@@ -1253,6 +1213,8 @@ You can supply a HADDOCK restraints TBL file with restraints that will always be
 Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
 </a>
 
+
+<br>
 #### Other docking settings and job submission
 
 In  the same page as where restraints are provided you can modify a large number of docking settings.
@@ -1295,12 +1257,7 @@ Can you locate the distance restraints in this file?
 * **Step 14:** Click on the "Submit" button at the bottom left of the interface.
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
-
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/submission.png">
-</figure>
-
-Currently, your run should be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
+Your run will be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
 The page will automatically refresh and the results will appear upon completion (which can take between 1/2 hour to
 several hours depending on the size of your system and the load of the server). Since we are dealing here with a large complex, 
 the docking will take quite some time (probably 1/2 day). So be patient. You will be notified by email once your job has successfully completed.
@@ -1447,12 +1404,14 @@ Which domain is the worst defined over the various clusters?
 </a>
 
 
+<hr>
 ### Satisfaction of cross-link restraints
 
 Let's now check if the solutions actually fit the cross-links we defined.
 Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
 ranking cluster, `cluster12_1.pdb`.
 
+<br>
 #### Analysing the cross-links defining the position of the C82 domain
 
 In the PyMOL command window type:
@@ -1492,6 +1451,8 @@ __Note__ that the reported distances are Euclidian distances. In reality, the cr
 surface of the molecule which might results in a longer effective distance. A proper comparison would require
 calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
 
+
+<br>
 #### Analysing the cross-links defining the position of the C34_wHTH1 domain
 
 You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
@@ -1524,6 +1485,8 @@ Is the model satisfying the cross-link restraints?
 If not, which ones are not satistified?
 </a>
 
+
+<br>
 #### Analysing the cross-links defining the position of the C34_wHTH2 domain
 
 You can first hide the distances shown for C34_wHTH1 by unselecting them in the menu on the right side of the window.
@@ -1561,6 +1524,7 @@ If not, which ones are not satistified?
 </a>
 
 
+<br>
 #### Analysing the cross-links defining the position of the C31 domain
 
 You can first hide the distances shown for C34_wHTH2 by unselecting them in the menu on the right side of the window.
@@ -1600,6 +1564,7 @@ If not, which ones are not satistified?
 </a>
 
 
+<hr>
 ### Fitting the docking models into low resolution cryo-EM maps
 
 We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
@@ -1828,7 +1793,26 @@ Chimera menu -> Tools -> Depiction -> Rainbow
 Select the option to color by chain and click the Apply button
 </a>
 
-Now let's check the quality of the fit:
+The two molecules were fitted separately into the map, which can cause clashes at the interface.
+Inspect the interface (first turn off the map by clicking on the "eye" in the Volume Viewer window).
+
+<a class="prompt prompt-question">
+Can you identify possible problematic areas of the interface?
+</a>
+
+
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary>
+<p>There are clearly several regions where the two molecules are clashing.</p>
+<figure align="center">
+<img src="/education/HADDOCK24/RNA-Pol-III-2022/core-C82-clashes1.png">
+</figure>
+</details>
+<br>
+<br>
+
+
+Now let's check the quality of the fit and try to improve the fit in Chimera:
 
 <a class="prompt prompt-info">
 UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
@@ -1846,31 +1830,67 @@ Click on Update and note the correlation value
 Click on Fit and check if the correlation does improve
 </a>
 
-If the correlation has improved after fitting, do save the fitted molecules:
-
-<a class="prompt prompt-info">
-File -> Save PDB -> Select fit_1.pdb (#0) and give a filename (e.g.: PolIII-core-fitted.pdb)
-</a>
-<a class="prompt prompt-info">
-File -> Save PDB -> Select fit_1.pdb (#1) and give a filename (e.g.: PolIII-C82-fitted.pdb)
-</a>
-
-The two molecules were fitted separately into the map, which can cause clashes at the interface.
-Inspect the interface (first turn off the map by clicking on the "eye" in the Volume Viewer window).
 
 <a class="prompt prompt-question">
-Can you identify possible problematic areas of the interface?
+Has the quality of the fit measured bu correlation coefficient improved?
 </a>
+
+<a class="prompt prompt-question">
+What about the clashes? Is the fit between core and C82 better in terms of clashes?
+</a>
+
+
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-<p>There are clearly several regions where the two molecules are clashing. Before using those, a refinement of the interface is thus required. This can be done using HADDOCK</p>
+<p>The fit in chimera has clearly removed some of the chain clashes, but there are still regions where the two molecules are clashing (especially considering we don't visualize the side-chains.</p>
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/core-C82-clashes.png">
+<img src="/education/HADDOCK24/RNA-Pol-III-2022/core-C82-clashes2.png">
 </figure>
 </details>
 <br>
 <br>
+
+
+Do save the fitted molecules:
+
+<a class="prompt prompt-info">
+File -> Save PDB -> Save relative to mode -> Select PolIII_9A.mrc (to make sure the models are saved in the orientation of the EM map)
+</a>
+
+<a class="prompt prompt-info">
+In the save model panel select both fit_1.pdb (#0) and fit_1.pdb (#1), give a filename (e.g.: PolIII-core-C82-chimera-fitted.pdb) and click on the save button
+</a>
+
+This will save both molecules into one PDB file as multimodel file (i.e. with MODEL/ENDMDL statements).
+In order to use this file for refinement with HADDOCK we need to merge two two models into one.
+This can be done either manually by editing the PDB file and removing all MODEL/ENDMDL statements, or using our [PDB-tools webserver](https://bianca.science.uu.nl/pdbtools/){:target="_blank"}.
+
+To use PDB-tools click on the above link.
+
+<a class="prompt prompt-info">
+Click on Submit in the top panel.
+</a>
+
+<a class="prompt prompt-info">
+Upload the PDB file you just saved (`PolIII-core-C82-chimera-fitted.pdb`) by clicking on Browse and then click Upload
+</a>
+
+<a class="prompt prompt-info">
+As pre-processing option select: pdb_splitmodel and click on the + button to add it to the workflow
+</a>
+
+<a class="prompt prompt-info">
+As post-processing option select: pdb_merge and click on the + button to add it to the workflow
+</a>
+
+<a class="prompt prompt-info">
+Click on the run button
+</a>
+
+<a class="prompt prompt-info">
+Download the `merged_1.pdb` file, we will use it as input for refinement in HADDOCK
+</a>
 
 
 <hr>
