@@ -149,52 +149,36 @@ you should see a directory called `RNA-Pol-III` with the following subdirectorie
 These files are in the format required to run DISVIS. The directory also containts the results of DISVIS analysis of the various domain pairs as directories named `disvis-results-X-Y`
 
   * __docking__: This directory contains json files containing all the parameters and input data for HADDOCK. Those are reference files of the docking setup and allow to repeat the modelling using the `Submit File` option of the HADDOCK2.4 web server:
-    * `run-PolIII-C82-C34-C31model-xlinks.json`: Docking following the 1st scenario described in this tutorial
-    * `run-PolIII-C82-C34-C31dummyLYS-xlinks.json`: Docking following the 1st scenario, but using dummy lysines for the C31 domain
-    * `run-PolIII-core-C82-EMfit-C34-C31-xlinks.json`: Docking following the 2nd scenario described in this tutorial
-    * `run-PolIII-core-C82-EMfit-C34-C31dummyLYS-xlinks.json`: Docking following the 2nd scenario described in this tutorial, but using dummy lysines for the C31 domain
-    * `run-PolIII-core-C82-refine.json`: Refinement of the core and C82 models fitted into the cryo-EM map with PowerFit
+    * `run-PolIII-core-C82-C34-C31-xlinks.json`: Docking following scenario 1A described in this tutorial
     
   * __input-pdbs__: This directory contains the HADDOCK-ready input PDB files for the various domains
     * `A_PolIII-5fja-core.pdb`: The core region of Pol III with non-overlapping residue numbering (named as chain A)
-    * `B_C82-2XUBA.pdb`: The C82 structure, homology modelled on PDB entry 2XUB excluding the disordered long loops (named as chain B)
     * `B_C82-alphafold-trimmed.pdb`: The AlphaFold model of C82 excluding the disordered long loops (named as chain B)
-    * `C_C34_alphafold-trimmed.pdb`: The AlhpaFold model of the three helix-turn-helix domains of C34 excluding the disordered regions (named as chain C). This thus contain the D and E domains listed below (but renamed to chain C).
-    * `C_C34_wHTH1-2DK8A.pdb`: The first helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain C)
+    * `C_C34_alphafold-trimmed.pdb`: The AlhpaFold model of the three helix-turn-helix domains of C34 excluding 
+                                     the disordered regions (named as chain C). This thus contain the D and E domains listed below (but renamed to chain C).
     * `C_C34_wHTH1-alphafold.pdb`: The AlphaFold model of the first helix-turn-helix domain of C34
-    * `D_C34_wHTH2-2DK8A.pdb`: The second helix-turn-helix domain of C34, homology modelled on PDB entry 2DK8-chainA (named as chain D)
     * `D_C34_wHTH2-alphafold.pdb`: The AlphaFold model of the second helix-turn-helix domain of C34
-    * `E_C34_wHTH3-1KDDA.pdb`: The third helix-turn-helix domain of C34, homology modelled on PDB entry 1KDD-chainA (named as chain E)
     * `E_C34_wHTH3-alphafold.pdb`: The AlphaFold model of the third helix-turn-helix domain of C34
-    * `F_C31_iTasser.pdb`: A de novo model from I-TASSER, conformation very uncertain (named as chain F)    
-    * `F_C31_LYS91.pdb`: Lysine 91 from C31 (named as chain F) - for use instead of the iTasser model
-    * `F_C31_LYS111.pdb`: Lysine 111 from C31 (named as chain G) - for use instead of the iTasser model
     * `F_C31_alphafold.pdb`: the AlphaFold model of C31 - unreliable model
+    * `F_C31_alphafold-K91-peptide.pdb`: Peptide containing Lysine 91 from C31 AlphaFold model (named as chain F) - for use instead of the iTasser model
+    * `G_C31_alphafold-K111-peptide.pdb`: Peptide Lysine 111 from C31 from C31 AlphaFold model  (named as chain G) - for use instead of the iTasser model
 
   * __restraints__:
-    * `xlink-all-inter.tbl`: This file contains all cross-links between the various domains (using the full C31 model)
-    * `xlink-all-inter-disvis-filtered.tbl`: This file contains the disvis-filtered cross-links between the various domains (using the full C31 model)
-    * `xlinks-all-inter-disvis-C-AF2-filtered.tbl`: This file contains the disvis-filtered cross-links between the various domains (using the AlphaFold C34 model and the iTasser C31 model)
-    * `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl`: This file contains the disvis-filtered cross-links between the various domains (using the C31 single Lysines as dummies)
-    * `C34-connectivity.tbl`: Connectivity restraints between the two C34 domains
-    * `C31-Lys91-Lys111.tbl`: Connectivity restraints between the two lysines of C31 for docking using those as dummies
+    * `xlinks-all-core-C82-C34.tbl`: This file contains all cross-links between the core, C82 and C34 domains
+    * `xlinks-all-core-C82-C34-C31-K91-K111.tbl`: This file contains all cross-links between the core, C82, C34 domains 
+                                                  and two peptides containing Lys 91 and 111 from the C31 domain (chains F and G, respectively)
+    * `C34-connectivity.tbl`: Connectivity restraints between the three C34 domains (if docking them separately)
+    * `C31-K91-K111-max-distance.tbl`: Maximum distance restraint between the two lysines of C31 for docking using the two peptides of C31
     * `C31-C34-connectivities.tbl`: The combination of the two previous files
 
 From MS, we have experimentally determined cross-links between the various domains. We have only kept  here  the inter-domain cross-links relevant for  this tutorial.
 The cross-links are taken from ([Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838){:target="_blank"}. These are the files present in the `disvis` directory. As an example here
-are the cross-links identified between the Pol III core (chain A here) and C31 (chain F):
+are the cross-links identified between the C82 (chain B here) and C34 (chain C):
 
 <pre style="background-color:#DAE4E7">
-A  143 CB F 179 CB 0.0 30.0
-A 1458 CB F 111 CB 0.0 30.0
-A 1458 CB F  91 CB 0.0 30.0
-A  166 CB F 196 CB 0.0 30.0
-A  189 CB F 199 CB 0.0 30.0
-A 3402 CB F  91 CB 0.0 30.0
-A 3514 CB F 111 CB 0.0 30.0
-A 4206 CB F  91 CB 0.0 30.0
-A 4359 CB F  91 CB 0.0 30.0
-A 4361 CB F  91 CB 0.0 30.0
+B 520 CB C 135 CB 0.0 30.0
+B 520 CB C 138 CB 0.0 30.0
+B 520 CB C 141 CB 0.0 30.0
 </pre>
 
 This is the format used by DisVis to represent the cross-links. Each cross-link definition consists of eight fields:
@@ -207,6 +191,191 @@ This is the format used by DisVis to represent the cross-links. Each cross-link 
 * atom name
 * lower distance limit
 * upper distance limit
+
+
+<hr><hr>
+## Inspecting the AlphaFold models
+
+
+For C82,C34 and C31 we will make use of the AlphaFold models. Before downloading those models from the [AlphaFold Database](https://alphafold.ebi.ac.uk){:target="_blank"} and use them blindly for modelling, it is crucial to first carefully assess their quality. For docking purposes the disordered regions should be removed as those will only give problems during the modelling.
+
+
+<a class="prompt prompt-question">
+    How should we interpret AlphaFold's predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
+</a>
+
+_Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}.
+
+
+Let's now take a look at the models for the three domains we want to dock (C82, C34 and C31.
+
+
+### C82 AlphaFold model
+
+The C82 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/A0A816BHH4){:target="\_blank"}.
+
+<a class="prompt prompt-info">
+Inspect the 3D model and in particular the color-coding which indicates the model confidence.
+</a>
+
+<a class="prompt prompt-info">
+Also consider the Predicted aligned error displayed as a matrix.
+</a>
+
+<a class="prompt prompt-question">
+   Can you identify the poorly predicted regions?
+</a>
+
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlhpaFold model and PAE plot</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img src="/education/HADDOCK24/RNA-Pol-III-2022/C82-alphafold.png">
+  </figure>
+  <br>
+</details>
+<br>
+
+
+A trimmed model of C82 has been provided with the data for this tutorial. Inspect it in PyMol or your favourite 3D structure viewer. 
+
+<a class="prompt prompt-question">
+   What are the differences with the model from the AlphaFold database?
+</a>
+
+<br>
+### C34 AlphaFold model
+
+The C34 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/P32910){:target="\_blank"}.
+
+<a class="prompt prompt-info">
+Inspect the 3D model and in particular the color-coding which indicates the model confidence.
+</a>
+
+<a class="prompt prompt-info">
+Also consider the Predicted aligned error displayed as a matrix.
+</a>
+
+<a class="prompt prompt-question">
+   Can you identify the poorly predicted regions?
+</a>
+
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlhpaFold model and PAE plot</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img src="/education/HADDOCK24/RNA-Pol-III-2022/C34-alphafold.png">
+  </figure>
+  <br>
+</details>
+<br>
+
+
+C34 consists of three [winged-helix-turn-helix](https://en.wikipedia.org/wiki/Helix-turn-helix#Winged_helix-turn-helix){:target="\_blank"} (wHTH) domains. 
+
+<a class="prompt prompt-question">
+   Can you identify them in the model? 
+</a>
+
+__Tip__: In the AlphaFold page you can select a block in the PAE matrix that will automatically be highlighted in the model. 
+
+<a class="prompt prompt-question">
+   How well defined are the three wHTH domains? 
+</a>
+
+<a class="prompt prompt-question">
+   How well defined are their relative orientations? The position of which wHTH domain is less well defined with respect to the others?
+</a>
+
+__Tip__: To assess how well defined the relative positions of the domains are consider the off-diagonal blocks of the PAE matrix connecting them. 
+
+
+Since we do have a number of cross-links between wHTH1 and wHTH2, let's check if the AlphaFold model satisfies those.
+For this we will inspect in PyMol the provided trimmed model of C34. 
+
+Start PyMOL and load the trimmed C82 model (`C_C34-alphafold-trimmed.pdb`):
+
+<a class="prompt prompt-pymol">File menu -> Open -> select C_C34-alphafold-trimmed.pdb</a>
+
+__Note:__ If using the command line, simply type:
+
+<a class="prompt prompt-cmd">pymol C_C34-alphafold-trimmed.pdb</a>
+
+
+Let's now check if this model actually fit the cross-links identified between the first two wHTH domains.
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+distance C34-d1-30A, chain C and resid 62 and name CB, chain C and resid   82 and name CB<br>
+distance C34-d2-30A, chain C and resid 62 and name CB, chain C and resid   83 and name CB<br>
+distance C34-d3-30A, chain C and resid 62 and name CB, chain C and resid  123 and name CB<br>
+distance C34-d4-30A, chain C and resid 65 and name CB, chain C and resid   82 and name CB<br>
+distance C34-d5-30A, chain C and resid 65 and name CB, chain C and resid  123 and name CB<br>
+distance C34-d6-30A, chain C and resid 65 and name CB, chain C and resid  126 and name CB<br>
+distance C34-d7-30A, chain C and resid 65 and name CB, chain C and resid  135 and name CB<br>
+</a>
+
+This will draw lines between the connected atoms and display the corresponding Euclidian distance.
+Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
+__Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
+surface of the molecule which might results in a longer effective distance. A proper comparison would require
+calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
+
+
+
+
+<br>
+### C31 AlphaFold model
+
+The C31 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/C7GXV1){:target="\_blank"}.
+
+<a class="prompt prompt-info">
+Inspect the 3D model and in particular the color-coding which indicates the model confidence.
+</a>
+
+<a class="prompt prompt-info">
+Also consider the Predicted aligned error displayed as a matrix.
+</a>
+
+<a class="prompt prompt-question">
+   How much trust to you have in this model?
+</a>
+
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlhpaFold model and PAE plot</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img src="/education/HADDOCK24/RNA-Pol-III-2022/C31-alphafold.png">
+  </figure>
+  <br>
+</details>
+<br>
+
+
+It should be rather evident that the prediction confidence for C31 is rather low. As such it does not make sense to use it as is for the modelling.
+But since there are a number of detected cross-links for this domain, in particular with the core and the C82 domains, we could consider including peptide fragments around the detected lysines in the modelling.
+This will be illustrated below in [Strategy 1B](#strategy-1b-modelling-the-complex-corec82c34c31peptides-by-docking-with-cross-links). 
+
 
 
 <hr><hr>
@@ -244,8 +413,8 @@ Before modelling Pol III, we will first run DisVis using the cross-links for the
 assess the information content of the cross-links and detect possible false positives. For the latter, please note that DisVis does not account for
 conformational changes. As such, a cross-link flagged as possible false positive might also simply reflect a conformational change occuring upon binding.
 
-We have cross-links available for 8 pairs of domains (see the `disvis` directory from the downloaded data). As an illustration of running DisVis, we will here
-setup the analysis for the Pol III core (chain A) - C31 (chain F) pair.
+We have cross-links available for 7 pairs of domains (see the `disvis` directory from the downloaded data). As an illustration of running DisVis, we will here
+setup the analysis for the Pol III C82 (chain B) - C34 (chain C) pair.
 
 To run DisVis, go to
 
@@ -273,9 +442,9 @@ Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:t
 
 From the `input-pdbs` directory select:
 <a class="prompt prompt-info">Fixed chain → A_PolIII-5fja-core.pdb</a>
-<a class="prompt prompt-info">Scanning chain → F_C31_iTasser.pdb</a>
+<a class="prompt prompt-info">Scanning chain → C_C34-alphafold-trimmed.pdb</a>
 From the `disvis` directory select:
-<a class="prompt prompt-info">Restraints file → xlinks-all-A-F.disvis</a>
+<a class="prompt prompt-info">Restraints file → xlinks-C82-C34.disvis</a>
 
 Once the fields have been filled in, you can submit your job to our server
 by clicking on "**Submit**" at the bottom of the page.
@@ -309,7 +478,8 @@ This number can of course be changed when using the local version of DisVis.
 Once your job has completed, and provided that you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification).
 
-If you don't want to wait for your run to complete, you can access the pre-calculated results [here](https://wenmr.science.uu.nl/disvis/tutorial/3){:target="_blank"}.
+If you don't want to wait for your run to complete, you can access the pre-calculated results in the data folder you downloaded for this tutorial.
+Look for the `disvis/disvis-results-C34-C82` directly and open in your web browser the `results.html` file present in that directory.
 
 The results page presents a summary split into several sections:
 
@@ -339,18 +509,10 @@ their z-Score and their violation frequency for a specific number of restraints.
 crosslinks with the highest number of violations. The DisVis web server preformats the results in a way that false positive restraints
 are highlighted and can be spotted at a glance.
 
-In our case, you should observe that DisVis found solutions consistent with up to 8 restraints indicating that there might be two false positive restraints.
-Taking a closer look at the violations table might already be enough to determine which residues are most likely true false positives.
-In this example, two restraints are violated in all complexes that are consistent with 8 restraints. These are thus the most likely candidates:
+In our case, you should observe that DisVis found solutions consistent all 3 restraints.
 
-<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
-</summary>
-<center><b>A166(CB)-F196(CB)</b></center>
-<center><b>A189(CB)-F199(CB)</b></center>
-</details>
-<br>
-<br>
 When DisVis fails to identify complexes consistent with all provided restraints during quick scanning, it is advisable to rerun with the complete scanning parameters before removing all restraints (or removing only the most violated ones and rerunning with complete scanning). It is possible that a more thourough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the list of putative false positive restraints.  
+
 
 <hr>
 #### DisVis output files
@@ -394,33 +556,18 @@ _Note_: The interaction space displayed corresponds to the region of space where
         of the scanning molecule can be placed while satisfying a given number of restraints
 
 
+<a class="prompt prompt-question">
+   How restrictive are the cross-links in defining the position of C34 around C82? Or put differently: How well-defined in the interaction space around C82?
+</a>
+
+_Remember_ that the displayed interaction space is the region where the center of mass of the second molecule can be put while satistying the distance restraints, contacting and not clashing with the first molecule.
+
+
 <hr>
 ### Converting DISVIS restraints into HADDOCK restraints
 
 In principle you should repeat the DisVis analysis for all pairs to detect possible false positives. 
-We are however providing the files that have already been filtered for possible false positive cross-links.
-Try to figure out how many cross-links were removed by comparing the following two files in the `disvis` directory:
-
- * `xlinks-all-inter.txt`
- * `xlinks-all-inter-disvis-filtered.txt`
-
-This can be easily done at the Linux level with:
-
-<a class="prompt prompt-linux">
-diff xlinks-all-inter.disvis xlinks-all-inter-disvis-filtered.disvis
-</a>
-
-<a class="prompt prompt-question">
-  How many restraints have been removed as false positive for the entire system? And between which domains?
-</a>
-
-<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
-</summary>
-Next to the two cross-links between domains A and F that we already identified from our DisVis analysis, one additional one was removed:
-B322(CB)-F179(CB)
-</details>
-<br>
-
+For the provided data, however, all cross-links can be satisfied simultaneously, i.e. DISVIS does not identify false positives.
 Before setting up the docking, we need to generate the distance restraint file for the cross-links in a format suitable for HADDOCK.
 HADDOCK uses [CNS][link-cns] as its computational engine. A description of the format for the various restraint types supported by HADDOCK can
 be found in our [Nature Protocols](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
@@ -455,16 +602,15 @@ Under Linux (or OSX), this file can be generated automatically from the `xlinks-
 file provided with the data for this tutorial by giving the following command (one line) in a terminal window:
 
 <a class="prompt prompt-linux">
-cat xlinks-all-inter-disvis-filtered.disvis| awk '{if (NF == 8) {print "assi (segid ",$1," and resid ",$2," and name ",$3,") (segid ",$4," and resid ",$5," and name ",$6,") ",$8,$8,$7}}' > xlinks-all-inter-disvis-filtered.tbl
+cat xlinks.disvis| awk '{if (NF == 8) {print "assi (segid ",$1," and resid ",$2," and name ",$3,") (segid ",$4," and resid ",$5," and name ",$6,") ",$8,$8,$7}}' > xlinks-all-inter-disvis-filtered.tbl
 </a>
 
 The correspondong pre-generated CNS/HADDOCK formatted restraints files are provided in the `restraints` directory as:
 
-  * `xlinks-all-inter.tbl`
-  * `xlinks-all-inter-disvis-filtered.tbl`
-  * `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl` (for use with the dummy Lysines of C31)
+  * `xlinks-all-core-C82-C34.tbl`
+  * `xlinks-all-core-C82-C34-C31-K91-K111.tbl` (for use when including peptide fragments of C31)
   
-Inspect the `xlinks-all-inter-disvis-filtered.tbl` file (open it as a text file)
+Inspect the `xlinks-all-core-C82-C34.tbl` file (open it as a text file)
 
 <a class="prompt prompt-question">
 We used CB atoms to define the restraints in the disvis restraint file. Can you find those is this file?
@@ -473,7 +619,7 @@ Are there other atoms defined? What could those be? (Hint... MARTINI)
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-Additional atoms are included in the distance restraints definitions: SC* . These correspond to the side-chain atom names in the MARTINI representation.
+Additional atoms are included in the distance restraints definitions: `BB` . These correspond to the backbone beads in the MARTINI representation.
 </details>
 <br>
 
@@ -486,7 +632,7 @@ What are those restraints for?
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-C34 consists of three helix-turn-helix domains which have been modelled separately. They are connected by flexible linkers for which no structure is available.
+C34 consists of three winged-helix-turn-helix domains which could be docked separately in principle. These are connected by flexible linkers for which no structure is available.
 The defined restraints impose upper limits to the distance between the C- and N-terminal domains of the the domains. The upper limit was estimated as the number of missing segments/residues * 4.5Å (a typical distance observed in diffraction data for amyloid fibrils, representing a CA-CA distance in an extended conformation).
 </details>
 <br>
@@ -496,25 +642,505 @@ _Note_: You should notice that the restraints are duplicated (actually 4 times).
 
 
 <hr><hr>
-## Strategy 1): Modelling the complex by docking with cross-links only and separate C34 wHTH domains
+## Strategy 1A): Modelling the complex (core+C82+C34) by docking with cross-links
 
-We only have cross-links for two of the three C34 domains. We will therefore not include C34_wHTH3 into the modelling.
-Further, we have the choice to trust or not the C31 iTasser model. Docking with unreliable models might do more harm than good.
-But excluding completely C31 would mean loosing information coming from the cross-links between C31 and the other domains.
+We will use the core domain of RNA-PolIII together with the AlphaFold models of C82 and C34, both trimmed to remove the disordered/poorly predicted regions.
+In this first example, we will thus neglect the information provided by the cross-links to C31.
 
-An alternative solution would be to include only separate Lysine residues to which cross-links are defined. In this case, there
-are two lysines with multiple cross-links each: Lys91 and Lys111. Instead of using the full C31 model we can include those two lysines,
-each being defined as a separate molecule (see [alternative runs](#alternative-runs) below).
-
-Here will set up a five-body docking using the PolIII-core, C82, C34_wHTH1, C34_wHTH2 and the iTasser C31 structures/models:
+For this we will set up a three-body docking using the PolIII-core, C82 and C34:
 
 * 1st molecule - chainA: PolIII-core
-* 2nd molecule - chainB: C82 homology model
-* 3rd molecule - chainC: C34 wHTH1 domain homology model
-* 4th molecule - chainD: C34 wHTH2 domain homology model
-* 5th molecule - chainF: C31 iTasser model
+* 2nd molecule - chainB: C82 AlphaFold model trimmed
+* 3rd molecule - chainC: C34 AlphaFold model trimmed
 
-_Note_: ChainE is reserved for the 3rd C34 wHTH domain (not used here since no cross-links defining its position).
+<hr>
+### Setting up the docking
+
+
+#### Submission and validation of structures
+
+We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+
+* **Step 1:** Define a name for your docking run, e.g. *RNA-PolIII-core-C82-C34-xlinks*.
+
+* **Step 2:** Define the number of components, i.e. *3*.
+
+* **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 input menu**.
+
+<a class="prompt prompt-info">
+First molecule: where is the structure provided? -> "I am submitting it"
+</a>
+<a class="prompt prompt-info">
+Which chain to be used? -> All (for this particular case)
+</a>
+<a class="prompt prompt-info">
+PDB structure to submit -> Browse and select *A_PolIII-5fja-core.pdb*
+</a>
+<a class="prompt prompt-info">
+Do you want to coarse-grain your molecule? -> turn on
+</a>
+
+* **Step 4:** Input the second protein PDB files.
+
+<a class="prompt prompt-info">
+PDB structure to submit -> Browse and select *B_C82-alphafold-trimmed.pdb*
+</a>
+Since we do not allow to mix all-atom and coarse grained models, the option to coarse grain this molecule is already turned on.
+
+* **Step 5:** Input the third protein PDB files.
+
+<a class="prompt prompt-info">
+PDB structure to submit -> Browse and select *C_C34-alphafold-trimmed.pdb*
+</a>
+
+
+* **Step 6:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+
+
+#### Definition of restraints
+
+If everything went well, the interface window should have updated itself and it should show the list of residues for molecules 1 and 2.
+
+* **Step 7:** Instead of specifying active and passive residues, we will supply restraint files to HADDOCK. 
+No further action is required in this page, so click on the "Next" button at the bottom of the **Input parameters** window, 
+which proceeds to the  **Distance Restraint** menu  of the **Docking Parameters** window.
+
+* **Step 8:** Upload the cross-link restraints file to the unambiguous restraints category
+
+<a class="prompt prompt-info">
+Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (unambiguous restraints) -> Browse and select *xlinks-all-core-C82-C34.tbl*
+</a>
+
+**Note:** Since we have a limited number of cross-links, and all can in principle be satisfied based on the DISVIS analysis, we are inputing those restraints as unambiguous restraints.
+          This means that all restraints will be used by default while in the case of ambiguous restraints, 50% is randomly discarded for each docking trial by default (can be turned off).
+
+
+#### Other docking settings and job submission
+
+In  the same page as where restraints are provided you can modify a large number of docking settings.
+
+* **Step 9:** Unfold the **sampling parameters** menu.
+
+Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits, depending on the amount of information available to guide the docking, it is recommended to increase the sampling. For this tutorial we will use 4000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
+
+<a class="prompt prompt-info">
+Number of structures for rigid body docking -> 4000
+</a>
+
+<a class="prompt prompt-info">
+Number of structures for semi-flexible refinement -> 400
+</a>
+
+<a class="prompt prompt-info">
+Number of structures for the final refinement -> 400
+</a>
+
+<a class="prompt prompt-info">
+Number of structures to analyze -> 400
+</a>
+
+When docking only with  interface information (i.e. no specific distances), we are systematically sampling the 180 degrees rotated solutions for each interface, minimizing the rotated solution and keeping the best of the two in terms of HADDOCK score. Since here we are using rather specific distance restraints, we can turn off this option to save time.
+
+<a class="prompt prompt-info">
+Sample 180 degrees rotated solutions during rigid body EM -> turn off
+</a>
+
+* **Step 10:** Unfold the **clustering parameters** menu.
+
+The default clustering methods in Fraction of Native Contacts (FCC). Since we are dealing with multiple interfaces, to have a better discrimination of solutions we will increase the cutoff to 0.75.
+
+<a class="prompt prompt-info">
+Cutoff for clustering -> 0.75
+</a>
+
+
+* **Step 11:** Submission.
+
+Scroll to the bottom of the page.
+
+
+The interface also allows us to download prior to submission the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading  it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This file, which provides a reference input of your run, can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+
+<pre>
+{
+    "runname": "RNA-Pol-III-core-C82-C34",
+    "amb_cool1": 10.0,
+    "amb_cool2": 50.0,
+    "amb_cool3": 50.0,
+    "amb_firstit": 0,
+    "amb_hot": 10.0,
+    "amb_lastit": 2,
+    "anastruc_1": 200,
+...
+</pre>
+
+This file contains all parameters and input data of your run, including the uploaded PDB files and the restraints.
+
+<a class="prompt prompt-question">
+Can you locate the distance restraints in this file?
+</a>
+
+
+We are now ready to submit the docking run.
+
+<a class="prompt prompt-info">
+Click on the "Submit" button at the bottom left of the interface.
+</a>
+
+
+Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
+
+Your run will first be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
+The page will automatically refresh and the results will appear upon completion (which can take between 1/2 hour to
+several hours depending on the size of your system and the load of the server). Since we are dealing here with a large complex, 
+the docking will take quite some time (probably 1/2 day). So be patient. You will be notified by email once your job has successfully completed.
+
+
+<figure align="center">
+<img width="75%" src="/education/HADDOCK24/RNA-Pol-III-2022/running.png">
+</figure>
+
+
+<hr>
+### First analysis of the results
+
+Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical
+representation of the data. If you are using course credentials the number of models generated will have been decreased 
+to allow the runs to complete within a reasonable amount of time. Because of that, the results might not be very good.
+
+We have already performed a full docking runs (with 4000/400/400 models generated for the
+rigid-body docking, semi-flexible and final refinement stages). 
+The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/187915-RNA-PolIII-C82-C34-xlinks){:target="_blank"}.
+
+
+<a class="prompt prompt-question">Inspect the result page.</a>
+<a class="prompt prompt-question">How many clusters are generated?</a>
+
+
+__Note:__ Refer to the analysis section of the modelling strategy 1 for more explanations of the results page if needed.
+
+
+<hr>
+### Visualisation of docked models
+
+Let's now visualize the various clusters. The result page allows to download individual models, but it also has an option to download 
+all clusters at once. Look for the following sentence, just above the cluster statistics:
+
+<pre>
+You can also download all cluster files (best X of the top 10 cluster(s)).
+</pre>
+
+<a class="prompt prompt-info">Download the archive by clicking on the link and unpack it</a>
+
+Start PyMOL and load each cluster representative (`clusterX_1.pdb`):
+
+<a class="prompt prompt-pymol">File menu -> Open -> select cluster12_1.pdb</a>
+
+Repeat this for each cluster. 
+
+__Note:__ If using the command line, all clusters can be loaded easily in one command:
+
+<a class="prompt prompt-cmd">pymol cluster*_1.pdb</a>
+
+
+Once all files have been loaded, type in the PyMOL command window:
+
+<a class="prompt prompt-pymol">
+show cartoon<br>
+util.cbc<br>
+hide lines<br>
+</a>
+
+
+Let's then superimpose all models on chain A of the first cluster:
+
+<a class="prompt prompt-pymol">
+alignto cluster1_1 and chain A<br>
+</a>
+
+This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains. Be patient as given the size of the system this might take a bit of time...
+
+
+<a class="prompt prompt-question">
+Examine the various clusters. Compare the orientation of each domain (C82,C34 and C31). 
+How does their orientation differ between the various clusters?
+</a>
+
+__Note:__ You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
+
+__Reminder:__ ChainA corresponds to PolIII-core, B to C82, C to C34_wHTH1, D to C34_wHTH2, F to C31.
+
+<details style="background-color:#DAE4E7"><summary><b>See PyMol view:</b>
+</summary>
+<figure align="center">
+<img src="/education/HADDOCK24/RNA-Pol-III-2022/clusters-pymol.png">
+<p> <i>PyMol view of the various clusters, superimposed on PolIII core</i></p>
+</figure>
+</details>
+<br>
+<br>
+
+<a class="prompt prompt-question">
+Which domain is the best defined over the various clusters?
+</a>
+
+<a class="prompt prompt-question">
+Which domain is the worst defined over the various clusters?
+</a>
+
+
+### Satisfaction of cross-link restraints
+
+Let's now check if the solutions actually fit the cross-links we defined.
+Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
+ranking cluster, `cluster12_1.pdb`.
+
+#### Analysing the cross-links defining the position of the C82 domain
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+show cartoon<br>
+util.cbc<br>
+hide lines<br>
+distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
+distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
+distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
+distance C82-d06-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
+distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
+distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
+distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
+distance C82-d10-30A, chain B and resid 612 and name CB, chain F and resid  111 and name CB<br>
+</a>
+
+This will draw lines between the connected atoms and display the corresponding Euclidian distance.
+Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
+__Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
+surface of the molecule which might results in a longer effective distance. A proper comparison would require
+calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
+
+#### Analysing the cross-links defining the position of the C34 domain
+
+You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
+Alternatively delete them in PyMol by typing:
+
+<a class="prompt prompt-pymol">delete C82*</a>
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+distance C34-1-d1-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-2-d2-30A, chain C and resid 123 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-2-d3-30A, chain C and resid 126 and name CB, chain F and resid  196 and name CB<br>
+distance C34-2-d4-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d5-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-2-d6-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
+</a>
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
+
+#### Analysing the cross-links defining the position of the C31 domain
+
+You can first hide the distances shown for C34 by unselecting them in the menu on the right side of the window.
+Alternatively delete them in PyMol by typing:
+
+<a class="prompt prompt-pymol">delete C34*</a>
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+distance C31-d01-30A, chain F and resid  57 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d02-30A, chain F and resid  66 and name CB, chain B and resid  604 and name CB<br>
+distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
+distance C31-d06-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
+distance C31-d07-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
+distance C31-d08-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
+distance C31-d09-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
+distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
+distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d12-30A, chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
+distance C31-d13-30A, chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d14-30A, chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
+distance C31-d15-30A, chain F and resid 196 and name CB, chain C and resid  126 and name CB<br>
+</a>
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
+
+### Fitting the docking models into low resolution cryo-EM maps
+
+We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
+For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
+
+For this open the PDB file of the cluster you want to fit and the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory).
+
+<a class="prompt prompt-info">
+  UCSF Chimera Menu → File → Open... → Select the file
+</a>
+
+Repeat this for each file. Chimera will automatically guess their type.
+
+
+If you want to use the Chimera command-line instead, you need to first display it:
+
+<a class="prompt prompt-info">
+  UCSF Chimera Menu → Favorites → Command Line
+</a>
+
+and type:
+
+<a class="prompt prompt-pymol">
+  open /path/to/clusterX_1.pdb
+</a>
+<a class="prompt prompt-pymol">
+  open /path/to/PolIII_9A.mrc
+</a>
+
+
+In the `Volume Viewer` window, the middle slide bar provides control on the
+value at which the isosurface of the density is shown. At high values, the
+envelope will shrink while lower values might even display the noise in the map.
+In the same window, you can click on `Center` to center the view on all visible molecules and the density.
+
+We will first make the density transparent, in order to be able to see the fitted structure inside:
+
+<a class="prompt prompt-info">
+  Within the Volume Viewer window click on the gray box next to Color
+</a>
+
+This opens the`Color Editor` window.
+
+<a class="prompt prompt-info">
+Check the Opacity box.
+</a>
+
+An extra slider bar appears in the box called A, for the alpha channel.
+
+<a class="prompt prompt-info">
+Set the alpha channel value to around 0.6.
+</a>
+
+In order to distinguish the various chains we can color the structure by chain. For this:
+<a class="prompt prompt-info">
+Chimera menu -> Tools -> Depiction -> Rainbow
+Select the option to color by chain and click the Apply button
+</a>
+
+
+In order to perform the fit, we will use the Command Line more:
+
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Favorites → Command Line
+</a>
+
+Also open the Model Panel to know the ID of the various files within Chimera:
+
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Favorites → Model Panel
+</a>
+
+Note the number of the cluster model you upload and of the cryo-EM map (e.g. if you loaded first the PDB file, it must have model #0 and the map is #1).
+Then, in the Command Line interface type:
+
+<a class="prompt prompt-pymol">
+molmap #0 9 modelId 3    
+</a>
+
+This generate a 9Å map from the PDB model we uploaded with ID #3.
+The next command then performs the fit of this map onto the experimental cryo-EM map:
+
+<a class="prompt prompt-pymol">
+fitmap #1 #3 search 100<br>
+close #3
+</a>
+
+When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
+Note the value for the cluster you selected.
+
+You also try to improve further the fit:
+<a class="prompt prompt-info">
+UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
+</a>
+
+<a class="prompt prompt-info">
+Click the Options button
+</a>
+<a class="prompt prompt-info">
+Select the Use map simulated from atoms and set the Resolution to 9
+</a>
+<a class="prompt prompt-info">
+Click on Update and note the correlation value
+</a>
+<a class="prompt prompt-info">
+Click on Fit and check if the correlation does improve
+</a>
+
+
+You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
+In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
+
+<a class="prompt prompt-question">
+Which model from Strategy 1 and Strategy 1A gives the best fit to the EM map?
+</a>
+
+<a class="prompt prompt-question">
+What is the best correlation coefficient obtained?
+</a>
+
+
+
+<hr><hr>
+## Strategy 1A): Modelling the complex (core+C82+C34+C31 peptides) by docking with cross-links
+
+
+We will use the core domain of RNA-PolIII together with the trimmed AlphaFold models of C82 and C34, and two peptides extracted from the C31 model in order to be able to include additional cross-link restraints.
+
+For this we will set up a five-body docking using the PolIII-core, C82 and C34 and two peptides from C31:
+
+* 1st molecule - chainA: PolIII-core
+* 2nd molecule - chainB: C82 AlphaFold model trimmed
+* 3rd molecule - chainC: C34 AlphaFold model trimmed
+* 4th molecule - chainF: C31 peptide containing Lys 91
+* 5th molecule - chainG: C31 peptide containing Lys 111
+
+_Note_: Chains D and E are reserved in case we would setup the docking with the three wHTH domains of C34 considered separately.
 
 
 <hr>
@@ -1088,466 +1714,6 @@ In case you upload multiple models simultaneously, make sure to use the correct 
 
 <a class="prompt prompt-question">
 Which model gives the best fit to the EM map?
-</a>
-
-<a class="prompt prompt-question">
-What is the best correlation coefficient obtained?
-</a>
-
-
-
-<hr><hr>
-## Strategy 1A): Modelling the complex by docking with cross-links only and the AlphaFold C34 models (three wHTH domains)
-
-In this case we will use the AlphaFold model of C24 with all three wHTH domains. We will also use in this scenario the AlphaFold model of C82.
-Further, we have the choice to trust or not the C31 iTasser model. Docking with unreliable models might do more harm than good.
-But excluding completely C31 would mean loosing information coming from the cross-links between C31 and the other domains.
-
-An alternative solution would be to include only separate Lysine residues to which cross-links are defined. In this case, there
-are two lysines with multiple cross-links each: Lys91 and Lys111. Instead of using the full C31 model we can include those two lysines,
-each being defined as a separate molecule (see [alternative runs](#alternative-runs) below).
-
-Here will set up a four-body docking using the PolIII-core, C82, C34 and the iTasser C31 structures/models:
-
-* 1st molecule - chainA: PolIII-core
-* 2nd molecule - chainB: C82 AlphaFold model
-* 3rd molecule - chainC: C34 AlphaFold model with the three wHTH domains
-* 4th molecule - chainF: C31 iTasser model
-
-
-<hr>
-### Setting up the docking
-
-
-#### Submission and validation of structures
-
-We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
-
-* **Step 1:** Define a name for your docking run, e.g. *RNA-PolIII-C82-C34-AF2-C31model-xlinks*.
-
-* **Step 2:** Define the number of components, i.e. *4*.
-
-* **Step 3:** Input the first protein PDB file. For this unfold the **Molecule 1 input menu**.
-
-<a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
-</a>
-<a class="prompt prompt-info">
-Which chain to be used? -> All (for this particular case)
-</a>
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *A_PolIII-5fja-core.pdb*
-</a>
-<a class="prompt prompt-info">
-Do you want to coarse-grain your molecule? -> turn on
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> A
-</a>
-
-* **Step 4:** Input the second protein PDB files.
-
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *B_C82-alphafold-trimmed.pdb*
-</a>
-Since we do not allow to mix all-atom and coarse grained models, the option to coarse grain this molecule is already turned on.
-<a class="prompt prompt-info">
-Segment ID to use during docking -> B
-</a>
-
-* **Step 5:** Input the third protein PDB files.
-
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *C_C34-alphafold-trimmed.pdb*
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> C
-</a>
-
-* **Step 6:** Input the fourth protein PDB files.
-
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *F_C31_iTasser.pdb*
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> F
-</a>
-
-===> _Make sure to change the Segmend ID to F otherwise the restraints for C31 won't be used!_ <===
-
-
-* **Step 7:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
-
-
-#### Definition of restraints
-
-If everything went well, the interface window should have updated itself and it should show the list of residues for molecules 1 and 2.
-
-* **Step 8:** Instead of specifying active and passive residues, we will supply restraint files to HADDOCK. 
-No further action is required in this page, so click on the "Next" button at the bottom of the **Input parameters** window, 
-which proceeds to the  **Distance Restraint** menu  of the **Docking Parameters** window.
-
-* **Step 9:** Upload the cross-link restraints file to the ambiguous restraints category
-
-<a class="prompt prompt-info">
-Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints) -> Browse and select *xlinks-all-inter-disvis-C-AF2-filtered.tbl*
-</a>
-
-**Note:** Although the name points to ambiguous restraints, any type of distance restraints can be uploaded here. The only thing to remember
-          is that by default 50% of the ambiguous restraints will be randomly discarded for each docking model generated. This option can be
-          turned off -something we will do below since we have a limited amount of cross-links and already checked them with DisVis.
-
-* **Step 10:** Turn off random removal of restraints
-
-<a class="prompt prompt-info">
-Randomly exclude a fraction of the ambiguous restraints (AIRs) -> Turn off
-</a>
-
-#### Other docking settings and job submission
-
-In  the same page as where restraints are provided you can modify a large number of docking settings.
-
-* **Step 11:** Unfold the **sampling parameters** menu.
-
-Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits it is recommended to increase the sampling, e.g. to 10000/400/400 (at the cost of longer computations). For this tutorial we might use 2000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
-
-
-When docking only with  interface information (i.e. no specific distances), we are systematically sampling the 180 degrees rotated solutions for each interface, minimizing the rotated solution and keeping the best of the two in terms of HADDOCK score. Since here we are using rather specific distance restraints, we can turn off this option to save time.
-
-<a class="prompt prompt-info">
-Sample 180 degrees rotated solutions during rigid body EM -> turn off
-</a>
-
-* **Step 12:** Click on the "Submit" button at the bottom left of the interface.
-
-Your run will first be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
-The page will automatically refresh and the results will appear upon completion (which can take between 1/2 hour to
-several hours depending on the size of your system and the load of the server). Since we are dealing here with a large complex, 
-the docking will take quite some time (probably 1/2 day). So be patient. You will be notified by email once your job has successfully completed.
-
-
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/running.png">
-</figure>
-
-
-<hr>
-### First analysis of the results
-
-Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical
-representation of the data. If you are using course credentials the number of models generated will have been decreased 
-to allow the runs to complete within a reasonable amount of time. Because of that, the results might not be very good.
-
-We have already performed a full docking runs (with 2000/400/400 models generated for the
-rigid-body docking, semi-flexible and final refinement stages). 
-The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-C82-C34-C31model-xlinks){:target="_blank"}.
-
-
-<a class="prompt prompt-question">Inspect the result page.</a>
-<a class="prompt prompt-question">How many clusters are generated?</a>
-
-
-__Note:__ Refer to the analysis section of the modelling strategy 1 for more explanations of the results page if needed.
-
-
-<hr>
-### Visualisation of docked models
-
-Let's now visualize the various clusters. The result page allows to download individual models, but it also has an option to download 
-all clusters at once. Look for the following sentence, just above the cluster statistics:
-
-<pre>
-You can also download all cluster files (best X of the top 10 cluster(s)).
-</pre>
-
-<a class="prompt prompt-info">Download the archive by clicking on the link and unpack it</a>
-
-Start PyMOL and load each cluster representative (`clusterX_1.pdb`):
-
-<a class="prompt prompt-pymol">File menu -> Open -> select cluster12_1.pdb</a>
-
-Repeat this for each cluster. 
-
-__Note:__ If using the command line, all clusters can be loaded easily in one command:
-
-<a class="prompt prompt-cmd">pymol cluster*_1.pdb</a>
-
-
-Once all files have been loaded, type in the PyMOL command window:
-
-<a class="prompt prompt-pymol">
-show cartoon<br>
-util.cbc<br>
-hide lines<br>
-</a>
-
-
-Let's then superimpose all models on chain A of the first cluster:
-
-<a class="prompt prompt-pymol">
-alignto cluster1_1 and chain A<br>
-</a>
-
-This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains. Be patient as given the size of the system this might take a bit of time...
-
-
-<a class="prompt prompt-question">
-Examine the various clusters. Compare the orientation of each domain (C82,C34 and C31). 
-How does their orientation differ between the various clusters?
-</a>
-
-__Note:__ You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
-
-__Reminder:__ ChainA corresponds to PolIII-core, B to C82, C to C34_wHTH1, D to C34_wHTH2, F to C31.
-
-<details style="background-color:#DAE4E7"><summary><b>See PyMol view:</b>
-</summary>
-<figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/clusters-pymol.png">
-<p> <i>PyMol view of the various clusters, superimposed on PolIII core</i></p>
-</figure>
-</details>
-<br>
-<br>
-
-<a class="prompt prompt-question">
-Which domain is the best defined over the various clusters?
-</a>
-
-<a class="prompt prompt-question">
-Which domain is the worst defined over the various clusters?
-</a>
-
-
-### Satisfaction of cross-link restraints
-
-Let's now check if the solutions actually fit the cross-links we defined.
-Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
-ranking cluster, `cluster12_1.pdb`.
-
-#### Analysing the cross-links defining the position of the C82 domain
-
-In the PyMOL command window type:
-
-<a class="prompt prompt-pymol">
-show cartoon<br>
-util.cbc<br>
-hide lines<br>
-distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
-distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
-distance C82-d06-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
-distance C82-d07-30A, chain B and resid 604 and name CB, chain F and resid   66 and name CB<br>
-distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d09-30A, chain B and resid 612 and name CB, chain F and resid   57 and name CB<br>
-distance C82-d10-30A, chain B and resid 612 and name CB, chain F and resid  111 and name CB<br>
-</a>
-
-This will draw lines between the connected atoms and display the corresponding Euclidian distance.
-Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
-
-<a class="prompt prompt-info">
-Inspect the various cross-link distances.
-</a>
-
-<a class="prompt prompt-question">
-Is the model satisfying the cross-link restraints?
-</a>
-
-<a class="prompt prompt-question">
-If not, which ones are not satistified?
-</a>
-
-__Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
-surface of the molecule which might results in a longer effective distance. A proper comparison would require
-calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](https://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
-
-#### Analysing the cross-links defining the position of the C34 domain
-
-You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
-
-<a class="prompt prompt-pymol">delete C82*</a>
-
-In the PyMOL command window type:
-
-<a class="prompt prompt-pymol">
-distance C34-1-d1-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d2-30A, chain C and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d3-30A, chain C and resid 126 and name CB, chain F and resid  196 and name CB<br>
-distance C34-2-d4-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d5-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d6-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
-</a>
-
-<a class="prompt prompt-info">
-Inspect the various cross-link distances.
-</a>
-
-<a class="prompt prompt-question">
-Is the model satisfying the cross-link restraints?
-</a>
-
-<a class="prompt prompt-question">
-If not, which ones are not satistified?
-</a>
-
-
-#### Analysing the cross-links defining the position of the C31 domain
-
-You can first hide the distances shown for C34 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
-
-<a class="prompt prompt-pymol">delete C34*</a>
-
-In the PyMOL command window type:
-
-<a class="prompt prompt-pymol">
-distance C31-d01-30A, chain F and resid  57 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d02-30A, chain F and resid  66 and name CB, chain B and resid  604 and name CB<br>
-distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
-distance C31-d06-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
-distance C31-d07-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
-distance C31-d08-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
-distance C31-d09-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
-distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
-distance C31-d11-30A, chain F and resid 111 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d12-30A, chain F and resid 111 and name CB, chain A and resid 3514 and name CB<br>
-distance C31-d13-30A, chain F and resid 111 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d14-30A, chain F and resid 179 and name CB, chain A and resid  143 and name CB<br>
-distance C31-d15-30A, chain F and resid 196 and name CB, chain C and resid  126 and name CB<br>
-</a>
-
-<a class="prompt prompt-info">
-Inspect the various cross-link distances.
-</a>
-
-<a class="prompt prompt-question">
-Is the model satisfying the cross-link restraints?
-</a>
-
-<a class="prompt prompt-question">
-If not, which ones are not satistified?
-</a>
-
-
-### Fitting the docking models into low resolution cryo-EM maps
-
-We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
-For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
-
-For this open the PDB file of the cluster you want to fit and the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory).
-
-<a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the file
-</a>
-
-Repeat this for each file. Chimera will automatically guess their type.
-
-
-If you want to use the Chimera command-line instead, you need to first display it:
-
-<a class="prompt prompt-info">
-  UCSF Chimera Menu → Favorites → Command Line
-</a>
-
-and type:
-
-<a class="prompt prompt-pymol">
-  open /path/to/clusterX_1.pdb
-</a>
-<a class="prompt prompt-pymol">
-  open /path/to/PolIII_9A.mrc
-</a>
-
-
-In the `Volume Viewer` window, the middle slide bar provides control on the
-value at which the isosurface of the density is shown. At high values, the
-envelope will shrink while lower values might even display the noise in the map.
-In the same window, you can click on `Center` to center the view on all visible molecules and the density.
-
-We will first make the density transparent, in order to be able to see the fitted structure inside:
-
-<a class="prompt prompt-info">
-  Within the Volume Viewer window click on the gray box next to Color
-</a>
-
-This opens the`Color Editor` window.
-
-<a class="prompt prompt-info">
-Check the Opacity box.
-</a>
-
-An extra slider bar appears in the box called A, for the alpha channel.
-
-<a class="prompt prompt-info">
-Set the alpha channel value to around 0.6.
-</a>
-
-In order to distinguish the various chains we can color the structure by chain. For this:
-<a class="prompt prompt-info">
-Chimera menu -> Tools -> Depiction -> Rainbow
-Select the option to color by chain and click the Apply button
-</a>
-
-
-In order to perform the fit, we will use the Command Line more:
-
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Favorites → Command Line
-</a>
-
-Also open the Model Panel to know the ID of the various files within Chimera:
-
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Favorites → Model Panel
-</a>
-
-Note the number of the cluster model you upload and of the cryo-EM map (e.g. if you loaded first the PDB file, it must have model #0 and the map is #1).
-Then, in the Command Line interface type:
-
-<a class="prompt prompt-pymol">
-molmap #0 9 modelId 3    
-</a>
-
-This generate a 9Å map from the PDB model we uploaded with ID #3.
-The next command then performs the fit of this map onto the experimental cryo-EM map:
-
-<a class="prompt prompt-pymol">
-fitmap #1 #3 search 100<br>
-close #3
-</a>
-
-When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
-Note the value for the cluster you selected.
-
-You also try to improve further the fit:
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
-</a>
-
-<a class="prompt prompt-info">
-Click the Options button
-</a>
-<a class="prompt prompt-info">
-Select the Use map simulated from atoms and set the Resolution to 9
-</a>
-<a class="prompt prompt-info">
-Click on Update and note the correlation value
-</a>
-<a class="prompt prompt-info">
-Click on Fit and check if the correlation does improve
-</a>
-
-
-You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
-In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
-
-<a class="prompt prompt-question">
-Which model from Strategy 1 and Strategy 1A gives the best fit to the EM map?
 </a>
 
 <a class="prompt prompt-question">
