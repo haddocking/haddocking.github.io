@@ -1783,131 +1783,43 @@ Download the `merged_1.pdb` file, we will use it as input for refinement in HADD
 <hr>
 ### Refining the interface of the cryo-EM fitted models with HADDOCK
 
-To refine the fitted models, we can use HADDOCK, keeping the molecules in their original orientation, skipping the initial rigid body docking stage and semi-flexible refimenent and only performing the final refinement (or morphing from CG to AA if coarse graining is used). Since we are dealing with severe clashes, a coarse graining approach would be better since the individual all atom representation are effectively docked onto the coarse-grained model and refined.
+To refine the fitted models, we can use the [HADDOCK2.4 refinement interface](https://bianca.science.uu.nl/haddock2.4/refinement/1){:target="_blank"} which offers different options to refine a complex.
+Their performance to refine complexes obtained by individually fitting molecules into low to medium resolution EM maps is described in:
 
-We will make use of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+* T Neijenhuis, S.C. van Keulen and **A.M.J.J. Bonvin**. [Interface Refinement of Low-to-Medium Resolution Cryo-EM Complexes using HADDOCK2.4](https://doi.org/10.1016/j.str.2022.02.001){:target="_blank"}. _Structure_ *30*, 476-484 (2022).
+ 
+Considering the size of the system we recommend in this case either the default `water refinement` or the `coarse-grained refinement`.
+ 
+Connect to the [HADDOCK2.4 refinement interface](https://bianca.science.uu.nl/haddock2.4/refinement/1){:target="_blank"} of the HADDOCK web server.
 
 * **Step 1:** Define a name for your refinement run, e.g. *PolIII-core-C82-refine*.
 
-* **Step 2:** Define the number of components, i.e. *2*.
-
-* **Step 3:** Input the first protein PDB file.
+* **Step 2:** Input the PDB file of the complex.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
+PDB structure to be refined ? -> merged_1.pdb (if you used PDB-tools - or the name of the complex you saved and edited from Chimera)
 </a>
 <a class="prompt prompt-info">
-Which chain to be used? -> All (for this particular case)
-</a>
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *PolIII-core-fitted.pdb* (the model we saved from Chimera)
-</a>
-<a class="prompt prompt-info">
-Do you want to coarse-grain your molecule? -> turn on
-</a>
-<a class="prompt prompt-info">
-Fix molecule at its original position during it0? -> turn on
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> A
+Click on Next
 </a>
 
-
-* **Step 4:** Input the second protein PDB file.
-
-<a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
-</a>
-<a class="prompt prompt-info">
-Which chain to be used? -> All (for this particular case)
-</a>
-<a class="prompt prompt-info">
-PDB structure to submit -> Browse and select *PolIII-C82-fitted.pdb* (the model we saved from Chimera)
-</a>
-<a class="prompt prompt-info">
-Do you want to coarse-grain your molecule? -> turn on
-</a>
-<a class="prompt prompt-info">
-Fix molecule at its original position during it0? -> turn on
-</a>
-<a class="prompt prompt-info">
-Segment ID to use during docking -> B
-</a>
-
-
-* **Step 5:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
-
-If everything went well, the interface window should have updated itself and it should now show the list of residues for molecules 1 and 2.
-
-* **Step 6:** No need for changes at this stage. Simply click on `Next`.
-
-* **Step 7:** We don't need to provide restraints, but will turn on center-of-mass restraints.
+The server will process the PDB files and recognize the number of chains and their type.
 
 <a class="prompt prompt-info">
-Define center of mass restraints to enforce contact between the molecules -> Turn on
+As nothing need to be changed further click on Submit
 </a>
 
+__Note__: The refinement interface allows to refine complexes consisting of various number of chains, but also single molecules. Also an ensemble of conformations can be submitted.
 
-In the same page where the restraints are provided you can modify a large number of docking settings.
 
-* **Step 8:** Unfold the **sampling parameters** menu.
-
-For refinement purposes a limited number of models is sufficient:
+The result page of such a refinement can be found [here](https://bianca.science.uu.nl/haddock2.4/result/4242424242/188005-RNA-PolIII-core-C82-watref){:target="_blank"}.
 
 <a class="prompt prompt-info">
-Decrease thee number of models to 20 for all stages (rigid body, semi-flexible refinement and final refinement)
-</a>
-<a class="prompt prompt-info">
-Number of trials for rigid body minimisation -> 1
-</a>
-<a class="prompt prompt-info">
-Sample 180 degrees rotated solutions during rigid body EM -> off
-</a>
-
-
-* **Step 9:** Unfold the **advanced sampling parameters** menu.
-
-We will here turn off the first rigid body docking and semi-flexible refinement stages:
-<a class="prompt prompt-info">
-Randomize starting orientations -> off
-</a>
-<a class="prompt prompt-info">
-Perform initial rigid body minimisation -> off
-</a>
-<a class="prompt prompt-info">
-Allow translation in rigid body minimisation -> off
-</a>
-<a class="prompt prompt-info">
-Number of MD steps for rigid body high temperature TAD -> 0
-</a>
-<a class="prompt prompt-info">
-Number of MD steps during first rigid body cooling stage -> 0
-</a>
-<a class="prompt prompt-info">
-Number of MD steps during second cooling stage with flexible side-chains at interface -> 0
-</a>
-<a class="prompt prompt-info">
-Number of MD steps during third cooling stage with fully flexible interface -> 0
-</a>
-
-We are now ready to submit the docking run.
-
-If you don't want to wait for your results, a pre-calculated refinement run is available [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-refine){:target="_blank"}.
-
-<a class="prompt prompt-question">
-Inspect the results page: Are the intermolecular energies favorable?
+Download the best model and following the previously provided instructions to fit in the EM map using Chimera, fit the refined model into the 9Å cryo-EM map and check the correlation coefficient.
 </a>
 
 <a class="prompt prompt-question">
-Download the top model and inspect it in PyMol. Are the clashing segments identified above still problematic?
-</a>
-
-__Note__: A refined model is available in the `cryo-EM` directory with as filename: `PolIII-core-C82-powerfit-chimera-fitted-refined.pdb`
-
-
-<a class="prompt prompt-question">
-Using Chimera, fit the refined model into the 9Å cryo-EM map (as described previously) and check the correlation coefficient.
-How does it compare with the Chimera-fitted, unrefined model?
+How do the correlation coefficient of the unrefined and refined models compare?
 </a>
 
 
