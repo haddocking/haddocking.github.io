@@ -1536,6 +1536,37 @@ Correlation between molmap PolIII-core-C82-chimera-fitted-CGref.pdb res 9 and Po
 <hr>
 ### Checking the agreement of the refined cryo-EM fitted models with the cross-links
 
+Let's now check if the EM-fitted model of core+C82 fits the two cross-links we have between those domains.
+Start a new PyMOL session and load as described above `PolIII-core-C82-chimera-fitted-CGref.pdb`.
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+util.cbc<br>
+distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
+distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
+</a>
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which one(s) is(are) not satistified?
+</a>
+
+<details style="background-color:#DAE4E7"><summary><b>See answer:</b>
+</summary>
+<p>Both cross-links are violated, but especially the one between core residue 5394  and C82 residue 472 (>70A!).
+The EM fitting solution for C82 was rather well defined according to PowerFit. There seems thus to be discrepancy between the EM and MS data.
+Another explanation could be conformational changes in the structures that are not accounted for in our modelling.</p>
+</details>
+<br>
+
 
 <hr>
 ### Setting up the full docking run using the cryo-EM fitted and refined core and C82 domains
