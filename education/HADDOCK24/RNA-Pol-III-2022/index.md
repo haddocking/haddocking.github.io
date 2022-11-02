@@ -17,7 +17,7 @@ This tutorial consists of the following sections:
 ## Introduction
 
 This tutorial will demonstrate the use of our DISVIS, POWERFIT and HADDOCK web servers for predicting the structure of a large biomolecular assembly from MS cross-linking data and low resolution cryo-EM data.
-The case we will be investigating is the apo form of the <em>Saccharomyces cerevisiae</em> RNA Polymerase-III (Pol III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer, and heterotrimer of C82, C34, and C31 subunits.
+The case we will be investigating is the apo form of the <em>Saccharomyces cerevisiae</em> RNA Polymerase-III (Pol III). Pol III is a 17-subunit enzyme that transcribes tRNA genes. Its architecture can be subdivided into a core, stalk, heterodimer of C53 and C37, and heterotrimer of C82, C34, and C31 subunits.
 <ul>
 <figure align="center">
   <img src="/education/HADDOCK24/RNA-Pol-III-2022/Pol-III-architecture.png">
@@ -27,10 +27,10 @@ The case we will be investigating is the apo form of the <em>Saccharomyces cerev
 <br>
 </ul>
 
-During this tutorial, we pretend that the structure of the Pol 3 core (14 subunits) is known and thus we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
+During this tutorial, we pretend that the structure of the Pol III core (14 subunits) is known. Therefore, we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
 
-We will be making use of i) our [DISVIS server](https://wenmr.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the new coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
-As an alternative strategy, we will use our [PowerFIt server][link-powerfit-web] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as starting point for the modelling of the remaining components.
+We will be making use of i) our [DISVIS server](https://wenmr.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
+As an alternative strategy, we will use our [PowerFit server][link-powerfit-web] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as a starting point for the modelling of the remaining components.
 
 A description of our the previous version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
 
@@ -81,9 +81,8 @@ incorporated in the energy function used in the calculations. AIRs are defined t
 under two categories: active and passive. Generally, active residues are those of central importance for the
 interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is
 higher. Throughout the simulation, these active residues are restrained to be part of the interface, if possible,
-otherwise incurring in a scoring penalty. Passive residues are those that contribute for the interaction, but are
-deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a
-careful selection of which residues are active and which are passive is critical for the success of the docking.
+otherwise incurring in a scoring penalty. Passive residues are those that contribute to the interaction, but are of less importance. If such a residue does not belong in the interface there is no scoring penalty. Hence, a
+careful selection of the active and passive residues is critical for the success of the docking.
 
 The docking protocol of HADDOCK was designed so that the molecules experience varying degrees of flexibility and
 different chemical environments, and it can be divided in three different stages, each with a defined goal and
@@ -102,10 +101,10 @@ displaying greater variability in the region of binding.
 
 * **2. Semi-flexible simulated annealing in torsion angle space (it1)** <BR>
 The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step
-molecular dynamics-based refinement in order to optimize interface packing. It is worth noting that flexibility in
+molecular dynamics-based refinement in order to optimize the interface packing. It is worth noting that flexibility in
 torsion angle space means that bond lengths and angles are still frozen. The interacting partners are first kept rigid
 and only their orientations are optimized. Flexibility is then introduced in the interface, which is automatically
-defined based on an analysis of intermolecular contacts within a 5A cut-off. This allows different binding poses coming
+defined based on an analysis of intermolecular contacts within a 5Å cut-off. This allows different binding poses coming
 from it0 to have different flexible regions defined. Residues belonging to this interface region are then allowed to
 move their side-chains in a second refinement step. Finally, both backbone and side-chains of the flexible interface
 are granted freedom.
@@ -117,14 +116,14 @@ interaction. HADDOCK currently supports water (TIP3P model) and DMSO environment
 mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at
 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side
 chains to be optimized. In the 2.4 version of HADDOCK, the explicit solvent refinement is replaced by default by a simple 
-energy minimisation as benchmarking has shown it does not add much to the quality of the models. This allows to save time.
+energy minimisation as benchmarking has shown solvent refinement does not add much to the quality of the models. This allows to save time.
 
 The performance of this protocol depends on the number of models generated at each step. Few models are less
 probable to capture the correct binding pose, while an exaggerated number will become computationally unreasonable. The
 standard HADDOCK protocol generates 1000 models in the rigid body minimization stage, and then refines the best 200 
 (ranked based on the HADDOCK score) in both it1 and water. Note, however, that while 1000 models are generated by default
 in it0, they are the result of five minimization trials and for each of these the 180 degrees symmetrical solution is also
-sampled. Effectively, the 1000 models written to disk are thus the results of the sampling of 10.000 docking solutions.
+sampled. Thus, the 1000 models written to disk are effectively the sampling results of the 10.000 docking poses.
 
 The final models are automatically clustered based on a specific similarity measure - either the *positional interface
 ligand RMSD* (iL-RMSD) that captures conformational changes about the interface by fitting on the interface of the
@@ -139,7 +138,7 @@ which is based on a four-to-one mapping of atoms on coarse-grained beads.
 <hr><hr>
 ## The information at hand
 
-Let us first inspect the available data, namely the various structures (or homology models) as well as
+Let us first inspect the available data, namely the various structures (or AlphaFold models) as well as
 the information from MS we have at hand to guide the docking. After unpacking the archive provided for this tutorial (see [Setup](#setuprequirements) above),
 you should see a directory called `RNA-Pol-III` with the following subdirectories in it:
 
@@ -149,26 +148,27 @@ you should see a directory called `RNA-Pol-III` with the following subdirectorie
 These files are in the format required to run DISVIS. The directory also containts the results of DISVIS analysis of the various domain pairs as directories named `disvis-results-X-Y`
 
   * __docking__: This directory contains json files containing all the parameters and input data for HADDOCK. Those are reference files of the docking setup and allow to repeat the modelling using the `Submit File` option of the HADDOCK2.4 web server:
-    * `run-PolIII-core-C82-C34-C31-xlinks.json`: Docking following scenario 1A described in this tutorial
+    * `strategy1-RNA-PolIII-core-C82-C34-C31pept.json`: Docking following Strategy 1 as described in this tutorial
+    * `strategy2-RNA-PolIII-core-C82-EMfit-C34-C31pept.json`: Docking following Strategy 2 as described in this tutorial
     
   * __input-pdbs__: This directory contains the HADDOCK-ready input PDB files for the various domains
-    * `A_PolIII-5fja-core.pdb`: The core region of Pol III with non-overlapping residue numbering (named as chain A)
-    * `B_C82-alphafold-trimmed.pdb`: The AlphaFold model of C82 excluding the disordered long loops (named as chain B)
+    * `A_PolIII-5fja-core.pdb`: The core region of Pol III with non-overlapping residue numbering (chain A)
+    * `B_C82-alphafold-trimmed.pdb`: The AlphaFold model of C82 excluding the disordered long loops (chain B)
     * `C_C34_alphafold-trimmed.pdb`: The AlhpaFold model of the three helix-turn-helix domains of C34 excluding 
                                      the disordered regions (named as chain C). This thus contain the D and E domains listed below (but renamed to chain C).
-    * `C_C34_wHTH1-alphafold.pdb`: The AlphaFold model of the first helix-turn-helix domain of C34
-    * `D_C34_wHTH2-alphafold.pdb`: The AlphaFold model of the second helix-turn-helix domain of C34
-    * `E_C34_wHTH3-alphafold.pdb`: The AlphaFold model of the third helix-turn-helix domain of C34
+    * `C_C34_wHTH1-alphafold.pdb`: The AlphaFold model of the first helix-turn-helix domain of C34 (chain C)
+    * `D_C34_wHTH2-alphafold.pdb`: The AlphaFold model of the second helix-turn-helix domain of C34 (chain D)
+    * `E_C34_wHTH3-alphafold.pdb`: The AlphaFold model of the third helix-turn-helix domain of C34 (chain E)
     * `F_C31_alphafold.pdb`: the AlphaFold model of C31 - unreliable model
-    * `F_C31_alphafold-K91-peptide.pdb`: Peptide containing Lysine 91 from C31 AlphaFold model (named as chain F) - for use instead of the iTasser model
-    * `G_C31_alphafold-K111-peptide.pdb`: Peptide Lysine 111 from C31 from C31 AlphaFold model  (named as chain G) - for use instead of the iTasser model
+    * `F_C31_alphafold-K91-peptide.pdb`: Peptide containing Lysine 91 from C31 AlphaFold model (chain F) 
+    * `G_C31_alphafold-K111-peptide.pdb`: Peptide Lysine 111 from C31 from C31 AlphaFold model  (chain G) 
 
   * __restraints__:
     * `xlinks-all-core-C82-C34.tbl`: This file contains all cross-links between the core, C82 and C34 domains
     * `xlinks-all-core-C82-C34-C31-K91-K111.tbl`: This file contains all cross-links between the core, C82, C34 domains 
-                                                  and two peptides containing Lys 91 and 111 from the C31 domain (chains F and G, respectively)
-    * `C34-connectivity.tbl`: Connectivity restraints between the three C34 domains (if docking them separately)
-    * `C31-K91-K111-max-distance.tbl`: Maximum distance restraint between the two lysines of C31 for docking using the two peptides of C31
+                                                  and two peptides containing Lys 91 and Lys 111 from the C31 domain (chains F and G, respectively)
+    * `C34-connectivity.tbl`: Connectivity restraints between the three C34 domains (if they are docked separately)
+    * `C31-K91-K111-max-distance.tbl`: Maximum distance restraints between the two lysines of C31 for docking using the two peptides of C31
     * `C31-C34-connectivities.tbl`: The combination of the two previous files
 
 From MS, we have experimentally determined cross-links between the various domains. We have only kept  here  the inter-domain cross-links relevant for  this tutorial.
@@ -197,7 +197,7 @@ This is the format used by DisVis to represent the cross-links. Each cross-link 
 ## Inspecting the AlphaFold models
 
 
-For C82,C34 and C31 we will make use of the AlphaFold models. Before downloading those models from the [AlphaFold Database](https://alphafold.ebi.ac.uk){:target="_blank"} and use them blindly for modelling, it is crucial to first carefully assess their quality. For docking purposes the disordered regions should be removed as those will only give problems during the modelling.
+For C82, C34, and C31, we will make use of the AlphaFold models. Before downloading those models from the [AlphaFold Database](https://alphafold.ebi.ac.uk){:target="_blank"} and use them blindly for modelling, it is crucial to first carefully assess their quality. For docking purposes the disordered regions should be removed as those will only lead to problems during the modelling.
 
 
 <a class="prompt prompt-question">
@@ -207,7 +207,7 @@ For C82,C34 and C31 we will make use of the AlphaFold models. Before downloading
 _Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}.
 
 
-Let's now take a look at the models for the three domains we want to dock (C82, C34 and C31.
+Let's now take a look at the models for the three monomers that we want to dock (C82, C34, and C31).
 
 
 ### C82 AlphaFold model
@@ -372,9 +372,9 @@ Also consider the Predicted aligned error displayed as a matrix.
 <br>
 
 
-It should be rather evident that the prediction confidence for C31 is rather low. As such it does not make sense to use it as is for the modelling.
-But since there are a number of detected cross-links for this domain, in particular with the core and the C82 domains, we could consider including peptide fragments around the detected lysines in the modelling.
-This will be illustrated below in [Strategy 1B](#strategy-1b-modelling-the-complex-corec82c34c31peptides-by-docking-with-cross-links). 
+It should be rather evident that the prediction confidence for C31 is low. As such it does not make sense to use it as is during the modelling.
+But since there are a number of detected cross-links for this domain, in particular with the core and the C82 domains, we could consider including peptide fragments around the cross-linked lysines in the modelling.
+This will be illustrated below in [Strategy 1](#strategy-1-modelling-the-complex-corec82c34c31peptides-by-docking-with-cross-links). 
 
 
 
@@ -390,10 +390,10 @@ To facilitate its use, we have developed a [web portal][link-disvis-web]{:target
 
 DisVis performs a full and systematic 6 dimensional search of the three translational and rotational degrees of freedom to
 determine the number of complexes consistent with the restraints. It outputs information about the inconsistent/violated
-restraints and a density map that represents the center-of-mass position of the scanning chain consistent with a given
+restraints and a density map that represents the center-of-mass position of the scanned chain consistent with a given
 number of restraints at every position in space.
 
-DisVis requires three input files: atomic structures of the biomolecules to be analysed and a text file containing the list of distance restraints between the two molecules .
+DisVis requires three input files: atomistic structures of the biomolecules to be analysed and a text file containing the list of distance restraints between the two molecules .
 This is also the minimal required input for the web server to setup a run.  
 
 DisVis and  its webserver are described in:
@@ -437,7 +437,7 @@ If you already have credential, simply login in the upper right corner of the [d
 Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:target="_blank"}.
 
 From the `input-pdbs` directory select:
-<a class="prompt prompt-info">Fixed chain → A_PolIII-5fja-core.pdb</a>
+<a class="prompt prompt-info">Fixed chain → B_C82-alphafold-trimmed.pdb</a>
 <a class="prompt prompt-info">Scanning chain → C_C34-alphafold-trimmed.pdb</a>
 From the `disvis` directory select:
 <a class="prompt prompt-info">Restraints file → xlinks-C82-C34.disvis</a>
@@ -475,7 +475,7 @@ Once your job has completed, and provided that you did not close the status page
 page (you will also receive an email notification).
 
 If you don't want to wait for your run to complete, you can access the pre-calculated results in the data folder you downloaded for this tutorial.
-Look for the `disvis/disvis-results-C34-C82` directly and open in your web browser the `results.html` file present in that directory.
+Look for the `disvis/disvis-results-C82-C34` directly and open in your web browser the `results.html` file present in that directory.
 
 The results page presents a summary split into several sections:
 
@@ -485,14 +485,14 @@ about how to cite the use of the portal.
 a density map representation) are displayed. Different views of the molecular scene can be chosen by clicking
  on the right or left part of the image frame. Each view shows the accessible space consistent with the selected number of restraints (using the slider below the picture).
 * `Accessible Complexes`: Summary of the statistics for the number of complexes consistent with at least N number of restraints.
- The statistics are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `restraints.txt`)
+ The statistics are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `xlinks-C82-C34.disvis`)
 * `z-Score`: For each restraint provided as input, a z-Score is calculated, indicating the likelihood that a restraint is a false positive.
 The higher the score, the more likely it is that a restraint is a false positive. Putative false positive restraints
 are only highlighted if no single solution was found to be consistent with the total number of restraints provided. If DisVis
 finds complexes consistent with all restraints, the z-Scores are still displayed, but in this case they should be ignored.
 * `Violations`: The table in this sections shows how often a specific restraint is violated for all models consistent with
 a given number of restraints. The higher the violation fraction of a specific restraint, the more likely it is to be a false positive.
-Column 1 shows the number of restraints N considered, while each following column indicates the violation fractions of
+Column 1 shows the number of restraints (N) considered, while each following column indicates the violation fractions of
 a specific restraint for complexes consistent with at least N restraints. Each row thus represents the fraction of all
 complexes consistent with at least N restraints that violated a particular restraint. As for the z-Scores, if solutions are found 
 that are consistent with all restraints provided, this table should be ignored.
@@ -505,7 +505,7 @@ their z-Score and their violation frequency for a specific number of restraints.
 crosslinks with the highest number of violations. The DisVis web server preformats the results in a way that false positive restraints
 are highlighted and can be spotted at a glance.
 
-In our case, you should observe that DisVis found solutions consistent all 3 restraints.
+In our case, you should observe that DisVis found solutions consistent with all 3 restraints submitted for C82-C34 interaction.
 
 When DisVis fails to identify complexes consistent with all provided restraints during quick scanning, it is advisable to rerun with the complete scanning parameters before removing all restraints (or removing only the most violated ones and rerunning with complete scanning). It is possible that a more thourough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the list of putative false positive restraints.  
 
@@ -628,7 +628,7 @@ What are those restraints for?
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-C34 consists of three winged-helix-turn-helix domains which could be docked separately in principle. These are connected by flexible linkers for which no structure is available.
+C34 consists of three winged-helix-turn-helix domains which could be docked separately in principle. These are connected by flexible linkers.
 The defined restraints impose upper limits to the distance between the C- and N-terminal domains of the the domains. The upper limit was estimated as the number of missing segments/residues * 4.5Å (a typical distance observed in diffraction data for amyloid fibrils, representing a CA-CA distance in an extended conformation).
 </details>
 <br>
@@ -651,7 +651,7 @@ For this we will set up a five-body docking using the PolIII-core, C82 and C34 a
 * 4th molecule - chainF: C31 peptide containing Lys 91
 * 5th molecule - chainG: C31 peptide containing Lys 111
 
-_Note_: Chains D and E are reserved in case we would setup the docking with the three wHTH domains of C34 considered separately.
+_Note_: Chains D and E are reserved in case we would setup the docking with the three wHTH domains of C34 separately.
 
 
 <hr>
@@ -735,7 +735,7 @@ If everything went well, the interface window should have updated itself and it 
 
 * **Step 9:** Instead of specifying active and passive residues, we will supply restraint files to HADDOCK. 
 No further action is required in this page, so click on the "Next" button at the bottom of the **Input parameters** window, 
-which proceeds to the  **Distance Restraint** menu  of the **Docking Parameters** window.
+which proceeds to the  **Distance Restraints** menu  of the **Docking Parameters** window.
 
 * **Step 10:** Upload the cross-link restraints file
 
@@ -753,7 +753,7 @@ In  the same page as where restraints are provided you can modify a large number
 
 * **Step 11:** Unfold the **sampling parameters** menu.
 
-Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts). When docking multiple subunits, depending on the amount of information available to guide the docking, it is recommended to increase the sampling. For this tutorial we will use 4000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
+Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts)). When docking multiple subunits, depending on the amount of information available to guide the docking, it is recommended to increase the sampling. For this tutorial we will use 4000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
 
 <a class="prompt prompt-info">
 Number of structures for rigid body docking -> 4000
@@ -810,7 +810,7 @@ Once your run has completed you will be presented with a result page showing the
 representation of the data. If you are using course credentials the number of models generated will have been decreased 
 to allow the runs to complete within a reasonable amount of time. Because of that, the results might not be very good.
 
-We have already performed a full docking runs (with 4000/400/400 models generated for the
+We have already performed a full docking run (with 4000/400/400 models generated for the
 rigid-body docking, semi-flexible and final refinement stages). 
 The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/187928-RNA-PolIII-core-C82-C34-C31pept){:target="_blank"}.
 
@@ -823,14 +823,14 @@ The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/
 <a class="prompt prompt-question">Inspect the result page</a>
 <a class="prompt prompt-question">How many clusters are generated?</a>
 
-**Note:** The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model). The graphs are interactive and you can turn on and off specific clusters, but also zoom in on specific areas of the plot.
+**Note:** The bottom of the page gives you some graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contacts and RMSD from the best generated model (the best scoring model). The graphs are interactive and you can turn on and off specific clusters, but also zoom in on specific areas of the plot.
 
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated as:
 <pre>
       HADDOCKscore = 1.0 * Evdw + 0.2 * Eelec + 1.0 * Edesol + 0.1 * Eair
 </pre>
 
-where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR energy. The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. The various components of the HADDOCK score are also reported for each cluster on the results web page.
+where Evdw is the intermolecular van der Waals energy, Eelec the intermolecular electrostatic energy, Edesol represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and Eair the AIR (restraints violation) energy. The cluster numbering reflects the size of the cluster, with cluster 1 being the most populated cluster. The various components of the HADDOCK score are also reported for each cluster on the results web page.
 
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
 <a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
@@ -1160,7 +1160,7 @@ __Note__: In the `cryo-EM` directory of the downloaded data you will find a Pyth
           are in the `docking/strategy1_RNA-PolIII-core-C82-C34-C31pept_summary` directory (if not do correct the path to the CCalculate script and the EM map):
 
 <a class="prompt prompt-cmd">
-chimera \-\-nogui \-\-script "CCcalculate.py cluster1_1.pdb PolIII_9A.mrc 9 10"
+chimera \-\-nogui \-\-script "../../cryo-EM/CCcalculate.py cluster1_1.pdb ../../cryo-EM/PolIII_9A.mrc 9 10"
 </a>
 
 The last number in the command is the number of fittings tried from different random positions. The best fit value will be reported.
@@ -1212,7 +1212,7 @@ the three translational and three rotational degrees of freedom. In short,
 PowerFit will try to systematically fit the structure in different orientations at every position
 in the map and calculate a cross-correlation score for each of them.
 
-It is open-source and available for download from our [Github repository][link-powerfit]{:target="_blank"}.
+PowerFit is open-source and available for download from our [Github repository][link-powerfit]{:target="_blank"}.
 To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
 The server makes use of either local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
@@ -1456,7 +1456,7 @@ How do the correlation coefficient of the unrefined and refined models compare?
 </details>
 <br>
 
-__Note__: In the `cryo-EM` directory of the downloaded data you will find a Python script that can be used to fit a structure into an EM map using Chimera from the command line. Here is an example of how to run it for the CGref model:
+__Note__: In the `cryo-EM` directory of the downloaded data you will find a Python script that can be used to fit a structure into an EM map using Chimera from the command line. Assuming that you are in the pre-calculated`cryo-EM` directory:
 
 <a class="prompt prompt-cmd">
 chimera \-\-nogui \-\-script "CCcalculate.py PolIII-core-C82-chimera-fitted-CGref.pdb PolIII_9A.mrc 9 10"
@@ -1738,7 +1738,7 @@ Once your run has completed you will be presented with the result page. You can 
 <a class="prompt prompt-question">Inspect the result page</a>
 <a class="prompt prompt-question">How many clusters are generated?</a>
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
-<a class="prompt prompt-question">Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
+<a class="prompt prompt-question">If there is more than one cluster, is  the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
 <a class="prompt prompt-question">Compare the score and the various energy terms of the best cluster and the best cluster obtained using Strategy 1) using only cross-links. Which strategy leads to better scores/energies?</a>
 
 
@@ -2134,10 +2134,10 @@ Thank you for following this tutorial. If you have any questions or suggestions,
 our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted by the
 [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
-[link-cns]: https://cns-online.org "CNS online"
+[link-cns]: http://cns-online.org/v1.3/ "CNS online"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: hhttps://bianca.science.uu.nl/disvis "DisVis web server"
+[link-disvis-web]: https://bianca.science.uu.nl/disvis "DisVis web server"
 [link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
 [link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
