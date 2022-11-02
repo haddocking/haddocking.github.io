@@ -1534,6 +1534,10 @@ Correlation between molmap PolIII-core-C82-chimera-fitted-CGref.pdb res 9 and Po
 
 
 <hr>
+### Checking the agreement of the refined cryo-EM fitted models with the cross-links
+
+
+<hr>
 ### Setting up the full docking run using the cryo-EM fitted and refined core and C82 domains
 
 We will now repeat the steps from the the first [HADDOCK run submission](#strategy-1-modelling-the-complex-corec82c34c31-peptides-by-docking-with-cross-links), 
@@ -1812,7 +1816,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>...</p>
+<p>The fit is better than in strategy 1, but thre is still one heavily violated cross-link between resid 472 of C82 and resid 5394 of the core. This might well be a false positive. It was not detected by DISVIS because the analysis is only performed for pair of domain and it can be satisfied, while when considering all molecules and all cross-links it can not.</p>
 </details>
 <br>
 
@@ -1849,7 +1853,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>...</p>
+<p>All cross-links are satistied for C34.</p>
 </details>
 <br>
 
@@ -1864,16 +1868,16 @@ Alternatively delete them in PyMol by typing:
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
-distance C31-d06-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
-distance C31-d07-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
-distance C31-d08-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
-distance C31-d09-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
-distance C31-d10-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
-distance C31-d11-30A, chain G and resid 111 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d13-30A, chain G and resid 111 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d12-30A, chain G and resid 111 and name CB, chain A and resid 3514 and name CB<br>
+distance C31-d01-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d02-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
+distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
+distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
+distance C31-d05-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
+distance C31-d06-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
+distance C31-d07-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
+distance C31-d08-30A, chain G and resid 111 and name CB, chain B and resid  612 and name CB<br>
+distance C31-d09-30A, chain G and resid 111 and name CB, chain A and resid 1458 and name CB<br>
+distance C31-d10-30A, chain G and resid 111 and name CB, chain A and resid 3514 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1890,7 +1894,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>...</p>
+<p>All cross-links are now stastified, including the one with C82 that was not in strategy 1.</p>
 </details>
 <br>
 
@@ -2030,15 +2034,10 @@ The last number in the command is the number of fittings tried from different ra
 </summary>
 <br>
 <pre>
-....cluster1_1.pdb :  0.
-....cluster2_1.pdb :  0.
-....cluster3_1.pdb :  0.
-....cluster4_1.pdb :  0.
-....cluster5_1.pdb :  0.
-....cluster6_1.pdb :  0.
-....cluster7_1.pdb :  0.
-....cluster8_1.pdb :  0.
-....cluster9_1.pdb :  0.
+....cluster1_1.pdb :  0.9292
+....cluster1_2.pdb :  0.9342
+....cluster1_3.pdb :  0.9360
+....cluster1_4.pdb :  0.9357
 </pre>
 <br>
 </details>
@@ -2053,13 +2052,10 @@ The last number in the command is the number of fittings tried from different ra
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III-2022/strategy2-EMfit.png">
 </figure>
-<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.XXX). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. C34 domains is found in regions of the map where unaccounted density appear when playing with the level at which the map is represented. As for the C31 peptides they are positioned in a region of low density, probably indicating disorder.</p>
+<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.9315). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 domains are however found in a region where no density is present, even when playing with the density level.</p>
 </details>
 <br>
 <br>
-
-
-
 
 
 <hr><hr>
