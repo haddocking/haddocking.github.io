@@ -1627,6 +1627,9 @@ Correlation between molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb re
 <br>
 
 
+__Note__ that we also performed the fitting using only the C82 model. Results can be found on disk (`powerfit-PolIII-C82` directory). Analysis in Chimera reveals unaccounted density in proximity of the C82 domain where the C34 wHTH3 domain is found in the analysis performed above, which gives confidence in the C82+C34wHTH3 model obtained with AlphaFold-multimer.
+
+
 <hr>
 ### Checking the agreement of the refined cryo-EM fitted models with the cross-links
 
