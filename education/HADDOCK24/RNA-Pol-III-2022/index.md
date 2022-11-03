@@ -370,6 +370,7 @@ Consider the Predicted aligned error displayed as a matrix.
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
     <i>See answer</i>
+  </summary>
   <p>From an analysis of the diagonal blocks we can identify the three wHTH domains, whose stucture is well predicted. When considering the off-diagonal blocks, the last domain of C34, wHTH3, seems to be the best defined with respect to C82. We will make use of this in our modelling strategy 2 in this tutorial. Since the orientation of the other domain with respect with C82, we will treat these as separate entities for modelling purpose, together with the available cross-links.</p>
 </details>
 <br>
