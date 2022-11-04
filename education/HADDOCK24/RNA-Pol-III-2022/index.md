@@ -341,7 +341,7 @@ calculating the surface distance instead. Such an analysis can be done with the 
 <br>
 ### C82-C34 AlphaFold-multimer model
 
-We have generated this model using a local version of Alphafold. The results are provided in the data you downloaded in the `AF2-multimer` directory.
+We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer` directory.
 
 <a class="prompt prompt-info">
 Consider the Predicted aligned error displayed as a matrix.
@@ -1660,9 +1660,11 @@ If not, which one(s) is(are) not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>Both cross-links are violated, but especially the one between core residue 5394  and C82 residue 472 (>70A!).
+<br>
+<p>Both cross-links are violated, but especially the one between core residue 5394  and C82 residue 472 (~70Å!).
 The EM fitting solution for C82+C34wHTH3 was well defined according to PowerFit. There seems thus to be discrepancy between the EM and MS data.
 Another explanation could be conformational changes in the structures that are not accounted for in our modelling.</p>
+<br>
 </details>
 <br>
 
@@ -2214,25 +2216,8 @@ And finally, using the cryo-EM data to pre-orient molecules prior to docking see
 <hr><hr>
 ## Alternative runs
 
-1) Instead of using the full C31 model, you could repeat the docking using the dummy Lysines residues for C31 and compare the results.
-Compare in particular the position of the various domains and the retraint energy indicating how well the cross-links are satistified.
-In that case you should setup a six-body docking run using:
-
-* 1st molecule - chainA: PolIII-core fitted into the EM map
-* 2nd molecule - chainB: C82 AlphaFold model fitter into the EM map
-* 3rd molecule - chainC: C34 wHTH1 domain AlphaFold model
-* 4th molecule - chainD: C34 wHTH2 domain AlphaFold model
-* 5th molecule - chainF: C31 lysine91
-* 6th molecule - chainG: C31 lysine111
-
-and as restraint files: `restraints-alternative-run.tbl`.
-
-The results of such a run can be accessed 
-[here](){:target="_blank"}.
-
-
-2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. 
-Repeat the docking and check if this affects the position of the various domains.
+Try to identify from the runs described in this tutorial the heavily violated cross-links and remove them from the restraints list. 
+Repeat the docking and check if this affects the position of the various domains (especially for Strategy 1).
 
 
 <hr><hr>
