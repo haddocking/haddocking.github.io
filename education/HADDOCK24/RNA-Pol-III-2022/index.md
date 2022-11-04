@@ -1511,11 +1511,21 @@ Connect to the [HADDOCK2.4 refinement interface](https://bianca.science.uu.nl/ha
 <a class="prompt prompt-info">
 PDB structure to be refined ? -> merged_1.pdb (if you used PDB-tools - or the name of the complex you saved and edited from Chimera)
 </a>
+
+* **Step 3:** Choose the refinement protocol
+<a class="prompt prompt-info">
+What protocol do you want to use? -> Coarse-grained refinement
+</a>
+
+Considering the size of the system, the coarse-grained refinement is much more efficient in this case.
+
 <a class="prompt prompt-info">
 Click on Next
 </a>
 
 The server will process the PDB files and recognize the number of chains and their type.
+
+* **Step 4:** Submission
 
 <a class="prompt prompt-info">
 As nothing need to be changed further click on Submit
