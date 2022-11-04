@@ -1526,7 +1526,7 @@ __Note__: The refinement interface allows to refine complexes consisting of vari
 
 The result page of such a refinement can be found:
 
-* default water refinement [here](){:target="_blank"}.
+* default water refinement [here](https://bianca.science.uu.nl/haddock2.4/result/4242424242/188542-RPolIII-core-C82-C34-wHTH-watref){:target="_blank"}.
 * coarse-grained refinement [here](https://bianca.science.uu.nl/haddock2.4/result/4242424242/188533-RPolIII-core-C82-C34-wHTH-CGref){:target="_blank"}.
 
 <a class="prompt prompt-info">
@@ -1542,7 +1542,7 @@ How do the correlation coefficient of the unrefined and refined models compare?
 <br>
 <pre>
      merged_1.pdb:                                   0.9441
-     RNA-PolIII-core-C82-chimera-fitted-watref.pdb   0....
+     RNA-PolIII-core-C82-chimera-fitted-watref.pdb   0.9388
      RNA-PolIII-core-C82-chimera-fitted-CGref.pdb    0.9495
 </pre>
 <br>
