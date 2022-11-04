@@ -1491,6 +1491,8 @@ Click on the run button
 Download the *merged_1.pdb* file, we will use it as input for refinement in HADDOCK
 </a>
 
+A pre-processed PDB file is already available on disk: `PolIII-core-C82-C34-wHTH3-chimera-fitted-merged.pdb`.
+
 
 <hr>
 ### Refining the interface of the cryo-EM fitted models with HADDOCK
@@ -1509,7 +1511,7 @@ Connect to the [HADDOCK2.4 refinement interface](https://bianca.science.uu.nl/ha
 * **Step 2:** Input the PDB file of the complex.
 
 <a class="prompt prompt-info">
-PDB structure to be refined ? -> merged_1.pdb (if you used PDB-tools - or the name of the complex you saved and edited from Chimera)
+PDB structure to be refined ? -> *PolIII-core-C82-C34-wHTH3-chimera-fitted-merged.pdb* (if you used PDB-tools - or the name of the complex you saved and edited from Chimera)
 </a>
 
 * **Step 3:** Choose the refinement protocol
@@ -1551,9 +1553,9 @@ How do the correlation coefficient of the unrefined and refined models compare?
 </summary>
 <br>
 <pre>
-     merged_1.pdb:                                   0.9441
-     RNA-PolIII-core-C82-chimera-fitted-watref.pdb   0.9388
-     RNA-PolIII-core-C82-chimera-fitted-CGref.pdb    0.9495
+     PolIII-core-C82-C34-wHTH3-chimera-fitted-merged.pdb:  0.9446
+     PolIII-core-C82-C34-wHTH3-chimera-fitted-watref.pdb:  0.9336
+     PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb:   0.9496
 </pre>
 <br>
 </details>
@@ -1571,20 +1573,9 @@ The last number in the command is the number of fittings tried from different ra
 </summary>
 <br>
 <pre>
-RNA-Pol-III-2022/cryo-EM> chimera --nogui --script "./CCcalculate.py PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb ./PolIII_9A.mrc 9 10"
+RNA-Pol-III-2022/cryo-EM> chimera --nogui --script "CCcalculate.py PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb PolIII_9A.mrc 9 10"
 Opening PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb...
-The following problems occurred while reading PDB file for PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb
-warning:  Ignored bad PDB record found on line 1
-warning:  Ignored bad PDB record found on line 2
-warning:  Ignored bad PDB record found on line 3
-warning:  Ignored bad PDB record found on line 4
-warning:  Ignored bad PDB record found on line 5
-warning:  Ignored bad PDB record found on line 7
-warning:  Ignored bad PDB record found on line 8
-warning:  Ignored bad PDB record found on line 10
-warning:  Ignored bad PDB record found on line 11
-warning:  Ignored bad PDB record found on line 14
-Suppressed 25 warnings about bad PDB records
+...
 
 Model 0 (PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb) appears to be a protein without secondary structure assignments.
 Automatically computing assignments using 'ksdssp' and parameter values:
@@ -1596,7 +1587,6 @@ Use command 'help ksdssp' for more information.
 Computing secondary structure assignments...
 Computed secondary structure assignments (see reply log)
 reading PolIII_9A.mrc 2.8 Mb 0%
-reading PolIII_9A.mrc 2.8 Mb 70%
 Done reading PolIII_9A.mrc
 reading PolIII_9A.mrc 178 Mb 0%
 Done reading PolIII_9A.mrc
@@ -1611,27 +1601,28 @@ Fit 8 of 10
 Fit 9 of 10
 Fit 10 of 10
 Fit search: finished
-Found 8 unique fits from 10 random placements having fraction of points inside contour >= 0.100 (10 of 10).
+Found 9 unique fits from 10 random placements having fraction of points inside contour >= 0.100 (10 of 10).
 
 Correlations and times found:
-	0.952 (3), 0.8203 (1), 0.8139 (1), 0.8103 (1), 0.8041 (1), 0.7965 (1), 0.7849 (1), 0.7616 (1)
+	0.952 (1), 0.8203 (1), 0.8133 (1), 0.8103 (2), 0.8049 (1), 0.8041 (1), 0.8009 (1), 0.7976 (1), 0.7753 (1)
 
 Best fit found:
 Fit map molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 in map PolIII_9A.mrc using 33394 points
-  correlation = 0.952, correlation about mean = 0.5948, overlap = 208
-  steps = 788, shift = 101, angle = 70.8 degrees
+  correlation = 0.952, correlation about mean = 0.595, overlap = 208
+  steps = 328, shift = 49.3, angle = 31.6 degrees
 Position of molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 (#0.1) relative to PolIII_9A.mrc (#1) coordinates:
   Matrix rotation and translation
-     0.10322688  -0.51116053  -0.85326381 185.59888343
-     0.45566479  -0.73823268   0.49737521 190.84314147
-    -0.88414581  -0.44014477   0.15671240 189.31301106
-  Axis  -0.69595997   0.02292499   0.71771454
-  Axis point 133.16511160 144.55361720   0.00000000
-  Rotation angle (degrees) 137.65877835
-  Shift along axis  11.07838480
+     0.10322358  -0.51111512  -0.85329141 185.59573168
+     0.45569008  -0.73824752   0.49733002 190.85526186
+    -0.88413316  -0.44017262   0.15670554 189.33240076
+  Axis  -0.69596127   0.02289558   0.71771422
+  Axis point 133.17124957 144.56295228   0.00000000
+  Rotation angle (degrees) 137.65984172
+  Shift along axis  11.08885675
 
-correlation = 0.9495, corr about mean = 0.5598
-Correlation between molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 and PolIII_9A.mrc = 0.9495, about mean = 0.5598
+correlation = 0.9496, corr about mean = 0.5599
+Correlation between molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 and PolIII_9A.mrc = 0.9496, about mean = 0.5599
+
 </pre>
 <br>
 </details>
