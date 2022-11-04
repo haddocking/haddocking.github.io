@@ -957,7 +957,7 @@ Which domain is the worst defined over the various clusters?
 
 Let's now check if the solutions actually fit the cross-links we defined.
 Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
-ranking cluster, `cluster1_1.pdb`.
+ranking cluster, `cluster5_1.pdb`.
 
 
 #### Analysing the cross-links defining the position of the C82 domain
@@ -993,7 +993,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>Two cross-links for C82 are heavily violated with distances >50A. Clearly this model does not stastify all crosslinks. 
+<p>Two cross-links for C82 are heavily violated with distances up to ~50A. Clearly this model does not stastify all crosslinks. 
 Check the restraint energy of the various clusters and examine if the one with the best (lowest) restraint energy fits the cross-links better.</p>
 </details>
 <br>
@@ -1022,10 +1022,6 @@ distance C34-d05-30A, chain C and resid  65 and name CB, chain D and resid  123 
 distance C34-d06-30A, chain C and resid  65 and name CB, chain D and resid  126 and name CB<br>
 distance C34-d07-30A, chain C and resid  65 and name CB, chain D and resid  135 and name CB<br>
 distance C34-d08-30A, chain C and resid  65 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-d09-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-d10-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-d11-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-d12-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1057,17 +1053,10 @@ Alternatively delete them in PyMol by typing:
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-distance C34-d01-30A, chain C and resid  62 and name CB, chain D and resid   82 and name CB<br>
-distance C34-d02-30A, chain C and resid  62 and name CB, chain D and resid   83 and name CB<br>
-distance C34-d03-30A, chain C and resid  62 and name CB, chain D and resid  123 and name CB<br>
-distance C34-d04-30A, chain C and resid  65 and name CB, chain D and resid   82 and name CB<br>
-distance C34-d05-30A, chain C and resid  65 and name CB, chain D and resid  123 and name CB<br>
-distance C34-d06-30A, chain C and resid  65 and name CB, chain D and resid  126 and name CB<br>
-distance C34-d07-30A, chain C and resid  65 and name CB, chain D and resid  135 and name CB<br>
-distance C34-d09-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-d10-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-d11-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-d12-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
+distance C34-d01-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-d02-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-d03-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-d04-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1126,7 +1115,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>As for C82, there are heavily violated cross-links with distances >50A, especially the one connecting C31 to C82 (already seen when analysing the fit of the C82 cross-links).</p>
+<p>As for C82, there are heavily violated cross-links with distances up to ~50Å, especially the one connecting C31 to C82 (already seen when analysing the fit of the C82 cross-links).</p>
 </details>
 <br>
 
@@ -1266,15 +1255,11 @@ The last number in the command is the number of fittings tried from different ra
 </summary>
 <br>
 <pre>
-....cluster1_1.pdb :  0.8113
-....cluster2_1.pdb :  0.8023
-....cluster3_1.pdb :  0.8095
-....cluster4_1.pdb :  0.8175
-....cluster5_1.pdb :  0.8145
-....cluster6_1.pdb :  0.8953
-....cluster7_1.pdb :  0.8946
-....cluster8_1.pdb :  0.8105
-....cluster9_1.pdb :  0.8923
+    cluster1_1.pdb :  0.8132
+    cluster2_1.pdb :  0.8130
+    cluster3_1.pdb :  0.8943
+    cluster4_1.pdb :  0.8189
+....cluster5_1.pdb :  0.8178
 </pre>
 <br>
 </details>
@@ -1282,7 +1267,7 @@ The last number in the command is the number of fittings tried from different ra
 
 
 <a class="prompt prompt-question">
-Looking at the correlation coefficients of the various clusters, a few have values close to 0.9. Do those fit the cross-link restraints better (concentrate here on C82)?
+Looking at the correlation coefficients of the various clusters, one has values close to 0.9. Do those fit the cross-link restraints better (concentrate here on C82)?
 </a>
 
 It looks like this strategy was not able to generate models that fullfil the cross-link restraints (or those restraints are possibly problematic/false positives). In the following we will explore an alternate strategy that will first make use of the cryo-EM data to position the largest components into the map and then dock the remaining models.
@@ -1883,7 +1868,7 @@ alignto cluster1_1 and chain A<br>
 This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains. Be patient as given the size of the system this might take a bit of time...
 
 
-__Note__: You can also open in PyMol a session in which the models have already been fitted. Open for this the `strategy2-clusters.pse` file found in the `docking/strategy2-RNA-PolIII-core-C82-C34-wHTHs-C31pep_summary` directory
+__Note__: You can also open in PyMol a session in which the models have already been fitted. Open for this the `strategy2-clusters.pse` file found in the `docking/strategy2-RNA-PolIII-core-C82-C34-wHTHs-C31pept_summary` directory
 
 
 <a class="prompt prompt-question">
@@ -1933,11 +1918,11 @@ util.cbc<br>
 distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
 distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
 distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d04-30A, chain B and resid 520 and name CB, chain C and resid  135 and name CB<br>
-distance C82-d05-30A, chain B and resid 520 and name CB, chain C and resid  138 and name CB<br>
-distance C82-d06-30A, chain B and resid 520 and name CB, chain C and resid  141 and name CB<br>
-distance C82-d08-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d10-30A, chain B and resid 612 and name CB, chain G and resid  111 and name CB<br>
+distance C82-d04-30A, chain B and resid 520 and name CB, chain D and resid  135 and name CB<br>
+distance C82-d05-30A, chain B and resid 520 and name CB, chain D and resid  138 and name CB<br>
+distance C82-d06-30A, chain B and resid 520 and name CB, chain D and resid  141 and name CB<br>
+distance C82-d07-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
+distance C82-d08-30A, chain B and resid 612 and name CB, chain G and resid  111 and name CB<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
@@ -1962,7 +1947,7 @@ If not, which ones are not satistified?
 <br>
 
 
-#### Analysing the cross-links defining the position of the C34 domain
+#### Analysing the cross-links defining the position of the C34 wHTH1 domain
 
 You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
 Alternatively delete them in PyMol by typing:
@@ -1972,11 +1957,14 @@ Alternatively delete them in PyMol by typing:
 In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-distance C34-1-d01-30A, chain C and resid 65 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d04-30A, chain C and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-2-d10-30A, chain C and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d11-30A, chain C and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-2-d12-30A, chain C and resid 141 and name CB, chain B and resid  520 and name CB<br>
+distance C34-d01-30A, chain C and resid  62 and name CB, chain D and resid   82 and name CB<br>
+distance C34-d02-30A, chain C and resid  62 and name CB, chain D and resid   83 and name CB<br>
+distance C34-d03-30A, chain C and resid  62 and name CB, chain D and resid  123 and name CB<br>
+distance C34-d04-30A, chain C and resid  65 and name CB, chain D and resid   82 and name CB<br>
+distance C34-d05-30A, chain C and resid  65 and name CB, chain D and resid  123 and name CB<br>
+distance C34-d06-30A, chain C and resid  65 and name CB, chain D and resid  126 and name CB<br>
+distance C34-d07-30A, chain C and resid  65 and name CB, chain D and resid  135 and name CB<br>
+distance C34-d08-30A, chain C and resid  65 and name CB, chain A and resid 5394 and name CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1994,7 +1982,42 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>All cross-links are satistied for C34.</p>
+<p>In the case of C34 wHTH1, all cross-links are satisfied.</p>
+</details>
+<br>
+
+#### Analysing the cross-links defining the position of the C34 wHTH2 domain
+
+You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
+Alternatively delete them in PyMol by typing:
+
+<a class="prompt prompt-pymol">delete C82*</a>
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+distance C34-d01-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
+distance C34-d02-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
+distance C34-d03-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
+distance C34-d04-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
+</a>
+
+<a class="prompt prompt-info">
+Inspect the various cross-link distances.
+</a>
+
+<a class="prompt prompt-question">
+Is the model satisfying the cross-link restraints?
+</a>
+
+<a class="prompt prompt-question">
+If not, which ones are not satistified?
+</a>
+
+
+<details style="background-color:#DAE4E7"><summary><b>See answer:</b>
+</summary>
+<p>In the case of C34 wHTH2, all cross-links are satisfied.</p>
 </details>
 <br>
 
@@ -2175,10 +2198,14 @@ The last number in the command is the number of fittings tried from different ra
 </summary>
 <br>
 <pre>
-....cluster1_1.pdb :  0.9292
-....cluster1_2.pdb :  0.9342
-....cluster1_3.pdb :  0.9360
-....cluster1_4.pdb :  0.9357
+....cluster1_1.pdb :  0.9435
+....cluster1_2.pdb :  0.9439
+....cluster1_3.pdb :  0.9458
+....cluster1_4.pdb :  0.9434
+....cluster2_1.pdb :  0.9456
+....cluster2_2.pdb :  0.9425
+....cluster2_3.pdb :  0.9415
+....cluster2_4.pdb :  0.9504
 </pre>
 <br>
 </details>
@@ -2193,7 +2220,7 @@ The last number in the command is the number of fittings tried from different ra
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III-2022/strategy2-EMfit.png">
 </figure>
-<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.9315). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 domains are however found in a region where no density is present, even when playing with the density level.</p>
+<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.9456). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 wHTH3 domain also nicely fit into the density. The other two C34 domains are however found in a region where no or little density is present, even when playing with the density level, which might indicate disorder / conformational variability.</p>
 </details>
 <br>
 <br>
