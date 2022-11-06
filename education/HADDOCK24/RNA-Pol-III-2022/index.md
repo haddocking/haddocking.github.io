@@ -359,7 +359,6 @@ Consider the Predicted aligned error displayed as a matrix.
   <figure align="center">
    <img src="/education/HADDOCK24/RNA-Pol-III-2022/C82-C34_PAE-alphafold.png">
   </figure>
-  <br>
 </details>
 <br>
 
@@ -371,7 +370,9 @@ Consider the Predicted aligned error displayed as a matrix.
   <summary style="font-weight: bold">
     <i>See answer</i>
   </summary>
+  <br>
   <p>From an analysis of the diagonal blocks we can identify the three wHTH domains, whose stucture is well predicted. When considering the off-diagonal blocks, the last domain of C34, wHTH3, seems to be the best defined with respect to C82. We will make use of this in our modelling strategy 2 in this tutorial. Since the orientation of the other domain with respect with C82, we will treat these as separate entities for modelling purpose, together with the available cross-links.</p>
+<br>
 </details>
 <br>
 
@@ -471,9 +472,12 @@ If you already have credential, simply login in the upper right corner of the [d
 Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:target="_blank"}.
 
 From the `input-pdbs` directory select:
+
 <a class="prompt prompt-info">Fixed chain → B_C82-alphafold-trimmed.pdb</a>
 <a class="prompt prompt-info">Scanning chain → C_C34-alphafold-trimmed.pdb</a>
+
 From the `disvis` directory select:
+
 <a class="prompt prompt-info">Restraints file → xlinks-C82-C34.disvis</a>
 
 Once the fields have been filled in, you can submit your job to our server
@@ -649,11 +653,12 @@ Are there other atoms defined? What could those be? (Hint... MARTINI)
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-Additional atoms are included in the distance restraints definitions: `BB` . These correspond to the backbone beads in the MARTINI representation.
+<br>
+<p>Additional atoms are included in the distance restraints definitions: `BB`. These correspond to the backbone beads in the MARTINI representation.</p>
 </details>
 <br>
 
-In the restraints directory provided, there are additional restraint file provided, e.g.: `C34-connectivity.tbl`.
+In the restraints directory provided, there are additional restraint file provided, e.g.: `C31-C34-connectivities.tbl`.
 Inspect its content.
 
 <a class="prompt prompt-question">
@@ -662,8 +667,10 @@ What are those restraints for?
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-C34 consists of three winged-helix-turn-helix domains which could be docked separately in principle. These are connected by flexible linkers.
+<br>
+<p>C34 consists of three winged-helix-turn-helix domains which could be docked separately in principle. These are connected by flexible linkers.
 The defined restraints impose upper limits to the distance between the C- and N-terminal domains of the the domains. The upper limit was estimated as the number of missing segments/residues * 4.5Å (a typical distance observed in diffraction data for amyloid fibrils, representing a CA-CA distance in an extended conformation).
+The same applies to C31 for which only two peptide fragments will be used to be able to make use of the cross-link restraints.</p>
 </details>
 <br>
 
@@ -672,7 +679,7 @@ _Note_: You should notice that the restraints are duplicated (actually 4 times).
 
 
 <hr><hr>
-## Strategy 1): Modelling the complex (core+C82+C34wHTH1+C34wHTH2+C31peptides) by docking with cross-links
+## Strategy 1): Modelling the complex (core + C82 + C34wHTH1 + C34wHTH2 + C31peptides) by docking with cross-links
 
 
 We will use the core domain of RNA-PolIII together with the trimmed AlphaFold models of C82 and C34, and two peptides extracted from the C31 model.
@@ -818,16 +825,8 @@ When docking only with  interface information (i.e. no specific distances), we a
 Sample 180 degrees rotated solutions during rigid body EM -> turn off
 </a>
 
-* **Step 13:** Unfold the **clustering parameters** menu.
 
-The default clustering methods in Fraction of Native Contacts (FCC). Since we are dealing with multiple interfaces, to have a better discrimination of solutions we will increase the cutoff to 0.75.
-
-<a class="prompt prompt-info">
-Cutoff for clustering -> 0.75
-</a>
-
-
-* **Step 14:** Submission.
+* **Step 13:** Submission.
 
 We are now ready to submit the docking run. Scroll to the bottom of the page.
 
@@ -841,7 +840,7 @@ Click on the "Submit" button at the bottom left of the interface.
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
 
 <figure align="center">
-<img width="50%" src="/education/HADDOCK24/RNA-Pol-III-2022/HADDOCK-submission.png">
+<img width="75%" src="/education/HADDOCK24/RNA-Pol-III-2022/HADDOCK-submission.png">
 </figure>
 
 Your run will first be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
@@ -859,11 +858,11 @@ to allow the runs to complete within a reasonable amount of time. Because of tha
 
 We have already performed a full docking run (with 4000/400/400 models generated for the
 rigid-body docking, semi-flexible and final refinement stages). 
-The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/188548-RPolIII-core-C82-C34-wHTH1-wHTH2-C31pept){:target="_blank"}.
+The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/result/4242424242/188717-RPolIII-core-C82-C34-wHTH1-wHTH2-C31pept){:target="_blank"}.
 
 
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2022/HADDOCK-result-page.png">
+<img width="75%" src="/education/HADDOCK24/RNA-Pol-III-2022/HADDOCK-result-page.png">
 <p> Example result page</p>
 </figure>
 
@@ -957,7 +956,7 @@ Which domain is the worst defined over the various clusters?
 
 Let's now check if the solutions actually fit the cross-links we defined.
 Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
-ranking cluster, `cluster5_1.pdb`.
+ranking cluster, `cluster1_1.pdb`.
 
 
 #### Analysing the cross-links defining the position of the C82 domain
@@ -993,7 +992,8 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
-<p>Two cross-links for C82 are heavily violated with distances up to ~50A. Clearly this model does not stastify all crosslinks. 
+<br>
+<p>Several cross-links for C82 are heavily violated with distances betweem 38 and ~50A. Clearly this model does not stastify all crosslinks. 
 Check the restraint energy of the various clusters and examine if the one with the best (lowest) restraint energy fits the cross-links better.</p>
 </details>
 <br>
@@ -1039,6 +1039,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>In the case of C34 wHTH1, all cross-links are satisfied.</p>
 </details>
 <br>
@@ -1048,7 +1049,7 @@ If not, which ones are not satistified?
 You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
 Alternatively delete them in PyMol by typing:
 
-<a class="prompt prompt-pymol">delete C82*</a>
+<a class="prompt prompt-pymol">delete C34*</a>
 
 In the PyMOL command window type:
 
@@ -1074,6 +1075,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>In the case of C34 wHTH2, all cross-links are satisfied.</p>
 </details>
 <br>
@@ -1115,6 +1117,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>As for C82, there are heavily violated cross-links with distances up to ~50Å, especially the one connecting C31 to C82 (already seen when analysing the fit of the C82 cross-links).</p>
 </details>
 <br>
@@ -1255,11 +1258,16 @@ The last number in the command is the number of fittings tried from different ra
 </summary>
 <br>
 <pre>
-    cluster1_1.pdb :  0.8132
-    cluster2_1.pdb :  0.8130
-    cluster3_1.pdb :  0.8943
-    cluster4_1.pdb :  0.8189
-....cluster5_1.pdb :  0.8178
+    cluster1_1.pdb :  0.8939
+    cluster2_1.pdb :  0.8957
+    cluster3_1.pdb :  0.9225
+    cluster4_1.pdb :  0.8931
+    cluster5_1.pdb :  0.8200
+    cluster6_1.pdb :  0.8193
+    cluster7_1.pdb :  0.8085
+    cluster8_1.pdb :  0.8959
+    cluster9_1.pdb :  0.8941
+    cluster10_1.pdb : 0.9143
 </pre>
 <br>
 </details>
@@ -1267,7 +1275,7 @@ The last number in the command is the number of fittings tried from different ra
 
 
 <a class="prompt prompt-question">
-Looking at the correlation coefficients of the various clusters, one has values close to 0.9. Do those fit the cross-link restraints better (concentrate here on C82)?
+Looking at the correlation coefficients of the various clusters, one has a correlation coefficient above 0.92. Does it fit the cross-link restraints better (concentrate here on C82)?
 </a>
 
 It looks like this strategy was not able to generate models that fullfil the cross-link restraints (or those restraints are possibly problematic/false positives). In the following we will explore an alternate strategy that will first make use of the cryo-EM data to position the largest components into the map and then dock the remaining models.
@@ -1500,6 +1508,7 @@ PDB structure to be refined ? -> *PolIII-core-C82-C34-wHTH3-chimera-fitted-merge
 </a>
 
 * **Step 3:** Choose the refinement protocol
+
 <a class="prompt prompt-info">
 What protocol do you want to use? -> Coarse-grained refinement
 </a>
@@ -1554,7 +1563,7 @@ chimera \-\-nogui \-\-script \"CCcalculate.py PolIII-core-C82-chimera-fitted-CGr
 
 The last number in the command is the number of fittings tried from different random positions. The best fit value will be reported.
 
-<details style="background-color:#DAE4E7"><summary>View an example outout of the CCcalclulate script:
+<details style="background-color:#DAE4E7"><summary>View an example outout of the CCcalculate script:
 </summary>
 <br>
 <pre>
@@ -1664,7 +1673,7 @@ for the initial rigid-body docking stage.
 Connect to the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 
-<br>
+
 #### Submission of structures
 
 * **Step 1:** Define a name for your docking run, e.g. *RPolIII-EMfit-C34-wHTH1-wHTH2-C31-xlinks*.
@@ -1876,7 +1885,7 @@ Examine the various clusters. Compare the orientation of each domain (C82,C34 an
 How does their orientation differ between the various clusters?
 </a>
 
-__Reminder:__ ChainA corresponds to PolIII-core (green), B to C82 (blue), C to C34 (magenta), F and G (yellow and wheat) to C31.
+__Reminder:__ ChainA corresponds to PolIII-core (green), B to C82 (blue), C to C34 wHTH1 (magenta), D to C34 wHTH2 (yellow), E to C34 wHTH3 (wheat) and F and G (violet and gray) to C31.
 
 <details style="background-color:#DAE4E7"><summary><b>See PyMol view:</b>
 </summary>
@@ -1942,6 +1951,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>The fit is better than in strategy 1, but thre is still one heavily violated cross-link between resid 472 of C82 and resid 5394 of the core. This might well be a false positive. It was not detected by DISVIS because the analysis is only performed for pair of domain and it can be satisfied, while when considering all molecules and all cross-links it can not.</p>
 </details>
 <br>
@@ -1982,9 +1992,11 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>In the case of C34 wHTH1, all cross-links are satisfied.</p>
 </details>
 <br>
+
 
 #### Analysing the cross-links defining the position of the C34 wHTH2 domain
 
@@ -2017,6 +2029,7 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>In the case of C34 wHTH2, all cross-links are satisfied.</p>
 </details>
 <br>
@@ -2058,9 +2071,11 @@ If not, which ones are not satistified?
 
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
+<br>
 <p>All cross-links are now stastified, including the one with C82 that was not in strategy 1.</p>
 </details>
 <br>
+
 
 <hr>
 ### Fitting the docking models into low resolution cryo-EM maps
@@ -2198,14 +2213,14 @@ The last number in the command is the number of fittings tried from different ra
 </summary>
 <br>
 <pre>
-....cluster1_1.pdb :  0.9435
-....cluster1_2.pdb :  0.9439
-....cluster1_3.pdb :  0.9458
-....cluster1_4.pdb :  0.9434
-....cluster2_1.pdb :  0.9456
-....cluster2_2.pdb :  0.9425
-....cluster2_3.pdb :  0.9415
-....cluster2_4.pdb :  0.9504
+    cluster1_1.pdb :  0.9435
+    cluster1_2.pdb :  0.9439
+    cluster1_3.pdb :  0.9458
+    cluster1_4.pdb :  0.9434
+    cluster2_1.pdb :  0.9456
+    cluster2_2.pdb :  0.9425
+    cluster2_3.pdb :  0.9415
+    cluster2_4.pdb :  0.9504
 </pre>
 <br>
 </details>
@@ -2220,6 +2235,7 @@ The last number in the command is the number of fittings tried from different ra
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III-2022/strategy2-EMfit.png">
 </figure>
+<br>
 <p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.9456). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 wHTH3 domain also nicely fit into the density. The other two C34 domains are however found in a region where no or little density is present, even when playing with the density level, which might indicate disorder / conformational variability.</p>
 </details>
 <br>
