@@ -220,7 +220,7 @@ If running under `bash` shell, type:
   cd .. <br>
   cd pdb-tools/pdbtools; export PATH=${PATH}:\`pwd\` <br>
   cd .. <br>
-  cd freesasa-2.0.3/src; export PATH=${PATH}:\`pwd\` <br>
+  cd freesasa-2.1.2/src; export PATH=${PATH}:\`pwd\` <br>
   cd ..<br>
 </a>
 
@@ -598,7 +598,7 @@ We can use `freesasa` to calculate the residue solvent accessibilities:
 The results is file similar to the output of `naccess` containing the per residue solvent accessibilities, both absolute and relative values, also distinguishing between backbone and side-chains:
 
 <pre style="background-color:#DAE4E7">
-REM  FreeSASA 2.0.3
+REM  FreeSASA 2.1.2
 REM  Absolute and relative SASAs for e2a_1F3G.pdb
 REM  Atomic radii and reference values for relative SASA: ProtOr
 REM  Chains: A
