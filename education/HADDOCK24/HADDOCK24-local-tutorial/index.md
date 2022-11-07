@@ -41,9 +41,9 @@ We will provide you links to download the various required software and data.
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2))
-is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the
-power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](/software/haddock2.4){:target="_blank"})
+is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the
+power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
@@ -74,6 +74,17 @@ to a very narrow sampling of the conformational space, meaning that the generate
 Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions,
 displaying greater variability in the region of binding.
 
+  <details >
+  <summary style="bold">
+  <b><i>See animation of rigid-body minimization (it0):</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/images/haddock_mini.gif">
+  </figure>
+  </details>
+  <br>
+
+
 * **2. Semi-flexible simulated annealing in torsion angle space (it1)** <BR>
 The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step
 molecular dynamics-based refinement in order to optimize interface packing. It is worth noting that flexibility in
@@ -85,12 +96,34 @@ move their side-chains in a second refinement step. Finally, both backbone and s
 are granted freedom.
 The AIRs again play an important role at this stage since they might drive conformational changes.
 
+  <details >
+  <summary style="bold">
+  <b><i>See animation of semi-flexible simulated annealing (it1):</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/images/haddock_sa.gif">
+  </figure>
+  </details>
+  <br>
+
+
 * **3. Refinement in Cartesian space with explicit solvent (water)** <BR>
 The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the
 interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane
 mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at
 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side
 chains to be optimized.
+
+  <details >
+  <summary style="bold">
+  <b><i>See animation of refinement in explicit solvent (water):</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/images/haddock_water.gif">
+  </figure>
+  </details>
+  <br>
+
 
 The performance of this protocol of course depends on the number of models generated at each step. Few models are less
 probable to capture the correct binding pose, while an exaggerated number will become computationally unreasonable. The
@@ -113,12 +146,12 @@ the interface used in the calculation is automatically defined based on an analy
 <hr>
 ### Downloading HADDOCK
 In this tutorial we will make use of the new HADDOCK2.4 version.  
-To obtain HADDOCK2.4 fill the [HADDOCK license form](/software/haddock2.4/download/).
+To obtain HADDOCK2.4 fill the [HADDOCK license form](/software/haddock2.4/download/){:target="_blank"}.
 
 <br>
 <hr>
 ### Downloading CNS
-The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23).
+The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23){:target="_blank"}.
 
 Untar the archive in the `software` directory.
 
@@ -131,14 +164,14 @@ Untar the archive in the `software` directory.
   cd <br>
   mkdir software <br>
   cd software <br>
-  wget https://freesasa.github.io/freesasa-2.0.3.tar.gz
+  wget https://freesasa.github.io/freesasa-2.1.2.tar.gz
 </a>
 
 If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
 
 <a class="prompt prompt-cmd">
-  tar xvfz freesasa-2.0.3.tar.gz <br>
-  cd freesasa-2.0.3 <br>
+  tar xvfz freesasa-2.1.2.tar.gz <br>
+  cd freesasa-2.1.2 <br>
   ./configure \-\-disable-json \-\-disable-xml \-\-prefix ~/software <br>
   make<br>
   make install<br>
@@ -153,7 +186,7 @@ If running into problems you might want to disable `json` and `xml` support. Her
 
 In case git is not installed on your system, go the GitHub site given in the command and download directly the archive.
 
-**[MolProbity][link-molprobity]{:target="_blank"}**: MolProbity is a structure validate software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely downloaded from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity). You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
+**[MolProbity][link-molprobity]{:target="_blank"}**: MolProbity is a structure validate software suite developed in the Richardson lab at Duke University. In the context of HADDOCK we are making use of MolProbity to define the protonation state of Histidine residues using the `reduce` application. An pre-compiled executable can be freely downloaded from the [MolProbity GitHub website](https://github.com/rlabduke/MolProbity){:target="_blank"}. You can directly download the `reduce` executable for [Linux](https://github.com/rlabduke/MolProbity/blob/master/bin/linux/reduce){:target="_blank"} or [OSX](https://github.com/rlabduke/MolProbity/blob/master/bin/macosx/reduce){:target="_blank"}.
 
 Put the executable in `~software/bin`, rename it to `reduce` if needed and make sure it is executable (e.g. `chmod +x ~/software/bin/reduce`).
 
@@ -235,7 +268,7 @@ And example configuration file for running on local resources assuming a 4 core 
 </pre>
 
 
-For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found [here](software/haddock2.4/faq).
+For submitting to a batch system instead you might want to use a wrapper script. An example for torque can be found [here](/software/haddock2.4/faq){:target="_blank"}.
 
 In order to configure HADDOCK, call the `install.csh` script with as argument the configuration script you just created:
 
@@ -286,7 +319,7 @@ We suggest to create separate directories for the different cases and work from 
 <br>
 <hr>
 ### Cleaning PDB files prior to docking
-We will use here as example the E2A structure used as input in our [HADDOCK webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/).
+We will use here as example the E2A structure used as input in our [HADDOCK webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/){:target="_blank"}.
 This protein is part of a phospho-transfer complex and one of its histidine residue should in principle be phosphorylated.
 Start PyMOL and in the command line window of PyMOL (indicated by PyMOL>) type:
 
@@ -324,7 +357,7 @@ For this in the PyMOL command line type:
 
 **Note** that you can of course also simply edit the PDB file with your favorite text editor.
 
-Since the biological function of the E2A-HPR complex is to transfer a phosphate group from one protein to another, via histidines side-chains, it is relevant to make sure that a phosphate group be present for docking. As we have seen above none is currently present in the PDB files. HADDOCK does support a list of modified amino acids which you can find at the following link: [https://wenmr.science.uu.nl/haddock2.4/library](https://wenmr.science.uu.nl/haddock2.4/library).
+Since the biological function of the E2A-HPR complex is to transfer a phosphate group from one protein to another, via histidines side-chains, it is relevant to make sure that a phosphate group be present for docking. As we have seen above none is currently present in the PDB files. HADDOCK does support a list of modified amino acids which you can find at the following link: [https://wenmr.science.uu.nl/haddock2.4/library](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}.
 
 <a class="prompt prompt-question">Check the list of supported modified amino acids.</a>
 <a class="prompt prompt-question">What is the proper residue name for a phospho-histidine in HADDOCK?</a>
@@ -357,7 +390,7 @@ In case your PDB file comes from some modelling software, it might be good to ch
 
 **Note** that not all warnings are relevant. The important part is that the columns be properly aligned.
 
-You can also check if your PDB model has gaps in the structure. If gaps are detected you can either try to modell the missing fragments, or define a few distance restraints to keep the fragments together during docking (see the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins).
+You can also check if your PDB model has gaps in the structure. If gaps are detected you can either try to modell the missing fragments, or define a few distance restraints to keep the fragments together during docking (see the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins){:target="_blank"}.
 
 <a class="prompt prompt-cmd">
   pdb_gap.py e2aP_1F3G-clean.pdb
@@ -373,7 +406,7 @@ For HADDOCK, you will have to remove those double occupancies (or create multipl
 
 HADDOCK can take as input an ensemble of conformation. This has the advantage that it allows to pre-sample possible conformational changes. We however recommend to limit the number of conformers used for docking, since the number of conformer combinations of the input molecules might explode (e.g. 10 conformers each will give 100 starting combinations, and if we generate 1000 rigid body models (see [HADDOCK general concepts](#haddock-general-concepts) above) each combination will only be sampled 10 times).
 
-While the HADDOCK webportal will take those as an ensemble PDB file (with `MODEL` / `ENDMDL` statements), the local version of HADDOCK expects those models to be provided as single structure and an additional file providing a listing of the models. To illustrate this we will use the HPR protein used as input in our [HADDOCK2.4 webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/). The input structure for docking corresponds to an NMR ensemble of 30 models.
+While the HADDOCK webportal will take those as an ensemble PDB file (with `MODEL` / `ENDMDL` statements), the local version of HADDOCK expects those models to be provided as single structure and an additional file providing a listing of the models. To illustrate this we will use the HPR protein used as input in our [HADDOCK2.4 webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/){:target="_blank"}. The input structure for docking corresponds to an NMR ensemble of 30 models.
 
 We will now inspect the HPR structure. For this start PyMOL and in the command line window of PyMOL type:
 
@@ -479,7 +512,7 @@ This is the file you should save as `unambig.tbl` and pass to HADDOCK.
 ## Defining restraints for docking
 
 Before setting up the docking we need first to generate distance restraint files in a format suitable for HADDOCK.
-HADDOCK uses [CNS][link-cns] as computational engine. A description of the format for the various restraint types supported by HADDOCK can
+HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational engine. A description of the format for the various restraint types supported by HADDOCK can
 be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
@@ -492,7 +525,7 @@ The lower limit for the distance is calculated as: distance minus lower-bound co
 and the upper limit as: distance plus upper-bound correction.
 The syntax for the selections can combine information about chainID - `segid` keyword -, residue number - `resid`
 keyword -, atom name - `name` keyword.
-Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/).
+Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/){:target="_blank"}.
 
 We will shortly explain in this section how to generate both ambiguous interaction restraints (AIRs) and specific distance restraints for use in HADDOCK illustrating three scenarios:
 
@@ -500,7 +533,7 @@ We will shortly explain in this section how to generate both ambiguous interacti
 * **Specific distance restraints** (e.g. cross-links detected by MS)
 * **Interface mapping on one side, full surface on the other**
 
-Information about various types of distance restraints in HADDOCK can also be found in our [online manual](https://www.bonvinlab.org/software/haddock2.2/generate_air_help/) pages.
+Information about various types of distance restraints in HADDOCK can also be found in our [online manual](/software/haddock2.4/generate_air_help/){:target="_blank"} pages.
 
 <br>
 <hr>
@@ -646,7 +679,7 @@ A 55 CA B 179 CA 0 26
 A 54 CA B 179 CA 0 26
 </pre>
 
-This is the format used by our [DisVis portal](https://wenmr.science.uu.nl/disvis) to represent the cross-links. Each cross-link definition consists of eight fields:
+This is the format used by our [DisVis portal](https://wenmr.science.uu.nl/disvis){:target="_blank"} to represent the cross-links. Each cross-link definition consists of eight fields:
 
 * chainID of the 1st molecule
 * residue number
@@ -744,7 +777,7 @@ Cross-referencing those against the predicted CDR residues gives a final list fo
 27 28 30 32 33 35 37 56 57 58 59 61 101 102 103 527 528 531 532 550 552 553 554 556 592 593 593 594
 
 </pre>
-Save this residue list (including an empty line for the passive residue) in a test file (e.g. [4G6K-active.list](/education/HADDOCK24/HADDOCK24-local-tutorial/4G6K-active.list)
+Save this residue list (including an empty line for the passive residue) in a test file (e.g. [4G6K-active.list](/education/HADDOCK24/HADDOCK24-local-tutorial/4G6K-active.list){:target="_blank"}
 
 
 
@@ -799,7 +832,7 @@ The resulting AIR restraint file is: `antibody-antigen-ambig.tbl`
 Finally, let's assume we have one detected DSS cross-link between Lys63 of the antibody and Lys93 or the antigen with an upper limit of 23Å.
 We can define an ambiguous restraints between the CB of those two residues:
 
-This distance restraint can be combined with the specific distances defined to keep the two antibody chains together (see [Dealing with multi-chain proteins](#dealing-with-multi-chain proteins) into a new [antibody-antigen-unambig.tbl](/education/HADDOCK24/HADDOCK24-local-tutorial/antibody-antigen-unambig.tbl) file:
+This distance restraint can be combined with the specific distances defined to keep the two antibody chains together (see [Dealing with multi-chain proteins](#dealing-with-multi-chain proteins) into a new [antibody-antigen-unambig.tbl](/education/HADDOCK24/HADDOCK24-local-tutorial/antibody-antigen-unambig.tbl){:target="_blank"} file:
 
 <pre style="background-color:#DAE4E7">
  ! antibody inter-chain restraints
@@ -894,12 +927,12 @@ This involves mainly:
 
 For this example we will limit ourselves to defining the Histidine protonation state and reducing the number of models generated in order to get results in a reasonable time. For a real run, considering we are targeting the entire surface of the antigen, we should rather increase the sampling.
 
-Edit `run.cns` using your favorite editor. Take the time to look a bit at its content. There is a very large number of variables defined that you can change (provided you know what you are doing...). Some of these are explained in our [HADDOCK2.2 online manual](software/haddock2.2/run/)
+Edit `run.cns` using your favorite editor. Take the time to look a bit at its content. There is a very large number of variables defined that you can change (provided you know what you are doing...). Some of these are explained in our [HADDOCK2.4 online manual](/software/haddock2.4/run/)
 
 
 #### Defining the protonation state of Histidines
 
-By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use [PROPKA](https://www.propka.org). The HADDOCK webservers defines the protonation state of Histidine using [MolProbity][link-molprobity]{:target="_blank"}. This is what we are going to demonstrate here. For this we will make use of the `reduce` executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based.
+By default HADDOCK will treat all histidines as doubly protonated and thus positively charged. It is therefore important when your structure contains Histidines to check what the protonation state should be. There are different options for this. One could be to use [PROPKA](https://www.propka.org){:target="_blank"}. The HADDOCK webservers defines the protonation state of Histidine using [MolProbity][link-molprobity]{:target="_blank"}. This is what we are going to demonstrate here. For this we will make use of the `reduce` executable from MolProbity to generate all hydrogens in the structure. It makes an educated guess of the protonation state of Histidine by considering the hydrogen bond network around those, i.e. structure-based.
 
 Our `haddock-tools` contain a script that will run `reduce` and extract the protonation state information (`reduce` must be in your path for the script to work):
 
@@ -1032,7 +1065,7 @@ You will see text appearing indicating the progression of your run. It is a good
 <hr>
 ## Analysing the docking results
 
-HADDOCK will perform various analysis of the resulting models, both after `it1` and `water`. For details see the online [HADDOCK manual](https://www.bonvinlab.org/software/haddock2.2/analysis/).
+HADDOCK will perform various analysis of the resulting models, both after `it1` and `water`. For details see the online [HADDOCK manual](/software/haddock2.4/analysis/){:target="_blank"}.
 While the web server will present you with cluster statistics, in the local version you will need to perform this analysis manually.
 
 There are various steps that can be performed:
@@ -1041,7 +1074,7 @@ There are various steps that can be performed:
 * Performing cluster analysis
 * Rerunning the analysis for a single cluster
 
-In order to work with real data, we have performed full runs on this system. Download and unpack the following [gzipped tar archive](https://surfdrive.surf.nl/files/index.php/s/sf2FUVau1Iasocd).
+In order to work with real data, we have performed full runs on this system. Download and unpack the following [gzipped tar archive](https://surfdrive.surf.nl/files/index.php/s/sf2FUVau1Iasocd){:target="_blank"}.
 
 <a class="prompt prompt-cmd">
   tar xfz antibody-antigen.tgz
@@ -1143,7 +1176,7 @@ In order to extract stats from the various PDB files following the HADDOCK ranki
 </a>
 
 This generates a variety of data files, the most interesting one being `structures_haddock-sorted.stat` which lists the various terms following the HADDOCK sorting.
-For more details refer to the [online manual](https://www.bonvinlab.org/software/haddock2.2/analysis/#anastruc).
+For more details refer to the [online manual](/software/haddock2.4/analysis/#anastruc){:target="_blank"}.
 
 
 <pre style="background-color:#DAE4E7">
@@ -1213,8 +1246,8 @@ One section of `run.cns` which we have not modified in this example specifies th
 
 HADDOCK supports two different clustering methods:
 
-* One based on the fraction of common contacts between the molecules (FCC clustering) (for details see the [online manual](/software/haddock2.2/analysis/#clusterrmsd){:target="_blank"})
-* One based on the ligand interface RMSD (here the structures are first fitted on the interface of the first molecule and then the RMSD is calculated on the interface of the remaining molecules (for details see the [online manual](/software/haddock2.2/analysis/#clusterfcc){:target="_blank"})
+* One based on the fraction of common contacts between the molecules (FCC clustering) (for details see the [online manual](/software/haddock2.4/analysis/#clusterrmsd){:target="_blank"})
+* One based on the ligand interface RMSD (here the structures are first fitted on the interface of the first molecule and then the RMSD is calculated on the interface of the remaining molecules (for details see the [online manual](/software/haddock2.4/analysis/#clusterfcc){:target="_blank"})
 
 The default is `FCC` (also recommended for multimeric complexes). For small ligand and peptide docking we however recommend using the RMSD clustering option with reduced cutoffs of 2.0Å and 5.0Å, respectively.
 
@@ -1252,7 +1285,7 @@ We will now perform a cluster-based analysis and ranking, calculating the averag
   $HADDOCKTOOLS/ana_clusters.csh -best 4 analysis/cluster.out
 </a>
 
-This generates a variety of data files, the most interesting one being `clusters_haddock-sorted.stats_best4` which lists the various terms following the clusters and their corresponding average score and other energy terms based on their average HADDOCK score. For details refer to the [online manual](/software/haddock2.2/analysis/#anaclust).
+This generates a variety of data files, the most interesting one being `clusters_haddock-sorted.stats_best4` which lists the various terms following the clusters and their corresponding average score and other energy terms based on their average HADDOCK score. For details refer to the [online manual](/software/haddock2.4/analysis/#anaclust){:target="_blank"}.
 
 <pre style="background-color:#DAE4E7">
 #Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
@@ -1310,7 +1343,7 @@ But in this particular example we only performed the clustering since the follow
 
 To perform the full analysis, you would have to empty the `analysis` directory, change the setting in `run.cns` to `full` and restart HADDOCK.
 Note that a full analysis can take quite some time, up to a few hours depending on the number of models generated and the size of your complex.
-For details about violations analysis, please refer to the [online manual](software/haddock2.2/analysis/#noes){:target="_blank"}
+For details about violations analysis, please refer to the [online manual](software/haddock2.4/analysis/#noes){:target="_blank"}
 
 
 <br>
@@ -1386,10 +1419,10 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
 
-[link-cns]:CNS_manual.pdf "CNS online"
+[link-cns]: https://cns-online.org "CNS online"
 [link]: https://www.pymol.org/ "PyMOL"
-[link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
-[link-manual]: https://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
+[link-haddock]: /software/haddock2.4 "HADDOCK 2.4"
+[link-manual]: /software/haddock2.4/manual/ "HADDOCK Manual"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
 [link-freesasa]: https://freesasa.github.io "FreeSASA"

@@ -99,6 +99,17 @@ to a very narrow sampling of the conformational space, meaning that the generate
 Conversely, very sparse restraints (e.g. the entire surface of a partner) will result in very different solutions,
 displaying greater variability in the region of binding.
 
+  <details >
+  <summary style="bold">
+  <b><i>See animation of rigid-body minimization (it0):</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/images/haddock_mini.gif">
+  </figure>
+  </details>
+  <br>
+
+
 * **2. Semi-flexible simulated annealing in torsion angle space (it1)** <BR>
 The second stage of the docking protocol introduces flexibility to the interacting partners through a three-step
 molecular dynamics-based refinement in order to optimize the interface packing. It is worth noting that flexibility in
@@ -110,6 +121,17 @@ move their side-chains in a second refinement step. Finally, both backbone and s
 are granted freedom.
 The AIRs again play an important role at this stage since they might drive conformational changes.
 
+  <details >
+  <summary style="bold">
+  <b><i>See animation of semi-flexible simulated annealing (it1):</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/images/haddock_sa.gif">
+  </figure>
+  </details>
+  <br>
+
+
 * **3. Refinement in Cartesian space with explicit solvent (water)** <BR>
 The final stage of the docking protocol allows to immerse the complex in a solvent shell to improve the energetics of the
 interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane
@@ -117,6 +139,17 @@ mimic. In this short explicit solvent refinement the models are subjected to a s
 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side
 chains to be optimized. In the 2.4 version of HADDOCK, the explicit solvent refinement is replaced by default by a simple 
 energy minimisation as benchmarking has shown solvent refinement does not add much to the quality of the models. This allows to save time.
+
+  <details >
+  <summary style="bold">
+  <b><i>See animation of refinement in explicit solvent (water):</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/images/haddock_water.gif">
+  </figure>
+  </details>
+  <br>
+
 
 The performance of this protocol depends on the number of models generated at each step. Few models are less
 probable to capture the correct binding pose, while an exaggerated number will become computationally unreasonable. The
