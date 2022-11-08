@@ -508,7 +508,7 @@ PDB structure to submit -> Browse and select from the _1ACB/HADDOCK/input_ direc
 Segment ID to use during docking -> B
 </a>
 
-* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.biochem.duke.edu/){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+* **Step 4:** Click on the "Next" button at the bottom left of the interface. This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu){:target="_blank"} to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 #### Definition of restraints
 
@@ -946,4 +946,4 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-haddock]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
-[link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
+[link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
