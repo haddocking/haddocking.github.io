@@ -20,6 +20,7 @@ This tutorial consists of the following sections:
 This tutorial will demonstrate the use of a local installation of HADDOCK2.4 for predicting the structure of biomolecular complexes. It will cover various steps, from the installation of a local HADDOCK2.4 version and the third party software required, the preparation of PDB files for docking, the definition of restraints to guide the docking, the setup of the docking and finally the analysis of the results. General information about HADDOCK can be found on our [group page][link-haddock]{:target="_blank"} and its corresponding [online manual][link-manual]{:target="_blank"}. Also take note of the [HADDOCK online forum][link-forum]{:target="_blank"} where you can post HADDOCK-related questions and search the archive for possible answers.
 
 
+
 Throughout the tutorial, colored text will be used to refer to questions or
 instructions, and/or PyMOL commands.
 
@@ -37,6 +38,7 @@ In order to follow this tutorial you will need to work on a Linux or MaxOSX syst
 (freely available for most operating systems) on your computer in order to visualize the input and output data.
 We will provide you links to download the various required software and data.  
 
+### HERE
 <hr>
 <hr>
 ## HADDOCK general concepts
@@ -105,6 +107,8 @@ receptor (the first molecule) and calculating the RMSDs on the interface of the 
 common contacts* (current default) that measures the similarity of the intermolecular contacts. For RMSD clustering,
 the interface used in the calculation is automatically defined based on an analysis of all contacts made in all models.
 
+### NOT INCLUDED - JOAO
+
 <hr>
 <hr>
 ## Installing HADDOCK
@@ -144,6 +148,8 @@ If running into problems you might want to disable `json` and `xml` support. Her
   make install<br>
 </a>
 
+### JOAO - skipping haddock-tools for now
+
 **[HADDOCK-tools][link-haddocktools]{:target="_blank"}**: A collection of HADDOCK-related scripts freely available from our GitHub repository. To install it:
 
 <a class="prompt prompt-cmd">
@@ -166,6 +172,7 @@ Put the executable in `~software/bin`, rename it to `reduce` if needed and make 
 
 In case git is not installed on your system, go the GitHub site given in the command and download directly the archive.
 
+### joao skipping profit
 **[ProFit][link-profit]{:target="_blank"}**: ProFit is designed to be the ultimate protein least squares fitting program. Some of the provided analysis tools in HADDOCK make use of Profit. Profit can be obtained free of charge for both non-profit and commercial users. The latter should notify the authors that they are using it. For information and download see the [ProFit webpage][link-profit]{:target="_blank"}.
 
 **[PyMol][link-pymol]{:target="_blank"}**: We will make use of PyMol for visualisation. If not already installed on your system, download and install PyMol.
@@ -285,6 +292,7 @@ We suggest to create separate directories for the different cases and work from 
 
 <br>
 <hr>
+
 ### Cleaning PDB files prior to docking
 We will use here as example the E2A structure used as input in our [HADDOCK webserver basic protein-protein docking tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/).
 This protein is part of a phospho-transfer complex and one of its histidine residue should in principle be phosphorylated.
@@ -658,6 +666,7 @@ This is the format used by our [DisVis portal](https://wenmr.science.uu.nl/disvi
 * upper distance limit
 
 The corresponding CNS-formatted HADDOCK restraint file for those would be ([unambig-xlinks.tbl](/education/HADDOCK24/HADDOCK24-local-tutorial/unambig-xlinks.tbl){:target="_blank"}):
+
 <pre style="background-color:#DAE4E7">
 assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
 assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
