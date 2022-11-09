@@ -378,7 +378,17 @@ calculating the surface distance instead. Such an analysis can be done with the 
 <br>
 ### C82-C34 AlphaFold-multimer model
 
-We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer` directory. You can inspect the pdb models together with the png files, which contains the plDDT and PAE analysis calculated per model. For coloring the pdb files according to the plDDT scores, you can use the following Pymol code: [https://github.com/cbalbin-bio/pymol-color-alphafold](https://github.com/cbalbin-bio/pymol-color-alphafold){:target="_blank"} 
+We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer/C82-C34-wo-template` directory. You can inspect the pdb models together with the png files, which contains the plDDT and PAE analysis calculated per model. For coloring the pdb files according to the plDDT scores, you can use the following PyMOL command:
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select C82C34_873a4_unrelaxed_rank_1_model_1.pdb
+</a>
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+spectrum b, tv_red yellow cyan blue, minimum=30, maximum=100
+</a>
 
 <a class="prompt prompt-info">
 Consider the Predicted aligned error displayed as a matrix.
