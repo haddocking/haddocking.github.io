@@ -68,8 +68,8 @@ Also, if not provided with special workshop credentials to use the HADDOCK porta
 <hr><hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the
-power of CNS (Crystallography and NMR System, [https://cns-online.org](https://cns-online.org){:target="_blank"}) for structure
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"}) is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) that harness the
+power of CNS (Crystallography and NMR System, [http://cns-online.org/v1.3/](http://cns-online.org/v1.3/){:target="_blank"}) for structure
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited
 from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
@@ -175,7 +175,7 @@ Let us first inspect the available data, namely the various structures (or Alpha
 the information from MS we have at hand to guide the docking. After unpacking the archive provided for this tutorial (see [Setup](#setuprequirements) above),
 you should see a directory called `RNA-Pol-III` with the following subdirectories in it:
 
-  * __cryo-EM__: This directory contains a 9Å cryo-EM map of the RNA Pol III.
+  * __cryo-EM__: This directory contains a 9Å cryo-EM map of the RNA Pol III (PolIII_9A.mrc).
   
   * __disvis__: This directory contains text files called `xlinks-all-X-Y.disvis` describing the cross-links between the various domains (X and Y).
 These files are in the format required to run DISVIS. The directory also containts the results of DISVIS analysis of the various domain pairs as directories named `disvis-results-X-Y`
@@ -187,18 +187,22 @@ These files are in the format required to run DISVIS. The directory also contain
   * __input-pdbs__: This directory contains the HADDOCK-ready input PDB files for the various domains
     * `A_PolIII-5fja-core.pdb`: The core region of Pol III with non-overlapping residue numbering (chain A)
     * `B_C82-alphafold-trimmed.pdb`: The AlphaFold model of C82 excluding the disordered long loops (chain B)
-    * `BE_C82-C34-wHTH3-alphafold-trimmed.pdb`: The AlphaFold-multimer model of C82 and C34 wHTH3 excluding the disordered long loops (chains B + E)
+    * `BE_C82-C34-wHTH3-alphafold-trimmed.pdb`: The AlphaFold-multimer model of C82 and the third helix-turn-helix domain of C34 excluding the disordered long loops (chains B + E)
     * `C_C34_wHTH1-alphafold.pdb`: The AlphaFold model of the first helix-turn-helix domain of C34 (chain C)
     * `D_C34_wHTH2-alphafold.pdb`: The AlphaFold model of the second helix-turn-helix domain of C34 (chain D)
-    * `F_C31_alphafold.pdb`: the AlphaFold model of C31 - unreliable model
-    * `F_C31_alphafold-K91-peptide.pdb`: Peptide containing Lysine 91 from C31 AlphaFold model (chain F) 
-    * `G_C31_alphafold-K111-peptide.pdb`: Peptide Lysine 111 from C31 from C31 AlphaFold model  (chain G) 
+    * `F_C31_alphafold.pdb`: The AlphaFold model of C31 - an unreliable model (chain F)
+    * `F_C31_alphafold-K91-peptide.pdb`: The peptide containing Lysine 91 from C31 AlphaFold model (chain F) 
+    * `G_C31_alphafold-K111-peptide.pdb`: The peptide containing Lysine 111 from C31 AlphaFold model (chain G) 
 
   * __restraints__:
     * `xlinks-all-core-C82-C34-C31-K91-K111.tbl`: This file contains all cross-links between the core, C82, C34 domains 
                                                   and two peptides containing Lys 91 and Lys 111 from the C31 domain (chains F and G, respectively)
     * `C31-C34-connectivities.tbl`: Connectivity restraints between the C34 domains and between the C31 peptides
     * `restraints-combined.tbl`: The combination of those two files
+
+* __AF-multimer__:
+    * `C82-C34-wo-template`: AF-multimer run results for predicting C82-C34 binding.
+    * `fasta-seqs`: Fasta sequences for the mobile monomers that can be used for further AF2 modeling.   
 
 From MS, we have experimentally determined cross-links between the various domains. We have only kept  here  the inter-domain cross-links relevant for  this tutorial.
 The cross-links are taken from ([Ferber et al. 2016](https://www.nature.com/articles/nmeth.3838){:target="_blank"}. These are the files present in the `disvis` directory. As an example here
@@ -374,7 +378,17 @@ calculating the surface distance instead. Such an analysis can be done with the 
 <br>
 ### C82-C34 AlphaFold-multimer model
 
-We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer` directory.
+We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer/C82-C34-wo-template` directory. You can inspect the pdb models together with the png files, which contains the plDDT and PAE analysis calculated per model. For coloring the pdb files according to the plDDT scores, you can use the following PyMOL command:
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select C82C34_873a4_unrelaxed_rank_1_model_1.pdb
+</a>
+
+In the PyMOL command window type:
+
+<a class="prompt prompt-pymol">
+spectrum b, tv_red yellow cyan blue, minimum=30, maximum=100
+</a>
 
 <a class="prompt prompt-info">
 Consider the Predicted aligned error displayed as a matrix.
@@ -404,7 +418,7 @@ Consider the Predicted aligned error displayed as a matrix.
     <i>See answer</i>
   </summary>
   <br>
-  <p>From an analysis of the diagonal blocks we can identify the three wHTH domains, whose stucture is well predicted. When considering the off-diagonal blocks, the last domain of C34, wHTH3, seems to be the best defined with respect to C82. We will make use of this in our modelling strategy 2 in this tutorial. Since the orientation of the other domain with respect with C82, we will treat these as separate entities for modelling purpose, together with the available cross-links.</p>
+  <p>From an analysis of the diagonal blocks we can identify the three wHTH domains, whose stucture is well predicted. When considering the off-diagonal blocks, the last domain of C34, wHTH3, seems to be the best defined with respect to C82. We will make use of this in our modelling strategy 2 in this tutorial. Since the orientation of the other domains are not well defined with respect with C82, we will treat them as separate entities during our modelling.</p>
 <br>
 </details>
 <br>
@@ -481,7 +495,7 @@ Before modelling Pol III, we will first run DisVis using the cross-links for the
 assess the information content of the cross-links and detect possible false positives. For the latter, please note that DisVis does not account for
 conformational changes. As such, a cross-link flagged as possible false positive might also simply reflect a conformational change occuring upon binding.
 
-We have cross-links available for 7 pairs of domains (see the `disvis` directory from the downloaded data). As an illustration of running DisVis, we will here
+We have cross-links available for 9 pairs of domains (see the `disvis` directory from the downloaded data). As an illustration of running DisVis, we will here
 setup the analysis for the Pol III C82 (chain B) - C34 (chain C) pair.
 
 To run DisVis, go to
@@ -525,7 +539,7 @@ However the load of the server as well as pre- and post-processing steps might s
 
 If you want to learn more about the meaning of the various parameters, you can go to:
 
-<a class="prompt prompt-info" href="https://.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis/" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
 Then click on the "**Help/Manual**" menu.
 
@@ -1596,7 +1610,7 @@ chimera \-\-nogui \-\-script \"CCcalculate.py PolIII-core-C82-chimera-fitted-CGr
 
 The last number in the command is the number of fittings tried from different random positions. The best fit value will be reported.
 
-<details style="background-color:#DAE4E7"><summary>View an example outout of the CCcalculate script:
+<details style="background-color:#DAE4E7"><summary>View an example output of the CCcalculate script:
 </summary>
 <br>
 <pre>
