@@ -29,7 +29,7 @@ The case we will be investigating is the apo form of the <em>Saccharomyces cerev
 
 During this tutorial, we pretend that the structure of the Pol III core (14 subunits) is known. Therefore, we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
 
-We will be making use of i) our [DISVIS server](https://wenmr.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
+We will be making use of i) our [DISVIS server](https://bianca.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
 As an alternative strategy, we will use our [PowerFit server][link-powerfit-web] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as a starting point for the modelling of the remaining components.
 
 A description of our the previous version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
@@ -63,7 +63,7 @@ Ready to dock models are provided as part of the material for this tutorial.
 The required data to run this tutorial should be downloaded from [**here**](https://surfdrive.surf.nl/files/index.php/s/hM9IewpGD6dzSad/download){:target="_blank"}.
 Once downloaded, make sure to unpack/unzip the archive (for Windows system you can install the [7-zip](https://www.7-zip.org){:target="_blank"} software if needed to unpack tar archives).
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 <hr><hr>
 ## HADDOCK general concepts
@@ -500,7 +500,7 @@ setup the analysis for the Pol III C82 (chain B) - C34 (chain C) pair.
 
 To run DisVis, go to
 
-<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
+<a class="prompt prompt-info" href="https://bianca.science.uu.nl/disvis" target="_blank">https://bianca.science.uu.nl/disvis</a>
 
 On this page, you will find the most relevant information about the server, as well as the links to the local and grid versions of the portal's submission page.
 
@@ -539,7 +539,7 @@ However the load of the server as well as pre- and post-processing steps might s
 
 If you want to learn more about the meaning of the various parameters, you can go to:
 
-<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis/" target="_blank">https://wenmr.science.uu.nl/disvis</a>
+<a class="prompt prompt-info" href="https://bianca.science.uu.nl/disvis/" target="_blank">https://bianca.science.uu.nl/disvis</a>
 
 Then click on the "**Help/Manual**" menu.
 
@@ -877,7 +877,7 @@ Sample 180 degrees rotated solutions during rigid body EM -> turn off
 
 We are now ready to submit the docking run. Scroll to the bottom of the page.
 
-You will find an option to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. The json file corresponding to this submission can be found in the `docking` directory as `strategy1-RNA-PolIII-core-C82-C34-wHTHs-C31pept.json`.
+You will find an option to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. The json file corresponding to this submission can be found in the `docking` directory as `strategy1-RNA-PolIII-core-C82-C34-wHTHs-C31pept.json`.
 
 
 <a class="prompt prompt-info">
@@ -2325,7 +2325,7 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
-[link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
+[link-haddock-web]: https://bianca.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
 [link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
 [link-haddock-expert]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
 [link-haddock-register]: https://bianca.science.uu.nl/auth/register/"HADDOCK web server registration"
