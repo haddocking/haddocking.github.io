@@ -4,7 +4,14 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2023
+
+* F. Ambrosetti, Z. Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://link.springer.com/protocol/10.1007/978-1-0716-2609-2_14). _Methods in molecular biology_ *2552*, 267-282 (2023). [Preprint](https://arxiv.org/abs/2005.03283).
+
+
 ## 2022
+
+* A. Basciu, L. Callea, S. Motta, **A.M.J.J. Bonvin**, L. Bonati and A.V. Vargiu. [No dance, no partner! A tale of receptor flexibility in docking and virtual screening](https://doi.org/10.1016/bs.armc.2022.08.006). _Annual Reports in Medicinal Chemistry_ (2022)
 
 * R. Shukla, F. Lavore, So. Maity, M.G.N. Derks, C.R. Jones4, B.J.A. Vermeulen, A. Melcrová, M.A. Morris, L.M. Becker, X. Wang, R. Kumar, J. Medeiros-Silva, R.A.M. van Beekveld, **A.M.J.J. Bonvin**, J. Lorent, M. Lelli, J. Nowick, H.D. MacGillavry, A.J. Peoples, A.L. Spoering, L.L. Ling, D.E. Hughes, W.H. Roos, E. Breukink, K. Lewis and M. Weingarth. [Teixobactin kills bacteria by a two-pronged attack on the cell envelope](https://www.nature.com/articles/s41586-022-05019-y). _Nature_ *608*, 390-396 (2022)
 
@@ -67,8 +74,6 @@ image:
 * H.H. Rabouw, L.J. Visser, T.C. Passchier, M.A. Langereis, F. Liu, P. Giansanti, A.L.W. van Vliet, J.G. Dekker, S.G. van der Grein, J.G. Saucedo, A.A. Anand, M.E. Trellet, **A.M.J.J. Bonvin**, P. Walter, A.J.R. Heck, R.J. de Groot and F.J.M. van Kuppeveld. [Inhibition of the integrated stress response by viral proteins that block p-eIF2–eIF2B association](https://doi.org/10.1038/s41564-020-0759-0). _Nature Microbiology_, *58*, 1361-1373 (2020).
 
 * A. Leitner, **A.M.J.J. Bonvin**, C.H. Borchers, R.J. Chalkley, . Chamot-Rooke, C.W. Combe, J. Cox, M. Dong, L. Fischer, M. Götze, F.C. Gozzo, A.J.R. Heck, M.R. Hoopmann, L. Huang, Y. Ishihama, A.R. Jones, N. Kalisman, O. Kohlbacher, K. Mechtler, R.L. Moritz, E. Netz, P.r Novak, E. Petrotchenko, A. Sali, R.A. Scheltema, C. Schmidt, D. Schriemer, A. Sinz, F. Sobott, F. Stengel, K. Thalassinos, H. Urlaub, R. Viner, J.A. Vizcaino, M. R. Wilkins, J. Rappsilber. [Towards Increased Reliability, Transparency and Accessibility in Crosslinking Mass Spectrometry](https://doi.org/10.1016/j.str.2020.09.011) _Structure_, _28_, 1259-1268 (2020).
-
-* F. Ambrosetti, Z. Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://arxiv.org/abs/2005.03283). _ArXiv_, 2005.03283 (2020).
 
 * J. Roel-Touris and **A.M.J.J. Bonvin**. [Coarse-Grained (Hybrid) Integrative Modeling of Biomolecular Interactions](https://doi.org/10.1016/j.csbj.2020.05.002). _Comp. Struct. Biotech. J._, *18*, 1182-1190 (2020).
 
