@@ -2283,7 +2283,7 @@ The last number in the command is the number of fittings tried from different ra
 <img src="/education/HADDOCK24/RNA-Pol-III-2022/strategy2-EMfit.png">
 </figure>
 <br>
-<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.9456). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 wHTH3 domain also nicely fit into the density. The other two C34 domains are however found in a region where no or little density is present, even when playing with the density level, which might indicate disorder / conformational variability.</p>
+<p>Strategy 2, consisting of first fitting the largest domains into the map and using those as starting point for the docking leads to a better fit in the EM map (correlation 0.9504). Comparing the two sets of solutions, one can clearly see that C82 fits much better into the density. The C34 wHTH3 domain (yellow) also nicely fit into the density. The other two C34 domains (green and cyan are found in a region where some density starts to appear seen when playing with the density level, which might indicate some disorder / conformational variability.</p>
 </details>
 <br>
 <br>
