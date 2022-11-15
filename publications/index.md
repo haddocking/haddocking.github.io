@@ -11,6 +11,10 @@ image:
 
 ## 2022
 
+* S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _BioRxiv_ 10.1101/2021.12.08.471762 (2022).
+
+* M. Stahl Madsen, M. Broekema, M. Rønn Madsen, A. Koppen, A. Borgman, C. Gräwe, E. Thomsen, D. Westland, M. Kranendonk, M. Groot Koerkamp, N. Hamers, **A.M.J.J. Bonvin**, J. Ramos Pittol, K. Natarajan, S. Kersten, F. Holstege, H. Monajemi, S. van Mil, M. Vermeulen, B. Kragelund, D. Cassiman, S. Mandrup and E. Kalkhoven. PPARγ lipodystrophy mutants reveal intermolecular interactions required for enhancer activation. _Nature Comm._, In Press (2022).
+
 * A. Basciu, L. Callea, S. Motta, **A.M.J.J. Bonvin**, L. Bonati and A.V. Vargiu. [No dance, no partner! A tale of receptor flexibility in docking and virtual screening](https://doi.org/10.1016/bs.armc.2022.08.006). _Annual Reports in Medicinal Chemistry_ (2022)
 
 * R. Shukla, F. Lavore, So. Maity, M.G.N. Derks, C.R. Jones4, B.J.A. Vermeulen, A. Melcrová, M.A. Morris, L.M. Becker, X. Wang, R. Kumar, J. Medeiros-Silva, R.A.M. van Beekveld, **A.M.J.J. Bonvin**, J. Lorent, M. Lelli, J. Nowick, H.D. MacGillavry, A.J. Peoples, A.L. Spoering, L.L. Ling, D.E. Hughes, W.H. Roos, E. Breukink, K. Lewis and M. Weingarth. [Teixobactin kills bacteria by a two-pronged attack on the cell envelope](https://www.nature.com/articles/s41586-022-05019-y). _Nature_ *608*, 390-396 (2022)
