@@ -417,9 +417,22 @@ We will use later this file to generate the ambiguous distance restraints for HA
 If you want to generate the same file, first create an empty line and then use the `awk` command, piping the results to an output file, e.g.:
 
 <a class="prompt prompt-cmd">
-  echo \" \" \> antigen-surface.act-pass<br>
-  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"\%d \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.act-pass<br>
+  echo \" \" \> antigen-surface.pass<br>
+  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"\%d \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.pass<br>
 </a>
+
+We can visualize the selected surface residues of Interleukin-1β.  
+For this start PyMOL and from the PyMOL File menu open the PDB file of the antigen.
+
+<a class="prompt prompt-pymol">File menu -> Open -> select 4I1B_clean.pdb</a>
+
+<a class="prompt prompt-pymol">
+color white, all<br>
+show surface<br>
+select surface40, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)<br>
+color green, surface40<br>
+</a>
+
 
 
 <hr>
@@ -483,10 +496,10 @@ in the `scripts` directly of the archive you downloaded for this tutorial:
   python ./scripts/passive_from_active.py 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </a>
 
-The combination of the NMR-identified residues and their surface neighbours generate with the above command will be used to define a loose epitope.
-The combined list of residues can be found in the `restraints/antigen-NMR-epitope.act-pass` file. Note in this file the empty first line. The file consists
-of two lines, with the first one defining the `active` residues and the second line the `passive` ones. We will use late this file to generate
-the ambiguous distance restraints for HADDOCK.
+The NMR-identified residues and their surface neighbours generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only.
+The corresponding files can be found in the `restraints/antigen-NMR-epitope.act-pass` and `restraints/antigen-NMR-epitope.pass`files. 
+Note in the second file the empty first line. The file consists of two lines, with the first one defining the `active` residues and 
+the second line the `passive` ones. We will use later these files to generate the ambiguous distance restraints for HADDOCK. 
 
 In general it is better to be too generous rather than too strict in the
 definition of passive residues.
@@ -522,7 +535,7 @@ For scenario 1 this would be:
 
 </pre>
 
-* and for the antigen (the file called `antigen-surface.act-pass` from the `restraints` directory):
+* and for the antigen (the file called `antigen-surface.pass` from the `restraints` directory):
 <pre style="background-color:#DAE4E7">
 
 3 4 5 6 13 14 15 20 21 22 23 24 25 30 32 33 34 35 37 38 48 49 50 51 52 53 54 55 61 63 64 65 66 73 74 75 76 77 80 84 86 87 88 89 90 91 93 94 96 97 105 106 107 108 109 118 119 126 127 128 129 130 135 136 137 138 139 140 141 142 147 148 150 151 152 153
@@ -532,7 +545,7 @@ Using those two files, we can generate the CNS-formatted AIR restraint files
 with the following command:
 
 <a class="prompt prompt-cmd">
-  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.act-pass > ambig-paratope-surface.tbl
+  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
 </a>
 
 This generates a file called `ambig-paratope-surface.tbl` that contains the AIR
@@ -558,9 +571,24 @@ No output means that your TBL file is valid.
 
 
 <hr>
-### Defining ambiguous restraints for scenario 2
+### Defining ambiguous restraints for scenario 2a
 
-The creation of the AIR tbl file for scenario 2 is similar to scenario 1, but instead using the `antigen-NMR-epitope.act-pass` file for the antigen:
+In this scenario the NMR epitope combined with the surface neighbors are used as passive residues in HADDOCK.
+
+The creation of the AIR tbl file for scenario 2a is similar to scenario 1, but instead using the `antigen-NMR-epitope.pass` file for the antigen:
+
+<a class="prompt prompt-cmd">
+  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.pass > ambig-paratope-NMR-epitope-pass.tbl
+</a>
+
+
+
+<hr>
+### Defining ambiguous restraints for scenario 2b
+
+In this scenario the NMR epitope is defined as active (meaning ambiguous distance restraints will be defined from the NMR epitope residues) and the surface neighbors are used as passive residues in HADDOCK.
+
+The creation of the AIR tbl file for scenario 2b is similar to scenario 1, but instead using the `antigen-NMR-epitope.act-pass` file for the antigen:
 
 <a class="prompt prompt-cmd">
   ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
