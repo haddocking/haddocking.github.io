@@ -645,14 +645,14 @@ we have at hand. This will directly allow us to assess the performance of the pr
 The basic workflow for all three scenarios will consists of the following modules, with some differences in the restraints used and some parameter settings (see below):
 
 
-1. **`topoaa`**: Generates the topologies for the CNS engine and build missing atoms
-2. **`rigidbody`**: Rigid body energy minimisation (`it0` in haddock2.x)
-3. **`clustfcc`**: Clustering of models based on the fraction of common contacts (FCC)
-4. **`seletopclusts`**: Selection of the top10 models of all clusters
-5. **`flexref`**: Semi-flexible refinement of the interface (`it1` in haddock2.x)
-6. **`emref`**: Final refinement by energy minimisation (`itw` EM only in haddock2.4)
-7. **`clustfcc`**: Clustering of models based on the fraction of common contacts (FCC)
-8. **`caprieval`**: *Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided
+1. **`topoaa`**: *Generates the topologies for the CNS engine and build missing atoms*
+2. **`rigidbody`**: *Rigid body energy minimisation (`it0` in haddock2.x)*
+3. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
+4. **`seletopclusts`**: *Selection of the top10 models of all clusters*
+5. **`flexref`**: *Semi-flexible refinement of the interface (`it1` in haddock2.4)*
+6. **`emref`**: *Final refinement by energy minimisation (`itw` EM only in haddock2.4)*
+7. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
+8. **`caprieval`**: *Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 
 
 <hr>
