@@ -13,6 +13,7 @@ This tutorial consists of the following sections:
 
 
 <hr>
+<hr>
 ## Introduction
 
 This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting 
@@ -60,9 +61,8 @@ instructions, and/or PyMOL commands.
 <a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
 
-<br>
 <hr>
-
+<hr>
 ## Setup/Requirements
 
 In order to follow this tutorial you will need to work on a Linux or MacOSX
@@ -81,7 +81,7 @@ and note the location of the extracted PDB files in your system. You should find
 * `4G6M-matched.pdb`: The PDB file of the reference antibody-antigen complex, matching the chainIDs and residue numbering of the free forms.
 
 
-<br>
+<hr>
 <hr>
 ## HADDOCK general concepts
 
@@ -105,7 +105,7 @@ not belong in the interface there is no scoring penalty. Hence, a careful select
 active and which are passive is critical for the success of the docking.
 
 
-<br>
+<hr>
 <hr>
 ## A brief introduction to HADDOCK3
 
@@ -180,7 +180,7 @@ procedure, in HADDOCK3, you can create your own simulation workflows by
 combining a multitude of independent modules that perform specialized tasks.
 
 
-<br>
+<hr>
 <hr>
 ## Software requirements
 
@@ -227,7 +227,7 @@ access to the pdb-tools package.
 already installed on your system, download and install PyMol.
 
 
-<br>
+<hr>
 <hr>
 ## Preparing PDB files for docking
 
@@ -247,7 +247,7 @@ conda activate haddock3
 </a>
 
 
-<br>
+<hr>
 ### Preparing the antibody structure
 
 Using PDB-tools we will download the structure from the PDB database (the PDB ID is [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}) and then process it to have a unique chain ID (A) and non-overlapping residue numbering by shifting the residue numbering of the second chain.
@@ -274,45 +274,18 @@ The third and last command merges the two processed chains and assign them uniqu
 _**Note**_ that the corresponding files can be found in the `pdbs` directory of the archive you downloaded.
 
 
-<br>
+<hr>
 ### Preparing the antigen structure
 
-
-
-<br>
-### Dealing with multi-chain proteins
-
-**Note** that this structure consists of two separate chains. It will therefore
-be important to define a few distance restraints to keep them together during
-the high temperature flexible refinement stage of HADDOCK. This can easily be
-done using another script from `haddock-tools`:
+Using PDB-tools we will download the structure from the PDB database (the PDB ID is [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"}), remove the hetero atoms and then process it to assign it chainID B. In this case we also select for `ATOM` lines to remove the `ANISOU` statements from the PDB file.
 
 <a class="prompt prompt-cmd">
-  restrain_bodies.py  4G6K-clean.pdb >antibody-unambig.tbl
+pdb_fetch 4I1B | pdb_tidy -strict  | pdb_delhetatm  | grep ATOM | pdb_chain -B | pdb_chainxseg | pdb_tidy -strict >4I1B_clean.pdb
 </a>
 
-The result file contains two CA-CA distance restraints with the exact distance
-measured between the picked CA atoms:
 
-<pre style="background-color:#DAE4E7">
-  assign (segid  and resi 189 and name CA) (segid  and resi 693 and name CA) 21.023 0.0 0.0
-  assign (segid  and resi 116 and name CA) (segid  and resi 702 and name CA) 44.487 0.0 0.0
-</pre>
-
-**Note** that in this example, we are missing segment identifiers since they
-were not present in the PDBs. And if they are present, make sure those match
-what you are going to define as segIDs in HADDOCK. So in this case we need to
-add `A` for the first molecule and `B` for the second:
-
-<pre style="background-color:#DAE4E7">
-  assign (segid A and resi 189 and name CA) (segid B and resi 693 and name CA) 21.023 0.0 0.0
-  assign (segid A and resi 116 and name CA) (segid B and resi 702 and name CA) 44.487 0.0 0.0
-</pre>
-
-This is the file you should save as `unambig.tbl` and pass to HADDOCK.
-
-
-<br>
+<hr>
+<hr>
 ## Defining restraints for docking
 
 Before setting up the docking we need first to generate distance restraint files
@@ -335,75 +308,185 @@ Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/).
 
 We will shortly explain in this section how to generate both ambiguous
 interaction restraints (AIRs) and specific distance restraints for use in
-HADDOCK illustrating three scenarios:
+HADDOCK illustrating two scenarios:
 
-* **Interface mapping on both side** (e.g. from NMR chemical shift perturbation data)
-* **Specific distance restraints** (e.g. cross-links detected by MS)
-* **Interface mapping on one side, full surface on the other**
+* **HV loops on the antibody, full surface on the antigen**
+* **HV loops on the antibody, NMR interface mapping on the antigen**
 
 Information about various types of distance restraints in HADDOCK can also be
 found in our [online manual][air-help] pages.
 
-### Defining AIRs from interface mapping
+<hr>
+### Identifying the paratope of the antibody
 
-We will use as example here the NMR chemical shift perturbations from the
-E2A-HPR complex used in our [HADDOCK 2.4 webserver basic protein-protein docking
-tutorial][haddock24protein]. The following residues of E2A were identified by
-[Wang *et al*, EMBO J (2000)][wang2000] as having significant chemical shift
-perturbations:
+Nowadays there are several computational tools that can identify the paratope (the residues of the hypervariable loops involved in binding) from the provided antibody sequence. In this tutorial we are providing you the corresponding list of residue obtained using [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
 
-<a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a>
+The corresponding paratope residues (those with either an overall probability >= 0.4 or a probabily for hydrophobic or hydrophylic > 0.3) are:
 
-Let's visualize them in PyMOL using the clean PDB file we created in the
-[Cleaning PDB files prior to docking](#cleaning-pdb-files-prior-to-docking)
-section of this tutorial:
+<pre style="background-color:#DAE4E7">
+    31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,1031,1032,1049,1050,1053,1091,1092,1093,1094,1096
+</pre>
+
+The numbering corresponds to the numbering of the `4G6K_clean.pdb` PDB file.
+
+Let's visualize those onto the 3D structure.
+For this start PyMOL and load `4G6K_clean.pdb`
+
+<a class="prompt prompt-pymol">File menu -> Open -> select 4G6K_clean.pdb</a>
+
+or from the command line:
 
 <a class="prompt prompt-cmd">
-  pymol e2a_1F3G-clean.pdb
+    pymol 4G6K_clean.pdb
 </a>
+
+We will now highlight the predicted paratope. In PyMOL type the following commands:
+
+<a class="prompt prompt-pymol">
+color white, all<br>
+select paratope, (resi 31+32+33+34+35+52+54+55+56+100+101+102+103+104+105+106+1031+1032+1049+1050+1053+1091+1092+1093+1094+1096)<br>
+color red, paratope<br>
+</a>
+
+<a class="prompt prompt-question">Can you identify the H3 loop? H stands for heavy chain (the first domain in our case with lower residue numbering). H3 is typically the longest loop.</a>
+
+Let's now switch to a surface representation to inspect the predicted binding site.
+
+<a class="prompt prompt-pymol">
+show surface<br>
+</a>
+
+Inspect the surface.
+
+<a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
+
+
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<b><i>See surface view of the paratope:</i></b>
+ </summary>
+ <figure align="center">
+  <img width="50%" src="./antibody-paratope.png">
+ </figure>
+<br>
+</details>
+
+
+<hr>
+### Antigen scenario 1: no information
+
+
+In this scenario, we will target the entire surface of the antigen by selecting the solvent accessible residues.
+For this we will use `freesasa` to calculate the solvent accessible surface area (SASA) for the different
+residues:
+
+<a class="prompt prompt-cmd">
+  freesasa 4I1B_clean.pdb \-\-format=rsa >4I1B_clean.rsa
+</a>
+
+<pre style="background-color:#DAE4E7">
+REM  FreeSASA 2.0.3
+REM  Absolute and relative SASAs for 4I1B_clean.pdb
+REM  Atomic radii and reference values for relative SASA: ProtOr
+REM  Chains: A
+REM  Algorithm: Lee & Richards
+REM  Probe-radius: 1.40
+REM  Slices: 20
+REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
+REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
+RES VAL A   3    84.83  55.8  13.08  11.8  71.76 172.9  30.45  26.5  54.38 147.5
+RES ARG A   4   200.36  84.1 192.85  98.3   7.51  17.9  71.92  98.3 128.44  77.8
+RES SER A   5    48.69  41.1  25.55  34.1  23.14  53.3  22.44  47.8  26.25  36.8
+RES LEU A   6    71.91  40.0  70.87  50.7   1.04   2.6  71.91  50.5   0.00   0.0
+RES ASN A   7    31.01  21.4  25.87  25.0   5.14  12.4   0.00   0.0  31.01  30.0
+...
+</pre>
+
+The following command will return all residues with a relative SASA for either
+the backbone or the side-chain > 40% (we use 40% to limit the number of surface residues selected as their
+number does increase the computational requirements)
+
+<a class="prompt prompt-cmd">
+  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"\%d \",$3; if (NF==14 && ($8>40 || $10>40)) print $0}\' 4I1B_clean.rsa
+</a>
+
+The resulting list of residues can be found in the `restraints/antigen-surface.act-pass` file. Note in this file the empty first line. The file consists
+of two lines, with the first one defining the `active` residues and the second line the `passive` ones, in this case the solvent accessible residues. 
+We will use later this file to generate the ambiguous distance restraints for HADDOCK.
+
+If you want to generate the same file, first create an empty line and then use the `awk` command, piping the results to an output file, e.g.:
+
+<a class="prompt prompt-cmd">
+  echo \" \" \> antigen-surface.act-pass<br>
+  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"\%d \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.act-pass<br>
+</a>
+
+
+<hr>
+### Antigen scenario 2: NMR-mapped epitope information
+
+
+The article describing the crystal structure of the antibody-antigen complex we are modelling also reports 
+on experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab) 
+on Interleukin-1β. The residues affected by binding are listed in Table 5 of 
+[Blech et al. JMB 2013](https://dx.doi.org/10.1016/j.jmb.2012.09.021){:target="_blank"}:
+
+<figure align="center">
+   <img width="50%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
+</figure>
+ 
+The list of binding site (epitope) residues identified by NMR is:
+
+<pre style="background-color:#DAE4E7">
+    72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+</pre>
+
+We will now visualize the epitope on Interleukin-1β.  For this start PyMOL and from the PyMOL File menu open the provided PDB file of the antigen.
+
+<a class="prompt prompt-pymol">File menu -> Open -> select 4I1B_clean.pdb</a>
 
 <a class="prompt prompt-pymol">
 color white, all<br>
 show surface<br>
-select e2a_active, (resi 38,40,45,46,69,71,78,80,94,96,141)<br>
-color red, e2a_active<br>
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)<br>
+color red, epitope<br>
 </a>
-
-<figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/e2a-surface-airs.png">
-</figure>
 
 Inspect the surface.
 
+<a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
 
-<a class="prompt prompt-question">
-    Do the identified residues form a well defined patch on the surface?
+The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding 
+(there are some white spots around/in the red surface. 
+
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<b><i>See surface view of the epitope identified by NMR</i></b>
+ </summary>
+ <figure align="center">
+  <img width="50%" src="./antigen-epitope.png">
+ </figure>
+ <br>
+</details>
+<br>
+
+In HADDOCK we are dealing with potentially uncomplete binding sites by defining surface neighbours as `passive` residues. 
+These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the 
+binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding 
+site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are 
+using a local version, we need to define those manually. 
+
+This can easily be done using a script from our [haddock-tools][haddock-tools] repository, which is also provided for convenience
+in the `scripts` directly of the archive you downloaded for this tutorial:
+
+<a class="prompt prompt-cmd">
+  python ./scripts/passive_from_active.py 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </a>
 
-<a class="prompt prompt-question">
-    Do they form a contiguous surface?
-</a>
-
-The answer to the last question should be **no**: We can observe residue in the
-center of the patch that do not seem significantly affected while still being in
-the middle of the defined interface. This is the reason why in HADDOCK we also
-define "*passive*" residues that correspond to surface neighbors of active
-residues. These should be selected manually, filtering for solvent accessible
-residues (the HADDOCK server will do it for you).
-
-<!-- TODO: describe behaviour in HADDOCK3 -->
-<!-- TODO: add the list of residues -->
-
-In the same PyMol session as before you can visualize them with:
-
-<a class="prompt prompt-pymol">
-select e2a_passive, (resi 35,37,39,42,43,44,47,48,64,66,68,72,73,74,82,83,84,86,97,99,100,105,109,110,112,131,132,133,143,144)<br>
-color green, e2a_passive<br>
-</a>
-
-<figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-local-tutorial/e2a-active-passive.png">
-</figure>
+The combination of the NMR-identified residues and their surface neighbours generate with the above command will be used to define a loose epitope.
+The combined list of residues can be found in the `restraints/antigen-NMR-epitope.act-pass` file. Note in this file the empty first line. The file consists
+of two lines, with the first one defining the `active` residues and the second line the `passive` ones. We will use late this file to generate
+the ambiguous distance restraints for HADDOCK.
 
 In general it is better to be too generous rather than too strict in the
 definition of passive residues.
@@ -414,45 +497,14 @@ Our webserver uses a default relative accessibility of 15% as cutoff. This is
 not a hard limit. You might consider including even more buried residues if some
 important chemical group seems solvent accessible from a visual inspection.
 
-We can use `freesasa` to calculate the solvent accessibility for the different
-residues:
 
-<a class="prompt prompt-cmd">
-  freesasa e2a_1F3G.pdb \-\-format=rsa >e2a_1F3G.rsa
-</a>
+<hr>
+### Defining ambiguous restraints for scenario 1
 
-The results is file similar to the output of `naccess` containing the per
-residue solvent accessibility, both absolute and relative values, and also
-distinguishing between backbone and side-chains:
-
-<pre style="background-color:#DAE4E7">
-REM  FreeSASA 2.0.3
-REM  Absolute and relative SASAs for e2a_1F3G.pdb
-REM  Atomic radii and reference values for relative SASA: ProtOr
-REM  Chains: A
-REM  Algorithm: Lee & Richards
-REM  Probe-radius: 1.40
-REM  Slices: 20
-REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
-REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
-RES THR A  19   125.49  89.3  59.11  59.9  66.38 158.2  33.47  45.0  92.02 139.1
-RES ILE A  20    29.18  16.6  23.16  17.3   6.02  14.5  29.18  21.0   0.00   0.0
-RES GLU A  21    63.92  36.7  50.29  38.0  13.63  32.5  13.71  26.5  50.21  41.0
-RES ILE A  22     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
-RES ILE A  23    25.26  14.4  25.26  18.8   0.00   0.0  25.26  18.2   0.00   0.0
-...
-</pre>
-
-The following command will return all residues with a relative SASA for either
-the backbone or the side-chain > 15%:
-
-<a class="prompt prompt-cmd">
-  awk \'{if (NF==13 && $5>40) print $0; if (NF==14 && $6>40) print $0}\' e2a_1F3G.rsa
-</a>
 
 Once you have defined your active and passive residues for both molecules, you
-can proceed with the generation of the AIR restraint file for HADDOCK.  For this
-you can either make use of our online [GenTBL][gentbl] webserver, entering the
+can proceed with the generation of the ambgiuous interaction restraints (AIR) file for HADDOCK. 
+For this you can either make use of our online [GenTBL][gentbl] webserver, entering the
 list of active and passive residues for each molecule, and saving the resulting
 restraint list to a text file, or use the relevant `haddock-tools` script.
 
@@ -462,28 +514,28 @@ create for each molecule a file containing two lines:
 * The first line corresponds to the list of active residues (numbers separated by spaces)
 * The second line corresponds to the list of passive residues.
 
-For our E2A-HPR example this would be:
+For scenario 1 this would be:
 
-* For E2A (a file called [e2a-act-pass.list](/education/HADDOCK24/HADDOCK24-local-tutorial/e2a-act-pass.list)):
+* For the antibody (the file called `antibody-paratope.act-pass` from the `restraints` directory):
 <pre style="background-color:#DAE4E7">
-38 40 45 46 69 71 78 80 94 96 141
-35 37 39 42 43 44 47 48 64 66 68 72 73 74 82 83 84 86 97 99 100 105 109 110 112 131 132 133 143 144
+31 32 33 34 35 52 54 55 56 100 101 102 103 104 105 106 1031 1032 1049 1050 1053 1091 1092 1093 1094 1096
+
 </pre>
 
-* and for HPR (a file called [hpr-act-pass.list](/education/HADDOCK24/HADDOCK24-local-tutorial/hpr-act-pass.list)):
+* and for the antigen (the file called `antigen-surface.act-pass` from the `restraints` directory):
 <pre style="background-color:#DAE4E7">
-15 16 17 20 48 49 51 52 54 56
-9 10 11 12 21 24 25 34 37 38 40 41 43 45 46 47 53 55 57 58 59 60 84 85
+
+3 4 5 6 13 14 15 20 21 22 23 24 25 30 32 33 34 35 37 38 48 49 50 51 52 53 54 55 61 63 64 65 66 73 74 75 76 77 80 84 86 87 88 89 90 91 93 94 96 97 105 106 107 108 109 118 119 126 127 128 129 130 135 136 137 138 139 140 141 142 147 148 150 151 152 153
 </pre>
 
 Using those two files, we can generate the CNS-formatted AIR restraint files
 with the following command:
 
 <a class="prompt prompt-cmd">
-  active-passive-to-ambig.py e2a-act-pass.list hpr-act-pass.list > e2a-hpr-ambig.tbl
+  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.act-pass > ambig-paratope-surface.tbl
 </a>
 
-This generates a file called `e2a-hpr-ambig.tbl` that contains the AIR
+This generates a file called `ambig-paratope-surface.tbl` that contains the AIR
 restraints. The default distance range for those is between 0 and 2Å, which
 might seem short but makes senses because of the 1/r^6 summation in the AIR
 energy function that makes the effective distance be significantly shorter than
@@ -493,99 +545,82 @@ The effective distance is calculated as the SUM over all pairwise atom-atom
 distance combinations between an active residue and all the active+passive on
 the other molecule: SUM[1/r^6]^(-1/6).
 
-If you modify this file, it is possible to quickly check if the format is valid.
-To do so, you can find in the `haddock-tools` repository a folder named
-`haddock_tbl_validation` that contains a script called `validate_tbl.py`. To use
-it, run:
+If you modify manually this file, it is possible to quickly check if the format is valid.
+To do so, you can find in our [haddock-tools][haddock-tools] repository a folder named
+`haddock_tbl_validation` that contains a script called `validate_tbl.py` (also provided here in the `scripts` directory. 
+To use it, type:
 
 <a class="prompt prompt-cmd">
-  python ~/software/haddock-tools/haddock_tbl_validation/validate_tbl.py --silent e2a-hpr-ambig.tbl
+  python ./scripts/validate_tbl.py \-\-silent ambig-paratope-surface.tbl
 </a>
 
-No output means that your TBL file is valid. You can also find TBL file examples
-for different types of restraints in the `haddock-tools/haddock_tbl_validation/`
-directory, [or here online][tbl-examples].
+No output means that your TBL file is valid.
 
-### Defining specific distance restraints
 
-You can define in HADDOCK unambiguous distance restraints between specific pairs
-of atoms to define restraints coming for example from MS cross-linking
-experiments or DEER experiments. As an illustration we will use cross-links from
-our [HADDOCK cross-links tutorial](/education/HADDOCK24/HADDOCK24-Xlinks)
-obtained for the complex between PRE5 (UniProtKB:
-[O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2
-(UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)).
-From MS, we have seven experimentally determined cross-links (4 ADH & 3 ZL)
-([Leitner et al.,
-2014](https://doi.org/10.1073/pnas.1320298111)), which we will
-define as CA-CA distance restraints
-([restraints.txt](/education/HADDOCK24/HADDOCK24-local-tutorial/restraints.txt)):
+<hr>
+### Defining ambiguous restraints for scenario 2
 
-<pre style="background-color:#DAE4E7">
-# ADH crosslinks
-A  27 CA B  18 CA 0 23
-A 122 CA B 125 CA 0 23
-A 122 CA B 128 CA 0 23
-A 122 CA B 127 CA 0 23
+The creation of the AIR tbl file for scenario 2 is similar to scenario 1, but instead using the `antigen-NMR-epitope.act-pass` file for the antigen:
 
-# ZL crosslinks
-A 55 CA B 169 CA 0 26
-A 55 CA B 179 CA 0 26
-A 54 CA B 179 CA 0 26
-</pre>
-
-This is the format used by our [DisVis portal](https://wenmr.science.uu.nl/disvis)
-to represent the cross-links. Each cross-link definition consists of eight
-fields:
-
-1. chainID of the 1st molecule
-1. residue number
-1. atom name
-1. chainID of the 2nd molecule
-1. residue number
-1. atom name
-1. lower distance limit
-1. upper distance limit
-
-The corresponding CNS-formatted HADDOCK restraint file for those would be
-([unambig-xlinks.tbl](/education/HADDOCK24/HADDOCK24-local-tutorial/unambig-xlinks.tbl)):
-
-<pre style="background-color:#DAE4E7">
-assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
-assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
-assign (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
-assign (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
-assign (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
-assign (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
-assign (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
-</pre>
-
-As a reminder, distance restraints are defined as:
-
-<pre style="background-color:#DAE4E7">
-    assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
-</pre>
-
-Where the lower limit for the distance is calculated as the distance minus
-lower-bound correction and the upper limit as the distance plus upper-bound
-correction.
-
-**Note:** Under Linux (or OSX), this file could be generated automatically from
-a text file containing the DisVis restraints with the following command (one
-line) in a terminal window:
-
-<a class="prompt prompt-linux">
-  cat restraints.txt | awk \'{if (NF == 8) {print \"assi (segid \",$1,\" and resid \",$2,\" and name \",$3,\") (segid \",$4,\" and resid \",$5,\" and name \",$6,\") \",$8,$8,$7}}\' > pre5-pup2-Xlinks.tbl
+<a class="prompt prompt-cmd">
+  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
 </a>
 
-[tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
+
+
+<hr>
+### Additional restraints for multi-chain proteins
+
+As an antibody consists of two separate chains, it is important to define a few distance restraints 
+to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
+done using a script from `[haddock-tools][haddock-tools]` repository, which is also provided for convenience
+in the `scripts` directly of the archive you downloaded for this tutorial.
+
+
+<a class="prompt prompt-cmd">
+  ./scripts/restrain_bodies.py  4G6K_clean.pdb >antibody-unambig.tbl
+</a>
+
+The result file contains two CA-CA distance restraints with the exact distance
+measured between the picked CA atoms:
+
+<pre style="background-color:#DAE4E7">
+    assign (segid A and resi 220 and name CA) (segid A and resi 1018 and name CA) 47.578 0.0 0.0
+    assign (segid A and resi 193 and name CA) (segid A and resi 1014 and name CA) 33.405 0.0 0.0
+</pre>
+
+This file is also provided in the `restraints` directory of the archive you downloaded.
+
+
+
+
+<hr>
+<hr>
+## Conclusions
+
+We have demonstrated the antibody-antigen docking guided with and without the knowledge about epitope. Always check and compare multiple clusters, don't blindly trust the cluster with the best HADDOCK score!
+
+
+<hr>
+<hr>
+## Congratulations!
+
+You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
+
+And check also our [education](/education) web page where you will find more tutorials!
+
+
+
+
+[air-help]: https://www.bonvinlab.org/software/haddock2.4/generate_air_help/ "AIRs help"
 [gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
-[haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK 3 GitHub"
+[haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK3 GitHub"
+[haddock-tools]: https://github.com/haddocking/haddock-tools "HADDOCK tools GitHub"
 [installation]: https://www.bonvinlab.org/haddock3/INSTALL.html "Installation"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-freesasa]: https://freesasa.github.io "FreeSASA"
 [link-pdbtools]:http://www.bonvinlab.org/pdb-tools/ "PDB-Tools"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
-[air-help]: https://www.bonvinlab.org/software/haddock2.2/generate_air_help/ "AIRs help"
+[tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
