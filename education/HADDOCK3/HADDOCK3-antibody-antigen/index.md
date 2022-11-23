@@ -592,6 +592,17 @@ measured between the picked CA atoms:
 This file is also provided in the `restraints` directory of the archive you downloaded.
 
 
+<hr>
+<hr>
+## Setting up the docking with HADDOCK3
+
+
+Now that we have all required files at hand (PBD and restraints files) it is time to setup our docking protocol.
+For this we need to create a HADDOCK3 configuration file that will define the docking workflow. In contrast to HADDOCK2.X,
+we have much more flexibility in doing this.
+
+
+
 
 
 <hr>
