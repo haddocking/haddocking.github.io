@@ -74,7 +74,9 @@ Further we are providing pre-processed PDB files for docking and analysis (but t
 preprocessing of those files will also be explained below. The files have been processed 
 to facilitate their use in HADDOCK and for allowing comparison with the known reference 
 structure of the complex. For this download and unzip the following [zip archive](input-data.zip) 
-and note the location of the extracted PDB files in your system. You should find the following files:
+and note the location of the extracted PDB files in your system. You should find the following directories and files:
+
+TO BE UPDATED...
 
 * `4G6K_fv.pdb`: The PDB file of the unbound(free) form of the antibody with the two chains defined as a single chain and with residues renumbered to avoid overlap in numbering between the chains. The structure was further truncated to only keep the two domains involved in binding (to save computational time).
 * `4I1B-matched.pdb`: The PDB file of the unbound(free) form of the antigen, renumbered to match the numbering of the reference complex.
@@ -255,10 +257,10 @@ Using PDB-tools we will download the structure from the PDB database (the PDB ID
 This can be done from the command line with:
 
 <a class="prompt prompt-cmd">
-pdb_fetch 4G6K | pdb_tidy -strict  | pdb_selchain -H | pdb_delhetatm | pdb_fixinsert | grep ATOM | pdb_tidy -strict > 4G6K_H.pdb<br>
+pdb_fetch 4G6K | pdb_tidy -strict  | pdb_selchain -H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_H.pdb<br>
 </a>
 <a class="prompt prompt-cmd">
-pdb_fetch 4G6K | pdb_tidy -strict  | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_shiftres -1000 | grep ATOM | pdb_tidy -strict > 4G6K_L.pdb<br>
+pdb_fetch 4G6K | pdb_tidy -strict  | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_shiftres -1000 | pdb_keepcoord | pdb_tidy -strict > 4G6K_L.pdb<br>
 </a>
 <a class="prompt prompt-cmd">
 pdb_merge 4G6K_H.pdb 4G6K_L.pdb |pdb_chain -A |pdb_chainxseg | pdb_tidy -strict > 4G6K_clean.pdb<br>
@@ -277,10 +279,10 @@ _**Note**_ that the corresponding files can be found in the `pdbs` directory of 
 <hr>
 ### Preparing the antigen structure
 
-Using PDB-tools we will download the structure from the PDB database (the PDB ID is [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"}), remove the hetero atoms and then process it to assign it chainID B. In this case we also select for `ATOM` lines to remove the `ANISOU` statements from the PDB file.
+Using PDB-tools we will download the structure from the PDB database (the PDB ID is [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"}), remove the hetero atoms and then process it to assign it chainID B.
 
 <a class="prompt prompt-cmd">
-pdb_fetch 4I1B | pdb_tidy -strict  | pdb_delhetatm  | grep ATOM | pdb_chain -B | pdb_chainxseg | pdb_tidy -strict >4I1B_clean.pdb
+pdb_fetch 4I1B | pdb_tidy -strict  | pdb_delhetatm  | pdb_keepcoord | pdb_chain -B | pdb_chainxseg | pdb_tidy -strict >4I1B_clean.pdb
 </a>
 
 
@@ -627,7 +629,49 @@ This file is also provided in the `restraints` directory of the archive you down
 
 Now that we have all required files at hand (PBD and restraints files) it is time to setup our docking protocol.
 For this we need to create a HADDOCK3 configuration file that will define the docking workflow. In contrast to HADDOCK2.X,
-we have much more flexibility in doing this.
+we have much more flexibility in doing this. We will illustrate this flexibility by introducing a clustering step
+after the initial rigid-body docking stage, select up to 10 models per cluster and refine all of those.
+
+HADDOCK3 also provides an analysis module (`caprieval`) that allows 
+to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case
+we have at hand. This will directly allow us to assess the performance of the protocol for the following three scenarios:
+
+
+1. Scenario 1: Docking using the paratope information only and the surface of the antigen
+2. Scenario 2a: Docking using the paratope and the NMR-identified epitope as passive
+3. Scenario 2b: Docking using the paratope and the NMR-identified epitope as active
+
+
+The basic workflow for all three scenarios will consists of the following modules, with some differences in the restraints used and some parameter settings (see below):
+
+
+1. **`topoaa`**: Generates the topologies for the CNS engine and build missing atoms
+2. **`rigidbody`**: Rigid body energy minimisation (`it0` in haddock2.x)
+3. **`clustfcc`**: Clustering of models based on the fraction of common contacts (FCC)
+4. **`seletopclusts`**: Selection of the top10 models of all clusters
+5. **`flexref`**: Semi-flexible refinement of the interface (`it1` in haddock2.x)
+6. **`emref`**: Final refinement by energy minimisation (`itw` EM only in haddock2.4)
+7. **`clustfcc`**: Clustering of models based on the fraction of common contacts (FCC)
+8. **`caprieval`**: *Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided
+
+
+<hr>
+### Scenario 1: Paratope - antigen surface
+
+
+
+
+
+<hr>
+### Scenario 2a: Paratope - NMR-epitope as passive
+
+
+
+
+
+
+<hr>
+### Scenario 2b: Paratope - NMR-epitope as active
 
 
 
