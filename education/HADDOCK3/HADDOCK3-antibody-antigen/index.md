@@ -668,12 +668,12 @@ HADDOCK3 currently supports three difference execution modes that are defined in
 In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file 
 to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
 
-<pre style="background-color:#DAE4E7">
+{% highlight toml %}
 # compute mode
-mode = 'local'
+mode = "local"
 #  1 nodes x 96 ncores
 ncores = 96
-</pre>
+{% endhighlight %}
 
 In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
 
@@ -689,11 +689,11 @@ Alternatively redirect the output to a log file and send haddock3 to the backgro
 
 _**Note**_: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
 
-<details style="background-color:#DAE4E7">
+<details>
 <summary style="bold">
 <i>View an example script for submitting via the slurm batch system:</i>
  </summary>
-<pre style="background-color:#DAE4E7">
+{% highlight shell %}
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=96
@@ -711,7 +711,7 @@ cd $HOME/HADDOCK3-antibody-antigen
 
 # execute
 haddock3 docking-Ab-Ag-CDR-surface-node.cfg
-</pre>
+{% endhighlight %}
 <br>
 </details>
 
@@ -727,18 +727,18 @@ You want to avoid sending thousands of very short jobs to the batch system if yo
 
 An example of the relevant parameters to be defined in the first section of the config file is:
 
-<pre style="background-color:#DAE4E7">
+{% highlight toml %}
 # compute mode
-mode = 'hpc'
+mode = "hpc"
 # batch system
-batch_type = 'slurm'
+batch_type = "slurm"
 # queue name
-queue = 'short'
+queue = "short"
 # number of concurrent jobs to submit to the batch system
 queue_limit = 100
 # number of models to produce per submitted job
 concat = 10
-</pre>
+{% endhighlight %}
 
 
 In this mode HADDOCK3 can be started from the command line as for the local mode.
@@ -752,20 +752,20 @@ The execution mode should be set to `mpi` and the total number of cores should m
 
 An example of the relevant parameters to be defined in the first section of the config file is:
 
-<pre style="background-color:#DAE4E7">
+{% highlight toml %}
 # compute mode
 mode = "mpi"
 #  5 nodes x 50 tasks = ncores = 250
 ncores = 250
-</pre>
+{% endhighlight %}
 
 In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.
 
-<details style="background-color:#DAE4E7">
+<details>
 <summary style="bold">
 <i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system:</i>
  </summary>
-<pre style="background-color:#DAE4E7">
+{% highlight shell %}
 #!/bin/bash
 #SBATCH --nodes=5
 #SBATCH --tasks-per-node=50
@@ -782,11 +782,9 @@ cd $HOME/HADDOCK3-antibody-antigen
 
 # execute
 haddock3 docking-Ab-Ag-CDR-NMR-epitope-act-mpi.cfg
-</pre>
+{% endhighlight %}
 <br>
 </details>
-
-
 
 <hr>
 ### Scenario 1: Paratope - antigen surface
@@ -794,9 +792,82 @@ haddock3 docking-Ab-Ag-CDR-NMR-epitope-act-mpi.cfg
 
 Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `ambig-paratope-surface.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. Further, as we have no information on the antigen side, it is important to increase the sampling in the ridig body sampling stage to 10000. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
-<figure align="center">
-  <img width="75%" src="./docking-Ab-Ag-CDR-surface-node.png">
-</figure>
+{% highlight toml %}
+# ====================================================================
+# Antibody-antigen docking example with restraints from the antibody
+# paratope to the entire surface of the antigen
+# ====================================================================
+
+# directory name of the run
+run_dir = "scenario1-CDR-surface"
+
+# compute mode
+mode = "local"
+#  1 nodes x 96 threads
+ncores = 96
+
+# molecules to be docked
+molecules =  [
+    "4G6K_clean.pdb",
+    "4I1B_clean.pdb"
+    ]
+
+# ====================================================================
+# Parameters for the various stages
+# ====================================================================
+[topoaa]
+
+[rigidbody]
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-surface.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+# Turn off ramdom removal of restraints
+randremoval = false
+# Number of models to generate
+sampling = 10000
+
+[clustfcc]
+threshold = 10
+
+[seletopclusts]
+## select all the clusters
+top_cluster = 500
+## select the best 10 models of each cluster
+top_models = 10
+
+[caprieval]
+# this is only for this tutorial to check the performance at the rigidbody stage
+reference_fname = "4G6M_matched.pdb"
+
+[flexref]
+# Acceptable percentage of model failures
+tolerance = 5
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-surface.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+# Turn off ramdom removal of restraints
+randremoval = false
+
+[emref]
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-surface.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+# Turn off ramdom removal of restraints
+randremoval = false
+
+[clustfcc]
+
+[seletopclusts]
+top_cluster = 500
+
+[caprieval]
+reference_fname = "4G6M_matched.pdb"
+
+# ====================================================================
+{% endhighlight %}
 
 This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-surface-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-surface-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
 
@@ -812,22 +883,178 @@ _**Note**_ that this scenario is computationally more expensive because of the i
 
 In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-CDR-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
-<figure align="center">
-  <img width="75%" src="./docking-Ab-Ag-CDR-NMR-epitope-pass-node.png">
-</figure>
+{% highlight toml %}
+# ====================================================================
+# Antibody-antigen docking example with restraints from the antibody
+# paratope to the NMR-identified epitope on the antigen (as passive)
+# ====================================================================
 
-This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-NMR-epitope-pass-node`. An MPI version is also available as `docking-Ab-Ag-CDR-NMR-epitope-pass-mpi.cfg`.
+# directory name of the run
+run_dir = "run1-mpi-CDR-NMR-epitope-pass"
+
+# MPI compute mode
+mode = "local"
+#  1 nodes x 96 threads
+ncores = 96
+
+# molecules to be docked
+molecules =  [
+    "4G6K_clean.pdb",
+    "4I1B_clean.pdb"
+    ]
+
+# ====================================================================
+# Parameters for each stage are defined below, prefer full paths
+# ====================================================================
+[topoaa]
+
+[rigidbody]
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+# Turn off ramdom removal of restraints
+randremoval = false
+
+[clustfcc]
+threshold = 10
+
+[seletopclusts]
+## select all the clusters
+top_cluster = 500
+## select the best 10 models of each cluster
+top_models = 10
+
+[caprieval]
+# this is only for this tutorial to check the performance at the rigidbody stage
+reference_fname = "4G6M_matched.pdb"
+
+[flexref]
+# Acceptable percentage of model failures
+tolerance = 5
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+# Turn off ramdom removal of restraints
+randremoval = false
+
+[emref]
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+# Turn off ramdom removal of restraints
+randremoval = false
+
+[clustfcc]
+
+[seletopclusts]
+top_cluster = 500
+
+[caprieval]
+reference_fname = "4G6M_matched.pdb"
+
+# ====================================================================
+{% endhighlight %}
+
+This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-NMR-epitope-pass-mpi.cfg`.
 
 
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
-_**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes.
+_**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes. In HPC/batch mode, using 100 queue slots and 10 models per job, the same run completed in about 45 minutes.
 
 
 <hr>
 ### Scenario 2b: Paratope - NMR-epitope as active
 
 
+Scenario 2b is rather similar to scenario 2a with the difference that the NMR-identified epitope is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
+And since there might be more false positive data in the identified interfaces, we will leave the random removal of restraints on. The restraint file to use for this is `ambig-CDR-NMR-epitope-act.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+
+{% highlight toml %}
+# ====================================================================
+# Antibody-antigen docking example with restraints from the antibody
+# paratope to the NMR-identified epitope on the antigen (as active)
+# and keeping the random removal of restraints
+# ====================================================================
+
+# directory name of the run
+run_dir = "run1-node-CDR-NMR-epitope-act"
+
+# compute mode
+mode = "local"
+#  1 nodes x 96 cores
+ncores = 96
+
+# molecules to be docked
+molecules =  [
+    "4G6K_clean.pdb",
+    "4I1B_clean.pdb"
+    ]
+
+# ====================================================================
+# Parameters for each stage are defined below, prefer full paths
+# ====================================================================
+[topoaa]
+
+[rigidbody]
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-NMR-epitope-act.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+
+[clustfcc]
+threshold = 10
+
+[seletopclusts]
+## select all the clusters
+top_cluster = 500
+## select the best 10 models of each cluster
+top_models = 10
+
+[caprieval]
+# this is only for this tutorial to check the performance at the rigidbody stage
+reference_fname = "4G6M_matched.pdb"
+
+[flexref]
+# Acceptable percentage of model failures
+tolerance = 5
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-NMR-epitope-act.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+
+[emref]
+# CDR to surface ambig restraints
+ambig_fname = "ambig-CDR-NMR-epitope-act.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "unambig.tbl"
+
+[clustfcc]
+
+[seletopclusts]
+top_cluster = 500
+
+[caprieval]
+reference_fname = "4G6M_matched.pdb"
+
+# ====================================================================
+
+{% endhighlight %}
+
+This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epitope-act-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-NMR-epitope-act-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-NMR-epitope-act-mpi.cfg`.
+
+
+If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
+
+_**Note**_ The running time for this scenario is similar to that of scenario 2a (see above).
+
+
+<hr>
+<hr>
+## Analysis of docking results
 
 
 
