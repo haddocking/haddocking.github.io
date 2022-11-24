@@ -205,7 +205,7 @@ In this tutorial we will make use of the new HADDOCK3 version. In case HADDOCK3
 is not pre-installed in your system you will have to install it.
 
 To obtaine HADDOCK3 navigate to [its official repository][haddock-repo], fill the
-registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html).
+registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
 
 
 <br>
@@ -654,20 +654,174 @@ The basic workflow for all three scenarios will consists of the following module
 7. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
 8. **`caprieval`**: *Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 
+The input PDB files are the same for all three scenarios. The differences are in the ambiguous interaction restraint files used and the sampling at the rigid body stage in the case of scenario1.
+
+
+<hr>
+### HADDOCK3 execution modes
+
+HADDOCK3 currently supports three difference execution modes that are defined in the first section of the configuration file of a run.
+
+
+#### 1. local mode
+
+In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file 
+to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
+
+<pre style="background-color:#DAE4E7">
+# compute mode
+mode = 'local'
+#  1 nodes x 96 ncores
+ncores = 96
+</pre>
+
+In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
+
+<a class="prompt prompt-cmd">
+  haddock3 \<my-workflow-configuration-file\>
+</a>
+
+Alternatively redirect the output to a log file and send haddock3 to the background
+
+<a class="prompt prompt-cmd">
+  haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
+</a>
+
+_**Note**_: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
+
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<i>View an example script for submitting via the slurm batch system:</i>
+ </summary>
+<pre style="background-color:#DAE4E7">
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=96
+#SBATCH -J haddock3
+#SBATCH --partition=medium
+
+# load haddock3 module
+module load haddock3
+# or activate the haddock3 conda environment
+##source $HOME/miniconda3/etc/profile.d/conda.sh
+##conda activate haddock3
+
+# go to the run directory
+cd $HOME/HADDOCK3-antibody-antigen
+
+# execute
+haddock3 docking-Ab-Ag-CDR-surface-node.cfg
+</pre>
+<br>
+</details>
+
+<br>
+#### 2. HPC/batch mode
+
+In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. 
+Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will 
+have to define the `queue` name and the maximum number of conccurent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model 
+calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. 
+The number of model per job is defined by the `concat` parameter in the configuration file. 
+You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
+
+An example of the relevant parameters to be defined in the first section of the config file is:
+
+<pre style="background-color:#DAE4E7">
+# compute mode
+mode = 'hpc'
+# batch system
+batch_type = 'slurm'
+# queue name
+queue = 'short'
+# number of concurrent jobs to submit to the batch system
+queue_limit = 100
+# number of models to produce per submitted job
+concat = 10
+</pre>
+
+
+In this mode HADDOCK3 can be started from the command line as for the local mode.
+
+
+#### 3. MPI mode
+
+HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library 
+must have been installed at installation time. Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html).
+The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
+
+An example of the relevant parameters to be defined in the first section of the config file is:
+
+<pre style="background-color:#DAE4E7">
+# compute mode
+mode = "mpi"
+#  5 nodes x 50 tasks = ncores = 250
+ncores = 250
+</pre>
+
+In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.
+
+<details style="background-color:#DAE4E7">
+<summary style="bold">
+<i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system:</i>
+ </summary>
+<pre style="background-color:#DAE4E7">
+#!/bin/bash
+#SBATCH --nodes=5
+#SBATCH --tasks-per-node=50
+#SBATCH -J haddock3mpi
+
+# load haddock3 module
+module load haddock3
+# or make sure haddock3 is activated
+##source $HOME/miniconda3/etc/profile.d/conda.sh
+##conda activate haddock3
+
+# go to the run directory
+cd $HOME/HADDOCK3-antibody-antigen
+
+# execute
+haddock3 docking-Ab-Ag-CDR-NMR-epitope-act-mpi.cfg
+</pre>
+<br>
+</details>
+
+
 
 <hr>
 ### Scenario 1: Paratope - antigen surface
 
 
+Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `ambig-paratope-surface.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. Further, as we have no information on the antigen side, it is important to increase the sampling in the ridig body sampling stage to 10000. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
+<figure align="center">
+  <img width="75%" src="./docking-Ab-Ag-CDR-surface-node.png">
+</figure>
+
+This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-surface-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-surface-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
+
+
+If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
+
+_**Note**_ that this scenario is computationally more expensive because of the increased sampling. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min. The same run on a single node using all 96 threads took on the same architecture ...
 
 
 <hr>
 ### Scenario 2a: Paratope - NMR-epitope as passive
 
 
+In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-CDR-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+
+<figure align="center">
+  <img width="75%" src="./docking-Ab-Ag-CDR-NMR-epitope-pass-node.png">
+</figure>
+
+This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-NMR-epitope-pass-node`. An MPI version is also available as `docking-Ab-Ag-CDR-NMR-epitope-pass-mpi.cfg`.
 
 
+If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
+
+_**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes.
 
 
 <hr>
