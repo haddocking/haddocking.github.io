@@ -869,12 +869,22 @@ reference_fname = "4G6M_matched.pdb"
 # ====================================================================
 {% endhighlight %}
 
-This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-surface-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-surface-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
+This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-surface-node.cfg) and is also provided 
+in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-surface-node.cfg`. 
+An MPI version is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
 
 
-If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
+<a class="prompt prompt-question">
+Compared to the workflow described above (Setting up the docking with HADDOCK3), 
+this example has one additional step. Can you identify which one?
+</a>
 
-_**Note**_ that this scenario is computationally more expensive because of the increased sampling. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min. The same run on a single node using all 96 threads took on the same architecture ...
+If you have everything ready, you can launch haddock3 either from the command line, or, better, 
+submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
+
+_**Note**_ that this scenario is computationally more expensive because of the increased sampling. 
+On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min. 
+The same run on a single node using all 96 threads took on the same architecture 4 hours and 8 minutes.
 
 
 <hr>
@@ -1055,6 +1065,470 @@ _**Note**_ The running time for this scenario is similar to that of scenario 2a 
 <hr>
 <hr>
 ## Analysis of docking results
+
+
+### Structure of the run directory
+
+Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
+
+{% highlight shelll %}
+> ls scenario2a-CDR-NMR-epitope-pass/
+    0_topoaa/
+    1_rigidbody/
+    2_clustfcc/
+    3_seletopclusts/
+    4_caprieval/
+    5_flexref/
+    6_emref/
+    7_clustfcc/
+    8_seletopclusts/
+    9_caprieval/
+    data/
+    log
+{% endhighlight %}
+
+There is one additional `data` directory containing the input data (PDB and restraint files) for the various modules and the `log` file of the run.
+You can find information about the duration of the run at the bottom of that file. Each sampling/refinement/selection module will contain PBD files.
+
+For example, the `X_seletopclusts` directory contains the selected models from each cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
+
+The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
+
+<pre style="background-color:#DAE4E7">
+model   md5     caprieval_rank  score   irmsd   fnat    lrmsd   ilrmsd  dockq   cluster-id      cluster-ranking model-cluster-ranking
+../6_emref/emref_19.pdb -       1       -147.606        1.252   0.793   2.355   1.680   0.770   6       1       1
+../6_emref/emref_18.pdb -       2       -135.651        1.048   0.879   2.246   1.408   0.829   6       1       2
+../6_emref/emref_15.pdb -       3       -134.860        1.100   0.776   1.937   1.236   0.792   6       1       3
+../6_emref/emref_11.pdb -       4       -133.143        1.367   0.741   3.787   1.952   0.707   6       1       4
+....
+</pre>
+
+If clustering was performed prior to calling the `caprieval` module the `capri_ss.tsv` will also contain information about to which cluster the model belongs to and its ranking within the cluster as shown above.
+
+The relevant statistics are:
+
+* **score**: *the HADDOCK score (arbitrary units)*
+* **irmsd**: *the interface RMSD, calculated over the interfaces the molecules*
+* **fnat**: *the fraction of native contacts*
+* **lrmsd**: *the ligand RMSD, calculated on the ligand after fitting on the receptor (1st component)*
+* **ilrmsd**: *the interface-ligand RMSD, calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example)*
+* **dockq**: *the DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale betweeen 1 (equal to reference) and 0*
+
+The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions).
+
+In CAPRI the quality of a model is defined as (for protein-protein complexes):
+
+* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1 
+* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
+* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
+
+<a class="prompt prompt-question">
+What is based on this CAPRI criterion the quality of the best model listed above (emref_19.pdb)?
+</a>
+
+In case the `caprieval` module is called after a clustering step an additional file will be present in the directory: `capri_clt.tsv`.
+This file contains the cluster ranking and score statistics, averaged over the minimumber number of models defined for clustering 
+(4 by default), with their corresponding standard deviations. E.g.:
+
+<pre style="background-color:#DAE4E7">
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
+1       6       10      -       -137.815        5.725   1.192   0.126   0.797   0.051   2.581   0.713   0.774   0.044   1
+2       2       16      -       -109.687        4.310   14.951  0.044   0.069   0.000   22.895  0.030   0.067   0.000   2
+3       8       4       -       -105.095        13.247  14.909  0.119   0.069   0.000   23.066  0.336   0.066   0.001   3
+4       5       10      -       -100.189        4.222   5.148   0.024   0.130   0.015   10.476  0.586   0.202   0.014   4
+...
+</pre>
+
+In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the precessind `X_seletopclusts` directory.
+
+
+<hr>
+### Analysis scenario 1: Paratope - antigen surface
+
+
+<hr>
+### Analysis scenario 2a: Paratope - NMR-epitope as passive
+
+
+Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory (note that to save space on partial data have been kept in this pre-calculated runs, but all relevant information is available).
+
+First of all let us check the final cluster statistics. 
+
+<a class="prompt prompt-info">Inspect the _capri_clt.tsv_ file</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+ </summary>
+<pre>
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
+1       6       10      -       -137.815        5.725   1.192   0.126   0.797   0.051   2.581   0.713   0.774   0.044   1
+2       2       16      -       -109.687        4.310   14.951  0.044   0.069   0.000   22.895  0.030   0.067   0.000   2
+3       8       4       -       -105.095        13.247  14.909  0.119   0.069   0.000   23.066  0.336   0.066   0.001   3
+4       5       10      -       -100.189        4.222   5.148   0.024   0.130   0.015   10.476  0.586   0.202   0.014   4
+5       1       21      -       -88.813 8.067   8.637   0.162   0.125   0.014   15.842  0.277   0.126   0.004   5
+6       4       10      -       -84.534 6.278   4.258   0.119   0.233   0.076   8.326   0.256   0.284   0.027   6
+7       7       9       -       -67.116 5.464   6.978   0.279   0.138   0.012   13.652  0.502   0.154   0.010   7
+8       3       10      -       -52.597 8.348   4.736   0.334   0.125   0.014   9.410   0.615   0.223   0.017   8
+</pre>
+</details>
+<br>
+
+<a class="prompt prompt-question">How many clusters are generated?</a>
+
+<a class="prompt prompt-question">Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?</a>
+
+Since for this tutorial we have at hand the crystal structure of the complex, we provided it as reference to the `caprieval` modules.
+This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the quality of the docked model compared to the reference crystal structure.
+
+<a class="prompt prompt-question">How many clusters or acceptable or better quality have been generate according to CAPRI criteria?</a>
+
+<a class="prompt prompt-question">What is the rank of the best cluster generated?</a>
+
+<a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a>
+
+
+
+In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow). 
+
+<a class="prompt prompt-info">Inspect the corresponding _capri_clt.tsv_ file</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+ </summary>
+<pre>
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
+1       1       10      -       -6.886  0.250   14.798  0.000   0.069   0.000   23.003  0.000   0.066   0.000   1
+2       4       10      -       -4.685  0.268   1.247   0.000   0.690   0.000   2.093   0.000   0.741   0.000   2
+3       5       10      -       -3.176  0.361   12.988  0.000   0.069   0.000   21.338  0.000   0.073   0.000   3
+4       6       10      -       -2.576  0.140   5.104   0.000   0.138   0.000   10.149  0.000   0.210   0.000   4
+5       3       10      -       -2.535  0.183   8.639   0.000   0.121   0.000   15.932  0.000   0.124   0.000   5
+6       2       10      -       0.258   0.306   10.007  0.027   0.048   0.008   17.988  0.047   0.084   0.003   6
+7       8       10      -       3.854   0.077   4.032   0.000   0.121   0.000   8.122   0.000   0.255   0.000   7
+8       9       10      -       4.665   0.189   7.100   0.000   0.121   0.000   13.749  0.000   0.147   0.000   8
+9       7       10      -       10.165  0.434   4.776   0.000   0.086   0.000   9.249   0.000   0.211   0.000   9
+</pre>
+</details>
+<br>
+
+<a class="prompt prompt-question">How many clusters are generated?</a>
+
+<a class="prompt prompt-question">Is this the same number that after refinement (see above)?</a>
+
+<a class="prompt prompt-question">If not what could be the reason?</a>
+
+<a class="prompt prompt-question">Consider now the rank of the first acceptable cluster based on iRMSD values. How does this compare with the refined clusters (see above)?</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>Answer:</i>
+ </summary>
+<p> After rigid body docking the first acceptable cluster is at rank 2. After refinement it scores at the top with score significantly better than the second-ranked cluster.
+</p>
+</details>
+<br>
+
+<a class="prompt prompt-question">Did the rank improve after refinement?</a>
+
+
+We are providing in the `scripts` a simple script that extract some cluster statistics for acceptable or better clusters from the `caprieval` steps.
+To use is simply call the script with as argument the run directory you want to analyse, e.g.:
+
+<a class="prompt prompt-cmd">
+   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-CDR-NMR-epitope-pass
+</a>
+
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the output of the script:</i>
+ </summary>
+<pre>
+==============================================
+== scenario2a-CDR-NMR-epitope-pass//4_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  9
+Total number of medium or better clusters:      1  out of  9
+Total number of high quality clusters:          0  out of  9
+
+First acceptable cluster - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
+First medium cluster     - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
+Best cluster             - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
+==============================================
+== scenario2a-CDR-NMR-epitope-pass//9_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  8
+Total number of medium or better clusters:      1  out of  8
+Total number of high quality clusters:          0  out of  8
+
+First acceptable cluster - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
+First medium cluster     - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
+Best cluster             - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
+</pre>
+</details>
+<br>
+
+Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script: 
+
+
+<a class="prompt prompt-cmd">
+   ./scripts/extract-capri-stats.sh ./runs/scenario2a-CDR-NMR-epitope-pass
+</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the output of the script:</i>
+ </summary>
+<pre>
+==============================================
+== scenario2a-CDR-NMR-epitope-pass//4_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  10  out of  90
+Total number of medium or better models:      10  out of  90
+Total number of high quality models:          2  out of  90
+
+First acceptable model - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
+First medium model     - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
+Best model             - rank:  18  i-RMSD:  0.980  Fnat:  0.586  DockQ:  0.739
+==============================================
+== scenario2a-CDR-NMR-epitope-pass//9_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  10  out of  90
+Total number of medium or better models:      10  out of  90
+Total number of high quality models:          0  out of  90
+
+First acceptable model - rank:  1  i-RMSD:  1.252  Fnat:  0.793  DockQ:  0.770
+First medium model     - rank:  1  i-RMSD:  1.252  Fnat:  0.793  DockQ:  0.770
+Best model             - rank:  2  i-RMSD:  1.048  Fnat:  0.879  DockQ:  0.829
+</pre>
+</details>
+<br>
+
+_**Note**_ that this kind of analysis only makes sense when we know the reference complex and for benchmarking / performance analysis purposes.
+
+
+<a class="prompt prompt-info">Look at the single structure statistics provided by the script</a>
+
+<a class="prompt prompt-question">How does the quality of the model changes after flexible refinement? Consider here the various metrics.</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>Answer:</i>
+ </summary>
+<p> In terms of iRMSD values we only observe very small differences with a slight increase. 
+The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement.
+All this will of course depend on how different are the bound and unbound conformations and the amount of data 
+used to drive the docking process. In general, from our experience, the more and better data at hand, 
+the larger the conformational changes that can be induced.
+</p>
+</details>
+<br>
+
+<a class="prompt prompt-question">Is the best model always rank as first?</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>Answer:</i>
+ </summary>
+<p> This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.</p>
+</details>
+<br>
+
+
+<hr>
+### Analysis scenario 2b: Paratope - NMR-epitope as active
+
+
+Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory (note that to save space on partial data have been kept in this pre-calculated runs, but all relevant information is available).
+
+First of all let us check the final cluster statistics. 
+
+<a class="prompt prompt-info">Inspect the _capri_clt.tsv_ file</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+ </summary>
+<pre>
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
+1       1       17      -       -148.986        7.256   1.774   0.659   0.690   0.136   4.096   1.402   0.652   0.138   1
+2       5       10      -       -131.282        3.481   14.993  0.055   0.069   0.000   23.430  0.078   0.065   0.000   2
+3       6       10      -       -109.953        10.789  4.999   0.104   0.130   0.009   10.137  0.730   0.209   0.013   3
+4       9       9       -       -108.985        6.842   5.048   0.702   0.310   0.068   9.739   1.195   0.277   0.045   4
+5       3       11      -       -102.771        11.794  14.779  0.157   0.095   0.009   23.291  0.274   0.074   0.004   5
+6       8       9       -       -100.618        16.534  4.691   0.704   0.250   0.058   8.812   1.324   0.279   0.051   6
+7       4       10      -       -94.901 3.834   9.640   0.464   0.077   0.015   18.645  0.917   0.091   0.010   7
+8       11      8       -       -86.147 6.887   3.785   0.420   0.383   0.058   7.878   1.242   0.355   0.048   8
+9       12      7       -       -85.281 13.431  14.745  0.102   0.077   0.019   23.084  0.106   0.069   0.006   9
+10      10      8       -       -85.188 8.390   3.042   0.195   0.483   0.056   6.999   0.304   0.425   0.025   10
+11      2       15      -       -81.657 7.278   13.872  0.749   0.086   0.012   22.271  0.727   0.075   0.004   11
+12      7       10      -       -81.123 2.345   7.474   0.122   0.172   0.000   15.516  0.447   0.147   0.004   12
+13      13      4       -       -68.804 9.982   14.468  0.091   0.090   0.014   22.792  0.056   0.075   0.005   13
+</pre>
+</details>
+<br>
+
+<a class="prompt prompt-question">How many clusters are generated?</a>
+
+<a class="prompt prompt-question">Can you think of a reason why this scenario leads to more clusters? (think of the differences in the setup of the two scenarios)</a>
+
+<a class="prompt prompt-question">Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?</a>
+
+<a class="prompt prompt-question">How many clusters or acceptable or better quality have been generate according to CAPRI criteria?</a>
+
+<a class="prompt prompt-question">What is the rank of the best cluster generated?</a>
+
+<a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a>
+
+
+In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow). 
+
+<a class="prompt prompt-info">Inspect the corresponding _capri_clt.tsv_ file</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+ </summary>
+<pre>
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
+1       7       10      -       -13.629 0.864   2.514   0.090   0.332   0.007   5.341   0.156   0.437   0.010   1
+2       5       10      -       -13.011 1.684   7.800   0.011   0.138   0.000   15.447  0.052   0.135   0.000   2
+3       1       10      -       -11.014 0.302   1.083   0.063   0.733   0.062   2.661   0.486   0.766   0.032   3
+4       3       10      -       -10.651 0.900   5.020   0.032   0.168   0.007   9.968   0.075   0.224   0.004   4
+5       4       10      -       -9.350  1.336   14.819  0.022   0.069   0.000   23.182  0.033   0.066   0.000   5
+6       2       10      -       -8.480  0.941   9.877   0.785   0.043   0.045   18.943  1.710   0.079   0.026   6
+7       14      10      -       -6.270  0.901   12.963  0.009   0.069   0.000   21.422  0.039   0.073   0.000   7
+8       6       10      -       -3.691  0.591   14.746  0.008   0.069   0.000   23.205  0.031   0.066   0.000   8
+10      9       10      -       -2.325  2.898   3.434   0.489   0.267   0.029   7.040   1.183   0.344   0.048   9
+9       8       10      -       -1.813  0.530   3.220   0.088   0.336   0.026   7.050   0.360   0.369   0.005   10
+12      12      10      -       -0.867  1.673   5.290   0.416   0.181   0.015   10.690  1.286   0.216   0.023   11
+11      11      10      -       0.309   1.236   14.796  0.397   0.052   0.012   23.420  0.358   0.059   0.005   12
+13      13      10      -       3.010   1.008   4.422   0.490   0.185   0.033   7.855   0.843   0.278   0.035   13
+14      10      10      -       5.161   0.834   14.703  0.060   0.052   0.000   23.147  0.239   0.060   0.001   14
+</pre>
+</details>
+<br>
+
+<a class="prompt prompt-question">How many clusters are generated?</a>
+
+<a class="prompt prompt-question">Is this the same number that after refinement (see above)?</a>
+
+<a class="prompt prompt-question">If not what could be the reason?</a>
+
+<a class="prompt prompt-question">Consider again the rank of the first acceptable cluster based on iRMSD values. How does this compare with the refined clusters (see above)?</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>Answer:</i>
+ </summary>
+<p> After rigid body docking the first acceptable cluster is at rank 1 and the same is true after refinement, but the iRMSD values have improved.</p>
+</details>
+<br>
+
+
+Use the `extract-capri-stats-clt.sh` script to extract some simple cluster statistics for this run.
+
+<a class="prompt prompt-cmd">
+   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2b-CDR-NMR-epitope-pass
+</a>
+
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the output of the script:</i>
+ </summary>
+<pre>
+==============================================
+== scenario2b-CDR-NMR-epitope-act//4_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  4  out of  14
+Total number of medium or better clusters:      1  out of  14
+Total number of high quality clusters:          0  out of  14
+
+First acceptable cluster - rank:  1  i-RMSD:  2.514  Fnat:  0.332  DockQ:  0.437
+First medium cluster     - rank:  3  i-RMSD:  1.083  Fnat:  0.733  DockQ:  0.766
+Best cluster             - rank:  3  i-RMSD:  1.083  Fnat:  0.733  DockQ:  0.766
+==============================================
+== scenario2b-CDR-NMR-epitope-act//9_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  3  out of  13
+Total number of medium or better clusters:      1  out of  13
+Total number of high quality clusters:          0  out of  13
+
+First acceptable cluster - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
+First medium cluster     - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
+Best cluster             - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
+</pre>
+</details>
+<br>
+
+Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script: 
+
+
+<a class="prompt prompt-cmd">
+   ./scripts/extract-capri-stats.sh ./runs/scenario2b-CDR-NMR-epitope-pass
+</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View the output of the script:</i>
+ </summary>
+<pre>
+==============================================
+== scenario2b-CDR-NMR-epitope-act//4_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  36  out of  140
+Total number of medium or better models:      10  out of  140
+Total number of high quality models:          1  out of  140
+
+First acceptable model - rank:  2  i-RMSD:  2.533  Fnat:  0.328  DockQ:  0.434
+First medium model     - rank:  13  i-RMSD:  1.152  Fnat:  0.810  DockQ:  0.794
+Best model             - rank:  15  i-RMSD:  0.982  Fnat:  0.776  DockQ:  0.803
+==============================================
+== scenario2b-CDR-NMR-epitope-act//9_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  31  out of  128
+Total number of medium or better models:      10  out of  128
+Total number of high quality models:          6  out of  128
+
+First acceptable model - rank:  1  i-RMSD:  2.554  Fnat:  0.552  DockQ:  0.506
+First medium model     - rank:  2  i-RMSD:  1.051  Fnat:  0.897  DockQ:  0.834
+Best model             - rank:  10  i-RMSD:  0.894  Fnat:  0.845  DockQ:  0.854
+</pre>
+</details>
+<br>
+
+_**Note**_ that this kind of analysis only makes sense when we know the reference complex and for benchmarking / performance analysis purposes.
+
+
+<a class="prompt prompt-info">Look at the single structure statistics provided by the script</a>
+
+<a class="prompt prompt-question">How does the quality of the model changes after flexible refinement? Consider here the various metrics.</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>Answer:</i>
+ </summary>
+<p> In this case we observe a small improvement in terms of iRMSD values and quite some large improvement in 
+the fraction of native contacts and the DockQ scores. Also the single model rankings have improved, but the top ranked model is not the best one.
+</p>
+</details>
+<br>
+
+<a class="prompt prompt-question">Is the best model always rank as first?</a>
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>Answer:</i>
+ </summary>
+<p> This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.</p>
+</details>
+<br>
+
+
+<hr>
+### Comparing the performance of the three scenarios
 
 
 
