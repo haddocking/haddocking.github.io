@@ -11,6 +11,8 @@ image:
 
 ## 2022
 
+* M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1093/bioinformatics/btac759). _Bioinformatics_ Advanced Online Publication (2022). Preprint [here](https://doi.org/10.1101/2021.12.08.471762).
+
 * S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _BioRxiv_ 10.1101/2021.12.08.471762 (2022).
 
 * M. Stahl Madsen, M. Broekema, M. Rønn Madsen, A. Koppen, A. Borgman, C. Gräwe, E. Thomsen, D. Westland, M. Kranendonk, M. Groot Koerkamp, N. Hamers, **A.M.J.J. Bonvin**, J. Ramos Pittol, K. Natarajan, S. Kersten, F. Holstege, H. Monajemi, S. van Mil, M. Vermeulen, B. Kragelund, D. Cassiman, S. Mandrup and E. Kalkhoven. PPARγ lipodystrophy mutants reveal intermolecular interactions required for enhancer activation. _Nature Comm._, In Press (2022).
@@ -31,8 +33,6 @@ image:
 
 
 ## 2021
-
-* M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1101/2021.12.08.471762). _BioRxiv_ 10.1101/2021.12.08.471762 (2021).
 
 * Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. [MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations](https://doi.org/10.1101/2021.10.06.463442). _BioRxiv_, 10.1101/2021.10.06.463442 (2021).
 
