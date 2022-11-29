@@ -73,9 +73,9 @@ provide you links to download the various required software and data.
 Further we are providing pre-processed PDB files for docking and analysis (but the 
 preprocessing of those files will also be explained in this tutorial). The files have been processed 
 to facilitate their use in HADDOCK and for allowing comparison with the known reference 
-structure of the complex. For this **download and unzip the following 
+structure of the complex. For this _download and unzip the following_ 
 [zip archive](https://surfdrive.surf.nl/files/index.php/s/HvXxgxCTY1DiPsV/download){:target="_blank"} 
-and note the location of the extracted PDB files in your system**. In it you should find the following directories:
+_and note the location of the extracted PDB files in your system_. In it you should find the following directories:
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
 * `pdbs`: Contains the pre-processed PDB files
@@ -83,6 +83,42 @@ and note the location of the extracted PDB files in your system**. In it you sho
 * `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
 * `scripts`: Contains a variety of scripts used in this tutorial
 
+
+### Setup for the EU-ASEAN HPC schooll on Fugaku
+
+The software and data required for this tutorial have been pre-installed on Fugaku. 
+In order to run the tutorial, first copy the required data into your home directory on fugagku:
+
+<a class="prompt prompt-cmd">
+tar xfz /vol0601/share/ra020021/LifeScience/20221208_Bonvin/HADDOCK3-antibody-antigen.tgz
+</a>
+
+This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and script and job examples ready for submission to the batch system.
+
+HADDOCK3 has been pre-installed, both on the login node and on the compute nodes.
+To active HADDOCK3 on the login node type:
+
+<a class="prompt prompt-cmd">
+source /vol0601/share/ra020021/LifeScience/20221208_Bonvin/miniconda3/etc/profile.d/conda.sh<br>
+conda activate haddock3
+</a>
+
+You will now have all the require software in place to run the various steps of this tutorial.
+
+In case you would start an interactive session on a node, e.g. with the following command:
+
+<a class="prompt prompt-cmd">
+pjsub \-\-interact \-\-sparam wait-time=60 \-L  \"elapse=02:00:00\" \-x \"PJM_LLIO_GFSCACHE=/vol0003:/vol0006\"
+</a>
+
+use then the following command to active the HADDOCK3 environment for the arm8 architecture of the compute nodes:
+
+<a class="prompt prompt-cmd">
+source /vol0601/share/ra020021/LifeScience/20221208_Bonvin/miniconda3-arm8/etc/profile.d/conda.sh<br>
+conda activate haddock3
+</a>
+
+This is the command you will also find in the example job script for batch submission.
 
 <hr>
 <hr>
@@ -657,6 +693,7 @@ The basic workflow for all three scenarios will consists of the following module
 
 The input PDB files are the same for all three scenarios. The differences are in the ambiguous interaction restraint files used and the sampling at the rigid body stage in the case of scenario1.
 
+**_Note_ that for the** [EU ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} **, we will only run scenario2a with a reduced sampling for the rigid body module of 240 models to limit to the computing time and get results within a reasonable time. The Fugaku example scripts for this are provided in the `haddock3` directory (`docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg` and `docking-Ab-Ag-CDR-NMR-epitope-pass-fugaku-node.job`). Copy those into the main tutorial directory before submitting the job file to the batch system with the `pjsub` command.**
 
 <hr>
 ### HADDOCK3 execution modes
@@ -715,6 +752,31 @@ haddock3 docking-Ab-Ag-CDR-surface-node.cfg
 {% endhighlight %}
 <br>
 </details>
+
+<details>
+<summary style="bold">
+<i><b>EU-ASEAN HPC school example script for submitting to the Fugaku batch system:</b></i>
+ </summary>
+{% highlight shell %}
+#!/bin/bash
+#PJM -L  "node=1"                            # Assign 1 node
+#PJM -L  "elapse=02:00:00"                   # Elapsed time limit 2 hour
+#PJM -x PJM_LLIO_GFSCACHE=/vol0003:/vol0006  # volume names that job uses
+#PJM -s                                      # Statistical information output
+
+# active the haddock3 conda environment
+source /vol0601/share/ra020021/LifeScience/20221208_Bonvin/miniconda3-arm8/etc/profile.d/conda.sh
+conda activate haddock3
+
+# go to the tutorial directory in your home directory
+cd $HOME/HADDOCK3-antibody-antigen
+
+# execute haddock3
+haddock3 docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg
+{% endhighlight %}
+<br>
+</details>
+
 
 <br>
 #### 2. HPC/batch mode
@@ -807,6 +869,12 @@ mode = "local"
 #  1 nodes x 96 threads
 ncores = 96
 
+# Self contained rundir (to avoid problems with long filename paths)
+self_contained = true
+
+# Cleaning to compress files and save space
+clean = true
+
 # molecules to be docked
 molecules =  [
     "4G6K_clean.pdb",
@@ -822,7 +890,7 @@ molecules =  [
 # CDR to surface ambig restraints
 ambig_fname = "ambig-CDR-surface.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 # Number of models to generate
@@ -847,7 +915,7 @@ tolerance = 5
 # CDR to surface ambig restraints
 ambig_fname = "ambig-CDR-surface.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -855,7 +923,7 @@ randremoval = false
 # CDR to surface ambig restraints
 ambig_fname = "ambig-CDR-surface.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -872,7 +940,7 @@ reference_fname = "4G6M_matched.pdb"
 
 This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-surface-node.cfg) and is also provided 
 in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-surface-node.cfg`. 
-An MPI version is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
+An MPI version (this is still very much experimental) is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
 
 
 <a class="prompt prompt-question">
@@ -886,6 +954,8 @@ submitting it to the batch system requesting in this local run mode a full node 
 _**Note**_ that this scenario is computationally more expensive because of the increased sampling. 
 On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min. 
 The same run on a single node using all 96 threads took on the same architecture 4 hours and 8 minutes.
+
+On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank" processors), this run completed in about 23 hours.
 
 
 <hr>
@@ -908,6 +978,12 @@ mode = "local"
 #  1 nodes x 96 threads
 ncores = 96
 
+# Self contained rundir (to avoid problems with long filename paths)
+self_contained = true
+
+# Cleaning to compress files and save space
+clean = true
+
 # molecules to be docked
 molecules =  [
     "4G6K_clean.pdb",
@@ -923,7 +999,7 @@ molecules =  [
 # CDR to surface ambig restraints
 ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -946,7 +1022,7 @@ tolerance = 5
 # CDR to surface ambig restraints
 ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -954,7 +1030,7 @@ randremoval = false
 # CDR to surface ambig restraints
 ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -975,6 +1051,8 @@ This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epi
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
 _**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes. In HPC/batch mode, using 100 queue slots and 10 models per job, the same run completed in about 45 minutes.
+
+On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank"} processors), this run completed in about 1 hour and 15 minutes. Limiting the sampling to 240 rigid body models (recommended for the EU ASEAN HPC school) shorten the execution time to 37 minutes.
 
 
 <hr>
@@ -998,6 +1076,12 @@ run_dir = "run1-node-CDR-NMR-epitope-act"
 mode = "local"
 #  1 nodes x 96 cores
 ncores = 96
+
+# Self contained rundir (to avoid problems with long filename paths)
+self_contained = true
+
+# Cleaning to compress files and save space
+clean = true
 
 # molecules to be docked
 molecules =  [
