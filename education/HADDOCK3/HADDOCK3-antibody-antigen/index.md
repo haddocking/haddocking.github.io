@@ -2,7 +2,7 @@
 layout: page
 title: "Antibody-antigen modelling tutorial using a local version of HADDOCK3"
 excerpt: "A tutorial describing the use of HADDOCK3 to model an antibody-antigen complex"
-tags: [HADDOCK, installation, preparation, proteins, docking, analysis]
+tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -693,7 +693,7 @@ The basic workflow for all three scenarios will consists of the following module
 
 The input PDB files are the same for all three scenarios. The differences are in the ambiguous interaction restraint files used and the sampling at the rigid body stage in the case of scenario1.
 
-**_Note_ that for the** [EU ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} **, we will only run scenario2a with a reduced sampling for the rigid body module of 240 models to limit to the computing time and get results within a reasonable time. The Fugaku example scripts for this are provided in the `haddock3` directory (`docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg` and `docking-Ab-Ag-CDR-NMR-epitope-pass-fugaku-node.job`). Copy those into the main tutorial directory before submitting the job file to the batch system with the `pjsub` command.**
+**_Note_ that for the** [EU ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} **, we will only run scenario2a with a reduced sampling for the rigid body module of 240 models to limit to the computing time and get results within a reasonable time. The Fugaku example scripts for this are provided in the `haddock3` directory (`scenario2a-NMR-epitope-pass-node.cfg` and `scenario2a-NMR-epitope-pass-fugaku-node.job`). Copy those into the main tutorial directory before submitting the job file to the batch system with the `pjsub` command.**
 
 <hr>
 ### HADDOCK3 execution modes
@@ -748,7 +748,7 @@ module load haddock3
 cd $HOME/HADDOCK3-antibody-antigen
 
 # execute
-haddock3 docking-Ab-Ag-CDR-surface-node.cfg
+haddock3 scenario1-surface-node.cfg
 {% endhighlight %}
 <br>
 </details>
@@ -772,7 +772,7 @@ conda activate haddock3
 cd $HOME/HADDOCK3-antibody-antigen
 
 # execute haddock3
-haddock3 docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg
+haddock3 scenario2a-NMR-epitope-pass-node.cfg
 {% endhighlight %}
 <br>
 </details>
@@ -844,7 +844,7 @@ module load haddock3
 cd $HOME/HADDOCK3-antibody-antigen
 
 # execute
-haddock3 docking-Ab-Ag-CDR-NMR-epitope-act-mpi.cfg
+haddock3 scenario2a-NMR-epitope-pass-mpi.cfg
 {% endhighlight %}
 <br>
 </details>
@@ -862,7 +862,7 @@ Now that we have all data ready, and know about execution modes of HADDOCK3 it i
 # ====================================================================
 
 # directory name of the run
-run_dir = "scenario1-CDR-surface"
+run_dir = "scenario1-surface"
 
 # compute mode
 mode = "local"
@@ -877,8 +877,8 @@ clean = true
 
 # molecules to be docked
 molecules =  [
-    "4G6K_clean.pdb",
-    "4I1B_clean.pdb"
+    "pdbs/4G6K_clean.pdb",
+    "pdbs/4I1B_clean.pdb"
     ]
 
 # ====================================================================
@@ -888,9 +888,9 @@ molecules =  [
 
 [rigidbody]
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-surface.tbl"
+ambig_fname = "restraints/ambig-paratope-surface.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "antibody-unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 # Number of models to generate
@@ -907,23 +907,23 @@ top_models = 10
 
 [caprieval]
 # this is only for this tutorial to check the performance at the rigidbody stage
-reference_fname = "4G6M_matched.pdb"
+reference_fname = "pdbs/4G6M_matched.pdb"
 
 [flexref]
 # Acceptable percentage of model failures
 tolerance = 5
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-surface.tbl"
+ambig_fname = "restraints/ambig-paratope-surface.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "antibody-unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
 [emref]
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-surface.tbl"
+ambig_fname = "restraints/ambig-paratope-surface.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "antibody-unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -933,14 +933,13 @@ randremoval = false
 top_cluster = 500
 
 [caprieval]
-reference_fname = "4G6M_matched.pdb"
+reference_fname = "pdbs/4G6M_matched.pdb"
 
 # ====================================================================
 {% endhighlight %}
 
-This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-surface-node.cfg) and is also provided 
-in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-surface-node.cfg`. 
-An MPI version (this is still very much experimental) is also available as `docking-Ab-Ag-CDR-surface-mpi.cfg`.
+This configuration file is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario1-surface-node.cfg`. 
+An MPI version (this is still very much experimental and might not work on all systems) is also available as `scenario1-surface-mpi.cfg`.
 
 
 <a class="prompt prompt-question">
@@ -962,7 +961,7 @@ On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a singl
 ### Scenario 2a: Paratope - NMR-epitope as passive
 
 
-In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-CDR-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-paratope-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -971,7 +970,7 @@ In scenario 2a we are settinp up the docking in which the paratope on the antibo
 # ====================================================================
 
 # directory name of the run
-run_dir = "run1-mpi-CDR-NMR-epitope-pass"
+run_dir = "scenario2b-NMR-epitope-pass"
 
 # MPI compute mode
 mode = "local"
@@ -986,8 +985,8 @@ clean = true
 
 # molecules to be docked
 molecules =  [
-    "4G6K_clean.pdb",
-    "4I1B_clean.pdb"
+    "pdbs/4G6K_clean.pdb",
+    "pdbs/4I1B_clean.pdb"
     ]
 
 # ====================================================================
@@ -997,9 +996,9 @@ molecules =  [
 
 [rigidbody]
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
+ambig_fname = "restraints/ambig-paratope-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "antibody-unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -1014,23 +1013,23 @@ top_models = 10
 
 [caprieval]
 # this is only for this tutorial to check the performance at the rigidbody stage
-reference_fname = "4G6M_matched.pdb"
+reference_fname = "pdbs/4G6M_matched.pdb"
 
 [flexref]
 # Acceptable percentage of model failures
 tolerance = 5
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
+ambig_fname = "restraints/ambig-paratope-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "antibody-unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
 [emref]
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-NMR-epitope-pass.tbl"
+ambig_fname = "restraints/ambig-paratope-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "antibody-unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 # Turn off ramdom removal of restraints
 randremoval = false
 
@@ -1040,12 +1039,12 @@ randremoval = false
 top_cluster = 500
 
 [caprieval]
-reference_fname = "4G6M_matched.pdb"
+reference_fname = "pdbs/4G6M_matched.pdb"
 
 # ====================================================================
 {% endhighlight %}
 
-This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-NMR-epitope-pass-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-NMR-epitope-pass-mpi.cfg`.
+This configuration is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario2a-NMR-epitope-pass-node.cfg`. An MPI version  (this is still very much experimental and might not work on all systems) is also available as `scenario2a-NMR-epitope-pass-mpi.cfg`.
 
 
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
@@ -1060,7 +1059,7 @@ On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a singl
 
 
 Scenario 2b is rather similar to scenario 2a with the difference that the NMR-identified epitope is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
-And since there might be more false positive data in the identified interfaces, we will leave the random removal of restraints on. The restraint file to use for this is `ambig-CDR-NMR-epitope-act.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+And since there might be more false positive data in the identified interfaces, we will leave the random removal of restraints on. The restraint file to use for this is `ambig-paratope-NMR-epitope-act.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -1070,7 +1069,7 @@ And since there might be more false positive data in the identified interfaces, 
 # ====================================================================
 
 # directory name of the run
-run_dir = "run1-node-CDR-NMR-epitope-act"
+run_dir = "scenario2b-NMR-epitope-act"
 
 # compute mode
 mode = "local"
@@ -1085,8 +1084,8 @@ clean = true
 
 # molecules to be docked
 molecules =  [
-    "4G6K_clean.pdb",
-    "4I1B_clean.pdb"
+    "pdbs/4G6K_clean.pdb",
+    "pdbs/4I1B_clean.pdb"
     ]
 
 # ====================================================================
@@ -1096,9 +1095,9 @@ molecules =  [
 
 [rigidbody]
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-NMR-epitope-act.tbl"
+ambig_fname = "restraints/ambig-paratope-NMR-epitope-act.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 
 [clustfcc]
 threshold = 10
@@ -1111,21 +1110,21 @@ top_models = 10
 
 [caprieval]
 # this is only for this tutorial to check the performance at the rigidbody stage
-reference_fname = "4G6M_matched.pdb"
+reference_fname = "pdbs/4G6M_matched.pdb"
 
 [flexref]
 # Acceptable percentage of model failures
 tolerance = 5
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-NMR-epitope-act.tbl"
+ambig_fname = "restraints/ambig-paratope-NMR-epitope-act.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 
 [emref]
 # CDR to surface ambig restraints
-ambig_fname = "ambig-CDR-NMR-epitope-act.tbl"
+ambig_fname = "restraints/ambig-paratope-NMR-epitope-act.tbl"
 # Restraints to keep the antibody chains together
-unambig_fname = "unambig.tbl"
+unambig_fname = "restraints/antibody-unambig.tbl"
 
 [clustfcc]
 
@@ -1133,13 +1132,13 @@ unambig_fname = "unambig.tbl"
 top_cluster = 500
 
 [caprieval]
-reference_fname = "4G6M_matched.pdb"
+reference_fname = "pdbs/4G6M_matched.pdb"
 
 # ====================================================================
 
 {% endhighlight %}
 
-This configuration file can be found [here](./haddock3/docking-Ab-Ag-CDR-NMR-epitope-act-node.cfg) and is also provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-Ab-Ag-CDR-NMR-epitope-act-node.cfg`. An MPI version is also available as `docking-Ab-Ag-CDR-NMR-epitope-act-mpi.cfg`.
+This configuration file is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario2b-NMR-epitope-act-node.cfg`. An MPI version is also available as `scenario2b-NMR-epitope-act-mpi.cfg`.
 
 
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
@@ -1157,7 +1156,7 @@ _**Note**_ The running time for this scenario is similar to that of scenario 2a 
 Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
 
 {% highlight shelll %}
-> ls scenario2a-CDR-NMR-epitope-pass/
+> ls scenario2a-NMR-epitope-pass/
     0_topoaa/
     1_rigidbody/
     2_clustfcc/
@@ -1563,7 +1562,7 @@ We are providing in the `scripts` directory a simple script that extract some cl
 To use is simply call the script with as argument the run directory you want to analyse, e.g.:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-CDR-NMR-epitope-pass
+   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-NMR-epitope-pass
 </a>
 
 
@@ -1573,7 +1572,7 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== run2-mpi-CDR-surface/4_caprieval/capri_clt.tsv
+== run2-mpi-surface/4_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  2  out of  142
 Total number of medium or better clusters:      1  out of  142
@@ -1583,7 +1582,7 @@ First acceptable cluster - rank:  41  i-RMSD:  2.535  Fnat:  0.345  DockQ:  0.44
 First medium cluster     - rank:  54  i-RMSD:  1.483  Fnat:  0.616  DockQ:  0.684
 Best cluster             - rank:  54  i-RMSD:  1.483  Fnat:  0.616  DockQ:  0.684
 ==============================================
-== run2-mpi-CDR-surface/9_caprieval/capri_clt.tsv
+== run2-mpi-surface/9_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  2  out of  123
 Total number of medium or better clusters:      1  out of  123
@@ -1599,7 +1598,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario2a-CDR-NMR-epitope-pass
+   ./scripts/extract-capri-stats.sh ./runs/scenario2a-NMR-epitope-pass
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1608,7 +1607,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== run2-mpi-CDR-surface/4_caprieval/capri_ss.tsv
+== run2-mpi-surface/4_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  20  out of  1420
 Total number of medium or better models:      9  out of  1420
@@ -1618,7 +1617,7 @@ First acceptable model - rank:  372  i-RMSD:  2.535  Fnat:  0.345  DockQ:  0.441
 First medium model     - rank:  511  i-RMSD:  1.282  Fnat:  0.707  DockQ:  0.741
 Best model             - rank:  574  i-RMSD:  1.049  Fnat:  0.569  DockQ:  0.721
 ==============================================
-== run2-mpi-CDR-surface/9_caprieval/capri_ss.tsv
+== run2-mpi-surface/9_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  22  out of  1379
 Total number of medium or better models:      11  out of  1379
@@ -1752,7 +1751,7 @@ We are providing in the `scripts` a simple script that extract some cluster stat
 To use is simply call the script with as argument the run directory you want to analyse, e.g.:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-CDR-NMR-epitope-pass
+   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-NMR-epitope-pass
 </a>
 
 
@@ -1762,7 +1761,7 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== scenario2a-CDR-NMR-epitope-pass//4_caprieval/capri_clt.tsv
+== scenario2a-NMR-epitope-pass//4_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  9
 Total number of medium or better clusters:      1  out of  9
@@ -1772,7 +1771,7 @@ First acceptable cluster - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
 First medium cluster     - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
 Best cluster             - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
 ==============================================
-== scenario2a-CDR-NMR-epitope-pass//9_caprieval/capri_clt.tsv
+== scenario2a-NMR-epitope-pass//9_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  8
 Total number of medium or better clusters:      1  out of  8
@@ -1789,7 +1788,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario2a-CDR-NMR-epitope-pass
+   ./scripts/extract-capri-stats.sh ./runs/scenario2a-NMR-epitope-pass
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1798,7 +1797,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== scenario2a-CDR-NMR-epitope-pass//4_caprieval/capri_ss.tsv
+== scenario2a-NMR-epitope-pass//4_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  10  out of  90
 Total number of medium or better models:      10  out of  90
@@ -1808,7 +1807,7 @@ First acceptable model - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
 First medium model     - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
 Best model             - rank:  18  i-RMSD:  0.980  Fnat:  0.586  DockQ:  0.739
 ==============================================
-== scenario2a-CDR-NMR-epitope-pass//9_caprieval/capri_ss.tsv
+== scenario2a-NMR-epitope-pass//9_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  10  out of  90
 Total number of medium or better models:      10  out of  90
@@ -1946,7 +1945,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 Use the `extract-capri-stats-clt.sh` script to extract some simple cluster statistics for this run.
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2b-CDR-NMR-epitope-pass
+   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2b-NMR-epitope-pass
 </a>
 
 
@@ -1956,7 +1955,7 @@ Use the `extract-capri-stats-clt.sh` script to extract some simple cluster stati
  </summary>
 <pre>
 ==============================================
-== scenario2b-CDR-NMR-epitope-act//4_caprieval/capri_clt.tsv
+== scenario2b-NMR-epitope-act//4_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  4  out of  14
 Total number of medium or better clusters:      1  out of  14
@@ -1966,7 +1965,7 @@ First acceptable cluster - rank:  1  i-RMSD:  2.514  Fnat:  0.332  DockQ:  0.437
 First medium cluster     - rank:  3  i-RMSD:  1.083  Fnat:  0.733  DockQ:  0.766
 Best cluster             - rank:  3  i-RMSD:  1.083  Fnat:  0.733  DockQ:  0.766
 ==============================================
-== scenario2b-CDR-NMR-epitope-act//9_caprieval/capri_clt.tsv
+== scenario2b-NMR-epitope-act//9_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  3  out of  13
 Total number of medium or better clusters:      1  out of  13
@@ -1983,7 +1982,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario2b-CDR-NMR-epitope-pass
+   ./scripts/extract-capri-stats.sh ./runs/scenario2b-NMR-epitope-pass
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1992,7 +1991,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== scenario2b-CDR-NMR-epitope-act//4_caprieval/capri_ss.tsv
+== scenario2b-NMR-epitope-act//4_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  36  out of  140
 Total number of medium or better models:      10  out of  140
@@ -2002,7 +2001,7 @@ First acceptable model - rank:  2  i-RMSD:  2.533  Fnat:  0.328  DockQ:  0.434
 First medium model     - rank:  13  i-RMSD:  1.152  Fnat:  0.810  DockQ:  0.794
 Best model             - rank:  15  i-RMSD:  0.982  Fnat:  0.776  DockQ:  0.803
 ==============================================
-== scenario2b-CDR-NMR-epitope-act//9_caprieval/capri_ss.tsv
+== scenario2b-NMR-epitope-act//9_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  31  out of  128
 Total number of medium or better models:      10  out of  128
@@ -2052,7 +2051,7 @@ Clearly all three scenarios give good results with an acceptable cluster in all 
 {% highlight shell %}
 
 =============================================================
-== scenario1-CDR-surface//9_caprieval/capri_clt.tsv
+== scenario1-surface//9_caprieval/capri_clt.tsv
 =============================================================
 Total number of acceptable or better clusters:  2  out of  123
 Total number of medium or better clusters:      1  out of  123
@@ -2063,7 +2062,7 @@ First medium cluster     - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
 Best cluster             - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
 
 =============================================================
-== scenario2a-CDR-NMR-epitope-pass//9_caprieval/capri_clt.tsv
+== scenario2a-NMR-epitope-pass//9_caprieval/capri_clt.tsv
 =============================================================
 Total number of acceptable or better clusters:  1  out of  8
 Total number of medium or better clusters:      1  out of  8
@@ -2074,7 +2073,7 @@ First medium cluster     - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
 Best cluster             - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
 
 =============================================================
-== scenario2b-CDR-NMR-epitope-act//9_caprieval/capri_clt.tsv
+== scenario2b-NMR-epitope-act//9_caprieval/capri_clt.tsv
 =============================================================
 Total number of acceptable or better clusters:  3  out of  13
 Total number of medium or better clusters:      1  out of  13
@@ -2105,7 +2104,7 @@ where you can find l-RMSD values for the surface scenario. Of course, due to the
 
 
 To visualize the models from top cluster of your favorite run,  start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 of scenario2a.
-These can be found in the `runs/scenario2a-CDR-NMR-epitope-pass/8_seletopclusts/` directory
+These can be found in the `runs/scenario2a-NMR-epitope-pass/8_seletopclusts/` directory
 
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
@@ -2115,7 +2114,7 @@ Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
 PyMol can also be started from the command line with as argument all the PDB files you want to visualize, e.g.:
 
 <a class="prompt prompt-cmd">
-  pymol runs/scenario2a-CDR-NMR-epitope-pass/8_seletopclusts/cluster_1_model_[1-4].pdb pdbs/4G6M-matched.pdb
+  pymol runs/scenario2a-NMR-epitope-pass/8_seletopclusts/cluster_1_model_[1-4].pdb pdbs/4G6M-matched.pdb
 </a>
 
 
@@ -2176,8 +2175,6 @@ and select all resulting clusters for refinement. This strategy led to excellent
 cluster was obtained with HADDOCK2.4. While HADDOCK3 is still very much work in progress, those results indicate already that we 
 should be able to improve the performance of antibody-antigen modelling compared to the results we presented in our 
 [Structure 2020](https://doi.org/10.1016/j.str.2019.10.011){:target="_blank"} article and in the [related HADDOCK2.4 tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen){:target="_blank"}.
-
-
 <hr>
 <hr>
 ## Congratulations!
@@ -2185,6 +2182,21 @@ should be able to improve the performance of antibody-antigen modelling compared
 You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
 
 And check also our [education](/education) web page where you will find more tutorials!
+
+
+<hr>
+<hr>
+## A look into the future Virtual Research Environment for HADDOCK3
+
+In the context of a project with the [Netherlands e-Science Center](){:target="_blank"} we are working on 
+building a Virtual Research Environment (VRE) for HADDOCK3 that will allow you to build and edit custom workflows, 
+execute those on a variety of infrastructures (grid, cloud, local, HPC) and provide an interactive analysis
+platform for analysing your HADDOCK3 results. This is _work in progress_ but you can already take a glimpse of the
+first component, the workflow builder, [here](){:target="_blank"}. 
+
+All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESS](){:target="_blank"} repository.
+
+So stay tuned!
 
 
 
