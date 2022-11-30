@@ -79,6 +79,7 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
 * `pdbs`: Contains the pre-processed PDB files
+* `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
 * `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
 * `scripts`: Contains a variety of scripts used in this tutorial
@@ -163,7 +164,7 @@ parameterisable yet rigid simulation pipeline composed of three steps:
 </figure>
 
 In HADDOCK3, users have the freedom to configure docking workflows into
-functional pipelines by combining the different HADDOCK3's modules, thus
+functional pipelines by combining the different HADDOCK3 modules, thus
 adapting the workflows to their projects. HADDOCK3 has therefore developed to
 truthfully work like a puzzle of many pieces (simulation modules) that users can
 combine freely. To this end, the “old” HADDOCK machinery has been modularised,
@@ -183,11 +184,11 @@ restraints can, however, be used in HADDOCK3, which also supports the
 <img width="75%" src="./HADDOCK3-workflow-scheme.png">
 </figure>
 
-To keep HADDOCK3's modules organised, we catalogued them into several
+To keep HADDOCK3 modules organised, we catalogued them into several
 categories. But, there are no constraints on piping modules of different
 categories.
 
-The main module's categories are "topology", "sampling", "refinement",
+The main module categories are "topology", "sampling", "refinement",
 "scoring", and "analysis". There is no limit to how many modules can belong to a
 category. Modules are added as developed, and new categories will be created
 if/when needed. You can access the HADDOCK3 documentation page for the list of
