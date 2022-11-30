@@ -955,7 +955,7 @@ _**Note**_ that this scenario is computationally more expensive because of the i
 On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min. 
 The same run on a single node using all 96 threads took on the same architecture 4 hours and 8 minutes.
 
-On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank" processors), this run completed in about 23 hours.
+On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank" processors}, this run completed in about 23 hours.
 
 
 <hr>
