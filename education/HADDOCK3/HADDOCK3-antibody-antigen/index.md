@@ -1661,6 +1661,35 @@ the larger the conformational changes that can be induced.
 <br>
 
 
+#### Analysis scenario 1: visualising the scores and their components
+
+We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
+
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+
+Models statistics:
+
+* [iRMSD versus HADDOCK score](plots/scenario1-surface/irmsd_score.html){:target="_blank"}
+* [DockQ versus HADDOCK score](plots/scenario1-surface/dockq_score.html){:target="_blank"}
+* [DockQ versus van der Waals energy](plots/scenario1-surface/dockq_vdw.html){:target="_blank"}
+* [DockQ versus electrostatic energy](plots/scenario1-surface/dockq_elec.html){:target="_blank"}
+* [DockQ versus ambiguous restraints energy](plots/scenario1-surface/dockq_air.html){:target="_blank"}
+* [DockQ versus desolvation energy](plots/scenario1-surface/dockq_desolv.html){:target="_blank"}
+
+Cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
+
+* [HADDOCK scores](plots/scenario1-surface/score_clt.html){:target="_blank"}
+* [van der Waals energies](plots/scenario1-surface/vdw_clt.html){:target="_blank"}
+* [electrostatic energies](plots/scenario1-surface/elec_clt.html){:target="_blank"}
+* [ambiguous restraints energies](plots/scenario1-surface/air_clt.html){:target="_blank"}
+* [desolvation energies](plots/scenario1-surface/desolv_clt.html){:target="_blank"}
+
+
+<a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
+
+
 <hr>
 ### Analysis scenario 2a: Paratope - NMR-epitope as passive
 
@@ -1849,6 +1878,35 @@ the larger the conformational changes that can be induced.
 <p> This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.</p>
 </details>
 <br>
+
+
+#### Analysis scenario 2a: visualising the scores and their components
+
+We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
+
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+
+Models statistics:
+
+* [iRMSD versus HADDOCK score](plots/scenario2a-NMR-epitope-pass/irmsd_score.html){:target="_blank"}
+* [DockQ versus HADDOCK score](plots/scenario2a-NMR-epitope-pass/dockq_score.html){:target="_blank"}
+* [DockQ versus van der Waals energy](plots/scenario2a-NMR-epitope-pass/dockq_vdw.html){:target="_blank"}
+* [DockQ versus electrostatic energy](plots/scenario2a-NMR-epitope-pass/dockq_elec.html){:target="_blank"}
+* [DockQ versus ambiguous restraints energy](plots/scenario2a-NMR-epitope-pass/dockq_air.html){:target="_blank"}
+* [DockQ versus desolvation energy](plots/scenario2a-NMR-epitope-pass/dockq_desolv.html){:target="_blank"}
+
+Cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
+
+* [HADDOCK scores](plots/scenario2a-NMR-epitope-pass/score_clt.html){:target="_blank"}
+* [van der Waals energies](plots/scenario2a-NMR-epitope-pass/vdw_clt.html){:target="_blank"}
+* [electrostatic energies](plots/scenario2a-NMR-epitope-pass/elec_clt.html){:target="_blank"}
+* [ambiguous restraints energies](plots/scenario2a-NMR-epitope-pass/air_clt.html){:target="_blank"}
+* [desolvation energies](plots/scenario2a-NMR-epitope-pass/desolv_clt.html){:target="_blank"}
+
+
+<a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
 
 
 <hr>
@@ -2042,6 +2100,35 @@ the fraction of native contacts and the DockQ scores. Also the single model rank
 <br>
 
 
+#### Analysis scenario 2b: visualising the scores and their components
+
+We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
+
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+
+Models statistics:
+
+* [iRMSD versus HADDOCK score](plots/scenario2b-NMR-epitope-act/irmsd_score.html){:target="_blank"}
+* [DockQ versus HADDOCK score](plots/scenario2b-NMR-epitope-act/dockq_score.html){:target="_blank"}
+* [DockQ versus van der Waals energy](plots/scenario2b-NMR-epitope-act/dockq_vdw.html){:target="_blank"}
+* [DockQ versus electrostatic energy](plots/scenario2b-NMR-epitope-act/dockq_elec.html){:target="_blank"}
+* [DockQ versus ambiguous restraints energy](plots/scenario2b-NMR-epitope-act/dockq_air.html){:target="_blank"}
+* [DockQ versus desolvation energy](plots/scenario2b-NMR-epitope-act/dockq_desolv.html){:target="_blank"}
+
+Cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
+
+* [HADDOCK scores](plots/scenario2b-NMR-epitope-act/score_clt.html){:target="_blank"}
+* [van der Waals energies](plots/scenario2b-NMR-epitope-act/vdw_clt.html){:target="_blank"}
+* [electrostatic energies](plots/scenario2b-NMR-epitope-act/elec_clt.html){:target="_blank"}
+* [ambiguous restraints energies](plots/scenario2b-NMR-epitope-act/air_clt.html){:target="_blank"}
+* [desolvation energies](plots/scenario2b-NMR-epitope-act/desolv_clt.html){:target="_blank"}
+
+
+<a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
+
+
 <hr>
 ### Comparing the performance of the three scenarios
 
@@ -2126,7 +2213,7 @@ util.cbc<br>
 color yellow, 4G6M_matched<br>
 </a>
 
-Let's then superimpose all models on the reference strucrture:
+Let us then superimpose all models on the reference strucrture:
 
 
 <a class="prompt prompt-pymol">
@@ -2188,13 +2275,13 @@ And check also our [education](/education) web page where you will find more tut
 <hr>
 ## A look into the future Virtual Research Environment for HADDOCK3
 
-In the context of a project with the [Netherlands e-Science Center](){:target="_blank"} we are working on 
+In the context of a project with the [Netherlands e-Science Center](https://www.esciencecenter.nl){:target="_blank"} we are working on 
 building a Virtual Research Environment (VRE) for HADDOCK3 that will allow you to build and edit custom workflows, 
 execute those on a variety of infrastructures (grid, cloud, local, HPC) and provide an interactive analysis
 platform for analysing your HADDOCK3 results. This is _work in progress_ but you can already take a glimpse of the
-first component, the workflow builder, [here](){:target="_blank"}. 
+first component, the workflow builder, [here](https://wonderful-noether-53a9e8.netlify.app){:target="_blank"}. 
 
-All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESS](){:target="_blank"} repository.
+All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESSE](https://github.com/i-VRESSE){:target="_blank"} repository.
 
 So stay tuned!
 
