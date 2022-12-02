@@ -277,7 +277,7 @@ Crystal structures of both the antibody and the antigen in their free forms are 
 of two chains (L+H) we will have to prepare it for use in HADDOCK such as it can be treated as 
 a single chain with non-overlapping residue numbering. For this we will be making use of `pdb-tools` from the command line.
 
-_**Note**_ that `pdb-tools` is also available as a [webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
+_**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
 
 _**Note**_: Before starting to work on the tutorial, make sure to activate haddock3, e.g. if installed using `conda`
@@ -331,7 +331,7 @@ pdb_fetch 4I1B | pdb_tidy -strict  | pdb_delhetatm  | pdb_keepcoord | pdb_chain 
 Before setting up the docking we need first to generate distance restraint files
 in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns] as computational
 engine. A description of the format for the various restraint types supported by
-HADDOCK can be found in our [Nature Protocol][nat_prot] paper, Box 4.
+HADDOCK can be found in our [Nature Protocol][nat-prot] paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -369,7 +369,7 @@ The corresponding paratope residues (those with either an overall probability >=
 
 The numbering corresponds to the numbering of the `4G6K_clean.pdb` PDB file.
 
-Let's visualize those onto the 3D structure.
+Let us visualize those onto the 3D structure.
 For this start PyMOL and load `4G6K_clean.pdb`
 
 <a class="prompt prompt-pymol">File menu -> Open -> select 4G6K_clean.pdb</a>
@@ -390,7 +390,7 @@ color red, paratope<br>
 
 <a class="prompt prompt-question">Can you identify the H3 loop? H stands for heavy chain (the first domain in our case with lower residue numbering). H3 is typically the longest loop.</a>
 
-Let's now switch to a surface representation to inspect the predicted binding site.
+Let us now switch to a surface representation to inspect the predicted binding site.
 
 <a class="prompt prompt-pymol">
 show surface<br>
@@ -544,7 +544,7 @@ the second line the `passive` ones. We will use later these files to generate th
 In general it is better to be too generous rather than too strict in the
 definition of passive residues.
 
-And important aspect is to filter both the active (the residues identified from
+An important aspect is to filter both the active (the residues identified from
 your mapping experiment) and passive residues by their solvent accessibility.
 Our webserver uses a default relative accessibility of 15% as cutoff. This is
 not a hard limit. You might consider including even more buried residues if some
@@ -557,7 +557,7 @@ important chemical group seems solvent accessible from a visual inspection.
 
 Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambgiuous interaction restraints (AIR) file for HADDOCK. 
-For this you can either make use of our online [GenTBL][gentbl] webserver, entering the
+For this you can either make use of our online [GenTBL][gentbl] web service, entering the
 list of active and passive residues for each molecule, and saving the resulting
 restraint list to a text file, or use the relevant `haddock-tools` script.
 
@@ -585,7 +585,7 @@ Using those two files, we can generate the CNS-formatted AIR restraint files
 with the following command:
 
 <a class="prompt prompt-cmd">
-  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
+  python ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
 </a>
 
 This generates a file called `ambig-paratope-surface.tbl` that contains the AIR
@@ -641,12 +641,12 @@ The creation of the AIR tbl file for scenario 2b is similar to scenario 1, but i
 
 As an antibody consists of two separate chains, it is important to define a few distance restraints 
 to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
-done using a script from `[haddock-tools][haddock-tools]` repository, which is also provided for convenience
+done using a script from [haddock-tools][haddock-tools] repository, which is also provided for convenience
 in the `scripts` directly of the archive you downloaded for this tutorial.
 
 
 <a class="prompt prompt-cmd">
-  ./scripts/restrain_bodies.py  4G6K_clean.pdb >antibody-unambig.tbl
+  python ./scripts/restrain_bodies.py  4G6K_clean.pdb >antibody-unambig.tbl
 </a>
 
 The result file contains two CA-CA distance restraints with the exact distance
@@ -770,6 +770,7 @@ source /vol0601/share/ra020021/LifeScience/20221208_Bonvin/miniconda3-arm8/etc/p
 conda activate haddock3
 
 # go to the tutorial directory in your home directory
+# edit if needed to specify the correct location
 cd $HOME/HADDOCK3-antibody-antigen
 
 # execute haddock3
@@ -784,7 +785,7 @@ haddock3 scenario2a-NMR-epitope-pass-node.cfg
 
 In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. 
 Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will 
-have to define the `queue` name and the maximum number of conccurent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model 
+have to define the `queue` name and the maximum number of concurent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model 
 calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. 
 The number of model per job is defined by the `concat` parameter in the configuration file. 
 You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
@@ -841,7 +842,8 @@ module load haddock3
 ##source $HOME/miniconda3/etc/profile.d/conda.sh
 ##conda activate haddock3
 
-# go to the run directory
+# go to the run directory 
+# edit if needed to specify the correct location
 cd $HOME/HADDOCK3-antibody-antigen
 
 # execute
@@ -854,7 +856,7 @@ haddock3 scenario2a-NMR-epitope-pass-mpi.cfg
 ### Scenario 1: Paratope - antigen surface
 
 
-Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `ambig-paratope-surface.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. Further, as we have no information on the antigen side, it is important to increase the sampling in the ridig body sampling stage to 10000. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `ambig-paratope-surface.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. Further, as we have no information on the antigen side, it is important to increase the sampling in the ridig body sampling stage to 10000. And we will also turn off the default random removal of restraints to keep all the information on the paratope (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -962,7 +964,7 @@ On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a singl
 ### Scenario 2a: Paratope - NMR-epitope as passive
 
 
-In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-paratope-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratote (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-paratope-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratope (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -971,7 +973,7 @@ In scenario 2a we are settinp up the docking in which the paratope on the antibo
 # ====================================================================
 
 # directory name of the run
-run_dir = "scenario2b-NMR-epitope-pass"
+run_dir = "scenario2a-NMR-epitope-pass"
 
 # MPI compute mode
 mode = "local"
@@ -1378,7 +1380,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 Since for this tutorial we have at hand the crystal structure of the complex, we provided it as reference to the `caprieval` modules.
 This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the quality of the docked model compared to the reference crystal structure.
 
-<a class="prompt prompt-question">How many clusters or acceptable or better quality have been generate according to CAPRI criteria?</a>
+<a class="prompt prompt-question">How many clusters of acceptable or better quality have been generate according to CAPRI criteria?</a>
 
 <a class="prompt prompt-question">What is the rank of the best cluster generated?</a>
 
@@ -1726,7 +1728,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 Since for this tutorial we have at hand the crystal structure of the complex, we provided it as reference to the `caprieval` modules.
 This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the quality of the docked model compared to the reference crystal structure.
 
-<a class="prompt prompt-question">How many clusters or acceptable or better quality have been generate according to CAPRI criteria?</a>
+<a class="prompt prompt-question">How many clusters of acceptable or better quality have been generate according to CAPRI criteria?</a>
 
 <a class="prompt prompt-question">What is the rank of the best cluster generated?</a>
 
@@ -1949,7 +1951,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 
 <a class="prompt prompt-question">Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?</a>
 
-<a class="prompt prompt-question">How many clusters or acceptable or better quality have been generate according to CAPRI criteria?</a>
+<a class="prompt prompt-question">How many clusters of acceptable or better quality have been generate according to CAPRI criteria?</a>
 
 <a class="prompt prompt-question">What is the rank of the best cluster generated?</a>
 
