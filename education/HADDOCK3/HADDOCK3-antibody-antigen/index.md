@@ -85,7 +85,7 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 * `scripts`: Contains a variety of scripts used in this tutorial
 
 
-### Setup for the EU-ASEAN HPC schooll on Fugaku
+### Setup for the EU-ASEAN HPC school on Fugaku
 
 The software and data required for this tutorial have been pre-installed on Fugaku. 
 In order to run the tutorial, first copy the required data into your home directory on fugagku:
@@ -329,9 +329,9 @@ pdb_fetch 4I1B | pdb_tidy -strict  | pdb_delhetatm  | pdb_keepcoord | pdb_chain 
 ## Defining restraints for docking
 
 Before setting up the docking we need first to generate distance restraint files
-in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns] as computational
+in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational
 engine. A description of the format for the various restraint types supported by
-HADDOCK can be found in our [Nature Protocol][nat-prot] paper, Box 4.
+HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
 
@@ -344,7 +344,7 @@ correction and the upper limit as: distance plus upper-bound correction.  The
 syntax for the selections can combine information about chainID - `segid`
 keyword -, residue number - `resid` keyword -, atom name - `name` keyword.
 Other keywords can be used in various combinations of OR and AND statements.
-Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/).
+Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/){:target="_blank"}.
 
 We will shortly explain in this section how to generate both ambiguous
 interaction restraints (AIRs) and specific distance restraints for use in
@@ -354,7 +354,7 @@ HADDOCK illustrating two scenarios:
 * **HV loops on the antibody, NMR interface mapping on the antigen**
 
 Information about various types of distance restraints in HADDOCK can also be
-found in our [online manual][air-help] pages.
+found in our [online manual][air-help]{:target="_blank"} pages.
 
 <hr>
 ### Identifying the paratope of the antibody
@@ -2291,7 +2291,7 @@ So stay tuned!
 
 
 
-[air-help]: https://www.bonvinlab.org/software/haddock2.4/generate_air_help/ "AIRs help"
+[air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
 [gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
 [haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK3 GitHub"
