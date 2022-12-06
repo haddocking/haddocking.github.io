@@ -2297,6 +2297,7 @@ So stay tuned!
 [haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK3 GitHub"
 [haddock-tools]: https://github.com/haddocking/haddock-tools "HADDOCK tools GitHub"
 [installation]: https://www.bonvinlab.org/haddock3/INSTALL.html "Installation"
+[link-cns]: https://cns-online.org "CNS online"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-freesasa]: https://freesasa.github.io "FreeSASA"
 [link-pdbtools]:http://www.bonvinlab.org/pdb-tools/ "PDB-Tools"
