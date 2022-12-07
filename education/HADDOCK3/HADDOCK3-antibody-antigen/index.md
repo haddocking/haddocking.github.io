@@ -694,7 +694,7 @@ The basic workflow for all three scenarios will consists of the following module
 
 The input PDB files are the same for all three scenarios. The differences are in the ambiguous interaction restraint files used and the sampling at the rigid body stage in the case of scenario1.
 
-**_Note_ that for the** [EU ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} **, we will only run scenario2a with a reduced sampling for the rigid body module of 240 models to limit to the computing time and get results within a reasonable time. The Fugaku example scripts for this are provided in the `haddock3` directory (`scenario2a-NMR-epitope-pass-node.cfg` and `scenario2a-NMR-epitope-pass-fugaku-node.job`). Copy those into the main tutorial directory before submitting the job file to the batch system with the `pjsub` command.**
+**_Note_ that for the** [EU ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} **, we will only run scenario2a with a reduced sampling for the rigid body module of 240 models to limit to the computing time and get results within a reasonable time. The Fugaku example scripts for this are provided in the `haddock3` directory (`scenario2a-NMR-epitope-pass-node.cfg` and `scenario2a-NMR-epitope-pass-node-fugaku.job`). Copy those into the main tutorial directory before submitting the job file to the batch system with the `pjsub` command.**
 
 <hr>
 ### HADDOCK3 execution modes
