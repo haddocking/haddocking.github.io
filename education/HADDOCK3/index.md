@@ -21,3 +21,15 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   It illustrate the modularity of HADDOCK3 by introducing a new workflow not possible under the current HADDOCK2.X versions.
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
+* Recording of the HADDOCK3 tutorial given at the [2022 EU-ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} in Bangkok (Dec. 5-10)
+
+  <ul>
+  <details>
+  <summary>View recording
+  </summary>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/p4sFvfr4xE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
+
+
