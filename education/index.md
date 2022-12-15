@@ -79,12 +79,12 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 * [**Tutorials for HADDOCK version 2.4**](/education/HADDOCK24): Various tutorials from basic protein-protein docking, to the use of cross-linking data, symmetry and homology informations to guide the docking, and advanced modelling of protein-ligand complexes.
 
+* __New!__: [**Tutorials for HADDOCK version 3.0**](/education/HADDOCK3): The first HADDOCK3 tutorial to install and run HADDOCK3 to model an antibody-antigen complex.
+
 * [**Tutorials for DisVis and Powerfit**](/education/Others): Tutorials about rigid-body fitting into cryo-EM maps and assessing the information content of cross-linking data.
 
 * [**Integrative modelling of the RNA polymerase III apo complex**](/education/HADDOCK24/RNA-Pol-III-2022): A combination of our DISVIS, POWERFIT and HADDOCK2.4 portals using cross-links and cryo-EM data to model a large macromolecular assembly.
 
-* [**2020 BioExcel summerschool metadynamics / HADDOCK tutorial**](/education/biomolecular-simulations-2020)
-
-* [**2019 BioExcel summerschool metadynamics / HADDOCK tutorial**](/education/biomolecular-simulations-2019)
+* [**2022 BioExcel summerschool metadynamics / HADDOCK tutorial**](/education/biomolecular-simulations-2022)
 
 * [**2018 BioExcel summerschool metadynamics / HADDOCK / CPMD tutorials**](/education/biomolecular-simulations-2018)
