@@ -8,6 +8,8 @@ image:
 
 * F. Ambrosetti, Z. Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://link.springer.com/protocol/10.1007/978-1-0716-2609-2_14). _Methods in molecular biology_ *2552*, 267-282 (2023). [Preprint](https://arxiv.org/abs/2005.03283).
 
+* Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations. _Biomolecules_, In Press (2022). Preprint [here](https://doi.org/10.1101/2021.10.06.463442)).
+
 
 ## 2022
 
@@ -15,7 +17,7 @@ image:
 
 * S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _BioRxiv_ 10.1101/2021.12.08.471762 (2022).
 
-* M. Stahl Madsen, M. Broekema, M. Rønn Madsen, A. Koppen, A. Borgman, C. Gräwe, E. Thomsen, D. Westland, M. Kranendonk, M. Groot Koerkamp, N. Hamers, **A.M.J.J. Bonvin**, J. Ramos Pittol, K. Natarajan, S. Kersten, F. Holstege, H. Monajemi, S. van Mil, M. Vermeulen, B. Kragelund, D. Cassiman, S. Mandrup and E. Kalkhoven. PPARγ lipodystrophy mutants reveal intermolecular interactions required for enhancer activation. _Nature Comm._, In Press (2022).
+* M. Stahl Madsen, M. Broekema, M. Rønn Madsen, A. Koppen, A. Borgman, C. Gräwe, E. Thomsen, D. Westland, M. Kranendonk, M. Groot Koerkamp, N. Hamers, **A.M.J.J. Bonvin**, J. Ramos Pittol, K. Natarajan, S. Kersten, F. Holstege, H. Monajemi, S. van Mil, M. Vermeulen, B. Kragelund, D. Cassiman, S. Mandrup and E. Kalkhoven. [PPARγ lipodystrophy mutants reveal intermolecular interactions required for enhancer activation](https://doi.org/10.1038/s41467-022-34766-9). _Nature Comm._,  *13*, 7090 (2022).
 
 * A. Basciu, L. Callea, S. Motta, **A.M.J.J. Bonvin**, L. Bonati and A.V. Vargiu. [No dance, no partner! A tale of receptor flexibility in docking and virtual screening](https://doi.org/10.1016/bs.armc.2022.08.006). _Annual Reports in Medicinal Chemistry_ (2022)
 
@@ -33,8 +35,6 @@ image:
 
 
 ## 2021
-
-* Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. [MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations](https://doi.org/10.1101/2021.10.06.463442). _BioRxiv_, 10.1101/2021.10.06.463442 (2021).
 
 * G. Dudas, S. Hong, B. Potter, S. Calvignac-Spencer, F. Niatou-Singa, T. Tombolomako, T. Fuh-Neba, U. Vickos, M. Ulrich, F. Leendertz, K. Khan, C. Huber, A. Watts, I. Olendraitė, J. Snijder, K. Wijnant, **A.M.J.J. Bonvin**, P. Martres, S. Behillil, A. Ayouba, M. Maidadi, D. Djomsi, C. Godwe, C. Butel, A. Šimaitis, M. Gabrielaite, M. Katėnaitė, R. Norvilas, L. Raugaitė, G. Koyaweda, J. Kaleb Kandou, R. Jonikas, I. Nasvytienė, Ž. Žemeckienė, D. Gečys, K. Tamušauskaitė, M. Norkienė, E. Vasiliūnaitė, D. Žiogienė, A. Timinskas, M. Šukys, M. Šarauskas, G. Alzbutas, A. Amuri, E. Lusamaki, J. Makangara, F. Muyembe, E. Lofiko, P. Mbala, J. Muyembe-Tamfum, M. Darnycka Belizaire, R. Essomba, M. Claire Assoumou, A. Mboringong, A. Baba Dieng, D. Juozapaitė, S. Hosch, J. Obama, M. Ondo'o Ayekaba, D. Naumovas, A. Pautienius, C. Rafaï, A. Vitkauskienė, R. Ugenskienė, A. Gedvilaitė, D. Čereškevičius, V. Lesauskaitė, L. Žemaitis, L. Griškevičius and G. Baele. [Emergence and spread of SARS-CoV-2 lineage B.1.620 with variant of concern-like mutations and deletion](https://doi.org/10.1038/s41467-021-26055-8). _Nature Comm._ *12*, 5769 (2021). Preprint available [here](https://www.medrxiv.org/content/10.1101/2021.05.04.21256637v1).
 
