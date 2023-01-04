@@ -114,7 +114,7 @@ Each PDB file (indicated by the `.pdb` extension) has a **suffix**, this is extr
 
 In this example the suffixes are: `receptor_suffix="_r_u"` and `ligand_suffix="_l_u"`. The suffixes are defined in the `benchmark.yaml` file.
 
-The same logic applies to the restraints files, in the example above the pattern for the ambiguous restraint can be defined as `ambig = "ti"`, so the file `complex1_ti.tbl` will be used as the ambiguous restraint for the target `complex1`, `complex2_ti.tbl` for the target `complex2`, etc.
+The same logic applies to the restraints files, in the example above the pattern for the ambiguous restraint can be defined as `ambig = "ti"`, so the file `complex1_ti.tbl` will be used as the ambiguous restraint for the target `complex1`, `complex2_ti.tbl` for the target `complex2`, etc. See section 3.2.2 for information specific to the definition of restraints when setting up a HADDOCK3.0 run.
 
 HADDOCK supports many modified amino acids/bases/glycans/ions (check the [full list](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}). However if your target molecule is not present in this library, you can also provide it following the same logic; `topology="_ligand.top"` and `param="_ligand.param"` will use the files `protein2_ligand.top` and `protein2_ligand.param` for the target `protein2`.
 
