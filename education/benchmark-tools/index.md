@@ -267,7 +267,7 @@ scenarios:
 
 > Note: HADDOCK3.0 is still under development and is not meant to be used for production runs! Please use HADDOCK2.4 instead.
 
-> There is currently limited information about the modules, please refer to the [documentation](https://www.bonvinlab.org/haddock3){:target="_blank"}.
+> For information about the available modules, please refer to the [HADDOCK3 tutorial](/education/HADDOCK3/HADDOCK3-antibody-antigen/#a-brief-introduction-to-haddock3){:target="_blank"} and the [documentation](https://www.bonvinlab.org/haddock3){:target="_blank"}.
 
 For HADDOCK3.0 you must define the following:
 
