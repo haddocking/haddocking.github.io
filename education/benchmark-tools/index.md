@@ -28,7 +28,7 @@ When running a benchmark, users/developers may be interested in the following (i
 * Comparing the results of different versions
 * The time it takes to run HADDOCK on a set of targets
 
-However the `benchmark-tools` can be used to run HADDOCK in a large-scale of targets such as virtual screening.
+However the `benchmark-tools` can be used to run HADDOCK on a large set of targets such as for virtual screening.
 
 ### How does `benchmark-tools` work?
 
@@ -41,37 +41,37 @@ The execution of a HADDOCK benchmark consists of a few steps:
   * For HADDOCK3, writing the `run.toml`
 3. Distribute several HADDOCK runs in a HPC-friendly manner
 
-`benchmark-tools` aim to automate all these steps, additionally giving the user the possibility of setting up several different *scenarios*. A scenario is a set of parameters that will be used to run HADDOCK. For example, a user may want to run HADDOCK against a set of targets with different sampling values, different restraints, different parameters, etc.
+`benchmark-tools` aim to automate all these steps, additionally giving the user the possibility of setting up various *scenarios*. A scenario is a set of parameters that will be used to run HADDOCK. For example, a user may want to run HADDOCK against a set of targets with different sampling values, different restraints, different parameters, etc.
 
 
 ### Who is `benchmark-tools` for?
 
-The tool is designed for users/students/developers that are familiar with HADDOCK, command-line scripting and with access to a HPC infrastructure. If this is the first time you are using HADDOCK, please familiarize yourself with the software running the [basic tutorials](/education/HADDOCK24/index.md){:target="_blank"}. `benchmark-tools` is not meant to be used by end-users who want to run on a single target, or in a small set of targets for that purpose we recommend using the [HADDOCK web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
+The tool is designed for users/students/developers that are familiar with HADDOCK, command-line scripting and with access to a HPC infrastructure. If this is the first time you are using HADDOCK, please familiarize first yourself with the software by running the basic [HADDOCK2.4](/education/HADDOCK24/index.md){:target="_blank"} or [HADDOCK3 tutorials](/education/HADDOCK3/index.md){:target="_blank"}. `benchmark-tools` is not meant to be used by end-users who want to run a single target, or a small set of targets; for that purpose we recommend instead using the [HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
 
 ***
 
 ## Installation
 
-> Note: You need to have HADDOCK installed. Please refer to the [HADDOCK2.4 installation instructions](/software/haddock2.4/installation){:target="_blank"} or [HADDOCK3.0 repository](https://github.com/haddocking/haddock3){:target="_blank"} for more information.
+> Note: You need to have HADDOCK installed on your system. Please refer to the [HADDOCK2.4 installation instructions](/software/haddock2.4/installation){:target="_blank"} or [HADDOCK3.0 repository](https://github.com/haddocking/haddock3){:target="_blank"} for more information, or refer to the local installation tutorials for [HADDOCK2.4](/education/HADDOCK24/HADDOCK24-local-tutorial/){:target="_blank"} and [HADDOCK3](/education/HADDOCK3/HADDOCK3-antibody-antigen/){:target="_blank"}.
 
-`benchmark-tools` is open-source licensed under Apache 2.0 and available in the following repository: [github.com/haddocking/benchmark-tools](https://github.com/haddocking/benchmark-tools){:target="_blank"}.
+`benchmark-tools` is open-source, licensed under Apache 2.0 and freely available from the following repository: [github.com/haddocking/benchmark-tools](https://github.com/haddocking/benchmark-tools){:target="_blank"}.
 
 Simply download the latest binary from the [releases page](https://github.com/haddocking/benchmark-tools/releases){:target="_blank"}, for example:
 
 {% highlight bash %}
-$ wget https://github.com/haddocking/benchmark-tools/releases/download/v1.0.0/benchmark-tools_1.0.0_linux_386.tar.gz
-$ tar -zxvf benchmark-tools_1.0.0_linux_386.tar.gz
-$ ./benchmark-tools -version
+> wget https://github.com/haddocking/benchmark-tools/releases/download/v1.0.0/benchmark-tools_1.0.0_linux_386.tar.gz
+> tar -zxvf benchmark-tools_1.0.0_linux_386.tar.gz
+> ./benchmark-tools -version
 benchmarktools version v1.0.0
 {% endhighlight %}
 
 Additionally, you can install the latest version from source, make sure [`go` is installed](https://go.dev/doc/install){:target="_blank"} and run the following commands:
 
 {% highlight bash %}
-$ git clone https://github.com/haddocking/benchmark-tools.git
-$ cd benchmark-tools
-$ go build -o benchmark-tools
-$ ./benchmark-tools -version
+> git clone https://github.com/haddocking/benchmark-tools.git
+> cd benchmark-tools
+> go build -o benchmark-tools
+> ./benchmark-tools -version
 benchmarktools version v1.0.0
 {% endhighlight %}
 
@@ -92,15 +92,15 @@ The setup consists of the following steps:
 The input list is a flat text file with the paths of the targets;
 
 {% highlight bash %}
-/home/rodrigo/projects/haddock-benchmark/data/protein1_r_u.pdb
-/home/rodrigo/projects/haddock-benchmark/data/protein1_l_u.pdb
-/home/rodrigo/projects/haddock-benchmark/data/protein1_ti.tbl
+/home/rodrigo/projects/haddock-benchmark/data/complex1_r_u.pdb
+/home/rodrigo/projects/haddock-benchmark/data/complex1_l_u.pdb
+/home/rodrigo/projects/haddock-benchmark/data/complex1_ti.tbl
 # comments are allowed, use it to organize your file
-/home/rodrigo/projects/haddock-benchmark/data/protein2_r_u.pdb
-/home/rodrigo/projects/haddock-benchmark/data/protein2_l_u.pdb
-/home/rodrigo/projects/haddock-benchmark/data/protein2_ti.tbl
-/home/rodrigo/projects/haddock-benchmark/data/protein2_ligand.top
-/home/rodrigo/projects/haddock-benchmark/data/protein2_ligand.param
+/home/rodrigo/projects/haddock-benchmark/data/complex2_r_u.pdb
+/home/rodrigo/projects/haddock-benchmark/data/complex2_l_u.pdb
+/home/rodrigo/projects/haddock-benchmark/data/complex2_ti.tbl
+/home/rodrigo/projects/haddock-benchmark/data/complex2_ligand.top
+/home/rodrigo/projects/haddock-benchmark/data/complex2_ligand.param
 {% endhighlight %}
 
 Note that this file **must** follow the pattern:
@@ -109,16 +109,16 @@ path/to/the/structure/NAME_receptor_suffix.pdb
 path/to/the/structure/NAME_ligand_suffix.pdb
 {% endhighlight %}
 
-
-Each `.pdb` has a **suffix**, this is extremely important as it will be used to organize the data. For example, the file `protein1_r_u.pdb` is the receptor of the target `protein1` and `protein1_l_u` is the ligand of the same target.
+In the above example, `complex1` and `complex2` correspond thus to `NAME`, identifying the complex which is modelled.
+Each PDB file (indicated by the `.pdb` extension) has a **suffix**, this is extremely important as it will be used to organize the data. For example, the file `complex1_r_u.pdb` is the receptor of the target `complex1` and `complex1_l_u` is the ligand of the same target.
 
 In this example the suffixes are: `receptor_suffix="_r_u"` and `ligand_suffix="_l_u"`. The suffixes are defined in the `benchmark.yaml` file.
 
-The same logic applies to the restraints files, in the example above the pattern for the ambiguous restraint can be defined as `ambig = "ti"`, so the file `protein1_ti.tbl` will be used as the ambiguous restraint for the target `protein1`, `protein2_ti.tbl` for the target `protein2`, etc.
+The same logic applies to the restraints files, in the example above the pattern for the ambiguous restraint can be defined as `ambig = "ti"`, so the file `complex1_ti.tbl` will be used as the ambiguous restraint for the target `complex1`, `complex2_ti.tbl` for the target `complex2`, etc.
 
 HADDOCK supports many modified amino acids/bases/glycans/ions (check the [full list](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}). However if your target molecule is not present in this library, you can also provide it following the same logic; `topology="_ligand.top"` and `param="_ligand.param"` will use the files `protein2_ligand.top` and `protein2_ligand.param` for the target `protein2`.
 
-> **IMPORTANT**: For ensembles, *provide each model independently* and append a number to the suffix, for example: `protein1_l_u_1.pdb`, `protein1_l_u_2.pdb`, etc.
+> **IMPORTANT**: For ensembles, *provide each model independently* and append a number to the suffix, for example: `complex1_l_u_1.pdb`, `complex1_l_u_2.pdb`, etc.
 
 See below a full example:
 
