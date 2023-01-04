@@ -286,9 +286,14 @@ scenarios:
   - name: true-interface
     parameters:
       general:
+        # execution mode using a batch system
         mode: hpc
+        # batch queue name to use
         queue: short
+        # number of jobs to submit to the batch system
         queue_limit: 100
+        # number of models to concatenate within one job
+        concat = 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref]
@@ -304,9 +309,14 @@ scenarios:
   - name: center-of-mass
     parameters:
       general:
+        # execution mode using a batch system
         mode: hpc
+        # batch queue name to use
         queue: short
+        # number of jobs to submit to the batch system
         queue_limit: 100
+        # number of models to concatenate within one job
+        concat = 5
 
       modules:
         order: [topoaa, rigidbody]
@@ -392,9 +402,14 @@ scenarios:
   - name: true-interface
     parameters:
       general:
+        # execution mode using a batch system
         mode: hpc
+        # batch queue name to use
         queue: short
+        # number of jobs to submit to the batch system
         queue_limit: 100
+        # number of models to concatenate within one job
+        concat = 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
@@ -414,9 +429,14 @@ scenarios:
   - name: center-of-mass
     parameters:
       general:
+        # execution mode using a batch system
         mode: hpc
+        # batch queue name to use
         queue: short
+        # number of jobs to submit to the batch system
         queue_limit: 100
+        # number of models to concatenate within one job
+        concat = 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
@@ -439,9 +459,14 @@ scenarios:
   - name: random-restraints
     parameters:
       general:
+        # execution mode using a batch system
         mode: hpc
+        # batch queue name to use
         queue: short
+        # number of jobs to submit to the batch system
         queue_limit: 100
+        # number of models to concatenate within one job
+        concat = 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
