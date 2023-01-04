@@ -395,7 +395,7 @@ scenarios:
 
 > `HADDOCK3.0`
 {% highlight yaml %}
-  general:
+general:
   executable: /Users/rvhonorato/repos/benchmark-tools/haddock3.sh
   max_concurrent: 4
   haddock_dir: /Users/rvhonorato/repos/haddock3
