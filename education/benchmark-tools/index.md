@@ -112,11 +112,11 @@ path/to/the/structure/NAME_ligand_suffix.pdb
 In the above example, `complex1` and `complex2` correspond thus to `NAME`, identifying the complex which is modelled.
 Each PDB file (indicated by the `.pdb` extension) has a **suffix**, this is extremely important as it will be used to organize the data. For example, the file `complex1_r_u.pdb` is the receptor of the target `complex1` and `complex1_l_u` is the ligand of the same target.
 
-In this example the suffixes are: `receptor_suffix="_r_u"` and `ligand_suffix="_l_u"`. The suffixes are defined in the `benchmark.yaml` file.
+In this example the suffixes are: `receptor_suffix: "_r_u"` and `ligand_suffix: "_l_u"`. The suffixes are defined in the `benchmark.yaml` file.
 
-The same logic applies to the restraints files, in the example above the pattern for the ambiguous restraint can be defined as `ambig = "ti"`, so the file `complex1_ti.tbl` will be used as the ambiguous restraint for the target `complex1`, `complex2_ti.tbl` for the target `complex2`, etc. See section 3.2.2 for information specific to the definition of restraints when setting up a HADDOCK3.0 run.
+The same logic applies to the restraints files, in the example above the pattern for the ambiguous restraint can be defined as `ambig: "ti"`, so the file `complex1_ti.tbl` will be used as the ambiguous restraint for the target `complex1`, `complex2_ti.tbl` for the target `complex2`, etc. See section 3.2.2 for information specific to the definition of restraints when setting up a HADDOCK3.0 run.
 
-HADDOCK supports many modified amino acids/bases/glycans/ions (check the [full list](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}). However if your target molecule is not present in this library, you can also provide it following the same logic; `topology="_ligand.top"` and `param="_ligand.param"` will use the files `protein2_ligand.top` and `protein2_ligand.param` for the target `protein2`.
+HADDOCK supports many modified amino acids/bases/glycans/ions (check the [full list](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}). However if your target molecule is not present in this library, you can also provide it following the same logic; `topology: "_ligand.top"` and `param: "_ligand.param"` will use the files `protein2_ligand.top` and `protein2_ligand.param` for the target `protein2`.
 
 > **IMPORTANT**: For ensembles, *provide each model independently* and append a number to the suffix, for example: `complex1_l_u_1.pdb`, `complex1_l_u_2.pdb`, etc.
 
@@ -227,6 +227,8 @@ general:
 {% endhighlight %}
 
 
+#### 3.2. Scenario section
+
 Here you must define the scenarios that you want to run, it is slightly different for HADDOCK2.4 and HADDOCK3.0.
 
 ##### 3.2.1 HADDOCK2.4
@@ -297,7 +299,7 @@ scenarios:
         # number of jobs to submit to the batch system
         queue_limit: 100
         # number of models to concatenate within one job
-        concat = 5
+        concat: 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref]
@@ -320,7 +322,7 @@ scenarios:
         # number of jobs to submit to the batch system
         queue_limit: 100
         # number of models to concatenate within one job
-        concat = 5
+        concat: 5
 
       modules:
         order: [topoaa, rigidbody]
@@ -413,7 +415,7 @@ scenarios:
         # number of jobs to submit to the batch system
         queue_limit: 100
         # number of models to concatenate within one job
-        concat = 5
+        concat: 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
@@ -440,7 +442,7 @@ scenarios:
         # number of jobs to submit to the batch system
         queue_limit: 100
         # number of models to concatenate within one job
-        concat = 5
+        concat: 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
@@ -470,7 +472,7 @@ scenarios:
         # number of jobs to submit to the batch system
         queue_limit: 100
         # number of models to concatenate within one job
-        concat = 5
+        concat: 5
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
@@ -483,10 +485,10 @@ scenarios:
           select: 200
         flexref:
           sampling: 400
-          contactairs = true
+          contactairs: true
         emref:
           sampling: 400
-          contactairs = true
+          contactairs: true
         clustfcc:
         seletopclusts:
 
