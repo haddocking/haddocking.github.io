@@ -223,7 +223,7 @@ general:
 {% endhighlight %}
 
 
-Here you must define the scenarios that you want to run, its slightly different for HADDOCK2.4 and HADDOCK3.0.
+Here you must define the scenarios that you want to run, it is slightly different for HADDOCK2.4 and HADDOCK3.0.
 
 ##### 3.2.1 HADDOCK2.4
 
