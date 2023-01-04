@@ -475,7 +475,7 @@ $ ./benchmark-tools my-benchmark-config-file.yml &
 
 `benchmark-tools` will read the input file, create the working directory, copy the input files to a `data/` directory and start the benchmark. Make sure you have enough space in your disk to store the input files and the results.
 
-**VERY IMPORTANT: In the current iteration, `benchmark-tools` leverages the internal scheduling routines of HADDOCK2.4 and HADDOCK3.0. This means that the number of concurrent runs is related to the number of concurrent runs, not to the number of processors being used! The actual number of processors being used depends on how HADDOCK was configured.**
+**VERY IMPORTANT:** In the current version, `benchmark-tools` leverages the internal scheduling routines of HADDOCK2.4. This means that the number of concurrent runs is related to the number of concurrent docking runs, not to the number of processors being used! The actual number of processors being used depends on how HADDOCK2.4 was configured. For HADDOCK3, the number of processors (or queue slots) to use and the running mode is defined in the config file under the `general` section (see examples above).
 
 **Example; `max_concurrent: 10` with `scenarios.parameters.mode: local` and `scenarios.parameters.ncores: 10` means 10x10 processors will be required!**
 
