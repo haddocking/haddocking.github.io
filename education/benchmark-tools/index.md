@@ -260,6 +260,7 @@ scenarios:
         structures_0: 10000
         structures_1: 400
         waterrefine: 400
+        anastruc_1: 400
 {% endhighlight %}
 
 
@@ -285,33 +286,34 @@ scenarios:
   - name: true-interface
     parameters:
       general:
-        mode: local
-        ncores: 1
+        mode: hpc
+        queue: short
+        queue_limit: 100
 
       modules:
         order: [topoaa, rigidbody, seletop, flexref, emref]
         topoaa:
           autohis: true
         rigidbody:
-          sampling: 10
           ambig_fname: "_ti.tbl"
         seletop:
-          select: 2
+          select: 200
         flexref:
         emref:
 
   - name: center-of-mass
     parameters:
       general:
-        mode: local
-        ncores: 1
+        mode: hpc
+        queue: short
+        queue_limit: 100
 
       modules:
         order: [topoaa, rigidbody]
         topoaa:
           autohis: true
         rigidbody:
-          sampling: 2
+          sampling: 10000
           cmrest: true
 {% endhighlight %}
 
@@ -337,9 +339,9 @@ scenarios:
     parameters:
       run_cns:
         noecv: false
-        structures_0: 2
-        structures_1: 2
-        waterrefine: 2
+        structures_0: 1000
+        structures_1: 200
+        waterrefine: 200
       restraints:
         ambig: "ti"
         unambig: "unambig"
@@ -352,17 +354,25 @@ scenarios:
     parameters:
       run_cns:
         cmrest: true
-        structures_0: 2
-        structures_1: 2
-        waterrefine: 2
+        structures_0: 10000
+        structures_1: 400
+        waterrefine: 400
+        anastruc_1: 400
+      custom_toppar:
+        topology: "_ligand.top"
+        param: "_ligand.param"
 
   - name: random-restraints
     parameters:
       run_cns:
         ranair: true
-        structures_0: 2
-        structures_1: 2
-        waterrefine: 2
+        structures_0: 10000
+        structures_1: 400
+        waterrefine: 400
+        anastruc_1: 400
+      custom_toppar:
+        topology: "_ligand.top"
+        param: "_ligand.param"
 
   #-----------------------------------------------
 {% endhighlight %}
@@ -382,48 +392,75 @@ scenarios:
   - name: true-interface
     parameters:
       general:
-        mode: local
-        ncores: 1
+        mode: hpc
+        queue: short
+        queue_limit: 100
 
       modules:
-        order: [topoaa, rigidbody, seletop, flexref, emref]
+        order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
         topoaa:
           autohis: true
         rigidbody:
-          sampling: 10
           ambig_fname: "_ti.tbl"
         seletop:
-          select: 2
+          select: 200
         flexref:
+          ambig_fname: "_ti.tbl"
         emref:
+          ambig_fname: "_ti.tbl"
+        clustfcc:
+        seletopclusts:
 
   - name: center-of-mass
     parameters:
       general:
-        mode: local
-        ncores: 1
+        mode: hpc
+        queue: short
+        queue_limit: 100
 
       modules:
-        order: [topoaa, rigidbody]
+        order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
         topoaa:
           autohis: true
         rigidbody:
-          sampling: 2
+          sampling: 10000
           cmrest: true
+        seletop:
+          select: 200
+        flexref:
+          sampling: 400
+          cmrest: true
+        emref:
+          sampling: 400
+          cmrest: true
+        clustfcc:
+        seletopclusts:
 
   - name: random-restraints
     parameters:
       general:
-        mode: local
-        ncores: 1
+        mode: hpc
+        queue: short
+        queue_limit: 100
 
       modules:
-        order: [topoaa, rigidbody]
+        order: [topoaa, rigidbody, seletop, flexref, emref, clustfcc, seletopclusts]
         topoaa:
           autohis: true
         rigidbody:
-          sampling: 2
+          sampling: 10000
           ranair: true
+        seletop:
+          select: 200
+        flexref:
+          sampling: 400
+          contactairs = true
+        emref:
+          sampling: 400
+          contactairs = true
+        clustfcc:
+        seletopclusts:
+
   #-----------------------------------------------
 {% endhighlight %}
 
