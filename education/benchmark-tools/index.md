@@ -189,6 +189,10 @@ HADDOCK3_DIR="$HOME/repos/haddock3"
 # Activate the virtual environment
 source "$HADDOCK3_DIR/venv/bin/activate" || exit
 
+### Or if installed with conda
+## source $HOME/miniconda3/etc/profile.d/conda.sh
+## conda activate haddock3
+
 # Mind the "$@" at the end, this is necessary to pass the arguments to the script
 haddock3 "$@"
 #===============================================================================
@@ -204,7 +208,7 @@ The `benchmark.yaml` file is a configuration file in [`YAML`](https://yaml.org/)
 Here you must define the following:
 
 * `executable`: the path to the `run-haddock.sh` script (see above for more details)
-* `max_concurrent`: the maximum number of jobs that can be executed at a given time
+* `max_concurrent`: the maximum number of runs that can be executed at a given time (a run is a target in a given scenario)
 * `haddock_dir`: the path to the HADDOCK installation
 * `receptor_suffix`: the suffix used to identify the receptor files
 * `ligand_suffix`: the suffix used to identify the ligand files
@@ -500,7 +504,7 @@ $ ./benchmark-tools my-benchmark-config-file.yml &
 
 `benchmark-tools` will read the input file, create the working directory, copy the input files to a `data/` directory and start the benchmark. Make sure you have enough space in your disk to store the input files and the results.
 
-**VERY IMPORTANT:** In the current version, `benchmark-tools` leverages the internal scheduling routines of HADDOCK2.4. This means that the number of concurrent runs is related to the number of concurrent docking runs, not to the number of processors being used! The actual number of processors being used depends on how HADDOCK2.4 was configured. For HADDOCK3, the number of processors (or queue slots) to use and the running mode is defined in the config file under the `general` section (see examples above).
+**VERY IMPORTANT:** In the current version, `benchmark-tools` does not submit jobs to the queue, instead it leverages the internal scheduling routines of HADDOCK2.4/HADDOCK3.0. This means that the number of concurrent runs is related to the number of docking runs at a given time, not to the total number of processors being used by HADDOCK! The actual number of processors being used depends on how HADDOCK was configured. For HADDOCK2.4 this depends on parameters defined in the `run.cns` (`queue_N`/`cpunumber_N`) and for HADDOCK3, the number of processors (or queue slots) to use and the running mode is defined in the config file under the `general` section (see examples above).
 
 **Example; `max_concurrent: 10` with `scenarios.parameters.mode: local` and `scenarios.parameters.ncores: 10` means 10x10 processors will be required!**
 
