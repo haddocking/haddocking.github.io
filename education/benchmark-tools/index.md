@@ -65,7 +65,7 @@ Simply download the latest binary from the [releases page](https://github.com/ha
 benchmarktools version v1.0.0
 {% endhighlight %}
 
-Additionally, you can install the latest version from source, make sure [`go` is installed](https://go.dev/doc/install){:target="_blank"} and run the following commands:
+Additionally, you can build the latest version from source, make sure [`go` is installed](https://go.dev/doc/install){:target="_blank"} and run the following commands:
 
 {% highlight bash %}
 > git clone https://github.com/haddocking/benchmark-tools.git
@@ -118,7 +118,7 @@ The same logic applies to the restraints files, in the example above the pattern
 
 HADDOCK supports many modified amino acids/bases/glycans/ions (check the [full list](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"}). However if your target molecule is not present in this library, you can also provide it following the same logic; `topology: "_ligand.top"` and `param: "_ligand.param"` will use the files `protein2_ligand.top` and `protein2_ligand.param` for the target `protein2`.
 
-> **IMPORTANT**: For ensembles, *provide each model independently* and append a number to the suffix, for example: `complex1_l_u_1.pdb`, `complex1_l_u_2.pdb`, etc.
+> **IMPORTANT**: For ensembles, *provide each model individually* and append a number to the suffix, for example: `complex1_l_u_1.pdb`, `complex1_l_u_2.pdb`, etc.
 
 See below a full example:
 
@@ -514,8 +514,10 @@ $ ./benchmark-tools my-benchmark-config-file.yml &
 
 ## Getting help
 
-If you encounter any issues or have any questions, please open an issue on the [GitHub repository](https://github.com/haddocking/benchmark-tools){:target="_blank"},contact us at software.csb [at] gmail.com or join the [BioExcel forum](https://ask.bioexcel.eu){:target="_blank"} and post your question there.
+If you encounter any issues or have any questions, please open an issue on the [GitHub repository](https://github.com/haddocking/benchmark-tools){:target="_blank"}, contact us at *software.csb [at] gmail.com* or join the [BioExcel forum](https://ask.bioexcel.eu){:target="_blank"} and post your question there.
 
 ## Final considerations
 
-The `benchmark-tools` is under active development and we have a list of planned features, such as an option to resume/restart the benchmark and a full suite of analysis. If you have any suggestions, or feedback please let us know! 🤓
+The `benchmark-tools` is under active development and we have a list of planned features, such as an option to resume/restart the benchmark and a full suite of analysis.
+
+If you have any suggestions, or feedback please let us know! 🤓
