@@ -359,12 +359,12 @@ scenarios:
         structures_1: 200
         waterrefine: 200
       restraints:
-        ambig: "ti"
-        unambig: "unambig"
-        hbonds: "hb"
+        ambig: ambig
+        unambig: restraint-bodies
+        hbonds: hbonds
       custom_toppar:
-        topology: "_ligand.top"
-        param: "_ligand.param"
+        topology: _ligand.top
+        param: _ligand.param
 
   - name: center-of-mass
     parameters:
@@ -375,8 +375,8 @@ scenarios:
         waterrefine: 400
         anastruc_1: 400
       custom_toppar:
-        topology: "_ligand.top"
-        param: "_ligand.param"
+        topology: _ligand.top
+        param: _ligand.param
 
   - name: random-restraints
     parameters:
@@ -387,8 +387,8 @@ scenarios:
         waterrefine: 400
         anastruc_1: 400
       custom_toppar:
-        topology: "_ligand.top"
-        param: "_ligand.param"
+        topology: _ligand.top
+        param: _ligand.param
 
   #-----------------------------------------------
 {% endhighlight %}
@@ -408,13 +408,9 @@ scenarios:
   - name: true-interface
     parameters:
       general:
-        # execution mode using a batch system
         mode: hpc
-        # batch queue name to use
         queue: short
-        # number of jobs to submit to the batch system
         queue_limit: 100
-        # number of models to concatenate within one job
         concat: 5
 
       modules:
@@ -422,26 +418,28 @@ scenarios:
         topoaa:
           autohis: true
         rigidbody:
-          ambig_fname: "_ti.tbl"
+          ambig_fname: _ambig.tbl
+          unambig_fname: _restraint-bodies.tbl
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         seletop:
           select: 200
         flexref:
-          ambig_fname: "_ti.tbl"
+          ambig_fname: _ambig.tbl
+          unambig_fname: _restraint-bodies.tbl
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         emref:
-          ambig_fname: "_ti.tbl"
+          ambig_fname: _ambig
         clustfcc:
         seletopclusts:
 
   - name: center-of-mass
     parameters:
       general:
-        # execution mode using a batch system
         mode: hpc
-        # batch queue name to use
         queue: short
-        # number of jobs to submit to the batch system
         queue_limit: 100
-        # number of models to concatenate within one job
         concat: 5
 
       modules:
@@ -451,27 +449,23 @@ scenarios:
         rigidbody:
           sampling: 10000
           cmrest: true
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         seletop:
-          select: 200
+          select: 400
         flexref:
-          sampling: 400
-          cmrest: true
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         emref:
-          sampling: 400
-          cmrest: true
         clustfcc:
         seletopclusts:
 
   - name: random-restraints
     parameters:
       general:
-        # execution mode using a batch system
         mode: hpc
-        # batch queue name to use
         queue: short
-        # number of jobs to submit to the batch system
         queue_limit: 100
-        # number of models to concatenate within one job
         concat: 5
 
       modules:
@@ -481,14 +475,18 @@ scenarios:
         rigidbody:
           sampling: 10000
           ranair: true
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         seletop:
-          select: 200
+          select: 400
         flexref:
-          sampling: 400
           contactairs: true
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         emref:
-          sampling: 400
           contactairs: true
+          ligand_param_fname: _ligand.param
+          ligand_top_fname: _ligand.top
         clustfcc:
         seletopclusts:
 
