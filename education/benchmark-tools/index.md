@@ -259,14 +259,6 @@ scenarios:
       restraints:
         ambig: ti
 
-  - name: center-of-mass
-    parameters:
-      run_cns:
-        cmrest: true
-        structures_0: 10000
-        structures_1: 400
-        waterrefine: 400
-        anastruc_1: 400
 {% endhighlight %}
 
 
@@ -312,26 +304,7 @@ scenarios:
         flexref:
         emref:
 
-  - name: center-of-mass
-    parameters:
-      general:
-        # execution mode using a batch system
-        mode: hpc
-        # batch queue name to use
-        queue: short
-        # number of jobs to submit to the batch system
-        queue_limit: 100
-        # number of models to concatenate within one job
-        concat: 5
-
-      modules:
-        order: [topoaa, rigidbody]
-        topoaa:
-          autohis: true
-        rigidbody:
-          sampling: 10000
-          cmrest: true
-{% endhighlight %}
+ {% endhighlight %}
 
 
 #### 3.2 Full example
@@ -506,7 +479,7 @@ $ ./benchmark-tools my-benchmark-config-file.yml &
 
 **VERY IMPORTANT:** In the current version, `benchmark-tools` does not submit jobs to the queue, instead it leverages the internal scheduling routines of HADDOCK2.4/HADDOCK3.0. This means that the number of concurrent runs is related to the number of docking runs at a given time, not to the total number of processors being used by HADDOCK! The actual number of processors being used depends on how HADDOCK was configured. For HADDOCK2.4 this depends on parameters defined in the `run.cns` (`queue_N`/`cpunumber_N`) and for HADDOCK3, the number of processors (or queue slots) to use and the running mode is defined in the config file under the `general` section (see examples above).
 
-**Example; `max_concurrent: 10` with `scenarios.parameters.mode: local` and `scenarios.parameters.ncores: 10` means 10x10 processors will be required!**
+**Example:** `max_concurrent: 10` with `scenarios.parameters.mode: local` and `scenarios.parameters.ncores: 10` means 10x10 processors will be required!
 
 ***
 
