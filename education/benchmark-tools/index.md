@@ -165,10 +165,17 @@ This script should contain all the commands necessary to run HADDOCK and it must
 #===============================================================================
 # HADDOCK2.4 runs on python2.7, which is EOL.
 # This script is a workaround to run HADDOCK with a custom python2 installation
+
+## With pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv shell 2.7.18
+
+## With Anaconda
+# source $HOME/miniconda3/etc/profile.d/conda.sh
+# conda create -n haddock24_env python=2.7
+# conda activate haddock24_env
 
 #===============================================================================
 # Configure HADDOCK2.4
