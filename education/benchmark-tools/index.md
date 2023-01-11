@@ -491,7 +491,7 @@ $ ./benchmark-tools my-benchmark-config-file.yml &
 
 ## Setting up a benchmark experiment with the Docking benchmark 5 (BM5)
 
-The Protein-Protein docking benchmark v5 ([Vreven, 2015](https://doi.org/10.1016/j.jmb.2015.07.016){:target="_blank"}), namely BM5. It contains a is a large set of non-redundat, high-quality structures, check [here](https://zlab.umassmed.edu/benchmark/){:target="_blank"} the full set.
+The Protein-Protein docking benchmark v5 ([Vreven, 2015](https://doi.org/10.1016/j.jmb.2015.07.016){:target="_blank"}), namely BM5, contains a is a large set of non-redundat high-quality structures, check [here](https://zlab.umassmed.edu/benchmark/){:target="_blank"} the full set.
 
 The BonvinLab provides a HADDOCK-ready sub-version of the BM5 which can be easily used as input for `benchmark-tools`. This version is available the following repository; [github.com/haddocking/BM5-clean](https://github.com/haddocking/BM5-clean){:target="_blank"}. Below we will go over step-by-step instructions on how to use it as input.
 
