@@ -15,7 +15,7 @@ image:
 The Structural Bioinformatics & Modelling course, created and maintained by the
 [Computational Structural Biology group](https://bonvinlab.org){:target="_blank"} of
 [Utrecht University](https://www.uu.nl){:target="_blank"}, is aimed
-at those interested in learning homology modelling, molecular simulation, and docking of biological
+at those interested in learning protein modelling, molecular simulation, and docking of biological
 molecules. The course material requires a solid understanding of molecular biology, namely of
 protein sequence and structure, as well as familiarity with basic chemistry concepts. Experience
 with a UNIX-like command-line environment is not required but helps tying the commands to the
