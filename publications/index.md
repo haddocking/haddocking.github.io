@@ -6,14 +6,14 @@ image:
 ---
 ## 2023
 
+* M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1093/bioinformatics/btac759). _Bioinformatics_ *39*, btac759, 1-8 (2023). Preprint [here](https://doi.org/10.1101/2021.12.08.471762).
+
 * F. Ambrosetti, Z. Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://link.springer.com/protocol/10.1007/978-1-0716-2609-2_14). _Methods in molecular biology_ *2552*, 267-282 (2023). [Preprint](https://arxiv.org/abs/2005.03283).
 
 * Y. Jung, C. Geng, **A.M.J.J. Bonvin**, L.C. Xue, V.G. Honavar. [MetaScore: A novel machine-learning based approach to improve traditional scoring functions for scoring protein-protein docking conformations](https://doi.org/10.3390/biom13010121). _Biomolecules_, Advanced Online Publication (2022). Preprint [here](https://doi.org/10.1101/2021.10.06.463442)).
 
 
 ## 2022
-
-* M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1093/bioinformatics/btac759). _Bioinformatics_ Advanced Online Publication (2022). Preprint [here](https://doi.org/10.1101/2021.12.08.471762).
 
 * S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _BioRxiv_ 10.1101/2021.12.08.471762 (2022).
 
