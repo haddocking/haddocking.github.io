@@ -33,14 +33,6 @@
     position: Visiting Ph.D Candidate
     avatar: /images/people/Anna-Ranaudo.jpg
 
--   name: Ivar de Leeuw
-    position: M.Sc Student
-    avatar: /images/people/Ivar.jpg
-
--   name: Rafaella Buzatu
-    position: M.Sc Student
-    avatar: /images/people/Rafaella-Buzatu.jpg
-
 -   name: Aldo van den Nieuwendijk
     position: M.Sc Student
     avatar: /images/people/Aldo-vandenNieuwendijk.png
@@ -56,4 +48,8 @@
 -   name: Daphne van Oosten
     position: M.Sc Student
     avatar: /images/people/Daphne-vanOosten.png
+
+-   name:  Azen Koc
+    position: M.Sc Student
+    avatar: /images/people/Azen-Koc.png
 
