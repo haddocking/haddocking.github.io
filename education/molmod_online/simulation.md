@@ -29,7 +29,7 @@ To use virtual machines through NMRbox, one needs to register, preferably with t
 ### Accessing NMRbox
 To run the virtual machine on a local computer, one needs to install [VNCviewer](https://www.realvnc.com/en/connect/download/viewer/){:target="_blank"}. With the RealVNC client connects your computer to the NMRbox servers with a virtual desktop - graphical interface. More information about the VNC viewer is in the [FAQ of NMRbox](https://nmrbox.org/faqs/vnc-client){:target="_blank"}.
 
-To choose a virtual machine, first log into the user dashboard [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"}. Download the zip file with bookmarks for the production NMRbox virtual machines [here](https://api.nmrbox.org/user/vm_launcher?host=all){:target="_blank"} and extract the zip file. Back in VNCviewer click `File -> Import connections` and select the folder in which you extracted the contentes of the downloaded zip file. After importing, you will see the current release virtual machines. You can use any available virtual machine. The user-dashboard provides information on machine capabilities and recent compute load, thus it is clever to choose a less occupied one. Double click on one of the VMs. An `Authentication` panel appears. Enter your NMRbox username and password. Click on the `Remember password` box to have VNCviewer save your information. By default, your desktop remains running when you disconnect from it. If you login to your VM repeatedly you will see a screen symbol next to the VM you connected to recently. For more details follow the quick start guide for using NMRbox with VNCviewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
+To choose a virtual machine, first log into the user dashboard [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"}. Download the zip file with bookmarks for the production NMRbox virtual machines [here](https://api.nmrbox.org/user/vm_launcher?host=all){:target="_blank"} and extract the zip file. Back in VNCviewer click `File -> Import connections` and select the folder in which you extracted the content of the downloaded zip file. After importing, you will see the current release virtual machines. You can use any available virtual machine. The user-dashboard provides information on machine capabilities and recent compute load, thus it is clever to choose a less occupied one. Double click on one of the VMs. An `Authentication` panel appears. Enter your NMRbox username and password. Click on the `Remember password` box to have VNCviewer save your information. By default, your desktop remains running when you disconnect from it. If you login to your VM repeatedly you will see a screen symbol next to the VM you connected to recently. For more details follow the quick start guide for using NMRbox with VNCviewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
 
 
 If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including Pymol. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer){:target="_blank"}.
@@ -60,6 +60,11 @@ $$
 The force felt by each individual particle is a collection of the effects exerted by other
 neighboring particles in the system. For protein simulations, the effect of distant particles can
 be ignored given their negligible contribution, saving substantial computation time in the process.
+
+<a class="prompt prompt-question">
+Consider a system with 10^6 particles, where each particle has 10^3 neighboring particles: How much faster is a simulation that does not calculate all the forces between all pairs of particles?
+</a>
+
 These forces are calculated using the *force field*, a set of functions and parameters that
 approximate the potential energy of the system. These parameters are usually derived either from
 experiments or high-level quantum mechanical calculations. Although force fields come in many
@@ -176,8 +181,7 @@ method such as homology modeling for this peptide is very likely unwarranted. In
 possible, and plausible, to generate structures of the peptide in three ideal conformations --
 helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the
 peptides deposited in the PDB. Generating these structures is a simple matter of manipulating
-backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell and
-available [here](http://pldserver1.biochem.queensu.ca/~rlc/work/pymol/){:target="_blank"} if necessary.
+backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell.
 
 The instructions shown in this tutorial refer only to the helical peptide, for simplicity. The
 successful completion of the tutorial requires, however, all three conformations to be simulated.
@@ -359,6 +363,15 @@ Protein             3
 
 </pre>
 
+<a class="prompt prompt-info">
+Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom. Also the last column reports the running sum of those charges which add to 1 for this particular residue.
+<a>
+
+<a class="prompt prompt-question">
+  GLN is in principle a neutral amino acid within a protein sequence. Can you rationalize why in this case the sum of the charges add up to +1?
+</a>
+
+
 ### Periodic Boundary Conditions
 This converted structure includes several atoms, namely hydrogen, that have been added according
 only to ideal geometric parameters. If generated with Pymol, it also has ideal backbone geometry.
@@ -408,9 +421,12 @@ the cell must be sufficiently large to allow the molecule to cross the boundarie
 sufficient distance from the next image that no force calculations are made between them. In
 GROMACS, this setting is defined as a distance from the molecule to the wall of the unit cell. This
 distance should not be arbitrarily large either, otherwise the box is to large and the simulation
-becomes computationally inefficient. Take the cutoff used to calculate non-bonded interactions
+becomes computationally inefficient as your purpose is not to simulate water. Take the cutoff used to calculate non-bonded interactions
 (long range) in the force field as a rule of thumb. The distance to the wall must be larger than
 this value.
+
+Also important is to consider possible conformational changes. The size of the box should allow for those to occur without introducing period image problems as explained above.
+
 
 <a class="prompt prompt-info">
   Setup periodic boundary conditions using a minimal distance of 1.4 nm between the peptide and the

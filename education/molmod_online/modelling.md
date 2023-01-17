@@ -20,7 +20,7 @@ procedure.
 ## A bite of theory
 The last decades of scientific advances in the fields of protein biology revealed the extent of both
 the protein sequence and structure universes. Protein sequences databases currently hold tens of
-millions of entries ([source](https://www.uniprot.org/statistics/){:target="_blank"}) and are foreseen to continue
+millions of entries ([source](https://www.ebi.ac.uk/uniprot/TrEMBLstats){:target="_blank"}) and are foreseen to continue
 growing exponentially, driven by high-throughput sequencing efforts. On the other hand, the number
 of experimental protein structures is two orders of magnitude smaller
 ([source](https://www.rcsb.org/stats/growth/growth-released-structures){:target="_blank"}), and
@@ -70,9 +70,8 @@ that binds the p53 trans-activation domain. So, where to start?
 The [Uniprot](https://www.uniprot.org){:target="_blank"} database is an online resource offering access to _all_ known
 protein sequences. Besides raw sequence data, Uniprot aggregates information from several other
 databases such as the [Worldwide PDB](https://www.wwpdb.org){:target="_blank"} (wwPDB) that archives information
-about the 3D structures of proteins, nucleic acids, and complex assemblies and ensures that the PDB
-is freely and publicly available to the global community, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/){:target="_blank"},
-[KEGG](https://www.genome.jp/kegg/){:target="_blank"}, [Pfam](https://pfam.xfam.org/){:target="_blank"}, and many others.
+about the 3D structures of proteins, nucleic acids, and complex assemblies, NCBI [Pubmed](https://www.ncbi.nlm.nih.gov/pubmed/){:target="_blank"},
+[KEGG](https://www.genome.jp/kegg/){:target="_blank"}, [Pfam](https://www.ebi.ac.uk/interpro){:target="_blank"}, and many others.
 The wwPDB itself consists of several sites that all provide access in their own way to the wwPDB core database together with various associated services: The Research Collaboratory for Structural Bioinformatics PDB ([RCSB](https://www.rcsb.org){:target="_blank"}), PDB Europe ([PDBe](https://www.pdbe.org){:target="_blank"}) and PDB Japan ([PDBj](https://www.pdbj.org){:target="_blank"}), together with the Biological Magnetic Resonance Data Bank ([BMRB](https://bmrb.io/){:target="_blank"}) that collects NMR data.
 These features of Uniprot makes it an obvious go-to resource when looking for information on any protein. There
 are two collections of sequences: Swiss-Prot, whose entries undergo manual annotation and revision,
@@ -101,7 +100,8 @@ Similarly as man, no protein is an island, entire of itself, every protein is a 
 
 You can navigate directly to the **Structure** section to verify if there are
 already published experimental structures for mouse MDM2. Fortunately, there aren't any; otherwise
-this tutorial would end here.
+this tutorial would end here. Note however that there is an available AlphaFold model, but for the purpose of this tutorial
+we will ignore it for the time being. 
 
 
 <a class="prompt prompt-question">
@@ -208,7 +208,7 @@ templates, build the models, and evaluate their quality.
 <hr>
 ## Finding homologues of known structure using SWISS-MODEL
 
-In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://swissmodel.expasy.org/){:target="_blank"}, which can conveniently perform above mentioned tasks and visualize both templates and created models.
+In the previous version of this course, we used multiple tools to search for sequence homologues, compare them and build a homology model. This year, to make this course accessible from remote locations, we will be using an online tool [SWISS-MODEL](https://swissmodel.expasy.org/){:target="_blank"}, which can conveniently perform the above mentioned tasks and visualize both templates and created models.
 
 The _template_ is the structurally-resolved homolog that serves as a basis for the modeling. The
 _query_, on the other hand, is the sequence being modelled. This standard nomenclature is used by
@@ -412,13 +412,13 @@ After clicking on individual models, you can examine their quality in multiple w
 
 The Global Quality Estimate consists of four individual terms: Cβ atoms only, all atoms, the solvation potential and the torsion angle potential. Here again, the lower values indicate that the models scores lower than the experimental structure (red) and higher values indicate, that the model scores higher than the experimental structure (blue).
 
-SWISS-MODEL uses another method **[QMEAN](https://pubmed.ncbi.nlm.nih.gov/21134891/){:target="_blank"}** to estimate the quality of freshly built models. QMEAN quantifies model accuracy as well as modelling errors per residues and globally - for the entire model. This is done using statistical potentials of mean force.
+SWISS-MODEL uses another method [QMEAN](https://pubmed.ncbi.nlm.nih.gov/21134891/){:target="_blank"} to estimate the quality of freshly built models. QMEAN quantifies model accuracy as well as modelling errors per residues and globally - for the entire model. This is done using statistical potentials of mean force.
 
 
 The QMEAN Z-score or the normalized QMEAN score shows the "degree of nativeness", which indicates how the model is comparable to an experimental structure of similar size. QMEAN Z-score around 0 indicates good agreement, while score below -4.0 are given to models of low quality. This is also turned into the "thumbs-up" or "thumbs-down" symbol next to the QMEAN value.
 
 
-QMEAN score per residue is shown in the *Local Quality Estimate* plot. The **[QMEANDisCo](https://doi.org/10.1093/bioinformatics/btz828){:target="_blank"}** method is used in this step. QMEANDisCo compares interatomic distances in the model with ensemble information extracted from experimentally determined protein structures of target sequence homologues.  The score shows similarity of the residues to the experimental structure and if it drops below 0.6, modelled residues are in general of low quality.
+QMEAN score per residue is shown in the *Local Quality Estimate* plot. The [QMEANDisCo](https://doi.org/10.1093/bioinformatics/btz828){:target="_blank"} method is used in this step. QMEANDisCo compares interatomic distances in the model with ensemble information extracted from experimentally determined protein structures of target sequence homologues.  The score shows similarity of the residues to the experimental structure and if it drops below 0.6, modelled residues are in general of low quality.
 Different chains are showed in different colours and the residue modelling-quality can be viewed in 3D by selecting QMEAN as the coloring method in the NGL viewer.
 
 The comparison plot shows the QMEAN score of our model (red star) within all QMEAN scores of experimentally determined structures compared to their size (number of residues). Here the Z-score is equivalent to the standard deviation of the mean.
@@ -426,17 +426,18 @@ The comparison plot shows the QMEAN score of our model (red star) within all QME
 One can superimpose selected models by clicking on their 3D structure image and they appear in the NGL viewer. Very handy is the sequence coverage comparison which appears under the 3D structure view. Here the target sequence is in green, while the model sequences in blue.
 
 <a class="prompt prompt-question">
-Which models show the highest quality? It is worth to consider the sequence coverage too. Is the local quality estimate to specific residue properties, e.g. secondary structure of b-factor value?
+Which models show the highest quality? It is worth to consider the sequence coverage too. 
+Does the local quality estimate correlate to specific residue properties, e.g. secondary structure of b-factor value?
 </a>
 
 
 For more detailed structure information, one can click on the `Structure Assessment` button. This feature can be used also as a separate interface [https://swissmodel.expasy.org/assess](https://swissmodel.expasy.org/assess){:target="_blank"} where one can upload their PDB structure and this will be assessed.
 
 <a class="prompt prompt-info">
-Investigate a selected model and its structure properties. What is the ratio of Ramachandran favoured residues?
+Investigate a selected model and its structural properties. What is the percentage of Ramachandran favoured residues?
 </a>
 
-A Ramachandran plot is a way to visualize backbone dihedral angles of amino acid residues in the model against energetically favored regions of dihedrals of amino acids in general. These favored regions were obtained from more than 12000 experimental structures from [PISCES](https://pubmed.ncbi.nlm.nih.gov/12912846/){:target="_blank"}. Moreover the model is validated by [Molprobity](https://molprobity.biochem.duke.edu){:target="_blank"} both locally and globally. The quality of the structure is then expressed in Molprobity score, which should be as low as possible and *Ramachandran Favoured* residues, ideally above 98%. Clash score, outliers and bad angles and bonds should be as well as low as possible. More about structure assessment can be found in its [documentation](https://swissmodel.expasy.org/assess/help){:target="_blank"}. Examples of Ramachadran plots for all residues below:
+A Ramachandran plot is a way to visualize backbone dihedral angles of amino acid residues in the model against energetically favored regions of dihedrals of amino acids in general. These favored regions were obtained from more than 12000 experimental structures from [PISCES](https://pubmed.ncbi.nlm.nih.gov/12912846/){:target="_blank"}. Moreover the model is validated by [Molprobity](https://molprobity.biochem.duke.edu){:target="_blank"} both locally and globally. The quality of the structure is then expressed in Molprobity score, which should be as low as possible, and the percentage of Ramachandran Favoured residues, ideally above 98%. Clash score, outliers and bad angles and bonds should be as well as low as possible. More about structure assessment can be found in its [documentation](https://swissmodel.expasy.org/assess/help){:target="_blank"}. Examples of Ramachadran plots for all residues below:
 
 <img src="/education/molmod_online/ramachandran.png">
 
@@ -464,7 +465,7 @@ Note that all figures can be downloaded by clicking on the `Download` icon. More
 Which model would be the most fitting to choose for further docking studies? Is it worth to build a model involving the first ~20 amino acids considering local quality of this terminus?
 </a>
 
-When performing docking, we want to make sure that we work with all relevant parts of the protein, i.e. part necessary for interactions. In some cases unstructured termini that are not vital for the complex formation can quite on the contrary, hinder the protein contact.
+When performing docking, we want to make sure that we only work with the relevant parts of the protein, i.e. the parts necessary for interactions. In some cases unstructured termini that are not vital for the complex formation might actually hinder the formation of a proper interface.
 
 
 <a class="prompt prompt-info">
