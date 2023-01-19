@@ -340,35 +340,28 @@ Protein             3
 
 [ atoms ]
 ;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
-; residue   1 GLN rtp NGLN q +1.0
-     1         N3      1    GLN      N      1     0.1493      14.01   ; qtot 0.1493
-     2          H      1    GLN     H1      2     0.1996      1.008   ; qtot 0.3489
-     3          H      1    GLN     H2      3     0.1996      1.008   ; qtot 0.5485
-     4          H      1    GLN     H3      4     0.1996      1.008   ; qtot 0.7481
-     5         CT      1    GLN     CA      5     0.0536      12.01   ; qtot 0.8017
-     6         HP      1    GLN     HA      6     0.1015      1.008   ; qtot 0.9032
-     7         CT      1    GLN     CB      7     0.0651      12.01   ; qtot 0.9683
-     8         HC      1    GLN    HB1      8      0.005      1.008   ; qtot 0.9733
-     9         HC      1    GLN    HB2      9      0.005      1.008   ; qtot 0.9783
-    10         CT      1    GLN     CG     10    -0.0903      12.01   ; qtot 0.888
-    11         HC      1    GLN    HG1     11     0.0331      1.008   ; qtot 0.9211
-    12         HC      1    GLN    HG2     12     0.0331      1.008   ; qtot 0.9542
-    13          C      1    GLN     CD     13     0.7354      12.01   ; qtot 1.69
-    14          O      1    GLN    OE1     14    -0.6133         16   ; qtot 1.076
-    15          N      1    GLN    NE2     15    -1.0031      14.01   ; qtot 0.0732
-    16          H      1    GLN   HE21     16     0.4429      1.008   ; qtot 0.5161
-    17          H      1    GLN   HE22     17     0.4429      1.008   ; qtot 0.959
-    18          C      1    GLN      C     18     0.6123      12.01   ; qtot 1.571
-    19          O      1    GLN      O     19    -0.5713         16   ; qtot 1
-
+; residue   1 SER rtp NSER q +1.0
+     1         N3      1    SER      N      1     0.1849      14.01
+     2          H      1    SER     H1      2     0.1898      1.008
+     3          H      1    SER     H2      3     0.1898      1.008
+     4          H      1    SER     H3      4     0.1898      1.008
+     5         CT      1    SER     CA      5     0.0567      12.01
+     6         HP      1    SER     HA      6     0.0782      1.008
+     7         CT      1    SER     CB      7     0.2596      12.01
+     8         H1      1    SER    HB1      8     0.0273      1.008
+     9         H1      1    SER    HB2      9     0.0273      1.008
+    10         OH      1    SER     OG     10    -0.6714         16
+    11         HO      1    SER     HG     11     0.4239      1.008
+    12          C      1    SER      C     12     0.6163      12.01
+    13          O      1    SER      O     13    -0.5722         16   ; qtot 1
 </pre>
 
 <a class="prompt prompt-info">
-Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom. Also the last column reports the running sum of those charges which add to 1 for this particular residue.
+Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom.
 <a>
 
 <a class="prompt prompt-question">
-  GLN is in principle a neutral amino acid within a protein sequence. Can you rationalize why in this case the sum of the charges add up to +1?
+  SER is in principle a neutral amino acid within a protein sequence. Can you rationalize why in this case the sum of the charges add up to +1?
 </a>
 
 
