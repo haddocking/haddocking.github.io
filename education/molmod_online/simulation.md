@@ -768,6 +768,12 @@ particles, the pressure is kept constant by varying the volume of the simulation
 <a class="prompt prompt-cmd">
   gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -r peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
 </a>
+<a class="prompt prompt-question">
+  Were you able to succesfully execute the previous command? If not, read the error message carefully.
+</a>
+
+Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although this weak-coupling algorithm is not rigorously compatible with a full isothermal-isobaric (NPT) ensemble. Gromacs correctly complains about this by means of a warning message. In our case, we are just equilibrating the system, and using the Berendsen barostat is perfectly fine. Therefore the warning can be safely ignored by adding `--maxwarn 1` at the end of the previous command.
+
 <a class="prompt prompt-cmd">
   gmx mdrun -v -deffnm peptide-NPT-PR1000
 </a>
