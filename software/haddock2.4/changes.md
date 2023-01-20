@@ -6,7 +6,13 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
-### Latest changes - version August 2022
+### Latest changes - version January 2023
+- Added missing SIA-NGA 2-6 glycosilic linkages
+- Added support for SIA-SIA 2-8 linkages
+- Implemented automatic DNA/RNA restraints definition
+
+
+### changes- version August 2022
 - Added support for 3-Hydroxyproline (HY3 residue)
 - Added improper to tensor topology
 - Extended support for 10 RDC restraint sets

@@ -17,11 +17,11 @@ This page provide you links to software and software manuals of the computationa
 ### HADDOCK
   Software package for integrative modelling of biomolecular complexes
   
-  * NEW! [**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
+  * [**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
   
   * [**HADDOCK2.4 software**](/software/haddock2.4/) - Official 2.4 production version
 
-  * [**HADDOCK2.4 web server**](https://wenmr.science.uu.nl/haddock2.4/) - New production version
+  * [**HADDOCK2.4 web server**](https://wenmr.science.uu.nl/haddock2.4/) - production version
   
   * [**HADDOCK3 software**](/software/haddock3) - A new, very experimental [BioExcel](https://www.bioexcel.eu) redesign of HADDOCK in a modular code. Use it at your own risk!
 

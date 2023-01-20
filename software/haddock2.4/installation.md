@@ -25,13 +25,14 @@ To obtain HADDOCK2.4 fill the [HADDOCK license form](https://www.bonvinlab.org/s
 * * *
 
 ### Downloading CNS
-The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. Consult for some guidance the related entry in the [HADDOCK forum](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23){:target="_blank"}.
+The other required piece of software to run HADDOCK is its computational engine, CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is freely available for non-profit organisations. In order to get access to all features of HADDOCK you will need to recompile CNS using the additional files provided in the HADDOCK distribution in the `cns1.3` directory. Compilation of CNS might be non-trivial. We are providing some instructions [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}. Consult also for some guidance the related entry in the [HADDOCK forum](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/23){:target="_blank"}  
 
-Untar the archive in your target installation directory.
 
 ### Python2.7
 
-[python](https://www.python.org){:target="_blank"} version 2.7 is required in order to run HADDOCK2.4.
+[python](https://www.python.org){:target="_blank"} version 2.7 is required in order to run HADDOCK2.4. Importantly, python2 (pointing to python2.7) should be existing on your system.
+
+As python2.7 is end of life, one way to install it is to use [miniconda](https://docs.conda.io/en/latest/miniconda.html){:target="_blank"} on your system.
 
 
 ### Biopython 1.72 (only required to use the coarse-graining option in HADDOCK2.4)
@@ -120,8 +121,21 @@ After having downloaded HADDOCK, unpack the archive under the installation direc
   tar xvfz haddock2.4.tgz
 </pre>
 
-Go into the newly created haddock2.4 directory and edit a configuration file specific to your system.
+In case you installed miniconda, create a HADDOCK2.4 environment with the
+following command (withing the haddock2.4 directory):
 
+<a class="prompt prompt-cmd">
+conda env create -f requirements.yml
+</a>
+
+Then activate the haddock2.4 environment with:
+
+<a class="prompt prompt-cmd">
+conda activate haddock2.4
+</a>
+
+
+Edit then a configuration file specific to your system.
 
 This configuration file should contain the following information:
 
