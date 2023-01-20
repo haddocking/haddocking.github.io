@@ -597,7 +597,7 @@ allowed to neutralize the charge of the system, if there is any.
   gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL- -p peptide.top
 </a>
 <a class="prompt prompt-question">
-  How many ions of each species were added to the box? Write this down, you will need this information in the next step!
+  How many ions of each species were added to the box?
 </a>
 
 <a class="prompt prompt-info">
