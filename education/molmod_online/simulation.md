@@ -594,21 +594,17 @@ allowed to neutralize the charge of the system, if there is any.
   Select the group that contains SOL.
 </a>
 <a class="prompt prompt-cmd">
-  gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL-
+  gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL- -p peptide.top
 </a>
 <a class="prompt prompt-question">
   How many ions of each species were added to the box? Write this down, you will need this information in the next step!
 </a>
 
-Unfortunately, the topology is now incorrect. Neither program used in this step updates the number
-of solvent molecules nor that of sodium or chloride. To do so, edit the topology file manually and
-add the correct number of each ionic species to the `[molecules]` section.
-
 <a class="prompt prompt-info">
-  Edit the topology file to include the newly added ions and adjust the number of solvent molecules.
+  Check the topology file for the newly added ions in the `[molecules]` section compare to previous topology file
 </a>
 <a class="prompt prompt-attention">
-  If something goes wrong with this file you need to start over..! Make a backup of the topology file, in case something goes awry.
+  If something goes wrong with the topology file you need to start over..! You can always make backup of the topology file, in case something goes awry. And you can also choose different names for the topolgy file after each stage (if you find it more convenient for reversing to a previous stage (just take care you use the correct one in the next stage).
 </a>
 <a class="prompt prompt-cmd">
   cp peptide.top peptide.top.backup
@@ -619,42 +615,6 @@ add the correct number of each ionic species to the `[molecules]` section.
 <a class="prompt prompt-cmd">
   cat peptide.top
 </a>
-
-Name the ions after their element, i.e. do not include the charge. Finally, subtract the total number of ions added
-from the solvent (`SOL`) group. The excerpt below is an example of a correctly updated topology file.
-**Note that the number of ions added varies from system to system**, how many have been added to yours? Edit the topology accordingly!
-
-<a class="prompt prompt-info">
-  For this we could will use an old-school command-line text editor nano
-</a>
-
-<a class="prompt prompt-cmd">
-  nano peptide.top
-</a>
-
-
-<pre style="background-color:#DAE4E7;padding:15px">
-; ========
-; BEFORE
-; ========
-[ molecules ]
-; Compound        #mols
-Protein             1
-SOL              3180
-</pre>
-
-
-<pre style="background-color:#DAE4E7;padding:15px">
-; ========
-; AFTER
-; ========
-[ molecules ]
-; Compound        #mols
-Protein             1
-SOL              3161
-NA                 10
-CL                  9
-</pre>
 
 ### Energy minimization of the solvated system
 The addition of ions was the final step in setting up the system (chemically) for the simulation.
