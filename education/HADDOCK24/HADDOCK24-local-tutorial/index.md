@@ -246,9 +246,8 @@ After having downloaded HADDOCK from the above link, unpack the archive under th
 
 HADDOCK2.4 version requires python version 2.7 and CNS version 1.3 (see above for CNS installation instructions).
 Importantly, python2 (pointing to python2.7) should be existing on your system.
-
-As python2.7 is out of life, one way to install it is to use miniconda.
-See for installing miniconda on your system: https://docs.conda.io/en/latest/miniconda.html
+/
+As python2.7 is end of life, one way to install it is to use [miniconda](https://docs.conda.io/en/latest/miniconda.html){:target="_blank"} on your system.
 
 Once miniconda has been installed and activated, create a HADDOCK2.4 environment with the
 following command (withing the haddock2.4 directory):
