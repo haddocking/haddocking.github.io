@@ -15,6 +15,8 @@ image:
 
 ## 2022
 
+* M.J. Abraham, R. Apostolov, P. Bauer, **A.M.J.J. Bonvin**, J.M. Correia Teixeira, B.L. de Groot, V. Gapsys, G. Groenhof, B. Hess, E. Laure, E. Lindahl, A.S.J. Melquiond, D. Morozov, J.P.G.L.M. Rodrigues, M. Trellet, R. Vargas Honorato. [BioExcel Updated Whitepaper on Scientific Software Development](https://doi.org/10.5281/zenodo.6404474). _Zenodo_ https://doi.org/10.5281/zenodo.6404474 (2022).
+
 * S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _BioRxiv_ 10.1101/2021.12.08.471762 (2022).
 
 * M. Stahl Madsen, M. Broekema, M. Rønn Madsen, A. Koppen, A. Borgman, C. Gräwe, E. Thomsen, D. Westland, M. Kranendonk, M. Groot Koerkamp, N. Hamers, **A.M.J.J. Bonvin**, J. Ramos Pittol, K. Natarajan, S. Kersten, F. Holstege, H. Monajemi, S. van Mil, M. Vermeulen, B. Kragelund, D. Cassiman, S. Mandrup and E. Kalkhoven. [PPARγ lipodystrophy mutants reveal intermolecular interactions required for enhancer activation](https://doi.org/10.1038/s41467-022-34766-9). _Nature Comm._,  *13*, 7090 (2022).
