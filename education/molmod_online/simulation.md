@@ -1453,9 +1453,9 @@ index file to check for hydrogen bonds between the two halves is as follows:
 
 <pre style="background-color:#DAE4E7;padding:15px">
 r 1-7
-name 19 half_1
+name 17 half_1
 r 8-14
-name 20 half_2
+name 18 half_2
 q
 </pre>
 
@@ -1465,6 +1465,10 @@ structure.
 </a>
 <a class="prompt prompt-cmd">
   gmx make_ndx -f p53_helix_CAH.tpr -o my_index.ndx
+</a>
+<a class="prompt prompt-attention">
+  When running the make_ndx command, pay attention to the index returned by the selection
+   commands (r 1-7 and r 8-14), as different versions of GROMACS may return different numbers.
 </a>
 <a class="prompt prompt-cmd">
   gmx hbond -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -n my_index.ndx -num beta_hairpin_hbond.xvg
