@@ -1479,7 +1479,7 @@ simulation?
 Among the most common parameters to analyse protein structure is the assignment of secondary
 structure elements, such as α-helices and β-sheets. One of the most popular tools for this purpose
 is the `dssp` software. Although not part of the GROMACS distribution, `dssp` can be freely
-obtained online at the [CMBI website](https://swift.cmbi.ru.nl/gv/dssp/){:target="_blank"}, and integrated in many of
+obtained online at the [PDB REDO github page](https://github.com/PDB-REDO/dssp){:target="_blank"}, and integrated in many of
 its analysis tools. Specifically, the `do_dssp` tool produces a plot of the different secondary
 structure elements of each residue in the peptide as a function of time. This matrix, in `.xpm`
 format, can be converted into a Postscript file using the `gmx xpm2ps` tool, and then into a PDF
@@ -1492,6 +1492,14 @@ short sequences, as well as a `-rainbow` flag that controls the coloring of the 
 </a>
 <a class="prompt prompt-cmd">
   gmx do_dssp -f p53_helix_CAH_reduced.xtc -s p53_helix_CAH.tpr -o md_secondary-structure.xpm
+</a>
+<a class="prompt prompt-question">
+  Did the previous command succeed? Read carefully the output to identify the problem.
+</a>
+In case the `do_dssp` command is not recognized, you may have to set the path to the dssp executable that
+is installed on your machine.
+<a class="prompt prompt-cmd">
+  export DSSP=${path_to_your_dssp_executable}
 </a>
 <a class="prompt prompt-cmd">
   gmx xpm2ps -f md_secondary-structure.xpm -o md_secondary-structure.eps -by 20 -rainbow blue
