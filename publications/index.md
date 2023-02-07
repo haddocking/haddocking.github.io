@@ -6,6 +6,8 @@ image:
 ---
 ## 2023
 
+* H. Schweke, Q. Xu, G. Tauriello, L. Pantolini, T. Schwede, F. Cazals, A. Lhéritier, J. Fernandez-Recio, L.A. Rodríguez-Lumbreras, O. Schueler-Furman, J.K. Varga, B. Jiménez-García, M.F. Réau, **A.M.J.J. Bonvin**, C. Savojardo, P.-L. Martelli, R. Casadio, J. Tubiana, H. Wolfson, R. Oliva, D. Barradas-Bautista, T. Ricciardelli, L. Cavallo, Č. Venclovas, K. Olechnovič, R. Guerois, J. Andreani, J. Martin, X. Wang, D. Kihara , A. Marchand, B. Correia, X. Zou, S. Dey, R. Dunbrack, E. Levy, S. Wodak. [Discriminating physiological from non-physiological interfaces in structures of protein complexes: a community-wide study](https://doi.org/10.22541/au.167569565.51141128/v1). _Authorea_ DOI:10.22541/au.167569565.51141128/v1 (2023).
+
 * M.F. Réau, N.Renaud, L.C. Xue and **A.M.J.J. Bonvin**. [DeepRank-GNN: A Graph Neural Network Framework to Learn Patterns in Protein-Protein Interfaces](https://doi.org/10.1093/bioinformatics/btac759). _Bioinformatics_ *39*, btac759, 1-8 (2023). Preprint [here](https://doi.org/10.1101/2021.12.08.471762).
 
 * F. Ambrosetti, Z. Jandova and **A.M.J.J. Bonvin**. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://link.springer.com/protocol/10.1007/978-1-0716-2609-2_14). _Methods in molecular biology_ *2552*, 267-282 (2023). [Preprint](https://arxiv.org/abs/2005.03283).
