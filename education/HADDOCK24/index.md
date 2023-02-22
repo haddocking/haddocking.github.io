@@ -19,7 +19,7 @@ In this page you can find links to tutorials on the usage of our software and we
   This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex using information 
   about the hypervariable loops of the antibody and NMR data identifying the epitope.
   This tutorial does not require any Linux expertise and only makes use of our web servers and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis.
-  The complex is also modelled using AlphaFold2 and the results compared those obtained with HADDOCK.
+  The complex is also modelled using AlphaFold2 and the results compared to those obtained with HADDOCK.
 
 * [**HADDOCK2.4 MS cross-links tutorial**](/education/HADDOCK24/HADDOCK24-Xlinks):
   A tutorial demonstrating the use of cross-linking data from mass spectrometry to guide the docking in HADDOCK.

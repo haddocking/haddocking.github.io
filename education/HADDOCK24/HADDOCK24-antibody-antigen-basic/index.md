@@ -46,6 +46,16 @@ _J. Mol. Biol._, *428*, 720-725 (2015).
 _Nature Protocols_, *5*, 883-897 (2010).  Download the final author version [here](https://igitur-archive.library.uu.nl/chem/2011-0314-200252/UUindex.html){:target="_blank"}.
 
 
+
+And our work on antibody antigen complexes is described in the following publications:
+
+* F. Ambrosetti, Z. Jandova and A.M.J.J. Bonvin. [A protocol for information-driven antibody-antigen modelling with the HADDOCK2.4 webserver](https://link.springer.com/protocol/10.1007/978-1-0716-2609-2_14). _Methods in molecular biology_ *2552*, 267-282 (2023). [Preprint](https://arxiv.org/abs/2005.03283).
+
+* F. Ambrosetti, T.H. Olsed, P.P. Olimpieri, B. Jiménez-García, E. Milanetti, P. Marcatilli and A.M.J.J. Bonvin. [proABC-2: PRediction Of AntiBody Contacts v2 and its application to information-driven docking](https://doi.org/10.1093/bioinformatics/btaa644). _Bioinformatics_, *36*, 5107–5108 (2020).
+
+* F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and A.M.J.J. Bonvin. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
+
+
 Throughout the tutorial, coloured text will be used to refer to questions or instructions, and/or PyMOL commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
