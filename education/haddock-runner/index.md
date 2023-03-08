@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Running HADDOCK with benchmark-tools"
+title: "Running HADDOCK with haddock-runner"
 excerpt: ""
 tags: [HADDOCK, benchmark, docking]
 image:
@@ -18,9 +18,9 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-### What is `benchmark-tools`?
+### What is `haddock-runner`?
 
-The `benchmark-tools` are an effort to reduce code duplication and to streamline the execution of HADDOCK benchmark. It is a standalone program written in [`go`](https://en.wikipedia.org/wiki/Go_(programming_language)){:target="_blank"}that can be used to run HADDOCK on a set of benchmark targets. It is designed to be used with both the production-ready [HADDOCK2.4](/software/haddock2.4){:target="_blank"}, the pre-release _HADDOCK2.5_ and the experimental (unpublished) [HADDOCK3](/software/haddock3) versions.
+The `haddock-runner` are an effort to reduce code duplication and to streamline the execution of HADDOCK benchmark. It is a standalone program written in [`go`](https://en.wikipedia.org/wiki/Go_(programming_language)){:target="_blank"}that can be used to run HADDOCK on a set of benchmark targets. It is designed to be used with both the production-ready [HADDOCK2.4](/software/haddock2.4){:target="_blank"}, the pre-release _HADDOCK2.5_ and the experimental (unpublished) [HADDOCK3](/software/haddock3) versions.
 
 When running a benchmark, users/developers may be interested in the following (in no specific order):
 
@@ -28,9 +28,9 @@ When running a benchmark, users/developers may be interested in the following (i
 * Comparing the results of different versions
 * The time it takes to run HADDOCK on a set of targets
 
-However the `benchmark-tools` can be used to run HADDOCK on a large set of targets such as for virtual screening.
+However the `haddock-runner` can be used to run HADDOCK on a large set of targets such as for virtual screening.
 
-### How does `benchmark-tools` work?
+### How does `haddock-runner` work?
 
 The execution of a HADDOCK benchmark consists of a few steps:
 
@@ -41,12 +41,12 @@ The execution of a HADDOCK benchmark consists of a few steps:
   * For HADDOCK3, writing the `run.toml`
 3. Distribute several HADDOCK runs in a HPC-friendly manner
 
-`benchmark-tools` aim to automate all these steps, additionally giving the user the possibility of setting up various *scenarios*. A scenario is a set of parameters that will be used to run HADDOCK. For example, a user may want to run HADDOCK against a set of targets with different sampling values, different restraints, different parameters, etc.
+`haddock-runner` aim to automate all these steps, additionally giving the user the possibility of setting up various *scenarios*. A scenario is a set of parameters that will be used to run HADDOCK. For example, a user may want to run HADDOCK against a set of targets with different sampling values, different restraints, different parameters, etc.
 
 
-### Who is `benchmark-tools` for?
+### Who is `haddock-runner` for?
 
-The tool is designed for users/students/developers that are familiar with HADDOCK, command-line scripting and with access to a HPC infrastructure. If this is the first time you are using HADDOCK, please familiarize first yourself with the software by running the basic [HADDOCK2.4](/education/HADDOCK24/index.md){:target="_blank"} or [HADDOCK3 tutorials](/education/HADDOCK3/index.md){:target="_blank"}. `benchmark-tools` is not meant to be used by end-users who want to run a single target, or a small set of targets; for that purpose we recommend instead using the [HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
+The tool is designed for users/students/developers that are familiar with HADDOCK, command-line scripting and with access to a HPC infrastructure. If this is the first time you are using HADDOCK, please familiarize first yourself with the software by running the basic [HADDOCK2.4](/education/HADDOCK24/index.md){:target="_blank"} or [HADDOCK3 tutorials](/education/HADDOCK3/index.md){:target="_blank"}. `haddock-runner` is not meant to be used by end-users who want to run a single target, or a small set of targets; for that purpose we recommend instead using the [HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
 
 ***
 
@@ -54,25 +54,25 @@ The tool is designed for users/students/developers that are familiar with HADDOC
 
 > Note: You need to have HADDOCK installed on your system. Please refer to the [HADDOCK2.4 installation instructions](/software/haddock2.4/installation){:target="_blank"} or [HADDOCK3.0 repository](https://github.com/haddocking/haddock3){:target="_blank"} for more information, or refer to the local installation tutorials for [HADDOCK2.4](/education/HADDOCK24/HADDOCK24-local-tutorial/){:target="_blank"} and [HADDOCK3](/education/HADDOCK3/HADDOCK3-antibody-antigen/){:target="_blank"}.
 
-`benchmark-tools` is open-source, licensed under Apache 2.0 and freely available from the following repository: [github.com/haddocking/benchmark-tools](https://github.com/haddocking/benchmark-tools){:target="_blank"}.
+`haddock-runner` is open-source, licensed under Apache 2.0 and freely available from the following repository: [github.com/haddocking/haddock-runner](https://github.com/haddocking/haddock-runner){:target="_blank"}.
 
-Simply download the latest binary from the [releases page](https://github.com/haddocking/benchmark-tools/releases){:target="_blank"}, for example:
+Simply download the latest binary from the [releases page](https://github.com/haddocking/haddock-runner/releases){:target="_blank"}, for example:
 
 {% highlight bash %}
-> wget https://github.com/haddocking/benchmark-tools/releases/download/v1.0.0/benchmark-tools_1.0.0_linux_386.tar.gz
-> tar -zxvf benchmark-tools_1.0.0_linux_386.tar.gz
-> ./benchmark-tools -version
-benchmarktools version v1.0.0
+> wget https://github.com/haddocking/haddock-runner/releases/download/v1.0.0/haddock-runner_1.0.0_linux_386.tar.gz
+> tar -zxvf haddock-runner_1.0.0_linux_386.tar.gz
+> ./haddock-runner -version
+haddock-runner version v1.0.0
 {% endhighlight %}
 
 Additionally, you can build the latest version from source, make sure [`go` is installed](https://go.dev/doc/install){:target="_blank"} and run the following commands:
 
 {% highlight bash %}
-> git clone https://github.com/haddocking/benchmark-tools.git
-> cd benchmark-tools
-> go build -o benchmark-tools
-> ./benchmark-tools -version
-benchmarktools version v1.0.0
+> git clone https://github.com/haddocking/haddock-runner.git
+> cd haddock-runner
+> go build -o haddock-runner
+> ./haddock-runner -version
+haddock-runner version v1.0.0
 {% endhighlight %}
 
 ***
@@ -84,7 +84,7 @@ The setup consists of the following steps:
 1. Writing the input file list of the targets `input.list`
 2. Writing a `run-haddock.sh` script
 3. Preparing the configuration file, `benchmark.yaml`
-4. Running `benchmark-tools`
+4. Running `haddock-runner`
 
 
 ### 1. Creating the `input.list` file
@@ -155,7 +155,7 @@ See below a full example:
 
 ### 2. Writing the `run-haddock.sh` script
 
-The `run-haddock.sh` script is a bash script that will be executed by `benchmark-tools` for each target. The purpose of this script is to provide an "adapter" to account for different HADDOCK versions and/or different python versions and even different operating systems and configurations on your cluster.
+The `run-haddock.sh` script is a bash script that will be executed by `haddock-runner` for each target. The purpose of this script is to provide an "adapter" to account for different HADDOCK versions and/or different python versions and even different operating systems and configurations on your cluster.
 
 This script should contain all the commands necessary to run HADDOCK and it must be customized for your installation, for example:
 
@@ -208,7 +208,7 @@ haddock3 "$@"
 
 ### 3. Writing the `benchmark.yaml` file
 
-The `benchmark.yaml` file is a configuration file in [`YAML`](https://yaml.org/){:target="_blank"} format that will be used by `benchmark-tools` to run the benchmark. This file is divided in 2 main sections; `general` and `scenarios`
+The `benchmark.yaml` file is a configuration file in [`YAML`](https://yaml.org/){:target="_blank"} format that will be used by `haddock-runner` to run the benchmark. This file is divided in 2 main sections; `general` and `scenarios`
 
 #### 3.1. General section
 
@@ -322,13 +322,13 @@ Here is a full example of the `benchmark.yaml` file:
 
 {% highlight yaml %}
 general:
-  executable: /Users/rodrigo/repos/benchmark-tools/haddock24.sh
+  executable: /Users/rodrigo/repos/haddock-runner/haddock24.sh
   max_concurrent: 2
   haddock_dir: /Users/rodrigo/repos/haddock
   receptor_suffix: _r_u
   ligand_suffix: _l_u
-  input_list: /Users/rodrigo/repos/benchmark-tools/example/input_list.txt
-  work_dir: /Users/rodrigo/repos/benchmark-tools/bm-goes-here
+  input_list: /Users/rodrigo/repos/haddock-runner/example/input_list.txt
+  work_dir: /Users/rodrigo/repos/haddock-runner/bm-goes-here
 
 scenarios:
   - name: true-interface
@@ -376,13 +376,13 @@ scenarios:
 > `HADDOCK3.0`
 {% highlight yaml %}
 general:
-  executable: /Users/rvhonorato/repos/benchmark-tools/haddock3.sh
+  executable: /Users/rvhonorato/repos/haddock-runner/haddock3.sh
   max_concurrent: 4
   haddock_dir: /Users/rvhonorato/repos/haddock3
   receptor_suffix: _r_u
   ligand_suffix: _l_u
-  input_list: /Users/rvhonorato/repos/benchmark-tools/example/input_list.txt
-  work_dir: /Users/rvhonorato/repos/benchmark-tools/bm-goes-here
+  input_list: /Users/rvhonorato/repos/haddock-runner/example/input_list.txt
+  work_dir: /Users/rvhonorato/repos/haddock-runner/bm-goes-here
 
 scenarios:
   - name: true-interface
@@ -476,15 +476,15 @@ scenarios:
 
 ### 3.3 Running the benchmark
 
-Considering the config input file and the config `.yaml` file have been properly set, you can run the benchmark by executing the `benchmark-tools` simply with:
+Considering the config input file and the config `.yaml` file have been properly set, you can run the benchmark by executing the `haddock-runner` simply with:
 
 {% highlight bash %}
-$ ./benchmark-tools my-benchmark-config-file.yml &
+$ ./haddock-runner my-benchmark-config-file.yml &
 {% endhighlight %}
 
-`benchmark-tools` will read the input file, create the working directory, copy the input files to a `data/` directory and start the benchmark. Make sure you have enough space in your disk to store the input files and the results.
+`haddock-runner` will read the input file, create the working directory, copy the input files to a `data/` directory and start the benchmark. Make sure you have enough space in your disk to store the input files and the results.
 
-**VERY IMPORTANT:** In the current version, `benchmark-tools` does not submit jobs to the queue, instead it leverages the internal scheduling routines of HADDOCK2.4/HADDOCK3.0. This means that the number of concurrent runs is related to the number of docking runs at a given time, not to the total number of processors being used by HADDOCK! The actual number of processors being used depends on how HADDOCK was configured. For HADDOCK2.4 this depends on parameters defined in the `run.cns` (`queue_N`/`cpunumber_N`) and for HADDOCK3, the number of processors (or queue slots) to use and the running mode is defined in the config file under the `general` section (see examples above).
+**VERY IMPORTANT:** In the current version, `haddock-runner` does not submit jobs to the queue, instead it leverages the internal scheduling routines of HADDOCK2.4/HADDOCK3.0. This means that the number of concurrent runs is related to the number of docking runs at a given time, not to the total number of processors being used by HADDOCK! The actual number of processors being used depends on how HADDOCK was configured. For HADDOCK2.4 this depends on parameters defined in the `run.cns` (`queue_N`/`cpunumber_N`) and for HADDOCK3, the number of processors (or queue slots) to use and the running mode is defined in the config file under the `general` section (see examples above).
 
 **Example:** `max_concurrent: 10` with `scenarios.parameters.mode: local` and `scenarios.parameters.ncores: 10` means 10x10 processors will be required!
 
@@ -493,7 +493,7 @@ $ ./benchmark-tools my-benchmark-config-file.yml &
 
 The Protein-Protein docking benchmark v5 ([Vreven, 2015](https://doi.org/10.1016/j.jmb.2015.07.016){:target="_blank"}), namely BM5, contains a is a large set of non-redundat high-quality structures, check [here](https://zlab.umassmed.edu/benchmark/){:target="_blank"} the full set.
 
-The BonvinLab provides a HADDOCK-ready sub-version of the BM5 which can be easily used as input for `benchmark-tools`. This version is available the following repository; [github.com/haddocking/BM5-clean](https://github.com/haddocking/BM5-clean){:target="_blank"}. Below we will go over step-by-step instructions on how to use it as input.
+The BonvinLab provides a HADDOCK-ready sub-version of the BM5 which can be easily used as input for `haddock-runner`. This version is available the following repository; [github.com/haddocking/BM5-clean](https://github.com/haddocking/BM5-clean){:target="_blank"}. Below we will go over step-by-step instructions on how to use it as input.
 
 ### 1. Downloading the BM5-clean
 
@@ -534,7 +534,7 @@ As previously mentioned, the `BM5-clean` repository is already an organized sub-
 /Users/rvhonorato/projects/benchmarking/BM5-clean/HADDOCK-ready/CP57/CP57_target.pdb
 {% endhighlight %}
 
-### 3. Add `bm5-input.list` to the `benchmark-tools` configuration file
+### 3. Add `bm5-input.list` to the `haddock-runner` configuration file
 
 {% highlight yaml %}
 general:
@@ -547,10 +547,10 @@ general:
 
 ## Getting help
 
-If you encounter any issues or have any questions, please open an issue on the [GitHub repository](https://github.com/haddocking/benchmark-tools){:target="_blank"}, contact us at *software.csb [at] gmail.com* or join the [BioExcel forum](https://ask.bioexcel.eu){:target="_blank"} and post your question there.
+If you encounter any issues or have any questions, please open an issue on the [GitHub repository](https://github.com/haddocking/haddock-runner){:target="_blank"}, contact us at *software.csb [at] gmail.com* or join the [BioExcel forum](https://ask.bioexcel.eu){:target="_blank"} and post your question there.
 
 ## Final considerations
 
-The `benchmark-tools` is under active development and we have a list of planned features, such as an option to resume/restart the benchmark and a full suite of analysis.
+The `haddock-runner` is under active development and we have a list of planned features, such as an option to resume/restart the benchmark and a full suite of analysis.
 
 If you have any suggestions, or feedback please let us know! 🤓
