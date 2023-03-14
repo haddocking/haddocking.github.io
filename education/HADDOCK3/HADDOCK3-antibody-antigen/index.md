@@ -131,7 +131,7 @@ You will find in that directory all input and precalculatd data and scripts requ
 
 
 <hr>
-### Setup for the EU-ASEAN HPC school on Fugaku
+### Setup for the 2022 EU-ASEAN HPC school on Fugaku
 
 <details>
 <summary style="bold">View details
