@@ -85,7 +85,58 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 * `scripts`: Contains a variety of scripts used in this tutorial
 
 
+<hr>
+### Setup for the ISGC2023 HADDOCK workshop in Taipei
+
+For this workshop we will be making use of the [NMRBox resources](https://nmrbox.nmrhub.org){:target="_blank"}. NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance). NMRbox users can choose from a large number of software packages that focus on research topics as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding. One can search through all available packages on [https://nmrbox.nmrhub.org/software](https://nmrbox.nmrhub.org/software){:target="_blank"}.
+
+#### Register on NMRBox
+
+To use virtual machines through NMRbox, one needs to register, preferably with their institutional account [here](https://nmrbox.nmrhub.org/signup){:target="_blank"}. Since the registration has to be manually validated and it can take up to two business days, we strongly encourage students to do so before the course starts. After a successful validation you will receive an e-mail with your NMRbox username and password that you will be using while accessing your virtual machine.
+
+#### Accessing NMRbox
+
+To run the virtual machine on a local computer, one needs to install [VNCviewer](https://www.realvnc.com/en/connect/download/viewer/){:target="_blank"}. With the RealVNC client connects your computer to the NMRbox servers with a virtual desktop - graphical interface. More information about the VNC viewer is in the [FAQ of NMRbox](https://nmrbox.nmrhub.org/faqs/vnc-client){:target="_blank"}.
+To choose a virtual machine, first log into the user dashboard [https://nmrbox.nmrhub.org/user-dashboard](https://nmrbox.nmrhub.org/user-dashboard){:target="_blank"}. Download the zip file with bookmarks for the production NMRbox virtual machines. Click `File -> Import` connections and select the downloaded zip file. After importing, you will see the current release virtual machines. You can use any available virtual machine. The user-dashboard provides information on machine capabilities and recent compute load, thus it is clever to choose a less occupied one. Double click on one of the VMs. An *“Authentication”* panel appears. Enter your NMRbox username and password. Click on the *“Remember password”* box to have RealVNC save your information. By default, your desktop remains running when you disconnect from it.  If you login to your VM repeatedly you will see a screen symbol next to the VM you connected to recently. For more details follow the quick start guide for using NMRbox with VNC viewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
+
+If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including Pymol. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.nmrhub.org/faqs/file-transfer](https://nmrbox.nmrhub.org/faqs/file-transfer){:target="_blank"}.
+
+In this workshop we will be working with the command line. For those of you who are not familiar with it, a lot of useful tutorials and documentation can be found [here](https://nmrbox.nmrhub.org/faqs/terminal-help){:target="_blank"}. To find the terminal, look for a black icon with a `$_` symbol on it. Once you are familiar with the command line, you can start the tutorial.
+
+Further NMRbox documentation can be found [here](https://nmrbox.nmrhub.org/pages/getting-started){:target="_blank"}.
+
+Once you are done using your VM just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
+
+**Important**: In order to participate to the ISGC2023 HADDOCK workshop, once you have an account on NMRBox, make sure to [register for the workshop](https://nmrbox.nmrhub.org/events/events/2023-haddock-isgc-taipei){:target="_blank"} on NMRBox. In that was all the data required for the workshop will be automatically copied to your home directory. 
+
+#### Tutorial setup on NMRbox
+
+<a class="prompt prompt-info">
+Connect to a NMRBox VM and open a terminal window
+</a>
+
+From the terminal setup the required environment (this activates haddock3) with:
+
+<a class="prompt prompt-cmd">
+source ~/EVENTS/2023-haddock-isgc-taipei/setup.sh
+</a>
+
+Then change directory to the workshop directory (the data have been copied automatically to your home dir if you registered for the event):
+
+<a class="prompt prompt-cmd">
+cd ~/EVENTS/2023-haddock-isgc-taipei/HADDOCK3-antibody-antigen
+</a>
+
+You will find in that directory all input and precalculatd data and scripts required to run this tutorial.
+
+
+<hr>
 ### Setup for the EU-ASEAN HPC school on Fugaku
+
+<details>
+<summary style="bold">View details
+ </summary>
+
 
 The software and data required for this tutorial have been pre-installed on Fugaku. 
 In order to run the tutorial, first copy the required data into your home directory on fugagku:
@@ -120,6 +171,10 @@ conda activate haddock3
 </a>
 
 This is the command you will also find in the example job script for batch submission.
+<br>
+</details>
+
+
 
 <hr>
 <hr>
@@ -251,11 +306,6 @@ registration form, and then follow the [installation instructions](https://www.b
 
 **[FreeSASA][link-freesasa]**: FreeSASA will be used to identify surface-accessible residues 
 (pre-calculated data are provided). 
-The software can be easily installed into your HADDOCK3 python installation with:
-
-<a class="prompt prompt-cmd">
-  pip install freesasa
-</a>
 
 **[PDB-tools][link-pdbtools]**: A useful collection of Python scripts for the
 manipulation (renumbering, changing chain and segIDs...) of PDB files is freely
@@ -280,7 +330,7 @@ a single chain with non-overlapping residue numbering. For this we will be makin
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
 
-_**Note**_: Before starting to work on the tutorial, make sure to activate haddock3, e.g. if installed using `conda`
+_**Note**_: Before starting to work on the tutorial, make sure to activate haddock3 (follow the workshop-specific instructions above), or, e.g. if installed using `conda`
 
 <a class="prompt prompt-cmd">
 conda activate haddock3
@@ -417,8 +467,8 @@ Inspect the surface.
 
 
 In this scenario, we will target the entire surface of the antigen by selecting the solvent accessible residues.
-For this we will use `freesasa` to calculate the solvent accessible surface area (SASA) for the different
-residues:
+For this can use `freesasa` to calculate the solvent accessible surface area (SASA) for the different
+residues. If `freesasa` is available from the command line you can run it to generate the solvent accessibility data with:
 
 <a class="prompt prompt-cmd">
   freesasa 4I1B_clean.pdb \-\-format=rsa >4I1B_clean.rsa
@@ -443,11 +493,11 @@ RES ASN A   7    31.01  21.4  25.87  25.0   5.14  12.4   0.00   0.0  31.01  30.0
 </pre>
 
 The following command will return all residues with a relative SASA for either
-the backbone or the side-chain > 40% (we use 40% to limit the number of surface residues selected as their
+the backbone or the side-chain > 15% (we use 15% to limit the number of surface residues selected as their
 number does increase the computational requirements)
 
 <a class="prompt prompt-cmd">
-  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"\%d \",$3; if (NF==14 && ($8>40 || $10>40)) print $0}\' 4I1B_clean.rsa
+  awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) print $0}\' 4I1B_clean.rsa
 </a>
 
 The resulting list of residues can be found in the `restraints/antigen-surface.act-pass` file. Note in this file the empty first line. The file consists
@@ -458,8 +508,27 @@ If you want to generate the same file, first create an empty line and then use t
 
 <a class="prompt prompt-cmd">
   echo \" \" \> antigen-surface.pass<br>
-  awk \'{if (NF==13 && ($7>40 || $9>40)) printf \"\%d \",$3; if (NF==14 && ($8>40 || $10>40)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.pass<br>
+  awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.pass<br>
 </a>
+
+
+**_Note_**: If the command line version of freesasa is not available, provided the freesasa python libraries have been installed 
+(can simply be done with: `pip install freesasa`), the same can be done with the _calc-accessibility.py_ script provided in the `scripts` directory:
+
+<a class="prompt prompt-cmd">
+   python ./scripts/calc-accessibility.py --cutoff 0.15 pdbs/4I1B_clean.pdb
+</a>
+
+The simple output directly reports the list of residues:
+
+<pre style="background-color:#DAE4E7">
+14/03/2023 13:15:20 L157 INFO - Calculate accessibility...
+14/03/2023 13:15:20 L228 INFO - Chain: B - 151 residues
+14/03/2023 13:15:20 L234 INFO - Applying cutoff to side_chain_rel - 0.15
+14/03/2023 13:15:20 L244 INFO - Chain B - 3,4,5,6,7,11,13,14,15,20,21,22,23,24,25,27,29,30,32,33,34,35,36,37,38,41,43,46,48,49,50,51,52,53,54,55,56,63,64,65,66,72,73,74,75,76,77,79,81,83,84,86,87,88,89,91,92,93,94,96,97,98,105,106,107,108,109,115,116,117,118,119,120,125,126,127,128,129,130,131,133,135,137,138,139,140,141,142,145,147,149,150,151,152,153
+</pre>
+
+
 
 We can visualize the selected surface residues of Interleukin-1β.  
 For this start PyMOL and from the PyMOL File menu open the PDB file of the antigen.
@@ -469,7 +538,7 @@ For this start PyMOL and from the PyMOL File menu open the PDB file of the antig
 <a class="prompt prompt-pymol">
 color white, all<br>
 show surface<br>
-select surface40, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)<br>
+select surface15, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)<br>
 color green, surface40<br>
 </a>
 
@@ -694,7 +763,9 @@ The basic workflow for all three scenarios will consists of the following module
 
 The input PDB files are the same for all three scenarios. The differences are in the ambiguous interaction restraint files used and the sampling at the rigid body stage in the case of scenario1.
 
-**_Note_ that for the** [EU ASEAN HPC school](https://www.hpcschool.net){:target="_blank"} **, we will only run scenario2a with a reduced sampling for the rigid body module of 240 models to limit to the computing time and get results within a reasonable time. The Fugaku example scripts for this are provided in the `haddock3` directory (`scenario2a-NMR-epitope-pass-node.cfg` and `scenario2a-NMR-epitope-pass-node-fugaku.job`). Copy those into the main tutorial directory before submitting the job file to the batch system with the `pjsub` command.**
+**_Note_** that for the** ISGC2023 HADDOCK workshop **, we will only run scenario2a with a reduced sampling for the rigid body module of 200 models to limit to the computing time and get results within a reasonable time using only 10 processors. The corresponding haddock3 scripts for this is provided  as `scenario2a-NMR-epitope-pass-short.cfg`.
+Other example scripts can be found in the `haddock3` directory.
+
 
 <hr>
 ### HADDOCK3 execution modes
@@ -720,7 +791,10 @@ In this mode HADDOCK3 can be started from the command line with as argument the 
   haddock3 \<my-workflow-configuration-file\>
 </a>
 
-Alternatively redirect the output to a log file and send haddock3 to the background
+Alternatively redirect the output to a log file and send haddock3 to the background.
+
+_**Note**_: This is the execution mode you should use on the NMRBox resources. For the tutorial we limit the number of cores to 10.
+
 
 <a class="prompt prompt-cmd">
   haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
@@ -756,7 +830,7 @@ haddock3 scenario1-surface-node.cfg
 
 <details>
 <summary style="bold">
-<i><b>EU-ASEAN HPC school example script for submitting to the Fugaku batch system:</b></i>
+View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system:
  </summary>
 {% highlight shell %}
 #!/bin/bash
@@ -875,6 +949,9 @@ ncores = 96
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
+# Post-processing to generate statistics and plots
+postprocess = true
+
 # Cleaning to compress files and save space
 clean = true
 
@@ -983,6 +1060,9 @@ ncores = 96
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
+# Post-processing to generate statistics and plots
+postprocess = true
+
 # Cleaning to compress files and save space
 clean = true
 
@@ -1082,6 +1162,9 @@ ncores = 96
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
+# Post-processing to generate statistics and plots
+postprocess = true
+
 # Cleaning to compress files and save space
 clean = true
 
@@ -1170,12 +1253,17 @@ Once your run has completed inspect the content of the resulting directory. You 
     7_clustfcc/
     8_seletopclusts/
     9_caprieval/
+    analysis/
     data/
     log
 {% endhighlight %}
 
-There is one additional `data` directory containing the input data (PDB and restraint files) for the various modules and the `log` file of the run.
-You can find information about the duration of the run at the bottom of that file. Each sampling/refinement/selection module will contain PBD files.
+There is in addition the log file (text file) and two additional directories:
+
+- the `data` directory containing the input data (PDB and restraint files) for the various modules
+- the `analysis` directory containing various plots to visualise the results for each `caprieval` step
+
+You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PBD files.
 
 For example, the `X_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based 
 on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
@@ -1183,11 +1271,12 @@ on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information ab
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
-model   md5     caprieval_rank  score   irmsd   fnat    lrmsd   ilrmsd  dockq   cluster-id      cluster-ranking model-cluster-ranking
-../6_emref/emref_19.pdb -       1       -147.606        1.252   0.793   2.355   1.680   0.770   6       1       1
-../6_emref/emref_18.pdb -       2       -135.651        1.048   0.879   2.246   1.408   0.829   6       1       2
-../6_emref/emref_15.pdb -       3       -134.860        1.100   0.776   1.937   1.236   0.792   6       1       3
-../6_emref/emref_11.pdb -       4       -133.143        1.367   0.741   3.787   1.952   0.707   6       1       4
+mmodel	md5	caprieval_rank	score	irmsd	fnat	lrmsd	ilrmsd	dockq	cluster-id	cluster-ranking	model-cluster-ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	total	vdw	vean	xpcs
+../6_emref/emref_11.pdb	-	1	-151.136	1.261	0.741	2.673	2.192	0.746	2	1	1	79.990	0.000	0.000	2072.710	0.000	0.000	0.000	9.960	0.000	-598.859	0.000	0.000	0.000	-568.192	-49.323	0.000	0.000
+../6_emref/emref_15.pdb	-	2	-137.252	1.237	0.845	2.713	2.253	0.783	2	1	2	83.274	0.000	0.000	2058.800	0.000	0.000	0.000	12.576	0.000	-584.402	0.000	0.000	0.000	-542.402	-41.275	0.000	0.000
+../6_emref/emref_19.pdb	-	3	-136.527	1.550	0.621	4.283	3.353	0.634	2	1	3	200.318	0.000	0.000	1879.180	0.000	0.000	0.000	11.023	0.000	-704.878	0.000	0.000	0.000	-531.166	-26.606	0.000	0.000
+../6_emref/emref_14.pdb	-	4	-131.142	1.658	0.776	3.271	3.005	0.699	2	1	4	163.724	0.000	0.000	2000.350	0.000	0.000	0.000	0.028	0.000	-449.205	0.000	0.000	0.000	-343.183	-57.702	0.000	0.000
+../6_emref/emref_1.pdb	-	5	-128.501	14.936	0.069	22.861	21.984	0.067	3	2	1	159.850	0.000	0.000	1975.260	0.000	0.000	0.000	7.691	0.000	-451.593	0.000	0.000	0.000	-353.602	-61.859	0.000	0.000
 ....
 </pre>
 
@@ -1219,11 +1308,10 @@ This file contains the cluster ranking and score statistics, averaged over the m
 (4 by default), with their corresponding standard deviations. E.g.:
 
 <pre style="background-color:#DAE4E7">
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
-1       6       10      -       -137.815        5.725   1.192   0.126   0.797   0.051   2.581   0.713   0.774   0.044   1
-2       2       16      -       -109.687        4.310   14.951  0.044   0.069   0.000   22.895  0.030   0.067   0.000   2
-3       8       4       -       -105.095        13.247  14.909  0.119   0.069   0.000   23.066  0.336   0.066   0.001   3
-4       5       10      -       -100.189        4.222   5.148   0.024   0.130   0.015   10.476  0.586   0.202   0.014   4
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	2	10	-	-139.014	7.386	1.426	0.182	0.746	0.081	3.235	0.650	0.715	0.056	131.826	51.848	2002.760	76.340	8.397	4.920	-584.336	90.832	-496.236	89.379	-43.727	11.464	1
+2	3	10	-	-120.115	6.139	14.964	0.018	0.069	0.000	23.390	0.342	0.065	0.001	189.120	18.758	1998.883	56.075	4.601	5.111	-426.788	71.303	-295.939	64.795	-58.270	8.018	2
+3	1	19	-	-86.814	2.027	8.747	0.451	0.112	0.019	16.725	0.548	0.115	0.010	203.898	11.457	1554.495	32.501	7.527	1.994	-355.098	23.298	-194.910	27.573	-43.710	4.911	3
 ...
 </pre>
 
@@ -1245,130 +1333,134 @@ First of all let us check the final cluster statistics.
 <i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
  </summary>
 <pre>
-cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	caprieval_rank
-1	19	16	-	-140.175	9.738	1.466	0.177	0.797	0.048	2.535	0.562	0.743	0.046	1
-2	60	10	-	-122.575	3.526	9.009	0.146	0.021	0.007	18.958	0.615	0.072	0.003	2
-3	92	10	-	-119.626	1.463	13.086	0.115	0.000	0.000	21.740	0.128	0.049	0.001	3
-4	59	10	-	-118.236	0.413	5.376	0.080	0.077	0.008	13.677	0.254	0.143	0.005	4
-5	72	10	-	-113.917	1.937	12.261	0.092	0.000	0.000	20.726	0.154	0.053	0.001	5
-6	90	10	-	-113.181	1.395	10.618	0.136	0.000	0.000	20.154	0.494	0.057	0.002	6
-7	7	20	-	-111.937	3.665	12.260	0.028	0.000	0.000	20.665	0.349	0.053	0.001	7
-8	85	10	-	-110.695	8.444	14.879	0.073	0.065	0.007	23.062	0.130	0.065	0.003	8
-9	11	19	-	-109.705	5.332	11.054	0.029	0.000	0.000	19.394	0.067	0.059	0.001	9
-10	17	16	-	-108.098	3.981	13.670	0.009	0.013	0.007	24.332	0.170	0.044	0.003	10
-11	98	10	-	-106.659	2.970	12.158	0.055	0.000	0.000	20.612	0.198	0.053	0.001	11
-12	86	10	-	-106.316	2.878	14.273	0.192	0.013	0.007	24.535	0.105	0.044	0.002	12
-13	4	23	-	-105.156	2.533	13.963	0.199	0.000	0.000	22.478	0.129	0.045	0.001	13
-14	14	18	-	-105.128	7.401	13.479	0.063	0.000	0.000	20.564	0.114	0.053	0.000	14
-15	22	14	-	-104.649	8.107	13.085	0.040	0.000	0.000	21.382	0.197	0.050	0.001	15
-16	20	16	-	-102.610	4.765	15.685	0.116	0.000	0.000	24.036	0.111	0.040	0.000	16
-17	9	20	-	-101.800	8.272	11.436	0.199	0.107	0.008	21.328	0.195	0.087	0.002	17
-18	2	27	-	-100.607	1.540	14.735	0.097	0.000	0.000	22.948	0.109	0.043	0.001	18
-19	89	10	-	-100.587	2.000	12.719	0.049	0.000	0.000	20.333	0.085	0.054	0.000	19
-20	29	12	-	-99.050	3.078	13.695	0.152	0.017	0.000	23.648	0.062	0.048	0.000	20
-21	73	10	-	-97.672	5.060	14.054	0.055	0.000	0.000	21.648	0.082	0.048	0.000	21
-22	96	10	-	-97.667	6.281	14.300	0.063	0.000	0.000	23.246	0.012	0.043	0.000	22
-23	100	10	-	-95.925	1.389	13.889	0.119	0.000	0.000	22.660	0.201	0.045	0.001	23
-24	65	10	-	-95.760	3.302	14.337	0.059	0.056	0.014	22.013	0.039	0.066	0.005	24
-25	71	10	-	-95.267	6.264	11.962	0.133	0.099	0.007	21.587	0.376	0.083	0.004	25
-26	31	12	-	-94.951	3.221	10.734	0.058	0.069	0.021	19.494	0.178	0.082	0.007	26
-27	121	4	-	-94.188	8.529	3.106	0.078	0.388	0.009	5.858	0.363	0.419	0.013	27
-28	75	10	-	-93.970	4.822	5.280	0.109	0.142	0.007	10.643	0.363	0.202	0.005	28
-29	18	16	-	-93.331	3.086	12.409	0.141	0.000	0.000	20.079	0.382	0.055	0.002	29
-30	119	4	-	-92.330	10.292	9.446	0.043	0.017	0.000	14.287	0.257	0.101	0.002	30
-31	101	10	-	-92.261	5.345	9.800	0.077	0.000	0.000	15.515	0.160	0.085	0.001	31
-32	10	20	-	-90.694	3.864	10.219	0.103	0.000	0.000	16.036	0.345	0.080	0.002	32
-33	6	21	-	-90.148	4.092	13.212	0.053	0.017	0.000	20.609	0.060	0.058	0.000	33
-34	16	16	-	-89.323	9.887	9.428	0.056	0.009	0.009	14.054	0.217	0.100	0.002	34
-35	5	22	-	-89.263	2.347	14.311	0.060	0.009	0.009	23.183	0.022	0.046	0.003	35
-36	123	4	-	-88.747	8.292	15.746	0.121	0.000	0.000	24.015	0.166	0.040	0.000	36
-37	78	10	-	-88.528	9.521	12.364	0.077	0.000	0.000	18.814	0.182	0.061	0.001	37
-38	83	10	-	-88.197	9.904	13.447	0.235	0.026	0.009	23.009	0.369	0.053	0.003	38
-39	81	10	-	-87.569	8.685	12.703	0.020	0.000	0.000	18.492	0.031	0.063	0.000	39
-40	118	5	-	-87.252	9.487	13.121	0.035	0.000	0.000	21.167	0.297	0.051	0.001	40
-41	24	13	-	-86.540	5.970	12.645	0.770	0.000	0.000	19.893	0.726	0.056	0.003	41
-42	84	10	-	-85.979	2.744	14.188	0.117	0.000	0.000	21.476	0.344	0.049	0.001	42
-43	25	13	-	-84.501	2.962	14.382	0.042	0.000	0.000	22.722	0.032	0.044	0.001	43
-44	1	28	-	-84.340	1.370	9.001	0.914	0.035	0.027	16.367	2.880	0.095	0.031	44
-45	63	10	-	-83.736	4.316	14.591	0.081	0.000	0.000	22.469	0.069	0.045	0.000	45
-46	97	10	-	-83.686	6.602	14.149	0.139	0.000	0.000	23.074	0.142	0.044	0.000	46
-47	30	12	-	-83.529	3.990	11.787	0.053	0.000	0.000	20.554	0.054	0.054	0.000	47
-48	54	10	-	-83.403	3.788	12.974	0.064	0.056	0.007	20.854	0.115	0.071	0.003	48
-49	46	10	-	-83.310	6.606	14.430	0.284	0.017	0.000	22.882	0.282	0.050	0.001	49
-50	69	10	-	-82.880	6.995	11.784	0.417	0.000	0.000	20.187	1.031	0.056	0.005	50
-51	57	10	-	-82.760	6.197	11.157	0.133	0.034	0.000	18.869	0.335	0.073	0.002	51
-52	94	10	-	-82.423	6.914	14.130	0.062	0.000	0.000	23.093	0.164	0.043	0.001	52
-53	103	9	-	-82.022	4.969	15.203	0.054	0.000	0.000	23.535	0.043	0.042	0.000	53
-54	26	12	-	-81.742	1.991	13.384	0.210	0.034	0.012	22.859	0.310	0.056	0.004	54
-55	91	10	-	-81.267	6.629	15.566	0.053	0.000	0.000	24.457	0.130	0.039	0.000	55
-56	108	8	-	-80.439	11.603	14.473	0.068	0.030	0.007	22.816	0.125	0.054	0.002	56
-57	28	12	-	-78.247	6.927	10.478	0.098	0.017	0.000	18.264	0.340	0.072	0.002	57
-58	62	10	-	-78.246	8.408	13.032	0.020	0.000	0.000	21.309	0.145	0.050	0.000	58
-59	45	10	-	-78.206	2.484	9.505	0.130	0.004	0.007	15.186	0.247	0.089	0.003	59
-60	115	6	-	-77.856	2.216	16.460	0.133	0.000	0.000	26.020	0.470	0.035	0.001	60
-61	8	20	-	-77.752	2.826	14.214	0.046	0.021	0.007	21.569	0.064	0.056	0.003	61
-62	99	10	-	-77.750	5.035	7.694	0.215	0.199	0.008	15.181	0.319	0.158	0.002	62
-63	48	10	-	-77.607	4.468	11.108	0.016	0.000	0.000	19.215	0.140	0.060	0.001	63
-64	3	24	-	-77.365	2.597	10.515	0.044	0.000	0.000	16.626	0.271	0.076	0.002	64
-65	107	8	-	-76.752	3.445	14.437	0.052	0.043	0.009	24.505	0.095	0.054	0.003	65
-66	113	7	-	-75.718	1.472	12.647	0.177	0.060	0.009	22.175	0.221	0.067	0.004	66
-67	105	8	-	-75.593	2.622	14.201	0.135	0.000	0.000	22.814	0.272	0.044	0.001	67
-68	21	14	-	-74.437	5.957	16.514	0.018	0.000	0.000	25.976	0.182	0.035	0.001	68
-69	109	8	-	-73.513	6.194	12.527	0.081	0.009	0.009	20.987	0.068	0.054	0.003	69
-70	74	10	-	-73.003	3.465	13.165	0.056	0.000	0.000	21.360	0.143	0.050	0.000	70
-71	77	10	-	-71.648	0.561	11.918	0.040	0.017	0.000	21.634	0.101	0.056	0.000	71
-72	49	10	-	-71.560	6.030	5.008	0.184	0.116	0.008	9.167	0.487	0.221	0.009	72
-73	104	8	-	-70.911	3.763	13.889	0.034	0.038	0.008	23.657	0.008	0.054	0.003	73
-74	51	10	-	-70.780	9.246	7.842	0.150	0.000	0.000	13.598	0.444	0.106	0.005	74
-75	35	10	-	-70.430	5.164	13.602	0.091	0.000	0.000	20.613	0.219	0.052	0.001	75
-76	110	8	-	-69.449	1.311	13.525	0.037	0.000	0.000	19.242	0.068	0.058	0.000	76
-77	70	10	-	-69.388	0.920	8.359	0.127	0.142	0.022	15.357	0.326	0.136	0.009	77
-78	52	10	-	-69.055	0.977	14.489	0.073	0.004	0.007	22.368	0.133	0.047	0.002	78
-79	106	8	-	-68.877	5.518	4.163	0.205	0.181	0.035	6.794	0.699	0.303	0.023	79
-80	38	10	-	-68.753	7.732	13.343	0.176	0.039	0.015	20.894	0.209	0.065	0.005	80
-81	66	10	-	-68.504	5.913	12.877	0.117	0.000	0.000	21.724	0.222	0.049	0.001	81
-82	15	17	-	-67.855	2.892	9.655	0.050	0.000	0.000	15.217	0.397	0.087	0.003	82
-83	33	10	-	-65.493	3.248	12.339	0.072	0.000	0.000	17.830	0.140	0.067	0.001	83
-84	102	10	-	-64.829	2.213	15.441	0.142	0.000	0.000	24.099	0.156	0.040	0.000	84
-85	122	4	-	-64.279	12.986	14.400	0.042	0.000	0.000	22.780	0.098	0.044	0.001	85
-86	82	10	-	-63.998	1.773	14.535	0.074	0.000	0.000	21.529	0.089	0.049	0.001	86
-87	111	7	-	-63.794	4.372	14.484	0.158	0.022	0.019	22.200	0.055	0.053	0.006	87
-88	56	10	-	-63.762	5.564	12.294	0.066	0.026	0.009	20.656	0.107	0.062	0.003	88
-89	80	10	-	-63.705	3.580	13.595	0.085	0.000	0.000	20.534	0.291	0.053	0.001	89
-90	114	6	-	-63.682	7.451	14.480	0.041	0.000	0.000	22.810	0.229	0.044	0.001	90
-91	61	10	-	-61.901	11.071	14.219	0.079	0.069	0.012	22.790	0.118	0.067	0.004	91
-92	12	19	-	-60.382	5.857	12.874	0.131	0.017	0.000	22.338	0.496	0.053	0.002	92
-93	34	10	-	-60.036	2.926	14.457	0.121	0.000	0.000	22.658	0.144	0.044	0.001	93
-94	23	13	-	-58.403	7.442	13.243	0.509	0.038	0.008	23.414	0.125	0.056	0.002	94
-95	37	10	-	-58.175	2.996	13.611	0.134	0.000	0.000	21.855	0.055	0.048	0.000	95
-96	47	10	-	-57.985	4.230	13.635	0.062	0.000	0.000	23.044	0.295	0.044	0.001	96
-97	112	7	-	-57.472	3.095	11.023	0.184	0.000	0.000	17.724	0.207	0.069	0.001	97
-98	67	10	-	-56.292	5.752	16.468	0.071	0.000	0.000	25.003	0.219	0.037	0.001	98
-99	53	10	-	-55.050	3.361	14.717	0.145	0.039	0.015	24.422	0.141	0.053	0.005	99
-100	50	10	-	-54.225	0.809	13.769	0.083	0.000	0.000	22.152	0.195	0.047	0.001	100
-101	87	10	-	-54.190	6.893	10.524	0.082	0.090	0.014	17.480	0.182	0.100	0.006	101
-102	93	10	-	-53.904	2.314	14.830	0.068	0.000	0.000	23.240	0.076	0.043	0.000	102
-103	55	10	-	-53.568	6.669	14.739	0.033	0.026	0.009	23.112	0.085	0.052	0.003	103
-104	32	11	-	-50.548	4.058	11.331	0.797	0.035	0.017	19.898	1.058	0.069	0.011	104
-105	79	10	-	-50.529	2.976	16.573	0.038	0.000	0.000	25.040	0.080	0.037	0.000	105
-106	88	10	-	-49.778	5.255	15.849	0.067	0.000	0.000	24.756	0.036	0.038	0.000	106
-107	44	10	-	-49.354	7.328	14.194	0.019	0.000	0.000	23.287	0.161	0.043	0.000	107
-108	120	4	-	-46.538	8.766	12.821	0.050	0.000	0.000	21.468	0.207	0.050	0.001	108
-109	27	12	-	-45.525	6.848	11.290	0.827	0.000	0.000	18.572	1.342	0.064	0.008	109
-110	116	5	-	-45.517	3.319	10.343	0.057	0.000	0.000	17.257	0.423	0.072	0.003	110
-111	40	10	-	-45.441	2.625	12.288	0.063	0.000	0.000	21.187	0.251	0.051	0.001	111
-112	68	10	-	-44.240	1.811	8.542	0.046	0.039	0.015	14.546	0.123	0.108	0.006	112
-113	43	10	-	-43.729	6.095	15.171	0.108	0.000	0.000	22.761	0.057	0.044	0.000	113
-114	13	18	-	-43.691	4.318	13.278	0.104	0.021	0.007	22.962	0.450	0.052	0.002	114
-115	117	5	-	-43.457	9.729	10.550	0.154	0.017	0.000	18.293	0.341	0.072	0.002	115
-116	41	10	-	-42.476	7.209	9.068	0.283	0.000	0.000	16.314	0.438	0.080	0.004	116
-117	64	10	-	-42.104	9.222	13.102	0.107	0.000	0.000	21.255	0.443	0.051	0.002	117
-118	95	10	-	-40.686	4.305	15.197	0.063	0.000	0.000	23.698	0.129	0.041	0.000	118
-119	58	10	-	-39.840	1.959	13.880	0.071	0.000	0.000	22.557	0.166	0.045	0.001	119
-120	39	10	-	-37.130	1.900	11.006	0.186	0.000	0.000	17.019	0.332	0.073	0.002	120
-121	36	10	-	-24.435	0.997	11.997	0.038	0.000	0.000	19.463	0.188	0.058	0.001	121
-122	76	10	-	-16.375	3.018	13.416	0.025	0.000	0.000	22.706	0.087	0.045	0.000	122
-123	42	10	-	-10.570	1.469	10.092	0.124	0.000	0.000	17.541	0.465	0.071	0.003	123
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	12	20	-	-148.831	5.410	1.678	0.214	0.733	0.106	3.865	0.862	0.669	0.076	185.424	46.938	2111.405	29.031	7.232	1.046	-570.066	22.622	-445.234	30.130	-60.592	5.236	1
+2	18	18	-	-123.766	3.115	13.094	0.125	0.000	0.000	21.834	0.146	0.048	0.001	183.704	11.225	2181.110	90.094	-10.254	2.067	-332.751	46.979	-214.379	31.846	-65.332	7.781	2
+3	88	10	-	-123.360	3.041	9.176	0.141	0.017	0.000	21.413	0.684	0.060	0.003	121.738	16.249	1813.925	34.884	-5.384	0.512	-436.619	11.830	-357.708	16.713	-42.827	3.868	3
+4	13	20	-	-118.282	5.208	10.944	0.299	0.120	0.021	21.415	0.619	0.092	0.006	152.420	10.986	1808.007	32.866	6.465	1.325	-496.468	28.628	-384.743	24.947	-40.696	2.465	4
+5	89	10	-	-116.454	3.801	14.020	0.134	0.017	0.000	24.744	0.187	0.045	0.001	195.446	27.781	1889.682	79.773	-4.616	1.591	-417.563	20.307	-269.986	30.222	-47.870	1.270	5
+6	61	10	-	-115.229	3.326	5.378	0.020	0.069	0.012	16.802	0.629	0.115	0.005	88.131	9.931	1852.945	23.752	6.616	0.785	-369.303	8.252	-337.969	11.465	-56.798	1.243	6
+7	3	27	-	-114.186	5.971	13.496	0.080	0.000	0.000	20.665	0.102	0.052	0.001	165.852	1.993	1707.362	39.298	-3.782	2.991	-376.041	22.069	-261.970	27.164	-51.781	5.373	7
+8	72	10	-	-112.872	6.827	13.981	0.020	0.000	0.000	21.801	0.126	0.048	0.000	132.974	16.434	1966.793	52.013	2.544	3.066	-294.085	43.518	-231.007	42.693	-69.896	9.485	8
+9	1	36	-	-109.409	4.762	14.617	0.071	0.000	0.000	23.183	0.063	0.043	0.000	197.155	20.227	1744.597	41.866	2.528	2.065	-328.410	33.521	-197.225	28.906	-65.970	1.565	9
+10	17	18	-	-108.195	7.362	11.031	0.082	0.000	0.000	20.012	0.260	0.057	0.001	164.234	10.186	1831.495	37.648	1.541	1.670	-396.469	47.982	-279.100	40.077	-46.865	5.102	10
+11	96	10	-	-107.334	2.166	10.667	0.151	0.000	0.000	21.692	0.437	0.051	0.002	142.746	7.402	1610.415	71.508	-1.450	3.091	-388.339	21.616	-288.084	14.372	-42.491	6.894	11
+12	14	20	-	-107.155	1.167	13.907	0.198	0.000	0.000	23.257	0.230	0.043	0.001	177.685	34.304	1817.573	49.504	-3.932	4.818	-359.962	72.737	-231.276	34.880	-48.999	7.524	12
+13	58	10	-	-105.459	2.853	9.418	0.041	0.017	0.000	14.704	0.253	0.098	0.002	142.162	20.088	1801.787	41.822	7.304	1.091	-390.603	6.402	-297.299	14.909	-48.858	1.289	13
+14	7	22	-	-104.950	8.949	12.591	0.206	0.000	0.000	21.517	0.421	0.050	0.002	137.010	17.810	1981.173	62.496	3.391	2.312	-294.790	53.286	-220.864	60.327	-63.084	12.713	14
+15	110	8	-	-104.523	5.407	15.786	0.141	0.000	0.000	24.742	0.292	0.038	0.001	188.247	28.369	1656.015	29.305	-7.098	2.026	-309.368	15.169	-175.498	17.510	-54.376	4.423	15
+16	90	10	-	-102.191	10.542	14.905	0.036	0.060	0.009	23.103	0.131	0.064	0.003	216.193	11.357	1942.820	85.100	5.473	2.317	-341.726	40.261	-186.471	38.069	-60.938	6.555	16
+17	104	9	-	-102.002	3.200	14.681	0.078	0.095	0.009	23.567	0.190	0.074	0.003	282.735	23.431	1944.375	30.920	5.480	0.963	-406.682	30.081	-178.366	9.480	-54.419	6.790	17
+18	100	10	-	-101.698	3.868	14.309	0.064	0.000	0.000	23.266	0.038	0.043	0.000	199.056	7.430	1988.773	23.017	-8.379	2.438	-240.464	33.134	-106.540	25.499	-65.132	4.179	18
+19	98	10	-	-100.603	4.480	12.350	0.118	0.000	0.000	21.122	0.363	0.051	0.001	252.315	14.795	1677.152	43.166	-3.298	0.773	-394.031	29.076	-185.446	16.087	-43.730	1.316	19
+20	102	10	-	-100.156	1.566	13.879	0.194	0.000	0.000	22.984	0.407	0.044	0.001	251.103	18.039	1770.800	64.193	-11.348	2.940	-282.111	7.081	-88.504	22.525	-57.496	2.031	20
+21	16	19	-	-100.048	2.675	12.712	0.077	0.000	0.000	21.116	0.748	0.051	0.003	141.121	20.656	1614.205	84.277	-7.610	2.379	-245.708	28.106	-161.995	21.053	-57.408	1.913	21
+22	95	10	-	-97.056	5.290	12.727	0.079	0.000	0.000	20.681	0.123	0.053	0.000	174.836	11.509	1808.197	27.762	7.899	2.831	-370.697	37.713	-244.160	41.611	-48.299	8.029	22
+23	40	10	-	-96.143	7.294	3.996	0.063	0.151	0.023	7.960	0.413	0.269	0.007	268.064	6.044	1733.595	64.045	5.918	1.741	-440.012	18.438	-212.812	23.620	-40.865	2.978	23
+24	87	10	-	-95.919	10.319	10.335	0.290	0.073	0.026	18.886	0.434	0.087	0.011	214.010	12.675	1786.825	65.807	-0.359	4.436	-345.955	25.147	-179.715	31.282	-47.770	4.496	24
+25	29	13	-	-94.903	5.148	11.976	0.456	0.000	0.000	20.189	0.481	0.056	0.002	180.302	16.905	1590.420	71.694	3.421	0.674	-407.384	36.274	-261.960	42.426	-34.878	4.826	25
+26	82	10	-	-94.568	1.367	13.254	0.087	0.021	0.007	23.375	0.213	0.050	0.002	139.468	19.278	1733.650	35.788	-7.849	1.524	-244.905	20.819	-157.122	27.990	-51.684	5.303	26
+27	74	10	-	-93.734	3.985	11.956	0.081	0.099	0.007	22.498	0.236	0.080	0.002	301.590	4.206	1764.012	79.875	-3.076	3.370	-299.142	56.102	-58.541	44.764	-60.989	9.410	27
+28	19	17	-	-92.956	3.507	13.908	0.268	0.026	0.015	23.921	0.385	0.050	0.004	266.721	14.416	1827.332	46.565	-0.139	2.193	-381.233	53.830	-157.755	45.492	-43.242	7.955	28
+29	122	6	-	-92.745	8.304	12.279	0.037	0.000	0.000	19.752	0.060	0.057	0.000	181.589	15.741	1752.342	47.374	1.028	1.586	-279.507	47.440	-153.948	58.429	-56.030	3.553	29
+30	6	22	-	-90.730	14.656	15.634	0.186	0.000	0.000	24.460	0.283	0.039	0.001	184.504	30.414	1646.735	13.700	-4.965	3.284	-279.679	35.172	-143.454	66.675	-48.279	4.415	30
+31	9	20	-	-90.251	2.575	13.154	0.202	0.017	0.000	20.607	0.234	0.058	0.001	245.319	26.351	1504.862	38.200	10.189	2.033	-416.678	30.459	-212.996	51.332	-41.636	4.161	31
+32	22	16	-	-90.038	7.776	13.627	0.190	0.021	0.014	24.214	0.496	0.048	0.006	184.562	6.921	1689.253	49.205	-3.136	2.159	-268.492	14.412	-135.590	22.903	-51.660	5.142	32
+33	26	14	-	-89.241	3.176	12.877	0.056	0.073	0.014	20.812	0.219	0.077	0.005	219.898	7.800	1397.388	66.657	9.547	1.503	-442.622	29.172	-254.977	24.167	-32.253	2.642	33
+34	115	7	-	-88.870	18.331	12.362	0.132	0.000	0.000	18.819	0.127	0.061	0.001	204.335	46.807	1699.523	139.984	12.768	1.118	-465.403	38.996	-290.059	88.987	-28.991	5.403	34
+35	31	13	-	-88.274	9.696	11.822	0.027	0.000	0.000	20.745	0.055	0.053	0.000	212.259	7.756	1703.915	75.126	7.349	1.187	-401.980	29.718	-226.174	34.586	-36.453	5.963	35
+36	51	10	-	-88.060	5.613	14.394	0.033	0.013	0.007	23.261	0.216	0.047	0.003	186.626	10.473	1530.995	13.755	-0.823	1.396	-285.016	40.961	-147.287	46.363	-48.896	3.714	36
+37	4	27	-	-87.381	3.159	14.366	0.075	0.000	0.000	23.345	0.143	0.043	0.000	262.042	8.675	1685.735	33.973	2.679	1.701	-375.458	19.104	-154.588	19.121	-41.172	3.024	37
+38	66	10	-	-86.618	5.301	14.360	0.065	0.065	0.007	22.073	0.117	0.068	0.002	175.771	18.244	1654.713	31.971	9.575	0.751	-391.041	27.344	-250.832	30.637	-35.561	2.215	38
+39	105	9	-	-86.351	7.447	12.441	0.119	0.000	0.000	21.061	0.886	0.052	0.003	203.393	38.498	1621.940	67.036	11.485	4.238	-397.087	49.285	-232.452	34.907	-38.758	6.513	39
+40	2	28	-	-85.386	3.721	8.292	0.100	0.060	0.009	14.033	0.238	0.120	0.004	223.683	20.263	1444.425	18.443	16.980	1.268	-531.053	52.923	-325.894	45.805	-18.524	8.161	40
+41	99	10	-	-85.318	3.371	14.167	0.142	0.000	0.000	23.073	0.125	0.044	0.000	210.252	30.361	1688.745	36.455	-3.802	1.262	-232.285	17.646	-78.117	29.587	-56.084	2.159	41
+42	103	10	-	-84.777	7.347	9.713	0.045	0.000	0.000	15.319	0.158	0.086	0.001	211.814	17.902	1762.062	62.020	-2.237	1.474	-302.213	19.881	-133.678	10.735	-43.278	8.354	42
+43	11	20	-	-84.755	3.002	10.202	0.038	0.000	0.000	16.040	0.210	0.080	0.001	242.024	11.938	1664.300	32.341	-1.048	2.058	-320.478	20.571	-122.268	20.568	-43.814	3.539	43
+44	27	14	-	-84.385	4.142	14.452	0.099	0.000	0.000	22.747	0.072	0.044	0.001	192.791	15.745	1680.112	60.521	8.681	0.414	-322.106	22.136	-177.239	23.588	-47.924	4.456	44
+45	30	13	-	-83.349	7.710	12.527	0.328	0.000	0.000	20.534	1.002	0.054	0.004	205.630	34.703	1630.215	82.132	0.730	2.859	-288.909	10.434	-130.138	41.408	-46.861	4.465	45
+46	15	19	-	-82.368	3.129	13.418	0.325	0.043	0.009	23.280	0.386	0.058	0.004	242.751	6.286	1658.195	38.410	5.431	0.414	-341.193	32.419	-142.278	23.070	-43.836	6.151	46
+47	20	16	-	-81.607	6.919	12.495	0.107	0.000	0.000	19.252	0.363	0.059	0.002	266.161	42.181	1672.205	55.410	5.343	4.413	-414.589	26.369	-179.076	49.862	-30.648	5.816	47
+48	76	10	-	-81.449	9.534	13.188	0.037	0.000	0.000	21.421	0.074	0.050	0.001	218.734	15.090	1736.692	89.208	-0.001	1.199	-290.595	36.010	-117.063	50.613	-45.203	3.614	48
+49	8	20	-	-81.182	4.279	10.455	0.122	0.000	0.000	16.979	0.225	0.073	0.002	202.172	4.326	1751.410	32.215	6.297	1.591	-296.855	38.493	-143.008	36.221	-48.325	6.151	49
+50	83	10	-	-80.925	4.370	12.827	0.095	0.000	0.000	18.830	0.175	0.061	0.001	178.048	13.548	1484.358	38.444	5.855	0.509	-387.956	12.917	-236.901	11.192	-26.994	3.744	50
+51	80	10	-	-80.920	1.233	8.605	0.110	0.000	0.000	14.204	0.254	0.098	0.003	263.125	9.132	1680.088	44.302	-2.533	1.044	-276.380	9.676	-62.678	11.913	-49.423	2.206	51
+52	65	10	-	-80.630	3.310	14.620	0.066	0.000	0.000	22.569	0.112	0.045	0.000	288.688	2.621	1667.402	19.562	6.148	0.292	-359.050	7.320	-114.200	9.850	-43.837	2.804	52
+53	78	10	-	-80.553	1.319	15.253	0.064	0.000	0.000	23.967	0.193	0.041	0.001	243.820	10.141	1722.265	32.414	-6.757	0.875	-233.628	32.754	-41.260	21.926	-51.452	6.462	53
+54	91	10	-	-80.434	7.690	12.606	0.433	0.065	0.007	22.027	0.766	0.070	0.005	239.985	31.342	1715.950	113.990	-2.244	1.763	-276.599	35.568	-83.483	44.904	-46.869	5.835	54
+55	86	10	-	-79.938	1.932	14.133	0.054	0.000	0.000	21.594	0.090	0.049	0.001	234.653	13.341	1560.172	37.779	-2.434	3.230	-216.869	17.452	-39.812	24.206	-57.595	0.798	55
+56	94	10	-	-79.785	3.074	14.163	0.044	0.000	0.000	23.755	0.224	0.042	0.001	233.620	10.459	1617.775	27.712	-4.985	3.008	-246.368	23.556	-61.636	15.735	-48.888	3.624	56
+57	57	10	-	-79.647	3.136	14.334	0.035	0.000	0.000	22.584	0.139	0.045	0.001	206.786	21.758	1752.880	43.951	4.484	1.474	-292.769	26.191	-132.238	35.347	-46.255	2.074	57
+58	109	8	-	-79.637	4.090	14.374	0.029	0.000	0.000	23.226	0.171	0.043	0.001	179.447	18.968	1587.280	48.041	-6.736	4.312	-216.970	21.146	-84.975	34.722	-47.452	4.918	58
+59	125	4	-	-79.181	3.093	13.707	0.110	0.013	0.007	25.049	0.264	0.043	0.002	208.704	5.337	1603.477	18.923	0.803	3.084	-320.220	17.996	-148.327	16.357	-36.811	2.829	59
+60	75	10	-	-79.050	2.188	9.582	0.072	0.013	0.007	17.607	0.404	0.075	0.002	255.051	11.542	1487.710	19.121	-3.626	3.331	-272.006	25.775	-63.483	15.928	-46.528	1.228	60
+61	21	16	-	-78.910	7.107	12.204	0.791	0.000	0.000	19.571	0.565	0.058	0.003	265.529	23.762	1628.423	100.079	-7.391	2.450	-259.371	19.026	-40.040	31.465	-46.198	2.505	61
+62	119	6	-	-78.891	12.708	12.225	0.073	0.000	0.000	21.918	0.277	0.049	0.001	183.873	60.583	1612.245	43.225	5.173	2.252	-342.645	40.522	-192.694	94.271	-33.921	1.601	62
+63	32	12	-	-78.111	4.787	11.640	0.490	0.030	0.007	19.381	0.419	0.070	0.005	224.618	24.572	1458.675	59.540	12.585	2.659	-404.922	39.771	-212.478	43.741	-32.174	7.745	63
+64	93	10	-	-75.558	0.893	15.617	0.035	0.000	0.000	25.553	0.142	0.036	0.001	234.040	18.302	1612.077	87.261	-2.881	1.880	-222.506	13.334	-40.046	22.117	-51.580	3.451	64
+65	53	10	-	-74.878	0.925	11.095	0.055	0.000	0.000	19.669	0.309	0.058	0.001	217.684	13.625	1737.645	54.714	4.811	2.265	-267.514	39.563	-97.784	28.401	-47.954	8.106	65
+66	50	10	-	-74.229	3.215	9.398	0.118	0.000	0.000	15.157	0.226	0.088	0.002	201.585	13.616	1307.077	34.282	7.107	1.138	-346.429	18.226	-177.052	16.240	-32.209	2.692	66
+67	46	10	-	-74.057	6.696	13.393	0.171	0.038	0.008	20.998	0.234	0.064	0.004	182.613	28.046	1532.910	44.960	11.778	4.762	-283.146	29.545	-148.000	30.970	-47.467	2.189	67
+68	10	20	-	-73.940	3.036	10.540	0.046	0.017	0.000	19.176	0.153	0.067	0.001	356.795	15.142	1492.230	74.353	15.509	2.170	-510.698	9.877	-176.892	19.108	-22.989	0.857	68
+69	44	10	-	-73.811	2.120	13.513	0.025	0.000	0.000	20.546	0.111	0.052	0.001	210.162	18.014	1370.822	23.324	5.688	1.348	-373.221	16.893	-188.930	22.084	-25.871	3.664	69
+70	101	10	-	-73.605	5.664	7.585	0.291	0.194	0.007	15.971	0.612	0.151	0.003	239.400	28.980	1437.820	17.631	2.496	1.252	-306.286	30.593	-105.669	8.236	-38.784	7.589	70
+71	73	10	-	-73.330	14.683	8.421	0.080	0.142	0.022	16.234	0.195	0.129	0.007	291.068	13.141	1524.905	74.286	7.236	1.570	-318.544	28.529	-73.439	41.719	-45.964	8.000	71
+72	79	10	-	-72.710	2.560	11.891	0.070	0.017	0.000	21.817	0.101	0.055	0.000	267.791	10.125	1643.050	30.536	-1.153	0.712	-316.054	21.622	-83.389	26.219	-35.125	3.184	72
+73	108	8	-	-72.053	6.427	14.141	0.080	0.000	0.000	22.606	0.088	0.045	0.000	274.130	28.215	1575.818	26.120	2.867	4.129	-353.149	37.289	-110.722	50.901	-31.703	6.123	73
+74	116	7	-	-71.931	3.431	14.263	0.020	0.021	0.007	21.881	0.092	0.055	0.002	239.220	23.289	1488.585	51.307	11.289	2.327	-337.511	20.455	-137.931	34.222	-39.639	2.696	74
+75	23	15	-	-71.317	1.735	9.651	0.111	0.000	0.000	15.522	0.401	0.085	0.003	194.466	13.162	1484.050	42.048	9.548	1.288	-290.001	20.663	-137.847	15.853	-42.312	1.866	75
+76	24	15	-	-71.030	2.953	16.556	0.115	0.000	0.000	28.355	0.305	0.030	0.000	205.405	8.091	1334.508	11.170	-5.633	2.051	-183.413	17.299	-27.264	20.045	-49.255	2.861	76
+77	28	13	-	-70.176	3.460	14.159	0.213	0.004	0.007	22.016	0.254	0.048	0.003	212.614	35.492	1491.645	40.439	8.647	0.432	-294.032	36.700	-122.695	8.604	-41.277	2.477	77
+78	37	11	-	-69.964	1.337	15.376	0.133	0.000	0.000	25.078	0.326	0.037	0.001	271.813	14.529	1713.650	51.673	-7.231	2.128	-241.582	17.736	-11.367	27.829	-41.599	3.838	78
+79	123	5	-	-69.304	4.503	16.450	0.148	0.000	0.000	27.833	0.537	0.031	0.001	210.556	19.322	1326.200	45.711	-5.965	1.162	-161.157	6.948	-2.764	25.378	-52.163	3.012	79
+80	106	9	-	-67.503	6.037	12.789	0.289	0.026	0.015	23.061	1.336	0.053	0.002	296.781	34.983	1620.858	52.591	5.560	2.969	-348.713	38.348	-84.930	63.453	-32.998	4.669	80
+81	120	6	-	-67.302	2.532	14.358	0.041	0.000	0.000	22.837	0.023	0.044	0.000	271.706	12.518	1634.723	24.273	0.998	1.097	-227.589	9.829	-5.836	14.119	-49.953	3.620	81
+82	55	10	-	-67.097	3.840	6.036	0.861	0.090	0.014	12.039	0.749	0.162	0.019	384.023	42.496	1531.295	87.955	3.794	4.479	-454.914	59.765	-89.202	76.199	-18.311	9.697	82
+83	124	4	-	-66.655	5.062	6.249	0.264	0.224	0.012	11.025	0.671	0.217	0.008	235.183	27.050	1650.928	104.661	12.126	3.442	-328.671	31.748	-130.053	21.804	-36.565	3.933	83
+84	34	11	-	-66.442	5.053	14.336	0.479	0.056	0.023	24.830	1.011	0.057	0.010	253.232	30.608	1472.758	125.167	2.441	1.679	-290.510	38.258	-73.383	33.664	-36.105	2.888	84
+85	38	10	-	-64.966	3.389	12.351	0.042	0.000	0.000	18.220	0.062	0.065	0.001	237.737	22.406	1463.210	47.096	18.877	2.622	-395.482	9.668	-186.266	30.185	-28.521	1.362	85
+86	62	10	-	-64.964	5.998	7.746	0.112	0.004	0.007	15.178	0.486	0.093	0.004	271.487	9.093	1577.678	76.023	-0.556	4.196	-206.951	36.880	14.369	36.913	-50.167	1.787	86
+87	25	15	-	-64.334	4.335	13.027	0.411	0.021	0.007	23.541	0.557	0.050	0.001	185.122	8.359	1583.560	19.045	-1.219	6.525	-176.576	111.800	-37.766	99.230	-46.312	12.209	87
+88	42	10	-	-62.875	14.148	14.485	0.024	0.000	0.000	23.143	0.209	0.043	0.001	179.610	11.087	1721.772	71.776	12.319	3.484	-243.120	35.868	-108.042	47.241	-44.532	3.820	88
+89	84	10	-	-62.085	1.306	14.514	0.132	0.000	0.000	22.149	0.316	0.046	0.001	296.997	14.696	1383.428	30.064	1.898	3.669	-292.144	12.479	-30.401	25.823	-35.254	1.893	89
+90	121	6	-	-61.957	4.116	12.331	0.311	0.000	0.000	19.451	0.605	0.058	0.003	270.992	23.909	1274.112	82.006	4.029	2.380	-266.295	41.053	-35.130	24.369	-39.827	4.542	90
+91	36	11	-	-61.811	2.141	14.445	0.058	0.000	0.000	22.627	0.070	0.045	0.000	270.514	14.399	1609.382	28.876	1.751	1.481	-254.673	33.427	-23.837	34.147	-39.679	5.666	91
+92	77	10	-	-61.079	5.725	5.780	0.082	0.039	0.015	10.799	0.259	0.162	0.009	240.534	37.298	1483.005	50.398	-0.002	2.077	-182.518	25.073	9.390	46.237	-48.626	2.883	92
+93	117	6	-	-60.777	11.533	9.801	0.191	0.013	0.007	21.006	0.640	0.059	0.004	246.636	8.427	1268.660	71.298	6.936	2.487	-314.050	22.326	-96.981	32.734	-29.567	6.294	93
+94	85	10	-	-60.209	2.297	11.213	0.218	0.000	0.000	18.816	0.542	0.062	0.003	381.891	10.325	1459.902	67.889	-2.759	1.863	-266.267	22.682	73.237	24.125	-42.386	2.780	94
+95	126	4	-	-59.397	3.161	13.514	0.088	0.000	0.000	20.613	0.206	0.052	0.001	340.899	11.341	1457.237	38.500	0.742	1.761	-285.606	3.678	18.186	8.403	-37.107	1.557	95
+96	63	10	-	-59.291	7.296	9.014	0.111	0.000	0.000	16.822	0.663	0.077	0.005	280.676	22.422	1318.048	29.172	9.234	1.737	-325.262	28.578	-76.127	49.934	-31.541	1.854	96
+97	70	10	-	-58.877	4.462	13.014	0.056	0.000	0.000	22.464	0.254	0.046	0.001	228.543	28.692	1422.508	65.438	-4.012	3.320	-200.927	16.946	-9.918	31.989	-37.534	1.424	97
+98	45	10	-	-58.029	6.480	7.814	0.140	0.017	0.000	13.251	0.317	0.115	0.004	229.389	29.836	1404.900	46.790	11.103	1.955	-327.900	39.785	-125.001	51.497	-26.490	2.094	98
+99	68	10	-	-55.807	3.727	16.510	0.066	0.000	0.000	25.624	0.263	0.036	0.001	318.869	16.264	1213.652	9.474	-5.589	2.224	-229.506	11.490	53.160	7.966	-36.203	3.035	99
+100	67	10	-	-55.715	3.802	14.121	0.078	0.073	0.007	23.021	0.127	0.068	0.003	364.598	7.533	1424.082	38.150	0.216	3.221	-301.127	9.515	31.305	11.925	-32.166	2.426	100
+101	43	10	-	-55.357	4.538	13.771	0.174	0.000	0.000	22.382	0.222	0.046	0.001	315.525	17.911	1224.170	95.586	15.578	3.930	-449.307	38.562	-146.408	51.664	-12.626	5.604	101
+102	60	10	-	-55.224	0.578	14.483	0.242	0.000	0.000	26.049	0.668	0.036	0.002	237.155	10.847	1474.113	27.846	0.259	1.804	-152.957	35.644	35.591	28.921	-48.607	4.912	102
+103	59	10	-	-55.141	2.610	14.717	0.093	0.034	0.000	23.704	0.289	0.053	0.001	298.384	26.262	1406.250	66.647	9.341	3.393	-316.841	23.707	-49.410	30.705	-30.952	4.042	103
+104	112	7	-	-54.921	9.461	10.685	0.208	0.073	0.026	18.506	0.476	0.089	0.007	219.840	44.971	1521.922	81.424	5.709	7.046	-214.847	15.424	-34.651	49.783	-39.644	4.737	104
+105	5	22	-	-54.314	4.331	12.385	0.086	0.021	0.014	22.595	0.342	0.053	0.006	233.002	17.524	1358.430	35.130	1.471	0.185	-207.591	22.952	-12.155	32.463	-37.567	1.570	105
+106	52	10	-	-53.491	15.207	12.353	0.103	0.000	0.000	22.051	0.367	0.048	0.001	233.007	31.498	1414.820	102.212	3.750	1.618	-249.119	20.721	-46.830	57.818	-30.718	7.272	106
+107	111	7	-	-53.239	5.226	13.791	0.212	0.000	0.000	23.428	0.626	0.043	0.002	268.166	12.080	1414.135	56.300	7.739	1.257	-222.832	3.164	2.106	14.206	-43.228	4.768	107
+108	54	10	-	-52.971	3.488	14.200	0.033	0.000	0.000	23.847	0.087	0.041	0.000	334.087	9.226	1546.130	36.750	-6.005	1.905	-190.261	19.194	101.503	17.352	-42.322	4.900	108
+109	56	10	-	-51.490	5.020	13.521	0.052	0.000	0.000	22.416	0.243	0.046	0.001	293.306	19.777	1477.102	25.522	5.609	1.461	-279.596	12.796	-16.800	25.540	-30.510	5.347	109
+110	118	6	-	-51.117	4.561	12.365	0.051	0.000	0.000	23.714	0.346	0.043	0.001	278.889	18.649	1432.265	9.470	0.370	2.751	-214.671	17.337	27.776	25.570	-36.442	3.072	110
+111	107	9	-	-49.501	5.059	14.835	0.038	0.000	0.000	23.410	0.057	0.042	0.000	344.941	19.284	1343.577	12.807	-3.153	1.679	-264.398	20.388	52.580	29.967	-27.963	9.609	111
+112	35	11	-	-49.340	2.447	11.317	0.928	0.039	0.015	20.295	1.572	0.069	0.011	235.385	37.942	1409.605	87.748	4.069	3.360	-185.705	44.350	9.873	43.861	-39.807	8.325	112
+113	33	12	-	-46.737	4.308	11.174	0.816	0.000	0.000	19.641	1.416	0.059	0.007	310.128	20.042	1238.068	110.488	4.568	2.574	-256.976	22.111	22.230	37.127	-30.923	2.384	113
+114	113	7	-	-45.800	5.982	10.348	0.124	0.000	0.000	18.316	0.481	0.066	0.003	282.571	18.197	1311.367	56.380	4.791	1.847	-211.064	18.902	34.872	19.595	-36.635	3.931	114
+115	81	10	-	-45.354	6.929	16.636	0.096	0.000	0.000	25.863	0.726	0.035	0.002	308.236	11.719	1275.400	52.716	-5.692	4.714	-181.522	49.756	92.533	51.322	-34.181	9.503	115
+116	49	10	-	-44.705	1.959	10.852	0.035	0.000	0.000	16.845	0.062	0.074	0.000	358.788	5.112	1341.040	72.642	10.412	2.121	-347.849	36.059	-10.488	33.632	-21.427	6.467	116
+117	39	10	-	-44.261	4.620	14.087	0.056	0.000	0.000	22.835	0.013	0.044	0.000	295.495	17.162	1234.227	27.363	4.174	3.430	-210.269	16.733	49.294	18.637	-35.931	4.941	117
+118	92	10	-	-44.053	1.106	15.813	0.128	0.000	0.000	25.745	0.368	0.036	0.001	283.916	13.486	1275.445	30.036	-6.639	1.857	-143.568	20.594	103.256	10.722	-37.092	1.745	118
+119	114	7	-	-43.996	7.676	13.036	0.151	0.000	0.000	21.041	0.248	0.051	0.001	318.293	22.689	1397.472	69.100	6.502	2.294	-242.837	58.413	41.697	35.569	-33.760	4.092	119
+120	127	4	-	-42.868	12.804	10.782	0.266	0.021	0.007	18.935	0.277	0.070	0.003	378.484	32.539	1279.013	79.482	-2.333	3.174	-249.324	69.688	100.641	96.319	-28.519	2.196	120
+121	97	10	-	-41.988	1.493	15.101	0.025	0.000	0.000	23.745	0.034	0.041	0.000	301.125	3.112	1269.653	33.464	-8.743	1.470	-129.712	11.741	133.997	11.234	-37.416	1.471	121
+122	71	10	-	-41.763	0.892	8.507	0.097	0.039	0.015	14.685	0.147	0.107	0.006	239.057	9.121	1327.050	24.875	8.577	4.145	-218.493	30.755	-9.983	30.699	-30.547	4.870	122
+123	47	10	-	-36.220	3.928	15.277	0.106	0.000	0.000	23.010	0.110	0.043	0.000	284.950	8.282	1175.388	69.795	5.948	1.847	-213.173	34.270	43.748	38.868	-28.029	3.546	123
+124	41	10	-	-32.454	10.820	12.104	0.204	0.000	0.000	20.116	0.705	0.056	0.003	396.786	30.865	1066.531	89.515	12.815	3.725	-377.880	29.248	9.535	54.759	-9.372	2.922	124
+125	64	10	-	-27.162	1.992	10.301	0.345	0.000	0.000	18.657	0.861	0.065	0.005	402.122	49.749	1030.695	25.469	4.338	0.861	-257.608	45.825	124.323	22.168	-20.191	4.685	125
+126	48	10	-	-14.746	4.336	10.121	0.049	0.000	0.000	18.586	0.361	0.065	0.002	357.317	19.257	1018.395	44.464	1.525	1.784	-147.322	10.412	187.457	30.279	-22.539	2.476	126
+127	69	10	-	-13.047	2.110	13.381	0.036	0.000	0.000	23.537	0.088	0.043	0.000	326.021	21.144	1056.715	43.823	-2.112	1.084	-98.899	7.148	203.364	15.655	-23.757	1.618	127
 </pre>
 </details>
 <br>
@@ -1397,149 +1489,159 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 <i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
  </summary>
 <pre>
-cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	caprieval_rank
-1	40	10	-	-12.925	0.755	13.403	0.034	0.000	0.000	21.424	0.117	0.050	0.001	1
-2	20	10	-	-10.730	0.386	16.017	0.000	0.000	0.000	24.133	0.000	0.040	0.000	2
-3	11	10	-	-10.139	0.556	15.857	0.000	0.000	0.000	24.143	0.000	0.040	0.000	3
-5	128	10	-	-9.461	0.656	15.461	0.121	0.000	0.000	23.886	0.095	0.041	0.000	4
-4	69	10	-	-8.921	0.171	14.254	0.000	0.000	0.000	22.411	0.000	0.046	0.000	5
-12	88	10	-	-7.933	0.902	15.057	0.055	0.000	0.000	23.167	0.032	0.043	0.000	6
-7	92	10	-	-7.888	0.173	14.981	0.000	0.000	0.000	23.642	0.000	0.041	0.000	7
-6	62	10	-	-7.845	0.175	9.909	0.113	0.000	0.000	15.543	0.256	0.084	0.002	8
-8	82	10	-	-6.984	0.120	13.301	0.000	0.000	0.000	21.881	0.000	0.048	0.000	9
-9	61	10	-	-6.787	0.106	14.379	0.000	0.000	0.000	23.134	0.000	0.043	0.000	10
-11	59	10	-	-6.598	0.366	12.685	0.000	0.000	0.000	20.851	0.000	0.052	0.000	11
-10	64	10	-	-6.453	0.194	7.774	0.000	0.138	0.000	15.156	0.000	0.138	0.000	12
-14	39	10	-	-6.240	0.648	14.552	0.000	0.000	0.000	23.101	0.000	0.043	0.000	13
-13	14	10	-	-6.215	0.594	13.551	0.000	0.017	0.000	23.531	0.000	0.048	0.000	14
-16	136	10	-	-6.106	0.573	14.398	0.000	0.000	0.000	23.115	0.000	0.043	0.000	15
-15	35	10	-	-5.681	0.456	14.596	0.115	0.000	0.000	23.388	0.123	0.043	0.000	16
-18	55	10	-	-5.629	0.550	15.360	0.000	0.000	0.000	23.619	0.000	0.041	0.000	17
-17	100	10	-	-5.540	0.578	14.454	0.000	0.017	0.000	23.209	0.000	0.049	0.000	18
-20	45	10	-	-5.447	0.583	15.923	0.062	0.000	0.000	24.503	0.056	0.039	0.000	19
-19	54	10	-	-5.436	0.434	12.638	0.183	0.000	0.000	20.234	0.601	0.054	0.003	20
-29	134	10	-	-5.106	0.565	13.872	0.000	0.000	0.000	20.718	0.000	0.052	0.000	21
-21	1	10	-	-4.840	0.717	10.316	0.088	0.000	0.000	16.192	0.239	0.079	0.002	22
-22	18	10	-	-4.566	0.461	13.640	0.000	0.000	0.000	20.630	0.000	0.052	0.000	23
-23	12	10	-	-4.500	0.590	10.910	0.000	0.000	0.000	19.503	0.000	0.059	0.000	24
-27	29	10	-	-4.395	0.251	14.738	0.000	0.000	0.000	22.854	0.000	0.044	0.000	25
-24	31	10	-	-4.395	0.217	12.983	0.000	0.000	0.000	20.366	0.000	0.054	0.000	26
-25	28	10	-	-4.341	0.269	10.532	0.221	0.009	0.009	17.600	0.723	0.072	0.002	27
-26	48	10	-	-4.117	0.271	11.428	0.484	0.043	0.009	21.233	0.821	0.067	0.006	28
-28	57	10	-	-3.713	0.258	13.370	0.239	0.000	0.000	21.771	0.059	0.048	0.000	29
-39	115	10	-	-3.238	1.994	14.816	0.034	0.000	0.000	23.075	0.087	0.043	0.000	30
-30	7	10	-	-3.228	0.078	16.858	0.000	0.000	0.000	26.285	0.000	0.034	0.000	31
-31	21	10	-	-3.181	0.364	14.904	0.000	0.000	0.000	23.018	0.000	0.043	0.000	32
-32	56	10	-	-2.818	0.240	16.116	0.012	0.000	0.000	24.674	0.045	0.038	0.000	33
-33	72	10	-	-2.463	0.570	12.839	0.168	0.056	0.007	22.343	0.365	0.065	0.004	34
-34	89	10	-	-2.437	0.467	10.431	0.000	0.069	0.000	17.182	0.000	0.095	0.000	35
-35	98	10	-	-2.172	0.296	14.829	0.324	0.017	0.000	24.804	0.318	0.044	0.001	36
-53	68	10	-	-2.057	0.703	9.577	0.000	0.017	0.000	19.779	0.000	0.066	0.000	37
-42	86	10	-	-1.894	0.720	15.423	0.000	0.000	0.000	23.556	0.000	0.042	0.000	38
-36	4	10	-	-1.743	0.243	13.133	0.000	0.017	0.000	20.519	0.000	0.059	0.000	39
-47	81	10	-	-1.730	0.538	14.595	0.000	0.017	0.000	22.873	0.000	0.050	0.000	40
-37	16	10	-	-1.636	0.362	14.586	0.000	0.017	0.000	21.890	0.000	0.053	0.000	41
-40	122	10	-	-1.568	0.414	11.650	0.000	0.086	0.000	20.836	0.000	0.082	0.000	42
-46	95	10	-	-1.410	0.312	10.477	0.166	0.017	0.000	18.950	0.159	0.069	0.001	43
-38	19	10	-	-1.395	0.125	13.132	0.000	0.000	0.000	21.510	0.000	0.049	0.000	44
-41	90	10	-	-1.246	0.097	2.535	0.000	0.345	0.000	5.317	0.000	0.441	0.000	45
-43	33	10	-	-1.219	0.200	14.753	0.000	0.069	0.000	22.926	0.000	0.067	0.000	46
-44	83	10	-	-1.211	0.430	14.651	0.000	0.000	0.000	22.855	0.000	0.044	0.000	47
-45	93	10	-	-1.129	0.330	12.217	0.000	0.000	0.000	19.162	0.000	0.060	0.000	48
-48	38	10	-	-0.659	0.390	10.615	0.000	0.000	0.000	16.944	0.000	0.074	0.000	49
-49	138	10	-	-0.508	0.323	14.657	0.000	0.000	0.000	22.827	0.000	0.044	0.000	50
-50	116	10	-	-0.508	0.826	12.890	0.000	0.000	0.000	21.465	0.000	0.050	0.000	51
-51	71	10	-	0.238	0.234	14.396	0.000	0.000	0.000	21.398	0.000	0.049	0.000	52
-52	30	10	-	0.386	0.830	11.978	0.000	0.000	0.000	20.524	0.000	0.054	0.000	53
-55	132	10	-	0.476	0.336	14.904	0.000	0.000	0.000	21.778	0.000	0.047	0.000	54
-54	85	10	-	0.675	0.419	1.483	0.348	0.616	0.157	2.500	0.599	0.684	0.099	55
-57	80	10	-	0.855	1.116	13.629	0.000	0.034	0.000	23.309	0.000	0.055	0.000	56
-91	109	10	-	0.931	0.501	12.545	0.000	0.000	0.000	18.859	0.000	0.061	0.000	57
-56	73	10	-	0.935	0.129	13.865	0.000	0.017	0.000	23.819	0.000	0.047	0.000	58
-59	74	10	-	1.034	0.221	11.393	0.000	0.000	0.000	17.851	0.000	0.067	0.000	59
-58	121	10	-	1.042	0.797	13.598	0.000	0.000	0.000	19.177	0.000	0.059	0.000	60
-61	26	10	-	1.404	0.362	10.784	0.000	0.034	0.000	18.978	0.000	0.074	0.000	61
-74	99	10	-	1.505	0.137	5.592	0.000	0.069	0.000	14.052	0.000	0.135	0.000	62
-60	25	10	-	1.536	0.490	12.884	0.000	0.000	0.000	18.468	0.000	0.063	0.000	63
-63	63	10	-	1.569	0.908	12.982	0.469	0.000	0.000	22.020	1.741	0.048	0.006	64
-62	2	10	-	1.837	0.762	11.164	0.000	0.052	0.000	19.040	0.000	0.079	0.000	65
-64	41	10	-	2.013	0.260	14.068	0.000	0.000	0.000	22.077	0.000	0.047	0.000	66
-65	5	10	-	2.156	0.427	10.791	0.000	0.000	0.000	17.019	0.000	0.073	0.000	67
-90	75	10	-	2.251	0.585	5.066	0.000	0.069	0.000	9.975	0.000	0.190	0.000	68
-67	50	10	-	2.401	0.335	14.563	0.000	0.052	0.000	24.552	0.000	0.056	0.000	69
-66	110	10	-	2.432	0.585	11.423	0.000	0.000	0.000	19.224	0.000	0.060	0.000	70
-68	103	10	-	2.514	0.496	12.761	0.000	0.000	0.000	18.893	0.000	0.061	0.000	71
-71	101	10	-	2.560	0.273	12.562	0.000	0.000	0.000	20.703	0.000	0.053	0.000	72
-72	124	10	-	2.738	1.042	5.087	0.000	0.155	0.000	10.120	0.000	0.216	0.000	73
-69	36	10	-	2.790	0.207	16.902	0.145	0.000	0.000	24.913	0.185	0.037	0.000	74
-78	60	10	-	2.914	0.449	11.694	0.000	0.000	0.000	19.183	0.000	0.060	0.000	75
-70	49	10	-	2.944	0.075	11.857	0.000	0.034	0.000	21.364	0.000	0.062	0.000	76
-88	107	10	-	3.058	2.268	14.619	0.158	0.000	0.000	23.064	0.574	0.043	0.002	77
-75	111	10	-	3.351	0.712	12.503	0.000	0.017	0.000	23.218	0.000	0.050	0.000	78
-73	9	10	-	3.357	0.253	9.774	0.000	0.000	0.000	15.433	0.000	0.085	0.000	79
-76	47	10	-	3.671	0.217	13.872	0.065	0.004	0.007	24.566	0.146	0.041	0.002	80
-79	78	10	-	3.678	1.717	12.076	0.000	0.052	0.000	21.755	0.000	0.066	0.000	81
-81	51	10	-	3.745	0.410	4.153	0.000	0.103	0.000	6.798	0.000	0.276	0.000	82
-77	79	10	-	3.945	0.270	13.402	0.000	0.000	0.000	22.188	0.000	0.047	0.000	83
-80	17	10	-	3.955	0.883	13.463	0.000	0.000	0.000	22.895	0.000	0.044	0.000	84
-89	130	10	-	4.205	0.668	13.286	0.000	0.000	0.000	21.366	0.000	0.050	0.000	85
-82	67	10	-	4.267	0.278	10.556	0.000	0.017	0.000	18.409	0.000	0.071	0.000	86
-85	32	10	-	4.356	0.841	13.516	0.086	0.000	0.000	21.320	0.051	0.050	0.000	87
-84	114	10	-	4.651	0.413	14.224	0.000	0.000	0.000	21.578	0.000	0.048	0.000	88
-83	10	10	-	4.687	0.269	13.434	0.000	0.000	0.000	20.399	0.000	0.053	0.000	89
-86	8	10	-	4.688	0.510	17.516	0.000	0.000	0.000	26.049	0.000	0.035	0.000	90
-87	58	10	-	5.001	0.603	8.479	0.001	0.121	0.000	15.383	0.000	0.128	0.000	91
-101	141	10	-	5.056	0.911	14.978	0.000	0.017	0.000	22.349	0.000	0.051	0.000	92
-95	133	10	-	5.170	0.585	12.375	0.000	0.017	0.000	20.811	0.000	0.058	0.000	93
-92	87	10	-	5.251	0.124	13.506	0.000	0.000	0.000	22.629	0.000	0.045	0.000	94
-93	120	10	-	5.497	0.599	12.373	0.000	0.000	0.000	19.683	0.000	0.057	0.000	95
-94	27	10	-	5.790	0.199	8.495	0.000	0.034	0.000	14.481	0.000	0.107	0.000	96
-103	96	10	-	5.906	0.479	14.566	0.000	0.000	0.000	22.629	0.000	0.045	0.000	97
-99	129	10	-	5.907	0.331	14.134	0.000	0.069	0.000	22.657	0.000	0.068	0.000	98
-97	105	10	-	5.929	0.690	14.969	0.056	0.000	0.000	22.642	0.080	0.044	0.001	99
-100	117	10	-	5.971	0.490	13.408	0.000	0.000	0.000	21.813	0.000	0.048	0.000	100
-96	24	10	-	6.025	0.353	14.550	0.000	0.034	0.000	22.100	0.000	0.058	0.000	101
-104	106	10	-	6.113	2.639	7.362	0.131	0.004	0.007	12.702	0.106	0.117	0.004	102
-98	94	10	-	6.160	0.357	16.706	0.008	0.000	0.000	25.092	0.092	0.037	0.000	103
-111	126	10	-	6.505	0.283	14.166	0.000	0.000	0.000	22.492	0.001	0.045	0.000	104
-110	140	10	-	6.538	0.922	7.750	0.000	0.000	0.000	13.963	0.000	0.102	0.000	105
-109	22	10	-	6.688	1.190	9.694	0.048	0.000	0.000	14.315	0.159	0.094	0.001	106
-112	142	10	-	6.785	0.528	12.685	0.088	0.000	0.000	20.691	0.226	0.052	0.001	107
-102	15	10	-	6.826	0.296	13.543	0.000	0.000	0.000	23.882	0.000	0.042	0.000	108
-108	42	10	-	6.962	0.523	11.212	0.000	0.017	0.000	18.910	0.000	0.068	0.000	109
-107	65	10	-	7.032	0.585	14.104	0.000	0.034	0.000	23.768	0.000	0.053	0.000	110
-106	53	10	-	7.052	0.245	12.974	0.000	0.017	0.000	22.407	0.000	0.052	0.000	111
-105	70	10	-	7.068	0.472	9.062	0.000	0.000	0.000	15.333	0.000	0.087	0.000	112
-117	137	10	-	7.907	1.092	11.372	0.107	0.000	0.000	20.206	0.162	0.056	0.001	113
-115	118	10	-	8.217	0.396	14.705	0.000	0.034	0.000	24.680	0.000	0.050	0.000	114
-120	135	10	-	8.244	0.387	14.723	0.074	0.000	0.000	22.755	0.017	0.044	0.000	115
-113	6	10	-	8.290	0.561	15.939	0.155	0.000	0.000	24.010	0.156	0.040	0.000	116
-114	23	10	-	8.534	0.494	14.667	0.000	0.034	0.000	23.361	0.000	0.054	0.000	117
-118	46	10	-	8.584	0.297	14.607	0.000	0.000	0.000	22.439	0.000	0.045	0.000	118
-116	52	10	-	8.626	0.073	13.076	0.000	0.034	0.000	21.077	0.000	0.062	0.000	119
-119	76	10	-	8.738	0.196	13.133	0.422	0.000	0.000	22.329	0.173	0.046	0.001	120
-121	13	10	-	9.000	0.489	13.992	0.000	0.000	0.000	22.481	0.000	0.045	0.000	121
-126	123	10	-	9.154	0.738	14.591	0.000	0.000	0.000	23.260	0.000	0.043	0.000	122
-130	139	10	-	9.191	1.322	13.053	0.330	0.000	0.000	22.965	0.886	0.045	0.003	123
-123	104	10	-	9.273	0.812	13.775	0.000	0.000	0.000	23.083	0.000	0.044	0.000	124
-125	125	10	-	9.418	0.650	13.752	0.250	0.026	0.009	23.171	0.422	0.052	0.004	125
-122	77	10	-	9.516	0.492	10.661	0.296	0.000	0.000	17.319	0.103	0.071	0.001	126
-124	3	10	-	9.758	0.374	14.428	0.000	0.034	0.000	21.942	0.000	0.059	0.000	127
-127	102	10	-	9.882	0.749	11.377	0.000	0.000	0.000	19.716	0.000	0.058	0.000	128
-132	108	10	-	9.926	0.765	8.739	0.000	0.017	0.000	14.595	0.000	0.100	0.000	129
-129	37	10	-	9.943	0.507	9.814	0.000	0.017	0.000	15.996	0.000	0.087	0.000	130
-131	131	10	-	10.020	0.283	15.446	0.000	0.000	0.000	22.899	0.000	0.043	0.000	131
-128	91	10	-	10.130	0.391	15.032	0.220	0.000	0.000	23.201	0.100	0.043	0.000	132
-133	43	10	-	10.640	1.661	10.602	0.000	0.000	0.000	18.071	0.001	0.067	0.000	133
-134	113	10	-	10.860	0.393	9.007	0.000	0.000	0.000	16.713	0.000	0.077	0.000	134
-136	97	10	-	11.372	1.198	11.161	0.121	0.000	0.000	17.073	0.094	0.072	0.000	135
-135	44	10	-	11.648	0.086	11.900	0.000	0.017	0.000	18.763	0.000	0.068	0.000	136
-139	127	10	-	12.333	0.212	13.926	0.168	0.000	0.000	20.746	0.188	0.052	0.001	137
-137	34	10	-	12.422	0.795	13.616	0.543	0.000	0.000	21.178	0.451	0.050	0.002	138
-140	119	10	-	12.685	0.612	10.014	0.281	0.000	0.000	19.676	0.908	0.060	0.005	139
-138	112	10	-	12.813	0.159	13.916	0.000	0.000	0.000	22.043	0.000	0.047	0.000	140
-141	84	10	-	13.223	0.097	12.241	0.000	0.000	0.000	19.872	0.000	0.056	0.000	141
-142	66	10	-	15.759	0.476	12.552	0.000	0.000	0.000	17.958	0.000	0.066	0.000	142
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	48	10	-	-13.844	0.900	13.404	0.035	0.000	0.000	22.237	0.123	0.046	0.001	1166.617	117.075	1315.115	40.932	-9.803	2.749	-3.493	0.991	1256.845	137.335	93.721	19.507	1
+9	138	10	-	-10.454	0.674	13.607	0.000	0.000	0.000	22.064	0.000	0.047	0.000	1204.100	0.000	1665.775	24.438	-3.712	0.820	-2.350	0.000	1224.210	0.000	22.460	0.002	2
+3	11	10	-	-10.412	0.432	15.857	0.000	0.000	0.000	24.564	0.000	0.039	0.000	1384.043	0.004	1245.633	13.154	-6.563	0.429	-5.648	0.000	1419.910	0.000	41.513	0.001	3
+2	15	10	-	-10.340	0.286	16.017	0.000	0.000	0.000	24.570	0.000	0.039	0.000	1333.983	0.004	1253.492	15.726	-1.585	0.327	-9.873	0.000	1355.403	0.004	31.294	0.002	4
+4	106	10	-	-9.829	0.222	15.391	0.000	0.000	0.000	24.525	0.000	0.039	0.000	1552.235	0.005	1383.528	17.921	-7.734	0.159	-4.185	0.000	1588.340	0.000	40.293	0.003	5
+6	69	10	-	-9.533	1.575	12.950	0.269	0.000	0.000	20.490	1.095	0.054	0.005	1276.435	67.292	1199.227	109.102	-8.069	0.667	-2.824	1.663	1332.377	61.750	58.763	7.369	6
+5	83	10	-	-9.012	0.282	14.254	0.000	0.000	0.000	22.921	0.000	0.044	0.000	1276.120	0.010	1183.360	18.970	-3.152	0.213	-7.525	0.000	1342.325	0.005	73.727	0.006	7
+7	80	10	-	-7.775	0.494	9.909	0.113	0.000	0.000	15.681	0.333	0.083	0.002	1542.185	35.608	1324.515	18.563	-4.813	0.320	-5.803	0.471	1602.840	32.869	66.456	2.271	8
+12	146	10	-	-7.423	0.848	14.398	0.000	0.000	0.000	23.944	0.000	0.041	0.000	1442.685	0.005	1299.652	32.980	-7.305	1.130	-1.911	0.000	1476.980	0.000	36.202	0.001	9
+8	103	10	-	-7.333	0.221	14.981	0.000	0.000	0.000	24.008	0.000	0.040	0.000	1543.658	0.004	1030.420	14.645	-10.900	0.124	-2.262	0.000	1610.960	0.000	69.566	0.001	10
+10	57	10	-	-6.935	0.458	14.379	0.000	0.000	0.000	23.639	0.000	0.042	0.000	1222.643	0.004	1453.100	18.107	-6.100	0.353	0.439	0.000	1326.150	0.000	103.066	0.004	11
+19	143	10	-	-6.913	0.973	15.057	0.055	0.000	0.000	23.498	0.016	0.042	0.000	1637.182	34.931	1089.412	27.157	-8.432	1.560	-4.361	0.102	1673.073	22.235	40.253	12.796	12
+11	46	10	-	-6.612	0.137	7.774	0.000	0.138	0.000	16.369	0.000	0.129	0.000	1427.530	0.000	1264.045	12.113	-2.676	0.088	-6.756	0.000	1539.297	0.004	118.522	0.001	13
+13	74	10	-	-6.451	0.515	12.795	0.110	0.000	0.000	21.337	0.231	0.050	0.001	1227.858	0.583	1320.807	16.754	-3.158	0.556	-2.694	0.171	1258.178	3.958	33.012	4.713	14
+14	40	10	-	-6.057	0.570	14.552	0.000	0.000	0.000	23.108	0.000	0.043	0.000	1325.322	0.004	1317.838	17.495	-3.007	0.666	-3.439	0.000	1353.310	0.000	31.430	0.001	15
+17	54	10	-	-5.998	0.121	12.456	0.000	0.000	0.000	19.696	0.000	0.057	0.000	1314.395	0.005	1310.680	23.796	-1.208	0.317	-5.261	0.000	1352.630	0.000	43.495	0.001	16
+15	32	10	-	-5.964	0.425	14.596	0.115	0.000	0.000	23.358	0.122	0.043	0.000	1277.912	7.923	1285.055	82.743	-3.391	0.456	-2.900	0.806	1314.905	3.200	39.893	5.527	17
+16	12	10	-	-5.777	0.104	13.551	0.000	0.017	0.000	23.658	0.000	0.048	0.000	1198.952	0.008	1149.155	9.000	-1.300	0.161	-5.170	0.000	1213.340	0.000	19.559	0.004	18
+18	124	10	-	-5.691	0.215	14.454	0.000	0.017	0.000	23.355	0.000	0.048	0.000	1416.720	0.007	1374.565	18.449	-4.243	0.272	-2.310	0.000	1458.433	0.004	44.024	0.004	19
+21	56	10	-	-5.412	0.747	15.959	0.000	0.000	0.000	25.689	0.001	0.036	0.000	1217.487	0.004	1439.070	19.619	-0.762	0.765	-2.668	0.000	1238.170	0.000	23.352	0.001	20
+29	104	10	-	-5.375	0.124	13.872	0.000	0.000	0.000	20.781	0.000	0.052	0.000	1406.888	0.015	1020.282	14.806	-3.770	0.202	-6.285	0.000	1481.987	0.004	81.386	0.009	21
+20	49	10	-	-5.250	0.321	15.360	0.000	0.000	0.000	23.819	0.000	0.041	0.000	1494.370	0.000	1010.559	24.070	-8.385	0.381	-2.102	0.000	1532.178	0.004	39.910	0.001	22
+23	14	10	-	-4.989	1.157	10.910	0.000	0.000	0.000	21.035	0.000	0.053	0.000	1197.435	0.015	1289.438	22.539	-1.583	1.033	-2.975	0.000	1243.383	0.004	48.924	0.011	23
+24	44	10	-	-4.755	0.228	11.912	0.000	0.034	0.000	22.612	0.000	0.058	0.000	1538.758	0.004	1152.660	13.464	-4.545	0.280	-4.549	0.000	1582.030	0.000	47.828	0.000	24
+25	29	10	-	-4.750	0.679	10.824	0.420	0.009	0.009	18.404	1.004	0.068	0.006	1371.130	157.122	1214.263	97.267	-3.579	1.850	-3.541	1.647	1447.700	178.555	80.112	41.852	25
+22	23	10	-	-4.670	0.217	13.640	0.000	0.000	0.000	20.717	0.000	0.052	0.000	1074.330	0.000	1374.390	4.007	0.869	0.209	-2.729	0.000	1090.750	0.000	19.152	0.001	26
+28	38	10	-	-4.363	0.605	16.033	0.155	0.000	0.000	25.480	0.271	0.036	0.001	1238.952	29.106	1052.057	45.106	-7.738	1.761	1.048	2.035	1285.750	39.525	45.747	12.456	27
+27	1	10	-	-4.137	0.568	10.316	0.088	0.000	0.000	16.498	0.391	0.076	0.003	1721.757	67.381	1135.003	53.658	-4.618	0.422	-5.766	0.216	1754.023	66.472	38.026	0.691	28
+26	27	10	-	-4.112	0.152	12.983	0.000	0.000	0.000	20.773	0.000	0.052	0.000	1139.570	0.000	1462.320	16.198	1.793	0.279	-2.812	0.000	1150.210	0.000	13.452	0.001	29
+30	61	10	-	-4.099	0.842	13.370	0.239	0.000	0.000	21.815	0.084	0.048	0.000	1308.007	135.944	1550.715	205.819	1.005	1.959	-2.987	1.590	1336.082	149.353	31.061	14.996	30
+37	112	10	-	-3.676	0.381	14.796	0.000	0.000	0.000	22.998	0.000	0.043	0.000	1486.800	0.000	1227.990	15.606	-0.708	0.396	-6.135	0.000	1538.500	0.000	57.833	0.002	31
+31	34	10	-	-3.597	0.147	14.799	0.061	0.000	0.000	23.015	0.136	0.043	0.001	1310.543	23.128	1183.075	91.732	-0.950	0.684	-4.455	0.136	1359.398	1.033	53.309	21.961	32
+32	7	10	-	-3.508	0.513	16.858	0.000	0.000	0.000	28.409	0.000	0.030	0.000	1301.480	0.000	1196.672	8.578	-4.923	0.571	-0.218	0.000	1359.760	0.000	58.499	0.001	33
+33	20	10	-	-2.773	0.374	14.904	0.000	0.000	0.000	23.214	0.000	0.043	0.000	1183.130	0.000	1460.190	23.915	1.641	0.539	-1.872	0.000	1204.100	0.000	22.843	0.001	34
+35	77	10	-	-2.739	0.764	12.238	0.036	0.000	0.000	19.323	0.055	0.059	0.000	1282.035	90.578	1268.540	64.375	-0.585	2.814	-2.576	0.397	1308.220	104.985	28.759	14.014	35
+42	42	10	-	-2.495	1.064	9.577	0.000	0.017	0.000	21.186	0.000	0.060	0.000	1085.117	0.004	1410.815	38.489	0.948	0.957	-0.636	0.000	1129.460	0.000	44.976	0.002	36
+40	62	10	-	-2.017	0.480	14.651	0.000	0.000	0.000	22.953	0.000	0.044	0.000	1362.965	0.005	1379.763	20.658	2.498	0.488	-4.718	0.000	1395.325	0.005	37.078	0.003	37
+34	64	10	-	-2.009	0.327	12.646	0.167	0.065	0.007	21.928	0.363	0.070	0.004	1227.983	17.299	1275.485	30.604	-2.275	0.709	0.190	0.874	1283.332	19.239	55.160	2.813	38
+39	105	10	-	-1.975	0.713	11.651	0.000	0.086	0.000	20.866	0.000	0.082	0.000	1426.785	0.005	1445.892	18.713	-1.552	0.833	-0.564	0.000	1459.400	0.000	33.182	0.001	39
+36	100	10	-	-1.974	0.614	14.641	0.375	0.017	0.000	25.137	0.604	0.044	0.001	1613.605	50.415	1285.878	28.846	-1.852	1.404	-4.480	2.223	1717.162	105.853	108.035	57.663	40
+56	88	10	-	-1.877	1.153	14.595	0.000	0.017	0.000	22.930	0.000	0.050	0.000	1377.500	0.000	1256.900	19.112	1.216	1.144	-4.825	0.000	1425.230	0.000	52.558	0.001	41
+41	36	10	-	-1.834	0.548	13.132	0.000	0.000	0.000	21.975	0.000	0.048	0.000	972.241	0.007	1488.515	12.437	5.426	0.465	-2.704	0.000	1030.163	0.004	60.625	0.003	42
+38	30	10	-	-1.684	0.302	14.753	0.000	0.069	0.000	23.211	0.000	0.066	0.000	1193.767	0.018	1714.410	16.251	4.303	0.358	-0.954	0.000	1210.110	0.007	17.296	0.011	43
+43	85	10	-	-1.494	0.422	2.535	0.000	0.345	0.000	6.023	0.000	0.423	0.000	1955.515	0.005	1609.628	8.936	11.827	0.474	-17.319	0.000	1992.133	0.004	53.936	0.002	44
+48	75	10	-	-1.190	1.574	12.890	0.000	0.000	0.000	21.606	0.000	0.049	0.000	1678.058	0.004	1003.288	20.621	-3.349	1.741	-5.239	0.000	1737.880	0.000	65.063	0.003	45
+44	4	10	-	-1.162	0.159	13.134	0.000	0.017	0.000	20.540	0.000	0.059	0.000	1402.763	0.004	1128.918	30.713	4.675	0.392	-8.789	0.000	1415.280	0.000	21.304	0.001	46
+45	17	10	-	-1.158	0.437	14.586	0.000	0.017	0.000	22.061	0.000	0.052	0.000	1350.850	0.000	1109.115	12.543	4.974	0.472	-9.271	0.000	1413.800	0.000	72.221	0.002	47
+46	127	10	-	-1.143	0.190	14.426	0.000	0.000	0.000	22.311	0.000	0.046	0.000	1326.025	0.005	1255.963	21.347	-0.151	0.291	-2.092	0.000	1363.835	0.005	39.904	0.003	48
+58	149	10	-	-0.788	0.547	14.657	0.000	0.000	0.000	23.481	0.001	0.042	0.000	1230.210	0.012	1123.400	25.376	0.072	0.545	-2.759	0.000	1310.590	0.007	83.137	0.006	49
+47	47	10	-	-0.634	0.202	10.615	0.000	0.000	0.000	17.214	0.000	0.072	0.000	1582.995	0.005	1101.400	8.505	-3.618	0.282	-2.392	0.000	1636.595	0.005	55.990	0.002	50
+50	65	10	-	-0.544	0.694	14.396	0.000	0.000	0.000	21.711	0.000	0.048	0.000	1204.223	0.004	1317.295	29.407	1.424	0.855	-1.151	0.000	1234.443	0.004	31.369	0.004	51
+49	123	10	-	-0.413	0.261	14.733	0.000	0.000	0.000	22.393	0.000	0.045	0.000	1690.878	0.013	1054.225	25.599	-2.721	0.379	-4.661	0.000	1746.453	0.008	60.234	0.010	52
+53	41	10	-	-0.301	0.901	11.978	0.000	0.000	0.000	20.686	0.000	0.053	0.000	1281.405	0.005	1249.838	29.204	4.705	0.853	-6.289	0.001	1371.910	0.000	96.793	0.001	53
+52	72	10	-	0.004	0.778	11.393	0.000	0.000	0.000	18.815	0.000	0.062	0.000	1841.592	0.004	1184.938	24.043	-2.198	0.990	-4.820	0.000	1882.420	0.000	45.649	0.002	54
+55	60	10	-	0.009	0.555	12.540	0.000	0.000	0.000	22.058	0.000	0.048	0.000	1472.052	0.008	1173.470	32.950	1.109	0.517	-4.536	0.001	1512.588	0.004	45.071	0.002	55
+51	33	10	-	0.107	0.243	13.624	0.000	0.000	0.000	22.164	0.000	0.047	0.000	1015.085	0.011	1247.485	25.589	6.940	0.203	-4.666	0.000	1026.035	0.005	15.620	0.008	56
+64	107	10	-	0.205	0.370	10.381	0.000	0.017	0.000	18.922	0.000	0.069	0.000	1627.175	0.009	1123.535	23.337	-0.720	0.382	-4.857	0.000	1696.867	0.004	74.549	0.006	57
+54	66	10	-	0.360	0.318	1.684	0.402	0.526	0.181	3.075	0.744	0.622	0.116	1597.793	284.803	1513.723	249.385	8.918	5.003	-10.031	0.661	1650.948	320.308	63.184	36.167	58
+57	111	10	-	0.766	0.550	14.904	0.000	0.000	0.000	22.475	0.000	0.045	0.000	1626.950	0.007	1014.321	27.012	-1.440	0.342	-4.577	0.000	1688.060	0.000	65.685	0.004	59
+59	55	10	-	0.858	0.540	13.865	0.000	0.017	0.000	23.838	0.000	0.047	0.000	1807.443	0.004	1378.845	3.558	8.995	0.538	-12.902	0.000	1842.455	0.005	47.919	0.003	60
+62	147	10	-	0.956	0.701	15.581	0.054	0.000	0.000	24.005	0.203	0.041	0.001	1597.950	3.608	1254.088	53.590	-0.842	0.535	-1.931	0.759	1624.987	4.291	28.966	0.072	61
+60	71	10	-	1.057	0.728	13.646	0.029	0.034	0.000	23.918	0.334	0.052	0.001	1631.675	116.506	1124.720	88.785	-3.940	2.101	-0.651	0.045	1688.805	101.923	57.782	14.540	62
+109	113	10	-	1.060	0.681	12.545	0.000	0.000	0.000	19.286	0.000	0.059	0.000	1484.197	0.004	920.633	17.258	-2.448	0.516	-2.606	0.000	1529.520	0.000	47.929	0.002	63
+80	91	10	-	1.140	0.825	5.592	0.000	0.069	0.000	17.456	0.000	0.109	0.000	1030.130	0.012	1601.830	27.680	5.160	0.616	0.752	0.000	1125.423	0.004	94.540	0.008	64
+61	22	10	-	1.547	0.489	12.884	0.000	0.000	0.000	18.658	0.000	0.062	0.000	1287.670	0.000	1227.920	26.361	2.087	0.630	-1.563	0.000	1328.707	0.004	42.597	0.002	65
+65	142	10	-	1.609	0.465	13.598	0.001	0.000	0.000	20.523	0.000	0.053	0.000	1812.180	0.007	1242.125	9.410	4.169	0.487	-8.600	0.001	1837.472	0.004	33.893	0.006	66
+63	2	10	-	1.618	0.620	11.163	0.000	0.052	0.000	19.921	0.000	0.074	0.000	1612.010	0.007	1142.242	17.089	0.629	0.472	-4.038	0.000	1640.850	0.000	32.880	0.004	67
+71	79	10	-	1.719	0.983	12.761	0.000	0.000	0.000	18.973	0.000	0.060	0.000	1428.622	0.004	1202.068	29.316	6.850	1.082	-7.824	0.000	1463.520	0.000	42.716	0.002	68
+69	53	10	-	1.771	1.118	14.068	0.000	0.000	0.000	22.330	0.000	0.046	0.000	1316.773	0.004	1285.473	14.217	6.192	1.087	-4.974	0.001	1335.790	0.000	23.991	0.001	69
+67	21	10	-	1.840	0.428	10.784	0.000	0.034	0.000	19.322	0.000	0.072	0.000	1285.688	0.008	1117.495	10.149	-0.691	0.439	0.523	0.001	1318.855	0.005	32.646	0.006	70
+70	134	10	-	1.845	0.422	11.423	0.000	0.000	0.000	19.694	0.000	0.058	0.000	1223.665	0.005	1143.160	12.317	3.324	0.532	-2.622	0.000	1254.850	0.000	33.809	0.003	71
+66	28	10	-	2.156	0.092	16.901	0.145	0.000	0.000	25.946	0.295	0.035	0.000	1664.168	128.023	953.917	39.846	-2.267	2.191	-3.344	0.114	1727.315	172.192	66.488	44.052	72
+72	51	10	-	2.177	0.345	14.563	0.000	0.052	0.000	24.598	0.000	0.056	0.000	1316.715	0.009	1570.730	16.814	6.253	0.181	-2.070	0.000	1368.102	0.004	53.459	0.004	73
+68	5	10	-	2.186	0.209	10.791	0.000	0.000	0.000	17.361	0.000	0.071	0.000	1320.465	0.009	1352.238	23.403	4.872	0.278	-2.775	0.000	1358.330	0.000	40.637	0.005	74
+73	52	10	-	2.462	0.437	11.857	0.000	0.034	0.000	21.481	0.000	0.062	0.000	1332.390	0.007	1331.270	18.518	3.857	0.469	-2.157	0.000	1405.307	0.004	75.072	0.005	75
+75	117	10	-	2.591	1.501	5.582	0.000	0.017	0.000	10.747	0.000	0.156	0.000	1471.223	0.004	1131.087	27.013	-0.164	1.301	-1.468	0.000	1551.900	0.000	82.145	0.003	76
+76	121	10	-	2.757	0.190	15.413	0.030	0.000	0.000	23.407	0.072	0.042	0.000	1441.680	23.042	1181.880	26.999	2.544	0.494	-2.763	0.841	1476.762	16.185	37.844	6.016	77
+74	8	10	-	2.804	0.346	9.774	0.000	0.000	0.000	15.587	0.000	0.084	0.000	1031.230	0.012	1151.565	3.228	4.639	0.312	-0.954	0.002	1062.565	0.005	32.287	0.005	78
+77	125	10	-	2.956	0.265	9.059	0.000	0.000	0.000	14.582	0.000	0.093	0.000	1332.722	0.004	1325.645	17.543	-0.222	0.167	2.522	0.000	1393.822	0.004	58.576	0.004	79
+79	148	10	-	3.338	0.337	9.501	0.000	0.017	0.000	16.813	0.000	0.082	0.000	1373.653	0.004	1326.715	10.338	2.499	0.388	0.027	0.000	1407.895	0.005	34.216	0.003	80
+78	43	10	-	3.420	0.161	13.876	0.062	0.000	0.000	24.966	0.181	0.038	0.000	1203.815	13.490	1353.628	21.704	3.673	0.639	0.968	0.680	1232.450	11.316	27.667	1.490	81
+85	90	10	-	3.499	0.582	11.694	0.000	0.000	0.000	19.420	0.000	0.059	0.000	1524.062	0.008	1254.383	26.891	2.957	0.549	-2.600	0.000	1566.020	0.000	44.559	0.004	82
+96	144	10	-	3.736	1.983	14.597	0.155	0.000	0.000	23.244	0.913	0.043	0.003	1638.918	27.535	1089.932	148.738	-1.437	2.850	-0.736	0.937	1680.150	26.411	41.970	7.550	83
+83	81	10	-	4.181	0.676	10.556	0.000	0.017	0.000	19.500	0.000	0.066	0.000	1679.600	0.000	1209.035	23.242	8.004	0.495	-8.994	0.001	1717.150	0.000	46.546	0.001	84
+86	126	10	-	4.231	0.820	13.402	0.000	0.000	0.000	22.864	0.000	0.045	0.000	1437.102	0.004	1009.162	9.760	-0.405	0.755	-0.675	0.000	1539.537	0.004	103.107	0.001	85
+82	35	10	-	4.429	0.243	13.516	0.086	0.000	0.000	21.373	0.051	0.050	0.001	1422.540	1.230	1373.582	45.688	4.605	0.121	-1.357	0.944	1490.320	18.770	69.143	18.482	86
+108	84	10	-	4.431	2.539	5.560	0.856	0.060	0.015	12.118	0.730	0.154	0.019	2052.713	82.831	1181.928	181.411	2.306	1.076	-7.277	0.965	2114.883	74.846	69.446	7.018	87
+81	10	10	-	4.533	0.147	13.434	0.000	0.000	0.000	20.796	0.000	0.052	0.000	1313.870	0.017	1106.747	9.549	4.643	0.101	-2.606	0.002	1353.747	0.004	42.483	0.009	88
+84	118	10	-	4.597	0.401	14.224	0.000	0.000	0.000	21.784	0.000	0.048	0.000	812.933	0.006	1561.932	19.206	6.094	0.589	5.630	0.001	854.980	0.002	36.417	0.005	89
+87	133	10	-	4.605	0.650	12.937	0.000	0.000	0.000	23.370	0.000	0.043	0.000	1314.115	0.005	955.893	27.114	0.978	0.632	-0.502	0.000	1368.153	0.004	54.539	0.003	90
+106	18	10	-	4.806	0.311	13.463	0.000	0.000	0.000	24.373	0.001	0.040	0.000	1207.367	0.004	1226.390	11.365	7.546	0.398	-2.879	0.000	1237.415	0.005	32.926	0.001	91
+88	9	10	-	4.811	1.015	17.516	0.000	0.000	0.000	26.890	0.000	0.033	0.000	1593.650	0.007	852.707	14.236	-3.510	1.086	0.360	0.000	1649.222	0.004	55.215	0.003	92
+89	76	10	-	4.921	0.828	8.479	0.001	0.121	0.000	16.155	0.009	0.123	0.000	1675.845	1.210	1128.490	24.540	5.340	0.543	-6.340	0.197	1714.182	0.917	44.677	0.098	93
+92	135	10	-	5.104	0.801	12.373	0.000	0.000	0.000	21.291	0.001	0.051	0.000	1682.297	0.008	879.111	26.874	0.911	0.548	-4.271	0.002	1721.285	0.005	43.257	0.003	94
+91	101	10	-	5.127	0.529	14.134	0.000	0.069	0.000	22.851	0.000	0.067	0.000	1774.452	0.004	1143.035	25.663	5.251	0.622	-6.708	0.000	1794.785	0.005	27.042	0.002	95
+93	68	10	-	5.267	0.116	13.506	0.000	0.000	0.000	23.168	0.000	0.044	0.000	1270.545	0.042	903.954	16.269	3.013	0.114	-3.875	0.000	1513.010	0.016	246.341	0.028	96
+90	98	10	-	5.488	0.197	12.076	0.000	0.052	0.000	22.598	0.000	0.064	0.000	1417.480	0.000	1486.365	17.352	4.645	0.302	1.068	0.000	1464.918	0.004	46.366	0.002	97
+95	78	10	-	5.560	0.457	16.706	0.008	0.000	0.000	25.451	0.140	0.036	0.000	1842.725	31.353	944.442	50.103	0.728	0.730	-4.713	0.093	1894.173	29.224	56.160	2.221	98
+94	24	10	-	5.636	0.329	8.495	0.000	0.034	0.000	14.545	0.000	0.106	0.000	1438.640	0.007	1052.645	15.771	1.940	0.237	-0.598	0.000	1481.457	0.004	43.412	0.003	99
+98	82	10	-	5.912	1.108	9.062	0.000	0.000	0.000	15.621	0.000	0.085	0.000	1579.757	0.022	1004.099	15.653	5.426	1.168	-6.184	0.000	1665.025	0.011	91.451	0.016	100
+100	102	10	-	6.178	0.304	7.429	0.009	0.000	0.000	13.326	0.125	0.110	0.002	1579.557	20.718	876.049	15.882	3.925	2.192	-5.419	1.923	1637.915	20.785	63.778	1.855	101
+101	73	10	-	6.491	1.286	5.274	1.121	0.112	0.009	9.331	1.965	0.220	0.043	1572.305	148.870	1132.720	36.265	8.968	1.519	-7.591	0.267	1636.495	138.775	71.783	10.363	102
+97	95	10	-	6.500	0.357	14.891	0.012	0.000	0.000	22.738	0.016	0.044	0.000	1324.383	41.675	1347.323	23.736	7.302	0.979	-1.935	0.308	1458.680	26.090	136.237	15.891	103
+103	16	10	-	6.598	0.717	13.543	0.000	0.000	0.000	25.565	0.000	0.037	0.000	1435.965	0.023	965.739	17.475	4.647	0.755	-3.499	0.000	1507.220	0.007	74.752	0.014	104
+113	131	10	-	6.748	0.706	11.362	0.097	0.000	0.000	21.172	0.035	0.052	0.000	1272.642	14.128	1152.102	20.187	2.181	0.890	2.808	0.199	1330.730	20.670	55.278	6.741	105
+99	26	10	-	6.777	0.221	14.549	0.000	0.034	0.000	22.246	0.000	0.057	0.000	1337.785	0.005	1237.665	9.368	12.623	0.281	-7.317	0.000	1377.372	0.004	46.903	0.001	106
+111	140	10	-	6.779	0.467	13.408	0.000	0.000	0.000	21.842	0.000	0.048	0.000	1701.625	0.009	1130.092	12.459	7.382	0.510	-6.848	0.000	1747.780	0.000	53.005	0.004	107
+102	70	10	-	6.859	0.368	14.104	0.000	0.034	0.000	23.831	0.000	0.053	0.000	1421.310	0.007	1245.168	28.046	7.072	0.205	-2.606	0.000	1481.862	0.004	63.157	0.003	108
+104	128	10	-	6.979	0.272	7.750	0.000	0.000	0.000	15.894	0.000	0.086	0.000	1565.898	0.004	1165.102	17.917	2.422	0.296	0.114	0.000	1609.468	0.004	43.454	0.002	109
+105	37	10	-	7.074	0.273	11.212	0.000	0.017	0.000	19.176	0.000	0.066	0.000	1435.567	0.004	1069.815	30.137	5.507	0.352	-2.716	0.000	1495.420	0.000	62.566	0.003	110
+107	63	10	-	7.255	0.593	12.974	0.000	0.017	0.000	23.438	0.000	0.049	0.000	1090.135	0.005	1330.148	10.453	2.694	0.583	6.481	0.000	1144.622	0.004	48.006	0.003	111
+110	141	10	-	7.577	0.087	14.993	0.000	0.000	0.000	26.718	0.000	0.034	0.000	1348.737	0.004	1125.025	15.059	3.369	0.154	1.314	0.001	1415.803	0.004	65.755	0.004	112
+112	39	10	-	7.717	1.437	13.076	0.000	0.034	0.000	21.292	0.000	0.062	0.000	1418.793	0.004	1031.657	36.860	7.200	1.546	-3.905	0.000	1469.900	0.000	55.008	0.004	113
+115	87	10	-	7.749	0.454	13.090	0.000	0.000	0.000	23.222	0.000	0.044	0.000	1476.158	0.011	1272.345	14.120	8.203	0.331	-3.187	0.001	1542.362	0.004	69.394	0.007	114
+114	19	10	-	8.156	0.557	9.610	0.000	0.000	0.000	14.939	0.000	0.089	0.000	1217.220	0.000	1305.247	14.882	12.752	0.458	-4.164	0.000	1257.840	0.000	44.788	0.001	115
+121	145	10	-	8.234	0.328	10.233	0.000	0.000	0.000	18.503	0.000	0.065	0.000	1947.057	0.004	867.776	31.685	3.537	0.526	-6.582	0.000	1988.970	0.000	48.495	0.001	116
+119	136	10	-	8.348	0.416	14.705	0.000	0.034	0.000	25.924	0.000	0.047	0.000	1386.100	0.007	1184.423	17.051	4.270	0.435	1.673	0.001	1426.608	0.004	38.834	0.003	117
+122	108	10	-	8.381	0.460	14.681	0.085	0.000	0.000	23.063	0.127	0.043	0.001	1232.655	19.625	1256.318	24.006	9.329	0.902	-1.541	0.488	1314.030	2.905	82.916	16.234	118
+118	59	10	-	8.410	0.499	14.607	0.000	0.000	0.000	22.480	0.000	0.045	0.000	1369.202	0.004	1270.800	13.880	9.935	0.543	-3.034	0.000	1418.590	0.000	52.421	0.003	119
+117	6	10	-	8.515	0.753	15.939	0.155	0.000	0.000	24.412	0.259	0.039	0.000	1449.795	8.149	1040.126	30.813	3.445	1.306	-0.055	0.320	1552.490	52.943	102.751	44.470	120
+116	25	10	-	8.519	0.328	14.667	0.000	0.034	0.000	24.106	0.000	0.052	0.000	1754.810	0.000	914.418	13.386	7.544	0.397	-8.388	0.000	1842.332	0.004	95.912	0.001	121
+123	67	10	-	8.816	0.536	10.832	0.000	0.000	0.000	18.596	0.000	0.064	0.000	1463.985	0.005	1034.602	12.469	6.496	0.480	-2.527	0.000	1516.725	0.005	55.269	0.003	122
+120	109	10	-	8.886	0.324	13.897	0.000	0.000	0.000	22.887	0.000	0.044	0.000	1739.505	0.005	1021.742	10.450	10.462	0.263	-9.293	0.000	1784.128	0.004	53.917	0.000	123
+126	116	10	-	9.037	0.868	13.219	0.286	0.000	0.000	25.431	1.049	0.038	0.003	1717.020	26.917	1053.345	24.494	5.122	1.014	-4.705	1.799	1910.625	57.426	198.310	32.310	124
+127	110	10	-	9.102	0.544	12.595	0.000	0.000	0.000	20.109	0.000	0.055	0.000	1458.440	0.000	1326.795	8.218	10.158	0.491	-2.662	0.000	1484.760	0.000	28.977	0.001	125
+128	94	10	-	9.273	0.182	11.377	0.000	0.000	0.000	20.295	0.000	0.055	0.000	1350.680	0.007	1263.432	15.692	4.961	0.186	3.037	0.000	1394.020	0.000	40.300	0.003	126
+124	13	10	-	9.465	0.169	13.992	0.000	0.000	0.000	23.157	0.000	0.043	0.000	1146.433	0.013	1120.465	15.556	10.227	0.270	-1.592	0.000	1201.948	0.004	57.108	0.007	127
+130	45	10	-	9.550	0.386	9.814	0.000	0.017	0.000	16.010	0.001	0.087	0.000	1554.797	0.004	1074.615	29.539	8.300	0.409	-4.112	0.000	1606.680	0.000	55.995	0.002	128
+135	152	10	-	9.610	0.259	15.446	0.000	0.000	0.000	23.011	0.000	0.043	0.000	1665.850	0.000	946.076	8.652	5.728	0.268	-4.098	0.000	1739.930	0.000	78.180	0.001	129
+125	93	10	-	9.689	0.119	13.345	0.366	0.000	0.000	23.264	0.111	0.043	0.000	1423.375	94.377	1040.887	98.513	5.578	0.171	-0.319	2.153	1483.550	109.385	60.492	17.162	130
+133	115	10	-	9.787	0.539	13.502	0.000	0.034	0.000	22.814	0.000	0.056	0.000	1637.325	0.005	1220.587	16.638	9.947	0.458	-4.921	0.001	1691.818	0.004	59.413	0.004	131
+131	114	10	-	9.826	0.114	13.465	0.000	0.000	0.000	20.399	0.000	0.053	0.000	1818.070	0.000	1053.033	18.751	9.771	0.258	-8.246	0.000	1874.900	0.000	65.072	0.001	132
+129	3	10	-	10.018	0.127	14.428	0.000	0.034	0.000	22.032	0.000	0.058	0.000	1549.895	0.005	1118.065	42.148	12.787	0.454	-7.537	0.001	1587.460	0.000	45.103	0.003	133
+132	119	10	-	10.143	0.318	14.591	0.000	0.000	0.000	23.723	0.000	0.041	0.000	2030.400	0.000	983.656	8.263	4.708	0.325	-5.477	0.000	2069.310	0.000	44.387	0.001	134
+136	150	10	-	10.431	0.253	14.509	0.338	0.073	0.007	23.445	0.046	0.067	0.003	2007.825	335.507	1296.773	80.914	10.058	1.357	-7.287	5.448	2055.438	339.336	54.902	9.277	135
+150	137	10	-	10.486	0.981	13.674	0.276	0.026	0.009	21.535	0.203	0.057	0.004	1802.435	67.949	850.777	19.785	5.939	1.057	-6.012	0.908	1900.545	36.937	104.120	32.144	136
+134	96	10	-	10.666	0.361	14.905	0.000	0.000	0.000	23.611	0.000	0.042	0.000	1180.222	0.008	1197.192	20.594	9.497	0.535	0.430	0.001	1271.465	0.005	90.810	0.004	137
+145	130	10	-	10.686	0.215	10.825	0.001	0.069	0.000	18.924	0.000	0.085	0.000	1267.947	0.004	1066.520	11.839	6.859	0.271	0.757	0.000	1374.340	0.000	105.638	0.005	138
+137	97	10	-	10.744	0.356	11.161	0.121	0.000	0.000	17.162	0.102	0.071	0.000	1500.715	119.809	1067.945	5.794	12.386	1.759	-6.461	0.315	1543.383	131.415	49.125	11.293	139
+138	89	10	-	10.796	0.255	8.739	0.000	0.017	0.000	14.675	0.000	0.099	0.000	1540.630	0.000	1060.565	11.528	12.264	0.289	-6.895	0.000	1596.385	0.005	62.650	0.001	140
+141	122	10	-	10.930	0.437	14.198	0.141	0.000	0.000	23.447	0.395	0.043	0.001	1390.735	77.045	1002.527	29.545	8.394	0.193	-1.835	0.884	1437.828	84.728	48.932	8.567	141
+139	50	10	-	10.969	0.619	10.602	0.000	0.000	0.000	18.906	0.000	0.063	0.000	1799.200	0.000	766.240	37.212	1.470	0.550	-1.686	0.000	1882.990	0.000	85.470	0.001	142
+147	120	10	-	11.521	0.159	4.285	0.000	0.121	0.000	8.527	0.000	0.243	0.000	1526.737	0.004	1528.830	15.598	15.387	0.301	-5.049	0.000	1642.110	0.000	120.418	0.003	143
+140	58	10	-	11.638	0.280	11.900	0.000	0.017	0.000	18.863	0.000	0.067	0.000	1899.500	0.000	1081.518	33.994	5.711	0.435	-2.672	0.000	1938.750	0.000	41.925	0.000	144
+142	31	10	-	12.238	0.461	13.303	0.000	0.000	0.000	21.021	0.000	0.051	0.000	1406.755	0.009	1096.230	19.810	11.836	0.584	-3.236	0.000	1456.838	0.004	53.317	0.006	145
+143	151	10	-	12.714	0.279	7.749	0.000	0.000	0.000	13.417	0.000	0.108	0.000	1964.388	0.004	896.694	19.473	6.427	0.348	-4.948	0.001	2015.227	0.004	55.788	0.002	146
+144	129	10	-	12.743	0.384	13.927	0.169	0.000	0.000	20.877	0.157	0.051	0.001	1557.322	37.718	937.363	18.414	7.410	1.237	-1.420	1.619	1611.295	33.980	55.392	2.120	147
+146	132	10	-	12.926	0.195	13.916	0.000	0.000	0.000	22.376	0.000	0.046	0.000	1836.933	0.004	878.615	11.559	11.218	0.259	-8.685	0.000	1909.210	0.000	80.959	0.002	148
+148	99	10	-	13.625	0.374	9.809	0.371	0.000	0.000	21.326	1.560	0.054	0.006	1819.340	7.577	948.136	21.599	10.081	0.705	-5.718	0.542	1868.615	8.389	54.990	1.051	149
+149	86	10	-	14.127	0.142	12.241	0.000	0.000	0.000	20.385	0.001	0.054	0.000	1876.680	0.000	793.395	14.295	7.999	0.164	-5.168	0.000	1917.780	0.000	46.262	0.001	150
+151	139	10	-	14.803	0.643	14.398	0.000	0.000	0.000	22.842	0.000	0.044	0.000	1558.020	0.007	877.430	6.677	7.620	0.660	-0.349	0.000	1630.265	0.005	72.595	0.004	151
+152	92	10	-	16.300	0.353	12.552	0.000	0.000	0.000	18.676	0.000	0.062	0.000	1163.448	0.008	1243.952	7.434	15.781	0.397	1.090	0.000	1187.940	0.000	23.400	0.002	152
 </pre>
 </details>
 <br>
@@ -1565,7 +1667,7 @@ We are providing in the `scripts` directory a simple script that extract some cl
 To use is simply call the script with as argument the run directory you want to analyse, e.g.:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-NMR-epitope-pass
+   ./scripts/extract-capri-stats-clt.sh ./runs/scenario1-surface
 </a>
 
 
@@ -1575,24 +1677,25 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== run2-mpi-surface/4_caprieval/capri_clt.tsv
+== ./runs/scenario1-surface//4_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  2  out of  142
-Total number of medium or better clusters:      1  out of  142
-Total number of high quality clusters:          0  out of  142
+Total number of acceptable or better clusters:  2  out of  152
+Total number of medium or better clusters:      1  out of  152
+Total number of high quality clusters:          0  out of  152
 
-First acceptable cluster - rank:  41  i-RMSD:  2.535  Fnat:  0.345  DockQ:  0.441
-First medium cluster     - rank:  54  i-RMSD:  1.483  Fnat:  0.616  DockQ:  0.684
-Best cluster             - rank:  54  i-RMSD:  1.483  Fnat:  0.616  DockQ:  0.684
+First acceptable cluster - rank:  43  i-RMSD:  2.535  Fnat:  0.345  DockQ:  0.423
+First medium cluster     - rank:  54  i-RMSD:  1.684  Fnat:  0.526  DockQ:  0.622
+Best cluster             - rank:  54  i-RMSD:  1.684  Fnat:  0.526  DockQ:  0.622
 ==============================================
-== run2-mpi-surface/9_caprieval/capri_clt.tsv
+== ./runs/scenario1-surface//9_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  2  out of  123
-Total number of medium or better clusters:      1  out of  123
-Total number of high quality clusters:          0  out of  123
+Total number of acceptable or better clusters:  2  out of  127
+Total number of medium or better clusters:      1  out of  127
+Total number of high quality clusters:          0  out of  127
 
-First acceptable cluster - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
-First medium cluster     - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
+First acceptable cluster - rank:  1  i-RMSD:  1.678  Fnat:  0.733  DockQ:  0.669
+First medium cluster     - rank:  1  i-RMSD:  1.678  Fnat:  0.733  DockQ:  0.669
+Best cluster             - rank:  1  i-RMSD:  1.678  Fnat:  0.733  DockQ:  0.669
 </pre>
 </details>
 <br>
@@ -1601,7 +1704,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario2a-NMR-epitope-pass
+   ./scripts/extract-capri-stats.sh ./runs/scenario1-surface
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1610,25 +1713,25 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== run2-mpi-surface/4_caprieval/capri_ss.tsv
+== ./runs/scenario1-surface/4_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  20  out of  1420
-Total number of medium or better models:      9  out of  1420
-Total number of high quality models:          0  out of  1420
+Total number of acceptable or better models:  20  out of  1520
+Total number of medium or better models:      8  out of  1520
+Total number of high quality models:          0  out of  1520
 
-First acceptable model - rank:  372  i-RMSD:  2.535  Fnat:  0.345  DockQ:  0.441
-First medium model     - rank:  511  i-RMSD:  1.282  Fnat:  0.707  DockQ:  0.741
-Best model             - rank:  574  i-RMSD:  1.049  Fnat:  0.569  DockQ:  0.721
+First acceptable model - rank:  344  i-RMSD:  2.535  Fnat:  0.345  DockQ:  0.423
+First medium model     - rank:  491  i-RMSD:  1.282  Fnat:  0.707  DockQ:  0.738
+Best model             - rank:  559  i-RMSD:  1.282  Fnat:  0.707  DockQ:  0.738
 ==============================================
-== run2-mpi-surface/9_caprieval/capri_ss.tsv
+== ./runs/scenario1-surface/9_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  22  out of  1379
-Total number of medium or better models:      11  out of  1379
-Total number of high quality models:          0  out of  1379
+Total number of acceptable or better models:  22  out of  1475
+Total number of medium or better models:      13  out of  1475
+Total number of high quality models:          0  out of  1475
 
-First acceptable model - rank:  1  i-RMSD:  1.165  Fnat:  0.879  DockQ:  0.822
-First medium model     - rank:  1  i-RMSD:  1.165  Fnat:  0.879  DockQ:  0.822
-Best model             - rank:  11  i-RMSD:  1.038  Fnat:  0.862  DockQ:  0.835
+First acceptable model - rank:  1  i-RMSD:  1.518  Fnat:  0.810  DockQ:  0.722
+First medium model     - rank:  1  i-RMSD:  1.518  Fnat:  0.810  DockQ:  0.722
+Best model             - rank:  17  i-RMSD:  1.197  Fnat:  0.879  DockQ:  0.811
 </pre>
 </details>
 <br>
@@ -1664,6 +1767,7 @@ the larger the conformational changes that can be induced.
 <br>
 
 
+
 #### Analysis scenario 1: visualising the scores and their components
 
 We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
@@ -1697,26 +1801,24 @@ Cluster statistics (distributions of values per cluster ordered according to the
 ### Analysis scenario 2a: Paratope - NMR-epitope as passive
 
 
-Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory (note that to save space only partial data have been kept in this pre-calculated runs, but all relevant information for this tutorial is available).
+Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
+Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and 
 
-First of all let us check the final cluster statistics. 
-
-<a class="prompt prompt-info">Inspect the _capri_clt.tsv_ file</a>
+<a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
 <i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
-1       6       10      -       -137.815        5.725   1.192   0.126   0.797   0.051   2.581   0.713   0.774   0.044   1
-2       2       16      -       -109.687        4.310   14.951  0.044   0.069   0.000   22.895  0.030   0.067   0.000   2
-3       8       4       -       -105.095        13.247  14.909  0.119   0.069   0.000   23.066  0.336   0.066   0.001   3
-4       5       10      -       -100.189        4.222   5.148   0.024   0.130   0.015   10.476  0.586   0.202   0.014   4
-5       1       21      -       -88.813 8.067   8.637   0.162   0.125   0.014   15.842  0.277   0.126   0.004   5
-6       4       10      -       -84.534 6.278   4.258   0.119   0.233   0.076   8.326   0.256   0.284   0.027   6
-7       7       9       -       -67.116 5.464   6.978   0.279   0.138   0.012   13.652  0.502   0.154   0.010   7
-8       3       10      -       -52.597 8.348   4.736   0.334   0.125   0.014   9.410   0.615   0.223   0.017   8
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	7	10	-	-138.617	3.623	1.302	0.095	0.759	0.042	3.654	0.845	0.723	0.042	106.923	15.255	2007.338	29.881	4.998	2.064	-535.045	31.312	-475.421	23.968	-47.299	4.337	1
+2	2	17	-	-114.732	8.026	14.934	0.048	0.069	0.000	23.085	0.282	0.066	0.001	160.053	15.937	1925.930	68.200	4.355	4.005	-383.893	65.058	-282.153	44.813	-58.313	7.769	2
+3	6	10	-	-94.885	3.118	5.158	0.190	0.142	0.014	12.677	0.697	0.177	0.010	195.712	3.139	1678.185	4.775	8.844	0.929	-326.919	4.813	-189.123	5.020	-57.916	4.522	3
+4	1	20	-	-85.733	5.280	8.889	0.683	0.116	0.049	17.160	0.949	0.115	0.023	212.853	21.459	1542.527	57.393	6.435	2.591	-328.754	32.768	-163.602	15.475	-47.702	7.750	4
+5	5	10	-	-77.835	3.974	4.405	0.344	0.207	0.086	10.394	1.197	0.239	0.050	177.651	29.362	1644.388	54.484	11.269	2.084	-365.089	43.590	-221.289	30.831	-33.852	8.784	5
+6	4	10	-	-69.846	2.776	6.854	0.076	0.142	0.007	14.212	0.179	0.150	0.004	305.336	14.743	1491.412	41.939	4.152	1.676	-302.880	31.549	-41.500	23.024	-43.955	4.249	6
+7	3	10	-	-52.284	6.453	4.930	0.161	0.125	0.033	12.482	0.704	0.176	0.018	356.568	28.814	1228.580	69.244	5.359	1.823	-299.986	38.202	23.279	48.112	-33.303	2.374	7
 </pre>
 </details>
 <br>
@@ -1745,16 +1847,16 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 <i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
-1       1       10      -       -6.886  0.250   14.798  0.000   0.069   0.000   23.003  0.000   0.066   0.000   1
-2       4       10      -       -4.685  0.268   1.247   0.000   0.690   0.000   2.093   0.000   0.741   0.000   2
-3       5       10      -       -3.176  0.361   12.988  0.000   0.069   0.000   21.338  0.000   0.073   0.000   3
-4       6       10      -       -2.576  0.140   5.104   0.000   0.138   0.000   10.149  0.000   0.210   0.000   4
-5       3       10      -       -2.535  0.183   8.639   0.000   0.121   0.000   15.932  0.000   0.124   0.000   5
-6       2       10      -       0.258   0.306   10.007  0.027   0.048   0.008   17.988  0.047   0.084   0.003   6
-7       8       10      -       3.854   0.077   4.032   0.000   0.121   0.000   8.122   0.000   0.255   0.000   7
-8       9       10      -       4.665   0.189   7.100   0.000   0.121   0.000   13.749  0.000   0.147   0.000   8
-9       7       10      -       10.165  0.434   4.776   0.000   0.086   0.000   9.249   0.000   0.211   0.000   9
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	1	10	-	-7.065	0.204	14.798	0.000	0.069	0.000	23.304	0.000	0.066	0.000	800.213	0.006	1705.220	15.183	3.034	0.336	-1.039	0.001	798.194	0.002	-0.980	0.003	1
+2	4	10	-	-4.905	0.322	1.247	0.000	0.690	0.000	2.258	0.000	0.738	0.000	830.946	0.006	1750.490	10.557	12.935	0.295	-8.707	0.001	828.476	0.002	6.237	0.004	2
+3	5	10	-	-3.218	0.321	12.988	0.000	0.069	0.000	21.389	0.000	0.073	0.000	1250.720	0.007	1281.875	12.910	-2.070	0.282	-1.521	0.000	1317.727	0.004	68.529	0.003	3
+4	6	10	-	-2.754	0.136	5.104	0.000	0.138	0.000	12.428	0.000	0.179	0.000	1109.805	0.005	1381.213	18.673	3.933	0.265	-4.214	0.000	1129.680	0.000	24.088	0.003	4
+5	3	10	-	-2.534	0.181	8.639	0.000	0.121	0.000	16.823	0.000	0.118	0.000	1115.398	0.004	1139.723	20.158	4.226	0.286	-6.851	0.000	1141.970	0.000	33.428	0.001	5
+6	2	10	-	0.099	0.314	9.991	0.000	0.052	0.000	18.505	0.001	0.083	0.000	1069.392	0.061	1148.727	27.538	7.879	0.518	-7.227	0.001	1086.138	0.023	23.972	0.039	6
+7	8	10	-	3.994	0.158	4.033	0.001	0.121	0.000	10.360	0.000	0.215	0.000	1343.840	0.000	1164.535	21.845	7.108	0.196	-5.423	0.000	1390.040	0.000	51.623	0.001	7
+8	9	10	-	4.619	0.267	7.100	0.000	0.121	0.000	14.167	0.000	0.143	0.000	1523.870	0.007	1134.912	25.058	6.563	0.123	-6.186	0.000	1552.900	0.000	35.217	0.004	8
+9	7	10	-	10.174	0.445	4.776	0.000	0.086	0.000	11.416	0.000	0.178	0.000	1954.290	0.000	937.232	7.379	10.179	0.376	-10.952	0.000	2021.017	0.004	77.678	0.002	9
 </pre>
 </details>
 <br>
@@ -1793,25 +1895,25 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== scenario2a-NMR-epitope-pass//4_caprieval/capri_clt.tsv
+== ./runs/scenario2a-NMR-epitope-pass/4_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  9
 Total number of medium or better clusters:      1  out of  9
 Total number of high quality clusters:          0  out of  9
 
-First acceptable cluster - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
-First medium cluster     - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
-Best cluster             - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
+First acceptable cluster - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.738
+First medium cluster     - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.738
+Best cluster             - rank:  2  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.738
 ==============================================
-== scenario2a-NMR-epitope-pass//9_caprieval/capri_clt.tsv
+== ./runs/scenario2a-NMR-epitope-pass/9_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  1  out of  8
-Total number of medium or better clusters:      1  out of  8
-Total number of high quality clusters:          0  out of  8
+Total number of acceptable or better clusters:  1  out of  7
+Total number of medium or better clusters:      1  out of  7
+Total number of high quality clusters:          0  out of  7
 
-First acceptable cluster - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
-First medium cluster     - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
-Best cluster             - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
+First acceptable cluster - rank:  1  i-RMSD:  1.302  Fnat:  0.759  DockQ:  0.723
+First medium cluster     - rank:  1  i-RMSD:  1.302  Fnat:  0.759  DockQ:  0.723
+Best cluster             - rank:  1  i-RMSD:  1.302  Fnat:  0.759  DockQ:  0.723
 </pre>
 </details>
 <br>
@@ -1829,25 +1931,25 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== scenario2a-NMR-epitope-pass//4_caprieval/capri_ss.tsv
+== ./runs/scenario2a-NMR-epitope-pass/4_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  10  out of  90
 Total number of medium or better models:      10  out of  90
-Total number of high quality models:          2  out of  90
+Total number of high quality models:           1  out of  90
 
-First acceptable model - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
-First medium model     - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.741
-Best model             - rank:  18  i-RMSD:  0.980  Fnat:  0.586  DockQ:  0.739
+First acceptable model - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.738
+First medium model     - rank:  11  i-RMSD:  1.247  Fnat:  0.690  DockQ:  0.738
+Best model             - rank:  16  i-RMSD:  0.980  Fnat:  0.586  DockQ:  0.726
 ==============================================
-== scenario2a-NMR-epitope-pass//9_caprieval/capri_ss.tsv
+== ./runs/scenario2a-NMR-epitope-pass/9_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  10  out of  90
-Total number of medium or better models:      10  out of  90
-Total number of high quality models:          0  out of  90
+Total number of acceptable or better models:  12  out of  87
+Total number of medium or better models:      10  out of  87
+Total number of high quality models:          0  out of  87
 
-First acceptable model - rank:  1  i-RMSD:  1.252  Fnat:  0.793  DockQ:  0.770
-First medium model     - rank:  1  i-RMSD:  1.252  Fnat:  0.793  DockQ:  0.770
-Best model             - rank:  2  i-RMSD:  1.048  Fnat:  0.879  DockQ:  0.829
+First acceptable model - rank:  1  i-RMSD:  1.300  Fnat:  0.793  DockQ:  0.730
+First medium model     - rank:  1  i-RMSD:  1.300  Fnat:  0.793  DockQ:  0.730
+Best model             - rank:  5  i-RMSD:  1.029  Fnat:  0.810  DockQ:  0.811
 </pre>
 </details>
 <br>
@@ -1885,7 +1987,8 @@ the larger the conformational changes that can be induced.
 
 #### Analysis scenario 2a: visualising the scores and their components
 
-We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
+By setting `postprocess=true` in the config files, interactive plots have been automatically generated in the _analysis_ directory of the run.
+These are useful to visualise the scores and their components versus ranks and model quality. 
 
 <a class="prompt prompt-info">
 Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
@@ -1916,31 +2019,29 @@ Cluster statistics (distributions of values per cluster ordered according to the
 ### Analysis scenario 2b: Paratope - NMR-epitope as active
 
 
-Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory (note that to save space only partial data have been kept in this pre-calculated runs, but all relevant information for this tutorial is available).
+Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
+Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and 
 
-First of all let us check the final cluster statistics. 
-
-<a class="prompt prompt-info">Inspect the _capri_clt.tsv_ file</a>
+<a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
 <i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
-1       1       17      -       -148.986        7.256   1.774   0.659   0.690   0.136   4.096   1.402   0.652   0.138   1
-2       5       10      -       -131.282        3.481   14.993  0.055   0.069   0.000   23.430  0.078   0.065   0.000   2
-3       6       10      -       -109.953        10.789  4.999   0.104   0.130   0.009   10.137  0.730   0.209   0.013   3
-4       9       9       -       -108.985        6.842   5.048   0.702   0.310   0.068   9.739   1.195   0.277   0.045   4
-5       3       11      -       -102.771        11.794  14.779  0.157   0.095   0.009   23.291  0.274   0.074   0.004   5
-6       8       9       -       -100.618        16.534  4.691   0.704   0.250   0.058   8.812   1.324   0.279   0.051   6
-7       4       10      -       -94.901 3.834   9.640   0.464   0.077   0.015   18.645  0.917   0.091   0.010   7
-8       11      8       -       -86.147 6.887   3.785   0.420   0.383   0.058   7.878   1.242   0.355   0.048   8
-9       12      7       -       -85.281 13.431  14.745  0.102   0.077   0.019   23.084  0.106   0.069   0.006   9
-10      10      8       -       -85.188 8.390   3.042   0.195   0.483   0.056   6.999   0.304   0.425   0.025   10
-11      2       15      -       -81.657 7.278   13.872  0.749   0.086   0.012   22.271  0.727   0.075   0.004   11
-12      7       10      -       -81.123 2.345   7.474   0.122   0.172   0.000   15.516  0.447   0.147   0.004   12
-13      13      4       -       -68.804 9.982   14.468  0.091   0.090   0.014   22.792  0.056   0.075   0.005   13
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	1	17	-	-151.013	2.855	1.957	0.466	0.642	0.060	4.965	0.721	0.593	0.080	61.922	16.739	1986.370	29.972	6.632	4.202	-596.659	47.783	-579.241	41.814	-44.505	9.407	1
+2	5	10	-	-144.671	4.375	15.023	0.056	0.073	0.007	24.092	0.434	0.065	0.003	82.575	31.344	2050.332	52.230	1.109	1.544	-454.861	68.487	-435.350	64.144	-63.065	9.264	2
+3	4	10	-	-103.148	2.915	9.859	0.357	0.065	0.025	19.699	0.784	0.082	0.011	118.571	18.485	1422.492	48.831	1.077	3.734	-395.524	36.286	-313.930	36.565	-36.977	2.057	3
+4	2	11	-	-101.775	9.988	14.811	0.042	0.082	0.014	23.773	0.258	0.069	0.005	112.762	35.542	1733.245	136.770	5.903	1.639	-369.718	13.140	-301.966	31.881	-45.010	9.758	4
+5	12	4	-	-101.717	16.264	2.883	0.465	0.414	0.073	6.588	0.667	0.421	0.039	123.812	49.768	1620.057	171.832	8.321	3.108	-510.810	25.365	-407.254	30.156	-20.257	18.482	5
+6	6	10	-	-100.286	5.972	5.029	0.078	0.121	0.012	12.377	0.431	0.175	0.007	81.077	18.925	1527.888	25.942	6.652	1.287	-297.121	20.305	-271.666	30.603	-55.622	4.563	6
+7	3	10	-	-98.426	7.151	4.147	0.602	0.341	0.092	8.377	1.144	0.324	0.059	163.456	41.462	1654.400	57.204	-1.567	4.125	-331.139	27.013	-214.660	64.132	-46.976	4.973	7
+8	9	8	-	-91.198	8.435	3.061	0.163	0.509	0.029	7.763	0.751	0.417	0.024	95.083	5.502	1636.765	120.832	7.456	2.015	-383.475	21.166	-319.859	23.245	-31.468	7.111	8
+9	10	8	-	-89.350	5.243	14.907	0.197	0.095	0.019	24.223	0.525	0.072	0.006	108.123	28.325	1698.345	93.675	4.693	2.411	-294.506	48.615	-232.337	53.247	-45.954	8.366	9
+10	7	10	-	-78.992	5.846	7.589	0.167	0.164	0.008	16.501	0.352	0.137	0.002	141.345	58.004	1386.070	33.470	-0.716	1.791	-253.702	31.000	-154.028	33.843	-41.671	4.896	10
+11	11	6	-	-77.052	4.065	3.956	0.826	0.341	0.071	8.653	1.743	0.327	0.075	171.334	27.914	1501.757	87.948	6.200	3.838	-329.716	23.812	-192.825	44.069	-34.442	5.191	11
+12	8	8	-	-67.688	6.454	14.580	0.019	0.086	0.012	23.018	0.239	0.072	0.005	148.451	30.560	1652.513	97.272	3.496	1.602	-203.546	55.957	-100.415	43.751	-45.320	6.620	12
 </pre>
 </details>
 <br>
@@ -1967,21 +2068,19 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 <i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std             caprieval_rank
-1       7       10      -       -13.629 0.864   2.514   0.090   0.332   0.007   5.341   0.156   0.437   0.010   1
-2       5       10      -       -13.011 1.684   7.800   0.011   0.138   0.000   15.447  0.052   0.135   0.000   2
-3       1       10      -       -11.014 0.302   1.083   0.063   0.733   0.062   2.661   0.486   0.766   0.032   3
-4       3       10      -       -10.651 0.900   5.020   0.032   0.168   0.007   9.968   0.075   0.224   0.004   4
-5       4       10      -       -9.350  1.336   14.819  0.022   0.069   0.000   23.182  0.033   0.066   0.000   5
-6       2       10      -       -8.480  0.941   9.877   0.785   0.043   0.045   18.943  1.710   0.079   0.026   6
-7       14      10      -       -6.270  0.901   12.963  0.009   0.069   0.000   21.422  0.039   0.073   0.000   7
-8       6       10      -       -3.691  0.591   14.746  0.008   0.069   0.000   23.205  0.031   0.066   0.000   8
-10      9       10      -       -2.325  2.898   3.434   0.489   0.267   0.029   7.040   1.183   0.344   0.048   9
-9       8       10      -       -1.813  0.530   3.220   0.088   0.336   0.026   7.050   0.360   0.369   0.005   10
-12      12      10      -       -0.867  1.673   5.290   0.416   0.181   0.015   10.690  1.286   0.216   0.023   11
-11      11      10      -       0.309   1.236   14.796  0.397   0.052   0.012   23.420  0.358   0.059   0.005   12
-13      13      10      -       3.010   1.008   4.422   0.490   0.185   0.033   7.855   0.843   0.278   0.035   13
-14      10      10      -       5.161   0.834   14.703  0.060   0.052   0.000   23.147  0.239   0.060   0.001   14
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	6	10	-	-14.099	0.485	2.534	0.060	0.328	0.000	6.091	0.186	0.416	0.006	497.929	84.662	1549.405	36.228	12.766	0.474	-16.378	0.493	484.394	89.658	2.844	5.623	1
+2	5	10	-	-13.662	1.131	7.797	0.008	0.138	0.000	16.855	0.109	0.126	0.001	728.546	171.645	1173.928	15.754	-3.900	0.575	-5.855	0.132	777.477	174.737	54.786	8.386	2
+3	1	10	-	-11.313	0.323	1.048	0.090	0.737	0.026	2.716	0.487	0.772	0.017	393.784	59.151	1658.795	79.415	11.225	0.683	-9.950	0.631	390.030	72.124	6.196	17.950	3
+4	3	10	-	-9.839	0.266	5.023	0.016	0.168	0.007	12.101	0.046	0.194	0.003	408.853	105.262	1349.137	18.104	5.414	0.889	-5.624	0.400	380.563	108.924	-22.667	6.196	4
+5	4	10	-	-9.326	1.678	14.812	0.010	0.069	0.000	23.503	0.056	0.065	0.000	380.995	98.521	1677.188	22.301	5.271	1.050	-1.377	0.204	353.849	106.067	-25.768	7.771	5
+7	11	10	-	-9.256	0.749	4.689	0.384	0.237	0.019	10.175	0.794	0.248	0.021	997.843	119.928	1262.298	9.238	-4.968	0.214	-1.769	1.706	1008.617	125.287	12.542	8.265	6
+6	2	10	-	-8.233	0.486	10.223	0.245	0.026	0.015	21.128	0.934	0.062	0.009	581.415	155.264	1036.009	53.300	1.424	0.492	-5.174	1.459	582.590	159.417	6.348	8.379	7
+8	7	10	-	-3.262	0.604	14.741	0.012	0.069	0.000	23.565	0.052	0.065	0.000	676.043	49.459	1149.500	14.839	9.827	0.292	-8.472	0.095	679.402	52.646	11.831	3.553	8
+10	8	10	-	-2.096	1.711	3.685	0.709	0.272	0.041	8.101	1.996	0.321	0.068	708.926	377.133	1167.398	7.469	11.135	1.233	-8.820	2.498	717.466	390.544	17.360	15.407	9
+9	9	10	-	-1.996	0.489	3.210	0.084	0.332	0.026	8.203	0.501	0.343	0.009	398.137	131.501	1060.155	56.080	12.793	0.944	-8.149	1.179	387.985	134.607	-2.003	5.126	10
+12	10	10	-	-1.280	2.048	14.353	0.513	0.038	0.008	22.816	0.551	0.057	0.003	869.164	86.949	1255.027	53.327	6.427	3.491	-4.390	2.183	918.969	91.260	54.194	7.974	11
+11	12	10	-	-1.104	3.228	14.742	0.077	0.052	0.000	24.131	0.342	0.058	0.001	574.145	40.525	1146.227	48.875	4.858	2.295	-0.342	0.112	583.846	49.827	10.042	11.138	12
 </pre>
 </details>
 <br>
@@ -2006,7 +2105,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 Use the `extract-capri-stats-clt.sh` script to extract some simple cluster statistics for this run.
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2b-NMR-epitope-pass
+   ./scripts/extract-capri-stats-clt.sh runs/scenario2b-NMR-epitope-act/
 </a>
 
 
@@ -2016,25 +2115,25 @@ Use the `extract-capri-stats-clt.sh` script to extract some simple cluster stati
  </summary>
 <pre>
 ==============================================
-== scenario2b-NMR-epitope-act//4_caprieval/capri_clt.tsv
+== runs/scenario2b-NMR-epitope-act//4_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  4  out of  14
-Total number of medium or better clusters:      1  out of  14
-Total number of high quality clusters:          0  out of  14
+Total number of acceptable or better clusters:  4  out of  12
+Total number of medium or better clusters:      1  out of  12
+Total number of high quality clusters:          0  out of  12
 
-First acceptable cluster - rank:  1  i-RMSD:  2.514  Fnat:  0.332  DockQ:  0.437
-First medium cluster     - rank:  3  i-RMSD:  1.083  Fnat:  0.733  DockQ:  0.766
-Best cluster             - rank:  3  i-RMSD:  1.083  Fnat:  0.733  DockQ:  0.766
+First acceptable cluster - rank:  1  i-RMSD:  2.534  Fnat:  0.328  DockQ:  0.416
+First medium cluster     - rank:  3  i-RMSD:  1.048  Fnat:  0.737  DockQ:  0.772
+Best cluster             - rank:  3  i-RMSD:  1.048  Fnat:  0.737  DockQ:  0.772
 ==============================================
-== scenario2b-NMR-epitope-act//9_caprieval/capri_clt.tsv
+== runs/scenario2b-NMR-epitope-act//9_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  3  out of  13
-Total number of medium or better clusters:      1  out of  13
-Total number of high quality clusters:          0  out of  13
+Total number of acceptable or better clusters:  4  out of  12
+Total number of medium or better clusters:      1  out of  12
+Total number of high quality clusters:          0  out of  12
 
-First acceptable cluster - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
-First medium cluster     - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
-Best cluster             - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
+First acceptable cluster - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
+First medium cluster     - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
+Best cluster             - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
 </pre>
 </details>
 <br>
@@ -2052,25 +2151,25 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== scenario2b-NMR-epitope-act//4_caprieval/capri_ss.tsv
+== runs/scenario2b-NMR-epitope-act//4_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  36  out of  140
-Total number of medium or better models:      10  out of  140
-Total number of high quality models:          1  out of  140
+Total number of acceptable or better models:  34  out of  120
+Total number of medium or better models:      10  out of  120
+Total number of high quality models:           2  out of  120
 
-First acceptable model - rank:  2  i-RMSD:  2.533  Fnat:  0.328  DockQ:  0.434
-First medium model     - rank:  13  i-RMSD:  1.152  Fnat:  0.810  DockQ:  0.794
-Best model             - rank:  15  i-RMSD:  0.982  Fnat:  0.776  DockQ:  0.803
+First acceptable model - rank:   2  i-RMSD:  2.533  Fnat:  0.328  DockQ:  0.416
+First medium model     - rank:  11  i-RMSD:  1.035  Fnat:  0.724  DockQ:  0.757
+Best model             - rank:  19  i-RMSD:  0.978  Fnat:  0.741  DockQ:  0.779
 ==============================================
-== scenario2b-NMR-epitope-act//9_caprieval/capri_ss.tsv
+== runs/scenario2b-NMR-epitope-act//9_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  31  out of  128
-Total number of medium or better models:      10  out of  128
-Total number of high quality models:          6  out of  128
+Total number of acceptable or better models:  35  out of  112
+Total number of medium or better models:      11  out of  112
+Total number of high quality models:           4  out of  112
 
-First acceptable model - rank:  1  i-RMSD:  2.554  Fnat:  0.552  DockQ:  0.506
-First medium model     - rank:  2  i-RMSD:  1.051  Fnat:  0.897  DockQ:  0.834
-Best model             - rank:  10  i-RMSD:  0.894  Fnat:  0.845  DockQ:  0.854
+First acceptable model - rank:   1  i-RMSD:  2.431  Fnat:  0.586  DockQ:  0.515
+First medium model     - rank:   3  i-RMSD:  1.922  Fnat:  0.638  DockQ:  0.597
+Best model             - rank:  10  i-RMSD:  0.758  Fnat:  0.845  DockQ:  0.871
 </pre>
 </details>
 <br>
@@ -2140,38 +2239,38 @@ Clearly all three scenarios give good results with an acceptable cluster in all 
 
 {% highlight shell %}
 
-=============================================================
-== scenario1-surface//9_caprieval/capri_clt.tsv
-=============================================================
-Total number of acceptable or better clusters:  2  out of  123
-Total number of medium or better clusters:      1  out of  123
-Total number of high quality clusters:          0  out of  123
+==============================================
+== ./runs/scenario1-surface/9_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  22  out of  1475
+Total number of medium or better models:      13  out of  1475
+Total number of high quality models:           0  out of  1475
 
-First acceptable cluster - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
-First medium cluster     - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
-Best cluster             - rank:  1  i-RMSD:  1.466  Fnat:  0.797  DockQ:  0.743
+First acceptable model - rank:   1  i-RMSD:  1.518  Fnat:  0.810  DockQ:  0.722
+First medium model     - rank:   1  i-RMSD:  1.518  Fnat:  0.810  DockQ:  0.722
+Best model             - rank:  17  i-RMSD:  1.197  Fnat:  0.879  DockQ:  0.811
 
-=============================================================
-== scenario2a-NMR-epitope-pass//9_caprieval/capri_clt.tsv
-=============================================================
-Total number of acceptable or better clusters:  1  out of  8
-Total number of medium or better clusters:      1  out of  8
-Total number of high quality clusters:          0  out of  8
+==============================================
+== runs/scenario2b-NMR-epitope-act//4_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  4  out of  12
+Total number of medium or better clusters:      1  out of  12
+Total number of high quality clusters:          0  out of  12
 
-First acceptable cluster - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
-First medium cluster     - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
-Best cluster             - rank:  1  i-RMSD:  1.192  Fnat:  0.797  DockQ:  0.774
+First acceptable cluster - rank:  1  i-RMSD:  2.534  Fnat:  0.328  DockQ:  0.416
+First medium cluster     - rank:  3  i-RMSD:  1.048  Fnat:  0.737  DockQ:  0.772
+Best cluster             - rank:  3  i-RMSD:  1.048  Fnat:  0.737  DockQ:  0.772
 
-=============================================================
-== scenario2b-NMR-epitope-act//9_caprieval/capri_clt.tsv
-=============================================================
-Total number of acceptable or better clusters:  3  out of  13
-Total number of medium or better clusters:      1  out of  13
-Total number of high quality clusters:          0  out of  13
+==============================================
+== runs/scenario2b-NMR-epitope-act//9_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  4  out of  12
+Total number of medium or better clusters:      1  out of  12
+Total number of high quality clusters:          0  out of  12
 
-First acceptable cluster - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
-First medium cluster     - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
-Best cluster             - rank:  1  i-RMSD:  1.774  Fnat:  0.690  DockQ:  0.652
+First acceptable cluster - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
+First medium cluster     - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
+Best cluster             - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
 
 {% endhighlight %}
 
