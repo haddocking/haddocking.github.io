@@ -1678,7 +1678,7 @@ To use is simply call the script with as argument the run directory you want to 
 
 <details style="background-color:#DAE4E7">
  <summary style="text-align: center;">
-  <span class="material-symbols-rounded">expand_more</span> <i>View the output of the script</i>
+  <i class="material-icons">expand_more</i><i>View the output of the script</i>
  </summary>
 <pre>
 ==============================================
