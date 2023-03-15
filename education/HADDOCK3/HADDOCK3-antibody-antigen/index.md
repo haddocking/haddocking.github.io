@@ -131,7 +131,8 @@ You will find in that directory all input and precalculatd data and scripts requ
 ### Setup for the 2022 EU-ASEAN HPC school on Fugaku
 
 <details>
-<summary style="bold">View details
+  <summary style="bold">
+  View details <i class="material-icons">expand_more</i>
  </summary>
 
 The software and data required for this tutorial have been pre-installed on Fugaku.
@@ -459,7 +460,7 @@ Do the identified residues form a well defined patch on the surface?
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <b><i>See surface view of the paratope:</i></b>
+    <b><i>See surface view of the paratope</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
     <img width="50%" src="./antibody-paratope.png">
@@ -606,7 +607,7 @@ The answer to that question should be yes, but we can see some residues not colo
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <b><i>See surface view of the epitope identified by NMR</i></b>
+    <b><i>See surface view of the epitope identified by NMR</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
     <img width="50%" src="./antigen-epitope.png">
@@ -818,7 +819,7 @@ _**Note**_: This is also the execution mode that should be used for example when
 
 <details>
   <summary style="bold">
-    <i>View an example script for submitting via the slurm batch system:</i>
+    <i>View an example script for submitting via the slurm batch system</i> <i class="material-icons">expand_more</i>
   </summary>
 
   {% highlight shell %}
@@ -845,7 +846,7 @@ _**Note**_: This is also the execution mode that should be used for example when
 
 <details>
 <summary style="bold">
-View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system:
+View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system <i class="material-icons">expand_more</i>
  </summary>
 {% highlight shell %}
 #!/bin/bash
@@ -915,7 +916,7 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 <details>
   <summary style="bold">
-    <i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system:</i>
+    <i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system</i> <i class="material-icons">expand_more</i>
   </summary>
   {% highlight shell %}
   #!/bin/bash
@@ -1335,7 +1336,7 @@ First of all let us check the final cluster statistics.
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1489,7 +1490,7 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1659,7 +1660,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
     <p>
       After rigid body docking the first acceptable cluster is at rank 41. After refinement it scores at the top with score significantly better than the second-ranked cluster!
@@ -1677,8 +1678,8 @@ To use is simply call the script with as argument the run directory you want to 
 
 
 <details style="background-color:#DAE4E7">
- <summary style="text-align: center;">
-  <i class="material-icons">expand_more</i><i>View the output of the script</i>
+ <summary style="text-align: center">
+  <i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1715,7 +1716,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script:</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1751,7 +1752,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     In terms of iRMSD values we only observe very small differences in the best models, but the change in ranking is impressive!
@@ -1768,7 +1769,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
@@ -1816,7 +1817,7 @@ Go into the _analysis/9_caprieval_analysis_  directory of the respective run dir
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1851,7 +1852,7 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1879,7 +1880,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     After rigid body docking the first acceptable cluster is at rank 2. After refinement it scores at the top with score significantly better than the second-ranked cluster.
@@ -1899,7 +1900,7 @@ To use is simply call the script with as argument the run directory you want to 
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1935,7 +1936,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1970,7 +1971,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     In terms of iRMSD values we only observe very small differences with a slight increase.
@@ -1986,7 +1987,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
@@ -2034,7 +2035,7 @@ Go into the _analysis/9_caprieval_analysis_  directory of the respective run dir
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -2066,7 +2067,7 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -2096,7 +2097,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer </i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     After rigid body docking the first acceptable cluster is at rank 1 and the same is true after refinement, but the iRMSD values have improved.
@@ -2114,7 +2115,7 @@ Use the `extract-capri-stats-clt.sh` script to extract some simple cluster stati
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+  <i>View the output of the script </i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -2150,7 +2151,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -2186,7 +2187,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
     In this case we observe a small improvement in terms of iRMSD values and quite some large improvement in
@@ -2200,7 +2201,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <i>Answer:</i>
+    <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
   This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
@@ -2354,7 +2355,7 @@ Are the residues of the paratope and NMR epitope at the interface?
 
 <details style="background-color:#DAE4E7">
  <summary style="bold">
- <b><i>See the overlay of the best model onto the reference structure</i></b>
+  <b><i>See the overlay of the best model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
  </summary>
  <p> Top4 models of the top cluster of scenario2a superimposed onto the reference crystal structure (in yellow)</p>
  <figure style="text-align: center">
