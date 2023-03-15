@@ -539,10 +539,16 @@ We can visualize the selected surface residues of Interleukin-1β.
 For this start PyMOL and from the PyMOL File menu open the PDB file of the antigen.
 
 <a class="prompt prompt-pymol">
-color white, all<br>
-show surface<br>
-select surface15, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)<br>
-color green, surface40<br>
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select surface15, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)
+</a>
+<a class="prompt prompt-pymol">
+color green, surface40
 </a>
 
 <a class="prompt prompt-pymol">
@@ -1678,7 +1684,7 @@ To use is simply call the script with as argument the run directory you want to 
 
 
 <details style="background-color:#DAE4E7">
- <summary style="text-align: center">
+ <summary>
   <i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
