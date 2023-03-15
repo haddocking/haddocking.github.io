@@ -104,7 +104,7 @@ Further NMRbox documentation can be found [here](https://nmrbox.nmrhub.org/pages
 
 Once you are done using your VM just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
 
-**Important**: In order to participate to the ISGC2023 HADDOCK workshop, once you have an account on NMRBox, make sure to [register for the workshop](https://nmrbox.nmrhub.org/events/events/2023-haddock-isgc-taipei){:target="_blank"} on NMRBox. In that was all the data required for the workshop will be automatically copied to your home directory. 
+**Important**: In order to participate to the ISGC2023 HADDOCK workshop, once you have an account on NMRBox, make sure to [register for the workshop](https://nmrbox.nmrhub.org/events/events/2023-haddock-isgc-taipei){:target="_blank"} on NMRBox. In that was all the data required for the workshop will be automatically copied to your home directory.
 
 #### Tutorial setup on NMRbox
 
@@ -298,8 +298,8 @@ registration form, and then follow the [installation instructions](https://www.b
 
 ### Auxiliary software
 
-**[FreeSASA][link-freesasa]**: FreeSASA will be used to identify surface-accessible residues 
-(pre-calculated data are provided). 
+**[FreeSASA][link-freesasa]**: FreeSASA will be used to identify surface-accessible residues
+(pre-calculated data are provided).
 
 **[PDB-tools][link-pdbtools]**: A useful collection of Python scripts for the
 manipulation (renumbering, changing chain and segIDs...) of PDB files is freely
@@ -517,7 +517,7 @@ If you want to generate the same file, first create an empty line and then use t
 </a>
 
 
-**_Note_**: If the command line version of freesasa is not available, provided the freesasa python libraries have been installed 
+**_Note_**: If the command line version of freesasa is not available, provided the freesasa python libraries have been installed
 (can simply be done with: `pip install freesasa`), the same can be done with the _calc-accessibility.py_ script provided in the `scripts` directory:
 
 <a class="prompt prompt-cmd">
@@ -533,7 +533,7 @@ The simple output directly reports the list of residues:
 14/03/2023 13:15:20 L244 INFO - Chain B - 3,4,5,6,7,11,13,14,15,20,21,22,23,24,25,27,29,30,32,33,34,35,36,37,38,41,43,46,48,49,50,51,52,53,54,55,56,63,64,65,66,72,73,74,75,76,77,79,81,83,84,86,87,88,89,91,92,93,94,96,97,98,105,106,107,108,109,115,116,117,118,119,120,125,126,127,128,129,130,131,133,135,137,138,139,140,141,142,145,147,149,150,151,152,153
 </pre>
 
-We can visualize the selected surface residues of Interleukin-1β.  
+We can visualize the selected surface residues of Interleukin-1β.
 
 For this start PyMOL and from the PyMOL File menu open the PDB file of the antigen.
 
@@ -1677,8 +1677,8 @@ To use is simply call the script with as argument the run directory you want to 
 
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>View the output of the script:</i>
+ <summary style="text-align: center;">
+  <span class="material-symbols-rounded">expand_more</span> <i>View the output of the script</i>
  </summary>
 <pre>
 ==============================================
@@ -1810,7 +1810,7 @@ Cluster statistics (distributions of values per cluster ordered according to the
 ### Analysis scenario 2a: Paratope - NMR-epitope as passive
 
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
-Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and 
+Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and
 
 <a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
@@ -1998,7 +1998,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 #### Analysis scenario 2a: visualizing the scores and their components
 
 By setting `postprocess=true` in the config files, interactive plots have been automatically generated in the _analysis_ directory of the run.
-These are useful to visualise the scores and their components versus ranks and model quality. 
+These are useful to visualise the scores and their components versus ranks and model quality.
 
 <a class="prompt prompt-info">
 Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
@@ -2028,7 +2028,7 @@ Cluster statistics (distributions of values per cluster ordered according to the
 ### Analysis scenario 2b: Paratope - NMR-epitope as active
 
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
-Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and 
+Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and
 
 <a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
@@ -2060,7 +2060,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 <a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a>
 
 
-In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow). 
+In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow).
 
 <a class="prompt prompt-info">Inspect the corresponding _capri_clt.tsv_ file</a>
 
