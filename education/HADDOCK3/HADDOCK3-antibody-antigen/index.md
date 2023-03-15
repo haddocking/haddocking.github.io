@@ -11,45 +11,43 @@ This tutorial consists of the following sections:
 * table of contents
 {:toc}
 
+<hr>
+<hr>
 
-<hr>
-<hr>
 ## Introduction
 
-This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting 
-the structure of an antibody-antigen complex using knowledge of the hypervariable loops 
-on the antibody and either the entire surface or an epitope identified from NMR chemical 
+This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
+the structure of an antibody-antigen complex using knowledge of the hypervariable loops
+on the antibody and either the entire surface or an epitope identified from NMR chemical
 shift perturbation data for the antigen to guide the docking.
 
-An antibody is a large protein that generally works by attaching itself to an antigen, 
-which is a unique site of the pathogen. The binding harnesses the immune system to directly 
-attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity, 
-which is achieved by their unique structure. **The fragment crystallizable region (Fc region**) 
-activates the immune response and is species-specific, i.e. the human Fc region should not 
-induce an immune response in humans.  **The fragment antigen-binding region (Fab region**) 
-needs to be highly variable to be able to bind to antigens of various nature (high specificity). 
-In this tutorial we will concentrate on the terminal **variable domain (Fv**) of the Fab region. 
- 
+An antibody is a large protein that generally works by attaching itself to an antigen,
+which is a unique site of the pathogen. The binding harnesses the immune system to directly
+attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity,
+which is achieved by their unique structure. **The fragment crystallizable region (Fc region)**
+activates the immune response and is species-specific, i.e. the human Fc region should not
+induce an immune response in humans.  **The fragment antigen-binding region (Fab region**)
+needs to be highly variable to be able to bind to antigens of various nature (high specificity).
+In this tutorial we will concentrate on the terminal **variable domain (Fv)** of the Fab region.
 
-<figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/antibody_described.png">
+<figure style="text-align: center;">
+  <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/antibody_described.png">
 </figure>
 
-The small part of the Fab region that binds the antigen is called **paratope**. The part of the antigen 
-that binds to an antibody is called **epitope**. The paratope consists of six highly flexible loops, 
-known as **complementarity-determining regions (CDRs)** or hypervariable loops whose sequence 
-and conformation are altered to bind to different antigens. CDRs are shown in red in the figure below: 
+The small part of the Fab region that binds the antigen is called **paratope**. The part of the antigen
+that binds to an antibody is called **epitope**. The paratope consists of six highly flexible loops,
+known as **complementarity-determining regions (CDRs)** or hypervariable loops whose sequence
+and conformation are altered to bind to different antigens. CDRs are shown in red in the figure below:
 
-<figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/CDRs.png">
+<figure style="text-align: center;">
+  <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/CDRs.png">
 </figure>
 
-In this tutorial we will be working with  Interleukin-1β (IL-1β) 
-(PDB code [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"})) as an antigen 
-and its highly specific monoclonal antibody gevokizumab 
-(PDB code [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}) 
-(PDB code of the complex [4G6M](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6m){:target="_blank"}).  
-
+In this tutorial we will be working with  Interleukin-1β (IL-1β)
+(PDB code [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"}) as an antigen
+and its highly specific monoclonal antibody gevokizumab
+(PDB code [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"})
+(PDB code of the complex [4G6M](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6m){:target="_blank"}).
 
 
 Throughout the tutorial, colored text will be used to refer to questions or
@@ -60,21 +58,21 @@ instructions, and/or PyMOL commands.
 <a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
 <a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
+<hr>
+<hr>
 
-<hr>
-<hr>
 ## Setup/Requirements
 
 In order to follow this tutorial you will need to work on a Linux or MacOSX
 system. We will also make use of [**PyMOL**][link-pymol] (freely available for
 most operating systems) in order to visualize the input and output data. We will
-provide you links to download the various required software and data.  
+provide you links to download the various required software and data.
 
-Further we are providing pre-processed PDB files for docking and analysis (but the 
-preprocessing of those files will also be explained in this tutorial). The files have been processed 
-to facilitate their use in HADDOCK and for allowing comparison with the known reference 
-structure of the complex. For this _download and unzip the following_ 
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/HvXxgxCTY1DiPsV/download){:target="_blank"} 
+Further we are providing pre-processed PDB files for docking and analysis (but the
+preprocessing of those files will also be explained in this tutorial). The files have been processed
+to facilitate their use in HADDOCK and for allowing comparison with the known reference
+structure of the complex. For this _download and unzip the following_
+[zip archive](https://surfdrive.surf.nl/files/index.php/s/HvXxgxCTY1DiPsV){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. In it you should find the following directories:
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
@@ -83,7 +81,6 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
 * `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
 * `scripts`: Contains a variety of scripts used in this tutorial
-
 
 <hr>
 ### Setup for the ISGC2023 HADDOCK workshop in Taipei
@@ -107,7 +104,7 @@ Further NMRbox documentation can be found [here](https://nmrbox.nmrhub.org/pages
 
 Once you are done using your VM just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
 
-**Important**: In order to participate to the ISGC2023 HADDOCK workshop, once you have an account on NMRBox, make sure to [register for the workshop](https://nmrbox.nmrhub.org/events/events/2023-haddock-isgc-taipei){:target="_blank"} on NMRBox. In that was all the data required for the workshop will be automatically copied to your home directory. 
+**Important**: In order to participate to the ISGC2023 HADDOCK workshop, once you have an account on NMRBox, make sure to [register for the workshop](https://nmrbox.nmrhub.org/events/events/2023-haddock-isgc-taipei){:target="_blank"} on NMRBox. In that was all the data required for the workshop will be automatically copied to your home directory.
 
 #### Tutorial setup on NMRbox
 
@@ -134,11 +131,11 @@ You will find in that directory all input and precalculatd data and scripts requ
 ### Setup for the 2022 EU-ASEAN HPC school on Fugaku
 
 <details>
-<summary style="bold">View details
+  <summary style="bold">
+  View details <i class="material-icons">expand_more</i>
  </summary>
 
-
-The software and data required for this tutorial have been pre-installed on Fugaku. 
+The software and data required for this tutorial have been pre-installed on Fugaku.
 In order to run the tutorial, first copy the required data into your home directory on fugagku:
 
 <a class="prompt prompt-cmd">
@@ -180,23 +177,23 @@ This is the command you will also find in the example job script for batch submi
 <hr>
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"}) 
-is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"}) 
-that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"}) 
-for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, 
-inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside 
-traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the 
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"})
+is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"})
+that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"})
+for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability,
+inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside
+traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
 ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
-A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the 
-translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance 
-restraints that are incorporated in the energy function used in the calculations. AIRs are defined through 
-a list of residues that fall under two categories: active and passive. Generally, active residues are those 
-of central importance for the interaction, such as residues whose knockouts abolish the interaction or those 
-where the chemical shift perturbation is higher. Throughout the simulation, these active residues are 
-restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues 
-are those that contribute for the interaction, but are deemed of less importance. If such a residue does 
-not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are 
+A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the
+translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance
+restraints that are incorporated in the energy function used in the calculations. AIRs are defined through
+a list of residues that fall under two categories: active and passive. Generally, active residues are those
+of central importance for the interaction, such as residues whose knockouts abolish the interaction or those
+where the chemical shift perturbation is higher. Throughout the simulation, these active residues are
+restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues
+are those that contribute for the interaction, but are deemed of less importance. If such a residue does
+not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are
 active and which are passive is critical for the success of the docking.
 
 
@@ -208,13 +205,13 @@ active and which are passive is critical for the success of the docking.
 HADDOCK3 is the next generation integrative modelling software in the
 long-lasting HADDOCK project. It represents a complete rethinking and rewriting
 of the HADDOCK2.X series, implementing a new way to interact with HADDOCK and
-offering new features to users who can now define custom workflows. 
+offering new features to users who can now define custom workflows.
 
 In the previous HADDOCK2.x versions, users had access to a highly
 parameterisable yet rigid simulation pipeline composed of three steps:
-`ridig-body docking (it0)`, `semi-flexible refinemnt (it1)`, and `final refinement (itw)`. 
+`rigid-body docking (it0)`, `semi-flexible refinement (it1)`, and `final refinement (itw)`.
 
-<figure align="center">
+<figure style="text-align: center;">
 <img width="75%" src="./HADDOCK2-stages.png">
 </figure>
 
@@ -222,9 +219,9 @@ In HADDOCK3, users have the freedom to configure docking workflows into
 functional pipelines by combining the different HADDOCK3 modules, thus
 adapting the workflows to their projects. HADDOCK3 has therefore developed to
 truthfully work like a puzzle of many pieces (simulation modules) that users can
-combine freely. To this end, the “old” HADDOCK machinery has been modularised,
+combine freely. To this end, the “old” HADDOCK machinery has been modularized,
 and several new modules added, including third-party software additions. As a
-result, the modularisation achieved in HADDOCK3 allows users to duplicate steps
+result, the modularization achieved in HADDOCK3 allows users to duplicate steps
 within one workflow (e.g., to repeat twice the `it1` stage of the HADDOCK2.x
 rigid workflow).
 
@@ -235,11 +232,11 @@ Any type of information that can be converted into ambiguous interaction
 restraints can, however, be used in HADDOCK3, which also supports the
 *ab initio* docking modes of HADDOCK.
 
-<figure align="center">
+<figure style="text-align: center;">
 <img width="75%" src="./HADDOCK3-workflow-scheme.png">
 </figure>
 
-To keep HADDOCK3 modules organised, we catalogued them into several
+To keep HADDOCK3 modules organized, we catalogued them into several
 categories. But, there are no constraints on piping modules of different
 categories.
 
@@ -252,8 +249,8 @@ all categories and modules. Below is a summary of the available modules:
 * **Topology modules**
     * `topoaa`: *generates the all-atom topologies for the CNS engine.*
 * **Sampling modules**
-    * `rigidbody`: *Rigid body energy minimisation with CNS (`it0` in haddock2.x).*
-    * `lightdock`: *Third-party glow-worm swam optimisationdocking software.*
+    * `rigidbody`: *Rigid body energy minimization with CNS (`it0` in haddock2.x).*
+    * `lightdock`: *Third-party glow-worm swam optimization docking software.*
 * **Model refinement modules**
     * `flexref`: *Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (`it1` in haddock2.x).*
     * `emref`: *Refinement by energy minimisation (`itw` EM only in haddock2.4).*
@@ -262,15 +259,15 @@ all categories and modules. Below is a summary of the available modules:
     * `emscoring`: *scoring of a complex performing a short EM (builds the topology and all missing atoms).*
     * `mdscoring`: *scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).*
 * **Analysis modules**
-    * `caprieval`: *Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided.*
+    * `caprieval`: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided.*
     * `clustfcc`: *Clusters models based on the fraction of common contacts (FCC)*
     * `clustrmsd`: *Clusters models based on pairwise RMSD matrix calculated with the `rmsdmatrix` module.*
     * `rmsdmatrix`: *Calculates the pairwise RMSD matrix between all the models generated in the previous step.*
     * `seletop`: *Selects the top N models from the previous step.*
     * `seletopclusts`: *Selects top N clusters from the previous step.*
 
-The HADDOCK3 workflows are defined in simple configuration text files, similar to the TOML format but with extra features. 
-Contrarily to HADDOCK2.X which follows a rigid (yet highly parametrizable)
+The HADDOCK3 workflows are defined in simple configuration text files, similar to the TOML format but with extra features.
+Contrarily to HADDOCK2.X which follows a rigid (yet highly parameterisable)
 procedure, in HADDOCK3, you can create your own simulation workflows by
 combining a multitude of independent modules that perform specialized tasks.
 
@@ -283,48 +280,47 @@ combining a multitude of independent modules that perform specialized tasks.
 ### Installing CNS
 The other required piece of software to run HADDOCK is its computational engine,
 CNS (Crystallography and NMR System –
-[https://cns-online.org](https://cns-online.org){:target="_blank"} ). CNS is
-freely available for non-profit organisations. In order to get access to all
-features of HADDOCK you will need to recompile CNS using the additional files
+[https://cns-online.org](https://cns-online.org){:target="_blank"}). CNS is
+freely available for non-profit organizations. In order to get access to all
+features of HADDOCK you will need to compile CNS using the additional files
 provided in the HADDOCK distribution in the `varia/cns1.3` directory. Compilation of
-CNS might be non-trivial. Some guidance on installing cns can is provided in the online 
+CNS might be non-trivial. Some guidance on installing CNS is provided in the online
 HADDOCK3 documentation page [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}.
 
 
-<br>
 ### Installing HADDOCK3
 
-In this tutorial we will make use of the new HADDOCK3 version. In case HADDOCK3
+In this tutorial we will make use of the HADDOCK3 version. In case HADDOCK3
 is not pre-installed in your system you will have to install it.
 
-To obtaine HADDOCK3 navigate to [its official repository][haddock-repo], fill the
+To obtain HADDOCK3 navigate to [its repository][haddock-repo], fill the
 registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
 
 
-<br>
 ### Auxiliary software
 
-**[FreeSASA][link-freesasa]**: FreeSASA will be used to identify surface-accessible residues 
-(pre-calculated data are provided). 
+**[FreeSASA][link-freesasa]**: FreeSASA will be used to identify surface-accessible residues
+(pre-calculated data are provided).
 
 **[PDB-tools][link-pdbtools]**: A useful collection of Python scripts for the
 manipulation (renumbering, changing chain and segIDs...) of PDB files is freely
 available from our GitHub repository. `pdb-tools` is automatically installed
-with HADDOCK3. If you have activated the HADDOCK3 Python enviroment you have
+with HADDOCK3. If you have activated the HADDOCK3 Python environment you have
 access to the pdb-tools package.
 
-**[PyMol][link-pymol]**: We will make use of PyMol for visualisation. If not
+**[PyMol][link-pymol]**: We will make use of PyMol for visualization. If not
 already installed on your system, download and install PyMol.
 
 
 <hr>
 <hr>
+
 ## Preparing PDB files for docking
 
 In this section we will prepare the PDB files of the antibody and antigen for docking.
-Crystal structures of both the antibody and the antigen in their free forms are available from the 
-[PDB database](https://www.pdbe.org){:target="_blank"}. In the case of the antibody which consists 
-of two chains (L+H) we will have to prepare it for use in HADDOCK such as it can be treated as 
+Crystal structures of both the antibody and the antigen in their free forms are available from the
+[PDBe database](https://www.pdbe.org){:target="_blank"}. In the case of the antibody which consists
+of two chains (L+H) we will have to prepare it for use in HADDOCK such as it can be treated as
 a single chain with non-overlapping residue numbering. For this we will be making use of `pdb-tools` from the command line.
 
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
@@ -345,17 +341,17 @@ Using PDB-tools we will download the structure from the PDB database (the PDB ID
 This can be done from the command line with:
 
 <a class="prompt prompt-cmd">
-pdb_fetch 4G6K | pdb_tidy -strict  | pdb_selchain -H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_H.pdb<br>
+pdb_fetch 4G6K | pdb_tidy -strict | pdb_selchain -H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_H.pdb
 </a>
 <a class="prompt prompt-cmd">
-pdb_fetch 4G6K | pdb_tidy -strict  | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_shiftres -1000 | pdb_keepcoord | pdb_tidy -strict > 4G6K_L.pdb<br>
+pdb_fetch 4G6K | pdb_tidy -strict | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_shiftres -1000 | pdb_keepcoord | pdb_tidy -strict > 4G6K_L.pdb
 </a>
 <a class="prompt prompt-cmd">
-pdb_merge 4G6K_H.pdb 4G6K_L.pdb |pdb_chain -A |pdb_chainxseg | pdb_tidy -strict > 4G6K_clean.pdb<br>
+pdb_merge 4G6K_H.pdb 4G6K_L.pdb |pdb_chain -A |pdb_chainxseg | pdb_tidy -strict > 4G6K_clean.pdb
 </a>
 
 The first command fetches the PDB ID, select the heavy chain (H) and removes water and heteroatoms (in this case no co-factor is present that should be kept).
-An important part for antibodies is the `pdb_fixinsert` command that fixes the residue numbering of the HV loops: Antibodies often follow the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} and insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly. As such renumbering is necessary before starting the docking. 
+An important part for antibodies is the `pdb_fixinsert` command that fixes the residue numbering of the HV loops: Antibodies often follow the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} and insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly. As such renumbering is necessary before starting the docking.
 
 The second command does the same for the light chain (L) with an additional step of shifting the residue numbering by 1000 (using `pdb_shiftres`) to avoid overlap in the numbering of the two chains.
 
@@ -363,19 +359,19 @@ The third and last command merges the two processed chains and assign them uniqu
 
 _**Note**_ that the corresponding files can be found in the `pdbs` directory of the archive you downloaded.
 
-
 <hr>
+
 ### Preparing the antigen structure
 
 Using PDB-tools we will download the structure from the PDB database (the PDB ID is [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"}), remove the hetero atoms and then process it to assign it chainID B.
 
 <a class="prompt prompt-cmd">
-pdb_fetch 4I1B | pdb_tidy -strict  | pdb_delhetatm  | pdb_keepcoord | pdb_chain -B | pdb_chainxseg | pdb_tidy -strict >4I1B_clean.pdb
+pdb_fetch 4I1B | pdb_tidy -strict | pdb_delhetatm  | pdb_keepcoord | pdb_chain -B | pdb_chainxseg | pdb_tidy -strict > 4I1B_clean.pdb
 </a>
 
+<hr>
+<hr>
 
-<hr>
-<hr>
 ## Defining restraints for docking
 
 Before setting up the docking we need first to generate distance restraint files
@@ -386,7 +382,7 @@ HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, 
 Distance restraints are defined as:
 
 <pre style="background-color:#DAE4E7">
-  assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound
@@ -407,14 +403,15 @@ Information about various types of distance restraints in HADDOCK can also be
 found in our [online manual][air-help]{:target="_blank"} pages.
 
 <hr>
+
 ### Identifying the paratope of the antibody
 
 Nowadays there are several computational tools that can identify the paratope (the residues of the hypervariable loops involved in binding) from the provided antibody sequence. In this tutorial we are providing you the corresponding list of residue obtained using [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
 
-The corresponding paratope residues (those with either an overall probability >= 0.4 or a probabily for hydrophobic or hydrophylic > 0.3) are:
+The corresponding paratope residues (those with either an overall probability >= 0.4 or a probability for hydrophobic or hydrophilic > 0.3) are:
 
 <pre style="background-color:#DAE4E7">
-    31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,1031,1032,1049,1050,1053,1091,1092,1093,1094,1096
+31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,1031,1032,1049,1050,1053,1091,1092,1093,1094,1096
 </pre>
 
 The numbering corresponds to the numbering of the `4G6K_clean.pdb` PDB file.
@@ -422,23 +419,31 @@ The numbering corresponds to the numbering of the `4G6K_clean.pdb` PDB file.
 Let us visualize those onto the 3D structure.
 For this start PyMOL and load `4G6K_clean.pdb`
 
-<a class="prompt prompt-pymol">File menu -> Open -> select 4G6K_clean.pdb</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_clean.pdb
+</a>
 
 or from the command line:
 
 <a class="prompt prompt-cmd">
-    pymol 4G6K_clean.pdb
+pymol 4G6K_clean.pdb
 </a>
 
 We will now highlight the predicted paratope. In PyMOL type the following commands:
 
 <a class="prompt prompt-pymol">
-color white, all<br>
+color white, all
+</a>
+<a class="prompt prompt-pymol">
 select paratope, (resi 31+32+33+34+35+52+54+55+56+100+101+102+103+104+105+106+1031+1032+1049+1050+1053+1091+1092+1093+1094+1096)<br>
-color red, paratope<br>
+</a>
+<a class="prompt prompt-pymol">
+color red, paratope
 </a>
 
-<a class="prompt prompt-question">Can you identify the H3 loop? H stands for heavy chain (the first domain in our case with lower residue numbering). H3 is typically the longest loop.</a>
+<a class="prompt prompt-question">
+Can you identify the H3 loop? H stands for heavy chain (the first domain in our case with lower residue numbering). H3 is typically the longest loop.
+</a>
 
 Let us now switch to a surface representation to inspect the predicted binding site.
 
@@ -448,30 +453,31 @@ show surface<br>
 
 Inspect the surface.
 
-<a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
+<a class="prompt prompt-question">
+Do the identified residues form a well defined patch on the surface?
+</a>
 
 
 <details style="background-color:#DAE4E7">
-<summary style="bold">
-<b><i>See surface view of the paratope:</i></b>
- </summary>
- <figure align="center">
-  <img width="50%" src="./antibody-paratope.png">
- </figure>
-<br>
+  <summary style="bold">
+    <b><i>See surface view of the paratope</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="50%" src="./antibody-paratope.png">
+  </figure>
+  <br>
 </details>
 
-
 <hr>
-### Antigen scenario 1: no information
 
+### Antigen scenario 1: no information
 
 In this scenario, we will target the entire surface of the antigen by selecting the solvent accessible residues.
 For this can use `freesasa` to calculate the solvent accessible surface area (SASA) for the different
 residues. If `freesasa` is available from the command line you can run it to generate the solvent accessibility data with:
 
 <a class="prompt prompt-cmd">
-  freesasa 4I1B_clean.pdb \-\-format=rsa >4I1B_clean.rsa
+freesasa 4I1B_clean.pdb \-\-format=rsa >4I1B_clean.rsa
 </a>
 
 <pre style="background-color:#DAE4E7">
@@ -497,11 +503,11 @@ the backbone or the side-chain > 15% (we use 15% to limit the number of surface 
 number does increase the computational requirements)
 
 <a class="prompt prompt-cmd">
-  awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) print $0}\' 4I1B_clean.rsa
+ awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) print $0}\' 4I1B_clean.rsa
 </a>
 
 The resulting list of residues can be found in the `restraints/antigen-surface.act-pass` file. Note in this file the empty first line. The file consists
-of two lines, with the first one defining the `active` residues and the second line the `passive` ones, in this case the solvent accessible residues. 
+of two lines, with the first one defining the `active` residues and the second line the `passive` ones, in this case the solvent accessible residues.
 We will use later this file to generate the ambiguous distance restraints for HADDOCK.
 
 If you want to generate the same file, first create an empty line and then use the `awk` command, piping the results to an output file, e.g.:
@@ -512,7 +518,7 @@ If you want to generate the same file, first create an empty line and then use t
 </a>
 
 
-**_Note_**: If the command line version of freesasa is not available, provided the freesasa python libraries have been installed 
+**_Note_**: If the command line version of freesasa is not available, provided the freesasa python libraries have been installed
 (can simply be done with: `pip install freesasa`), the same can be done with the _calc-accessibility.py_ script provided in the `scripts` directory:
 
 <a class="prompt prompt-cmd">
@@ -528,104 +534,129 @@ The simple output directly reports the list of residues:
 14/03/2023 13:15:20 L244 INFO - Chain B - 3,4,5,6,7,11,13,14,15,20,21,22,23,24,25,27,29,30,32,33,34,35,36,37,38,41,43,46,48,49,50,51,52,53,54,55,56,63,64,65,66,72,73,74,75,76,77,79,81,83,84,86,87,88,89,91,92,93,94,96,97,98,105,106,107,108,109,115,116,117,118,119,120,125,126,127,128,129,130,131,133,135,137,138,139,140,141,142,145,147,149,150,151,152,153
 </pre>
 
+We can visualize the selected surface residues of Interleukin-1β.
 
-
-We can visualize the selected surface residues of Interleukin-1β.  
 For this start PyMOL and from the PyMOL File menu open the PDB file of the antigen.
 
-<a class="prompt prompt-pymol">File menu -> Open -> select 4I1B_clean.pdb</a>
-
 <a class="prompt prompt-pymol">
-color white, all<br>
-show surface<br>
-select surface15, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)<br>
-color green, surface40<br>
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select surface15, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)
+</a>
+<a class="prompt prompt-pymol">
+color green, surface40
 </a>
 
-
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select surface40, (resi 3+4+5+6+13+14+15+20+21+22+23+24+25+30+32+33+34+35+37+38+48+49+50+51+52+53+54+55+61+63+64+65+66+73+74+75+76+77+80+84+86+87+88+89+90+91+93+94+96+97+105+106+107+108+109+118+119+126+127+128+129+130+135+136+137+138+139+140+141+142+147+148+150+151+152+153)
+</a>
+<a class="prompt prompt-pymol">
+color green, surface40
+</a>
 
 <hr>
+
 ### Antigen scenario 2: NMR-mapped epitope information
 
 
-The article describing the crystal structure of the antibody-antigen complex we are modelling also reports 
-on experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab) 
-on Interleukin-1β. The residues affected by binding are listed in Table 5 of 
+The article describing the crystal structure of the antibody-antigen complex we are modelling also reports
+on experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab)
+on Interleukin-1β. The residues affected by binding are listed in Table 5 of
 [Blech et al. JMB 2013](https://dx.doi.org/10.1016/j.jmb.2012.09.021){:target="_blank"}:
 
-<figure align="center">
-   <img width="50%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
+<figure style="text-align: center;">
+  <img width="50%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
 </figure>
- 
+
 The list of binding site (epitope) residues identified by NMR is:
 
 <pre style="background-color:#DAE4E7">
-    72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </pre>
 
 We will now visualize the epitope on Interleukin-1β.  For this start PyMOL and from the PyMOL File menu open the provided PDB file of the antigen.
 
-<a class="prompt prompt-pymol">File menu -> Open -> select 4I1B_clean.pdb</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4I1B_clean.pdb
+</a>
 
 <a class="prompt prompt-pymol">
-color white, all<br>
-show surface<br>
-select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)<br>
-color red, epitope<br>
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)
+</a>
+<a class="prompt prompt-pymol">
+color red, epitope
 </a>
 
 Inspect the surface.
 
-<a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
+<a class="prompt prompt-question">
+Do the identified residues form a well defined patch on the surface?
+</a>
 
-The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding 
-(there are some white spots around/in the red surface. 
+The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding - there are some white spots around/in the red surface.
 
 <details style="background-color:#DAE4E7">
-<summary style="bold">
-<b><i>See surface view of the epitope identified by NMR</i></b>
- </summary>
- <figure align="center">
-  <img width="50%" src="./antigen-epitope.png">
- </figure>
- <br>
+  <summary style="bold">
+    <b><i>See surface view of the epitope identified by NMR</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="50%" src="./antigen-epitope.png">
+  </figure>
+  <br>
 </details>
+
 <br>
 
-In HADDOCK we are dealing with potentially uncomplete binding sites by defining surface neighbours as `passive` residues. 
-These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the 
-binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding 
-site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are 
-using a local version, we need to define those manually. 
+In HADDOCK we are dealing with potentially incomplete binding sites by defining surface neighbors as `passive` residues.
+These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the
+binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding
+site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are
+using a local version, we need to define those manually.
 
 This can easily be done using a script from our [haddock-tools][haddock-tools] repository, which is also provided for convenience
 in the `scripts` directly of the archive you downloaded for this tutorial:
 
 <a class="prompt prompt-cmd">
-  python ./scripts/passive_from_active.py 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+python ./scripts/passive_from_active.py 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </a>
 
-The NMR-identified residues and their surface neighbours generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only.
-The corresponding files can be found in the `restraints/antigen-NMR-epitope.act-pass` and `restraints/antigen-NMR-epitope.pass`files. 
-Note in the second file the empty first line. The file consists of two lines, with the first one defining the `active` residues and 
-the second line the `passive` ones. We will use later these files to generate the ambiguous distance restraints for HADDOCK. 
+The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only.
+The corresponding files can be found in the `restraints/antigen-NMR-epitope.act-pass` and `restraints/antigen-NMR-epitope.pass`files.
+Note in the second file the empty first line. The file consists of two lines, with the first one defining the `active` residues and
+the second line the `passive` ones. We will use later these files to generate the ambiguous distance restraints for HADDOCK.
 
 In general it is better to be too generous rather than too strict in the
 definition of passive residues.
 
 An important aspect is to filter both the active (the residues identified from
 your mapping experiment) and passive residues by their solvent accessibility.
-Our webserver uses a default relative accessibility of 15% as cutoff. This is
+Our web service uses a default relative accessibility of 15% as cutoff. This is
 not a hard limit. You might consider including even more buried residues if some
 important chemical group seems solvent accessible from a visual inspection.
 
-
 <hr>
+
 ### Defining ambiguous restraints for scenario 1
 
 
 Once you have defined your active and passive residues for both molecules, you
-can proceed with the generation of the ambgiuous interaction restraints (AIR) file for HADDOCK. 
+can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
 For this you can either make use of our online [GenTBL][gentbl] web service, entering the
 list of active and passive residues for each molecule, and saving the resulting
 restraint list to a text file, or use the relevant `haddock-tools` script.
@@ -641,12 +672,10 @@ For scenario 1 this would be:
 * For the antibody (the file called `antibody-paratope.act-pass` from the `restraints` directory):
 <pre style="background-color:#DAE4E7">
 31 32 33 34 35 52 54 55 56 100 101 102 103 104 105 106 1031 1032 1049 1050 1053 1091 1092 1093 1094 1096
-
 </pre>
 
 * and for the antigen (the file called `antigen-surface.pass` from the `restraints` directory):
 <pre style="background-color:#DAE4E7">
-
 3 4 5 6 13 14 15 20 21 22 23 24 25 30 32 33 34 35 37 38 48 49 50 51 52 53 54 55 61 63 64 65 66 73 74 75 76 77 80 84 86 87 88 89 90 91 93 94 96 97 105 106 107 108 109 118 119 126 127 128 129 130 135 136 137 138 139 140 141 142 147 148 150 151 152 153
 </pre>
 
@@ -654,7 +683,7 @@ Using those two files, we can generate the CNS-formatted AIR restraint files
 with the following command:
 
 <a class="prompt prompt-cmd">
-  python ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
+python ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
 </a>
 
 This generates a file called `ambig-paratope-surface.tbl` that contains the AIR
@@ -669,17 +698,17 @@ the other molecule: SUM[1/r^6]^(-1/6).
 
 If you modify manually this file, it is possible to quickly check if the format is valid.
 To do so, you can find in our [haddock-tools][haddock-tools] repository a folder named
-`haddock_tbl_validation` that contains a script called `validate_tbl.py` (also provided here in the `scripts` directory. 
+`haddock_tbl_validation` that contains a script called `validate_tbl.py` (also provided here in the `scripts` directory).
 To use it, type:
 
 <a class="prompt prompt-cmd">
-  python ./scripts/validate_tbl.py \-\-silent ambig-paratope-surface.tbl
+python ./scripts/validate_tbl.py \-\-silent ambig-paratope-surface.tbl
 </a>
 
 No output means that your TBL file is valid.
 
-
 <hr>
+
 ### Defining ambiguous restraints for scenario 2a
 
 In this scenario the NMR epitope combined with the surface neighbors are used as passive residues in HADDOCK.
@@ -687,12 +716,11 @@ In this scenario the NMR epitope combined with the surface neighbors are used as
 The creation of the AIR tbl file for scenario 2a is similar to scenario 1, but instead using the `antigen-NMR-epitope.pass` file for the antigen:
 
 <a class="prompt prompt-cmd">
-  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.pass > ambig-paratope-NMR-epitope-pass.tbl
+./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.pass > ambig-paratope-NMR-epitope-pass.tbl
 </a>
 
-
-
 <hr>
+
 ### Defining ambiguous restraints for scenario 2b
 
 In this scenario the NMR epitope is defined as active (meaning ambiguous distance restraints will be defined from the NMR epitope residues) and the surface neighbors are used as passive residues in HADDOCK.
@@ -700,57 +728,50 @@ In this scenario the NMR epitope is defined as active (meaning ambiguous distanc
 The creation of the AIR tbl file for scenario 2b is similar to scenario 1, but instead using the `antigen-NMR-epitope.act-pass` file for the antigen:
 
 <a class="prompt prompt-cmd">
-  ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
+./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
 </a>
 
-
-
 <hr>
+
 ### Additional restraints for multi-chain proteins
 
-As an antibody consists of two separate chains, it is important to define a few distance restraints 
+As an antibody consists of two separate chains, it is important to define a few distance restraints
 to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
 done using a script from [haddock-tools][haddock-tools] repository, which is also provided for convenience
 in the `scripts` directly of the archive you downloaded for this tutorial.
 
-
 <a class="prompt prompt-cmd">
-  python ./scripts/restrain_bodies.py  4G6K_clean.pdb >antibody-unambig.tbl
+python ./scripts/restrain_bodies.py  4G6K_clean.pdb >antibody-unambig.tbl
 </a>
 
-The result file contains two CA-CA distance restraints with the exact distance
-measured between the picked CA atoms:
+The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:
 
 <pre style="background-color:#DAE4E7">
-    assign (segid A and resi 220 and name CA) (segid A and resi 1018 and name CA) 47.578 0.0 0.0
-    assign (segid A and resi 193 and name CA) (segid A and resi 1014 and name CA) 33.405 0.0 0.0
+  assign (segid A and resi 220 and name CA) (segid A and resi 1018 and name CA) 47.578 0.0 0.0
+  assign (segid A and resi 193 and name CA) (segid A and resi 1014 and name CA) 33.405 0.0 0.0
 </pre>
 
 This file is also provided in the `restraints` directory of the archive you downloaded.
 
+<hr>
+<hr>
 
-<hr>
-<hr>
 ## Setting up the docking with HADDOCK3
-
 
 Now that we have all required files at hand (PBD and restraints files) it is time to setup our docking protocol.
 For this we need to create a HADDOCK3 configuration file that will define the docking workflow. In contrast to HADDOCK2.X,
 we have much more flexibility in doing this. We will illustrate this flexibility by introducing a clustering step
 after the initial rigid-body docking stage, select up to 10 models per cluster and refine all of those.
 
-HADDOCK3 also provides an analysis module (`caprieval`) that allows 
+HADDOCK3 also provides an analysis module (`caprieval`) that allows
 to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case
 we have at hand. This will directly allow us to assess the performance of the protocol for the following three scenarios:
-
 
 1. Scenario 1: Docking using the paratope information only and the surface of the antigen
 2. Scenario 2a: Docking using the paratope and the NMR-identified epitope as passive
 3. Scenario 2b: Docking using the paratope and the NMR-identified epitope as active
 
-
 The basic workflow for all three scenarios will consists of the following modules, with some differences in the restraints used and some parameter settings (see below):
-
 
 1. **`topoaa`**: *Generates the topologies for the CNS engine and build missing atoms*
 2. **`rigidbody`**: *Rigid body energy minimisation (`it0` in haddock2.x)*
@@ -759,7 +780,7 @@ The basic workflow for all three scenarios will consists of the following module
 5. **`flexref`**: *Semi-flexible refinement of the interface (`it1` in haddock2.4)*
 6. **`emref`**: *Final refinement by energy minimisation (`itw` EM only in haddock2.4)*
 7. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
-8. **`caprieval`**: *Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
+8. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 
 The input PDB files are the same for all three scenarios. The differences are in the ambiguous interaction restraint files used and the sampling at the rigid body stage in the case of scenario1.
 
@@ -768,14 +789,14 @@ Other example scripts can be found in the `haddock3` directory.
 
 
 <hr>
+
 ### HADDOCK3 execution modes
 
 HADDOCK3 currently supports three difference execution modes that are defined in the first section of the configuration file of a run.
 
-
 #### 1. local mode
 
-In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file 
+In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file
 to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
 
 {% highlight toml %}
@@ -788,7 +809,7 @@ ncores = 96
 In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
 
 <a class="prompt prompt-cmd">
-  haddock3 \<my-workflow-configuration-file\>
+haddock3 \<my-workflow-configuration-file\>
 </a>
 
 Alternatively redirect the output to a log file and send haddock3 to the background.
@@ -797,40 +818,41 @@ _**Note**_: This is the execution mode you should use on the NMRBox resources. F
 
 
 <a class="prompt prompt-cmd">
-  haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
+haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
 </a>
 
 _**Note**_: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
 
 <details>
-<summary style="bold">
-<i>View an example script for submitting via the slurm batch system:</i>
- </summary>
-{% highlight shell %}
-#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --tasks-per-node=96
-#SBATCH -J haddock3
-#SBATCH --partition=medium
+  <summary style="bold">
+    <i>View an example script for submitting via the slurm batch system</i> <i class="material-icons">expand_more</i>
+  </summary>
 
-# load haddock3 module
-module load haddock3
-# or activate the haddock3 conda environment
-##source $HOME/miniconda3/etc/profile.d/conda.sh
-##conda activate haddock3
+  {% highlight shell %}
+  #!/bin/bash
+  #SBATCH --nodes=1
+  #SBATCH --tasks-per-node=96
+  #SBATCH -J haddock3
+  #SBATCH --partition=medium
 
-# go to the run directory
-cd $HOME/HADDOCK3-antibody-antigen
+  # load haddock3 module
+  module load haddock3
+  # or activate the haddock3 conda environment
+  ##source $HOME/miniconda3/etc/profile.d/conda.sh
+  ##conda activate haddock3
 
-# execute
-haddock3 scenario1-surface-node.cfg
-{% endhighlight %}
-<br>
+  # go to the run directory
+  cd $HOME/HADDOCK3-antibody-antigen
+
+  # execute
+  haddock3 scenario1-surface-node.cfg
+  {% endhighlight %}
+  <br>
 </details>
 
 <details>
 <summary style="bold">
-View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system:
+View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system <i class="material-icons">expand_more</i>
  </summary>
 {% highlight shell %}
 #!/bin/bash
@@ -853,15 +875,15 @@ haddock3 scenario2a-NMR-epitope-pass-node.cfg
 <br>
 </details>
 
-
 <br>
+
 #### 2. HPC/batch mode
 
-In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. 
-Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will 
-have to define the `queue` name and the maximum number of concurent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model 
-calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. 
-The number of model per job is defined by the `concat` parameter in the configuration file. 
+In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster.
+Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
+have to define the `queue` name and the maximum number of concurrent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model
+calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system.
+The number of model per job is defined by the `concat` parameter in the configuration file.
 You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
 
 An example of the relevant parameters to be defined in the first section of the config file is:
@@ -879,13 +901,11 @@ queue_limit = 100
 concat = 10
 {% endhighlight %}
 
-
 In this mode HADDOCK3 can be started from the command line as for the local mode.
-
 
 #### 3. MPI mode
 
-HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library 
+HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library
 must have been installed at installation time. Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html).
 The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
 
@@ -901,36 +921,36 @@ ncores = 250
 In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.
 
 <details>
-<summary style="bold">
-<i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system:</i>
- </summary>
-{% highlight shell %}
-#!/bin/bash
-#SBATCH --nodes=5
-#SBATCH --tasks-per-node=50
-#SBATCH -J haddock3mpi
+  <summary style="bold">
+    <i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system</i> <i class="material-icons">expand_more</i>
+  </summary>
+  {% highlight shell %}
+  #!/bin/bash
+  #SBATCH --nodes=5
+  #SBATCH --tasks-per-node=50
+  #SBATCH -J haddock3mpi
 
-# load haddock3 module
-module load haddock3
-# or make sure haddock3 is activated
-##source $HOME/miniconda3/etc/profile.d/conda.sh
-##conda activate haddock3
+  # load haddock3 module
+  module load haddock3
+  # or make sure haddock3 is activated
+  ##source $HOME/miniconda3/etc/profile.d/conda.sh
+  ##conda activate haddock3
 
-# go to the run directory 
-# edit if needed to specify the correct location
-cd $HOME/HADDOCK3-antibody-antigen
+  # go to the run directory
+  # edit if needed to specify the correct location
+  cd $HOME/HADDOCK3-antibody-antigen
 
-# execute
-haddock3 scenario2a-NMR-epitope-pass-mpi.cfg
-{% endhighlight %}
-<br>
+  # execute
+  haddock3 scenario2a-NMR-epitope-pass-mpi.cfg
+  {% endhighlight %}
+  <br>
 </details>
 
 <hr>
+
 ### Scenario 1: Paratope - antigen surface
 
-
-Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `ambig-paratope-surface.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. Further, as we have no information on the antigen side, it is important to increase the sampling in the ridig body sampling stage to 10000. And we will also turn off the default random removal of restraints to keep all the information on the paratope (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `ambig-paratope-surface.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. Further, as we have no information on the antigen side, it is important to increase the sampling in the rigid body sampling stage to 10000. And we will also turn off the default random removal of restraints to keep all the information on the paratope (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -971,7 +991,7 @@ molecules =  [
 ambig_fname = "restraints/ambig-paratope-surface.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Turn off ramdom removal of restraints
+# Turn off random removal of restraints
 randremoval = false
 # Number of models to generate
 sampling = 10000
@@ -996,7 +1016,7 @@ tolerance = 5
 ambig_fname = "restraints/ambig-paratope-surface.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Turn off ramdom removal of restraints
+# Turn off random removal of restraints
 randremoval = false
 
 [emref]
@@ -1004,7 +1024,7 @@ randremoval = false
 ambig_fname = "restraints/ambig-paratope-surface.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Turn off ramdom removal of restraints
+# Turn off random removal of restraints
 randremoval = false
 
 [clustfcc]
@@ -1018,30 +1038,27 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 # ====================================================================
 {% endhighlight %}
 
-This configuration file is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario1-surface-node.cfg`. 
+This configuration file is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario1-surface-node.cfg`.
 An MPI version (this is still very much experimental and might not work on all systems) is also available as `scenario1-surface-mpi.cfg`.
 
-
 <a class="prompt prompt-question">
-Compared to the workflow described above (Setting up the docking with HADDOCK3), 
-this example has one additional step. Can you identify which one?
+Compared to the workflow described above (Setting up the docking with HADDOCK3), this example has one additional step. Can you identify which one?
 </a>
 
-If you have everything ready, you can launch haddock3 either from the command line, or, better, 
+If you have everything ready, you can launch haddock3 either from the command line, or, better,
 submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
-_**Note**_ that this scenario is computationally more expensive because of the increased sampling. 
-On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min. 
+_**Note**_ that this scenario is computationally more expensive because of the increased sampling.
+On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in 1h23min.
 The same run on a single node using all 96 threads took on the same architecture 4 hours and 8 minutes.
 
-On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank" processors}, this run completed in about 23 hours.
-
+On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node 48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank" processors}, this run completed in about 23 hours.
 
 <hr>
+
 ### Scenario 2a: Paratope - NMR-epitope as passive
 
-
-In scenario 2a we are settinp up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identied epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-paratope-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratope (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+In scenario 2a we are setting up the docking in which the paratope on the antibody is used to guide the docking, targeting the NMR-identified epitope (+surface neighbors) defined as passive residues. The restraint file to use for this is `ambig-paratope-NMR-epitope-pass.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. And we will also turn off the default random removal of restraints to keep all the information on the paratope (`randremoval = false`). The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -1082,7 +1099,7 @@ molecules =  [
 ambig_fname = "restraints/ambig-paratope-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Turn off ramdom removal of restraints
+# Turn off random removal of restraints
 randremoval = false
 
 [clustfcc]
@@ -1105,7 +1122,7 @@ tolerance = 5
 ambig_fname = "restraints/ambig-paratope-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Turn off ramdom removal of restraints
+# Turn off random removal of restraints
 randremoval = false
 
 [emref]
@@ -1113,7 +1130,7 @@ randremoval = false
 ambig_fname = "restraints/ambig-paratope-NMR-epitope-pass.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Turn off ramdom removal of restraints
+# Turn off random removal of restraints
 randremoval = false
 
 [clustfcc]
@@ -1129,17 +1146,15 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 This configuration is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario2a-NMR-epitope-pass-node.cfg`. An MPI version  (this is still very much experimental and might not work on all systems) is also available as `scenario2a-NMR-epitope-pass-mpi.cfg`.
 
-
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
 _**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes. In HPC/batch mode, using 100 queue slots and 10 models per job, the same run completed in about 45 minutes.
 
 On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank"} processors), this run completed in about 1 hour and 15 minutes. Limiting the sampling to 240 rigid body models (recommended for the EU ASEAN HPC school) shorten the execution time to 37 minutes.
 
-
 <hr>
-### Scenario 2b: Paratope - NMR-epitope as active
 
+### Scenario 2b: Paratope - NMR-epitope as active
 
 Scenario 2b is rather similar to scenario 2a with the difference that the NMR-identified epitope is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
 And since there might be more false positive data in the identified interfaces, we will leave the random removal of restraints on. The restraint file to use for this is `ambig-paratope-NMR-epitope-act.tbl`. As for scenario1, we will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file. In this case since we have information for both interfaces default sampling parameters are sufficient. The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
@@ -1226,22 +1241,20 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 This configuration file is provided in the `haddock3` directory of the downloaded data set for this tutorial as `scenario2b-NMR-epitope-act-node.cfg`. An MPI version is also available as `scenario2b-NMR-epitope-act-mpi.cfg`.
 
-
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
 _**Note**_ The running time for this scenario is similar to that of scenario 2a (see above).
 
+<hr>
+<hr>
 
-<hr>
-<hr>
 ## Analysis of docking results
-
 
 ### Structure of the run directory
 
 Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
 
-{% highlight shelll %}
+{% highlight shell %}
 > ls scenario2a-NMR-epitope-pass/
     0_topoaa/
     1_rigidbody/
@@ -1265,7 +1278,7 @@ There is in addition the log file (text file) and two additional directories:
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PBD files.
 
-For example, the `X_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based 
+For example, the `X_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
 on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
@@ -1289,13 +1302,13 @@ The relevant statistics are:
 * **fnat**: *the fraction of native contacts*
 * **lrmsd**: *the ligand RMSD, calculated on the ligand after fitting on the receptor (1st component)*
 * **ilrmsd**: *the interface-ligand RMSD, calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example)*
-* **dockq**: *the DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale betweeen 1 (equal to reference) and 0*
+* **dockq**: *the DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale between 1 (equal to reference) and 0*
 
 The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions).
 
 In CAPRI the quality of a model is defined as (for protein-protein complexes):
 
-* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1 
+* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1
 * **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
 * **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
 
@@ -1304,7 +1317,7 @@ What is based on this CAPRI criterion the quality of the best model listed above
 </a>
 
 In case the `caprieval` module is called after a clustering step an additional file will be present in the directory: `capri_clt.tsv`.
-This file contains the cluster ranking and score statistics, averaged over the minimumber number of models defined for clustering 
+This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering
 (4 by default), with their corresponding standard deviations. E.g.:
 
 <pre style="background-color:#DAE4E7">
@@ -1315,22 +1328,21 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 ...
 </pre>
 
-In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the precessind `X_seletopclusts` directory.
-
+In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the processing `X_seletopclusts` directory.
 
 <hr>
+
 ### Analysis scenario 1: Paratope - antigen surface
 
+Let us now analyze the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory (note that to save space only partial data have been kept in this pre-calculated runs, but all relevant information for this tutorial is available).
 
-Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory (note that to save space only partial data have been kept in this pre-calculated runs, but all relevant information for this tutorial is available).
-
-First of all let us check the final cluster statistics. 
+First of all let us check the final cluster statistics.
 
 <a class="prompt prompt-info">Inspect the _capri_clt.tsv_ file</a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1478,15 +1490,13 @@ This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the qualit
 
 <a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a>
 
-
-
-In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow). 
+In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow).
 
 <a class="prompt prompt-info">Inspect the corresponding _capri_clt.tsv_ file</a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1655,16 +1665,18 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 <a class="prompt prompt-question">Consider now the rank of the first acceptable cluster based on iRMSD values. How does this compare with the refined clusters (see above)?</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> After rigid body docking the first acceptable cluster is at rank 41. After refinement it scores at the top with score significantly better than the second-ranked cluster! 
-</p>
-</details>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+    <p>
+      After rigid body docking the first acceptable cluster is at rank 41. After refinement it scores at the top with score significantly better than the second-ranked cluster!
+    </p>
+  </details>
+
 <br>
 
 We are providing in the `scripts` directory a simple script that extract some cluster statistics for acceptable or better clusters from the `caprieval` steps.
-To use is simply call the script with as argument the run directory you want to analyse, e.g.:
+To use is simply call the script with as argument the run directory you want to analyze, e.g.:
 
 <a class="prompt prompt-cmd">
    ./scripts/extract-capri-stats-clt.sh ./runs/scenario1-surface
@@ -1672,8 +1684,8 @@ To use is simply call the script with as argument the run directory you want to 
 
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>View the output of the script:</i>
+ <summary>
+  <i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1698,9 +1710,10 @@ First medium cluster     - rank:  1  i-RMSD:  1.678  Fnat:  0.733  DockQ:  0.669
 Best cluster             - rank:  1  i-RMSD:  1.678  Fnat:  0.733  DockQ:  0.669
 </pre>
 </details>
+
 <br>
 
-Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script: 
+Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script:
 
 
 <a class="prompt prompt-cmd">
@@ -1709,7 +1722,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script:</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1734,43 +1747,46 @@ First medium model     - rank:  1  i-RMSD:  1.518  Fnat:  0.810  DockQ:  0.722
 Best model             - rank:  17  i-RMSD:  1.197  Fnat:  0.879  DockQ:  0.811
 </pre>
 </details>
+
 <br>
 
 _**Note**_ that this kind of analysis only makes sense when we know the reference complex and for benchmarking / performance analysis purposes.
-
 
 <a class="prompt prompt-info">Look at the single structure statistics provided by the script</a>
 
 <a class="prompt prompt-question">How does the quality of the model changes after flexible refinement? Consider here the various metrics.</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> In terms of iRMSD values we only observe very small differences in the best models, but the change in ranking is impressive! 
-The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement.
-All this will of course depend on how different are the bound and unbound conformations and the amount of data 
-used to drive the docking process. In general, from our experience, the more and better data at hand, 
-the larger the conformational changes that can be induced.
-</p>
-</details>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    In terms of iRMSD values we only observe very small differences in the best models, but the change in ranking is impressive!
+    The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement.
+    All this will of course depend on how different are the bound and unbound conformations and the amount of data
+    used to drive the docking process. In general, from our experience, the more and better data at hand,
+    the larger the conformational changes that can be induced.
+  </p>
+  </details>
+
 <br>
 
 <a class="prompt prompt-question">Is the best model always rank as first?</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.</p>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
+  </p>
 </details>
+
 <br>
-
-
 
 #### Analysis scenario 1: visualising the scores and their components
 
-We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
+We have precalculated a number of interactive plots to visualize the scores and their components versus ranks and model quality.
 
 <a class="prompt prompt-info">
 Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
@@ -1796,19 +1812,18 @@ Cluster statistics (distributions of values per cluster ordered according to the
 
 <a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
 
-
 <hr>
+
 ### Analysis scenario 2a: Paratope - NMR-epitope as passive
 
-
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
-Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and 
+Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and
 
 <a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1821,6 +1836,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 7	3	10	-	-52.284	6.453	4.930	0.161	0.125	0.033	12.482	0.704	0.176	0.018	356.568	28.814	1228.580	69.244	5.359	1.823	-299.986	38.202	23.279	48.112	-33.303	2.374	7
 </pre>
 </details>
+
 <br>
 
 <a class="prompt prompt-question">How many clusters are generated?</a>
@@ -1836,15 +1852,13 @@ This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the qualit
 
 <a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a>
 
-
-
-In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow). 
+In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow).
 
 <a class="prompt prompt-info">Inspect the corresponding _capri_clt.tsv_ file</a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -1859,6 +1873,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 9	7	10	-	10.174	0.445	4.776	0.000	0.086	0.000	11.416	0.000	0.178	0.000	1954.290	0.000	937.232	7.379	10.179	0.376	-10.952	0.000	2021.017	0.004	77.678	0.002	9
 </pre>
 </details>
+
 <br>
 
 <a class="prompt prompt-question">How many clusters are generated?</a>
@@ -1870,28 +1885,28 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 <a class="prompt prompt-question">Consider now the rank of the first acceptable cluster based on iRMSD values. How does this compare with the refined clusters (see above)?</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> After rigid body docking the first acceptable cluster is at rank 2. After refinement it scores at the top with score significantly better than the second-ranked cluster.
-</p>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    After rigid body docking the first acceptable cluster is at rank 2. After refinement it scores at the top with score significantly better than the second-ranked cluster.
+  </p>
 </details>
+
 <br>
 
 <a class="prompt prompt-question">Did the rank improve after refinement?</a>
 
-
 We are providing in the `scripts` a simple script that extract some cluster statistics for acceptable or better clusters from the `caprieval` steps.
-To use is simply call the script with as argument the run directory you want to analyse, e.g.:
+To use is simply call the script with as argument the run directory you want to analyze, e.g.:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-NMR-epitope-pass
+./scripts/extract-capri-stats-clt.sh ./runs/scenario2a-NMR-epitope-pass
 </a>
-
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1916,18 +1931,18 @@ First medium cluster     - rank:  1  i-RMSD:  1.302  Fnat:  0.759  DockQ:  0.723
 Best cluster             - rank:  1  i-RMSD:  1.302  Fnat:  0.759  DockQ:  0.723
 </pre>
 </details>
+
 <br>
 
-Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script: 
-
+Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario2a-NMR-epitope-pass
+./scripts/extract-capri-stats.sh ./runs/scenario2a-NMR-epitope-pass
 </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -1956,39 +1971,41 @@ Best model             - rank:  5  i-RMSD:  1.029  Fnat:  0.810  DockQ:  0.811
 
 _**Note**_ that this kind of analysis only makes sense when we know the reference complex and for benchmarking / performance analysis purposes.
 
-
 <a class="prompt prompt-info">Look at the single structure statistics provided by the script</a>
 
 <a class="prompt prompt-question">How does the quality of the model changes after flexible refinement? Consider here the various metrics.</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> In terms of iRMSD values we only observe very small differences with a slight increase. 
-The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement.
-All this will of course depend on how different are the bound and unbound conformations and the amount of data 
-used to drive the docking process. In general, from our experience, the more and better data at hand, 
-the larger the conformational changes that can be induced.
-</p>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    In terms of iRMSD values we only observe very small differences with a slight increase.
+    The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement.
+    All this will of course depend on how different are the bound and unbound conformations and the amount of data
+    used to drive the docking process. In general, from our experience, the more and better data at hand,
+    the larger the conformational changes that can be induced.
+  </p>
 </details>
 <br>
 
 <a class="prompt prompt-question">Is the best model always rank as first?</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.</p>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
+  </p>
 </details>
+
 <br>
 
-
-#### Analysis scenario 2a: visualising the scores and their components
+#### Analysis scenario 2a: visualizing the scores and their components
 
 By setting `postprocess=true` in the config files, interactive plots have been automatically generated in the _analysis_ directory of the run.
-These are useful to visualise the scores and their components versus ranks and model quality. 
+These are useful to visualise the scores and their components versus ranks and model quality.
 
 <a class="prompt prompt-info">
 Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
@@ -2011,22 +2028,20 @@ Cluster statistics (distributions of values per cluster ordered according to the
 * [ambiguous restraints energies](plots/scenario2a-NMR-epitope-pass/air_clt.html){:target="_blank"}
 * [desolvation energies](plots/scenario2a-NMR-epitope-pass/desolv_clt.html){:target="_blank"}
 
-
 <a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
 
-
 <hr>
+
 ### Analysis scenario 2b: Paratope - NMR-epitope as active
 
-
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
-Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and 
+Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and
 
 <a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -2044,13 +2059,6 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 12	8	8	-	-67.688	6.454	14.580	0.019	0.086	0.012	23.018	0.239	0.072	0.005	148.451	30.560	1652.513	97.272	3.496	1.602	-203.546	55.957	-100.415	43.751	-45.320	6.620	12
 </pre>
 </details>
-<br>
-
-<a class="prompt prompt-question">How many clusters are generated?</a>
-
-<a class="prompt prompt-question">Can you think of a reason why this scenario leads to more clusters? (think of the differences in the setup of the two scenarios)</a>
-
-<a class="prompt prompt-question">Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?</a>
 
 <a class="prompt prompt-question">How many clusters of acceptable or better quality have been generate according to CAPRI criteria?</a>
 
@@ -2059,13 +2067,13 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 <a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a>
 
 
-In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow). 
+In this run we also had a `caprieval` after the clustering of the rigid body models (step 4 of our workflow).
 
 <a class="prompt prompt-info">Inspect the corresponding _capri_clt.tsv_ file</a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 4_caprieval/capri_clt.tsv file:</i>
+<i>View the pre-calculated 4_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
@@ -2094,13 +2102,15 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 <a class="prompt prompt-question">Consider again the rank of the first acceptable cluster based on iRMSD values. How does this compare with the refined clusters (see above)?</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> After rigid body docking the first acceptable cluster is at rank 1 and the same is true after refinement, but the iRMSD values have improved.</p>
+  <summary style="bold">
+    <i>Answer </i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    After rigid body docking the first acceptable cluster is at rank 1 and the same is true after refinement, but the iRMSD values have improved.
+  </p>
 </details>
-<br>
 
+<br>
 
 Use the `extract-capri-stats-clt.sh` script to extract some simple cluster statistics for this run.
 
@@ -2111,7 +2121,7 @@ Use the `extract-capri-stats-clt.sh` script to extract some simple cluster stati
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+  <i>View the output of the script </i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -2136,18 +2146,18 @@ First medium cluster     - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
 Best cluster             - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
 </pre>
 </details>
+
 <br>
 
-Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script: 
-
+Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario2b-NMR-epitope-pass
+./scripts/extract-capri-stats.sh ./runs/scenario2b-NMR-epitope-pass
 </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the output of the script:</i>
+<i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
 ==============================================
@@ -2172,39 +2182,43 @@ First medium model     - rank:   3  i-RMSD:  1.922  Fnat:  0.638  DockQ:  0.597
 Best model             - rank:  10  i-RMSD:  0.758  Fnat:  0.845  DockQ:  0.871
 </pre>
 </details>
+
 <br>
 
 _**Note**_ that this kind of analysis only makes sense when we know the reference complex and for benchmarking / performance analysis purposes.
-
 
 <a class="prompt prompt-info">Look at the single structure statistics provided by the script</a>
 
 <a class="prompt prompt-question">How does the quality of the model changes after flexible refinement? Consider here the various metrics.</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> In this case we observe a small improvement in terms of iRMSD values and quite some large improvement in 
-the fraction of native contacts and the DockQ scores. Also the single model rankings have improved, but the top ranked model is not the best one.
-</p>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+    In this case we observe a small improvement in terms of iRMSD values and quite some large improvement in
+    the fraction of native contacts and the DockQ scores. Also the single model rankings have improved, but the top ranked model is not the best one.
+  </p>
 </details>
+
 <br>
 
 <a class="prompt prompt-question">Is the best model always rank as first?</a>
 
 <details style="background-color:#DAE4E7">
-<summary>
-<i>Answer:</i>
- </summary>
-<p> This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.</p>
+  <summary style="bold">
+    <i>Answer</i> <i class="material-icons">expand_more</i>
+  </summary>
+  <p>
+  This is clearly not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
+  </p>
 </details>
+
 <br>
 
+#### Analysis scenario 2b: visualizing the scores and their components
 
-#### Analysis scenario 2b: visualising the scores and their components
-
-We have precalculated a number of interactive plots to visualise the scores and their components versus ranks and model quality. 
+We have precalculated a number of interactive plots to visualize the scores and their components versus ranks and model quality.
 
 <a class="prompt prompt-info">
 Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
@@ -2227,18 +2241,15 @@ Cluster statistics (distributions of values per cluster ordered according to the
 * [ambiguous restraints energies](plots/scenario2b-NMR-epitope-act/air_clt.html){:target="_blank"}
 * [desolvation energies](plots/scenario2b-NMR-epitope-act/desolv_clt.html){:target="_blank"}
 
-
 <a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
 
-
 <hr>
-### Comparing the performance of the three scenarios
 
+### Comparing the performance of the three scenarios
 
 Clearly all three scenarios give good results with an acceptable cluster in all three cases ranked at the top:
 
 {% highlight shell %}
-
 ==============================================
 == ./runs/scenario1-surface/9_caprieval/capri_ss.tsv
 ==============================================
@@ -2274,23 +2285,21 @@ Best cluster             - rank:  1  i-RMSD:  1.957  Fnat:  0.642  DockQ:  0.593
 
 {% endhighlight %}
 
-The best models are obtained when combining the information about the paratope with the NMR epitope defined as passive for HADDOCK, 
+The best models are obtained when combining the information about the paratope with the NMR epitope defined as passive for HADDOCK,
 which is also the scenario described in our Structure 2020 article:
 
 * F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and A.M.J.J. Bonvin. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
 
-
-What is striking here is that the surface-based protocol (scenario1) is givin now thanks to the clustering step after the rigid-body 
-docking step an excellent solution ranking on top, while these would not make throught the refinement stage in the static HADDOCK2.4 
-protocol (or only very few that would not cluster at the end). Check for comparion our the 
-[related HADDOCK2.4 tutorial](http://localhost:4000/education/HADDOCK24/HADDOCK24-antibody-antigen/#scenario-2-a-loose-definition-of-the-epitope-is-known-1){:target="_blank"} 
-where you can find l-RMSD values for the surface scenario. Of course, due to the increased sampling it is also more costly.  
-
+What is striking here is that the surface-based protocol (scenario1) is givin now thanks to the clustering step after the rigid-body
+docking step an excellent solution ranking on top, while these would not make through the refinement stage in the static HADDOCK2.4
+protocol (or only very few that would not cluster at the end). Check for comparison our the
+[related HADDOCK2.4 tutorial](http://localhost:4000/education/HADDOCK24/HADDOCK24-antibody-antigen/#scenario-2-a-loose-definition-of-the-epitope-is-known-1){:target="_blank"}
+where you can find l-RMSD values for the surface scenario. Of course, due to the increased sampling it is also more costly.
 
 <hr>
 <hr>
-## Visualisation of the models
 
+## Visualization of the models
 
 To visualize the models from top cluster of your favorite run,  start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 of scenario2a.
 These can be found in the `runs/scenario2a-NMR-epitope-pass/8_seletopclusts/` directory
@@ -2298,41 +2307,50 @@ These can be found in the `runs/scenario2a-NMR-epitope-pass/8_seletopclusts/` di
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
 If you want to get an impression of how well defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`).
-Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`. 
+Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
 
 PyMol can also be started from the command line with as argument all the PDB files you want to visualize, e.g.:
 
 <a class="prompt prompt-cmd">
-  pymol runs/scenario2a-NMR-epitope-pass/8_seletopclusts/cluster_1_model_[1-4].pdb pdbs/4G6M-matched.pdb
+pymol runs/scenario2a-NMR-epitope-pass/8_seletopclusts/cluster_1_model_[1-4].pdb pdbs/4G6M-matched.pdb
 </a>
-
 
 Once all files have been loaded, type in the PyMOL command window:
 
 <a class="prompt prompt-pymol">
-show cartoon<br>
-util.cbc<br>
-color yellow, 4G6M_matched<br>
+show cartoon
+</a>
+<a class="prompt prompt-pymol">
+util.cbc
+</a>
+<a class="prompt prompt-pymol">
+color yellow, 4G6M_matched
 </a>
 
-Let us then superimpose all models on the reference strucrture:
+Let us then superimpose all models on the reference structure:
 
 
 <a class="prompt prompt-pymol">
-alignto 4G6M_matched <br>
+alignto 4G6M_matched
 </a>
 
 <a class="prompt prompt-question">
-How close are the top4 models to the reference? Did HADDOCK do a good job at ranking the best in the top? 
+How close are the top4 models to the reference? Did HADDOCK do a good job at ranking the best in the top?
 </a>
 
 Let’s now check if the active residues which we have defined (the paratope and epitope) are actually part of the interface. In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-select paratope, (resi 31+32+33+34+35+52+54+55+56+100+101+102+103+104+105+106+1031+1032+1049+1050+1053+1091+1092+1093+1094+1096 and chain A)<br>
-color red, paratope<br>
-select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117 and chain B)<br>
-color orange, epitope<br>
+select paratope, (resi 31+32+33+34+35+52+54+55+56+100+101+102+103+104+105+106+1031+1032+1049+1050+1053+1091+1092+1093+1094+1096 and chain A)
+</a>
+<a class="prompt prompt-pymol">
+color red, paratope
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117 and chain B)
+</a>
+<a class="prompt prompt-pymol">
+color orange, epitope
 </a>
 
 <a class="prompt prompt-question">
@@ -2341,13 +2359,12 @@ Are the residues of the paratope and NMR epitope at the interface?
 
 **Note:** You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.
 
-
 <details style="background-color:#DAE4E7">
  <summary style="bold">
- <b><i>See the overlay of the best model onto the reference structure</i></b>
+  <b><i>See the overlay of the best model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
  </summary>
  <p> Top4 models of the top cluster of scenario2a superimposed onto the reference crystal structure (in yellow)</p>
- <figure align="center">
+ <figure style="text-align: center">
    <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/results-best-model.png">
  </figure>
  <br>
@@ -2355,41 +2372,42 @@ Are the residues of the paratope and NMR epitope at the interface?
 
 <hr>
 <hr>
+
 ## Conclusions
 
-We have demonstrated three different scenarios for antibody-antigen modelling, all making use of the paratope information on the 
-antibody side and either no information (surface) or a NMR-mapped epitope for the other two scenarios. Compared to the static 
-HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allowed to implement a clustering step after rigid-body sampling 
-and select all resulting clusters for refinement. This strategy led to excellent results in this case while no single acceptable 
-cluster was obtained with HADDOCK2.4. While HADDOCK3 is still very much work in progress, those results indicate already that we 
-should be able to improve the performance of antibody-antigen modelling compared to the results we presented in our 
+We have demonstrated three different scenarios for antibody-antigen modelling, all making use of the paratope information on the
+antibody side and either no information (surface) or a NMR-mapped epitope for the other two scenarios. Compared to the static
+HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allowed to implement a clustering step after rigid-body sampling
+and select all resulting clusters for refinement. This strategy led to excellent results in this case while no single acceptable
+cluster was obtained with HADDOCK2.4. While HADDOCK3 is still very much work in progress, those results indicate already that we
+should be able to improve the performance of antibody-antigen modelling compared to the results we presented in our
 [Structure 2020](https://doi.org/10.1016/j.str.2019.10.011){:target="_blank"} article and in the [related HADDOCK2.4 tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen){:target="_blank"}.
+
 <hr>
 <hr>
-## Congratulations!
+
+## Congratulations! 🎉
 
 You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
 
 And check also our [education](/education) web page where you will find more tutorials!
 
+<hr>
+<hr>
 
-<hr>
-<hr>
 ## A look into the future Virtual Research Environment for HADDOCK3
 
-In the context of a project with the [Netherlands e-Science Center](https://www.esciencecenter.nl){:target="_blank"} we are working on 
-building a Virtual Research Environment (VRE) for HADDOCK3 that will allow you to build and edit custom workflows, 
+In the context of a project with the [Netherlands e-Science Center](https://www.esciencecenter.nl){:target="_blank"} we are working on
+building a Virtual Research Environment (VRE) for HADDOCK3 that will allow you to build and edit custom workflows,
 execute those on a variety of infrastructures (grid, cloud, local, HPC) and provide an interactive analysis
-platform for analysing your HADDOCK3 results. This is _work in progress_ but you can already take a glimpse of the
-first component, the workflow builder, [here](https://wonderful-noether-53a9e8.netlify.app){:target="_blank"}. 
+platform for analyzing your HADDOCK3 results. This is _work in progress_ but you can already take a glimpse of the
+first component, the workflow builder, [here](https://wonderful-noether-53a9e8.netlify.app){:target="_blank"}.
 
 All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESSE](https://github.com/i-VRESSE){:target="_blank"} repository.
 
 So stay tuned!
 
-
-
-
+<!-- Links -->
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
 [gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
