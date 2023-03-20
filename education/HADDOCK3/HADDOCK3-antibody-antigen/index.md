@@ -522,7 +522,7 @@ If you want to generate the same file, first create an empty line and then use t
 (can simply be done with: `pip install freesasa`), the same can be done with the _calc-accessibility.py_ script provided in the `scripts` directory:
 
 <a class="prompt prompt-cmd">
-   python ./scripts/calc-accessibility.py --cutoff 0.15 pdbs/4I1B_clean.pdb
+   python ./scripts/calc-accessibility.py \-\-cutoff 0.15 pdbs/4I1B_clean.pdb
 </a>
 
 The simple output directly reports the list of residues:
