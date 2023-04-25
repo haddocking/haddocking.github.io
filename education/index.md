@@ -32,6 +32,17 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 ## Online lectures
 
+* Recordings of the Computer Aided Drugs Design [ELIXIR 3D-BioInfo](https://elixir-europe.org/communities/3d-bioinfo){:target="_blank"} webinar by Prof. Bonvin (April 18th, 2023) on `Shape-restrainted modelling of protein-small molecule complexes with HADDOCK`:
+
+  <ul>
+  <details>
+  <summary>View recorded webinar (30 min.)
+  </summary>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/-6s1Jgx0DSs?start=2250" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
+
 * Recordings of the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool HADDOCK lectures by Prof. Bonvin (June 7th, 2021):
 
   <ul>
