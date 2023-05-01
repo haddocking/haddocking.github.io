@@ -206,6 +206,10 @@
     current: 'Medical University of Vienna, Austria'
     status: phd
     
+-   name: Anna Ranaudo
+    current: 'University of Milano-Bicocca'
+    status: visiting-phd
+
 -   name: Farzaneh Meimandi Parizi
     current: 'University of Nijmegen, Netherlands'
     status: visiting-phd
