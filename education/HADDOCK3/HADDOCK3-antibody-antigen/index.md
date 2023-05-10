@@ -382,7 +382,7 @@ HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, 
 Distance restraints are defined as:
 
 <pre style="background-color:#DAE4E7">
-assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound
@@ -390,7 +390,7 @@ correction and the upper limit as: distance plus upper-bound correction.  The
 syntax for the selections can combine information about chainID - `segid`
 keyword -, residue number - `resid` keyword -, atom name - `name` keyword.
 Other keywords can be used in various combinations of OR and AND statements.
-Please refer for that to the [online CNS manual](https://cns-online.org/v1.3/){:target="_blank"}.
+Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"}.
 
 We will shortly explain in this section how to generate both ambiguous
 interaction restraints (AIRs) and specific distance restraints for use in
