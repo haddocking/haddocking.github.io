@@ -6,7 +6,11 @@ image:
 ---
 ## 2023
 
+* R. Shukla, A.J. Peoples, K.C. Ludwig, S. Maity, M.G.N. Derks, S. de Benedetti, A.M. Krueger, B.J.A. Vermeulen, F. Lavore, R.V. Honorato, F. Grein, A.M.J.J. Bonvin, U. Kubitscheck, E. Breukink, C. Achorn, A. Nitti, C.J. Schwalen, A.L. Spoering, L.L. Ling, D. Hughes, M. Lelli, W.H. Roos, K. Lewis, T. Schneider, M. Weingarth. [A new antibiotic from an uncultured bacterium binds to an immutable target](https://doi.org/10.1101/2023.05.15.540765). BioRxiv  2023.05.15.540765 (2023).
+
 * F. van der Krift, D.W. Zijlmans, R. Shukla, A. Javed, P.I. Koukos, L.L.E. Schwarz, E.P.M. Timmermans-Sprang, P.E.M. Maas, D. Gahtory, M. van den Nieuwboer, J.A. Mol, G.J. Strous, **A.M.J.J. Bonvin**, M. van der Stelt, E.J.A. Veldhuizen, M.s Weingarth, M. Vermeulen, J. Klumperman, M.M. Maurice. [A novel antifolate suppresses growth of FPGS-deficient cells and overcomes methotrexate resistance](https://doi.org/10.1101/2023.02.26.530079). _bioRxiv_ 2023.02.26.530079 (2023).
+
+* S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _Proteins: Struc. Funct. &amp; Bioinformatics_ In Press (2023). Preprint [here](https://doi.org/10.1101/2022.11.03.515006).
 
 * H. Schweke, Q. Xu, G. Tauriello, L. Pantolini, T. Schwede, F. Cazals, A. Lhéritier, J. Fernandez-Recio, L.A. Rodríguez-Lumbreras, O. Schueler-Furman, J.K. Varga, B. Jiménez-García, M.F. Réau, **A.M.J.J. Bonvin**, C. Savojardo, P.-L. Martelli, R. Casadio, J. Tubiana, H. Wolfson, R. Oliva, D. Barradas-Bautista, T. Ricciardelli, L. Cavallo, Č. Venclovas, K. Olechnovič, R. Guerois, J. Andreani, J. Martin, X. Wang, D. Kihara , A. Marchand, B. Correia, X. Zou, S. Dey, R. Dunbrack, E. Levy, S. Wodak. [Discriminating physiological from non-physiological interfaces in structures of protein complexes: a community-wide study](https://doi.org/10.22541/au.167569565.51141128/v1). _Proteomics_ In Press DOI:10.22541/au.167569565.51141128/v1 (2023).
 
@@ -20,8 +24,6 @@ image:
 ## 2022
 
 * M.J. Abraham, R. Apostolov, P. Bauer, **A.M.J.J. Bonvin**, J.M. Correia Teixeira, B.L. de Groot, V. Gapsys, G. Groenhof, B. Hess, E. Laure, E. Lindahl, A.S.J. Melquiond, D. Morozov, J.P.G.L.M. Rodrigues, M. Trellet, R. Vargas Honorato. [BioExcel Updated Whitepaper on Scientific Software Development](https://doi.org/10.5281/zenodo.6404474). _Zenodo_ https://doi.org/10.5281/zenodo.6404474 (2022).
-
-* S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](https://doi.org/10.1101/2022.11.03.515006). _BioRxiv_ 10.1101/2021.12.08.471762 (2022).
 
 * M. Stahl Madsen, M. Broekema, M. Rønn Madsen, A. Koppen, A. Borgman, C. Gräwe, E. Thomsen, D. Westland, M. Kranendonk, M. Groot Koerkamp, N. Hamers, **A.M.J.J. Bonvin**, J. Ramos Pittol, K. Natarajan, S. Kersten, F. Holstege, H. Monajemi, S. van Mil, M. Vermeulen, B. Kragelund, D. Cassiman, S. Mandrup and E. Kalkhoven. [PPARγ lipodystrophy mutants reveal intermolecular interactions required for enhancer activation](https://doi.org/10.1038/s41467-022-34766-9). _Nature Comm._,  *13*, 7090 (2022).
 
