@@ -206,6 +206,10 @@
     current: 'Medical University of Vienna, Austria'
     status: phd
     
+-   name: Kira Devantier
+    current: 'University of Copenhagen'
+    status: visiting-phd
+
 -   name: Anna Ranaudo
     current: 'University of Milano-Bicocca'
     status: visiting-phd
