@@ -42,7 +42,7 @@ As python2.7 is end of life, one way to install it is to use [miniconda](https:/
 
 ### DSSP (only required to use the coarse-graining option in HADDOCK2.4)
 
-[DSSP](https://swift.cmbi.umcn.nl/gv/dssp){:target="_blank"} is required to define the secondary structure, an information required to select the proper backbone parameter for the Martini coarse grained model (see [coarse graining PDB files for docking](/software/haddock2.4/pdb-cg){:target="_blank"}.
+[DSSP](https://github.com/cmbi/dssp){:target="_blank"} is required to define the secondary structure, an information required to select the proper backbone parameter for the Martini coarse grained model (see [coarse graining PDB files for docking](/software/haddock2.4/pdb-cg){:target="_blank"}.
 
 
 * * *
@@ -55,7 +55,7 @@ As python2.7 is end of life, one way to install it is to use [miniconda](https:/
 In order to identify surface-accessible residues to define restraints for HADDOCK we can make use of [NACCESS][link-naccess]{:target="_blank"} freely available to non-profit users, or its open-source software alternative [FreeSASA][link-freesasa]{:target="_blank"}. We will here make use of FreeSASA. Following the download and installation instructions from the [FreeSASA website][link-freesasa]{:target="_blank"}. The direct download command is:
 
 <pre style="background-color:#DAE4E7">
-  wget https://freesasa.github.io/freesasa-2.0.3.tar.gz
+  wget https://github.com/mittinatten/freesasa/archive/refs/tags/2.0.3.tar.gz
 </pre>
 
 If running into problems you might want to disable `json` and `xml` support. Here we will assume you save the tar archive under the `software` directory in your home directory:
@@ -199,7 +199,7 @@ At this stage you should be ready to use HADDOCK2.4!
 [link-manual]: https://www.bonvinlab.org/software/haddock2.2/manual/ "HADDOCK Manual"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-naccess]: https://www.bioinf.manchester.ac.uk/naccess/ "NACCESS"
-[link-freesasa]: https://freesasa.github.io "FreeSASA"
+[link-freesasa]: https://github.com/mittinatten/freesasa/releases/tag/2.0.3 "FreeSASA"
 [link-profit]: http://www.bioinf.org.uk/software/profit/ "ProFit"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-molprobity]: https://molprobity.biochem.duke.edu "MolProbity"
