@@ -6,9 +6,11 @@ image:
 ---
 ## 2023
 
-* R. Shukla, A.J. Peoples, K.C. Ludwig, S. Maity, M.G.N. Derks, S. de Benedetti, A.M. Krueger, B.J.A. Vermeulen, F. Lavore, R.V. Honorato, F. Grein, A.M.J.J. Bonvin, U. Kubitscheck, E. Breukink, C. Achorn, A. Nitti, C.J. Schwalen, A.L. Spoering, L.L. Ling, D. Hughes, M. Lelli, W.H. Roos, K. Lewis, T. Schneider, M. Weingarth. [A new antibiotic from an uncultured bacterium binds to an immutable target](https://doi.org/10.1101/2023.05.15.540765). BioRxiv  2023.05.15.540765 (2023).
+* X. Xu,  A**A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1101/2023.06.22.546080). _BioRxiv_  2023.06.22.546080 (2023).
 
-* F. van der Krift, D.W. Zijlmans, R. Shukla, A. Javed, P.I. Koukos, L.L.E. Schwarz, E.P.M. Timmermans-Sprang, P.E.M. Maas, D. Gahtory, M. van den Nieuwboer, J.A. Mol, G.J. Strous, **A.M.J.J. Bonvin**, M. van der Stelt, E.J.A. Veldhuizen, M.s Weingarth, M. Vermeulen, J. Klumperman, M.M. Maurice. [A novel antifolate suppresses growth of FPGS-deficient cells and overcomes methotrexate resistance](https://doi.org/10.1101/2023.02.26.530079). _bioRxiv_ 2023.02.26.530079 (2023).
+* R. Shukla, A.J. Peoples, K.C. Ludwig, S. Maity, M.G.N. Derks, S. de Benedetti, A.M. Krueger, B.J.A. Vermeulen, F. Lavore, R.V. Honorato, F. Grein, **A.M.J.J. Bonvin**, U. Kubitscheck, E. Breukink, C. Achorn, A. Nitti, C.J. Schwalen, A.L. Spoering, L.L. Ling, D. Hughes, M. Lelli, W.H. Roos, K. Lewis, T. Schneider, M. Weingarth. [A new antibiotic from an uncultured bacterium binds to an immutable target](https://doi.org/10.1101/2023.05.15.540765). _BioRxiv_  2023.05.15.540765 (2023).
+
+* F. van der Krift, D.W. Zijlmans, R. Shukla, A. Javed, P.I. Koukos, L.L.E. Schwarz, E.P.M. Timmermans-Sprang, P.E.M. Maas, D. Gahtory, M. van den Nieuwboer, J.A. Mol, G.J. Strous, **A.M.J.J. Bonvin**, M. van der Stelt, E.J.A. Veldhuizen, M.s Weingarth, M. Vermeulen, J. Klumperman, M.M. Maurice. [A novel antifolate suppresses growth of FPGS-deficient cells and overcomes methotrexate resistance](https://doi.org/10.1101/2023.02.26.530079). _BioRxiv_ 2023.02.26.530079 (2023).
 
 * S. van Keulen and **A.M.J.J. Bonvin**. [Improving the Quality of Co-evolution Intermolecular Contact Prediction with DisVis](http://doi.org/10.1002/prot.26514). _Proteins: Struc. Funct. &amp; Bioinformatics_ Advanced Online Publication (2023). Preprint [here](https://doi.org/10.1101/2022.11.03.515006).
 
