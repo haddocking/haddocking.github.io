@@ -102,8 +102,7 @@
     status: postdoc
 
 -   name: Zeynep Kurkcuoglu
-    url: http://niped.org/en/
-    current: 'NIPED Institute, the Netherlands'
+    current: 'UMC Utrecht, Julius Institute, the Netherlands'
     status: postdoc
 
 -   name: Gydo van Zundert
@@ -248,7 +247,6 @@
     status: student
 
 -   name: Mehdi Nellen
-    current: ' '
     status: student
 
 -   name: Annin Ramsing
@@ -376,6 +374,9 @@
     status: student
 
 -   name: Rafaella Buzatu
+    status: student
+
+-   name: Aldo van den Nieuwendijk
     status: student
 
 
