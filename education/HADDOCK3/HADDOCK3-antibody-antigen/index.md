@@ -2401,7 +2401,7 @@ In the context of a project with the [Netherlands e-Science Center](https://www.
 building a Virtual Research Environment (VRE) for HADDOCK3 that will allow you to build and edit custom workflows,
 execute those on a variety of infrastructures (grid, cloud, local, HPC) and provide an interactive analysis
 platform for analyzing your HADDOCK3 results. This is _work in progress_ but you can already take a glimpse of the
-first component, the workflow builder, [here](https://wonderful-noether-53a9e8.netlify.app){:target="_blank"}.
+first component, the workflow builder, [here](https://github.com/i-VRESSE/workflow-builder){:target="_blank"}.
 
 All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESSE](https://github.com/i-VRESSE){:target="_blank"} repository.
 
