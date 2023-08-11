@@ -32,4 +32,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   <br>
   </ul>
 
-
+* [**HADDOCK3 antibody-antigen docking for bioexcel 2023 workshop**](/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023):
+  This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information
+  about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments.
+  As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
