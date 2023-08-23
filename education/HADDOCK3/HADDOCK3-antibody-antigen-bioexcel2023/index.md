@@ -286,9 +286,15 @@ _**Note**_ that the corresponding files can be found in the `pdbs` directory of 
 
 The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold) and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/)) performing nicely on the variable regions.
 
+For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
+
 CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility. Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.
 
 Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used to target the antigen in place of the standard unbound form, which is not usually available.
+
+We already ran the prediction with these two tools, and you can find them in the `pdbs` directory (with names `4g6k_Abodybuilder2.pdb` and `4g6k_AF2_multimer.pdb`).
+
+Let's preprocess these models!
 
 <a class="prompt prompt-cmd">
 pdb_tidy -strict pdbs/4g6k_Abodybuilder2.pdb | pdb_selchain -H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_abb_H.pdb
@@ -312,7 +318,7 @@ pdb_tidy -strict pdbs/4g6k_AF2_multimer.pdb | pdb_selchain -B | pdb_delhetatm | 
 pdb_merge 4g6k_af2_A.pdb 4g6k_af2_B.pdb | pdb_chain -A | pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > data_ml/4G6K_af2_clean.pdb
 </a>
 
-Let's load the three cleaned antibody structures in Pymol to see whether they resemble the experimental unbound structures.
+Let's load the three cleaned antibody structures in Pymol to see whether they resemble the experimental unbound structure.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 4G6K_clean.pdb
@@ -335,7 +341,7 @@ Which structure (between _4G6K_abb_clean.pdb_ and _4G6K_af2_clean.pdb_) is close
 
 Both ABodyBuilder2 and Alphafold2 can give an _ensemble_ of models in output. All the structures in these ensembles may be used as input antibody molecules in HADDOCK.
 
-<a class="prompt prompt-info">The rest of the tutorial will consider only the experimental unbound structure, but you can use your preprocessed predicted structures simply by substituting _4G6K_clean.pdb_ with either _4G6K_abb_clean.pdb_ or _4G6K_af2_clean.pdb_.</a>
+<a class="prompt prompt-info">The remaining of the tutorial will consider only the experimental unbound structure, but you can use your preprocessed predicted structures simply by substituting _4G6K_clean.pdb_ with either _4G6K_abb_clean.pdb_ or _4G6K_af2_clean.pdb_.</a>
 
 ### Preparing the antigen structure
 
@@ -396,12 +402,6 @@ For this start PyMOL and load `4G6K_clean.pdb`
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 4G6K_clean.pdb
-</a>
-
-or from the command line:
-
-<a class="prompt prompt-cmd">
-pymol 4G6K_clean.pdb
 </a>
 
 We will now highlight the predicted paratope. In PyMOL type the following commands:
@@ -653,19 +653,19 @@ The basic workflow will consists of the following modules:
 
 ### HADDOCK3 execution modes
 
-HADDOCK3 currently supports three difference execution modes that are defined in the first section of the configuration file of a run.
+HADDOCK3 currently supports three difference execution modes that are defined in the first section of the configuration file of a run:
 
-#### 1. local mode
+- **local mode** : in this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system minus one;
+- **HPC/batch mode**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster;
+- **MPI mode**: HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage).
 
-In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file
-to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
+In this tutorial we are using local resources (our laptops), and therefore we will stick to the **local** mode. For the tutorial we limit the number of cores to 12, that is, the maximum number of available cores on your computer.
 
-{% highlight toml %}
-# compute mode
-mode = "local"
-#  1 nodes x 12 ncores
-ncores = 12
-{% endhighlight %}
+Make sure your `haddock3` conda environment is active:
+
+<a class="prompt prompt-cmd">
+conda activate haddock3
+</a>
 
 In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
 
@@ -675,145 +675,15 @@ haddock3 \<my-workflow-configuration-file\>
 
 Alternatively redirect the output to a log file and send haddock3 to the background.
 
-_**Note**_: This is the execution mode you should use on your local laptop. For the tutorial we limit the number of cores to 12, that is, the maximum number of available cores on your computer.
-
-
 <a class="prompt prompt-cmd">
 haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
 </a>
-
-_**Note**_: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
-
-<details>
-  <summary style="bold">
-    <i>View an example script for submitting via the slurm batch system</i> <i class="material-icons">expand_more</i>
-  </summary>
-
-  {% highlight shell %}
-  #!/bin/bash
-  #SBATCH --nodes=1
-  #SBATCH --tasks-per-node=96
-  #SBATCH -J haddock3
-  #SBATCH --partition=medium
-
-  # load haddock3 module
-  module load haddock3
-  # or activate the haddock3 conda environment
-  ##source $HOME/miniconda3/etc/profile.d/conda.sh
-  ##conda activate haddock3
-
-  # go to the run directory
-  cd $HOME/HADDOCK3-antibody-antigen
-
-  # execute
-  haddock3 scenario1-surface-node.cfg
-  {% endhighlight %}
-  <br>
-</details>
-
-<details>
-<summary style="bold">
-View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system <i class="material-icons">expand_more</i>
- </summary>
-{% highlight shell %}
-#!/bin/bash
-#PJM -L  "node=1"                            # Assign 1 node
-#PJM -L  "elapse=02:00:00"                   # Elapsed time limit 2 hour
-#PJM -x PJM_LLIO_GFSCACHE=/vol0003:/vol0006  # volume names that job uses
-#PJM -s                                      # Statistical information output
-
-# active the haddock3 conda environment
-source /vol0601/share/ra020021/LifeScience/20221208_Bonvin/miniconda3-arm8/etc/profile.d/conda.sh
-conda activate haddock3
-
-# go to the tutorial directory in your home directory
-# edit if needed to specify the correct location
-cd $HOME/HADDOCK3-antibody-antigen
-
-# execute haddock3
-haddock3 scenario2a-NMR-epitope-pass-node.cfg
-{% endhighlight %}
-<br>
-</details>
-
-<br>
-
-#### 2. HPC/batch mode
-
-In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster.
-Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
-have to define the `queue` name and the maximum number of concurrent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model
-calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system.
-The number of model per job is defined by the `concat` parameter in the configuration file.
-You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
-
-An example of the relevant parameters to be defined in the first section of the config file is:
-
-{% highlight toml %}
-# compute mode
-mode = "hpc"
-# batch system
-batch_type = "slurm"
-# queue name
-queue = "short"
-# number of concurrent jobs to submit to the batch system
-queue_limit = 100
-# number of models to produce per submitted job
-concat = 10
-{% endhighlight %}
-
-In this mode HADDOCK3 can be started from the command line as for the local mode.
-
-#### 3. MPI mode
-
-HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library
-must have been installed at installation time. Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html).
-The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
-
-An example of the relevant parameters to be defined in the first section of the config file is:
-
-{% highlight toml %}
-# compute mode
-mode = "mpi"
-#  5 nodes x 50 tasks = ncores = 250
-ncores = 250
-{% endhighlight %}
-
-In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.
-
-<details>
-  <summary style="bold">
-    <i>View an example script for submitting an MPI HADDOCK3 job the slurm batch system</i> <i class="material-icons">expand_more</i>
-  </summary>
-  {% highlight shell %}
-  #!/bin/bash
-  #SBATCH --nodes=5
-  #SBATCH --tasks-per-node=50
-  #SBATCH -J haddock3mpi
-
-  # load haddock3 module
-  module load haddock3
-  # or make sure haddock3 is activated
-  ##source $HOME/miniconda3/etc/profile.d/conda.sh
-  ##conda activate haddock3
-
-  # go to the run directory
-  # edit if needed to specify the correct location
-  cd $HOME/HADDOCK3-antibody-antigen
-
-  # execute
-  haddock3 scenario2a-NMR-epitope-pass-mpi.cfg
-  {% endhighlight %}
-  <br>
-</details>
-
-In your local installation of HADDOCK3 you do not have access to the MPI execution.
 
 <hr>
 
 ### Docking Scenario: Paratope - NMR-epitope
 
-Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking. Here we are using the NMR-identified epitope, which is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
+Now that we have all data ready and know about execution modes of HADDOCK3 it is time to setup the docking. Here we are using the NMR-identified epitope, which is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
 The restraint file to use for this is `ambig-paratope-NMR-epitope.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file.
 
 <a class="prompt prompt-info">If you are using the Alphafold2 antibody you should use the *af2-antibody-unambig.tbl* file.</a>
@@ -900,6 +770,8 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 {% endhighlight %}
 
+The idea of this configuration file is to generate 96 models with the standard rigid-body energy minimization (*rigidbody* module). Only the 48 best scoring models are selected (*seletop* module) for flexible refinement (*flexref* module). Refined modes are then subject to a short energy minimisation in the OPLS force field (*emref*). FCC clustering (*clustfcc*) is applied at the end of the workflow to group together models sharing a consistent fraction of the interface contacts. The top 4 models of each cluster are saved to disk (*seletopclusts*). Multiple *caprieval* modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol.
+
 This configuration file is provided in the `/home/utente/BioExcel_SS_2023/HADDOCK` directory on your laptop as `docking-antibody-antigen-CDR-NMR-CSP.cfg` (`docking-antibody-antigen-CDR-NMR-CSP-af2.cfg` and `docking-antibody-antigen-CDR-NMR-CSP-abb.cfg` for Alphafold2 and ABodyBuilder2 antibodies, respectively).
 
 If you want to use your own pdb and restraint files please change the paths in the configuration files (for example from `pdbs/4G6K_clean.pdb` to `4G6K_clean.pdb`).
@@ -915,12 +787,17 @@ haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg
 
 ## Analysis of docking results
 
+In case something went wrong with the docking (or simply if you don't want to wait for the results) you can find the following precalculated runs in the `runs`:
+- `run1-CDR-NMR-CSP`: run started using the unbound antibody
+- `run1-CDR-NMR-CSP-af2`: run started using the Alphafold-multimer antibody
+- `run1-CDR-NMR-CSP-abb`: run started using the Immunebuilder antibody
+
 ### Structure of the run directory
 
 Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
 
 {% highlight shell %}
-> ls scenario2a-NMR-epitope-pass/
+> ls run1-CDR-NMR-CSP/
     0_topoaa/
     1_rigidbody/
     2_caprieval/
@@ -944,10 +821,10 @@ There is in addition the log file (text file) and two additional directories:
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.
 
-For example, the `X_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
+For example, the `09_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
 on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
-The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
+The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `10_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
 mmodel	md5	caprieval_rank	score	irmsd	fnat	lrmsd	ilrmsd	dockq	cluster-id	cluster-ranking	model-cluster-ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	total	vdw	vean	xpcs
@@ -979,9 +856,9 @@ The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein
 
 In CAPRI the quality of a model is defined as (for protein-protein complexes):
 
-* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1
-* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
-* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
+* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1 (0.23 < DOCKQ < 0.49)
+* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3 (0.49 < DOCKQ < 0.8)
+* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5 (DOCKQ > 0.8)
 
 <a class="prompt prompt-question">
 What is based on this CAPRI criterion the quality of the best model listed above (emref_6.pdb)?
@@ -999,7 +876,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 ...
 </pre>
 
-In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the processing `X_seletopclusts` directory.
+In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the processing `09_seletopclusts` directory.
 
 <hr>
 
@@ -1212,19 +1089,13 @@ The good information about the paratope with the NMR epitope is critical for the
 
 ## Visualization of the models
 
-To visualize the models from top cluster of your favorite run,  start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 of scenario2a.
-These can be found in the `runs/scenario2a-NMR-epitope-pass/8_seletopclusts/` directory
+To visualize the models from top cluster of your favorite run,  start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 for run `run1-CDR-NMR-CSP`.
+These can be found in the `runs/run1-CDR-NMR-CSP/09_seletopclusts/` directory
 
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
 If you want to get an impression of how well defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`).
 Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
-
-PyMol can also be started from the command line with as argument all the PDB files you want to visualize, e.g.:
-
-<a class="prompt prompt-cmd">
-pymol runs/scenario2a-NMR-epitope-pass/8_seletopclusts/cluster_1_model_[1-4].pdb pdbs/4G6M-matched.pdb
-</a>
 
 Once all files have been loaded, type in the PyMOL command window:
 
@@ -1239,7 +1110,6 @@ color yellow, 4G6M_matched
 </a>
 
 Let us then superimpose all models on the reference structure:
-
 
 <a class="prompt prompt-pymol">
 alignto 4G6M_matched
@@ -1284,7 +1154,7 @@ Are the residues of the paratope and NMR epitope at the interface?
 <hr>
 <hr>
 
-## BONUS: visualizing interleukin's interactions with ARCTIC-3D
+## BONUS: Does the antibody binds to a known interface of interleukin?  ARCTIC-3D analysis
 
 Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file *4G6M*, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with IL-1RI's binding site (in PDB file *4G6J*). For more details please check [this article](https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub).
 
@@ -1326,21 +1196,22 @@ You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/
 How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
 </a>
 
+<hr>
+<hr>
+
 ## BONUS: Alphafold2 for antibody-antigen complex structure prediction
 
 With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict with AlphaFold this antibody-antigen complex.
-For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
 To predict our complex, we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"}, making use of the Google Colab CLOUD resources.
 
 Start the AlphaFold2 notebook on Colab by clicking [here](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"}.
 
-**Note**: The bottom part of the notebook contains instructions on how to use it. 
-
+**Note**: The bottom part of the notebook contains instructions on how to use it.
 
 <br>
-### Setting up the antibody-antigen complex prediction with AlphaFold2
 
+### Setting up the antibody-antigen complex prediction with AlphaFold2
 
 To setup the prediction we need to provide the sequence of the heavy and light chains of the antibody and the sequence of the antigen.
 These are respectively
@@ -1349,30 +1220,26 @@ These are respectively
 <pre style="background-color:#DAE4E7">
 QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDES
 YNPSLKSRLTISKDTSKNQVSLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSS
-ASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSS
-GLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKRVEP
 </pre>
 
 * Antibody light chain:
 <pre style="background-color:#DAE4E7">
 DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPS
-RFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIKRTVAAPSVFIFPP
-SDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLT
-LSKADYEKHKVYACEVTHQGLSSPVTKSFNRG
+RFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIK
 </pre>
 
 * Antigen:
 <pre style="background-color:#DAE4E7">
-APVRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVAL
-GLKEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNW
-YISTSQAENMPVFLGGTKGGQDITDFTMQFVSS
+VRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVALGL
+KEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNWYI
+STSQAENMPVFLGGTKGGQDITDFTMQFVSS
 </pre>
 <br>
 
 To use AlphaFold2 to predict e.g. the pentamer follow the following steps:
 
 <a class="prompt prompt-info">
-Copy and paste each of the above sequence in the _query_sequence_ field, adding a colon `:` in between the sequences.
+Copy and paste each of the above sequence in the _query_sequence_ field, adding a colon *:* in between the sequences.
 </a>
 
 <a class="prompt prompt-info">
@@ -1400,10 +1267,10 @@ And while waiting try to answer the following questions:_
 _Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}.
 
 
-Pre-calculated AlphFold2 predictions are provided [here](Ab-Ag-AF2.zip){:target="\_blank"}. This archive contains the fives predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
-
+Pre-calculated AlphFold2 predictions are provided [here](abagtest_2d03e.result.zip){:target="\_blank"}. This archive contains the five predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
 
 <br>
+
 ### Analysis of the generated AF2 models
 
 While the notebook is running models will appear first under the `Run Prediction` section, colored both by chain and by pLDDT.
@@ -1412,13 +1279,11 @@ The best model will then be displayed under the `Display 3D structure` section. 
 
 **Note** that you can change the model displayed with the _rank_num_ option. After changing it execute the cell by clicking on the run cell icon on the left of it.
 
-
 <a class="prompt prompt-question">
     How similar are the five models generated by AF2?
 </a>
 
-
-Consider the pLDDT of the various models (the higher the pLDDT the more reliable the model). 
+Consider the pLDDT of the various models (the higher the pLDDT the more reliable the model).
 
 <a class="prompt prompt-question">
     What is the confidence of those predictions? (check again the FAQ page of the Alphafold database provided above for pLDDT values)
@@ -1434,11 +1299,11 @@ While the pLDDT score is an overall measure, you can also focus on the interface
   </summary>
 
    <pre>
-      Model1:  pLDDT 90.5, ptmscore 0.734 and iptm 0.626
-      Model2:  pLDDT 90.5, ptmscore 0.741 and iptm 0.655
-      Model3:  pLDDT 90.4, ptmscore 0.723 and iptm 0.622
-      Model4:  pLDDT 91.0, ptmscore 0.715 and iptm 0.623
-      Model5:  pLDDT 90.0, ptmscore 0.699 and iptm 0.599
+    Model1: pLDDT=90.4 pTM=0.654 ipTM=0.525
+    Model2: pLDDT=88.0 pTM=0.65  ipTM=0.522
+    Model3: pLDDT=88.2 pTM=0.647 ipTM=0.52
+    Model4: pLDDT=88.0 pTM=0.644 ipTM=0.516
+    Model5: pLDDT=88.1 pTM=0.641 ipTM=0.512
 </pre>
 
 </details>
@@ -1468,13 +1333,13 @@ Our antibody-antigen complex consists of three interfaces:
   <br>
   </summary>
   <figure align="center">
-   <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/AF2-PAE-plots.png">
+   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/abagtest_2d03e_pae.png">
   </figure>
 </details>
 <br>
 
 <a class="prompt prompt-question">
-    Based on the PAE plots, which interfaces can be considered reliable, unreliable?
+    Based on the PAE plots, which interfaces can be considered reliable/unreliable?
 </a>
 
 
@@ -1483,19 +1348,19 @@ Our antibody-antigen complex consists of three interfaces:
 ### Visualization of the generated AF2 models
 
 
-Let's now visualize the models in PyMOL. For this save your predictions to disk or download the precalculated AlphaFold2 model from [here](Ab-Ag-AF2.zip){:target="\_blank"}.
+Let's now visualize the models in PyMOL. For this save your predictions to disk or download the precalculated AlphaFold2 model from [here](abagtest_2d03e.result.zip){:target="\_blank"}.
 
-Start PyMOL and load via the File menu all five AF2 models (or use the command line to start PyMOL loading all models directly).
+Start PyMOL and load via the File menu all five AF2 models.
 
-<a class="prompt prompt-pymol">File menu -> Open -> select Ab_Ag_unrelaxed_rank_1_model_2.pdb</a>
+<a class="prompt prompt-pymol">File menu -> Open -> select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000.pdb</a>
 
-Repeat this for each model (`Ab_Ag_unrelaxed_rank_X_model_Y.pdb` or whatever the naming of your model is). 
+Repeat this for each model (`abagtest_2d03e_unrelaxed_rank_X_alphafold2_multimer_v3_model_X_seed_000.pdb` or whatever the naming of your model is). 
 
-Let's superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains B and C):
+Let's superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains A and B):
 
 <a class="prompt prompt-pymol">
 util.cbc<br>
-select Ab_Ag_unrelaxed_rank_1_model_2 and chain B+C<br>
+select Ab_Ag_unrelaxed_rank_1_model_2 and chain A+B<br>
 alignto sele<br>
 </a>
 
@@ -1529,7 +1394,7 @@ Note that there is a shift in numbering of 2 residues between the AF2 and the HA
 
 <a class="prompt prompt-pymol">
 util.cbc<br>
-select epitope, (resi 72,73,74,75,83,84,89,90,92,94,96,97,98,115,116,117) and chain D<br>
+select epitope, (resi 70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115) and chain C<br>
 color orange, epitope<br>
 </a>
 
@@ -1545,7 +1410,7 @@ Does any model have the NMR-identified epitope at the interface with the antibod
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/AF2-models-epitope.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/ab-ag-af2.png">
   </figure>
   <br>
 </details>
@@ -1571,18 +1436,17 @@ alignto sele
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/AF2-models-4G6M.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/ab-ag-af2-4G6M.png">
   </figure>
   <br>
 </details>
 <br>
 
-
 <hr>
 
 ## Conclusions
 
-We have demonstrated the usage of HADDOCK3 in an antibody-antigend docking scenario making use of the paratope information on the antibody side (i.e. no prior experimental information) and a NMR-mapped epitope for the antigen. Compared to the static
+We have demonstrated the usage of HADDOCK3 in an antibody-antigen docking scenario making use of the paratope information on the antibody side (i.e. no prior experimental information) and a NMR-mapped epitope for the antigen. Compared to the static
 HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allows to customise the docking protocols and to run a deeper analysis of the results.
 While HADDOCK3 is still very much work in progress, its intrinsic flexibility can be used to improve the performance of antibody-antigen modelling compared to the results we presented in our
 [Structure 2020](https://doi.org/10.1016/j.str.2019.10.011){:target="_blank"} article and in the [related HADDOCK2.4 tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen){:target="_blank"}.
