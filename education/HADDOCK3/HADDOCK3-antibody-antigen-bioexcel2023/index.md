@@ -667,23 +667,12 @@ Make sure your `haddock3` conda environment is active:
 conda activate haddock3
 </a>
 
-In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
-
-<a class="prompt prompt-cmd">
-haddock3 \<my-workflow-configuration-file\>
-</a>
-
-Alternatively redirect the output to a log file and send haddock3 to the background.
-
-<a class="prompt prompt-cmd">
-haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
-</a>
-
 <hr>
 
 ### Docking Scenario: Paratope - NMR-epitope
 
 Now that we have all data ready and know about execution modes of HADDOCK3 it is time to setup the docking. Here we are using the NMR-identified epitope, which is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
+
 The restraint file to use for this is `ambig-paratope-NMR-epitope.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file.
 
 <a class="prompt prompt-info">If you are using the Alphafold2 antibody you should use the *af2-antibody-unambig.tbl* file.</a>
@@ -1346,7 +1335,6 @@ Our antibody-antigen complex consists of three interfaces:
 <br>
 
 ### Visualization of the generated AF2 models
-
 
 Let's now visualize the models in PyMOL. For this save your predictions to disk or download the precalculated AlphaFold2 model from [here](abagtest_2d03e.result.zip){:target="\_blank"}.
 
