@@ -247,7 +247,7 @@ a single chain with non-overlapping residue numbering. For this we will be makin
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
 
-_**Note**_: Before starting to work on the tutorial, make sure to activate haddock3 (follow the workshop-specific instructions above), or, e.g. if installed using `conda`
+_**Note**_: Before starting to work on the tutorial, make sure to activate haddock3
 
 <a class="prompt prompt-cmd">
 conda activate haddock3
@@ -276,7 +276,11 @@ An important part for antibodies is the `pdb_fixinsert` command that fixes the r
 
 The second command does the same for the light chain (L) with the difference that the light chain is slightly shorter and we can focus on the first 107 residues.
 
-The third and last command merges the two processed chains and assign them unique chain- and segIDs, resulting in the HADDOCK-ready `4G6K_clean.pdb` file.
+The third and last command merges the two processed chains and assign them unique chain- and segIDs, resulting in the HADDOCK-ready `4G6K_clean.pdb` file. You can view its sequence running:
+
+<a class="prompt prompt-cmd">
+pdb_tofasta 4G6K_clean.pdb 
+</a>
 
 _**Note**_ that the corresponding files can be found in the `pdbs` directory of the archive you downloaded.
 
@@ -303,7 +307,7 @@ pdb_tidy -strict pdbs/4g6k_Abodybuilder2.pdb | pdb_selchain -H | pdb_delhetatm |
 pdb_tidy -strict pdbs/4g6k_Abodybuilder2.pdb | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_abb_L.pdb
 </a>
 <a class="prompt prompt-cmd">
-pdb_merge 4G6K_H.pdb 4G6K_L.pdb |pdb_chain -A |pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > 4G6K_abb_clean.pdb
+ pdb_merge 4G6K_abb_H.pdb 4G6K_abb_L.pdb | pdb_chain -A | pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > 4G6K_abb_clean.pdb
 </a>
 
 Now the Alphafold2-multimer top ranked structure. By default it is written to disk with chains A and B.
@@ -315,7 +319,7 @@ pdb_tidy -strict pdbs/4g6k_AF2_multimer.pdb | pdb_selchain -A | pdb_delhetatm | 
 pdb_tidy -strict pdbs/4g6k_AF2_multimer.pdb | pdb_selchain -B | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4g6k_af2_B.pdb
 </a>
 <a class="prompt prompt-cmd">
-pdb_merge 4g6k_af2_A.pdb 4g6k_af2_B.pdb | pdb_chain -A | pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > data_ml/4G6K_af2_clean.pdb
+pdb_merge 4g6k_af2_A.pdb 4g6k_af2_B.pdb | pdb_chain -A | pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > 4G6K_af2_clean.pdb
 </a>
 
 Let's load the three cleaned antibody structures in Pymol to see whether they resemble the experimental unbound structure.
@@ -671,7 +675,7 @@ conda activate haddock3
 
 ### Docking Scenario: Paratope - NMR-epitope
 
-Now that we have all data ready and know about execution modes of HADDOCK3 it is time to setup the docking. Here we are using the NMR-identified epitope, which is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
+Now that we have all data ready it is time to setup the docking. Here we are using the NMR-identified epitope, which is treated as active, meaning restraints will be defined from it to "force" it to be at the interface.
 
 The restraint file to use for this is `ambig-paratope-NMR-epitope.tbl`. We will also define the restraints to keep the two antibody chains together using for this the `antibody-unambig.tbl` restraint file.
 
@@ -693,7 +697,7 @@ run_dir = "run1-CDR-NMR-CSP"
 
 # compute mode
 mode = "local"
-#  1 nodes x 96 cores
+#  12 local cores
 ncores = 12
 
 # Self contained rundir (to avoid problems with long filename paths)
@@ -701,9 +705,6 @@ self_contained = true
 
 # Post-processing to generate statistics and plots
 postprocess = true
-
-# Cleaning to compress files and save space
-clean = true
 
 # molecules to be docked
 molecules =  [
@@ -816,21 +817,20 @@ on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information ab
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `10_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
-mmodel	md5	caprieval_rank	score	irmsd	fnat	lrmsd	ilrmsd	dockq	cluster-id	cluster-ranking	model-cluster-ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	total	vdw	vean	xpcs
 model   md5 caprieval_rank  score   irmsd   fnat    lrmsd   ilrmsd  dockq   cluster-id  cluster-ranking model-cluster-ranking   air angles  bonds   bsa cdih    coup    dani    desolv  dihe    elec    improper    rdcs    rg  total   vdw vean    xpcs
 ../06_emref/emref_6.pdb -   1   -140.975    0.960   0.931   1.828   1.692   0.865   -   -   -   33.263  0.000   0.000   1947.720    0.000   0.000   0.000   11.203  0.000   -539.778    0.000   0.000   0.000   -554.063    -47.548 0.000   0.000
-../06_emref/emref_10.pdb    -   2   -140.328    1.009   0.897   2.461   1.712   0.836   -   -   -   46.787  0.000   0.000   1842.640    0.000   0.000   0.000   4.612   0.000   -516.071    0.000   0.000   0.000   -515.689    -46.405 0.000   0.000
+../06_emref/emref_10.pdb -  2   -140.328    1.009   0.897   2.461   1.712   0.836   -   -   -   46.787  0.000   0.000   1842.640    0.000   0.000   0.000   4.612   0.000   -516.071    0.000   0.000   0.000   -515.689    -46.405 0.000   0.000
 ../06_emref/emref_4.pdb -   3   -135.492    0.984   0.931   1.812   1.557   0.862   -   -   -   101.587 0.000   0.000   1820.850    0.000   0.000   0.000   2.812   0.000   -498.636    0.000   0.000   0.000   -445.784    -48.736 0.000   0.000
 ../06_emref/emref_1.pdb -   4   -135.266    1.110   0.828   1.750   1.795   0.811   -   -   -   37.907  0.000   0.000   1929.730    0.000   0.000   0.000   5.107   0.000   -505.720    0.000   0.000   0.000   -510.834    -43.020 0.000   0.000
 ../06_emref/emref_7.pdb -   5   -135.140    1.039   0.931   1.881   1.734   0.853   -   -   -   137.978 0.000   0.000   1934.520    0.000   0.000   0.000   7.220   0.000   -609.693    0.000   0.000   0.000   -505.934    -34.219 0.000   0.000
 ../06_emref/emref_5.pdb -   6   -131.557    0.960   0.897   1.819   1.533   0.854   -   -   -   79.243  0.000   0.000   1806.910    0.000   0.000   0.000   1.090   0.000   -498.482    0.000   0.000   0.000   -460.114    -40.876 0.000   0.000
 ../06_emref/emref_8.pdb -   7   -131.009    1.311   0.810   2.511   2.227   0.766   -   -   -   63.142  0.000   0.000   1859.770    0.000   0.000   0.000   7.756   0.000   -527.098    0.000   0.000   0.000   -503.616    -39.660 0.000   0.000
-../06_emref/emref_12.pdb    -   8   -130.900    1.437   0.741   2.758   2.484   0.722   -   -   -   73.370  0.000   0.000   1957.780    0.000   0.000   0.000   5.955   0.000   -473.885    0.000   0.000   0.000   -449.930    -49.415 0.000   0.000
-../06_emref/emref_31.pdb    -   9   -129.925    14.673  0.069   23.379  21.840  0.065   -   -   -   138.350 0.000   0.000   1980.060    0.000   0.000   0.000   5.802   0.000   -395.519    0.000   0.000   0.000   -327.627    -70.458 0.000   0.000
+../06_emref/emref_12.pdb -  8   -130.900    1.437   0.741   2.758   2.484   0.722   -   -   -   73.370  0.000   0.000   1957.780    0.000   0.000   0.000   5.955   0.000   -473.885    0.000   0.000   0.000   -449.930    -49.415 0.000   0.000
+../06_emref/emref_31.pdb -  9   -129.925    14.673  0.069   23.379  21.840  0.065   -   -   -   138.350 0.000   0.000   1980.060    0.000   0.000   0.000   5.802   0.000   -395.519    0.000   0.000   0.000   -327.627    -70.458 0.000   0.000
 ....
 </pre>
 
-If clustering was performed prior to calling the `caprieval` module the `capri_ss.tsv` will also contain information about to which cluster the model belongs to and its ranking within the cluster as shown above.
+If clustering was performed prior to calling the `caprieval` module the `capri_ss.tsv` file will also contain information about to which cluster the model belongs to and its ranking within the cluster.
 
 The relevant statistics are:
 
@@ -885,7 +885,7 @@ cluster_rank    cluster_id  n   under_eval  score   score_std   irmsd   irmsd_st
 1   1   15  -   -138.015    2.647   1.016   0.057   0.897   0.042   1.963   0.289   0.844   0.022   54.886  27.397  1885.235    54.415  5.933   3.160   -515.051    15.564  -506.593    38.897  -46.427 2.133   1
 2   4   4   -   -110.736    18.239  14.826  0.136   0.069   0.000   23.369  0.334   0.065   0.001   132.600 23.440  1868.953    172.244 3.968   1.382   -353.955    65.225  -278.527    57.166  -57.173 9.861   2
 3   2   13  -   -110.344    3.107   4.926   0.095   0.138   0.012   10.730  0.458   0.203   0.010   130.046 35.925  1661.280    35.009  5.389   1.263   -293.795    25.939  -233.727    52.083  -69.978 6.192   3
-4   3   10  -   -98.583 3.401   9.761   0.321   0.073   0.028   18.989  0.770   0.088   0.013   78.389  37.656  1449.342    55.663  1.485   0.942   -319.842    40.522  -285.391    44.606  -43.938 4.154   4
+4   3   10  -   -98.583     3.401   9.761   0.321   0.073   0.028   18.989  0.770   0.088   0.013   78.389  37.656  1449.342    55.663  1.485   0.942   -319.842    40.522  -285.391    44.606  -43.938 4.154   4
 </pre>
 </details>
 
@@ -1067,7 +1067,7 @@ open runs/run1-CDR-NMR-CSP/analysis/10_caprieval_analysis/report.html
 
 ### Comparing the performance of the three antibodies
 
-All three antibody structures give good results. The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure. Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.
+All three antibody structures used in input give good results. The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure. Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.
 
 The good information about the paratope with the NMR epitope is critical for the good docking performance, which is also the scenario described in our Structure 2020 article:
 
@@ -1133,9 +1133,9 @@ Are the residues of the paratope and NMR epitope at the interface?
  <summary style="bold">
   <b><i>See the overlay of the best model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
  </summary>
- <p> Top4 models of the top cluster of scenario2a superimposed onto the reference crystal structure (in yellow)</p>
+ <p> Top4 models of the top cluster superimposed onto the reference crystal structure (in yellow)</p>
  <figure style="text-align: center">
-   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/results-best-model.png">
+   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/results-best-model.png">
  </figure>
  <br>
 </details>
@@ -1304,7 +1304,7 @@ While the pLDDT score is an overall measure, you can also focus on the interface
 
 **Note** that in this case the iptm score reports on all interfaces, i.e. both the interface between the two chains of the antibody, and the antibody-antigen interface
 
-Another usefull way of looking at the model accuracy is to check the Predicted Alignmed Error plots (PAE) (also refered to as Domain position confidence).
+Another useful way of looking at the model accuracy is to check the Predicted Alignmed Error plots (PAE) (also refered to as Domain position confidence).
 The PAE gives a distance error for every pair of residues: It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
 Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
 
