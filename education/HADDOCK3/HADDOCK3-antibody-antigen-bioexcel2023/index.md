@@ -77,13 +77,14 @@ In it you should find the following directories and files:
 
 * `haddock3`: Contains the HADDOCK3 source code with some usage examples
 * `pdbs`: Contains the pre-processed PDB files
-* `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
 * `restraints`: Contains the interface information and the corresponding restraint files for HADDOCK
 * `runs`: Contains pre-calculated run results for the various protocols in this tutorial
 * `scripts`: Contains a variety of scripts used in this tutorial
 * `docking-antibody-antigen-CDR-NMR-CSP*.cfg`: the different HADDOCK3 configuration files that can be used in the tutorial 
 
 <hr>
+
+If you are working from your own computer you download [this zip archive](https://surfdrive.surf.nl/files/index.php/s/2NbStaQ4ub5Vgv1). Remember that on your local machine you'll have to install CNS and HADDOCK3.
 
 ## HADDOCK general concepts
 
@@ -198,7 +199,7 @@ provided in the HADDOCK distribution in the `varia/cns1.3` directory. Compilatio
 CNS might be non-trivial. Some guidance on installing CNS is provided in the online
 HADDOCK3 documentation page [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}.
 
-In this tutorial CNS has already been installed at `/home/utente/BioExcel_SS_2023/HADDOCK/cns_solve_1.3/`, so you don't have to worry.
+In this tutorial CNS has already been installed at `/usr/local/cns_solve_1.3/`, so you don't have to worry.
 
 
 ### Installing HADDOCK3
@@ -257,7 +258,7 @@ conda activate haddock3
 
 ### Preparing the antibody structure
 
-Using PDB-tools we will download the structure from the PDB database (the PDB ID is [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}) and then process it to have a unique chain ID (A) and non-overlapping residue numbering by renumbering the merged pdb (starting from 1).
+Using PDB-tools we will download the unbound structure of the antibody from the PDB database (the PDB ID is [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}) and then process it to have a unique chain ID (A) and non-overlapping residue numbering by renumbering the merged pdb (starting from 1).
 
 This can be done from the command line with:
 
@@ -272,11 +273,11 @@ pdb_merge 4G6K_H.pdb 4G6K_L.pdb | pdb_reres -1 | pdb_chain -A | pdb_chainxseg | 
 </a>
 
 The first command fetches the PDB ID, selects the heavy chain (H) and removes water and heteroatoms (in this case no co-factor is present that should be kept).
-An important part for antibodies is the `pdb_fixinsert` command that fixes the residue numbering of the HV loops: Antibodies often follow the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} and insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly. As such renumbering is necessary before starting the docking. Then, the command pdb_selres selects only the residues from 1 to 120, so as to consider only the variable domain (FV) of the antibody.
+An important part for antibodies is the `pdb_fixinsert` command that fixes the residue numbering of the HV loops: Antibodies often follow the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} and insertions created by this numbering scheme (e.g. 82A, 82B, 82C) cannot be processed by HADDOCK directly. As such renumbering is necessary before starting the docking. Then, the command `pdb_selres` selects only the residues from 1 to 120, so as to consider only the variable domain (FV) of the antibody. This allows to save a substantial amount of computational resources.
 
 The second command does the same for the light chain (L) with the difference that the light chain is slightly shorter and we can focus on the first 107 residues.
 
-The third and last command merges the two processed chains and assign them unique chain- and segIDs, resulting in the HADDOCK-ready `4G6K_clean.pdb` file. You can view its sequence running:
+The third and last command merges the two processed chains and assign them unique chain and segIDs, resulting in the HADDOCK-ready `4G6K_clean.pdb` file. You can view its sequence running:
 
 <a class="prompt prompt-cmd">
 pdb_tofasta 4G6K_clean.pdb 
@@ -288,7 +289,7 @@ _**Note**_ that the corresponding files can be found in the `pdbs` directory of 
 
 ### Machine-learning-based modelling of antibodies
 
-The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold) and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/)) performing nicely on the variable regions.
+The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold) and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/), from the ImmuneBuilder suite) performing nicely on the variable regions.
 
 For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
@@ -764,7 +765,7 @@ The idea of this configuration file is to generate 96 models with the standard r
 
 This configuration file is provided in the `/home/utente/BioExcel_SS_2023/HADDOCK` directory on your laptop as `docking-antibody-antigen-CDR-NMR-CSP.cfg` (`docking-antibody-antigen-CDR-NMR-CSP-af2.cfg` and `docking-antibody-antigen-CDR-NMR-CSP-abb.cfg` for Alphafold2 and ABodyBuilder2 antibodies, respectively).
 
-If you want to use your own pdb and restraint files please change the paths in the configuration files (for example from `pdbs/4G6K_clean.pdb` to `4G6K_clean.pdb`).
+If you want to use your own pdb and restraint files please change the paths in the configuration files (for example from `pdbs/4G6K_clean.pdb` to `4G6K_abb_clean.pdb`).
 
 If you have everything ready, you can launch haddock3 from the command line.
 
@@ -817,16 +818,16 @@ on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information ab
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `10_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
-model   md5 caprieval_rank  score   irmsd   fnat    lrmsd   ilrmsd  dockq   cluster-id  cluster-ranking model-cluster-ranking   air angles  bonds   bsa cdih    coup    dani    desolv  dihe    elec    improper    rdcs    rg  total   vdw vean    xpcs
-../06_emref/emref_6.pdb -   1   -140.975    0.960   0.931   1.828   1.692   0.865   -   -   -   33.263  0.000   0.000   1947.720    0.000   0.000   0.000   11.203  0.000   -539.778    0.000   0.000   0.000   -554.063    -47.548 0.000   0.000
-../06_emref/emref_10.pdb -  2   -140.328    1.009   0.897   2.461   1.712   0.836   -   -   -   46.787  0.000   0.000   1842.640    0.000   0.000   0.000   4.612   0.000   -516.071    0.000   0.000   0.000   -515.689    -46.405 0.000   0.000
-../06_emref/emref_4.pdb -   3   -135.492    0.984   0.931   1.812   1.557   0.862   -   -   -   101.587 0.000   0.000   1820.850    0.000   0.000   0.000   2.812   0.000   -498.636    0.000   0.000   0.000   -445.784    -48.736 0.000   0.000
-../06_emref/emref_1.pdb -   4   -135.266    1.110   0.828   1.750   1.795   0.811   -   -   -   37.907  0.000   0.000   1929.730    0.000   0.000   0.000   5.107   0.000   -505.720    0.000   0.000   0.000   -510.834    -43.020 0.000   0.000
-../06_emref/emref_7.pdb -   5   -135.140    1.039   0.931   1.881   1.734   0.853   -   -   -   137.978 0.000   0.000   1934.520    0.000   0.000   0.000   7.220   0.000   -609.693    0.000   0.000   0.000   -505.934    -34.219 0.000   0.000
-../06_emref/emref_5.pdb -   6   -131.557    0.960   0.897   1.819   1.533   0.854   -   -   -   79.243  0.000   0.000   1806.910    0.000   0.000   0.000   1.090   0.000   -498.482    0.000   0.000   0.000   -460.114    -40.876 0.000   0.000
-../06_emref/emref_8.pdb -   7   -131.009    1.311   0.810   2.511   2.227   0.766   -   -   -   63.142  0.000   0.000   1859.770    0.000   0.000   0.000   7.756   0.000   -527.098    0.000   0.000   0.000   -503.616    -39.660 0.000   0.000
-../06_emref/emref_12.pdb -  8   -130.900    1.437   0.741   2.758   2.484   0.722   -   -   -   73.370  0.000   0.000   1957.780    0.000   0.000   0.000   5.955   0.000   -473.885    0.000   0.000   0.000   -449.930    -49.415 0.000   0.000
-../06_emref/emref_31.pdb -  9   -129.925    14.673  0.069   23.379  21.840  0.065   -   -   -   138.350 0.000   0.000   1980.060    0.000   0.000   0.000   5.802   0.000   -395.519    0.000   0.000   0.000   -327.627    -70.458 0.000   0.000
+model                   md5 caprieval_rank     score    irmsd   fnat    lrmsd   ilrmsd  dockq cluster-id cluster-ranking model-cluster-ranking      air        bsa  desolv      elec      total      vdw
+../06_emref/emref_6.pdb   -              1  -140.975    0.960   0.931   1.828   1.692   0.865          -               -                     -   33.263  1947.720   11.203  -539.778   -554.063  -47.548
+../06_emref/emref_10.pdb  -              2  -140.328    1.009   0.897   2.461   1.712   0.836          -               -                     -   46.787  1842.640    4.612  -516.071   -515.689  -46.405
+../06_emref/emref_4.pdb   -              3  -135.492    0.984   0.931   1.812   1.557   0.862          -               -                     -  101.587  1820.850    2.812  -498.636   -445.784  -48.736
+../06_emref/emref_1.pdb   -              4  -135.266    1.110   0.828   1.750   1.795   0.811          -               -                     -   37.907  1929.730    5.107  -505.720   -510.834  -43.020
+../06_emref/emref_7.pdb   -              5  -135.140    1.039   0.931   1.881   1.734   0.853          -               -                     -  137.978  1934.520    7.220  -609.693   -505.934  -34.219
+../06_emref/emref_5.pdb   -              6  -131.557    0.960   0.897   1.819   1.533   0.854          -               -                     -   79.243  1806.910    1.090  -498.482   -460.114  -40.876
+../06_emref/emref_8.pdb   -              7  -131.009    1.311   0.810   2.511   2.227   0.766          -               -                     -   63.142  1859.770    7.756  -527.098   -503.616  -39.660
+../06_emref/emref_12.pdb  -              8  -130.900    1.437   0.741   2.758   2.484   0.722          -               -                     -   73.370  1957.780    5.955  -473.885   -449.930  -49.415
+../06_emref/emref_31.pdb  -              9  -129.925   14.673   0.069  23.379  21.840   0.065          -               -                     -  138.350  1980.060    5.802  -395.519   -327.627  -70.458
 ....
 </pre>
 
@@ -1143,7 +1144,7 @@ Are the residues of the paratope and NMR epitope at the interface?
 <hr>
 <hr>
 
-## BONUS: Does the antibody binds to a known interface of interleukin?  ARCTIC-3D analysis
+## BONUS: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis
 
 Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file *4G6M*, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with IL-1RI's binding site (in PDB file *4G6J*). For more details please check [this article](https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub).
 
