@@ -80,7 +80,7 @@ In it you should find the following directories and files:
 * `restraints`: Contains the interface information and the corresponding restraint files for HADDOCK
 * `runs`: Contains pre-calculated run results for the various protocols in this tutorial
 * `scripts`: Contains a variety of scripts used in this tutorial
-* `docking-antibody-antigen-CDR-NMR-CSP*.cfg`: the different HADDOCK3 configuration files that can be used in the tutorial 
+* `docking-antibody-antigen-CDR-NMR-CSP*.cfg`: the different HADDOCK3 configuration files that can be used in the tutorial
 
 <hr>
 
@@ -218,7 +218,7 @@ and then type
 haddock3 -h
 </a>
 
-in the terminal. You should see a small help message explaining how to use the software. 
+in the terminal. You should see a small help message explaining how to use the software.
 
 In case you want to obtain HADDOCK3 for another platform, navigate to [its repository][haddock-repo], fill the
 registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
@@ -280,7 +280,7 @@ The second command does the same for the light chain (L) with the difference tha
 The third and last command merges the two processed chains and assign them unique chain and segIDs, resulting in the HADDOCK-ready `4G6K_clean.pdb` file. You can view its sequence running:
 
 <a class="prompt prompt-cmd">
-pdb_tofasta 4G6K_clean.pdb 
+pdb_tofasta 4G6K_clean.pdb
 </a>
 
 _**Note**_ that the corresponding files can be found in the `pdbs` directory of the archive you downloaded.
@@ -456,7 +456,7 @@ Do the identified residues form a well defined patch on the surface?
 
 <hr>
 
-### Antigen: NMR-mapped epitope information 
+### Antigen: NMR-mapped epitope information
 
 The article describing the crystal structure of the antibody-antigen complex we are modelling also reports
 on experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab)
@@ -924,7 +924,7 @@ To use is simply call the script with as argument the run directory you want to 
 Total number of acceptable or better clusters:  1  out of  4
 Total number of medium or better clusters:      1  out of  4
 Total number of high quality clusters:          0  out of  4
- 
+
 First acceptable cluster - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
 First medium cluster     - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
 Best cluster             - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
@@ -963,7 +963,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 Total number of acceptable or better models:  27  out of  96
 Total number of medium or better models:      17  out of  96
 Total number of high quality models:          0  out of  96
- 
+
 First acceptable model - rank:  1  i-RMSD:  2.504  Fnat:  0.328  DockQ:  0.405
 First medium model     - rank:  4  i-RMSD:  1.179  Fnat:  0.828  DockQ:  0.786
 Best model             - rank:  15  i-RMSD:  1.027  Fnat:  0.586  DockQ:  0.705
@@ -973,7 +973,7 @@ Best model             - rank:  15  i-RMSD:  1.027  Fnat:  0.586  DockQ:  0.705
 Total number of acceptable or better models:  16  out of  48
 Total number of medium or better models:      15  out of  48
 Total number of high quality models:          4  out of  48
- 
+
 First acceptable model - rank:  1  i-RMSD:  1.074  Fnat:  0.810  DockQ:  0.810
 First medium model     - rank:  1  i-RMSD:  1.074  Fnat:  0.810  DockQ:  0.810
 Best model             - rank:  14  i-RMSD:  0.910  Fnat:  0.776  DockQ:  0.822
@@ -983,7 +983,7 @@ Best model             - rank:  14  i-RMSD:  0.910  Fnat:  0.776  DockQ:  0.822
 Total number of acceptable or better models:  16  out of  48
 Total number of medium or better models:      15  out of  48
 Total number of high quality models:          5  out of  48
- 
+
 First acceptable model - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
 First medium model     - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
 Best model             - rank:  18  i-RMSD:  0.916  Fnat:  0.845  DockQ:  0.844
@@ -993,7 +993,7 @@ Best model             - rank:  18  i-RMSD:  0.916  Fnat:  0.845  DockQ:  0.844
 Total number of acceptable or better models:  15  out of  42
 Total number of medium or better models:      15  out of  42
 Total number of high quality models:          5  out of  42
- 
+
 First acceptable model - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
 First medium model     - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
 Best model             - rank:  17  i-RMSD:  0.916  Fnat:  0.845  DockQ:  0.844
@@ -1157,7 +1157,7 @@ Insert the selected uniprot ID in the **UniprotID** field.
 </a>
 
 <a class="prompt prompt-info">
-Leave the other parameters as they are and click on **Submit**. 
+Leave the other parameters as they are and click on **Submit**.
 </a>
 
 Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3Sa8mhzR).
@@ -1166,7 +1166,7 @@ Wait a few seconds for the job to complete or access a precalculated run [here](
 How many interface clusters were found for this protein?
 </a>
 
-Once you download the output archive, you can find the clustering infomation presented in the dendrogram:
+Once you download the output archive, you can find the clustering information presented in the dendrogram:
 
 <figure style="text-align: center;">
 <img width="75%" src="dendrogram_average_P01584.png">
@@ -1285,7 +1285,7 @@ While the pLDDT score is an overall measure, you can also focus on the interface
 <details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
-    <i>See the confidence statistis for the five generated models</i>
+    <i>See the confidence statistics for the five generated models</i>
   </summary>
 
    <pre>
@@ -1305,9 +1305,9 @@ While the pLDDT score is an overall measure, you can also focus on the interface
 
 **Note** that in this case the iptm score reports on all interfaces, i.e. both the interface between the two chains of the antibody, and the antibody-antigen interface
 
-Another useful way of looking at the model accuracy is to check the Predicted Alignmed Error plots (PAE) (also refered to as Domain position confidence).
-The PAE gives a distance error for every pair of residues: It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y. 
-Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diaganal blocks report on the accuracy of the domain-domain placement.
+Another useful way of looking at the model accuracy is to check the Predicted Alignment Error plots (PAE) (also referred to as Domain position confidence).
+The PAE gives a distance error for every pair of residues: It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y.
+Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diagonal blocks report on the accuracy of the domain-domain placement.
 
 
 Our antibody-antigen complex consists of three interfaces:
@@ -1343,7 +1343,7 @@ Start PyMOL and load via the File menu all five AF2 models.
 
 <a class="prompt prompt-pymol">File menu -> Open -> select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000.pdb</a>
 
-Repeat this for each model (`abagtest_2d03e_unrelaxed_rank_X_alphafold2_multimer_v3_model_X_seed_000.pdb` or whatever the naming of your model is). 
+Repeat this for each model (`abagtest_2d03e_unrelaxed_rank_X_alphafold2_multimer_v3_model_X_seed_000.pdb` or whatever the naming of your model is).
 
 Let's superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains A and B):
 
@@ -1379,7 +1379,7 @@ Examine the various models. How does the orientation of the antigen differ betwe
 <br>
 
 Since we do have NMR chemical shift perturbation data for the antigen, let's check if the perturbed residues are at the interface in the AF2 models.
-Note that there is a shift in numbering of 2 residues between the AF2 and the HADDOCK models. 
+Note that there is a shift in numbering of 2 residues between the AF2 and the HADDOCK models.
 
 <a class="prompt prompt-pymol">
 util.cbc<br>
