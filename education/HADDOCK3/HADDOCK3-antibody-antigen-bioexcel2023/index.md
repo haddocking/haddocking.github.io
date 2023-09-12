@@ -337,7 +337,7 @@ File menu -> Open -> select 4G6K_af2_clean.pdb
 
 We now use the backbone RMSD to align the machine learning models to the experimental structure.
 <a class="prompt prompt-pymol">
-alignto 4G6K_fv
+alignto 4G6K_clean
 </a>
 
 <a class="prompt prompt-question">
