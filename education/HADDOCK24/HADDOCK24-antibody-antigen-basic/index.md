@@ -506,7 +506,7 @@ Are the active residues at the interface in the different clusters? How is the r
 <br>
 <br>
 <hr>
-## Modelling the antibody-antigen complex with AlphaFold2 - does it work?
+## BONUS 1: Modelling the antibody-antigen complex with AlphaFold2 - does it work?
 
 With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict with AlphaFold this antibody-antigen complex.
 For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
@@ -756,7 +756,110 @@ alignto sele
 </details>
 <br>
 
+<br>
+<hr>
 
+## BONUS 2: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis
+
+Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file *4G6M*, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with IL-1RI's binding site (in PDB file *4G6J*). For more details please check [this article](https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub){:target="\_blank"}.
+
+We will now use our new software, [ARCTIC-3D](https://www.biorxiv.org/content/10.1101/2023.07.10.548477v1){:target="\_blank"}, to visualize the binding interfaces formed by IL-1β. First, the program retrieves all the existing binding surfaces formed by IL-1β from the [PDBe website](https://www.ebi.ac.uk/pdbe/){:target="\_blank"}. Then, these binding surfaces are compared and clustered together if they span a similar region of the selected protein (IL-1β in our case).
+
+We now use the ARCTIC-3D web-server available [here](https://wenmr.science.uu.nl/arctic3d/){:target="\_blank"} to run an ARCTIC-3D job targeting the uniprot ID of human Interleukin-1 beta, namely [P01584](https://www.uniprot.org/uniprotkb/P01584/entry){:target="\_blank"}.
+
+<a class="prompt prompt-info">
+Insert the selected uniprot ID in the **UniprotID** field.
+</a>
+
+<a class="prompt prompt-info">
+Leave the other parameters as they are and click on **Submit**.
+</a>
+
+Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SxLmeey){:target="\_blank"}.
+
+<a class="prompt prompt-question">
+How many interface clusters were found for this protein?
+</a>
+
+Once you download the output archive, you can find the clustering information presented in the dendrogram:
+
+<figure style="text-align: center;">
+<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/dendrogram_average_P01584.png">
+</figure>
+
+We can see how the two *4G6M* antibody chains are recognized as a unique cluster, clearly separated from the other binding surfaces and, in particular, from those proper to IL-1RI (uniprot ID P14778).
+
+<a class="prompt prompt-info">
+Rerun ARCTIC-3D with a clustering threshold equal to 0.95
+</a>
+
+This means that the clustering will be looser, therefore lumping more dissimilar surfaces into the same object.
+
+You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SxLv9B1){:target="\_blank"}.
+
+<a class="prompt prompt-question">
+How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
+</a>
+
+<br>
+<br>
+<hr>
+
+## BONUS 3: Dissecting the interface energetics: PROT-ON analysis
+
+PROT-ON (Structure-based detection of designer mutations in PROTein-protein interface mutatiONs) is a tool and [online server](http://proton.tools.ibg.edu.tr:8001){:target="\_blank"} that allows to identify critical amino acids for redesigning a structurally characterized protein-protein interfaces, which paves the way for developing protein-based therapeutics to deal with diverse range of diseases. To find such amino acids positions, the residues across the protein interaction surfaces are either randomly or strategically mutated. Scanning mutations in this manner is experimentally costly. Therefore, computational methods have been developed to estimate the impact of an interfacial mutation on protein-protein interactions. PROT-ON scans all possible interfacial mutations by using EvoEF1 (active in both on the web server and stand-alone versions) or FoldX (active only in the stand-alone version) with the aim of finding the most mutable positions. The original publication describing PROT-ON can be found [here](https://www.frontiersin.org/articles/10.3389/fmolb.2023.1063971/full){:target="\_blank"}.
+
+Here we will use PROT-ON to analyse the interface of our antibody-antigen complex. We will use for that the provide matched reference structure (4G6M-matched) in which both chains of the antibody have the same chainID (A), which allows us to analyse all interface residues of the antibody at once.
+
+<a class="prompt prompt-info">
+Connect to the PROT-ON server page (link above)
+</a>
+
+<a class="prompt prompt-info">
+Specify your run name --> 4G6M
+</a>
+
+<a class="prompt prompt-info">
+Choose / Upload your protein complex --> select the provided _4G6M-matched.pdb_ file
+</a>
+
+<a class="prompt prompt-info">
+Which dimer chains should be analyzed --> select chain A for the 1st molecule and B for the 2nd
+</a>
+<a class="prompt prompt-info">
+Pick the monomer for mutational scanning --> select the first molecule (the antibody) (switch the button)
+</a>
+
+<a class="prompt prompt-info">
+Click on submit
+</a>
+
+You run should complete in 5 to 10 minutes. Once finished you will be presented with a result page summarizing the most deterious (lower the binding affinity) and most advantageous (increases the binding affinity) mutations.
+
+<a class="prompt prompt-question">
+Which possible mutations would you propose to improve the binding affinity of the antibody?
+</a>
+
+<a class="prompt prompt-question">
+Inspect the proposed amino acids in PyMol. Can you rationalise why they might increase the affinity?
+</a>
+
+Now let's consider how sensitive is this kind of analysis on the quality of the modelled complex. Instead of using the crystal structure, repeat this analysis using the best model of the top-ranked cluster (_cluster5_1.pdb_) or the best model of the second best cluster (overlapping scores), which has the lowest ligand-RMSD (_cluster2_1.pdb_).
+
+<a class="prompt prompt-question">
+Considering the predicted most advantageous mutations, how different are those than those predicted based on the crystal structure?
+</a>
+
+
+_Note_: For the purpose of our EMBO course pre-calculated runs are provided:
+
+* [_4G6M_matched_](http://proton.tools.ibg.edu.tr:8001/result/dae4ee4df0ec47e9a119fd512fdbfd98){:target="_blank"} (crystal structure)
+* [_cluster5_1_](http://proton.tools.ibg.edu.tr:8001/result/73cdda1fade6457faefa98af9e55b454){:target="_blank"} (top ranked cluster, l-RMSD 7.3Å)
+* [_cluster2_1_](http://proton.tools.ibg.edu.tr:8001/result/5ab290262ad340eaba0e6357b6ef46f2){:target="_blank"} (second best ranked cluster, l-RMSD 2.2Å)
+
+
+<br>
+<br>
 <hr>
 ## Conclusions
 
