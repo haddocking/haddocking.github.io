@@ -1160,7 +1160,7 @@ Insert the selected uniprot ID in the **UniprotID** field.
 Leave the other parameters as they are and click on **Submit**.
 </a>
 
-Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SxLmeey).
+Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SMSa8-7).
 
 <a class="prompt prompt-question">
 How many interface clusters were found for this protein?
@@ -1180,7 +1180,7 @@ Rerun ARCTIC-3D with a clustering threshold equal to 0.95
 
 This means that the clustering will be looser, therefore lumping more dissimilar surfaces into the same object.
 
-You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SxLv9B1).
+You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SMSgsHc).
 
 <a class="prompt prompt-question">
 How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
