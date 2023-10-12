@@ -64,7 +64,7 @@ instructions, and/or PyMOL commands.
 
 In order to follow this tutorial you will need to work on a Linux or MacOSX system. We will also make use of [**PyMOL**][link-pymol] (freely available for most operating systems) in order to visualize the input and output data.
 
-## PyMOL on the DEVANA cluster
+### PyMOL on the DEVANA cluster
 It is possible to run PyMOL directly on DEVANA by connecting to the [DEVANA Desktop application](https://ood.devana.nscc.sk/pun/sys/dashboard/batch_connect/sessions). There, you can start a Desktop session by specifying your account, the **testing** partition, and 1 as the number of cores.
 
 Once logged in, you can start a terminal in the DEVANA Desktop emulator. From there, you can start PyMOL by typing:
@@ -92,19 +92,15 @@ For this, navigate through the terminal to the tutorial directory:
   <br>
 </details>
 
-<details>
-  <summary style="bold">
-  Bratislava<i class="material-icons">expand_more</i>
- </summary>
+### Bratislava
 
-  Please connect to the DEVANA supercomputer using your credentials, either using SSH or accessing this page: https://ood.devana.nscc.sk/pun/sys/shell/ssh/login01
+  Please connect to the DEVANA supercomputer using your credentials, either using SSH or accessing [this page](https://ood.devana.nscc.sk/pun/sys/shell/ssh/login01)
 
   From your home directory, navigate to the tutorial directory:
   <a class="prompt prompt-cmd">
   cd HADDOCK
   </a>
-  <br>
-</details>
+  
 
 In it you should find the following directories and files:
 
@@ -931,8 +927,13 @@ This file contains the cluster ranking and score statistics, averaged over the m
 (4 by default), with their corresponding standard deviations. E.g.:
 
 <pre style="background-color:#DAE4E7">
-
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	2	10	-	-139.014	7.386	1.426	0.182	0.746	0.081	3.235	0.650	0.715	0.056	131.826	51.848	2002.760	76.340	8.397	4.920	-584.336	90.832	-496.236	89.379	-43.727	11.464	1
+2	3	10	-	-120.115	6.139	14.964	0.018	0.069	0.000	23.390	0.342	0.065	0.001	189.120	18.758	1998.883	56.075	4.601	5.111	-426.788	71.303	-295.939	64.795	-58.270	8.018	2
+3	1	19	-	-86.814	2.027	8.747	0.451	0.112	0.019	16.725	0.548	0.115	0.010	203.898	11.457	1554.495	32.501	7.527	1.994	-355.098	23.298	-194.910	27.573	-43.710	4.911	3
+...
 </pre>
+
 
 In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the processing `09_seletopclusts` directory.
 
@@ -993,12 +994,9 @@ Total number of acceptable or better clusters:  1  out of  4
 Total number of medium or better clusters:      1  out of  4
 Total number of high quality clusters:          0  out of  4
  
-First acceptable cluster - rank:  1  i-RMSD:  1.413  Fnat:  0.759  Do
-ckQ:  0.726
-First medium cluster     - rank:  1  i-RMSD:  1.413  Fnat:  0.759  Do
-ckQ:  0.726
-Best cluster             - rank:  1  i-RMSD:  1.413  Fnat:  0.759  Do
-ckQ:  0.726
+First acceptable cluster - rank:  1  i-RMSD:  1.413  Fnat:  0.759  DockQ:  0.726
+First medium cluster     - rank:  1  i-RMSD:  1.413  Fnat:  0.759  DockQ:  0.726
+Best cluster             - rank:  1  i-RMSD:  1.413  Fnat:  0.759  DockQ:  0.726
 </pre>
 </details>
 
@@ -1128,7 +1126,7 @@ Cluster statistics (distributions of values per cluster ordered according to the
 
 <a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
 
-You can also access the full analysis report on your web browser.
+You can also access the full analysis report on your web browser:
 
 <a class="prompt prompt-cmd">
 firefox HADDOCK/runs/run1-CDR-NMR-CSP/analysis/10_caprieval_analysis/report.html
@@ -1536,4 +1534,3 @@ And check also our [education](/education) web page where you will find more tut
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
 [tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
-[link-devana]: https://ood.devana.nscc.sk/pun/sys/shell/ssh/login01 "DEVANA link"
