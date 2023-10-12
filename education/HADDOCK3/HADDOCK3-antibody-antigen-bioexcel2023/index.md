@@ -1128,10 +1128,10 @@ Cluster statistics (distributions of values per cluster ordered according to the
 
 <a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
 
-You can also access the full analysis report on your web browser:
+You can also access the full analysis report on your web browser.
 
 <a class="prompt prompt-cmd">
-open runs/run1-CDR-NMR-CSP/analysis/10_caprieval_analysis/report.html
+firefox HADDOCK/runs/run1-CDR-NMR-CSP/analysis/10_caprieval_analysis/report.html
 </a>
 
 <hr>
