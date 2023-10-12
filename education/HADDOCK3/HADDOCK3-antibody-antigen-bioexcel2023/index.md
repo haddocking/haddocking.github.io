@@ -708,7 +708,7 @@ HADDOCK3 currently supports three difference execution modes that are defined in
 
 ## Cagliari
   
-In this tutorial we are using local resources (our laptops), andtherefore we will stick to the **local** mode. For the tutorial we limit the number of cores to 12, that is, the maximum number ofavailable cores on your computer.
+In this tutorial we are using local resources (our laptops), and therefore we will stick to the **local** mode. For the tutorial we limit the number of cores to 12, that is, the maximum number ofavailable cores on your computer.
 
 Make sure your `haddock3` conda environment is active:
 
