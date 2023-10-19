@@ -64,18 +64,46 @@ instructions, and/or PyMOL commands.
 
 In order to follow this tutorial you will need to work on a Linux or MacOSX system. We will also make use of [**PyMOL**][link-pymol] (freely available for most operating systems) in order to visualize the input and output data.
 
+### PyMOL on the DEVANA cluster
+It is possible to run PyMOL directly on DEVANA by connecting to the [DEVANA Desktop application](https://ood.devana.nscc.sk/pun/sys/dashboard/batch_connect/sessions). There, you can start a Desktop session by specifying your account, the **testing** partition, and 1 as the number of cores.
+
+Once logged in, you can start a terminal in the DEVANA Desktop emulator. From there, you can start PyMOL by typing:
+<a class="prompt prompt-cmd">
+module load PyMOL
+</a>
+and then
+<a class="prompt prompt-cmd">
+pymol
+</a>
+
 Further we are providing pre-processed PDB files for docking and analysis (but the preprocessing of those files will also be explained in this tutorial). The files have been processed
 to facilitate their use in HADDOCK and for allowing comparison with the known reference structure of the complex.
 
 For this, navigate through the terminal to the tutorial directory:
 
-<a class="prompt prompt-cmd">
-cd /home/utente/BioExcel_SS_2023/HADDOCK
-</a>
+<details>
+  <summary style="bold">
+  Cagliari<i class="material-icons">expand_more</i>
+ </summary>
+  
+  <a class="prompt prompt-cmd">
+  cd /home/utente/BioExcel_SS_2023/HADDOCK
+  </a>
+  <br>
+</details>
+
+### Bratislava
+
+  Please connect to the DEVANA supercomputer using your credentials, either using SSH or accessing [this page](https://ood.devana.nscc.sk/pun/sys/shell/ssh/login01)
+
+  From your home directory, navigate to the tutorial directory:
+  <a class="prompt prompt-cmd">
+  cd HADDOCK
+  </a>
+  
 
 In it you should find the following directories and files:
 
-* `haddock3`: Contains the HADDOCK3 source code with some usage examples
 * `pdbs`: Contains the pre-processed PDB files
 * `restraints`: Contains the interface information and the corresponding restraint files for HADDOCK
 * `runs`: Contains pre-calculated run results for the various protocols in this tutorial
@@ -84,7 +112,7 @@ In it you should find the following directories and files:
 
 <hr>
 
-If you are working from your own computer you download [this zip archive](https://surfdrive.surf.nl/files/index.php/s/2NbStaQ4ub5Vgv1). Remember that on your local machine you'll have to install CNS and HADDOCK3.
+If you are working from your own computer please download [this zip archive](https://surfdrive.surf.nl/files/index.php/s/2NbStaQ4ub5Vgv1). Remember that on your local machine you'll have to install CNS and HADDOCK3.
 
 ## HADDOCK general concepts
 
@@ -199,18 +227,38 @@ provided in the HADDOCK distribution in the `varia/cns1.3` directory. Compilatio
 CNS might be non-trivial. Some guidance on installing CNS is provided in the online
 HADDOCK3 documentation page [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}.
 
-In this tutorial CNS has already been installed at `/usr/local/cns_solve_1.3/`, so you don't have to worry.
+In this tutorial CNS has already been installed, so you don't have to worry.
 
 
 ### Installing HADDOCK3
 
 In this tutorial we will make use of the HADDOCK3 version. HADDOCK3 is already pre-installed in your system.
 
-To make sure the HADDOCK3 is properly installed activate its conda environment:
+To make sure the HADDOCK3 is properly installed
+<details>
+  <summary style="bold">
+  Cagliari<i class="material-icons">expand_more</i>
+ </summary>
 
-<a class="prompt prompt-cmd">
-conda activate haddock3
-</a>
+  activate its conda environment:
+
+  <a class="prompt prompt-cmd">
+  conda activate haddock3
+  </a>
+</details>
+ 
+### Bratislava
+
+  load the Python 3.9.6 module:
+
+  <a class="prompt prompt-cmd">
+  module load Python/3.9.6-GCCcore-11.2.0
+  </a>
+
+  and then source the HADDOCK3 environment:
+  <a class="prompt prompt-cmd">
+  source /home/projects/training-05/.haddock3-env/bin/activate
+  </a>
 
 and then type
 
@@ -247,12 +295,6 @@ a single chain with non-overlapping residue numbering. For this we will be makin
 
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
-
-_**Note**_: Before starting to work on the tutorial, make sure to activate haddock3
-
-<a class="prompt prompt-cmd">
-conda activate haddock3
-</a>
 
 <hr>
 
@@ -664,13 +706,20 @@ HADDOCK3 currently supports three difference execution modes that are defined in
 - **HPC/batch mode**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster;
 - **MPI mode**: HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage).
 
-In this tutorial we are using local resources (our laptops), and therefore we will stick to the **local** mode. For the tutorial we limit the number of cores to 12, that is, the maximum number of available cores on your computer.
+## Cagliari
+  
+In this tutorial we are using local resources (our laptops), and therefore we will stick to the **local** mode. For the tutorial we limit the number of cores to 12, that is, the maximum number ofavailable cores on your computer.
 
 Make sure your `haddock3` conda environment is active:
 
 <a class="prompt prompt-cmd">
 conda activate haddock3
 </a>
+
+
+## Bratislava
+  
+  In this tutorial we are using local resources of remote nodes on DEVANA, and therefore we will stick to the **local** mode. For the tutorial we limit the number of cores to 12, so as to avoid overloading the nodes.
 
 <hr>
 
@@ -763,22 +812,41 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 The idea of this configuration file is to generate 96 models with the standard rigid-body energy minimization (*rigidbody* module). Only the 48 best scoring models are selected (*seletop* module) for flexible refinement (*flexref* module). Refined modes are then subject to a short energy minimisation in the OPLS force field (*emref*). FCC clustering (*clustfcc*) is applied at the end of the workflow to group together models sharing a consistent fraction of the interface contacts. The top 4 models of each cluster are saved to disk (*seletopclusts*). Multiple *caprieval* modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol.
 
-This configuration file is provided in the `/home/utente/BioExcel_SS_2023/HADDOCK` directory on your laptop as `docking-antibody-antigen-CDR-NMR-CSP.cfg` (`docking-antibody-antigen-CDR-NMR-CSP-af2.cfg` and `docking-antibody-antigen-CDR-NMR-CSP-abb.cfg` for Alphafold2 and ABodyBuilder2 antibodies, respectively).
 
-If you want to use your own pdb and restraint files please change the paths in the configuration files (for example from `pdbs/4G6K_clean.pdb` to `4G6K_abb_clean.pdb`).
+<details>
+  <summary style="bold">
+  Cagliari<i class="material-icons">expand_more</i>
+ </summary>
+  
+  This configuration file is provided in the `/home/utente/BioExcel_SS_2023/HADDOCK` directory on your laptop as `docking-antibody-antigen-CDR-NMR-CSP.cfg` (`docking-antibody-antigen-CDR-NMR-CSP-af2.cfg` and `docking-antibody-antigen-CDR-NMR-CSP-abb.cfg` for Alphafold2 and ABodyBuilder2 antibodies, respectively).
 
-If you have everything ready, you can launch haddock3 from the command line.
+  If you want to use your own pdb and restraint files please change the paths in the configuration files (for example from `pdbs/4G6K_clean.pdb` to `4G6K_abb_clean.pdb`).
 
-<a class="prompt prompt-cmd">
-haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg
-</a>
+  If you have everything ready, you can launch haddock3 from the command line.
 
-<hr>
+  <a class="prompt prompt-cmd">
+  haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg
+  </a>  
+</details>
+
+
+## Bratislava
+  
+  This configuration file is provided in the `HADDOCK` directory within your home folder on DEVANA as `docking-antibody-antigen-CDR-NMR-CSP.cfg` (`docking-antibody-antigen-CDR-NMR-CSP-af2.cfg` and `docking-antibody-antigen-CDR-NMR-CSP-abb.cfg` for Alphafold2 and ABodyBuilder2 antibodies, respectively).
+
+  If you want to use your own pdb and restraint files please change the paths in the configuration files (for example from `pdbs/4G6K_clean.pdb` to `4G6K_abb_clean.pdb`).
+
+  If you have everything ready, we can submit our haddock3 run to the cluster.
+
+  <a class="prompt prompt-cmd">
+  sbatch run-haddock3.job
+  </a>
+
 <hr>
 
 ## Analysis of docking results
 
-In case something went wrong with the docking (or simply if you don't want to wait for the results) you can find the following precalculated runs in the `runs`:
+In case something went wrong with the docking (or simply if you don't want to wait for the results) you can find the following precalculated runs in the `runs` directory:
 - `run1-CDR-NMR-CSP`: run started using the unbound antibody
 - `run1-CDR-NMR-CSP-af2`: run started using the Alphafold-multimer antibody
 - `run1-CDR-NMR-CSP-abb`: run started using the Immunebuilder antibody
@@ -818,16 +886,16 @@ on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information ab
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `10_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
-model                   md5 caprieval_rank     score    irmsd   fnat    lrmsd   ilrmsd  dockq cluster-id cluster-ranking model-cluster-ranking      air        bsa  desolv      elec      total      vdw
-../06_emref/emref_6.pdb   -              1  -140.975    0.960   0.931   1.828   1.692   0.865          -               -                     -   33.263  1947.720   11.203  -539.778   -554.063  -47.548
-../06_emref/emref_10.pdb  -              2  -140.328    1.009   0.897   2.461   1.712   0.836          -               -                     -   46.787  1842.640    4.612  -516.071   -515.689  -46.405
-../06_emref/emref_4.pdb   -              3  -135.492    0.984   0.931   1.812   1.557   0.862          -               -                     -  101.587  1820.850    2.812  -498.636   -445.784  -48.736
-../06_emref/emref_1.pdb   -              4  -135.266    1.110   0.828   1.750   1.795   0.811          -               -                     -   37.907  1929.730    5.107  -505.720   -510.834  -43.020
-../06_emref/emref_7.pdb   -              5  -135.140    1.039   0.931   1.881   1.734   0.853          -               -                     -  137.978  1934.520    7.220  -609.693   -505.934  -34.219
-../06_emref/emref_5.pdb   -              6  -131.557    0.960   0.897   1.819   1.533   0.854          -               -                     -   79.243  1806.910    1.090  -498.482   -460.114  -40.876
-../06_emref/emref_8.pdb   -              7  -131.009    1.311   0.810   2.511   2.227   0.766          -               -                     -   63.142  1859.770    7.756  -527.098   -503.616  -39.660
-../06_emref/emref_12.pdb  -              8  -130.900    1.437   0.741   2.758   2.484   0.722          -               -                     -   73.370  1957.780    5.955  -473.885   -449.930  -49.415
-../06_emref/emref_31.pdb  -              9  -129.925   14.673   0.069  23.379  21.840   0.065          -               -                     -  138.350  1980.060    5.802  -395.519   -327.627  -70.458
+model                    md5     caprieval_rank     score    irmsd    fnat   lrmsd  ilrmsd   dockq      air       bsa  desolv      elec     total       vdw
+../06_emref/emref_2.pdb  -       1               -164.078    2.111   0.621   5.456   4.368   0.555   96.928  2077.920   6.253  -584.597  -550.774   -63.105
+../06_emref/emref_8.pdb  -       2               -144.476    1.472   0.759   2.659   2.691   0.726   43.505  2018.670   5.884  -549.010  -550.413   -44.908
+../06_emref/emref_4.pdb  -       3               -138.888    1.087   0.724   2.888   1.830   0.759  116.384  1817.670   2.875  -558.618  -483.913   -41.678
+../06_emref/emref_3.pdb  -       4               -138.860    0.983   0.931   1.826   1.554   0.862  100.098  1822.150   1.606  -503.198  -452.935   -49.836
+../06_emref/emref_1.pdb  -       5               -138.754    1.146   0.828   1.738   1.846   0.806   36.138  1924.090   5.316  -528.536  -534.375   -41.976
+../06_emref/emref_5.pdb  -       6               -138.362    0.921   0.914   1.817   1.482   0.866   73.832  1897.950   4.279  -484.430  -463.736   -53.138
+../06_emref/emref_6.pdb  -       7               -138.054    1.153   0.862   2.220   1.880   0.809   63.112  1958.060   5.507  -529.438  -510.311   -43.985
+../06_emref/emref_9.pdb  -       8               -134.536    1.313   0.810   2.508   2.239   0.765   63.951  1862.230   7.050  -522.799  -502.269   -43.421
+../06_emref/emref_11.pdb -       9               -131.577    0.965   0.862   1.337   1.428   0.848   58.716  1905.400   9.684  -519.910  -504.344   -43.151
 ....
 </pre>
 
@@ -866,6 +934,7 @@ cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_s
 ...
 </pre>
 
+
 In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the processing `09_seletopclusts` directory.
 
 <hr>
@@ -882,11 +951,11 @@ Go into the _analysis/10_caprieval_analysis_  directory of the respective run di
 <i>View the pre-calculated 10_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
-cluster_rank    cluster_id  n   under_eval  score   score_std   irmsd   irmsd_std   fnat    fnat_std    lrmsd   lrmsd_std   dockq   dockq_stdair    air_std bsa bsa_std desolv  desolv_std  elec    elec_std    total   total_std   vdw vdw_std caprieval_rank
-1   1   15  -   -138.015    2.647   1.016   0.057   0.897   0.042   1.963   0.289   0.844   0.022   54.886  27.397  1885.235    54.415  5.933   3.160   -515.051    15.564  -506.593    38.897  -46.427 2.133   1
-2   4   4   -   -110.736    18.239  14.826  0.136   0.069   0.000   23.369  0.334   0.065   0.001   132.600 23.440  1868.953    172.244 3.968   1.382   -353.955    65.225  -278.527    57.166  -57.173 9.861   2
-3   2   13  -   -110.344    3.107   4.926   0.095   0.138   0.012   10.730  0.458   0.203   0.010   130.046 35.925  1661.280    35.009  5.389   1.263   -293.795    25.939  -233.727    52.083  -69.978 6.192   3
-4   3   10  -   -98.583     3.401   9.761   0.321   0.073   0.028   18.989  0.770   0.088   0.013   78.389  37.656  1449.342    55.663  1.485   0.942   -319.842    40.522  -285.391    44.606  -43.938 4.154   4
+cluster_rank	cluster_id	n	under_eval	    score	score_std	 irmsd irmsd_std	  fnat	fnat_std	lrmsd	lrmsd_std	  dockq	dockq_std	     air	air_std	      bsa	 bsa_std	desolv	desolv_std	     elec	elec_std	   total total_std	    vdw	vdw_std	caprieval_rank
+1             1          17          -   -146.575    10.361  1.413     0.442   0.759     0.112    3.207   1.357   0.726     0.110   89.229   27.411  1934.102  116.109   4.155       1.970   -548.856   29.400  -509.509    42.520  -49.882   8.168   1
+2             2          15          -   -108.943     2.131  4.978     0.092   0.134     0.014   11.239   0.427   0.194     0.009  158.010   45.857  1670.585   42.916   8.673       2.771   -344.907   20.265  -251.333    32.787  -64.436   2.947   2
+3             3          5           -   -96.132     13.387  9.913     0.553   0.077     0.019   19.462   0.471   0.087     0.009  155.613   56.813  1460.395   15.293   1.130       1.740   -348.077   48.270  -235.672    68.325  -43.208   9.309   3
+4             4          4           -   -87.709     10.400 14.477     0.276   0.073     0.026   23.422   0.445   0.067     0.010   99.097   12.356  1602.033  180.993   6.684       2.524   -311.045   11.794  -254.042    22.508  -42.094   8.503   4
 </pre>
 </details>
 
@@ -919,15 +988,15 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== run1-CDR-NMR-CSP/10_caprieval/capri_clt.tsv
+== runs/run1-CDR-NMR-CSP/10_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  4
 Total number of medium or better clusters:      1  out of  4
 Total number of high quality clusters:          0  out of  4
-
-First acceptable cluster - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
-First medium cluster     - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
-Best cluster             - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
+ 
+First acceptable cluster - rank:  1  i-RMSD:  1.413  Fnat:  0.759  DockQ:  0.726
+First medium cluster     - rank:  1  i-RMSD:  1.413  Fnat:  0.759  DockQ:  0.726
+Best cluster             - rank:  1  i-RMSD:  1.413  Fnat:  0.759  DockQ:  0.726
 </pre>
 </details>
 
@@ -936,11 +1005,11 @@ Best cluster             - rank:  1  i-RMSD:  1.016  Fnat:  0.897  DockQ:  0.844
 We can now do the same for runs that used Alphafold2 and ABodyBuilder2 antibodies in input:
 
 <a class="prompt prompt-cmd">
-./scripts/extract-capri-stats.sh runs/run1-CDR-NMR-CSP-af2
+./scripts/extract-capri-stats-clt.sh runs/run1-CDR-NMR-CSP-af2
 </a>
 
 <a class="prompt prompt-cmd">
-./scripts/extract-capri-stats.sh runs/run1-CDR-NMR-CSP-abb
+./scripts/extract-capri-stats-clt.sh runs/run1-CDR-NMR-CSP-abb
 </a>
 
 <a class="prompt prompt-question">According to this cluster analysis, which run produced the most accurate models?</a>
@@ -956,47 +1025,46 @@ Similarly some simple statistics can be extracted from the single model `capriev
 <i>View the output of the script</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
-(base) utente@Scientific-School:~/BioExcel_SS_2023/HADDOCK$ scripts/extract-capri-stats.sh run1-CDR-NMR-CSP
 ==============================================
-== run1-CDR-NMR-CSP/02_caprieval/capri_ss.tsv
+== ./runs/run1-CDR-NMR-CSP/02_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  27  out of  96
-Total number of medium or better models:      17  out of  96
+Total number of acceptable or better models:  25  out of  96
+Total number of medium or better models:      15  out of  96
 Total number of high quality models:          0  out of  96
-
+ 
 First acceptable model - rank:  1  i-RMSD:  2.504  Fnat:  0.328  DockQ:  0.405
-First medium model     - rank:  4  i-RMSD:  1.179  Fnat:  0.828  DockQ:  0.786
-Best model             - rank:  15  i-RMSD:  1.027  Fnat:  0.586  DockQ:  0.705
+First medium model     - rank:  5  i-RMSD:  1.169  Fnat:  0.828  DockQ:  0.788
+Best model             - rank:  13  i-RMSD:  1.013  Fnat:  0.672  DockQ:  0.735
 ==============================================
-== run1-CDR-NMR-CSP/05_caprieval/capri_ss.tsv
+== ./runs/run1-CDR-NMR-CSP/05_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  16  out of  48
+Total number of acceptable or better models:  18  out of  48
 Total number of medium or better models:      15  out of  48
 Total number of high quality models:          4  out of  48
-
-First acceptable model - rank:  1  i-RMSD:  1.074  Fnat:  0.810  DockQ:  0.810
-First medium model     - rank:  1  i-RMSD:  1.074  Fnat:  0.810  DockQ:  0.810
-Best model             - rank:  14  i-RMSD:  0.910  Fnat:  0.776  DockQ:  0.822
+ 
+First acceptable model - rank:  1  i-RMSD:  1.107  Fnat:  0.810  DockQ:  0.805
+First medium model     - rank:  1  i-RMSD:  1.107  Fnat:  0.810  DockQ:  0.805
+Best model             - rank:  10  i-RMSD:  0.857  Fnat:  0.810  DockQ:  0.848
 ==============================================
-== run1-CDR-NMR-CSP/07_caprieval/capri_ss.tsv
+== ./runs/run1-CDR-NMR-CSP/07_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  16  out of  48
+Total number of acceptable or better models:  18  out of  48
 Total number of medium or better models:      15  out of  48
 Total number of high quality models:          5  out of  48
-
-First acceptable model - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
-First medium model     - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
-Best model             - rank:  18  i-RMSD:  0.916  Fnat:  0.845  DockQ:  0.844
+ 
+First acceptable model - rank:  1  i-RMSD:  2.111  Fnat:  0.621  DockQ:  0.555
+First medium model     - rank:  2  i-RMSD:  1.472  Fnat:  0.759  DockQ:  0.726
+Best model             - rank:  6  i-RMSD:  0.921  Fnat:  0.914  DockQ:  0.866
 ==============================================
-== run1-CDR-NMR-CSP/10_caprieval/capri_ss.tsv
+== ./runs/run1-CDR-NMR-CSP/10_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  15  out of  42
-Total number of medium or better models:      15  out of  42
-Total number of high quality models:          5  out of  42
-
-First acceptable model - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
-First medium model     - rank:  1  i-RMSD:  0.960  Fnat:  0.931  DockQ:  0.865
-Best model             - rank:  17  i-RMSD:  0.916  Fnat:  0.845  DockQ:  0.844
+Total number of acceptable or better models:  17  out of  41
+Total number of medium or better models:      15  out of  41
+Total number of high quality models:          5  out of  41
+ 
+First acceptable model - rank:  1  i-RMSD:  2.111  Fnat:  0.621  DockQ:  0.555
+First medium model     - rank:  2  i-RMSD:  1.472  Fnat:  0.759  DockQ:  0.726
+Best model             - rank:  6  i-RMSD:  0.921  Fnat:  0.914  DockQ:  0.866
 </pre>
 </details>
 <br>
@@ -1061,7 +1129,7 @@ Cluster statistics (distributions of values per cluster ordered according to the
 You can also access the full analysis report on your web browser:
 
 <a class="prompt prompt-cmd">
-open runs/run1-CDR-NMR-CSP/analysis/10_caprieval_analysis/report.html
+firefox HADDOCK/runs/run1-CDR-NMR-CSP/analysis/10_caprieval_analysis/report.html
 </a>
 
 <hr>
@@ -1160,7 +1228,7 @@ Insert the selected uniprot ID in the **UniprotID** field.
 Leave the other parameters as they are and click on **Submit**.
 </a>
 
-Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SMSa8-7).
+Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/example-P01584).
 
 <a class="prompt prompt-question">
 How many interface clusters were found for this protein?
@@ -1180,7 +1248,7 @@ Rerun ARCTIC-3D with a clustering threshold equal to 0.95
 
 This means that the clustering will be looser, therefore lumping more dissimilar surfaces into the same object.
 
-You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/run/3SMSgsHc).
+You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/example-P01584-095).
 
 <a class="prompt prompt-question">
 How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
@@ -1421,7 +1489,7 @@ alignto sele
 <details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
-    <i>See the AlphaFold models superimposed onto the crystal structure of the complex (4G6M) </i>
+    <i>See the AlphaFold models superimposed onto the crystal structure of the complex (4G6M)</i>
   <br>
   </summary>
   <figure align="center">
