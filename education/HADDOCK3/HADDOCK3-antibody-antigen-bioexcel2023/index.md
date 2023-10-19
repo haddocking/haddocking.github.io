@@ -65,7 +65,7 @@ instructions, and/or PyMOL commands.
 In order to follow this tutorial you will need to work on a Linux or MacOSX system. We will also make use of [**PyMOL**][link-pymol] (freely available for most operating systems) in order to visualize the input and output data.
 
 ### PyMOL on the DEVANA cluster
-It is possible to run PyMOL directly on DEVANA by connecting to the [DEVANA Desktop application](https://ood.devana.nscc.sk/pun/sys/dashboard/batch_connect/sessions). There, you can start a Desktop session by specifying your account, the **testing** partition, and 1 as the number of cores.
+It is possible to run PyMOL directly on DEVANA by connecting to the [DEVANA Desktop application](https://ood.devana.nscc.sk/pun/sys/dashboard/batch_connect/sessions). There, you can start a Desktop session by specifying the **testing** partition and 1 as the number of cores.
 
 Once logged in, you can start a terminal in the DEVANA Desktop emulator. From there, you can start PyMOL by typing:
 <a class="prompt prompt-cmd">
