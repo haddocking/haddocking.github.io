@@ -51,7 +51,7 @@ We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2
 ### Tutorial data set
 
 In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case.
-All the tutorial data are made available as a tar.gz archive and can be downloaded at the following [address](https://surfdrive.surf.nl/files/index.php/s/FFHdJqlUYwnihzR/download).
+All the tutorial data are made available as a tar.gz archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/FFHdJqlUYwnihzR/download).
 
 ### Extract the archive
 
@@ -292,6 +292,11 @@ After you run has finished (approximately 1 hours, depending on the load of the 
 <img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/cluster_first.png">
 <p> <b>Figure 2</b>: HADDOCK2.4 results page of protein-DNA docking of the first cluster, composed of 124 models.</p>
 </figure>
+
+<a class="prompt prompt-question">
+By looking at the number of models in each clusters and their average energy, can you select which cluster is the best ? <br>
+Is the selection of the best cluster clear and unambiguous ?
+</a>
 
 **Note:** At the bottom of the page are present graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, …) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model), as presented in **Figure 3**.
 The graphs are interactive, you can turn on/off specific clusters, and zoom in on specific areas of the plot.
