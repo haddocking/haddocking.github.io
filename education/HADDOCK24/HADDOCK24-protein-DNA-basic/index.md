@@ -362,10 +362,6 @@ The graphs are interactive, you can turn on/off specific clusters, and zoom in o
 
 Finally, the bottom graphs show you the distribution of scores (van der Waals, Electrostatics and AIRs energy terms) for the various clusters.
 
-<a class="prompt prompt-question">
-Is the first cluster unambiguously the best one in terms of the HADDOCK score?
-</a>
-
 ### Analysis on your own computer
 
 After you analysed the graphs that are presented within the HADDOCK2.4 result page, you can download the complete run output files from the top of the page by clicking the hyperlink after "The complete run can be downloaded as a gzipped tar file".
