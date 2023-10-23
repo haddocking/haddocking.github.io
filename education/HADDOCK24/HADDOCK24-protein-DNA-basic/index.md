@@ -163,7 +163,7 @@ Apart from the default setup procedures and server input checks, the use of DNA 
 
 In addition to these automatic setup procedures, there are a number of settings specific to protein-DNA docking that are worth considering:
 
-* Flexibility: DNA often changes conformation globally in the vicinity of the interface of the protein. To allow such changes to occur, you need to define nearly the full DNA sequence as semi-flexible to allow the DNA to change conformation globally. Full flexibility is not recommended.
+* Flexibility: DNA often changes conformation globally in the vicinity of the interface of the protein. To allow such changes to occur, you need to define nearly the full DNA sequence as semi-flexible to allow the DNA to change conformation globally. Full flexibility is not recommended (it is useful for flexible peptides).
 * Dielectric constant (epsilon): Is set to 78 on default for both *it0* and *it1*.
 * Advanced sampling parameters: the heating and cooling regime in the simulated annealing stages is optimized for protein systems but might be a bit too coarse for DNA systems. Reducing temperature, and the number and size of time steps will help in maintaining the helical structure of the DNA.
 
@@ -278,6 +278,60 @@ Why is the full DNA structure defined as semi-flexible except for the terminal n
 
 <hr>
 
+## Visualizing the interaction restraints
+
+The interaction restraints are defined in the `ambig.tbl` file you just uploaded to the web server. Let's start by visualizing how the interacting residues are distributed on the protein.
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 1ZUG_ensemble.pdb
+</a>
+
+We will now highlight the interacting. In PyMOL type the following commands:
+
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+select interacting, (resi 28+29+30+31+34+35)<br>
+</a>
+<a class="prompt prompt-pymol">
+color red, interacting
+</a>
+
+<a class="prompt prompt-question">
+How much does the conformation of the interacting region change in the provided ensemble? Is it the most flexible region of the protein?
+</a>
+
+<a class="prompt prompt-question">
+Why is residue 33 excluded from these amino acids?
+</a>
+
+Let us now switch to a surface representation to inspect the binding site.
+
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface<br>
+</a>
+<a class="prompt prompt-pymol">
+color red, interacting
+</a>
+
+Inspect the surface.
+
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See surface view of the interacting residues</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="50%" src="./protein-interacting.png">
+  </figure>
+  <br>
+</details>
+
+<hr>
+
 ## Analysis of docking run
 
 In case you are running short in time, a permanent link to the docking results of this tutorial is made available at [the following link](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/267340-Protein-DNA-Basic).
@@ -301,6 +355,10 @@ The graphs are interactive, you can turn on/off specific clusters, and zoom in o
 
 Finally, the bottom graphs show you the distribution of scores (van der Waals, Electrostatics and AIRs energy terms) for the various clusters.
 
+<a class="prompt prompt-question">
+Is the first cluster unambiguously the best one in terms of the HADDOCK score?
+</a>
+
 ### Analysis on your own computer
 
 After you analysed the graphs that are presented within the HADDOCK2.4 result page, you can download the complete run output files from the top of the page by clicking the hyperlink after "The complete run can be downloaded as a gzipped tar file".
@@ -308,9 +366,9 @@ After you analysed the graphs that are presented within the HADDOCK2.4 result pa
 Open a new PyMol session and type the following commands in the prompt to superimpose the docking complex Y from cluster X to the reference structure.
 
 <a class="prompt prompt-pymol">
-load clustX_complex_Y.pdb<br>
+load clusterX_Y.pdb<br>
 load 3CRO_complex.pdb<br>
-align clustX_complex_Y, 3CRO_complex
+align clusterX_Y, 3CRO_complex
 </a>
 
 <hr>
