@@ -280,7 +280,7 @@ Why is the full DNA structure defined as semi-flexible except for the terminal n
 
 ## Visualizing the interaction restraints
 
-The interaction restraints are defined in the `ambig.tbl` file you just uploaded to the web server. Let's start by visualizing how the interacting residues are distributed on the protein.
+The interaction restraints are defined in the `ambig_pm.tbl` file you just uploaded to the web server. Let's start by visualizing how the interacting residues are distributed on the protein.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 1ZUG_ensemble.pdb
