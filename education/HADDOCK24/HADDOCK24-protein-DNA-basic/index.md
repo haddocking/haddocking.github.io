@@ -40,19 +40,18 @@ You will perform a docking of a protein-DNA system composed of 3 biomolecules (2
 All of these molecules are in their unbound conformation.
 
 * Introduction on the use of symmetry restraints. 
-* Special considerations for the use of flexibility in protein-DNA systems. 
-* Analysis of the HADDOCK run regarding multiple parameters such as RMSD, Fnat, etc.
+* Special considerations for the use of flexibility in protein-DNA systems.
 
 ### Using this tutorial
 
-You should be able to go through this tutorial in about 3 hours.
+You should be able to go through this tutorial in about 1 hours.
 Basic knowledge on the principles and use of Linux command lines and HADDOCK is useful but not required.
-We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking and the standalone version of HADDOCK to perform the analysis of the results.
+We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking.
 
 ### Tutorial data set
 
 In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case.
-All the tutorial data are made available as a tar.gz archive and can be downloaded at the following [address](https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz).
+All the tutorial data are made available as a tar.gz archive and can be downloaded at the following [address](https://surfdrive.surf.nl/files/index.php/s/FFHdJqlUYwnihzR/download).
 
 ### Extract the archive
 
@@ -63,23 +62,16 @@ You can either extract the archive by just selecting “extract” option.
 Extract the archive in the current working directory:
 
 <a class="prompt prompt-cmd">
-tar /…/haddock-protein-dna-basic.tgz
+tar -xvf protein-DNA_basic.tgz
 </a>
 
-Extraction of the archive will present you with a new directory called `3CRO` that contains a number of sub-directories and files:
+Extraction of the archive will present you with a new directory called `protein-DNA_basic` that contains a number of files:
+* the prepared structure of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`)
+* the structure of the OR1 operator in B-DNA conformation (`OR1_unbound.pdb`)
+* the ambiguous restrains (`ambig_pm.tbl`) extracted from the reference complex
+* The X-ray structure of the complex `3CRO_complex.pdb` used as reference to compare with the docking results
 
-* `protein-DNA_basic`: Here, the data for the protein-DNA docking run can be found. This directory contains the prepared structure of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`), the structure of the OR1 operator in B-DNA conformation (`OR1_unbound.pdb`) and the ambiguous restrains (`ambig_pm.tbl`) extracted from the reference complex. To obtain more detailed information about how to obtain these files, please refer to the [advanced tutorial on protein-DNA docking](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/).
-* `3CRO_complex.pdb`: The X-ray structure of the complex used as reference to compare with the docking results.
-* `tools`: This directory contains scripts dedicated to the analysis of the results.
-* `setup.sh/setup.csh`: A setup script that will prepare the shell environment so you can use all the tools available. You need to `source setup.sh` it once in the `3CRO` directory.
-* `protein-DNA-arch`: This directory contains the pre-computed data of this tutorial. This can be used as reference, or in case you are short on time, or access to the web server is limited or impossible.
-
-### Virtual Machine
-
-This tutorial contains UNIX command line operations that should be done in a GNU/Linux operating system.
-You can launch these operating systems in virtual environments that could be created by software such as VirtualBox or VMware.
-We recommend VirtualBox as the hypervisor and Ubuntu as the operating system, which is free to download and use, and is available at [https://www.virtualbox.org/](https://www.virtualbox.org/) and [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop).
-The complete installation guide of Ubuntu on the VirtualBox could be found in [here](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview).
+To obtain more detailed information about how to obtain these files, please refer to the [advanced tutorial on protein-DNA docking](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/).
 
 ### Where can I find more information?
 
@@ -292,7 +284,7 @@ In case you are running short in time, a permanent link to the docking results o
 
 ### Analysis on the HADDOCK result page
 
-After you run has finished (approximately 3 hours, depending on the load of the server), you will be presented with the results page in which you can observe different data for each cluster (**Figure 2**).
+After you run has finished (approximately 1 hours, depending on the load of the server), you will be presented with the results page in which you can observe different data for each cluster (**Figure 2**).
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/cluster_first.png">
@@ -313,62 +305,11 @@ Finally, the bottom graphs show you the distribution of scores (van der Waals, E
 
 After you analysed the graphs that are presented within the HADDOCK2.4 result page, you can download the complete run output files from the top of the page by clicking the hyperlink after "The complete run can be downloaded as a gzipped tar file".
 
-A dedicated script will perform both the general analysis of the docking solutions as well as the more specific DNA analysis automatically.
-Before running the analysis command, you should change the path to necessary scripts in the `tools/HaddockAnalysis/` folder.
-To do that, open the `Constants.py` file, with simple text editor, and change the paths for profit, contact, and *pdbxsegchain* which are all in the `/tools/HaddockAnalysis/` folder.
-
-Alternatively, you can type the following three `sed` commands, that will update the paths present in the `Constants.py` file:
-
-<a class="prompt prompt-cmd">
-sed -i "s|contact|3CRO/tools/HaddockAnalysis/contact|g" 3CRO/tools/HaddockAnalysis/Constants.py<br>
-sed -i "s|profit|3CRO/tools/HaddockAnalysis/profit|g" 3CRO/tools/HaddockAnalysis/Constants.py<br>
-sed -i "s|segxchain|3CRO/tools/HaddockAnalysis/pdb_segxchain|g" 3CRO/tools/HaddockAnalysis/Constants.py
-</a>
-
-Extract the HADDOCK results (`begin`, `data`, `structures`, `haddockparam.web`, `index.html`, `run.cns`, and the four structures of the highest ranking two clusters) to the `3CRO/protein-DNA_basic` folder before executing the following commands:
-
-**1) General analysis of the protein-DNA docking solutions:**
-
-First, go to the `3CRO` directory:
-
-<a class="prompt prompt-cmd">
-cd 3CRO
-</a>
-
-Make sure you have enabled the right shell environment:
-
-<a class="prompt prompt-cmd">
-source setup.sh (.csh)
-</a>
-
-Navigate one directory below the tutorial data root (below 3CRO):
-
-<a class="prompt prompt-cmd">
-cd ..
-</a>
-
-Execute the command:
-
-<a class="prompt prompt-cmd">
-analysis -r 3CRO/protein-DNA_basic/ -an complex
-</a>
-
-Wait till the process is finished (this analysis procedure will take few minutes).
-
-The analysis program will generate a new directory in `protein-DNA_basic` called `Analysis_3CRO_protein-DNA_basic`.
-The `analysis.stat` file contains a summary of various statistics of the best ranking solutions after rigid body docking (it0), semi-flexible refinement (it1 and water) and for every cluster.
-Detailed statistics are provided for the 10 best solutions according to the HADDOCK score and according to i-RMSD to the reference in every stage.
-The same detailed statistics are listed for the 10 best solutions of every cluster according to the HADDOCK score (or less than 10 if the cluster is not so large).
-For all these cases the interface fitted structures are available in the directory and can be visualized with a molecular viewer.
-
-**2) Visualize the best solutions using PyMol**
-
 Open a new PyMol session and type the following commands in the prompt to superimpose the docking complex Y from cluster X to the reference structure.
 
 <a class="prompt prompt-pymol">
-cd 3CRO/protein-DNA_basic/Analysis_3CRO_protein-DNA_basic<br>
 load clustX_complex_Y.pdb<br>
-load ../../3CRO_complex.pdb<br>
+load 3CRO_complex.pdb<br>
 align clustX_complex_Y, 3CRO_complex
 </a>
 
