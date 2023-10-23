@@ -65,11 +65,13 @@ Extract the archive in the current working directory:
 tar -xvf protein-DNA_basic.tgz
 </a>
 
-Extraction of the archive will present you with a new directory called `protein-DNA_basic` that contains a number of files:
+Extraction of the archive will present you with a new directory called `protein-DNA_basic` that contains a number of files and directories:
 * the prepared structure of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`)
 * the structure of the OR1 operator in B-DNA conformation (`OR1_unbound.pdb`)
 * the ambiguous restrains (`ambig_pm.tbl`) extracted from the reference complex
-* The X-ray structure of the complex `3CRO_complex.pdb` used as reference to compare with the docking results
+* the X-ray structure of the complex `3CRO_complex.pdb` used as reference to compare with the docking results
+* the `Pre-computed-example` directory holds a sample of the results obtained by doing this tutorial.
+* the `Analysis` directory holds various scripts and tools used in the **bonus** section at the end of this tutorial.
 
 To obtain more detailed information about how to obtain these files, please refer to the [advanced tutorial on protein-DNA docking](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/).
 
@@ -312,6 +314,49 @@ load clustX_complex_Y.pdb<br>
 load 3CRO_complex.pdb<br>
 align clustX_complex_Y, 3CRO_complex
 </a>
+
+#### Bonus analysis
+
+For the ones who already want to better digg into the results generated, several tools and scripts are provided in the `3CRO` directory.
+
+First, go to the `3CRO` directory:
+
+<a class="prompt prompt-cmd">
+cd 3CRO<br>
+ls
+</a>
+
+Extract the haddock2.4 docking results archive in the current working directory:
+
+<a class="prompt prompt-cmd">
+tar -xvf haddock-run-name.tgz
+</a>
+
+Make sure you have enabled the right shell environment:
+
+<a class="prompt prompt-cmd">
+source setup.sh (.csh)
+</a>
+
+Navigate one directory below the analysis directory root (below `3CRO`):
+
+<a class="prompt prompt-cmd">
+cd ..
+</a>
+
+Execute the command:
+
+<a class="prompt prompt-cmd">
+analysis -r 3CRO/haddock-run-name/ -an complex
+</a>
+
+Wait till the process is finished (this analysis procedure will take few minutes).
+
+The analysis program will generate a new directory in `3CRO/haddock-run-name/` called `Analysis_3CRO_protein-DNA_basic`.
+The `analysis.stat` file contains a summary of various statistics of the best ranking solutions after rigid body docking (it0), semi-flexible refinement (it1 and water) and for every cluster.
+Detailed statistics are provided for the 10 best solutions according to the HADDOCK score and according to i-RMSD to the reference in every stage.
+The same detailed statistics are listed for the 10 best solutions of every cluster according to the HADDOCK score (or less than 10 if the cluster is not so large).
+For all these cases the interface fitted structures are available in the directory and can be visualized with a molecular viewer.
 
 <hr>
 
