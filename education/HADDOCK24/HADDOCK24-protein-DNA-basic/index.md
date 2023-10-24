@@ -280,28 +280,28 @@ Why is the full DNA structure defined as semi-flexible except for the terminal n
 
 <hr>
 
-## Visualizing the interaction restraints
+## Visualizing the ambiguous interaction restraints
 
-The interaction restraints are defined in the `ambig_pm.tbl` file you just uploaded to the web server. Let's start by visualizing how the interacting residues are distributed on the protein.
+The ambiguous interaction restraints are defined in the `ambig_pm.tbl` file you just uploaded to the web server. Let's start by visualizing how the interacting residues used to drive the docking are distributed on the protein.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 1ZUG_ensemble.pdb
 </a>
 
-We will now highlight the interacting. In PyMOL type the following commands:
+We will now highlight the amino acids that are supposed to be at the interface. In PyMOL type the following commands:
 
 <a class="prompt prompt-pymol">
 color white, all
 </a>
 <a class="prompt prompt-pymol">
-select interacting, (resi 28+29+30+31+34+35)<br>
+select interacting, (resi 28+29+30+31+32+34+35)<br>
 </a>
 <a class="prompt prompt-pymol">
 color red, interacting
 </a>
 
 <a class="prompt prompt-question">
-How much does the conformation of the interacting region change in the provided ensemble? Is it the most flexible region of the protein?
+How much does the conformation of the interacting region change in the provided ensemble? Is this the most flexible region of the protein?
 </a>
 
 <a class="prompt prompt-question">
@@ -332,9 +332,15 @@ Inspect the surface.
   <br>
 </details>
 
+<br>
+
+<a class="prompt prompt-question">
+You can repeat the same analysis for the DNA molecule (OR1_unbound.pdb) using the residues (13+14+15+16+17+18+22+23+24+25) that are supposed to interact with one of the protein chains. What do you observe?
+</a>
+
 <hr>
 
-## Analysis of docking run
+## Analysis of the docking run
 
 In case you are running short in time, a permanent link to the docking results of this tutorial is made available at [the following link](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/267340-Protein-DNA-Basic).
 
@@ -348,8 +354,8 @@ After you run has finished (approximately 1 hours, depending on the load of the 
 </figure>
 
 <a class="prompt prompt-question">
-By looking at the number of models in each clusters and their average energy, can you select which cluster is the best ? <br>
-Is the selection of the best cluster clear and unambiguous ?
+By looking at the number of models in each clusters and their average energy, can you select which cluster is the best? <br>
+Is the selection of the best cluster clear and unambiguous?
 </a>
 
 **Note:** At the bottom of the page are present graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, …) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model), as presented in **Figure 3**.
@@ -376,7 +382,7 @@ align clusterX_Y, 3CRO_complex
 
 #### Bonus analysis
 
-For the ones who already want to better digg into the results generated, several tools and scripts are provided in the `3CRO` directory.
+For the ones who already want to better dig into the results generated, several tools and scripts are provided in the `3CRO` directory.
 
 First, go to the `3CRO` directory:
 
@@ -437,5 +443,3 @@ Happy docking!
 
 More information about the HADDOCK web server:
 * de Vries et al. (2010). **The HADDOCK web server for data-driven biomolecular docking**. Nat Protoc 5, 883-897
-
-
