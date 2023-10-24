@@ -410,9 +410,9 @@ To do that, open the `Constants.py` file, with simple text editor, and change th
 Alternatively, you can type the following three `sed` commands, that will update the paths present in the `Constants.py` file:
 
 <a class="prompt prompt-cmd">
-sed -i "s|contact|3CRO/tools/HaddockAnalysis/contact|g" 3CRO/tools/HaddockAnalysis/Constants.py<br>
-sed -i "s|profit|3CRO/tools/HaddockAnalysis/profit|g" 3CRO/tools/HaddockAnalysis/Constants.py<br>
-sed -i "s|segxchain|3CRO/tools/HaddockAnalysis/pdb_segxchain|g" 3CRO/tools/HaddockAnalysis/Constants.py
+sed -i "s|contact|3CRO/tools/HaddockAnalysis/contact|g" tools/HaddockAnalysis/Constants.py<br>
+sed -i "s|profit|3CRO/tools/HaddockAnalysis/profit|g" tools/HaddockAnalysis/Constants.py<br>
+sed -i "s|segxchain|3CRO/tools/HaddockAnalysis/pdb_segxchain|g" tools/HaddockAnalysis/Constants.py
 </a>
 
 Navigate one directory below the analysis directory root (below `3CRO`):
