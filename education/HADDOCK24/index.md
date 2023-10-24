@@ -50,6 +50,9 @@ In this page you can find links to tutorials on the usage of our software and we
   The information from the ab-initio run is then used to setup a binding pocket-targeted protein-ligand docking run.
   We use as example the multidrug exporter AcrB.
 
+* [**HADDOCK2.4 basic Protein-DNA tutorial**](/education/HADDOCK24/HADDOCK24-protein-DNA-basic):
+  This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of a protein-DNA trimer (3CRO) using symmetry restraints and defining the DNA structure as semi-flexible.
+
 * [**DISVIS/HADDOCK2.4 oligomer puzzle**](/education/HADDOCK24/XL-MS-oligomer):
   In this tutorial you will have to solve an oligomer puzzle, namely predicting the correct oligomeric state
   of a symmetrical homomer complex based on a few (artificial) cross-links.
