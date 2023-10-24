@@ -51,7 +51,7 @@ We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2
 ### Tutorial data set
 
 In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case.
-All the tutorial data are made available as a tar.gz archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/FFHdJqlUYwnihzR/download).
+All the tutorial data are made available as a tar.gz archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/Bah1zgZwauWbs7n/download).
 
 ### Extract the archive
 
