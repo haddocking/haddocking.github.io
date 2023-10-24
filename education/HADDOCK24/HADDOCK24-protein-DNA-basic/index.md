@@ -51,7 +51,7 @@ We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2
 ### Tutorial data set
 
 In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case.
-All the tutorial data are made available as a tar.gz archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/Bah1zgZwauWbs7n/download).
+All the tutorial data are made available as a tar.gz archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/BCYV669ZwU3AO2N/download).
 
 ### Extract the archive
 
@@ -401,18 +401,6 @@ Make sure you have enabled the right shell environment:
 
 <a class="prompt prompt-cmd">
 source setup.sh (.csh)
-</a>
-
-A dedicated script will perform both the general analysis of the docking solutions as well as the more specific DNA analysis automatically.
-Before running the analysis command, you should change the path to necessary scripts in the `tools/HaddockAnalysis/` folder.
-To do that, open the `Constants.py` file, with simple text editor, and change the paths for profit, contact, and *pdbxsegchain* which are all in the `tools/HaddockAnalysis/` folder.
-
-Alternatively, you can type the following three `sed` commands, that will update the paths present in the `Constants.py` file:
-
-<a class="prompt prompt-cmd">
-sed -i "s|contact|3CRO/tools/HaddockAnalysis/contact|g" tools/HaddockAnalysis/Constants.py<br>
-sed -i "s|profit|3CRO/tools/HaddockAnalysis/profit|g" tools/HaddockAnalysis/Constants.py<br>
-sed -i "s|segxchain|3CRO/tools/HaddockAnalysis/pdb_segxchain|g" tools/HaddockAnalysis/Constants.py
 </a>
 
 Navigate one directory below the analysis directory root (below `3CRO`):
