@@ -21,6 +21,10 @@ In this page you can find links to tutorials on the usage of our software and we
   This tutorial does not require any Linux expertise and only makes use of our web servers and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis.
   The complex is also modelled using AlphaFold2 and the results compared to those obtained with HADDOCK.
 
+* [**HADDOCK2.4 basic Protein-DNA tutorial**](/education/HADDOCK24/HADDOCK24-protein-DNA-basic):
+  This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of a protein-DNA complex in which two protein units bind to the DNA in a symmetrical manner (3CRO). Next to ambiguous restraints to drive the docking symmetry restraints are defined to enforce symmetrical protein binding.
+    This tutorial does not require any Linux expertise and only makes use of our web servers and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis.
+
 * [**HADDOCK2.4 MS cross-links tutorial**](/education/HADDOCK24/HADDOCK24-Xlinks):
   A tutorial demonstrating the use of cross-linking data from mass spectrometry to guide the docking in HADDOCK.
   This tutorial builds on our [DisVis tutorial](/education/Others/disvis-webserver/) and illustrates various scenarios of using
