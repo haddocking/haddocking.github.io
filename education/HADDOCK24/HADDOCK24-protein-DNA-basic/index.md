@@ -44,14 +44,13 @@ All of these molecules are in their unbound conformation.
 
 ### Using this tutorial
 
-You should be able to go through this tutorial in about 1 hours.
-Basic knowledge on the principles and use of Linux command lines and HADDOCK is useful but not required.
+You should be able to go through this tutorial in about 1 hour.
 We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking.
 
 ### Tutorial data set
 
 In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case.
-All the tutorial data are made available as a tar.gz archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/taP8O6wuUc0SrwP/download).
+All the tutorial data are made available as a zip archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/BWhfEEAEHtmqa5a/download).
 
 ### Extract the archive
 
@@ -59,11 +58,7 @@ You need to decompress the tutorial data archive.
 Move the archive to your working directory of choice and extract it.
 You can either extract the archive by just selecting “extract” option.
 
-Extract the archive in the current working directory:
-
-<a class="prompt prompt-cmd">
-tar -xvf protein-DNA_basic.tgz
-</a>
+Extract the archive in the current working directory.
 
 Extraction of the archive will present you with a new directory called `protein-DNA_basic` that contains a number of files and directories:
 * the prepared structure of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`)
@@ -95,7 +90,6 @@ Throughout the tutorial we will use the following special fonts and icons to per
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
 <a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
-<a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
 <hr>
 
