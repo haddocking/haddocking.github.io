@@ -62,7 +62,7 @@ Extraction of the archive will present you with a new directory called `protein-
 * an NMR ensemble of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`)
 * a single structure coming from the NMR ensemble (`1ZUG.pdb`) with the disordered residues removed
 * the structure of the OR1 operator in B-DNA conformation (`OR1_unbound.pdb`)
-* the ambiguous restrains (`ambig_pm.tbl`), created with a combination of experimental data and literature information. A detailed explanation of how to generate these restraints can be found [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data).
+* the ambiguous restrains (`ambig_pm.tbl`), created with a combination of experimental from literature information. A detailed explanation of how to generate these restraints can be found [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data).
 * the X-ray structure of the complex `3CRO_complex.pdb` used as reference to compare with the docking results
 * the `prot-dna-outputs-examples/` directory holds a sample of the results obtained by doing this tutorial.
 
