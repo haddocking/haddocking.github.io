@@ -74,9 +74,9 @@ An elaborate discussion of all the concepts of protein-DNA docking and the vario
 Where needed, some concepts will be explained throughout the tutorial to maintain the readability and flow of this document.
 The tutorial ends with a reference block that provides links to in depth literature or Internet documentation about various topics. 
 
-### What if I do not find an answer to my questions?
+### What if I do not find an answer to my ions?
 
-It is always possible that you have questions or run into problems for which you cannot find the answer in the regular documentation. Here are some additional links that you can find answers to your questions:
+It is always possible that you have ions or run into problems for which you cannot find the answer in the regular documentation. Here are some additional links that you can find answers to your questions:
 
 * Bioexcel user forum: [https://ask.bioexcel.eu/c/haddock/6](https://ask.bioexcel.eu/c/haddock/6) 
 * HADDOCK Help Center: [https://wenmr.science.uu.nl/haddock2.4/help](https://wenmr.science.uu.nl/haddock2.4/help) 
@@ -171,6 +171,10 @@ assign ( resid 16 and segid C and (name H3 or name O4 or name C4 or name C5 or n
 ```
 
 which is coupled to a set of amino acids on the protein side (residues 29, 31, 32, 30, 28 and 34 in this case).
+
+<a class="prompt prompt-question">Consider the list of atoms defined in those restraints. What is their effect on the restraint? Which part of the DNA is targeted by defining this set of atoms?
+</a>
+
 
 ## Visualizing the ambiguous interaction restraints
 
