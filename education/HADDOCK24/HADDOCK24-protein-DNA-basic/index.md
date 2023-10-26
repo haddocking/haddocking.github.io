@@ -76,7 +76,7 @@ The tutorial ends with a reference block that provides links to in depth literat
 
 ### What if I do not find an answer to my questions?
 
-It is always possible that you have ions or run into problems for which you cannot find the answer in the regular documentation. Here are some additional links that you can find answers to your questions:
+It is always possible that you have questions or run into problems for which you cannot find the answer in the regular documentation. Here are some additional links that you can find answers to your questions:
 
 * Bioexcel user forum: [https://ask.bioexcel.eu/c/haddock/6](https://ask.bioexcel.eu/c/haddock/6) 
 * HADDOCK Help Center: [https://wenmr.science.uu.nl/haddock2.4/help](https://wenmr.science.uu.nl/haddock2.4/help) 
