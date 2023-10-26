@@ -404,7 +404,7 @@ In case you are running short in time, a permanent link to the docking results o
 
 ### Analysis on the HADDOCK result page
 
-After you run has finished (approximately 1 hour, depending on the load of the server), you will be presented with the results page in which you can observe different data for each cluster (**Figure 2**).
+After you run has finished (approximately 1 hour, depending on the load of the server), you will be presented with a result page in which the top10 (max) clusters and their statistics are displayed (**Figure 2**).
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/cluster_first.png">
@@ -412,30 +412,38 @@ After you run has finished (approximately 1 hour, depending on the load of the s
 </figure>
 
 <a class="prompt prompt-question">
-By looking at the number of models in each clusters and their average energy, can you select which cluster is the best? <br>
-Is the selection of the best cluster clear and unambiguous?
+Consider the HADDOCK score of the various clusters. Is the first ranked cluster significantly better than the second one?
+Is there a clear winning solution?
 </a>
 
-**Note:** At the bottom of the page are present graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, …) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model), as presented in **Figure 4**.
-The graphs are interactive, you can turn on/off specific clusters, and zoom in on specific areas of the plot.
+**Note:** The bottom of the page shows a graphical representation of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, …) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model), as presented in **Figure 4**.
+The graphs are interactive: E.g. you can zoom in on specific areas of the plot.
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/graph_first.png">
 <p> <b>Figure 4</b>: HADDOCK2.4 graphical representation of the results.</p>
 </figure>
 
-Finally, the bottom graphs show you the distribution of scores (van der Waals, Electrostatics and AIRs energy terms) for the various clusters.
+Finally, the bottom graphs show the distribution of scores (van der Waals, Electrostatics and AIRs energy terms) for the various clusters.
 
 ### Analysis on your own computer
 
-After you analysed the graphs that are presented within the HADDOCK2.4 result page, you can download the complete run output files from the top of the page by clicking the hyperlink after "The complete run can be downloaded as a gzipped tar file".
+After having analysed the statistics on the HADDOCK2.4 result page, you can download an archive containing all cluster representatives by clicking on the _ download all cluster files_ link just above the statistics of the first-ranked cluster.
 
-Open a new PyMol session and type the following commands in the prompt to superimpose the docking complex Y from cluster X to the reference structure.
+Unpack this archive and then open a new PyMol session and type the following commands in the prompt to superimpose the docking complex Y from cluster X to the reference structure.
 
 <a class="prompt prompt-pymol">
 load clusterX_Y.pdb<br>
 load 3CRO_complex.pdb<br>
 align clusterX_Y, 3CRO_complex
+</a>
+
+<a class="prompt prompt-question">
+Look at the various cluster. Can you find the differences between the various clusters?
+</a>
+
+<a class="prompt prompt-question">
+Is the top-ranked cluster by HADDOCK also the closest to the reference crystal structure?
 </a>
 
 <hr>
