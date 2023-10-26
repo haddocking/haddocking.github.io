@@ -40,12 +40,12 @@ You will perform a docking of a protein-DNA system composed of 3 biomolecules (2
 All of these molecules are in their unbound conformation.
 
 * Introduction on the use of symmetry restraints. 
-* Special considerations for the use of flexibility in protein-DNA systems.
 
 ### Using this tutorial
 
 You should be able to go through this tutorial in about 1 hour.
-We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking.
+We will be using the [PBD-tools webserver](https://wenmr.science.uu.nl/pdbtools) for preprocessing a PDB file (optional) and the HADDOCK 2.4 webserver
+ [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking.
 
 ### Tutorial data set
 
@@ -58,12 +58,11 @@ You need to decompress the tutorial data archive.
 Move the archive to your working directory of choice and extract it.
 You can either extract the archive by just selecting “extract” option.
 
-Extract the archive in the current working directory.
-
 Extraction of the archive will present you with a new directory called `protein-DNA_basic` that contains a number of files and directories:
-* the prepared structure of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`)
+* an NMR ensemble of the 343 Cro repressor structure (`1ZUG_ensemble.pdb`)
+* a single structure coming from the NMR ensemble (`1ZUG.pdb`) with the disordered residues removed
 * the structure of the OR1 operator in B-DNA conformation (`OR1_unbound.pdb`)
-* the ambiguous restrains (`ambig_pm.tbl`) extracted from the reference complex
+* the ambiguous restrains (`ambig_pm.tbl`), created with a combination of experimental data and literature information. A detailed explanation of how to generate these restraints can be found [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data).
 * the X-ray structure of the complex `3CRO_complex.pdb` used as reference to compare with the docking results
 * the `prot-dna-outputs-examples/` directory holds a sample of the results obtained by doing this tutorial.
 
@@ -126,156 +125,56 @@ Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by
 
 <hr>
 
-## Preparing the HADDOCK2.4 web server run
 
-The introduction of the HADDOCK web server in 2008 and the eNMR Grid-enabled web server shortly after, changed a lot in the docking community.
-HADDOCK 2.4 is now available for commercial use through [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) after registration.
-As the years progressed, new machine learning based modelling tools started to emerge, such as AlphaFold.
-Although machine learning based methods eased modelling of a variety of protein-protein complexes, it cannot be used for protein-DNA or protein-RNA modelling.
-Therefore, HADDOCK remain a convenient tool to be used for protein-DNA docking.
-The combination of automated setup procedures, vigorous checks of the input, best practice defaults, easy access to many of the powerful HADDOCK features and access to ample computer resources has made docking available to a wide audience. 
+## Understanding the ambiguous interaction restraints
 
-Protein-DNA complexes are one of the more challenging systems to dock but also here the HADDOCK web server assists the user with a number of automated routines to setup the system correctly.
-This tutorial will introduce you to these features. 
+The ambiguous interaction restraints are defined in the `ambig_pm.tbl` file and the creation of such file is explained in detail [here](../HADDOCK24-protein-DNA-advanced/#available-data).
 
-### Using this part
+Let's have a look at the first lines of the file:
 
-With the protein and DNA starting structures available and the Ambiguous Interaction Restraints setup, you can start setting up your docking using the HADDOCK web server.
+```bash
+! Protein first monomer restraints
+!
+assign ( resid 31 and segid A)
+	(
+		( resid 24 and segid C and (name H41 or name H42 or name N3 or name C4 or name C5 or name C6))
+	  or
+		( resid 17 and segid C and (name H1 or name H21 or name N7 or name O6 or name C5 or name C6 or name C8))
+	  or
+		( resid 25 and segid C and (name H61 or name H62 or name N1 or name N7 or name C5 or name C6 or name C8))
+	  ...
+  ) 2.000 2.000 0.000
+```
 
-This part will introduce you to the use of the HADDOCK web server for the docking of protein-DNA systems.
-Although basic two-body protein-DNA docking can be performed using the HADDOCK Easy interface privileges, the use of custom Ambiguous Interaction Restraints requires the `Expert` privileges and the use of additional restraint types such as symmetry restraints, tweaking of the sampling parameters and multi-body docking requires the `Guru` privileges.
-Hence, for this tutorial you will require Guru access privileges.
-After registering to HADDOCK from [here](https://wenmr.science.uu.nl/auth/register/haddock), you can request access elevation from [here](https://wenmr.science.uu.nl/usr/).
+After the two commented lines (starting with !), the first line of the file indicates that residue 31 of chain A is should be involved in the interaction with the DNA (chain C), and that the possibly interacting residues are defined by the following lines (DNA bases 24, 17 and so on, each one with a few atoms). If one of these residues satisfies the distance requirement, the interaction restraint is considered satisfied.
 
-<hr>
+The same syntax is followed for the DNA molecule:
 
-## Protein-DNA docking using the HADDOCK web server
+```bash
+!
+! DNA restraints
+!
+assign ( resid 16 and segid C and (name H3 or name O4 or name C4 or name C5 or name C6 or name C7))
+	(
+		( resid 29 and segid A)
+	  or
+		( resid 31 and segid A)
+	  or
+		( resid 32 and segid A)
+	  or
+		( resid 30 and segid A)
+	  or
+		( resid 28 and segid A)
+	  or
+		( resid 34 and segid A)
+	) 2.000 2.000 0.000
+```
 
-Apart from the default setup procedures and server input checks, the use of DNA requires two additional steps that are automatically performed by the server:
-
-* The server will define the proper nucleic acid topology, parameter and linkage files for the partners indicated to be DNA. A ribose or deoxyribose patch will be applied depending on the choice of “Nucleic acid (DNA and/or RNA)” as input structure. 
-* An additional set of restraints will be generated to help maintain the helical structure of the DNA. These include sugar-pucker restraints, nucleotide base planarity restraints, sugar-phosphate backbone dihedral restraints and Watson-Crick hydrogen bond restraints between nucleotides that have been detected to be within pairing distance of one another. 
-
-In addition to these automatic setup procedures, there are a number of settings specific to protein-DNA docking that are worth considering:
-
-* Flexibility: DNA often changes conformation globally in the vicinity of the interface of the protein. To allow such changes to occur, you need to define nearly the full DNA sequence as semi-flexible to allow the DNA to change conformation globally. Full flexibility is not recommended (it is useful for flexible peptides).
-* Dielectric constant (epsilon): Is set to 78 on default for both *it0* and *it1*.
-* Advanced sampling parameters: the heating and cooling regime in the simulated annealing stages is optimized for protein systems but might be a bit too coarse for DNA systems. Reducing temperature, and the number and size of time steps will help in maintaining the helical structure of the DNA.
-
-<hr>
-
-## Preparing the Cro-OR1 docking run
-
-Setup the Cro-OR1 multi-body docking run using HADDOCK 2.4 webserver.
-Input files can be found in `protein-DNA_basic` directory.
-
-### Input data
-
-<a class="prompt prompt-info">
-Name --> Give your run a name.
-</a>
-<a class="prompt prompt-info">
-Molecules --> 3
-</a>
-
-**Molecule 1 - input:**
-
-<a class="prompt prompt-info">
-Which chain of the structure must be used? --> All<br>
-PDB structure to submit --> 1ZUG_ensemble.pdb<br>
-What kind of molecule are you docking? --> Protein or Protein-Ligand<br>
-Segment ID to use during the docking --> A
-</a>
-
-**Molecule 2 - input:**
-
-<a class="prompt prompt-info">
-Which chain of the structure must be used? --> All<br>
-PDB structure to submit --> 1ZUG_ensemble.pdb<br>
-What kind of molecule are you docking? --> Protein or Protein-Ligand<br>
-Segment ID to use during the docking --> C
-</a>
-
-**Molecule 3 - input:**
-
-<a class="prompt prompt-info">
-Which chain of the structure must be used? --> All<br>
-PDB structure to submit --> OR1_unbound.pdb<br>
-What kind of molecule are you docking? --> Nucleic acid (DNA and/or RNA)<br>
-Segment ID to use during the docking --> B
-</a>
-
-Click `Next` at the bottom of the page to proceed to “Input parameters” section.
-This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors).
-The server makes use of *Molprobity* to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
-
-### Input parameters
-
-**Molecule 3 (OR1) - parameters:**
-
-<a class="prompt prompt-info">
-From the “Semi-flexible segments” definition of molecule 3:<br>
-How are the flexible segments defined? --> Manual<br>
-Semi-flexible segments --> 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39
-</a>
-
-Click `Next` at the bottom of the page to proceed to “Docking parameters” section.
-
-### Docking parameters
-
-**Distance restraints:**
-
-<a class="prompt prompt-info">
-Upload the `ambig_pm.tbl` AIR file at “Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints)”
-</a>
-
-**Energy and interaction parameters:**
-
-<a class="prompt prompt-info">
-Epsilon constant for the electrostatic energy term in it0 --> 78 (78 by default)<br>
-Epsilon constant for the electrostatic energy term in it1 --> 78 (78 by default)
-</a>
-
-**Clustering parameters:**
-
-<a class="prompt prompt-info">
-Clustering method --> RMSD (FCC by default)<br>
-RMSD cutoff for clustering --> 20<br>
-Minimum cluster size --> 4
-</a>
-
-By default, the recommended cut-off value is 7.5 Å.
-However, because of the limited number of docking trials you performed with respect to the sampling requirements (due to flexibility and AIR restraints) the cut-off of 7.5 Å will not result in any clusters and hence no proper finalization of the docking run and it therefore increased to 20 Å.
-Under “normal” conditions (i.e. not this tutorial), the 7.5 Å cut-off is good value to use.
-
-**Symmetry restraints:**
-
-<a class="prompt prompt-info">
-Use symmetry restraints --> Check<br>
-Number of C2 symmetry segment pairs --> 1<br>
-C2 Segment pair (Segment 1) --> first residue 4, last residue 64, Segment ID: A<br>
-C2 Segment pair (Segment 2) --> first residue 4, last residue 64, Segment ID: C
-</a>
-
-**Advanced sampling parameters:**
-
-<a class="prompt prompt-info">
-Initial temperature for third TAD cooling step with fully flexible interface: 300<br>
-Factor for time step in TAD: 4<br>
-Number of steps for 300K phase: 750
-</a>
-
-Click `Submit` at the bottom of the page to launch the docking.
-
-<a class="prompt prompt-question">
-Why is the full DNA structure defined as semi-flexible except for the terminal nucleotide pairs?
-</a>
-
-<hr>
+which is coupled to a set of amino acids on the protein side (residues 29, 31, 32, 30, 28 and 34 in this case).
 
 ## Visualizing the ambiguous interaction restraints
 
-The ambiguous interaction restraints are defined in the `ambig_pm.tbl` file you just uploaded to the web server. Let's start by visualizing how the interacting residues used to drive the docking are distributed on the protein.
+Let's start by visualizing how the interacting residues used to drive the docking are distributed on the protein.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 1ZUG_ensemble.pdb
@@ -333,17 +232,179 @@ You can repeat the same analysis for the DNA molecule (OR1_unbound.pdb) using th
 
 <hr>
 
+## Extracting a single structure from the NMR ensemble using PBD-tools (optional)
+
+We understood how the NMR ensemble of protein has a disordered tail at the end of the protein chain. Since this disordered region is not involved in the binding, 
+we can simply take the first structure from the ensemble and remove this region. This can be done using the PBD-tools program (see **Figure 2**). Docking with an ensemble of conformations is still possible.
+
+First open your web browser to go to [https://wenmr.science.uu.nl/pdbtools/](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} and choose **Submit a pipeline**.
+
+Here, we fetch the NMR ensemble directly from the PDB database by typing *1ZUG* in the **PDB Code** field.
+
+<a class="prompt prompt-info">
+Fetch the NMR ensemble of 1ZUG from the PDB using the PDB code.
+</a>
+
+Now we will split our ensemble in several models.
+
+<a class="prompt prompt-info"> Choose 'pdb_splitmodel' from the **Pre-processing** panel and click on +Add a new block.</a>
+
+Then we need to clean our pdb structure by removing all water, ion or other non-protein atoms as a result from the crystallisation process.  
+
+<a class="prompt prompt-info"> Choose 'pdb_delhetatm' and click on +Add a new block.</a>
+
+Now we will remove the disordered region at the end of the protein chain.
+
+<a class="prompt prompt-info"> Choose 'pdb_selres' and click on +Add a new block</a>
+
+<a class="prompt prompt-info"> Once the 'pdb_selres' block is added to the pipeline, add 1:66 to the selection box.</a>
+
+This will select all the residues from 1 to 66, thus removing the disordered region at the end of the protein chain.
+
+<figure align="center">
+<img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/pdbtools-screenshoot.png">
+<p> <b>Figure 2:</b>visualization of the PBD-tools pipeline.</p>
+</figure>
+
+<a class="prompt prompt-info"> Once you have all commands in our pipeline click on **Run**.</a>
+
+On the result page we can see twenty output files, each corresponding to one model of the ensemble. For each the command used to run PBD-tools is also given. 
+
+<a class="prompt prompt-info"> Save *output_0_0.pdb* to your local computer as 1zug.pdb. This file is already available in the archive you downloaded.</a>
+
+If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
+
+## Preparing the HADDOCK2.4 web server run
+
+The introduction of the HADDOCK web server in 2008 and the eNMR Grid-enabled web server shortly after, changed a lot in the docking community.
+HADDOCK 2.4 is now available for commercial use through [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) after registration.
+As the years progressed, new machine learning based modelling tools started to emerge, such as AlphaFold.
+Although machine learning based methods eased modelling of a variety of protein-protein complexes, it cannot be used for protein-DNA or protein-RNA modelling.
+Therefore, HADDOCK remain a convenient tool to be used for protein-DNA docking.
+The combination of automated setup procedures, vigorous checks of the input, best practice defaults, easy access to many of the powerful HADDOCK features and access to ample computer resources has made docking available to a wide audience. 
+
+Protein-DNA complexes are one of the more challenging systems to dock but also here the HADDOCK web server assists the user with a number of automated routines to setup the system correctly.
+This tutorial will introduce you to these features.
+
+### Using this part
+
+With the protein and DNA starting structures available and the Ambiguous Interaction Restraints setup, you can start setting up your docking using the HADDOCK web server.
+
+This part will introduce you to the use of the HADDOCK web server for the docking of protein-DNA systems.
+Although basic two-body protein-DNA docking can be performed using the HADDOCK Easy interface privileges, the use of custom Ambiguous Interaction Restraints requires the `Expert` privileges and the use of additional restraint types such as symmetry restraints, tweaking of the sampling parameters and multi-body docking requires the `Guru` privileges.
+Hence, for this tutorial you will require Guru access privileges.
+After registering to HADDOCK from [here](https://wenmr.science.uu.nl/auth/register/haddock), you can request access elevation from [here](https://wenmr.science.uu.nl/usr/).
+
+<hr>
+
+## Protein-DNA docking using the HADDOCK web server
+
+Apart from the default setup procedures and server input checks, the use of DNA requires two additional steps that are automatically performed by the server:
+
+* The server will define the proper nucleic acid topology, parameter and linkage files for the partners indicated to be DNA. A ribose or deoxyribose patch will be applied depending on the choice of “Nucleic acid (DNA and/or RNA)” as input structure. 
+* An additional set of restraints will be generated to help maintain the helical structure of the DNA. These include sugar-pucker restraints, nucleotide base planarity restraints, sugar-phosphate backbone dihedral restraints and Watson-Crick hydrogen bond restraints between nucleotides that have been detected to be within pairing distance of one another. 
+* Dielectric constant (epsilon): Is set to 78 on default for both *it0* and *it1*.
+
+<hr>
+
+## Preparing the Cro-OR1 docking run
+
+Setup the Cro-OR1 multi-body docking run using HADDOCK 2.4 webserver.
+Input files can be found in `protein-DNA_basic` directory.
+
+### Input data
+
+<a class="prompt prompt-info">
+Name --> Give your run a name.
+</a>
+<a class="prompt prompt-info">
+Molecules --> 3
+</a>
+
+**Molecule 1 - input:**
+
+<a class="prompt prompt-info">
+Which chain of the structure must be used? --> All<br>
+PDB structure to submit --> 1ZUG.pdb<br>
+What kind of molecule are you docking? --> Protein or Protein-Ligand<br>
+Segment ID to use during the docking --> A
+</a>
+
+**Molecule 2 - input:**
+
+<a class="prompt prompt-info">
+Which chain of the structure must be used? --> All<br>
+PDB structure to submit --> 1ZUG.pdb<br>
+What kind of molecule are you docking? --> Protein or Protein-Ligand<br>
+Segment ID to use during the docking --> B
+</a>
+
+**Molecule 3 - input:**
+
+<a class="prompt prompt-info">
+Which chain of the structure must be used? --> All<br>
+PDB structure to submit --> OR1_unbound.pdb<br>
+What kind of molecule are you docking? --> Nucleic acid (DNA and/or RNA)<br>
+Segment ID to use during the docking --> C
+</a>
+
+Click `Next` at the bottom of the page to proceed to “Input parameters” section.
+This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors).
+The server makes use of *Molprobity* to check side-chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+
+### Input parameters
+
+Leave all parameters to their default values and press `Next` at the bottom of the page.
+
+### Docking parameters
+
+**Distance restraints:**
+
+<a class="prompt prompt-info">
+Upload the `ambig_pm.tbl` AIR file at “Instead of specifying active and passive residues, you can supply a HADDOCK restraints TBL file (ambiguous restraints)”
+</a>
+
+**Energy and interaction parameters:**
+
+<a class="prompt prompt-info">
+Epsilon constant for the electrostatic energy term in it0 --> 78 (78 by default)<br>
+Epsilon constant for the electrostatic energy term in it1 --> 78 (78 by default)
+</a>
+
+<a class="prompt prompt-question">
+In standard HADDOCK protein-protein docking the epsilon constant for the electrostatic energy
+term is 10.0 for it0 and 1.0 for it1. Why is it different for protein-DNA docking?
+</a>
+
+**Symmetry restraints:**
+
+Here we want to enforce a pairwise (C2) symmetry between the two protein monomers.
+
+<a class="prompt prompt-info">
+Use symmetry restraints --> Check<br>
+Number of C2 symmetry segment pairs --> 1<br>
+C2 Segment pair (Segment 1) --> first residue 4, last residue 64, Segment ID: A<br>
+C2 Segment pair (Segment 2) --> first residue 4, last residue 64, Segment ID: B
+</a>
+
+For more information on symmetry restraints, please refer to the corresponding page in the
+ [HADDOCK2.4 manual](https://www.bonvinlab.org/software/haddock2.4/run/#symmetry-restraints).
+
+Click `Submit` at the bottom of the page to launch the docking.
+
+<hr>
+
 ## Analysis of the docking run
 
 In case you are running short in time, a permanent link to the docking results of this tutorial is made available at [the following link](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/267340-Protein-DNA-Basic).
 
 ### Analysis on the HADDOCK result page
 
-After you run has finished (approximately 1 hours, depending on the load of the server), you will be presented with the results page in which you can observe different data for each cluster (**Figure 2**).
+After you run has finished (approximately 1 hour, depending on the load of the server), you will be presented with the results page in which you can observe different data for each cluster (**Figure 2**).
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/cluster_first.png">
-<p> <b>Figure 2</b>: HADDOCK2.4 results page of protein-DNA docking of the first cluster, composed of 124 models.</p>
+<p> <b>Figure 3</b>: HADDOCK2.4 results page of protein-DNA docking of the first cluster, composed of 124 models.</p>
 </figure>
 
 <a class="prompt prompt-question">
@@ -351,12 +412,12 @@ By looking at the number of models in each clusters and their average energy, ca
 Is the selection of the best cluster clear and unambiguous?
 </a>
 
-**Note:** At the bottom of the page are present graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, …) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model), as presented in **Figure 3**.
+**Note:** At the bottom of the page are present graphical representations of the results, showing the distribution of the solutions for various measures (HADDOCK score, van der Waals energy, …) as a function of the Fraction of Common Contact and RMSD from the best generated model (the best scoring model), as presented in **Figure 4**.
 The graphs are interactive, you can turn on/off specific clusters, and zoom in on specific areas of the plot.
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-DNA-basic/graph_first.png">
-<p> <b>Figure 3</b>: HADDOCK2.4 graphical representation of the results.</p>
+<p> <b>Figure 4</b>: HADDOCK2.4 graphical representation of the results.</p>
 </figure>
 
 Finally, the bottom graphs show you the distribution of scores (van der Waals, Electrostatics and AIRs energy terms) for the various clusters.
