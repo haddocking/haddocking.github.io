@@ -303,11 +303,11 @@ After registering to HADDOCK from [here](https://wenmr.science.uu.nl/auth/regist
 
 ## Protein-DNA docking using the HADDOCK web server
 
-Apart from the default setup procedures and server input checks, the use of DNA requires two additional steps that are automatically performed by the server:
+Apart from the default setup procedures and server input checks, the use of DNA requires two additional steps. These are automatically performed by the server when defining one molecule as nucleic acid:
 
-* The server will define the proper nucleic acid topology, parameter and linkage files for the partners indicated to be DNA. A ribose or deoxyribose patch will be applied depending on the choice of “Nucleic acid (DNA and/or RNA)” as input structure. 
+* The server will select the proper nucleic acid topology, parameter and linkage files for the nucleic acid molecule. DNA and RNA are distinguished by their residue namings (single letter for RNA, two letters (starting with a D for DNA), e.g. A or DA for adenine. 
 * An additional set of restraints will be generated to help maintain the helical structure of the DNA. These include sugar-pucker restraints, nucleotide base planarity restraints, sugar-phosphate backbone dihedral restraints and Watson-Crick hydrogen bond restraints between nucleotides that have been detected to be within pairing distance of one another. 
-* Dielectric constant (epsilon): Is set to 78 on default for both *it0* and *it1*.
+* A constant dielectric constant (epsilon) is selected with a value of 78 by default for both *it0* and *it1*.
 
 <hr>
 
