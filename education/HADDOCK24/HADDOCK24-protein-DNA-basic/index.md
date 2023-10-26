@@ -74,7 +74,7 @@ An elaborate discussion of all the concepts of protein-DNA docking and the vario
 Where needed, some concepts will be explained throughout the tutorial to maintain the readability and flow of this document.
 The tutorial ends with a reference block that provides links to in depth literature or Internet documentation about various topics. 
 
-### What if I do not find an answer to my ions?
+### What if I do not find an answer to my questions?
 
 It is always possible that you have ions or run into problems for which you cannot find the answer in the regular documentation. Here are some additional links that you can find answers to your questions:
 
