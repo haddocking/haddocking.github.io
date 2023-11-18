@@ -8,29 +8,56 @@ web page](http://mmistakes.github.io/minimal-mistakes/theme-setup/).
 
 To ensure whatever you create/change appears as faithfully as possible after pushing to the main repository, install the version of Ruby and the gems used by Github. See a list [here](https://pages.github.com/versions/).
 
-### Installation Instructions (updt. Feb. 2016)
+### Installation Instructions (updt. Nov. 2023)
 
-1. Install [RVM](https://rvm.io) (optional, to manage your Ruby installations)
-```bash
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
-rvm install ruby-2.6.3
-rvm --default use ruby-2.6.3
+Following the instructions from: https://github.com/BillRaymond/install-jekyll-apple-silicon/blob/main/README.md
+
+And using homebrew
+
+
+1. Install ruby3.0
+
+```
+brew install ruby@3.0
 ```
 
-2. Install Bundler
-```bash
-gem install bundler
+2. Add path to ruby3.0 in .bashrc (or .bash_provile)
+
+export PATH="/opt/homebrew/opt/ruby@3.0/bin/:$PATH"
+
+3. Restart your terminal and make sure you are now using ruby3.0
+
+```
+ruby -v
 ```
 
-3. Clone the haddocking.github.io repository and install all dependency Gems with Bundler
+4. Install Jekyll and Bundler
+
+```
+gem install --user-install bundler jekyll
+```
+
+5. Add the path to the gems to in .bashrc (or .bash_provile)
+
+export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
+
+
+6. Clone the haddocking.github.io repository and install all dependency Gems with Bundler
 
 ```bash
 git clone https://github.com/haddocking/haddocking.github.io.git haddocking-website
 cd haddocking-website
+bundle init
+bundle add jekyll --version "~>4.2"
+bundle config set --local path 'vendor/bundle'
 bundle install
+bundle exec jekyll new --force --skip-bundle .
+bundle add webrick
+bundle install
+bundle update
 ```
 
-4. Adapt the settings in _config.yml accordingly
+7. Adapt the settings in _config.yml accordingly
 In order for links to properly work, the `url` setting in must be set accordingly, otherwise you will be redirected to the live version. This sets all the `site.url` variable calls throughout _layouts/,  _includes/, etc.
 
 ```yaml
@@ -52,7 +79,7 @@ To preview changes, which you should always do before committing anything or mak
     $ python _utilities/create_new_article.py 'A Random Post'
 ```
 
-4. For updating jeckyll and bundle
+8. For updating jeckyll and bundle
 
 ```bash
     $ gem update jekyll

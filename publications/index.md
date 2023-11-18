@@ -6,9 +6,11 @@ image:
 ---
 ## 2023
 
+* M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1101/2023.11.17.567543). _BioRxiv_ 10.1101/2023.11.17.567543 (2023).
+
 * M. Giulini, R.V. Honorato, J.L. Rivera, **A.M.J.J. Bonvin**. [ARCTIC-3D: Automatic Retrieval and ClusTering of Interfaces in Complexes from 3D structural information](https://doi.org/10.1101/2023.07.10.548477). _BioRxiv_ 2023.07.10.548477 (2023).
 
-* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1101/2023.06.22.546080). _BioRxiv_  2023.06.22.546080 (2023).
+* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1101/2023.06.22.546080). _BioRxiv_  10.1101/2023.06.22.546080 (2023).
 
 * **A.M.J.J. Bonvin**. [Empowering Global Collaboration in Structural Biology and Life Sciences](https://zenodo.org/record/8135315). DOI:10.5281/zenodo.8135315 (2023).
 
