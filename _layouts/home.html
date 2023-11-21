@@ -38,7 +38,7 @@
   </div><!-- /.article-wrap -->
   <!-- News Section -->
   <h3><a href="{{ site.url}}/news/">Recent News</a></h3>
-  {% for post in site.categories.news limit:2 %}
+  {% for post in site.categories.news limit:3 %}
   <article>
     {% if post.link %}
       <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
@@ -49,10 +49,10 @@
   </article>
   {% endfor %}
   <!-- Twitter list -->
-  <a class="twitter-timeline" data-tweet-limit="5" data-width="600" data-chrome="noheader transparent"
-     href="https://twitter.com/amjjbonvin/lists/1628031198835486721?ref_src=twsrc%5Etfw">
-     A Twitter List by the BonvinLab </a>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- <a class="twitter-timeline" data-tweet-limit="5" data-width="600" data-chrome="noheader transparent" -->
+  <!--    href="https://twitter.com/amjjbonvin/lists/1628031198835486721?ref_src=twsrc%5Etfw"> -->
+  <!--    A Twitter List by the BonvinLab </a> -->
+  <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 </div><!-- /#index -->
 
 <div class="footer-wrap">
