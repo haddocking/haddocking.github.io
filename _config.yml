@@ -7,8 +7,6 @@ url:              https://www.bonvinlab.org
 #url:              http://127.0.0.1:4000/
 baseurl: "" # the subpath of your site, e.g. /blog
 #email: your-email@example.com
-twitter_username: amjjbonvin
-github_username:  haddocking
 
 # RSS Feed configuration
 name: Bonvin Lab
@@ -50,7 +48,8 @@ owner:
     ad-client:
     ad-slot:
   github: haddocking
-
+  twitter: amjjbonvin
+  x: amjjbonvin
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "_utilities", "vendor", "ruby"]
@@ -65,3 +64,4 @@ github: [metadata]
 highlighter: rouge
 incremental: false
 lsi: false
+
