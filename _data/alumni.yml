@@ -272,11 +272,9 @@
     status: student
 
 -   name: Chiara Fais
-    current: 'Cagliari University, Italy'
     status: student
 
 -   name: Kasey Pham
-    current: 'Michigan State University, USA'
     status: student
 
 -   name: Marijne Schijns
@@ -295,7 +293,6 @@
     status: student
 
 -   name: Carlos Barreto
-    current: 'University of Coimbra, Portugal'
     status: student
 
 -   name: Daan Sybrandi
@@ -379,6 +376,17 @@
 -   name: Aldo van den Nieuwendijk
     status: student
 
+-   name: Padraic Hughes
+    status: student
+
+-   name: Daphne van Oosten
+    status: student
+
+-   name:  Bora Akdari
+    status: student
+
+-   name:  Erdem Kertmen
+    status: student
 
 
 
