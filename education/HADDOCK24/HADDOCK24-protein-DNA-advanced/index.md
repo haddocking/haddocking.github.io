@@ -32,7 +32,7 @@ This tutorial will introduce HADDOCK (High Ambiguity Driven DOCKing) [1] as a me
 ### About this tutorial
 
 This tutorial will introduce you to a practical approach for modelling protein-DNA complexes using HADDOCK2.4.
-It is the advanced version of `basic protein-DNA modelling tutorial` which can be found in [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-basic).
+It is the advanced version of [basic protein-DNA modelling tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-basic).
 You may therefore regard this tutorial as an extension of the introductory protein-DNA docking tutorial.
 
 ### What is new in this tutorial?
@@ -41,9 +41,8 @@ This tutorial introduces the following theoretical and practical concepts of whi
 
 * Part I: Launch a protein-DNA docking run using HADDOCK2.4 webserver and provided starting structures.
 * Part II: How to obtain DNA starting structures in various conformations suitable for use in HADDOCK? For this purpose, the *3D-DART* web server is introduced.
-* Part III: How to prepare Ambiguous Interaction Restraints (AIR) for protein-DNA docking? What information is available to construct AIRs? How to go about preparing AIRs in multi-body protein-DNA systems? How to make use of atom subsets in preparing restraints if there is sufficient information available?
-* Part IV: Introduction to the dedicated AIR viewer plugin for the PyMol, that allows easy exploration and preparation of Ambiguous Interaction Restraints for HADDOCK.
-* Part IV and V: How to perform an iterative protein-DNA docking run? How to use the *3D-DART* web server to generate new models for a second docking run based on the results of the first docking run.
+* Part III: How to prepare Ambiguous Interaction Restraints (AIR) for protein-DNA docking? What information is available to construct AIRs? How to go about preparing AIRs in multi-body protein-DNA systems? How to make use of atom subsets in preparing restraints if there is sufficient information available? Introduction to the dedicated AIR viewer plugin for the PyMol, that allows easy exploration and preparation of Ambiguous Interaction Restraints for HADDOCK.
+* Part IV and V: How to perform an iterative protein-DNA docking run? How to use the *3D-DART* web server to analyse the output of the first run and generate new models for a second docking run based on the results of the first docking run.
 
 ### What are the main concepts introduced in this tutorial?
 
@@ -69,14 +68,15 @@ This approach is based upon the following principles:
 </figure>
 
 <a class="prompt prompt-attention">
-In a normal HADDOCK setup, you will have to prepare PDB input structures and Ambiguous Interaction Restraints before starting the docking using the webserver. In this tutorial you will first start the docking, allowing HADDOCK computing machines (HPC or GRID) to finish your job before the end of the tutorial, before starting the input file preparation parts.
+In a normal HADDOCK setup, you will have to prepare PDB input structures and Ambiguous Interaction Restraints before starting the docking using the webserver.
+In this tutorial you will first start the docking, allowing HADDOCK computing ressources (HPC or GRID) to finish your job before starting analysis of the first docking run. In between, we will see how the provided input files were prepared and generated.
 </a>
 
 ### Using this tutorial
 
 You should be able to go through this tutorial in about 4 hours.
 Basic knowledge on the principles and use of HADDOCK is useful but not required.
-We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking and the standalone version of HADDOCK to perform the analysis of the results.
+We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/) to perform the docking, while the analysis of the results will be performed by dedicated set of scripts as well as *3D-DART*.
 
 #### Tutorial data set
 
@@ -98,17 +98,6 @@ Running this tutorial requires several computational and knowledge pre-requisite
 * ProFit [http://www.bioinf.org.uk/software/profit/index.html](http://www.bioinf.org.uk/software/profit/index.html) will be used to perform superimposition of models and calculate various RMSD values.
 * Pymol [http://www.pymol.org](http://www.pymol.org) will be used to visualize the structural models. Although most commands are listed and explained, basic working knowledge is advised.
 
-### Where can I find more information?
-
-An elaborate discussion of all the concepts of protein-DNA docking and the various options of the HADDOCK docking software is beyond the scope of this tutorial. Where needed, some concepts will be explained throughout the tutorial to maintain the readability and flow of this tutorial. Every part end with a short 'reference' block that provides links to in depth literature or Internet documentation about various topics. 
-
-What if I do not find an answer to my questions?
-It is always possible that you have questions or run into problems for which you cannot find the answer in the regular documentation. Here are some additional links that you can find answers to your questions:
-* Bioexcel user forum:
-[https://ask.bioexcel.eu/c/haddock/6](https://ask.bioexcel.eu/c/haddock/6)
-* HADDOCK Help Center: [https://wenmr.science.uu.nl/haddock2.4/help](https://wenmr.science.uu.nl/haddock2.4/help)
-* HADDOCK software and online manual: [https://www.bonvinlab.org/software/haddock2.4/manual/](https://www.bonvinlab.org/software/haddock2.4/manual/)
-
 ### Tutorial icon conventions
 
 Throughout the tutorial we will use the following special fonts and icons to perform certain tasks or draw your attention:
@@ -118,6 +107,23 @@ Throughout the tutorial we will use the following special fonts and icons to per
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
 <a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
 <a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
+
+### Where can I find more information?
+
+An elaborate discussion of all the concepts of protein-DNA docking and the various options of the HADDOCK docking software is beyond the scope of this tutorial. Where needed, some concepts will be explained throughout the tutorial to maintain the readability and flow of this tutorial.
+Every part end with a short **reference** block that provides links to in depth literature or Internet documentation about various topics. 
+
+<a class="prompt prompt-attention">
+What if I do not find an answer to my questions? <br>
+It is always possible that you have questions or run into problems for which you cannot find the answer in the regular documentation.
+</a>
+
+Here are some additional links that you can find answers to your questions:
+* Bioexcel user forum:
+[https://ask.bioexcel.eu/c/haddock/6](https://ask.bioexcel.eu/c/haddock/6)
+* HADDOCK Help Center: [https://wenmr.science.uu.nl/haddock2.4/help](https://wenmr.science.uu.nl/haddock2.4/help)
+* HADDOCK software and online manual: [https://www.bonvinlab.org/software/haddock2.4/manual/](https://www.bonvinlab.org/software/haddock2.4/manual/)
+
 
 ### Introduction to the tutorial test case
 
@@ -152,7 +158,7 @@ Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by
 
 ### Tutorial setup
 
-The tutorial data is present as a zipped file in the following address [https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz](https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz).
+The tutorial data is present as a *gzipped* tar archive at the following address [https://surfdrive.surf.nl/files/index.php/s/TXKyQeZsvSXMBpy](https://surfdrive.surf.nl/files/index.php/s/TXKyQeZsvSXMBpy).
 
 #### Extract the archive
 You need to decompress the tutorial data archive. Move the archive to your working directory of choice and extract it.
@@ -160,7 +166,7 @@ You need to decompress the tutorial data archive. Move the archive to your worki
 **1) Extract the archive in the current working directory:**
 
 <a class="prompt prompt-cmd">
-tar /…/haddock-protein-dna-data.tgz
+tar haddock-protein-dna-data.tgz
 </a>
 
 Extraction of the archive will present you with a new directory called `3CRO` that contains a number of sub-directories arranged according to the part of this tutorial:
@@ -192,8 +198,9 @@ In case of a C-shell: >source setup.csh
 ### References
 1)  Dominguez, C. et al. (2003). **HADDOCK: a protein-protein docking approach based on biochemical or biophysical information**. *JACS*  125, 1731-1737<br>
 2)  van Dijk, M. et al. (2006). **Information-driven protein-DNA docking using HADDOCK: it is a matter of flexibility**.  *Nucl. Acids. Res.*  25, 3317-3325<br>
-3)  van Dijk and Bonvin (2010) **Pushing the limits of what is achievable in protein-DNA docking: benchmarking HADDOCK's performance**. *Nucleic Acids Res* 38, 5634-5647<br>
-4)  Mondragón and Harrison (1991). **The phage 434 Cro/OR1 complex at 2.5 A resolution**. *J Mol Biol* 219, 321-334
+3)  van Dijk and Bonvin (2009) **3D-DART: a DNA structure modelling server**, *Nucleic Acids Res* 37 (Web Server Issue):W235-W239<br>
+4)  van Dijk and Bonvin (2010) **Pushing the limits of what is achievable in protein-DNA docking: benchmarking HADDOCK's performance**. *Nucleic Acids Res* 38, 5634-5647<br>
+5)  Mondragón and Harrison (1991). **The phage 434 Cro/OR1 complex at 2.5 A resolution**. *J Mol Biol* 219, 321-334
 
 <hr>
 
@@ -207,15 +214,15 @@ Therefore, HADDOCK remains a very convenient tool to be used for protein-DNA doc
 The combination of automated setup procedures, vigorous checks of the input, best practice defaults, easy access to many of the powerful HADDOCK features and access to ample computer resources has made docking available to a wide audience. 
 
 Protein-DNA complexes are one of the more challenging systems to dock but also here the HADDOCK web server assists the user with several automated routines to setup the system correctly.
-This first part of the tutorial will introduce you to these features. 
+This first part of the tutorial will introduce you to these features.
 
 ### Using this part
 
 With the protein and DNA starting structures available and the Ambiguous Interaction Restraints setup, you can start setting up your docking using the HADDOCK web server.
 
 This part will introduce you to the use of the HADDOCK web server for the docking of protein-DNA systems.
-Although basic two-body protein-DNA docking can be performed using the HADDOCK Easy interface privileges, the use of custom Ambiguous Interaction Restraints requires the Expert privileges and the use of additional restraint types such as symmetry restraints, tweaking of the sampling parameters and multi-body docking requires the Guru privileges.
-Hence, for this tutorial you will require Guru access privileges.
+Although basic two-body protein-DNA docking can be performed using the HADDOCK Easy interface privileges, the use of custom Ambiguous Interaction Restraints requires the Expert privileges and the use of additional restraint types such as symmetry restraints, tweaking of the sampling parameters and multi-body docking requires the *Guru* privileges.
+Hence, for this tutorial you will require *Guru* access privileges.
 After registering to HADDOCK from [here](https://wenmr.science.uu.nl/auth/register/haddock), you can request access elevation from [here](https://wenmr.science.uu.nl/usr/).
 
 <hr>
@@ -309,8 +316,8 @@ Minimum cluster size --> 4
 </a>
 
 By default, the recommended cut-off value is 7.5 Å.
-However, because of the limited number of docking trials you performed with respect to the sampling requirements (due to flexibility and AIR restraints) the cut-off of 7.5 Å will not result in any clusters and hence no proper finalization of the docking run and it therefore increased to  20 Å.
-Under "normal" conditions (i.e. not this tutorial), the 7.5 Å cut-off is good value to use.
+However, because of the limited number of docking trials you performed with respect to the sampling requirements (due to flexibility and AIR restraints) the cut-off of 7.5 Å will not result in any clusters and hence no proper finalization of the docking run and it therefore increased to 20 Å.
+Under *normal* conditions (i.e. not this tutorial), the default 7.5 Å cut-off is good value to use.
 
 **Symmetry restraints:**
 
@@ -379,7 +386,8 @@ This benefit is used to efficiently deal with flexibility in protein-DNA systems
 ### Using this part
 
 In this part we will introduce you to the various steps required to prepare PDB coordinate files for the Cro protein and the OR1 DNA structures.
-The procedure for the protein is no different than for protein-protein docking. You will be using an NMR-solved structure of the protein. 
+The procedure for the protein is not different than for protein-protein docking.
+You will be using an NMR-solved structure of the protein. 
 
 Modelling DNA is new to this tutorial and we will spend some more time discussing this part.
 You will be using the *3D-DART* web server [1] for this purpose.
@@ -482,6 +490,8 @@ Both Cro protein and OR1 DNA structures are now ready for use with the HADDOCK w
 1)  van Dijk and Bonvin (2009). **3D-DART: a DNA structure modelling server**. Nucleic Acids Res 37 (Web Server issue) pp. W235-239<br>
 2)  Padmanabhan, S. et al. (1997) **Three-dimensional solution structure and stability of phage 434 Cro protein**. Biochemistry 36, 6424-6436
 
+
+
 <hr>
 
 ## Part III: Understanding Ambiguous Interaction Restraints in Protein-DNA Docking
@@ -498,12 +508,13 @@ The network of restraints that is generated as such is a powerful way to reduce 
 But if not setup correctly they may restrict the docking to the sampling of a non-relevant conformational space and pollute the final selection with false positives!
 </a>
 
-In this part we will introduce you to some of the more powerful methods for generating AIRs and make optimal use of the information content of the data you have at hand. 
+In this part, we will introduce you to some of the more powerful methods for generating AIRs and make optimal use of the information content of the data you have at hand. 
 
 ### Using this part
+
 The topics covered in this part assume that you are familiar with the concept of "Ambiguous Interaction Restraints" and their basic setup using *active* and *passive* residues (See Reference for more information). 
 
-In this part, you will use a custom-made plugin for the `PyMol` molecular viewer to construct and visualise *AIR*s for the Cro-OR1 system.
+In this part, you will use a custom-made plugin for the `PyMol` molecular viewer to construct and visualise *AIRs* for the Cro-OR1 system.
 This plugin (`AIRviewer.py`) comes as part of the tutorial data set, and you will be instructed on how to use it during the course of this part.
 The plugin combines the ability to construct custom restraint sets for multi-body systems with the convenience of a visual appreciation of the resulting restraints network. 
 
@@ -823,9 +834,10 @@ Aspects such as: the conformational space sampled (number of docking trials), th
 
 1)  van Dijk and Bonvin (2009). **3D-DART: a DNA structure modelling server**. *Nucleic Acids Res* 37 (Web Server issue) pp. W235-239
 
+
 <hr>
 
-## Preparing the second HADDOCK run
+## Part V: Preparing the second HADDOCK run
 
 ### Introduction
 
