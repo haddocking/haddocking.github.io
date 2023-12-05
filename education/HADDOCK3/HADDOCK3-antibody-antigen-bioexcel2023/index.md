@@ -560,11 +560,10 @@ binding site in the final models, while the residues defined as `active` (typica
 site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are
 using a local version, we need to define those manually.
 
-This can easily be done using a script from our [haddock-tools][haddock-tools] repository, which is also provided for convenience
-in the `scripts` directly of the archive you downloaded for this tutorial:
+This can easily be done in the following way:
 
 <a class="prompt prompt-cmd">
-python ./scripts/passive_from_active.py 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+haddock3-restraints passive_from_active 4I1B_clean.pdb 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </a>
 
 The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only. We will focus only on this second case here: the corresponding residues can be found in the `restraints/antigen-NMR-epitope.act-pass` file.
@@ -588,9 +587,9 @@ Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
 For this you can either make use of our online [GenTBL][gentbl] web service, entering the
 list of active and passive residues for each molecule, and saving the resulting
-restraint list to a text file, or use the relevant `haddock-tools` script.
+restraint list to a text file, or use the relevant `haddock3-restraints` command.
 
-To use our `haddock-tools` `active-passive-to-ambig.py` script you need to
+To use our `haddock3-restraints active_passive_to_ambig` script you need to
 create for each molecule a file containing two lines:
 
 * The first line corresponds to the list of active residues (numbers separated by spaces)
@@ -613,7 +612,7 @@ In this scenario the NMR epitope is defined as active (meaning ambiguous distanc
 Using those two files, we can generate the CNS-formatted AIR restraint files with the following command:
 
 <a class="prompt prompt-cmd">
-./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
 </a>
 
 This generates a file called `ambig-paratope-NMR-epitope.tbl` that contains the AIR
@@ -627,12 +626,9 @@ distance combinations between an active residue and all the active+passive on
 the other molecule: SUM[1/r^6]^(-1/6).
 
 If you modify manually this file, it is possible to quickly check if the format is valid.
-To do so, you can find in our [haddock-tools][haddock-tools] repository a folder named
-`haddock_tbl_validation` that contains a script called `validate_tbl.py` (also provided here in the `scripts` directory).
-To use it, type:
 
 <a class="prompt prompt-cmd">
-python ./scripts/validate_tbl.py \-\-silent ambig-paratope-NMR-epitope.tbl
+haddock3-restraints validate_tbl ambig-paratope-NMR-epitope.tbl --silent
 </a>
 
 No output means that your TBL file is valid.
@@ -643,11 +639,10 @@ No output means that your TBL file is valid.
 
 As an antibody consists of two separate chains, it is important to define a few distance restraints
 to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
-done using a script from [haddock-tools][haddock-tools] repository, which is also provided for convenience
-in the `scripts` directly of the archive you downloaded for this tutorial.
+done using the `haddock3-restraints restrain_bodies` subcommand.
 
 <a class="prompt prompt-cmd">
-python ./scripts/restrain_bodies.py 4G6K_clean.pdb > antibody-unambig.tbl
+haddock3-restraints restrain_bodies 4G6K_clean.pdb > antibody-unambig.tbl
 </a>
 
 The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:
@@ -662,11 +657,11 @@ This file is also provided in the `restraints` directory of the archive you down
 If you are considering Alphafold2 or ABodyBuilder2 antibodies you have to create the appropriate distance restraints:
 
 <a class="prompt prompt-cmd">
-python ./scripts/restrain_bodies.py 4G6K_af2_clean.pdb > af2-antibody-unambig.tbl
+haddock3-restraints restrain_bodies 4G6K_af2_clean.pdb > af2-antibody-unambig.tbl
 </a>
 
 <a class="prompt prompt-cmd">
-python ./scripts/restrain_bodies.py 4G6K_abb_clean.pdb > abb-antibody-unambig.tbl
+haddock3-restraints restrain_bodies 4G6K_abb_clean.pdb > abb-antibody-unambig.tbl
 </a>
 
 <hr>
