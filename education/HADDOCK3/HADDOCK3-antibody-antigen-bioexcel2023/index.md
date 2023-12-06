@@ -1352,8 +1352,8 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 <hr>
 ## Visualization of the models
 
-To visualize the models from top cluster of your favorite run,  start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 for run `run1-CDR-NMR-CSP`.
-These can be found in the `runs/run1-CDR-NMR-CSP/09_seletopclusts/` directory
+To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 for run `run1-CDR-NMR-CSP`.
+These can be found in the `runs/run1/09_seletopclusts/` directory
 
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
@@ -1372,7 +1372,7 @@ util.cbc
 color yellow, 4G6M_matched
 </a>
 
-Let us then superimpose all models on the reference structure:
+Let us then superimpose all models onto the reference structure:
 
 <a class="prompt prompt-pymol">
 alignto 4G6M_matched
@@ -1415,94 +1415,27 @@ Are the residues of the paratope and NMR epitope at the interface?
 </details>
 
 
-<hr>
-<hr>
-## BONUS 1: Machine-learning-based modelling of antibodies and docking
-
-The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold) and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/), from the ImmuneBuilder suite) performing nicely on the variable regions.
-
-For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
-
-CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility. Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.
-
-Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used to target the antigen in place of the standard unbound form, which is not usually available.
-
-We already ran the prediction with these two tools, and you can find them in the `pdbs` directory (with names `4g6k_Abodybuilder2.pdb` and `4g6k_AF2_multimer.pdb`).
-
-
-We should again preprocess these models for use in HADDOCK:
-
-<a class="prompt prompt-cmd">
-pdb_tidy -strict pdbs/4g6k_Abodybuilder2.pdb | pdb_selchain -H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_abb_H.pdb
-</a>
-<a class="prompt prompt-cmd">
-pdb_tidy -strict pdbs/4g6k_Abodybuilder2.pdb | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4G6K_abb_L.pdb
-</a>
-<a class="prompt prompt-cmd">
- pdb_merge 4G6K_abb_H.pdb 4G6K_abb_L.pdb | pdb_chain -A | pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > 4G6K_abb_clean.pdb
-</a>
-
-Now the Alphafold2-multimer top ranked structure. By default it is written to disk with chains A and B.
-
-<a class="prompt prompt-cmd">
-pdb_tidy -strict pdbs/4g6k_AF2_multimer.pdb | pdb_selchain -A | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4g6k_af2_A.pdb
-</a>
-<a class="prompt prompt-cmd">
-pdb_tidy -strict pdbs/4g6k_AF2_multimer.pdb | pdb_selchain -B | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_tidy -strict > 4g6k_af2_B.pdb
-</a>
-<a class="prompt prompt-cmd">
-pdb_merge 4g6k_af2_A.pdb 4g6k_af2_B.pdb | pdb_chain -A | pdb_chainxseg | pdb_reres -1 | pdb_tidy -strict > 4G6K_af2_clean.pdb
-</a>
-
-
-Load the three cleaned antibody structures in Pymol to see whether they resemble the experimental unbound structure.
-
-<a class="prompt prompt-pymol">
-File menu -> Open -> select 4G6K_clean.pdb
-</a>
-<a class="prompt prompt-pymol">
-File menu -> Open -> select 4G6K_abb_clean.pdb
-</a>
-<a class="prompt prompt-pymol">
-File menu -> Open -> select 4G6K_af2_clean.pdb
-</a>
-
-We now use the backbone RMSD to align the machine learning models to the experimental structure.
-<a class="prompt prompt-pymol">
-alignto 4G6K_clean
-</a>
-
-<a class="prompt prompt-question">
-Which structure (between _4G6K_abb_clean.pdb_ and _4G6K_af2_clean.pdb_) is closer to the unbound conformation?
-</a>
-
-Both ABodyBuilder2 and Alphafold2 can give an _ensemble_ of models in output. All the structures in these ensembles may be used as input antibody molecules in HADDOCK.
-
-<a class="prompt prompt-info">The remaining of the tutorial will consider only the experimental unbound structure, but you can use your preprocessed predicted structures simply by substituting _4G6K_clean.pdb_ with either _4G6K_abb_clean.pdb_ or _4G6K_af2_clean.pdb_.</a>
-
 
 <hr>
+<hr>
+## Conclusions
 
-### Comparing the performance of the three antibodies
-
-All three antibody structures used in input give good results. The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure. Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.
-
-The good information about the paratope with the NMR epitope is critical for the good docking performance, which is also the scenario described in our Structure 2020 article:
-
-* F. Ambrosetti, B. Jiménez-García, J. Roel-Touris and A.M.J.J. Bonvin. [Modeling Antibody-Antigen Complexes by Information-Driven Docking](https://doi.org/10.1016/j.str.2019.10.011). _Structure_, *28*, 119-129 (2020). Preprint freely available from [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362436).
-
-
+We have demonstrated the usage of HADDOCK3 in an antibody-antigen docking scenario making use of the paratope information on the antibody side (i.e. no prior experimental information) and a NMR-mapped epitope for the antigen. Compared to the static HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allows to customise the docking protocols and to run a deeper analysis of the results.
+While HADDOCK3 is still very much work in progress, its intrinsic flexibility can be used to improve the performance of antibody-antigen modelling compared to the results we presented in our
+[Structure 2020](https://doi.org/10.1016/j.str.2019.10.011){:target="_blank"} article and in the [related HADDOCK2.4 tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen){:target="_blank"}.
 
 
 <hr>
 <hr>
-## BONUS: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis
+## BONUS 1: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis
 
-Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file *4G6M*, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with IL-1RI's binding site (in PDB file *4G6J*). For more details please check [this article](https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub).
+Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file *4G6M*, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with the binding site of IL-1RI (in PDB file *4G6J*). For more details please check [this article](https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub){:target="_blank"}.
 
-We will now use our new software, [ARCTIC-3D](https://www.biorxiv.org/content/10.1101/2023.07.10.548477v1), to visualize the binding interfaces formed by IL-1β. First, the program retrieves all the existing binding surfaces formed by IL-1β from the [PDBe website](https://www.ebi.ac.uk/pdbe/). Then, these binding surfaces are compared and clustered together if they span a similar region of the selected protein (IL-1β in our case).
+We will now use our new software, [ARCTIC-3D](https://www.biorxiv.org/content/10.1101/2023.07.10.548477v1){:target="_blank"}, to visualize the binding interfaces formed by IL-1β. First, the program retrieves all the existing binding surfaces formed by IL-1β from the [PDBe website](https://www.ebi.ac.uk/pdbe/){:target="_blank"}. Then, these binding surfaces are compared and clustered together if they span a similar region of the selected protein (IL-1β in our case).
 
-We can now open the ARCTIC-3D web-server page [here](https://wenmr.science.uu.nl/arctic3d/). We will run an ARCTIC-3D job targeting the uniprot ID proper to human Interleukin-1 beta, namely [P01584](https://www.uniprot.org/uniprotkb/P01584/entry).
+We will run an ARCTIC-3D job targeting the uniprot ID of human Interleukin-1 beta, namely [P01584](https://www.uniprot.org/uniprotkb/P01584/entry){:target="_blank"}.
+
+For this first open the ARCTIC-3D web-server page [here](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}. 
 
 <a class="prompt prompt-info">
 Insert the selected uniprot ID in the **UniprotID** field.
@@ -1538,14 +1471,225 @@ You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/
 How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
 </a>
 
+
+
 <hr>
 <hr>
+## BONUS 2: How good are AI-based models of antibody for docking?
 
-## BONUS: Alphafold2 for antibody-antigen complex structure prediction
+The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold) and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/), from the ImmuneBuilder suite) performing nicely on the variable regions.
 
-With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict with AlphaFold this antibody-antigen complex.
+For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
-To predict our complex, we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov's [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"}, making use of the Google Colab CLOUD resources.
+CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility. 
+Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.
+
+Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used for generating reliabble models of the antibody-antigen complex by docking, instead of the unbound form used in this tutorial, which, in a many cases, will not be available.
+
+
+### Analysing the AI models
+
+We already ran the prediction with these two tools, and you can find the resulting models in the `pdbs` directory as:
+
+- `4g6k_Abodybuilder2.pdb`
+- `4g6k_AF2_multimer.pdb`
+
+
+As was demonstrated in the tutorial, those files must be preprocess for use in HADDOCK. Docking-ready files are also provided in the `pdbs` directory:
+
+
+- `4G6K_abb_clean.pdb`
+- `4G6K_af2_clean.pdb`
+
+
+Load the experimental unbound structure (`4G6K_clean.pdb`) and the two AI model in PyMol to see whether they ressemble the experimental unbound structure.
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_abb_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_af2_clean.pdb
+</a>
+
+Align the models to the experimental unbound structure
+
+<a class="prompt prompt-pymol">
+alignto 4G6K_clean
+</a>
+
+<a class="prompt prompt-question">
+Which model is the closest to the unbound conformation?
+</a>
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the RMSD values</i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+  4G6K_abb_clean       RMSD =    0.428 Å
+  4G6K_af2_clean       RMSD =    0.765 Å
+</pre>
+ <br>
+</details>
+<br>
+
+For docking purposes however, it might be more interesting to know how far are the models from the bound conformation, i.e. the conformation in the antibody-antigen complex.
+The closer it is the easiest it should become to model the complex by docking. To assess this we can load the structure of the complex in PyMol and align all other structures/models to it.
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6M_matched.pdb
+</a>
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> color yellow, 4G6M_matched
+</a>
+
+Align now the models to the experimental bound structure
+
+<a class="prompt prompt-pymol">
+alignto 4G6M_matched and chain A
+</a>
+
+<a class="prompt prompt-question">
+Which model is the closest to the bound conformation?
+</a>
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the RMSD values</i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+  4G6K_abb_clean       RMSD =    0.330 Å
+  4G6K_af2_clean       RMSD =    0.675 Å
+  4G6K_clean           RMSD =    0.393 Å
+</pre>
+ <br>
+</details>
+<br>
+
+
+<hr>
+### Docking performance using AI-based antibody models
+
+We can repeat the docking as described above in our tutorial, but using this time either the ABodyBuilder2 or Alphafold2 models as input.
+For this modify your haddock3 configuration file, changing the input PDB file of the first molecule (the antibody) using the respective HADDOCK-ready models provided in the `pdbs` directory.
+You will also need to change the restraint filename using to keep the two parts of the antibody together (those files are present in the `restraints` directory.
+
+Further run haddock3 as described above.
+
+Pre-calculated runs are provided in the `runs` directory. Analyse your run (or the pre-calculated ones) as described previously.
+
+<a class="prompt prompt-question">
+Which starting structure of the antibody gives the best results in terms of cluster quality and ranking?
+</a>
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the cluster statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== run1/10_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  4
+Total number of medium or better clusters:      1  out of  4
+Total number of high quality clusters:          0  out of  4
+
+First acceptable cluster - rank:  1  i-RMSD:  1.102  Fnat:  0.836  DockQ:  0.805
+First medium cluster     - rank:  1  i-RMSD:  1.102  Fnat:  0.836  DockQ:  0.805
+Best cluster             - rank:  1  i-RMSD:  1.102  Fnat:  0.836  DockQ:  0.805
+
+==============================================
+== run1-abb/10_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  5
+Total number of medium or better clusters:      1  out of  5
+Total number of high quality clusters:          0  out of  5
+
+First acceptable cluster - rank:  1  i-RMSD:  1.103  Fnat:  0.832  DockQ:  0.797
+First medium cluster     - rank:  1  i-RMSD:  1.103  Fnat:  0.832  DockQ:  0.797
+Best cluster             - rank:  1  i-RMSD:  1.103  Fnat:  0.832  DockQ:  0.797
+
+==============================================
+== run1-af2/10_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  2  out of  5
+Total number of medium or better clusters:      0  out of  5
+Total number of high quality clusters:          0  out of  5
+
+First acceptable cluster - rank:  1  i-RMSD:  2.956  Fnat:  0.375  DockQ:  0.413
+Best cluster             - rank:  3  i-RMSD:  2.903  Fnat:  0.375  DockQ:  0.327
+</pre>
+ <br>
+</details>
+<br>
+
+<a class="prompt prompt-question">
+Which starting structure of the antibody gives the best overall model (irrespective of the ranking)?
+</a>
+
+*__Hint__*: Use the `extract-capri-stats.sh` script to analyse the various runs and find the best (lowest i-RMSD or highest Dock-Q score).
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See single structure statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== run1/07_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  16  out of  50
+Total number of medium or better models:      12  out of  50
+Total number of high quality models:           2  out of  50
+
+First acceptable model - rank:  1  i-RMSD:  1.034  Fnat:  0.879  DockQ:  0.819
+First medium model     - rank:  1  i-RMSD:  1.034  Fnat:  0.879  DockQ:  0.819
+Best model             - rank:  3  i-RMSD:  0.822  Fnat:  0.862  DockQ:  0.858
+
+==============================================
+== run1-abb/07_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  13  out of  50
+Total number of medium or better models:      10  out of  50
+Total number of high quality models:           2  out of  50
+
+First acceptable model - rank:  1  i-RMSD:  1.249  Fnat:  0.793  DockQ:  0.773
+First medium model     - rank:  1  i-RMSD:  1.249  Fnat:  0.793  DockQ:  0.773
+Best model             - rank:  4  i-RMSD:  0.901  Fnat:  0.862  DockQ:  0.857
+
+==============================================
+== run1-af2/07_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  23  out of  50
+Total number of medium or better models:       1  out of  50
+Total number of high quality models:           0  out of  50
+
+First acceptable model - rank:   2  i-RMSD:  2.492  Fnat:  0.466  DockQ:  0.508
+First medium model     - rank:  22  i-RMSD:  1.780  Fnat:  0.448  DockQ:  0.592
+Best model             - rank:  22  i-RMSD:  1.780  Fnat:  0.448  DockQ:  0.592
+</pre>
+ <br>
+</details>
+<br>
+
+
+<hr>
+### Conclusions - AI-based docking
+
+All three antibody structures used in input give good to reasonable results. The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure. Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.
+
+
+<hr>
+<hr>
+## BONUS 3: Antibody-antigen complex structure prediction from sequence using AlphaFold2
+
+
+With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict directly the full antibody-antigen complex using AlphaFold.
+For this we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov 
+[ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"}, making use of the Google Colab CLOUD resources.
 
 Start the AlphaFold2 notebook on Colab by clicking [here](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb){:target="_blank"}.
 
@@ -1578,14 +1722,21 @@ STSQAENMPVFLGGTKGGQDITDFTMQFVSS
 </pre>
 <br>
 
-To use AlphaFold2 to predict e.g. the pentamer follow the following steps:
+To use AlphaFold2 to predict this antibody-antigen complex follow the following steps:
 
 <a class="prompt prompt-info">
 Copy and paste each of the above sequence in the _query_sequence_ field, adding a colon *:* in between the sequences.
 </a>
 
+For your convenience the full sequence with colons is:
+
+<pre style="background-color:#DAE4E7">
+QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQVSLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSS:DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPSRFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIK:VRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVALGLKEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNWYISTSQAENMPVFLGGTKGGQDITDFTMQFVSS
+</pre>
+
+
 <a class="prompt prompt-info">
-Define the _jobname_, e.g. Ab_Ag
+Define the _jobname_, e.g. Ab-Ag
 </a>
 
 <a class="prompt prompt-info">
@@ -1596,14 +1747,17 @@ In the _Advanced settings_ block you can check the option to save the results to
 In the top section of the Colab, click: _Runtime > Run All_
 </a>
 
-(It may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction complete you will be asked to download a zip-archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).
+(It may give a warning that this is not authored by Google, because it is pulling code from GitHub - you can ignore it). 
+
+This will automatically install, configure and run AlphaFold for you - leave this window open. 
+After the prediction complete you will be asked to download a zip-archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).
 
 <br>
 _Time to grap a cup of tea or a coffee!
 And while waiting try to answer the following questions:_
 
 <a class="prompt prompt-question">
-    How do you interpret AlphaFold's predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
+    How do you interpret AlphaFold2 predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
 </a>
 
 _Tip_: Try to find information about the prediction confidence at [https://alphafold.ebi.ac.uk/faq](https://alphafold.ebi.ac.uk/faq){:target="\_blank"}. A nice summary can also be found [here](https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html){:target="\_blank"}.
@@ -1658,7 +1812,7 @@ While the pLDDT score is an overall measure, you can also focus on the interface
 **Note** that in this case the iptm score reports on all interfaces, i.e. both the interface between the two chains of the antibody, and the antibody-antigen interface
 
 Another useful way of looking at the model accuracy is to check the Predicted Alignment Error plots (PAE) (also referred to as Domain position confidence).
-The PAE gives a distance error for every pair of residues: It gives AlphaFold's estimate of position error at residue x when the predicted and true structures are aligned on residue y.
+The PAE gives a distance error for every pair of residues: It gives the estimate of the position error at residue x when the predicted and true structures are aligned on residue y.
 Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diagonal blocks report on the accuracy of the domain-domain placement.
 
 
@@ -1689,7 +1843,7 @@ Our antibody-antigen complex consists of three interfaces:
 
 ### Visualization of the generated AF2 models
 
-Let's now visualize the models in PyMOL. For this save your predictions to disk or download the precalculated AlphaFold2 model from [here](abagtest_2d03e.result.zip){:target="\_blank"}.
+In order to visualize the models in PyMOL save your predictions to disk or download the precalculated AlphaFold2 model from [here](abagtest_2d03e.result.zip){:target="\_blank"}.
 
 Start PyMOL and load via the File menu all five AF2 models.
 
@@ -1697,11 +1851,11 @@ Start PyMOL and load via the File menu all five AF2 models.
 
 Repeat this for each model (`abagtest_2d03e_unrelaxed_rank_X_alphafold2_multimer_v3_model_X_seed_000.pdb` or whatever the naming of your model is).
 
-Let's superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains A and B):
+Let us superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains A and B):
 
 <a class="prompt prompt-pymol">
 util.cbc<br>
-select Ab_Ag_unrelaxed_rank_1_model_2 and chain A+B<br>
+select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000 and chain A+B<br>
 alignto sele<br>
 </a>
 
@@ -1730,7 +1884,7 @@ Examine the various models. How does the orientation of the antigen differ betwe
 </details>
 <br>
 
-Since we do have NMR chemical shift perturbation data for the antigen, let's check if the perturbed residues are at the interface in the AF2 models.
+Since we do have NMR chemical shift perturbation data for the antigen, we can check if the perturbed residues are at the interface in the AF2 models.
 Note that there is a shift in numbering of 2 residues between the AF2 and the HADDOCK models.
 
 <a class="prompt prompt-pymol">
@@ -1783,18 +1937,9 @@ alignto sele
 </details>
 <br>
 
-<hr>
-
-## Conclusions
-
-We have demonstrated the usage of HADDOCK3 in an antibody-antigen docking scenario making use of the paratope information on the antibody side (i.e. no prior experimental information) and a NMR-mapped epitope for the antigen. Compared to the static
-HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allows to customise the docking protocols and to run a deeper analysis of the results.
-While HADDOCK3 is still very much work in progress, its intrinsic flexibility can be used to improve the performance of antibody-antigen modelling compared to the results we presented in our
-[Structure 2020](https://doi.org/10.1016/j.str.2019.10.011){:target="_blank"} article and in the [related HADDOCK2.4 tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen){:target="_blank"}.
 
 <hr>
 <hr>
-
 ## Congratulations! 🎉
 
 You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
