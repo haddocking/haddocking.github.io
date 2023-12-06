@@ -172,18 +172,18 @@ to facilitate their use in HADDOCK and for allowing comparison with the known re
 structure of the complex. 
 
 If you are running this tutorial on your own resources _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/2NbStaQ4ub5Vgv1){:target="_blank"}
+[zip archive](https://surfdrive.surf.nl/files/index.php/s/5WIXeRRZEVmiuw0){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/2NbStaQ4ub5Vgv1/download<br>
-unzip HADDOCK3-antibody-antigen.zip
+wget https://surfdrive.surf.nl/files/index.php/s/5WIXeRRZEVmiuw0/download<br>
+unzip HADDOCK3-antibody-antigen-BioExcel.zip
 </a>
 
 
-After unziping the file you should find the following directories and files:
+Unziping the file will create the `HADDOCK3-antibody-antigen` directory which should contain the following directories and files:
 
 * `docking-antibody-antigen-CDR-NMR-CSP.cfg`: the HADDOCK3 configuration file used in this tutorial
 * `workflows`: a directory containing example haddock3 config files (workflows)
@@ -1692,7 +1692,15 @@ All three antibody structures used in input give good to reasonable results. The
 
 <hr>
 <hr>
-## BONUS 3: Antibody-antigen complex structure prediction from sequence using AlphaFold2
+## BONUS 3: Ensemble-docking using a combination of exprimental and AI-predicted antibody structures
+
+
+... TO DO ...
+
+
+<hr>
+<hr>
+## BONUS 4: Antibody-antigen complex structure prediction from sequence using AlphaFold2
 
 
 With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict directly the full antibody-antigen complex using AlphaFold.
