@@ -947,6 +947,7 @@ In in the first section of the workflow above we have a parameter `mode` definin
 - **HPC**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster (slurm and torque are currently supported);
 - **mpi**: HADDOCK3 supports a pseudo parallel MPI implementation which allows to harvest the power of mutliple nodes to distribute the computations (functional but still very experimental at this stage).
 
+
 <hr>
 #### Execution of Fugaku using a full node (EU-ASEAN HPC School)
 
@@ -977,6 +978,8 @@ pjsub workflows/haddock3-fugaku.sh
 </a>
 <br>
 
+This run should take about 20 minutes to complete on a single node using 50 arm cores.
+
 
 <hr>
 #### Local execution
@@ -997,6 +1000,11 @@ haddock3 \<my-workflow-configuration-file\>
 </a>
 
 Alternatively redirect the output to a log file and send haddock3 to the background.
+
+
+As an indication, running locally on an Apple M2 laptop using 10 cores, this workflow completed in 7 minutes.
+
+
 
 <a class="prompt prompt-cmd">
 haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
@@ -1801,7 +1809,9 @@ While the pLDDT score is an overall measure, you can also focus on the interface
     Model4: pLDDT=88.0 pTM=0.644 ipTM=0.516
     Model5: pLDDT=88.1 pTM=0.641 ipTM=0.512
 </pre>
-
+<br>
+Note that if you performed a fresh run your results might well differ from those show here.
+<br>
 </details>
 <br>
 
