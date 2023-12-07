@@ -179,7 +179,7 @@ If running as part of the EU-ASEAN HPC school see the instructions below.
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/5WIXeRRZEVmiuw0/download<br>
+wget https://surfdrive.surf.nl/files/index.php/s/5WIXeRRZEVmiuw0/download -O HADDOCK3-antibody-antigen.zip<br>
 unzip HADDOCK3-antibody-antigen-BioExcel.zip
 </a>
 
@@ -204,7 +204,7 @@ The software and data required for this tutorial have been pre-installed on Fuga
 In order to run the tutorial, first copy the required data into your home directory on fugagku:
 
 <a class="prompt prompt-cmd">
-tar xfz /vol0300/share/ra022304/LifeScience/20231213_Bonvin/HADDOCK3-antibody-antigen.tgz
+unzip /vol0300/share/ra022304/LifeScience/20231213_Bonvin/HADDOCK3-antibody-antigen.zip
 </a>
 
 This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and script and job examples ready for submission to the batch system.
@@ -1233,6 +1233,9 @@ As this is an interactive table you can sort it as you wish by using the arrows 
 
 You can also view this report online [here](plots/report.html){:target="_blank"}
 
+*__Note__* that in case the PDB files are still compressed (gzipped) the download links will not work. Also online visualisation is not enabled.
+
+
 <a class="prompt prompt-info">Inspect the final cluster statistics</a>
 
 <a class="prompt prompt-question">How many clusters are generated?</a>
@@ -1366,6 +1369,8 @@ These can be found in the `runs/run1/09_seletopclusts/` directory
 
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
+*__Note__* that the PDB files are compressed (gzipped) by default at the end of a run. You can uncompress those with the `gunzip` command. PyMol can directly read the gzipped files.
+
 If you want to get an impression of how well defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`).
 Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
 
@@ -1414,9 +1419,9 @@ Are the residues of the paratope and NMR epitope at the interface?
 
 <details style="background-color:#DAE4E7">
  <summary style="bold">
-  <b><i>See the overlay of the best model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
+  <b><i>See the overlay of the top ranked model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
  </summary>
- <p> Top4 models of the top cluster superimposed onto the reference crystal structure (in yellow)</p>
+ <p> Top-ranked model of the top cluster superimposed onto the reference crystal structure (in yellow)</p>
  <figure style="text-align: center">
    <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/results-best-model.png">
  </figure>
