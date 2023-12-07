@@ -219,7 +219,7 @@ pjsub \-\-interact \-L "node=1" \-L "rscgrp=int" \-\-sparam "wait-time=600"
 Once the session is active, activate HADDOCK3 with:
 
 <a class="prompt prompt-cmd">
-source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh
+source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh<br>
 conda activate haddock3
 </a>
 
