@@ -935,7 +935,7 @@ In the above workflow we see in three modules a *tolerance* parameter defined. U
 </a>
 
 
-*__Note__* that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow. As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, select a given number of models per cluster and refine all of those. For an example of this strategy see the BONUS section about ensemble docking.
+*__Note__* that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow. As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, select a given number of models per cluster and refine all of those. For an example of this strategy see the BONUS 3 section about ensemble docking.
 
 
 <hr>
@@ -1114,9 +1114,9 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the `runs` directory:
 - `run1`: run started using the unbound antibody
-- `run1-af2`: run started using the Alphafold-multimer antibody (see BONUS)
-- `run1-abb`: run started using the Immunebuilder antibody (see BONUS)
-- `run1-ens`: run started using an ensemble of antibody models (see BONUS)
+- `run1-af2`: run started using the Alphafold-multimer antibody (see BONUS 2)
+- `run1-abb`: run started using the Immunebuilder antibody (see BONUS 2)
+- `run1-ens`: run started using an ensemble of antibody models (see BONUS 3)
 
 
 Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially startin at 0, e.g.:
@@ -1695,7 +1695,191 @@ All three antibody structures used in input give good to reasonable results. The
 ## BONUS 3: Ensemble-docking using a combination of exprimental and AI-predicted antibody structures
 
 
-... TO DO ...
+Instead of running haddock3 using a specific input structure of the antibody we can also use an ensemble of all available models.
+Such an ensemble can be create from the individual models using `pdb_mkensemble` from PDB-tools:
+
+<a class="prompt prompt-cmd">
+pdb_mkensemble 4G6K_clean.pdb 4G6K_abb_clean.pdb 4G6K_af2_clean.pdb >4G6K-ensemble.pdb
+</a>
+
+This ensemble file is provided in the `pdbs` directory.
+
+Now we can make use of the flexibility of haddock3 in defining workflows to add a clustering step after the rigid body docking step in order to make sure that models originating from all models will ideally be selected for the refinement steps (provided they do cluster). This modified workflow looks like:
+
+
+{% highlight toml %}
+# ====================================================================
+# Antibody-antigen docking example with restraints from the antibody
+# paratope to the NMR-identified epitope on the antigen 
+# ====================================================================
+
+# directory in which the scoring will be done
+run_dir = "run1-CDR-NMR-CSP"
+
+# compute mode
+mode = "local"
+ncores=50
+
+# Self contained rundir (to avoid problems with long filename paths)
+self_contained = true
+
+# Post-processing to generate statistics and plots
+postprocess = true
+clean = true
+
+molecules =  [
+    "pdbs/4G6K-ensemble.pdb",
+    "pdbs/4I1B_clean.pdb"
+    ]
+
+# ====================================================================
+# Parameters for each stage are defined below, prefer full paths
+# ====================================================================
+[topoaa]
+
+[rigidbody]
+# CDR to NMR epitope ambig restraints
+ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "restraints/antibody-unambig.tbl"
+sampling = 150
+
+[clustfcc]
+
+[seletopclusts]
+top_models = 10
+
+[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"
+
+[flexref]
+tolerance = 5
+# CDR to NMR epitope ambig restraints
+ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "restraints/antibody-unambig.tbl"
+
+[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"
+
+[emref]
+tolerance = 5
+# CDR to NMR epitope ambig restraints
+ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"
+# Restraints to keep the antibody chains together
+unambig_fname = "restraints/antibody-unambig.tbl"
+
+[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"
+
+[clustfcc]
+
+[seletopclusts]
+top_models = 4
+
+[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"
+
+[contactmap]
+
+# ====================================================================
+
+{% endhighlight %}
+
+
+Our workflow consists of the following 14 modules:
+
+0. **`topoaa`**: *Generates the topologies for the CNS engine and build missing atoms*
+1. **`rigidbody`**: *Rigid body energy minimisation* - with increased sampling (150 models - 50 per input model)
+2. **`caprieval`**: *Calculates CAPRI metrics*
+3. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
+4. **`seletopclusts`**: *Selects the top models of all clusters* - In this case we select max 10 models per cluster.
+5. **`caprieval`**: *Calculates CAPRI metrics* of the selected clusters
+6. **`flexref`**: *Semi-flexible refinement of the interface (`it1` in haddock2.4)*
+7. **`caprieval`**
+8. **`emref`**: *Final refinement by energy minimisation (`itw` EM only in haddock2.4)*
+9. **`caprieval`**
+10. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
+11. **`seletopclusts`**: *Selects the top models of all clusters*
+12. **`caprieval`**
+13. **`contactmap`**: *Contacts matrix and a chordchart of intermolecular contacts*
+
+Compared to the original workflow described in this tutorial we have added clustering and cluster selections steps after the rigid body docking.
+
+Run haddock3 with this configuration file as described above.
+
+A pre-calculated run is provided in the `runs` directory as `run1-ens-clst. 
+Analyse your run (or the pre-calculated ones) as described previously.
+
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the cluster statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== run1-ens-clst//12_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  3  out of  7
+Total number of medium or better clusters:      1  out of  7
+Total number of high quality clusters:          0  out of  7
+
+First acceptable cluster - rank:  1  i-RMSD:  1.276  Fnat:  0.828  DockQ:  0.779
+First medium cluster     - rank:  1  i-RMSD:  1.276  Fnat:  0.828  DockQ:  0.779
+Best cluster             - rank:  1  i-RMSD:  1.276  Fnat:  0.828  DockQ:  0.779
+</pre>
+ <br>
+</details>
+<br>
+
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See single structure statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== run1-ens-clst//02_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  50  out of  150
+Total number of medium or better models:      25  out of  150
+Total number of high quality models:          0  out of  150
+
+First acceptable model - rank:  3  i-RMSD:  1.273  Fnat:  0.672  DockQ:  0.716
+First medium model     - rank:  3  i-RMSD:  1.273  Fnat:  0.672  DockQ:  0.716
+Best model             - rank:  46  i-RMSD:  1.154  Fnat:  0.828  DockQ:  0.795
+==============================================
+== run1-ens-clst//05_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  28  out of  68
+Total number of medium or better models:      10  out of  68
+Total number of high quality models:          0  out of  68
+
+First acceptable model - rank:  3  i-RMSD:  1.273  Fnat:  0.672  DockQ:  0.716
+First medium model     - rank:  3  i-RMSD:  1.273  Fnat:  0.672  DockQ:  0.716
+Best model             - rank:  15  i-RMSD:  1.229  Fnat:  0.707  DockQ:  0.744
+==============================================
+== run1-ens-clst//07_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  27  out of  68
+Total number of medium or better models:      10  out of  68
+Total number of high quality models:          3  out of  68
+
+First acceptable model - rank:  1  i-RMSD:  1.454  Fnat:  0.759  DockQ:  0.720
+First medium model     - rank:  1  i-RMSD:  1.454  Fnat:  0.759  DockQ:  0.720
+Best model             - rank:  22  i-RMSD:  0.908  Fnat:  0.776  DockQ:  0.803
+</pre>
+ <br>
+</details>
+<br>
+
+
+We started from three different conformations of the antibody: 1) the unbound crystal structure, 2) the ABodyBuilder2 model and 3) the AlphaFold2 model.
+
+<a class="prompt prompt-question">
+Using the information in the _traceback_ directory, try to figure out which of the three starting antibody models makes it into the best cluster at the end of the workflow.
+</a>
+
 
 
 <hr>
