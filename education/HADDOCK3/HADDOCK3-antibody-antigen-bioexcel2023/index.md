@@ -774,7 +774,7 @@ the other molecule: SUM[1/r^6]^(-1/6).
 If you modify manually this generated restraint files or create your own, it is possible to quickly check if the format is valid using the following haddock3 command:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints validate_tbl ambig-paratope-NMR-epitope.tbl --silent
+haddock3-restraints validate_tbl ambig-paratope-NMR-epitope.tbl \-\-silent
 </a>
 
 No output means that your TBL file is valid.
