@@ -174,6 +174,7 @@ structure of the complex.
 If you are running this tutorial on your own resources _download and unzip the following_
 [zip archive](https://surfdrive.surf.nl/files/index.php/s/5WIXeRRZEVmiuw0){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
+If running as part of the EU-ASEAN HPC school see the instructions below.
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
