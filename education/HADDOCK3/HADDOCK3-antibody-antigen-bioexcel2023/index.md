@@ -1068,7 +1068,7 @@ In this mode HADDOCK3 can be started from the command line as for the local mode
 <hr>
 #### MPI mode
 
-HADDOCK3 supports a parallel pseudo-MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library must have been installed at installation time. Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html).
+HADDOCK3 supports a parallel pseudo-MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library must have been installed at installation time. Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html){:target="_blank"}.
 
 The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
 
@@ -1185,7 +1185,7 @@ Various other terms are also reported including:
 * **desolv**: *the desolvation energy*
 
 
-The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions).
+The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/){:target="_blank"} (Critical PRediction of Interactions).
 
 In CAPRI the quality of a model is defined as (for protein-protein complexes):
 
@@ -1478,7 +1478,7 @@ Insert the selected uniprot ID in the **UniprotID** field.
 Leave the other parameters as they are and click on **Submit**.
 </a>
 
-Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/example-P01584).
+Wait a few seconds for the job to complete or access a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/example-P01584){:target="_blank"}.
 
 <a class="prompt prompt-question">
 How many interface clusters were found for this protein?
@@ -1498,7 +1498,7 @@ Rerun ARCTIC-3D with a clustering threshold equal to 0.95
 
 This means that the clustering will be looser, therefore lumping more dissimilar surfaces into the same object.
 
-You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/example-P01584-095).
+You can inspect a precalculated run [here](https://wenmr.science.uu.nl/arctic3d/example-P01584-095){:target="_blank"}.
 
 <a class="prompt prompt-question">
 How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
@@ -1510,7 +1510,7 @@ How do the results change? Are gevokizumab or canakinumab PDB files being cluste
 <hr>
 ## BONUS 2: How good are AI-based models of antibody for docking?
 
-The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold) and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/), from the ImmuneBuilder suite) performing nicely on the variable regions.
+The release of Alphafold2 in late 2020 has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold){:target="_blank"} and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/){:target="_blank"}, from the ImmuneBuilder suite) performing nicely on the variable regions.
 
 For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
@@ -2171,7 +2171,7 @@ alignto sele
 
 You have completed this tutorial. If you have any questions or suggestions, feel free to contact us via email or asking a question through our [support center](https://ask.bioexcel.eu){:target="_blank"}.
 
-And check also our [education](/education) web page where you will find more tutorials!
+And check also our [education](/education){:target="_blank"} web page where you will find more tutorials!
 
 <hr>
 <hr>
