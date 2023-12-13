@@ -213,7 +213,7 @@ HADDOCK3 has been pre-installed for the compute nodes. To test the installation,
 
 
 <a class="prompt prompt-cmd">
-pjsub \-\-interact \-L "node=1" \-L \"rscgrp=int\" \-\-sparam \"wait-time=600\" -L \"elapse=01:00:00\"
+pjsub \-\-interact \-L \"node=1\" \-L \"rscgrp=int\" \-\-sparam \"wait-time=600\" -L \"elapse=01:00:00\"
 </a>
 
 Once the session is active, activate HADDOCK3 with:
