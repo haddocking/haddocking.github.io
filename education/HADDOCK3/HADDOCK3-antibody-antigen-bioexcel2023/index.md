@@ -213,7 +213,7 @@ HADDOCK3 has been pre-installed for the compute nodes. To test the installation,
 
 
 <a class="prompt prompt-cmd">
-pjsub \-\-interact \-L "node=1" \-L "rscgrp=int" \-\-sparam "wait-time=600"
+pjsub \-\-interact \-L "node=1" \-L \"rscgrp=int\" \-\-sparam \"wait-time=600\" -L \"elapse=01:00:00\"
 </a>
 
 Once the session is active, activate HADDOCK3 with:
@@ -975,7 +975,7 @@ haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg
 This file should be submitted to the batch system using the `pjsub` command:
 
 <a class="prompt prompt-cmd">
-pjsub workflows/haddock3-fugaku.sh
+pjsub workflows/run-haddock3-fugaku.sh
 </a>
 <br>
 
