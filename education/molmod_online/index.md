@@ -56,7 +56,7 @@ try their best and answer these questions, _instead of_ blindly copy-pasting com
 For the homology modelling module we will be using SWISS-MODEL [https://swissmodel.expasy.org](https://swissmodel.expasy.org){:target="_blank"} online modelling tool to perform all stages of homology modelling: Template Search, Template selection, Model building and Model estimation.
 
 The molecular dynamics module requires installation of specific software packages: [GROMACS](https://www.gromacs.org){:target="_blank"}.
-GROMACS is installed on the virtual machines, which students can access via [NMRbox](https://nmrbox.org){:target="_blank"}) (see below).
+GROMACS is installed on the virtual machines, which students can access via [NMRbox](https://nmrbox.org){:target="_blank"}) (see below). **IMPORTANT**:
 Early registration to NMRBox before the course start is necessary [https://nmrbox.org/signup](https://nmrbox.org/signup){:target="_blank"}.
 
 Once you have registered, please enroll for the 2024 version of the course on NMRBox [here](https://nmrbox.nmrhub.org/events/events/2024-struct-bioinfo-uu){:target="_blank"}.
