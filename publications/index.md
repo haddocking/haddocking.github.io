@@ -4,7 +4,7 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
-## 2023
+## 2024
 
 * M. Giulini, R.V. Honorato, J.L. Rivera, **A.M.J.J. Bonvin**. [ARCTIC-3D: Automatic Retrieval and ClusTering of Interfaces in Complexes from 3D structural information](https://doi.org/10.1038/s42003-023-05718-w). _Comm. Biol._  *7*:49, p. 1-9  (2024).
 
@@ -13,7 +13,7 @@ image:
 
 ## 2023
 
-* M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1038/s42003-023-05718-w). _Comm. Biol._ 10.1101/2023.11.17.567543 (2024).
+* M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://www.biorxiv.org/content/10.1101/2023.11.17.567543v1). _BioRXiv._ 10.1101/2023.11.17.567543v1 (2023).
 
 * **A.M.J.J. Bonvin**. [Empowering Global Collaboration in Structural Biology and Life Sciences](https://zenodo.org/record/8135315). DOI:10.5281/zenodo.8135315 (2023).
 
