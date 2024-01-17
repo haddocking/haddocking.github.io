@@ -18,28 +18,30 @@ interpret its results in terms of biological insights.
 {:toc}
 
 <hr>
+
 ## A bite of theory
 
 Protein-protein interactions mediate most cellular processes in the cell, such as differentiation,
 proliferation, signal transduction, and cell death. Their structural characterization is however
-not always trivial, even with the constant developments in X-ray crystallography and nuclear
-magnetic resonance spectroscopy. The culprits widely vary, ranging from the native environment of
+not always trivial, even with the constant developments in X-ray crystallography, nuclear
+magnetic resonance spectroscopy and cryo electron microscopy.
+The culprits widely vary, ranging from the native environment of
 the complexes, which might make them hard to purify or crystallize, to the size of the system being
 too large for current methodologies to grasp. More importantly, homeostasis often depends on very
 tightly regulated transient interactions, yet another hindrance to the purification and
 characterization of these complexes. Nevertheless, three decades of spectacular progress in
 structural biology have shown that the protein fold space is finite and the rules of the folding
 game are well defined. This prompted the development of several computational methods aimed at
-complementing experimental techniques in their quest for a full 3D view of the proteome.  A widely
+complementing experimental techniques in their quest for a full 3D view of the proteome. A widely
 used computational method for the prediction of the protein-protein complexes is molecular docking,
 which aims at generating the structure of such a complex starting from the structures (or models)
 of its native constituents.
 
 This tutorial will introduce HADDOCK (High Ambiguity Driven DOCKing) as a method to predict the
-three-dimensional structure of protein-protein complexes in silico using a variety of sources of
+three-dimensional structure of protein-protein complexes *in silico* using a variety of sources of
 information to guide the docking process and score the predicted models.
 [HADDOCK](https://www.bonvinlab.org/software/haddock2.4/){:target="_blank"} is a collection of python
-scripts derived from [ARIA](https://aria.pasteur.fr){:target="_blank"} that harness the power of
+scripts derived from [ARIA](https://aria.pasteur.fr){:target="_blank"}, that harness the power of
 [CNS](https://cns-online.org){:target="_blank"} (Crystallography and NMR System) for structure calculation of
 molecular complexes. What distinguishes HADDOCK from other docking software is its ability,
 inherited from CNS, to incorporate experimental data as restraints and use these to guide the
@@ -47,11 +49,11 @@ docking process alongside traditional energetics and shape complementarity. More
 coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality
 to be archived in the Protein Data Bank.
 
-A central aspect to HADDOCK is the definition of ambiguous interaction restraints or AIRs. These
+A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints (AIRs). These
 allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis
 experiments into distance restraints that are incorporated in the energy function used in the
-calculations. AIRs are defined through a list of residues that fall under two categories: active
-and passive. Generally, active residues are those of central importance for the interaction, such
+calculations. AIRs are defined through a list of residues that fall under two categories: *active*
+and *passive*. Generally, active residues are those of central importance for the interaction, such
 as residues whose knockouts abolish the interaction or those where the chemical shift perturbation
 is higher. Throughout the simulation, these active residues are restrained to be part of the
 interface, if possible, otherwise incurring in a scoring penalty. Passive residues are those that
@@ -126,7 +128,8 @@ based on an analysis of all contacts made in all models.
 
 
 <hr>
-## Predicting the interface of p53 on Mdm2
+
+## Predicting the interface of p53 on MDM2
 
 HADDOCK excels at predicting the structure of the protein complexes given there is some sort of
 information to guide the docking. In the absence of experimental information, it is possible to use
@@ -138,7 +141,7 @@ homologues of mouse MDM2, it is possible to assess which residues are more conse
 First we need to find sequence homologues again. This time we will be running a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi){:target="_blank"} search using Uniprot. We can come back to the entry from the homology modelling part where we looked up mouse MDM2 in [Uniprot](https://www.uniprot.org){:target="_blank"}.
 
 <a class="prompt prompt-info">
-Search for 'MDM2' in Uniprot and choose the mouse isoform.
+Search for 'MDM2' in UniProt and choose the mouse isoform.
 </a>
 
 A familiar page should appear with all the previously described information. Go directly to the **Sequences** section. The sequence that you see is a canonical sequence, which means that it is either the most prevalent, the most similar to orthologous sequences in other species or in absence of any information, the longest sequence. On the right side of the sequence there is a possibility to run a BLAST (Basic Local Alignment Search Tool) search.
@@ -179,7 +182,9 @@ logo for the alignment produced by BLAST.
 
 Since the other sequences might be longer than our query, specify conservancy of which residues you are interested in.
 
-<a class="prompt prompt-info">In WebLogo 3 upload your alignment file </a>
+<a class="prompt prompt-info">
+In WebLogo 3, upload your alignment file
+</a>
 
 Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in logo range.
 
@@ -188,7 +193,7 @@ Do you see where the mouse MDM2 sequence is located on the alignment? Try to sel
 </a>
 
 <a class="prompt prompt-info">
-  Visualize the homology model of mouse MDM2 in Pymol.
+  Visualize the homology model of mouse MDM2 in PyMOL.
 </a>
 
 
@@ -196,6 +201,8 @@ Do you see where the mouse MDM2 sequence is located on the alignment? Try to sel
   Can you draw a conclusion about which region of the protein can be important for binding, based
 solely on the evolutionary conservation analysis?
 </a>
+
+### Predicting interafce residues
 
 Besides sequence conservation, other features can be used to predict possible interfaces on protein
 structures. For example, certain residues tend to be overrepresented at protein-protein interfaces.
@@ -208,7 +215,7 @@ combines (up to) 6 different predictors to provide a consensus prediction that i
 more reliable than any of the individual predictors alone. CPORT was designed to provide
 predictions for HADDOCK. The server also returns a PDB file of the
 original structure loaded with the predictions in the temperature factor column. This is extremely
-helpful to visualize the predictions in Pymol.
+helpful to visualize the predictions in PyMOL.
 
 <a class="prompt prompt-info">
   Submit the homology model of mouse MDM2 to the CPORT web server and load the resulting PDB file
@@ -225,7 +232,47 @@ in Pymol.
 </a>
 
 
+### Obtain known interfaces of homologous proteins
+
+Finally, another way to obtain information about possible interface residues is by analysing known interfaces found in homologous proteins.
+This can easily be performed by [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a [new tool](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"} dedicated to the automatic retrieval and clustering of interfaces in complexes from 3D structural information.
+As structural information of the human MDM2 interacting with other partners is available, ARCTIC-3D will extract interacting residues and cluster them into binding surfaces. Not all residues of a binding surface are relevant, as some amino acids may be rarely present among the interfaces that define that patch.
+Wisely define a probability threshold and note down the residue indices, as you will need them to define *active* residues in HADDOCK.
+
+<a class="prompt prompt-info">
+  Submit UniProt accession code of the Human MDM2 in ARCTIC-3D.
+  Check the 'Cluster partners by protein function' option.
+  'Submit' your query.
+</a>
+
+By selecting the 'Cluster partners by protein function' option the software will look into the function of the protein partners that interact with each binding surface.
+
+<a class="prompt prompt-question">
+  What is the most relevant cluster in our case?
+  How many residues are above the 0.5 probability threshold ?
+</a>
+
+Download the outputs of ARCTIC-3D.
+ARCTIC-3D will provide a structure of the human MDM2, and add the residue contact probability in the *b-factor* column, enabling to easily visualise it on PyMOL.
+
+<a class="prompt prompt-pymol">
+  spectrum b, cyan_red
+</a>
+
+Because the current residue indices match the human canonical sequence, you will have to run a structural alignment of you mouse MDM2 model onto this structure and define the residue mapping by hand.
+For this, you need to load your mouse MDM2 model on the same PyMOL session and then perform a structural alignment on the human one. The `align` [function](https://pymolwiki.org/index.php/Align){:target="_blank"}, already implemented in PyMOL, is easy to use and well suited for this task.
+
+<a class="prompt prompt-pymol">
+  align mouse_model, human_structure
+</a>
+
+<a class="prompt prompt-question">
+  What is the list of residues indices that you selected ?
+</a>
+
+
 <hr>
+
 ## Preparing the structures for the docking calculation
 
 In order to perform a docking calculation with HADDOCK, the initial structures of both MDM2 and p53
@@ -252,8 +299,8 @@ the ensemble, i.e. that all members have exactly the same atomic constitution.
 
 
 <hr>
-## Setting up the docking calculation using the HADDOCK web server
 
+## Setting up the docking calculation using the HADDOCK web server
 
 ### Registration / Login
 
@@ -323,8 +370,8 @@ The definition of restraints does require some thoughts. Active residues in HADD
 *might* be at the interface. Ambiguous Interaction Restraints, or AIRs, are created
 between each active residue of a partner and the combination of active and passive residues of the other partner.
 An active residue which is not at the interface will cause an energy penalty while this is not the case for passive residues.
-For the docking of MDM2 and p53, active residues on MDM2 are taken from [CPORT](https://alcazar.science.uu.nl/services/CPORT){:target="_blank"} predictions,
-while the peptide is only defined as passive. This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769){:target="_blank"} paper.
+For the docking of MDM2 and p53, **active** residues on MDM2 are taken from [CPORT](https://alcazar.science.uu.nl/services/CPORT){:target="_blank"} / [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} predictions, while the peptide is only defined as **passive**.
+This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769){:target="_blank"} paper.
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have
 all to make contacts per se.
 
@@ -332,7 +379,7 @@ all to make contacts per se.
 In this stage we will make use of the active residues returned by CPORT for MDM2
 
 <a class="prompt prompt-info">
-  Active residues (directly involved in the interaction) -> Input here the list of active residues returned by CPORT for MDM2
+  Active residues (directly involved in the interaction) -> Input here the list of active residues returned by CPORT/ARCTIC-3D for MDM2
 </a>
 <a class="prompt prompt-info">
   Automatically define passive residues around the active residues -> **uncheck** (passive should only be defined if active residues are defined for the second molecule)
@@ -494,6 +541,7 @@ students, since all accounts are pre-configured, the email notification is turne
 
 
 <hr>
+
 ## Analyzing the docking calculation results
 
 After the simulation is complete, the results page is generated and a notification email sent to
@@ -515,6 +563,7 @@ answer of which conformation is more likely to be realistic?
 
 
 <hr>
+
 ## Visual inspection of the cluster representatives
 
 Any molecular simulation, docking included, lacks the accuracy to produce one single good model.
@@ -563,7 +612,9 @@ The best way to validate your docking is to compare your solution to an experime
 
 
 <hr>
+
 ## Congratulations!
+
 The docking calculation of MDM2 and the p53 N-terminal transactivation peptide was the culmination
 of a three-stage computational exercise that involved the three major methods in the repertoire of
 a Computational Structural Biologist. As you have seen, in modeling, there are rarely any
