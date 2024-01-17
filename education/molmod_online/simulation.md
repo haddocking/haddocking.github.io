@@ -209,10 +209,10 @@ The successful completion of the tutorial requires, however, all three conformat
 [//]: # (Full detail on the library function can be found [here](https://pymolwiki.org/index.php/Fab)).
 
 <a class="prompt prompt-info">
-  Generate an ideal structure for the peptide sequence using the fab script in PyMOL, choose between helix/polypro/beta.
+  Generate an ideal structure for the peptide sequence using the 'build_seq' script in PyMOL, choose between helix/polypro/beta.
 </a>
 
-<a class="prompt prompt-pymol" style="dispay: none;">
+<a class="prompt prompt-pymol" style="display: none;">
   fab SQETFSGLWKLLPPE, peptide_helix, ss=1
 </a>
 
@@ -1220,6 +1220,7 @@ Then, in the command-line interface, assuming you are in the directory where Pym
 
 
 <hr>
+
 ## Quantitative Quality Assurance
 
 After a first visual inspection of the trajectory, assuming the simulation went smoothly, it is
@@ -1233,6 +1234,7 @@ be surprises! Finally, the occurrence of interactions between periodic images mu
 well since, if these did occur, they might lead to artifacts in the simulation.
 
 ### Convergence of the thermodynamical parameters
+
 Start off by extracting the thermodynamic parameters from the energy file, as done previously. Of
 interest are the temperature, pressure, potential energy, kinetic energy, unit cell volume,
 density, and the box dimensions. The energy file of the simulation contains several dozen terms.
@@ -1292,6 +1294,7 @@ parts of the system might take much longer.
 </a>
 
 ### Calculation of the minimum distance between periodic images
+
 A key point of any molecular dynamics simulation analysis where periodic boundary conditions were
 used is to check if there have been any direct interactions between neighboring images. Since the
 periodic images are just a *trick* to avoid having hard boundaries, such interactions are
@@ -1325,6 +1328,7 @@ before, the water around the solute has a different structure than the bulk wate
 safe side, add an extra nanometer when calculating the allowed minimal distance.
 
 ### Conformational dynamics and stability I -- Radius of Gyration
+
 Before analyzing any structural parameter, the trajectory has to be massaged to avoid artifacts
 because of the periodic boundary conditions. In addition, all the analysis tools work faster if the
 trajectory contains only the necessary (protein) atoms and their information.
@@ -1445,6 +1449,7 @@ structure is likely to offer a better perspective of the evolution of structural
 the simulation.
 
 <hr>
+
 ## Structural Analysis
 
 <a class="prompt prompt-attention">
@@ -1531,6 +1536,7 @@ simulation?
 </a>
 
 ### Secondary Structure
+
 Among the most common parameters to analyse protein structure is the assignment of secondary
 structure elements, such as α-helices and β-sheets. One of the most popular tools for this purpose
 is the `dssp` software. Although not part of the GROMACS distribution, `dssp` can be freely
@@ -1571,6 +1577,7 @@ is installed on your machine.
 
 
 <hr>
+
 ## Analysis of time-averaged properties
 
 This simulation considers only one conformation. To obtain proper sampling of the peptide
@@ -1721,6 +1728,7 @@ these clusters are meaningful, i.e. contain only similar structures?
 
 
 <hr>
+
 ## Picking representatives of the simulation
 
 The aim of this simulation exercise was the sample the conformational landscape of the p53
@@ -1736,7 +1744,9 @@ PDB files using Pymol.
 
 
 <hr>
+
 ## Congratulations!
+
 By the end of this tutorial, you have (we hope!) learned how to setup a molecular dynamics
 simulation of a small peptide and how to critically interpret and validate your results. This is no
 small feat. The analyses we show here are just the tip of the iceberg of what you can extract from
