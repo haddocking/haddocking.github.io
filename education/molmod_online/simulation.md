@@ -9,11 +9,9 @@ image:
 ## General Overview
 {:.no_toc}
 
-This tutorial introduces Molecular Dynamics (MD) simulations of proteins. The simulation protocol
-can be used as a starting point for the investigation of protein dynamics, provided your system
-does not contain non-standard groups. By the end of this tutorial, you should know the steps
-involved in setting up, running, and analyzing a simulation, including critically assessing the
-choices made at the different steps.
+This tutorial introduces Molecular Dynamics (MD) simulations of proteins.
+The simulation protocol can be used as a starting point for the investigation of protein dynamics, provided your system does not contain non-standard groups.
+By the end of this tutorial, you should know the steps involved in setting up, running, and analyzing a simulation, including critically assessing the choices made at the different steps.
 
 * table of contents
 {:toc}
@@ -21,32 +19,48 @@ choices made at the different steps.
 
 ## Use of virtual machines (VMs)
 
-For this module of the course we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}. NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance). NMRbox users can choose from 235 software packages that focus on research topics as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding. One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
+For this module of the practical, we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}.
+NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance) experiements.
+NMRbox users can choose from 261 already installed software packages, that focus on various research topics such as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding.
+One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
 
 ### Register
-To use virtual machines through NMRbox, one needs to register, preferably with their institutional account [here](https://nmrbox.org/signup){:target="_blank"}. Since the registration has to be manually validated and it can take up to two business days, we strongly encourage students to do so before the course starts. After a successful validation you will receive an e-mail with your NMRbox username and password that you will be using while accessing your virtual machine.
+
+To use virtual machines through NMRbox, one needs to register, preferably with their institutional account [here](https://nmrbox.org/signup){:target="_blank"}. Since the registration has to be manually validated and it can take up to two business days, we strongly encourage students to do so before the course starts. After a successful validation, you will receive an e-mail with your NMRbox username and password that you will be using while accessing your virtual machine.
 
 ### Accessing NMRbox
+
 To run the virtual machine on a local computer, one needs to install [VNCviewer](https://www.realvnc.com/en/connect/download/viewer/){:target="_blank"}. With the RealVNC client connects your computer to the NMRbox servers with a virtual desktop - graphical interface. More information about the VNC viewer is in the [FAQ of NMRbox](https://nmrbox.org/faqs/vnc-client){:target="_blank"}.
 
-To choose a virtual machine, first log into the user dashboard [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"}. Download the zip file with bookmarks for the production NMRbox virtual machines [here](https://api.nmrbox.org/user/vm_launcher?host=all){:target="_blank"} and extract the zip file. Back in VNCviewer click `File -> Import connections` and select the folder in which you extracted the content of the downloaded zip file. After importing, you will see the current release virtual machines. You can use any available virtual machine. The user-dashboard provides information on machine capabilities and recent compute load, thus it is clever to choose a less occupied one. Double click on one of the VMs. An `Authentication` panel appears. Enter your NMRbox username and password. Click on the `Remember password` box to have VNCviewer save your information. By default, your desktop remains running when you disconnect from it. If you login to your VM repeatedly you will see a screen symbol next to the VM you connected to recently. For more details follow the quick start guide for using NMRbox with VNCviewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
+To choose a virtual machine:
+* first log into the user dashboard [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"}.
+* Download the zip file with bookmarks for the production NMRbox virtual machines.
+* Click `File -> Import` connections and select the downloaded zip file.
+* After importing, you will see the current release virtual machines. You can use any available virtual machine. The user-dashboard provides information on machine capabilities and recent compute load, thus it is clever to choose a less occupied one.
+* Double click on one of the VMs. An *“Authentication”* panel appears.
+* Enter your NMRbox username and password.
+* Click on the *“Remember password”* box to have RealVNC save your information. 
+
+By default, your desktop remains running when you disconnect from it. If you login to your VM repeatedly you will see a screen symbol next to the VM you connected to recently. For more details follow the quick start guide for using NMRbox with VNCviewer [here](https://api.nmrbox.org/files/quick-start-osx.pdf){:target="_blank"}.
 
 
-If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including Pymol. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer){:target="_blank"}.
+If everything runs correctly you should have a window with your virtual desktop open. In the virtual desktop you have an access to the internet with Chromium as browser or use various programs, including PyMOL. Thus, you could run all three stages of this course here or transfer data between your local machine and the virtual machine. File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer){:target="_blank"}.
 
-In this course we will be working with the command line. For those of you who are not familiar with it, a lot of useful tutorials and documentation can be found [here](https://nmrbox.org/faqs/terminal-help). To find the terminal, look for a black icon with a `$_` symbol on it. Once you are familiar with the command line, we can start the Molecular Dynamics tutorial.
+In this course we will be working with the command line. For those of you who are not familiar with it, a lot of useful tutorials and documentation can be found [here](https://nmrbox.org/faqs/terminal-help). To find the terminal, look for a black icon with a `$_` symbol on it (named **Terminal emulator** *Use the command line*), and click on it. Once you are familiar with the command line, we can start the Molecular Dynamics tutorial.
 
 Further NMRbox documentation can be found [here](https://nmrbox.org/pages/documentation){:target="_blank"}.
 
-Once you are done using your VM for the day just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
+**Note:** Once you are done using your VM for the day, just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
 
 
 <hr>
+
 ## A bite of theory
+
 Molecular Dynamics generate successive configurations of a given molecular system, by integrating
 the classical laws of motion as described by Newton. Generally, the end product is a *trajectory*
 that describes the positions and velocities of the particles in the system throughout the
-simulation as they vary with time. The following equation describes the equations that describe the
+simulation as they vary with time. The following equation describes the
 motion of a particle of mass $$m$$ along the $$x_{i}$$ coordinate, where $$F_{x_{i}}$$ is the force
 acting on that particle in that direction. In a realistic molecular system, this equation is
 expanded to a three-dimensional space.
@@ -58,7 +72,7 @@ $$
 $$
 
 The force felt by each individual particle is a collection of the effects exerted by other
-neighboring particles in the system. For protein simulations, the effect of distant particles can
+*neighboring* particles in the system. For protein simulations, the effect of distant particles can
 be ignored given their negligible contribution, saving substantial computation time in the process.
 
 <a class="prompt prompt-question">
@@ -67,15 +81,13 @@ Consider a system with 10^6 particles, where each particle has 10^3 neighboring 
 
 These forces are calculated using the *force field*, a set of functions and parameters that
 approximate the potential energy of the system. These parameters are usually derived either from
-experiments or high-level quantum mechanical calculations. Although force fields come in many
-flavors, in the field of biomolecular simulation they generally respect the same principles. First
-of all, atoms are represented by single particles, with a fixed charge and size. Then, bonds are
-modelled as springs and follow quadratic energy functions, meaning that they are effectively
-unbreakable. Finally, the force field is divided in interactions of atoms linked by covalent bonds
-(bonded interactions) and other interactions (non-bonded) such as electrostatics and van der Waals
-forces. Most of these interactions are modelled using rather simplistic mathematical functions. For
-example, in the popular AMBER force field, the non-bonded interactions are described by the
-following pair of equations:
+experiments or high-level quantum mechanical calculations.
+Although force fields come in many flavors, in the field of biomolecular simulation they generally respect the same principles.
+First of all, atoms are represented by single particles, with a fixed charge and size.
+Then, covalent bonds are modelled as springs and follow quadratic energy functions, meaning that they are effectively unbreakable.
+Finally, the force field is divided in interactions of atoms linked by covalent bonds (bonded interactions) and other interactions (non-bonded) such as electrostatics and van der Waals forces.
+Most of these interactions are modelled using rather simplistic mathematical functions.
+For example, in the popular **AMBER** force field, the non-bonded interactions are described by the following pair of equations:
 
 $$
 \begin{equation}
@@ -86,31 +98,31 @@ $$
 $$
 
 The molecular dynamics algorithm starts by assigning random velocities to the atoms in the system,
-from a Maxwell-Boltzmann distribution at the desired temperature. The random seed value seen in
-many configuration files of molecular dynamics software influences this attribution. Two
-trajectories of the same system with the same random seed are numerically identical, given the
+from a Maxwell-Boltzmann distribution at the desired temperature. The _random seed_ value, seen in
+most configuration files of molecular dynamics software, influences this initial attribution. Two
+trajectories, of the same system **with** the same random seed are numerically identical, given the
 deterministic nature of the simulation. To move the atoms from one configuration to another, the
 algorithm first calculates the forces acting on each atom. From that force, one can determine the
 acceleration of the atoms and combine these with their positions and velocities at time $$ t $$ to
-yield a new set of positions and velocities. The time between the old and new positions is fixed
-and pre-determined at the beginning of the simulation. In biomolecular simulations, the time step
-($$ \delta t $$) is usually 2 femtoseconds, which is large enough to sample significant dynamics
-but not as large as to cause problems during the calculations. Too big of a time step and two atoms
-might overlook each other and end up overlapping! At $$ t + \delta t $$, a new set of forces is
+yield a new set of positions and velocities. The _time_ between the old and new positions is fixed
+and parametrized at the beginning of the simulation. In biomolecular simulations, the time step
+($$ \delta t $$) is usually set to 2 femtoseconds (*fs*), which is large enough to sample significant dynamics
+but not as large as to cause problems during the calculations. Too big of a time step can lead to severe issues, such as two atoms
+overlooking each other, or even end up overlapping! At $$ t + \delta t $$, a new set of forces is
 calculated and so on. The simulation finishes only when there have been enough steps to reach the
 desired simulation time. Besides all these calculations, biomolecular simulations try to also
 simulate the conditions inside cells, namely regarding temperature and pressure. There are special
-algorithms in place, during the simulation, that maintain these two properties constant (or not
-depending on the setup!).
+algorithms in place, during the simulation, that maintain these two properties constant (or not depending on the setup!).
 
 Despite decades of research, as well as advances in computer science and hardware development, most
 simulations are able to sample only a few microseconds of *real time*, although they take several
-days/weeks running on multiple processors. The millisecond barrier was broken only recently, by
-simulating on a purpose-built computer. Moreover, the force fields used in biomolecular simulation
+days/weeks running on multiple processors. The millisecond (*ms*) barrier was broken only recently, by
+simulating on a purpose-built computer ([Anton](https://en.wikipedia.org/wiki/Anton_(computer))). Moreover, the force fields used in biomolecular simulation
 are approximating the interactions happening in reality. This results in errors in the estimation
 of energies of interacting atoms and groups of atoms. As such, molecular dynamics are not a
-miraculous alternative to experiments, nor can the results of simulations be trusted blindly. There
-must always be some sort of validation, preferably by experimental data. When considering setting
+miraculous alternative to experiments, nor can the results of simulations be trusted blindly.
+There must always be some sort of validation, preferably by experimental data.
+When considering setting
 up a molecular dynamics simulation, plan it wisely, choosing carefully the setup and the system so
 that there are a minimum of variables under study. If carried out properly, these simulations
 remain an unparalleled method in terms of spatial and temporal resolution that are able to shed
@@ -118,21 +130,25 @@ light on principles underlying biological function and fuel the formulation of n
 
 
 <hr>
+
 ## Introduction and Outline
+
 The aim of this tutorial is to simulate and analyze the conformational dynamics of a small peptide
 using molecular dynamics algorithms as implemented in the [GROMACS](https://www.gromacs.org){:target="_blank"}
-software. The following sections outline several preparation steps and analyses. These instructions
-do not apply to all molecular systems. Take your time to know your system and what particularities
-its simulation entails.
+software.
+The following sections outline several preparation steps and analyses.
+These instructions do not apply to all molecular systems.
+Take your time to know your system and what particularities its simulation entails.
 
 <a class="prompt prompt-attention">
-  To run the actual simulation, you will need access to a computing cluster. Running on your laptop
-is likely to take far too long. In our hands, the simulations of this system take ~2 full days on
-18 CPU cores in our dedicated cluster.
+  To run the actual simulation, you will need access to a computing cluster. Running on your laptop is likely to take far too long. In our hands, the simulations of this system take ~2 full days on 18 CPU cores in our dedicated cluster.
 </a>
 
 
-In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username. You will find your own copy of the course material in `~/EVENTS/2024-struct-bioinfo-uu/` directory. You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
+In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username.
+You will find your own copy of the course material in `~/EVENTS/2024-struct-bioinfo-uu/` directory.
+You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
+
 
 __Note__: The data are automatically copied to your home directory under the `EVENTS` directory provided you have registered for this event on NMRBox. The event can be found at [https://nmrbox.nmrhub.org/events](https://nmrbox.nmrhub.org/events){:target="_blank"}. In order to register for the course you need to have an NMRBox account.
 
@@ -142,6 +158,8 @@ Open the terminal and create a directory where you will work in with name of you
 <a class="prompt prompt-cmd">
 mkdir *directory_name*
 </a>
+
+Go to this directory using the **cd** (for _change directory_ ) command .
 <a class="prompt prompt-cmd">
 cd *directory_name*
 </a>
@@ -157,7 +175,9 @@ $MOLMOD_DATA/setup.sh
 
 
 <hr>
+
 ## Preparing the System
+
 The preparation of the system is the heart of the simulation. Neglecting this stage can lead to
 artifacts or instability during the simulation. Each simulation must be prepared carefully, taking
 into consideration its purpose and the biological and chemical characteristics of the system under
@@ -165,62 +185,70 @@ study.
 
 
 ### Selecting an initial structure
+
 The first step is obviously the selection of a starting structure. The aim of this tutorial is to
 simulate a peptide of the N-terminal sequence of the transactivation domain of p53. The sequence of
 this peptide is given below, in FASTA format:
 
 <pre style="background-color:#DAE4E7;padding:15px">
->P53_MOUSE
+>sp|P53_MOUSE|18-32
 SQETFSGLWKLLPPE
 </pre>
 
-Peptides are often very flexible molecules with short-lived secondary structure elements. Some can
-even adopt different structures depending on which protein partner they are interacting with,
-remaining in a disordered state if free in solution. As such, the effort of using an advanced
-method such as homology modeling for this peptide is very likely unwarranted. Instead, it is
-possible, and plausible, to generate structures of the peptide in three ideal conformations --
+Peptides are often very flexible molecules with short-lived secondary structure elements.
+Some can even adopt different structures depending on which protein partner they are interacting with, often remaining in a disordered state if free in solution.
+As such, the effort of using an advanced method such as homology modeling for this peptide is very likely unwarranted.
+Instead, it is possible, and plausible, to generate structures of the peptide in three ideal conformations --
 helical, sheet, and polyproline-2 -- which have been shown to represent the majority of the
 peptides deposited in the PDB. Generating these structures is a simple matter of manipulating
-backbone dihedral angles. Pymol has a utility script to do so, written by Robert Campbell.
+backbone dihedral angles. PyMOL has a utility script to do so, written by Robert Campbell.
 
-The instructions shown in this tutorial refer only to the helical peptide, for simplicity. The
-successful completion of the tutorial requires, however, all three conformations to be simulated.
+The instructions shown in this tutorial refer only to the helical peptide, for simplicity.
+The successful completion of the tutorial requires, however, all three conformations to be simulated.
 
+[//]: # (Full detail on the library function can be found [here](https://pymolwiki.org/index.php/Fab)).
 
 <a class="prompt prompt-info">
-  Generate an ideal structure for the peptide sequence using the build_seq script in PyMol, choose between helix/polypro/beta.
+  Generate an ideal structure for the peptide sequence using the fab script in PyMOL, choose between helix/polypro/beta.
+</a>
+
+<a class="prompt prompt-pymol" style="dispay: none;">
+  fab SQETFSGLWKLLPPE, peptide_helix, ss=1
 </a>
 
 <a class="prompt prompt-pymol">
   build_seq peptide_helix, SQETFSGLWKLLPPE, ss=helix
 </a>
+
 <a class="prompt prompt-pymol">
   save p53_helix.pdb, peptide_helix
 </a>
 
 <a class="prompt prompt-attention">
-  Pay attention when typing the sequence! A missing or swapped amino acid will render your simulation **useless**!
-  Also carefully inspect the generated object whether it matches your expectations - you might want to adjust the residue numbers.
+  Pay attention when typing the sequence! A missing or swapped amino acid will render your simulation <b>useless</b>!
+  Also carefully inspect the generated object whether it matches your expectations - you might also want to adjust the residue numbers.
 </a>
 
-To change residue numbers within PyMol take a look at the help message of the alter command:
+To change residue numbers within PyMOL take a look at the help message of the alter command:
 
 <a class="prompt prompt-pymol">
   help alter
 </a>
 
 ### Preparing the initial structure
+
 In case of structures downloaded from the RCSB PDB, it is important to ensure that there are no
-missing atoms, as well as check for the presence of non-standard amino acids and other small
-ligands. Force fields usually contain parameters for natural amino acids and nucleotides, a few
+missing residues nor atoms, as well as check for the presence of non-standard amino-acids and other small ligands.
+Force fields usually contain parameters for natural amino-acids and nucleotides, a few
 post-translational modifications, water, and ions. Exotic molecules such as pharmaceutical drugs
 and co-factors often have to be parameterized manually, which is a science on its own. Always judge
 if the presence of these exotic species is a necessity. In some cases, the ligands can be safely
 ignored and removed from the structure. As for missing residues and atoms, except hydrogens, it is
-absolutely necessary to rebuild them before starting a simulation. [MODELLER](https://salilab.org/modeller/){:target="_blank"} is an excellent program
-for this purpose. In addition, some crystals diffract at a good enough resolution to distinguish
-water molecules in the density mesh. Save for very particular cases where these waters are the
-subject of the study, the best policy is to remove them altogether from the structure. Fortunately,
+**absolutely necessary** to rebuild them before starting a simulation.
+[MODELLER](https://salilab.org/modeller/){:target="_blank"} is an excellent program for this purpose.
+In addition, some crystals diffract at a good enough resolution to distinguish
+water molecules in the density mesh. Save for very particular cases, where these waters are the
+subject of the study, the best policy is to remove them altogether from the initial structure. Fortunately,
 most of these "problematic" molecules appear as hetero-atoms (`HETATM`) in the PDB file, and can
 therefore be removed rather easily with a simple `sed` command:
 
@@ -228,35 +256,37 @@ therefore be removed rather easily with a simple `sed` command:
   sed -e '/^HETATM/d' 1XYZ.pdb > 1XYZ_clean.pdb
 </a>
 
-It is also good practice to run additional quality checks on the structure before starting the
-simulation. The refinement process in structure determination does not always yield a proper
+It is also good practice to run additional quality checks on the structure before starting the simulation.
+The refinement process in structure determination does not always yield a proper
 orientation of some side-chains, such as glutamine and asparagine, given the difficulty in
 distinguishing nitrogen and oxygen atoms in the density mesh. Also, the protonation state of
-several residues depends on the pH and can influence the protein's hydrogen bonding network. For
-crystal structures, the [PDB_REDO](https://pdb-redo.eu){:target="_blank"} database contains refined versions
+several residues depends on the pH and can influence the protein's hydrogen bonding network.
+For crystal structures, the [PDB_REDO](https://pdb-redo.eu){:target="_blank"} database contains refined versions
 of structures deposited in the RCSB PDB, which address some of these problems. Alternatively, there
 are web servers that allow these and other problems to be detected and corrected, such as
 [WHATIF](https://swift.cmbi.umcn.nl/whatif/){:target="_blank"}.
 
-Since the initial structure of the p53 peptide was generated using Pymol and ideal geometries,
-there is no need to proceed with such checks.
+Since the initial structure of the p53 peptide was generated using PyMOL and ideal geometries,
+there is (*should be*) no need to proceed with such checks.
+
 
 ### Structure Conversion and Topology Generation
+
 A molecule is defined not only by the three-dimensional coordinates of its atoms, but also by the
 description of how these atoms are connected and how they interact with each other. The PDB file,
 which was generated or downloaded in the previous step, contains only the former. The description
-of the system in terms of atom types, charges, bonds, etc, is contained in the topology, which is
-specific to the force field used in the simulation. The choice of the force field must then not be
-taken lightly. For biomolecular systems, there are few major force fields -- e.g. CHARMM, AMBER,
-GROMOS, OPLS -- that have been parameterized to reproduce the properties of biological molecules,
-namely proteins. This has been, and continues to be, an area of active research since the very
+of the system in terms of atom types, charges, bonds, *etc...*, is contained in the *topology*, which is
+specific to the force field used in the simulation. The choice of the force field must then not be taken lightly.
+For biomolecular systems, there are few major force fields 
+-- e.g. CHARMM, AMBER, GROMOS, OPLS -- 
+that have been parameterized to reproduce the properties of biological molecules, namely proteins. This has been, and continues to be, an area of active research since the very
 first day of molecular dynamics simulations. There are several literature reviews available in
-Pubmed that assess the quality and appropriateness of each force field and their several versions.
-Some are well-known for their artifacts, such as a biased propensity for alpha-helical
-conformations. Here, in this tutorial, we use the AMBER99SB-ILDN force field, which is widely used
+PubMed that assess the quality and appropriateness of each force field and their several versions.
+Some are well-known for their artifacts, such as a biased propensity for alpha-helical conformations.
+Here, in this tutorial, we will use the AMBER99SB-ILDN force field, which is widely used
 in sampling and folding simulations and has been shown to reproduce fairly well experimental data
-([source](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131){:target="_blank"}). Another, more
-practical, reason behind this choice is the availability of this force field in GROMACS.
+([source](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131){:target="_blank"}).
+Another, more practical, reason behind this choice is the availability of this force field in GROMACS.
 
 Since the simulation takes place in a solvated environment, i.e. a box of water molecules, we have
 also to choose an appropriate solvent model. The model is simply an addition to the force field
@@ -264,13 +294,12 @@ containing the properties of the water molecule, parameterized to reproduce spec
 such as density and freezing and vaporization temperatures. As such, particular water models tend
 to be tied to specific force fields. Due to the difficulties of reproducing the properties of water
 computationally - yes, even for such a simple molecule! - some models represent water with more
-than 3 atoms, using additional pseudo-particles to improve characteristics such as its
-electrostatic distribution. The water model suggested to use with the AMBER force field, and which
-we will use in this simulation, is the TIP3P model (for Transferable Interaction Potential with 3
-Points), which was actually developed by the author of the OPLS force field. Really transferable!
+than 3 atoms, using additional pseudo-particles to improve characteristics such as its electrostatic distribution.
+The water model suggested to use with the AMBER force field, and which
+we will use in this simulation, is the *TIP3P* model (for Transferable Interaction Potential with 3
+Points).
 
-This choice is usually limited by the force field, unless there is a specific need for a particular
-solvent model.
+This choice is usually limited by the force field, unless there is a specific need for a particular solvent model.
 
 <a class="prompt prompt-info">
   Generate a topology and matching structure for the p53 peptide with GROMACS.
@@ -282,8 +311,8 @@ solvent model.
   Adjust the commands to whatever name you gave to the initial structure file.
 </a>
 
-The GROMACS program `pdb2gmx` takes an initial structure and returns both a topology file
-(`peptide.top`) and a new structure (`peptide.gro`) that adheres to the force field atom naming
+The GROMACS program `pdb2gmx` takes an initial structure and returns both a new structure (`peptide.gro`) and a topology file
+(`peptide.top`), that adheres to the force field atom naming
 conventions. To convert the structure and build the topology, `pdb2gmx` divides the molecule in
 several blocks, such as amino acids, and uses a force field-specific library of such building
 blocks to make the necessary conversions. Usually, the matching to the library is done through
@@ -291,12 +320,11 @@ residue/atom names on each `ATOM`/`HETATM` line in the PDB file. If a residue (o
 recognized, the program stops and returns an error.
 
 <a class="prompt prompt-attention">
-  In case of an error, make sure to **read** the error message. It often points very clearly to the
-problem and its solution.
+  In case of an error, make sure to **read** the error message. It often points very clearly to the problem and its solution.
 </a>
 
-Different force fields define different atom types and/or give different names to the same atom
-type. While the majority of the heavy atoms, i.e. non-hydrogen, have identical naming across most
+Different force fields define different atom types and/or give different names to the same atom type.
+While the majority of the heavy atoms, i.e. non-hydrogen, have identical naming across most
 force fields, hydrogens do not. As such, the flag `-ignh` indicates that GROMACS should ignore
 these atoms when reading the structure and (re)generate their coordinates using ideal geometric
 parameters defined in the force field. Also, the program allows the user to define the status of
@@ -310,8 +338,7 @@ Read through the output of `pdb2gmx` and check the choices the program made for 
 protonation states and the resulting charge of the peptide.
 
 <a class="prompt prompt-info">
-  Generate a PDB file back from the converted *gro* file and compare it to the initial structure in
-Pymol.
+  Generate a PDB file back from the converted *gro* file and compare it to the initial structure in PyMOL.
 </a>
 <a class="prompt prompt-cmd">
   gmx editconf -f peptide.gro -o peptide.pdb
@@ -366,27 +393,30 @@ Look at the partial charge that each atom carries (column 7) and note the differ
 
 
 ### Periodic Boundary Conditions
+
 This converted structure includes several atoms, namely hydrogen, that have been added according
-only to ideal geometric parameters. If generated with Pymol, it also has ideal backbone geometry.
+only to ideal geometric parameters. If generated with PyMOL, it also has ideal backbone geometry.
 If it was otherwise downloaded from the RCSB PDB, the structure is also likely to contain certain
 chemical aspects (bond lengths, angles, interatomic distances) that are not considered ideal by the
-force field. In fact, merely changing force fields will cause the definition of *ideal* to change
-as well. The first step towards preparing the system is then to remove these "imperfections" as
-best as possible, which is normally achieved through an energy minimization of the system. This
+force field.
+In fact, merely changing force fields will cause the definition of *ideal* to change as well.
+The first step towards preparing the system is then to remove these "imperfections" as
+best as possible, which is normally achieved through an **energy minimization** of the system. This
 optimization method essentially forces a set of atoms to adhere, as best as possible, to the
 definitions of the force field. The larger the number of atoms in the system, the harder it is to
 have all of them to comply ideally with respect to all the definitions. For example, moving two
 atoms closer to reduce the strain from violating the definitions imposed by the van der Waals
 forces may cause the strain from the electrostatic term to increase.
 
-Before minimizing the system, a general layout of the simulation setup has to be chosen. In other
-words, the peptide must be placed *somewhere* for this minimization to happen. Most modern
-simulations of proteins and peptides define periodic boundary conditions (PBC), which set a single
-unit cell that can be stacked infinitely. As a result, an infinite, periodic system is defined that
+Before minimizing the system, a general layout of the simulation setup has to be chosen.
+In other words, the peptide must be placed *somewhere* for this minimization to happen.
+Most modern simulations of proteins and peptides define periodic boundary conditions (PBC),
+which set a single unit cell that can be stacked infinitely.
+As a result, an infinite, periodic system is defined that
 avoids the problem of having hard boundaries (walls) that the molecules can literally bump into.
 When the protein crosses the *wall* on the left side, the periodic image to its right enters the
 current unit cell, maintaining a constant number of atoms in every unit cell. A simpler way to
-rationalize PBCs is to compare them to the snake game available in old Nokia cell phones. When the
+rationalize PBCs is to compare them to the snake game available in *old* Nokia cell phones. When the
 head of the snake crosses a boundary of the screen, it re-appears on the diametrically opposed edge.
 
 
@@ -399,26 +429,28 @@ head of the snake crosses a boundary of the screen, it re-appears on the diametr
 <br>
 
 The choice of the shape of the unit cell is also important, since this will define the volume in
-which the molecule is simulated. Molecular dynamics simulations are computationally demanding. The
-more molecules in the system, the more forces need to be calculated at each step. As such, while a
-cube can be perfectly stacked *ad eternum* it is not the most efficient shape from a volume
+which the molecule is simulated.
+Molecular dynamics simulations are computationally demanding.
+The more molecules in the system, the more forces need to be calculated at each step.
+As such, while a cube can be perfectly stacked *ad eternum*, it is not the most efficient shape from a volume
 standpoint (remember that simulations take place, usually, in a solvated environment!).
-Approximating the shape to a sphere is ideal, but spheres cannot be stacked. As such, only a few
-general shapes support the setup of periodic boundary conditions. One of those is the rhombic
-dodecahedron, which corresponds to the optimal packing of a sphere and is therefore the best choice
+Approximating the shape to a sphere is ideal, but spheres cannot be stacked.
+As such, only a few general shapes support the setup of periodic boundary conditions.
+One of those is the [rhombic dodecahedron](https://en.wikipedia.org/wiki/Rhombic_dodecahedron), which corresponds to the optimal packing of a sphere and is therefore the best choice
 for a freely rotating molecule such as a peptide or a protein.
 
-Another thing to have in mind when setting up the PBCs is the size of the unit cell. Continuing
-with the snake analogy, it is not proper to have the snake's head see its own tail. In other words,
-the cell must be sufficiently large to allow the molecule to cross the boundaries and still be at a
-sufficient distance from the next image that no force calculations are made between them. In
-GROMACS, this setting is defined as a distance from the molecule to the wall of the unit cell. This
-distance should not be arbitrarily large either, otherwise the box is to large and the simulation
-becomes computationally inefficient as your purpose is not to simulate water. Take the cutoff used to calculate non-bonded interactions
-(long range) in the force field as a rule of thumb. The distance to the wall must be larger than
-this value.
+Another thing to have in mind, when setting up the PBCs, is the size of the unit cell.
+Continuing with the snake analogy, it is not proper to have the snake's head see its own tail.
+In other words, the cell must be sufficiently large to allow the molecule to cross the boundaries and still be at a
+sufficient distance from the next image that no force calculations are made between them.
+In GROMACS, this setting is defined as a distance from the molecule to the wall of the unit cell.
+This distance should not be arbitrarily large either, otherwise the box is to large and the simulation
+becomes computationally inefficient as your purpose is not to simulate water.
+Take the cutoff used to calculate non-bonded interactions (long range) in the force field as a rule of thumb.
+The distance to the wall must be larger than this value.
 
-Also important is to consider possible conformational changes. The size of the box should allow for those to occur without introducing period image problems as explained above.
+Also important is to consider possible conformational changes.
+The size of the box should allow for those to occur without introducing period image problems as explained above.
 
 
 <a class="prompt prompt-info">
@@ -439,6 +471,7 @@ triclinic matrix representation, in which the first three numbers specify the di
 </a>
 
 ### Energy minimization of the structure in vacuum
+
 Having defined the physical space where simulations can take place, the molecule can now be energy
 minimized. GROMACS uses a two-step process for any calculation involving the molecules and a force
 field. First, the user must combine the structure and the topology data, together with the
@@ -452,10 +485,9 @@ usually run on specialized clusters with hundreds of processing cores that provi
 command-line interface access. This will be relevant when running the production simulation. The
 intermediate calculations to prepare the system are comfortably small to run on a laptop.
 
-The simulation parameters are contained in a separate file, usually with the `.mdp` extension. For
-simplicity, we provide these files in our [GitHub
-repository](https://github.com/haddocking/molmod-data){:target="_blank"}) and also already in our virtual image in NMRBox,
-if you are using it (see `$MOLMOD_DATA/mdp/`). These parameters specify, for example, the cutoffs
+The simulation parameters are contained in a separate file, usually with the `.mdp` extension (for *molecular dynamics parameters*).
+For simplicity, we provide these files in our [GitHub repository](https://github.com/haddocking/molmod-data){:target="_blank"}) and also already in our virtual image in NMRBox, if you are using it (see `$MOLMOD_DATA/mdp/`).
+These parameters specify, for example, the cutoffs
 used to calculate non-bonded interactions, the algorithm used to calculate the neighbors of each
 atom, the type of periodic boundary conditions (e.g. three-dimensional, bi-dimensional), and the
 algorithms to calculate non-bonded interactions. They also specify the type of simulation, for
@@ -489,8 +521,9 @@ the minimization?
   gmx mdrun -v -deffnm peptide-EM-vacuum
 </a>
 
-Although GROMACS is made of several utilities, its heart is the `mdrun` program. It is this code
-that runs all the simulations. The `-deffnm` flag is a very convenient option that sets the default
+Although GROMACS is made of several utilities, its heart is the `mdrun` program.
+It is this code that runs all the simulations.
+The `-deffnm` flag is a very convenient option that sets the default
 file name for *all* file options, both input and output, avoiding multiple individual definitions.
 The `-v` flag tells `mdrun` to be verbose and in this case, print the potential energy of the
 system and the maximum force at each step of the minimization.
@@ -513,32 +546,35 @@ Step=   10, Dmax= 9.0e-03 nm, Epot=  7.77891e+02 Fmax= 5.97918e+03, atom= 56
 ...
 </pre>
 
-The steepest descent algorithm used in this minimization calculates the gradient of the energy of
-the system at each step and extracts forces that push the system towards an energy minimum. As
-such, the potential energy *must* decrease. This is not the case for molecular dynamics and other
-minimization algorithms. The minimization ends when one of two conditions is met: either the
-maximum force is small than the provided threshold ($$10 kJ.mol^-1$$), and the minimization
-converged, or the algorithm reached the maximum number of steps defined in the parameter file
-(5000). Ideally, a minimization should run until convergence, but except for very specific
-scenarios such as normal mode analysis, this is not a strict requirement.
+The *steepest descent* algorithm used in this minimization calculates the gradient of the energy of
+the system at each step and extracts forces that push the system towards an energy minimum.
+As such, the potential energy *must* decrease.
+This is not the case for molecular dynamics and other minimization algorithms.
+The minimization ends when one of two conditions is met:
+
+* either the maximum force is small than the provided threshold ($$10 kJ.mol^-1$$), and the minimization converged,
+* or the algorithm reached the maximum number of steps defined in the parameter file (5000).
+
+Ideally, a minimization should run until convergence, but except for very specific scenarios, such as normal mode analysis, this is not a strict requirement.
 
 <a class="prompt prompt-info">
-  Compare the initial structure with the energy minimized structure in Pymol.
+  Compare the initial structure with the energy minimized structure in PyMOL.
 </a>
 <a class="prompt prompt-question">
   Are there major changes in the structure of the peptide? Where are most of these located?
 </a>
 
 ### Solvating the simulation box
-The next step is to add solvent to the simulation box. The first molecular dynamics simulations of
-proteins were done in vacuum, but researchers quickly realized this was a major limitation. Water
-molecules interact with the protein, mediating interactions between residues. In addition, water as
-a solvent has a *screening* effect for long-range interactions, such as electrostatics. In vacuum,
-there is nothing to prevent two opposite charge atoms to feel each other even at a very long
-distance, as long as they are within the cutoff used for the simulation of course. With the
-addition of water, this interaction is dampened significantly. The effect of water-mediated
-interactions are also important when choosing the size of the box. The presence of a solute, the
-peptide, induces a particular ordering of the water molecules in its vicinity. This might have a
+
+The next step is to add solvent to the simulation box.
+The first molecular dynamics simulations of proteins were done in vacuum, but researchers quickly realized this was a major limitation.
+Water molecules interact with the protein, mediating interactions between residues.
+In addition, water as a solvent has a *screening* effect for long-range interactions, such as electrostatics.
+In vacuum, there is nothing to prevent two opposite charge atoms to feel each other even at a very long
+distance, as long as they are within the cutoff used for the simulation of course.
+With the addition of water, this interaction is dampened significantly.
+The effect of water-mediated interactions are also important when choosing the size of the box.
+The presence of a solute, the peptide, induces a particular ordering of the water molecules in its vicinity. This might have a
 ripple effect that propagates the effect of the solute and causes artifacts well beyond the
 theoretical non-bonded cutoff.
 
@@ -576,6 +612,7 @@ are now in the structure. It also added a definition that loads the water model 
 </a>
 
 ### Addition of ions: counter charge and physiological concentration
+
 Besides water, the cellular environment contains a number of ions that maintain a certain chemical
 neutrality of the system. Adding some of these to the simulation box also increases the realism of
 the simulation. The GROMACS program `genion` performs this task, but requires as input a `.tpr`
@@ -591,10 +628,10 @@ allowed to neutralize the charge of the system, if there is any.
   gmx grompp -v -f $MOLMOD_DATA/mdp/02_em_sol_PME.mdp -c peptide-water.gro -p peptide.top -o peptide-water.tpr -maxwarn 1
 </a>
 <a class="prompt prompt-info">
-  Select the group that contains SOL.
+  While running next command line, when asked, select the group that contains SOL.
 </a>
 <a class="prompt prompt-cmd">
-  gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA+ -nname CL- -p peptide.top
+  gmx genion -s peptide-water.tpr -o peptide-solvated.gro -conc 0.15 -neutral -pname NA -nname CL -p peptide.top
 </a>
 <a class="prompt prompt-question">
   How many ions of each species were added to the box?
@@ -603,9 +640,13 @@ allowed to neutralize the charge of the system, if there is any.
 <a class="prompt prompt-info">
   Check the topology file for the newly added ions in the `[molecules]` section compare to previous topology file
 </a>
+
+<br>
 <a class="prompt prompt-attention">
-  If something goes wrong with the topology file you need to start over..! You can always make backup of the topology file, in case something goes awry. And you can also choose different names for the topolgy file after each stage (if you find it more convenient for reversing to a previous stage (just take care you use the correct one in the next stage).
+  If something goes wrong with the topology file you need to start over..! You can always make backup of the topology file, in case something goes away. And you can also choose different names for the topolgy file after each stage - if you find it more convenient for reversing to a previous stage. Just take care you use the correct one in the next stage.
 </a>
+<br>
+
 <a class="prompt prompt-cmd">
   cp peptide.top peptide.top.backup
 </a>
@@ -617,6 +658,7 @@ allowed to neutralize the charge of the system, if there is any.
 </a>
 
 ### Energy minimization of the solvated system
+
 The addition of ions was the final step in setting up the system (chemically) for the simulation.
 From here on, all that is necessary is to relax the system in a controlled manner. Adding the
 solvent and the ions might have caused some unfavorable interactions, such as overlapping atoms
@@ -635,6 +677,7 @@ gmx mdrun -v -deffnm peptide-EM-solvated
 </a>
 
 ### Restrained MD -- relaxation of solvent and hydrogen atoms
+
 Despite dissipating most of the strain in the system, energy minimization does not consider
 temperature, and therefore velocities and kinetic energy. When first running molecular dynamics,
 the algorithm assigns velocities to the atoms, which again stresses the system and might cause the
@@ -680,14 +723,12 @@ used to generate initial velocities. Pick an unlikely number for the random seed
   What is the length of the simulation in picoseconds?
 </a>
 
-The inclusion of velocity in this system caused the particles and the system to gain kinetic
-energy. This information is stored in an binary file format with extension `.edr`, which can be
-read using the GROMACS utility `energy`. This utility extracts the information from the energy file
-into tabular files that can then be turned into plots. Select the terms of interest by typing their
-numbers sequentially followed by `Enter`. To quit, type `0` and `Enter`. Use the `xvg_plot.py`
-utility to plot the resulting `.xvg` file, passing the `-i` flag to have an interactive session
-open. If you want to change the colors of the plot, run the script with the `-h` flag and refer to
-[this page for the available color maps](https://matplotlib.org/examples/color/colormaps_reference.html){:target="_blank"}.
+The inclusion of velocity in this system caused the particles and the system to gain kinetic energy.
+This information is stored in an binary file format with extension `.edr`, which can be read using the GROMACS utility `energy`.
+This utility extracts the information from the energy file into tabular files that can then be turned into plots.
+Select the terms of interest by typing their numbers sequentially followed by `Enter`.
+To quit, type `0` and `Enter`. Use the `xvg_plot.py` utility to plot the resulting `.xvg` file, passing the `-i` flag to have an interactive session open.
+If you want to change the colors of the plot, run the script with the `-h` flag and refer to [this page for the available color maps](https://matplotlib.org/examples/color/colormaps_reference.html){:target="_blank"}.
 
 <a class="prompt prompt-info">
   Extract and plot the temperature, potential, kinetic, and total energy of the system.
@@ -707,11 +748,12 @@ open. If you want to change the colors of the plot, run the script with the `-h`
 </a>
 
 ### Coupling the barostat -- simulating in NPT conditions
-Equilibration is often conducted in two stages: first, the system is simulated under a canonical
-ensemble (NVT) in which the number of molecules, volume, and temperature are kept constant. The
-goal is to let the system reach and stabilize at the desired temperature. The second step is to
-couple a barostat to the simulation and maintain a constant pressure, which resembles more closely
-the experimental conditions. While the temperature is controlled by adjusting the velocity of the
+
+Equilibration is often conducted in two stages: 
+* first, the system is simulated under a canonical ensemble (NVT) in which the number of molecules, volume, and temperature are kept constant. The goal is to let the system reach and stabilize at the desired temperature.
+* The second step is to couple a barostat to the simulation and maintain a constant pressure (NPT), which resembles more closely the experimental conditions.
+
+While the temperature is controlled by adjusting the velocity of the
 particles, the pressure is kept constant by varying the volume of the simulation box ($$PV = NRT$$).
 
 <a class="prompt prompt-info">
@@ -725,7 +767,10 @@ particles, the pressure is kept constant by varying the volume of the simulation
   Were you able to succesfully execute the previous command? If not, read the error message carefully.
 </a>
 
-Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although this weak-coupling algorithm is not rigorously compatible with a full isothermal-isobaric (NPT) ensemble. Gromacs correctly complains about this by means of a warning message. In our case, we are just equilibrating the system, and using the Berendsen barostat is perfectly fine. Therefore the warning can be safely ignored by adding `--maxwarn 1` at the end of the previous command.
+Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although this weak-coupling algorithm is not rigorously compatible with a full isothermal-isobaric (NPT) ensemble.
+GROMACS correctly complains about this by means of a warning message.
+In our case, we are just equilibrating the system, and using the Berendsen barostat is perfectly fine.
+Therefore the warning can be safely ignored by adding `--maxwarn 1` at the end of the previous command.
 
 <a class="prompt prompt-cmd">
   gmx mdrun -v -deffnm peptide-NPT-PR1000
@@ -742,6 +787,7 @@ Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although
 </a>
 
 ### Releasing the position restraints
+
 By now, the system had time to adjust to the injection of velocities and the introduction of both
 temperature and pressure. The heavy atoms of the peptide are, however, still restrained to their
 initial positions. The next and final steps of the simulation setup release these restraints,
@@ -814,6 +860,7 @@ parameters. For simplicity, we provide a further `.mdp` file without this defini
 </a>
 
 <hr>
+
 ## Production Simulation
 
 Despite all these efforts, the system is unlikely to be in equilibrium already. The first few
@@ -878,6 +925,7 @@ the command to a text processor such as `less` or `more` (Unix joke) to paginate
 
 
 <hr>
+
 ## Analysis of the Molecular Dynamics Simulation
 
 The production run is only the beginning of the real work behind molecular dynamics simulations.
@@ -906,6 +954,7 @@ time
 errors.
 
 ### Quality Assurance
+
 Before all else, it must be assured that the simulation finished properly. Many variables can cause
 a simulation to crash, especially problems related to the force field (if you use custom
 parameters) or insufficient or deficient equilibration of the system.
@@ -1072,7 +1121,9 @@ time? How much time would it need, assuming this speed, to simulate a full secon
 
 
 <hr>
+
 ## Visually inspecting the simulation
+
 Although most of the analysis comes down to extracting data and plotting them, molecular dynamics
 is first and foremost about *dynamical*. As such, it is possible to extract the frames from the
 trajectory and combine them into a movie. This alone can inform substantially about the integrity
@@ -1083,7 +1134,7 @@ output, choose *Protein* only, otherwise you will end up with a box of slushy wa
 obscuring the real action!
 
 <a class="prompt prompt-info">
-  Extract 100 frames from the trajectory and visualize them in Pymol
+  Extract 100 frames from the trajectory and visualize them in PyMOL
 </a>
 <a class="prompt prompt-cmd">
   gmx trjconv -f p53_helix_CAH.xtc -s p53_helix_CAH.tpr -o p53_helix_CAH-nojump.pdb -pbc nojump -dt 500
