@@ -638,7 +638,7 @@ allowed to neutralize the charge of the system, if there is any.
 </a>
 
 <a class="prompt prompt-info">
-  Check the topology file for the newly added ions in the `[molecules]` section compare to previous topology file
+  Check the topology file for the newly added ions in the [molecules] section and compare it to the previous topology file
 </a>
 
 <br>
