@@ -146,12 +146,13 @@ Take your time to know your system and what particularities its simulation entai
 
 
 In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username.
-You will find your own copy of the course material in `~/EVENTS/2023-struct-bioinfo-uu/` directory.
+You will find your own copy of the course material in `~/EVENTS/2024-struct-bioinfo-uu/` directory.
 You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
+
 
 __Note__: The data are automatically copied to your home directory under the `EVENTS` directory provided you have registered for this event on NMRBox. The event can be found at [https://nmrbox.nmrhub.org/events](https://nmrbox.nmrhub.org/events){:target="_blank"}. In order to register for the course you need to have an NMRBox account.
 
-__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the 2022 course can be found once logged in into a VM in the following directory: `/tutorial/workshops/2022-UU-MD`. The 2023 tutorial setup can be found in: `/public/EVENTS/2023-struct-bioinfo-uu/`
+__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2024-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
 
 Open the terminal and create a directory where you will work in with name of your choice:
 <a class="prompt prompt-cmd">
