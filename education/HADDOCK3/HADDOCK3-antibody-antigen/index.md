@@ -877,7 +877,7 @@ haddock3 scenario2a-NMR-epitope-pass-node.cfg
 
 <br>
 
-#### 2. HPC/batch mode
+#### 2. batch mode
 
 In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster.
 Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
@@ -890,7 +890,7 @@ An example of the relevant parameters to be defined in the first section of the 
 
 {% highlight toml %}
 # compute mode
-mode = "hpc"
+mode = "batch"
 # batch system
 batch_type = "slurm"
 # queue name
@@ -1148,7 +1148,7 @@ This configuration is provided in the `haddock3` directory of the downloaded dat
 
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
-_**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes. In HPC/batch mode, using 100 queue slots and 10 models per job, the same run completed in about 45 minutes.
+_**Note**_ that this scenario is less expensive since we keep the default sampling parameters. On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about 7 minutes. The same run on a single node using all 96 threads took on the same architecture about 21 minutes. In `batch` mode, using 100 queue slots and 10 models per job, the same run completed in about 45 minutes.
 
 On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank"} processors), this run completed in about 1 hour and 15 minutes. Limiting the sampling to 240 rigid body models (recommended for the EU ASEAN HPC school) shorten the execution time to 37 minutes.
 
