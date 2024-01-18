@@ -460,15 +460,16 @@ unit cell wall.
 <a class="prompt prompt-cmd">
   gmx editconf -f peptide.gro -o peptide-PBC.gro -bt dodecahedron -c -d 1.4
 </a>
+<a class="prompt prompt-question">
+  What is the volume of the unit cell?
+</a>
 
 As with `pdb2gmx`, the GROMACS program `editconf` generates a sizable output that contains, for
 example, the volume and dimensions of the unit cell it just created. The dimensions use the
 triclinic matrix representation, in which the first three numbers specify the diagonal elements
 ($$xx, yy, zz$$) and the last six the off-diagonal elements ($$xy, xz, yx, yz, zx, zy$$).
 
-<a class="prompt prompt-question">
-  What is the volume of the unit cell?
-</a>
+
 
 ### Energy minimization of the structure in vacuum
 
@@ -480,7 +481,7 @@ and ensures the reproducibility of the simulation, provided the same force field
 the machine. Another advantage of having such a self-contained file is that the preparation can
 take place in one machine while the calculations run on another. Again, simulations are
 computationally demanding. While the system can be easily prepared on a laptop, with the help of
-Pymol, GUI-enabled text editors, and all the other advantages of having a screen, calculations
+PyMOL, GUI-enabled text editors, and all the other advantages of having a screen, calculations
 usually run on specialized clusters with hundreds of processing cores that provide only a
 command-line interface access. This will be relevant when running the production simulation. The
 intermediate calculations to prepare the system are comfortably small to run on a laptop.
@@ -600,7 +601,7 @@ of the new topology file, there is an additional entry listing the number of wat
 are now in the structure. It also added a definition that loads the water model parameters.
 
 <a class="prompt prompt-info">
-  Open the solvated structure in Pymol.
+  Open the solvated structure in PyMOL.
 </a>
 
 <a class="prompt prompt-pymol">
@@ -770,7 +771,7 @@ particles, the pressure is kept constant by varying the volume of the simulation
 Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although this weak-coupling algorithm is not rigorously compatible with a full isothermal-isobaric (NPT) ensemble.
 GROMACS correctly complains about this by means of a warning message.
 In our case, we are just equilibrating the system, and using the Berendsen barostat is perfectly fine.
-Therefore the warning can be safely ignored by adding `--maxwarn 1` at the end of the previous command.
+Therefore the warning can be safely ignored by adding `-maxwarn 1` at the end of the previous command.
 
 <a class="prompt prompt-cmd">
   gmx mdrun -v -deffnm peptide-NPT-PR1000
@@ -816,7 +817,7 @@ restraints is as simple as modifying the numbers on the file.
 </a>
 
 <a class="prompt prompt-cmd">
-  cp posre.itp posrest.itp.1000.backup # Make a backup of the original file
+  cp posre.itp posre.itp.1000.backup # Make a backup of the original file
 </a>
 <a class="prompt prompt-cmd">
   sed -i -e \'s/1000&nbsp;&nbsp;1000&nbsp;&nbsp;1000/&nbsp;100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/g\' posre.itp
@@ -829,7 +830,7 @@ restraints is as simple as modifying the numbers on the file.
 </a>
 
 <a class="prompt prompt-cmd">
-  cp posre.itp posrest.itp.100.backup
+  cp posre.itp posre.itp.100.backup
 </a>
 <a class="prompt prompt-cmd">
   sed -i -e \'s/100&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;100/&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;10/g\' posre.itp
@@ -1127,7 +1128,7 @@ time? How much time would it need, assuming this speed, to simulate a full secon
 Although most of the analysis comes down to extracting data and plotting them, molecular dynamics
 is first and foremost about *dynamical*. As such, it is possible to extract the frames from the
 trajectory and combine them into a movie. This alone can inform substantially about the integrity
-of the peptide throughout the simulation. The following Pymol commands show the peptide in a
+of the peptide throughout the simulation. The following PyMOL commands show the peptide in a
 sausage-like representation colored sequentially from N- to C-terminal. To manipulate the
 trajectory file, use `trjconv`, the GROMACS *swiss-knife* utility. When asked to select a group to
 output, choose *Protein* only, otherwise you will end up with a box of slushy water molecules
@@ -1187,12 +1188,12 @@ the frames, so that you can better observe peptide motions. Then replay the traj
 remained stable while others didn't?
 </a>
 
-Feel free to play around with Pymol. Zoom in on specific regions, such as where the peptide is most
+Feel free to play around with PyMOL. Zoom in on specific regions, such as where the peptide is most
 rigid or most flexible, and check the side chain conformations (`show sticks`). Feel free to waste
 some (CPU) time on making an nice image, using `ray` and `png`. Do mind that scenes that are too
-complex may cause the built-in ray-tracer of Pymol to crash, so in that case you can only get the
+complex may cause the built-in ray-tracer of PyMOL to crash, so in that case you can only get the
 image as you have it on screen using `png` directly. Check out the
-[Pymol Gallery](https://pymolwiki.org/index.php/Gallery){:target="_blank"} for inspiration, or ask your instructors for tips. If you
+[PyMOL Gallery](https://pymolwiki.org/index.php/Gallery){:target="_blank"} for inspiration, or ask your instructors for tips. If you
 have **really** a lot of time to waste, you can also make a movie of the trajectory, although this
 is probably best done outside the virtual machine of the course, for performance reasons. You might
 need to extract more frames from the simulation to make a sizable movie, depending on the frame
@@ -1211,7 +1212,7 @@ rate you choose.
   mpng frame_.png
 </a>
 
-Then, in the command-line interface, assuming you are in the directory where Pymol stored all the
+Then, in the command-line interface, assuming you are in the directory where PyMOL stored all the
 `.png` files:
 
 <a class="prompt prompt-cmd">
@@ -1398,7 +1399,7 @@ show the highest flexibility?
 </a>
 
 <a class="prompt prompt-info">
-  Load the two newly created PDB files in Pymol. Color the b-factor structure accordingly and
+  Load the two newly created PDB files in PyMOL. Color the b-factor structure accordingly and
 inspect the flexible regions visually. Note the unphysical character of the average structure.
 </a>
 <a class="prompt prompt-pymol">
@@ -1700,7 +1701,7 @@ these clusters are meaningful, i.e. contain only similar structures?
 </a>
 
 <a class="prompt prompt-info">
-  Open the resulting PDB file in Pymol and compare the centroids of each cluster with the others.
+  Open the resulting PDB file in PyMOL and compare the centroids of each cluster with the others.
 </a>
 
 <a class="prompt prompt-pymol">
@@ -1739,7 +1740,7 @@ clusters) and are likely good candidates for seeding the docking calculations.
 
 <a class="prompt prompt-info">
   Select 5 representatives of the clusters you obtained in the previous step and create individual
-PDB files using Pymol.
+PDB files using PyMOL.
 </a>
 
 
