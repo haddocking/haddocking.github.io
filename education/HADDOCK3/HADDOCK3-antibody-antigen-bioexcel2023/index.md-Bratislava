@@ -698,7 +698,7 @@ The basic workflow will consists of the following modules:
 HADDOCK3 currently supports three difference execution modes that are defined in the first section of the configuration file of a run:
 
 - **local mode** : in this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system minus one;
-- **HPC/batch mode**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster;
+- **batch mode**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster;
 - **MPI mode**: HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage).
 
 ## Cagliari

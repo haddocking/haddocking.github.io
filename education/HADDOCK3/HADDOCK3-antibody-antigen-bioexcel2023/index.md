@@ -945,7 +945,7 @@ In the above workflow we see in three modules a *tolerance* parameter defined. U
 In in the first section of the workflow above we have a parameter `mode` defining the execution mode. HADDOCK3 currently supports three difference execution modes:
 
 - **local** : In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system
-- **HPC**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster (slurm and torque are currently supported);
+- **batch**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster (slurm and torque are currently supported);
 - **mpi**: HADDOCK3 supports a pseudo parallel MPI implementation which allows to harvest the power of mutliple nodes to distribute the computations (functional but still very experimental at this stage).
 
 
@@ -1040,7 +1040,7 @@ _**Note**_: This is also the execution mode that should be used for example when
 
 
 <hr>
-#### Exection in HPC/batch mode using slurm
+#### Exection in batch mode using slurm
 
 In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
 have to define the `queue` name and the maximum number of concurrent jobs sent to the queue (`queue_limit`). 
@@ -1051,7 +1051,7 @@ An example of the relevant parameters to be defined in the first section of the 
 
 {% highlight toml %}
 # compute mode
-mode = "hpc"
+mode = "batch"
 # batch system
 batch_type = "slurm"
 # queue name
