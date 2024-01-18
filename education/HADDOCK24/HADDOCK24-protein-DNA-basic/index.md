@@ -278,6 +278,8 @@ On the result page we can see twenty output files, each corresponding to one mod
 
 If you wish to save the pipeline after this step, click on **Download JSON pipeline**.
 
+**Note:**: in case you want to use the (trimmed) ensemble during docking you can simply add the 'pdb_mkensemble' command at the end of the PBD-tools pipeline. This will merge the 20 trimmed conformations in a single PDB file.
+
 ## Preparing the HADDOCK2.4 web server run
 
 The introduction of the HADDOCK web server in 2008 and the eNMR Grid-enabled web server shortly after, changed a lot in the docking community.
