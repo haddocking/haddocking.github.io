@@ -1454,7 +1454,7 @@ the simulation.
 ## Structural Analysis
 
 <a class="prompt prompt-attention">
-  When asked for a selection choose "Protein" if no selection is specifically stated or does not
+  When asked for a selection, choose "Protein" if no selection is specifically stated or does not
 follow logically from the text.
 </a>
 
@@ -1558,8 +1558,13 @@ short sequences, as well as a `-rainbow` flag that controls the coloring of the 
 <a class="prompt prompt-question">
   Did the previous command succeed? Read carefully the output to identify the problem.
 </a>
+
 In case the `do_dssp` command is not recognized, you may have to set the path to the dssp executable that
 is installed on your machine.
+First identify where is installed the `dssp` executable.
+<a class="prompt prompt-cmd">
+  whereis dssp
+</a>
 <a class="prompt prompt-cmd">
   export DSSP=${path_to_your_dssp_executable}
 </a>
@@ -1630,16 +1635,15 @@ which tells `trjcat` to append the next trajectory right after the last frame of
 
 ### Root Mean Square Deviations -- Part II
 
-Although the root mean square deviation (RMSD) was already calculated to check for the convergence
-of the simulation, it can be used for a more advanced and in-depth analysis of conformational
-diversity. After all, the RMSD is a metric that compares structures. By performing an all-vs-all
-comparison with all frames in the concatenated trajectory, it is possible to identify groups of
-frames that share similar structures. This also quantifies the conformational diversity of a
-particular trajectory (or trajectories). The matrix allows also to detect and quantify the number
-of transitions between different conformations during the simulations. It is as relevant to have 10
-different conformations or 2 that interconvert quickly. Since an all-vs-all RMSD matrix entails a
-very large number of pairwise comparisons, and the peptide conformations are different enough, use
-only backbone atoms to fit and calculate the RMSD.
+Although the root mean square deviation (RMSD) was already calculated to check for the convergence of the simulation, it can be used for a more advanced and in-depth analysis of conformational
+diversity.
+After all, the RMSD is a metric that compares structures.
+By performing an all-vs-all comparison with all frames in the concatenated trajectory, it is possible to identify groups of frames that share similar structures.
+This also quantifies the conformational diversity of a particular trajectory (or trajectories).
+The matrix allows also to detect and quantify the number
+of transitions between different conformations during the simulations.
+It is as relevant to have 10 different conformations or 2 that interconvert quickly.
+Since an all-vs-all RMSD matrix entails a very large number of pairwise comparisons, and the peptide conformations are different enough, use only backbone atoms to fit and calculate the RMSD.
 
 <a class="prompt prompt-info">
   Calculate and plot an all-vs-all RMSD matrix for the concatenated trajectory.
