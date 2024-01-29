@@ -236,8 +236,10 @@ in Pymol.
 
 Finally, another way to obtain information about possible interface residues is by analysing known interfaces found in homologous proteins.
 This can easily be performed by [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a [new tool](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"} dedicated to the automatic retrieval and clustering of interfaces in complexes from 3D structural information.
-As structural information of the human MDM2 interacting with other partners is available, ARCTIC-3D will extract interacting residues and cluster them into binding surfaces. Not all residues of a binding surface are relevant, as some amino acids may be rarely present among the interfaces that define that patch.
-Wisely define a probability threshold and note down the residue indices, as you will need them to define *active* residues in HADDOCK.
+As structural information of the human MDM2 interacting with other partners is available, ARCTIC-3D will extract interacting residues and cluster them into binding surfaces.
+Not all residues of a binding surface are relevant, as some amino acids may be rarely present among the interfaces that define that patch.
+Hence ARCTIC-3D also computes the probability for a given residue to be in contact for each patch.
+Find the most relevant patch and note down the residue indices, as you will need them to define *active* residues in HADDOCK
 
 <a class="prompt prompt-info">
   Submit UniProt accession code of the Human MDM2 in ARCTIC-3D.
@@ -245,14 +247,15 @@ Wisely define a probability threshold and note down the residue indices, as you 
   'Submit' your query.
 </a>
 
-By selecting the 'Cluster partners by protein function' option the software will look into the function of the protein partners that interact with each binding surface.
+By selecting the 'Cluster partners by protein function' option, the software will look into the function of the protein partners that interact with each binding surface.
+This will allow you to eventually discover a patch of residues involved in the binding with p53.
 
 <a class="prompt prompt-question">
   What is the most relevant cluster in our case?
   How many residues are above the 0.5 probability threshold ?
 </a>
 
-Download the outputs of ARCTIC-3D.
+At the bottom of the page, download the outputs of ARCTIC-3D.
 ARCTIC-3D will provide a structure of the human MDM2, and add the residue contact probability in the *b-factor* column, enabling to easily visualise it on PyMOL.
 
 <a class="prompt prompt-pymol">
@@ -260,10 +263,11 @@ ARCTIC-3D will provide a structure of the human MDM2, and add the residue contac
 </a>
 
 Because the current residue indices match the human canonical sequence, you will have to run a structural alignment of you mouse MDM2 model onto this structure and define the residue mapping by hand.
-For this, you need to load your mouse MDM2 model on the same PyMOL session and then perform a structural alignment on the human one. The `align` [function](https://pymolwiki.org/index.php/Align){:target="_blank"}, already implemented in PyMOL, is easy to use and well suited for this task.
+For this, you need to load your mouse MDM2 model on the same PyMOL session and then perform a structural alignment on the human one.
+The `align` [function](https://pymolwiki.org/index.php/Align){:target="_blank"}, already implemented in PyMOL, is easy to use and well suited for this task.
 
 <a class="prompt prompt-pymol">
-  align mouse_model, human_structure
+  align mouse_mdm2_homology_model, human_structure
 </a>
 
 <a class="prompt prompt-question">
