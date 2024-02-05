@@ -35,3 +35,6 @@ nested at the Centre of Excellence for Computational Biomolecular Research - Bio
 
 * [**Metadynamics**](/education/biomolecular-simulations-2019/Metadynamics_tutorial): 
   This tutorial explains how to perform metadynamics simulations to enhance the comformational sampling of a binding site on a protein to improve molecular docking predictions.
+
+  **NOTE** that there is an updated version of this tutorial [**here**](https://molmod.dsf.unica.it/edes){:target="_blank"} which we are recommending to follow.
+

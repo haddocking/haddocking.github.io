@@ -29,6 +29,8 @@ The second tutorial illustrates how metadynamics can be used to sample conformat
 * [**Metadynamics**](/education/biomolecular-simulations-2020/Metadynamics_tutorial):
   This tutorial highlights the benefits of enhanced sampling using metadynamics to improve the predictive power of molecular docking for protein-small molecule targets, in the case of binding sites undergoing conformational changes. For this, we will first generate an ensemble of conformers for the target protein using [GROMACS](http://www.gromacs.org/) and [PLUMED](http://www.plumed.org/), before proceeding with the docking using [HADDOCK](http://www.bonvinlab.org/software/haddock2.2/).
 
+  **NOTE** that there is an updated version of this tutorial [**here**](https://molmod.dsf.unica.it/edes){:target="_blank"}) which we are recommending to follow instead. 
+
 * [**HADDOCK2.4 antibody-antigen**](/education/HADDOCK24/HADDOCK24-antibody-antigen):
   This tutorial demonstrates how to use HADDOCK for the prediction of the three dimensional structure of antibody-antigen complexes.
 

@@ -24,7 +24,7 @@ This tutorial does not require any Linux expertise and only makes use of our web
 
 ## Tutorials
 
-* [**Metadynamics**](https://molmod.dsf.unica.it/enhanced-sampling-of-binding-pocket-volume-and-shape-tutorial){:target="_blank"}:
+* [**Metadynamics**](https://molmod.dsf.unica.it/edes){:target="_blank"}:
   This tutorial highlights the benefits of enhanced sampling using metadynamics to improve the predictive power of molecular docking for protein-small molecule targets, in the case of binding sites undergoing conformational changes. For this, we will first generate an ensemble of conformers for the target protein using [GROMACS](http://www.gromacs.org/){:target="_blank"} and [PLUMED](http://www.plumed.org/){:target="_blank"}.
 
 * [**HADDOCK2.4 basic protein-protein docking tutorial**](/education/HADDOCK24/HADDOCK24-protein-protein-basic):
