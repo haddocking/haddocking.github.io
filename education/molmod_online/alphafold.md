@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Using AlphaFold to model the MDM2-p53 complex"
+excerpt: "Solving the complex with AlphaFold"
 tags: [MODELLER, GROMACS, HADDOCK, molecular dynamics, homology modeling, docking, p53, MDM2, AlphaFold]
 image:
     feature: pages/banner_education-thin.jpg
