@@ -857,10 +857,6 @@ ncores=50
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
-# Post-processing to generate statistics and plots
-postprocess = true
-clean = true
-
 molecules =  [
     "pdbs/4G6K_clean.pdb",
     "pdbs/4I1B_clean.pdb"
@@ -1717,7 +1713,7 @@ All three antibody structures used in input give good to reasonable results. The
 
 <hr>
 <hr>
-## BONUS 3: Ensemble-docking using a combination of exprimental and AI-predicted antibody structures
+## BONUS 3: Ensemble-docking using a combination of experimental and AI-predicted antibody structures
 
 
 Instead of running haddock3 using a specific input structure of the antibody we can also use an ensemble of all available models.
@@ -1747,10 +1743,6 @@ ncores=50
 
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
-
-# Post-processing to generate statistics and plots
-postprocess = true
-clean = true
 
 molecules =  [
     "pdbs/4G6K-ensemble.pdb",

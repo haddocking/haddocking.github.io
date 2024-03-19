@@ -261,10 +261,13 @@ all categories and modules. Below is a summary of the available modules:
 * **Analysis modules**
     * `caprieval`: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided.*
     * `clustfcc`: *Clusters models based on the fraction of common contacts (FCC)*
-    * `clustrmsd`: *Clusters models based on pairwise RMSD matrix calculated with the `rmsdmatrix` module.*
     * `rmsdmatrix`: *Calculates the pairwise RMSD matrix between all the models generated in the previous step.*
+    * `ilrmsdmatrix`: *Calculates the pairwise interface-ligand RMSD matrix between all the models generated in the previous step.*
+    * `clustrmsd`: *Clusters models based on pairwise RMSD matrix calculated with the `rmsdmatrix`/`ilrmsdmatrix` module.*
     * `seletop`: *Selects the top N models from the previous step.*
     * `seletopclusts`: *Selects top N clusters from the previous step.*
+    * `contactmap`: *Generates a contact map for the models generated in the previous step.*
+    * `alascan`: *Performs an alanine scanning on the models generated in the previous step.*
 
 The HADDOCK3 workflows are defined in simple configuration text files, similar to the TOML format but with extra features.
 Contrarily to HADDOCK2.X which follows a rigid (yet highly parameterisable)
@@ -629,11 +632,10 @@ binding site in the final models, while the residues defined as `active` (typica
 site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are
 using a local version, we need to define those manually.
 
-This can easily be done using a script from our [haddock-tools][haddock-tools] repository, which is also provided for convenience
-in the `scripts` directly of the archive you downloaded for this tutorial:
+This can easily be done using a command line interface taken from our [haddock-tools][haddock-tools] repository:
 
 <a class="prompt prompt-cmd">
-python ./scripts/passive_from_active.py 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+haddock3-restraints passive_from_active 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </a>
 
 The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only.
@@ -661,7 +663,7 @@ For this you can either make use of our online [GenTBL][gentbl] web service, ent
 list of active and passive residues for each molecule, and saving the resulting
 restraint list to a text file, or use the relevant `haddock-tools` script.
 
-To use our `haddock-tools` `active-passive-to-ambig.py` script you need to
+To use our `haddock3-restraints` `active_passive_to_ambig` script you need to
 create for each molecule a file containing two lines:
 
 * The first line corresponds to the list of active residues (numbers separated by spaces)
@@ -683,7 +685,7 @@ Using those two files, we can generate the CNS-formatted AIR restraint files
 with the following command:
 
 <a class="prompt prompt-cmd">
-python ./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
 </a>
 
 This generates a file called `ambig-paratope-surface.tbl` that contains the AIR
@@ -697,12 +699,11 @@ distance combinations between an active residue and all the active+passive on
 the other molecule: SUM[1/r^6]^(-1/6).
 
 If you modify manually this file, it is possible to quickly check if the format is valid.
-To do so, you can find in our [haddock-tools][haddock-tools] repository a folder named
-`haddock_tbl_validation` that contains a script called `validate_tbl.py` (also provided here in the `scripts` directory).
+To do so, you can use the `haddock3-restraints validate_tbl` utility.
 To use it, type:
 
 <a class="prompt prompt-cmd">
-python ./scripts/validate_tbl.py \-\-silent ambig-paratope-surface.tbl
+haddock3-restraints validate_tbl \-\-silent ambig-paratope-surface.tbl
 </a>
 
 No output means that your TBL file is valid.
@@ -716,7 +717,7 @@ In this scenario the NMR epitope combined with the surface neighbors are used as
 The creation of the AIR tbl file for scenario 2a is similar to scenario 1, but instead using the `antigen-NMR-epitope.pass` file for the antigen:
 
 <a class="prompt prompt-cmd">
-./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.pass > ambig-paratope-NMR-epitope-pass.tbl
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.pass > ambig-paratope-NMR-epitope-pass.tbl
 </a>
 
 <hr>
@@ -728,7 +729,7 @@ In this scenario the NMR epitope is defined as active (meaning ambiguous distanc
 The creation of the AIR tbl file for scenario 2b is similar to scenario 1, but instead using the `antigen-NMR-epitope.act-pass` file for the antigen:
 
 <a class="prompt prompt-cmd">
-./scripts/active-passive-to-ambig.py ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
 </a>
 
 <hr>
@@ -737,11 +738,10 @@ The creation of the AIR tbl file for scenario 2b is similar to scenario 1, but i
 
 As an antibody consists of two separate chains, it is important to define a few distance restraints
 to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
-done using a script from [haddock-tools][haddock-tools] repository, which is also provided for convenience
-in the `scripts` directly of the archive you downloaded for this tutorial.
+done using another `haddock3-restraints` subcommand.
 
 <a class="prompt prompt-cmd">
-python ./scripts/restrain_bodies.py  4G6K_clean.pdb >antibody-unambig.tbl
+haddock3-restraints restrain_bodies 4G6K_clean.pdb > antibody-unambig.tbl
 </a>
 
 The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:
@@ -969,12 +969,6 @@ ncores = 96
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
-# Post-processing to generate statistics and plots
-postprocess = true
-
-# Cleaning to compress files and save space
-clean = true
-
 # molecules to be docked
 molecules =  [
     "pdbs/4G6K_clean.pdb",
@@ -997,7 +991,7 @@ randremoval = false
 sampling = 10000
 
 [clustfcc]
-threshold = 10
+min_population = 10
 
 [seletopclusts]
 ## select all the clusters
@@ -1077,12 +1071,6 @@ ncores = 96
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
-# Post-processing to generate statistics and plots
-postprocess = true
-
-# Cleaning to compress files and save space
-clean = true
-
 # molecules to be docked
 molecules =  [
     "pdbs/4G6K_clean.pdb",
@@ -1103,7 +1091,7 @@ unambig_fname = "restraints/antibody-unambig.tbl"
 randremoval = false
 
 [clustfcc]
-threshold = 10
+min_population = 10
 
 [seletopclusts]
 ## select all the clusters
@@ -1177,12 +1165,6 @@ ncores = 96
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
 
-# Post-processing to generate statistics and plots
-postprocess = true
-
-# Cleaning to compress files and save space
-clean = true
-
 # molecules to be docked
 molecules =  [
     "pdbs/4G6K_clean.pdb",
@@ -1201,7 +1183,7 @@ ambig_fname = "restraints/ambig-paratope-NMR-epitope-act.tbl"
 unambig_fname = "restraints/antibody-unambig.tbl"
 
 [clustfcc]
-threshold = 10
+min_population = 10
 
 [seletopclusts]
 ## select all the clusters
@@ -1771,7 +1753,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <br>
 
-<a class="prompt prompt-question">Is the best model always rank as first?</a>
+<a class="prompt prompt-question">Is the best model always ranked as first?</a>
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
@@ -1989,7 +1971,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 </details>
 <br>
 
-<a class="prompt prompt-question">Is the best model always rank as first?</a>
+<a class="prompt prompt-question">Is the best model always ranked as first?</a>
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
@@ -2004,7 +1986,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 #### Analysis scenario 2a: visualizing the scores and their components
 
-By setting `postprocess=true` in the config files, interactive plots have been automatically generated in the _analysis_ directory of the run.
+Using the default settings (option `postprocess=true`) in the config files, interactive plots have been automatically generated in the _analysis_ directory of the run.
 These are useful to visualise the scores and their components versus ranks and model quality.
 
 <a class="prompt prompt-info">
@@ -2203,7 +2185,7 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <br>
 
-<a class="prompt prompt-question">Is the best model always rank as first?</a>
+<a class="prompt prompt-question">Is the best model always ranked as first?</a>
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
