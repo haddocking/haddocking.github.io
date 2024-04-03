@@ -17,7 +17,7 @@ This computer practical consists of the following sections:
 
 This practical will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, you will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](https://www.ebi.ac.uk/pdbe/entry/pdb/1f3g)) and NMR spectroscopy (HPr) (PDB ID [1HDN](https://www.ebi.ac.uk/pdbe/entry/pdb/1hdn)). The structure of the native complex has also been determined with NMR (PDB ID [1GGR](https://www.ebi.ac.uk/pdbe/entry/pdb/1ggr)). These NMR experiments have also provided us with an array of data on the interaction itself. For this tutorial, you will only make use of interface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract).
 
-For this tutorial you will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
+For this tutorial you will make use of the [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4).
 
 A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
 
@@ -115,6 +115,9 @@ Try to locate the histidines in this structure.
 
 <a class="prompt prompt-question">Q1: Is there any phosphate group present in the E2A structure? (PDB code: 1F3G). If so, state the residue name and the residue number.</a>
 
+*Hint* : you can select phosphate atoms with the following PyMOL command: 
+<a class="prompt prompt-pymol">select elem P</a>
+
 Note that you can zoom on the histidines by typing in PyMOL:
 
 <a class="prompt prompt-pymol">zoom resn HIS</a>
@@ -146,7 +149,7 @@ color red, e2a_active<br>
 
 Inspect the surface.
 
-<a class="prompt prompt-question">Q2: Do the E2A residues identified by NMR as putative binding form a well-defined patch on the surface? Do they form a contiguous patch? Motivate your answers?</a>
+<a class="prompt prompt-question">Q2: Do the E2A residues identified by NMR as putative binding form a well-defined patch on the surface? Do they form a contiguous patch? Motivate your answers.</a>
 
 As final step save the molecule as a new PDB file which we will call: *e2a_1F3G.pdb*<br>
 For this in the PyMOL menu on top select:
@@ -245,7 +248,7 @@ In order to start the submission, either click on "*here*" next to the submissio
 
 #### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server.
+For this we will make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server.
 
 In this stage of the submission process we can upload the structures we previously prepared with PyMOL.
 
@@ -303,7 +306,7 @@ Active residues (directly involved in the interaction) -> 15,16,17,20,48,49,51,5
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload interface](https://wenmr.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
+This interface allows us to modify many parameters that control the behaviour of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We stronly recommend to download this file as it will allow you to repeat the run after uploading into the [file upload interface](https://bianca.science.uu.nl/haddock2.4/submit_file) of the HADDOCK webserver. It can serve as input reference for the run. This file can also be edited to change a few parameters for example. 
 
 
 * **Step 8:** Click on the "Submit" button at the bottom left of the interface.
@@ -398,6 +401,7 @@ Q11: Examine the various clusters (the top model from the top 10 clusters). How 
 Do attach a picture that supports your answer.
 </a>
 
+
 **Note:** You can turn on and off a cluster by clicking on its name in the right panel of the PyMOL window.
 
 **Note:** If you aligned correctly the clusters with the commands described above, all clusters shoud be well aligned on E2A, which makes it easier to see differences in the orientation of HPR. Use for example the alpha helix of HpR as a reference to compare orientations.
@@ -441,7 +445,7 @@ zoom vis<br>
 </a>
 
 <a class="prompt prompt-question">Q13: First of all, has the phosphate group been properly generated?</a>
-<a class="prompt prompt-question">Q14: If so, what is the distance (in angstroms) of the N-P bond? How does it compare with C-C and O-P bonds? TIP: You may calculate them by using the atomic coordinates from the PDB file (open it in a text editor and locate the phosphate atom) or using the “Measurement” in PyMOL.</a>
+<a class="prompt prompt-question">Q14: If so, what is the distance (in angstroms) of the N-P bond? How does it compare with C-C and O-P bonds? TIP: You may calculate them by using the atomic coordinates from the PDB file (open it in a text editor and locate the phosphate atom) or using the “Wizard->Measurement” command in PyMOL (click on the two atoms upon activating the “Measurement“ wizard).</a>
 
 
 Now inspect each cluster in turn and check if histidine 90 of E2A is in close proximity to another histidine of HPR.
@@ -509,6 +513,13 @@ In CAPRI, the l-RMSD value defines the quality of a model:
 Q19: What is based on this CAPRI criterion the quality of the best model?
 </a>
 
+**Note:** On some machines the pymol rms_cur command can fail due to a bug in the PyMOL software. In this case you can use the following command instead:
+
+<a class="prompt prompt-pymol">
+align cluster1_1, 1GGR, cycles=0<br>
+</a>
+
+This will align the two structures based on the all-atom RMSD, different from the ligand-RMSD (l-RMSD) that you can calculate with rms_cur and the above commands.
 
 <hr>
 ## Congratulations!
@@ -526,11 +537,11 @@ Q1: Is there any phosphate group present in the E2A structure? (PDB code: 1F3G).
 </a>
 
 <a class="prompt prompt-question">
-Q2: Do the E2A residues identified by NMR as putative binding form a well-defined patch on the surface? Do they form a contiguous patch? Motivate your answers?
+Q2: Do the E2A residues identified by NMR as putative binding form a well-defined patch on the surface? Do they form a contiguous patch? Motivate your answers.
 </a>
 
 <a class="prompt prompt-question">
-Q3: Do the HpR residues identified by NMR as putative binding form a well-defined patch on the surface? Do they form a contiguous patch? Motivate your answers?
+Q3: Do the HpR residues identified by NMR as putative binding form a well-defined patch on the surface? Do they form a contiguous patch? Motivate your answers.
 </a>
 
 <a class="prompt prompt-question">
@@ -575,7 +586,7 @@ Q13: First of all, has the phosphate group been properly generated?
 </a>
 
 <a class="prompt prompt-question">
-Q14: If so, what is the distance (in angstroms) of the N-P bond? How does it compare with C-C and O-P bonds? TIP: You may calculate them by using the atomic coordinates from the PDB file (open it in a text editor and locate the phosphate atom) or using the “Measurement” in PyMOL.
+Q14: If so, what is the distance (in angstroms) of the N-P bond? How does it compare with C-C and O-P bonds? TIP: You may calculate them by using the atomic coordinates from the PDB file (open it in a text editor and locate the phosphate atom) or using the “Wizard->Measurement” command in PyMOL (click on the two atoms upon activating the “Measurement“ wizard).
 </a>
 
 <a class="prompt prompt-question">
