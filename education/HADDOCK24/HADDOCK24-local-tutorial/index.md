@@ -483,7 +483,7 @@ hide lines<br>
 remove resn HOH<br>
 </a>
 
-This structure consists of two chains, L and H, with overlapping residue numbering. Turn on the sequence in PyMol (under the Display menu) and find out what is the last residue number of the first chain L. We need this information to know by how much we should shift the numbering of the second chain.
+This structure consists of two chains, L and H, with overlapping residue numbering. Turn on the sequence in PyMol (under the Display menu) and find out what is the last residue number of the first chain L. We need this information to know by how much we should shift the numbering of the second chain H.
 
 Save the molecule as a PDB file:
 
@@ -674,7 +674,7 @@ The effective distance is calculated as the SUM over all pairwise atom-atom dist
 If you modify this file, it is possible to quickly check if the format is valid. To do so, you can find in the `haddock-tools` repository a folder named `haddock_tbl_validation` that contains a script called `validate_tbl.py`. To use it, simply run:
 
 <a class="prompt prompt-cmd">
-  python ~/software/haddock-tools/haddock_tbl_validation/validate_tbl.py --silent e2a-hpr-ambig.tbl
+  python ~/software/haddock-tools/haddock_tbl_validation/validate_tbl.py \-\-silent e2a-hpr-ambig.tbl
 </a>
 
 No output means that your TBL file is valid. You can also find TBL file examples for different types of restraints in the `haddock-tools/haddock_tbl_validation/` directory.
@@ -733,14 +733,14 @@ and the upper limit as: distance plus upper-bound correction.
  with the following command (one line) in a terminal window:
 
 <a class="prompt prompt-linux">
-  cat restraints.txt | awk \'{if (NF == 8) {print \"assi (segid \",$1,\" and resid \",$2,\" and name \",$3,\") (segid \",$4,\" and resid \",$5,\" and name \",$6,\") \",$8,$8,$7}}\' > pre5-pup2-Xlinks.tbl
+  cat restraints.txt | awk \'{if (NF == 8) {print \"assign (segid \",$1,\" and resid \",$2,\" and name \",$3,\") (segid \",$4,\" and resid \",$5,\" and name \",$6,\") \",$8,$8,$7}}\' > pre5-pup2-Xlinks.tbl
 </a>
 
 <br>
 <hr>
 ### Defining AIRs from interface mapping on one side, full surface on the other
 
-To illustrate such a case, we will define restraints between the CDR loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (1G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](https://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
+To illustrate such a case, we will define restraints between the CDR loops residue of an antibody and the entire surface of its antigen. The assumption is that we don't know yet the binding epitope on the antigen and want to sample the entire surface. We will use the same antibogy used above (4G6K) in the section about [Dealing with multi-chain proteins](#dealing-with-multi-chain-proteins). The CRD loops can be identified manually, or using for example the [Paratome webserver](https://ofranservices.biu.ac.il/site/services/paratome/index.html){:target="_blank"} (Kunik et al. doi: 10.1093/nar/gks480). Submitted the 4G6K PBD file to Paratome results in the following prediction:
 <pre style="background-color:#DAE4E7">
 >paratome_8633_pdbChain_H (heavy chain)
 QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQV
@@ -1265,8 +1265,8 @@ One section of `run.cns` which we have not modified in this example specifies th
 
 HADDOCK supports two different clustering methods:
 
-* One based on the fraction of common contacts between the molecules (FCC clustering) (for details see the [online manual](/software/haddock2.4/analysis/#clusterrmsd){:target="_blank"})
-* One based on the ligand interface RMSD (here the structures are first fitted on the interface of the first molecule and then the RMSD is calculated on the interface of the remaining molecules (for details see the [online manual](/software/haddock2.4/analysis/#clusterfcc){:target="_blank"})
+* One is based on the fraction of common contacts between the molecules (FCC clustering) (for details see the [online manual](/software/haddock2.4/analysis/#clusterrmsd){:target="_blank"})
+* One is based on the ligand interface RMSD (here the structures are first fitted on the interface of the first molecule and then the RMSD is calculated on the interface of the remaining molecules (for details see the [online manual](/software/haddock2.4/analysis/#clusterfcc){:target="_blank"})
 
 The default is `FCC` (also recommended for multimeric complexes). For small ligand and peptide docking we however recommend using the RMSD clustering option with reduced cutoffs of 2.0Å and 5.0Å, respectively.
 
@@ -1307,7 +1307,6 @@ We will now perform a cluster-based analysis and ranking, calculating the averag
 This generates a variety of data files, the most interesting one being `clusters_haddock-sorted.stats_best4` which lists the various terms following the clusters and their corresponding average score and other energy terms based on their average HADDOCK score. For details refer to the [online manual](/software/haddock2.4/analysis/#anaclust){:target="_blank"}.
 
 <pre style="background-color:#DAE4E7">
-#Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
 #Cluster haddock-score sd rmsd sd rmsd-Emin sd Nstruc Einter sd Enb sd Evdw+0.1Eelec sd Evdw sd Eelec sd Eair sd Ecdih sd Ecoup sd Esani sd Evean
 sd Edani sd #AIRviol sd #dihedviol sd #Coupviol sd #Saniviol sd #Veanviol sd #Daniviol sd BSA sd #dH sd #Edesolv sd
 file.nam_clust14 -115.743 7.339 1.433 0.946 1.433 0.946 4 -110.79 70.50 -567.22 23.43 -114.59 2.56 -64.30 4.37 -502.92 26.99 456.43 49.82 0.00 0.0
@@ -1340,7 +1339,7 @@ Looking at the plot of HADDOCK scores vs RMSD from the best model we generated a
 
 <br><br>
 <a class="prompt prompt-info">
-Try now to locate the column corresponding to the AIR energy (_Eair_) and the number of violations of the AIR restraints (_#AURviol_)
+Try now to locate the column corresponding to the AIR energy (_Eair_) and the number of violations of the AIR restraints (_#AIRviol_)
 </a>
 
 <a class="prompt prompt-question">
@@ -1351,7 +1350,7 @@ Between 8 and 9 restraints are violated on average in this example, out of the 2
 Remember that our definition of active residues in the antibody was based on predicted CDR loops and might not be perfect.
 
 
-In principle you could analyse which restraints are most often violated
+In principle you could analyse which restraints are most often violated.
 But in this particular example we only performed the clustering since the following settings were defined in `run.cns`:
 
 <pre style="background-color:#DAE4E7">
@@ -1362,7 +1361,7 @@ But in this particular example we only performed the clustering since the follow
 
 To perform the full analysis, you would have to empty the `analysis` directory, change the setting in `run.cns` to `full` and restart HADDOCK.
 Note that a full analysis can take quite some time, up to a few hours depending on the number of models generated and the size of your complex.
-For details about violations analysis, please refer to the [online manual](software/haddock2.4/analysis/#noes){:target="_blank"}
+For details about violations analysis, please refer to the [online manual](software/haddock2.4/analysis/#violations-analysis){:target="_blank"}.
 
 
 <br>

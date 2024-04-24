@@ -19,7 +19,7 @@ This page provide you links to software and software manuals of the computationa
   
   * [**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
   
-  * [**HADDOCK2.4 software**](/software/haddock2.4/) - Official 2.4 production version
+  * [**HADDOCK2.4/5 software**](/software/haddock2.4/) - Official 2.4/5 production version
 
   * [**HADDOCK2.4 web server**](https://wenmr.science.uu.nl/haddock2.4/) - production version
   

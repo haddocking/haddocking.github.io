@@ -6,7 +6,24 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
-### Latest changes - version January 2023
+### Latest changes
+- Implemented missing glycan 1-6 linkage
+- Shortened the distance cutoff for automatic detection of glycan linkages
+- Added missing improper parameter for D-amino acid
+- Added missing param for HYP (all atoms)
+- Added missing improper for D-Ala
+- Added missing impropers for D-amino acids and cis-peptide bond
+
+
+### Changes - version August 2023
+- Implemented missing glycan params into solvated docking generate-water.inp
+- Added support for GLC-GLC alpha 1-1 linkage
+- Added missing improper for NME methyl group
+- Corrected read_noes.cns to take into account the lastit parameter for distance restraints
+- Corrected linkage files (noter and noNter) to have an uncharged PRO when at the N-ter
+
+
+### Changes - version January 2023
 - Added missing SIA-NGA 2-6 glycosilic linkages
 - Added support for SIA-SIA 2-8 linkages
 - Implemented automatic DNA/RNA restraints definition
