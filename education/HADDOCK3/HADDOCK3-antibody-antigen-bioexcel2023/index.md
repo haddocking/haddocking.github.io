@@ -612,7 +612,7 @@ The difference between `active` and `passive` residues in HADDOCK is:
 *__passive__* residues should be at the interface, if they are not no energetic penalty is paid.
 
 In general it is better to be too generous rather than too strict in the definition of passive residues. An important aspect is to filter both the active (the residues identified from
-your mapping experiment) and passive residues by their solvent accessibility. This is done automatically when using the `haddock3-restraints passive_from_active` command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discared.
+your mapping experiment) and passive residues by their solvent accessibility. This is done automatically when using the `haddock3-restraints passive_from_active` command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discarded.
 This is however not a hard limit and you might consider including even more buried residues if some
 important chemical group seems solvent accessible from a visual inspection.
 
