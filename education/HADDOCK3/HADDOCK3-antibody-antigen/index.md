@@ -520,12 +520,10 @@ If you want to generate the same file, first create an empty line and then use t
   awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.pass<br>
 </a>
 
-
-**_Note_**: If the command line version of freesasa is not available, provided the freesasa python libraries have been installed
-(can simply be done with: `pip install freesasa`), the same can be done with the _calc-accessibility.py_ script provided in the `scripts` directory:
+The same can be achieved using the `haddock3-restraints` command line tool:
 
 <a class="prompt prompt-cmd">
-   python ./scripts/calc-accessibility.py \-\-cutoff 0.15 pdbs/4I1B_clean.pdb
+   haddock3-restraints calc_accessibility --cutoff 0.15 pdbs/4I1B_clean.pdb
 </a>
 
 The simple output directly reports the list of residues:
@@ -632,7 +630,7 @@ binding site in the final models, while the residues defined as `active` (typica
 site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are
 using a local version, we need to define those manually.
 
-This can easily be done using a command line interface taken from our [haddock-tools][haddock-tools] repository:
+This can easily be done using the following HADDOCK3 command line interface:
 
 <a class="prompt prompt-cmd">
 haddock3-restraints passive_from_active 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
@@ -991,7 +989,8 @@ randremoval = false
 sampling = 10000
 
 [clustfcc]
-min_population = 10
+min_population = 4
+top_models = 10
 
 [seletopclusts]
 ## select all the clusters
@@ -1091,7 +1090,8 @@ unambig_fname = "restraints/antibody-unambig.tbl"
 randremoval = false
 
 [clustfcc]
-min_population = 10
+min_population = 4
+top_models = 10
 
 [seletopclusts]
 ## select all the clusters
@@ -1183,7 +1183,8 @@ ambig_fname = "restraints/ambig-paratope-NMR-epitope-act.tbl"
 unambig_fname = "restraints/antibody-unambig.tbl"
 
 [clustfcc]
-min_population = 10
+min_population = 4
+top_models = 10
 
 [seletopclusts]
 ## select all the clusters
