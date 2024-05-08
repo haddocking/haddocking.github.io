@@ -29,6 +29,9 @@ This page provide you links to software and software manuals of the computationa
 ### [HADDOCKING GitHub repository](https://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
 
+  * [**Arctic-3D**](https://github.com/haddocking/arctic3d):
+  ARCTIC-3D is a software for data-mining and clustering of protein interface information. It allows you to retrieve all the existing interface information for your desired protein from the [PDBE graph database](https://www.ebi.ac.uk/pdbe/pdbe-kb/), grouping similar interfaces in interacting surfaces.
+
   * [**Binding_affinity: PRODIGY**](https://github.com/haddocking/binding_affinity):
   A collection of Python scripts to predict the binding affinity in protein-protein complexes.
 
@@ -75,6 +78,9 @@ This page provide you links to software and software manuals of the computationa
   
   * [**DeepRank-GNN**](https://github.com/DeepRank/Deeprank-GNN)
   DeepRank-GNN is a general, configurable deep learning framework for data mining protein-protein interactions (PPIs) using graph convolutional neural networks (CNNs).
+  
+  * [**DeepRank-GNN-esm**](https://github.com/haddocking/DeepRank-GNN-esm)
+  DeepRank-GNN-esm is a general, configurable deep learning framework for data mining protein-protein interactions (PPIs) using graph convolutional neural networks (CNNs) and including language model features.
 
 <HR>
 ### Benchmarks and datasets
@@ -96,3 +102,5 @@ This page provide you links to software and software manuals of the computationa
 * [Protein-cyclic peptide docking benchmark](https://github.com/haddocking/cyclic-peptides) and associated models dataset [https://data.sbgrid.org/dataset/912](https://data.sbgrid.org/dataset/912)
 
 * All-atom and Coarse-grained HADDOCK docking models for Protein-DNA complexes: [https://zenodo.org/record/3941636](https://zenodo.org/record/3941636)
+
+* [Dataset of modelled protein-cyclic peptide complexes](https://data.sbgrid.org/dataset/912/) obtained with HADDOCK corresponding to the optimal protocol described in  [Charitou et al. JCTC 2022](https://doi.org/10.1021/acs.jctc.2c00075)
