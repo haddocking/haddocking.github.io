@@ -6,6 +6,8 @@ image:
 ---
 ## 2024
 
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes. _Nature Prot._, In Press (2024).
+
 * B. Vallat, B.M. Webb, J.D. Westbrook, T. Goddard, C.A. Hanke, A. Graziadei, E. Peisach, A. Zalevsky, J. Sagendorf, H. Tangmunarunkit, S. Voinea, M. Sekharan, J. Yu, **A.M.J.J. Bonvin**, Fr, DiMaio, G. Hummer, J. Meiler, E. Tajkhorshid, T. Ferrin, C.L. Lawson, A. Leitner, J. Rappsilber, C.A.M. Seidel, C.M. Jeffries, S.K. Burley, J. Hoch, G.i Kurisu, K.e Morris, A. Patwardhan, S. Velankar, T. Schwede, J. Trewhella, C. Kesselman, H.M. Berman, A. Sali. [IHMCIF: An extension of PDBx/mmCIF data standard for integrative structure determination methods](https://doi.org/10.1016/j.jmb.2024.168546). _J. Mol. Biol._, Advanced Online Publication (2024).
 
 * K.W. Collins, M.M. Copeland,, G. Brysbaert, S.J. Wodak, **A.M.J.J. Bonvin**, P,J, Kundrotas, I.A. Vakser and M.F. Lensink. [CAPRI-Q: The CAPRI resource evaluating the quality of predicted structures of protein complexes](https://doi.org/10.1016/j.jmb.2024.168540). _J. Mol. Biol._, Advanced Online Publication (2024).
