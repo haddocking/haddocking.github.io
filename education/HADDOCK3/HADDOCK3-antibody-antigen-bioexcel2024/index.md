@@ -177,14 +177,14 @@ to facilitate their use in HADDOCK and for allowing comparison with the known re
 structure of the complex. 
 
 If you are running this tutorial on your own resources _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/fkdLtZ28n0zIrCP){:target="_blank"}
+[zip archive](https://surfdrive.surf.nl/files/index.php/s/ts2kMjBFxjaNeId){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 If running as part of the EU-ASEAN HPC school see the instructions below.
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/fkdLtZ28n0zIrCP/download -O HADDOCK3-antibody-antigen.zip<br>
+wget https://surfdrive.surf.nl/files/index.php/s/ts2kMjBFxjaNeId/download -O HADDOCK3-antibody-antigen.zip<br>
 unzip HADDOCK3-antibody-antigen-BioExcel.zip
 </a>
 
@@ -1496,7 +1496,7 @@ Are the residues of the paratope and NMR epitope at the interface?
  </summary>
  <p> Top-ranked model of the top cluster superimposed onto the reference crystal structure (in yellow)</p>
  <figure style="text-align: center">
-   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/results-best-model.png">
+   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/results-best-model.png">
  </figure>
  <br>
 </details>
@@ -1570,7 +1570,7 @@ How do the results change? Are gevokizumab or canakinumab PDB files being cluste
 
 The release of [AlphaFold2 in late 2020](https://www.nature.com/articles/s41586-021-03819-2) has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with [Alphafold2-multimer](https://github.com/sokrypton/ColabFold){:target="_blank"} and other prediction methods (most notably [ABodyBuilder2](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/){:target="_blank"}, from the ImmuneBuilder suite) performing nicely on the variable regions.
 
-For a short introduction to AI and AlphaFold refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
+For a short introduction to AI and AlphaFold2 refer to this other tutorial [introduction](/education/molmod_online/alphafold/#introduction){:target="_blank"}.
 
 For antibody modelings, CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility. 
 Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.
@@ -1979,7 +1979,7 @@ Using the information in the _traceback_ directory, try to figure out which of t
 ## BONUS 4: Antibody-antigen complex structure prediction from sequence using AlphaFold2
 
 
-With the advent of Artificial Intelligence (AI) and AlphaFold we can also try to predict directly the full antibody-antigen complex using AlphaFold.
+With the advent of Artificial Intelligence (AI) and AlphaFold2 we can also try to predict directly the full antibody-antigen complex using AlphaFold2.
 For this we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov 
 [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"}, making use of the Google Colab CLOUD resources.
 
@@ -2041,7 +2041,7 @@ In the top section of the Colab, click: _Runtime > Run All_
 
 (It may give a warning that this is not authored by Google, because it is pulling code from GitHub - you can ignore it). 
 
-This will automatically install, configure and run AlphaFold for you - leave this window open. 
+This will automatically install, configure and run AlphaFold2 for you - leave this window open. 
 After the prediction complete you will be asked to download a zip-archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).
 
 <br>
@@ -2056,6 +2056,7 @@ _Tip_: Try to find information about the prediction confidence at [https://alpha
 
 
 Pre-calculated AlphFold2 predictions are provided [here](abagtest_2d03e.result.zip){:target="\_blank"}. This archive contains the five predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).
+
 
 <br>
 
@@ -2123,7 +2124,7 @@ Our antibody-antigen complex consists of three interfaces:
   <br>
   </summary>
   <figure align="center">
-   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/abagtest_2d03e_pae.png">
+   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/abagtest_2d03e_pae.png">
   </figure>
 </details>
 <br>
@@ -2167,7 +2168,7 @@ Examine the various models. How does the orientation of the antigen differ betwe
     <i>See tips on how to visualize the prediction confidence in PyMOL</i>
   </summary>
 
-  When looking at the structures generated by AlphaFold in PyMOL, the pLDDT is encoded as the B-factor. <br>
+  When looking at the structures generated by AlphaFold2 in PyMOL, the pLDDT is encoded as the B-factor. <br>
   To color the model according to the pLDDT type in PyMOL:
   <br>
   <a class="prompt prompt-pymol">
@@ -2195,11 +2196,11 @@ Does any model have the NMR-identified epitope at the interface with the antibod
 <details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
-    <i>See the AlphaFold models with the NMR-mapped epitope </i>
+    <i>See the AlphaFold2 models with the NMR-mapped epitope </i>
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/ab-ag-af2.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af2.png">
   </figure>
   <br>
 </details>
@@ -2221,25 +2222,57 @@ alignto sele
 <details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
-    <i>See the AlphaFold models superimposed onto the crystal structure of the complex (4G6M)</i>
+    <i>See the AlphaFold2 models superimposed onto the crystal structure of the complex (4G6M)</i>
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/ab-ag-af2-4G6M.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af2-4G6M.png">
   </figure>
   <br>
 </details>
 <br>
 
 
-<hr>
-<hr>
+More recently, the third version of AlphaFold (AlphaFold3) has been [published](https://www.nature.com/articles/s41586-024-07487-w){:target="\_blank"}. While the code is not yet released, a dedicated online tool [AlphaFoldServer](https://golgi.sandbox.google.com/){:target="\_blank"} is made available for the academic community to allow us to make upto 10 predictions per day with this new version.
+Pre-calculated AlphFold3 predictions are provided [here](af3server_abag_15052024.zip){:target="\_blank"}.
 
+<a class="prompt prompt-question">
+Try to reproduce the previous steps and examine the quality of the various generated models. Do AlphaFold3 provide better predictions?
+</a>
+
+<details style="background-color:#DAE4E7">
+
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold3 models with mapped epitope residues in orange</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af3-epitope.png">
+  </figure>
+  <br>
+</details>
+<br>
+
+<details style="background-color:#DAE4E7">
+
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold3 models onto the crystal structure of the complex (4G6M) in red</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af3-4G6M.png">
+  </figure>
+  <br>
+</details>
+<br>
+
+<hr>
+<hr>
 
 
 ## BONUS 5: Introduction to the haddock3 webapp
 
-In addition to the command line interface of haddock3, we are currently developing a new dedicated web application enabling to use haddock3 under a graphical user interface, directly linked to the software functionalities and computed results in an interactive manner.
+In addition to the command line interface of haddock3, we are currently developing a new dedicated web application enabling to use haddock3 under a graphical user interface, directly linking the software functionalities and computed results in an interactive manner.
 While not yet deployed as a web service, the application is already available for local installations.
 
 
@@ -2273,6 +2306,7 @@ Once the build is terminated (after several minutes), the webapp should be runni
 To access it, go to [http://localhost:8080](http://localhost:8080)
 </details>
 
+
 ### Creating an account
 
 For the sake of this tutorial, we have already created accounts:
@@ -2288,6 +2322,9 @@ To create a new account, add your email adresse and choose a password.
 
 <br>
 Right after its creation, you will be able to login, but before you can definitely use all the functionalities of the webapp, your account must be validated by an adminitrator that will grant you priviledges.
+
+**Note** that with the current implementation, the first user to register comes the administrator.
+
 </details>
 
 
@@ -2295,6 +2332,7 @@ Right after its creation, you will be able to login, but before you can definite
 
 Once logged in, click on the `build` menu to start the creation of a custom workflow.
 You will land in the workflow-builder page, where you can interactively build your haddock3 scenario by combining the available modules.
+This page is sub-divided in three areas, that will be described below.
 
 On the left are presented the list of modules.
 To add a module to the workflow, just click on it, and it will be automatically added at the bottom of the configuration file.
@@ -2304,12 +2342,13 @@ In the central panel is presented the current set of modules defining your workf
 You can switch between interactive (visual) and textual (text) form of it.
 By clicking on a specific module, you will be able to configure its parameters on the right panel.
 
-Intially, defaut parameters are set for each module.
+Initially, default parameters are set for each module.
 Parameters are sub-categorized based on their properties.
-Unfold a propery by clicking on it, and discover the set of related parameters.
+Unfold a property by clicking on it, and discover the set of related parameters.
 **Note** that you should always click the `save` button after modifying a parameter value for it to be taken into consideration.
 
 Finally, once you configured you workflow, click on `submit` to launch the corresponding haddock3 run.
+
 
 <details style="background-color:#DAE4E7">
   <summary>
@@ -2385,10 +2424,83 @@ On the right side of the table, actions can be performed.
 Current implementation allows to rename a run or to delete it.
 
 To access the content of a run, click on its name and you will be directed to the haddock3 webapp result page.
-You will land on the analysis page summerizing performances of the complexes obtained at the last stage, similar to what was perviously obtained by opening the `report.html` file (see above) that contains a variety of plots plotting the HADDOCK score and its components against various CAPRI metrics.
+You will land on the analysis page summarizing performances of the complexes obtained at the last stage, similar to what was previously obtained by opening the `report.html` file (see above) that contains a variety of plots displaying the HADDOCK score and its components against various CAPRI metrics.
 In this case, because a reference was provided during the `caprieval` module, performances are evaluated based on this structure.
 
 In addition, you can click on the `browse` button, that will let you access all the files of the run.
+
+
+### Running a scoring scenario
+
+In this scenario, we want to score the various models obtained at the previous stages (ensemble docking and AlphaFold predictions), and observe if the HADDOCK scoring function is able to detect the quality of the models.
+
+In this scenario, we want to:
+- Start by generating the topologies for the various models.
+- Cluster the models using Fraction of Common Contacts: Here, modify the parameter `min_population` to 1 so all complexes will be forwarded to the next steps even the ones that do not cluster with any other will define singlotons AND generate a matrix of the cluster to have a visual representation (`plot_matrix`).
+- Add the Energy Minimisation module to score all complexes.
+- End the scenario with a comparisons of the models with the reference complex `4G6M_matched.pdb` using CAPRI criterions.
+
+For this, two ensembles must be scored and one structure will be used as reference. You can find them in the `pdbs/` directory:
+- `07_emref_and_top5af2_ensemble.pdb`: An ensemble of models obtained from the ensemble run, combined with top5 AlphaFold2 predictions.
+- `af3server_15052024_top5ens.pdb`: An ensemble of top5 AlphaFold3 predictions.
+- `4G6M_matched.pdb`: The reference structure for quality assessments.
+
+
+<a class="prompt prompt-info">
+Generate a simple scoring configuration file scenario using the workflow builder.
+</a>
+
+
+{% highlight toml %}
+# ====================================================================
+# Antibody-antigen docking example with restraints from the antibody
+# paratope to the NMR-identified epitope on the antigen 
+# ====================================================================
+run_dir = "scoring-haddock3-alphafold2and3-ensemble"
+
+molecules =  [
+    "07_emref_and_top5af2_ensemble.pdb",
+    "af3server_15052024_top5ens.pdb",
+    ]
+
+# ====================================================================
+# Parameters for each stage are defined below
+# ====================================================================
+
+# Start by generating the topologies
+[topoaa]
+
+# Cluster structures to observe similarities
+[clustfcc]
+# Reducing min_population to define a cluster to 1 so even complexes
+#  that do not cluster with any other will define singlotons
+min_population = 1
+# Generate a matrix of the clusters
+plot_matrix = true
+
+# Run the Energy Minimisation Scoring module
+[emscoring]
+
+
+# Evaluate the models with the CAPRI criterions
+[caprieval]
+reference_fname = "4G6M_matched.pdb"
+
+# ====================================================================
+
+{% endhighlight %}
+
+
+To simplify the tutorial, scoring scenario configuration files are provided in the `workflow/` directory, precomputated results in the `runs/` directory and finally archives for the haddock3-webapp upload section in `workflow/webapp/scoring-*.cfg`.
+
+<a class="prompt prompt-question">
+How are scoring the AlphaFold predictions ?
+</a>
+
+<a class="prompt prompt-question">
+Is the HADDOCK scoring function able to detect best models ?
+</a>
+
 
 <hr>
 <hr>
