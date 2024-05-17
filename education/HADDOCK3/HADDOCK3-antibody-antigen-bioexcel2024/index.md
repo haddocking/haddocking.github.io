@@ -22,12 +22,12 @@ on the antibody (i.e., the most basic knowledge) and epitope information identif
 
 An antibody is a large protein that generally works by attaching itself to an antigen,
 which is a unique site of the pathogen. The binding harnesses the immune system to directly
-attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity,
+attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity (i.e. the ability to provoke an immune response),
 which is achieved by their unique structure. **The fragment crystallizable region (Fc region)**
 activates the immune response and is species-specific, i.e. the human Fc region should not
-induce an immune response in humans.  **The fragment antigen-binding region (Fab region**)
+induce an immune response in humans. **The fragment antigen-binding region (Fab region**)
 needs to be highly variable to be able to bind to antigens of various nature (high specificity).
-In this tutorial we will concentrate on the terminal **variable domain (Fv)** of the Fab region.
+In this tutorial, we will concentrate on the terminal **variable domain (Fv)** of the Fab region.
 
 <figure style="text-align: center;">
   <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/antibody_described.png">
@@ -71,14 +71,14 @@ inherited from CNS, to incorporate experimental data as restraints and use these
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
 ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
-A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the
+A central aspect of HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the
 translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance
-restraints that are incorporated in the energy function used in the calculations. AIRs are defined through
+restraints that are incorporated into the energy function used in the calculations. AIRs are defined through
 a list of residues that fall under two categories: active and passive. Generally, active residues are those
 of central importance for the interaction, such as residues whose knockouts abolish the interaction or those
 where the chemical shift perturbation is higher. Throughout the simulation, these active residues are
-restrained to be part of the interface, if possible, otherwise incurring in a scoring penalty. Passive residues
-are those that contribute for the interaction, but are deemed of less importance. If such a residue does
+restrained to be part of the interface, if possible, otherwise incurring a scoring penalty. Passive residues
+are those that contribute to the interaction but are deemed of less importance. If such a residue does
 not belong in the interface there is no scoring penalty. Hence, a careful selection of which residues are
 active and which are passive is critical for the success of the docking.
 
@@ -123,7 +123,7 @@ restraints can, however, be used in HADDOCK3, which also supports the
 </figure>
 
 To keep HADDOCK3 modules organized, we catalogued them into several
-categories. But, there are no constraints on piping modules of different
+categories. However, there are no constraints on piping modules of different
 categories.
 
 The main module categories are "topology", "sampling", "refinement",
@@ -146,17 +146,17 @@ all categories and modules. Below is a summary of the available modules:
     * `mdscoring`: *scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).*
 * **Analysis modules**
     * `alascan`: *Performs a systematic (or user-define) alanine scanning mutagenesis of interface residues.*
-    * `caprieval`: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided.*
+    * `caprieval`: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top-scoring model or reference structure if provided.*
     * `clustfcc`: *Clusters models based on the fraction of common contacts (FCC)*
     * `clustrmsd`: *Clusters models based on pairwise RMSD matrix calculated with the `rmsdmatrix` module.*
     * `contactmap`: *Generate contact matrices of both intra- and intermolecular contacts and a chordchart of intermolecular contacts.*
     * `rmsdmatrix`: *Calculates the pairwise RMSD matrix between all the models generated in the previous step.*
     * `ilrmsdmatrix`: *Calculates the pairwise interface-ligand-RMSD (il-RMSD) matrix between all the models generated in the previous step.*
     * `seletop`: *Selects the top N models from the previous step.*
-    * `seletopclusts`: *Selects top N clusters from the previous step.*
+    * `seletopclusts`: *Selects the top N clusters from the previous step.*
 
 The HADDOCK3 workflows are defined in simple configuration text files, similar to the TOML format but with extra features.
-Contrarily to HADDOCK2.X which follows a rigid (yet highly parameterisable)
+Contrary to HADDOCK2.X which follows a rigid (yet highly parameterisable)
 procedure, in HADDOCK3, you can create your own simulation workflows by
 combining a multitude of independent modules that perform specialized tasks.
 
@@ -171,9 +171,9 @@ system. We will also make use of [**PyMOL**][link-pymol] (freely available for
 most operating systems) in order to visualize the input and output data. We will
 provide you links to download the various required software and data.
 
-Further we are providing pre-processed PDB files for docking and analysis (but the
+Further, we are providing pre-processed PDB files for docking and analysis (but the
 preprocessing of those files will also be explained in this tutorial). The files have been processed
-to facilitate their use in HADDOCK and for allowing comparison with the known reference
+to facilitate their use in HADDOCK and to allow comparison with the known reference
 structure of the complex. 
 
 If you are running this tutorial on your own resources _download and unzip the following_
@@ -191,11 +191,11 @@ unzip HADDOCK3-antibody-antigen-BioExcel.zip
 
 Unziping the file will create the `HADDOCK3-antibody-antigen-BioExcelSS2024` directory which should contain the following directories and files:
 
-* `pdbs`: a directory ontains the pre-processed PDB files
-* `restraints`: a directory containing the interface information and the corresponding restraint files for HADDOCK
-* `runs`: a directory with pre-calculated results
+* `pdbs`: a directory containing the pre-processed PDB files
+* `restraints`: a directory containing the interface information and the corresponding restraint files for HADDOCK3
+* `runs`: a directory containing pre-calculated results
 * `scripts`: a directory containing various scripts used in this tutorial
-* `workflows`: a directory containing configuration file examples for haddock3
+* `workflows`: a directory containing configuration file examples for HADDOCK3
 
 
 <hr>
@@ -203,18 +203,18 @@ Unziping the file will create the `HADDOCK3-antibody-antigen-BioExcelSS2024` dir
 ### EU-ASEAN 2023 HPC school
 
 We will be making use of the Fugaku supercomputer for this tutorial. 
-Please connect to fugaku using your credentials.
+Please connect to Fugaku using your credentials.
 
 The software and data required for this tutorial have been pre-installed on Fugaku.
-In order to run the tutorial, first copy the required data into your home directory on fugagku:
+In order to run the tutorial, first copy the required data into your home directory on Fugagku:
 
 <a class="prompt prompt-cmd">
 unzip /vol0300/share/ra022304/LifeScience/20231213_Bonvin/HADDOCK3-antibody-antigen.zip
 </a>
 
-This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and script and job examples ready for submission to the batch system.
+This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
 
-HADDOCK3 has been pre-installed for the compute nodes. To test the installation, first create an interactive session on a node with:
+HADDOCK3 has been pre-installed on the compute nodes. To test the installation, first create an interactive session on a node with:
 
 
 <a class="prompt prompt-cmd">
@@ -228,7 +228,7 @@ source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profil
 conda activate haddock3
 </a>
 
-You can then test that haddock3 is indeed accessible with:
+You can then test that `haddock3` is indeed accessible with:
 
 <a class="prompt prompt-cmd">
 haddock3 -h
@@ -271,7 +271,7 @@ registration form, and then follow the [installation instructions](https://www.b
 
 ### Local setup (on your own)
 
-If you are installing HADDOCK3 on your own system check the instructions are requirement below.
+If you are installing HADDOCK3 on your own system, check the instructions and requirements below.
 
 
 #### Installing HADDOCK3
@@ -285,13 +285,13 @@ registration form, and then follow the [installation instructions](https://www.b
 The other required piece of software to run HADDOCK is its computational engine,
 CNS (Crystallography and NMR System –
 [https://cns-online.org](https://cns-online.org){:target="_blank"}). CNS is
-freely available for non-profit organizations. In order to get access to all
+freely available for non-profit organizations. To get access to all
 features of HADDOCK you will need to compile CNS using the additional files
 provided in the HADDOCK distribution in the `extras/cns1.3` directory. Compilation of
-CNS might be non-trivial. Some guidance on installing CNS is provided in the online
+CNS might be non-trivial. Some guidance on installing CNS is provided on the online
 HADDOCK3 documentation page [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}.
 
-Once CNS has been properly compiled, you will have to copy the executable to `haddock3/bin/cns` and make sure it is executable and work. Try starting cns from the command line. You should see the following output:
+Once CNS has been properly compiled, you will have create a symbolic link or copy the executable to `haddock3/bin/cns` and make sure it is executable and functional. Try starting `cns` from the command line. You should see the following output:
 
 <details style="background-color:#DAE4E7">
   <summary>
