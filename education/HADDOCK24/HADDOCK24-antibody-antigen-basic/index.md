@@ -433,6 +433,15 @@ align cluster5_1 and chain A, 4G6M-matched and chain A, cycles=0 <br>
 rms_cur cluster5_1 and chain B, 4G6M-matched <br>
 </a>
 
+**Note:** On some machines the pymol rms_cur command can fail due to a bug in the PyMOL software. In this case you can use the following command instead:
+
+<a class="prompt prompt-pymol">
+align cluster1_1, 1GGR, cycles=0
+</a>
+
+This will align the two structures based on the all-atom RMSD, different from the ligand-RMSD (l-RMSD) that you can calculate with rms_cur and the above commands.
+
+
 <a class="prompt prompt-info">
 Repeat the align and rms commands for each cluster representative and take note of the reported RMSD value.
 </a>
