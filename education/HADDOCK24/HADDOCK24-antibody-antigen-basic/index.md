@@ -515,7 +515,7 @@ Are the active residues at the interface in the different clusters? How is the r
 <br>
 <br>
 <hr>
-## BONUS 2: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis
+## BONUS 1: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis
 
 Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file *4G6M*, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with IL-1RI's binding site (in PDB file *4G6J*). For more details please check [this article](https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub){:target="\_blank"}.
 
