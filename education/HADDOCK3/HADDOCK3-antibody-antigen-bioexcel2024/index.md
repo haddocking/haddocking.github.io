@@ -289,7 +289,7 @@ freely available for non-profit organizations. To get access to all
 features of HADDOCK you will need to compile CNS using the additional files
 provided in the HADDOCK distribution in the `extras/cns1.3` directory. Compilation of
 CNS might be non-trivial. Some guidance on installing CNS is provided on the online
-HADDOCK3 documentation page [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}.
+HADDOCK3 documentation page [here](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md){:target="_blank"}.
 
 Once CNS has been properly compiled, you will have create a symbolic link or copy the executable to `haddock3/bin/cns` and make sure it is executable and functional. Try starting `cns` from the command line. You should see the following output:
 
@@ -349,7 +349,7 @@ In this section we will prepare the PDB files of the antibody and antigen for do
 Crystal structures of both the antibody and the antigen in their free forms are available from the
 [PDBe database](https://www.pdbe.org){:target="_blank"}. 
 
-*__Important:__ For a docking run with HADDOCK, each molecule should consist of a single chain with non-overlapping residue numbering*.
+*__Important:__ For a docking run with HADDOCK, each molecule should consist of a single chain with non-overlapping residue numbering within the same chain.
 
 As an antibody consists of two chains (L+H), we will have to prepare it for use in HADDOCK. For this we will be making use of `pdb-tools` from the command line.
 
@@ -376,13 +376,14 @@ pdb_merge 4G6K_H.pdb 4G6K_L.pdb | pdb_reres \-1 | pdb_chain \-A | pdb_chainxseg 
 
 The first command fetches the PDB ID, selects the heavy chain (H) (`pdb_selchain`) and removes water and heteroatoms (`pdb_delhetatm`) (in this case no co-factor is present that should be kept).
 
-An important part for antibodies is the `pdb_fixinsert` command that fixes the residue numbering of the HV loops: Antibodies often follow the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} and insertions created by this numbering scheme (e.g. 82A, 82B, 82C) cannot be processed by HADDOCK directly (if not done those residues will not be considered resulting effectively in a break in the loop). As such renumbering is necessary before starting the docking. 
+An important part for antibodies is the `pdb_fixinsert` command that fixes the residue numbering of the HV loops: Antibodies often follow the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} and insertions created by this numbering scheme (e.g. 82A, 82B, 82C) cannot be processed by HADDOCK directly (if not done those residues will not be considered resulting effectively in a break in the loop).
+As such, renumbering is necessary before starting the docking. 
 
 Then, the command `pdb_selres` selects only the residues from 1 to 120, so as to consider only the variable domain (FV) of the antibody. This allows to save a substantial amount of computational resources.
 
 The second command does the same for the light chain (L) with the difference that the light chain is slightly shorter and we can focus on the first 107 residues.
 
-The third and last command merges the two processed chains, renumber the residues starting from 1 (`pdb_reres`) and assign them unique chain and segIDs (`pdb_chain` and `pdb_chainxseg`), resulting in the HADDOCK-ready `4G6K_clean.pdb` file. You can view its sequence running:
+The third and last command merges the two processed chains, renumber the residues starting from 1 (`pdb_reres`) and assign them unique chain and segIDs (`pdb_chain` and `pdb_chainxseg`), resulting in the HADDOCK-ready `4G6K_clean.pdb` file. You can view its sequence by running:
 
 <a class="prompt prompt-cmd">
 pdb_tofasta 4G6K_clean.pdb
@@ -409,10 +410,9 @@ pdb_fetch 4I1B | pdb_tidy \-strict | pdb_delhetatm  | pdb_keepcoord | pdb_chain 
 
 ## Defining restraints for docking
 
-Before setting up the docking we need first to generate distance restraint files
-in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational
-engine. A description of the format for the various restraint types supported by
-HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.
+Before setting up the docking, we first need to generate distance restraint files in a format suitable for HADDOCK.
+HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational engine.
+A description of the format for the various restraint types supported by HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as follows:
 
@@ -421,7 +421,7 @@ assign (selection1) (selection2) distance, lower-bound correction, upper-bound c
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound correction
-and the upper limit as: distance plus upper-bound correction
+and the upper limit as: distance plus upper-bound correction.
 
 The syntax for the selections can combine information about:
 
@@ -431,8 +431,8 @@ The syntax for the selections can combine information about:
 
 Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual][link-cns]{:target="_blank"}.
 
-E. g. a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an
-allowed distance range between 10 and 20Å would be defined as follows:
+E.g.: a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an
+allowed distance range between 10Å and 20Å would be defined as follows:
 
 <pre style="background-color:#DAE4E7">
 assign (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
@@ -448,7 +448,10 @@ allowed range?
 
 ### Identifying the paratope of the antibody
 
-Nowadays there are several computational tools that can identify the paratope (the residues of the hypervariable loops involved in binding) from the provided antibody sequence. In this tutorial we are providing you the corresponding list of residue obtained using [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
+Nowadays several computational tools can identify the paratope (the residues of the hypervariable loops involved in binding) from the provided antibody sequence.
+In this tutorial, we are providing you with the corresponding list of residue obtained using [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}.
+ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic).
+The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
 
 The corresponding paratope residues (those with either an overall probability >= 0.4 or a probability for hydrophobic or hydrophilic > 0.3) are:
 
@@ -465,7 +468,7 @@ For this start PyMOL and load `4G6K_clean.pdb`
 File menu -> Open -> select 4G6K_clean.pdb
 </a>
 
-Alternatively, if PyMOL is accessible from the command line simply type:
+Alternatively, if PyMOL is accessible from the command line, simply type:
 
 <a class="prompt prompt-cmd">
 pymol 4G6K_clean.pdb
@@ -496,7 +499,7 @@ show surface<br>
 Inspect the surface.
 
 <a class="prompt prompt-question">
-Do the identified paratope residues form a well defined patch on the surface?
+Do the identified paratope residues form a well-defined patch on the surface?
 </a>
 
 
@@ -514,8 +517,8 @@ Do the identified paratope residues form a well defined patch on the surface?
 
 ### Identifying the epitope of the antigen
 
-The article describing the crystal structure of the antibody-antigen complex we are modelling also reports on experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab) on Interleukin-1β. The residues affected by binding are listed in Table 5 of
-[Blech et al. JMB 2013](https://dx.doi.org/10.1016/j.jmb.2012.09.021){:target="_blank"}:
+The article describing the crystal structure of the antibody-antigen complex we are modeling also reports experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab) on Interleukin-1β.
+The residues affected by binding are listed in Table 5 of [Blech et al. JMB 2013](https://dx.doi.org/10.1016/j.jmb.2012.09.021){:target="_blank"}:
 
 <figure style="text-align: center;">
   <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
@@ -527,7 +530,8 @@ The list of binding site (epitope) residues identified by NMR is:
 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
 </pre>
 
-We will now visualize the epitope on Interleukin-1β. For this start PyMOL and from the PyMOL File menu open the provided PDB file of the antigen.
+We will now visualize the epitope on Interleukin-1β.
+To do this, start PyMOL and open the provided PDB file of the antigen from the PyMOL File menu.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 4I1B_clean.pdb
@@ -549,7 +553,7 @@ color red, epitope
 Inspect the surface.
 
 <a class="prompt prompt-question">
-Do the identified residues form a well defined patch on the surface?
+Do the identified residues form a well-defined patch on the surface?
 </a>
 
 The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding - there are some white spots around/in the red surface.
@@ -566,10 +570,10 @@ The answer to that question should be yes, but we can see some residues not colo
 
 <br>
 
-In HADDOCK we are dealing with potentially incomplete binding sites by defining surface neighbors as `passive` residues.
-These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding site residues) will.
+In HADDOCK, we are dealing with potentially incomplete binding sites by defining surface neighbors as `passive` residues.
+These passive residues are added in the definition of the interface but do not incur any energetic penalty if they are not part of the binding site in the final models. In contrast, residues defined as active (typically the identified or predicted binding site residues) will incur an energetic penalty.
 When using the HADDOCK2.x webserver, `passive` residues will be automatically defined.
-Here since we are using a local version, we need to define those manually.
+Here, since we are using a local version, we need to define those manually.
 
 This can easily be done using a haddock3 command line tool in the following way:
 
@@ -577,7 +581,7 @@ This can easily be done using a haddock3 command line tool in the following way:
 haddock3-restraints passive_from_active 4I1B_clean.pdb 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117 --cutoff 0.15
 </a>
 
-The command prints a list of passive residues which you should save to a file for further use.
+The command prints a list of passive residues, which you should save to a file for further use.
 
 We can visualize the epitope and its surface neighbors using PyMOL:
 
@@ -618,32 +622,33 @@ color green, passive
 
 The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors. 
 
-The difference between `active` and `passive` residues in HADDOCK is:
+The difference between `active` and `passive` residues in HADDOCK is as follows:
 
-*__active__* residues will be "forced" to be at the interface, meaning that if the end models they are not an energetic penalty will be paid. The interface in this context is defined by the union of active and passive residues on the partner molecules.
+*__Active residues__*: These residues are "forced" to be at the interface. If they are not part of the interface in the final models, an energetic penalty will be applied. The interface in this context is defined by the union of active and passive residues on the partner molecules.
 
-*__passive__* residues should be at the interface, if they are not no energetic penalty is paid.
+*__Passive residues__*: These residues are expected to be at the interface. However, if they are not, no energetic penalty is applied.
 
-In general it is better to be too generous rather than too strict in the definition of passive residues.
+
+In general, it is better to be too generous rather than too strict in the definition of passive residues.
 An important aspect is to filter both the active (the residues identified from your mapping experiment) and passive residues by their solvent accessibility.
 This is done automatically when using the `haddock3-restraints passive_from_active` command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discared.
-This is however not a hard limit and you might consider including even more buried residues if some
-important chemical group seems solvent accessible from a visual inspection.
+This is, however, not a hard limit, and you might consider including even more buried residues if some important chemical group seems solvent accessible from a visual inspection.
 
 
 <hr>
 
 ### Defining ambiguous restraints
 
-Once you have identified your active and passive residues for both molecules, you can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK. For this you can either make use of our online [GenTBL][gentbl] web service, entering the list of active and passive residues for each molecule, the chainIDs of each molecule and saving the resulting restraint list to a text file, or use again one of the `haddock3-restraints` sub-command.
+Once you have identified your active and passive residues for both molecules, you can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
+For this you can either make use of our online [GenTBL][gentbl] web service, entering the list of active and passive residues for each molecule, the chainIDs of each molecule and saving the resulting restraint list to a text file, or use another `haddock3-restraints` sub-command.
 
-To use our `haddock3-restraints active_passive_to_ambig` script you need to
+To use our `haddock3-restraints active_passive_to_ambig` script, you need to
 create for each molecule a file containing two lines:
 
 * The first line corresponds to the list of active residues (numbers separated by spaces)
 * The second line corresponds to the list of passive residues (numbers separated by spaces).
 
-*__Important__*: The file must consist of two lines, but a line could be empty (e.g. if you do not want to define active residues for one molecule). There must however be at least one set of active residue defined for one of the molecule.
+*__Important__*: The file must consist of two lines, but a line can be empty (e.g., if you do not want to define active residues for one molecule). However, there must be at least one set of active residue defined for one of the molecules.
 
 
 * For the antibody we will use the predicted paratope as active and no passive residues defined. The corresponding file can be found in the `restraints` directory as `antibody-paratope.act-pass`:
@@ -660,13 +665,13 @@ create for each molecule a file containing two lines:
 3 24 46 47 48 50 66 76 77 79 80 82 86 87 88 91 93 95 118 119 120
 </pre>
 
-Using those two files, we can generate the CNS-formatted AIR restraints file with the following command:
+Using those two files, we can generate the CNS-formatted Ambiguous Interaction Restraints (AIRs) file with the following command:
 
 <a class="prompt prompt-cmd">
 haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass --segid-one A --segid-two B > ambig-paratope-NMR-epitope.tbl
 </a>
 
-This generates a file called `ambig-paratope-NMR-epitope.tbl` that contains the AIR restraints. 
+This generates a file called `ambig-paratope-NMR-epitope.tbl` that contains the AIRs. 
 
 <a class="prompt prompt-question">
 Inspect the generated file and note how the ambiguous distances are defined.
@@ -802,7 +807,7 @@ No output means that your TBL file is valid.
 ### Additional restraints for multi-chain proteins
 
 As an antibody consists of two separate chains, it is important to define a few distance restraints
-to keep them together during the high temperature flexible refinement stage of HADDOCK otherwise they might slightly drift appart. This can easily be done using the `haddock3-restraints restrain_bodies` subcommand.
+to keep them together during the high temperature flexible refinement stage of HADDOCK otherwise they might slightly drift appart. This can easily be done using the `haddock3-restraints restrain_bodies` sub-command.
 
 <a class="prompt prompt-cmd">
 haddock3-restraints restrain_bodies 4G6K_clean.pdb > antibody-unambig.tbl
@@ -842,11 +847,11 @@ We will also integrate two analysis modules in our workflow:
 
 Our workflow consists of the following modules:
 
-1. **`topoaa`**: *Generates the topologies for the CNS engine and build missing atoms*
-2. **`rigidbody`**: *Rigid body energy minimisation (`it0` in haddock2.x)*
+1. **`topoaa`**: *Generates the topologies for the CNS engine and builds missing atoms*
+2. **`rigidbody`**: *Preforms rigid body energy minimisation (`it0` in haddock2.x)*
 3. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 4. **`seletop`** : *Selects the top X models from the previous module*
-5. **`flexref`**: *Semi-flexible refinement of the interface (`it1` in haddock2.4)*
+5. **`flexref`**: *Preforms semi-flexible refinement of the interface (`it1` in haddock2.4)*
 6. **`caprieval`**
 7. **`emref`**: *Final refinement by energy minimisation (`itw` EM only in haddock2.4)*
 8. **`caprieval`**
@@ -864,10 +869,10 @@ The corresponding toml configuration file (provided in `workflows/docking-antibo
 # paratope to the NMR-identified epitope on the antigen 
 # ====================================================================
 
-# directory in which the scoring will be done
+# Directory in which the scoring will be done
 run_dir = "run1-CDR-NMR-CSP"
 
-# compute mode
+# Compute mode
 mode = "local"
 ncores = 50
 
@@ -941,7 +946,11 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 In this case, since we have information for both interfaces we use a low-sampling configuration file, which takes only a small amount of computational resources to run. From the sampling parameters in the above config file, you can see we are sampling only 50 models at each stage of the docking: 
 
-The initial `sampling` parameter at the rigid-body energy minimization (*rigidbody*) module is set to 50 models, of which only best 40 are passed to the flexible refinement (*flexref*) module with the *seletop* module. The subsequence flexible refinement (*flexref* module) and energy minimisation (*emref*) modules will use all models passed by the *seletop* module. FCC clustering (*clustfcc*) is then applied to group together models sharing a consistent fraction of the interface contacts. The top 4 models of each cluster are saved to disk (*seletopclusts*). Multiple *caprieval* modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol.
+The initial `sampling` parameter at the rigid-body energy minimization (*rigidbody*) module is set to 50 models, of which only best the 40 are passed to the flexible refinement (*flexref*) module with the *seletop* module.
+The subsequence flexible refinement (*flexref* module) and energy minimisation (*emref*) modules will use all models passed by the *seletop* module.
+FCC clustering (*clustfcc*) is then applied to group together models sharing a consistent fraction of the interface contacts.
+The top 4 models of each cluster are saved to disk (*seletopclusts*).
+Multiple *caprieval* modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol.
 
 To get a list of all possible parameters that can be defined in a specific module (and their default values) you can use the following command:
 
@@ -956,7 +965,9 @@ In the above workflow we see in three modules a *tolerance* parameter defined. U
 </a>
 
 
-*__Note__* that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow. As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, select a given number of models per cluster and refine all of those. For an example of this strategy see the BONUS 3 section about ensemble docking.
+*__Note__* that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow.
+As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, selecting a given number of models per cluster and refining all of those.
+For an example of this strategy see the BONUS 3 section about ensemble docking.
 
 
 <hr>
@@ -965,9 +976,9 @@ In the above workflow we see in three modules a *tolerance* parameter defined. U
 
 In in the first section of the workflow above we have a parameter `mode` defining the execution mode. HADDOCK3 currently supports three difference execution modes:
 
-- **local** : In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system
-- **batch**: in this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster (slurm and torque are currently supported);
-- **mpi**: HADDOCK3 supports a pseudo parallel MPI implementation which allows to harvest the power of mutliple nodes to distribute the computations (functional but still very experimental at this stage).
+- **local** : In this mode, HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system.
+- **batch**: In this mode, HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster (slurm and torque are currently supported).
+- **mpi**: HADDOCK3 also supports a pseudo parallel MPI implementation, which allows to harvest the power of multiple nodes to distribute the computations (functional but still very experimental at this stage).
 
 
 <hr>
@@ -1151,13 +1162,14 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 ## Analysis of docking results
 
 In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the `runs` directory:
-- `run1`: run started using the unbound antibody
-- `run1-af2`: run started using the Alphafold-multimer antibody (see BONUS 2)
-- `run1-abb`: run started using the Immunebuilder antibody (see BONUS 2)
-- `run1-ens`: run started using an ensemble of antibody models (see BONUS 3)
+- `run1`: run created using the unbound antibody.
+- `run1-af2`: run created using the Alphafold-multimer antibody (see BONUS 2).
+- `run1-abb`: run created using the Immunebuilder antibody (see BONUS 2).
+- `run1-ens`: run created using an ensemble of antibody models (see BONUS 3).
 
 
-Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially startin at 0, e.g.:
+Once your run has completed - inspect the content of the resulting directory.
+You will find the various steps (modules) of the defined workflow numbered sequentially starting at 0, e.g.:
 
 {% highlight shell %}
 > ls run1/
@@ -1180,12 +1192,12 @@ Once your run has completed inspect the content of the resulting directory. You 
      traceback/
 {% endhighlight %}
 
-There is in addition the log file (text file) and four additional directories:
+In addition, there is a log file (text file) and four additional directories:
 
-- the `analysis` directory containing various plots to visualise the results for each `caprieval` step and a general report (`report.html`) that provides all statistics with various plot. You can open this file in your preferred web browser.
-- the `data` directory containing the input data (PDB and restraint files) for the various modules
-- the `toppar` directory containing the force field topology and paramter files (only present when running in self-contained mode)
-- the `traceback` directory containing `traceback.tsv` that links all models in order to see which model originates from which throughout all steps of the workflow.
+- the `analysis` directory contains various plots to visualize the results for each caprieval step and a general report (`report.html`) that provides all statistics with various plots. You can open this file in your preferred web browser
+- the `data` directory contains the input data (PDB and restraint files) for the various modules
+- the `toppar` directory contains the force field topology and parameter files (only present when running in self-contained mode)
+- the `traceback` directory contains `traceback.tsv`, which links all models to see which model originates from which throughout all steps of the workflow.
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.
 
@@ -1216,7 +1228,7 @@ The relevant statistics are:
 
 Various other terms are also reported including:
 
-* **bsa**: *the buried surface area in squared Angstromn*
+* **bsa**: *the buried surface area (in squared angstroms)*
 * **elec**: *the intermolecular electrostatic energy*
 * **vdw**: *the intermolecular van der Waals energy*
 * **desolv**: *the desolvation energy*
@@ -1250,10 +1262,9 @@ cluster_rank  cluster_id  n  under_eval     score  score_std   irmsd  irmsd_std 
 
 In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the preceeding `09_seletopclusts` directory.
 
-While these simple text file can be easily checked from the command line already, they might be cumbersome to read.
-For that reason we have developed a post-processing analysis that automatically generates html reports for all `caprieval` steps in the workflow.
+While these simple text files can be easily checked from the command line already, they might be cumbersome to read.
+For that reason, we have developed a post-processing analysis that automatically generates html reports for all `caprieval` steps in the workflow.
 These are located in the respective `analysis/XX_caprieval` directories and can be viewed using your favorite web browser.
-
 
 
 <hr>
@@ -1263,10 +1274,11 @@ These are located in the respective `analysis/XX_caprieval` directories and can 
 Let us now analyse the docking results. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
 Go into the `analysis/10_caprieval_analysis` directory of the respective run directory  (if needed copy the run or that directory to your local computer) and open in a web browser the `report.html` file. Be patient as this page contains interactive plots that may take some time to generate.
 
-On the top of the page you will see a table that summarises the cluster statistics (taken from the `capri_clt.tsv` file).
-The columns (corresponding to the various clusters) are sorted by default on the cluster rank, which is based on the HADDOCK score (found on 4th row of the table).
-As this is an interactive table you can sort it as you wish by using the arrows present in the first column. Simply click on the arrows of the term you want to use to sort the table (and you can sort it in ascending or descending order). A snapshot of this table is shown below.
-
+On the top of the page, you will see a table that summarises the cluster statistics (taken from the `capri_clt.tsv` file).
+The columns (corresponding to the various clusters) are sorted by default on the cluster rank, which is based on the HADDOCK score (found on the 4th row of the table).
+As this is an interactive table, you can sort it as you wish by using the arrows present in the first column.
+Simply click on the arrows of the term you want to use to sort the table (and you can sort it in ascending or descending order).
+A snapshot of this table is shown below:
 
 <figure style="text-align: center;">
     <img width="100%" src="caprieval_analysis-table.png">
@@ -1274,7 +1286,7 @@ As this is an interactive table you can sort it as you wish by using the arrows 
 
 You can also view this report online [here](plots/report.html){:target="_blank"}
 
-*__Note__* that in case the PDB files are still compressed (gzipped) the download links will not work. Also online visualisation is not enabled.
+*__Note__* that in case the PDB files are still compressed (gzipped) the download links will not work. Also online visualisation is not enabled. To overcome this disk space storge solution, consider adding the global parameter `clean = true` at the begining of your configuration file.
 
 
 <a class="prompt prompt-info">Inspect the final cluster statistics</a>
