@@ -18,10 +18,10 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 * [**HADDOCK3 antibody-antigen docking**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information 
   about the hypervariable loops of the antibody and either the entire surface of the antigen or a loose definition of the epitope.
-  It illustrate the modularity of HADDOCK3 by introducing a new workflow not possible under the current HADDOCK2.X versions.
+  It illustrates the modularity of HADDOCK3 by introducing a new workflow not possible under the current HADDOCK2.X versions.
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
-* [**HADDOCK3 antibody-antigen docking for bioexcel 2023 workshop**](/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023):
+* [**HADDOCK3 antibody-antigen docking for bioexcel 2024 workshop**](/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024):
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information
   about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments.
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
