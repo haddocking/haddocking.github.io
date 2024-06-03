@@ -1291,7 +1291,7 @@ You can also view this report online [here](plots/report.html){:target="_blank"}
 
 <a class="prompt prompt-info">Inspect the final cluster statistics</a>
 
-<a class="prompt prompt-question">How many clusters are generated?</a>
+<a class="prompt prompt-question">How many clusters have been generated?</a>
 
 <a class="prompt prompt-question">Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?</a>
 
@@ -1310,7 +1310,7 @@ This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the qualit
 ### Visualizing the scores and their components
 
 
-Next to the cluster statistic table shown above, the `report.html` file also contains a variety of plots plotting the HADDOCK score 
+Next to the cluster statistic table shown above, the `report.html` file also contains a variety of plots displaying the HADDOCK score 
 and its components against various CAPRI metrics (i-RMSD, l-RMSD,  Fnat, Dock-Q) with a color-coded representation of the clusters.
 These are interactive plots. A menu on the top right of the first row (you might have to scroll to the rigth to see it) 
 allows you to zoom in and out in the plots and turn on and off clusters. 
@@ -1332,7 +1332,7 @@ Finally, the report also shows plots of the cluster statistics (distributions of
     <img width="100%" src="caprieval_analysis-distributions.png">
 </figure>
 
-<a class="prompt prompt-question">For this antibody-antigen case, which of the score component is correlating best with the quality of the models?.</a>
+<a class="prompt prompt-question">For this antibody-antigen case, which of the score components correlates best with the quality of the models?</a>
 
 
 <hr>
@@ -1340,7 +1340,7 @@ Finally, the report also shows plots of the cluster statistics (distributions of
 ### Some single structure analysis
 
 
-Going back to command line analysis, we are providing in the `scripts` directory a simple script that extract some model statistics for acceptable or better models from the `caprieval` steps.
+Going back to command line analysis, we are providing in the `scripts` directory a simple script that extracts some model statistics for acceptable or better models from the `caprieval` steps.
 To use it, simply call the script with as argument the run directory you want to analyze, e.g.:
 
 <a class="prompt prompt-cmd">
@@ -1407,19 +1407,22 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
     <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
-    In terms of iRMSD values we only observe very small differences in the best model. The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement, but increases again slightly after final minimisation. All this will of course depend on how different are the bound and unbound conformations and the amount of data used to drive the docking process. In general, from our experience, the more and better data at hand, the larger the conformational changes that can be induced.
+  In terms of iRMSD values, we only observe very small differences in the best model.
+  The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement but increases again slightly after final minimisation.
+  All this will of course depend on how different are the bound and unbound conformations and the amount of data used to drive the docking process.
+  In general, from our experience, the more and better data at hand, the larger the conformational changes that can be induced.
   </p>
 </details>
 <br>
 
-<a class="prompt prompt-question">Is the best model always ranked as first?</a>
+<a class="prompt prompt-question">Is the best model always ranked first?</a>
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
     <i>Answer</i> <i class="material-icons">expand_more</i>
   </summary>
   <p>
-    This is not the case. The scoring function is not perfect, but does a reasonable job in ranking models of acceptable or better quality on top in this case.
+    This is not the case. The scoring function is not perfect, but does a reasonable job at ranking models of acceptable or better quality on top in this case.
   </p>
 </details>
 <br>
@@ -1432,10 +1435,10 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 We have recently added a new contact analysis module to HADDOCK3 that generates for each cluster both a contact matrix of the entire system showing all contacts within a 4.5Å cutoff and a chord chart representation of intermolecular contacts.
 
 In the current workflow we run, those files can be found in the `11_contactmap` directory.
-These are again html files with interactive plots (hoover with your mouse over the plots).
+These are again html files with interactive plots (hover with your mouse over the plots).
 
 <a class="prompt prompt-info">
-Open in your favorite web browser the _cluster1_contmap_chordchart.html_ file to analyse the intermolecular contacts of the best ranked cluster.
+Open in your favorite web browser the _cluster1_contmap_chordchart.html_ file to analyse the intermolecular contacts of the best-ranked cluster.
 </a>
 
 This file taken from the pre-computed run can also directly be visualized [here](cluster1_contmap_chordchart.html){:target="_blank"}
@@ -1449,14 +1452,14 @@ Can you identify which residue(s) make(s) the most intermolecular contacts?
 
 ### Visualization of the models
 
-To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 for run `run1-CDR-NMR-CSP`.
+To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 for run `run1-CDR-NMR-CSP`.
 These can be found in the `runs/run1/09_seletopclusts/` directory.
 
 <a class="prompt prompt-pymol">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
 *__Note__* that the PDB files are compressed (gzipped) by default at the end of a run. You can uncompress those with the `gunzip` command. PyMOL can directly read the gzipped files.
 
-If you want to get an impression of how well defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`).
+If you want to get an impression of how well-defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`).
 Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
 
 Once all files have been loaded, type in the PyMOL command window:
@@ -1520,9 +1523,9 @@ Are the residues of the paratope and NMR epitope at the interface?
 
 ## Conclusions
 
-We have demonstrated the usage of HADDOCK3 in an antibody-antigen docking scenario making use of the paratope information on the antibody side (i.e. no prior experimental information, but computational predictions) and a NMR-mapped epitope for the antigen.
-Compared to the static HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allows to customise the docking protocols and to run a deeper analysis of the results.
-While HADDOCK3 is still very much work in progress, its intrinsic flexibility can be used to improve the performance of antibody-antigen modelling compared to the results we presented in our
+We have demonstrated the usage of HADDOCK3 in an antibody-antigen docking scenario making use of the paratope information on the antibody side (i.e. no prior experimental information, but computational predictions) and an NMR-mapped epitope for the antigen.
+Compared to the static HADDOCK2.X workflow, the modularity and flexibility of HADDOCK3 allow to customise the docking protocols and to run a deeper analysis of the results.
+While HADDOCK3 is still very much a work in progress, its intrinsic flexibility can be used to improve the performance of antibody-antigen modelling compared to the results we presented in our
 [Structure 2020](https://doi.org/10.1016/j.str.2019.10.011){:target="_blank"} article and in the [related HADDOCK2.4 tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen){:target="_blank"}.
 
 
@@ -1540,7 +1543,7 @@ We will run an ARCTIC-3D job targeting the uniprot ID of human Interleukin-1 bet
 For this first open the ARCTIC-3D web-server page [here](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}. 
 
 <a class="prompt prompt-info">
-Insert the selected uniprot ID in the **UniprotID** field.
+Insert the selected UniProt ID in the **UniprotID** field.
 </a>
 
 <a class="prompt prompt-info">
@@ -1587,7 +1590,7 @@ For a short introduction to AI and AlphaFold2 refer to this other tutorial [intr
 For antibody modelings, CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility. 
 Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.
 
-Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used for generating reliabble models of the antibody-antigen complex by docking, instead of the unbound form used in this tutorial, which, in a many cases, will not be available.
+Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used for generating reliable models of the antibody-antigen complex by docking, instead of the unbound form used in this tutorial, which, in many cases, will not be available.
 
 
 ### Analysing the AI models
@@ -1598,14 +1601,14 @@ We already ran the prediction with these two tools, and you can find the resulti
 - `4g6k_AF2_multimer.pdb`
 
 
-As was demonstrated in the tutorial, those files must be preprocess for use in HADDOCK. Docking-ready files are also provided in the `pdbs` directory:
+As was demonstrated in the tutorial, those files must be preprocessed for their use in HADDOCK. Docking-ready files are also provided in the `pdbs` directory:
 
 
 - `4G6K_abb_clean.pdb`
 - `4G6K_af2_clean.pdb`
 
 
-Load the experimental unbound structure (`4G6K_clean.pdb`) and the two AI model in PyMOL to see whether they ressemble the experimental unbound structure.
+Load the experimental unbound structure (`4G6K_clean.pdb`) and the two AI models in PyMOL to see whether they resemble the experimental unbound structure.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 4G6K_clean.pdb
@@ -1640,7 +1643,7 @@ Which model is the closest to the unbound conformation?
 <br>
 
 For docking purposes however, it might be more interesting to know how far are the models from the bound conformation, i.e. the conformation in the antibody-antigen complex.
-The closer it is, the easiest it should become to model the complex by docking.
+The closer it is, the easier it should become to model the complex by docking.
 To assess this, we can load the structure of the complex in PyMOL and align all other structures/models to it.
 
 <a class="prompt prompt-pymol">
@@ -1681,9 +1684,9 @@ Which model is the closest to the bound conformation?
 
 We can repeat the docking as described above in our tutorial, but using this time either the ABodyBuilder2 or AlphaFold2 models as input.
 For this, modify your haddock3 configuration file, changing the input PDB file of the first molecule (the antibody) using the respective HADDOCK-ready models provided in the `pdbs` directory.
-You will also need to change the restraint filename using to keep the two parts of the antibody together (those files are present in the `restraints` directory.
+You will also need to change the restraint filename used to keep the two parts of the antibody together (those files are present in the `restraints` directory.
 
-Further run haddock3 as described above.
+Further, run haddock3 as described above.
 
 Pre-calculated runs are provided in the `runs` directory. Analyse your run (or the pre-calculated ones) as described previously.
 
@@ -1786,17 +1789,19 @@ Best model             - rank:  10  i-RMSD:  1.654  Fnat:  0.707  DockQ:  0.645
 
 ### Conclusions - AI-based docking
 
-All three antibody structures used in input give good to reasonable results. The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure. Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.
+All three antibody structures used in input give good to reasonable results.
+The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure.
+Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.
 
 
 <hr>
 <hr>
 
-## BONUS 3: Ensemble-docking using a combination of exprimental and AI-predicted antibody structures
+## BONUS 3: Ensemble docking using a combination of exprimental and AI-predicted antibody structures
 
 
-Instead of running haddock3 using a specific input structure of the antibody we can also use an ensemble of all available models.
-Such an ensemble can be create from the individual models using `pdb_mkensemble` from PDB-tools:
+Instead of running haddock3 using a specific input structure of the antibody, we can also use an ensemble of all available models.
+Such an ensemble can be created from the individual models using `pdb_mkensemble` from PDB-tools:
 
 <a class="prompt prompt-cmd">
 pdb_mkensemble 4G6K_clean.pdb 4G6K_abb_clean.pdb 4G6K_af2_clean.pdb > 4G6K-ensemble.pdb
@@ -1892,15 +1897,15 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 Our workflow consists of the following 14 modules:
 
-0. **`topoaa`**: *Generates the topologies for the CNS engine and build missing atoms*
-1. **`rigidbody`**: *Rigid body energy minimisation* - with increased sampling (150 models - 50 per input model)
+0. **`topoaa`**: *Generates the topologies for the CNS engine and builds missing atoms*
+1. **`rigidbody`**: *Performs Rigid body energy minimisation* - with increased sampling (150 models - 50 per input model)
 2. **`caprieval`**: *Calculates CAPRI metrics*
 3. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
-4. **`seletopclusts`**: *Selects the top models of all clusters* - In this case we select max 10 models per cluster.
+4. **`seletopclusts`**: *Selects the top models of all clusters* - In this case, we select max 10 models per cluster.
 5. **`caprieval`**: *Calculates CAPRI metrics* of the selected clusters
-6. **`flexref`**: *Semi-flexible refinement of the interface (`it1` in haddock2.4)*
+6. **`flexref`**: *Performs Semi-flexible refinement of the interface (`it1` in haddock2.4)*
 7. **`caprieval`**
-8. **`emref`**: *Final refinement by energy minimisation (`itw` EM only in haddock2.4)*
+8. **`emref`**: *Performs a final refinement by energy minimisation (`itw` EM only in haddock2.4)*
 9. **`caprieval`**
 10. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
 11. **`seletopclusts`**: *Selects the top models of all clusters*
@@ -1911,7 +1916,7 @@ Compared to the original workflow described in this tutorial we have added clust
 
 Run haddock3 with this configuration file as described above.
 
-A pre-calculated run is provided in the `runs` directory as `run1-ens-clst. 
+A pre-calculated run is provided in the `runs` directory as `run1-ens-clst`. 
 Analyse your run (or the pre-calculated ones) as described previously.
 
 
@@ -1991,7 +1996,7 @@ Using the information in the _traceback_ directory, try to figure out which of t
 ## BONUS 4: Antibody-antigen complex structure prediction from sequence using AlphaFold2
 
 
-With the advent of Artificial Intelligence (AI) and AlphaFold2 we can also try to predict directly the full antibody-antigen complex using AlphaFold2.
+With the advent of Artificial Intelligence (AI) and AlphaFold2, we can also try to predict directly the full antibody-antigen complex using AlphaFold2.
 For this we are going to use the _AlphaFold2_mmseq2_ Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov 
 [ColabFold GitHub repository](https://github.com/sokrypton/ColabFold){:target="_blank"}, making use of the Google Colab CLOUD resources.
 
@@ -2029,7 +2034,7 @@ STSQAENMPVFLGGTKGGQDITDFTMQFVSS
 To use AlphaFold2 to predict this antibody-antigen complex follow the following steps:
 
 <a class="prompt prompt-info">
-Copy and paste each of the above sequence in the _query_sequence_ field, adding a colon *:* in between the sequences.
+Copy and paste each of the above sequences in the _query_sequence_ field, adding a colon *:* in between the sequences.
 </a>
 
 For your convenience the full sequence with colons is provided:
@@ -2051,13 +2056,13 @@ In the _Advanced settings_ block you can check the option to save the results to
 In the top section of the Colab, click: _Runtime > Run All_
 </a>
 
-(It may give a warning that this is not authored by Google, because it is pulling code from GitHub - you can ignore it). 
+(It may give a warning that this is not authored by Google because it is pulling code from GitHub - you can ignore it). 
 
 This will automatically install, configure and run AlphaFold2 for you - leave this window open. 
-After the prediction complete you will be asked to download a zip-archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).
+After the prediction completed, you will be asked to download a zip archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).
 
 <br>
-_Time to grap a cup of tea or a coffee!
+_Time to grab a cup of tea or a coffee!
 And while waiting try to answer the following questions:_
 
 <a class="prompt prompt-question">
@@ -2078,7 +2083,7 @@ While the notebook is running, models will appear first under the `Run Predictio
 
 The best model will then be displayed under the `Display 3D structure` section. This is an interactive 3D viewer that allows you to rotate the molecule and zoom in or out.
 
-**Note** that you can change the model displayed with the _rank_num_ option. After changing it execute the cell by clicking on the run cell icon on the left of it.
+**Note** that you can change the model displayed with the _rank_num_ option. After changing, it execute the cell by clicking on the run cell icon on the left of it.
 
 <a class="prompt prompt-question">
     How similar are the five models generated by AF2?
@@ -2107,7 +2112,7 @@ While the pLDDT score is an overall measure, you can also focus on the interface
     Model5: pLDDT=88.1 pTM=0.641 ipTM=0.512
 </pre>
 <br>
-Note that if you performed a fresh run your results might well differ from those show here.
+Note that if you performed a fresh run your results might well differ from those shown here.
 <br>
 </details>
 <br>
@@ -2120,7 +2125,10 @@ Note that if you performed a fresh run your results might well differ from those
 
 Another useful way of looking at the model accuracy is to check the Predicted Alignment Error plots (PAE) (also referred to as Domain position confidence).
 The PAE gives a distance error for every pair of residues: It gives the estimate of the position error at residue x when the predicted and true structures are aligned on residue y.
-Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues. If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain. When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diagonal blocks report on the accuracy of the domain-domain placement.
+Values range from 0 to 35 Angstroms.
+It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues.
+If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain.
+When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diagonal blocks report the accuracy of the domain-domain placement.
 
 
 Our antibody-antigen complex consists of three interfaces:
@@ -2150,7 +2158,7 @@ Our antibody-antigen complex consists of three interfaces:
 
 ### Visualization of the generated AF2 models
 
-In order to visualize the models in PyMOL save your predictions to disk or download the precalculated AlphaFold2 model from [here](abagtest_2d03e.result.zip){:target="\_blank"}.
+In order to visualize the models in PyMOL save your predictions to disk or download the precalculated AlphaFold2 models from [here](abagtest_2d03e.result.zip){:target="\_blank"}.
 
 Start PyMOL and load via the File menu all five AF2 models.
 
@@ -2192,7 +2200,7 @@ Examine the various models. How does the orientation of the antigen differ betwe
 <br>
 
 Since we do have NMR chemical shift perturbation data for the antigen, we can check if the perturbed residues are at the interface in the AF2 models.
-Note that there is a shift in numbering of 2 residues between the AF2 and the HADDOCK models.
+Note that there is a shift in the numbering of 2 residues between the AF2 and the HADDOCK models.
 
 <a class="prompt prompt-pymol">
 util.cbc<br>
@@ -2218,7 +2226,7 @@ Does any model have the NMR-identified epitope at the interface with the antibod
 </details>
 <br>
 
-It should be clear from the visualization of the NMR-mapped epitope on the AF2 models that none does satisfy the NMR data.
+It should be clear from the visualization of the NMR-mapped epitope on the AF2 models that none satisfies the NMR data.
 To further make that clear we can compare the models to the crystal structure of the complex (4G6M).
 
 For this download and superimpose the models onto the crystal structure in PyMOL with the following commands:
@@ -2245,7 +2253,8 @@ alignto sele
 <br>
 
 
-More recently, the third version of AlphaFold (AlphaFold3) has been [published](https://www.nature.com/articles/s41586-024-07487-w){:target="\_blank"}. While the code is not yet released, a dedicated online tool [AlphaFoldServer](https://golgi.sandbox.google.com/){:target="\_blank"} is made available for the academic community to allow us to make upto 10 predictions per day with this new version.
+More recently, the third version of AlphaFold (AlphaFold3) has been [published](https://www.nature.com/articles/s41586-024-07487-w){:target="\_blank"}.
+While the code is not yet released, a dedicated online tool [AlphaFoldServer](https://golgi.sandbox.google.com/){:target="\_blank"} is made available for the academic community to allow us to make upto 20 predictions per day with this new version.
 Pre-calculated AlphFold3 predictions are provided [here](af3server_abag_15052024.zip){:target="\_blank"}.
 
 <a class="prompt prompt-question">
@@ -2284,7 +2293,7 @@ Try to reproduce the previous steps and examine the quality of the various gener
 
 ## BONUS 5: Introduction to the haddock3 webapp
 
-In addition to the command line interface of haddock3, we are currently developing a new dedicated web application enabling to use haddock3 under a graphical user interface, directly linking the software functionalities and computed results in an interactive manner.
+In addition to the command line interface of haddock3, we are currently developing a new dedicated web application enabling the use of haddock3 under a graphical user interface, directly linking the software functionalities and computed results in an interactive manner.
 While not yet deployed as a web service, the application is already available for local installations.
 
 
@@ -2306,16 +2315,9 @@ First, download the haddock3 webapp:
 <a class="prompt prompt-cmd">git clone https://github.com/i-VRESSE/haddock3-webapp.git</a>
 
 Then copy a compiled CNS executable in the `deploy/` directory.
-**Note** that the container is running under Linux, therfore a Linux-compiled version of CNS is required here. Instructions on how to compile CNS are available in the [haddock3 documentation](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md)
+**Note** that the container is running under Linux, therfore a Linux-compiled version (compatible with your CPU architecture) of CNS is required here. Instructions on how to compile CNS are available in the [haddock3 documentation](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md)
 
-<a class="prompt prompt-cmd">cd haddock3-webapp; cp path/to/cns_executable.exe deploy/cns</a>
-
-Finally, user `docker compose` to build the application:
-
-<a class="prompt prompt-cmd">docker compose -f deploy/arq/docker-compose.yml up --build</a>
-
-Once the build is terminated (after several minutes), the webapp should be running as a local webserver.
-To access it, go to [http://localhost:8080](http://localhost:8080)
+<b style="color: red;">As this is still in heavy development, the instructions on how to build the web-app is not yet trivial. Better instructions will be written onces it will be in production.</b>
 </details>
 
 
@@ -2343,23 +2345,23 @@ Right after its creation, you will be able to login, but before you can definite
 ### Running this tutorial
 
 Once logged in, click on the `build` menu to start the creation of a custom workflow.
-You will land in the workflow-builder page, where you can interactively build your haddock3 scenario by combining the available modules.
-This page is sub-divided in three areas, that will be described below.
+You will land on the workflow-builder page, where you can interactively build your haddock3 scenario by combining the available modules.
+This page is subdivided into three areas described below.
 
-On the left are presented the list of modules.
+On the left is presented the list of modules.
 To add a module to the workflow, just click on it, and it will be automatically added at the bottom of the configuration file.
-Alternatively, you can drag-and-drop it to the central panel, at the location where you wish to place it.
+Alternatively, you can drag-and-drop (using the dots) it to the central panel, at the location where you wish to place it.
 
-In the central panel is presented the current set of modules defining your workflow.
-You can switch between interactive (visual) and textual (text) form of it.
-By clicking on a specific module, you will be able to configure its parameters on the right panel.
+The set of modules defining your current workflow is presented on the central panel.
+You can switch between interactive (click on “Visual” tab under the Workflow section) and textual (click on “Text” tab) forms of it.
+You can configure the parameters of each module by clicking on this module (inside the central panel).
 
 Initially, default parameters are set for each module.
 Parameters are sub-categorized based on their properties.
 Unfold a property by clicking on it, and discover the set of related parameters.
 **Note** that you should always click the `save` button after modifying a parameter value for it to be taken into consideration.
 
-Finally, once you configured you workflow, click on `submit` to launch the corresponding haddock3 run.
+Finally, once you configured your workflow, click on `submit` to launch the corresponding haddock3 run.
 
 
 <details style="background-color:#DAE4E7">
@@ -2369,20 +2371,20 @@ Finally, once you configured you workflow, click on `submit` to launch the corre
   </summary>
 
 * **Topology modules**
-    * `topoaa`: *generates the all-atom topologies for the CNS engine.*
+    * `topoaa`: *Generates the all-atom topologies for the CNS engine.*
 
 * **Sampling modules**
-    * `rigidbody`: *Rigid body energy minimization with CNS (`it0` in haddock2.x).*
+    * `rigidbody`: *Performs rigid body energy minimization with CNS (`it0` in haddock2.x).*
     * `lightdock`: *Third-party glow-worm swam optimization docking software.*
 
 * **Model refinement modules**
-    * `flexref`: *Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (`it1` in haddock2.x).*
-    * `emref`: *Refinement by energy minimisation (`itw` EM only in haddock2.4).*
-    * `mdref`: *Refinement by a short molecular dynamics simulation in explicit solvent (`itw` in haddock2.X).*
+    * `flexref`: *Performs semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (`it1` in haddock2.x).*
+    * `emref`: *Performs refinement by energy minimisation (`itw` EM only in haddock2.4).*
+    * `mdref`: *Performs refinement by a short molecular dynamics simulation in explicit solvent (`itw` in haddock2.X).*
 
 * **Scoring modules**
-    * `emscoring`: *scoring of a complex performing a short EM (builds the topology and all missing atoms).*
-    * `mdscoring`: *scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).*
+    * `emscoring`: *Performs scoring of a complex performing a short EM (builds the topology and all missing atoms).*
+    * `mdscoring`: *Performs scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).*
 
 * **Analysis modules**
     * `alascan`: *Performs a systematic (or user-define) alanine scanning mutagenesis of interface residues.*
@@ -2399,20 +2401,20 @@ Finally, once you configured you workflow, click on `submit` to launch the corre
 
 <br>
 
-**Note** that you can also upload a zip archive of a workflow containing a configuration file named `workflow.cfg` and all corresponding files (e.g: pdb structures, restraints files, topological parameters, ...). Workflow archives presented in this tutorial are available in `workflows/webapp-workflows/`.
+**Note** that you can also upload a zip archive of a workflow containing a configuration file named `workflow.cfg` and all corresponding files (e.g.: pdb structures, restraints files, topological parameters, etc.). Workflow archives presented in this tutorial are available in `workflows/webapp-workflows/`.
 
 
 ### Loading haddock3 runs
 
-The web application also allows one to upload a pre-computed run, allowing to enjoy the graphical interface to navigate thought the docking results.
-Under the `Upload` menu, one can upload two types of zip archives:
+The webapp also allows you to upload a pre-computed run, so you can navigate through the docking results with ease thanks to the graphical interface.
+Under the `Upload` menu, you can upload two types of zip archives:
 
-* **Workflow**: a zip archive containing a configuration file named `workflow.cfg` and all corresponding files (e.g: pdb structures, restraints files, topological parameters, ...)
+* **Workflow**: a zip archive containing a configuration file named `workflow.cfg` and all corresponding files (e.g.: pdb structures, restraints files, topological parameters, etc.)
 * **Run**: a zip archive of the run.
 
 <details style="background-color:#DAE4E7">
  <summary>
-  <b><i>How to generate a zip archive a the run? </i></b> <i class="material-icons">expand_more</i>
+  <b><i>How to generate a zip archive of a run?</i></b> <i class="material-icons">expand_more</i>
  </summary>
 <br>
 
@@ -2430,29 +2432,31 @@ Create the zip archive<br>
 
 ### Navigating throught the results
 
-In the `Manage` page, a table is displaying all the haddock3 runs performed by one user.
+On the `Manage` page, a table displays all the haddock3 runs performed by one user.
 This table contains the job status (queued, running, error, ok), its name, creation date and modification date.
 On the right side of the table, actions can be performed.
-Current implementation allows to rename a run or to delete it.
+The current implementation allows to rename a run or to delete it.
 
-To access the content of a run, click on its name and you will be directed to the haddock3 webapp result page.
-You will land on the analysis page summarizing performances of the complexes obtained at the last stage, similar to what was previously obtained by opening the `report.html` file (see above) that contains a variety of plots displaying the HADDOCK score and its components against various CAPRI metrics.
-In this case, because a reference was provided during the `caprieval` module, performances are evaluated based on this structure.
+To access the content of a run, click on its name to be directed to the haddock3 webapp results page.
+You will land on the analysis page, which summarizes the performance of the models obtained at the last stage. This is similar to the previous method of opening the `report.html` file (see above), which contains various plots displaying the HADDOCK score and its components against different CAPRI metrics.
+In this case, because a reference was provided during the `caprieval` module, performance is evaluated based on this structure.
 
-In addition, you can click on the `browse` button, that will let you access all the files of the run.
+In addition, you can click on the `browse` button, which will let you access all the files of the run.
 
 
 ### Running a scoring scenario
 
-In this scenario, we want to score the various models obtained at the previous stages (ensemble docking and AlphaFold predictions), and observe if the HADDOCK scoring function is able to detect the quality of the models.
+In this scenario, we want to score the various models obtained at the previous stages (ensemble docking and AlphaFold predictions) and observe if the HADDOCK scoring function is able to detect the quality of the models.
 
 In this scenario, we want to:
 - Start by generating the topologies for the various models.
-- Cluster the models using Fraction of Common Contacts: Here, modify the parameter `min_population` to 1 so all complexes will be forwarded to the next steps even the ones that do not cluster with any other will define singlotons AND generate a matrix of the cluster to have a visual representation (`plot_matrix`).
+- Cluster the models using Fraction of Common Contacts:
+  - set the parameter `min_population` to 1 so that all models, including singletons (models that do not cluster with any others), will be forwarded to the next steps.
+  - set the parameter `plot_matrix` to true to generate a matrix of the clusters for a visual representation.
 - Add the Energy Minimisation module to score all complexes.
-- End the scenario with a comparisons of the models with the reference complex `4G6M_matched.pdb` using CAPRI criterions.
+- End the scenario with a comparison of the models with the reference complex `4G6M_matched.pdb` using CAPRI criteria.
 
-For this, two ensembles must be scored and one structure will be used as reference. You can find them in the `pdbs/` directory:
+For this, two ensembles must be scored and one structure will be used as a reference. You can find them in the `pdbs/` directory:
 - `07_emref_and_top5af2_ensemble.pdb`: An ensemble of models obtained from the ensemble run, combined with top5 AlphaFold2 predictions.
 - `af3server_15052024_top5ens.pdb`: An ensemble of top5 AlphaFold3 predictions.
 - `4G6M_matched.pdb`: The reference structure for quality assessments.
@@ -2503,14 +2507,14 @@ reference_fname = "4G6M_matched.pdb"
 {% endhighlight %}
 
 
-To simplify the tutorial, scoring scenario configuration files are provided in the `workflow/` directory, precomputated results in the `runs/` directory and finally archives for the haddock3-webapp upload section in `workflow/webapp/scoring-*.cfg`.
+To simplify the tutorial, scoring scenario configuration files are provided in the `workflow/` directory, precomputed results in the `runs/` directory and finally archives for the haddock3-webapp upload section in `workflow/webapp/scoring-*.cfg`.
 
 <a class="prompt prompt-question">
-How are scoring the AlphaFold predictions ?
+How are scoring the AlphaFold predictions?
 </a>
 
 <a class="prompt prompt-question">
-Is the HADDOCK scoring function able to detect best models ?
+Can the HADDOCK scoring function identify the best models?
 </a>
 
 
