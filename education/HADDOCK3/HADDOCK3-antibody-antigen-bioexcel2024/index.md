@@ -2349,7 +2349,7 @@ You will land on the workflow-builder page, where you can interactively build yo
 This page is subdivided into three areas described below.
 
 <figure style="text-align: center;">
-  <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/haddock3-webapp-workflow-builder.png">
+  <img width="75%" src="./haddock3-webapp-workflow-builder.png">
 </figure>
 
 On the left is presented the list of modules.
@@ -2442,7 +2442,7 @@ On the right side of the table, actions can be performed.
 The current implementation allows to rename a run or to delete it.
 
 <figure style="text-align: center;">
-  <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/haddock3-webapp-manage-run-access.png">
+  <img width="75%" src="./haddock3-webapp-manage-run-access.png">
 </figure>
 
 To access the content of a run, click on its name to be directed to the haddock3 webapp results page.
