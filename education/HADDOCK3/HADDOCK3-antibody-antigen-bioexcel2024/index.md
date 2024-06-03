@@ -2348,6 +2348,10 @@ Once logged in, click on the `build` menu to start the creation of a custom work
 You will land on the workflow-builder page, where you can interactively build your haddock3 scenario by combining the available modules.
 This page is subdivided into three areas described below.
 
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/haddock3-webapp-workflow-builder.png">
+</figure>
+
 On the left is presented the list of modules.
 To add a module to the workflow, just click on it, and it will be automatically added at the bottom of the configuration file.
 Alternatively, you can drag-and-drop (using the dots) it to the central panel, at the location where you wish to place it.
@@ -2437,8 +2441,13 @@ This table contains the job status (queued, running, error, ok), its name, creat
 On the right side of the table, actions can be performed.
 The current implementation allows to rename a run or to delete it.
 
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/haddock3-webapp-manage-run-access.png">
+</figure>
+
 To access the content of a run, click on its name to be directed to the haddock3 webapp results page.
-You will land on the analysis page, which summarizes the performance of the models obtained at the last stage. This is similar to the previous method of opening the `report.html` file (see above), which contains various plots displaying the HADDOCK score and its components against different CAPRI metrics.
+You will land on the analysis page, which summarizes the performance of the models obtained at the last stage.
+This is similar to the previous method of opening the `report.html` file (see above), which contains various plots displaying the HADDOCK score and its components against different CAPRI metrics.
 In this case, because a reference was provided during the `caprieval` module, performance is evaluated based on this structure.
 
 In addition, you can click on the `browse` button, which will let you access all the files of the run.
