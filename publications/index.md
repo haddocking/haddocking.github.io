@@ -6,6 +6,8 @@ image:
 ---
 ## 2024
 
+* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [AlphaFastPPi: a fast AlphaFold-Multimer-based pipeline for high-throughput screening](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v1) _BioRXiv._ 10.1101/2024.06.07.597882 (2024).
+
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://doi.org/10.1101/2024.06.02.597018). _BioRXiv._ 10.1101/2024.06.02.597018 (2024).
 
 * R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes. _Nature Prot._, In Press (2024).
