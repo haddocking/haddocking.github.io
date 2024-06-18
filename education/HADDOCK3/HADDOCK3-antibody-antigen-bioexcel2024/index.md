@@ -668,7 +668,7 @@ create for each molecule a file containing two lines:
 Using those two files, we can generate the CNS-formatted Ambiguous Interaction Restraints (AIRs) file with the following command:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass --segid-one A --segid-two B > ambig-paratope-NMR-epitope.tbl
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass \-\-segid-one A \-\-segid-two B > ambig-paratope-NMR-epitope.tbl
 </a>
 
 This generates a file called `ambig-paratope-NMR-epitope.tbl` that contains the AIRs. 
