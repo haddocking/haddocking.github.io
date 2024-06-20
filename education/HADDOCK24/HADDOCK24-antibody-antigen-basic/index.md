@@ -33,7 +33,7 @@ The small part of the Fab region that binds the antigen is called **paratope**. 
 In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I1B](https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b){:target="_blank"})) as an antigen and its highly specific monoclonal antibody gevokizumab (PDB code [4G6K](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}) (PDB code of the complex [4G6M](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6m){:target="_blank"}).  
 
 
-We will make use of the [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"}.
+We will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}.
 
 A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2){:target="_blank"} can be found in the following publications:
 
@@ -68,7 +68,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-PyMOL].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 Further we are providing pre-processed PDB files for docking and analysis. They have been processed (see below) to facilitate their use in HADDOCK and for allowing comparison with the known reference structure of the complex. For this download and unzip the following [zip archive](input-data.zip) and note the location of the extracted PDB files in your system. You should find the following three files:
 
@@ -243,7 +243,7 @@ The answer to that question should be yes, but we can see some residues not colo
 
 In previous steps we have identified the paratope and epitope residues of the antibody and antigen. Those can now be used to guide the docking. We will use this information to setup the docking.
 
-If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://bianca.science.uu.nl/haddock2.4/](https://bianca.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
+If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
 
 
 To start the submission process, you are prompted for our login credentials. After successful validation of the credentials you can proceed to the structure upload under **Submit a new job**.
@@ -254,7 +254,7 @@ To start the submission process, you are prompted for our login credentials. Aft
 
 ### Submission and validation of structures
 
-We will make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+We will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we will upload the provided, pre-processed PDB structures.
 
@@ -320,7 +320,7 @@ Then uncheck the option to automatically define passive residues as for the anti
 
 ### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *job_params* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload interface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *job_params* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *job_params* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload interface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *job_params* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
 
 It can serve as input reference for the run. This file can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 

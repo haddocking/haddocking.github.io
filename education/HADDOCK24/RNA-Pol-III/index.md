@@ -29,7 +29,7 @@ The case we will be investigating is the apo form of the <em>Saccharomyces cerev
 
 During this tutorial, we pretend that the structure of the Pol 3 core (14 subunits) is known and thus we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
 
-We will be making use of i) our [DISVIS server](https://bianca.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the new coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
+We will be making use of i) our [DISVIS server](https://wenmr.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the new coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
 As an alternative strategy, we will use our [PowerFIt server][link-powerfit-web] to fit the largest components of the complex into the 9Å cryo-EM map and then use those as starting point for the modelling of the remaining components.
 
 A description of our the previous version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
@@ -63,7 +63,7 @@ Ready to dock models are provided as part of the material for this tutorial.
 The required data to run this tutorial should be downloaded from [**here**](/education/HADDOCK24/RNA-Pol-III/RNA-Pol-III.zip){:target="_blank"}.
 Once downloaded, make sure to unpack/unzip the archive (for Windows system you can install the [7-zip](https://www.7-zip.org){:target="_blank"} software if needed to unpack tar archives).
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 <hr><hr>
 ## HADDOCK general concepts
@@ -242,7 +242,7 @@ setup the analysis for the Pol III core (chain A) - C31 (chain F) pair.
 
 To run DisVis, go to
 
-<a class="prompt prompt-info" href="https://bianca.science.uu.nl/disvis" target="_blank">https://bianca.science.uu.nl/disvis</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
 On this page, you will find the most relevant information about the server, as well as the links to the local and grid versions of the portal's submission page.
 
@@ -282,7 +282,7 @@ However the load of the server as well as pre- and post-processing steps might s
 
 If you want to learn more about the meaning of the various parameters, you can go to:
 
-<a class="prompt prompt-info" href="https://bianca.science.uu.nl/disvis" target="_blank">https://bianca.science.uu.nl/disvis</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
 Then click on the "**Help/Manual**" menu.
 
@@ -302,7 +302,7 @@ This number can of course be changed when using the local version of DisVis.
 Once your job has completed, and provided that you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification).
 
-If you don't want to wait for your run to complete, you can access the pre-calculated results [here](https://bianca.science.uu.nl/disvis/tutorial/3){:target="_blank"}.
+If you don't want to wait for your run to complete, you can access the pre-calculated results [here](https://wenmr.science.uu.nl/disvis/tutorial/3){:target="_blank"}.
 
 The results page presents a summary split into several sections:
 
@@ -515,7 +515,7 @@ _Note_: ChainE is reserved for the 3rd C34 wHTH domain (not used here since no c
 
 #### Registration / Login
 
-To start the submission, click [here](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"}. You will be prompted for our login credentials. 
+To start the submission, click [here](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"}. You will be prompted for our login credentials. 
 After successful validation of your credentials you can proceed to the structure upload.
 If running this tutorial in the context of a course/workshop, you will be provided with course credentials.
 
@@ -523,7 +523,7 @@ If running this tutorial in the context of a course/workshop, you will be provid
 
 #### Submission and validation of structures
 
-We will make us of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+We will make us of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 * **Step 1:** Define a name for your docking run, e.g. *PolIII-C82-C34-C31model-xlinks*.
 
@@ -638,7 +638,7 @@ Sample 180 degrees rotated solutions during rigid body EM -> turn off
 
 We are now ready to submit the docking run.
 
-The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading  it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This file, which provides a reference input of your run, can also be edited to change a few parameters for example. An excerpt of this file is shown here:
+The interface also allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend to download this file as it will allow you to repeat the run after uploading  it into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. This file, which provides a reference input of your run, can also be edited to change a few parameters for example. An excerpt of this file is shown here:
 
 <pre>
 {
@@ -683,7 +683,7 @@ to allow the runs to complete within a reasonable amount of time. Because of tha
 
 We have already performed a full docking runs (with 2000/400/400 models generated for the
 rigid-body docking, semi-flexible and final refinement stages). 
-The full run can be accessed [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-C82-C34-C31model-xlinks){:target="_blank"}.
+The full run can be accessed [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/PolIII-C82-C34-C31model-xlinks){:target="_blank"}.
 
 
 <figure align="center">
@@ -1252,7 +1252,7 @@ Can you identify possible problematic areas of the interface?
 
 To refine the fitted models, we can use HADDOCK, keeping the molecules in their original orientation, skipping the initial rigid body docking stage and semi-flexible refimenent and only performing the final refinement (or morphing from CG to AA if coarse graining is used). Since we are dealing with severe clashes, a coarse graining approach would be better since the individual all atom representation are effectively docked onto the coarse-grained model and refined.
 
-We will make use of the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+We will make use of the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 * **Step 1:** Define a name for your refinement run, e.g. *PolIII-core-C82-refine*.
 
@@ -1359,7 +1359,7 @@ Number of MD steps during third cooling stage with fully flexible interface -> 0
 
 We are now ready to submit the docking run.
 
-If you don't want to wait for your results, a pre-calculated refinement run is available [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-refine){:target="_blank"}.
+If you don't want to wait for your results, a pre-calculated refinement run is available [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-refine){:target="_blank"}.
 
 <a class="prompt prompt-question">
 Inspect the results page: Are the intermolecular energies favorable?
@@ -1385,7 +1385,7 @@ We will now repeat the steps from the the first [HADDOCK run submission](#strate
 with as difference that we will use the PowerFit/Chimera, HADDOCK-refined structures of PolIII core and C82. Those will be kept fixed in their original positions
 for the initial rigid-body docking stage.
 
-Connect to the [HADDOCK2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+Connect to the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 * **Step 1:** Define a name for your docking run, e.g. *PolIII-core-C82-EMfit-C34-C31-xlinks*.
 
@@ -1510,7 +1510,7 @@ We are now ready to submit the docking run!
 <hr>
 ### Analysis of the docking results
 
-Once your run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [link](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-EMfit-C34-C31-xlinks){:target="_blank"}.
+Once your run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [link](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-EMfit-C34-C31-xlinks){:target="_blank"}.
 
 <a class="prompt prompt-info">
 Inspect the results page
@@ -1594,10 +1594,10 @@ In that case you should setup a six-body docking run using:
 and as restraint files: `xlinks-all-inter-disvis-filtered-C31dummyLYS.tbl` for the cross-links and `C31-C34-connectivities.tbl` as connectivity restraints.
 
 The results of such a run using exclusively cross-links (strategy 1) can be accessed 
-[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}.
+[here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/RNA-Pol-III-xlinks-C31dummies){:target="_blank"}.
 
 The results of such a run using the cryo-EM fitted core and C82 domains with cross-links (strategy 2) can be accessed 
-[here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-EMfit-C34-C31dummies){:target="_blank"}.
+[here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/PolIII-core-C82-EMfit-C34-C31dummies){:target="_blank"}.
 
 2) Try to identify from the run described in this tutorial the heavily violated cross-links and remove them from the restraints list. 
 Repeat the docking and check if this affects the position of the various domains.
@@ -1613,19 +1613,19 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-cns]: https://cns-online.org "CNS online"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: hhttps://bianca.science.uu.nl/disvis "DisVis web server"
-[link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
-[link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
+[link-disvis-web]: hhttps://wenmr.science.uu.nl/disvis "DisVis web server"
+[link-disvis-submit]: https://wenmr.science.uu.nl/disvis/submit "DisVis submission"
+[link-disvis-register]: https://wenmr.science.uu.nl/auth/register "DisVis registration"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
 [link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
 [link-haddock-expert]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html "HADDOCK2.2 webserver expert interface"
-[link-haddock-register]: https://bianca.science.uu.nl/auth/register/"HADDOCK web server registration"
+[link-haddock-register]: https://wenmr.science.uu.nl/auth/register/"HADDOCK web server registration"
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: https://bianca.science.uu.nl/auth/register  "PowerFit registration"
+[link-powerfit-register]: https://wenmr.science.uu.nl/auth/register  "PowerFit registration"
 [link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
 [link-xwalk]: https://www.xwalk.org

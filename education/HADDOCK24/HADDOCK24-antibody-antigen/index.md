@@ -34,7 +34,7 @@ In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I
 
 <hr>
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
 
 A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2){:target="_blank"} can be found in the following publications:
 
@@ -69,7 +69,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 
 <hr>
@@ -299,7 +299,7 @@ Save *output_1.pdb* as 4G6K_fv.pdb . If you wish to save the pipeline after this
 ### Registration / Login
 
 
-If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://bianca.science.uu.nl/haddock2.4/](https://bianca.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
+If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.  
 
 
 To start the submission process, you are prompted for our login credentials. After successful validation of the credentials you can proceed to the structure upload under **Submit a new job**.
@@ -314,7 +314,7 @@ In previous steps we have identified the paratope residues of the antibody. Thos
 
 #### Submission and validation of structures
 
-For this we will make use of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+For this we will make use of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the antibody structure we previously prepared with PDB-tools and the IL-1β structure.
 
@@ -398,7 +398,7 @@ Number of structures to analyze -> 400
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again.
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again.
 
 
 * **Step 11:** Click on the **Submit** button at the bottom left of the interface.
@@ -414,7 +414,7 @@ In this scenario, additionally to the CDR residues of the antibody, a loose defi
 
 #### Submission and validation of structures
 
-We again make us of the [HADDOCK 2.4 interface](https://bianca.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+We again make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 In this stage of the submission process we can upload the structures we previously prepared with PyMOL.
 
@@ -479,7 +479,7 @@ Since we have a rather loose definition of the interface, we will input the corr
 
 #### Job submission
 
-This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://bianca.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
+This interface allows us to modify many parameters that control the behaviour of HADDOCK, but in our case, the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a tgz archive) and a *haddockparameter* file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK webserver. The *haddockparameter* file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again. An excerpt of this file is shown here:
 
 
 * **Step 9:** Click on the **Submit** button at the bottom left of the interface.
@@ -695,7 +695,7 @@ These residues could be used as active residues for Interleukin-1β, leaving HAD
      70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115
 </pre>
 
-The results of such a docking run can be found [here](https://bianca.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-NMR-sas-filtered){:target="_blank"}.
+The results of such a docking run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/4G6M-Ab-Ag-NMR-sas-filtered){:target="_blank"}.
 
 <a class="prompt prompt-info">
 Inspect the results.

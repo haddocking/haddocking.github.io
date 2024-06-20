@@ -57,7 +57,7 @@ Further, the required data to run this tutorial are the same as for the [DisVis 
 and should be downloaded from [**here**][link-data]{:target="_blank"}.
 Once downloaded, make sure to unpack the archive.
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock).
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock).
 
 <hr>
 ## HADDOCK general concepts
@@ -377,7 +377,7 @@ cat restraints_filtered.txt | awk \'{if ( NF == 8 ) {print \"assi ( segid \",$1,
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
@@ -483,7 +483,7 @@ job has successfully completed.
 
 #### Registration and Submission
 
-For this scenario we will make us of [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) after registering [here](https://bianca.science.uu.nl/auth/register/).
+For this scenario we will make us of [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) after registering [here](https://wenmr.science.uu.nl/auth/register/).
 
 * **Step 1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-interface*.
 
@@ -546,7 +546,7 @@ __Remember__ _to save the haddockparameter file for reference._
 
 #### Registration and Submission
 
-For this scenario we will make us of [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) after registering [here](https://bianca.science.uu.nl/auth/register/).
+For this scenario we will make us of [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) after registering [here](https://wenmr.science.uu.nl/auth/register/).
 
 * **Step1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-crosslinks-interface*.
 

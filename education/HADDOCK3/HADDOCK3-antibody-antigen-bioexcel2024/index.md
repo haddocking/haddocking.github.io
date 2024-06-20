@@ -578,7 +578,7 @@ Here, since we are using a local version, we need to define those manually.
 This can easily be done using a haddock3 command line tool in the following way:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints passive_from_active 4I1B_clean.pdb 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117 --cutoff 0.15
+haddock3-restraints passive_from_active 4I1B_clean.pdb 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117 \-\-cutoff 0.15
 </a>
 
 The command prints a list of passive residues, which you should save to a file for further use.

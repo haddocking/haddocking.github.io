@@ -840,7 +840,7 @@ Type 1 and the cluster analysis will start.<hr>
 <hr>
 ## Protein-ligand docking with HADDOCK
 
-Note that protein-ligand HADDOCKing typically requires fine-tuning a handful of parameters that requires the most advanced privilege on the web server. If you did not apply for the _guru_ access level yet, it is time to apply for it via our [registration portal](https://bianca.science.uu.nl/auth/register/). Alternatively, you can use the course credentials that were provided to you during the summer school to submit your docking runs. Please, use the pre-calculated runs to move on with the analysis section.
+Note that protein-ligand HADDOCKing typically requires fine-tuning a handful of parameters that requires the most advanced privilege on the web server. If you did not apply for the _guru_ access level yet, it is time to apply for it via our [registration portal](https://wenmr.science.uu.nl/auth/register/). Alternatively, you can use the course credentials that were provided to you during the summer school to submit your docking runs. Please, use the pre-calculated runs to move on with the analysis section.
 
 #### Setting up a new docking run targeting the identified binding pocket
 

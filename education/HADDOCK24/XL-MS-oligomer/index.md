@@ -184,7 +184,7 @@ A 132 CA B 161 CA 3.0 10.0
 
 We have all input data required to run DisVis. To launch the run go to:
 
-<a class="prompt prompt-info" href="https://bianca.science.uu.nl/disvis" target="_blank">https://bianca.science.uu.nl/disvis</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
 On this page, you will find the most relevant information about the server.
 
@@ -231,7 +231,7 @@ Once your job has completed, and provided you did not close the status page, you
 page (you will also receive an email notification).
 
 If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input and complete scanning [here](https://bianca.science.uu.nl/disvis/run/gQH_3T7grzrD){:target="_blank"}.
+with the same input and complete scanning [here](https://wenmr.science.uu.nl/disvis/run/gQH_3T7grzrD){:target="_blank"}.
 
 The results page presents a summary split into several sections:
 
@@ -353,7 +353,7 @@ Let's now setup the docking run!
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
@@ -681,9 +681,9 @@ If you download the results, you can visualize the prediction confidence in PyMo
 
 [link-cns]: https://cns-online.org "CNS online"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
-[link-disvis-web]: https://bianca.science.uu.nl/disvis "DisVis web server"
-[link-disvis-submit]: https://bianca.science.uu.nl/disvis/submit "DisVis submission"
-[link-disvis-register]: https://bianca.science.uu.nl/auth/register "DisVis registration"
+[link-disvis-web]: https://wenmr.science.uu.nl/disvis "DisVis web server"
+[link-disvis-submit]: https://wenmr.science.uu.nl/disvis/submit "DisVis submission"
+[link-disvis-register]: https://wenmr.science.uu.nl/auth/register "DisVis registration"
 [link-data]: https://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip "DisVis tutorial data"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-chimera-distance]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera distance command"
@@ -693,5 +693,5 @@ If you download the results, you can visualize the prediction confidence in PyMo
 [link-haddock]: https://bonvinlab.org/software/haddock2.4 "HADDOCK2.4"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK2.4 webserver"
 [link-haddock-multi]: https://wenmr.science.uu.nl/haddock2.4/submit/1 "HADDOCK2.4 docking interface"
-[link-haddock-register]: https://bianca.science.uu.nl/auth/register/ "HADDOCK2.4 registration"
+[link-haddock-register]: https://wenmr.science.uu.nl/auth/register/ "HADDOCK2.4 registration"
 [link-haddock-tutorial]: https://bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic "HADDOCK2.4 webserver tutorial"

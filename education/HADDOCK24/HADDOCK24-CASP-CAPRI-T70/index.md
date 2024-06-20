@@ -118,14 +118,14 @@ You will see three directories and one file:
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/auth/register/). To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
 #### Submission and validation of structures
 
 We will launch two docking runs, one for the dimeric and one for the tetrameric form of this target.
-For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server, where you will need to register as a user and request Expert or Guru level access [here](https://bianca.science.uu.nl/auth/register/).
+For this we will make us of the [HADDOCK 2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1) of the HADDOCK web server, where you will need to register as a user and request Expert or Guru level access [here](https://wenmr.science.uu.nl/auth/register/).
 
 We will first set up a symmetrical tetramer docking run:
 

@@ -137,11 +137,11 @@ Examples of using MD for HADDOCK are shown here:
 
 Upon acquiring the input structures provided you might want to modify in one way or the other. This might not be very straightforward since pdb files have to meet strict formatting requirements and are rather lengthy to edit manually. The HADDOCK group has therefore developed a pipeline called PDB-Tools where pdb files can be submitted and edited it as needed. PDB-tools are available here:
 
-* [PDB-Tools Web](https://bianca.science.uu.nl/pdbtools/)
+* [PDB-Tools Web](https://wenmr.science.uu.nl/pdbtools/)
 
 * [Local version of PDB-Tools](http://www.bonvinlab.org/pdb-tools/)
 
-[<img src="/software/bpg/pdbtoolsweb_graphical_abstract.png">](https://bianca.science.uu.nl/pdbtools/)  
+[<img src="/software/bpg/pdbtoolsweb_graphical_abstract.png">](https://wenmr.science.uu.nl/pdbtools/)  
 
 
 Tutorials:  

@@ -77,7 +77,7 @@ table, th, td {
 
 ## [Advanced model refinement](/software/haddock2.4/tips/advanced_refinement/)
 
-The HADDOCK2.4 server provides a dedicated web interface to run a [refinement on a molecular complex](https://bianca.science.uu.nl/haddock2.4/refinement/1) (still experimental). As input, only a PDB file for each partner of the complex is needed. In case one wants to tune the default parameters, it is possible to run the refinement also locally or using the regular [submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1). Then following settings need to be adjusted: 
+The HADDOCK2.4 server provides a dedicated web interface to run a [refinement on a molecular complex](https://wenmr.science.uu.nl/haddock2.4/refinement/1) (still experimental). As input, only a PDB file for each partner of the complex is needed. In case one wants to tune the default parameters, it is possible to run the refinement also locally or using the regular [submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1). Then following settings need to be adjusted: 
 
 ### Settings to run water refinement locally
 

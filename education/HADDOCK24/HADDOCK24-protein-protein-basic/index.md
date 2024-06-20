@@ -41,7 +41,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://bianca.science.uu.nl/auth/register/haddock](https://bianca.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 <hr>
 ## HADDOCK general concepts
@@ -248,7 +248,7 @@ In order to use a modified amino-acid in HADDOCK, the only thing you will need t
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://bianca.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 

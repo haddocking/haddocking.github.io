@@ -38,7 +38,7 @@ instructions and/or PyMOL commands.
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this our [registration page](https://bianca.science.uu.nl/auth/register/){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this our [registration page](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}.
 
 
 <hr>
@@ -292,7 +292,7 @@ or download it from [here](./media/unambig.tbl){:target="_blank"} for convenienc
 <hr>
 ## Submit your docking run
 
-**Note** that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the “guru” access level yet, it is time to apply for it on our [registration portal](https://bianca.science.uu.nl/auth/register/). If using workshop credentials, you will have “guru” access already.
+**Note** that fine-tuning the parameters of the web server to covalently dock a ligand requires the most advanced privilege on the web server. If you did not apply for the “guru” access level yet, it is time to apply for it on our [registration portal](https://wenmr.science.uu.nl/auth/register/). If using workshop credentials, you will have “guru” access already.
 
 A problem when trying to "covalently dock" a small ligand is that the van der Waals interactions will typically prevent close proximity of the atoms involved in the covalent bond.
 To allow the distance restraint to be satisfied, we need to scale down the non-bonded interactions between the specific atoms involved in that covalent bond. For this purpose we created a special Cysteine residue (residue name: CYC), without hydrgogen atom on the sulfur and with significantly reduced VDW parameters for the sulfur atom (scaled down by a factor 10).

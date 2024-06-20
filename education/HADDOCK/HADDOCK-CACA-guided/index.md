@@ -449,7 +449,7 @@ We can see that the CA-CA distance restraints (yellow dashes) are mostly at the 
 <hr>
 ## CA-CA distance restraint-driven docking with HADDOCK
 
-__Note:__ _To perform CA-CA guided docking runs with HADDOCK, you will need to register as a user and request Expert or Guru level access. The registration page for HADDOCK can be found [here](https://bianca.science.uu.nl/auth/register/){:target="_blank"}._
+__Note:__ _To perform CA-CA guided docking runs with HADDOCK, you will need to register as a user and request Expert or Guru level access. The registration page for HADDOCK can be found [here](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}._
 
 
 ### Setting up the docking

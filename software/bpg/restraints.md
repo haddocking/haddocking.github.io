@@ -164,7 +164,7 @@ More about optimal settings for different docking scenarios can be found [here](
 
 # Getting restraints HADDOCK-ready
 
-In [HADDOCK2.4 webserver](https://bianca.science.uu.nl/haddock2.4/) active and passive residues can be entered manually or in a *tbl* file of ambiguous and unambiguous restraints. 
+In [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4/) active and passive residues can be entered manually or in a *tbl* file of ambiguous and unambiguous restraints. 
 
 Such restraints file can be generated in the [GenTBL server](https://alcazar.science.uu.nl/services/GenTBL/) and can be further used when using HADDOCK locally, since it is already CNS-formatted.
 
@@ -214,9 +214,9 @@ Tutorials using CPORT:
 * [HADDOCKing of the p53 N-terminal peptide to MDM2](/education/molmod/docking/)
 
 
-## [DISVIS](https://bianca.science.uu.nl/disvis/) 
+## [DISVIS](https://wenmr.science.uu.nl/disvis/) 
 
-[DISVIS](https://bianca.science.uu.nl/disvis/) visualizes and quantifies the information content of distance restraints between macromolecular complexes.
+[DISVIS](https://wenmr.science.uu.nl/disvis/) visualizes and quantifies the information content of distance restraints between macromolecular complexes.
 
 Tutorial describing DisVis: 
 
