@@ -14,7 +14,7 @@ image:
 
 ![Structure + Binformatic/Biophysical Data => Complex](/images/HADDOCK3-logo.png)  
 
-_Version:_ 3.0 (first release May 2020)  
+_Version:_ 3.0.0 (first alpha release May 2020)  
 
 _Authors:_ Computational structural biology group, Utrecht University  
 
@@ -32,6 +32,22 @@ Fax: +31-30-2537623
 
 **ATTENTION: This new version is under heavy development and will change abruptly and without warning.**
 
+
+* * *
+
+**HADDOCK3 manual**: [https://www.bonvinlab.org/software/haddock2.4/manual/index.md](/software/haddock2.4/manual.md)
+
+**HADDOCK3 web application**:  The haddock3 web application is still under development. [https://github.com/i-VRESSE/haddock3-webapp](https://github.com/i-VRESSE/haddock3-webapp)
+
+**HADDOCK3 web service**:  -- Not yet available --
+
+**Getting the software**:  [haddock3 GitHub repository](https://github.com/haddocking/haddock3)
+
+**Questions about HADDOCK or looking for support?**  [Ask BioExcel](https://ask.bioexcel.eu)
+
+**Questions about code related issue?**  [GitHub issues](https://github.com/haddocking/haddock3/issues)
+
+[**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
 
 * * *
 
