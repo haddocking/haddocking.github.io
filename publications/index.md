@@ -6,7 +6,7 @@ image:
 ---
 ## 2024
 
-* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [AlphaFastPPi: a fast AlphaFold-Multimer-based pipeline for high-throughput screening](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v1) _BioRXiv._ 10.1101/2024.06.07.597882 (2024).
+* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v2) _BioRXiv._ 10.1101/2024.06.07.597882 (2024).
 
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://doi.org/10.1101/2024.06.02.597018). _BioRXiv._ 10.1101/2024.06.02.597018 (2024).
 
