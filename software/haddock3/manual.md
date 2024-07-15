@@ -56,6 +56,7 @@ Welcome to the haddock3 user manual
 
 ### Available modules
 
+* [Module available in haddock3](/software/haddock3/manual/modules.md)
 * [Topology](/software/haddock3/manual/modules/topology)
 * [Sampling](/software/haddock3/manual/modules/sampling)
 * [Refinements](/software/haddock3/manual/modules/refinements)
