@@ -9,38 +9,89 @@ image:
   feature: pages/banner_software.jpg
 ---
 
-* [HADDOCK home page](/software/haddock3/)
-* [Introduction](/software/haddock3/manual/introduction)
 
-### Input files and restraints
-* [Preparing PDB files for docking](/software/haddock3/pdb)
-* [Defining ambiguous interaction restraints](/software/haddock3/airs)
-* [Defining a docking protocol](/software/haddock3/airs)
+# Haddock3 User Manual
 
-### Project setup and parameters
-* [Docking protocol](/software/haddock3/protocol)
-* [Setting up the docking](/software/haddock3/docking)
-* [HADDOCK parameters and settings (run.cns)](/software/haddock3/run)
+Welcome to the haddock3 user manual
+
+
+### Introduction
+
+* [HADDOCK - High Ambiguity Docking](/software/haddock3/manual/haddocking)
+* [Haddock3 modularity](/software/haddock3/manual/haddock3)
+
+
+### Installation
+
+* [Obtaining HADDOCK](/software/haddock3/manual/download)
+* [CNS](/software/haddock3/manual/install_cns)
+* [Virtual environments (conda / venv)](/software/haddock3/manual/envs)
+
+
+### Command Line Interfaces
+
+* [Command Line Interfaces](/software/haddock3/manual/clis)
+
+
+### Preparing input files
+
+* [Haddock3 requirements](/software/haddock3/manual/structure_requirements)
+* [Tools to manipulate structures](/software/haddock3/manual/pdbtools)
+
+
+###  Generating restraints for HADDOCK
+
+* [General introduction](/software/haddock3/manual/intro_restraints)
+* [haddock3-restraints](/software/haddock3/manual/restraints_cli)
+* [Symmetry restraints](/software/haddock3/manual/symmetry_restraints)
+* [Ab-initio docking mode](/software/haddock3/manual/abinitio_docking)
+* [Flexibility](/software/haddock3/manual/flexibility)
+
+
+### Generating a docking protocol
+
+* [Global parameters](/software/haddock3/manual/global_parameters)
+* [Concept of modules / parameters](/software/haddock3/manual/modules_parameters)
+
+
+### Available modules
+
+* [Topology](/software/haddock3/manual/modules/topology)
+* [Sampling](/software/haddock3/manual/modules/sampling)
+* [Refinements](/software/haddock3/manual/modules/refinements)
+* [Scoring](/software/haddock3/manual/modules/scoring)
+* [Analysis](/software/haddock3/manual/modules/analysis)
+
+
+### Docking scenario examples
+
+* [protein-protein docking]()
+* [antibody-antigen docking]()
+* [protein-ligand docking]()
+* [protein-glycan docking]()
+
+
+### Getting support / How to ask for help
+
+* [Getting support / How to ask for help](/software/haddock3/manual/info)
 * [FAQ](/software/haddock3/faq)
 
-### HADDOCK scoring
-* [Scoring](/software/haddock3/scoring)
 
-### Analysis and scoring
-* [Analysis](/software/haddock3/analysis)
+### [Tutorials]
 
-### Download and Software links
-* [Obtaining HADDOCK](/software/haddock3/download)
-* [Installing HADDOCK](/software/haddock3/installation)
-* [Software links](/software/haddock3/software)
-
-### Tips & tricks
+* [Access to various tutorials](/software/haddock3/manual/tutorials)
 * [HADDOCK best practice guide](/software/bpg) - A must read when starting to use our software!
-* [Advanced model refinement](/software/haddock3/tips/advanced_refinement)
-* [Settings for use with bioinformatics predictions](/software/haddock3/tips/bioinformatics-prediction-mode)
 
-### [HADDOCK-related publications](/software/haddock3/publications)
 
 ### [Online lectures](https://www.youtube.com/user/WeNMRchannel)
 
-### [Tutorials](/software/haddock3/tutorials)
+
+### Citing haddock3
+
+* [Citing haddock3](/software/haddock3/manual/citing)
+* [Haddck3-related publications](/software/haddock3/manual/publications)
+
+
+### Acknowledgements
+
+* [Acknowledgements](/software/haddock3/manual/acknowledgements)

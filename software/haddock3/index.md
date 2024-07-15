@@ -41,7 +41,7 @@ Fax: +31-30-2537623
 
 **HADDOCK3 web service**:  -- Not yet available --
 
-**Getting the software**:  [haddock3 GitHub repository](https://github.com/haddocking/haddock3)
+**Getting the software**:  [https://www.bonvinlab.org/software/haddock3/](https://www.bonvinlab.org/software/haddock3/)
 
 **Questions about HADDOCK or looking for support?**  [Ask BioExcel](https://ask.bioexcel.eu)
 
