@@ -28,7 +28,8 @@ Feature requests can also be performed directly from our [GitHub repository issu
 
 ## 20 years of HADDOCK
 
-Haddock3 is the newest version of HADDOCK, an original idea initially developped by [Dominguez, C., Boelens, R. & Bonvin, A. M. J. J. in 2003](). Since more than 20 years now, HADDOCK has been improved, going from its first description to several milestones, namely Haddock2.2, Haddock2.4 and now Haddock3.
+Haddock3 is the newest version of HADDOCK, an original idea initially developped by [Dominguez, C., Boelens, R. & Bonvin, A. M. J. J. in 2003](https://pubs.acs.org/doi/10.1021/ja026939x).
+Since more than 20 years now, HADDOCK has been improved, going from its first description to several milestones, namely Haddock2.2, Haddock2.4 and now Haddock3.
 
 In november 2023, we celebrated the 20 years anniversary of HADDOCK, where most of the incredible scientists that contributed to its developement attended.
 
