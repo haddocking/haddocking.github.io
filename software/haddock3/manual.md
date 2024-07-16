@@ -50,8 +50,10 @@ Welcome to the haddock3 user manual
 
 ### Generating a docking protocol
 
+* [Configuration file](/software/haddock3/manual/config_file)
 * [Global parameters](/software/haddock3/manual/global_parameters)
 * [Concept of modules / parameters](/software/haddock3/manual/modules_parameters)
+
 
 
 ### Available modules
