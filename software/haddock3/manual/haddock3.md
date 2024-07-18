@@ -45,3 +45,5 @@ You can access the [HADDOCK3 documentation page](https://www.bonvinlab.org/haddo
 
 The HADDOCK3 workflows are defined in simple configuration text files, similar to the [TOML](https://toml.io/en/) format but with extra features.
 Contrary to HADDOCK2.X which follows a rigid (yet highly parameterisable) procedure, in HADDOCK3, you can create your own simulation workflows by combining a multitude of independent modules that perform specialized tasks.
+Details on [how to create a workflow is provided in a dedicated section](/software/haddock3/manual/config_file).
+We also provide a set of [docking scenario examples](), containing quite a variety of different protocols that can also guide you.

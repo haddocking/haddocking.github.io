@@ -53,7 +53,7 @@ Welcome to the haddock3 user manual
 * [Configuration file](/software/haddock3/manual/config_file)
 * [Global parameters](/software/haddock3/manual/global_parameters)
 * [Concept of modules / parameters](/software/haddock3/manual/modules_parameters)
-
+* [Notable parameters](/software/haddock3/manual/important_parameters)
 
 
 ### Available modules
@@ -68,6 +68,7 @@ Welcome to the haddock3 user manual
 
 ### Docking scenario examples
 
+* [Docking scenarios](/software/haddock3/manual/modules/docking_scenarios)
 * [protein-protein docking]()
 * [antibody-antigen docking]()
 * [protein-ligand docking]()
@@ -80,7 +81,7 @@ Welcome to the haddock3 user manual
 * [FAQ](/software/haddock3/faq)
 
 
-### [Tutorials]
+### Tutorials
 
 * [Access to various tutorials](/software/haddock3/manual/tutorials)
 * [HADDOCK best practice guide](/software/bpg) - A must read when starting to use our software!
