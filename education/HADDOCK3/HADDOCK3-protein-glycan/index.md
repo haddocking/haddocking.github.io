@@ -73,7 +73,7 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 
 In this section we will prepare the PDB files of the protein and glycan for docking.
 A crystal structure of the protein in the unbound form is available, but you are welcome to
-use either the bound form or the [Alphafold structure]() if you prefer.
+use either the bound form or the [Alphafold structure](https://www.alphafold.ebi.ac.uk/entry/Q8NJY3) if you prefer.
 
 _**Note**_: Before starting to work on the tutorial, make sure to activate haddock3. For example, if haddock3 was installed using `conda`
 
