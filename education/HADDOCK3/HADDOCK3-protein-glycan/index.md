@@ -16,15 +16,14 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
+This tutorial demonstrates the use of HADDOCK3 for predicting
 the structure of a protein-glycan complex using information about the protein binding site.
 
 A glycan is a molecule composed of different monosaccharide units, linked to each other
 by glycosidic bonds. Glycans are involved in a wide range of biological processes, such as
 cell-cell recognition, cell adhesion, and immune response. With respect to proteins, glycan
  structures are highly diverse and complex, as they can involve mutliple *branches* and different *linkages*, namely different ways in which a glycosidic bond can connect two monosaccharides. Therefore, the prediction of glycan-protein interactions is a challenging
-task. In this tutorial, we will use HADDOCK3 to predict the structure of a protein-glycan
-complex using information about the binding site on the protein.
+task.
 
 In this tutorial we will be working with the catalytic domain of the *Humicola Grisea* Cel12A enzyme
 (PDB code [1OLR](https://www.ebi.ac.uk/pdbe/entry/pdb/1olr){:target="_blank"}) and a linear homopolymer,
@@ -52,7 +51,7 @@ instructions, and/or PyMOL commands.
 In order to follow this tutorial you will need to work on a Linux or MacOSX
 system. We will also make use of [**PyMOL**][link-pymol] (freely available for
 most operating systems) in order to visualize the input and output data. We will
-provide you links to download the various required software and data.
+provide you links to download the various required software and data. We assume that you have a working installation of HADDOCK3 on your system. If not, please refer to the [HADDOCK3 installation instructions](https://github.com/haddocking/haddock3/blob/main/docs/INSTALL.md){:target="_blank"}.
 
 Further we are providing pre-processed PDB files for docking and analysis (but the
 preprocessing of those files will also be explained in this tutorial). The files have been processed
