@@ -22,7 +22,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
 * [**HADDOCK3 protein-glycan modelling and docking**](/education/HADDOCK3/HADDOCK3-protein-glycan):
-  This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided with different levels of information about the binding site.
+  This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
 
 * [**HADDOCK3 antibody-antigen docking for bioexcel 2024 workshop**](/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024):
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information

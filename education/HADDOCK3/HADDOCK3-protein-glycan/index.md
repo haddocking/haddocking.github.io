@@ -22,13 +22,13 @@ the structure of a protein-glycan complex using information about the protein bi
 A glycan is a molecule composed of different monosaccharide units, linked to each other
 by glycosidic bonds. Glycans are involved in a wide range of biological processes, such as
 cell-cell recognition, cell adhesion, and immune response. With respect to proteins, glycan
- structures are highly diverse and complex, as they can involve mutliple *branches* and different *linkages*, namely different ways in which a glycosidic bond can be connect two monosaccharides. Therefore, the prediction of glycan-protein interactions is a challenging
+ structures are highly diverse and complex, as they can involve mutliple *branches* and different *linkages*, namely different ways in which a glycosidic bond can connect two monosaccharides. Therefore, the prediction of glycan-protein interactions is a challenging
 task. In this tutorial, we will use HADDOCK3 to predict the structure of a protein-glycan
 complex using information about the binding site on the protein.
 
 In this tutorial we will be working with the catalytic domain of the *Humicola Grisea* Cel12A enzyme
 (PDB code [1OLR](https://www.ebi.ac.uk/pdbe/entry/pdb/1olr){:target="_blank"}) and a linear homopolymer,
-4 beta glucopyranose, as glycan
+*4-beta-glucopyranose*, as glycan
 (PDB code of the complex [1UU6](https://www.ebi.ac.uk/pdbe/entry/pdb/1uu6){:target="_blank"}).
 
 <figure style="text-align: center;">
@@ -58,7 +58,7 @@ Further we are providing pre-processed PDB files for docking and analysis (but t
 preprocessing of those files will also be explained in this tutorial). The files have been processed
 to facilitate their use in HADDOCK and for allowing comparison with the known reference
 structure of the complex. For this _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/HvXxgxCTY1DiPsV){:target="_blank"}
+[zip archive](https://surfdrive.surf.nl/files/index.php/s/fNdwCbjtUtBeuXi){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. In it you should find the following directories:
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
@@ -102,13 +102,13 @@ The command fetches the PDB ID and removes water and heteroatoms (in this case n
 ### Preparing the glycan structure
 
 We will model the glycan using the Glycam web server. The glycan is a linear polymer of 4 beta-D-glucopyranose units.
-Beta-D-glucopyranose is a common monosaccharide found basically in all the living organisms. In this case the four monosaccharides are linked by beta-1,4-glycosidic bonds, where the C1 of one monosaccharide is linked to the C4 of the next one.
+Beta-D-glucopyranose is a common monosaccharide found basically in all the living organisms. In this case the four monosaccharides are linked by beta-1,4-glycosidic bonds, where the *anomeric carbon* (C1) of one monosaccharide is linked to the C4 of the next one.
 
 We can start by accessing the [GLYCAM webserver](https://glycam.org/cb/){:target="_blank"} where we will model the glycan!
 
 <a class="prompt prompt-info">Select the Glc monosaccharide with your mouse.</a>
 
-This will add the monosaccharide to the sequence, together with an OH group as *aglycon* (the non-sugar part of a glycan), which we don't need in this case. We will remove it.
+This will add the monosaccharide to the sequence, together with an OH group as *aglycon* (the non-sugar part of a glycan).
 
 Now we need to add a second beta-D-glucopyranose unit to the sequence. We will link it to the first one by a beta-1,4-glycosidic bond.
 
@@ -129,15 +129,29 @@ At the end of the process you should observe the following sequence:
 <a class="prompt prompt-info">Press the Done button and wait for the webserver to process your request. When done, press Download Minimized Structure and download the PDB file.</a>
 
 Unfortunately, the glycan structure we just obtained cannot be directly used in HADDOCK as it's not properly formatted.
-We will need to edit it to remove the several TER statements GLYCAM placed between the monosaccharides, and to add the [HADDOCK residue name](https://rascar.science.uu.nl/haddock2.4/library){:target="_blank"} proper to beta-D-glucopyranose.
+We will need to edit it to remove the several TER statements GLYCAM placed between the monosaccharides, and to add the [HADDOCK residue name](https://rascar.science.uu.nl/haddock2.4/library){:target="_blank"} proper to beta-D-glucopyranose. Importantly, we have to merge the OH aglycon with the first monosaccharide unit, as they are now separated in two different residues.
 
 <a class="prompt prompt-question">What is the HADDOCK three letter code corresponding to beta-D-glucopyranose?</a>
 
+Let's start with the aglycon:
+
 <a class="prompt prompt-cmd">
-pdb_tidy -strict DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_selres -2:5 | pdb_chain -B | pdb_rplresname -0GB:BGC | pdb_rplresname -4GB:BGC | pdb_reres -1 > 1UU6_l_u.pdb
+pdb_selresname -ROH DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_tidy -strict| pdb_chain -B | pdb_rplresname -ROH:BGC > aglycon.pdb
 </a>
 
-The pdb_tidy command removes the TER statements between each unit, while pdb_selres selects all the residues except the OH aglycon. The pdb_chain command changes the chain ID to B, and the pdb_rplresname command changes the residue name to BGC. The last command, pdb_reres, renumbers the residues of the glycan starting from 1, which was previously occupied by the removed OH aglycon. The final structure is saved in the 1UU6_l_u.pdb file.
+This command selects the GLYCAM residue name proper to the aglycon, changes the chain ID to B, and changes the residue name to the HADDOCK one. The final structure is saved in the aglycon.pdb file. Now we will process the rest of the glycan structure:
+
+<a class="prompt prompt-cmd">
+pdb_tidy -strict DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_selres -2:5 | pdb_chain -B | pdb_rplresname -0GB:BGC | pdb_rplresname -4GB:BGC | pdb_reres -1 > sugar.pdb
+</a>
+
+The pdb_tidy command removes the TER statements between each unit, while pdb_selres selects all the residues except the OH aglycon. The pdb_chain command changes the chain ID to B, and the pdb_rplresname command changes the residue name to BGC. The last command, pdb_reres, renumbers the residues of the glycan starting from 1. 
+
+Let's now merge the two structures in the 1UU6_l_u.pdb file:
+
+<a class="prompt prompt-cmd">
+pdb_merge aglycon.pdb sugar.pdb | pdb_tidy > 1UU6_l_u.pdb
+</a>
 
 _**Note**_ that the pre-processed glycan structure can be found in the `pdbs` directory of the archive you downloaded.
 
@@ -160,14 +174,14 @@ align 1UU6_l_u, 1UU6
 
 <figure style="text-align: center;">
   <img src="/education/HADDOCK3/HADDOCK3-protein-glycan/glycan_comparison.png">
-  Comparison between the bound (lightblue) and modelled (magenta) glycan conformations.
+  Comparison between the bound (green) and modelled (light blue) glycan conformations.
 </figure>
 
 ### BONUS section: creating an ensemble of glycan conformations
 
 We've just modelled a single conformation of the glycan. However, glycans are highly flexible molecules that can adopt multiple conformations. Indeed, the modelled glycan is quite different from the conformation adopted in the reference structure. To account for this flexibility, we can generate an ensemble of glycan structures that will be docked to the protein.
 
-To do this, we will use the short Molecular Dynamics refinement protocol available in HADDOCK3. This protocol will generate an ensemble of glycan conformations by running short MD simulations on the glycan structure. You're encouraged to try more extensive and optimized MD software for this task, such as [GROMACS](https://www.gromacs.org){:target="_blank"} and [OPENMM](https://openmm.org/){:target="_blank"}, but for the sake of this tutorial, we will use HADDOCK3.
+To do this, we will use the short Molecular Dynamics refinement protocol available in HADDOCK3. This protocol will generate an ensemble of glycan conformations by running short MD simulations on the glycan structure. The hope here is to observe a glycan structure that is significantly closer to the structure observed in the complex (bound conformation). You're encouraged to try more extensive and optimized MD software for this task, such as [GROMACS](https://www.gromacs.org){:target="_blank"} and [OPENMM](https://openmm.org/){:target="_blank"}, but for the sake of this tutorial, we will use HADDOCK3.
 
 We will use the following protocol, available as `glycan-mdref.cfg` in the `haddock3` directory of the archive you downloaded:
 
@@ -322,7 +336,7 @@ No output means that your TBL file is valid.
 ## Setting up the docking with HADDOCK3
 
 Now that we have all required files at hand (PDB and restraints files) it is time to setup our docking protocol.
-For this we need to create a HADDOCK3 configuration file that will define the docking workflow. We will illustrate this flexibility by introducing a clustering step after the initial rigid-body docking stage, select up to 10 models per cluster and refine all of those.
+For this we need to create a HADDOCK3 configuration file that will define the docking workflow. We will illustrate this flexibility by introducing a clustering step after the initial rigid-body docking stage, select up to 20 models per cluster and refine all of those.
 
 HADDOCK3 also provides an analysis module (`caprieval`) that allows
 to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case
@@ -378,7 +392,7 @@ criterion = 'maxclust'
 n_clusters = 50
 
 [seletopclusts]
-top_models = 10
+top_models = 20
 
 [caprieval]
 reference_fname = "../pdbs/1UU6_target.pdb"
@@ -417,7 +431,7 @@ haddock3 protein-glycan.cfg
 </a>
 
 <a class="prompt prompt-info">
-Using 16 cores the workflow should execute in around 15 minutes, time for a cup of coffee!
+Using 16 cores the workflow should execute in around 20 minutes, time for a cup of coffee!
 </a>
 
 If you don't wait for the run to finish, you can find the (partial) results of the run in the `runs/run_prot-glyc` directory of the archive you downloaded.
@@ -495,12 +509,12 @@ on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information ab
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
-model                           md5     caprieval_rank  score   irmsd   fnat       lrmsd   ilrmsd  dockq      cluster_id      cluster_ranking model-cluster_ranking   air     angles     bonds   bsa     cdih    coup    dani    desolv  dihe    elec    improper   rdcs    rg      sym     total   vdw     vean    xpcs
-../07_flexref/flexref_143.pdb   -       1       -162.297        4.407   0.318   12.442  12.445  0.247   -       -       -       43.991  0.000   0.000   1126.6000.000    0.000   0.000   -5.008  0.000   -94.640 0.000   0.000   0.000   0.000   -106.432        -55.782 0.000   0.000
-../07_flexref/flexref_35.pdb    -       2       -158.244        1.161   0.705   3.164   3.171   0.736   -       -       -       2.920   0.000   0.000   1017.9400.000    0.000   0.000   -7.106  0.000   -95.593 0.000   0.000   0.000   0.000   -138.331        -45.658 0.000   0.000
-../07_flexref/flexref_10.pdb    -       3       -156.499        1.150   0.705   3.138   3.144   0.738   -       -       -       5.698   0.000   0.000   1035.5400.000    0.000   0.000   -6.679  0.000   -96.587 0.000   0.000   0.000   0.000   -134.336        -43.447 0.000   0.000
-../07_flexref/flexref_1.pdb     -       4       -150.678        4.887   0.250   13.987  14.000  0.202   -       -       -       13.902  0.000   0.000   1017.2300.000    0.000   0.000   -7.448  0.000   -87.625 0.000   0.000   0.000   0.000   -120.545        -46.822 0.000   0.000
-../07_flexref/flexref_46.pdb    -       5       -148.188        4.490   0.295   12.692  12.694  0.235   -       -       -       5.778   0.000   0.000   937.517 0.000    0.000   0.000   -1.598  0.000   -103.235        0.000   0.000   0.000   0.000   -132.015        -34.558 0.000   0.000
+model                         md5 caprieval_rank  score         irmsd    fnat   lrmsd   ilrmsd  dockq      cluster_id      cluster_ranking model-cluster_ranking   air     angles     bonds   bsa     cdih    coup    dani    desolv  dihe    elec    improper   rdcs    rg      sym     total   vdw     vean    xpcs
+../07_flexref/flexref_237.pdb   -       1       -184.731        4.555   0.318   12.900  12.900  0.240   -       -       -       11.109  0.000 0.000  918.783 0.000   0.000   0.000   -0.984  0.000   -153.991        0.000   0.000   0.000   0.000   -164.561        -21.679 0.000   0.000
+../07_flexref/flexref_207.pdb   -       2       -174.067        4.180   0.227   11.678  11.674  0.229   -       -       -       6.119   0.000 0.000  1098.520        0.000   0.000   0.000   -3.223  0.000   -125.030        0.000   0.000   0.000   0.000   -154.352        -35.440 0.000 0.000
+../07_flexref/flexref_31.pdb    -       3       -169.206        0.889   0.750   2.320   2.329   0.807   -       -       -       0.835   0.000 0.000  1066.150        0.000   0.000   0.000   -4.048  0.000   -105.096        0.000   0.000   0.000   0.000   -153.746        -49.484 0.000 0.000
+../07_flexref/flexref_124.pdb   -       4       -169.098        1.616   0.682   4.317   4.346   0.647   -       -       -       31.160  0.000 0.000  1170.630        0.000   0.000   0.000   1.868   0.000   -130.898        0.000   0.000   0.000   0.000   -131.216        -31.478 0.000 0.000
+../07_flexref/flexref_140.pdb   -       5       -163.281        4.645   0.295   13.172  13.161  0.228   -       -       -       6.717   0.000 0.000  888.963 0.000   0.000   0.000   -4.111  0.000   -114.599        0.000   0.000   0.000   0.000   -144.236        -36.353 0.000   0.000
 ....
 </pre>
 
@@ -513,7 +527,11 @@ In CAPRI the quality of a model is defined as (for protein-protein complexes):
 * **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
 
 <a class="prompt prompt-question">
-What is based on this CAPRI criterion the quality of the best model listed above (flexref_10.pdb)?
+What is based on this CAPRI criterion the quality of the best-ranked model listed above (flexref_237.pdb)?
+</a>
+
+<a class="prompt prompt-question">
+What is based on this CAPRI criterion the quality of the best model listed above (flexref_31.pdb)?
 </a>
 
 In the case of information-driven protein-glycan docking, the Fnat term is not so relevant, as most contacts will be preserved.
@@ -526,7 +544,7 @@ We recently proposed a different, stricter metric for information-driven protein
 * **high quality model**: ilRMSD < 1Å
 
 <a class="prompt prompt-question">
-What is based on this criterion the quality of the best model listed above (flexref_10.pdb)?
+What is based on this criterion the quality of the best model listed above (flexref_31.pdb)?
 </a>
 
 Near-acceptable quality models can be considered OK for long linear glycans (like the one we are using here), but for smaller glycans the quality of the models should be higher.
