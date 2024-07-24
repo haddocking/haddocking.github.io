@@ -189,22 +189,34 @@
     url: https://www.wageningenur.nl/en/Persons/dr.-ADJ-AaltJan-van-Dijk.htm
     current: 'Wageningen UR, Wageningen, Netherlands'
     status: phd
-    
+
 -   name: Danny S.-T. Hsu
     url: https://sites.google.com/site/hsushangte/
     current: 'Academia Sinica, Taiwan'
     status: phd
-    
+
 -   name: Cyril Dominguez
     url: http://www2.le.ac.uk/departments/biochemistry/staff/cyril-dominguez
     current: 'Leicester University, UK'
     status: phd
-    
+
 -   name: Thomas Stockner
     url: http://www.meduniwien.ac.at/pharmakologie/stockner
     current: 'Medical University of Vienna, Austria'
     status: phd
-    
+
+-   name: Greta Bellinzona
+    current: 'University of Pavia'
+    status: visiting-phd
+
+-   name: Stephanie Walcher
+    current: 'BOKU University, Vienna'
+    status: visiting-phd
+
+-   name: Rozana Vasarhelyi
+    current: 'Babeș-Bolyai University, Cluj-Napoca'
+    status: visiting-phd
+
 -   name: Kira Devantier
     current: 'University of Copenhagen'
     status: visiting-phd
@@ -388,5 +400,7 @@
 -   name:  Erdem Kertmen
     status: student
 
+-   name: Tineke Kadijk
+    status: student
 
 
