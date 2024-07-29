@@ -21,19 +21,23 @@ the structure of a protein-glycan complex using information about the protein bi
 
 A glycan is a molecule composed of different monosaccharide units, linked to each other
 by glycosidic bonds. Glycans are involved in a wide range of biological processes, such as
-cell-cell recognition, cell adhesion, and immune response. With respect to proteins, glycan
- structures are highly diverse and complex, as they can involve mutliple *branches* and different *linkages*, namely different ways in which a glycosidic bond can connect two monosaccharides. Therefore, the prediction of glycan-protein interactions is a challenging
-task.
+cell-cell recognition, cell adhesion, and immune response. Glycan are highly diverse and complex 
+in their structure, as they can involve multiple *branches* and different *linkages*, namely different ways 
+in which a glycosidic bond can connect two monosaccharides. This complexity together with their flexibility 
+makes the prediction of glycan-protein interactions a challenging task.
 
 In this tutorial we will be working with the catalytic domain of the *Humicola Grisea* Cel12A enzyme
 (PDB code [1OLR](https://www.ebi.ac.uk/pdbe/entry/pdb/1olr){:target="_blank"}) and a linear homopolymer,
 *4-beta-glucopyranose*, as glycan
 (PDB code of the complex [1UU6](https://www.ebi.ac.uk/pdbe/entry/pdb/1uu6){:target="_blank"}).
 
-<figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-protein-glycan/1UU6.png">
-  Picture of the protein-glycan complex in pdb 1UU6.
+<figure align="center">
+  <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/1UU6.png" size=75%>
 </figure>
+<center>
+  <i>Picture of the protein-glycan complex in pdb 1UU6</i>
+</center>
+<br><br>
 
 Throughout the tutorial, colored text will be used to refer to questions or
 instructions, and/or PyMOL commands.
@@ -48,22 +52,25 @@ instructions, and/or PyMOL commands.
 
 ## Requirements
 
-In order to follow this tutorial you will need to work on a Linux or MacOSX
-system. We will also make use of [**PyMOL**][link-pymol] (freely available for
-most operating systems) in order to visualize the input and output data. We will
-provide you links to download the various required software and data. We assume that you have a working installation of HADDOCK3 on your system. If not, please refer to the [HADDOCK3 installation instructions](https://github.com/haddocking/haddock3/blob/main/docs/INSTALL.md){:target="_blank"}.
+In order to follow this tutorial you will need to work in a Linux terminal. 
+We will also make use of [**PyMOL**][link-pymol] (freely available for
+most operating systems) in order to visualize the input and output data. 
+We will provide you links to download the various required software and data. 
+We assume that you have a working installation of HADDOCK3 on your system. 
+If not, please refer to the [HADDOCK3 installation instructions](https://github.com/haddocking/haddock3/blob/main/docs/INSTALL.md){:target="_blank"}.
 
 Further we are providing pre-processed PDB files for docking and analysis (but the
-preprocessing of those files will also be explained in this tutorial). The files have been processed
-to facilitate their use in HADDOCK and for allowing comparison with the known reference
-structure of the complex. For this _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/fNdwCbjtUtBeuXi){:target="_blank"}
-_and note the location of the extracted PDB files in your system_. In it you should find the following directories:
+preprocessing of those files will also be explained in this tutorial). 
+The files have been processed to facilitate their use in HADDOCK and for allowing 
+comparison with the known reference structure of the complex. 
+For this _download and unzip the following_ [zip archive](https://surfdrive.surf.nl/files/index.php/s/fNdwCbjtUtBeuXi){:target="_blank"}
+_and note the location of the extracted PDB files in your system_. 
+Once unzipped, you should find the following directories:
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
 * `pdbs`: Contains the pre-processed PDB files
 * `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
-* `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
+* `restraints`: Contains the interface information and the corresponding restraint files for HADDOCK
 * `runs`: Contains pre-calculated run results for the various scenarios in this tutorial
 
 <hr>
@@ -89,7 +96,7 @@ Using PDB-tools we will download the structure from the PDB database (the PDB ID
 This can be done from the command line with:
 
 <a class="prompt prompt-cmd">
-pdb_fetch 1OLR | pdb_tidy -strict pdb_delhetatm | pdb_keepcoord | pdb_tidy -strict > 1OLR_ready.pdb
+pdb_fetch 1OLR | pdb_tidy \-strict pdb_delhetatm | pdb_keepcoord | pdb_tidy \-strict > 1OLR_ready.pdb
 </a>
 
 The command fetches the PDB ID and removes water and heteroatoms (in this case no co-factor is present that should be kept).
@@ -100,8 +107,11 @@ The command fetches the PDB ID and removes water and heteroatoms (in this case n
 
 ### Preparing the glycan structure
 
-We will model the glycan using the Glycam web server. The glycan is a linear polymer of 4 beta-D-glucopyranose units.
-Beta-D-glucopyranose is a common monosaccharide found basically in all the living organisms. In this case the four monosaccharides are linked by beta-1,4-glycosidic bonds, where the *anomeric carbon* (C1) of one monosaccharide is linked to the C4 of the next one.
+We will model the glycan using the [GLYCAM webserver](https://glycam.org/cb/){:target="_blank"}. 
+Our glycan is a linear polymer consisting of 4 beta-D-glucopyranose units.
+Beta-D-glucopyranose is a common monosaccharide found basically in all the living organisms. 
+In this case the four monosaccharides are linked by beta-1,4-glycosidic bonds, 
+where the *anomeric carbon* (C1) of one monosaccharide is linked to the C4 of the next one.
 
 We can start by accessing the [GLYCAM webserver](https://glycam.org/cb/){:target="_blank"} where we will model the glycan!
 
@@ -125,26 +135,34 @@ At the end of the process you should observe the following sequence:
 
 **DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpa1-OH**
 
-<a class="prompt prompt-info">Press the Done button and wait for the webserver to process your request. When done, press Download Minimized Structure and download the PDB file.</a>
+<a class="prompt prompt-info">Press the Done button and wait for the webserver to process your request. 
+When done, press Download Minimized Structure and download the PDB file.</a>
 
-Unfortunately, the glycan structure we just obtained cannot be directly used in HADDOCK as it's not properly formatted.
-We will need to edit it to remove the several TER statements GLYCAM placed between the monosaccharides, and to add the [HADDOCK residue name](https://rascar.science.uu.nl/haddock2.4/library){:target="_blank"} proper to beta-D-glucopyranose. Importantly, we have to merge the OH aglycon with the first monosaccharide unit, as they are now separated in two different residues.
+Unfortunately, the glycan structure we just obtained cannot be directly used in HADDOCK as the formant and the residue 
+and atom naming differ from the conventions used in HADDOCK (which follow the naming in the PDB).
+We will need to edit it to remove the several TER statements GLYCAM placed between the monosaccharides, 
+and to add the [HADDOCK residue name](https://rascar.science.uu.nl/haddock2.4/library){:target="_blank"} 
+proper to beta-D-glucopyranose. Importantly, we have to merge the OH aglycon with the first monosaccharide unit, 
+as they are now separated in two different residues.
 
 <a class="prompt prompt-question">What is the HADDOCK three letter code corresponding to beta-D-glucopyranose?</a>
 
 Let's start with the aglycon:
 
 <a class="prompt prompt-cmd">
-pdb_selresname -ROH DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_tidy -strict| pdb_chain -B | pdb_rplresname -ROH:BGC > aglycon.pdb
+pdb_selresname \-ROH DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_tidy \-strict| pdb_chain \-B | pdb_rplresname \-ROH:BGC > aglycon.pdb
 </a>
 
-This command selects the GLYCAM residue name proper to the aglycon, changes the chain ID to B, and changes the residue name to the HADDOCK one. The final structure is saved in the aglycon.pdb file. Now we will process the rest of the glycan structure:
+This command selects the GLYCAM residue name proper to the aglycon, changes the chain ID to B, 
+and changes the residue name to the HADDOCK one. The final structure is saved in the aglycon.pdb file. Now we will process the rest of the glycan structure:
 
 <a class="prompt prompt-cmd">
-pdb_tidy -strict DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_selres -2:5 | pdb_chain -B | pdb_rplresname -0GB:BGC | pdb_rplresname -4GB:BGC | pdb_reres -1 > sugar.pdb
+pdb_tidy \-strict DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_selres \-2:5 | pdb_chain -B | pdb_rplresname \-0GB:BGC | pdb_rplresname \-4GB:BGC | pdb_reres \-1 > sugar.pdb
 </a>
 
-The pdb_tidy command removes the TER statements between each unit, while pdb_selres selects all the residues except the OH aglycon. The pdb_chain command changes the chain ID to B, and the pdb_rplresname command changes the residue name to BGC. The last command, pdb_reres, renumbers the residues of the glycan starting from 1. 
+The pdb_tidy command removes the TER statements between each unit, while pdb_selres selects all 
+the residues except the OH aglycon. The pdb_chain command changes the chain ID to B, and the pdb_rplresname 
+command changes the residue name to BGC. The last command, pdb_reres, renumbers the residues of the glycan starting from 1. 
 
 Let's now merge the two structures in the 1UU6_l_u.pdb file:
 
@@ -154,7 +172,8 @@ pdb_merge aglycon.pdb sugar.pdb | pdb_tidy > 1UU6_l_u.pdb
 
 _**Note**_ that the pre-processed glycan structure can be found in the `pdbs` directory of the archive you downloaded.
 
-Now we would like to know how close the modelled glycan is to the reference structure. For this we will use Pymol to superimpose the two structures and calculate the RMSD.
+Now we would like to know how close the modelled glycan is to the reference structure. 
+For this we will use Pymol to superimpose the two structures and calculate the RMSD.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 1UU6_l_u.pdb
@@ -171,10 +190,15 @@ align 1UU6_l_u, 1UU6
 <a class="prompt prompt-question">What is the RMSD between the two glycan structures? In which of the four monosaccharide units is the model accurate? In which ones is it not?</a>
 
 
-<figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-protein-glycan/glycan_comparison.png">
-  Comparison between the bound (green) and modelled (light blue) glycan conformations.
+<figure align="center">
+  <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/glycan_comparison.png">
 </figure>
+<center>
+  <i>Comparison between the bound (green) and modelled (light blue) glycan conformations.</i>
+</center>
+<br><br>
+
+<hr>
 
 ### BONUS section: creating an ensemble of glycan conformations
 
