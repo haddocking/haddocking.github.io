@@ -31,8 +31,8 @@ In this tutorial we will be working with the catalytic domain of the *Humicola G
 *4-beta-glucopyranose*, as glycan
 (PDB code of the complex [1UU6](https://www.ebi.ac.uk/pdbe/entry/pdb/1uu6){:target="_blank"}).
 
-<figure align="center">
-  <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/1UU6.png" size=75%>
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/1UU6.png">
 </figure>
 <center>
   <i>Picture of the protein-glycan complex in pdb 1UU6</i>
@@ -74,6 +74,7 @@ Once unzipped, you should find the following directories:
 * `runs`: Contains pre-calculated run results for the various scenarios in this tutorial
 
 <hr>
+<hr>
 
 ## Preparing PDB files for docking
 
@@ -96,7 +97,7 @@ Using PDB-tools we will download the structure from the PDB database (the PDB ID
 This can be done from the command line with:
 
 <a class="prompt prompt-cmd">
-pdb_fetch 1OLR | pdb_tidy \-strict pdb_delhetatm | pdb_keepcoord | pdb_tidy \-strict > 1OLR_ready.pdb
+pdb_fetch 1OLR | pdb_tidy \-strict | pdb_delhetatm | pdb_keepcoord | pdb_tidy \-strict > 1OLR\_ready.pdb
 </a>
 
 The command fetches the PDB ID and removes water and heteroatoms (in this case no co-factor is present that should be kept).
@@ -174,6 +175,8 @@ _**Note**_ that the pre-processed glycan structure can be found in the `pdbs` di
 
 Now we would like to know how close the modelled glycan is to the reference structure. 
 For this we will use Pymol to superimpose the two structures and calculate the RMSD.
+Start pymol and then load the generated PDB file from the file menu 
+(alternatively start it from the command line with as argument the name of the PDB file):
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 1UU6_l_u.pdb
@@ -191,12 +194,13 @@ align 1UU6_l_u, 1UU6
 
 
 <figure align="center">
-  <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/glycan_comparison.png">
+  <img width="75%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/glycan_comparison.png">
 </figure>
 <center>
   <i>Comparison between the bound (green) and modelled (light blue) glycan conformations.</i>
 </center>
 <br><br>
+
 
 <hr>
 
@@ -216,7 +220,7 @@ run_dir = "run-glycan-mdref"
 
 # execution mode
 mode = "local"
-ncores = 16
+ncores = 8
 
 # starting glycan conformation
 molecules =  [
@@ -252,28 +256,33 @@ top_models = 1
 
 {% endhighlight %}
 
-This protocol will run a short MD simulation on the glycan structure, generate an ensemble of conformations, cluster them based on their RMSD, and select the best model from each cluster.
+This protocol will run a short MD simulation on the glycan structure, generate an ensemble of conformations, 
+cluster them based on their RMSD using a 0.6Å cutoff, and select the cluster center from each cluster.
 
-**Note** how the glycan is here defined as fully flexible (nfle1 = 1). The number of steps of the different mdref parameters has also been increased with respect to the default values to ensure a better sampling of the conformational space. The sampling factor has been set to 16 to generate 16 conformations.
+**Note** how the glycan is here defined as fully flexible (nfle1 = 1). The number of steps of the different 
+mdref parameters has also been increased with respect to the default values to ensure a better sampling of 
+the conformational space. The sampling factor has been set to 16 to generate 16 conformations.
 
 <a class="prompt prompt-info">If you have sufficient computing power try to increase the sampling factor to 400.</a>
 
-To run the protocol above, execute the following command:
+To run the protocol above, go into the `haddock3` directory and execute the following command:
 
 <a class="prompt prompt-cmd">
 haddock3 glycan-mdref.cfg
 </a>
 
-This will generate a new directory `run-glycan-mdref` with the results of the MD refinement. In particular, we're interested in the content of the 4_selectopclusts directory, which contains the selected models from each cluster. The clusters in that directory are numbered based on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Let's unzip these files:
+This will generate a new directory `run-glycan-mdref` with the results of the MD refinement. In particular, 
+we are interested in the content of the 4_selectopclusts directory, which contains the selected models from each cluster. 
+The clusters in that directory are numbered based on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Let us unzip these files:
 
 <a class="prompt prompt-cmd">
-gzip -d run-glycan-mdref/4_seletopclusts/cluster\*pdb\*gz
+gzip \-d run-glycan-mdref/4\_seletopclusts/cluster\*pdb\*gz
 </a>
 
 and create an ensemble of conformations:
 
 <a class="prompt prompt-cmd">
-pdb_mkensemble run-glycan-mdref/4_seletopclusts/cluster_*pdb | pdb_tidy > 1UU6_l_u_ens.pdb
+pdb_mkensemble run-glycan-mdref/4\_seletopclusts/cluster*pdb | pdb_tidy > 1UU6_l_u_ens.pdb
 </a>
 
 Now we can compare the ensemble of glycan conformations with the reference structure. To do this, we will superimpose the two structures and calculate the RMSD.
@@ -282,51 +291,58 @@ Now we can compare the ensemble of glycan conformations with the reference struc
 File menu -> Open -> select 1UU6_l_u_ens
 </a>
 
-Let's split the ensemble in its constituent models:
+Let us split the ensemble in its constituent models:
 
 <a class="prompt prompt-pymol">
 split_states 1UU6_l_u_ens
 </a>
 
-Now we can calculate the RMSD of each element:
+<a class="prompt prompt-question">How many conforamtions are present in the ensemble (i.e. how many clusters have been generated by haddock3)?</a>
+
+Now we can calculate the RMSD of each conformation in the ensemble:
+
+<a class="prompt prompt-pymol">
+fetch 1UU6
+</a>
 
 <a class="prompt prompt-pymol">
 align 1UU6_l_u_ens_0001, 1UU6, cycles=0
 </a>
 
+Repeat this command for each member of the ensemble.
+
 <a class="prompt prompt-question">Is at least one of these models closer to the bound structure than the original GLYCAM conformation?</a>
+
+
+<hr>
+<hr>
 
 ## Defining restraints for docking
 
 In this section we will define the restraints that will guide the docking of the protein and glycan structures.
 
 A description of the format for the various restraint types supported by
-HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.
+HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 1.
 Information about various types of distance restraints in HADDOCK can also be
 found in our [online manual][air-help]{:target="_blank"} pages.
 
-Here we mimic a scenario where we have information about the glycan binding site on the protein, but no knowledge about which monosaccharide units are relevant for the binding. In this case (see Fig. 1), all the four beta-D-glucopyranose units are at the interface, although this is not true in general, especially when longer glycans are considered.
+Here we mimic a scenario where we have information about the glycan binding site on the protein, but no knowledge about which monosaccharide units are relevant for the binding. In this case (see Fig. 1), all the four beta-D-glucopyranose units are at the interface, although this might not be true in general, especially when longer glycans are considered.
 
-Let's visualize the interface on our unbound protein structure.
-
-<a class="prompt prompt-pymol">
-File menu -> Open -> select 1OLR_clean.pdb
-</a>
-
-The corresponding residues correspond to the protein binding site, as calculated from the crystal structure of the complex:
+The following residues correspond to the protein binding site, as calculated from the crystal structure of the complex are:
 
 <pre style="background-color:#DAE4E7">
 22,24,59,64,97,103,105,115,120,122,124,131,132,133,134,155,158,205,207
 </pre>
 
+Let us visualize the interface on our unbound protein structure. For this start PyMol and load the PDB file of the unbound protein:
+
 <a class="prompt prompt-pymol">
-color white, all
+File menu -> Open -> select 1OLR_clean.pdb
 </a>
 <a class="prompt prompt-pymol">
+color white, all<br>
 select binding_site, (resi 22+24+59+64+97+103+105+115+120+122+124+131+132+133+134+155+158+205+207)<br>
-</a>
-<a class="prompt prompt-pymol">
-color red, binding_site
+color red, binding_site<br>
 </a>
 
 In order to visualize the binding site of a small molecule we have to add the side chains to our representation.
@@ -337,23 +353,56 @@ show sticks, binding_site
 
 <a class="prompt prompt-question">Are all the highlighted side chains exposed on the surface of the protein?</a>
 
+**Note** that you can visualise the surface in PyMol with the following command:
+
+<a class="prompt prompt-pymol">
+show surface
+</a>
+
 <hr>
 
 ### Generating the restraints
 
-We will use `haddock3-restraints` to generate the restraints for the protein-glycan docking. The command will generate a tbl file using the protein binding site as the active residues and the glycan as the passive residues.
+We will use `haddock3-restraints` to generate the restraints for the protein-glycan docking. 
+For this we need to define two files, one for each molecule, containing on the first line the list of `active residues` 
+(those that should be at the interface) and on the second line the list of `passive residues` (those that can be at the interface).
+
+For the protein, we will only define active residues (based on the identified binding site above) and leave the second line (passive) empty, 
+while for the glycan we only define passive residues in the second line, leaving the first line empty. The corresponding files
+are provided as:
+
+* _restraints/1olr-binding-site.act_ for the protein
+* _restraints/glycan.pass_ for the glycan
+
+The command to generate a HADDOCK ambiguous distance restraint file (.tbl) from those file is:
 
 <a class="prompt prompt-cmd">
 haddock3-restraints active_passive_to_ambig restraints/1olr-binding-site.act restraints/glycan.pass > ambig.tbl
 </a>
 
-Let's now check the validity of the generated tbl file
+We can check the validity of the generated tbl file (useful when manually editing restraint files) with:
+
 <a class="prompt prompt-cmd">
 haddock3-restraints validate_tbl ambig.tbl
 </a>
 
 No output means that your TBL file is valid.
 
+<a class="prompt prompt-question">Inspect the generated file. Can you understand the syntax? </a>
+
+<a class="prompt prompt-question">What is the distance range (lower and upper limits) defined for the restraints? </a>
+
+Distance restraints in the HADDOCK/CNS syntax are defined as:
+
+<pre style="background-color:#DAE4E7">
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+</pre>
+
+where the lower limit for the distance is calculated as: `distance minus lower-bound correction`
+and the upper limit as: `distance plus upper-bound correction`.
+
+
+<hr>
 <hr>
 
 ## Setting up the docking with HADDOCK3
@@ -698,5 +747,5 @@ We hope you have enjoyed this tutorial and that you have learned something new. 
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-pdbtools]:http://www.bonvinlab.org/pdb-tools/ "PDB-Tools"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
-[nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
+[nat-pro]: https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D "Nature protocol"
 [tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
