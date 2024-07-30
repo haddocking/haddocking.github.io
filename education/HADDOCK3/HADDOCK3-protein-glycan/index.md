@@ -148,7 +148,7 @@ as they are now separated in two different residues.
 
 <a class="prompt prompt-question">What is the HADDOCK three letter code corresponding to beta-D-glucopyranose?</a>
 
-Let's start with the aglycon:
+Let us start with the aglycon:
 
 <a class="prompt prompt-cmd">
 pdb_selresname \-ROH DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_tidy \-strict| pdb_chain \-B | pdb_rplresname \-ROH:BGC > aglycon.pdb
@@ -165,7 +165,7 @@ The pdb_tidy command removes the TER statements between each unit, while pdb_sel
 the residues except the OH aglycon. The pdb_chain command changes the chain ID to B, and the pdb_rplresname 
 command changes the residue name to BGC. The last command, pdb_reres, renumbers the residues of the glycan starting from 1. 
 
-Let's now merge the two structures in the 1UU6_l_u.pdb file:
+We will now merge the two structures in the 1UU6_l_u.pdb file:
 
 <a class="prompt prompt-cmd">
 pdb_merge aglycon.pdb sugar.pdb | pdb_tidy > 1UU6_l_u.pdb
@@ -206,9 +206,9 @@ align 1UU6_l_u, 1UU6
 
 ### BONUS section: creating an ensemble of glycan conformations
 
-We've just modelled a single conformation of the glycan. However, glycans are highly flexible molecules that can adopt multiple conformations. Indeed, the modelled glycan is quite different from the conformation adopted in the reference structure. To account for this flexibility, we can generate an ensemble of glycan structures that will be docked to the protein.
+We have just modelled a single conformation of the glycan. However, glycans are highly flexible molecules that can adopt multiple conformations. Indeed, the modelled glycan is quite different from the conformation adopted in the reference structure. To account for this flexibility, we can generate an ensemble of glycan structures that will be docked to the protein.
 
-To do this, we will use the short Molecular Dynamics refinement protocol available in HADDOCK3. This protocol will generate an ensemble of glycan conformations by running short MD simulations on the glycan structure. The hope here is to observe a glycan structure that is significantly closer to the structure observed in the complex (bound conformation). You're encouraged to try more extensive and optimized MD software for this task, such as [GROMACS](https://www.gromacs.org){:target="_blank"} and [OPENMM](https://openmm.org/){:target="_blank"}, but for the sake of this tutorial, we will use HADDOCK3.
+To do this, we will use the short Molecular Dynamics refinement protocol available in HADDOCK3. This protocol will generate an ensemble of glycan conformations by running short MD simulations on the glycan structure. The hope here is to observe a glycan structure that is significantly closer to the structure observed in the complex (bound conformation). You are encouraged to try more extensive and optimized MD software for this task, such as [GROMACS](https://www.gromacs.org){:target="_blank"} and [OPENMM](https://openmm.org/){:target="_blank"}, but for the sake of this tutorial, we will use HADDOCK3.
 
 We will use the following protocol, available as `glycan-mdref.cfg` in the `haddock3` directory of the archive you downloaded:
 
@@ -411,7 +411,7 @@ Now that we have all required files at hand (PDB and restraints files) it is tim
 For this we need to create a HADDOCK3 configuration file that will define the docking workflow. We will illustrate this flexibility by introducing a clustering step after the initial rigid-body docking stage, select up to 20 models per cluster and refine all of those.
 
 HADDOCK3 also provides an analysis module (`caprieval`) that allows
-to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case
+to compare models to either the best scoring model (if no reference is given) or to a reference structure, which in our case
 we have at hand.
 
 The basic workflow for all three scenarios will consists of the following modules, with some differences in the restraints used and some parameter settings (see below):
@@ -421,7 +421,7 @@ The basic workflow for all three scenarios will consists of the following module
 3. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 4. **`ilrmsdmatrix`**: *Calculate the ilRMSD matrix between the generated models*
 5. **`clustrmsd`**: *Cluster the ilRMSD matrix in 50 clusters*
-6. **`seletopclusts`**: *Selection of the top10 models of all clusters*
+6. **`seletopclusts`**: *Selection of the top20 models of each clusters*
 7. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 8. **`flexref`**: *Semi-flexible refinement of the interface (`it1` in haddock2.4)*
 9. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
@@ -432,6 +432,7 @@ The basic workflow for all three scenarios will consists of the following module
 
 The configuration file for this scenario is already provided in the `haddock3` directory of the archive you downloaded, together with different examples related to the different execution modes of HADDOCK3 (for a comprehensive description see the [antibody-antigen tutorial](../HADDOCK3-antibody-antigen/index.md#haddock3-execution-modes)).
 
+
 {% highlight toml %}
 # ====================================================================
 # protein-glycan docking using information about the protein binding site
@@ -439,7 +440,7 @@ The configuration file for this scenario is already provided in the `haddock3` d
 # ====================================================================
 #general section
 mode = "local"
-ncores = 16
+ncores = 10
 run_dir = "run_prot-glyc"  #insert full path
 
 # list, insert full path
@@ -492,27 +493,43 @@ reference_fname = "../pdbs/1UU6_target.pdb"
 
 {% endhighlight %}
 
-**Important** : the weight of the van der Waals component at the rigidbody stage has been set to 1.0 rather than 0.01 as in the protein-protein tutorial. This is in agreement with the settings used for protein-small molecules docking in HADDOCK2.4, as explained in [Journal of Computer-Aided Molecular Design, 2019](https://link.springer.com/article/10.1007/s10822-019-00244-6).
+**Important** : the weight of the van der Waals component of the HADDOCK score at the rigidbody stage has been set to 1.0 
+rather than the default 0.01 (`vdw_w = 1.0`) as in the protein-protein tutorial. This is in agreement with the settings 
+used for protein-small molecules docking in HADDOCK2.4, as explained in [Journal of Computer-Aided Molecular Design, 2019](https://link.springer.com/article/10.1007/s10822-019-00244-6) and also applied to protein-glycan docking. 
 
-**Note** that the clustering step is placed between the rigidbody and the flexible refinement stages. This was not possible in the static workflow proper to the HADDOCK2.X series, but is now doable in HADDOCK3. The idea here is that the scoring function at the rigidbody level is not perfect, thus good models may not be selected if we only consider the top 200 models (as in HADDOCK2.X). Clustering the rigidbody models allows to increase the diversity of the models selected for the flexible refinement stage.
+**Note** that the clustering step is placed between the rigidbody and the flexible refinement stages. 
+This was not possible in the static workflow proper to the HADDOCK2.X series, but is now doable in HADDOCK3. 
+The idea here is that the scoring function at the rigidbody level is not perfect, thus good models may not be selected 
+if we only consider the top 200 models (as in HADDOCK2.X). Clustering the rigidbody models 
+(1000 generated with default settings - can be changed by adding a `sampling` parameter in the rigid body module) 
+allows to increase the diversity of the models selected for the flexible refinement stage.
 
-If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node.
+If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to 
+the batch system requesting in this local run mode a full node and adapting the `ncores` parameter to the number of cores avaible on a node.
+
+Make sure to launch this command from the haddock3 directory in the data directory downloaded for this tutorial.
 
 <a class="prompt prompt-cmd">
 haddock3 protein-glycan.cfg
 </a>
 
 <a class="prompt prompt-info">
-Using 16 cores the workflow should execute in around 20 minutes, time for a cup of coffee!
+Using 10 cores on a Max OSX M2 processor the workflow executes in around 20 minutes, time for a cup of coffee!
 </a>
 
-If you don't wait for the run to finish, you can find the (partial) results of the run in the `runs/run_prot-glyc` directory of the archive you downloaded.
+If you do not wish to wait for the run to finish, you can find the (partial) results of the run in the `runs/run_prot-glyc` directory of the archive you downloaded.
 
-## BONUS: docking from an ensemble of glycan conformations
+<hr>
 
-[Here](#bonus-section-creating-an-ensemble-of-glycan-conformations) we generated an ensemble of glycan conformations using a short MD refinement protocol. We can now use this ensemble to dock the protein to multiple glycan conformations.
+### BONUS: docking from an ensemble of glycan conformations
 
-To do this, we will use the `protein-glycan-ens.cfg`, available in the `haddock3` directory of the archive you downloaded.  Besides the presence of the glycan ensemble (`1UU6_l_u_ens`) in place of the single structure (`1UU6_l_u`), the only difference between this protocol and the [previous one](#setting-up-the-docking-with-haddock3) is the `sampling` parameter at the rigidbody docking level: as multiple conformations are being docked, we need to increase the number of models generated to ensure a good sampling per starting model:
+[In a previous BONUS section](#bonus-section-creating-an-ensemble-of-glycan-conformations) we described how to generate 
+an ensemble of glycan conformations using a short MD refinement protocol. We can now use this ensemble to dock the protein to multiple glycan conformations.
+
+To do this, we will use the `protein-glycan-ens.cfg`, available in the `haddock3` directory of the archive you downloaded.  
+Besides the presence of the glycan ensemble (`1UU6_l_u_ens`) in place of the single structure (`1UU6_l_u`), the only difference 
+between this protocol and the [previous one](#setting-up-the-docking-with-haddock3) is the `sampling` parameter at 
+the rigidbody docking level: as multiple conformations are being docked, in order to sample each starting conformation a sufficient amount of time we increase the number of models generated:
 
 {% highlight toml %}
 
@@ -542,6 +559,9 @@ reference_fname = "../pdbs/1UU6_target.pdb"
 
 Such information would not be available in a realistic modelling scenario, as the bound structure (1UU6 here) would be unknown.
 
+<hr>
+<hr>
+
 ## Analysis of docking results
 
 Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
@@ -567,18 +587,18 @@ Once your run has completed inspect the content of the resulting directory. You 
   traceback
 {% endhighlight %}
 
-There is in addition the log file (text file) and two additional directories:
+There is in addition to the various modules defined in the config workflow a log file (text file) and three additional directories:
 
 - the `data` directory containing the input data (PDB and restraint files) for the various modules
 - the `analysis` directory containing various plots to visualise the results for each `caprieval` step
-- the `traceback` directory containing the names of the generated models for each step
+- the `traceback` directory containing the names of the generated models for each step, allowing to trace back a model throughout the various stages.
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.
 
 For example, the `11_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
 on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
-The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
+The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps, even when no reference structures are known). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
 model                         md5 caprieval_rank  score         irmsd    fnat   lrmsd   ilrmsd  dockq      cluster_id      cluster_ranking model-cluster_ranking   air     angles     bonds   bsa     cdih    coup    dani    desolv  dihe    elec    improper   rdcs    rg      sym     total   vdw     vean    xpcs
@@ -598,40 +618,56 @@ In CAPRI the quality of a model is defined as (for protein-protein complexes):
 * **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
 * **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
 
-<a class="prompt prompt-question">
-What is based on this CAPRI criterion the quality of the best-ranked model listed above (flexref_237.pdb)?
-</a>
+As these metrics are for protein-protein complexes and glycans are typically smaller, it is best to use stricter metrics to assess the quality of the models.
+In the case of information-driven protein-glycan docking, the Fnat term is less relevant, as most contacts will typically be satistified.
 
-<a class="prompt prompt-question">
-What is based on this CAPRI criterion the quality of the best model listed above (flexref_31.pdb)?
-</a>
-
-In the case of information-driven protein-glycan docking, the Fnat term is not so relevant, as most contacts will be preserved.
-
-We recently proposed a different, stricter metric for information-driven protein-glycan docking:
+For protein-glycan modelling we recently proposed a different, stricter metric based on the interface ligand RMSD (ilRMSD) [ADD REFERENCE TO BIORXIV PREPRINT]:
 
 * **near acceptable model**: ilRMSD < 4Å
 * **acceptable model**: ilRMSD < 3Å
 * **medium quality model**: ilRMSD < 2Å
 * **high quality model**: ilRMSD < 1Å
 
+The ilRMSD is calculated by fitting the models onto the refence using the interface residues of the receptor (the protein in this case)
+and calculated the RMSD on the ligand (the glycans in this case).
+
 <a class="prompt prompt-question">
-What is based on this criterion the quality of the best model listed above (flexref_31.pdb)?
+What is based on this criterion the quality of the top ranked model listed above (flexref_237.pdb)?
+</a>
+<a class="prompt prompt-question">
+Consider now the model with the best ilRMSD (lowest value). Which model is it and what is its quality?
 </a>
 
 Near-acceptable quality models can be considered OK for long linear glycans (like the one we are using here), but for smaller glycans the quality of the models should be higher.
 
-<hr>
+Since we have `caprieval` steps at various stages of the workflow we can assess the impact of the flexible refinement.
 
-#### Visualising the scores and their components
-
-The HADDOCK3 analysis precalculated a lot of plots and tables for you to inspect the results. You can find them in the `analysis` directory of each run, with one folder available for each `caprieval` step. The plots are in html format and can be opened in your browser. You can also open the full report in your browser:
+The ilRMSD values are listed in column 8 of the `capri_ss.tsv` file. To find the lowest ilRMSD value you can sort the file numerically based on column 8 and extract the top model. 
+This can be down at the command line with the following command:
 
 <a class="prompt prompt-cmd">
-python -m http.server \--directory ./run_prot-glyc
+sort \-nk8 capri_ss.tsv |head -2
+</a>
+
+<a class="prompt prompt-question">
+Look for the lowest ilRMSD model in the clustered models after the rigidbody stage (_06_caprieval_) and compare that values to the lowest ilRMSD value after flexible refinment (_08_caprieval_). By how much did the ilRMSD improve (decrease) after flexible refinement?
+</a>
+
+
+<hr>
+
+### Visualising the scores and their components
+
+The HADDOCK3 analysis precalculated a lot of plots and tables for you to inspect the results. 
+You can find them in the `analysis` directory of each run, with one folder available for each `caprieval` step. 
+The plots are in html format and can be opened in your browser. You can also open the full report in your browser:
+
+<a class="prompt prompt-cmd">
+python -m http.server \-\-directory ./run_prot-glyc
 </a>
 
 and then open your browser at `http://localhost:8000/analysis/`. From there you can navigate to the preferred caprieval directory (typically the last one), to inspect the results.
+Under a given `caprieval` step, the overall view of the results can be found in the `report.html` file.
 
 If this does not work (for example because port 8000 is already in use), you can also open the html files directly from the file system. For example, to inspect the final results (after refinement):
 
@@ -643,20 +679,25 @@ Alternatively, you can check this [example report](plots/report.html) for the fi
 
 <a class="prompt prompt-question">For this protein-glycan example, which of the score component is correlating best with the quality of the models?.</a>
 
-<a class="prompt prompt-question">Would it be useful to use the upweighted van der Waals component also at the flexible refinement stage in this case?</a>
+<a class="prompt prompt-question">Would it be useful to increase the weight of the van der Waals component in the HADDOCK scoring function also at the flexible refinement stage in this case?</a>
+
 
 <hr>
+<hr>
 
-## Comparison with the reference structure
+## Visualisation and comparison with the reference structure
 
-To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1. These can be found in the `runs/run_prot-glyc/11_seletopclusts/` directory.
 
-Let's unzip the files:
+To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, 
+e.g. this could be the top model from cluster1. These can be found in the `runs/run_prot-glyc/11_seletopclusts/` directory.
+
+Let us unzip the files:
 <a class="prompt prompt-cmd">
-gzip -d run_prot-glyc/11_seletopclusts/cluster_*.pdb.gz
+gunzip \-d run_prot-glyc/11\_seletopclusts/cluster_*.pdb.gz
 </a>
 
-Then we can load the models in PyMOL:
+You can load the models from the `run_prot-glyc/11_seletopclusts` directory in PyMOL.
+Will first check the top ranked cluster to see if this is good solution. 
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> cluster_1_model_1.pdb
@@ -672,19 +713,16 @@ File menu -> Open -> 1UU6_target.pdb
 Once all files have been loaded, type in the PyMOL command window:
 
 <a class="prompt prompt-pymol">
-show cartoon
-</a>
-<a class="prompt prompt-pymol">
-util.cbc
-</a>
-<a class="prompt prompt-pymol">
-color yellow, 1UU6_target
+show cartoon<br>
+util.cbc<br>
+color yellow, 1UU6_target<br>
+util.cnc<br>
 </a>
 
 Let us then superimpose all models on the reference structure:
 
 <a class="prompt prompt-pymol">
-alignto 1UU6_matched
+alignto 1UU6_target
 </a>
 
 This will align the proteins. To evaluate the quality of the glycan pose, we can now calculate the ligand-RMSD (l-RMSD) between the glycan in the model and the reference structure. This can be done with the following, superimposition-free PyMOL command:
@@ -705,13 +743,23 @@ To address this question you can use the standard align command, focusing on cha
 align cluster_1_model_1 and chain B, 1UU6_target and chain B, cycles=0
 </a>
 
+
+Now repeat this analysis but with the cluster with the lowest ilRMSD values.
+
+<a class="prompt prompt-question">
+How close are the top4 models of this cluster to the reference?
+</a>
+<a class="prompt prompt-question">
+What was the rank of this cluster?
+</a>
+
+
 Let’s now check if the active residues which we have defined (the protein binding site) are actually part of the interface. In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
-select binding_site, chain A and (resi 22+24+59+64+97+103+105+115+120+122+124+131+132+133+134+155+158+205+207)
-</a>
-<a class="prompt prompt-pymol">
-color red, binding_site
+select binding_site, chain A and (resi 22+24+59+64+97+103+105+115+120+122+124+131+132+133+134+155+158+205+207) and not 1UU6_target<br>
+color red, binding_site<br>
+show lines, binding_site<br>
 </a>
 
 <a class="prompt prompt-question">
@@ -720,16 +768,19 @@ Are the residues of the binding_site at the interface with the glycan?
 
 **Note:** You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.
 
+
 <details style="background-color:#DAE4E7">
  <summary style="bold">
-  <b><i>See the overlay of the best model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
- </summary>
- <p> Top model of the top cluster superimposed onto the reference crystal structure (in yellow)</p>
- <figure style="text-align: center">
-   <img width="75%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/model_vs_ref_example.png">
- </figure>
- <br>
+ <i>See the overlay of the cluster solution with the lowest ilRMSD values (ranked #2) onto the reference crystal structure (in yellow)</i>
+  </summary>
+  <figure style="text-align: center">
+    <img width="75%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/model_vs_ref_example.png">
+  </figure>
+  <br>
 </details>
+
+<hr>
+<hr>
 
 ## Conclusion
 
