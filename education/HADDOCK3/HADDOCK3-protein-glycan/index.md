@@ -151,7 +151,7 @@ as they are now separated in two different residues.
 Let us start with the aglycon:
 
 <a class="prompt prompt-cmd">
-pdb_selresname \-ROH DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_tidy \-strict| pdb_chain \-B | pdb_rplresname \-ROH:BGC > aglycon.pdb
+pdb_selresname \-ROH DGlcpb1-4DGlcpb1-4DGlcpb1-4DGlcpb1-OH_structure.pdb | pdb_tidy \-strict | pdb_chain \-B | pdb_rplresname \-ROH:BGC > aglycon.pdb
 </a>
 
 This command selects the GLYCAM residue name proper to the aglycon, changes the chain ID to B, 
@@ -220,7 +220,7 @@ run_dir = "run-glycan-mdref"
 
 # execution mode
 mode = "local"
-ncores = 8
+ncores = 10
 
 # starting glycan conformation
 molecules =  [
@@ -237,7 +237,7 @@ tolerance = 5
 nfle1 = 1
 fle_sta_1_1 = 1
 fle_end_1_1 = 4
-sampling_factor = 16
+sampling_factor = 20
 nemsteps = 200
 waterheatsteps = 100
 watersteps = 20000
@@ -646,7 +646,7 @@ The ilRMSD values are listed in column 8 of the `capri_ss.tsv` file. To find the
 This can be down at the command line with the following command:
 
 <a class="prompt prompt-cmd">
-sort \-nk8 capri_ss.tsv |head -2
+sort \-nk8 capri_ss.tsv | head -2
 </a>
 
 <a class="prompt prompt-question">
@@ -677,7 +677,7 @@ open run_prot-glyc/analysis/12_caprieval_analysis/report.html
 
 Alternatively, you can check this [example report](plots/report.html) for the final docking results.
 
-<a class="prompt prompt-question">For this protein-glycan example, which of the score component is correlating best with the quality of the models?.</a>
+<a class="prompt prompt-question">For this protein-glycan example, which of the score component is correlating best with the quality of the models?</a>
 
 <a class="prompt prompt-question">Would it be useful to increase the weight of the van der Waals component in the HADDOCK scoring function also at the flexible refinement stage in this case?</a>
 
