@@ -602,11 +602,11 @@ The simplest way to extract ranking information and the corresponding HADDOCK sc
 
 <pre style="background-color:#DAE4E7">
 model                         md5 caprieval_rank  score         irmsd    fnat   lrmsd   ilrmsd  dockq      cluster_id      cluster_ranking model-cluster_ranking   air     angles     bonds   bsa     cdih    coup    dani    desolv  dihe    elec    improper   rdcs    rg      sym     total   vdw     vean    xpcs
-../07_flexref/flexref_237.pdb   -       1       -184.731        4.555   0.318   12.900  12.900  0.240   -       -       -       11.109  0.000 0.000  918.783 0.000   0.000   0.000   -0.984  0.000   -153.991        0.000   0.000   0.000   0.000   -164.561        -21.679 0.000   0.000
-../07_flexref/flexref_207.pdb   -       2       -174.067        4.180   0.227   11.678  11.674  0.229   -       -       -       6.119   0.000 0.000  1098.520        0.000   0.000   0.000   -3.223  0.000   -125.030        0.000   0.000   0.000   0.000   -154.352        -35.440 0.000 0.000
-../07_flexref/flexref_31.pdb    -       3       -169.206        0.889   0.750   2.320   2.329   0.807   -       -       -       0.835   0.000 0.000  1066.150        0.000   0.000   0.000   -4.048  0.000   -105.096        0.000   0.000   0.000   0.000   -153.746        -49.484 0.000 0.000
-../07_flexref/flexref_124.pdb   -       4       -169.098        1.616   0.682   4.317   4.346   0.647   -       -       -       31.160  0.000 0.000  1170.630        0.000   0.000   0.000   1.868   0.000   -130.898        0.000   0.000   0.000   0.000   -131.216        -31.478 0.000 0.000
-../07_flexref/flexref_140.pdb   -       5       -163.281        4.645   0.295   13.172  13.161  0.228   -       -       -       6.717   0.000 0.000  888.963 0.000   0.000   0.000   -4.111  0.000   -114.599        0.000   0.000   0.000   0.000   -144.236        -36.353 0.000   0.000
+../07_flexref/flexref_139.pdb   -       1       -171.128        4.483   0.318   12.677  12.670  0.243   -       -       -       34.993  0.000   0.000   914.696 0.000      0.000   0.000   -1.980  0.000   -132.565        0.000   0.000   0.000   0.000   -128.507        -30.936 0.000   0.000
+../07_flexref/flexref_222.pdb   -       2       -168.406        1.450   0.614   4.089   4.087   0.648   -       -       -       34.083  0.000   0.000   951.757 0.000      0.000   0.000   -6.838  0.000   -115.378        0.000   0.000   0.000   0.000   -121.376        -40.081 0.000   0.000
+../07_flexref/flexref_216.pdb   -       3       -164.403        4.183   0.273   11.677  11.675  0.244   -       -       -       0.886   0.000   0.000   1024.660  0.000    0.000   0.000   -3.221  0.000   -104.942        0.000   0.000   0.000   0.000   -150.138        -46.082 0.000   0.000
+../07_flexref/flexref_71.pdb    -       4       -158.462        0.942   0.727   2.482   2.486   0.789   -       -       -       25.864  0.000   0.000   1056.530  0.000    0.000   0.000   -8.386  0.000   -94.870 0.000   0.000   0.000   0.000   -116.233        -47.227 0.000   0.000
+../07_flexref/flexref_142.pdb   -       5       -158.083        4.418   0.318   12.484  12.477  0.246
 ....
 </pre>
 
@@ -632,7 +632,7 @@ The ilRMSD is calculated by fitting the models onto the refence using the interf
 and calculated the RMSD on the ligand (the glycans in this case).
 
 <a class="prompt prompt-question">
-What is based on this criterion the quality of the top ranked model listed above (flexref_237.pdb)?
+What is based on this criterion the quality of the top ranked model listed above (flexref_139.pdb)?
 </a>
 <a class="prompt prompt-question">
 Consider now the model with the best ilRMSD (lowest value). Which model is it and what is its quality?
@@ -697,7 +697,7 @@ gunzip \-d run_prot-glyc/11\_seletopclusts/cluster_*.pdb.gz
 </a>
 
 You can load the models from the `run_prot-glyc/11_seletopclusts` directory in PyMOL.
-Will first check the top ranked cluster to see if this is good solution. 
+Will first check the top ranked cluster to see if this is good solution.
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> cluster_1_model_1.pdb
