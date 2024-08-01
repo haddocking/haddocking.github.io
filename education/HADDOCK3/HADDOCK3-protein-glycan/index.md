@@ -619,7 +619,7 @@ In CAPRI the quality of a model is defined as (for protein-protein complexes):
 * **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
 
 As these metrics are for protein-protein complexes and glycans are typically smaller, it is best to use stricter metrics to assess the quality of the models.
-In the case of information-driven protein-glycan docking, the Fnat term is less relevant, as most contacts will typically be satistified.
+In the case of information-driven protein-glycan docking, the Fnat term is less relevant, as most contacts will typically be satisfied.
 
 For protein-glycan modelling we recently proposed a different, stricter metric based on the interface ligand RMSD (ilRMSD) [ADD REFERENCE TO BIORXIV PREPRINT]:
 
@@ -653,7 +653,7 @@ sort \-nk8 capri_ss.tsv | head -2
 Look for the lowest ilRMSD model in the clustered models after the rigidbody stage (_06_caprieval_) and compare that values to the lowest ilRMSD value after flexible refinment (_08_caprieval_). By how much did the ilRMSD improve (decrease) after flexible refinement?
 </a>
 
-
+<hr>
 <hr>
 
 ### Visualising the scores and their components
@@ -684,6 +684,47 @@ Alternatively, you can check this [example report](plots/report.html) for the fi
 
 <hr>
 <hr>
+
+### BONUS: modifying the scoring weights at the flexible refinement stage
+
+In the HADDOCK3 configuration file you just used, the scoring weights for the flexible refinement stage are set to the default values, that can be found [here](https://www.bonvinlab.org/software/haddock2.4/scoring/).
+
+Glycans are quite hydrophobic molecules and, in a protein-glycan complex, the van der Waals energy is typically playing a more important role than the electrostatic interactions. We can therefore try to decrease the weight of the electrostatic energy term at the flexible refinement stage.
+
+To do this, we need to modify the configuration file. The relevant section is the `flexref` module:
+
+{% highlight toml %}
+
+[flexref]
+ambig_fname = "../restraints/ambig.tbl"
+tolerance = 5
+w_elec = 0.4
+
+{% endhighlight %}
+
+Setting `w_elec` to 0.4 (in place of 1.0) will downscale the electrostatic weight by a factor of 2.5.
+
+You can now try to run the docking again with this new configuration file. You can either do this by running the modified configuration file (`protein-glycan-elec.cfg`, always from the `haddock3` directory):
+
+<a class="prompt prompt-cmd">
+haddock3 protein-glycan-elec.cfg
+</a>
+
+or by restarting the existing run upon modifying the `protein-glycan.cfg` file:
+
+<a class="prompt prompt-cmd">
+haddock3 protein-glycan.cfg \--restart 7
+</a>
+
+This will restart the run from the flexible refinement stage, using the new scoring weights.
+
+<a class="prompt prompt-info">
+Repeat the analysis performed in the previous section to evaluate the quality of the docking models
+</a>
+
+<a class="prompt prompt-question">
+What is the impact of the change in the scoring weights on the ranking of the models?
+</a>
 
 ## Visualisation and comparison with the reference structure
 
