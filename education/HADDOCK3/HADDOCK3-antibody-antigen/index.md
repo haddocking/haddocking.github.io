@@ -81,6 +81,7 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
 * `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
 * `scripts`: Contains a variety of scripts used in this tutorial
+* `utils`: Contains a variety of utilities used in this tutorial
 
 <hr>
 ### Setup for the ISGC2023 HADDOCK workshop in Taipei
@@ -124,7 +125,7 @@ Then change directory to the workshop directory (the data have been copied autom
 cd ~/EVENTS/2023-haddock-isgc-taipei/HADDOCK3-antibody-antigen
 </a>
 
-You will find in that directory all input and precalculatd data and scripts required to run this tutorial.
+You will find in that directory all input and precalculated data and scripts required to run this tutorial.
 
 
 <hr>
@@ -205,7 +206,7 @@ active and which are passive is critical for the success of the docking.
 HADDOCK3 is the next generation integrative modelling software in the
 long-lasting HADDOCK project. It represents a complete rethinking and rewriting
 of the HADDOCK2.X series, implementing a new way to interact with HADDOCK and
-offering new features to users who can now define custom workflows.
+offering new features to users who can now define custom workflows. It is currently in beta testing.
 
 In the previous HADDOCK2.x versions, users had access to a highly
 parameterisable yet rigid simulation pipeline composed of three steps:
@@ -314,6 +315,10 @@ access to the pdb-tools package.
 **[PyMol][link-pymol]**: We will make use of PyMol for visualization. If not
 already installed on your system, download and install PyMol.
 
+**[haddock-restraints][link-haddock-restraints]**: A command line tool to
+generate HADDOCK restraints from various types of experimental data. It is
+already available in the `utils` directory of the tutorial archive.
+
 
 <hr>
 <hr>
@@ -393,7 +398,7 @@ correction and the upper limit as: distance plus upper-bound correction.  The
 syntax for the selections can combine information about chainID - `segid`
 keyword -, residue number - `resid` keyword -, atom name - `name` keyword.
 Other keywords can be used in various combinations of OR and AND statements.
-Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"}.
+Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"}, the [haddock-restraints][link-haddock-restraints]{:target="_blank"} tool documentation or the [Best Practice Guide][link-bpg]{:target="_blank"}.
 
 We will shortly explain in this section how to generate both ambiguous
 interaction restraints (AIRs) and specific distance restraints for use in
@@ -476,64 +481,8 @@ Do the identified residues form a well defined patch on the surface?
 ### Antigen scenario 1: no information
 
 In this scenario, we will target the entire surface of the antigen by selecting the solvent accessible residues.
-For this can use `freesasa` to calculate the solvent accessible surface area (SASA) for the different
-residues. If `freesasa` is available from the command line you can run it to generate the solvent accessibility data with:
-
-<a class="prompt prompt-cmd">
-freesasa 4I1B_clean.pdb \-\-format=rsa >4I1B_clean.rsa
-</a>
-
-<pre style="background-color:#DAE4E7">
-REM  FreeSASA 2.0.3
-REM  Absolute and relative SASAs for 4I1B_clean.pdb
-REM  Atomic radii and reference values for relative SASA: ProtOr
-REM  Chains: A
-REM  Algorithm: Lee & Richards
-REM  Probe-radius: 1.40
-REM  Slices: 20
-REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
-REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
-RES VAL A   3    84.83  55.8  13.08  11.8  71.76 172.9  30.45  26.5  54.38 147.5
-RES ARG A   4   200.36  84.1 192.85  98.3   7.51  17.9  71.92  98.3 128.44  77.8
-RES SER A   5    48.69  41.1  25.55  34.1  23.14  53.3  22.44  47.8  26.25  36.8
-RES LEU A   6    71.91  40.0  70.87  50.7   1.04   2.6  71.91  50.5   0.00   0.0
-RES ASN A   7    31.01  21.4  25.87  25.0   5.14  12.4   0.00   0.0  31.01  30.0
-...
-</pre>
-
-The following command will return all residues with a relative SASA for either
-the backbone or the side-chain > 15% (we use 15% to limit the number of surface residues selected as their
-number does increase the computational requirements)
-
-<a class="prompt prompt-cmd">
- awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) print $0}\' 4I1B_clean.rsa
-</a>
-
-The resulting list of residues can be found in the `restraints/antigen-surface.act-pass` file. Note in this file the empty first line. The file consists
-of two lines, with the first one defining the `active` residues and the second line the `passive` ones, in this case the solvent accessible residues.
-We will use later this file to generate the ambiguous distance restraints for HADDOCK.
-
-If you want to generate the same file, first create an empty line and then use the `awk` command, piping the results to an output file, e.g.:
-
-<a class="prompt prompt-cmd">
-  echo \" \" \> antigen-surface.pass<br>
-  awk \'{if (NF==13 && ($7>15 || $9>15)) printf \"\%d \",$3; if (NF==14 && ($8>15 || $10>15)) printf \"\%d \",$4}\' 4I1B_clean.rsa \>\> antigen-surface.pass<br>
-</a>
-
-The same can be achieved using the `haddock3-restraints` command line tool:
-
-<a class="prompt prompt-cmd">
-   haddock3-restraints calc_accessibility --cutoff 0.15 pdbs/4I1B_clean.pdb
-</a>
-
-The simple output directly reports the list of residues:
-
-<pre style="background-color:#DAE4E7">
-14/03/2023 13:15:20 L157 INFO - Calculate accessibility...
-14/03/2023 13:15:20 L228 INFO - Chain: B - 151 residues
-14/03/2023 13:15:20 L234 INFO - Applying cutoff to side_chain_rel - 0.15
-14/03/2023 13:15:20 L244 INFO - Chain B - 3,4,5,6,7,11,13,14,15,20,21,22,23,24,25,27,29,30,32,33,34,35,36,37,38,41,43,46,48,49,50,51,52,53,54,55,56,63,64,65,66,72,73,74,75,76,77,79,81,83,84,86,87,88,89,91,92,93,94,96,97,98,105,106,107,108,109,115,116,117,118,119,120,125,126,127,128,129,130,131,133,135,137,138,139,140,141,142,145,147,149,150,151,152,153
-</pre>
+For this can use the `haddock-restraints` tool to automatically to calculate the solvent accessible surface area (SASA) for the different
+residues.
 
 We can visualize the selected surface residues of Interleukin-1β.
 
@@ -627,25 +576,11 @@ The answer to that question should be yes, but we can see some residues not colo
 In HADDOCK we are dealing with potentially incomplete binding sites by defining surface neighbors as `passive` residues.
 These are added to the definition of the interface but will not lead to any energetic penalty if they are not part of the
 binding site in the final models, while the residues defined as `active` (typically the identified or predicted binding
-site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are
-using a local version, we need to define those manually.
-
-This can easily be done using the following HADDOCK3 command line interface:
-
-<a class="prompt prompt-cmd">
-haddock3-restraints passive_from_active 4I1B_clean.pdb  72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
-</a>
-
-The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only.
-The corresponding files can be found in the `restraints/antigen-NMR-epitope.act-pass` and `restraints/antigen-NMR-epitope.pass`files.
-Note in the second file the empty first line. The file consists of two lines, with the first one defining the `active` residues and
-the second line the `passive` ones. We will use later these files to generate the ambiguous distance restraints for HADDOCK.
-
-In general it is better to be too generous rather than too strict in the
-definition of passive residues.
+site residues) will. The `haddock-restraints` utility can be used to generate the passive residues from the active ones.
 
 An important aspect is to filter both the active (the residues identified from
 your mapping experiment) and passive residues by their solvent accessibility.
+`haddock-restraints` has also an option to automatically do this filtering.
 Our web service uses a default relative accessibility of 15% as cutoff. This is
 not a hard limit. You might consider including even more buried residues if some
 important chemical group seems solvent accessible from a visual inspection.
@@ -657,34 +592,42 @@ important chemical group seems solvent accessible from a visual inspection.
 
 Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
-For this you can either make use of our online [GenTBL][gentbl] web service, entering the
-list of active and passive residues for each molecule, and saving the resulting
-restraint list to a text file, or use the relevant `haddock-tools` script.
+Here we will use the `haddock-restraints` utility.
 
-To use our `haddock3-restraints` `active_passive_to_ambig` script you need to
-create for each molecule a file containing two lines:
+For scenario 1, we will define the active residues of the antibody, adding an option to extend this selection
+to include neighbouring residues as passive. The passive residues of the antigen will be defined as the surface residues.
 
-* The first line corresponds to the list of active residues (numbers separated by spaces)
-* The second line corresponds to the list of passive residues.
+A pre-filled input file has been provided in the `restraints/scenario1.json` directory of the tutorial archive, you can inspect it with:
 
-For scenario 1 this would be:
+```json
+[
+  {
+    "id": 1,
+    "chain": "A",
+    "structure": "4G6K_clean.pdb",
+    "active": [31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,1031,1032,1049,1050,1053,1091,1092,1093,1094,1096],
+    "passive": [],
+    "passive_from_active": true,
+    "target": [2]
+  },
+  {
+    "id": 2,
+    "chain": "B",
+    "structure": "4I1B_clean.pdb",
+    "active": [],
+    "passive": [],
+    "surface_as_passive": true,
+    "target": [1]
+  }
+]
+```
 
-* For the antibody (the file called `antibody-paratope.act-pass` from the `restraints` directory):
-<pre style="background-color:#DAE4E7">
-31 32 33 34 35 52 54 55 56 100 101 102 103 104 105 106 1031 1032 1049 1050 1053 1091 1092 1093 1094 1096
-</pre>
-
-* and for the antigen (the file called `antigen-surface.pass` from the `restraints` directory):
-<pre style="background-color:#DAE4E7">
-3 4 5 6 13 14 15 20 21 22 23 24 25 30 32 33 34 35 37 38 48 49 50 51 52 53 54 55 61 63 64 65 66 73 74 75 76 77 80 84 86 87 88 89 90 91 93 94 96 97 105 106 107 108 109 118 119 126 127 128 129 130 135 136 137 138 139 140 141 142 147 148 150 151 152 153
-</pre>
-
-Using those two files, we can generate the CNS-formatted AIR restraint files
-with the following command:
+Then generate the restraints with the following command:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-surface.pass > ambig-paratope-surface.tbl
+./utils/haddock-restraints tbl restraints/scenario1.json > ambig-paratope-surface.tbl
 </a>
+
 
 This generates a file called `ambig-paratope-surface.tbl` that contains the AIR
 restraints. The default distance range for those is between 0 and 2Å, which
@@ -696,15 +639,6 @@ The effective distance is calculated as the SUM over all pairwise atom-atom
 distance combinations between an active residue and all the active+passive on
 the other molecule: SUM[1/r^6]^(-1/6).
 
-If you modify manually this file, it is possible to quickly check if the format is valid.
-To do so, you can use the `haddock3-restraints validate_tbl` utility.
-To use it, type:
-
-<a class="prompt prompt-cmd">
-haddock3-restraints validate_tbl \-\-silent ambig-paratope-surface.tbl
-</a>
-
-No output means that your TBL file is valid.
 
 <hr>
 
@@ -712,10 +646,35 @@ No output means that your TBL file is valid.
 
 In this scenario the NMR epitope combined with the surface neighbors are used as passive residues in HADDOCK.
 
-The creation of the AIR tbl file for scenario 2a is similar to scenario 1, but instead using the `antigen-NMR-epitope.pass` file for the antigen:
+A pre-filled input file has been provided in the `restraints/scenario2a.json` directory of the tutorial archive, you can inspect it with:
+
+```json
+[
+  {
+    "id": 1,
+    "chain": "A",
+    "structure": "../4G6K_clean.pdb",
+    "active": [31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,1031,1032,1049,1050,1053,1091,1092,1093,1094,1096],
+    "passive": [],
+    "passive_from_active": true,
+    "target": [2]
+  },
+  {
+    "id": 2,
+    "chain": "B",
+    "structure": "../4I1B_clean.pdb",
+    "active": [72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117],
+    "passive": [],
+    "passive_from_active": true,
+    "target": [1]
+  }
+]
+```
+
+Then generate the restraints with the following command:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.pass > ambig-paratope-NMR-epitope-pass.tbl
+./utils/haddock-restraints tbl restraints/scenario2a.json > ambig-paratope-NMR-epitope-pass.tbl
 </a>
 
 <hr>
@@ -724,11 +683,35 @@ haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-p
 
 In this scenario the NMR epitope is defined as active (meaning ambiguous distance restraints will be defined from the NMR epitope residues) and the surface neighbors are used as passive residues in HADDOCK.
 
-The creation of the AIR tbl file for scenario 2b is similar to scenario 1, but instead using the `antigen-NMR-epitope.act-pass` file for the antigen:
+A pre-filled input file has been provided in the `restraints/scenario2b.json` directory of the tutorial archive, you can inspect it with:
+
+```json
+[
+  {
+    "id": 1,
+    "chain": "A",
+    "structure": "../4G6K_clean.pdb",
+    "active": [31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,1031,1032,1049,1050,1053,1091,1092,1093,1094,1096],
+    "passive": [],
+    "passive_from_active": false,
+    "target": [2]
+  },
+  {
+    "id": 2,
+    "chain": "B",
+    "structure": "../4I1B_clean.pdb",
+    "active": [72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117],
+    "passive": [],
+    "passive_from_active": true,
+    "target": [1]
+  }
+]
+```
 
 <a class="prompt prompt-cmd">
-haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass > ambig-paratope-NMR-epitope.tbl
+./utils/haddock-restraints tbl restraints/scenario2b.json > ambig-paratope-NMR-epitope.tbl
 </a>
+
 
 <hr>
 
@@ -736,11 +719,17 @@ haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-p
 
 As an antibody consists of two separate chains, it is important to define a few distance restraints
 to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
-done using another `haddock3-restraints` subcommand.
+done using another `haddock-restraints` subcommand.
 
+<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
+<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
+<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
 <a class="prompt prompt-cmd">
-haddock3-restraints restrain_bodies 4G6K_clean.pdb > antibody-unambig.tbl
+./utils/haddock-restraints restraint  4G6K_clean.pdb > antibody-unambig.tbl
 </a>
+<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
+<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
+<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
 
 The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:
 
@@ -2404,3 +2393,5 @@ So stay tuned!
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
 [tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
+[link-haddock-restraints]: https://github.com/haddocking/haddock-restraints
+[link-bpg]: https://www.bonvinlab.org/software/bpg/
