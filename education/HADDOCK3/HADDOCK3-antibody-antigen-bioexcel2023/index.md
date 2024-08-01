@@ -612,7 +612,7 @@ The difference between `active` and `passive` residues in HADDOCK is:
 *__passive__* residues should be at the interface, if they are not no energetic penalty is paid.
 
 In general it is better to be too generous rather than too strict in the definition of passive residues. An important aspect is to filter both the active (the residues identified from
-your mapping experiment) and passive residues by their solvent accessibility. This is done automatically when using the `haddock3-restraints passive_from_active` command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discared.
+your mapping experiment) and passive residues by their solvent accessibility. This is done automatically when using the `haddock3-restraints passive_from_active` command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discarded.
 This is however not a hard limit and you might consider including even more buried residues if some
 important chemical group seems solvent accessible from a visual inspection.
 
@@ -856,10 +856,6 @@ ncores=50
 
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
-
-# Post-processing to generate statistics and plots
-postprocess = true
-clean = true
 
 molecules =  [
     "pdbs/4G6K_clean.pdb",
@@ -1717,7 +1713,7 @@ All three antibody structures used in input give good to reasonable results. The
 
 <hr>
 <hr>
-## BONUS 3: Ensemble-docking using a combination of exprimental and AI-predicted antibody structures
+## BONUS 3: Ensemble-docking using a combination of experimental and AI-predicted antibody structures
 
 
 Instead of running haddock3 using a specific input structure of the antibody we can also use an ensemble of all available models.
@@ -1747,10 +1743,6 @@ ncores=50
 
 # Self contained rundir (to avoid problems with long filename paths)
 self_contained = true
-
-# Post-processing to generate statistics and plots
-postprocess = true
-clean = true
 
 molecules =  [
     "pdbs/4G6K-ensemble.pdb",
