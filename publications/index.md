@@ -6,6 +6,8 @@ image:
 ---
 ## 2024
 
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _BioRXiv._ 10.1101/2024.07.31.605986 (2024).
+
 * X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
 
 * G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v2) _BioRXiv_ 10.1101/2024.06.07.597882 (2024).
