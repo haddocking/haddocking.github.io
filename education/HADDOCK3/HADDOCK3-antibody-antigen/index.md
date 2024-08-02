@@ -721,21 +721,15 @@ As an antibody consists of two separate chains, it is important to define a few 
 to keep them together during the high temperature flexible refinement stage of HADDOCK. This can easily be
 done using another `haddock-restraints` subcommand.
 
-<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
-<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
-<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
 <a class="prompt prompt-cmd">
 ./utils/haddock-restraints restraint  4G6K_clean.pdb > antibody-unambig.tbl
 </a>
-<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
-<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
-<!-- CHECK THIS, OUTPUT IS DIFFERENT -->
 
 The result file contains two CA-CA distance restraints with the exact distance measured between the picked CA atoms:
 
 <pre style="background-color:#DAE4E7">
-  assign (segid A and resi 220 and name CA) (segid A and resi 1018 and name CA) 47.578 0.0 0.0
-  assign (segid A and resi 193 and name CA) (segid A and resi 1014 and name CA) 33.405 0.0 0.0
+assign ( resid 30 and segid A and name CA ) ( resid 1052 and segid A and name CA ) 28.7 0.0 0.0
+assign ( resid 116 and segid A and name CA ) ( resid 1115 and segid A and name CA ) 35.1 0.0 0.0
 </pre>
 
 This file is also provided in the `restraints` directory of the archive you downloaded.
@@ -779,9 +773,9 @@ Other example scripts can be found in the `haddock3` directory.
 
 ### HADDOCK3 execution modes
 
-HADDOCK3 currently supports three difference execution modes that are defined in the first section of the configuration file of a run.
+HADDOCK3 currently supports three different execution modes that are defined in the first section of the configuration file of a run.
 
-#### 1. local mode
+#### 1. local mode (multiprocessing)
 
 In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file
 to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
@@ -866,8 +860,8 @@ haddock3 scenario2a-NMR-epitope-pass-node.cfg
 
 #### 2. batch mode
 
-In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster.
-Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
+In this mode, you will start HADDOCK3 on the login node and HADDOCK's internal routines will interact with the queue scheduler your HPC.
+Two queue schedulers are supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
 have to define the `queue` name and the maximum number of concurrent jobs sent to the queue (`queue_limit`). Since HADDOCK3 single model
 calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system.
 The number of model per job is defined by the `concat` parameter in the configuration file.
@@ -890,10 +884,10 @@ concat = 10
 
 In this mode HADDOCK3 can be started from the command line as for the local mode.
 
-#### 3. MPI mode
+#### 3. (pseudo)-MPI mode
 
-HADDOCK3 supports a parallel MPI implementation (functional but still very experimental at this stage). For this to work, the `mpi4py` library
-must have been installed at installation time. Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html).
+HADDOCK3 has a pseudo-MPI implementation. For this to work, your system needs OpenMpi and the `mpi4py` python package.
+Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html).
 The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
 
 An example of the relevant parameters to be defined in the first section of the config file is:
@@ -906,6 +900,7 @@ ncores = 250
 {% endhighlight %}
 
 In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.
+Note that you must **NOT** run haddock3 with `mpirun`, this will be handled internally.
 
 <details>
   <summary style="bold">
