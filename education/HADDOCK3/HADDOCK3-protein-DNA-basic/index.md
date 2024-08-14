@@ -18,9 +18,13 @@ This tutorial demonstrates a simplified Haddock3 workflow dedicated to predictin
 basic preparation of the input pdb files; 
 creation of the suitable Haddock3 workflow; 
 basic analysis of the docking results. 
- Please note that we do not cover the processing of literature data into docking restraints; for more information, please refer to the advanced tutorial.
+Please note that we do not cover the processing of literature data into docking restraints; for more information, please refer to the advanced tutorial. 
 
-Computation within this tutorial should take X hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/ADD_NEW_DATA todo ).
+Computation within this tutorial should take 1.5 hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/ADD_NEW_DATA todo ).  
+
+This tutorail is an adaptation of the basic protein-DNA docking [tutorial](#todo link) using HADDOCK2.4 webserver. 
+
+This tutorial is an adaptation of Haddock2.4 
 
 #### Tutorial test case
 In this tutorial, we will work with the phage 434 Cro/OR1 complex (PDB: [3CRO](https://www.rcsb.org/structure/3CRO)), formed by bacteriophage 434 Cro repressor proteins and the OR1 operator.
@@ -31,7 +35,7 @@ Cro is part of the bacteriophage 434 genetic switch, playing a key role in contr
 The structure of the phage 434 Cro/OR1 complex was solved by X-RAY crystallography at 2.5Å. We will use this experimentally solved structure as a reference within the tutorial. Cro is a symmetrical dimer, each subunit contains a helix-turn-helix (HTH), with helices α2 and α3 being separated by a short turn. This is a DNA binding motif that is known to bind major grooves. Helix α3 is the recognition helix that fits into the major groove of the operator DNA and is oriented with its axes parallel to the major groove. The side chains of each helix are thus positioned to interact with the edges of base pairs on the floor of the groove. Non-specific interactions also help to anchor Cro to the DNA. These include H-bonds between main chain NH groups and phosphate oxygens of the DNA in the region of the operator. Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by Cro, and the middle region of the operator is overwound, as reflected in the reduced distance between phosphate backbones in the minor groove.
 
 <figure align="center">
-<img src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/CRO-OR1.png">
+<img src="/CRO-OR1.png">
 </figure>
 
 Throughout the tutorial, coloured text will be used to refer to questions, instructions, PyMOL and terminal prompts:
@@ -62,7 +66,7 @@ wget https://surfdrive.surf.nl/files/index.php/ADD_NEW_LINK -O haddock3-protein-
 unzip haddock3-protein-dna-basic.zip
 </a>
 
-Decompressing the file will create the `haddock3-protein-dna-basic` directory with the following subdirectories and items:
+Decompressing the file will create the `haddock3-protein-dna-basic` directory with the following subdirectories and items: # todo formatting 
 * `workflow`:
  - `protein-dna-basic.cfg`, a Haddock configuration file.
 * `pdbs`: <more here, todo>
@@ -98,7 +102,7 @@ color red, interface
    Now the residues of the interface are displayed in red.<i class="material-icons">expand_more</i>
  </summary>
  <figure style="text-align: center;">
-   <img width="50%" src="education/HADDOCK3/HADDOCK3-protein-DNA-basic/CRO-OR1-interface.png">
+   <img width="50%" src="/CRO-OR1-interface.png">
  </figure>
  <br>
 </details>
@@ -222,40 +226,40 @@ _**Note**_ that it is possible to perform the docking with an ensemble of trimme
 
 ## Docking with Haddock3
 
-In this section we will discuss specificities of protein-DNA docking in the frame of Haddock3, then create an appropriate Haddock3 workflow, and, lastly, perform analysis of the docking results using experimentally solved structure as a reference. 
+In this section, we will discuss the specifics of protein-DNA docking in the frame of Haddock3. We will then create an appropriate Haddock3 workflow and, finally, perform an analysis of the docking results using the experimentally solved structure as a reference.
 
-#### Specificity of the protein-DNA docking
+#### Specifics of the protein-DNA docking
 
-Docking a double-stranded DNA requires changing the default values of several parameters to allow for a better mimicking of the conditions under which DNA interactions occur. The following parameters should be modified:
-An automatic restraints should be added to maintain an input conformation of the DNA during the refinement: `dnarest_on = true`; 
-An explicit solvent molecular dynamic refinement should be performed rather that energy minimization refinement: use [mdref] module instead of [emref];
-A dielectric constant should be set to 78, for both sampling and flexible refinement (but not in MD refinement!): `epsilon = 78`;
-A relative dielectric constant in Coulomb potential should be fixed (rather than distance-dependant) for both sampling and flexible refinement: `dielec = cdie`;
-A weight of the desolvation energy term should be set to 0: `w_desolv = 0`;
-A scaling factor for the flexible refinement should be lowered to 4 (from 8) to allow less movement during the refinement: `tadfactor = 4`;
-An initial temperature for the final round of flexible refinement should be lowered to 300 (from 1000) to allow less movement during the final refinement stage: `temp_cool3_init = 300`.
+Docking a double-stranded DNA requires adjusting several default parameters to better mimic the conditions under which DNA interactions occur. The following parameters should be modified:
+Add an automatic restraint to maintain the input conformation of the DNA during refinement: `dnarest_on = true`;
+Perform explicit solvent molecular dynamics refinement instead of energy minimization refinement by using the `[mdref]` module instead of `[emref]`;
+Set the dielectric constant to 78 for both sampling and flexible refinement (but not for MD refinement): `epsilon = 78`;
+Fix the relative dielectric constant in the Coulomb potential (rather than using a distance-dependent mode) for both sampling and flexible refinement: `dielec = cdie`;
+Set the weight of the desolvation energy term to 0: `w_desolv = 0`;
+Lower the scaling factor for flexible refinement to 4 (from 8) to allow less movement during the refinement: `tadfactor = 4`;
+Lower the initial temperature for the final round of flexible refinement to 300 (from 1000) to allow less movement during the final refinement stage: `temp_cool3_init = 300`.
 
-_**Note**_ that Haddock3 distinguishes nucleotides of DNA from nucleotides of RNA based on the naming of the residues in the pdb file. Two letter naming convention starting with ‘D’ is used for the DNA, for example, ‘DA’ defines adenine in DNA, while ‘A’ defines adenine in RNA. Another example is thymine: while ‘DT’ defines it in DNA, the ‘T’ will be removed from any nucleic acid structure.
+_**Note**_ that Haddock3 distinguishes DNA nucleotides from RNA nucleotides based on the residue naming in the PDB file. DNA nucleotides are named with two letters starting with 'D' (e.g., 'DA' for adenine in DNA), while RNA nucleotides use single-letter names (e.g., 'A' for adenine in RNA).
 
 #### Haddock3 workflow
 
-Now that we have all necessary files ready for the docking, along with the several insights into the specificity of the protein-DNA docking - it’s time to create the docking workflow. In this scenario we will adhere to the following, rather straightforward, workflow: rigid body docking, semi-flexible refinement and explicit solvent molecular dynamic (MD) refinement followed by clustering. 
+Now that we have all the necessary files ready for docking, along with several insights into the specifics of protein-DNA docking, it’s time to create the docking workflow. In this scenario, we will adhere to the following straightforward workflow: rigid-body docking, semi-flexible refinement, and explicit solvent molecular dynamics (MD) refinement followed by clustering.
 
-Practically speaking, out workflow consists of the following modules:
-topoaa: _Generates the topologies for the CNS engine and build missing atoms_
-rigidbody: _Performs sampling by rigid-body energy minimisation (it0 in Haddock2.x)_
-caprieval: _Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the best-scored model or reference structure if provided_
+Out workflow consists of the following modules:
+topoaa: _Generates the topologies for the CNS engine and builds missing atoms_
+rigidbody: _Performs sampling by rigid-body energy minimization (equivalent to it0 in Haddock2.x)_
+caprieval: _Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the best-scored model or a provided reference structure_
 seletop: _Selects X best-scored models from the previous module_
-flexref: _Performs semi-flexible refinement of the interface (it1 in Haddock2.x)_ 
+flexref: _Performs semi-flexible refinement of the interface (equivalent to it1 in Haddock2.x)_ 
 caprieval
-mdref: _Performs final refinement via explicit solvent MD (itw in Haddock2.X)_
+mdref: _Performs final refinement via explicit solvent MD (equivalent to itw in Haddock2.X)_
 caprieval 
-rmsdmatrix: _Calculates of the root mean squared deviation (RMSD) matrix between all the models from the previous module; 
-clustrmsd: _Takes in input the RMSD matrix calculated in the [rmsdmatrix] and performs a hierarchical clustering procedure on it_
+rmsdmatrix: _Calculates of the root mean squared deviation (RMSD) matrix between all models from the previous module_
+clustrmsd: _Takes the RMSD matrix calculated in the [rmsdmatrix] module and performs a hierarchical clustering procedure on it_
 caprieval
-seletopclusts: Selects best-scored models of all clusters
+seletopclusts: _Selects X best-scored models of Y clusters_
 
-As mentioned before, we should enforce C2 symmetry between the proteins throughout the entire docking process. This can be achieved by adding the following parameters to [rigidbody], [flexref] and [mdref]:
+As mentioned before, we should enforce C2 symmetry between the proteins throughout the entire docking process. This can be achieved by adding the following parameters to the `[rigidbody]` , `[flexref]` , and `[mdref]` modules::
 
 ```
 # Turn on symmetry restraints 
@@ -272,10 +276,10 @@ c2sym_sta2_1 = 4
 c2sym_end2_1 = 64
 ```
 
-In this definition we omitted the first 3 residues of each protein as they are somewhat flexible. 
+**Note** that in this definition we omitted the first 3 residues of each protein.
 
 Take a look at the tolm configuration file `workflow/protein-dna-basic.cfg`. 
-<a class="prompt prompt-info"> Take your time to read the comments and relate parameters of this file to the info of this tutorial:</a>
+<a class="prompt prompt-info"> Take your time to read the comments and relate parameters of this file to the information given above :</a>
 
 {% highlight toml %}
 # ====================================================================
@@ -386,7 +390,7 @@ w_desolv = 0
 watersteps = 750
 
 [caprieval]
-reference_fname = "/pdbs/3CRO_complex.pdb"
+reference_fname = "pdbs/3CRO_complex.pdb"
 
 [rmsdmatrix]
 # use all residues of each docking partner to calculate RMSD matrix
@@ -398,17 +402,19 @@ resdic_C = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2
 # generate an interactive plot of the clustering results
 plot_matrix = true
 
+[seletopclusts]
 [caprieval]
 reference_fname = "/pdbs/3CRO_complex.pdb
+
 # ====================================================================
 
 {% endhighlight %}
 
 _**Note**_ that in this example we use relative paths to define input files and output folder. However it is preferable to use the full paths instead. 
 
-This workflow beings with creating topologies for the docking partners. Then we perform rigid body sampling with ambiguous and symmetry restraints - 1000 models are generated. We keep 200 top-ranked models. Then we perform flexible refinement of these models, followed by MD refinement in explicit solvent, still with ambiguous and symmetry restraints. Lastly, we cluster docking models via RMSD - all residues are used to calculate RMSD values -  and select 5 top-ranked models of each cluster. The module `caprieval` was added after each step of the procedure to simplify the analysis of the models. This module allows to track rank of a given model throughout the docking process and more. 
+This workflow begins by creating topologies for the docking partners. Rigid body sampling is performed with ambiguous and symmetry restraints, generating 1000 models, from which the top 200 are selected. These models then undergo flexible refinement followed by MD refinement in explicit solvent, still maintaining the same ambiguous and symmetry restraints. Finally, docking models are clustered via RMSD, with all residues used to calculate RMSD values. The top 5 models from each cluster are selected. The `caprieval` module is added after each step to simplify model analysis and track the rank of models throughout the docking process.
 
-#### Running Haddock3
+#### Running Haddock3 locally
 
 In the first section of the configuration file you can see:
 
@@ -418,7 +424,7 @@ mode = "local"
 ncores=8
 {% endhighlight %}
 
-Parameter `mode` defines how this workflow will be executed. In this case it will run locally, on your machine, using 8 CPUs (feel free to change this value). You can find out about other modes [link?](here). #todo
+The parameter `mode` defines how this workflow will be executed. In this case, it will run locally, on your machine, using 8 CPUs (feel free to change this value). You can find out about other modes [link?](here). #todo
 
 To start the docking you need to **activate your haddock3 environment**, then navigate to the folder with the configuration file `workflow/protein-dna-basic.cfg`, and type:
  type one of the following:
@@ -429,21 +435,125 @@ haddock3 protein-dna-basic.cfg > log-protein-dna-basic.out &
 haddock3 protein-dna-basic.cfg 
 </a>
 
-The first version of this command will run the docking in the background and will save output in the files `log-protein-dna-basic.out`. The second version will run directly in the terminal window and will print output on screen.
-
-This workflow took X h Y min to complete using 8 CPUs. You can run it and wait for the results, or you can access results of this protocol immediately by navigating to the `run` folder.
+The first version of this command will run the docking in the background and will save output in the files `log-protein-dna-basic.out`. The second version will run directly in the terminal window and will print output on the screen.
+# todo 
+This workflow took 1.5 hours to complete using 8 CPUs (. You can run it and wait for the results, or you can access pre-computed results of this protocol immediately by navigating to the `run` directory.
 
 ## Analysis of the docking results
 
-+ navigation around I guess...
-+ explain capri_ss and capri_csv
+Inspect the content of the resulting directory. You will find the various steps of our workflow (modules) numbered sequentially starting at 0:
 
-+ compare with reference
-+ ? Visualizing the scores and their components
+{% highlight shell %}
+> ls run1/
+     00_topoaa/
+     01_rigidbody/
+     02_caprieval/
+     03_seletop/
+     04_flexref/
+     05_caprieval/
+     06_mdref/
+     07_caprieval/
+     08_rmsdmatrix/
+     09_clustrmsd/
+     10_seletopclusts/
+     11_caprieval/
+     analysis/
+     data/
+     log
+     traceback/
+{% endhighlight %}
+
+There are also:
+* `log` file, here you can verify execution of each module, and, more importantly, in case the docking run fails, identify the reason for it by reading carefully the error message. At the very bottom of the file you can see the execution time of this docking run;
+* `analysis` directory contains information relevant to the result of each `caprieval` step, including various plots to visualise statistics of the results. Here you can find a general report (`report.html`) of the run. This file can be opened in the web browser;
+* `data` directory contains input pdbs (not the actual docking models!) and restraints files used within each  module;
+* `traceback` directory contains the `traceback.tsv` file, which displays the name and rank of each docking model throughout the entire workflow. 
+
+Each sampling/refinement/selection module’s directory contains compressed pdb files of the docking models. For example, `10_seletopclusts` contains 10 top-ranked docking models from each of the 14 clusters. The clusters themselves are numbered based on the average rank of the models within, thus `cluster_1` contains top-ranked models of the run. Information about the origin of each model can be found in `10_seletopclusts/seletopclusts.txt`. 
+
+<a class="prompt prompt-info"> Open `analysis/report.html` in a web browser. Inspect displayed on the top of the page table with cluster statistics.
+</a>
+
+<a class="prompt prompt-question">
+Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+   <i>Answer</i> <i class="material-icons">expand_more</i>
+ </summary>
+ <p>
+   According to the two-sample t-test, 3 first clusters are significantly different from each other at the 0.05 significance level. #todo
+ </p>
+</details>
+
+For this docking case we had access to the experimentally solved structure of the complex, and we provided this structure to the caprieval modules. This means that the interface RMSD, ligand RMSD, Fraction of Common Contacts (FCC) and DockQ statistics report on the quality of the docked model compared to the reference structure. Remember here that higher DockQ and FCC values and lower RMSD values correspond to better models. 
+
+<a class="prompt prompt-question">
+Look at the DockQ of the clusters: Does the top-ranked cluster has the highest average DockQ?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+   <i>Answer</i> <i class="material-icons">expand_more</i>
+ </summary>
+ <p>
+No, Cluster2 nad Cluster5 have the highest average DockQ value (0.26). Cluster 1 has average DockQ of 0.2. #todo
+ </p>
+</details>
+
+#### Visualisation of the HADDOCK scores and their components
+
+Under the cluster statistic table, you can see a variety of plost displaying the HADDOCK score and its components against various metrics (i-RMSD, l-RMSD, FCC, Dock-Q) with a color-coded representation of the clusters. Last rows display plots the cluster statistics - distributions of values per cluster ordered according to their HADDOCK rank. 
+
+These plots are interactive. A menu on the top right, just above the right corner of the last plot in the the first row (you have to position your mouth there for this menu to appear) allows you to zoom in and out in the plots and hide/show clusters on the plots.
+
+<a class="prompt prompt-info"> Inspect plots displayed on the top of the page table with cluster statistics. Which of the score components correlates best with the quality of the models?
+</a>
+
+Depending on the docking models, there could be a set of unclustered models. Typically it will be shown in `report.html`. You can see origins of these models in `traceback/traceback.tsv`. 
+
 #### Visualisation of the docking models
+
+It’s time to visualise some of the docking models. Let’s visualise cluster_1_model_1.pdb, the best-ranked model, cluster_X_model_Y, the model with the lowest i-RMSD (according to the plot x vs y) and reference structure. Please open all these files in PyMOL. `Cluster_1_model_1.pdb` and `cluster_1_model_1.pdb` can be found in `path, reference structure `3CRO_complex.pdb` in `pdbs`. Then type in the PyMOL command line: 
+
+<a class="prompt prompt-pymol">
+show cartoon 
+</a>
+<a class="prompt prompt-pymol">
+ color paleyellow, 3CRO_complex
+</a>
+<a class="prompt prompt-pymol">
+alignto 3CRO_complex
+</a>
+
+<a class="prompt prompt-question">
+How close there models are to the reference? Did HADDOCK do a good job at ranking docking models?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+   <i>Answer</i> <i class="material-icons">expand_more</i>
+ </summary>
+ <p>
+Models are asseptably close to the reference. While the best model is not top-ranked, HADDOCK produces reasonable ranking. 
+ </p>
+</details>
+
+It could be helpful to examine several top-ranked models of each cluster. This can give you an idea about the diversity of the models within a cluster, as well as the diversity of models coming from the different clusters. 
+
+<a class="prompt prompt-info"> Compare top-ranked models of the same cluster. Is this cluster well-defined?
+</a>
 
 ## Congratulations!
 
-You have made it to the end of this basic protein-DNA docking tutorial. We hope it has been illustrative and may help you get started with your own docking projects.
+You have made it to the end of this basic protein-DNA docking tutorial. We hope it has been illustrative and may help you get started with your own docking projects. Check out [advanced version of this tutorial](#todo) to get more insights on protein-DNA docking! 
 
 Happy docking!
+
+
+#todo
+1. check all todos in text
+2. make zip with data + run 
+3. Paste correst cfg 
+4. Add images to analysis 
+5. Add working links (+ link to report.html)
+6. Add correct numbers to analysis 
+
