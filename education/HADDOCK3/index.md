@@ -25,3 +25,9 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information
   about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments.
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
+
+* [**HADDOCK3 basic protein-DNA docking tutorial**](/education/HADDOCK3/HADDOCK3-protein-DNA-basic):
+  This tutorial demonstrates the use of HADDOCK3 for predicting the structure of a protein-DNA complex in which two protein units 
+  bind to the double-stranded DNA in a symmetrical manner (3CRO). Next to provided ambiguous restraints to drive the docking symmetry 
+  restraints are defined to enforce symmetrical protein binding. As HADDOCK3 only exists as a command line version, this tutorial does
+  require some basic Linux expertise.
