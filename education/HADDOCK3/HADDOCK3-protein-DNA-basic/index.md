@@ -14,6 +14,7 @@ This tutorial consists of the following sections:
 <hr>
 
 ## Introduction
+
 This tutorial demonstrates a simplified Haddock3 workflow dedicated to predicting the 3D structure of protein-DNA (double-stranded DNA) complexes using pre-defined restraints, derived from the literature, and symmetry restraints. Here, we introduce the basic concepts of HADDOCK, suitable for tackling various typical protein-DNA docking challenges: 
 * basic preparation of the input PDB files; 
 * creation of the suitable Haddock3 workflow; 
