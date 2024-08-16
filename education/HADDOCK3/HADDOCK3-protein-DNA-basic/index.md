@@ -2,7 +2,7 @@
 layout: page
 title: "Basic protein-DNA docking using local version of Haddock3"
 excerpt: "A basic tutorial on protein-DNA docking in Haddock3."
-tags: [HADDOCK, Haddock3, Pymol, Protein-DNA]
+tags: [HADDOCK, Haddock3, PyMOL, Protein-DNA, symmetry, 3-body docking]
 image:
  feature: pages/banner_education-thin.jpg
 ---
