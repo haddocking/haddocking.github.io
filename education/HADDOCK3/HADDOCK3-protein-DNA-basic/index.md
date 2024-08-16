@@ -179,6 +179,7 @@ _**Note**_ that in the real docking case the bound structure of a complex is una
 ### What’s inside of the restraints file?
 
 The ambiguous interaction restraints are defined in the `ambig_prot_dna.tbl` file. This file was created using both experimental knowledge and information from literature. A detailed explanation of how to generate these restraints can be found in the advanced version of the tutorial, [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data). 
+
 Let’s have a look at it's first lines:
 ```bash
 assign ( resid 35 and segid C)
