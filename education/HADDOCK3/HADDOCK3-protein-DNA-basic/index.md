@@ -23,7 +23,6 @@ This tutorial demonstrates a simplified Haddock3 workflow dedicated to predictin
 Please note that we do not cover the processing of literature data into docking restraints; for more information, please refer to the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/). 
 
 Computation within this tutorial should take 1.5 hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/files/index.php/s/5Z1C9UWKgwTpq74).  
-This tutorail is an adaptation of the basic protein-DNA docking [tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-basic/) using HADDOCK2.4 webserver. 
 
 ### Tutorial test case
 
