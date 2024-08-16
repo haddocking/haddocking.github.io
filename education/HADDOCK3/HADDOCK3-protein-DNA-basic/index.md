@@ -83,6 +83,7 @@ Decompressing the file will create the `haddock3-protein-dna-basic` directory wi
 The Ambiguous Interaction Restraints (AIRs) are crucial to successful docking as AIRs should guide docking partners towards the correct conformation. AIRs consist of the residues located in the interface of a complex.
 
 ### Visualisation of the interface
+
 Let's visualise residues in the interface of the 3CRO using PyMOL.
 Open `pdbs/3CRO_complex.pdb` in PyMOL and type:
 <a class="prompt prompt-pymol">
