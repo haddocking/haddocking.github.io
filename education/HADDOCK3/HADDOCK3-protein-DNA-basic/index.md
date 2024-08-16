@@ -208,7 +208,7 @@ HADDOCK is not limited to ambiguous restraints, other types, like unambiguous an
 Haddock3 requires an input structure for each docking partner. The quality of these input structures are highly influential to the quality of the docking models. Conformational deficiencies such as clashes, chain breaks and missing atoms may cause problems during the docking, so it is important to verify each input file.
 Another important factor is the difference between unbound and bound conformations. The more different these conformations are, the more difficult it is to generate correct docking models.
 
-In this section we will go over the preparation of the protein structures. The preparation of the DNA structure is out of the score of this tutorial and detailed [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#preparing-pdb-coordinate-files-for-the-or1-operator).
+In this section we will go over the preparation of the protein structures. The preparation of the DNA structure is out of the scope of this tutorial, but is detailed in the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#preparing-pdb-coordinate-files-for-the-or1-operator).
 
 Ready-to-dock structures are available in `pdbs` directory, namely `1ZUG_dimer1.pdb`, `1ZUG_dimer2.pdb` and `OR1_unbound.pdb`.
 
