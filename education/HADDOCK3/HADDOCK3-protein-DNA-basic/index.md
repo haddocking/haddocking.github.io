@@ -199,7 +199,7 @@ Check out the list of atoms defined in 'ambig_prot_DNA.tbl'. Which part of the D
 
 You may notice that not all residues of the protein’s interface are used for the AIRs. This is done to save computational time.
 
-HADDOCK is not limited to ambiguous restraints, other types, like unambiguous and symmetry restraints can play an important role as well. As mentioned before, Cro is known to function as a symmetrical dimer. This means we should **enforce a pairwise symmetry (C2)** between the two protein monomers. This part will be explained in the “Haddock3 workflow” section of the tutorial.
+HADDOCK is not limited to ambiguous restraints, other types, like unambiguous and symmetry restraints can play an important role as well. As mentioned before, Cro is known to function as a symmetrical dimer. This means we should **enforce a pairwise symmetry (C2)** between the two protein monomers. This part will be explained in the [Haddock3 workflow](#haddock3-workflow) section of the tutorial.
 
 <hr>
 
