@@ -27,13 +27,13 @@ For this tutorial we will make use the following web servers:
 
 * [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}: The HADDOCK web portal which allows to model 3D structures of the query complex using distance restraints derived by PS-HomPPI v2.0 to guide the docking.
 
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
-A description of the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/){:target="_blank"} can be found in the following publications:
+
+A description of the template-based modelling procedure described in this tutorial can be found in the following publication:
 
 * Li C Xue, João P G L M Rodrigues, Drena Dobbs, Vasant Honavar, Alexandre M J J Bonvin. [Template-based protein–protein docking exploiting pairwise interfacial residue restraints.](https://academic.oup.com/bib/article/18/3/458/2562753){:target="_blank"} _Briefings in bioinformatics_ *18*, 458-466 (2017).
 
-* S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html){:target="_blank"} _Nature Protocols_, *5*, 883-897 (2010).
 
 Throughout the tutorial, colored text will be used to refer to questions or
 instructions, and/or PyMOL commands.
