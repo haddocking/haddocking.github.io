@@ -700,9 +700,9 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 ### Scenario 1: 1000 rigidbody docking models, selection of top200 and flexible refinement + EM of those
 
-Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. [DESCRIBE BETTER]. 
+Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
-The configuration file for this scenario (assuming a local running mode, eventually submitted to the batch system requesting a full node) is:
+The configuration file for this scenario (assuming a batch running mode) is:
 
 {% highlight toml %}
 # ====================================================================
@@ -785,16 +785,12 @@ This configuration file is provided in the `haddock3` directory of the downloade
 If you have everything ready, you can launch haddock3 either from the command line, or, better,
 submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
-_**Note**_ that this scenario is computationally more expensive because of the increased sampling.
-On our own cluster, running in batch mode took 12 minutes and 37 seconds.
-Running in MPI mode with 250 cores on AMD EPYC 7451 processors took [TO BE TESTED].
-The same run on a single node using all 96 threads took on the same architecture [TO BE TESTED].
-
 <hr>
 
 ### Scenario 2: 1000 rigidbody docking models, selection of top200 and flexible refinement + final refinement in explicit solvent (water) of those 
 
-In scenario 2 we are setting up the docking in which [DESCRIBE BETTER]. 
+In scenario 2, we proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment then water refinment. 
+For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario (assuming a batch running mode) is:
 
 {% highlight toml %}
@@ -879,15 +875,12 @@ This configuration is provided in the `haddock3` directory of the downloaded dat
 
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
 
-_**Note**_ On our own cluster, running in MPI mode with 250 cores on AMD EPYC 7451 processors the run completed in about [TO BE COMPLETED]. The same run on a single node using all 96 threads took on the same architecture about [TO BE COMPLETED]. In `batch` mode, using 100 queue slots and 10 models per job, the same run completed in about [TO BE COMPLETED].
-
-On the Fugaku supercomputer used for the EU ASEAN HPC school, running on a single node (48 [armv8 A64FX](https://github.com/fujitsu/A64FX){:target="_blank"} processors), this run completed in about [TO BE COMPLETED]. 
-
 <hr>
 
 ### Scenario 3: 1000 rigidbody docking models, FCC clustering and selection of max 20 models per cluster followed by flexible refinement and EM 
 
-Scenario 3 is [TO BE COMPETED]
+In scenario 3, we proceed to produce 1000 rigidbody docking models, from which we proceed to do a first clustering analysis. From the top clusters a flexible refinment then energy minization is done. 
+For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario (assuming a batch running mode) is:
 
 {% highlight toml %}
@@ -1781,7 +1774,7 @@ zoom resn NEP<br>
 </a>
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/phosphorylated-histidine.png">
+<img src="/education/HADDOCK3/HADDOCK3-protein-protein-basic/phosphorylated-histidine.png">
 </figure>
 
 Zoom back to all visible molecules with
