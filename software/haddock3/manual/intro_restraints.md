@@ -69,7 +69,7 @@ Because of the explicit ambiguity present in this file, two other parameters are
 Please note that you can provide a set of multiple restraints files, compressed in a `.tgz` archive.
 In this scenario, we strongly advise to set the parameter `previous_ambig = true` in subsequent modules (instead of defining the path to the ambiguous file), so that the same ambiguous restraint file used to generate the first complex will be used again along the workflow for this specific complex.
 
-The force constant of the ambiguous distance restraints can be tuned using the `ambig_scale` parameter.
+The force constant of the ambiguous distance restraints can be tuned using the `ambig_scale` parameter or `ambig_hot`, `ambig_cool1`, `ambig_cool2` and `ambig_cool3` for simulated annealing stages in `[flexref]` module.
 
 
 ## Unambiguous distance restraints
