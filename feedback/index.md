@@ -6,7 +6,7 @@ image:
   feature: pages/banner_home-mini.jpg
 ---
 
-Thanks for using the services and softwares of the BonvinLab! 🎉
+Thanks for using the services and software of the BonvinLab! 🎉
 
 We are always looking for ways to improve our services and software. If you have any feedback, please let us know by making a post in our Feedback Form!
 
