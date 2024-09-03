@@ -21,11 +21,11 @@ Welcome to the haddock3 user manual
 * [Haddock3 modularity](/software/haddock3/manual/haddock3)
 
 
-### Installation
+### [Installation](/software/haddock3/manual/install)
 
-* [Obtaining HADDOCK](/software/haddock3/manual/download)
-* [CNS](/software/haddock3/manual/install_cns)
-* [Virtual environments (conda / venv)](/software/haddock3/manual/envs)
+* [Obtaining HADDOCK](/software/haddock3/manual/install#download-haddock3)
+* [CNS](/software/haddock3/manual/install#install-cns)
+* [Virtual environments (conda / venv)](/software/haddock3/manual/install#virtual-environments)
 
 
 ### Command Line Interfaces
