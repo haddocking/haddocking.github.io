@@ -158,8 +158,8 @@ combining a multitude of independent modules that perform specialized tasks.
 
 <hr>
 <hr>
-## Software requirements
 
+## Software requirements
 
 ### Installing CNS
 The other required piece of software to run HADDOCK is its computational engine,
@@ -201,11 +201,9 @@ already installed on your system, download and install PyMol.
 
 ## Preparing PDB files for docking
 
-In this section we will prepare the PDB files of the antibody and antigen for docking.
-Crystal structures of both the antibody and the antigen in their free forms are available from the
-[PDBe database](https://www.pdbe.org){:target="_blank"}. In the case of the antibody which consists
-of two chains (L+H) we will have to prepare it for use in HADDOCK such as it can be treated as
-a single chain with non-overlapping residue numbering. For this we will be making use of `pdb-tools` from the command line.
+In this section we will prepare the PDB files of the two proteins for docking.
+Crystal structures are available from the [PDBe database](https://www.pdbe.org){:target="_blank"}. 
+Throughout this step, we will use `pdb-tools` from the command line.
 
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
@@ -520,9 +518,9 @@ HADDOCK3 also provides an analysis module (`caprieval`) that allows
 to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case
 we have at hand. This will directly allow us to assess the performance of the protocol for the following three scenarios:
 
-1. Scenario 1: Docking using the paratope information only and the surface of the antigen
-2. Scenario 2a: Docking using the paratope and the NMR-identified epitope as passive
-3. Scenario 2b: Docking using the paratope and the NMR-identified epitope as active
+1. Scenario 1: 1000 rigidbody docking models, selection of top200 and flexible refinement + EM 
+2. Scenario 2a: 1000 rigidbody docking models, selection of top200 and flexible refinement + final refinement in explicit solvent (water)
+3. Scenario 2b: 1000 rigidbody docking models, FCC clustering and selection of max 20 models per cluster followed by flexible refinement and EM
 
 The basic workflow for all three scenarios will consists of the following modules, with some differences in the restraints used and some parameter settings (see below):
 
@@ -592,37 +590,12 @@ _**Note**_: This is also the execution mode that should be used for example when
   ##conda activate haddock3
 
   # go to the run directory
-  cd $HOME/HADDOCK3-antibody-antigen
+  cd $HOME/HADDOCK3-protein-protein-basic
 
   # execute
-  haddock3 scenario1-surface-node.cfg
+  haddock3 docking-protein-protein-full.cfg
   {% endhighlight %}
   <br>
-</details>
-
-<details>
-<summary style="bold">
-View an EU-ASEAN HPC school example script for submitting to the Fugaku batch system <i class="material-icons">expand_more</i>
- </summary>
-{% highlight shell %}
-#!/bin/bash
-#PJM -L  "node=1"                            # Assign 1 node
-#PJM -L  "elapse=02:00:00"                   # Elapsed time limit 2 hour
-#PJM -x PJM_LLIO_GFSCACHE=/vol0003:/vol0006  # volume names that job uses
-#PJM -s                                      # Statistical information output
-
-# active the haddock3 conda environment
-source /vol0601/share/ra020021/LifeScience/20221208_Bonvin/miniconda3-arm8/etc/profile.d/conda.sh
-conda activate haddock3
-
-# go to the tutorial directory in your home directory
-# edit if needed to specify the correct location
-cd $HOME/HADDOCK3-antibody-antigen
-
-# execute haddock3
-haddock3 scenario2a-NMR-epitope-pass-node.cfg
-{% endhighlight %}
-<br>
 </details>
 
 <br>
@@ -664,8 +637,8 @@ An example of the relevant parameters to be defined in the first section of the 
 {% highlight toml %}
 # compute mode
 mode = "mpi"
-#  5 nodes x 50 tasks = ncores = 250
-ncores = 250
+#  1 nodes x 50 tasks = ncores = 50
+ncores = 50
 {% endhighlight %}
 
 In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.
@@ -688,19 +661,19 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
   # go to the run directory
   # edit if needed to specify the correct location
-  cd $HOME/HADDOCK3-antibody-antigen
+  cd $HOME/HADDOCK3-protein-protein-basic
 
   # execute
-  haddock3 scenario2a-NMR-epitope-pass-mpi.cfg
+  haddock3 docking-protein-protein-full.cfg
   {% endhighlight %}
   <br>
 </details>
 
 <hr>
 
-### Scenario 1: 1000 rigidbody docking models, selection of top200 and flexible refinement + EM of those
+### Scenario 1: 1000 rigidbody docking models, selection of top200 and flexible refinement + EM 
 
-Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario in which we will use the paratope on the antibody to guide the docking, targeting the entire surface of the antibody. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. 
+Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario (assuming a batch running mode) is:
 
@@ -709,7 +682,7 @@ The configuration file for this scenario (assuming a batch running mode) is:
 # Protein-protein docking example with NMR-derived ambiguous interaction restraints
 
 # directory in which the scoring will be done
-run_dir = "run1-full"
+run_dir = "scenario1-full"
 
 # execution mode
 mode = "batch"
@@ -772,7 +745,7 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-top_models = 4
+top_models = 500
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
@@ -798,7 +771,7 @@ The configuration file for this scenario (assuming a batch running mode) is:
 # Protein-protein docking example with NMR-derived ambiguous interaction restraints
 
 # directory in which the scoring will be done
-run_dir = "run2-mdref-full"
+run_dir = "scenario2-mdref-full"
 
 # execution mode
 mode = "batch"
@@ -863,7 +836,7 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-top_models = 4
+top_models = 500
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
@@ -889,7 +862,7 @@ The configuration file for this scenario (assuming a batch running mode) is:
 # ====================================================================
 
 # directory in which the scoring will be done
-run_dir = "run3-cltsel-full"
+run_dir = "scenario3-cltsel-full"
 
 # execution mode
 mode = "batch"
@@ -930,7 +903,7 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-## select the best 4 models of each cluster
+## select the best 20 models of each cluster
 top_models = 20
 
 [caprieval]
@@ -953,7 +926,7 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-top_models = 4
+top_models = 500
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
@@ -964,9 +937,6 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 This configuration file is provided in the `haddock3` directory of the downloaded data set for this tutorial as `docking-protein-protein-cltsel-full.cfg`. 
 
 If you have everything ready, you can launch haddock3 either from the command line, or, better, submitting it to the batch system requesting in this local run mode a full node (see local execution mode above).
-
-_**Note**_ The running time for this scenario is similar to that of scenario 2a (see above).
-
 
 <hr>
 <hr>
@@ -1071,11 +1041,11 @@ First of all let us check the final cluster statistics.
 <i>View the pre-calculated 11_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std       air     air_std bsa     bsa_std desolv  desolv_std      elec    elec_std        total   total_std       vdw     vdw_std caprieval_rank
-1       1       4       -       -144.093        2.488   0.982   0.066   0.868   0.053   1.808   0.400   0.841   0.030   7.948   2.867   1552.338        29.521  -9.815  0.581   -516.505        19.903  -540.329        19.324  -31.772 4.032   1
-2       2       4       -       -114.725        2.332   7.857   0.537   0.160   0.060   15.260  1.442   0.145   0.031   20.796  13.446  1463.065        62.919  -15.198 1.933   -366.827        51.294  -374.272        36.604  -28.241 6.257   2
-3       3       4       -       -94.068 5.808   3.275   0.819   0.438   0.069   6.634   0.746   0.421   0.078   39.979  8.006   1355.070        46.720  -15.369 2.124   -277.523        45.985  -264.737        43.408  -27.193 3.176   3
-4       4       4       -       -90.571 9.613   7.949   0.272   0.139   0.020   13.948  0.422   0.148   0.007   11.023  13.529  1180.695        135.973 -12.646 2.946   -267.354        21.668  -281.889        19.831  -25.557 6.065   4
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsdirmsd_std        fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std    ilrmsd   ilrmsd_std      air     air_std bsa     bsa_std desolv  desolv_std      elec elec_std total   total_std       vdw     vdw_std caprieval_rank
+1       1       132     -       -136.315        2.459   0.922   0.050   0.847   0.0501.497    0.158   0.848   0.022   1.577   0.100   17.510  10.499  1592.155        26.85-11.290  2.460   -477.868        20.524  -491.561        13.390  -31.203 1.856   1     
+2       2       41      -       -118.410        9.418   7.843   0.237   0.194   0.00014.976   0.870   0.158   0.008   14.161  0.256   33.123  27.142  1525.405        19.48-11.788  2.649   -396.013        33.391  -393.621        55.889  -30.732 8.145   2     
+3       3       8       -       -87.144 5.206   3.741   0.418   0.333   0.039   7.4090.410    0.348   0.025   7.643   0.422   41.435  13.967  1290.872        72.223  -15.930       4.468   -245.765        38.007  -230.535        31.740  -26.204 3.205   3     
+4       4       4       -       -55.138 9.488   2.340   0.218   0.292   0.031   5.7850.727    0.424   0.019   5.334   0.773   42.306  19.922  960.189 142.370 -13.059 3.913-158.379 14.190  -130.707        26.432  -14.634 3.528   4
 </pre>
 </details>
 <br>
@@ -1098,7 +1068,7 @@ We are providing in the `scripts` directory a simple script that extract some cl
 To use is simply call the script with as argument the run directory you want to analyze, e.g.:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./scenario1-surface
+   ./scripts/extract-capri-stats-clt.sh ./scenario1
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1107,18 +1077,7 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-==============================================
-== run1-full/02_caprieval/capri_clt.tsv
-==============================================
-Total number of acceptable or better clusters:  0  out of  1
-Total number of medium or better clusters:      0  out of  1
-Total number of high quality clusters:          0  out of  1
-
-First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
-First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  7.330  Fnat:  0.125  DockQ:  0.155      
-==============================================
-== run1-full/04_caprieval/capri_clt.tsv
+== scenario1-full/02_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1126,9 +1085,9 @@ Total number of high quality clusters:          0  out of  1
 
 First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  7.330  Fnat:  0.125  DockQ:  0.155      
+Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== run1-full/06_caprieval/capri_clt.tsv
+== scenario1-full/04_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1136,27 +1095,37 @@ Total number of high quality clusters:          0  out of  1
 
 First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  4.563  Fnat:  0.424  DockQ:  0.455      
+Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== run1-full/08_caprieval/capri_clt.tsv
+== scenario1-full/06_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  1
+Total number of medium or better clusters:      0  out of  1
+Total number of high quality clusters:          0  out of  1
+
+First acceptable cluster - rank:  -  i-RMSD:  2.976  Fnat:  0.611  DockQ:  0.601
+First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
+Best cluster             - rank:  -  i-RMSD:  2.976  Fnat:  0.611  DockQ:  0.601      
+==============================================
+== scenario1-full/08_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  1
 Total number of medium or better clusters:      1  out of  1
-Total number of high quality clusters:          1  out of  1
+Total number of high quality clusters:          0  out of  1
 
-First acceptable cluster - rank:  -  i-RMSD:  0.982  Fnat:  0.868  DockQ:  0.841
-First medium cluster     - rank:  -  i-RMSD:  0.982  Fnat:  0.868  DockQ:  0.841      
-Best cluster             - rank:  -  i-RMSD:  0.982  Fnat:  0.868  DockQ:  0.841      
+First acceptable cluster - rank:  -  i-RMSD:  1.673  Fnat:  0.736  DockQ:  0.727
+First medium cluster     - rank:  -  i-RMSD:  1.673  Fnat:  0.736  DockQ:  0.727      
+Best cluster             - rank:  -  i-RMSD:  1.673  Fnat:  0.736  DockQ:  0.727      
 ==============================================
-== run1-full/11_caprieval/capri_clt.tsv
+== scenario1-full/11_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  2  out of  4
+Total number of acceptable or better clusters:  3  out of  4
 Total number of medium or better clusters:      1  out of  4
 Total number of high quality clusters:          1  out of  4
 
-First acceptable cluster - rank:  1  i-RMSD:  0.982  Fnat:  0.868  DockQ:  0.841
-First medium cluster     - rank:  1  i-RMSD:  0.982  Fnat:  0.868  DockQ:  0.841      
-Best cluster             - rank:  1  i-RMSD:  0.982  Fnat:  0.868  DockQ:  0.841      
+First acceptable cluster - rank:  1  i-RMSD:  0.922  Fnat:  0.847  DockQ:  0.848
+First medium cluster     - rank:  1  i-RMSD:  0.922  Fnat:  0.847  DockQ:  0.848      
+Best cluster             - rank:  1  i-RMSD:  0.922  Fnat:  0.847  DockQ:  0.848      
 </pre>
 </details>
 
@@ -1175,55 +1144,55 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== run1-full/02_caprieval/capri_ss.tsv
+== scenario1-full/02_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  351  out of  1000
-Total number of medium or better models:      201  out of  1000
+Total number of acceptable or better models:  365  out of  1000
+Total number of medium or better models:      199  out of  1000
 Total number of high quality models:          0  out of  1000
 
-First acceptable model - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568
-First medium model     - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568       
-Best model             - rank:  48  i-RMSD:  1.146  Fnat:  0.556  DockQ:  0.713       
+First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
+First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
+Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== run1-full/04_caprieval/capri_ss.tsv
+== scenario1-full/04_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  138  out of  200
-Total number of medium or better models:      131  out of  200
+Total number of acceptable or better models:  144  out of  200
+Total number of medium or better models:      137  out of  200
 Total number of high quality models:          0  out of  200
 
-First acceptable model - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568
-First medium model     - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568       
-Best model             - rank:  48  i-RMSD:  1.146  Fnat:  0.556  DockQ:  0.713       
+First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
+First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
+Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== run1-full/06_caprieval/capri_ss.tsv
+== scenario1-full/06_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  141  out of  200
-Total number of medium or better models:      123  out of  200
-Total number of high quality models:          29  out of  200
+Total number of acceptable or better models:  147  out of  200
+Total number of medium or better models:      118  out of  200
+Total number of high quality models:          20  out of  200
 
-First acceptable model - rank:  3  i-RMSD:  0.966  Fnat:  0.833  DockQ:  0.828
-First medium model     - rank:  3  i-RMSD:  0.966  Fnat:  0.833  DockQ:  0.828        
-Best model             - rank:  92  i-RMSD:  0.890  Fnat:  0.806  DockQ:  0.840       
+First acceptable model - rank:  2  i-RMSD:  1.221  Fnat:  0.694  DockQ:  0.727
+First medium model     - rank:  2  i-RMSD:  1.221  Fnat:  0.694  DockQ:  0.727        
+Best model             - rank:  30  i-RMSD:  0.883  Fnat:  0.750  DockQ:  0.823       
 ==============================================
-== run1-full/08_caprieval/capri_ss.tsv
+== scenario1-full/08_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  140  out of  200
-Total number of medium or better models:      124  out of  200
-Total number of high quality models:          45  out of  200
+Total number of acceptable or better models:  147  out of  200
+Total number of medium or better models:      118  out of  200
+Total number of high quality models:          34  out of  200
 
-First acceptable model - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866
-First medium model     - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866        
-Best model             - rank:  52  i-RMSD:  0.838  Fnat:  0.861  DockQ:  0.866       
+First acceptable model - rank:  1  i-RMSD:  1.219  Fnat:  0.833  DockQ:  0.787
+First medium model     - rank:  1  i-RMSD:  1.219  Fnat:  0.833  DockQ:  0.787        
+Best model             - rank:  39  i-RMSD:  0.807  Fnat:  0.833  DockQ:  0.862       
 ==============================================
-== run1-full/11_caprieval/capri_ss.tsv
+== scenario1-full/11_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  8  out of  16
-Total number of medium or better models:      5  out of  16
-Total number of high quality models:          2  out of  16
+Total number of acceptable or better models:  141  out of  185
+Total number of medium or better models:      116  out of  185
+Total number of high quality models:          34  out of  185
 
-First acceptable model - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866
-First medium model     - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866        
-Best model             - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866        
+First acceptable model - rank:  1  i-RMSD:  0.907  Fnat:  0.917  DockQ:  0.871
+First medium model     - rank:  1  i-RMSD:  0.907  Fnat:  0.917  DockQ:  0.871        
+Best model             - rank:  36  i-RMSD:  0.807  Fnat:  0.833  DockQ:  0.862          
 </pre>
 </details>
 
@@ -1263,26 +1232,43 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <br>
 
+#### Analysis scenario 1: visualising the scores and their components
+
+We have precalculated a number of interactive plots to visualize the scores and their components versus ranks and model quality.
+
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+
+Models statistics:
+
+* [iRMSD versus HADDOCK score](plots/scenario1/irmsd_score.html){:target="_blank"}
+* [DockQ versus HADDOCK score](plots/scenario1/dockq_score.html){:target="_blank"}
+
+Cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
+
+* [HADDOCK scores](plots/scenario1/score_clt.html){:target="_blank"}
+* [iRMSD](plots/scenario1/irmsd_clt.html){:target="_blank"}
+* [DockQ](plots/scenario1/dockq_clt.html){:target="_blank"}
+
 <hr>
 
 ### Analysis scenario 2: 
 
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
-Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and
+Go into the _analysis/_caprieval_analysis_  directory of the respective run directory and
 
 <a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
+<i>View the pre-calculated 09_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std       air     air_std bsa     bsa_std desolv  desolv_std      elec    elec_std        total   total_std       vdw     vdw_std caprieval_rank
-1       1       4       -       -152.266        6.827   1.063   0.088   0.875   0.046   1.919   0.354   0.831   0.030   9.789   4.782   1666.013        73.943  -14.186 2.889   -451.427        36.126  -490.412        39.908  -48.774 6.566   1
-2       2       4       -       -118.927        4.544   8.218   0.226   0.084   0.034   16.077  0.481   0.111   0.014   15.749  9.293   1446.352        88.238  -11.992 2.298   -382.010        16.477  -398.369        16.682  -32.108 1.977   2
-3       3       4       -       -92.965 7.490   3.203   0.522   0.416   0.027   6.760   0.336   0.406   0.024   18.864  13.757  1293.035        117.159 -18.657 4.710   -234.961        19.534  -245.298        24.082  -29.202 6.667   3
-4       4       4       -       -88.999 5.805   7.961   0.279   0.146   0.023   13.985  0.473   0.150   0.003   5.901   6.214   1224.918        78.277  -15.469 3.235   -212.758        22.313  -238.425        21.362  -31.568 4.338   4
-5       5       4       -       -79.140 9.087   3.194   1.314   0.312   0.135   6.154   1.904   0.406   0.135   24.820  15.208  1180.793        111.786 -14.802 4.462   -230.060        40.784  -226.049        33.401  -20.809 3.137   5
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsdirmsd_std        fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std    ilrmsd   ilrmsd_std      air     air_std bsa     bsa_std desolv  desolv_std      elec elec_std total   total_std       vdw     vdw_std caprieval_rank
+1       1       135     -       -150.688        4.693   1.179   0.175   0.792   0.1091.950    0.688   0.786   0.071   1.944   0.456   19.494  12.609  1690.822        47.60-18.212  3.894   -419.064        25.202  -450.182        33.243  -50.613 2.503   1     
+2       2       43      -       -127.775        6.046   8.432   0.520   0.139   0.05916.534   1.229   0.127   0.029   15.098  1.051   23.416  26.105  1511.128        127.638       -13.659 2.707   -383.687        32.493  -399.990        32.684  -39.720 4.6852
+3       3       8       -       -88.830 6.416   3.701   0.393   0.354   0.012   7.6140.634    0.352   0.024   7.684   0.663   14.781  8.117   1263.165        122.190 -22.622       4.743   -174.373        32.041  -192.404        36.319  -32.812 3.443   3     
 </pre>
 </details>
 
@@ -1315,7 +1301,8 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== run2-full/02_caprieval/capri_clt.tsv
+==============================================
+== scenario2-mdref-full/02_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1323,19 +1310,9 @@ Total number of high quality clusters:          0  out of  1
 
 First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  7.330  Fnat:  0.125  DockQ:  0.155      
+Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== run2-full/04_caprieval/capri_clt.tsv
-==============================================
-Total number of acceptable or better clusters:  0  out of  1
-Total number of medium or better clusters:      0  out of  1
-Total number of high quality clusters:          0  out of  1
-
-First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
-First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  7.330  Fnat:  0.125  DockQ:  0.155      
-==============================================
-== run2-full/06_caprieval/capri_clt.tsv
+== scenario2-mdref-full/04_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1343,27 +1320,37 @@ Total number of high quality clusters:          0  out of  1
 
 First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  4.563  Fnat:  0.424  DockQ:  0.455      
+Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== run2-full/08_caprieval/capri_clt.tsv
+== scenario2-mdref-full/06_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  1
+Total number of medium or better clusters:      0  out of  1
+Total number of high quality clusters:          0  out of  1
+
+First acceptable cluster - rank:  -  i-RMSD:  2.976  Fnat:  0.611  DockQ:  0.601
+First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
+Best cluster             - rank:  -  i-RMSD:  2.976  Fnat:  0.611  DockQ:  0.601      
+==============================================
+== scenario2-mdref-full/08_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  1
 Total number of medium or better clusters:      1  out of  1
 Total number of high quality clusters:          0  out of  1
 
-First acceptable cluster - rank:  -  i-RMSD:  1.063  Fnat:  0.875  DockQ:  0.831
-First medium cluster     - rank:  -  i-RMSD:  1.063  Fnat:  0.875  DockQ:  0.831      
-Best cluster             - rank:  -  i-RMSD:  1.063  Fnat:  0.875  DockQ:  0.831      
+First acceptable cluster - rank:  -  i-RMSD:  1.179  Fnat:  0.792  DockQ:  0.786
+First medium cluster     - rank:  -  i-RMSD:  1.179  Fnat:  0.792  DockQ:  0.786      
+Best cluster             - rank:  -  i-RMSD:  1.179  Fnat:  0.792  DockQ:  0.786      
 ==============================================
-== run2-full/11_caprieval/capri_clt.tsv
+== scenario2-mdref-full/11_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  3  out of  5
-Total number of medium or better clusters:      1  out of  5
-Total number of high quality clusters:          0  out of  5
+Total number of acceptable or better clusters:  2  out of  3
+Total number of medium or better clusters:      1  out of  3
+Total number of high quality clusters:          0  out of  3
 
-First acceptable cluster - rank:  1  i-RMSD:  1.063  Fnat:  0.875  DockQ:  0.831
-First medium cluster     - rank:  1  i-RMSD:  1.063  Fnat:  0.875  DockQ:  0.831      
-Best cluster             - rank:  1  i-RMSD:  1.063  Fnat:  0.875  DockQ:  0.831      
+First acceptable cluster - rank:  1  i-RMSD:  1.179  Fnat:  0.792  DockQ:  0.786
+First medium cluster     - rank:  1  i-RMSD:  1.179  Fnat:  0.792  DockQ:  0.786      
+Best cluster             - rank:  1  i-RMSD:  1.179  Fnat:  0.792  DockQ:  0.786
 </pre>
 </details>
 
@@ -1381,55 +1368,55 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== run2-full/02_caprieval/capri_ss.tsv
+== scenario2-mdref-full/02_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  351  out of  1000
-Total number of medium or better models:      201  out of  1000
+Total number of acceptable or better models:  365  out of  1000
+Total number of medium or better models:      199  out of  1000
 Total number of high quality models:          0  out of  1000
 
-First acceptable model - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568
-First medium model     - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568       
-Best model             - rank:  48  i-RMSD:  1.146  Fnat:  0.556  DockQ:  0.713       
+First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
+First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
+Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== run2-full/04_caprieval/capri_ss.tsv
+== scenario2-mdref-full/04_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  138  out of  200
-Total number of medium or better models:      131  out of  200
+Total number of acceptable or better models:  144  out of  200
+Total number of medium or better models:      137  out of  200
 Total number of high quality models:          0  out of  200
 
-First acceptable model - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568
-First medium model     - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568       
-Best model             - rank:  48  i-RMSD:  1.146  Fnat:  0.556  DockQ:  0.713       
+First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
+First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
+Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== run2-full/06_caprieval/capri_ss.tsv
+== scenario2-mdref-full/06_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  141  out of  200
-Total number of medium or better models:      123  out of  200
-Total number of high quality models:          29  out of  200
+Total number of acceptable or better models:  147  out of  200
+Total number of medium or better models:      118  out of  200
+Total number of high quality models:          20  out of  200
 
-First acceptable model - rank:  3  i-RMSD:  0.966  Fnat:  0.833  DockQ:  0.828
-First medium model     - rank:  3  i-RMSD:  0.966  Fnat:  0.833  DockQ:  0.828        
-Best model             - rank:  92  i-RMSD:  0.890  Fnat:  0.806  DockQ:  0.840       
+First acceptable model - rank:  2  i-RMSD:  1.221  Fnat:  0.694  DockQ:  0.727
+First medium model     - rank:  2  i-RMSD:  1.221  Fnat:  0.694  DockQ:  0.727        
+Best model             - rank:  30  i-RMSD:  0.883  Fnat:  0.750  DockQ:  0.823       
 ==============================================
-== run2-full/08_caprieval/capri_ss.tsv
+== scenario2-mdref-full/08_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  140  out of  200
-Total number of medium or better models:      123  out of  200
-Total number of high quality models:          16  out of  200
+Total number of acceptable or better models:  146  out of  200
+Total number of medium or better models:      121  out of  200
+Total number of high quality models:          15  out of  200
 
-First acceptable model - rank:  1  i-RMSD:  1.096  Fnat:  0.917  DockQ:  0.836
-First medium model     - rank:  1  i-RMSD:  1.096  Fnat:  0.917  DockQ:  0.836        
-Best model             - rank:  105  i-RMSD:  0.909  Fnat:  0.806  DockQ:  0.836      
+First acceptable model - rank:  1  i-RMSD:  1.129  Fnat:  0.806  DockQ:  0.804
+First medium model     - rank:  1  i-RMSD:  1.129  Fnat:  0.806  DockQ:  0.804        
+Best model             - rank:  51  i-RMSD:  0.891  Fnat:  0.861  DockQ:  0.855       
 ==============================================
-== run2-full/11_caprieval/capri_ss.tsv
+== scenario2-mdref-full/11_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  10  out of  20
-Total number of medium or better models:      5  out of  20
-Total number of high quality models:          1  out of  20
+Total number of acceptable or better models:  141  out of  186
+Total number of medium or better models:      118  out of  186
+Total number of high quality models:          15  out of  186
 
-First acceptable model - rank:  1  i-RMSD:  1.096  Fnat:  0.917  DockQ:  0.836
-First medium model     - rank:  1  i-RMSD:  1.096  Fnat:  0.917  DockQ:  0.836        
-Best model             - rank:  4  i-RMSD:  0.929  Fnat:  0.917  DockQ:  0.870        
+First acceptable model - rank:  1  i-RMSD:  1.129  Fnat:  0.806  DockQ:  0.804
+First medium model     - rank:  1  i-RMSD:  1.129  Fnat:  0.806  DockQ:  0.804        
+Best model             - rank:  50  i-RMSD:  0.891  Fnat:  0.861  DockQ:  0.855
 </pre>
 </details>
 <br>
@@ -1467,30 +1454,49 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <br>
 
+#### Analysis scenario 2: visualising the scores and their components
+
+We have precalculated a number of interactive plots to visualize the scores and their components versus ranks and model quality.
+
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+
+Models statistics:
+
+* [iRMSD versus HADDOCK score](plots/scenario2/irmsd_score.html){:target="_blank"}
+* [DockQ versus HADDOCK score](plots/scenario2/dockq_score.html){:target="_blank"}
+
+Cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
+
+* [HADDOCK scores](plots/scenario2/score_clt.html){:target="_blank"}
+* [iRMSD](plots/scenario2/irmsd_clt.html){:target="_blank"}
+* [DockQ](plots/scenario2/dockq_clt.html){:target="_blank"}
+
 <hr>
 
 ### Analysis scenario 3: Paratope - NMR-epitope as active
 
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
-Go into the _analysis/9_caprieval_analysis_  directory of the respective run directory and
+Go into the _analysis/_caprieval_analysis_  directory of the respective run directory and
 
 <a class="prompt prompt-info">Inspect the final cluster statistics in _capri_clt.tsv_ file </a>
 
 <details style="background-color:#DAE4E7">
 <summary>
-<i>View the pre-calculated 9_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
+<i>View the pre-calculated _caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
-cluster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std       air     air_std bsa     bsa_std desolv  desolv_std      elec    elec_std        total   total_std       vdw     vdw_std caprieval_rank
-1       1       4       -       -124.146        3.141   1.022   0.113   0.785   0.074   1.812   0.477   0.808   0.045   19.088  8.507   1493.348        101.980 -14.374 2.868   -390.668        44.141  -405.127        39.003  -33.547 7.112   1
-2       2       4       -       -109.733        4.447   8.384   0.538   0.153   0.063   15.962  0.969   0.135   0.029   64.065  29.996  1461.225        113.842 -13.164 2.827   -394.903        13.092  -354.834        34.074  -23.996 4.254   2
-3       6       4       -       -105.989        3.889   4.022   0.232   0.243   0.050   6.572   0.337   0.331   0.025   38.555  17.146  1385.205        39.561  -6.273  3.174   -425.420        56.558  -405.353        38.939  -18.487 5.586   3
-4       15      4       -       -104.603        12.655  2.611   0.503   0.528   0.059   6.425   1.299   0.477   0.067   85.213  45.158  1356.690        121.841 -8.303  1.220   -373.493        63.970  -318.403        31.234  -30.123 7.143   4
-5       4       4       -       -104.598        8.865   10.825  0.034   0.132   0.012   18.111  0.347   0.110   0.004   30.421  16.727  1598.340        70.785  -14.415 3.302   -271.984        24.921  -280.391        29.442  -38.828 10.416  5
-6       5       4       -       -101.889        2.338   9.402   0.193   0.104   0.030   16.057  0.690   0.116   0.009   64.991  18.462  1450.140        29.114  -5.857  3.187   -315.007        37.319  -289.547        33.841  -39.530 5.579   6
-7       11      4       -       -99.698 1.987   10.559  0.095   0.056   0.019   18.576  0.518   0.083   0.006   54.563  22.794  1569.310        56.647  -8.234  1.467   -295.063        14.691  -278.408        32.855  -37.908 3.927   7
-8       3       4       -       -96.631 7.773   7.819   1.263   0.083   0.019   13.394  2.088   0.140   0.028   56.501  8.286   1374.160        140.711 -12.846 3.790   -310.567        43.021  -281.388        40.284  -27.321 13.323  8
-9       16      4       -       -92.523 3.297   3.663   0.302   0.292   0.024   11.379  1.400   0.267   0.027   54.758  29.513  1501.015        38.489  -11.325 1.019   -272.691        16.590  -250.069        27.109  -32.135 4.675   9
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsdirmsd_std        fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std    ilrmsd   ilrmsd_std      air     air_std bsa     bsa_std desolv  desolv_std      elec elec_std total   total_std       vdw     vdw_std caprieval_rank
+1       1       37      -       -124.658        10.252  3.857   0.922   0.319   0.0976.660    1.321   0.365   0.085   6.780   1.681   31.615  22.188  1616.990        119.623       -6.778  6.101   -437.724        75.263  -439.605        69.689  -33.496 10.191
+2       3       26      -       -119.435        4.949   0.982   0.026   0.805   0.0522.058    0.408   0.816   0.026   1.781   0.120   29.748  11.990  1522.275        58.81-14.346  5.089   -383.147        87.371  -384.832        89.623  -31.434 9.369   2     
+3       8       15      -       -117.501        8.381   10.507  0.012   0.049   0.02318.245   0.253   0.082   0.008   17.406  0.097   16.941  13.148  1695.840        65.32-11.683  2.440   -305.048        31.227  -334.610        34.942  -46.502 3.538   3     
+4       10      12      -       -115.472        5.836   0.980   0.038   0.812   0.0532.062    0.443   0.819   0.020   1.762   0.114   19.993  10.271  1488.888        64.59-14.848  1.764   -351.208        32.914  -363.598        30.092  -32.382 8.809   4     
+5       2       27      -       -106.389        2.683   9.379   0.146   0.125   0.01416.285   0.693   0.122   0.004   16.768  0.405   20.260  12.423  1359.715        23.92-10.242  1.447   -272.409        33.608  -295.839        37.474  -43.691 4.786   5     
+6       4       25      -       -106.037        2.709   7.852   0.619   0.132   0.07715.047   1.787   0.139   0.042   14.277  0.588   43.187  10.734  1403.977        70.15-13.256  1.092   -361.058        57.590  -342.759        55.416  -24.888 11.965  6     
+7       9       13      -       -105.524        8.380   10.273  0.355   0.076   0.01217.160   0.297   0.098   0.005   16.986  0.601   52.965  34.487  1493.557        88.840.241    1.661   -433.424        58.594  -404.836        36.296  -24.376 10.058  7     
+8       13      11      -       -104.016        12.736  6.651   1.287   0.215   0.04112.319   2.028   0.201   0.046   11.777  2.166   67.269  34.762  1452.928        53.36-7.209   2.522   -367.069        36.068  -329.921        62.280  -30.121 8.255   8     
+9       12      11      -       -100.932        9.238   10.829  0.016   0.132   0.01218.562   0.153   0.108   0.004   17.755  0.101   32.367  14.729  1645.305        104.797       -18.030 2.335   -232.574        32.271  -239.830        42.371  -39.624 7.4289
 ...
 </pre>
 </details>
@@ -1511,16 +1517,16 @@ In this run we also had a `caprieval` after the clustering of the rigid body mod
 <i>View the pre-calculated 5_caprieval/capri_clt.tsv file</i> <i class="material-icons">expand_more</i>
  </summary>
 <pre>
-luster_rank    cluster_id      n       under_eval      score   score_std       irmsd   irmsd_std       fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std       air     air_std bsa     bsa_std desolv  desolv_std      elec    elec_std        total   total_std       vdw     vdw_std caprieval_rank
-1       4       20      -       -32.856 0.533   8.410   0.035   0.056   0.000   16.588  0.218   0.098   0.002   124.256 24.532  1065.697        38.144  -16.689 0.709   -6.744  0.291   116.646 27.428  -0.865  3.459   1
-2       18      7       -       -32.414 0.110   4.179   0.038   0.306   0.019   7.728   0.105   0.323   0.005   202.292 47.410  1058.705        25.612  -16.835 0.581   -6.903  0.482   184.302 52.002  -11.087 4.822   2
-3       11      15      -       -31.515 0.233   1.350   0.190   0.514   0.024   3.046   0.805   0.651   0.048   78.437  33.653  1145.055        41.997  -12.978 0.175   -7.768  1.150   60.382  39.543  -10.287 7.148   3
-4       1       20      -       -31.236 0.236   1.284   0.040   0.556   0.000   2.864   0.281   0.677   0.011   131.928 45.555  1219.428        39.426  -13.313 0.388   -6.916  0.117   111.705 48.278  -13.307 3.521   4
-5       21      7       -       -31.142 1.942   8.839   0.522   0.049   0.012   16.884  0.430   0.093   0.007   95.692  53.937  893.915 67.400  -15.663 3.094   -7.449  1.286   83.407  60.857  -4.835  6.370   5
-6       5       20      -       -29.475 0.296   7.493   0.661   0.076   0.012   12.982  1.199   0.140   0.013   106.772 69.264  981.186 49.018  -12.258 0.686   -8.331  0.482   84.322  76.530  -14.119 7.722   6
-7       26      5       -       -28.704 0.755   3.229   0.706   0.327   0.041   6.579   0.763   0.383   0.055   83.999  32.448  1017.403        165.642 -13.274 2.333   -5.973  1.267   65.694  38.740  -12.333 6.890   7
-8       2       20      -       -28.470 0.706   4.247   0.060   0.118   0.012   7.243   0.105   0.270   0.007   153.547 91.575  1000.080        27.610  -11.114 0.595   -8.809  0.321   136.608 96.503  -8.130  5.374   8
-9       33      4       -       -26.485 0.685   10.716  0.057   0.076   0.012   18.370  0.215   0.091   0.004   186.693 110.722 996.022 75.935  -13.582 1.714   -4.750  0.313   175.985 115.674 -5.959  5.733   9
+cluster_rank    cluster_id      n       under_eval      score   score_std       irmsdirmsd_std        fnat    fnat_std        lrmsd   lrmsd_std       dockq   dockq_std    ilrmsd   ilrmsd_std      air     air_std bsa     bsa_std desolv  desolv_std      elec elec_std total   total_std       vdw     vdw_std caprieval_rank
+1       4       20      -       -32.647 0.718   8.443   0.050   0.056   0.000   16.670.440    0.098   0.003   15.142  0.029   103.171 30.153  1037.440        40.574  -16.600       0.384   -6.642  0.367   90.292  34.825  -6.237  4.862   1
+2       1       20      -       -32.078 0.309   1.193   0.052   0.563   0.012   2.3440.382    0.701   0.015   2.241   0.176   144.927 37.448  1185.507        24.515  -14.154       0.495   -7.458  0.197   131.527 41.553  -5.942  4.909   2
+3       11      15      -       -31.524 0.512   2.591   0.043   0.306   0.000   5.8830.150    0.411   0.006   5.951   0.125   238.270 90.904  838.533 10.610  -17.621 0.383-7.971   0.168   237.269 95.233  6.969   4.900   3
+4       23      6       -       -31.175 0.237   4.180   0.009   0.285   0.012   7.7030.015    0.316   0.004   8.171   0.036   217.839 78.900  1071.035        16.129  -15.642       0.348   -6.892  0.257   199.998 83.806  -10.949 5.140   4
+5       32      4       -       -30.152 1.356   7.126   0.074   0.069   0.024   16.690.938    0.106   0.014   12.952  0.455   286.907 150.515 1041.192        37.687  -13.618       0.880   -8.950  0.629   273.851 150.190 -4.106  4.566   5
+6       33      4       -       -29.431 2.824   2.660   0.894   0.326   0.121   7.1353.087    0.407   0.141   6.418   2.586   124.179 48.395  917.899 78.204  -13.272 2.489-8.230   0.566   116.856 51.814  0.907   4.084   6
+7       2       20      -       -27.915 0.952   4.133   0.017   0.139   0.020   7.0510.018    0.282   0.007   7.455   0.023   264.450 31.588  1014.276        17.755  -11.711       0.867   -8.673  0.226   252.511 36.667  -3.266  5.371   7
+8       17      11      -       -27.474 1.291   6.676   0.703   0.063   0.012   11.461.246    0.157   0.014   12.049  1.207   303.023 57.328  963.135 62.068  -12.556 1.856-8.338   0.587   296.748 55.220  2.063   6.790   8
+9       13      14      -       -27.374 0.754   10.733  0.011   0.083   0.000   18.250.037    0.094   0.000   17.522  0.031   134.468 43.797  1039.598        13.308  -13.613       0.558   -4.687  0.149   127.422 45.173  -2.360  2.548   9
 ...
 </pre>
 </details>
@@ -1558,7 +1564,7 @@ Use the `extract-capri-stats-clt.sh` script to extract some simple cluster stati
  </summary>
 <pre>
 ==============================================
-== run3-full/02_caprieval/capri_clt.tsv
+== scenario3-cltsel-full/02_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1566,19 +1572,19 @@ Total number of high quality clusters:          0  out of  1
 
 First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  7.330  Fnat:  0.125  DockQ:  0.155      
+Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== run3-full/05_caprieval/capri_clt.tsv
+== scenario3-cltsel-full/05_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  7  out of  33
-Total number of medium or better clusters:      2  out of  33
+Total number of acceptable or better clusters:  6  out of  33
+Total number of medium or better clusters:      1  out of  33
 Total number of high quality clusters:          0  out of  33
 
-First acceptable cluster - rank:  3  i-RMSD:  1.350  Fnat:  0.514  DockQ:  0.651
-First medium cluster     - rank:  3  i-RMSD:  1.350  Fnat:  0.514  DockQ:  0.651      
-Best cluster             - rank:  4  i-RMSD:  1.284  Fnat:  0.556  DockQ:  0.677      
+First acceptable cluster - rank:  2  i-RMSD:  1.193  Fnat:  0.563  DockQ:  0.701
+First medium cluster     - rank:  2  i-RMSD:  1.193  Fnat:  0.563  DockQ:  0.701      
+Best cluster             - rank:  2  i-RMSD:  1.193  Fnat:  0.563  DockQ:  0.701      
 ==============================================
-== run3-full/07_caprieval/capri_clt.tsv
+== scenario3-cltsel-full/07_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1586,27 +1592,27 @@ Total number of high quality clusters:          0  out of  1
 
 First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  -  i-RMSD:  7.761  Fnat:  0.118  DockQ:  0.135      
+Best cluster             - rank:  -  i-RMSD:  8.237  Fnat:  0.104  DockQ:  0.121      
 ==============================================
-== run3-full/09_caprieval/capri_clt.tsv
+== scenario3-cltsel-full/09_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  1  out of  1
-Total number of medium or better clusters:      1  out of  1
+Total number of acceptable or better clusters:  0  out of  1
+Total number of medium or better clusters:      0  out of  1
 Total number of high quality clusters:          0  out of  1
 
-First acceptable cluster - rank:  -  i-RMSD:  1.022  Fnat:  0.785  DockQ:  0.808
-First medium cluster     - rank:  -  i-RMSD:  1.022  Fnat:  0.785  DockQ:  0.808      
-Best cluster             - rank:  -  i-RMSD:  1.022  Fnat:  0.785  DockQ:  0.808      
+First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ: 
+First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
+Best cluster             - rank:  -  i-RMSD:  4.840  Fnat:  0.361  DockQ:  0.400      
 ==============================================
-== run3-full/12_caprieval/capri_clt.tsv
+== scenario3-cltsel-full/12_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  6  out of  23
-Total number of medium or better clusters:      2  out of  23
-Total number of high quality clusters:          0  out of  23
+Total number of acceptable or better clusters:  4  out of  25
+Total number of medium or better clusters:      2  out of  25
+Total number of high quality clusters:          2  out of  25
 
-First acceptable cluster - rank:  1  i-RMSD:  1.022  Fnat:  0.785  DockQ:  0.808
-First medium cluster     - rank:  1  i-RMSD:  1.022  Fnat:  0.785  DockQ:  0.808      
-Best cluster             - rank:  1  i-RMSD:  1.022  Fnat:  0.785  DockQ:  0.808      
+First acceptable cluster - rank:  1  i-RMSD:  3.857  Fnat:  0.319  DockQ:  0.365
+First medium cluster     - rank:  2  i-RMSD:  0.982  Fnat:  0.805  DockQ:  0.816      
+Best cluster             - rank:  4  i-RMSD:  0.980  Fnat:  0.812  DockQ:  0.819      
 </pre>
 </details>
 
@@ -1624,55 +1630,55 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== run3-full/02_caprieval/capri_ss.tsv
+== scenario3-cltsel-full/02_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  351  out of  1000
-Total number of medium or better models:      201  out of  1000
+Total number of acceptable or better models:  365  out of  1000
+Total number of medium or better models:      199  out of  1000
 Total number of high quality models:          0  out of  1000
 
-First acceptable model - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568
-First medium model     - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568       
-Best model             - rank:  48  i-RMSD:  1.146  Fnat:  0.556  DockQ:  0.713       
+First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
+First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
+Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== run3-full/05_caprieval/capri_ss.tsv
+== scenario3-cltsel-full/05_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  64  out of  351
-Total number of medium or better models:      30  out of  351
-Total number of high quality models:          0  out of  351
+Total number of acceptable or better models:  62  out of  375
+Total number of medium or better models:      22  out of  375
+Total number of high quality models:          0  out of  375
 
-First acceptable model - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568
-First medium model     - rank:  15  i-RMSD:  1.677  Fnat:  0.472  DockQ:  0.568       
-Best model             - rank:  47  i-RMSD:  1.146  Fnat:  0.556  DockQ:  0.713       
+First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
+First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
+Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== run3-full/07_caprieval/capri_ss.tsv
+== scenario3-cltsel-full/07_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  79  out of  351
-Total number of medium or better models:      36  out of  351
-Total number of high quality models:          5  out of  351
+Total number of acceptable or better models:  74  out of  375
+Total number of medium or better models:      27  out of  375
+Total number of high quality models:          1  out of  375
 
-First acceptable model - rank:  5  i-RMSD:  1.009  Fnat:  0.778  DockQ:  0.808
-First medium model     - rank:  5  i-RMSD:  1.009  Fnat:  0.778  DockQ:  0.808        
-Best model             - rank:  15  i-RMSD:  0.948  Fnat:  0.722  DockQ:  0.801       
+First acceptable model - rank:  6  i-RMSD:  1.081  Fnat:  0.750  DockQ:  0.771
+First medium model     - rank:  6  i-RMSD:  1.081  Fnat:  0.750  DockQ:  0.771        
+Best model             - rank:  36  i-RMSD:  0.930  Fnat:  0.778  DockQ:  0.822       
 ==============================================
-== run3-full/09_caprieval/capri_ss.tsv
+== scenario3-cltsel-full/09_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  81  out of  351
-Total number of medium or better models:      37  out of  351
-Total number of high quality models:          7  out of  351
+Total number of acceptable or better models:  74  out of  375
+Total number of medium or better models:      27  out of  375
+Total number of high quality models:          7  out of  375
 
-First acceptable model - rank:  1  i-RMSD:  1.011  Fnat:  0.861  DockQ:  0.835
-First medium model     - rank:  1  i-RMSD:  1.011  Fnat:  0.861  DockQ:  0.835        
-Best model             - rank:  4  i-RMSD:  0.927  Fnat:  0.778  DockQ:  0.827        
+First acceptable model - rank:  1  i-RMSD:  3.718  Fnat:  0.333  DockQ:  0.382
+First medium model     - rank:  3  i-RMSD:  0.991  Fnat:  0.806  DockQ:  0.821        
+Best model             - rank:  60  i-RMSD:  0.896  Fnat:  0.778  DockQ:  0.828       
 ==============================================
-== run3-full/12_caprieval/capri_ss.tsv
+== scenario3-cltsel-full/12_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  25  out of  92
-Total number of medium or better models:      8  out of  92
-Total number of high quality models:          2  out of  92
+Total number of acceptable or better models:  65  out of  317
+Total number of medium or better models:      27  out of  317
+Total number of high quality models:          7  out of  317
 
-First acceptable model - rank:  1  i-RMSD:  1.011  Fnat:  0.861  DockQ:  0.835
-First medium model     - rank:  1  i-RMSD:  1.011  Fnat:  0.861  DockQ:  0.835        
-Best model             - rank:  4  i-RMSD:  0.927  Fnat:  0.778  DockQ:  0.827        
+First acceptable model - rank:  1  i-RMSD:  3.718  Fnat:  0.333  DockQ:  0.382
+First medium model     - rank:  3  i-RMSD:  0.991  Fnat:  0.806  DockQ:  0.821        
+Best model             - rank:  54  i-RMSD:  0.896  Fnat:  0.778  DockQ:  0.828       
 </pre>
 </details>
 
@@ -1708,6 +1714,25 @@ _**Note**_ that this kind of analysis only makes sense when we know the referenc
 
 <br>
 
+#### Analysis scenario 3: visualising the scores and their components
+
+We have precalculated a number of interactive plots to visualize the scores and their components versus ranks and model quality.
+
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+
+Models statistics:
+
+* [iRMSD versus HADDOCK score](plots/scenario3/irmsd_score.html){:target="_blank"}
+* [DockQ versus HADDOCK score](plots/scenario3/dockq_score.html){:target="_blank"}
+
+Cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
+
+* [HADDOCK scores](plots/scenario3/score_clt.html){:target="_blank"}
+* [iRMSD](plots/scenario3/irmsd_clt.html){:target="_blank"}
+* [DockQ](plots/scenario3/dockq_clt.html){:target="_blank"}
+
 <hr>
 
 ### Comparing the performance of the three scenarios
@@ -1716,41 +1741,42 @@ Clearly all three scenarios give good results with an acceptable cluster in all 
 
 {% highlight shell %}
 ==============================================
-== run1-full/11_caprieval/capri_ss.tsv
+== scenario1-full/11_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  8  out of  16
-Total number of medium or better models:      5  out of  16
-Total number of high quality models:          2  out of  16
+Total number of acceptable or better models:  141  out of  185
+Total number of medium or better models:      116  out of  185
+Total number of high quality models:          34  out of  185
 
-First acceptable model - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866
-First medium model     - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866        
-Best model             - rank:  1  i-RMSD:  0.894  Fnat:  0.889  DockQ:  0.866        
-
-==============================================
-== run2-full/11_caprieval/capri_ss.tsv
-==============================================
-Total number of acceptable or better models:  10  out of  20
-Total number of medium or better models:      5  out of  20
-Total number of high quality models:          1  out of  20
-
-First acceptable model - rank:  1  i-RMSD:  1.096  Fnat:  0.917  DockQ:  0.836
-First medium model     - rank:  1  i-RMSD:  1.096  Fnat:  0.917  DockQ:  0.836        
-Best model             - rank:  4  i-RMSD:  0.929  Fnat:  0.917  DockQ:  0.870        
+First acceptable model - rank:  1  i-RMSD:  0.907  Fnat:  0.917  DockQ:  0.871
+First medium model     - rank:  1  i-RMSD:  0.907  Fnat:  0.917  DockQ:  0.871        
+Best model             - rank:  36  i-RMSD:  0.807  Fnat:  0.833  DockQ:  0.862       
 
 ==============================================
-== run3-full/12_caprieval/capri_ss.tsv
+== scenario2-mdref-full/11_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  25  out of  92
-Total number of medium or better models:      8  out of  92
-Total number of high quality models:          2  out of  92
+Total number of acceptable or better models:  141  out of  186
+Total number of medium or better models:      118  out of  186
+Total number of high quality models:          15  out of  186
 
-First acceptable model - rank:  1  i-RMSD:  1.011  Fnat:  0.861  DockQ:  0.835
-First medium model     - rank:  1  i-RMSD:  1.011  Fnat:  0.861  DockQ:  0.835        
-Best model             - rank:  4  i-RMSD:  0.927  Fnat:  0.778  DockQ:  0.827        
+First acceptable model - rank:  1  i-RMSD:  1.129  Fnat:  0.806  DockQ:  0.804
+First medium model     - rank:  1  i-RMSD:  1.129  Fnat:  0.806  DockQ:  0.804        
+Best model             - rank:  50  i-RMSD:  0.891  Fnat:  0.861  DockQ:  0.855        
+
+==============================================
+== scenario3-cltsel-full/12_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  65  out of  317
+Total number of medium or better models:      27  out of  317
+Total number of high quality models:          7  out of  317
+
+First acceptable model - rank:  1  i-RMSD:  3.718  Fnat:  0.333  DockQ:  0.382
+First medium model     - rank:  3  i-RMSD:  0.991  Fnat:  0.806  DockQ:  0.821        
+Best model             - rank:  54  i-RMSD:  0.896  Fnat:  0.778  DockQ:  0.828        
 
 {% endhighlight %}
 
-While the three scerios show similar results, the combination of the flexible and energy minimization refinment has the most acceptable or better models.
+While the first two scenarios show similar results, we can observe that scenario 3 produces a higher count of clusters, i.e. a higher conformational diversity than the other scenarios. 
+This difference is most probably a consequence of the clustering step carried out after the rigidbody docking. In fact, this additional step allowed us to select the best models of each clusters, retaining the diversity produced in the riigid body step, while selecting the overall best ranked models in the first two scenarios showed lower diversity.
 
 <hr>
 <hr>
