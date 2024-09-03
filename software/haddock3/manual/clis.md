@@ -255,6 +255,91 @@ the parameters' explanations. Otherwise, ask us in the ["issues" forum](https://
 
 ## haddock3-re
 
+The `haddock3-re` CLI is dedicated at **re**computing some steps in your workflow.
+This can be very usefull as it allows to fine tune parameters and evaluate the impact in the results.
+
+`haddock3-re` takes two mandatory positional arguments:
+
+- **1: **The name of the subcommand
+- **2: **Path to the module on which to apply the modifications in your run
+
+By running `haddock3-re`, a new directory will be created, with the `_interactive` suffix, where the new results are stored.
+Relaunching several times `haddock3-re` on the same directory will update the content in the `_interactive` one.
+
+For now, three modules can be **re**computed and tuned, `[caprieval]`, `[clustfcc]` and `[clustrmsd]`.
+
+### re-score
+
+The subcommand `haddock3-re score`, allows to tune the weights of the [HADDOCK scoring function]().
+It takes a `[caprieval]` step folder as positional argument, and the tuned weights for the scoring function.
+
+Note that if you do not provide new weights as optional arguments, previous weights used in the run are used.
+
+Usage:
+```bash
+haddock3-re clustrmsd <path/to/the/module/step/X_caprieval>
+
+optional arguments:
+  -e W_ELEC, --w_elec W_ELEC
+                        weight of the electrostatic component.
+  -w W_VDW, --w_vdw W_VDW
+                        weight of the van-der-Waals component.
+  -d W_DESOLV, --w_desolv W_DESOLV
+                        weight of the desolvation component.
+  -b W_BSA, --w_bsa W_BSA
+                        weight of the BSA component.
+  -a W_AIR, --w_air W_AIR
+                        weight of the AIR component.
+```
+
+### re-clustfcc
+
+The subcommand `haddock3-re clustfcc`, allows to tune the clustering parameters of the `[clustfcc]` module.
+It takes a `[clustfcc]` step folder as positional argument, and the tuned parameters for the module.
+
+Note that if you do not provide new parameters as optional arguments, previous ones will be used instead.
+
+Usage:
+```bash
+haddock3-re clustfcc <path/to/the/module/step/X_clustfcc>
+
+optional arguments:
+  -f CLUST_CUTOFF, --clust_cutoff CLUST_CUTOFF
+                        Minimum fraction of common contacts to be considered in a cluster.
+  -s STRICTNESS, --strictness STRICTNESS
+                        Strictness factor.
+  -t MIN_POPULATION, --min_population MIN_POPULATION
+                        Clustering population threshold.
+  -p, --plot_matrix     Generate the matrix plot with the clusters.
+```
+
+### re-clustrmsd
+
+The subcommand `haddock3-re clustrmsd`, allows to tune the clustering parameters of the `[clustrmsd]` module.
+It takes a `[clustrmsd]` step folder as positional argument, and the tuned parameters for the module.
+
+Note that if you do not provide new parameters as optional arguments, previous ones will be used instead.
+
+Usage:
+```bash
+haddock3-re clustrmsd <path/to/the/module/step/X_clustrmsd>
+
+optional arguments:
+  -n N_CLUSTERS, --n_clusters N_CLUSTERS
+                        number of clusters to generate.
+  -d CLUST_CUTOFF, --clust_cutoff CLUST_CUTOFF
+                        clustering cutoff distance.
+  -t MIN_POPULATION, --min_population MIN_POPULATION
+                        minimum cluster population.
+  -p, --plot_matrix     Generate the matrix plot with the clusters.
+```
+
+Please note that parameters `--n_clusters` (defining the number of clusters you want)
+and `--clust_cutoff` are mutually exclusive,
+as the former is cutting the dendogram at a height satifying the number of desired clusters
+while the latter is cutting the dendogram at the `--clust_cutoff` value height.
+
+
 ## haddock3-copy
 
 The `haddock3-copy` CLI allows one to copy the content of a run to an other run directory.
