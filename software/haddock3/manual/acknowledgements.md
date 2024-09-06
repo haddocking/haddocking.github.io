@@ -16,7 +16,8 @@ image:
 
 ## Fundings
 
-The development of Haddock3 is made possible thanks to the financial support from Horizon 2020 [BioExcel CeO](https://www.bioexcel.eu) project [823830](https://cordis.europa.eu/project/id/823830), that provided and still provide substancial fundings for software development.
+The development of Haddock3 is made possible thanks to the financial support from Horizon 2020, projects [BioExcel](https://www.bioexcel.eu) [823830](https://cordis.europa.eu/project/id/823830) and [101093290](https://cordis.europa.eu/project/id/101093290), EGI-ACE [101017567](https://cordis.europa.eu/project/id/101017567), and from the Netherlands e-Science Center (027.020.G13), that provided and still provides substancial fundings for software development.
+This allows the HADDOCK team to ensure software quality, imporvements, maintenance and user supports.
 
 
 ## User driven developments
