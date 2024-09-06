@@ -41,6 +41,8 @@ Haddock3 currently supports up to 20 separate input molecules, thus allowing mul
 Each input molecule can be composed of an [ensemble of conformations](#conformational-ensemble), allowing to implicitly represent the conformational sampling.
 Input molecules can also be composed of multiple chains, allowing for their evaluation using scoring and analysis modules.
 
+To input molecules, use the [global parameter](/software/haddock3/manual/global_parameters) `molecules = ["path/to/mol1.pdb", "path/to/mol2.pdb"]`.
+
 
 ## Definition of a chain
 
