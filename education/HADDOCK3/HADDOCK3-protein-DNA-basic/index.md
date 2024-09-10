@@ -32,7 +32,14 @@ Cro is part of the bacteriophage 434 genetic switch, playing a key role in contr
 
 ### Solved structure of the Cro-OR1 complex
 
-The structure of the phage 434 Cro/OR1 complex was solved by X-RAY crystallography at 2.5Å. We will use this experimentally solved structure as a reference within the tutorial. Cro is a symmetrical dimer, each subunit contains a helix-turn-helix (HTH), with helices α2 and α3 being separated by a short turn. This is a DNA binding motif that is known to bind major grooves. Helix α3 is the recognition helix that fits into the major groove of the operator DNA and is oriented with its axes parallel to the major groove. The side chains of each helix are thus positioned to interact with the edges of base pairs on the floor of the groove. Non-specific interactions also help to anchor Cro to the DNA. These include H-bonds between main chain NH groups and phosphate oxygens of the DNA in the region of the operator. Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by Cro, and the middle region of the operator is overwound, as reflected in the reduced distance between phosphate backbones in the minor groove.
+The structure of the phage 434 Cro/OR1 complex was solved by X-RAY crystallography at 2.5Å.
+We will use this experimentally solved structure (PDBID: 3CRO) as a reference within the tutorial.
+Cro is a symmetrical dimer, each subunit contains a helix-turn-helix (HTH), with helices α2 and α3 being separated by a short turn.
+This is a DNA binding motif that is known to bind major grooves.
+Helix α3 is the recognition helix that fits into the major groove of the operator DNA and is oriented with its axes parallel to the major groove.
+The side chains of each helix are thus positioned to interact with the edges of base pairs on the floor of the groove. Non-specific interactions also help to anchor Cro to the DNA.
+These include H-bonds between main chain NH groups and phosphate oxygens of the DNA in the region of the operator.
+Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by Cro, and the middle region of the operator is overwound, as reflected in the reduced distance between phosphate backbones in the minor groove.
 
 <figure align="center">
 <img src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/CRO-OR1.png">
@@ -178,7 +185,9 @@ _**Note**_ that in the real docking case the bound structure of a complex is una
 
 ### What’s inside of the restraints file?
 
-The ambiguous interaction restraints are defined in the `ambig_prot_dna.tbl` file. This file was created using both experimental knowledge and information from literature. A detailed explanation of how to generate these restraints can be found in the advanced version of the tutorial, [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data). 
+The ambiguous interaction restraints are defined in the `ambig_prot_dna.tbl` file.
+This file was created using both experimental knowledge and information from literature.
+A detailed explanation of how to generate these restraints can be found in the advanced version of the tutorial, accessible [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data). 
 
 Let’s have a look at it's first lines:
 ```bash
@@ -216,7 +225,7 @@ Ready-to-dock structures are available in `pdbs` directory, namely `1ZUG_dimer1.
 
 An unbound structure of the protein is available on [PDB](https://www.rcsb.org/structure/1ZUG). We already examined this structure using PyMOL. Our observation revealed that this protein has a disordered tail, and that this disordered tail does not interact with the DNA. Since the core conformation remains unchanged, we can simply take the first conformation from the ensemble, remove the disordered tail from it and use it as an input structure for the docking. 
 
-This can be done using `pdb-tools`, a collection of simple scripts handy to manipulate pdb files. `pdb-tools` is installed automatically with Haddock3. Alternatively, a web-server is available as a [web-server](https://rascar.science.uu.nl/pdbtools/).
+This can be done using `pdb-tools`, a collection of simple scripts handy to manipulate pdb files. `pdb-tools` is installed automatically with Haddock3. Alternatively, it is also available as a [web-server](https://wenmr.science.uu.nl/pdbtools/).
 
 To obtain a single trimmed structure using command-line version of `pdb-tools` _**remember to activate a virtual environment for Haddock3 first**_. 
 The following command will override existing file with the name `1ZUG_dimer1.pdb` - consider executing it outside of `pdbs/`:
@@ -231,13 +240,13 @@ The complex of interest contains 2 copies of the protein. As each molecule given
 pdb_rplchain -A:C 1ZUG_dimer1.pdb > 1ZUG_dimer2.pdb
 </a>
 
-_**Note**_ that it is possible to perform the docking with an ensemble of trimmed conformations. Such ensemble can be obtained using the next command: `pdb_fetch 1ZUG | pdb_delhetatm | pdb_selres -1:66 | pdb_tidy -strict > 1zug_ens.pdb`
+_**Note**_ that it is possible to perform the docking with an ensemble of trimmed conformations. Such ensemble can be obtained using the following command: `pdb_fetch 1ZUG | pdb_delhetatm | pdb_selres -1:66 | pdb_tidy -strict > 1zug_ens.pdb`. Here the command `pdb_selmodel -1` was removed and therefore all the available models in the ensemble will be processed.
 
 <hr>
 
 ## Docking with Haddock3
 
-In this section, we will discuss the specifics of protein-DNA docking in the frame of Haddock3. We will then create an appropriate Haddock3 workflow and, finally, perform an analysis of the docking results using the experimentally solved structure as a reference.
+In this section, we will discuss the specifics of protein-DNA docking in the frame of Haddock3. We will then create an appropriate Haddock3 workflow and, finally, perform an analysis of the docking results and evaluate their quality with respect to the experimentally solved structure as a reference.
 
 ### Specifics of the protein-DNA docking
 
@@ -250,29 +259,29 @@ Docking a double-stranded DNA requires adjusting several default parameters to b
 * Lower the scaling factor for flexible refinement to 4 (from 8) to allow less movement during the refinement: `tadfactor = 4`;
 * Lower the initial temperature for the final round of flexible refinement to 300 (from 1000) to allow less movement during the final refinement stage: `temp_cool3_init = 300`.
 
-_**Note**_ that Haddock3 distinguishes DNA nucleotides from RNA nucleotides based on the residue naming in the PDB file. DNA nucleotides are named with two letters starting with 'D' (e.g., 'DA' for adenine in DNA), while RNA nucleotides use single-letter names (e.g., 'A' for adenine in RNA).
+_**Note**_ that Haddock3 distinguishes DNA nucleotides from RNA nucleotides based on the residue naming in the PDB file. DNA nucleotides are named with two letters starting with 'D' (e.g., 'DA' for deoxyadenosine in DNA), while RNA nucleotides use single-letter names (e.g., 'A' for adenosine in RNA).
 
 ### Haddock3 workflow
 
-Now that we have all the necessary files ready for docking, along with several insights into the specifics of protein-DNA docking, it’s time to create the docking workflow. In this scenario, we will adhere to the following straightforward workflow: rigid-body docking, semi-flexible refinement, and explicit solvent molecular dynamics (MD) refinement followed by clustering.
+Now that we have all the necessary files ready for docking, along with several insights into the specifics of protein-DNA docking, it’s time to create the docking workflow. In this scenario, we will adhere to the following straightforward workflow: rigid-body docking, semi-flexible refinement in torsional angle space, molecular dynamics (MD) refinement in explicit solvent, and a final RMSD clustering step.
 
 Out workflow consists of the following modules:
 * **topoaa**: _Generates the topologies for the CNS engine and builds missing atoms;_
-* **rigidbody**: _Performs sampling by rigid-body energy minimization (equivalent to it0 in Haddock2.x);_
+* **rigidbody**: _Performs sampling by rigid-body energy minimization (equivalent to `it0` in Haddock2.X);_
 * **caprieval**: _Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the best-scored model or a provided reference structure;_
 * **seletop**: _Selects X best-scored models from the previous module;_
-* **flexref**: _Performs semi-flexible refinement of the interface (equivalent to it1 in Haddock2.x);_ 
+* **flexref**: _Performs semi-flexible refinement of the interface (equivalent to `it1` in Haddock2.X);_ 
 * **caprieval**
 * **mdref**: _Performs final refinement via explicit solvent MD (equivalent to itw in Haddock2.X);_
 * **caprieval** 
 * **rmsdmatrix**: _Calculates of the root mean squared deviation (RMSD) matrix between all models from the previous module;_
-* **clustrmsd**: _Takes the RMSD matrix calculated in the [rmsdmatrix] module and performs a hierarchical clustering procedure on it;_
+* **clustrmsd**: _Takes the RMSD matrix calculated in the `[rmsdmatrix]` module and performs a hierarchical clustering procedure on it;_
 * **caprieval**
 * **seletopclusts**: _Selects X best-scored models of Y clusters._
 
-As mentioned before, we should enforce C2 symmetry between the proteins throughout the entire docking process. This can be achieved by adding the following parameters to the `[rigidbody]` , `[flexref]` , and `[mdref]` modules:
+As mentioned before, we should enforce C2 symmetry between the proteins throughout the entire docking process. This can be easily achieved by adding the following parameters to the `[rigidbody]` , `[flexref]` , and `[mdref]` modules:
 
-```
+```toml
 # Turn on symmetry restraints 
 sym_on = true
 # Define first symmetry partner 
@@ -289,7 +298,7 @@ c2sym_end2_1 = 64
 
 **Note** that in this definition we omitted the first 3 residues of each protein.
 
-Take a look at the tolm configuration file `protein-dna-basic.cfg`. 
+Take a look at the TOML configuration file `protein-dna-basic.cfg`. 
 
 <a class="prompt prompt-info"> Take your time to read the comments and relate parameters of this file to the information given above:</a>
 
@@ -345,6 +354,7 @@ reference_fname = "pdbs/3CRO_complex.pdb"
 [seletop]
 
 [flexref]
+tolerance = 5
 # to maintain conformation of the DNA with automatic restraints
 dnarest_on = true
 # Cro to OR1 ambiguous restraints
@@ -365,12 +375,14 @@ dielec = 'cdie'
 w_desolv = 0
 # allow less movement during the refinement 
 tadfactor = 4
+# Reduce the initial temperature for the final round of flexible refinement to 300 (from 1000 with default parameters)
 temp_cool3_init = 300
 
 [caprieval]
 reference_fname = "pdbs/3CRO_complex.pdb"
 
 [mdref]
+tolerance = 5
 # to maintain conformation of the DNA with automatic restraints
 dnarest_on = true
 # Cro to OR1 ambiguous restraints
@@ -393,10 +405,7 @@ watersteps = 750
 reference_fname = "pdbs/3CRO_complex.pdb"
 
 [rmsdmatrix]
-# use all residues of each docking partner to calculate the RMSD matrix
-resdic_A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66]
-resdic_B = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
-resdic_C = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66]
+# By default, all residues will be used to calculate the RMSD matrix
 
 [clustrmsd]
 # generate an interactive plot of the clustering results
@@ -413,7 +422,7 @@ reference_fname = "pdbs/3CRO_complex.pdb"
 
 _**Note**_ that in this example we use relative paths to define input files and output folder. However it is preferable to use the full paths instead. 
 
-This workflow begins by creating topologies for the docking partners. Rigid body sampling is performed with ambiguous and symmetry restraints, generating 1000 models, from which the top 200 are selected. These models then undergo flexible refinement followed by MD refinement in explicit solvent, still maintaining the same ambiguous and symmetry restraints. Finally, docking models are clustered via RMSD, with all residues used to calculate RMSD values. The top 5 models from each cluster are selected. The `caprieval` module is added after each step to simplify model analysis and track the rank of models throughout the docking process.
+This workflow begins by creating topologies for the docking partners. Rigid body sampling is performed with ambiguous and symmetry restraints, generating 1000 models, from which the top 200 are selected. These models then undergo flexible refinement followed by MD refinement in explicit solvent, still maintaining the same ambiguous and symmetry restraints. Finally, docking models are clustered via RMSD, with all residues used to calculate RMSD values. The top 10 models from each cluster are selected. The `caprieval` module is added after each step to simplify model analysis and track the rank of models throughout the docking process.
 
 ### Running Haddock3 locally
 
@@ -422,7 +431,7 @@ In the first section of the configuration file you can see:
 {% highlight toml %}
 # compute mode
 mode = "local"
-ncores=8
+ncores = 8
 {% endhighlight %}
 
 The parameter `mode` defines how this workflow will be executed. In this case, it will run locally, on your machine, using 8 CPUs (feel free to change this value). You can find out about other modes [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/#local-execution).
@@ -481,7 +490,7 @@ Caprieval, executed after clustering - in this case `11_caprieval` - enables a c
 <a class="prompt prompt-info"> Open 'analysis/11_caprieval_analysis/report.html' in a web browser by typing "open report.html" in the command line. Once the report is displayed, locate the table with cluster statistics at the top of the page. You can sort the columns in ascending or descending order by clicking the arrow icon on the right side of each column header. 
 </a>
 
-Here is a scheenshot of the top-left cornet of the table in `11_caprieval_analysis/report.htm`:
+Here is a screenshot of the top-left corner of the table in `11_caprieval_analysis/report.html`:
 
 <figure align="center">
 <img src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/stat_analys_table.png">
@@ -501,11 +510,11 @@ Look at the "HADDOCK score" row of the first 3 clusters: Are they significantly 
  </p>
 </details>
 <br>
-In this docking case, we had access to the experimentally solved structure of the complex, which we provided to all caprieval modules. As a result, the interface RMSD (i-RMSD), ligand RMSD (l-RMSD), Fraction of Common Contacts (FCC), and DockQ statistics reflect the quality of the docked model in comparison to the reference structure.
-Remember that higher DockQ and FCC values, along with lower RMSD values, indicate better model quality.
+In this docking case, we had access to the experimentally solved structure of the complex, which we provided to all `[caprieval]` modules using the `reference_fname` parameter. As a result, the interface RMSD (i-RMSD), ligand RMSD (l-RMSD), Fraction of Common Contacts (FCC), and DockQ statistics reflect the quality of the docked model with respect to the reference structure.
+Remember that high DockQ and FCC values, along with low RMSD values, indicate better model quality.
 
 <a class="prompt prompt-question">
-Look at the DockQ of the clusters: Does the top-ranked cluster has the highest average DockQ?
+Look at the DockQ of the clusters: Does the top-ranked cluster have the highest average DockQ?
 </a>
 <details style="background-color:#DAE4E7">
  <summary style="bold">
