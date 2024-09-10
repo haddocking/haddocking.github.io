@@ -66,7 +66,7 @@ It is always possible that you have questions or run into problems for which you
 For a complete setup of the local version of Haddock3, refer to the [online documentation](https://www.bonvinlab.org/haddock3/).
 Please, familiarise yourself with the sections ['**A brief introduction to HADDOCK3**'](https://www.bonvinlab.org/haddock3/intro.html) and ['**Installation**'](https://www.bonvinlab.org/haddock3/INSTALL.html).
 
-In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/). You can use your favourite visualisation software instead, but be aware that instructions here are provided only for PyMOL.
+In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/). You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 
 Please, download and decompress the tutorial data archive. Move the archive to your working directory of choice and extract it. You can download and unzip this archive directly from the Linux command line:
 
@@ -223,7 +223,9 @@ Ready-to-dock structures are available in `pdbs` directory, namely `1ZUG_dimer1.
 
 ### Protein structures
 
-An unbound structure of the protein is available on [PDB](https://www.rcsb.org/structure/1ZUG). We already examined this structure using PyMOL. Our observation revealed that this protein has a disordered tail, and that this disordered tail does not interact with the DNA. Since the core conformation remains unchanged, we can simply take the first conformation from the ensemble, remove the disordered tail from it and use it as an input structure for the docking. 
+An unbound structure of the protein is available on [PDB](https://www.rcsb.org/structure/1ZUG). We already examined this structure using PyMOL. 
+Our observation revealed that this protein has a disordered tail, which does not interact with the DNA.
+Since the core conformation remains unchanged, we can simply take the first conformation from the ensemble, remove the disordered tail from it and use it as an input structure for the docking. 
 
 This can be done using `pdb-tools`, a collection of simple scripts handy to manipulate pdb files. `pdb-tools` is installed automatically with Haddock3. Alternatively, it is also available as a [web-server](https://wenmr.science.uu.nl/pdbtools/).
 
@@ -276,9 +278,9 @@ Out workflow consists of the following modules:
 * **caprieval** 
 * **rmsdmatrix**: _Calculates of the root mean squared deviation (RMSD) matrix between all models from the previous module;_
 * **clustrmsd**: _Takes the RMSD matrix calculated in the `[rmsdmatrix]` module and performs a hierarchical clustering procedure on it;_
-* **caprieval**
 * **seletopclusts**: _Selects X best-scored models of Y clusters._
-
+* **caprieval**: _Final assessment of the docking results._
+ 
 As mentioned before, we should enforce C2 symmetry between the proteins throughout the entire docking process. This can be easily achieved by adding the following parameters to the `[rigidbody]` , `[flexref]` , and `[mdref]` modules:
 
 ```toml
@@ -331,6 +333,10 @@ molecules =  [
 [topoaa]
 
 [rigidbody]
+# allow up to 5% of the models to fail without interrupting the run
+tolerance = 5
+# create 1000 modles (default value)
+sampling = 1000
 # Cro to OR1 ambiguous restraints
 ambig_fname = "restraints/ambig_prot_DNA.tbl"
 # C2 symmetry
@@ -352,6 +358,8 @@ w_desolv = 0
 reference_fname = "pdbs/3CRO_complex.pdb"
 
 [seletop]
+# select top 200 models (default value) based on HADDOCK score
+select = 200
 
 [flexref]
 tolerance = 5
@@ -426,7 +434,7 @@ This workflow begins by creating topologies for the docking partners. Rigid body
 
 ### Running Haddock3 locally
 
-In the first section of the configuration file you can see:
+In the first section of the configuration file you can see the definition of the global parameters:
 
 {% highlight toml %}
 # compute mode
@@ -506,7 +514,7 @@ Look at the "HADDOCK score" row of the first 3 clusters: Are they significantly 
    <i>Answer</i> <i class="material-icons">expand_more</i>
  </summary>
  <p>
-   According to the two-sample t-test, there is a significant difference between cluster_1 and cluster_2, as well as between cluster_1 and cluster_3. However, there is no significant difference between cluster_2 and cluster_3.
+   According to the two-sample t-test, there is a significant difference between cluster_1 and cluster_2, as well as between cluster_1 and cluster_3. However, there is no significant difference between cluster_2 and cluster_3. 
  </p>
 </details>
 <br>
@@ -525,7 +533,7 @@ Yes, cluster_1 has the highest average DockQ. However, cluster_3 has the same Do
  </p>
 </details>
 <br>
-_**Note**_ that if no reference structure is provided to the caprieval module, all statistics are calculated relative to the top-ranked docking model. However, keep in mind that the top-ranked model may not necessarily represent the true solution.
+_**Note**_ that if no reference structure is provided to the caprieval module, all statistics are calculated relative to the top-ranked (based on HADDOCK score) docking model. However, keep in mind that the top-ranked model may not necessarily represent the true solution.
 
 ### Visualisation of the HADDOCK scores and their components
 
