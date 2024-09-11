@@ -384,7 +384,7 @@ dielec = 'cdie'
 w_desolv = 0
 # allow less movement during the refinement 
 tadfactor = 4
-# Reduce the initial temperature for the final round of flexible refinement to 300 (from 1000 with default parameters)
+# reduce the initial temperature for the final round of flexible refinement to 300 (from 1000 with default parameters)
 temp_cool3_init = 300
 
 [caprieval]
@@ -414,7 +414,7 @@ watersteps = 750
 reference_fname = "pdbs/3CRO_complex.pdb"
 
 [rmsdmatrix]
-# By default, all residues will be used to calculate the RMSD matrix
+# by default, all residues of each docking partner are used to calculate the RMSD matrix
 
 [clustrmsd]
 # generate an interactive plot of the clustering results
