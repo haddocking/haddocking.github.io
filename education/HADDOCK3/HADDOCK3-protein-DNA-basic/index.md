@@ -318,7 +318,7 @@ run_dir = "run"
 
 # compute mode
 mode = "local"
-ncores=8
+ncores = 8
 
 # input PDBs of the docking partners 
 molecules =  [
