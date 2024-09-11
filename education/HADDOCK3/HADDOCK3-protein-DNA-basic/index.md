@@ -214,7 +214,7 @@ HADDOCK is not limited to ambiguous restraints, other types, like unambiguous an
 
 ## Preparation of PDB files for the docking (optional)
 
-Haddock3 requires an input structure for each docking partner. The quality of these input structures are highly influential to the quality of the docking models. Conformational deficiencies such as clashes, chain breaks and missing atoms may cause problems during the docking, so it is important to verify each input file.
+Haddock3 requires an input structure for each docking partner. The quality of these input structures are highly influential to the quality of the docking models. Conformational deficiencies such as sterical clashes, chain breaks and missing atoms may cause problems during the docking, so it is important to verify each input file.
 Another important factor is the difference between unbound and bound conformations. The more different these conformations are, the more difficult it is to generate correct docking models.
 
 In this section we will go over the preparation of the protein structures. The preparation of the DNA structure is out of the scope of this tutorial, but is detailed in the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#preparing-pdb-coordinate-files-for-the-or1-operator).
@@ -229,8 +229,9 @@ Since the core conformation remains unchanged, we can simply take the first conf
 
 This can be done using `pdb-tools`, a collection of simple scripts handy to manipulate pdb files. `pdb-tools` is installed automatically with Haddock3. Alternatively, it is also available as a [web-server](https://wenmr.science.uu.nl/pdbtools/).
 
-To obtain a single trimmed structure using command-line version of `pdb-tools` _**remember to activate a virtual environment for Haddock3 first**_. 
-The following command will override existing file with the name `1ZUG_dimer1.pdb` - consider executing it outside of `pdbs/`:
+To obtain a single trimmed structure, we will make use of the command-line version of `pdb-tools`. 
+Please, _**remember to activate a virtual environment for Haddock3**_ before using  `pdb-tools`. 
+The following command will override the existing file with the name `1ZUG_dimer1.pdb` - consider executing it outside of `pdbs/`:
 <a class="prompt prompt-cmd">
 pdb_fetch 1ZUG | pdb_selmodel -1 | pdb_delhetatm | pdb_selres -1:66 | pdb_tidy -strict > 1ZUG_dimer1.pdb
 </a>
