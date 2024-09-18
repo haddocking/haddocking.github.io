@@ -1475,7 +1475,7 @@ Cluster statistics (distributions of values per cluster ordered according to the
 
 <hr>
 
-### Analysis scenario 3: Paratope - NMR-epitope as active
+### Analysis scenario 3: 
 
 Let us now analyse the docking results for this scenario. Use for that either your own run or a pre-calculated run provided in the `runs` directory.
 Go into the _analysis/_caprieval_analysis_  directory of the respective run directory and
@@ -1554,7 +1554,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 Use the `extract-capri-stats-clt.sh` script to extract some simple cluster statistics for this run.
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh runs/scenario2b-NMR-epitope-act/
+   ./scripts/extract-capri-stats-clt.sh runs/scenario3/
 </a>
 
 
@@ -1621,7 +1621,7 @@ Best cluster             - rank:  4  i-RMSD:  0.980  Fnat:  0.812  DockQ:  0.819
 Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script:
 
 <a class="prompt prompt-cmd">
-./scripts/extract-capri-stats.sh ./runs/scenario2b-NMR-epitope-pass
+./scripts/extract-capri-stats.sh ./runs/scenario3
 </a>
 
 <details style="background-color:#DAE4E7">
