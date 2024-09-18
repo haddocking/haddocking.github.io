@@ -19,12 +19,6 @@ A workflow is defined in simple configuration text files, similar to the [TOML](
 
 It basically contains two main parts:
 * [Global parameters](/software/haddock3/manual/global_parameters): General parameters to be applied to the workflow, including input molecules and location where to run the docking protocol.
-* [List of modules](/software/haddock3/manual/modules_parameters): Sequence of [module names], defining the sequential order in which each module must be perfromed.
-
-Here is a schematic representation of a haddock3 configuration file:
-
-<figure style="text-align: center;">
-<img width="75%" src="/software/haddock3/manual/images/schematic_cfg.png" alt="schematic representation of a haddock3 configuration file">
-</figure>
+* [List of modules](/software/haddock3/manual/modules_parameters): Sequence of [module names], defining the sequential order in which each module must be perfromed. Each module has several parameters, that can be defined to fine tune them, or left untouched therefore using default parameters.
 
 Examples of workflow configuration files are [available here !](https://github.com/haddocking/haddock3/tree/main/examples)
