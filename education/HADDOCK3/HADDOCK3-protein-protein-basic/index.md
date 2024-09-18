@@ -183,9 +183,6 @@ registration form, and then follow the [installation instructions](https://www.b
 
 ### Auxiliary software
 
-**[FreeSASA][link-freesasa]**: FreeSASA will be used to identify surface-accessible residues
-(pre-calculated data are provided).
-
 **[PDB-tools][link-pdbtools]**: A useful collection of Python scripts for the
 manipulation (renumbering, changing chain and segIDs...) of PDB files is freely
 available from our GitHub repository. `pdb-tools` is automatically installed
@@ -1884,7 +1881,6 @@ So stay tuned!
 [installation]: https://www.bonvinlab.org/haddock3/INSTALL.html "Installation"
 [link-cns]: https://cns-online.org "CNS online"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
-[link-freesasa]: https://freesasa.github.io "FreeSASA"
 [link-pdbtools]:http://www.bonvinlab.org/pdb-tools/ "PDB-Tools"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
