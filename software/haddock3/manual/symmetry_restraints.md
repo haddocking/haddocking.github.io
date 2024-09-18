@@ -18,7 +18,7 @@ CNS modules using restraints, such as `[rigidbody]`, `[flexref]`, `[emref]` or `
 This can be very useful when you know that the system you are working with contain such property, and you wish to enforce sampled solutions to be symmetrical.
 
 Various symmetry restraints are already available in Haddock3.
-But custom symmetry restraints can also be provided, to learn more about it, read the [custom symmetry section]().
+But custom symmetry restraints can also be provided, to learn more about it, read the [custom symmetry section](#custom-symmetry-restraints).
 
 
 ## Pre-defined symmetry restraints
@@ -30,6 +30,10 @@ But custom symmetry restraints can also be provided, to learn more about it, rea
 - [**S3 symmetry**](#s3-symmetry): The S3 rotational and translational symmetry.
 
 They are described in more details below.
+
+Here is a related research article describing some of the available symmetries in HADDOCK: E. Karaca, A.S.J. Melquiond, S.J. de Vries, P.L. Kastritis and A.M.J.J. Bonvin
+[Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](https://doi.org/doi:10.1074/mcp.M000051-MCP201)
+_Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
 
 
 ### Non crystallographic symmetry
@@ -92,6 +96,10 @@ We have dedicated functions to assess the validity of the NCS parameters.
 Rotational symmetries (**C symmetries**) can be enforced between partners.
 Currently, C2, C3, C4, C5 and C6 symmetries are available.
 Each symmetry type (C**N**) must be defined between **N** partners to be valid.
+
+<figure align="center">
+<img src="/software/haddock3/manual/images/CN_symmetries_haddock.jpg">
+</figure>
 
 To make use of C**N** symmetry parameters, one should first activate the use of such restraints using the `sym_on = true` parameter!
 
@@ -163,10 +171,6 @@ c3sym_seg3_2 = "C"
 It is also possible to tune the force constant for the C**N** symmetries using the `ksym` parameter.
 
 We are providing an example of protein-homotrimer docking using haddock3 [here](/software/haddock3/manual/docking_scenarios#protein-homotrimer).
-
-Here is a related research article describing some of the available symmetries in HADDOCK: E. Karaca, A.S.J. Melquiond, S.J. de Vries, P.L. Kastritis and A.M.J.J. Bonvin
-[Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](https://doi.org/doi:10.1074/mcp.M000051-MCP201)
-_Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
 
 
 ### S3 symmetry
