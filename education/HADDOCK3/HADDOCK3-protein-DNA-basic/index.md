@@ -201,7 +201,7 @@ assign ( resid 35 and segid C)
 ```
 The first line means that the residue 35 from the chain C (protein) should interact either with the residue 32, or with the residue 33 of the chain B (DNA). Additionally, the substring `(name H3 or name O4 or name C4 or name C5 or name C6 or name C7)` precise the atoms with which the interaction should occur.
 
-In other words, if at least one pair or residues (residue 35 from chain C; residue 32 from chain B) or (residue 35 from chain C; residue 33 from chain B) are located within 2Å from one another - then this particular restraint is satisfied.
+To simplify, if at least one pair or residues (residue 35 from chain C; residue 32 from chain B) or (residue 35 from chain C; residue 33 from chain B) are located in the vicinity from one another - then this particular restraint is satisfied.
 
 <a class="prompt prompt-question">
 Check out the list of atoms defined in 'ambig_prot_DNA.tbl'. Which part of the DNA is targeted by defining a given set of atoms? What is the effect of such restraints onto the docking process? 
@@ -496,7 +496,7 @@ Additionally, you will find the following directories and files:
 * `data` directory: Stores input PDB files (not the actual docking models) and restraints files used in each module;
 * `traceback` directory: Contains the `traceback.tsv` file, which tracks the name and rank of each docking model throughout the entire workflow. Handy, if you want to see how the model's rank evolved step-by-step.
 
-Each sampling, refinement, or selection module's directory contains compressed PDB files of the docking models. For example, `10_seletopclusts` contains the top-ranked docking models from each of the 9 clusters. Clusters are numbered based on the average rank of the models within them, so cluster_1 contains the top-ranked models of the entire run. Information about the origin of each model can be found in `10_seletopclusts/seletopclusts.txt`, as well as in `traceback/traceback.tsv`.
+Each sampling, refinement, or selection module's directory contains compressed PDB files of the docking models. For example, `10_seletopclusts` contains 10 top-ranked docking models from each of the 4 clusters. Clusters are numbered based on the average rank of the models within them, so cluster_1 contains the top-ranked models of the entire run. Information about the origin of each model can be found in `10_seletopclusts/seletopclusts.txt`, as well as in `traceback/traceback.tsv`.
 
 One of the ways to analyse the docking results is to examine file(s) `analysis/XX_caprieval_analysis/report.html`. Depending on the positionning of the given caprieval module, `report.html` will display information about the models at the different stages of the workflow. For example, `11_caprieval_analysis/report.html` contains statictis related of the clusters, while `02_caprieval_analysis/report.html` contains statictis related to the models generated during the rigid body sampling stage.
 Caprieval, executed after clustering - in this case `11_caprieval` - enables a comprehensive evaluation of the docking results from a broad perspective. 
@@ -520,7 +520,7 @@ Look at the "HADDOCK score" row of the first 3 clusters: Are they significantly 
    <i>Answer</i> <i class="material-icons">expand_more</i>
  </summary>
  <p>
-   According to the two-sample t-test, there is a significant difference between cluster_1 and cluster_2, as well as between cluster_1 and cluster_3. However, there is no significant difference between cluster_2 and cluster_3. 
+   According to the two-sample t-test, there is a significant difference between all 3 clusters. 
  </p>
 </details>
 <br>
@@ -535,7 +535,7 @@ Look at the DockQ of the clusters: Does the top-ranked cluster have the highest 
    <i>Answer</i> <i class="material-icons">expand_more</i>
  </summary>
  <p>
-Yes, cluster_1 has the highest average DockQ. However, cluster_3 has the same DockQ. 
+No, cluster_2 has the highest average DockQ equal to 0.26+/-0.02.  
  </p>
 </details>
 <br>
@@ -558,7 +558,7 @@ Depending on the docking models, there could be a set of unclustered models. It 
 
 ### Visualisation of the docking models
 
-It's time to visualise some of the docking models. Let's take a look at `cluster_1_model_1.pdb.gz`, the best-ranked model; `cluster_3_model_3.pdb.gz`, the model with the lowest i-RMSD (as shown in the plot "HADDOCK score vs i-RMSD"); and the reference structure `3CRO_complex.pdb`. Please open all these files in PyMOL (it can display compressed PDB files). You can find the first two files in `10_seletopclusts`, and the reference structure in `pdbs`. Then, in the PyMOL command line, type:
+It's time to visualise some of the docking models. Let's take a look at `cluster_1_model_1.pdb.gz`, the best-ranked model; `cluster_1_model_4.pdb.gz`, the model with the lowest i-RMSD (as shown in the plot "HADDOCK score vs i-RMSD"); and the reference structure `3CRO_complex.pdb`. Please open all these files in PyMOL (it can display compressed PDB files). You can find the first two files in `10_seletopclusts`, and the reference structure in `pdbs`. Then, in the PyMOL command line, type:
 
 <a class="prompt prompt-pymol">
 show cartoon 
@@ -567,20 +567,23 @@ show cartoon
 color paleyellow, 3CRO_complex
 </a>
 <a class="prompt prompt-pymol">
-alignto 3CRO_complex
+align cluster_1_model_1 and chain B, 3CRO_complex and chain B 
+</a>
+<a class="prompt prompt-pymol">
+align cluster_1_mode_4 and chain B, 3CRO_complex and chain B 
 </a>
 
 <details style="background-color:#CECECE">
  <summary>
    See the overlay of the top ranked model onto the reference structure.<i class="material-icons">expand_more</i>
  </summary>
-<p> Reference structure is displyed in yellow; cluster_1_model_1 in green; cluster_3_model_3 in blue.</p>
+<p> Reference structure is displyed in yellow; cluster_1_model_1 in green; cluster_1_model_4 in blue.</p>
 <div style="display: flex; justify-content: center;">
   <figure style="margin-left: 3px;">
     <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/alig_ref_cl1mod1.png" alt="Image 1">
   </figure>
   <figure style="margin-right: 3px;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/alig_ref_cl3mod3.png" alt="Image 2">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/alig_ref_cl1mod4.png" alt="Image 2">
   </figure>
 </div>
  <br>
@@ -603,7 +606,7 @@ The models are acceptably close to the reference. Although the best model may no
 <br>
 It may be helpful to examine several top-ranked models from each cluster. This can give you insight into the diversity of the models within a cluster, as well as the diversity of models across different clusters. 
 
-<a class="prompt prompt-info"> Compare the top-ranked models within the same cluster. Are the top models from each cluster close to the reference structure?
+<a class="prompt prompt-info"> Compare the top-ranked models within the same cluster, e.g. cluster_2. Are the top models from this cluster close to the reference structure? To each other? 
 </a>
 
 <hr>
