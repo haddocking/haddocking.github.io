@@ -194,9 +194,9 @@ Let’s have a look at it's first lines:
 ```bash
 assign ( resid 35 and segid C)
 (
-( resid 32 and segid B and (name H3 or name O4 or name C4 or name C5 or name C6 or name C7))
-or
-( resid 33 and segid B and (name H3 or name O4 or name C4 or name C5 or name C6 or name C7))
+   (  resid 32 and segid B and (name H3 or name O4 or name C4 or name C5 or name C6 or name C7))
+    or
+    ( resid 33 and segid B and (name H3 or name O4 or name C4 or name C5 or name C6 or name C7))
 ) 2.000 2.000 0.000
 ```
 The first line means that the residue 35 from the chain C (protein) should interact either with the residue 32, or with the residue 33 of the chain B (DNA). Additionally, the substring `(name H3 or name O4 or name C4 or name C5 or name C6 or name C7)` precise the atoms with which the interaction should occur.
@@ -251,7 +251,7 @@ _**Note**_ that it is possible to perform the docking with an ensemble of trimme
 
 ## Docking with Haddock3
 
-In this section, we will discuss the specifics of protein-DNA docking in the frame of Haddock3. We will then create an appropriate Haddock3 workflow and, finally, perform an analysis of the docking results and evaluate their quality with respect to the experimentally solved structure as a reference.
+In this section, we will discuss the specificities related to protein-DNA docking in the frame of Haddock3. We will then create an appropriate Haddock3 workflow and, finally, perform an analysis of the docking results and evaluate their quality with respect to the experimentally solved structure as a reference.
 
 ### Specifics of the protein-DNA docking
 
@@ -501,7 +501,7 @@ Each sampling, refinement, or selection module's directory contains compressed P
 One of the ways to analyse the docking results is to examine file(s) `analysis/XX_caprieval_analysis/report.html`. Depending on the positionning of the given caprieval module, `report.html` will display information about the models at the different stages of the workflow. For example, `11_caprieval_analysis/report.html` contains statictis related of the clusters, while `02_caprieval_analysis/report.html` contains statictis related to the models generated during the rigid body sampling stage.
 Caprieval, executed after clustering - in this case `11_caprieval` - enables a comprehensive evaluation of the docking results from a broad perspective. 
 
-<a class="prompt prompt-info"> Open 'analysis/11_caprieval_analysis/report.html' in a web browser by typing "open report.html" in the command line. Once the report is displayed, locate the table with cluster statistics at the top of the page. You can sort the columns in ascending or descending order by clicking the arrow icon on the right side of each column header. 
+<a class="prompt prompt-info"> Open 'analysis/11_caprieval_analysis/report.html' in a web browser by typing "open report.html" in the command line. Once the report is displayed, locate the table with cluster statistics at the top of the page. You can sort the columns in ascending or descending order by clicking the arrow icon (&#8646;) on the right side of each column header. 
 </a>
 
 Here is a screenshot of the top-left corner of the table in `11_caprieval_analysis/report.html`:
@@ -543,7 +543,7 @@ _**Note**_ that if no reference structure is provided to the caprieval module, a
 
 ### Visualisation of the HADDOCK scores and their components
 
-Below the cluster statistics table, you'll find a series of plots displaying the HADDOCK score and its components against various metrics (i-RMSD, l-RMSD, FCC, DockQ), with clusters represented using color coding. The last rows show plots of cluster statistics, i.e. distributions of values per cluster, ordered by their HADDOCK rank.
+Below the cluster statistics table, you'll find a series of plots displaying the HADDOCK score and its components against various metrics (i-RMSD, l-RMSD, FCC, DockQ), with clusters represented using color coding. The last rows show plots of cluster statistics, i.e. distributions of values per cluster, ordered by their HADDOCK score.
 
 These plots are interactive. A menu will appear at the top right, just above the last plot in the first row, when you hover your mouse over it. This menu allows you to zoom in and out of the plots and toggle the visibility of clusters.
 
@@ -554,7 +554,7 @@ These plots are interactive. A menu will appear at the top right, just above the
 <a class="prompt prompt-info"> Inspect the plots. Which of the score components correlates best with the quality of the models?
 </a>
 
-Depending on the docking models, there could be a set of unclustered models. It will be explisitely shown in `report.html` as 'other'. You can see the origins of these models in `traceback/traceback.tsv`. 
+Depending on the docking models, there could be a set of unclustered models. It will be explicitly shown in `report.html` as 'other'. You can see the origins of these models in `traceback/traceback.tsv`. 
 
 ### Visualisation of the docking models
 
