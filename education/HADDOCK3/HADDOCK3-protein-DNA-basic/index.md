@@ -15,7 +15,7 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-This tutorial demonstrates a simplified Haddock3 workflow dedicated to predicting the 3D structure of protein-DNA (double-stranded DNA) complexes using pre-defined restraints, derived from the literature, and symmetry restraints. Here, we introduce the basic concepts of HADDOCK, suitable for tackling various typical protein-DNA docking challenges: 
+This tutorial demonstrates how to setup a Haddock3 workflow dedicated to predict the 3D structure of protein-DNA (double-stranded DNA) complexes using pre-defined restraints, derived from the literature, and symmetry restraints. Here, we introduce the basic concepts of HADDOCK, suitable for tackling various typical protein-DNA docking challenges: 
 * basic preparation of the input PDB files; 
 * creation of the suitable Haddock3 workflow; 
 * basic analysis of the docking results. 
@@ -91,7 +91,8 @@ Decompressing the file will create the `haddock3-protein-dna-basic` directory wi
 
 ## Understanding the Ambiguous Interaction Restraints
 
-The Ambiguous Interaction Restraints (AIRs) are crucial to successful docking as AIRs should guide docking partners towards the correct conformation. AIRs consist of the residues located in the interface of a complex.
+The Ambiguous Interaction Restraints (AIRs) are crucial to successful docking, as they guide the modelling process by biasing partners' conformations and co-orientation towards a certain, hopefully correct conformation of the complex.
+AIRs consist of the residues located in the interface of a complex.
 
 ### Visualisation of the interface
 
@@ -238,7 +239,8 @@ pdb_fetch 1ZUG | pdb_selmodel -1 | pdb_delhetatm | pdb_selres -1:66 | pdb_tidy -
 
 This sequence of commands: 1/ Downloads given structure in PDB format from the RCSB website; 2/ Extracts the first model from the file; 3/ Removes all HETATM records in the PDB file; 4/ Selects residues by their index (in a range); 5/ Adds TER statement at the end of the chain.
 
-The complex of interest contains 2 copies of the protein. As each molecule given to HADDOCK in a docking scenario must have a **unique chain ID and segment ID**, we have to change chain ID from A to C and save this as a new structure (segment ID remains empty for both cases, which is acceptable):
+The complex of interest contains 2 copies of the protein. As each molecule given to HADDOCK in a docking scenario must have a **unique chain ID and segment ID**, we have to change the chain ID from A to C and save this as a new structure. 
+This can be achieved using another command from `pdb_tools`, namely, `pdb_rplchain`, which stands for "replace chain":
 <a class="prompt prompt-cmd">
 pdb_rplchain -A:C 1ZUG_dimer1.pdb > 1ZUG_dimer2.pdb
 </a>
@@ -268,7 +270,7 @@ _**Note**_ that Haddock3 distinguishes DNA nucleotides from RNA nucleotides base
 
 Now that we have all the necessary files ready for docking, along with several insights into the specifics of protein-DNA docking, it’s time to create the docking workflow. In this scenario, we will adhere to the following straightforward workflow: rigid-body docking, semi-flexible refinement in torsional angle space, molecular dynamics (MD) refinement in explicit solvent, and a final RMSD clustering step.
 
-Out workflow consists of the following modules:
+Our workflow consists of the following modules:
 * **topoaa**: _Generates the topologies for the CNS engine and builds missing atoms;_
 * **rigidbody**: _Performs sampling by rigid-body energy minimization (equivalent to `it0` in Haddock2.X);_
 * **caprieval**: _Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the best-scored model or a provided reference structure;_
@@ -326,6 +328,9 @@ molecules =  [
     "pdbs/OR1_unbound.pdb",
     "pdbs/1ZUG_dimer2.pdb"
     ]
+
+# compress all generated models
+clean = true
 
 # ====================================================================
 # Workflow is defined as a pipeline of modules with specified parameters per module 
@@ -431,7 +436,7 @@ reference_fname = "pdbs/3CRO_complex.pdb"
 
 _**Note**_ that in this example we use relative paths to define input files and output folder. However it is preferable to use the full paths instead. 
 
-This workflow begins by creating topologies for the docking partners. Rigid body sampling is performed with ambiguous and symmetry restraints, generating 1000 models, from which the top 200 are selected. These models then undergo flexible refinement followed by MD refinement in explicit solvent, still maintaining the same ambiguous and symmetry restraints. Finally, docking models are clustered via RMSD, with all residues used to calculate RMSD values. The top 10 models from each cluster are selected. The `caprieval` module is added after each step to simplify model analysis and track the rank of models throughout the docking process.
+This workflow begins by creating topologies for the docking partners (`[topoaa]`). Rigid body sampling (`[rigidbody]`) is performed with ambiguous and symmetry restraints, generating 1000 models, from which the top 200 are selected (`[seletop]`). These models then undergo flexible refinement (`[flexref]`) followed by MD refinement in explicit solvent (`[mdref]`), still maintaining the same ambiguous and symmetry restraints. Finally, the RMSD matrix for docking models is computed (`[rmsdmatrix]`), followed by its clusterisation (`[clustrmsd]`). The RMSD values are calculated using the backbone atoms of all residues of each docking partner. The top 10 models from each cluster are selected (`[seletopclusts]`). The `caprieval` module is added after each step using the crystal structure as a reference to simplify the analysis and track the rank of models throughout the docking process.
 
 ### Running Haddock3 locally
 
@@ -443,7 +448,7 @@ mode = "local"
 ncores = 8
 {% endhighlight %}
 
-The parameter `mode` defines how this workflow will be executed. In this case, it will run locally, on your machine, using 8 CPUs (feel free to change this value). You can find out about other modes [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/#local-execution).
+The parameter `mode` defines how this workflow will be executed. In this case, it will run locally, on your machine, using up to 8 CPUs. Feel free to change this value, if more cores are available. You can find out about other modes [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/#local-execution).
 
 To start the docking you need to **activate your haddock3 environment**, then navigate to the folder `haddock3-protein-dna-basic` with the configuration file `protein-dna-basic.cfg`, and type one of the following:
 <a class="prompt prompt-cmd">
@@ -553,7 +558,7 @@ Depending on the docking models, there could be a set of unclustered models. It 
 
 ### Visualisation of the docking models
 
-It's time to visualise some of the docking models. Let's take a look at `cluster_1_model_1.pdb`, the best-ranked model; `cluster_3_model_3.pdb`, the model with the lowest i-RMSD (as shown in the plot "HADDOCK score vs i-RMSD"); and the reference structure `3CRO_complex.pdb`. Please open all these files in PyMOL (it can display compressed PDB files). You can find the first two files in `10_seletopclusts`, and the reference structure in `pdbs`. Then, in the PyMOL command line, type:
+It's time to visualise some of the docking models. Let's take a look at `cluster_1_model_1.pdb.gz`, the best-ranked model; `cluster_3_model_3.pdb.gz`, the model with the lowest i-RMSD (as shown in the plot "HADDOCK score vs i-RMSD"); and the reference structure `3CRO_complex.pdb`. Please open all these files in PyMOL (it can display compressed PDB files). You can find the first two files in `10_seletopclusts`, and the reference structure in `pdbs`. Then, in the PyMOL command line, type:
 
 <a class="prompt prompt-pymol">
 show cartoon 
@@ -581,6 +586,8 @@ alignto 3CRO_complex
  <br>
 </details>
 <br>
+
+_**Note**_ that models are compressed because of the line `clean = true` in the global parameters of the workflow. To decompress all models in a directory, one can run `haddock3-unpack <path/to/directory>` 
 
 <a class="prompt prompt-question">
 How close are these models to the reference? Did HADDOCK do a good job at ranking the docking models?
