@@ -424,6 +424,8 @@ reference_fname = "pdbs/3CRO_complex.pdb"
 [clustrmsd]
 # generate an interactive plot of the clustering results
 plot_matrix = true
+# reduce the clustering cutoff distance from 7.5
+clust_cutoff = 5.5
 
 [seletopclusts]
 
