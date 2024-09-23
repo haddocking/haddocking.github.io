@@ -42,7 +42,7 @@ These include H-bonds between main chain NH groups and phosphate oxygens of the 
 Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by Cro, and the middle region of the operator is overwound, as reflected in the reduced distance between phosphate backbones in the minor groove.
 
 <figure align="center">
-<img src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/CRO-OR1.png">
+<img src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/CRO-OR1.png">
 </figure>
 
 Throughout the tutorial, coloured text will be used to refer to questions, instructions, PyMOL and terminal prompts:
@@ -113,7 +113,7 @@ color red, interface
    Now the residues of the interface are displayed in red.<i class="material-icons">expand_more</i>
  </summary>
  <figure style="text-align: center;">
-   <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/CRO-OR1-interface.png">
+   <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/CRO-OR1-interface.png">
  </figure>
  <br>
 </details>
@@ -509,10 +509,11 @@ Caprieval, executed after clustering - in this case `11_caprieval` - enables a c
 Here is a screenshot of the top-left corner of the table in `11_caprieval_analysis/report.html`:
 
 <figure align="center">
-<img src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/stat_analys_table.png">
+<img src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/stat_analys_table.png">
 </figure>
 
-You can also access this file [here](/education/HADDOCK3/HADDOCK3-protein-dna-basic/report.html). 
+You can also access this file [here](/education/HADDOCK3/HADDOCK3-protein-DNA-basic/report.html). 
+
 
 <a class="prompt prompt-question">
 Look at the "HADDOCK score" row of the first 3 clusters: Are they significantly different if you consider the average scores, standard deviations and cluster size?
@@ -550,7 +551,7 @@ Below the cluster statistics table, you'll find a series of plots displaying the
 These plots are interactive. A menu will appear at the top right, just above the last plot in the first row, when you hover your mouse over it. This menu allows you to zoom in and out of the plots and toggle the visibility of clusters.
 
 <figure align="center">
-<img src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/stat_plots.png">
+<img src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/stat_plots.png">
 </figure>
 
 <a class="prompt prompt-info"> Inspect the plots. Which of the score components correlates best with the quality of the models?
@@ -582,10 +583,10 @@ align cluster_1_mode_4 and chain B, 3CRO_complex and chain B
 <p> Reference structure is displyed in yellow; cluster_1_model_1 in green; cluster_1_model_4 in blue.</p>
 <div style="display: flex; justify-content: center;">
   <figure style="margin-left: 3px;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/alig_ref_cl1mod1.png" alt="Image 1">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/alig_ref_cl1mod1.png" alt="Image 1">
   </figure>
   <figure style="margin-right: 3px;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-dna-basic/alig_ref_cl1mod4.png" alt="Image 2">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-DNA-basic/alig_ref_cl1mod4.png" alt="Image 2">
   </figure>
 </div>
  <br>
