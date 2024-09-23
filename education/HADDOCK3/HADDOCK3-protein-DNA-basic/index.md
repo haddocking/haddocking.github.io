@@ -514,6 +514,7 @@ Here is a screenshot of the top-left corner of the table in `11_caprieval_analys
 
 You can also access this file [here](/education/HADDOCK3/HADDOCK3-protein-DNA-basic/report.html). 
 
+
 <a class="prompt prompt-question">
 Look at the "HADDOCK score" row of the first 3 clusters: Are they significantly different if you consider the average scores, standard deviations and cluster size?
 </a>
