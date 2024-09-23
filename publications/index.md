@@ -6,19 +6,25 @@ image:
 ---
 ## 2024
 
-* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v2) _BioRXiv._ 10.1101/2024.06.07.597882 (2024).
+* K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1101/2024.08.09.60700). _BioRXiv._ 10.1101/2024.08.09.60700 (2024).
+
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _BioRXiv._ 10.1101/2024.07.31.605986 (2024).
+
+* X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
+
+* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v2) _BioRXiv_ 10.1101/2024.06.07.597882 (2024).
 
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://doi.org/10.1101/2024.06.02.597018). _BioRXiv._ 10.1101/2024.06.02.597018 (2024).
 
 * R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
-* B. Vallat, B.M. Webb, J.D. Westbrook, T. Goddard, C.A. Hanke, A. Graziadei, E. Peisach, A. Zalevsky, J. Sagendorf, H. Tangmunarunkit, S. Voinea, M. Sekharan, J. Yu, **A.M.J.J. Bonvin**, Fr, DiMaio, G. Hummer, J. Meiler, E. Tajkhorshid, T. Ferrin, C.L. Lawson, A. Leitner, J. Rappsilber, C.A.M. Seidel, C.M. Jeffries, S.K. Burley, J. Hoch, G.i Kurisu, K.e Morris, A. Patwardhan, S. Velankar, T. Schwede, J. Trewhella, C. Kesselman, H.M. Berman, A. Sali. [IHMCIF: An extension of PDBx/mmCIF data standard for integrative structure determination methods](https://doi.org/10.1016/j.jmb.2024.168546). _J. Mol. Biol._, Advanced Online Publication (2024).
+* B. Vallat, B.M. Webb, J.D. Westbrook, T. Goddard, C.A. Hanke, A. Graziadei, E. Peisach, A. Zalevsky, J. Sagendorf, H. Tangmunarunkit, S. Voinea, M. Sekharan, J. Yu, **A.M.J.J. Bonvin**, Fr, DiMaio, G. Hummer, J. Meiler, E. Tajkhorshid, T. Ferrin, C.L. Lawson, A. Leitner, J. Rappsilber, C.A.M. Seidel, C.M. Jeffries, S.K. Burley, J. Hoch, G.i Kurisu, K.e Morris, A. Patwardhan, S. Velankar, T. Schwede, J. Trewhella, C. Kesselman, H.M. Berman, A. Sali. [IHMCIF: An extension of PDBx/mmCIF data standard for integrative structure determination methods](https://doi.org/10.1016/j.jmb.2024.168546). _J. Mol. Biol._, *436*:168546 (2024).
 
-* K.W. Collins, M.M. Copeland,, G. Brysbaert, S.J. Wodak, **A.M.J.J. Bonvin**, P,J, Kundrotas, I.A. Vakser and M.F. Lensink. [CAPRI-Q: The CAPRI resource evaluating the quality of predicted structures of protein complexes](https://doi.org/10.1016/j.jmb.2024.168540). _J. Mol. Biol._, Advanced Online Publication (2024).
+* K.W. Collins, M.M. Copeland,, G. Brysbaert, S.J. Wodak, **A.M.J.J. Bonvin**, P,J, Kundrotas, I.A. Vakser and M.F. Lensink. [CAPRI-Q: The CAPRI resource evaluating the quality of predicted structures of protein complexes](https://doi.org/10.1016/j.jmb.2024.168540). _J. Mol. Biol._, *436*:168540 (2024).
 
 * M. Giulini, R.V. Honorato, J.L. Rivera, **A.M.J.J. Bonvin**. [ARCTIC-3D: Automatic Retrieval and ClusTering of Interfaces in Complexes from 3D structural information](https://doi.org/10.1038/s42003-023-05718-w). _Comm. Biol._  *7*:49, p. 1-9  (2024).
 
-* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1093/bioadv/vbad191). _Bioinfo. Adv._  vbad191, _Advanced Online Publication  (2024).
+* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1093/bioadv/vbad191). _Bioinfo. Adv._  *4*:vbad191 (2024).
 
 
 ## 2023

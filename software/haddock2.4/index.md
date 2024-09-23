@@ -79,11 +79,9 @@ Fax: +31-30-2537623
 
 **_When using HADDOCK cite:_**
 
-*   Cyril Dominguez, Rolf Boelens and Alexandre M.J.J. Bonvin. [HADDOCK: a protein-protein docking approach based on biochemical and/or biophysical information.](https://doi.org/doi:10.1021/ja026939x)  
-    _J. Am. Chem. Soc._ **125**, 1731-1737 (2003).
+* Cyril Dominguez, Rolf Boelens and Alexandre M.J.J. Bonvin. [HADDOCK: a protein-protein docking approach based on biochemical and/or biophysical information.](https://doi.org/doi:10.1021/ja026939x) _J. Am. Chem. Soc._ **125**, 1731-1737 (2003).
 
-*   G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and A.M.J.J. Bonvin. "[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014)."  
-    _J. Mol. Biol._, **428**, 720-725 (2016).
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
 **_For additional citations when using specific modules see also our [publication page](./publications)_**.
 
@@ -91,7 +89,7 @@ Fax: +31-30-2537623
 
 ### Acknowledgments:
 
-HADDOCK is derived from [ARIA](https://aria.pasteur.fr) scripts by Michael Nilges and Jens Linge.
+HADDOCK was originally derived from [ARIA](https://aria.pasteur.fr) scripts by Michael Nilges and Jens Linge.
 
 *   J.P. Linge, M. Habeck, W. Rieping and M. Nilges (2003). [ARIA: automated NOE assignment and NMR structure calculation.](https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12538267&dopt=Abstract) _Bioinformatics_ **19**, 315-316.
 
