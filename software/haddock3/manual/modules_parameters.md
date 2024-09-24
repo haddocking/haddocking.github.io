@@ -21,11 +21,11 @@ Haddock3 has this particularity (compared to the pervious HADDOCK2.X versions), 
 </figure>
 
 Various `[modules]` are available in Haddock3, and they are grouped together by types:
-- [**Topology modules**](): these modules focus in the building of missing atoms and generation of approriate topology files enabling downstream use of molecular dynamics protocols.
-- [**Sampling modules**](): dedicated at performing sampling of initial conformations, such as rigidbody docking.
-- [**Refinement modules**](): these modules aim at refining interaction interface, using simulated annealing protocol, energy minimisation or molecular dynamics with an explicit solvent shell.
-- [**Scoring modules**](): these modules are evaluating provided complexes with dedicated scoring functions, such as the HADDOCK score.
-- [**Analysis modules**](): these modules focus on the analysis of docking models. It ranges from the clustering of docking models, to the selection of best ranked ones passing by the evaluation of the models with respect to a reference structure using CAPRI criteria.
+- [**Topology modules**](#topology-modules): these modules focus in the building of missing atoms and generation of approriate topology files enabling downstream use of molecular dynamics protocols.
+- [**Sampling modules**](#sampling-modules): dedicated at performing sampling of initial conformations, such as rigidbody docking.
+- [**Refinement modules**](#refinement-modules): these modules aim at refining interaction interface, using simulated annealing protocol, energy minimisation or molecular dynamics with an explicit solvent shell.
+- [**Scoring modules**](#scoring-modules): these modules are evaluating provided complexes with dedicated scoring functions, such as the HADDOCK score.
+- [**Analysis modules**](#analysis-modules): these modules focus on the analysis of docking models. It ranges from the clustering of docking models, to the selection of best ranked ones passing by the evaluation of the models with respect to a reference structure using CAPRI criteria.
 
 
 <figure align="center">
@@ -40,6 +40,10 @@ Various `[modules]` are available in Haddock3, and they are grouped together by 
 
 ## Set of available modules
 
+Below is presented the list of available modules.
+For detailed explannation of each modules and their respective parameters, please refere to [the online documentation]().
+
+
 ### Topology modules
 
 
@@ -47,6 +51,9 @@ Various `[modules]` are available in Haddock3, and they are grouped together by 
 
 
 ### Refinement modules
+
+
+### Scoring modules
 
 
 ### Analysis modules
