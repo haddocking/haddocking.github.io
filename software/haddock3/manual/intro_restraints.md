@@ -56,6 +56,7 @@ For a detailed explanation of the distance restraints, please refere to the foll
 * A.M.J.J. Bonvin, E. Karaca, P.L. Kastritis & J.P.G.L.M. Rodrigues. Correspondence: [Defining distance restraints in HADDOCK](https://doi.org/10.1038/s41596-018-0017-6). _Nature Protocols_ *13*, 1503 (2018). [Free online only access](https://rdcu.be/1OyH)
 * S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin. [The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html) _Nature Protocols_, *5*, 883-897 (2010).
 
+
 ## Ambiguous distance restraints
 
 Ambiguous restraints are usually defined between two different chains, aiming at bringing them closer and guiding the docking procedure.
@@ -92,12 +93,12 @@ While unambiguous and hbond restraints are similar in their behavior, one can pl
 
 ## Other type of restraints 
 
-In the HADDOCK2.X series, other types of restraints were available, namely
-Diffusion anisotropy (DANI),
-cryo-EM density maps,
-Pseudo contact shifts (PCS),
-Radius of Gyration (Rg),
-Residual Dipolar Couplings (RDCs)
+In the HADDOCK2.X series, other types of restraints were available, namely:
+- Diffusion anisotropy (DANI)
+- cryo-EM density maps
+- Pseudo contact shifts (PCS)
+- Radius of Gyration (Rg)
+- Residual Dipolar Couplings (RDCs)
 
 With the current version of haddock3, these restraints are not yet ported.
 Stay tuned, as they will again show up in the near future.
