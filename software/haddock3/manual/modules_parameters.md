@@ -35,30 +35,74 @@ Various `[modules]` are available in Haddock3, and they are grouped together by 
 
 ## Defining module parameters
 
+To tune modules parameters, you first need to define which module you will be using, then add the list of parameters and their new values.
 
+Note that if a parameter is not defined, its default value will be used instead.
+
+### Tuning a module parameter
+
+In the configuration file, right after declaring which module you want to use, add the parameters and their new values in the subsequent lines.
+
+Here is a synthetic example:
+```TOML
+[module]
+parameter1 = new_value_1
+parameter3 = new_value_3
+```
+
+### Definition of defaults parameter values
+
+Each module is having its own default parameters values set in a file name `defaults.yaml`.
+This file is not only used to check if the parameter name exists at execution time, but also as reference to know if the configuration file provided by the use respects the allowed value for a given parameter.
+
+If the parameter range is not suited for your research, you can always tune the defaults values or the maximum values that can be adopted by this parameter (at your own risk).
 
 
 ## Set of available modules
 
 Below is presented the list of available modules.
 For detailed explannation of each modules and their respective parameters, please refere to [the online documentation]().
+You can also use the `haddock3-cfg` command line to get information of each module and their parameters.
 
 
 ### Topology modules
 
+- `[topoaa]`(/software/haddock3/manual/modules/topology.md#topoaa):
+- `[topocg]`(/software/haddock3/manual/modules/topology.md#topocg): *comming soon*
 
 ### Sampling modules
 
+- `[rigidbody]`(/software/haddock3/manual/modules/sampling.md#rigidbody):
+- `[gdock]`(/software/haddock3/manual/modules/sampling.md#gdock):
+- `[lightdock]`(/software/haddock3/manual/modules/sampling.md#lightdock):
 
 ### Refinement modules
+
+- `[flexref]`(/software/haddock3/manual/modules/refinements.md#flexref):
+- `[emref]`(/software/haddock3/manual/modules/refinements.md#emref):
+- `[mdref]`(/software/haddock3/manual/modules/refinements.md#mdref):
 
 
 ### Scoring modules
 
+- CNS scoring modules:
+  - `[emscoring]`(/software/haddock3/manual/modules/scoring.md#emscoring):
+  - `[mdscoring]`(/software/haddock3/manual/modules/scoring.md#mdscoring):
+
 
 ### Analysis modules
 
-
+- Analysis:
+  - `[caprieval]`(/software/haddock3/manual/modules/analysis.md#caprieval):
+  - `[alascan]`(/software/haddock3/manual/modules/analysis.md#alascan):
+  - `[contactmap]`(/software/haddock3/manual/modules/analysis.md#contactmap):
+- Clustering:
+  - `[clustfcc]`(/software/haddock3/manual/modules/analysis.md#clustfcc):
+  - `[rmsdmatrix]`(/software/haddock3/manual/modules/analysis.md#rmsdmatrix):
+  - `[clustrmsd]`(/software/haddock3/manual/modules/analysis.md#clustrmsd):
+- Selection:
+  - `[seletop]`(/software/haddock3/manual/modules/analysis.md#seletop):
+  - `[seletopclusts]`(/software/haddock3/manual/modules/analysis.md#seletopclusts):
 
 
 ## Developping a new module
