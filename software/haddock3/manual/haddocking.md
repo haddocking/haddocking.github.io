@@ -25,3 +25,32 @@ Generally, active residues are those of central importance for the interaction, 
 Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring a scoring penalty.
 Passive residues are those that contribute to the interaction but are deemed of less importance. If such a residue does not belong in the interface there is no scoring penalty.
 Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.
+
+
+## HADDOCK scoring function
+
+CNS modules are using the HADDOCK scoring function to score and rank generated models.
+The HADDOCK scoring function consists of a linear combination of various weighted physics-based energies terms and buried surface area.
+
+The scoring is performed according to the _weighted sum_ (HADDOCK score) of the 6 following terms:
+
+* _Eelec_: electrostatic intermolecular energy
+* _Evdw_: van der Waals intermolecular energy
+* _Edesol_: desolvation energy
+* _BSA_: buried surface area
+* _Eair_: distance restraints energy (only unambiguous and AIR (ambig) restraints)
+* _Esym_: symmetry restraints energy (NCS and C2/C3/C5 terms)
+
+<figure style="text-align: center;">
+<img width="75%" src="/software/haddock3/manual/images/haddock_scoring_function_terms.png">
+</figure>
+
+As the weights for each of the scoring function components differs for the various available CNS module, they will be described in each of the modules (see: [haddock3 modules]()).
+
+Of course, these weights can be tuned by the user, by modifying their related parmeters:
+* `w_elec`: to tune the electrostatic intermolecular energy weight
+* `w_vdw`: to tune the van der Waals intermolecular energy weight
+* `w_desolv`: to tune the desolvation energy weight
+* `w_bsa`: to tune the buried surface area weight
+* `w_air`: to tune the distance restraints energy (only unambiguous and AIR (ambig) restraints) weight
+* `w_sym`: to tune the symmetry restraints energy (NCS and C2/C3/C5 terms) weight
