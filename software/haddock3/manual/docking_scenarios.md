@@ -24,14 +24,14 @@ These examples are encompassing a wide range of applications, such as:
 - [Protein-glycan docking](#protein-glycan-docking)
 - [Small-molecule docking](#small-molecule-docking)
 - [Complexes refinement protocols](#refinement-protocols)
-- [Scoring workflow](#scoring-workflow)
-- [Comparison to an experimental reference](#comparison-to-a-reference-structure)
 - [Building cyclic peptide](#cyclic-peptide)
-- [Analysis pipelines](#analysis-pipeline)
+- [Scoring workflow](#scoring-workflow)
+- [Analysis pipelines](#analysis-scenario)
 
-Alternatively, upto date examples can also be found:
+
+Alternatively, up-to-date examples can also be found:
 - in your local installation of haddock3: `haddock3/examples/`.
-- online on our [GitHub repository `haddock3/examples/`](https://github.com/haddocking/haddock3/tree/main/examples).
+- online, on our [GitHub repository `haddock3/examples/`](https://github.com/haddocking/haddock3/tree/main/examples).
 
 
 Please note the extension scheme we are using in the provided configuration file examples:
@@ -40,8 +40,6 @@ Please note the extension scheme we are using in the provided configuration file
 
 
 ## Protein-protein docking
-
-HADDOCK was originally developped for the integrative modeling of protein-protein interactions.
 
 ### Two body docking
 
@@ -205,7 +203,9 @@ rair_end_1_6 = 215
 sampling = 10000
 
 ###
+# ....
 # Insert other modules here if you want
+# ....
 ###
 
 [flexref]
@@ -344,10 +344,6 @@ The OpenMM molecular dynamics engine has its own module in haddock3, where users
 It can be used as a refinement module, in implicit or explicit solvent.
 Note that the use of the `[openmm]` module is a thirdparty module that requires its own installation procedure that is not part of the standard haddock3 suite.
 
-#### As refinement module
-
-Simple MD simulation, without restraints !
-
 
 #### As quality assessment of a docking pose
 
@@ -365,19 +361,19 @@ molecules = "model_1.pdb"
 [topoaa]
 [openmm]
 # Define the timesteps
-timestep_ps = 0.002
+timestep_ps = 0.002  # default parameter
 # Increase the simulation timesteps (500000 * 0.002 = 10 ns)
 simulation_timesteps = 5000000
 # Save 100 intermediate frames
 save_intermediate = 100
 # Define force-field
-forcefield = 'amber14-all.xml'
+forcefield = 'amber14-all.xml'  # default parameter
 # Use TIP3P explicit water model
-explicit_solvent_model = 'amber14/tip3p.xml'
+explicit_solvent_model = 'amber14/tip3p.xml'  # default parameter
 # Keep HBonds rigid
-constraints = 'HBonds'
+constraints = 'HBonds'  # default parameter
 # Generate a final ensemble composed of all the frames
-generate_ensemble = true
+generate_ensemble = true  # default parameter
 
 [topoaa]
 # Compare the generated ensemble with the initial model
@@ -387,39 +383,6 @@ sort_by = "dockq"
 ```
 
 This protocol has been used during CAPRI round 55 for target 231, to validate the docking poses of the FLAG-peptide on the antibody (see: [CAPRI rounds 47-55 paper](https://www.biorxiv.org/content/10.1101/2024.09.16.613212v2)).
-
-
-## Scoring workflow
-
-### Energy minimised scoring
-
-`[emscoring]`
-
-### Short molecular dynamics in explicit solvent
-
-`[mdscoring]`
-
-
-### Using scoring command line
-
-
-Haddock3 also contain a simple command line interface that allows you to score a single pdb file.
-To do so, just run:
-```bash
-haddock3-score complex.pdb
-```
-
-This command is a short-cut to the following parameter file, and therefore can be really handy, as it simplify a lot the procedure, but is limitted to the scoring of a single model.
-```toml
-run_dir = "tmp_score"
-molecules = "complex.pdb"
-[topoaa]
-[emscoring]
-```
-
-For more details on the `haddock3-score` CLI, please refere to [this section](/software/haddock3/module/clis.md#haddock3-score).
-
-## Comparison to a reference structure
 
 
 ## Peptide cyclisation
@@ -447,22 +410,78 @@ A second round of `[emref]`, `[flexref]` and `[mdref]` is then performed, allowi
 
 The `[caprieval]` module is called at various stages during the workflow to assess the conformation of the peptide with respect to the known reference structure. Note that in this case, only the `global_rmsd` value is computed, as the structure is not a complex.
 
+## Scoring workflow
 
-## Analysis pipeline
+## Defining a haddock3 configuration file
+
+This example illustrates the use of Haddock3 for scoring purposes.
+In contrast to HADDOCK2.X, Haddock3 can score a heterogenous set of complexes within one run/workflow.
+In this example, four different types of complexes are scored within the same workflow:
+
+- an ensemble of 5 models taken from CAPRI Target161
+- a protein-DNA complex (model taken from our protein-DNA docking example)
+- two models of a protein-protein complex (taken from our protein-protein docking example)
+- a homotrimer model (taken from our protein-homotrimer docking examples)
+
+Two scoring workflows are illustrated:
+
+- [emscoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/emscoring-test.cfg): Only a short energy minimisation is performed on each model using `[emref]` module.
+- [mdscoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/mdscoring-test.cfg): A short molecular dynamics simulation in explicit solvent (water) is performed on each model using `[mdref]` module. In that case contact AIRs (`contactairs = true`), dihedral angle restraints on secondary structure element (`ssdihed = alphabeta`) and DNA restraints (`dnarest_on = true`) are automatically defined.
+- [mdscoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/mdscoring-test.cfg): An example scoring pipeline using in the CAPRI55 competition, where energy minimisation ()`[emref]`) is followed by FCC clustering (`[clustfcc]`) and selection of the top 2 models per cluster (`[seletopclusts]` with `top_models = 2`). Then a short molecular dynamics simulation in explicit solvent (water) is performed on each model using `[mdref]` module and the models are clustered again.
+
+The model listings with their associated HADDOCK scores can be found in a `.tsv` file in the stage `01_xxx` directory of the respective runs.
+
+
+### Using scoring command line
+
+
+Haddock3 also contain a simple command line interface that allows you to score a single pdb file.
+To do so, just run:
+```bash
+haddock3-score complex.pdb
+```
+
+This command is a short-cut to the following parameter file, and therefore can be really handy, as it simplify a lot the procedure, but is limitted to the scoring of a single model.
+```toml
+run_dir = "tmp_score"
+molecules = "complex.pdb"
+[topoaa]
+[emscoring]
+```
+
+For more details on the `haddock3-score` CLI, please refere to [this section](/software/haddock3/module/clis.md#haddock3-score).
+
+
+## Analysis scenario
 
 The addition and inclusion of analysis modules in haddock3 is one of its major new strength, as it allows to perform various kind of analysis directly during the workflow.
 For the complete list of analysis modules and their capabilities, please refere to the [Analysis Modules section](software/haddock3/manual/modules/analysis.md).
 
 
-### 
+### Comparison to a reference structure
+
+The `[caprieval]` module is dedicated to the computation of the CAPRI metrics (rmsd, interface-rmsd, ligand-rmsd, interface-ligand rmsd and dockq) on a set of input models. A reference structure can be provided using the `reference_fname` parameter. If this parameter is not defined, the best scoring model will be used as reference.
+
+An example is provided here: [topoaa-caprieval-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/topoaa-caprieval-test.cfg).
 
 
 ### Hot spot detection
 
-`[alascan]`
+The analysis of hot-spots and key residues involved in the interaction between two chain can be of valuable information for mutagenesis or design purposes.
+The `[alascan]` module is designed to perform point mutation of residues at the interface of a complex, and evaluate the difference in HADDOCK score with respect to the original input complex. It also splits the scoring function in its various components and generate an interactive graph allowing for a visual representation of the scanned resiudes contributions.
+
+An example is provided here: [alascan-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/alascan-test.cfg).
 
 
 ### Generation of contact maps
+
+While HADDOCK is producing 3D atomistic models, having the opportunity to have a 2D representation of the complexes can allow to understand at the sequence level the contacts involved in the compelex.
+The `[contactmap]` module is specially designed to produce interactive plots describing the contacts observed in the structures.
+It will produce two types of figures:
+- a pair-wise distance matrix between all residues
+- a chord chart recapitulating the residue-residue contacts observed
+
+An example is provided here: [contmap-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/contmap-test.cfg)
 
 
 ### Fine tuning clustering parameters
@@ -479,7 +498,7 @@ Here are some examples:
 - [fine tuning of the `clustfcc` parameters](https://github.com/haddocking/haddock3/blob/main/examples/analysis/plot-finetune-clustfcc.cfg).
 
 
-Note that fine tuning of clustering parameters can also be performed with the `haddock3-re` command, as both `[clustfcc]` and `[clustrmsd]` handle this `re`-computation approach.
+Note that fine tuning of clustering parameters can also be performed with the `haddock3-re` command, as both `[clustfcc]` and `[clustrmsd]` modules are subcommands of the `haddock3-re` CLI.
 
 
 # Web-application pre-defined scenario
