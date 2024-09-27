@@ -58,7 +58,7 @@ Welcome to the haddock3 user manual
 
 ### Available modules
 
-* [Module available in haddock3](/software/haddock3/manual/modules.md)
+More than 15 modules are currently available in HADDOCK3, grouped by category:
 * [Topology](/software/haddock3/manual/modules/topology)
 * [Sampling](/software/haddock3/manual/modules/sampling)
 * [Refinements](/software/haddock3/manual/modules/refinements)
@@ -68,7 +68,7 @@ Welcome to the haddock3 user manual
 
 ### Docking scenario examples
 
-* [Docking scenarios](/software/haddock3/manual/modules/docking_scenarios)
+* [Docking scenarios](/software/haddock3/manual/docking_scenarios)
 * [protein-protein docking]()
 * [antibody-antigen docking]()
 * [protein-ligand docking]()
