@@ -423,11 +423,11 @@ In this example, four different types of complexes are scored within the same wo
 - two models of a protein-protein complex (taken from our protein-protein docking example)
 - a homotrimer model (taken from our protein-homotrimer docking examples)
 
-Two scoring workflows are illustrated:
+Three scoring workflows are illustrated:
 
 - [emscoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/emscoring-test.cfg): Only a short energy minimisation is performed on each model using `[emref]` module.
 - [mdscoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/mdscoring-test.cfg): A short molecular dynamics simulation in explicit solvent (water) is performed on each model using `[mdref]` module. In that case contact AIRs (`contactairs = true`), dihedral angle restraints on secondary structure element (`ssdihed = alphabeta`) and DNA restraints (`dnarest_on = true`) are automatically defined.
-- [mdscoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/mdscoring-test.cfg): An example scoring pipeline using in the CAPRI55 competition, where energy minimisation ()`[emref]`) is followed by FCC clustering (`[clustfcc]`) and selection of the top 2 models per cluster (`[seletopclusts]` with `top_models = 2`). Then a short molecular dynamics simulation in explicit solvent (water) is performed on each model using `[mdref]` module and the models are clustered again.
+- [capri-scoring-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/scoring/capri-scoring-test.cfg): An example scoring pipeline using in the CAPRI55 competition, where energy minimisation ()`[emref]`) is followed by FCC clustering (`[clustfcc]`) and selection of the top 2 models per cluster (`[seletopclusts]` with `top_models = 2`). Then a short molecular dynamics simulation in explicit solvent (water) is performed on each model using `[mdref]` module and the models are clustered again.
 
 The model listings with their associated HADDOCK scores can be found in a `.tsv` file in the stage `01_xxx` directory of the respective runs.
 
