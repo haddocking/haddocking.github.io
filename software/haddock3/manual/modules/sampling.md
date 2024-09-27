@@ -9,7 +9,7 @@ image:
 
 # rigidbody module
 
-This module does a **randomization of orientations and rigid-body
+The ``[rigidbody]`` module does a **randomization of orientations and rigid-body
 minimization.** It corresponds to the classical ``it0`` step in the HADDOCK2.x
 series.
 
@@ -35,6 +35,24 @@ much better and the sampling can be limited. In *ab-initio* mode, however, very
 diverse solutions will be obtained and the sampling should be increased to make
 sure to sample enough the possible interaction space.
 
+The default HADDOCK scoring function in the rigid-body module is the following:
+
+![equ](https://latex.codecogs.com/gif.latex?HS=0.01E_{vdw}&plus;1.0E_{elec}&plus;0.01E_{air}&plus;1.0E_{desolv}-0.01BSA)
+
+For a detailed explanation of the components of the scoring function, please have a look [here](../haddocking.md#haddock-scoring-function).
+
+Throughout the years, the weights of the scoring function have been optimized for various systems. For example, when dealing with small molecules or glycans, it is recommended to scale up the van der Waals term:
+
+```bash
+...
+[rigidbody]
+w_vdw = 1.0
+...
+```
+
+![equ](https://latex.codecogs.com/gif.latex?HS_{small}=1.0E_{vdw}&plus;1.0E_{elec}&plus;0.01E_{air}&plus;1.0E_{desolv}-0.01BSA)
+
+Please refer to the [different docking scenarios](../docking_scenarios) for more information about how to tune the scoring function for your specific system.
 
 #### Notable parameters
 

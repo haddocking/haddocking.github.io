@@ -16,9 +16,14 @@ the conjugate gradient method implemented in CNS.
 
 Coordinates of the energy minimized structures are saved, and each
 complex is then evaluated using the HADDOCK scoring function.
+
+The default HADDOCK scoring function in the ``[emref]`` module is the following:
+
+![equ](https://latex.codecogs.com/gif.latex?HS=1.0E_{vdw}&plus;0.2E_{elec}&plus;0.1E_{air}&plus;1.0E_{desolv})
+
 #### Notable parameters
 
-The most important parameters for the ``[flexref]`` module are:
+The most important parameters for the ``[emref]`` module are:
 
 - `ambig_fname`: file containing the ambiguous interaction restraints (AIRs)
 - `unambig_fname`: file containing the unambiguous interaction restraints
@@ -54,6 +59,10 @@ allowed to move throughout the entire protocol from the high temperature rigid
 body molecular dynamics on.
 
 The temperature and number of steps for the various stages can be tuned.
+
+The default HADDOCK scoring function in the ``[flexref]`` module is the following:
+
+![equ](https://latex.codecogs.com/gif.latex?HS=1.0E_{vdw}&plus;1.0E_{elec}&plus;0.1E_{air}&plus;1.0E_{desolv}-0.01BSA)
 
 #### Notable parameters
 
@@ -92,6 +101,10 @@ The `mdref` protocol is composed of 4 sequential steps:
 
 Using this protocol, with default parameters, no spectacular changes are
 expected, however, the scoring of the various structures might be improved.
+
+The default HADDOCK scoring function in the ``[mdref]`` module is the following:
+
+![equ](https://latex.codecogs.com/gif.latex?HS=1.0E_{vdw}&plus;0.2E_{elec}&plus;0.1E_{air}&plus;1.0E_{desolv})
 
 #### Notable parameters
 
