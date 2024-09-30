@@ -58,6 +58,17 @@ define the semi-flexible regions, and also define fully flexible regions that ar
 allowed to move throughout the entire protocol from the high temperature rigid
 body molecular dynamics on.
 
+<details >
+  <summary style="bold">
+  <b><i>See animation of flexref protocol:</i></b>
+  </summary>
+  <figure align="center">
+    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
+  </figure>
+  </details>
+  <br>
+
+
 The temperature and number of steps for the various stages can be tuned.
 
 The default HADDOCK scoring function in the ``[flexref]`` module is the following:
@@ -98,6 +109,17 @@ The `mdref` protocol is composed of 4 sequential steps:
 - 3 stages of molecular dynamics to reach 300K (at 100, 200 and 300K)
 - Molecular dynamics at 300K.
 - 3 stages of molecular dynamics, to reach 100K (at 300, 200 and 100K)
+
+
+<details >
+ <summary style="bold">
+ <b><i>See animation of mdref protocol:</i></b>
+ </summary>
+ <figure align="center">
+   <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_water.gif">
+ </figure>
+ </details>
+ <br>
 
 Using this protocol, with default parameters, no spectacular changes are
 expected, however, the scoring of the various structures might be improved.

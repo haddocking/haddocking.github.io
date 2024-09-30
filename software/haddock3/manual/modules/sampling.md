@@ -35,6 +35,16 @@ much better and the sampling can be limited. In *ab-initio* mode, however, very
 diverse solutions will be obtained and the sampling should be increased to make
 sure to sample enough the possible interaction space.
 
+<details >
+<summary style="bold">
+<b><i>See animation of the rigidbody protocol:</i></b>
+</summary>
+<figure align="center">
+  <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_mini.gif">
+</figure>
+</details>
+<br>
+
 The default HADDOCK scoring function in the rigid-body module is the following:
 
 ![equ](https://latex.codecogs.com/gif.latex?HS=0.01E_{vdw}&plus;1.0E_{elec}&plus;0.01E_{air}&plus;1.0E_{desolv}-0.01BSA)
