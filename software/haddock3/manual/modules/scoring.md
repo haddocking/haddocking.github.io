@@ -14,6 +14,12 @@ EM scoring module.
 This module performs energy minimization and scoring of the models generated in
 the previous step of the workflow. No restraints are applied during this step.
 
+The default HADDOCK scoring function in the ``[emscoring]`` module is therefore the following:
+
+![equ](https://latex.codecogs.com/gif.latex?HS=1.0E_{vdw}&plus;0.2E_{elec}&plus;0.0E_{air}&plus;1.0E_{desolv})
+
+For a detailed explanation of the components of the scoring function, please have a look [here](../haddocking.md#haddock-scoring-function).
+
 #### Notable parameters
 
 The most important parameters for the ``[emscoring]`` module are:
@@ -34,6 +40,10 @@ MD scoring module.
 
 This module will perform a short MD simulation on the input models and
 score them. No restraints are applied during this step.
+
+The same scoring function as in the ``[emscoring]`` module is used:
+
+![equ](https://latex.codecogs.com/gif.latex?HS=1.0E_{vdw}&plus;0.2E_{elec}&plus;0.0E_{air}&plus;1.0E_{desolv})
 
 #### Notable parameters
 
