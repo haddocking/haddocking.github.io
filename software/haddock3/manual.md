@@ -61,7 +61,7 @@ Welcome to the haddock3 user manual
 More than 15 modules are currently available in HADDOCK3, grouped by category:
 * [Topology](/software/haddock3/manual/modules/topology)
 * [Sampling](/software/haddock3/manual/modules/sampling)
-* [Refinements](/software/haddock3/manual/modules/refinements)
+* [Refinement](/software/haddock3/manual/modules/refinement)
 * [Scoring](/software/haddock3/manual/modules/scoring)
 * [Analysis](/software/haddock3/manual/modules/analysis)
 
