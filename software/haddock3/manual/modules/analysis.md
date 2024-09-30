@@ -136,6 +136,20 @@ as most models will share a consistent fraction of contacts, while still being s
 In [this paper](https://www.biorxiv.org/content/10.1101/2024.07.31.605986v1), we show that, in the context of protein-glycan docking, RMSD clustering performed after 
 ``[rigidbody]`` docking increases the success rate. A detailed tutorial on this specific case is available [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-glycan/).
 
+Example application of the ``[clustrmsd]`` module after rigid-body docking, retrieving 50 clusters:
+
+```bash
+...
+[rigidbody]
+ambig_fname = ambiguous_restraints.tbl
+[rmsdmatrix]
+resdic_A = [1,2,3,4]
+resdic_B = [2,3,4,5]
+[clustrmsd]
+n_clusters = 50
+...
+```
+
 #### Notable parameters
 
 The most important parameters for the ``[clustrmsd]`` module are:
