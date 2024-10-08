@@ -13,16 +13,17 @@ This tutorial consists of the following sections:
 
 
 <hr>
+
 ## Introduction
 
 In this tutorial, your task is to determine the oligomeric state of a homomeric symmetrical complex and model its 3D structure, based on cross-linking data obtained by mass spectrometry.
 Note that for the purpose of this tutorial we are using simulated data that would correspond to rather short cross-linkers that are not amino-acid specific.
-We are also assuming that all detected cross-links are highly reliable, i.e. there are no false positives in our data.
+We are also assuming that **all detected cross-links are highly reliable**, i.e. there are no false positives in our data.
 (This differs thus from our [DisVis Webserver Tutorial](/education/Others/disvis-webserver) in which you first have to identify false positives).
 
-You will first use our DisVis web server to analyse the data and visualise the accessible interaction space defined by the cross-links.
+You will first use our [DisVis web server](https://wenmr.science.uu.nl/disvis/) to analyse the data and visualise the accessible interaction space defined by the cross-links.
 Based on those results you should then make a choice about the putative oligomeric state of the complex (e.g. homodimer, homotrimer, homotetramer,...)
-and then try to model its 3D structure using our HADDOCK web portal. This means defining the cross-links as distance restraints to guide the docking
+and then try to model its 3D structure using our [HADDOCK2.4 web portal](https://wenmr.science.uu.nl/haddock2.4/). This means defining the cross-links as distance restraints to guide the docking
 and imposing symmetry restraints to generate the proper homomeric complex. Those two aspects are described in two related online tutorials:
 
 * [**HADDOCK2.4 MS cross-links tutorial**](/education/HADDOCK24/HADDOCK24-Xlinks/):
@@ -34,7 +35,7 @@ and imposing symmetry restraints to generate the proper homomeric complex. Those
 
 For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
 
-A description of DisVis and the previous major version of our web server [HADDOCK2.2](https://alcazar.science.uu.nl/services/HADDOCK2.2/) can be found in the following publications:
+A description of DisVis and the major versions of our HADDOCK web server can be found in the following publications:
 
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
 [The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](https://doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
@@ -43,6 +44,10 @@ _J. Mol. Biol._. *429(3)*, 399-407 (2016).
 * G.C.P van Zundert and A.M.J.J. Bonvin.
 [DisVis: Quantifying and visualizing accessible interaction space of distance-restrained biomolecular complexes](https://doi.org/doi:10.1093/bioinformatics/btv333){:target="_blank"}.
   _Bioinformatics_ *31*, 3222-3224 (2015).
+
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and A.M.J.J. Bonvin.
+[The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D).
+_Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
 * G.C.P. van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries, A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}
@@ -60,22 +65,24 @@ _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010).
 
 
 Throughout the tutorial, coloured text will be used to refer to questions,
-instructions, and PyMol commands.
+instructions, and PyMOL  commands.
 
 <a class="prompt prompt-question">This is a question prompt: Answer it! (This will be part of the report you should submit)</a>
 <a class="prompt prompt-info">This is an instruction prompt: follow it!</a>
-<a class="prompt prompt-pymol">This is a PyMol prompt: write this in the PyMol command line prompt!</a>
+<a class="prompt prompt-pymol">This is a PyMOL  prompt: write this in the PyMOL  command line prompt!</a>
 
 <hr>
+
 ## Setup/Requirements
 
 In order to follow this tutorial you only need a **web browser**, a **text editor** and [**PyMOL**][link-pymol]{:target="_blank"}
 (freely available for most operating systems) on your computer in order to visualize the input and output data.  
 
-Further, the required data to run this tutorial should be downloaded from [**here**](/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip).
+Further, the required data to run this tutorial should be aquired [**from this download link here**](/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip).
 Once downloaded, make sure to unzip the archive.
 
 <hr>
+
 ## Inspecting the data
 
 Let us first inspect the available data, namely the structure of the monomeric protein and the cross-links.
@@ -137,6 +144,7 @@ Or differently said, is any of those distances shorter than 10Å?
 In case you do identify a crosslink that could be explained by an intramolecular contact (within the same monomer), exclude it from all steps in the remaining part of this tutorial.
 
 <hr>
+
 ## Visualizing the accessible interaction space with DisVis
 
 DisVis is a software we developed that allows you to visualize and quantify the information content of distance restraints between macromolecular complexes.
@@ -215,14 +223,15 @@ If the input fields have been correctly filled you should be redirected to a sta
 indicating that your run has been successfully submitted.
 While performing the search, the DisVis web server will update you on the progress of the
 job by reloading the status page every 30 seconds.
-The runtime of this example case is below  5 minutes on our local CPU and grid GPU servers. However the load of the server as well as
+The runtime of this example case is usually below 5 minutes on our local CPU and grid GPU servers. However the load of the server as well as
 pre- and post-processing steps might substantially increase the time until the results are available.
 
-The default on the server is to perform a `quick scanning` (meaning `15.00°` rotational sampling and `2.0Å` grid) in order to get results in a reasonable time.
+The default on the server is to perform a `quick scanning` grid search (meaning `15.00°` rotational sampling and `2.0Å` grid) in order to get results in a reasonable time.
 You can however choose to perform a `complete scanning`, which should give more reliable results (`9.72°` rotational sampling and `1.0Å` grid).
 
 
 <hr>
+
 ## Analysing the DisVis results
 
 **Web server output**
@@ -230,8 +239,12 @@ You can however choose to perform a `complete scanning`, which should give more 
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification).
 
-If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input and complete scanning [here](https://wenmr.science.uu.nl/disvis/run/gQH_3T7grzrD){:target="_blank"}.
+<details style="background-color:#DAE4E7">
+<summary>See solution</summary>
+If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
+with the same input and complete scanning [here](https://wenmr.science.uu.nl/disvis/run/rth_3XwWbRcd){:target="_blank"}.
+<br>
+</details>
 
 The results page presents a summary split into several sections:
 
@@ -305,7 +318,7 @@ be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs
 Distance restraints are defined as follows:
 
 <pre>
-assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound correction
@@ -323,7 +336,7 @@ E. g. a distance restraint between the CB carbons of residues 10 and 200 in chai
 allowed distance range between 10 and 20Å would be defined as follows:
 
 <pre>
-assi (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
+assign (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
 </pre>
 
 <a class="prompt prompt-question">
@@ -335,14 +348,14 @@ A HADDOCK-compatible distance restraint file based on the cross-links defined ab
 It contains the following distance restraints (8 in total):
 
 <pre>
-assi (segid A and resid  40   and name  CA ) (not segid A and resid  252  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  90   and name  CA ) (not segid A and resid  176  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  135  and name  CA ) (not segid A and resid  158  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  161  and name  CA ) (not segid A and resid  132  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  252  and name  CA ) (not segid A and resid   40  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  176  and name  CA ) (not segid A and resid   90  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  158  and name  CA ) (not segid A and resid  135  and name  CA )  10.0 7.0 0.0
-assi (segid A and resid  132  and name  CA ) (not segid A and resid  161  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  40   and name  CA ) (not segid A and resid  252  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  90   and name  CA ) (not segid A and resid  176  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  135  and name  CA ) (not segid A and resid  158  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  161  and name  CA ) (not segid A and resid  132  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  252  and name  CA ) (not segid A and resid   40  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  176  and name  CA ) (not segid A and resid   90  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  158  and name  CA ) (not segid A and resid  135  and name  CA )  10.0 7.0 0.0
+assign (segid A and resid  132  and name  CA ) (not segid A and resid  161  and name  CA )  10.0 7.0 0.0
 </pre>
 
 Since we might be docking various numbers of monomers - and we thus don't know to which monomer a cross-link should be defined,
@@ -395,7 +408,7 @@ PDB structure to submit -> Browse and select *monomer-B.pdb*
 Segment ID to use during docking -> B
 </a>
 
-* **Step 4X:** Repeat Step3 as many times to complete the number of molecules you chose in Step2. For this unfold the **Third Molecule menu** and additional ones as needed.
+* **Step 4':** Repeat Step4 as many times to complete the number of molecules you chose in Step2. For this unfold the **Third/Fourth/Fifth Molecule menu** and additional ones as needed.
 
 <a class="prompt prompt-info">
 XX molecule: where is the structure provided? -> "I am submitting it"
@@ -457,6 +470,7 @@ Eair 3	 -> 1.0<br>
 
 
 <hr>
+
 ## Analysing the docking results
 
 Once you docking run has completed you will be presented with a result page (and in case you registered for the server an email will be sent to you).
@@ -465,12 +479,17 @@ The ranking of the clusters is based on the HADDOCK score. Consult the online [H
 pages for an explanation of the scoring scheme and the default weights used at various stages.
 Remember that we have increased the weight of the distance restraints for our runs since we wanted to put more weight on the cross-links which we considered highly reliable.
 
-Don't want to wait for your results?  
 
+<details style="background-color:#DAE4E7">
+<summary>Don't want to wait for your results?</summary>
 The completed dimer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-dimer){:target="_blank"}.  
 The completed trimer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-trimer){:target="_blank"}.  
 The completed tetramer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-tetramer){:target="_blank"}.  
-The completed pentamer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-pentamer){:target="_blank"}.    
+The completed pentamer run can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/XL-MS-pentamer){:target="_blank"}.  
+<br>
+</details>
+  
+
 <br>
 
 Answer the following questions:
@@ -481,10 +500,10 @@ Answer the following questions:
 
 <a class="prompt prompt-question"><b>Q10:</b>  Which cluster has the smallest restraints violation energy (meaning it satisfies best the cross-link restraints) ?</a>
 
-Now download the top model of each cluster and inspect them in PyMol:
+Now download the top model of each cluster and inspect them in PyMOL :
 
 <a class="prompt prompt-info">
-  PyMOL Menu → File → Open... → Select the file
+  PyMOL  Menu → File → Open... → Select the file
 </a>
 
 If you want to use the PyMOL command-line instead, type the following command:
@@ -499,7 +518,7 @@ This will display the docking model in cartoon mode, with each chain colored dif
 
 <a class="prompt prompt-question"><b>Q11:</b>  Do the models show the symmetry that you defined?</a>
 
-<a class="prompt prompt-question"><b>Q12:</b>  If two clusters have rather similar scores (possibly overlapping within their standard deviations), compare them in PyMol. What are the differences?</a>
+<a class="prompt prompt-question"><b>Q12:</b>  If two clusters have rather similar scores (possibly overlapping within their standard deviations), compare them in PyMOL . What are the differences?</a>
 
 Now select what you consider is your best model and check if it satisfies the defined cross-links. For this we need to check all possible combinations between the chains.
 For example for the first cross-link between residues 40 and 252 we should calculate all possible distances between residue 40 of chainA and residue 252 of all other chains in the model:
@@ -529,6 +548,7 @@ _"Occam's razor (also Ockham's razor; Latin: lex parsimoniae "law of parsimony")
 
 
 <hr>
+
 ## Your report
 
 Congratulations! You should have completed this assignment. For your report we expect the following:
@@ -541,6 +561,7 @@ Make sure to write your name and student number at the top of your report.
 
 <br>
 <hr>
+
 ## Bonus: Predicting the oligomeric state with AlphaFold2
 
 With the advent of Artificial Intelligence (AI) and AlphaFold you could also try to predict with AlphaFold the oligomeric state of this protein.
@@ -554,6 +575,7 @@ _Note_ that the bottom part of the notebook contains instructions on how to use 
 
 
 <br>
+
 ### Setting up the homomeric complex prediction with AlphaFold2
 
 
@@ -602,6 +624,7 @@ Pre-calculated AlphFold2 predictions are provided here. The corresponding zip fi
 
 
 <br>
+
 ### Analysis of the generated models
 
 While the notebook is running models will appear first under the `Run Prediction` section, colored both by chain and by pLDDT.
@@ -651,12 +674,12 @@ Values range from 0 to 35 Angstroms. It is usually shown as a heatmap image with
     Which oligomeric state shows the highest confidence in the domain (monomer) - domain positions?
 </a>
 
-If you download the results, you can visualize the prediction confidence in PyMol by coloring the model by B-factor.
+If you download the results, you can visualize the prediction confidence in PyMOL  by coloring the model by B-factor.
 
 <details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
-    <i>See tips on how to visualize the prediction confidence in PyMol</i>
+    <i>See tips on how to visualize the prediction confidence in PyMOL </i>
   </summary>
 
   <br>
@@ -666,14 +689,18 @@ If you download the results, you can visualize the prediction confidence in PyMo
     util.cbc
   </a>
 
-  When looking at the structures generated by AlphaFold in PyMol, the pLDDT is encoded as the B-factor. Analyze what is the pLDDT of prediction around the interaction interface.
-  To color the model according to the pLDDT type in PyMol:
+  When looking at the structures generated by AlphaFold in PyMOL , the pLDDT is encoded as the B-factor. Analyze what is the pLDDT of prediction around the interaction interface.
+  To color the model according to the pLDDT type in PyMOL :
 
   <a class="prompt prompt-pymol">
     spectrum b
   </a>
 
 </details>
+
+
+## Bonus: Predicting the oligomeric state with AlphaFold3
+
 
 
 <hr>
