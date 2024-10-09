@@ -441,6 +441,7 @@ The protein sequence starts at residue 32 and ends at residue 254. Use those num
 
 <a class="prompt prompt-info">
 Use this type of restraints	 -> switch on
+Number of CX symmetry segment pairs 	 -> 1
 </a>
 <a class="prompt prompt-info">
 For the symmetry that matches your chosen oligomeric state (C2, C3, C4 or C5), unfold the first CX symmetry segment menu and enter the first and last residue numbers and specify the chainID for each monomer.
@@ -534,7 +535,7 @@ Another way of thinking about your choice is to apply Occam's razor (see [Wikipe
 
 _"Occam's razor (also Ockham's razor; Latin: lex parsimoniae "law of parsimony") is a problem-solving principle that, when presented with competing hypothetical answers to a problem, one should select the one that makes the fewest assumptions."_
 
-<a class="prompt prompt-question"><b>Q14:</b>  FINALLY, based on all above analysis, what is your conclusion concerning the oligomeric state and symmetry of this complex?
+<a class="prompt prompt-question"><b>Q14:</b>  FINALLY, based on all above analysis, what is your conclusion concerning the oligomeric state and symmetry of this complex?</a>
 
 
 <hr>
@@ -595,7 +596,7 @@ In the top section of the Colab, click: _Runtime > Run All_
 (It may give a warning that this is not authored by Google, because it is pulling code from GitHub). This will automatically install, configure and run AlphaFold for you - leave this window open. After the prediction complete you will be asked to download a zip-archive with the results.
 
 <br><br>
-Time to grap a cup of tea or a coffee!
+Time to grab a cup of tea or a coffee!
 And while waiting try to answer the following questions:
 
 <a class="prompt prompt-question">
@@ -689,9 +690,99 @@ If you download the results, you can visualize the prediction confidence in PyMO
 </details>
 
 
-## Bonus: Predicting the oligomeric state with AlphaFold3
+## Bonus II: Predicting the oligomeric state with AlphaFold3
+
+The newest version of AlphaFold (AlphaFold3) has recently been published: [Abramson J, __et al._ __Accurate structure prediction of biomolecular interactions with AlphaFold 3.__ _Nature. 2024_](https://ww.nature.com/articles/s41586-024-07487-w).
+This new version is not only an improved one compared to its predecessor in terms of accuracy and speed, but it also allows us to now deal with supplementary biochemical entities such as nucleotides, post-translational modifications and some lipides, glycans and co-factors.
+While the source code is not yet available for local installations, a dedicated webserver is provided to use the tool.
+It currently allows generating up to 20 modeling procedures per days, which is sufficient for the purpose of this tutorial.
 
 
+To run it, go to [https://golgi.sandbox.google.com/](https://golgi.sandbox.google.com/).
+For this you will need a google account.
+
+### Setting up the homomeric complex prediction with AlphaFold3
+
+* **Step 1:** Select molecule type: Protein
+* **Step 2:** Copies: X (where X is the oligomeric state you want to model)
+* **Step 3:** Add the protein sequence.
+
+The sequence of our protein is the following:
+<pre>
+QAFWKAVTAEFLAMLIFVLLSLGSTINWGGTEKPLPVDMVLISLCFGLSIATMVQCFGHISGGHINPAVTVAMVCTRKISIAKSVFYIAAQCLGAIIGAGILYLVTPPSVVGGLGVTMVHGNLTAGHGLLVELIITFQLVFTIFASCDSKRTDVTGSIALAIGFSVAIGHLFAINYTGASMNPARSFGPAVIMGNWENHWIYWVGPIIGAVLAGGLYEYVFCP
+</pre>
+* **Step 4:** Click on "Continue and preview job"
+* **Step 5:** Job Name: X-mer.
+* **Step 6:** Switch the seed button on and select a pseudo-random seed for your run.
+* **Step 7:** Click on "Confirm and submit job"
+
+All your submitted jobs will be displayed in a table at the bottom of the page.
+This recapitulates their status (running or succeeded), their name and the time they were created.
+__Note__ that you can have multiple jobs running concurrently. This will allow you to try-out multiple oligomeric states simply by modifying the number of copies in __step 2__, and re-submitting.
+
+
+Time to grab a cup of tea or a coffee!
+And while waiting, try to answer the following questions:
+
+<a class="prompt prompt-question">
+    How do you interpret AlphaFold's predictions? What are the predicted LDDT (pLDDT), PAE, PTM, iPTM?
+</a>
+
+_Tip_: Try to find information about the prediction confidence at [https://golgi.sandbox.google.com/faq#how-can-i-interpret-confidence-metrics-to-check-the-accuracy-of-structures](https://golgi.sandbox.google.com/faq#how-can-i-interpret-confidence-metrics-to-check-the-accuracy-of-structures)
+
+Pre-calculated AlphFold3 predictions are provided here.
+The single zip archive contains the four different runs tested.
+Each run consits of an archive containing information about the run and five predicted models (the naming indicates the rank).
+
+* [`AlphaFold3Server-runs.zip`](/education/HADDOCK24/XL-MS-oligomer/AlphaFold3Server-runs.zip)
+  - `fold_dimer.zip`: contains the dimer run results (copies = 2)
+  - `fold_trimer.zip`: contains the trimer run results (copies = 3)
+  - `fold_tetramer.zip`: contains the tetramer run results (copies = 4)
+  - `fold_pentamer.zip`: contains the pentamer run results (copies = 5)
+
+
+### Analysis of the generated models
+
+Once the run is finished and the status reached succeeded, you can click on one of the table rows to go to the provided visualizing tool.
+
+On the top, best model metrics will be shown (ipTM and PTM), and in the visualizer, residues are colored based on their pLDDT values.
+
+Take time to look at the generated models and the arrangement of the various monomers. When submitting our prediction, we only defined the number monomers, but not the symmetry.
+
+<a class="prompt prompt-question">
+    Does AlphaFold3 generate symmetrical solutions? Compare results from different oligomeric states.
+</a>
+
+Consider the `iPTM` score (value between 0 and 1) of the various oligomeric states (assuming that you run the notebook with different oligomeric states).
+
+<a class="prompt prompt-question">
+    Which oligomeric state results in the highest iPTM score?
+</a>
+
+<details style="background-color:#DAE4E7">
+
+  <summary style="font-weight: bold">
+    <i>View the AlphaFold3 scores of the best model of each predicted oligomeric state from the above archive</i>
+  </summary>
+
+<pre>
+Dimer:     ipTM = 0.77,   pTM = 0.86
+Trimer:    ipTM = 0.83,   pTM = 0.86
+Tetramer:  ipTM = 0.90,   pTM = 0.91
+Pentamer:  ipTM = 0.74,   pTM = 0.78
+</pre>
+
+</details>
+
+
+The AlphaFold3 viewer does not allow you to visualize all the generated models.
+To do so, you will need to download (or obtain from the pre-computed results above), and use external tools to analyze all the generated models.
+You can either visualize them on PyMOL, but it will require you to load all the models separately, and you will not gain access to all the computed metrics related to the run.
+Or use a dedicated online tool [AlphaFold3 viewer](https://wenmr.science.uu.nl/af3viewer/), that allows you to load the entire archive at once and visualize the various metrics.
+
+<a class="prompt prompt-question">
+    What differences can you observe between the best-ranked model and the other ones?
+</a>
 
 <hr>
 
