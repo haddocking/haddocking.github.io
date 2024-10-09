@@ -35,7 +35,8 @@ and imposing symmetry restraints to generate the proper homomeric complex. Those
 
 For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
 
-A description of DisVis and the major versions of our HADDOCK web server can be found in the following publications:
+
+A description of DisVis and of the HADDOCK2.4 web server can be found in the following publications:
 
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
 [The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](https://doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
@@ -49,13 +50,6 @@ _J. Mol. Biol._. *429(3)*, 399-407 (2016).
 [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D).
 _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
-* G.C.P. van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries, A.M.J.J. Bonvin.
-[The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes.](https://doi.org/doi:10.1016/j.jmb.2015.09.014){:target="_blank"}
-_J. Mol. Biol._ *428(4)*, 720-725 (2016).
-
-* S.J. de Vries, M. van Dijk and A.M.J.J. Bonvin.
-[The HADDOCK web server for data-driven biomolecular docking.](https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html)
-_Nature Protocols_, *5*, 883-897 (2010).
 
 Further, multi-body docking and the use of symmetry restraints is described in the following paper:
 
