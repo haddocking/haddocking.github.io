@@ -14,21 +14,26 @@ This tutorial consists of the following sections:
 
 
 <hr>
+
 ## Introduction
 
 This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from MS cross-linking data. 
 The case we will be investigating is the interaction between two proteins of the 26S proteasome of *S. pombe*, PRE5 
 (UniProtKB: [O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)). 
-For this complex seven experimentally determined cross-links (4 ADH & 3 ZL) are available 
+For this complex seven experimentally determined cross-links (4 Adipic acid dihydrazide (ADH) & 3 Zero-length (ZL)) are available 
 ([Leitner et al., 2014](https://doi.org/10.1073/pnas.1320298111)). The tutorial builds on our [DisVis tutorial](/education/Others/disvis-webserver)
 to evaluate the information content of MS cross-links and identify possible false positive. Another feature of DisVis is,
 that it allows to identify the surface residues that are most often contacted in all possible models of the complex 
 satisfying the cross-links. This is an additional information which might be useful to guide the docking.
 
 We will thus be making use of the results of the [DisVis tutorial](/education/Others/disvis-webserver) to setup various 
-docking runs using our [HADDOCK2.2 webserver](https://alcazar.science.uu.nl/services/HADDOCK2.2).
+docking runs using our [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/services/HADDOCK2.4).
 
 A description of our web server can be found in the following publications:
+
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and A.M.J.J. Bonvin.
+[The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D).
+_Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  A.M.J.J. Bonvin.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
@@ -48,19 +53,21 @@ instructions, and/or PyMOL commands.
 
 
 <hr>
+
 ## Setup/Requirements
 
 In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**PyMOL**][link-pymol]{:target="_blank"} 
 (freely available for most operating systems) on your computer in order to visualize the input and output data.  
 Further, the required data to run this tutorial are the same as for the [DisVis tutorial](/education/Others/disvis-webserver) 
-and should be downloaded from [**here**](/education/disvis-webserver/disvis-tutorial.zip).
+and should be aquired from [**this download link**](/education/disvis-webserver/disvis-tutorial.zip).
 Once downloaded, make sure to unpack the archive.
 
 
 <hr>
+
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.2](https://www.bonvinlab.org/software/haddock2.2)) 
+HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4)) 
 is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr)) that harness the 
 power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org)) for structure 
 calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability, inherited 
@@ -121,11 +128,12 @@ sampled. Effectively, the 1000 models written to disk are thus the results of th
 The final models are automatically clustered based on a specific similarity measure - either the *positional interface 
 ligand RMSD* (iL-RMSD) that captures conformational changes about the interface by fitting on the interface of the 
 receptor (the first molecule) and calculating the RMSDs on the interface of the smaller partner, or the *fraction of 
-common contacts* (current default) that measures the similarity of the intermolecular contacts. For RMSD clustering, 
-the interface used in the calculation is automatically defined based on an analysis of all contacts made in all models. 
+common contacts* (FCC), which is the current default, that measures the similarity of the intermolecular contacts. For RMSD clustering, 
+the interface used in the calculation is automatically defined based on an analysis of all intermolecular contacts made in all models. 
 
 
 <hr>
+
 ## The information at hand
 
 Let us first inspect the available data, namely the two individual structures (or rather homology models) as well as 
@@ -133,8 +141,8 @@ the information from MS we have at hand to guide the docking.
 
 In the data you downloaded you will find two PDB files for PRE5 (UniProtKB: 
 [O14250](https://www.uniprot.org/uniprot/O14250)) and PUP2 (UniProtKB: [Q9UT97](https://www.uniprot.org/uniprot/Q9UT97)), 
-the components of the complex we are modeling. If you click on the UniProtLB entries and search for the available 
-structural information you will see that no experimental structures are available for those. What we will be using here 
+the components of the complex we are modeling. If you click on the UniProtKB entries and search for the available 
+structural information, you will see that no experimental structures are available for those. What we will be using here 
 are homology models obtained from [SwissModel](https://swissmodel.expasy.org/repository) (this can also be seen in the 
 content of the PDB file if you open it in a text editor for example).
 
@@ -288,6 +296,7 @@ show surface<br>
 </details>
 
 <hr>
+
 ## Scenarios for docking - how to make use of MS data in HADDOCK
 
 We have two types of data:
@@ -318,7 +327,7 @@ be found in our [Nature Protocol](https://www.nature.com/nprot/journal/v5/n5/abs
 Distance restraints are defined as:
 
 <pre>
-assi (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound correction
@@ -332,7 +341,7 @@ Here would be an example of a distance restraint between the CB carbons of resid
 allowed distance range between 10 and 20Å:
 
 <pre>
-assi (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
+assign (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
 </pre>
 
 <a class="prompt prompt-question">
@@ -351,13 +360,13 @@ create now a distance restraint file suitable for use in HADDOCK.
 <summary>See solution:
 </summary>
 <pre>
-assi (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
-assi (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
-assi (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
-assi (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
-assi (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
-assi (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
-assi (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 27  and name CA) (segid B and resid 18  and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 125 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 128 and name CA)  23 23 0
+assign (segid A and resid 122 and name CA) (segid B and resid 127 and name CA)  23 23 0
+assign (segid A and resid 55  and name CA) (segid B and resid 169 and name CA)  26 26 0
+assign (segid A and resid 55  and name CA) (segid B and resid 179 and name CA)  26 26 0
+assign (segid A and resid 54  and name CA) (segid B and resid 179 and name CA)  26 26 0
 </pre>
 </details>
 
@@ -366,10 +375,11 @@ __Note:__ Under Linux (or OSX), this file could be generated automatically from 
  file provided with the data for this tutorial by giving the following command (one line) in a terminal window:_
 
 <a class="prompt prompt-linux">
-cat restraints_filtered.txt | awk \'{if ( NF == 8 ) {print \"assi ( segid \",$1,\" and resid \",$2,\" and name \",$3,\" ) ( segid \",$4,\" and resid \",$5,\" and name \",$6,\" ) \",$8,$8,$7}}\' > restraints_filtered.tbl
+cat restraints_filtered.txt | awk \'{if ( NF == 8 ) {print \"assign ( segid \",$1,\" and resid \",$2,\" and name \",$3,\" ) ( segid \",$4,\" and resid \",$5,\" and name \",$6,\" ) \",$8,$8,$7}}\' > restraints_filtered.tbl
 </a>
 
 <hr>
+
 ## Register for the HADDOCK web server
 
 [Register][link-haddock-register]{:target="_blank"} for getting access to the web server (or use the credentials 
@@ -379,13 +389,14 @@ Fill the required information. Registration is not automatic but is usually proc
 Once you got your credentials, you will need to request access to the expert server in order to complete this tutorial.
 
 <hr>
+
 ## Setting up the docking from cross-link restraints (scenario 1)
 
 We will now launch the docking run. For this scenario we will make us of the [expert interface][link-haddock-expert]{:target="_blank"}
 of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
+https://wenmr.science.uu.nl/services/HADDOCK2.2/haddockserver-expert.html
 </a>
 
 __Note:__ _The blue bars on the server can be folded/unfolded by clicking on the arrow on the right._
@@ -450,7 +461,7 @@ containing all settings and input data of your run.
 </figure>
 
 We strongly recommend to save this haddockparameter file since it will allow you to repeat the run by simply uploading it into the 
-[file upload interface](https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
+[file upload interface](https://wenmr.science.uu.nl/services/HADDOCK2.2/haddockserver-file.html) of the HADDOCK webserver. 
 It can thus serve as input reference for the run. This file can also be edited to change a few parameters, 
 for example increasing the number of models generated. 
 
@@ -497,12 +508,13 @@ job has successfully completed.
 
 
 <hr>
+
 ## Setting up the docking with the DisVis-derived interfaces (scenario 2)
 
 For this scenario we will make us of the [easy interface][link-haddock-easy]{:target="_blank"} of the HADDOCK web server:
 
 <a class="prompt prompt-info">
-https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
+https://wenmr.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html
 </a>
 
 * **Step1:** Define a name for your docking run, e.g. *PRE5-PUP2-MS-interface*.
