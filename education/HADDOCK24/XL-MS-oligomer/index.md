@@ -751,7 +751,7 @@ Once the run is finished and the status reached succeeded, you can click on one 
 
 On the top, best model metrics will be shown (ipTM and PTM), and in the visualizer, residues are colored based on their pLDDT values.
 
-Take time to look at the generated models and the arrangement of the various monomers. When submitting our prediction, we only defined the number monomers, but not the symmetry.
+Take time to look at the generated models and the arrangement of the various monomers. When submitting our prediction, we only defined the number of monomers, but not the symmetry.
 
 <a class="prompt prompt-question">
     Does AlphaFold3 generate symmetrical solutions? Compare results from different oligomeric states.
