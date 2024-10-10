@@ -702,7 +702,7 @@ While the source code is not yet available for local installations, a dedicated 
 It currently allows to generate up to 20 predictions per day, which is sufficient for the purpose of this tutorial.
 
 
-To run it, go to [https://golgi.sandbox.google.com/](https://golgi.sandbox.google.com/).
+To run Alphafold3, go to [https://golgi.sandbox.google.com/](https://golgi.sandbox.google.com/).
 For this you will need a google account.
 
 ### Setting up the homomeric complex prediction with AlphaFold3
