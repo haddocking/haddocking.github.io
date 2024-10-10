@@ -695,7 +695,7 @@ If you download the results, you can visualize the prediction confidence in PyMO
 The newest version of AlphaFold (AlphaFold3) has recently been published: [Abramson J, __et al._ __Accurate structure prediction of biomolecular interactions with AlphaFold 3.__ _Nature. 2024_](https://ww.nature.com/articles/s41586-024-07487-w).
 This new version is not only an improved one compared to its predecessor in terms of accuracy and speed, but it also allows us to now deal with supplementary biochemical entities such as nucleotides, post-translational modifications and some lipides, glycans and co-factors.
 While the source code is not yet available for local installations, a dedicated webserver is provided to use the tool.
-It currently allows generating up to 20 modeling procedures per days, which is sufficient for the purpose of this tutorial.
+It currently allows to generate up to 20 predictions per day, which is sufficient for the purpose of this tutorial.
 
 
 To run it, go to [https://golgi.sandbox.google.com/](https://golgi.sandbox.google.com/).
