@@ -1,0 +1,6 @@
+[book]
+authors = ["VGPReys"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Haddock3 User Manual"
