@@ -1,17 +1,3 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
 # Haddock3 tutorial
 
 Haddock3 is not only a tool, but also a set of training materials, allowing to new user to understand the main aspects and functionalities available in haddock3.

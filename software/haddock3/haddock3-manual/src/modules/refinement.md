@@ -1,13 +1,12 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
+# Refinements modules
 
-# emref module
+- [`[emref]` module](#emref-module)
+- [`[flexref]` module](#flexref-module)
+- [`[mdref]` module](#mdref-module)
+- [`[openmm]` module](#openmm-module)
+
+
+## `[emref]` module
 
 Energy minimization refinement with CNS.
 
@@ -37,7 +36,7 @@ haddock3-cfg -m emref
 
 <hr>
 
-# flexref module
+## `[flexref]` module
 
 Flexible refinement with CNS.
 
@@ -63,7 +62,7 @@ body molecular dynamics on.
   <b><i>See animation of flexref protocol:</i></b>
   </summary>
   <figure align="center">
-    <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_sa.gif">
+    <img src="./images/haddock_sa.gif">
   </figure>
   </details>
   <br>
@@ -71,34 +70,34 @@ body molecular dynamics on.
 
 The temperature and number of steps for the various stages can be tuned.
 
-The default HADDOCK scoring function in the ``[flexref]`` module is the following:
+The default HADDOCK scoring function in the `[flexref]` module is the following:
 
 ![equ](https://latex.codecogs.com/gif.latex?HS=1.0E_{vdw}&plus;1.0E_{elec}&plus;0.1E_{air}&plus;1.0E_{desolv}-0.01BSA)
 
 #### Notable parameters
 
-The most important parameters for the ``[flexref]`` module are:
+The most important parameters for the `[flexref]` module are:
 
 - `ambig_fname`: file containing the ambiguous interaction restraints (AIRs)
 - `unambig_fname`: file containing the unambiguous interaction restraints
 <!-- TODO: add nfle description -->
 
-More information about ``[flexref]`` parameters can be accessed [here](https://bonvinlab.org/haddock3/modules/refinement/haddock.modules.refinement.flexref.html#default-parameters) or retrieved by running
+More information about `[flexref]` parameters can be accessed [here](https://bonvinlab.org/haddock3/modules/refinement/haddock.modules.refinement.flexref.html#default-parameters) or retrieved by running
 ```bash
 haddock3-cfg -m flexref
 ```
 <hr>
 
-# openmm module
+## `[openmm]` module
 
 <hr>
 
 
-# mdref module
+## `[mdref]` module
 
 Explicit solvent MD refinement with CNS.
 
-The ``[mdref]`` module (also known as ``itw`` in HADDOCK2.X series), is a small
+The `[mdref]` module (also known as `itw` in HADDOCK2.X series), is a small
 molecular dynamics simulation, in cartesian space, using explicit solvent.
 
 A layer of solvent (8A for water, 12.5A for DMSO) is generated around
@@ -116,7 +115,7 @@ The `mdref` protocol is composed of 4 sequential steps:
  <b><i>See animation of mdref protocol:</i></b>
  </summary>
  <figure align="center">
-   <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_water.gif">
+   <img src="./images/haddock_water.gif">
  </figure>
  </details>
  <br>
@@ -138,7 +137,7 @@ The most important parameters for the ``[mdref]`` module are:
 - `watersteps`: number of MD steps at 300K
 - `watercoolsteps` : number of MD steps for cooling down the system 
 
-More information about ``[mdref]`` parameters can be accessed [here](https://bonvinlab.org/haddock3/modules/refinement/haddock.modules.refinement.mdref.html#default-parameters) or retrieved by running
+More information about `[mdref]` parameters can be accessed [here](https://bonvinlab.org/haddock3/modules/refinement/haddock.modules.refinement.mdref.html#default-parameters) or retrieved by running
 ```bash
 haddock3-cfg -m mdref
 ```

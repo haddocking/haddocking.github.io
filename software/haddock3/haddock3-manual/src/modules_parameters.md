@@ -1,17 +1,3 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
 # Modules in haddock3
 
 Haddock3 has this particularity (compared to the pervious HADDOCK2.X versions), that there is not a single static workflow to be processed, but rather a custom one requiring the user to design its own workflows by placing `[modules]` one after the other, enabling to generate a sequence of events to solve their research question.

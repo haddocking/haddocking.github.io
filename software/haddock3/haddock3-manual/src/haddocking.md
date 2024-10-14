@@ -1,17 +1,3 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
 # HADDOCK - High Ambiguity Driven Docking
 
 High Ambiguity Driven DOCKing (HADDOCK), is now a long standing docking software, that harness the power of CNS (Crystallography and NMR System – https://cns-online.org) for structure calculation of molecular complexes.
@@ -42,7 +28,7 @@ The scoring is performed according to the _weighted sum_ (HADDOCK score) of the 
 * _Esym_: symmetry restraints energy (NCS and C2/C3/C5 terms)
 
 <figure style="text-align: center;">
-<img width="75%" src="/software/haddock3/manual/images/haddock_scoring_function_terms.png">
+<img width="100%" src="./images/haddock_scoring_function_terms.png">
 </figure>
 
 As the weights for each of the scoring function components differs for the various available CNS module, they will be described in each of the modules (see: [haddock3 modules]()).

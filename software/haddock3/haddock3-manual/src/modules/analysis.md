@@ -1,13 +1,16 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
+# Analysis modules
 
-# alascan module
+- [`[alascan]` module](#alascan-module)
+- [`[caprieval]` module](#caprieval-module)
+- [`[clustfcc]` module](#clustfcc-module)
+- [`[clustrmsd]` module](#clustrmsd-module)
+- [`[contactmap]` module](#contactmap-module)
+- [`[ilrmsdmatrix]` module](#ilrmsdmatrix-module)
+- [`[rmsdmatrix]` module](#rmsdmatrix-module)
+- [`[seletop]` module](#seletop-module)
+- [`[seletopclusts]` module](#seletopclusts-module)
+
+## `[alascan]` module
 
 HADDOCK3 module for alanine scanning.
 
@@ -37,7 +40,7 @@ haddock3-cfg -m alascan
 
 Here an example configuration file snapshot performing glycine scanning on some residues after Molecular Dynamics refinement:
 
-```bash
+```TOML
 ...
 [mdref]
 ambig_fname = ambiguous_restraints.tbl
@@ -50,7 +53,7 @@ resdic_B = [24,25]
 ```
 <hr>
 
-# caprieval module
+## `[caprieval]` module
 
 Calculate CAPRI metrics for the input models.
 
@@ -96,7 +99,8 @@ haddock3-cfg -m caprieval
 
 <hr>
 
-# clustfcc module
+## `[clustfcc]` module
+
 Cluster modules with Fraction of Common Contacts (FCC) similarity.
 
 The module takes the models generated in the previous step and calculates the
@@ -120,7 +124,7 @@ The most important parameters for the ``[clustfcc]`` module are:
 
 <hr>
 
-# clustrmsd module
+## `[clustrmsd]` module
 
 RMSD clustering module.
 
@@ -138,7 +142,7 @@ In [this paper](https://www.biorxiv.org/content/10.1101/2024.07.31.605986v1), we
 
 Example application of the ``[clustrmsd]`` module after rigid-body docking, retrieving 50 clusters:
 
-```bash
+```TOML
 ...
 [rigidbody]
 ambig_fname = ambiguous_restraints.tbl
@@ -164,9 +168,11 @@ The most important parameters for the ``[clustrmsd]`` module are:
   of models that should be present in a cluster to consider it. If criterion is
   `maxclust`, the value is ignored.
 - `plot_matrix`: whether to plot the matrix of cluster members (default: False)
+
 <hr>
 
-# contactmap module
+## `[contactmap]` module
+
 Compute contacts between chains in complexes.
 
 The ``[contactmap]`` module aims at generating heatmaps and chordcharts of
@@ -184,7 +190,7 @@ connecting with *chords* the two residues that are contacting.
 
 <hr>
 
-# ilrmsdmatrix module
+## `[ilrmsdmatrix]` module
 
 Calculate the Interface Ligand Root Mean Square Deviation (ILRMSD) matrix.
 
@@ -214,7 +220,7 @@ haddock3-cfg -m ilrmsdmatrix
 
 Here an example configuration file snapshot using ILRMSD-based clustering after flexible refinement:
 
-```bash
+```TOML
 ...
 [flexref]
 ambig_fname = ambiguous_restraints.tbl
@@ -226,7 +232,7 @@ clust_cutoff = 2.5
 
 <hr>
 
-# rmsdmatrix module
+## `[rmsdmatrix]` module
 
 RMSD matrix module.
 
@@ -247,7 +253,7 @@ is coherent.
   two proteins denoted by chain IDs A and B, then the user can operate
   such selection in the following way inside the configuration file
 
-```bash
+```TOML
 resdic_A = [1,2,3,4]
 resdic_B = [2,3,4]
 ```
@@ -262,7 +268,7 @@ haddock3-cfg -m rmsdmatrix
 
 Here an example configuration file snapshot using RMSD-based clustering after energy minimization refinement:
 
-```bash
+```TOML
 ...
 [emref]
 ambig_fname = ambiguous_restraints.tbl
@@ -276,7 +282,7 @@ clust_cutoff = 3.0
 
 <hr>
 
-# seletop module
+## `[seletop]` module
 Select a number of models.
 
 This module selects a number of models from the input models. By default, the
@@ -286,7 +292,7 @@ The number of models to be selected is defined by the parameter `select`.
 In the standard HADDOCK protocol, this number is 200, but this number can be increased
 if more models should be refined (which is the recommended approach when limited experimental information is available).
 
-```bash
+```TOML
 ...
 [topoaa]
 [rigidbody]
@@ -299,7 +305,7 @@ select = 400
 
 <hr>
 
-# seletopclusts module
+## `[seletopclusts]` module
 
 Select models from the top clusters.
 
@@ -319,7 +325,7 @@ The most important parameters for the ``[seletopclusts]`` module are:
 
 Here an example selection of the top 10 models of the top 50 clusters after ``[rigidbody]`` docking:
 
-```bash
+```TOML
 ...
 [topoaa]
 [rigidbody]

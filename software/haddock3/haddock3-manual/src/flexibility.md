@@ -1,17 +1,3 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
 # Flexibility Options in Haddock3
 
 A molecule or a part of it, i.e., its segment, can be defined as:
@@ -94,10 +80,13 @@ Let's consider a docking scenario involving two partners, namely a protein (chai
 Let's define the protein as the 1st docking partner and the glycan as the 2nd docking partner in .cfg file like so:
 
 ```toml
-molecules = ["protein.pdb", "glycan.pdb"]
+molecules = [
+  "protein.pdb", # chain A
+  "glycan.pdb"   # chain B
+  ]
 ```
 
-To be defined as fully flexible, the entire glycan (2nd partner) should be defined as a single segment, where we will define the starting resiude (`sta`), ending residue (`end`) and the chainID/segmentID (`seg`).
+To be defined as fully flexible, the entire glycan (2nd partner, chain B) should be defined as a single segment, where we will define the starting resiude (`sta`), ending residue (`end`) and the chainID/segmentID (`seg`).
 For this, three parameter must be tuned:
 
 ```toml

@@ -1,17 +1,3 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
 # Ab-initio / naive docking protocols
 
 While HADDOCK is ment to use information from coming from experiments, literature or bioinformatic predictions to guide the sampling during the docking, sometimes you cannot obtain such kind of data.
@@ -54,6 +40,8 @@ By doing so, for each rigidbody sampling performed, residues on the surface of e
 Ambiguous restraints will then be generated between all the patches and rigidbody minimisation performed.
 
 We suggest to turn on `contactairs = true` parameters in later stages of the workflow for CNS modules (`[flexref]`, `[emref]`, `[mdref]`).
+
+__*Note*__ that `ranair` is limitted to the docking of two chains only, and no other type of restraints will be considered (even tho specified in the configuration file).
 
 
 ## Surface restraints

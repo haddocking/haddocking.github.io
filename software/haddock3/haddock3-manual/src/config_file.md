@@ -1,17 +1,3 @@
- ---
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
 # Workflow configuration file
 
 Haddock3 is using a configuration file to define the workflow to be performed.

@@ -1,18 +1,3 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
-
-* table of contents
-{:toc}
-
-<hr>
-
-
 # Command line interfaces
 
 Haddock3 is a software that can read configuration files and compute data.
@@ -26,7 +11,22 @@ To use the command line interface, you must open a terminal:
 * [VSCode](): an integrated developping environnment (IDE) that allows you to run command lines in the terminal.
 
 
-Haddock3 comes with several Command Line Interfaces (CLIs), that are described and listed below.
+Haddock3 comes with several Command Line Interfaces (CLIs), that are described and listed below:
+
+- [haddock3](#haddock3): Main CLI for running a workflow.
+- [haddock3-cfg](#haddock3-cfg): Obtain information about module parameters
+- [haddock3-restraints](#haddock3-restraints): Generation of restraints.
+- [haddock3-score](#haddock3-score): Scoring CLI.
+- [haddock3-analyse](#haddock3-analyse): Analysis of output.
+- [haddock3-traceback](#haddock3-analyse): Traceback of generated docking models.
+- [haddock3-re](#haddock3-re): Recomputing modules with different parameters.
+  - [haddock3-re score](#-re-score): To modify scoring function weights.
+  - [haddock3-re clustfcc](#-re-clustfcc): To modify `[clustfcc]` parameters.
+  - [haddock3-re clustrmsd](#-re-clustrmsd): To modify `[clustrmsd]` parameters.
+- [haddock3-copy](#haddock3-copy): To copy a haddock3 run.
+- [haddock3-clean](#haddock3-clean): Archiving a run.
+- [haddock3-unpack](#haddock3-unpack): Uncompressing an archived a run.
+- [haddock3-pp](#haddock3-pp): Pre-processing of input files.
 
 
 ## haddock3
@@ -268,7 +268,7 @@ Relaunching several times `haddock3-re` on the same directory will update the co
 
 For now, three modules can be **re**computed and tuned, `[caprieval]`, `[clustfcc]` and `[clustrmsd]`.
 
-### re-score
+### -re score
 
 The subcommand `haddock3-re score`, allows to tune the weights of the [HADDOCK scoring function]().
 It takes a `[caprieval]` step folder as positional argument, and the tuned weights for the scoring function.
@@ -292,7 +292,7 @@ optional arguments:
                         weight of the AIR component.
 ```
 
-### re-clustfcc
+### -re clustfcc
 
 The subcommand `haddock3-re clustfcc`, allows to tune the clustering parameters of the `[clustfcc]` module.
 It takes a `[clustfcc]` step folder as positional argument, and the tuned parameters for the module.
@@ -313,7 +313,7 @@ optional arguments:
   -p, --plot_matrix     Generate the matrix plot with the clusters.
 ```
 
-### re-clustrmsd
+### -re clustrmsd
 
 The subcommand `haddock3-re clustrmsd`, allows to tune the clustering parameters of the `[clustrmsd]` module.
 It takes a `[clustrmsd]` step folder as positional argument, and the tuned parameters for the module.
@@ -350,7 +350,8 @@ It takes three arguments:
 - **`-m module_id_X module_id_Y`** is the list of modules you wish to copy (separated by spaces).
 
 As an example, considering your previous run directory is named `run1` and contains the following modules:
-```
+
+```bash
 run1/
   0_topoaa/
   1_rigidbody/
@@ -466,10 +467,4 @@ optional arguments:
   -v, --version         show version
 ```
 
-## haddock3-mpitask
-
-## haddock3-dmn
-
 ## haddock3-pp
-
-## haddock3-bm

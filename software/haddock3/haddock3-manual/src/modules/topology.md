@@ -1,13 +1,8 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
+# Topology modules
 
-# topoaa module
+- [`[topoaa]` module](#topoaa-module)
+
+## `[topoaa]` module
 
 The ``[topoaa]`` module is dedicated to the generation of CNS compatible
 parameters (.param) and topologies (.psf) for each of the input structures.
@@ -39,7 +34,7 @@ Here an example configuration file snapshot of a typical execution of the
 ``[topoaa]`` module in which a user specifies the protonation state of the histidine
 residues:
 
-```bash
+```TOML
 ...
 molecules = [
     "1abc.pdb",

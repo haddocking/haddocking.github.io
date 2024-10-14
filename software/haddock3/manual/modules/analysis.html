@@ -1,0 +1,486 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Analysis - Haddock3 User Manual</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../haddocking.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../haddocking.html"><strong aria-hidden="true">1.1.</strong> HADDOCK - High Ambiguity Docking</a></li><li class="chapter-item expanded "><a href="../haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3 modularity</a></li></ol></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../download-haddock3.html"><strong aria-hidden="true">2.1.</strong> Obtaining HADDOCK</a></li><li class="chapter-item expanded "><a href="../install-cns.html"><strong aria-hidden="true">2.2.</strong> CNS</a></li><li class="chapter-item expanded "><a href="../virtual-environments.html"><strong aria-hidden="true">2.3.</strong> Virtual environments (conda / venv)</a></li></ol></li><li class="chapter-item expanded "><a href="../clis.html"><strong aria-hidden="true">3.</strong> Command Line Interfaces</a></li><li class="chapter-item expanded "><a href="../structure_requirements.html"><strong aria-hidden="true">4.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../structure_requirements.html"><strong aria-hidden="true">4.1.</strong> Haddock3 requirements</a></li><li class="chapter-item expanded "><a href="../pdbtools.html"><strong aria-hidden="true">4.2.</strong> Tools to manipulate structures</a></li></ol></li><li class="chapter-item expanded "><a href="../intro_restraints.html"><strong aria-hidden="true">5.</strong> Generating restraints for HADDOCK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../restraints_cli.html"><strong aria-hidden="true">5.1.</strong> haddock3-restraints</a></li><li class="chapter-item expanded "><a href="../symmetry_restraints.html"><strong aria-hidden="true">5.2.</strong> Symmetry restraints</a></li><li class="chapter-item expanded "><a href="../abinitio_docking.html"><strong aria-hidden="true">5.3.</strong> Ab-initio docking mode</a></li><li class="chapter-item expanded "><a href="../flexibility.html"><strong aria-hidden="true">5.4.</strong> Flexibility</a></li></ol></li><li class="chapter-item expanded "><a href="../config_file.html"><strong aria-hidden="true">6.</strong> Generating a docking protocol</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../global_parameters.html"><strong aria-hidden="true">6.1.</strong> Global parameters</a></li><li class="chapter-item expanded "><a href="../modules_parameters.html"><strong aria-hidden="true">6.2.</strong> Concept of modules / parameters</a></li><li class="chapter-item expanded "><a href="../important_parameters.html"><strong aria-hidden="true">6.3.</strong> Notable parameters</a></li></ol></li><li class="chapter-item expanded "><a href="../modules.html"><strong aria-hidden="true">7.</strong> Available modules</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../modules/topology.html"><strong aria-hidden="true">7.1.</strong> Topology</a></li><li class="chapter-item expanded "><a href="../modules/sampling.html"><strong aria-hidden="true">7.2.</strong> Sampling</a></li><li class="chapter-item expanded "><a href="../modules/refinement.html"><strong aria-hidden="true">7.3.</strong> Refinement</a></li><li class="chapter-item expanded "><a href="../modules/scoring.html"><strong aria-hidden="true">7.4.</strong> Scoring</a></li><li class="chapter-item expanded "><a href="../modules/analysis.html" class="active"><strong aria-hidden="true">7.5.</strong> Analysis</a></li></ol></li><li class="chapter-item expanded "><a href="../docking_scenarios.html"><strong aria-hidden="true">8.</strong> Docking scenarios</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docking_scenarios.html"><strong aria-hidden="true">8.1.</strong> protein-protein docking</a></li><li class="chapter-item expanded "><a href="../docking_scenarios.html"><strong aria-hidden="true">8.2.</strong> antibody-antigen docking</a></li><li class="chapter-item expanded "><a href="../docking_scenarios.html"><strong aria-hidden="true">8.3.</strong> protein-ligand docking</a></li><li class="chapter-item expanded "><a href="../docking_scenarios.html"><strong aria-hidden="true">8.4.</strong> protein-glycan docking</a></li></ol></li><li class="chapter-item expanded "><a href="../info.html"><strong aria-hidden="true">9.</strong> Getting support / How to ask for help</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../info.html"><strong aria-hidden="true">9.1.</strong> Getting support / How to ask for help</a></li><li class="chapter-item expanded "><a href="../faq.html"><strong aria-hidden="true">9.2.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../tutorials.html"><strong aria-hidden="true">10.</strong> Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorials.html"><strong aria-hidden="true">10.1.</strong> Access to various tutorials</a></li><li class="chapter-item expanded "><a href="../bpg.html"><strong aria-hidden="true">10.2.</strong> HADDOCK best practice guide - A must read when starting to use our software!</a></li></ol></li><li class="chapter-item expanded "><a href="../eco_system.html"><strong aria-hidden="true">11.</strong> Haddock3 eco-system</a></li><li class="chapter-item expanded "><a href="../online_lectures.html"><strong aria-hidden="true">12.</strong> Online lectures</a></li><li class="chapter-item expanded "><a href="../citing.html"><strong aria-hidden="true">13.</strong> How to cite haddock3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../citing.html"><strong aria-hidden="true">13.1.</strong> Citing haddock3</a></li><li class="chapter-item expanded "><a href="../publications.html"><strong aria-hidden="true">13.2.</strong> Haddock3-related publications</a></li></ol></li><li class="chapter-item expanded "><a href="../acknowledgements.html"><strong aria-hidden="true">14.</strong> Acknowledgements</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Haddock3 User Manual</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="analysis-modules"><a class="header" href="#analysis-modules">Analysis modules</a></h1>
+<ul>
+<li><a href="#alascan-module"><code>[alascan]</code> module</a></li>
+<li><a href="#caprieval-module"><code>[caprieval]</code> module</a></li>
+<li><a href="#clustfcc-module"><code>[clustfcc]</code> module</a></li>
+<li><a href="#clustrmsd-module"><code>[clustrmsd]</code> module</a></li>
+<li><a href="#contactmap-module"><code>[contactmap]</code> module</a></li>
+<li><a href="#ilrmsdmatrix-module"><code>[ilrmsdmatrix]</code> module</a></li>
+<li><a href="#rmsdmatrix-module"><code>[rmsdmatrix]</code> module</a></li>
+<li><a href="#seletop-module"><code>[seletop]</code> module</a></li>
+<li><a href="#seletopclusts-module"><code>[seletopclusts]</code> module</a></li>
+</ul>
+<h2 id="alascan-module"><a class="header" href="#alascan-module"><code>[alascan]</code> module</a></h2>
+<p>HADDOCK3 module for alanine scanning.</p>
+<p>This module is responsible for the alanine scan analysis of the models
+generated in the previous step of the workflow. For each model, the module
+will mutate the interface residues and calculate the energy differences
+between the wild type and the mutant, thus providing a measure of the impact
+of such mutation.</p>
+<p>If cluster information is available, the module will also calculate the
+average energy difference for each cluster of models.</p>
+<h4 id="notable-parameters"><a class="header" href="#notable-parameters">Notable parameters</a></h4>
+<p>The most important parameters for the <code>[alascan]</code> module are:</p>
+<ul>
+<li><code>scan_residue</code>: the probe residue used for the scanning (alanine by default)</li>
+<li><code>resdic_</code>: list of residues to be mutated (by default all the interface residues). For example, to mutate only residues 2 and 3 of chain A, add resdic_A = [2,3]</li>
+<li><code>plot</code>: plot scanning data (default: False)</li>
+</ul>
+<p>More information about <code>[alascan]</code> parameters can be accessed <a href="https://bonvinlab.org/haddock3/modules/analysis/haddock.modules.analysis.alascan.html#default-parameters">here</a> or retrieved by running</p>
+<pre><code class="language-bash">haddock3-cfg -m alascan
+</code></pre>
+<p>Here an example configuration file snapshot performing glycine scanning on some residues after Molecular Dynamics refinement:</p>
+<pre><code class="language-TOML">...
+[mdref]
+ambig_fname = ambiguous_restraints.tbl
+[alascan]
+scan_residue = "GLY"
+resdic_A = [2,3]
+resdic_B = [24,25]
+
+...
+</code></pre>
+<hr>
+<h2 id="caprieval-module"><a class="header" href="#caprieval-module"><code>[caprieval]</code> module</a></h2>
+<p>Calculate CAPRI metrics for the input models.</p>
+<p>By default the following metrics are calculated:</p>
+<ul>
+<li>FNAT (fraction of native contacts), namely the fraction of
+intermolecular contacts in the docked complex that are also
+present in the reference complex.</li>
+<li>IRMSD (interface root mean square deviation), namely the RMSD
+of the interface of the docked complex with respect
+to the reference complex.</li>
+<li>LRMSD (ligand root mean square deviation), namely the RMSD of the
+ligand of the docked complex with respect to the
+reference complex upon superposition of the receptor.</li>
+<li>DOCKQ, a measure of the quality of the docked model obtained
+by combining FNAT, IRMSD and LRMSD (see
+Basu and Wallner 2016,  11 (8), e0161879).</li>
+<li>ILRMSD (interface ligand root mean square deviation), the RMSD of the
+ligand of the docked complex with respect to the reference complex
+upon superposition of the interface of the receptor.</li>
+<li>GLOBAL_RMSD, the full RMSD between the reference and the model.</li>
+</ul>
+<p>The following files are generated:</p>
+<ul>
+<li><strong>capri_ss.tsv</strong>: a table with the CAPRI metrics for each model.</li>
+<li><strong>capri_clt.tsv</strong>: a table with the CAPRI metrics for each cluster of models (if clustering information is available).</li>
+</ul>
+<p>These files are at the core of the <a href="https://bonvinlab.org/software/haddock3/manual/clis#the-report">analysis report produced by HADDOCK3</a>.</p>
+<h4 id="notable-parameters-1"><a class="header" href="#notable-parameters-1">Notable parameters</a></h4>
+<p>The most important parameters for the <code>[caprieval]</code> module are:</p>
+<ul>
+<li><code>allatoms</code>: whether to use all the atoms for the analysis (default: False)</li>
+<li><code>reference_fname</code>: the reference structure to compare the models to. It can be the reference structure of the complex or another model (for example, an Alphafold model).</li>
+<li><code>receptor_chain</code>: the chain to be considered as the receptor (default: A)</li>
+<li><code>ligand_chains</code>: the chains to be considered as the ligands (default: all but the receptor chain)</li>
+</ul>
+<p>More information about <code>[caprieval]</code> parameters can be accessed <a href="https://bonvinlab.org/haddock3/modules/analysis/haddock.modules.analysis.caprieval.html#default-parameters">here</a> or retrieved by running</p>
+<pre><code class="language-bash">haddock3-cfg -m caprieval
+</code></pre>
+<hr>
+<h2 id="clustfcc-module"><a class="header" href="#clustfcc-module"><code>[clustfcc]</code> module</a></h2>
+<p>Cluster modules with Fraction of Common Contacts (FCC) similarity.</p>
+<p>The module takes the models generated in the previous step and calculates the
+contacts between them. Then, the module calculates the FCC matrix and clusters
+the models based on the calculated contacts.</p>
+<p>For more details please check <em>Rodrigues, J. P. et al. Proteins: Struct. Funct. Bioinform. 80, 1810–1817 (2012)</em>.</p>
+<p>Typically, the module is run at the end of the docking protocol to cluster the
+models and identify the best clusters. Alternatively, <code>[clustfcc]</code> can also be
+used to cluster models generated in a sampling step (such as <code>[rigidbody]</code>) to
+perform a <a href="#seletopclusts-module">cluster-based selection</a> before proceeding to the next steps (e.g. <a href="./refinement">refinement modules</a>).</p>
+<h4 id="notable-parameters-2"><a class="header" href="#notable-parameters-2">Notable parameters</a></h4>
+<p>The most important parameters for the <code>[clustfcc]</code> module are:</p>
+<ul>
+<li><code>clust_cutoff</code>: Minimum fraction of common contacts to be considered in a cluster (default: 0.6). <em>Tip</em> In case you retrieve only one cluster with the default value, try to increase this value.</li>
+<li><code>min_population</code>: Threshold employed to exclude clusters with less than this number of members (default: 4)</li>
+<li><code>plot_matrix</code>: whether to plot the FCC matrix (default: False)</li>
+</ul>
+<hr>
+<h2 id="clustrmsd-module"><a class="header" href="#clustrmsd-module"><code>[clustrmsd]</code> module</a></h2>
+<p>RMSD clustering module.</p>
+<p>This module takes in input the <a href="#rmsdmatrix-module">RMSD</a> (or the <a href="#ilrmsdmatrix-module">ILRMSD</a>) matrix calculated in the previous step and
+performs a hierarchical clustering procedure on it, leveraging <a href="https://docs.scipy.org/doc/scipy/reference/cluster.hierarchy.html">scipy routines</a> for this purpose.</p>
+<p>Essentially, the procedure amounts at lumping the input models in a
+progressively coarser hierarchy of clusters, called the dendrogram.</p>
+<p>Typically, the module is run at the end of a protein-small molecule docking protocol to cluster the
+models and identify the best clusters. In these workflows, <code>[clustrmsd]</code> is more appropriate than <code>[clustfcc]</code>
+as most models will share a consistent fraction of contacts, while still being structurally different.
+In <a href="https://www.biorxiv.org/content/10.1101/2024.07.31.605986v1">this paper</a>, we show that, in the context of protein-glycan docking, RMSD clustering performed after
+<code>[rigidbody]</code> docking increases the success rate. A detailed tutorial on this specific case is available <a href="https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-glycan/">here</a>.</p>
+<p>Example application of the <code>[clustrmsd]</code> module after rigid-body docking, retrieving 50 clusters:</p>
+<pre><code class="language-TOML">...
+[rigidbody]
+ambig_fname = ambiguous_restraints.tbl
+[rmsdmatrix]
+resdic_A = [1,2,3,4]
+resdic_B = [2,3,4,5]
+[clustrmsd]
+n_clusters = 50
+...
+</code></pre>
+<h4 id="notable-parameters-3"><a class="header" href="#notable-parameters-3">Notable parameters</a></h4>
+<p>The most important parameters for the <code>[clustrmsd]</code> module are:</p>
+<ul>
+<li><code>linkage</code>: governs the way clusters are merged together in the creation of
+the dendrogram</li>
+<li><code>criterion</code>: defines the prescription to cut the dendrogram and obtain the
+desired clusters</li>
+<li><code>n_clusters</code>: number of desired clusters (if <code>criterion</code> is <code>maxclust</code>).</li>
+<li><code>clust_cutoff</code>: value of distance that separates distinct clusters (if <code>criterion</code> is
+<code>distance</code>)</li>
+<li><code>min_population</code> : analogously to the <code>clustfcc</code> module, it is the minimum number
+of models that should be present in a cluster to consider it. If criterion is
+<code>maxclust</code>, the value is ignored.</li>
+</ul>
+<ul>
+<li><code>plot_matrix</code>: whether to plot the matrix of cluster members (default: False)</li>
+</ul>
+<hr>
+<h2 id="contactmap-module"><a class="header" href="#contactmap-module"><code>[contactmap]</code> module</a></h2>
+<p>Compute contacts between chains in complexes.</p>
+<p>The <code>[contactmap]</code> module aims at generating heatmaps and chordcharts of
+the contacts observed in the input complexes.</p>
+<p>If complexes are clustered, the analysis of contacts will be performed
+based on all structures from each cluster.</p>
+<p><strong>Heatmaps</strong> are describing the probability of contacts (&lt;5A) between two
+residues (both intramolecular and intermolecular).</p>
+<p><strong>Chordcharts</strong> are describing only intermolecular contacts in circles,
+connecting with <em>chords</em> the two residues that are contacting.</p>
+<hr>
+<h2 id="ilrmsdmatrix-module"><a class="header" href="#ilrmsdmatrix-module"><code>[ilrmsdmatrix]</code> module</a></h2>
+<p>Calculate the Interface Ligand Root Mean Square Deviation (ILRMSD) matrix.</p>
+<p>This module calculates of the interface-ligand RMSD (ilRMSD) matrix between all
+the models generated in the previous step.</p>
+<p>As all the pairwise ilRMSD calculations are independent, the module distributes
+them over all the available cores in an optimal way.</p>
+<p><strong>IMPORTANT</strong>: the module assumes coherent numbering for all the receptor and ligand
+chains, as no sequence alignment is performed. The user must ensure that the numbering
+is coherent.</p>
+<h4 id="notable-parameters-4"><a class="header" href="#notable-parameters-4">Notable parameters</a></h4>
+<p>The most important parameters for the <code>[ilrmsdmatrix]</code> module are:</p>
+<ul>
+<li><code>contact_distance_cutoff</code>: the distance cutoff to consider a contact (default: 5.0)</li>
+<li><code>allatoms</code>: whether to use all the atoms for the ILRMSD calculation (default: False)</li>
+<li><code>receptor_chain</code>: the chain to be considered as the receptor (default: A)</li>
+<li><code>ligand_chains</code>: the chains to be considered as the ligands (default: all but the receptor chain)</li>
+</ul>
+<p>More information about <code>[ilrmsdmatrix]</code> parameters can be accessed <a href="https://bonvinlab.org/haddock3/modules/analysis/haddock.modules.analysis.ilrmsdmatrix.html#default-parameters">here</a> or retrieved by running</p>
+<pre><code class="language-bash">haddock3-cfg -m ilrmsdmatrix
+</code></pre>
+<p>Here an example configuration file snapshot using ILRMSD-based clustering after flexible refinement:</p>
+<pre><code class="language-TOML">...
+[flexref]
+ambig_fname = ambiguous_restraints.tbl
+[ilrmsdmatrix]
+[clustrmsd]
+clust_cutoff = 2.5
+...
+</code></pre>
+<hr>
+<h2 id="rmsdmatrix-module"><a class="header" href="#rmsdmatrix-module"><code>[rmsdmatrix]</code> module</a></h2>
+<p>RMSD matrix module.</p>
+<p>This module calculates of the RMSD matrix between all the models
+generated in the previous step.</p>
+<p>As all the pairwise RMSD calculations are independent, the module distributes
+them over all the available cores in an optimal way.</p>
+<p><strong>IMPORTANT</strong>: the module assumes coherent numbering for all the receptor and ligand
+chains, as no sequence alignment is performed. The user must ensure that the numbering
+is coherent.</p>
+<h4 id="notable-parameters-5"><a class="header" href="#notable-parameters-5">Notable parameters</a></h4>
+<ul>
+<li><code>allatoms</code>: whether to use all the atoms for the ILRMSD calculation (default: False)</li>
+<li><code>resdic_</code> : an expandable parameter to specify which residues must be
+considered for the alignment and the RMSD calculation. If there are
+two proteins denoted by chain IDs A and B, then the user can operate
+such selection in the following way inside the configuration file</li>
+</ul>
+<pre><code class="language-TOML">resdic_A = [1,2,3,4]
+resdic_B = [2,3,4]
+</code></pre>
+<p>thus telling the module to consider residues from 1 to 4 of chain A and from 2
+to 4 of chain B for the alignment and RMSD calculation.</p>
+<p>More information about <code>[rmsdmatrix]</code> parameters can be accessed <a href="https://bonvinlab.org/haddock3/modules/analysis/haddock.modules.analysis.rmsdmatrix.html#default-parameters">here</a> or retrieved by running</p>
+<pre><code class="language-bash">haddock3-cfg -m rmsdmatrix
+</code></pre>
+<p>Here an example configuration file snapshot using RMSD-based clustering after energy minimization refinement:</p>
+<pre><code class="language-TOML">...
+[emref]
+ambig_fname = ambiguous_restraints.tbl
+[rmsdmatrix]
+resdic_A = [1,2,3,4]
+resdic_B = [2,3,4]
+[clustrmsd]
+clust_cutoff = 3.0
+...
+</code></pre>
+<hr>
+<h2 id="seletop-module"><a class="header" href="#seletop-module"><code>[seletop]</code> module</a></h2>
+<p>Select a number of models.</p>
+<p>This module selects a number of models from the input models. By default, the
+selection is based on the HADDOCK score of the models.</p>
+<p>The number of models to be selected is defined by the parameter <code>select</code>.
+In the standard HADDOCK protocol, this number is 200, but this number can be increased
+if more models should be refined (which is the recommended approach when limited experimental information is available).</p>
+<pre><code class="language-TOML">...
+[topoaa]
+[rigidbody]
+ambig_fname = ambiguous_restraints.tbl
+[seletop]
+select = 400
+...
+</code></pre>
+<hr>
+<h2 id="seletopclusts-module"><a class="header" href="#seletopclusts-module"><code>[seletopclusts]</code> module</a></h2>
+<p>Select models from the top clusters.</p>
+<p>This module selects a number of models from a number of clusters. The
+selection is based on the score of the models within the clusters.</p>
+<p>In the standard HADDOCK analysis, the top 4 models of the top 10 clusters
+are shown. In case seletopclusts is run after a sampling module, we can
+keep a few models from all the clusters to have more diversity at the
+refinement stage(s).</p>
+<h4 id="notable-parameters-6"><a class="header" href="#notable-parameters-6">Notable parameters</a></h4>
+<p>The most important parameters for the <code>[seletopclusts]</code> module are:</p>
+<ul>
+<li><code>top_cluster</code>: the number of top clusters to consider</li>
+<li><code>top_models</code>: the number of top models to select from each cluster</li>
+</ul>
+<p>Here an example selection of the top 10 models of the top 50 clusters after <code>[rigidbody]</code> docking:</p>
+<pre><code class="language-TOML">...
+[topoaa]
+[rigidbody]
+ambig_fname = ambiguous_restraints.tbl
+[clustfcc]
+[seletopclusts]
+top_cluster = 50
+top_models = 10
+...
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../modules/scoring.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../docking_scenarios.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../modules/scoring.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../docking_scenarios.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

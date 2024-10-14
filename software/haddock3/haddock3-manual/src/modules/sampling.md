@@ -1,13 +1,11 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
+# Sampling modules
 
-# rigidbody module
+- [`[rigidbody]` module](#rigidbody-module)
+- [`[lightdock]` module](#lightdock-module)
+- [`[gdock]` module](#gdock-module)
+
+
+## `[rigidbody]` module
 
 The ``[rigidbody]`` module does a **randomization of orientations and rigid-body
 minimization.** It corresponds to the classical ``it0`` step in the HADDOCK2.x
@@ -40,7 +38,7 @@ sure to sample enough the possible interaction space.
 <b><i>See animation of the rigidbody protocol:</i></b>
 </summary>
 <figure align="center">
-  <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/haddock_mini.gif">
+  <img src="./images/haddock_mini.gif">
 </figure>
 </details>
 <br>
@@ -53,7 +51,7 @@ For a detailed explanation of the components of the scoring function, please hav
 
 Throughout the years, the weights of the scoring function have been optimized for various systems. For example, when dealing with small molecules or glycans, it is recommended to scale up the van der Waals term:
 
-```bash
+```TOML
 ...
 [rigidbody]
 w_vdw = 1.0
@@ -62,7 +60,7 @@ w_vdw = 1.0
 
 ![equ](https://latex.codecogs.com/gif.latex?HS_{small}=1.0E_{vdw}&plus;1.0E_{elec}&plus;0.01E_{air}&plus;1.0E_{desolv}-0.01BSA)
 
-Please refer to the [different docking scenarios](../docking_scenarios) for more information about how to tune the scoring function for your specific system.
+Please refer to the [different docking scenarios](../docking_scenarios.md) for more information about how to tune the scoring function for your specific system.
 
 #### Notable parameters
 
@@ -82,7 +80,7 @@ haddock3-cfg -m rigidbody
 Here an example configuration file snapshot of a typical execution of the
 ``[rigidbody]`` module:
 
-```bash
+```TOML
 ...
 molecules = [
     "1abc.pdb",
@@ -99,6 +97,6 @@ sampling = 2000 # higher sampling if information is limited
 ```
 <hr>
 
-# lightdock module
+## `[lightdock]` module
 
-# gdock module
+## `[gdock]` module

@@ -1,13 +1,12 @@
----
-layout: page
-title: ""
-excerpt: ""
-tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, manual, usage]
-image:
-  feature: pages/banner_software.jpg
----
+# Scoring modules
 
-# emscoring module
+- [`[emscoring]` module](#emscoring-module)
+- [`[mdscoring]` module](#mdscoring-module)
+- [prodigy modules](#prodigy-module)
+  - [`[prodigyprotein]`](#prodigyprotein-module)
+  - [`[prodigyligand]`](#prodigyligand-module)
+
+## `[emscoring]` module
 
 EM scoring module.
 
@@ -32,9 +31,10 @@ More information about ``[emscoring]`` parameters can be accessed [here](https:/
 ```bash
 haddock3-cfg -m emscoring
 ```
+
 <hr>
 
-# mdscoring module
+## `[mdscoring]` module
 
 MD scoring module.
 
@@ -61,3 +61,8 @@ haddock3-cfg -m mdscoring
 ```
 
 
+## prodigy modules
+
+### `[prodigyprotein]` module
+
+### `[prodigyligand]` module
