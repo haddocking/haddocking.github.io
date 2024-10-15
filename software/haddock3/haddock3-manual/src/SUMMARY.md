@@ -5,9 +5,9 @@
   - [Haddock3 modularity](./haddock3.md)
 
 - [Installation](./install.md)
+  - [Virtual environments (conda / venv)](./virtual-environments.md)
   - [Obtaining HADDOCK](./download-haddock3.md)
   - [CNS](./install-cns.md)
-  - [Virtual environments (conda / venv)](./virtual-environments.md)
 
 - [Command Line Interfaces](./clis.md)
 

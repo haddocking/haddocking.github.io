@@ -31,7 +31,7 @@ The scoring is performed according to the _weighted sum_ (HADDOCK score) of the 
 <img width="100%" src="./images/haddock_scoring_function_terms.png">
 </figure>
 
-As the weights for each of the scoring function components differs for the various available CNS module, they will be described in each of the modules (see: [haddock3 modules]()).
+As the weights for each of the scoring function components differs for the various available CNS module, they will be described in each of the modules (see: [haddock3 modules](./modules.md)).
 
 Of course, these weights can be tuned by the user, by modifying their related parmeters:
 * `w_elec`: to tune the electrostatic intermolecular energy weight
