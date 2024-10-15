@@ -3,7 +3,7 @@
 Haddock3 has this particularity (compared to the pervious HADDOCK2.X versions), that there is not a single static workflow to be processed, but rather a custom one requiring the user to design its own workflows by placing `[modules]` one after the other, enabling to generate a sequence of events to solve their research question.
 
 <figure align="center">
-<img src="/software/haddock3/manual/images/hd3_custom_workflow.png">
+<img src="./images/hd3_custom_workflow.png">
 </figure>
 
 Various `[modules]` are available in Haddock3, and they are grouped together by types:
@@ -15,7 +15,7 @@ Various `[modules]` are available in Haddock3, and they are grouped together by 
 
 
 <figure align="center">
-<img src="/software/haddock3/manual/images/list_modules.png">
+<img src="./images/list_modules.png">
 </figure>
 
 
