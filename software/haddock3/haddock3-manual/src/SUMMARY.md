@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](./haddocking.md)
+- [Introduction](./intro_manual.md)
   - [HADDOCK - High Ambiguity Docking](./haddocking.md)
   - [Haddock3 modularity](./haddock3.md)
 

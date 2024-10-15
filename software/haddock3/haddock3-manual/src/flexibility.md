@@ -28,7 +28,7 @@ The value of the chosen parameter simultaneously defines the type of flexibility
 * If `nsegX = 0`, then the Xth docking partner is defined as rigid;
 * If `nsegX = y` with `y > 0`, then:
   - The segments of interest are defined as semi-flexible;
-  - The number of these segments is equal to `y`. In this case, the first and last residues of each segment should be defined using pairs of parameters `seg_sta_X_1`, `seg_end_X_1`, and consequently `seg_sta_X_2`, `seg_end_X_2`, etc., until all `y` segments are defined. Haddock3 allows for up to 1000 segments, with residues numbered up to 9999.
+  - The number of these segments is equal to `y`. In this case, the first and last residues of each segment should be defined using pairs of parameters `seg_sta_X_1`, `seg_end_X_1`, and consequently `seg_sta_X_2`, `seg_end_X_2`, etc., until all `y` segments are defined. Haddock3 allows for up to 1000 segments, with residues numbered from -999 up to 9999.
 
 
 #### Example: Two Semi-Flexible Segments of a DNA
@@ -41,7 +41,7 @@ Since the order of the docking partner is important, let's define DNA as the 1st
 molecules = ["DNA.pdb", "protein.pdb"]
 ```
 
-To define two segments of DNA (1st partner), we should assign 2 to the parameter `nseg1`:
+To define two segments of DNA (**1**st partner), we should assign 2 to the parameter `nseg1` (standing for: **n**umber of **seg**ments for molecule **1**):
 
 ```toml
 nseg1 = 2
@@ -97,7 +97,3 @@ fle_end_1 = 4
 # ChaindID/segmentID of the molecule
 fle_seg_1 = "B"
 ```
-
-
-
-
