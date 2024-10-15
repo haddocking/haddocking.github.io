@@ -3,16 +3,16 @@
 As creating a new workflow can be complex at the beginning, we are providing a set of pre-defined haddock3 scenarios.
 These examples are encompassing a wide range of applications, such as:
 
-- [Protein-protein docking](#protein-protein-docking)
-- [Protein-peptide docking](#protein-peptide-docking)
-- [Protein-DNA docking](#protein-dna-docking)
-- [Antibody-antigen docking](#antibody-antigen-docking)
-- [Protein-glycan docking](#protein-glycan-docking)
-- [Small-molecule docking](#small-molecule-docking)
-- [Complexes refinement protocols](#refinement-protocols)
-- [Building cyclic peptide](#cyclic-peptide)
-- [Scoring workflow](#scoring-workflow)
-- [Analysis pipelines](#analysis-scenario)
+- [Protein-protein docking](./docking_scenarios/prot-prot.md)
+- [Protein-peptide docking](./docking_scenarios/prot-peptide.md)
+- [Protein-DNA docking](./docking_scenarios/prot-DNA.md)
+- [Antibody-antigen docking](./docking_scenarios/antibody-antigen.md)
+- [Protein-glycan docking](./docking_scenarios/prot-glycan.md)
+- [Small-molecule docking](./docking_scenarios/prot-ligand.md)
+- [Complexes refinement protocols](./docking_scenarios/refinement-protocols.md)
+- [Building cyclic peptide](./docking_scenarios/cyclic-peptides.md)
+- [Scoring workflow](./docking_scenarios/scorings.md)
+- [Analysis pipelines](./docking_scenarios/analyses.md)
 
 
 Alternatively, up-to-date examples can also be found:
