@@ -8,6 +8,12 @@ Therefore, the only command you should run is the following:
 pip install haddock3
 ```
 
+**DISCLAMER**:
+
+By running this command, you will download a compiled executable of CNS (Crystallographic and NMR System) which is free of use for non-profit applications.
+For commercial use it is your own responsibility to have a proper license.
+For details refer to [the DISCLAIMER file](https://github.com/haddocking/haddock3/blob/main/DISCLAIMER.md) in the HADDOCK3 repository.
+
 ## Download haddock3 source code
 
 Haddock3 is an open source software and therefore its source code can be downloaded at any time.
@@ -29,4 +35,8 @@ source .haddock3-env/bin/activate
 
 # Install haddock3
 pip install .
+# DISCLAMER
+# By running this command, you will download a compiled executable of CNS (Crystallographic and NMR System) which is free of use for non-profit applications.
+# For commercial use it is your own responsibility to have a proper license.
+# For details refer to [the DISCLAIMER file](https://github.com/haddocking/haddock3/blob/main/DISCLAIMER.md) in the HADDOCK3 repository.
 ```
