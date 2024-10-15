@@ -84,7 +84,7 @@ Currently, C2, C3, C4, C5 and C6 symmetries are available.
 Each symmetry type (C**N**) must be defined between **N** partners to be valid.
 
 <figure align="center">
-<img src="/software/haddock3/manual/images/CN_symmetries_haddock.jpg">
+<img src="./images/CN_symmetries_haddock.jpg">
 </figure>
 
 To make use of C**N** symmetry parameters, one should first activate the use of such restraints using the `sym_on = true` parameter!

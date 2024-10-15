@@ -1,7 +1,7 @@
 # Command line interfaces
 
 Haddock3 is a software that can read configuration files and compute data.
-While there will be [a web application](), haddock3 do not have interface, and you must use it from the command line.
+While there will be [a web application](https://github.com/i-VRESSE/haddock3-webapp), haddock3 do not have interface, and you must use it from the command line.
 While this may have some negative impact for some unexperienced user, it is also very powerful as it allows custom scripts to launch haddock, and therefore integrate it in your own pipelines.
 
 
@@ -31,7 +31,7 @@ Haddock3 comes with several Command Line Interfaces (CLIs), that are described a
 
 ## haddock3
 
-The main command line, `haddock3` is used to launch a Haddock3 workflow from a [configuration file](/software/haddock3/manual/config_file).
+The main command line, `haddock3` is used to launch a Haddock3 workflow from a [configuration file](./config_file.md).
 It takes a positional argument, the path to the configuration file.
 
 ```bash
@@ -73,7 +73,7 @@ The `haddock3-restraints` CLI is composed of several sub-commands, each one dedi
 - Generating ambiguous restraints from active and passive resiudes
 - Generating plans and corresponding restraints
 
-As this CLI is more specialized, we have made a [special chapter in this manual](/software/haddock3/manual/restraints_cli) to explain all the functionalities.
+As this CLI is more specialized, we have made a [special chapter in this manual](./restraints_cli.md) to explain all the functionalities.
 
 <hr>
 
