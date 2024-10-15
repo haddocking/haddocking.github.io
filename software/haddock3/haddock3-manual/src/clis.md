@@ -43,7 +43,7 @@ Also two optional arguments can be used:
 - `--restart <module_id>`: allows to restart the workflow restarting for the module id. Note that previously generated folders from the selected step onward will be deleted.
 - `--extend-run <run_directory>`: allows to start the new workflow from the last step of a previously computed run.
 
-
+<hr>
 
 ## haddock3-cfg
 
@@ -60,6 +60,7 @@ haddock3-cfg -m seletopclusts
 
 Please note that all the parameters for each module are also available from the [online documentation](https://www.bonvinlab.org/haddock3/modules/index.html).
 
+<hr>
 
 ## haddock3-restraints
 
@@ -74,6 +75,7 @@ The `haddock3-restraints` CLI is composed of several sub-commands, each one dedi
 
 As this CLI is more specialized, we have made a [special chapter in this manual](/software/haddock3/manual/restraints_cli) to explain all the functionalities.
 
+<hr>
 
 ## haddock3-score
 
@@ -115,6 +117,8 @@ To modify multiple parameters, just add the new parameter separate by a space:
 ```bash
 haddock3-score path/to/complex.pdb -p w_vdw 0.5 w_bsa 0.2
 ```
+
+<hr>
 
 ## haddock3-analyse
 
@@ -198,6 +202,9 @@ python -m http.server --directory path-to-my-run
 In the browser you can navigate to each analysis subfolder and open the `report.html` file. If you are not interested in
 visualizing the models, you can simply open the `report.html` file in a standard browser. An example report can be visualized [here](../../../education/HADDOCK3/HADDOCK3-protein-glycan/plots/report.html).
 
+
+<hr>
+
 ## haddock3-traceback
 
 HADDOCK3 is highly customisable and modular, as the user can introduce several refinement, clustering, and scoring steps in a workflow.
@@ -252,6 +259,8 @@ postprocess = false
 
 You can find additional help by running the command: `haddock3-analyse -h` and `haddock3-traceback -h` and reading
 the parameters' explanations. Otherwise, ask us in the ["issues" forum](https://github.com/haddocking/haddock3/issues).
+
+<hr>
 
 ## haddock3-re
 
@@ -340,6 +349,8 @@ as the former is cutting the dendogram at a height satifying the number of desir
 while the latter is cutting the dendogram at the `--clust_cutoff` value height.
 
 
+<hr>
+
 ## haddock3-copy
 
 The `haddock3-copy` CLI allows one to copy the content of a run to an other run directory.
@@ -371,6 +382,7 @@ haddock3-copy -r run1 -m 0 4 -o run2
 **Notes**:
 - the flag `-m` allows to define which modules must be copied, and modules `0` (for `0_topoaa`) and `4`  (for `4_flexref`) are space separated.
 - in this case, we also copy the content of `0_topoaa`, this is because topologies are stored in this module directory, and we must have access to them if we are using an other module requiering CNS topology to run.
+- it is often recommended to **always** copy the `topoaa` directory, as we will often require the topologies later un the workflow.
 
 **WARNING**:
 To copy the content of a run and modify the paths, we are using the `sed` command, searching to replace the previous run directory name (`run1`) to the new one (`run2`) in all the generated files to make sure that paths will be functional in the new run directory.
@@ -384,6 +396,7 @@ Here is a list of run directory names **NOT** to use:
 
 The best solution is to always use a unique name that describe the content of the run.
 
+<hr>
 
 ## haddock3-clean
 
@@ -422,6 +435,8 @@ optional arguments:
                         uses the number indicated, for example: `-n 4` will use 4 threads.
   -v, --version         show version
 ```
+
+<hr>
 
 ## haddock3-unpack
 
@@ -467,4 +482,39 @@ optional arguments:
   -v, --version         show version
 ```
 
+<hr>
+
 ## haddock3-pp
+
+The `haddock3-pp` is a pre-processing (-pp) CLI, dedicated at processing PDB files for agreement with HADDOCK3 requirements.
+
+You can use the `--dry` option to report on the performed changes without actually performing the changes.
+
+Corrected PDBs are saved to new files named after the `--suffix` option.
+Original PDBs are never overwritten, unless `--suffix` is given an empty string.
+
+You can pass multiple PDB files to the command-line.
+
+Usage:
+```bash
+haddock-pp file1.pdb file2.pdb
+haddock-pp file1.pdb file2.pdb --suffix _new
+haddock-pp file1.pdb file2.pdb --dry
+```
+
+Arguments:
+
+```bash
+positional arguments:
+  pdb_files             Input PDB files.
+
+options:
+  -h, --help            show this help message and exit
+  -d, --dry             Perform a dry run. Informs changes without modifying files.
+  -t [TOPFILE ...], --topfile [TOPFILE ...]
+                        Additional .top files.
+  -s SUFFIX, --suffix SUFFIX
+                        Suffix to output files. Defaults to '_processed'
+  -odir OUTPUT_DIRECTORY, --output-directory OUTPUT_DIRECTORY
+                        The directory where to save the output.
+```
