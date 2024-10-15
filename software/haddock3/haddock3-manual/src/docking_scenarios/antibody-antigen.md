@@ -88,11 +88,11 @@ Note that after random air definition, we will use `contactairs = true` in later
 
 
 Here are some examples:
-- standard HADDOCK workflow: [docking-antibody-antigen-ranairCDR-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-full.cfg){:target="_blank"}
-- with intermediate clustering steps: [docking-antibody-antigen-ranairCDR-clt-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-clt-full.cfg){:target="_blank"}
+- standard HADDOCK workflow: [docking-antibody-antigen-ranairCDR-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-full.cfg)
+- with intermediate clustering steps: [docking-antibody-antigen-ranairCDR-clt-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-clt-full.cfg)
 - using MPI to spread the workload:
-  - [docking-antibody-antigen-ranairCDR-full-mpi.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-full-mpi.cfg){:target="_blank"}
-  - [docking-antibody-antigen-ranairCDR-full-mpi.job](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-full-mpi.job){:target="_blank"}
+  - [docking-antibody-antigen-ranairCDR-full-mpi.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-full-mpi.cfg)
+  - [docking-antibody-antigen-ranairCDR-full-mpi.job](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-ranairCDR-full-mpi.job)
 
 
 ### NMR informed paratop
@@ -101,5 +101,5 @@ An ideal case would be to have information about the antigen paratop.
 Coming from experimental methods or bioinformatic predictions, this information is extremly valuable as it will focus the  search by sampling comformations near key residues involed in the interaction.
 By generating a dedicated ambiguous restraint file (`ambig-CDR-NMR-CSP.tbl`), only antigen CDR residues and few residues on the antigen side will be interacting.
 
-Here is an  example: [docking-antibody-antigen-CDR-NMR-CSP-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-CDR-NMR-CSP-full.cfg){:target="_blank"}
+Here is an  example: [docking-antibody-antigen-CDR-NMR-CSP-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-antibody-antigen/docking-antibody-antigen-CDR-NMR-CSP-full.cfg)
 

@@ -22,13 +22,13 @@ However, there are no constraints on piping modules of different categories.
 
 The main module categories are *“topology”*, *“sampling”*, *“refinement”*, *“scoring”*, and *“analysis”*.
 There is no limit to how many modules can belong to a category. Modules are added as developed, and new categories will be created if/when needed.
-You can access the [HADDOCK3 documentation page](https://www.bonvinlab.org/haddock3/modules/index.html){:target="_blank"}, or read the user manual for the [list of all categories and modules](./modules.md).
+You can access the [HADDOCK3 documentation page](https://www.bonvinlab.org/haddock3/modules/index.html), or read the user manual for the [list of all categories and modules](./modules.md).
 
 <figure style="text-align: center;">
 <img width="95%" src="./images/HADDOCK3-workflow-scheme.png">
 </figure>
 
-The HADDOCK3 workflows are defined in simple configuration text files, similar to the [TOML](https://toml.io/en/){:target="_blank"} format but with extra features.
+The HADDOCK3 workflows are defined in simple configuration text files, similar to the [TOML](https://toml.io/en/) format but with extra features.
 Contrary to HADDOCK2.X which follows a rigid (yet highly parameterisable) procedure, in HADDOCK3, you can create your own simulation workflows by combining a multitude of independent modules that perform specialized tasks.
 Details on [how to create a workflow is provided in a dedicated section](./config_file.md).
 We also provide a set of [docking scenario examples](./docking_scenarios.md), containing quite a variety of different protocols that can also guide you.

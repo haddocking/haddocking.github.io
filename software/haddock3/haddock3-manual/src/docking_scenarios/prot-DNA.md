@@ -9,7 +9,7 @@ In such senario, various important parameters must be set, allowing to:
 
 
 Here are some examples:
-- using a final energy minimisation step: [docking-protein-DNA-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-full.cfg){:target="_blank"}
-- refining the interface using MD in a solvent shell: [docking-protein-DNA-mdref-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-mdref-full.cfg){:target="_blank"}
-- with an intermediate clustering step after rigidbody docking: [docking-protein-DNA-cltsel-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-cltsel-full.cfg){:target="_blank"}
-- using center of mass restraints instead of ambiguous restraints extracted from the literature: [docking-protein-DNA-cmrest-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-cmrest-test.cfg){:target="_blank"}
+- using a final energy minimisation step: [docking-protein-DNA-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-full.cfg)
+- refining the interface using MD in a solvent shell: [docking-protein-DNA-mdref-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-mdref-full.cfg)
+- with an intermediate clustering step after rigidbody docking: [docking-protein-DNA-cltsel-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-cltsel-full.cfg)
+- using center of mass restraints instead of ambiguous restraints extracted from the literature: [docking-protein-DNA-cmrest-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-DNA/docking-protein-DNA-cmrest-test.cfg)

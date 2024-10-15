@@ -1,6 +1,6 @@
 ## Refinement protocols
 
-All refinements examples can be found [here](https://github.com/haddocking/haddock3/tree/main/examples/refine-complex){:target="_blank"}.
+All refinements examples can be found [here](https://github.com/haddocking/haddock3/tree/main/examples/refine-complex).
 
 ### Short molecular dynamics symulation in explicit solvent
 
@@ -36,7 +36,7 @@ hise_1 = 15
 sampling_factor = 10
 ```
 
-[Here is a full example](https://github.com/haddocking/haddock3/blob/main/examples/refine-complex/refine-complex-test.cfg){:target="_blank"} with provided input file and also using an experimental reference to track the evolution of the refinement.
+[Here is a full example](https://github.com/haddocking/haddock3/blob/main/examples/refine-complex/refine-complex-test.cfg) with provided input file and also using an experimental reference to track the evolution of the refinement.
 
 
 ### OpenMM MD simulation
@@ -49,7 +49,7 @@ Note that the use of the `[openmm]` module is a thirdparty module that requires 
 #### As quality assessment of a docking pose
 
 Using the `[openmm]` module allows to run unbiased molecular dynamics simulations in explicit solvent.
-Previous work of [Z. Jandova, *et al.*, _J. Chem. Theo. and Comp._ 2021](https://doi.org/10.1021/acs.jctc.1c00336){:target="_blank"}, showed that near-native complexes have less deviation from their input structure after 10 ns of simulation.
+Previous work of [Z. Jandova, *et al.*, _J. Chem. Theo. and Comp._ 2021](https://doi.org/10.1021/acs.jctc.1c00336), showed that near-native complexes have less deviation from their input structure after 10 ns of simulation.
 Setting up such kind of experiment with haddock3 is extremely easy, as it simply requires to use the `[openmm]` module with an input complex model, followed by the `[caprieval]` using the same input complex as reference structure.
 This will allow to track how far from the original pose the final frame reached.
 
@@ -83,5 +83,5 @@ reference_fname = "model_1.pdb"
 sort_by = "dockq"
 ```
 
-This protocol has been used during CAPRI round 55 for target 231, to validate the docking poses of the FLAG-peptide on the antibody (see: [CAPRI rounds 47-55 paper](https://www.biorxiv.org/content/10.1101/2024.09.16.613212v2){:target="_blank"}).
+This protocol has been used during CAPRI round 55 for target 231, to validate the docking poses of the FLAG-peptide on the antibody (see: [CAPRI rounds 47-55 paper](https://www.biorxiv.org/content/10.1101/2024.09.16.613212v2)).
 

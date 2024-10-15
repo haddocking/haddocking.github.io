@@ -1,14 +1,14 @@
 ## Analysis scenario
 
 The addition and inclusion of analysis modules in haddock3 is one of its major new strength, as it allows to perform various kind of analysis directly during the workflow.
-For the complete list of analysis modules and their capabilities, please refere to the [Analysis Modules section](software/haddock3/manual/modules/analysis.md){:target="_blank"}.
+For the complete list of analysis modules and their capabilities, please refere to the [Analysis Modules section](software/haddock3/manual/modules/analysis.md).
 
 
 ### Comparison to a reference structure
 
 The `[caprieval]` module is dedicated to the computation of the CAPRI metrics (rmsd, interface-rmsd, ligand-rmsd, interface-ligand rmsd and dockq) on a set of input models. A reference structure can be provided using the `reference_fname` parameter. If this parameter is not defined, the best scoring model will be used as reference.
 
-An example is provided here: [topoaa-caprieval-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/topoaa-caprieval-test.cfg){:target="_blank"}.
+An example is provided here: [topoaa-caprieval-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/topoaa-caprieval-test.cfg).
 
 
 ### Hot spot detection
@@ -16,7 +16,7 @@ An example is provided here: [topoaa-caprieval-test.cfg](https://github.com/hadd
 The analysis of hot-spots and key residues involved in the interaction between two chain can be of valuable information for mutagenesis or design purposes.
 The `[alascan]` module is designed to perform point mutation of residues at the interface of a complex, and evaluate the difference in HADDOCK score with respect to the original input complex. It also splits the scoring function in its various components and generate an interactive graph allowing for a visual representation of the scanned resiudes contributions.
 
-An example is provided here: [alascan-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/alascan-test.cfg){:target="_blank"}.
+An example is provided here: [alascan-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/alascan-test.cfg).
 
 
 ### Generation of contact maps
@@ -27,7 +27,7 @@ It will produce two types of figures:
 - a pair-wise distance matrix between all residues
 - a chord chart recapitulating the residue-residue contacts observed
 
-An example is provided here: [contmap-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/contmap-test.cfg){:target="_blank"}
+An example is provided here: [contmap-test.cfg](https://github.com/haddocking/haddock3/blob/main/examples/analysis/contmap-test.cfg)
 
 
 ### Fine tuning clustering parameters
