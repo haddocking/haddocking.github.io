@@ -21,7 +21,7 @@ Since more than 20 years now, HADDOCK has been improved, going from its first de
 In november 2023, we celebrated the 20 years anniversary of HADDOCK, where most of the incredible scientists that contributed to its developement attended.
 
 <figure style="text-align: center;">
-<img width="75%" src="20yearshaddock.png" alt="photo 20 years haddock3">
+<img width="75%" src="./images/20-years-haddock.png" alt="photo 20 years haddock3">
 </figure>
 
 We wish to thank all the students, PhD candidates, PostDoctoral researchers for each of their contribution to the tool, as it allowed to continuously develop new methods and improve HADDOCK functionalities over the years.
