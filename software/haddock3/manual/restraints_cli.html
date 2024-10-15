@@ -195,11 +195,48 @@ Generating them can be quite difficult, and for this reason we added a dedicated
 <li><a href="#validate-tbl">validate_tbl</a>:</li>
 </ul>
 <h2 id="calc-accessibility"><a class="header" href="#calc-accessibility">Calc Accessibility</a></h2>
-<h2 id="passive-form-active"><a class="header" href="#passive-form-active">Passive form active</a></h2>
+<p>Given a pdb file, <code>calc_accessibility</code> will calculate the relative accessibility of
+the side chains and return a list of surface exposed residues.</p>
+<p>Nucleic acids bases are considered to be always accessible.</p>
+<p>This command is particularly useful when little interface information is available for one biomolecule and one wants to identify (and then target) all the surface exposed residues on a certain protein.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>haddock3-restraints calc_accessibility &lt;input_pdb_file&gt; [-c &lt;cutoff&gt;] [--log_level &lt;log_level&gt;] [--export_to_actpass]
+</code></pre>
+<h2 id="passive-from-active"><a class="header" href="#passive-from-active">Passive from active</a></h2>
+<p>Given a list of active_residues and a PDB structure, <code>passive_from_active</code> will return a list of
+surface exposed passive residues within a 6.5A radius from the active residues.</p>
+<p>When provided with a list of surface residues, <code>passive_from_active</code> will filter the list for those
+that are within 6.5A from the active residues.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>haddock3-restraints passive_from_active &lt;pdb_file&gt; &lt;active_list&gt; [-c &lt;chain_id&gt;] [-s &lt;surface_list&gt;]
+</code></pre>
+<p>This command is useful if few active residues are known and you want to enlarge the possible interface by adding passive residues.</p>
 <h2 id="active-passive-to-ambig"><a class="header" href="#active-passive-to-ambig">Active passive to ambig</a></h2>
+<p>Given two files containing active (in the first line) and passive (second line)
+residues to be used by HADDOCK, <code>active_passive_to_ambig</code> gives in output the corresponding
+<code>ambig.tbl</code> file.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>haddock3-restraints active_passive_to_ambig file_actpass_one file_actpass_two [--segid-one] [--segid-two]
+</code></pre>
+<p>Here <code>file_actpass_one</code> and <code>file_actpass_two</code> are the files containing the active and passive residues for the first and second molecule, respectively. The two optional arguments (<code>--segid-one</code> and <code>--segid-two</code>) are used to specify the segment ID of the residues in the output <code>ambig.tbl</code> file.</p>
 <h2 id="restrain-bodies"><a class="header" href="#restrain-bodies">Restrain bodies</a></h2>
+<p>The <code>restrain_bodies</code> subcommand creates distance restraints to lock several
+chains together. It is useful to avoid unnatural flexibility or movement due to
+sequence/numbering gaps.</p>
+<p>As an example, this subcommand is crucial when docking an antibody to their cognate antigen (see for example <a href="www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#additional-restraints-for-multi-chain-proteins">this tutorial</a>), as the hypervariable region of an antibody is formed by two chains that are not covalently linked.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>haddock3-restraints restrain_bodies &lt;structure&gt; [--exclude] [--verbose]
+</code></pre>
+<p>One can exclude some chains from this calculation using the <code>--exclude</code> option.</p>
 <h2 id="z-surface-restraints"><a class="header" href="#z-surface-restraints">Z surface restraints</a></h2>
+<p><code>z-surface-restraints</code> generate both z-restraints and corresponding z-surfaces based on
+input pdb structure and residue selection.</p>
 <h2 id="validate-tbl"><a class="header" href="#validate-tbl">Validate tbl</a></h2>
+<p>A simple subcommand to validate the content of a tbl file.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>haddock3-restraints validate_tbl &lt;tbl_file&gt; [--silent] [--quick]
+</code></pre>
+<p>The <code>--silent</code> option will suppress the output of the validation (in case of success), while the <code>--quick</code> option will first check the global formatting first, before getting into the context.</p>
 <h1 id="new-version-of-the-haddock-restraints"><a class="header" href="#new-version-of-the-haddock-restraints">New version of the haddock-restraints</a></h1>
 <p>A new version of the haddock3-restraints is currently being developped.
 This new implementation using <em>rust</em> will allow better maintainability as well as its deployment on various operating systems as well as on web-browser using WebAssembly.
