@@ -14,3 +14,19 @@ Haddock3 is an open source software and therefore its source code can be downloa
 We are hosting the code on a dedicated [GitHub repository](https://github.com/haddocking/haddock3/), allowing for better version control, code development and maintainability.
 
 For usage tracking purposes (to avoid counting robots downloading the tool), we advise users to download it from our [lab page](https://www.bonvinlab.org/software/haddock3/#haddock3-distribution-download), as it allows us for easier reporting to authoritise supporting the development of this project with grants.
+
+
+To install haddock3 from source, we suggest to run the following commands:
+
+```bash
+# First, download the source code:
+git clone https://github.com/haddocking/haddock3.git
+cd haddock3
+
+# Setup the virtural environnement:
+python3.9 -m venv .haddock3-env
+source .haddock3-env/bin/activate
+
+# Install haddock3
+pip install .
+```
