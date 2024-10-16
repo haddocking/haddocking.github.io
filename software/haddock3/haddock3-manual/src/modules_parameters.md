@@ -52,51 +52,54 @@ The `defaults.yaml` file is not only used to check if the parameter name exists 
 
 Below is presented the list of available modules.
 For detailed explannation of each modules and their respective parameters, please refere to [the online documentation](https://bonvinlab/haddock3/).
-You can also use the `haddock3-cfg` command line to get information of each module and their parameters ([documentation here](/software/haddock3/manual/clis#haddock3_cfg)).
+You can also use the `haddock3-cfg` command line to get information of each module and their parameters ([documentation here](./clis.md#haddock3-cfg)).
+
 
 
 ### Topology modules
 
-- [`[topoaa]`](/software/haddock3/manual/modules/topology.md#topoaa):
-- [`[topocg]`](/software/haddock3/manual/modules/topology.md#topocg): *comming soon*
+- [`[topoaa]`](./modules/topology.md#topoaa-module): Builds missing atoms and generates the all-atom topologies for the CNS engine.
+- [`[topocg]`](./modules/topology.md#topology-modules): *comming soon*
+
 
 ### Sampling modules
 
-- [`[rigidbody]`](/software/haddock3/manual/modules/sampling.md#rigidbody):
-- [`[gdock]`](/software/haddock3/manual/modules/sampling.md#gdock):
-- [`[lightdock]`](/software/haddock3/manual/modules/sampling.md#lightdock):
+- [`[rigidbody]`](./modules/sampling.md#rigidbody-module): Rigid body energy minimisation with CNS (previously known as `it0` in HADDOCK2.X series).
+- [`[gdock]`](./modules/sampling.md#gdock-module): Third-party genetic algorithm-based docking software.
+- [`[lightdock]`](./modules/sampling.md#lightdock-module): Third-party Glow-worm Swarm Optimisation (GSO) docking software.
 
 
 ### Refinement modules
 
-- [`[flexref]`](/software/haddock3/manual/modules/refinements.md#flexref):
-- [`[emref]`](/software/haddock3/manual/modules/refinements.md#emref):
-- [`[mdref]`](/software/haddock3/manual/modules/refinements.md#mdref):
-- [`[openmm]`](/software/haddock3/manual/modules/sampling.md#openmm):
-
+- [`[flexref]`](./modules/refinement.md#flexref-module): Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (previously known as `it1` in HADDOCK2.X series).
+- [`[emref]`](./modules/refinement.md#emref-module): Refinement by energy minimisation (previously known as `itw EM only` in HADDOCK2.4).
+- [`[mdref]`](./modules/refinement.md#mdref-module): Refinement by a short molecular dynamics simulation in explicit solvent (previously known as `itw` in HADDOCK2.X series).
+- [`[openmm]`](./modules/refinement.md#openmm-module): Short molecular dynamics simulation (in explicit or implicit solvent) using the OpenMM library.
 
 
 ### Scoring modules
 
 - CNS scoring modules:
-  - [`[emscoring]`](/software/haddock3/manual/modules/scoring.md#emscoring):
-  - [`[mdscoring]`](/software/haddock3/manual/modules/scoring.md#mdscoring):
-- [`[prodigyprotein]`](/software/haddock3/manual/modules/scoring.md#prodigyprotein):
-- [`[prodigyligand]`](/software/haddock3/manual/modules/scoring.md#prodigyligand):
+  - [`[emscoring]`](./modules/scoring.md#emscoring-module): Scoring of a complex performing a short EM (builds the topology and all missing atoms).
+  - [`[mdscoring]`](./modules/scoring.md#mdscoring-module): Scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).
+- [`[prodigyprotein]`](./modules/scoring.md#prodigyprotein-module): Binding affinity prediction of a protein-protein complex by the `prodigy` tool.
+- [`[prodigyligand]`](./modules/scoring.md#prodigyligand-module): Binding affinity prediction of a protein-ligand complex by the `prodigy-ligand` tool.
+
 
 ### Analysis modules
 
 - Analysis:
-  - [`[caprieval]`](/software/haddock3/manual/modules/analysis.md#caprieval):
-  - [`[alascan]`](/software/haddock3/manual/modules/analysis.md#alascan):
-  - [`[contactmap]`](/software/haddock3/manual/modules/analysis.md#contactmap):
+  - [`[alascan]`](./modules/analysis.md#alascan-module): Performs alanine (or other residue) scanning on the models generated in the previous step.
+  - [`[caprieval]`](./modules/analysis.md#caprieval-module): Calculates CAPRI metrics (i-RMDS, l-RMSD, Fnat, DockQ, RMSD) with respect to the top scoring model or reference structure if provided.
+  - [`[contactmap]`](./modules/analysis.md#contactmap-module): Calculates the contact maps for the models generated in the previous step.
 - Clustering:
-  - [`[rmsdmatrix]`](/software/haddock3/manual/modules/analysis.md#rmsdmatrix):
-  - [`[clustrmsd]`](/software/haddock3/manual/modules/analysis.md#clustrmsd):
-  - [`[clustfcc]`](/software/haddock3/manual/modules/analysis.md#clustfcc):
+  - [`[rmsdmatrix]`](./modules/analysis.md#rmsdmatrix-module): Calculates the pairwise RMSD matrix between all the models generated in the previous step.
+  - [`[ilrmsdmatrix]`](./modules/analysis.md#ilrmsdmatrix-module): Calculates the pairwise interface-ligand-RMSD (iLRMSD) matrix between all the models generated in the previous step.
+  - [`[clustrmsd]`](./modules/analysis.md#clustrmsd-module): Clusters models based on pairwise RMSD matrix previously computed by either the calculated with the `[rmsdmatrix]` or `[ilrmsdmatrix]` modules.
+  - [`[clustfcc]`](./modules/analysis.md#clustfcc-module): Clusters models based on the fraction of common contacts (FCC)
 - Selection:
-  - [`[seletop]`](/software/haddock3/manual/modules/analysis.md#seletop):
-  - [`[seletopclusts]`](/software/haddock3/manual/modules/analysis.md#seletopclusts):
+  - [`[seletop]`](./modules/analysis.md#seletop-module): Selects the top N models from the previous step.
+  - [`[seletopclusts]`](./modules/analysis.md#seletopclusts-module): Selects top N clusters from the previous step.
 
 
 ## Developping a new module

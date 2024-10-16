@@ -16,9 +16,9 @@ Haddock3 currently supports files in PDB and mmCIF format.
 The PDB format is quite strict, and all characters must be well positionned in the file.
 
 To make sure your file is correctly formated, you can use the `pdbtools` library (should be already installed in your `haddock3` virtual environement),
-or read go to [this online resource](https://cupnet.net/pdb-format/) where it is well explained.
+or read [this online resource](https://cupnet.net/pdb-format/) where it is well explained.
 
-Please refere to the [pdb-tools](/software/haddock3/manual/pdbtools.md) section for more information on how to use it.
+Please refere to the [pdb-tools](./pdbtools.md) section for more information on how to use it.
 
 
 ## Number of input molecules 
@@ -63,4 +63,5 @@ For this, you will need to use dedicated tools, such as `acpype` or [`ccp4-prodr
 
 Here are some usefull resources on how to generate those:
 
-- **bioBB using acpype**: https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization
+- **bioBB using acpype**: https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization.
+* **Automated Topology Builder (ATB)**: Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://atb.uq.edu.au/](https://atb.uq.edu.au/).

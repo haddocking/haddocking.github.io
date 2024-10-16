@@ -17,7 +17,9 @@
 
 - [Generating restraints for HADDOCK](./intro_restraints.md)
   - [haddock3-restraints](./restraints_cli.md)
-  - [Symmetry restraints](./symmetry_restraints.md)
+  - [Auotmated restraints generation](./automated_restraints.md)
+    - [Symmetry restraints](./automated_restraints.md#symmetry-restraints)
+    - [DNA & RNA restraints](./automated_restraints.md#dna--rna-restraints)
   - [Ab-initio docking mode](./abinitio_docking.md)
   - [Flexibility](./flexibility.md)
 
@@ -52,6 +54,14 @@
 - [Tutorials](./tutorials.md)
   - [Access to various tutorials](./tutorials.md)
   - [HADDOCK best practice guide - A must read when starting to use our software!](./bpg.md)
+    - [Structure preparation](./bpg/structures.md)
+    - [Generating restraints](./bpg/restraints.md)
+    - [Small-molecules / Ligands](./bpg/small_mol.md)
+    - [Glycans](./bpg/glycans.md)
+    - [Peptides](./bpg/peptides.md)
+    - [DNA / RNA](./bpg/dna.md)
+    - [Proteins](./bpg/proteins.md)
+    - [Analysing results](./bpg/analysis.md)
 
 - [Haddock3 eco-system](./eco_system.md)
 

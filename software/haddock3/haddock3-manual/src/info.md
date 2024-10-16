@@ -9,6 +9,14 @@ The BioExcel forum ([https://ask.bioexcel.eu/](https://ask.bioexcel.eu/)) is the
 You can search for previous post, as maybe your question has been asked by other scientist before you.
 Or create a new post, in which case we will try to answer it as fast as we can.
 
+**Note** that you are not the only one having difficulties, and the question you may have been already asked and answered !
+The BioExcel forum has a quite powerfull search engine that allows you to search for keywords present in all its content.
+For this, simply click on the magnifying glass at the top-right for the forum, and type the keywords of interest (e.g: "restraints").
+
+<figure style="text-align: center;">
+<img width="75%" src="./images/AskBioExcel_search_engine.png" alt="a screenshot of the AskBioExcel forum search engine queriying restraints">
+</figure>
+
 
 ## Code related issues
 

@@ -173,3 +173,8 @@ This is performed by defining the path to this file using the `symtbl_fname = cu
 This parameter is available in `[rigidbody]`, `[flexref]`, `[emref]` and `[mdref]` modules.
 
 For more details on how to define symmetry restraints, please refere to the [Xplor documentation, Distance Symmetry Restraints](https://nmr.cit.nih.gov/xplor-nih/xplorMan/node393.html).
+
+
+
+## DNA & RNA restraints
+
