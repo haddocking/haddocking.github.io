@@ -1,4 +1,4 @@
-# Symmetry restraints
+## Symmetry restraints
 
 CNS modules using restraints, such as `[rigidbody]`, `[flexref]`, `[emref]` or `[mdref]`, are also capable of handling symmetry restraints.
 This can be very useful when you know that the system you are working with contain such property, and you wish to enforce sampled solutions to be symmetrical.
@@ -7,7 +7,7 @@ Various symmetry restraints are already available in Haddock3.
 But custom symmetry restraints can also be provided, to learn more about it, read the [custom symmetry section](#custom-symmetry-restraints).
 
 
-## Pre-defined symmetry restraints
+### Pre-defined symmetry restraints
 
 3 types of symmetry restraints have been implemented in haddock3:
 
@@ -22,7 +22,7 @@ Here is a related research article describing some of the available symmetries i
 _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
 
 
-### Non crystallographic symmetry
+#### Non crystallographic symmetry
 
 Non-crystallographic symmetry (NCS) restraints is a type of restraints available in CNS.
 While symmetry is in the name, there is in fact no symmetry involved.
@@ -77,7 +77,7 @@ Note that for the use of NCS restraints:
 
 We have dedicated functions to assess the validity of the NCS parameters.
 
-### Rotational symmetry
+#### Rotational symmetry
 
 Rotational symmetries (**C symmetries**) can be enforced between partners.
 Currently, C2, C3, C4, C5 and C6 symmetries are available.
@@ -159,14 +159,24 @@ It is also possible to tune the force constant for the C**N** symmetries using t
 We are providing an example of protein-homotrimer docking using haddock3 [here](/software/haddock3/manual/docking_scenarios#protein-homotrimer).
 
 
-### S3 symmetry
+#### S3 symmetry
 
 To make use of S3 symmetry parameters, one should first activate the use of such restraints using the `sym_on = true` parameter!
 
 It is also possible to tune the force constant for the S3 symmetry using the `ksym` parameter.
 
 
-## Custom symmetry restraints
+### DNA & RNA restraints
+
+Often, you will want to keep DNA / RNA base-pairing fixed during a simulation.
+Without any restraints, they the pairing can fall apart when running semi-flexible refinements or molecular dynamics simulations.
+
+A dedicated parameter can be turned **on** to automatically discover base-pairs and generate restraints between nucleotides to keep them together.
+For this, simply set the `dnarest_on` to true (`dnarest_on = true`) in the corresponding CNS modules (mainly `[flexref]` and `[mdref]`).
+
+
+
+### Custom symmetry restraints
 
 If the type of symmetries already implemented in haddock3 is not sufficent for your needs, you can always supply your own symmetry restraint file.
 This is performed by defining the path to this file using the `symtbl_fname = custom_symmetry_restraints.tbl` parameter.
@@ -175,6 +185,4 @@ This parameter is available in `[rigidbody]`, `[flexref]`, `[emref]` and `[mdref
 For more details on how to define symmetry restraints, please refere to the [Xplor documentation, Distance Symmetry Restraints](https://nmr.cit.nih.gov/xplor-nih/xplorMan/node393.html).
 
 
-
-## DNA & RNA restraints
 
