@@ -1,3 +1,8 @@
+# Contribute to the book
+
+The book source code is located in `haddock3/src/`.
+From here, consider only relative paths for things to be functional.
+
 # Compile the book
 
 This manual is ment to be compiled by `mdbook`.
