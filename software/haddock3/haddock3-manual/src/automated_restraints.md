@@ -19,7 +19,7 @@ They are described in more details below.
 
 Here is a related research article describing some of the available symmetries in HADDOCK: E. Karaca, A.S.J. Melquiond, S.J. de Vries, P.L. Kastritis and A.M.J.J. Bonvin
 [Building macromolecular assemblies by information-driven docking: Introducing the HADDOCK multi-body docking server.](https://doi.org/doi:10.1074/mcp.M000051-MCP201)
-_Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://igitur-archive.library.uu.nl/chem/2011-0314-200254/UUindex.html">here</a>.
+_Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://utrechtuniversity.on.worldcat.org/atoztitles/link?sid=Entrez:PubMed&id=pmid:20305088">here</a>.
 
 
 #### Non crystallographic symmetry
@@ -173,6 +173,8 @@ Without any restraints, they the pairing can fall apart when running semi-flexib
 
 A dedicated parameter can be turned **on** to automatically discover base-pairs and generate restraints between nucleotides to keep them together.
 For this, simply set the `dnarest_on` to true (`dnarest_on = true`) in the corresponding CNS modules (mainly `[flexref]` and `[mdref]`).
+
+*Note* that while the parameter name only contain DNA in its name, it is also functional for RNA!
 
 
 

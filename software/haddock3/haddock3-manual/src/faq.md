@@ -71,13 +71,31 @@ Removing regions with low pLDDT (~< 60) can be an appropriate solution so use Al
 
 ### Clustering issues  
 
-When perfoming RMSD clustering,
-When choosing which of the two molecules will be in the first segid (e.g. "A"), it is recommended to choose the largest and/or most rigid one of the two.
-This should give better clustering results when RMSD clustering is selected since in the rmsd calculation for clustering the structures are first fitted on the semi-flexible segments of the first molecule and then the rmsds are calculated on the semi-flexible segments of the remaining molecules (defined as "ligand interface RMSD").  
 
-Defining the largest and best defined (most rigid) molecule first should thus result in a better fitting.  
+When perfoming RMSD clustering, two modules can be used to compute the RMSD matrix:
+- `[rmsdmatrix]`: computing the full complex (or single chain) RMSD matrix
+- `[ilrmsdmatrix]`: computing the interface-ligand RMSD matrix
 
-**Note** that this is not an issue if fractions of common contact (FCC) clustering  ([`clustfcc`] module) is used.
+The `[rmsdmatrix]` module allows you to define a subset of resiudes used to perform both the structural alignment and the RMSD computation.
+For this, you need to specify a list of residue for each chain, using the parameter `resdic_*`, where `*` is the chainID.
+As an example, to perform the selection of residues 12, 13, 14 and 15 from chain A and 1, 2, 3 from chain B, refine the following parameters:
+```toml
+[rmsdmatrix]
+resdic_A = [12, 13, 14, 15]
+resdic_B = [1, 2, 3]
+```
+This will result in the selectio of those 7 residues to perform the structural alignment onto the reference and then compute the RMSD.
+
+While for the `[ilrmsdmatrix]` module, a different approach is taken.
+Two parameters must be defined
+- `receptor_chain`: defining the chainID of the receptor. By default "A".
+- `ligand_chains`: a list of other chain IDs that should represent the "ligands". If not set, all the remaining chains will be considered as ligand.
+
+During the computational workflow, first all the residue-residue contacts between the receptor and ligand are selected.
+This selection is then used to perform later structural alignment and RMSD computation.
+
+Those two modules must be followed by the `[clustrmsd]` module, otherwise only the pair-wise RMSD matrix will be computed, and clustering not performed.
+**Note** that this is not an issue if fractions of common contact (FCC) clustering  ([`clustfcc`] module) is used as the matrix is computed within the clustering module directly (*as much faster*).
 
 
 <hr>
