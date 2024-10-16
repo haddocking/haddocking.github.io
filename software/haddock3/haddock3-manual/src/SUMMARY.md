@@ -17,9 +17,9 @@
 
 - [Generating restraints for HADDOCK](./intro_restraints.md)
   - [haddock3-restraints](./restraints_cli.md)
-  - [Auotmated restraints generation](./automated_restraints.md)
-    - [Symmetry restraints](./automated_restraints.md#symmetry-restraints)
-    - [DNA & RNA restraints](./automated_restraints.md#dna--rna-restraints)
+  - [Automated restraints generation](./automated_restraints.md)
+    - [Symmetry restraints](./automated_restraints.md)
+    - [DNA & RNA restraints](./automated_restraints.md)
   - [Ab-initio docking mode](./abinitio_docking.md)
   - [Flexibility](./flexibility.md)
 

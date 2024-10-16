@@ -1,8 +1,8 @@
 # Command line interfaces
 
 Haddock3 is a software that can read configuration files and compute data.
-While there will be [a web application](https://github.com/i-VRESSE/haddock3-webapp), haddock3 do not have interface, and you must use it from the command line.
-While this may have some negative impact for some unexperienced user, it is also very powerful as it allows custom scripts to launch haddock, and therefore integrate it in your own pipelines.
+While there will be [a web application](https://github.com/i-VRESSE/haddock3-webapp), haddock3 do not have a graphical user interface, and must used from the command line.
+While this may have some negative impact for some unexperienced user, it is also very powerful as it allows custom scripting to launch haddock#, and therefore integrating it in your own pipelines is easier.
 
 
 To use the command line interface, you must open a terminal:
