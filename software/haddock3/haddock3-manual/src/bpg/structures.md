@@ -53,7 +53,7 @@ Once one finds the protein homologues, some freely available software for **homo
 
 Homology modeling using these tools is described in our tutorial here:
 
-* [Homology Modeling of the mouse MDM2 protein](/education/molmod/modelling/)
+* [Homology Modeling of the mouse MDM2 protein](https://www.bonvinlab.org/education/molmod/modelling/)
 
 
 #### Modelling of peptides and mutations in proteins
@@ -181,15 +181,17 @@ table, th, td {
 
 | <font size="10" color="RED">Don't</font> | <font size="10" color="GREEN">Do instead</font> |
 |:---:|:---:|
-| submit a pdb file without checking it first | carefully inspect your pdb and remove any unwanted atoms (water molecules, ions, crystallization agents)|
-| edit pdb files in Word, OpenOffice or LibreOffice editor |edit pdb files in an ASCII text editor |
-| use residues with multiple occupancies (e.g. 124A, 124B) | use *pdb_selaltloc.py* to choose only one residue occupancy |
-| use residues with overlapping numbering | use *pdb_reres.py* to renumber residues |
-| use atoms with identical atom names | edit your molecule with an ASCII text editor to make all atom names unique or use [*pdb_uniqname.py*](https://github.com/haddocking/pdb-tools/blob/master/pdbtools/pdb_uniqname.py) from our PDB-tools|
-| use a pdb file with incorrect formatting | pdb formatting is very strict, check your file with *pdb_validate.py* and reload and export the file in Pymol if necessary |
+| input a pdb file without checking it first | carefully inspect your pdb and remove any unwanted atoms (water molecules, ions, crystallization agents)|
+| edit pdb files in Word, OpenOffice or LibreOffice editor | edit pdb files in an ASCII text editor |
+| use residues with multiple occupancies (e.g. 124A, 124B) | use [*pdb_selaltloc*](../pdbtools.md#pdb_selaltloc) to choose only one residue occupancy |
+| use residues with overlapping numbering | use [*pdb_reres*](../pdbtools.md#pdb_reres) to renumber residues |
+| use atoms with identical atom names for the same residue | edit your molecule with an ASCII text editor to make all atom names unique or use [*pdb_uniqname*](../pdbtools.md#pdb_uniqname) from our PDB-tools |
+| use a pdb file with incorrect formatting | pdb formatting is very strict, check your file with [*pdb_validate*](../pdbtools.md#pdb_validate) and reload and export the file in Pymol if necessary |
 
 
-Once you have your structures HADDOCK-ready you can go to next step and define [**restraints**](/software/bpg/restraints/).
+Once you have your structures HADDOCK-ready you can go to next step and define [**restraints**](./restraints.md).
 
 
-Any more questions about pdb preparation for HADDOCK? Have a look at the **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=pdb%20%23haddock)**  hosted by [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu). There is a very high chance that your problem has already been addressed. 
+Any more questions about pdb preparation for HADDOCK?
+Have a look at the **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=pdb%20%23haddock)**  hosted by [<img width="70" src="../images/Bioexcel_logo.png">](https://bioexcel.eu).
+There is a very high chance that your problem has already been addressed. 
