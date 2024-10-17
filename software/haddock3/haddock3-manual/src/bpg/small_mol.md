@@ -1,17 +1,23 @@
 ## Small-molecules / Ligands
 
 <p align="right">
-  <img src="/software/bpg/bound_smallmol.png" />
+  <img src="./bound_smallmol.png" />
 </p>
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
 
 It's possible to dock small ligands using HADDOCK but for that topology and parameter files for the ligand should be provided in CNS format. Several sources exist to find such files:
 
+
+* **ccp4-prodrg**: [`ccp4-prodrg`](https://www.ccp4.ac.uk/html/index.html)
+
 *   the **PRODGR** server maintained by Daan van Aalten at Dundee University: [https://prodrg2.dyndns.org](https://prodrg2.dyndns.org)  
     This server allows you to draw your molecule or paste coordinates and will return topologies and parameter files in various format, including CNS. You should turn on the electrostatic to obtain partial charges.
 
-*   the **Automated Topology Builder (ATB)** and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://compbio.biosci.uq.edu.au/atb](https://compbio.biosci.uq.edu.au/atb)  
+*   the **Automated Topology Builder (ATB)** and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://compbio.biosci.uq.edu.au/atb](https://compbio.biosci.uq.edu.au/atb)
+
+* **BioBB using acpype**: The [BioExcel BioBuildingBlock (BioBB)](https://mmb.irbbarcelona.org/biobb/) library is hosting several tutorials on how to perform computations with a variety of different tools.
+    Here is a link to the workflow used to parametrize ligands: [https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization](https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization)
    
 
 More detailed description is written in the [frequently asked questions page](/software/haddock2.4/faq/#small-ligand-docking-with-haddock). To get increase the chance of getting the right ligand conformation, one can perform ensemble docking. In this scenario multiple conformations can be generated as described [here](/software/bpg/structures/#modeling-of-small-molecules).

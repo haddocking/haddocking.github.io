@@ -14,3 +14,15 @@ In this manual, we will describe:
 - the new functionalities of the haddock3 software suite
 - how to create custom workflows
 - provide example workflows
+
+
+## Navigate through the manual
+
+On the top-left part of you screen, you will find 3 icons:
+- stacked lines: allows to display/hide the table of content
+- brushes: allows to tune the colors of the manual
+- the magnifying glass: perform keyword text search in the entire manual and access corresponding pages
+
+<figure style="text-align: center;">
+<img src="./images/mdbook_tools.png">
+</figure>

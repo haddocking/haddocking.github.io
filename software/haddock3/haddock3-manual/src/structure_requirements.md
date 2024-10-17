@@ -20,6 +20,47 @@ or read [this online resource](https://cupnet.net/pdb-format/) where it is well 
 
 Please refere to the [pdb-tools](./pdbtools.md) section for more information on how to use it.
 
+### PDB format
+
+In order to run HADDOCK you need to have the structures of the molecules (or fragments thereof) in PDB format.
+There are a few points to pay attention to when preparing the PDBs for HADDOCK.
+
+* Make sure that all PDB files end with an END statement
+
+* If providing a conformational ensemble (e.g.: from an NMR PDB entry, or out of a MD simulation), each model should start with a MODEL statement and end with an ENDMDL statement and the file should terminate with a END.
+
+* haddock3 will **not** check for breaks in the chain (e.g. missing density in crystal structures or between the two strands of a DNA molecules).
+  In the case of multiple chains within one molecule (e.g. DNA) or in the presence of co-factors, it is recommended to add a TER statement in between the chains/sub-molecules.
+  Also condisider using the `haddock3-restraints restrain_bodies` command line to generate restraints and input them as unambiguous restraints using the `unambig_fname` parameter.
+
+* If your input molecule consists of multiple chains with overlapping numbering you will have to renumber those (or shift the numbering of some parts) in order to avoid overlapping numbering.
+  HADDOCK will treat each molecule with a single chainID and overlap in numbering will lead to problems.
+
+*	Higher resolution crystal structures often contain multiple occupancy side-chain conformations, which means one residue might have multiple conforamtions present in the crystal structure, each with a partial occupancy.
+  The is often reflected by the presence of a `A` and `B` before the residue name for the atoms having multiple conformations.
+  To avoid problems, only one conformation should be retained (the web server will raise an error for such cases).
+  This can be easily done using our [PDB-tools](https://github.com/haddocking/pdb-tools).
+  Alternatively you can also make use of our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} for this.
+  The script that allows you to remove double occupancies is `pdb_selaltloc`.
+  Its default behavior is to only keep the fisrt (`A`) conformation, but you can select other conformations if wanted.
+
+* HADDOCK can deal with ions.
+  You will have however to make sure that the ion naming is consistent with the ion [topologies provided in HADDOCK](https://wenmr.science.uu.nl/haddock2.4/library).
+  For example, a CA heteroatom with residue name CA will be interpreted as a neutral calcium atom.
+  A doubly charged calcium ion should be named CA+2 with as residue name CA2 to be properly recognized by HADDOCK.
+  (See also the [FAQ](./faq.md) for docking in the presence of ions).
+
+A list of [supported modified amino acids and ions is available online](https://wenmr.science.uu.nl/haddock2.4/library).
+
+
+**Note:** Most of the tasks mentioned above can also be performed using our PDB-tools python scripts ([Rodrigues et al. F1000 Research](https://doi.org/10.12688/f1000research.17456.1)) to manipulate PDB files, select and rename chains and segids, renumber residues... and much more!
+It should be installed by default in your haddock3 environement.
+And a [dedicated section is present in this manual](./pdbtools.md).
+For more details, see for this our [GitHub repository](https://github.com/haddocking/pdb-tools).
+Alternatively you can also make use of our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/).
+
+
+<hr>
 
 ## Number of input molecules 
 
@@ -59,9 +100,10 @@ In modules that uses CNS, you can provide such files with the `ligand_top_fname`
 ### How to generate topology and parameters for my ligand
 
 Generating topology and parameters for your ligand is not trivial.
-For this, you will need to use dedicated tools, such as `acpype` or [`ccp4-prodrg`](https://www.ccp4.ac.uk/html/index.html), or use dedicated libraries such as [`bioBB`](https://mmb.irbbarcelona.org/biobb/).
+For this, you will need to use dedicated tools, such as `acpype` or [`ccp4-prodrg`](https://www.ccp4.ac.uk/html/index.html), or use dedicated libraries such as [`BioBB`](https://mmb.irbbarcelona.org/biobb/).
 
 Here are some usefull resources on how to generate those:
 
-- **bioBB using acpype**: https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization.
-* **Automated Topology Builder (ATB)**: Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://atb.uq.edu.au/](https://atb.uq.edu.au/).
+- **BioBB using acpype**: The [BioExcel BioBuildingBlock (BioBB)](https://mmb.irbbarcelona.org/biobb/) library is hosting several tutorials on how to perform computations with a variety of different tools.
+  Here is a link to the workflow used to parametrize ligands: [https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization](https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization).
+- **Automated Topology Builder (ATB)**: Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://atb.uq.edu.au/](https://atb.uq.edu.au/).

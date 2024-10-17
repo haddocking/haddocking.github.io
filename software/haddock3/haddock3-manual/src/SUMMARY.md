@@ -53,7 +53,7 @@
 
 - [Tutorials](./tutorials.md)
   - [Access to various tutorials](./tutorials.md)
-  - [HADDOCK best practice guide - A must read when starting to use our software!](./bpg.md)
+  - [Best practice guide](./bpg.md)
     - [Structure preparation](./bpg/structures.md)
     - [Generating restraints](./bpg/restraints.md)
     - [Small-molecules / Ligands](./bpg/small_mol.md)
