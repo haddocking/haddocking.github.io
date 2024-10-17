@@ -1,6 +1,7 @@
 ## Frequently Asked Questions
 
-We collect here frequently occurring problems and solutions. The following topics are currently available:
+We collected here a list of frequently occurring problems and their solutions.
+The following topics are currently available:
 
 - [What about missing atoms or chain breaks?](#what-about-missing-atoms-or-chain-breaks)
 - [What about point mutations?](#what-about-point-mutations)
@@ -8,8 +9,12 @@ We collect here frequently occurring problems and solutions. The following topic
 - [Domain definition for docking](#domain-definition-for-docking)
 - [Clustering issues](#clustering-issues)
 - [Running HADDOCK on a cluster using a queuing system (e.g. Torque or Slurm)](#running-haddock-on-a-cluster-using-a-queuing-system-eg-torque-or-slurm)
-- [Small ligand docking with HADDOCK](#small-ligand-docking-with-haddock)
+- [Small ligand docking with HADDOCK](#cofactors--small-ligand-docking-with-haddock)
 - [Usage of dummy atoms / beads with HADDOCK](#beads-dummy-atoms-docking-with-haddock)
+- [Typical error messages](#typical-haddock3-error-messages)
+
+
+If your problem falls outside of the topics, please see the [Getting support / How to ask for help](./info.md) section.
 
 <hr>
 
@@ -199,3 +204,98 @@ Haddock3 comes with an [example for protein-ligand docking](./docking_scenarios/
 **Important:** When starting a run, always check for error messages in the `0_topoaa` directory in the various generated `.out` files, especially for your ligand.
 
 <hr>
+
+
+### Beads dummy atoms docking with haddock3
+
+Dummy atoms can be used in haddock3 and can be usefull as distance restraints can be built towards them.
+This is used, for example:
+- [to restraints some residues to a plan](./restraints_cli.md#z-surface-restraints)
+- [perform shape based ligand docking](./docking_scenarios/prot-ligand.md#template-based-shape-docking)
+
+Dummy atoms (also called shape beads) must be defined in a separated PDB file and have the following naming:
+- Start with the `ATOM`
+- using `SHA` for both atom and residue name
+- defined as chain `S`
+- have the same atom and residue index
+
+```pdb
+ATOM      1  SHA SHA S   1      24.222  -6.426 -14.545  1.00  1.00
+ATOM      2  SHA SHA S   2      23.059  -6.675 -14.930  1.00  1.00
+...
+```
+
+Because such type of dummy atoms do not have topology nor force-field parameters,
+they must be explicitly defined as shapes.
+To do so, two parameters must be set in you configuration file:
+- `mol_shape_X = true`: allows to tell haddock3 that molecule `X` is a shape.
+- `mol_fix_origin_X = true`: allows to tell haddock3 not to move molecule `X`, and keep the original coordinates.
+
+Where `X` is a number that correspond to the molecule position in the input list of molecules in the configuration file.
+
+Here is an example, where the shapes will be inputed at second position in the molecules:
+```toml
+run_dir = "test_shape"
+molecules = ["protein.pdb", "shapes.pdb"]
+[topoaa]
+[rigidbody]
+mol_shape_2 = true
+mol_fix_origin_2 = true
+```
+
+### Typical haddock3 error messages
+
+In some cases, the haddock3 exection can stop for a given reason.
+While we are already trying the handle possible errors, some of them will lead to critical failure, terminating the workflow.
+If such a error occures, we report it in the log file.
+The logfile can be found at two locations:
+- printed on your screen as standard output.
+- written in a file named `log` located in the workflow run directory.
+
+We often try to provide a meaningful error message that can help you figure out what could be the issue related to it.
+If not, please refere to the [Getting support / How to ask for help](./info.md) section to get assistance.
+
+Here is a list of most common error:
+- [tolerance issue](#tolerance-issue)
+
+
+#### Tolerance issue
+
+Here is a typical **tolerance issue** log error message:
+
+```bash
+[2024-09-09 20:04:33,709 libutil ERROR] 100.00% of output was not generated for this module and tolerance was set to 5.00%.
+Traceback (most recent call last):
+  File "/data/haddock3/src/haddock/libs/libutil.py", line 335, in log_error_and_exit
+    yield
+  File "/data/haddock3/src/haddock/clis/cli.py", line 192, in main
+    workflow.run()
+  File "/data/haddock3/src/haddock/libs/libworkflow.py", line 43, in run
+    step.execute()
+  File "/data/haddock3/src/haddock/libs/libworkflow.py", line 162, in execute
+    self.module.run()  # type: ignore
+  File "/data/haddock3/src/haddock/modules/base_cns_module.py", line 61, in run
+    self._run()
+  File "/data/haddock3/src/haddock/modules/sampling/rigidbody/__init__.py", line 246, in _run
+    self.export_io_models(faulty_tolerance=self.params["tolerance"])
+  File "/data/haddock3/src/haddock/modules/__init__.py", line 300, in export_io_models
+    self.finish_with_error(_msg)
+  File "/data/haddock3/src/haddock/modules/__init__.py", line 308, in finish_with_error
+    raise RuntimeError(reason)
+RuntimeError: 100.00% of output was not generated for this module and tolerance was set to 5.00%.
+```
+
+This means that models that should have been generated by a modules are missing from the file system, and therefore were not written.
+This can come from multiple reasons:
+- There is an issue with the parameters / topology generation.
+- The model contained clashes that led to extremly high energetics that blowed up the system.
+- The `tolerance` threshold was set too low.
+
+If `100.00% of output was not generated`, there is probably an issue with the input molecules:
+- unrecognised amino acids
+- missing parameters / topology for residues outside of the [HADDOCK library](https://wenmr.science.uu.nl/haddock2.4/library)
+- huge sterical clashes
+
+If the value is inferior to `100.00%`, it can come from either one of the input conformers, or a random error from the molecular dynamic simulation.
+In this case, you could increase the tolerance threshold to a higher value (e.g.: `tolerance = 10`), for the workflow to continue, as missing few models can be acceptable.
+Note that you could also restart the workflow from the next module (e.g.: `haddock3 workflow.cfg --restart 5` to restart from module 5 if module did not meet the tolerance threshold), allowing you to save computational ressources not having to recompute data from module 0 to 4.
