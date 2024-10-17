@@ -1,6 +1,6 @@
 # PDB-Tools
 
-PDB-tool is set of python scripts dedicated at manipulating PDB files, select and rename chains and segids, renumber residues... and much more! ([Rodrigues et al. F1000 Research](https://doi.org/10.12688/f1000research.17456.1))
+PDB-tool is set of python scripts dedicated at manipulating PDB files, select and rename chains and segids, renumber residues... and much more! ([Rodrigues et al. *F1000 Research* (2018)](https://doi.org/10.12688/f1000research.17456.1))
 The source code can be obtain from its [GitHub repository](https://github.com/haddocking/pdb-tools).
 Alternatively you can also make use of our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/).
 
