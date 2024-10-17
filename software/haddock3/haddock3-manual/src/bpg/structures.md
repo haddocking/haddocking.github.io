@@ -89,7 +89,7 @@ Homology modeling using these tools is described in our tutorial here:
 * [OpenBabel](http://openbabel.org/index.html)
 	- open source chemoinformatics software, with an online version [accessible here](https://www.cheminfo.org/Chemistry/Cheminformatics/FormatConverter/index.html).
 
-<center><img width="300" src="/software/bpg/ligand.png"></center>
+<center><img width="300" src="./ligand.png"></center>
 
 * to prepare topology and parameter files for the ligand in CNS format one can use:
 

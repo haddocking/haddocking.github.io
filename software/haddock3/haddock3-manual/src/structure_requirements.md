@@ -53,9 +53,10 @@ There are a few points to pay attention to when preparing the PDBs for HADDOCK.
 A list of [supported modified amino acids and ions is available online](https://wenmr.science.uu.nl/haddock2.4/library).
 
 
-**Note:** Most of the tasks mentioned above can also be performed using our PDB-tools python scripts ([Rodrigues et al. F1000 Research](https://doi.org/10.12688/f1000research.17456.1)) to manipulate PDB files, select and rename chains and segids, renumber residues... and much more!
+**Note:** Most of the tasks mentioned above can also be performed using our PDB-tools python scripts ([Rodrigues et al. *F1000 Research* (2018)](https://doi.org/10.12688/f1000research.17456.1)) to manipulate PDB files, select and rename chains and segids, renumber residues... and much more!
 It should be installed by default in your haddock3 environement.
 And a [dedicated section is present in this manual](./pdbtools.md).
+
 For more details, see for this our [GitHub repository](https://github.com/haddocking/pdb-tools).
 Alternatively you can also make use of our new [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools/).
 

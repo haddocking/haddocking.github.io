@@ -24,5 +24,5 @@ On the top-left part of you screen, you will find 3 icons:
 - the magnifying glass: perform keyword text search in the entire manual and access corresponding pages
 
 <figure style="text-align: center;">
-<img src="./images/mdbook_tools.png">
+<img width="60%" src="./images/mdbook_tools.png">
 </figure>

@@ -29,8 +29,8 @@ mode = "local"
 # Setting the number of cores to 10
 ncores = 10
 ### POST PROCESSING AND CLEANING PARAMETERS
-postprocess = true
-clean = true
+postprocess = true  # will run `haddock3-analyse` and generate graphs
+clean = true  # Will compress output pdb files
 
 #############################################################
 # Now, we define the list of [modules] and their parameters #
