@@ -56,6 +56,20 @@ Homology modeling using these tools is described in our tutorial here:
 * [Homology Modeling of the mouse MDM2 protein](https://www.bonvinlab.org/education/molmod/modelling/)
 
 
+#### AI generated structures
+
+Using AI tools to generate structures is now becoming the standard.
+Nevertheless, one should always be carefull when using it, at artifacts can be generated.
+Indeed, sterical clashed can be present.
+Also, long disordered regions with low predicted pLDDT arround the protein will not help during the docking, as it may prevent the interaction of the structured domain.
+To prevent this, try to energy minimise the structure and remove *spaghetti* around the domain of interest.
+
+* [AlphaFoldDB](https://alphafold.ebi.ac.uk/): Hosted by the EBI/EMBL, it contains more than 2 milions predicted monomeric strucutre for a bunch of taxonomic spieces, that can be downloaded.
+* [UniProt](https://www.uniprot.org/): The UniProtKB now also provide, in the 'Structure' section, direct links to AlphaFoldDB, when available.
+* [Online ColabFold](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb): Written and maintained by Sergey Ovchinnikov & Martin Steinegger, allows to run AlphaFold2 on a jupyter notebook using online resources.
+* [Local ColabFold](https://github.com/YoshitakaMo/localcolabfold): The GitHub repository of ColabFold host multiple solutions to install AlphaFold2 locally.
+
+
 #### Modelling of peptides and mutations in proteins
 
 * **Point-mutations in HADDOCK**
