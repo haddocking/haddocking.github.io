@@ -12,11 +12,11 @@ Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van
 
 * X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
 
-* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v2) _BioRXiv_ 10.1101/2024.06.07.597882 (2024).
-
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://doi.org/10.1101/2024.06.02.597018). _BioRXiv._ 10.1101/2024.06.02.597018 (2024).
 
-* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _J. Chem. Inf. Mod._ In press (2024). [BioRXiv](https://doi.org/10.1101/2024.07.31.605986)
+* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ vbae153 (2024).
+
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _J. Chem. Inf. Mod._ *64*, 7816–7825 (2024).
 
 * M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1093/bioinformatics/btae583). _Bioinformatics_ Advanced Online Publication, 10.1093/bioinformatics/btae583 (2024).[BioRxiv](https://www.biorxiv.org/content/10.1101/2023.11.17.567543v1)
 

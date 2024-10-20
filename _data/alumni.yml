@@ -19,6 +19,11 @@
     current: 'Oregon State University, Corvallis OR, USA'
     status: visiting-professor
 
+-   name: Vlad Cojocaru
+    url: https://starubb.institute.ubbcluj.ro/en/member/cojocaru-vlad-3
+    current: 'STAR-UBB Institute, Babeș-Bolyai University, Cluj-Napoca, Romania'
+    status: Senior Researcher / Data Scientist
+
 -   name: João Teixeira
     current: 'University of Padova, Italy'
     url: https://fuxreiterlab.github.io/index.html
@@ -48,6 +53,9 @@
     url: https://www.boehringer-ingelheim.at/en
     current: 'Boehringer Ingelheim, Vienna, Austria'
     status: 'postdoc'
+
+-   name: Charlotte van Noort
+    status: Ph.D Candidate
 
 -   name: Jorge Roel
     url: https://www.ibmb.csic.es/en/department-of-structural-biology-dsb/protein-design-and-modeling
@@ -403,4 +411,6 @@
 -   name: Tineke Kadijk
     status: student
 
+-   name:  Joe Zhang
+    status: student
 
