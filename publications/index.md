@@ -38,11 +38,7 @@ Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van
 
 * M. Giulini, R.V. Honorato, J.L. Rivera, **A.M.J.J. Bonvin**. [ARCTIC-3D: Automatic Retrieval and ClusTering of Interfaces in Complexes from 3D structural information](https://doi.org/10.1038/s42003-023-05718-w). _Comm. Biol._  *7*:49, p. 1-9  (2024).
 
-<<<<<<< HEAD
 * X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1093/bioadv/vbad191). _Bioinfo. Adv._  *4*:vbad191  (2024).
-=======
-* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1093/bioadv/vbad191). _Bioinfo. Adv._  vbad191, _Advanced Online Publication  (2024).
->>>>>>> f7aa90a (Updated publications)
 
 
 ## 2023
