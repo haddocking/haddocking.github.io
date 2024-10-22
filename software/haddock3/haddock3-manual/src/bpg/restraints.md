@@ -1,13 +1,22 @@
 ## Restraints
 
 <p align="right">
-  <img src="/software/bpg/restraints_1.png" />
+  <img src="./restraints_1.png" />
 </p>
 
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
-As you probably saw in the [previous step](/software/bpg/structures/) there are many ways how to obtain structures of molecules that you want to dock. The next step is to define the way you expect these molecules to interact. HADDOCK is an information-driven tool, which means that the more available information about binding you have, the more meaningful your results will be. Based on the available information we distinguish between following options:
+As you probably saw in the [previous step](./structures.md), there are many ways how to obtain structures of molecules that you want to dock.
+The next step is to define the way you expect these molecules to interact.
+HADDOCK is an information-driven tool, which means that the more available information about binding you have, the more meaningful your results will be.
+Based on the available information we distinguish between following options:
+- [What information about binding is available?](#what-information-about-binding-is-available)
+  - [Information about the interface is available](#1-information-about-the-interface-is-available)
+    - [Unambiguous Interaction restraints](#unambiguous-interaction-restraints)
+    - [Ambiguous Interaction restraints](#ambiguous-interaction-restraints)
+  - [Information about the interface is not available](#2--information-about-the-interface-is-not-available)
+    - [Information about the quaternary structure of proteins (symmetry)](#information-about-the-quaternary-structure-of-proteins-symmetry)
 
 <hr>
 
@@ -15,19 +24,24 @@ As you probably saw in the [previous step](/software/bpg/structures/) there are 
 
 ### What information about binding is available? 
 
-<img src="/software/bpg/interface.png" align="right" >
+<img src="./interface.png" align="right" >
 
 #### 1.) Information about the interface is available
 
 #### Unambiguous Interaction restraints  
 
- If your predictions are highly reliable and you wish to have all of them applied during docking, define them a unambiguous restraints. These can be for example template-derived pairwise distance restraints ([tutorial](/education/HADDOCK24/HADDOCK24-CACA-guided/)),  MS crosslink data ([tutorial](/education/HADDOCK24/HADDOCK24-Xlinks/))  or cryo-EM connectivity data ([tutorial](/education/HADDOCK24/RNA-Pol-III/)).
+If your predictions are highly reliable and you wish to have all of them applied during docking, define them a unambiguous restraints.
+These can be for example template-derived pairwise distance restraints ([tutorial](/education/HADDOCK24/HADDOCK24-CACA-guided/)),
+MS crosslink data ([tutorial](/education/HADDOCK24/HADDOCK24-Xlinks/))
+or cryo-EM connectivity data ([tutorial](/education/HADDOCK24/RNA-Pol-III/)).
 
 
+#### [<font color="RED">A</font>mbiguous <font color="RED">I</font>nteraction <font color="RED">R</font>estraints (<font color="RED">AIR</font>s)](../airs.md)
 
-#### [<font color="RED">A</font>mbiguous <font color="RED">I</font>nteraction <font color="RED">R</font>estraints (<font color="RED">AIR</font>s)](/software/haddock2.4/airs/)
-
-Nevertheless, as in life, in science one also needs to be somewhat critical to the data one works with. If you are not 100% sure about the interaction information and want to be cautious while incorporating it into your docking, use ambiguous interaction restraints, unique for HADDOCK. Here, for each docking trial a fraction of these restraints will be [randomly removed](/software/haddock2.4/run/#random-removal-of-airs), which ensures a wider sampling satisfying always a different subset of predefined restraints. Thus, if some of the restraints are artificial, these can be filtered out if the complex satisfying them is unfavorable. 
+Nevertheless, as in life, in science one also needs to be somewhat critical to the data one works with.
+If you are not 100% sure about the interaction information and want to be cautious while incorporating it into your docking, use ambiguous interaction restraints, unique for HADDOCK.
+Here, for each docking trial a fraction of these restraints will be [randomly removed](/software/haddock2.4/run/#random-removal-of-airs), which ensures a wider sampling satisfying always a different subset of predefined restraints.
+Thus, if some of the restraints are artificial, these can be filtered out if the complex satisfying them is unfavorable. 
 
 For AIRs, it is important to define the residues at the interface for each molecule based on experimental data that provides information on the interaction interface.  
 
@@ -43,19 +57,22 @@ In general, an AIR is defined as an ambiguous intermolecular distance between an
 
 Ambiguous distance restraints are described in the [**HADDOCK manual**](/software/haddock2.4/airs/) and more about parameters in the *run.cns* file is written [here](/software/haddock2.4/run/#distance-restraints).
 
-Using ambiguous restraints for docking is described in several tutorials: [local installation tutorial](/education/HADDOCK24/HADDOCK24-local-tutorial/#defining-restraints-for-docking), [basic protein-protein tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/#definition-of-restraints), [small molecule docking tutorial](/education/HADDOCK24/HADDOCK24-binding-sites/) or [antibody-antigen docking tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen/#definition-of-restraints).
+Using ambiguous restraints for docking is described in several tutorials:
+- [local installation tutorial](/education/HADDOCK24/HADDOCK24-local-tutorial/#defining-restraints-for-docking)
+- [basic protein-protein tutorial](/education/HADDOCK24/HADDOCK24-protein-protein-basic/#definition-of-restraints)
+- [small molecule docking tutorial](/education/HADDOCK24/HADDOCK24-binding-sites/)
+- [antibody-antigen docking tutorial](/education/HADDOCK24/HADDOCK24-antibody-antigen/#definition-of-restraints).
 
 
 #### Other kinds of restraints
 
-* [Hydrogen bonds restraints](/software/haddock2.4/run/#hydrogen-bond-restraints)
+* [Hydrogen bonds restraints](../intro_restraints.md#hydrogen-distance-restraints)
 
-* [DNA/RNA restraints](/software/haddock2.4/run/#dnarna-restraints)
-
-* [Dihedral angles restraints](/software/haddock2.4/run/#dihedrals-angle-restraints)
+* [DNA/RNA restraints](../automated_restraints.md#dna--rna-restraints)
 
 
-HADDOCK can utilize plenty of experimental information. Here we describe other types of restraints supported by HADDOCK:
+HADDOCK can utilize plenty of experimental information.
+Here we describe other types of restraints supported by HADDOCK:
 
 * [Residual Dipolar Couplings](/software/haddock2.4/RDC/)  
 
@@ -69,55 +86,73 @@ HADDOCK can utilize plenty of experimental information. Here we describe other t
 
 <hr>
 
-<img src="/software/bpg/all_passive.png" align="right" >
+<img src="./all_passive.png" align="right" >
 
 ### 2.)  Information about the interface is not available
 
 
-If there is no direct information about the interacting residues available, one can still browse through the available literature or employ bionformatic prediction to gain some information about the potential complex. HADDOCK offers a plethora of ways for these scenarios.   
+If there is no direct information about the interacting residues available, one can still browse through the available literature or employ bionformatic prediction to gain some information about the potential complex.
+HADDOCK offers a plethora of ways for these scenarios.   
 
 
 
 #### Information about the quaternary structure of proteins (symmetry)
 
-##### [Symmetry restraints](/software/haddock2.4/run/#symmetry-restraints)
+##### [Symmetry restraints](../automated_restraints.md#symmetry-restraints)
 
-HADDOCK offers the possibility to define multiple symmetry relationships within or in between molecules. This is done by using symmetry distance restraints. By defining multiple pairs of distances between the CA atoms of two chains, various symmetries can be enforced. 
-Symmetry restraints are described in the manual [here](/software/haddock2.4/run/#symmetry-restraints). 
+HADDOCK offers the possibility to define multiple symmetry relationships within or in between molecules.
+This is done by using symmetry distance restraints.
+By defining multiple pairs of distances between the CA atoms of two chains, various symmetries can be enforced. 
+Symmetry restraints are described in the manual [here](../automated_restraints.md#symmetry-restraints). 
 
 Ab-initio multi-body docking with symmetry restraints is described this [ab-initio tutorial](/education/HADDOCK24/HADDOCK24-CASP-CAPRI-T70/).
 
-##### [Non-crystallographic symmetry restraints (NCS)](/software/haddock2.4/run/#non-crystallographic-symmetry-restraints-ncs)
+
+##### [Non-crystallographic symmetry restraints (NCS)](../automated_restraints.md#non-crystallographic-symmetry)
 
 The NCS option imposes non-crystallographic symmetry restraints: It enforces that two molecules, a fraction thereof or even two sub-domains within the same molecule should be identical without defining any symmetry operation between them. 
-Non-crystallographic symmetry restraints are described in the manual [here](/software/haddock2.4/run/#non-crystallographic-symmetry-restraints-ncs). 
+Non-crystallographic symmetry restraints are described in the manual [here](../automated_restraints.md#non-crystallographic-symmetry). 
 
 Ab-initio multi-body docking with NCS restraints is described [here](/education/HADDOCK24/HADDOCK24-CASP-CAPRI-T70/).
 
-##### [Membrane Z-positioning restraints](/software/haddock2.4/run/#membrane-z-positioning-restraints)
+##### [Membrane Z-positioning restraints](../restraints_cli.md#z-surface-restraints)
 
-These restraints do not deal with symmetry, but can be useful in guiding the docking of membrane proteins. This type of restraints is used to keep segments within or outside of a defined Z-coordinate range. They can be used for docking of membrane proteins but can be use generically as well.
+These restraints do not deal with symmetry, but can be useful in guiding the docking of membrane proteins.
+This type of restraints is used to keep segments within or outside of a defined Z-coordinate range.
+They can be used for docking of membrane proteins but can be use generically as well.
 
-They are described in the HADDOCK manual [here](/software/haddock2.4/run/#membrane-z-positioning-restraints).
+They are described in the HADDOCK manual [here](../restraints_cli.md#z-surface-restraints).
 
 #### Ab-initio docking
 
 ##### [Random interaction restraints](/haddock2.4/airs/#random-air-definition-ab-initio-mode)
 
-HADDOCK offers to define [random AIRs](/haddock2.4/airs/#random-air-definition-ab-initio-mode)  from solvent accessible residues (>20% relative accessibility) in case there is no experimental information. The sampling will be done from the defined semi-flexible segments. This can be useful for ab-initio docking to sample the entire protein surface. To ensure a thorough sampling of the surface, the number of structures generated at the rigid-body stage (it0) should be increased (e.g. 10000), depending on the extent of the surface to be sampled. These random restraints are described [here](/software/haddock2.4/run/#random-interaction-restraints-definition). 
+HADDOCK offers to define [random AIRs](/haddock2.4/airs/#random-air-definition-ab-initio-mode) from solvent accessible residues (>20% relative accessibility) in case there is no experimental information.
+The sampling will be done from the defined semi-flexible segments.
+This can be useful for ab-initio docking to sample the entire protein surface.
+To ensure a thorough sampling of the surface, the number of structures generated at the rigid-body stage (it0) should be increased (e.g. 10000), depending on the extent of the surface to be sampled.
+These random restraints are described [here](/software/haddock2.4/run/#random-interaction-restraints-definition). 
 
 Random interaction restraints are used in the [binding site tutorial](/education/HADDOCK24/HADDOCK24-binding-sites/).
 
 
 ##### [Surface contact restraints](/haddock2.4/airs/#surface-contact-restraint)
 
-[Surface contact restraints](/software/haddock2.4/airs/#surface-contact-restraints) can be useful in multi-body (N>2) docking to ensure that all molecules are in contact and thus promote compactness of the docking solutions. As for the random AIRs, surface contact restraints can be used in ab-initio docking; in such a case it is important to have enough sampling of the random starting orientations and this significantly increases the number of structures for rigid-body docking. They can be useful in combination with random interaction restraints definition (see above) or in refinement of molecular complexes. They are described in the manual [here](/software/haddock2.4/run/#surface-contact-restraints).
+[Surface contact restraints](/software/haddock2.4/airs/#surface-contact-restraints) can be useful in multi-body (N>2) docking to ensure that all molecules are in contact and thus promote compactness of the docking solutions.
+As for the random AIRs, surface contact restraints can be used in ab-initio docking; in such a case it is important to have enough sampling of the random starting orientations and this significantly increases the number of structures for rigid-body docking.
+They can be useful in combination with random interaction restraints definition (see above) or in refinement of molecular complexes.
+They are described in the manual [here](/software/haddock2.4/run/#surface-contact-restraints).
 
 ##### [Center of mass restraints](/software/haddock2.4/airs/#center-of-mass-restraints)
 
-[Center of mass (COM) restraints](/software/haddock2.4/airs/#center-of-mass-restraints) are distance restraints that ensure close proximity of two molecules. Such restraints can be useful in multi-body (N>2) docking to ensure that all molecules are in contact and thus promote compactness of the docking solutions. Similarly to the contact surface restraints they can be useful in combination with random interaction restraints definition (see above) or in refinement of molecular complexes.
+[Center of mass (COM) restraints](/software/haddock2.4/airs/#center-of-mass-restraints) are distance restraints that ensure close proximity of two molecules.
+Such restraints can be useful in multi-body (N>2) docking to ensure that all molecules are in contact and thus promote compactness of the docking solutions.
+Similarly to the contact surface restraints they can be useful in combination with random interaction restraints definition (see above) or in refinement of molecular complexes.
 
-COM restraints are mentioned in multiple tutorials, for example: [Refining the interface of the cryo-EM fitted models with HADDOCK](/education/HADDOCK24/RNA-Pol-III/#refining-the-interface-of-the-cryo-em-fitted-models-with-haddock),  [HADDOCK 2.4 CASP-CAPRI T70 ab-initio docking tutorial](/education/HADDOCK24/HADDOCK24-CASP-CAPRI-T70/#definition-of-restraints), [Modelling a homo-oligomeric complex from MS cross-links](/education/HADDOCK24/XL-MS-oligomer/#definition-of-restraints).
+COM restraints are mentioned in multiple tutorials, for example:
+- [Refining the interface of the cryo-EM fitted models with HADDOCK](/education/HADDOCK24/RNA-Pol-III/#refining-the-interface-of-the-cryo-em-fitted-models-with-haddock)
+- [HADDOCK 2.4 CASP-CAPRI T70 ab-initio docking tutorial](/education/HADDOCK24/HADDOCK24-CASP-CAPRI-T70/#definition-of-restraints)
+- [Modelling a homo-oligomeric complex from MS cross-links](/education/HADDOCK24/XL-MS-oligomer/#definition-of-restraints).
 
 
 <hr>
@@ -192,7 +227,7 @@ table, th, td {
 
 #  Complimentary software related to restraints for HADDOCK
 
-In bonvinlab a number of complementary webservers have been developed to help users to reevaluate restraints. 
+In BonvinLab a number of complementary webservers have been developed to help users to reevaluate restraints. 
 
 ## [CPORT](http://alcazar.science.uu.nl/services/CPORT/) 
 
