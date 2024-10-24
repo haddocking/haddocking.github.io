@@ -6,8 +6,11 @@
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
 
-It's possible to dock small ligands using HADDOCK but for that topology and parameter files for the ligand should be provided in CNS format. Several sources exist to find such files:
+It's possible to dock small ligands using HADDOCK but for that topology and parameter files for the ligand should be provided in CNS format.
+Several sources exist to find such files:
 
+* **BioBB using acpype**: The [BioExcel BioBuildingBlock (BioBB)](https://mmb.irbbarcelona.org/biobb/) library is hosting several tutorials on how to perform computations with a variety of different tools.
+    Here is a link to the workflow used to parametrize ligands: [https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization](https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization)
 
 * **ccp4-prodrg**: [`ccp4-prodrg`](https://www.ccp4.ac.uk/html/index.html)
 
@@ -16,20 +19,19 @@ It's possible to dock small ligands using HADDOCK but for that topology and para
 
 *   the **Automated Topology Builder (ATB)** and Repository developed in Prof. Alan Mark's group at the University of Queensland in Brisbane: [https://compbio.biosci.uq.edu.au/atb](https://compbio.biosci.uq.edu.au/atb)
 
-* **BioBB using acpype**: The [BioExcel BioBuildingBlock (BioBB)](https://mmb.irbbarcelona.org/biobb/) library is hosting several tutorials on how to perform computations with a variety of different tools.
-    Here is a link to the workflow used to parametrize ligands: [https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization](https://mmb.irbbarcelona.org/biobb/workflows/tutorials/biobb_wf_ligand_parameterization)
-   
 
-More detailed description is written in the [frequently asked questions page](/software/haddock2.4/faq/#small-ligand-docking-with-haddock). To get increase the chance of getting the right ligand conformation, one can perform ensemble docking. In this scenario multiple conformations can be generated as described [here](/software/bpg/structures/#modeling-of-small-molecules).
+More detailed description is written in the [protein-ligand docking example](../docking_scenarios/prot-ligand.md).
+To get increase the chance of getting the right ligand conformation, one can perform ensemble docking.
+In this scenario multiple conformations can be generated as described [here](./structures.md#modeling-of-small-molecules).
 
 Following sections summarize all documentation about small molecule docking with HADDOCK.
 
 
 <hr>
 
-### [Tutorials](/education/)
+### [Tutorials](../tutorials.md)
 
-* [**HADDOCK2.4 ligand binding site tutorial**](/education/HADDOCK24/HADDOCK24-binding-sites):
+* [**HADDOCK2.4 ligand binding site tutorial**](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-binding-sites):
   A tutorial demonstrating the use of HADDOCK in ab-initio mode to screen for potential ligand binding sites.
   The information from the ab-initio run is then used to setup a binding pocket-targeted protein-ligand docking run.
   We use as example the multidrug exporter AcrB. 
@@ -37,13 +39,13 @@ Following sections summarize all documentation about small molecule docking with
 * [**Metadynamics**](/education/biomolecular-simulations-2020/Metadynamics_tutorial):
   This tutorial highlights the benefits of enhanced sampling using metadynamics to improve the predictive power of molecular docking for protein-small molecule targets, in the case of binding sites undergoing conformational changes. For this, we will first generate an ensemble of conformers for the target protein using [GROMACS](http://www.gromacs.org/) and [PLUMED](http://www.plumed.org/), before proceeding with the docking using [HADDOCK](http://www.bonvinlab.org/software/haddock2.4/).
 
-* [**HADDOCK covalent binding**](/education/biomolecular-simulations-2018/HADDOCK_tutorial):
+* [**HADDOCK covalent binding**](https://www.bonvinlab.org/education/biomolecular-simulations-2018/HADDOCK_tutorial):
   This tutorial demonstrates how to use HADDOCK for the prediction of the three dimensional structure of a covalently bound ligand onto a receptor.
 
 
 <hr>
 
-### [Publications](/publications/)
+### [Publications](https://www.bonvinlab.org/publications/)
 
 
 * A. Basciu, P.I. Koukos, G. Malloci, **A.M.J.J. Bonvin** and A.V. Vargiu. [Coupling enhanced sampling of the apo‐receptor with template‐based ligand conformers selection: performance in pose prediction in the D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6). _J. Comp. Aid. Mol. Des._ *34*, 149-162 (2020). A preprint can be downloaded from [here](https://arxiv.org/abs/2005.04142).  
@@ -65,27 +67,28 @@ table, th, td {
 </style>
 
 
-|<font size="4" color="#203A98">Parameter</font>|<font size="4" color="#203A98">run.cns name</font>| <font size="4" color="#203A98">default value</font>|<font size="4" color="#203A98">optimal value</font> |
+|<font size="4" color="#203A98">Parameter</font>|<font size="4" color="#203A98">module / parameter</font>| <font size="4" color="#203A98">default value</font>|<font size="4" color="#203A98">optimal value</font> |
 |-|:-:|:-:|:-:| 
-|**Clustering method** | <code> clust_meth</code>| FCC | **RMSD** |   
-|**Cutoff for clustering** | <code> clust_cutoff </code>| 0.6 | **2.5** |  
-|**Dieletric constant for it0** | <code> dielec_0</code> | rdie | **cdie** |  
-|**Dieletric constant for it1** | <code> dielec_1</code> | rdie | **cdie**  |
-|**Epsilon constant for the electrostatic energy term in it1** | <code> epsilon_1</code> |  1.0 | **10.0** |  
-|**Number of MD steps for rigid body high temperature TAD** | <code> initiosteps</code> | 500 | **0**  | 
-|**Number of MD steps during first rigid body cooling stage** | <code> cool1_steps</code>| 500 | **0**  | 
-|**Initial temperature for second TAD cooling step with flexible side-chain at the interface**  | <code> tadinit2_t </code>| 1000 | **500** |
-|**Initial temperature for third TAD cooling step with fully flexible interface** | <code> tadinit3_t </code> | 1000 | **300** |
-|**Evdw 1** | <code> w_vdw_0 </code>| 0.01 | **1.0**  | 
-|**Eelec 3**| <code> w_elec_2 </code> | 0.2 | **0.1**  | 
+|**Clustering method** | <code> `[**clustrmsd**]`</code>|  |  |   
+|**Cutoff for clustering** | <code> clust_cutoff </code>| 7.5 | **2.5** |  
+|**Constant dieletric constant in `[rigidbody]`** | <code> dielec</code> | rdie | **cdie** |  
+|**Reduce VdW energy component in `[rigidbody]`** | <code> w_vdw </code>| 0.01 | **0**  | 
+|**Constant dieletric constant in `[flexref]`** | <code> dielec</code> | rdie | **cdie**  |
+|**Epsilon constant for the electrostatic energy term in `[flexref]`** | <code> epsilon</code> |  1.0 | **10.0** |  
+|**Number of MD steps for rigid body high temperature TAD in `[flexref]`** | <code> mdsteps_rigid</code> | 500 | **0**  | 
+|**Number of MD steps during first rigid body cooling stage in `[flexref]`** | <code> mdsteps_cool1</code>| 500 | **0**  | 
+|**Initial temperature for second TAD cooling step with flexible side-chain at the interfacein `[flexref]`**  | <code> mdsteps_cool2 </code>| 1000 | **500** |
+|**Initial temperature for third TAD cooling step with fully flexible interfacein `[flexref]`** | <code> mdsteps_cool3 </code> | 1000 | **300** |
+|**Increase electrostatics component in `[emref]`**| <code> w_elec </code> | 0.2 | **0.1**  | 
 
 
 More about optimal settings for different docking scenarios can be found [here](https://wenmr.science.uu.nl/haddock2.4/settings#optimal).
 
 <hr>
 
-### [FAQ](/software/haddock2.4/faq/)
+Any more questions about small molecule docking with HADDOCK?
 
-A special section about docking of small molecules with HADDOCK is dedicated in the [frequently asked questions page](/software/haddock2.4/faq/#small-ligand-docking-with-haddock).
-
-Any more questions about small molecule docking with HADDOCK? Have a look at our **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=ligand%20%23haddock)**  hosted by [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu). There is a very high chance that your problem has already been addressed. 
+Have a look at:
+- [F.A.Q](../faq.md)
+- [Ask for help / find support](../info.md)
+ 

@@ -1,7 +1,7 @@
 ## Glycans
 
 <p align="right">
-  <img src="/software/bpg/bound_glycan.png" />
+  <img src="./bound_glycan.png" />
 </p>
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
@@ -12,12 +12,16 @@ A list of glycan residues supported by HADDOCK can be found [here](https://wenmr
 
 <hr>
 
-### [Tutorials](/education/)
+### [Tutorials](../tutorials.md)
+
+* [HADDOCK3 protein-glycan modelling and docking](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-glycan/): This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
+
 
 <HR>
 
-### [Publications](/publications/)
+### [Publications](../publications.md)
 
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and A.M.J.J. Bonvin. [Modelling Protein-Glycan Interactions with HADDOCK.](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01372) _J. Chem. Inf. Mod._ 64, 7816–7825 (2024).
 
 <hr>
 
@@ -34,14 +38,17 @@ table, th, td {
 
 |<font size="4" color="#203A98">Parameter</font>|<font size="4" color="#203A98">run.cns name</font>| <font size="4" color="#203A98">default value</font>|<font size="4" color="#203A98">optimal value</font> |
 |-|:-:|:-:|:-:| 
-|**Clustering method** | <code> clust_meth</code>| FCC | **RMSD** |   
-|**Cutoff for clustering** | <code> clust_cutoff </code>| 0.6 | **2.5** |  
+|**Clustering method** | <code> `[ilrmsdmatrix]` and `[clustrmsd]`</code>|  |  |   
+|**Cutoff for clustering in `[clustrmsd]`** | <code> clust_cutoff </code>| 7.5 | **2.5** |  
 
 More about optimal settings for different docking scenarios can be found [here](https://wenmr.science.uu.nl/haddock2.4/settings#optimal).
 
 
 <hr>
 
-### [FAQ](/software/haddock2.4/faq/)
+### [FAQ](../faq.md)
 
-Any more questions about glycan docking with HADDOCK? Have a look at our **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=glycan%20category%3A6)**  hosted by [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu). There is a very high chance that your problem has already been addressed. 
+Any more questions about glycan docking with HADDOCK? 
+Have a look at:
+- [F.A.Q](../faq.md)
+- [Ask for help / find support](../info.md)
