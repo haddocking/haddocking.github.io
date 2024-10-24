@@ -36,7 +36,7 @@ table, th, td {
 </style>
 
 
-|<font size="4" color="#203A98">Parameter</font>|<font size="4" color="#203A98">run.cns name</font>| <font size="4" color="#203A98">default value</font>|<font size="4" color="#203A98">optimal value</font> |
+|<font size="4" color="#203A98">Parameter</font>|<font size="4" color="#203A98">Module / parameter</font>| <font size="4" color="#203A98">default value</font>|<font size="4" color="#203A98">optimal value</font> |
 |-|:-:|:-:|:-:| 
 |**Clustering method** | <code> `[ilrmsdmatrix]` and `[clustrmsd]`</code>|  |  |   
 |**Cutoff for clustering in `[clustrmsd]`** | <code> clust_cutoff </code>| 7.5 | **2.5** |  
