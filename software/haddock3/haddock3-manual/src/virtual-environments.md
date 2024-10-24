@@ -37,18 +37,18 @@ source .haddock3-env/bin/activate
 
 For more details and troubleshooting with the `conda` library, have a look at [its documentation](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 
-Then create a new `haddock3` environement with the following command:
+Then create a new `haddock3-env` environement with the following command:
 ```bash
-conda create -n haddock3 python=3.9
+conda create -n haddock3-env python=3.9
 # or
-conda create -n haddock3 python=3.10
+conda create -n haddock3-env python=3.10
 # or
-conda create -n haddock3 python=3.11
+conda create -n haddock3-env python=3.11
 # or
-conda create -n haddock3 python=3.12
+conda create -n haddock3-env python=3.12
 ```
 
 Finally, you should activate the environement, and you are readdy for the next steps
 ```bash
-conda activate haddock3
+conda activate haddock3-env
 ```

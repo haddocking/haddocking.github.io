@@ -67,6 +67,8 @@
 
 - [Online lectures](./online_lectures.md)
 
+- [Haddock3 source code](./source_code_organisation.md)
+
 - [How to cite haddock3](./citing.md)
   - [Citing haddock3](./citing.md)
   - [Haddock3-related publications](./publications.md)

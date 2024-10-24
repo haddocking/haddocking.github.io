@@ -1,3 +1,12 @@
+# Automated restraints generation
+
+- [Symmetry restraints](#symmetry-restraints)
+  - [Non crystallographic symmetry - NCS](#non-crystallographic-symmetry)
+  - [Rotational symmetry](#rotational-symmetry)
+  - [S3 symmetry](#s3-symmetry)
+- [DNA / RNA restraints](#dna--rna-restraints)
+- [Contact restraints](#contact-restraints)
+
 ## Symmetry restraints
 
 CNS modules using restraints, such as `[rigidbody]`, `[flexref]`, `[emref]` or `[mdref]`, are also capable of handling symmetry restraints.
@@ -166,7 +175,7 @@ To make use of S3 symmetry parameters, one should first activate the use of such
 It is also possible to tune the force constant for the S3 symmetry using the `ksym` parameter.
 
 
-### DNA & RNA restraints
+## DNA & RNA restraints
 
 Often, you will want to keep DNA / RNA base-pairing fixed during a simulation.
 Without any restraints, they the pairing can fall apart when running semi-flexible refinements or molecular dynamics simulations.
@@ -177,8 +186,11 @@ For this, simply set the `dnarest_on` to true (`dnarest_on = true`) in the corre
 *Note* that while the parameter name only contain DNA in its name, it is also functional for RNA!
 
 
+## Contact restraints
 
-### Custom symmetry restraints
+
+
+# Custom symmetry restraints
 
 If the type of symmetries already implemented in haddock3 is not sufficent for your needs, you can always supply your own symmetry restraint file.
 This is performed by defining the path to this file using the `symtbl_fname = custom_symmetry_restraints.tbl` parameter.

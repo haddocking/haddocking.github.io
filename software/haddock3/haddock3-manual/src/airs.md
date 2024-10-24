@@ -208,9 +208,9 @@ To select the residues that satisfy the 40% accessibility cut-off type:
 
 ## Generating the AIR restraints file  
     
-Once you have defined your active and passive residues you can use our [online server](https://milou.science.uu.nl/services/GenTBL/) to generate a CNS-formatted ambiguous distance restraints file.
-    
-"Copy and paste" the output or save it as a simple text to disk using "file save as".
+Once you have defined your active and passive residues you can use our [GenTBL online server](https://wenmr.science.uu.nl/gentbl/) to generate a CNS-formatted ambiguous distance restraints file.
+
+"Copy and paste" the output in your favourit text editor or save it as a simple text to disk by clicking on the "DOWNLOAD" button (default name will be `ambig.tbl`).
 Make sure the saved file contains the proper data since some browsers might give problems with this service.
-    
+
 Alternatively, you can also generate those directly following the instructions and using the scripts described in our [online HADDOCK2.4 installation tutorial](education/HADDOCK24/HADDOCK24-local-tutorial/#defining-restraints-for-docking).
