@@ -61,6 +61,7 @@
     - [Peptides](./bpg/peptides.md)
     - [DNA / RNA](./bpg/dna.md)
     - [Proteins](./bpg/proteins.md)
+    - [Clustering complexes](./bpg/clustering.md)
     - [Analysing results](./bpg/analysis.md)
 
 - [Haddock3 eco-system](./eco_system.md)

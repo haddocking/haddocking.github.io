@@ -205,7 +205,10 @@ table, th, td {
 
 Once you have your structures HADDOCK-ready you can go to next step and define [**restraints**](./restraints.md).
 
+<hr>
 
 Any more questions about pdb preparation for HADDOCK?
-Have a look at the **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=pdb%20%23haddock)**  hosted by [<img width="70" src="../images/Bioexcel_logo.png">](https://bioexcel.eu).
-There is a very high chance that your problem has already been addressed. 
+
+Have a look at:
+- [F.A.Q](../faq.md)
+- [Ask for help / find support](../info.md)

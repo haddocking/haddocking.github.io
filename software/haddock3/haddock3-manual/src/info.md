@@ -6,8 +6,8 @@ Several dedicated channels are available for you to ask questions, submit feedba
 ## Related to the use of HADDOCK
 
 The BioExcel forum ([https://ask.bioexcel.eu/](https://ask.bioexcel.eu/)) is the exact location where you can ask any question related to HADDOCK (and other BioExcel core applications).
-You can search for previous post, as maybe your question has been asked by other scientist before you.
-Or create a new post, in which case we will try to answer it as fast as we can.
+You can search for previous post, as maybe your question has been asked by other scientist before you (there is a very high chance that your problem has already been addressed).
+Or create a new post, in which case we will try to answer as fast as we can.
 
 **Note** that you are not the only one having difficulties, and the question you may have been already asked and answered !
 The BioExcel forum has a quite powerfull search engine that allows you to search for keywords present in all its content.

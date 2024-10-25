@@ -1,18 +1,22 @@
 ## Proteins
 
 <p align="right">
-  <img src="/software/bpg/bound_protein.png" />
+  <img src="./bound_protein.png" />
 </p>
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
-As the name **HADDOCK** (**H**igh **A**mbiguity **D**riven protein-protein **DOCK**ing) suggests, HADDOCK was originally developed for docking of proteins.  Nowadays HADDOCK belongs to the state-of-the-art software in the protein-protein docking field, thus protein-protein documentation is the most comprehensive one. You can read more about protein-protein docking in following sections:
-
-
+As the name **HADDOCK** (**H**igh **A**mbiguity **D**riven protein-protein **DOCK**ing) suggests, HADDOCK was originally developed for docking of proteins.
+Nowadays HADDOCK belongs to the state-of-the-art software in the protein-protein docking field, thus protein-protein documentation is the most comprehensive one.
+You can read more about protein-protein docking in following sections:
 
 <hr>
 
-### [Tutorials](/education/)
+### [Tutorials](../tutorials.md)
+
+
+
+#### HADDOCK2.4 versions
 
 * [**HADDOCK2.4 local installation tutorial**](/education/HADDOCK24/HADDOCK24-local-tutorial):
   A tutorial demonstrating the installation and use of a local installation of HADDOCK2.4. It demonstrates various docking scenarios.
@@ -48,11 +52,10 @@ As the name **HADDOCK** (**H**igh **A**mbiguity **D**riven protein-protein **DOC
 
 <HR>
 
-### [Publications](/publications/)
+### [Publications](../publications.md)
 
 
 * **A.M.J.J. Bonvin**, E. Karaca, P.L. Kastritis & J.P.G.L.M. Rodrigues. Correspondence: [Defining distance restraints in HADDOCK](https://doi.org/10.1038/s41596-018-0017-6). _Nature Protocols_ *13*, 1503 (2018). [Free online only access](https://rdcu.be/1OyH)
-
 
 
 * **A.M.J.J. Bonvin**, C. Geng, M. van Dijk, E. Karaca, P. L. Kastritis, P.I. Koukos, Z. Kurkcuoglu, A.S.J. Melquiond, 
@@ -60,40 +63,30 @@ J.P.G.L.M. Rodrigues, J. Schaarschmidt, C. Schmitz, J. Roel-Touris, M.E. Trellet
 [HADDOCK](https://doi.org/10.1007/978-3-642-35943-9_330-1). In _Encyclopedia of Biophysics_, In press (2018).
 
 
-
 * G.C.P van Zundert, J.P.G.L.M. Rodrigues, M. Trellet, C. Schmitz, P.L. Kastritis, E. Karaca, A.S.J. Melquiond, M. van Dijk, S.J. de Vries and  **A.M.J.J. Bonvin**.
 [The HADDOCK2.2 webserver: User-friendly integrative modeling of biomolecular complexes](https://doi.org/doi:10.1016/j.jmb.2015.09.014).
 _J. Mol. Biol._, *428*, 720-725 (2016).
-
 
 * G.C.P. van Zundert, A.S.J. Melquiond and **A.M.J.J. Bonvin**.
 [Integrative modeling of biomolecular complexes: HADDOCKing with Cryo-EM data.](https://doi.org/10.1016/j.str.2015.03.014)
 _Structure._ *23*, 949-960 (2015).
 
 
-
-
 * J.P.G.L.M Rodrigues, E. Karaca and **A.M.J.J. Bonvin**.
 [Information-driven structural modelling of protein-protein interactions.](https://link.springer.com/protocol/10.1007/978-1-4939-1465-4_18)
 _Methods in Molecular Biology: Molecular Modelling of Proteins._ Ed. Andreas Kokul. Humana Press Inc. 399-424 (2015).
-
-
 
 * G.C.P. van Zundert and **A.M.J.J. Bonvin**.
 [Modeling protein-protein complexes using the HADDOCK webserver.](https://link.springer.com/protocol/10.1007/978-1-4939-0366-5_12)
 _Methods in Molecular Biology: Protein Structure Prediction._ Ed. Daisuke Kihara. Humana Press Inc., 163-179 (2014).
 
-
 * **A.M.J.J. Bonvin**, M. van Dijk, E. Karaca, P.L. Kastritis, A.S.J. Melquiond, C. Schmitz and S.J. de Vries
 [HADDOCK](https://www.springer.com/life+sciences/biochemistry+%26+biophysics/book/978-3-642-16711-9)
 In Encyclopedia of Biophysics, Ed. G.C.K. Roberts, Springer-Verlag Berlin Heidelberg (2013).
 
-
-
 * C. Schmitz, A.S.J. Melquiond, S.J. de Vries, E. Karaca, M. van Dijk, P.L. Kastritis and **A.M.J.J. Bonvin**
 Protein-protein docking with HADDOCK
 In: <a href="https://eu.wiley.com/WileyCDA/WileyTitle/productCd-3527328505,subjectCd-CH17.html">NMR in Mechanistic Systems Biology</a>. Ed. I. Bertini, K.S. McGreevy and G. Parigi, Wiley-Blackwell, 512-535.
-
 
 * P.L. Kastritis, A.D.J. van Dijk and **A.M.J.J. Bonvin**
 [Explicit Treatment of Water Molecules in Data-Driven Protein-Protein Docking: The Solvated HADDOCKing Approach](https://doi.org/doi:10.1007/978-1-61779-465-0_22)
@@ -170,7 +163,8 @@ _J. Am. Chem. Soc._, *125*, 1731-1737 (2003).
 
 <hr>
 
-### [Settings](https://wenmr.science.uu.nl/haddock2.4/settings#default)
+
+### Optimal settings
 
 Default settings are optimal for protein-protein docking, however one can still modify parameters, such as number of generated models. 
 
@@ -178,8 +172,11 @@ More about optimal settings for different docking scenarios can be found [here](
 
 <hr>
 
-### [FAQ](/software/haddock2.4/faq/)
+### [FAQ](../faq.md)
 
 A special section about docking of mutations with HADDOCK is dedicated in the [frequently asked questions page](/software/haddock2.4/faq/#what-about-point-mutations).
 
-Any more questions about protein-protein docking with HADDOCK? Have a look at our **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=protein%20%23haddock)**  hosted by [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu). There is a very high chance that your problem has already been addressed. 
+Any more questions about protein-protein docking with HADDOCK?
+Have a look at:
+- [F.A.Q](../faq.md)
+- [Ask for help / find support](../info.md)

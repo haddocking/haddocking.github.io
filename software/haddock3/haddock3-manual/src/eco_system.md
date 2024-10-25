@@ -27,3 +27,7 @@ Here are some usefull links to software that can be useful to solve your researc
 We also provide online resources to perform computation related to the tools we developed.
 
 Access our web-portal here: [https://wenmr.science.uu.nl/](https://wenmr.science.uu.nl/).
+
+## Haddock3 Web-Application
+
+Here is the GitHub repository of the [haddock3 web applications](https://github.com/i-VRESSE/haddock3-webapp/).
