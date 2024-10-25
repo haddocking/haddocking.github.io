@@ -1,14 +1,14 @@
 # Command line interfaces
 
 Haddock3 is a software that can read configuration files and compute data.
-While there will be [a web application](https://github.com/i-VRESSE/haddock3-webapp), haddock3 do not have a graphical user interface, and must used from the command line.
-While this may have some negative impact for some unexperienced user, it is also very powerful as it allows custom scripting to launch haddock#, and therefore integrating it in your own pipelines is easier.
+While there will be [a web application](https://github.com/i-VRESSE/haddock3-webapp), haddock3 does not have a graphical user interface and must used from the command line.
+While this may have some negative impact for some inexperienced users, it is also very powerful as it allows custom scripting to launch haddock3, and therefore integrating it in your own pipelines is easier.
 
 
 To use the command line interface, you must open a terminal:
-* [iTerm / Terminal]: for Mac users, defaults terminals are available and fully functional.
-* [WindowsPowerShell]: The windows solution to open a terminal.
-* [VSCode](): an integrated developping environnment (IDE) that allows you to run command lines in the terminal.
+* [iTerm / Terminal]: for Mac users, default terminals are available and fully functional.
+* [WindowsPowerShell]: The Windows solution to open a terminal.
+* [VSCode](): an integrated developing environment (IDE) that allows you to run command lines in the terminal.
 
 
 Haddock3 comes with several Command Line Interfaces (CLIs), that are described and listed below:
@@ -38,7 +38,7 @@ It takes a positional argument, the path to the configuration file.
 haddock3 workflow.cfg
 ```
 
-Also two optional arguments can be used:
+Also, two optional arguments can be used:
 
 - `--restart <module_id>`: allows to restart the workflow restarting for the module id. Note that previously generated folders from the selected step onward will be deleted.
 - `--extend-run <run_directory>`: allows to start the new workflow from the last step of a previously computed run.
@@ -47,11 +47,11 @@ Also two optional arguments can be used:
 
 ## haddock3-cfg
 
-An other very interesting CLI is `haddock3-cfg`.
-This CLI allows you to list the parameter names, their description and default values for each available modules.
+Another very interesting CLI is `haddock3-cfg`.
+This CLI allows you to list the parameter names, their description, and default values for each available module.
 Used without any option, the command `haddock3-cfg` will return all [Global parameters](/software/haddock3/manual/global_parameters).
 
-To access the list of parameters for a given module, you should use the optinal argument `-m <module_name>`.
+To access the list of parameters for a given module, you should use the optional argument `-m <module_name>`.
 As an example, to list available parameters for the module `seletopclusts`, you should run the following command:
 
 ```bash
@@ -64,13 +64,13 @@ Please note that all the parameters for each module are also available from the 
 
 ## haddock3-restraints
 
-The CLI `haddock3-restraints` is made to generate restraints used either a ambiguous restraints or unambiguous ones.
+The CLI `haddock3-restraints` is made to generate restraints used either as ambiguous restraints or unambiguous ones.
 The `haddock3-restraints` CLI is composed of several sub-commands, each one dedicated to some specific actions, such as:
 
-- Searching for solvent accessible residues
+- Searching for solvent-accessible residues
 - Gathering neighbors of a selection
-- Maintaining the conformation of a single chain with potential gap
-- Generating ambiguous restraints from active and passive resiudes
+- Maintaining the conformation of a single chain with a potential gap
+- Generating ambiguous restraints from active and passive residues
 - Generating plans and corresponding restraints
 
 As this CLI is more specialized, we have made a [special chapter in this manual](./restraints_cli.md) to explain all the functionalities.
@@ -80,9 +80,9 @@ As this CLI is more specialized, we have made a [special chapter in this manual]
 ## haddock3-score
 
 The `haddock3-score` is a CLI made for scoring a single complex.
-The topologies are created and a small energy minimization is performed on the complex before the evalutation of the haddock score components.
+The topologies are created and a small energy minimization is performed on the complex before the evaluation of the haddock score components.
 It is dedicated to the scoring of it and only returns the computed haddock score and its components.
-It is a short cut to a full configuration file that would contain the `topoaa` and `emscoring` modules.
+It is a shortcut to a full configuration file that would contain the `topoaa` and `emscoring` modules.
 
 To use it, provide the path to the complex to be scored:
 
@@ -90,7 +90,7 @@ To use it, provide the path to the complex to be scored:
 haddock3-score path/to/complex.pdb
 ```
 
-This CLI can take optional parameters using the `-p` flag, where the user can provide the set of parameter and values to tune the weights of the Haddock scoring function.
+This CLI can take optional parameters using the `-p` flag, where the user can provide the set of parameters and values to tune the weights of the Haddock scoring function.
 Be aware that only parameters available for the `emscoring` module are accepted.
 
 To tune the haddock3 scoring function weights, there are basically only 5 parameters to be tuned.
@@ -99,9 +99,9 @@ To tune the haddock3 scoring function weights, there are basically only 5 parame
 - **w_elec**: to tune the weight of the Electrostatic term
 - **w_desolv**: to tune the weight of the Desolvation term
 - **w_air**: to tune the weight of the Ambiguous Restraints term
-- **w_bsa**: to tune the weight of the Burried Surface Area term
+- **w_bsa**: to tune the weight of the Buried Surface Area term
 
-Note that, if a parameter is not tuned, the defaults scoring function weights are used.
+Note that, if a parameter is not tuned, the default scoring function weights are used.
 
 
 As an example, this command would tune the Van der Walls term during the evaluation of the complex:
@@ -122,13 +122,13 @@ haddock3-score path/to/complex.pdb -p w_vdw 0.5 w_bsa 0.2
 
 ## haddock3-analyse
 
-HADDOCK3 allows to analyse different steps of the workflow, even after it has been completed. The `haddock3-analyse` command is the main tool for the analysis of one or more workflow steps. Typically it runs automatically at the end of a HADDOCK3 workflow (activated by the [`postprocess`](#the-postprocess-option) option), but it can be run independently as well.
+Haddock3 contains functionalities that allow the analysis of various steps of the workflow, even after it has been completed. The `haddock3-analyse` command is the main tool for the analysis of one or more workflow steps. Typically it runs automatically at the end of a HADDOCK3 workflow (activated by the [`postprocess`](#the-postprocess-option) option), but it can be run independently as well.
 
 ```
 haddock3-analyse -r my-run-folder -m 2 5 6
 ```
 
-Here `my-run-folder` is the run directory and 2, 5, and 6 are the steps that you want to analyse.
+Here `my-run-folder` is the run directory and 2, 5, and 6 are the steps that you want to analyze.
 
 The command will inspect the folder, looking for the existing models. If the selected module is a `caprieval` module, `haddock3-analyse` simply loads the `capri_ss.tsv` and `capri_clt.tsv` files
 produced by the `caprieval` module. Otherwise, `haddock3-analyse` runs a `caprieval` analysis of the models.
@@ -139,7 +139,7 @@ using the following syntax:
 haddock3-analyse -r my-run-folder -m 2 5 6 -p reference_fname my_ref.pdb receptor_chain F
 ```
 
-Here the `-p` key tells the code that you are about to insert caprieval parameters, whose name should match the parameter name. Each parameter name and the corresponding value must be separated by a space character.
+Here the `-p` key tells the code that you are about to insert `[caprieval]` parameters, whose name should match the parameter name of the module. Each parameter name and the corresponding value must be separated by a space character.
 
 Another parameter that can be specified is `top_cluster`, which defines how many of the first N clusters will be considered in the analysis.
 This value is set to 10 by default.
@@ -150,7 +150,7 @@ haddock3-analyse -r my-run-folder -m 2 5 6 --top_cluster 12
 
 This number is meaningless when dealing with models with no cluster information, that is, models that have never been clustered before.
 
-By default `haddock3-analyse` produces [plotly](https://plotly.com/python/) plots in the html `format`, but the user can select 
+By default `haddock3-analyse` produces [plotly](https://plotly.com/python/) plots in the HTML `format`, but the user can select 
 one of the formats available [here](https://plotly.github.io/plotly.py-docs/generated/plotly.io.write_image.html), 
 while also adjusting the resolution with the `scale` parameter:
 
@@ -161,28 +161,28 @@ haddock3-analyse -r my-run-folder -m 2 5 6 --format pdf --scale 2.0
 #### The analysis folder
 
 After running `haddock3-analyse` you can check the content of the `analysis` directory in your run folder.
-If everything went succesfully, one of the above commands should have produced an analysis folder structured as
+If everything went successfully, one of the above commands should have produced an analysis folder structured as
 
 ```
 my-run-folder/
 |--- analysis/
-     |--- 2_caprieval_analysis
-     |--- 5_seletopclusts_analysis
-     |--- 6_flexref_analysis
+ |--- 2_caprieval_analysis
+ |--- 5_seletopclusts_analysis
+ |--- 6_flexref_analysis
 ```
 
 Each subfolder contains all the analysis plots related to that specific step of the workflow.
 
 By default `haddock3-analyse` produces a set of scatter plots that compare each HADDOCK energy term 
 (i.e., the HADDOCK score and its components) to the different metrics used to evaluate the quality of a model,
-such as the interface-RMSD, Fnat, DOCKQ, and so on. An example is available [here](../../../education/HADDOCK3/HADDOCK3-antibody-antigen/plots/scenario1-surface/irmsd_score.html).
+such as the interface-RMSD, Fnat, DOCKQ, and so on. An example is available [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/plots/scenario1-surface/irmsd_score.html).
 
-For each of the energy component and the metrics mentioned above `haddock3-analyse` produces also a box plot, in which each cluster 
+For each of the energy components and the metrics mentioned above `haddock3-analyse` produces also a box plot, in which each cluster 
 is considered separately. An example is available [here](../../../education/HADDOCK3/HADDOCK3-antibody-antigen/plots/scenario1-surface/score_clt.html).
 
 #### The report
 
-Scatter plots, box plots, CAPRI statistics and an interactive visualization of the models is available in the `report.html` file, present
+Scatter plots, box plots, CAPRI statistics, and interactive visualization of the models are available in the `report.html` file, present
 in each analysis subfolder. In order to visualize the models it is necessary to start a local server at the end of the `haddock3-analyse` run,
 following the indications provided in the log file:
 
@@ -199,7 +199,7 @@ Launch this command to open the report:
 python -m http.server --directory path-to-my-run
 ```
 
-In the browser you can navigate to each analysis subfolder and open the `report.html` file. If you are not interested in
+In the browser, you can navigate to each analysis subfolder and open the `report.html` file. If you are not interested in
 visualizing the models, you can simply open the `report.html` file in a standard browser. An example report can be visualized [here](../../../education/HADDOCK3/HADDOCK3-protein-glycan/plots/report.html).
 
 
@@ -207,7 +207,7 @@ visualizing the models, you can simply open the `report.html` file in a standard
 
 ## haddock3-traceback
 
-HADDOCK3 is highly customisable and modular, as the user can introduce several refinement, clustering, and scoring steps in a workflow.
+HADDOCK3 is highly customizable and modular, as the user can introduce several refinement, clustering, and scoring steps in a workflow.
 Quantifying the impact of the different modules is important while developing a novel docking protocol. The `haddock3-traceback` command
 is developed to assist the user in this task, as it allows to "connect" all the models generated in a HADDOCK3 workflow:
 
@@ -225,10 +225,14 @@ haddock3-traceback my-run-folder
 4G6K.psf     4I1B.psf        rigidbody_20.pdb        15                      cluster_2_model_2.pdb   4                       flexref_4.pdb   3       
 ```
 
-In this table each row represents a model that has been produced by the workflow. The (typically) two used topologies are reported first,
-and then each module has its own column, containing the name and rank of the model at that stage. As an example, in the first row of the
-table above `rigidbody_10.pdb` is ranked 3rd at the `rigidbody` stage. Then, it becomes `cluster_1_model_1.pdb` (ranked 1st) after 
-the `seletopclusts` module. This model is then refined in `flexref_1.pdb`, which turns out to be the 2nd best model at the end of the workflow.
+In this table, each row represents a model that has been produced by the workflow.
+The (typically) two used topologies are reported first,
+and then each module has its own column, containing the name and rank of the model at that stage.
+As an example, in the first row of the
+table above `rigidbody_10.pdb` is ranked 3rd at the `rigidbody` stage.
+Then, it becomes `cluster_1_model_1.pdb` (ranked 1st) after 
+the `seletopclusts` module.
+This model is then refined in `flexref_1.pdb`, which turns out to be the 2nd best model at the end of the workflow.
 
 The table can be easily parsed and used to evaluate the impact of different refinement steps on the different models.
 
@@ -236,7 +240,7 @@ The table can be easily parsed and used to evaluate the impact of different refi
 
 You may want to run the `haddock3-analyse` and `haddock3-traceback` commands by default at the end of the workflow.
 The `postprocess` option of a standard HADDOCK3 configuration (.cfg) file is devoted to this task. At first, it forces HADDOCK3 
-to execute `haddock3-analyse` on all the `caprieval` folders found in the workflow, therefore loading data present in the CAPRI tables.
+to execute `haddock3-analyse` on all the `XX_caprieval` folders found in the workflow, therefore loading data present in the CAPRI tables.
 Second, it executes the `haddock3-traceback` command.
 
 By default, `postprocess` is set to `true` but can also be de-activated at the beginning of your configuration file:
@@ -254,7 +258,7 @@ postprocess = false
 ...
 ```
 
-<a class="prompt prompt-info">If speed is an issue, please turn the postprocess option off for your run!</a>
+**Note**: If speed is an issue, please turn the postprocess option off for your run!
 
 
 You can find additional help by running the command: `haddock3-analyse -h` and `haddock3-traceback -h` and reading
@@ -264,8 +268,8 @@ the parameters' explanations. Otherwise, ask us in the ["issues" forum](https://
 
 ## haddock3-re
 
-The `haddock3-re` CLI is dedicated at **re**computing some steps in your workflow.
-This can be very usefull as it allows to fine tune parameters and evaluate the impact in the results.
+The `haddock3-re` CLI is dedicated to **re**computing some steps in your workflow.
+This can be very useful as it allows us to fine-tune parameters and evaluate the impact on the results.
 
 `haddock3-re` takes two mandatory positional arguments:
 
@@ -280,7 +284,7 @@ For now, three modules can be **re**computed and tuned, `[caprieval]`, `[clustfc
 ### -re score
 
 The subcommand `haddock3-re score`, allows to tune the weights of the [HADDOCK scoring function]().
-It takes a `[caprieval]` step folder as positional argument, and the tuned weights for the scoring function.
+It takes a `[caprieval]` step folder as positional argument and the tuned weights for the scoring function.
 
 Note that if you do not provide new weights as optional arguments, previous weights used in the run are used.
 
@@ -304,7 +308,7 @@ optional arguments:
 ### -re clustfcc
 
 The subcommand `haddock3-re clustfcc`, allows to tune the clustering parameters of the `[clustfcc]` module.
-It takes a `[clustfcc]` step folder as positional argument, and the tuned parameters for the module.
+It takes a `[clustfcc]` step folder as a positional argument and the tuned parameters for the module.
 
 Note that if you do not provide new parameters as optional arguments, previous ones will be used instead.
 
@@ -325,7 +329,7 @@ optional arguments:
 ### -re clustrmsd
 
 The subcommand `haddock3-re clustrmsd`, allows to tune the clustering parameters of the `[clustrmsd]` module.
-It takes a `[clustrmsd]` step folder as positional argument, and the tuned parameters for the module.
+It takes a `[clustrmsd]` step folder as a positional argument, and the tuned parameters for the module.
 
 Note that if you do not provide new parameters as optional arguments, previous ones will be used instead.
 
@@ -345,22 +349,22 @@ optional arguments:
 
 Please note that parameters `--n_clusters` (defining the number of clusters you want)
 and `--clust_cutoff` are mutually exclusive,
-as the former is cutting the dendogram at a height satifying the number of desired clusters
-while the latter is cutting the dendogram at the `--clust_cutoff` value height.
+as the former is cutting the dendrogram at a height satisfying the number of desired clusters
+while the latter is cutting the dendrogram at the `--clust_cutoff` value height.
 
 
 <hr>
 
 ## haddock3-copy
 
-The `haddock3-copy` CLI allows one to copy the content of a run to an other run directory.
+The `haddock3-copy` CLI allows one to copy the content of a run to another run directory.
 
 It takes three arguments:
 - **`-r run_directory`** is the directory of a previously computed haddock3 run.
 - **`-o new_run_directory`** is the new directory where to make to copy of the old run.
 - **`-m module_id_X module_id_Y`** is the list of modules you wish to copy (separated by spaces).
 
-As an example, considering your previous run directory is named `run1` and contains the following modules:
+As an example, consider your previous run directory is named `run1` and contains the following modules:
 
 ```bash
 run1/
@@ -369,10 +373,10 @@ run1/
   2_caprieval/
   3_seletop/
   4_flexref/
-  (etc...)
+ (etc...)
 ```
 
-You may want to use `4_flexref` step folder as a starting point for a new run names `run2`.
+You may want to use `4_flexref` step folder as a starting point for a new run named `run2`.
 To do so, run the following command:
 
 ```bash
@@ -380,13 +384,13 @@ haddock3-copy -r run1 -m 0 4 -o run2
 ```
 
 **Notes**:
-- the flag `-m` allows to define which modules must be copied, and modules `0` (for `0_topoaa`) and `4`  (for `4_flexref`) are space separated.
-- in this case, we also copy the content of `0_topoaa`, this is because topologies are stored in this module directory, and we must have access to them if we are using an other module requiering CNS topology to run.
-- it is often recommended to **always** copy the `topoaa` directory, as we will often require the topologies later un the workflow.
+- the flag `-m` allows to define which modules must be copied, and modules `0` (for `0_topoaa`) and `4` (for `4_flexref`) are space separated.
+- in this case, we also copy the content of `0_topoaa`, this is because topologies are stored in this module directory, and we must have access to them if we are using another module requiring CNS topology to run.
+- it is often recommended to **always** copy the `topoaa` directory, as we will often require the topologies later in the workflow.
 
 **WARNING**:
-To copy the content of a run and modify the paths, we are using the `sed` command, searching to replace the previous run directory name (`run1`) to the new one (`run2`) in all the generated files to make sure that paths will be functional in the new run directory.
-In some cases, this can lead to some artefacts, such as the modification of attribute names if your run directory contain a name that is used by haddock3.
+To copy the content of a run and modify the paths, we are using the `sed` command, searching to replace the previous run directory name (`run1`) with the new one (`run2`) in all the generated files to make sure that paths will be functional in the new run directory.
+In some cases, this can lead to some artifacts, such as the modification of attribute names if your run directory contains a name that is used by haddock3.
 
 Here is a list of run directory names **NOT** to use:
 - topology
@@ -394,23 +398,23 @@ Here is a list of run directory names **NOT** to use:
 - emref
 - etc...
 
-The best solution is to always use a unique name that describe the content of the run.
+The best solution is to always use a unique name that describes the content of the run.
 
 <hr>
 
 ## haddock3-clean
 
-The` haddock3-clean` CLI performs file archiving and file compressing operations on the output of an haddock3 run directory.
-This CLI can save you some harddrive storage space, as the multiple files generated by HADDOCK can lead to several GigaBites of data, therefore compressing them allows to keep them while saving some precious splace.
+The` haddock3-clean` CLI performs file archiving and file compressing operations on the output of a haddock3 run directory.
+This CLI can save you some hard drive storage space, as the multiple files generated by HADDOCK can lead to several gigabytes of data, therefore compressing them allows you to keep them while saving some precious place.
 
 All `.inp` and `.out` files are deleted except for the first one, which is compressed to `.gz`.
-On the other hand, all `.seed` and `.con` files are compressed and archived to `.tgz` files.
+On the other hand, all `.seed` and `.con` files are compressed and archived into `.tgz` files.
 Finally, `.pdb` and `.psf` files are compressed to `.gz`.
 
 The <run_directory> can either be a whole HADDOCK3 run folder or a specific folder of the workflow step. <ncores> defines the number of threads to use; by default uses a single core.
 
 Please note that by default this CLI is launched automatically at the end of a workflow.
-It is exposed as generaral parameter `clean = true`.
+It is exposed as a general parameter `clean = true`.
 To switch off this behavior, you can set it to false in your configuration file.
 
 
@@ -440,14 +444,14 @@ optional arguments:
 
 ## haddock3-unpack
 
-The `haddock3-unpack` CLI is the oposite of the `haddock3-clean` one.
+The `haddock3-unpack` CLI is the opposite of the `haddock3-clean` one.
 It takes a haddock3 run directory as input (or the output directory of a module), and uncompress archives found within.
 
-This CLI can be especially usefull when your run has been archived, but you would like to open a PDB file using a molecular viewer.
+This CLI can be especially useful when your run has been archived, but you would like to open a PDB file using a molecular viewer.
 
-The unpack process performs file unpacking and file decompressing operations.
-File with extension `seed` and `con` are unpacked from their `.tgz` files.
-While files with `.pdb.gz` and `.psf.gz` extension are uncompressed.
+The unpacking process performs file unpacking and file decompressing operations.
+Files with extensions `seed` and `con` are unpacked from their `.tgz` files.
+While files with `.pdb.gz` and `.psf.gz` extensions are uncompressed.
 If `--all` is given, unpack also `.inp.gz` and `.out.gz` files.
 
 
@@ -455,7 +459,7 @@ Usage:
 ```bash
 # To display help
 haddock3-unpack -h
-# To unpack the entier run directory
+# To unpack the entire run directory
 haddock3-unpack run1
 # To unpack the output directory of a specific module
 haddock3-unpack run1/1_rigidbody
@@ -475,7 +479,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  --all, -a             Unpack all files (includes `.inp` and `.out`).
+  --all, -a             Unpack all files (including `.inp` and `.out`).
   -n [NCORES], --ncores [NCORES]
                         The number of threads to use. Uses 1 if not specified. Uses all available threads if `-n` is given. Else,
                         uses the number indicated, for example: `-n 4` will use 4 threads.
@@ -486,14 +490,14 @@ optional arguments:
 
 ## haddock3-pp
 
-The `haddock3-pp` is a pre-processing (-pp) CLI, dedicated at processing PDB files for agreement with HADDOCK3 requirements.
+The `haddock3-pp` is a pre-processing (-pp) CLI, dedicated to processing PDB files for agreement with HADDOCK3 requirements.
 
 You can use the `--dry` option to report on the performed changes without actually performing the changes.
 
 Corrected PDBs are saved to new files named after the `--suffix` option.
-Original PDBs are never overwritten, unless `--suffix` is given an empty string.
+Original PDBs are never overwritten unless the `--suffix` is given an empty string.
 
-You can pass multiple PDB files to the command-line.
+You can pass multiple PDB files to the command line.
 
 Usage:
 ```bash

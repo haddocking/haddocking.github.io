@@ -1,11 +1,11 @@
 # Best practice guide
 
-**A must read when starting to use our software!**
+**A must-read when starting to use our software!**
 
-HADDOCK is a powerful tool, however to reach its full potential it must be wisely used.
+HADDOCK is a powerful tool, however, to reach its full potential it must be wisely used.
 Thus **the best practice guide shows how to run HADDOCK in a sensible and rational manner.**
 Which settings are best used in which scenario and which on the other hand are better avoided?
-This best practice guide will guide you through all possible scenarios with related settings linked with tutorials of the newest HADDOCK version, published articles and protocols from our group.
+This best practice guide will guide you through all possible scenarios with related settings linked with tutorials of the newest HADDOCK version, published articles, and protocols from our group.
 
 
 <hr>
@@ -43,8 +43,8 @@ table, th, td {
     <td><center><b><p style="font-size:20px"><a href="./bpg/dna.md" alt="Docking of nucleotides" title="Docking of small molecules">Nucleotides</a></p></b></center></td>
     <td><center><b><p style="font-size:20px"><a href="./bpg/proteins.md" alt="Docking of proteins" title="Docking of protein">Proteins</a></p></b></center></td>
     <!--
-    <td><center><b><p style="font-size:20px"><a href="./bpg/cg.md" alt="Docking of coarse grained molecules" title="Docking of coarse grained molecules ">Coarse grain</a></p></b></center></td>
-    -->
+ <td><center><b><p style="font-size:20px"><a href="./bpg/cg.md" alt="Docking of coarse grained molecules" title="Docking of coarse grained molecules ">Coarse grain</a></p></b></center></td>
+ -->
   </tr>
   <tr>
     <td>
@@ -83,14 +83,14 @@ table, th, td {
       </a>
     </td>
     <!--
-    <td>
-      <a href="./bpg/cg.md"
-         alt="Docking of coarse grained molecules"
-         title="Docking of coarse grained molecules">
-         <img src="./bpg/cg.png" style="border-radius: 50%; border: dashed 2px black;">
-      </a>
-    </td>
-    -->
+ <td>
+ <a href="./bpg/cg.md"
+ alt="Docking of coarse grained molecules"
+ title="Docking of coarse grained molecules">
+ <img src="./bpg/cg.png" style="border-radius: 50%; border: dashed 2px black;">
+ </a>
+ </td>
+ -->
   </tr>
   <tr>
        <td colspan="6">
@@ -102,7 +102,7 @@ table, th, td {
 
 <hr>
 
-##  [After docking: How to analyse docking results from HADDOCK or refine models?](./bpg/analysis.md)
+##  [After docking: How to analyze docking results from HADDOCK or refine models?](./bpg/analysis.md)
 
 
 <a href="./bpg/analysis.md" title="Analysis">
@@ -111,4 +111,3 @@ table, th, td {
 </a>
 
 
-<hr>
