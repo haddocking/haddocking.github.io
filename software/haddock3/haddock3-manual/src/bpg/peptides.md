@@ -1,25 +1,28 @@
 ## Peptides
 
 <p align="right">
-  <img src="/software/bpg/bound_peptide.png" />
+  <img src="./bound_peptide.png" />
 </p>
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
-HADDOCK supports docking of peptides as well. Since the secondary structure of short peptides is not always well defined, is is safer to dock an ensemble of multiple conformations. Different ways of generating of these conformations are described [here](/software/bpg/structures/#modelling-of-peptides-and-mutations-in-proteins). More documentation about peptide docking with HADDOCK is in following sections:
+HADDOCK supports the docking of peptides as well.
+Since the secondary structure of short peptides is not always well defined, it is safer to dock an ensemble of multiple conformations.
+Different ways of generating these conformations are described [here](./structures.md#modelling-of-peptides-and-mutations-in-proteins).
+More documentation about peptide docking with HADDOCK is in the following sections:
 
 
 <hr>
 
-### [Tutorials](/education/)
+### [Tutorials](../tutorials.md)
 
 * [**HADDOCKing of the p53 N-terminal peptide to MDM2**](/education/molmod/docking/):
-  This tutorial introduces protein-peptide docking using the HADDOCK web server. It also introduces the CPORT web server for interface prediction, based on evolutionary conservation and other biophysical properties.  
+ This tutorial introduces protein-peptide docking using the HADDOCK web server. It also introduces the CPORT web server for interface prediction, based on evolutionary conservation and other biophysical properties.  
 
 
 <hr>
 
-### [Publications](/publications/)
+### [Publications](../publications.md)
 
 * C. Geng, S. Narasimhan, J. P.G.L.M. Rodrigues and **A.M.J.J. Bonvin**.
 [Information-driven, ensemble flexible peptide docking using HADDOCK](https://doi.org/10.1007/978-1-4939-6798-8_8).
@@ -75,6 +78,10 @@ More about optimal settings for different docking scenarios can be found [here](
 
 <hr>
 
-### [FAQ](/software/haddock2.4/faq/)
+### [FAQ](../faq.md)
 
-Any more questions about peptide docking with HADDOCK? Have a look at our **[HADDOCK bioexcel forum](https://ask.bioexcel.eu/search?q=peptide%20%23haddock)**  hosted by [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu). There is a very high chance that your problem has already been addressed. 
+Any more questions about peptide docking with HADDOCK?
+
+Have a look at:
+- [F.A.Q](../faq.md)
+- [Ask for help / find support](../info.md)

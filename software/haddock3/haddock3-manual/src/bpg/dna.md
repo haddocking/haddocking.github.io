@@ -8,14 +8,14 @@
 
 
 HADDOCK can perform docking of nucleic acids.
-The list of nucleic acid bases supported by HADDOCKis listed [here](https://wenmr.science.uu.nl/haddock2.4/library).
+The list of nucleic acid bases supported by HADDOCK is listed [here](https://wenmr.science.uu.nl/haddock2.4/library).
  
 
 <hr>
 
 ### DNA and RNA nucleotide naming convention
 
-In HADDOCK, DNA and RNA bases must follow a strict naming for it to be well detected and understood by CNS.
+In HADDOCK, DNA and RNA bases must follow a strict naming convension for it to be well detected and understood by CNS.
 
 
 **DNA nucleotides**:
@@ -63,9 +63,9 @@ _Nucl. Acids Res._, *34* 3317-3325 (2006).
 ### [Tutorials](../tutorials.md)
 
 * [**Haddock3 basic protein-DNA docking tutorial**](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-DNA-basic):
-  This tutorial demonstrates the use of Haddock3 for predicting the structure of a protein-DNA complex in which two protein units bind to the double-stranded DNA in a symmetrical manner (reference structure [3CRO](https://www.rcsb.org/structure/3CRO)).
-  In addition to provided ambiguous restraints used to drive the docking, symmetry restraints are also defined to enforce symmetrical binding to the protein.
-  This tutorial is using a local version of Haddock3, and therefore requires the use of a terminal and some basic command line expertise.
+ This tutorial demonstrates the use of Haddock3 for predicting the structure of a protein-DNA complex in which two protein units bind to the double-stranded DNA in a symmetrical manner (reference structure [3CRO](https://www.rcsb.org/structure/3CRO)).
+ In addition to provided ambiguous restraints used to drive the docking, symmetry restraints are also defined to enforce symmetrical binding to the protein.
+ This tutorial is using a local version of Haddock3, and therefore requires the use of a terminal and some basic command line expertise.
 
 <hr>
 
@@ -93,7 +93,7 @@ table, th, td {
 
 More about optimal settings for different docking scenarios can be found [here](https://wenmr.science.uu.nl/haddock2.4/settings#optimal).
 
-<HR>
+<hr>
 
 ### [FAQ](../faq.md)
 

@@ -6,15 +6,15 @@
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
-HADDOCK2.4 now supports docking of carbohydrates, however it has not been tested properly yet. It is in an experimental intense-development phase.
-A list of glycan residues supported by HADDOCK can be found [here](https://wenmr.science.uu.nl/haddock2.4/library). This page consists of following chapters:
+HADDOCK also supports the docking of several carbohydrates.
+A list of glycan residues supported by HADDOCK can be found [here](https://wenmr.science.uu.nl/haddock2.4/library). This page consists of the following chapters:
 
 
 <hr>
 
 ### [Tutorials](../tutorials.md)
 
-* [HADDOCK3 protein-glycan modelling and docking](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-glycan/): This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
+* [HADDOCK3 protein-glycan modeling and docking](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-protein-glycan/): This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
 
 
 <HR>
