@@ -7,13 +7,13 @@ This is also extended to the cluster level, enabling to rank clusters.
 See here the [full documentation related to the `[caprieval]` module](../modules/analysis.md#caprieval-module).
 
 
-Here is an schematic example on how to use the `[caprieval]` module:
+Here is a schematic example of how to use the `[caprieval]` module:
 
 ```toml
 # Some previous modules in the workflow
 # ...
 
-# Use caprieval to compare previously generated models to a reference
+# Use CAPRIeval to compare previously generated models to a reference
 [caprieval]
 reference_fname = "target_complex.pdb"
 
@@ -23,11 +23,11 @@ reference_fname = "target_complex.pdb"
 
 **Notes**:
 - that without specifying the `reference_fname` in the `[caprieval]` module, the best scoring complex will be used as reference.
-- If a clustering step is placed before the `[caprieval]` module, the analysis will also be extended to the cluster level, hense providing a more robust analysis.
+- If a clustering step is placed before the `[caprieval]` module, the analysis will also be extended to the cluster level, hence providing a more robust analysis.
 
 <hr>
 
-## Analysis command line interace
+## Analysis command line interface
 
 The `haddock3-analyse` command line allows to generate interactive plots from the data obtained by a `[caprieval]` module directory.
 
@@ -50,14 +50,14 @@ table, th, td {
 |:---:|:---:|
 | take blindly the first ranked model/cluster | consider/examine multiple models/clusters, especially if they overlap within standard deviations in their score|
 | consider the size of the cluster as an indication of its quality | use the cluster score and not its size for selecting best solutions (of course it is nice if the largest cluster is also the best scoring one) |
-| consider/look only at the best model of a cluster | within one cluster, do visualise and compare several models (e.g. the top4) to get an idea of the precision and make sure the clustering worked properly |
+| consider/look only at the best model of a cluster | within one cluster, do visualize and compare several models (e.g. the top4) to get an idea of the precision and make sure the clustering worked properly |
 | take scores as proxies of binding affinity to compare different complexes | compare scores only within the same system/complex (i.e. to distinguish models for one docking run), or run <code>[prodigy]</code> module |
 
 
 
 <hr>
 
-Any more questions about analysis of the HADDOCK run?
+Any more questions about the analysis of the HADDOCK run?
 
 Have a look at:
 - [F.A.Q](../faq.md)

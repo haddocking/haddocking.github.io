@@ -1,45 +1,66 @@
-## Comparing your docking results to a known reference structure
+# Clustering methods implemented in Haddock3
 
-The comparison to a reference structure has been streamlined, and can now be made simply by using the `[caprieval]` module.
-See here the [full documentation related to the `[caprieval]` module](../modules/analysis.md#caprieval-module).
+The clustering of conformations, complexes is a key step in most of the workflows, as it allows to observe convergence, redundancies, or even remove noise coming from singlotons.
+Yet, two clustering methods are available in Haddock3:
+- Clustering by **R**oot **M**ean **S**quared **D**eviation: [`[clustrmsd]`](#rmsd-clustering)
+- Clustering by **F**raction of **C**omon **C**ontacts: [`[clustfcc]`](#fcc-clustering)
 
-
-Here is an schematic example on how to use the `[caprieval]` module:
-
-```toml
-# Some previous modules in the workflow
-# ...
-
-# Use caprieval to compare previously generated models to a reference
-[caprieval]
-reference_fname = "target_complex.pdb"
-
-# Some more modules until the end of the workflow
-# ...
-```
-
-**Note** that without specifying the `reference_fname` in the `[caprieval]` module, the best scoring complex will be used as reference.
 
 <hr>
 
-## Analysis manual
+## RMSD clustering
+
+In Haddock3, RMSD clustering module `[clustrmsd]` must always be preceeded by the building of the RMSD matrix.
+Indeed, the modules takes the resulting RMSD matrix as input to build the dendrograme and cluster it.
+Two modules can compute the RMSD matrix:
+- [`[rmsdmatrix]`](../modules/analysis.md#rmsdmatrix-module): Calculates of the RMSD matrix between all the models generated in the previous step.
+- [`[ilrmsdmatrix]`](../modules/analysis.md#ilrmsdmatrix-module): Calculates the Interface Ligand Root Mean Square Deviation (ILRMSD) matrix.
+
+Those two modules must be followed by the `[clustrmsd]` module, otherwise only the pair-wise RMSD matrix will be computed, and clustering not performed.
+
+### [rmsdmatrix] module
+
+The `[rmsdmatrix]` module allows you to define a subset of resiudes used to perform both the structural alignment and the RMSD computation.
+For this, you need to specify a list of residues for each chain, using the parameter `resdic_*`, where `*` is the chainID.
+As an example, to perform the selection of residues 12, 13, 14 and 15 from chain A and 1, 2, 3 from chain B, refine the following parameters:
+```toml
+[rmsdmatrix]
+resdic_A = [12, 13, 14, 15]
+resdic_B = [1, 2, 3]
+```
+This will result in the selection of those 7 residues to perform the structural alignment onto the reference and then compute the RMSD.
+
+Full documentation about `[rmsdmatrix]` is accessible [here](../modules/analysis.md#rmsdmatrix-module).
+
+### [ilrmsdmatrix] module
+
+For the `[ilrmsdmatrix]` module, a different approach is taken.
+Two parameters must be defined
+- `receptor_chain`: defining the chainID of the receptor. By default "A".
+- `ligand_chains`: a list of other chain IDs that should represent the "ligands". If not set, all the remaining chains will be considered as ligand.
+
+During the computational workflow, first, all the residue-residue contacts between the receptor and ligand are selected.
+This selection is then used to perform later structural alignment and RMSD computation.
+
+Full documentation about `[ilrmsdmatrix]` is accessible [here](../modules/analysis.md#ilrmsdmatrix-module).
+
+### [clustrmsd] module
+
+Once the matrix has been computed, the clustering can be performed using the `[clustrmsd]` module.
+The clustering is performed by first building a dendrograme, and then prunning the tree given two methods, accessible using the `criterion` parameter:
+- `criterion = "maxclust"`: Prunning the tree to provide a defined number of clusters.
+- `criterion = "distance"`: Prunning the tree so members of the same cluster will share a RMSD distance between themselves inferior to the one defined.
 
 
-Analysis of docking results are described in the [HADDOCK2.4 manual](/software/haddock2.4/analysis/) and more about parameters in the *run.cns* file is written [here](/software/haddock2.4/run/#analysis-and-clustering).
+
+<hr>
+
+## FCC clustering
 
 
-<HR>
-
-## Clustering and scoring
-
-The HADDOCK scoring function is explained [here](/software/haddock2.4/scoring/).
-
-The cluster-based HADDOCK analysis is explained [here](/software/haddock2.4/analysis/#cluster-based-analysis).
-
-A short section about key default analysis parameters is provided [here](https://wenmr.science.uu.nl/haddock2.4/settings).
 
 
-<HR>
+<hr>
 
 ## Dos and Don'ts
 
