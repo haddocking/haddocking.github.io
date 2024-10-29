@@ -7,7 +7,7 @@
 
 
 HADDOCK, standing for **H**igh **A**mbiguity **D**riven protein-protein **DOCK**ing, is a widely used computational tool for the integrative modeling of biomolecular interactions.
-Developed by researchers at [Utrecht University](https://uu.nl) in the [BonvinLab](https://bonvinlab.org) for more than 20 years, it integrates various types of experimental data, biochemical, biophysical, bioinformatic prediction and knowledge to guide the docking process.
+Developed by researchers at [Utrecht University](https://uu.nl) in the [BonvinLab](https://bonvinlab.org) for more than 20 years, it integrates various types of experimental data, biochemical, biophysical, bioinformatic prediction, and knowledge to guide the docking process.
 
 In this manual, we will describe:
 - the basic concepts of HADDOCK
@@ -18,7 +18,7 @@ In this manual, we will describe:
 
 ## Navigate through the manual
 
-On the top-left part of you screen, you will find 3 icons:
+On the top-left part of your screen, you will find three icons:
 - stacked lines: allows to display/hide the table of content
 - brushes: allows to tune the colors of the manual
 - the magnifying glass: perform keyword text search in the entire manual and access corresponding pages

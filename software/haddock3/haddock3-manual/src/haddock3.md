@@ -1,6 +1,6 @@
 # Haddock3
 
-HADDOCK3 is the next generation integrative modelling software of the long-lasting HADDOCK docking tool.
+Haddock3 is the next-generation integrative modeling software of the long-lasting HADDOCK docking tool.
 It represents a complete rethinking and rewriting of the HADDOCK2.X series, implementing a new way to interact with HADDOCK and offering new features to users who can now define custom workflows.
 
 In the previous HADDOCK2.x versions, users had access to a highly parameterisable yet rigid simulation pipeline composed of three steps: rigid-body docking (*it0*), semi-flexible refinement (*it1*), and final refinement (*itw*).
@@ -17,7 +17,7 @@ As a result, the modularization achieved in HADDOCK3 allows users to duplicate s
 Note that, for simplification purposes, at this time, not all functionalities of HADDOCK2.x have been ported to HADDOCK3, which does not (yet) support NMR RDC, PCS and diffusion anisotropy restraints, cryo-EM restraints and coarse-graining.
 Any type of information that can be converted into ambiguous interaction restraints can, however, be used in HADDOCK3, which also supports the ab initio docking modes of HADDOCK.
 
-To keep HADDOCK3 modules organized, we catalogued them into several categories.
+To keep HADDOCK3 modules organized, we cataloged them into several categories.
 However, there are no constraints on piping modules of different categories.
 
 The main module categories are *“topology”*, *“sampling”*, *“refinement”*, *“scoring”*, and *“analysis”*.

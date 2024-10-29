@@ -1,6 +1,6 @@
 # Generating restraints with Haddock3
 
-Ambiguous (or not) restraints file must comply with the CNS syntax.
+Ambiguous (or not) restraint files must comply with the CNS syntax.
 Generating them can be quite difficult, and for this reason we added a dedicated command line interface `haddock3-restraints`, allowing to perform several maniputation to generate restraints files to be used later in your docking experiment.
 
 Usage:
@@ -23,20 +23,20 @@ haddock3-restraints <TASK_NAME> -h
 
 
 This CLI holds multiple sub-commands, listed and explained below:
-- [calc_accessibility](#calc-accessibility): Compute solvent accessible resiudes from an input PDB file.
-- [passive_from_active](#passive-form-active): Generates a list of solvent accessible residues near a list of resiudes.
+- [calc_accessibility](#calc-accessibility): Compute solvent-accessible residues from an input PDB file.
+- [passive_from_active](#passive-form-active): Generates a list of solvent-accessible residues near a list of residues.
 - [active_passive_to_ambig](#active-passive-to-ambig): Generates a ambiguous/unambiguous restraints file from two *active/passive* residue selections.
-- [restrain_bodies](#restrain-bodies): Generates restraints within the same chain. Useful when chain breaks are present or multiple proteins are defined as single chain.
+- [restrain_bodies](#restrain-bodies): Generates restraints within the same chain. Useful when chain breaks are present or multiple proteins are defined as a single chain.
 - [z_surface_restraints](#z-surface-restraints): Generates surfaces and restraints selected residues to it.
-- [validate_tbl](#validate-tbl): Validate the content of a ambiguous/unambiguous restraints file.
+- [validate_tbl](#validate-tbl): Validate the content of an ambiguous/unambiguous restraints file.
 
 
 ## Calc Accessibility
 
-Given a pdb file, `calc_accessibility` will calculate the relative accessibility of
-the side chains and return a list of surface exposed residues.
+Given a PDB file, `calc_accessibility` will calculate the relative accessibility of
+the side chains and return a list of surface-exposed residues.
 
-Nucleic acids bases are considered to be always accessible.
+Nucleic acid bases are considered to be always accessible.
 
 This command is particularly useful when little interface information is available for one biomolecule and one wants to identify (and then target) all the surface exposed residues on a certain protein.
 
@@ -123,7 +123,7 @@ The `restrain_bodies` subcommand creates distance restraints to lock several
 chains together. It is useful to avoid unnatural flexibility or movement due to
 sequence/numbering gaps.
 
-As an example, this subcommand is crucial when docking an antibody to their cognate antigen (see for example [this tutorial](www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#additional-restraints-for-multi-chain-proteins)), as the hypervariable region of an antibody is formed by two chains that are not covalently linked.
+As an example, this subcommand is crucial when docking an antibody to its cognate antigen (see for example [this tutorial](www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#additional-restraints-for-multi-chain-proteins)), as the hypervariable region of an antibody is formed by two chains that are not covalently linked.
 
 **Usage:**
 ```bash
@@ -148,8 +148,8 @@ One can exclude some chains from this calculation using the `--exclude` option.
 ## Z surface restraints
 
 The `z_surface_restraints` subcommand generates both z-surfaces (x,y plans at a given z coordinate) 
-and corresponding based on input pdb structure and residue selection.
-This is usefull to mimic membranes and make sure the protein will stay in the in place.
+and corresponding based on input PDB structure and residue selection.
+This is useful to mimic membranes and make sure the protein will stay in the plan.
 
 **Usage:**
 ```bash
@@ -158,7 +158,7 @@ haddock3-restraints z_surface_restraints --pdb <structure> --residues 7,50,53,71
 
 This command will generate a plan at x,y plan at z==0 (`z_restraints_beads.pdb`), and a restraint file (`z_restraints.tbl`).
 
-Note that you can have multiple set of coma separated residues (e.g: `7,50,53,71 1,2,3`) by separating them by spaces.
+Note that you can have multiple sets of comma-separated residues (e.g: `7,50,53,71 1,2,3`) by separating them by spaces.
 If you do so, multiple surfaces will be generated and each residue selections will be restraints to a plan.
 
 
@@ -168,9 +168,9 @@ options:
   -h, --help            show this help message and exit
   --pdb PDB, -p PDB     Path to a pdb file.
   --residues RESIDUES [RESIDUES ...], -r RESIDUES [RESIDUES ...]
-                        List of comma separated residues (can be multiple selections). Example 1,2,3 7,8,9 for two selections.
+                        List of comma-separated residues (can be multiple selections). Example 1,2,3 7,8,9 for two selections.
   --output OUTPUT, -o OUTPUT
-                        Base output path. This script will generate two files, therefore no extention needed here
+                        Base output path. This script will generate two files, therefore no extension needed here
   --spacing SPACING, -s SPACING
                         Spacing between two beads (A)
   --x-size X_SIZE, -x X_SIZE
@@ -207,6 +207,6 @@ The `--silent` option will suppress the output of the validation (in case of suc
 
 # New version of the haddock-restraints
 
-A new version of the haddock3-restraints is currently being developped.
+A new version of the haddock3-restraints is currently being developed.
 This new implementation using *rust* will allow better maintainability as well as its deployment on various operating systems as well as on web-browser using WebAssembly.
 Not yet part of the haddock3 intallation, you can already find it in its dedicated repository at [https://github.com/haddocking/haddock-restraints](https://github.com/haddocking/haddock-restraints).

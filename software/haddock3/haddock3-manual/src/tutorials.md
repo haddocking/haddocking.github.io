@@ -1,8 +1,8 @@
 # Haddock3 tutorial
 
-Haddock3 is not only a tool, but also a set of training materials, allowing to new user to understand the main aspects and functionalities available in haddock3.
+Haddock3 is not only a tool, but also a set of training materials, allowing new user to understand the main aspects and functionalities available in haddock3.
 
-The list of tutorial is available from our [BonvinLab website -> education -> haddock3 -> tutorials](https://www.bonvinlab.org/education/HADDOCK3/)
+The list of tutorials is available from our [BonvinLab website -> education -> haddock3 -> tutorials](https://www.bonvinlab.org/education/HADDOCK3/)
 
 
 Please note that we are constantly adding new tutorials, and therefore new ones may appear from time to time.

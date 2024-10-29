@@ -35,12 +35,12 @@ haddock3
 |       |-- *.tsv
 |       |-- *.tbl
 `-- examples
-    |-- docking-examples
-        |-- worflow.cfg
-        `-- data
-            |-- structure*.pdb
-            |-- airs.tbl
-            `-- reference_structure.pdb
+ |-- docking-examples
+ |-- worflow.cfg
+ `-- data
+ |-- structure*.pdb
+ |-- airs.tbl
+ `-- reference_structure.pdb
 ```
 
 
@@ -75,11 +75,11 @@ Holds the module execution machinery.
 
 #### `cns/` directory
 
-Contains cns scripts related to the module : `*.cns`
+Contains CNS scripts related to the module: `*.cns`
 
 #### python3 scripts `*.py`
 
-Holds the module classes, methods and functions related to the logic for the computation.
+Holds the module classes, methods, and functions related to the logic for the computation.
 
 ### Tests
 
@@ -102,6 +102,6 @@ They are supposed to be executed by `pytest`.
 #### End-to-end tests
 
 The end-to-end tests are also examples that we provide to the users, to guide and help them understand how to use a module.
-They also consists of predifined docking scenarios.
+They also consist of predefined docking scenarios.
 End-to-end tests are located in the `examples/` directory.
-We run on a daily basis most of the tests configuration files `*-test.cfg` present, tracking potential errors, hense making sure that haddock3 is functional after a new update.
+We run on a daily basis most of the tests configuration files `*-test.cfg` present, tracking potential errors, hens making sure that haddock3 is functional after a new update.

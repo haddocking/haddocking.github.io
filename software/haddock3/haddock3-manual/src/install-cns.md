@@ -1,6 +1,6 @@
 ## Install CNS
 
-HADDOCK is using [Crystallography & NMR System (CNS)](http://cns-online.org/v1.3/) as core computing engine.
+HADDOCK is using [Crystallography & NMR System (CNS)](http://cns-online.org/v1.3/) as a core computing engine.
 CNS is a FORTRAN66 code that must be compiled on your machine, for your own hardware.
 
 ### Pre-compiled binaries
@@ -10,9 +10,9 @@ Therefore there should be no need of compiling it yourself, which was one of the
 
 **DISCLAMER**:
 By running this command, you will download a compiled executable of CNS (Crystallographic and NMR System) which is free of use for non-profit applications.
-For commercial use it is your own responsibility to have a proper license.
+For commercial use, it is your own responsibility to have a proper license.
 For details refer to [the DISCLAIMER file](https://github.com/haddocking/haddock3/blob/main/DISCLAIMER.md) in the HADDOCK3 repository.
 
-### Compiling CNS by your own
+### Compiling CNS on your own
 
-Please see the [up-to-date installation procedure of CNS here](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md), where you will find specific guide and troubleshooting sections.
+Please see the [up-to-date installation procedure of CNS here](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md), where you will find specific guides and troubleshooting sections.

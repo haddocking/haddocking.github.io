@@ -7,11 +7,11 @@ Haddock3 has this particularity (compared to the pervious HADDOCK2.X versions), 
 </figure>
 
 Various `[modules]` are available in Haddock3, and they are grouped together by types:
-- [**Topology modules**](#topology-modules): these modules focus in the building of missing atoms and generation of approriate topology files enabling downstream use of molecular dynamics protocols.
-- [**Sampling modules**](#sampling-modules): dedicated at performing sampling of initial conformations, such as rigidbody docking.
-- [**Refinement modules**](#refinement-modules): these modules aim at refining interaction interface, using simulated annealing protocol, energy minimisation or molecular dynamics with an explicit solvent shell.
+- [**Topology modules**](#topology-modules): these modules focus in the building of missing atoms and the generation of appropriate topology files enabling downstream use of molecular dynamics protocols.
+- [**Sampling modules**](#sampling-modules): dedicated to performing sampling of initial conformations, such as rigidbody docking.
+- [**Refinement modules**](#refinement-modules): these modules aim at refining interaction interface, using simulated annealing protocol, energy minimization or molecular dynamics with an explicit solvent shell.
 - [**Scoring modules**](#scoring-modules): these modules are evaluating provided complexes with dedicated scoring functions, such as the HADDOCK score.
-- [**Analysis modules**](#analysis-modules): these modules focus on the analysis of docking models. It ranges from the clustering of docking models, to the selection of best ranked ones passing by the evaluation of the models with respect to a reference structure using CAPRI criteria.
+- [**Analysis modules**](#analysis-modules): these modules focus on the analysis of docking models. It ranges from the clustering of docking models to the selection of best-ranked ones passing by the evaluation of the models with respect to a reference structure using CAPRI criteria.
 
 
 <figure align="center">
@@ -21,7 +21,7 @@ Various `[modules]` are available in Haddock3, and they are grouped together by 
 
 ## Defining module parameters
 
-To tune modules parameters, you first need to define which `[module]` you will be using, then add the list of parameters and their new values.
+To tune module parameters, you first need to define which `[module]` you will be using, then add the list of parameters and their new values.
 
 Note that if a parameter is not defined, its default value will be used instead.
 
@@ -38,10 +38,10 @@ parameter3 = new_value_3
 
 **Note** that you can only define one parameter per line.
 
-### Definition of defaults parameter values
+### Definition of default parameter values
 
-Each module is having its own default parameters names and values, set in a file named `defaults.yaml`.
-This is used to set defaults parameters when they are not specified in the configuration file.
+Each module has its own default parameter names and values, set in a file named `defaults.yaml`.
+This is used to set default parameters when they are not specified in the configuration file.
 
 The `defaults.yaml` file is not only used to check if the parameter name exists at execution time, but also as reference to know if the configuration file provided by the use respects the allowed value for a given parameter.
 
@@ -51,9 +51,8 @@ The `defaults.yaml` file is not only used to check if the parameter name exists 
 ## Set of available modules
 
 Below is presented the list of available modules.
-For detailed explannation of each modules and their respective parameters, please refere to [the online documentation](https://bonvinlab/haddock3/).
-You can also use the `haddock3-cfg` command line to get information of each module and their parameters ([documentation here](./clis.md#haddock3-cfg)).
-
+For detailed explanation of each module and their respective parameters, please refer to [the online documentation](https://bonvinlab/haddock3/).
+You can also use the `haddock3-cfg` command line to get information on each module and their parameters ([documentation here](./clis.md#haddock3-cfg)).
 
 
 ### Topology modules
@@ -64,7 +63,7 @@ You can also use the `haddock3-cfg` command line to get information of each modu
 
 ### Sampling modules
 
-- [`[rigidbody]`](./modules/sampling.md#rigidbody-module): Rigid body energy minimisation with CNS (previously known as `it0` in HADDOCK2.X series).
+- [`[rigidbody]`](./modules/sampling.md#rigidbody-module): Rigid body energy minimization with CNS (previously known as `it0` in HADDOCK2.X series).
 - [`[gdock]`](./modules/sampling.md#gdock-module): Third-party genetic algorithm-based docking software.
 - [`[lightdock]`](./modules/sampling.md#lightdock-module): Third-party Glow-worm Swarm Optimisation (GSO) docking software.
 
@@ -72,7 +71,7 @@ You can also use the `haddock3-cfg` command line to get information of each modu
 ### Refinement modules
 
 - [`[flexref]`](./modules/refinement.md#flexref-module): Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (previously known as `it1` in HADDOCK2.X series).
-- [`[emref]`](./modules/refinement.md#emref-module): Refinement by energy minimisation (previously known as `itw EM only` in HADDOCK2.4).
+- [`[emref]`](./modules/refinement.md#emref-module): Refinement by energy minimization (previously known as `itw EM only` in HADDOCK2.4).
 - [`[mdref]`](./modules/refinement.md#mdref-module): Refinement by a short molecular dynamics simulation in explicit solvent (previously known as `itw` in HADDOCK2.X series).
 - [`[openmm]`](./modules/refinement.md#openmm-module): Short molecular dynamics simulation (in explicit or implicit solvent) using the OpenMM library.
 
@@ -98,14 +97,14 @@ You can also use the `haddock3-cfg` command line to get information of each modu
   - [`[clustrmsd]`](./modules/analysis.md#clustrmsd-module): Clusters models based on pairwise RMSD matrix previously computed by either the calculated with the `[rmsdmatrix]` or `[ilrmsdmatrix]` modules.
   - [`[clustfcc]`](./modules/analysis.md#clustfcc-module): Clusters models based on the fraction of common contacts (FCC)
 - Selection:
-  - [`[seletop]`](./modules/analysis.md#seletop-module): Selects the top N models from the previous step.
+  - [`[seletop]`](./modules/analysis.md#seletop-module): Select the top N models from the previous step.
   - [`[seletopclusts]`](./modules/analysis.md#seletopclusts-module): Selects top N clusters from the previous step.
 
 
-## Developping a new module
+## Developing a new module
 
 Haddock3 is a collaborative project, and researchers can contribute to it, increasing the scope and potential of the Haddock3 suite.
-Information on how to contribute and setup a proper development environment are available on the GitHub repository:
+Information on how to contribute and setup a proper development environment is available on the GitHub repository:
 - [**CONTRIBUTING.md**](https://github.com/haddocking/haddock3/blob/main/CONTRIBUTING.md), contains information on how to contribute.
 - [**DEVELOPMENT.md**](https://github.com/haddocking/haddock3/blob/main/DEVELOPMENT.md), contains information on how to set up an adequate development environment.
 
