@@ -1,10 +1,10 @@
 # Haddock3 eco-system
 
-Haddock3 can be used together with other tools that have been developped and maintained by the BonvinLab.
+Haddock3 can be used together with other tools that have been developed and maintained by the BonvinLab.
 
 ## Local installation of tools
 
-Here are some usefull links to software that can be useful to solve your research question:
+Here are some useful links to software that can be useful to solve your research question:
 
 ### Featured research software
 
@@ -24,9 +24,9 @@ Here are some usefull links to software that can be useful to solve your researc
 
 ## Webservers
 
-We also provide online resources to perform computation related to the tools we developed.
+We also provide online resources to perform computations related to the tools we developed.
 
-Access our web-portal here: [https://wenmr.science.uu.nl/](https://wenmr.science.uu.nl/).
+Access our web portal here: [https://wenmr.science.uu.nl/](https://wenmr.science.uu.nl/).
 
 ## Haddock3 Web-Application
 

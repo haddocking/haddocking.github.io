@@ -5,18 +5,18 @@ We have simplified the installation of Haddock3 by adding it to the Python Packa
 Therefore, the only command you should run is the following:
 
 ```bash
-# Activate your haddock3 virtural env
+# Activate your haddock3 virtual env
 # ...
 # run pip install haddock3
 pip install haddock3
 ```
 
 **Note** that by running `pip install haddock3`, you will be able to use haddock3, but the examples will not be provided.
-To obtain them, you should [install haddock3 from source code (as described below)](#download-haddock3-source-code).
+To obtain them, you should [install haddock3 from the source code (as described below)](#download-haddock3-source-code).
 
 **DISCLAMER**:
 By running this command, you will download a compiled executable of CNS (Crystallographic and NMR System) which is free of use for non-profit applications.
-For commercial use it is your own responsibility to have a proper license.
+For commercial use, it is your own responsibility to have a proper license.
 For details refer to [the DISCLAIMER file](https://github.com/haddocking/haddock3/blob/main/DISCLAIMER.md) in the HADDOCK3 repository.
 
 ## Download haddock3 source code
@@ -24,10 +24,10 @@ For details refer to [the DISCLAIMER file](https://github.com/haddocking/haddock
 Haddock3 is an open source software and therefore its source code can be downloaded at any time.
 We are hosting the code on a dedicated [GitHub repository](https://github.com/haddocking/haddock3/), allowing for better version control, code development and maintainability.
 
-For usage tracking purposes (to avoid counting robots downloading the tool), we advise users to download it from our [lab page](https://www.bonvinlab.org/software/haddock3/#haddock3-distribution-download), as it allows us for easier reporting to authoritise supporting the development of this project with grants.
+For usage tracking purposes (to avoid counting robots downloading the tool), we advise users to download it from our [lab page](https://www.bonvinlab.org/software/haddock3/#haddock3-distribution-download), as it eases the reporting tasks to authorities supporting the development of this project with grants.
 
 
-To install haddock3 from source, we suggest to run the following commands:
+To install haddock3 from the source, we suggest running the following commands:
 
 ```bash
 # First, download the source code:
@@ -66,4 +66,4 @@ source .haddock3-env/bin/activate
 pip install -e '.[dev,docs]'
 ```
 
-Complete guide on how to setup an adequate development environement can be found here: [DEVELOPMENT.md](https://github.com/haddocking/haddock3/blob/main/DEVELOPMENT.md)
+A complete guide on how to setup an adequate development environment can be found here: [DEVELOPMENT.md](https://github.com/haddocking/haddock3/blob/main/DEVELOPMENT.md)

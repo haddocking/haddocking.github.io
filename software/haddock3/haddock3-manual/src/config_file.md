@@ -1,11 +1,11 @@
 # Workflow configuration file
 
-Haddock3 is using a configuration file to define the workflow to be performed.
+Haddock3 uses a configuration file to define the workflow to be performed.
 A workflow is defined in simple configuration text files, similar to the [TOML](https://toml.io/en/) format but with extra features.
 
 It basically contains two main parts:
 * [Global parameters](./global_parameters.md): General parameters to be applied to the workflow, including input molecules and location where to run the docking protocol.
-* [List of modules](./modules_parameters.md): Sequence of [module names], defining the sequential order in which each module must be perfromed. Each module has several parameters, that can be defined to fine tune them, or left untouched therefore using default parameters.
+* [List of modules](./modules_parameters.md): Sequence of [module names], defining the sequential order in which each module must be performed. Each module has several parameters, that can be defined to fine-tune them, or left untouched therefore using default parameters.
 
 Examples of workflow configuration files are [available here !](https://github.com/haddocking/haddock3/tree/main/examples)
 
@@ -51,7 +51,7 @@ param2 = "fine_tune"
 param1 = "other_string"
 param4 = 3.33
 ```
-**_note_** that this configuration file is only schematic and not functional as modules `[moduleX]` and `[moduleY]` do not exists in haddock3.
+**_note_** that this configuration file is only schematic and not functional as modules `[moduleX]` and `[moduleY]` do not exist in haddock3.
 
 
 This configuration file can then be executed by running:

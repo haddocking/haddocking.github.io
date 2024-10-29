@@ -86,6 +86,16 @@ More information about `[flexref]` parameters can be accessed [here](https://bon
 ```bash
 haddock3-cfg -m flexref
 ```
+
+#### `[flexref]` module simulated annealing protocol scheme
+
+To simplify your understanding of the simulated annealing protocol and the parameters related to each step, we built a schematic representation of it:
+
+<figure style="text-align: center;">
+<img width="100%" src="../images/flexref_scheme.png">
+</figure>
+
+
 <hr>
 
 ## `[openmm]` module
