@@ -38,10 +38,10 @@ More information about ``[alascan]`` parameters can be accessed [here](https://b
 haddock3-cfg -m alascan
 ```
 
-Here an example configuration file snapshot performing glycine scanning on some residues after Molecular Dynamics refinement:
+Here is an example configuration file snapshot performing glycine scanning on some residues after Molecular Dynamics refinement:
 
-```TOML
-...
+```toml
+# ...
 [mdref]
 ambig_fname = ambiguous_restraints.tbl
 [alascan]
@@ -49,7 +49,7 @@ scan_residue = "GLY"
 resdic_A = [2,3]
 resdic_B = [24,25]
 
-...
+# ...
 ```
 <hr>
 
@@ -60,20 +60,20 @@ Calculate CAPRI metrics for the input models.
 By default the following metrics are calculated:
 
 - FNAT (fraction of native contacts), namely the fraction of
-    intermolecular contacts in the docked complex that are also
-    present in the reference complex.
+ intermolecular contacts in the docked complex that are also
+ present in the reference complex.
 - IRMSD (interface root mean square deviation), namely the RMSD
-    of the interface of the docked complex with respect
-    to the reference complex.
+ of the interface of the docked complex with respect
+ to the reference complex.
 - LRMSD (ligand root mean square deviation), namely the RMSD of the
-    ligand of the docked complex with respect to the
-    reference complex upon superposition of the receptor.
+ ligand of the docked complex with respect to the
+ reference complex upon superposition of the receptor.
 - DOCKQ, a measure of the quality of the docked model obtained
-    by combining FNAT, IRMSD and LRMSD (see
-    Basu and Wallner 2016,  11 (8), e0161879).
+ by combining FNAT, I-RMSD and L-RMSD (see
+ Basu and Wallner 2016,  11 (8), e0161879).
 - ILRMSD (interface ligand root mean square deviation), the RMSD of the
-    ligand of the docked complex with respect to the reference complex
-    upon superposition of the interface of the receptor.
+ ligand of the docked complex with respect to the reference complex
+ upon superposition of the interface of the receptor.
 - GLOBAL_RMSD, the full RMSD between the reference and the model.
 
 The following files are generated:
@@ -142,8 +142,8 @@ In [this paper](https://www.biorxiv.org/content/10.1101/2024.07.31.605986v1), we
 
 Example application of the ``[clustrmsd]`` module after rigid-body docking, retrieving 50 clusters:
 
-```TOML
-...
+```toml
+# ...
 [rigidbody]
 ambig_fname = ambiguous_restraints.tbl
 [rmsdmatrix]
@@ -151,21 +151,21 @@ resdic_A = [1,2,3,4]
 resdic_B = [2,3,4,5]
 [clustrmsd]
 n_clusters = 50
-...
+# ...
 ```
 
 #### Notable parameters
 
 The most important parameters for the ``[clustrmsd]`` module are:
 * `linkage`: governs the way clusters are merged together in the creation of
-  the dendrogram
+ the dendrogram
 * `criterion`: defines the prescription to cut the dendrogram and obtain the
-  desired clusters
+ desired clusters
 * `n_clusters`: number of desired clusters (if `criterion` is `maxclust`).
 * `clust_cutoff`: value of distance that separates distinct clusters (if `criterion` is
   ``distance``)
-* `min_population` : analogously to the `clustfcc` module, it is the minimum number
-  of models that should be present in a cluster to consider it. If criterion is
+* `min_population`: analogously to the `clustfcc` module, it is the minimum number
+ of models that should be present in a cluster to consider it. If criterion is
   `maxclust`, the value is ignored.
 - `plot_matrix`: whether to plot the matrix of cluster members (default: False)
 
@@ -175,7 +175,7 @@ The most important parameters for the ``[clustrmsd]`` module are:
 
 Compute contacts between chains in complexes.
 
-The ``[contactmap]`` module aims at generating heatmaps and chordcharts of
+The `[contactmap]` module aims at generating heatmaps and chordcharts of
 the contacts observed in the input complexes.
 
 If complexes are clustered, the analysis of contacts will be performed
@@ -220,14 +220,14 @@ haddock3-cfg -m ilrmsdmatrix
 
 Here an example configuration file snapshot using ILRMSD-based clustering after flexible refinement:
 
-```TOML
-...
+```toml
+# ...
 [flexref]
 ambig_fname = ambiguous_restraints.tbl
 [ilrmsdmatrix]
 [clustrmsd]
 clust_cutoff = 2.5
-...
+# ...
 ```
 
 <hr>
@@ -249,11 +249,11 @@ is coherent.
 #### Notable parameters
 - `allatoms`: whether to use all the atoms for the ILRMSD calculation (default: False)
 - `resdic_` : an expandable parameter to specify which residues must be
-  considered for the alignment and the RMSD calculation. If there are
-  two proteins denoted by chain IDs A and B, then the user can operate
-  such selection in the following way inside the configuration file
+ considered for the alignment and the RMSD calculation. If there are
+ two proteins denoted by chain IDs A and B, then the user can operate
+ such selection in the following way inside the configuration file
 
-```TOML
+```toml
 resdic_A = [1,2,3,4]
 resdic_B = [2,3,4]
 ```
@@ -268,8 +268,8 @@ haddock3-cfg -m rmsdmatrix
 
 Here an example configuration file snapshot using RMSD-based clustering after energy minimization refinement:
 
-```TOML
-...
+```toml
+# ...
 [emref]
 ambig_fname = ambiguous_restraints.tbl
 [rmsdmatrix]
@@ -277,29 +277,29 @@ resdic_A = [1,2,3,4]
 resdic_B = [2,3,4]
 [clustrmsd]
 clust_cutoff = 3.0
-...
+# ...
 ```
 
 <hr>
 
 ## `[seletop]` module
+
 Select a number of models.
 
 This module selects a number of models from the input models. By default, the
 selection is based on the HADDOCK score of the models.
 
 The number of models to be selected is defined by the parameter `select`.
-In the standard HADDOCK protocol, this number is 200, but this number can be increased
-if more models should be refined (which is the recommended approach when limited experimental information is available).
+In the standard HADDOCK protocol, this number is 200, but this number can be increased if more models should be refined (which is the recommended approach when limited experimental information is available).
 
-```TOML
-...
+```toml
+# ...
 [topoaa]
 [rigidbody]
-ambig_fname = ambiguous_restraints.tbl
+ambig_fname = "ambiguous_restraints.tbl"
 [seletop]
 select = 400
-...
+# ...
 ```
 
 
@@ -312,9 +312,8 @@ Select models from the top clusters.
 This module selects a number of models from a number of clusters. The
 selection is based on the score of the models within the clusters.
 
-In the standard HADDOCK analysis, the top 4 models of the top 10 clusters
-are shown. In case seletopclusts is run after a sampling module, we can
-keep a few models from all the clusters to have more diversity at the
+In the standard HADDOCK analysis, the top 4 models of the top 10 clusters are shown.
+In case `[seletopclusts]` is run after a sampling module, we can keep a few models from all the clusters to have more diversity at the
 refinement stage(s).
 
 #### Notable parameters
@@ -325,8 +324,8 @@ The most important parameters for the ``[seletopclusts]`` module are:
 
 Here an example selection of the top 10 models of the top 50 clusters after ``[rigidbody]`` docking:
 
-```TOML
-...
+```toml
+# ...
 [topoaa]
 [rigidbody]
 ambig_fname = ambiguous_restraints.tbl
@@ -334,5 +333,5 @@ ambig_fname = ambiguous_restraints.tbl
 [seletopclusts]
 top_cluster = 50
 top_models = 10
-...
+# ...
 ```
