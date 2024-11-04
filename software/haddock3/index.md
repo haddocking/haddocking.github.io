@@ -37,6 +37,8 @@ Fax: +31-30-2537623
 
 **HADDOCK3 manual**: [https://www.bonvinlab.org/software/haddock3/manual](https://www.bonvinlab.org/software/haddock3/manual/index.html)
 
+**HADDOCK3 manual iframe**: [https://www.bonvinlab.org/software/haddock3/manual.md](https://www.bonvinlab.org/software/haddock3/manual.md)
+
 **HADDOCK3 web application**:  The haddock3 web application is still under development. [https://github.com/i-VRESSE/haddock3-webapp](https://github.com/i-VRESSE/haddock3-webapp)
 
 **HADDOCK3 web service**:  -- Not yet available --
