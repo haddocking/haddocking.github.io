@@ -152,3 +152,11 @@ More information about `[mdref]` parameters can be accessed [here](https://bonvi
 ```bash
 haddock3-cfg -m mdref
 ```
+
+#### `[mdref]` module molecular dynamics protocol scheme
+
+To simplify your understanding of the molecular dynamics protocol, the various flexibilities and the parameters related to each step, we built a schematic representation of it:
+
+<figure style="text-align: center;">
+<img width="100%" src="../images/mdref_scheme.png">
+</figure>
