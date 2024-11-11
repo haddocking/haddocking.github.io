@@ -1,0 +1,6 @@
+[book]
+authors = ["VGPReys"]
+language = "en"
+multilingual = false
+src = "src"
+title = "HADDOCK3 protein DNA basic"

@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AI based modelling - HADDOCK3-antibody-antigen</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.</strong> High Ambiguity Driven DOCKing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.1.</strong> HADDOCK</a></li><li class="chapter-item expanded "><a href="shared/intro/haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Antibody-antigen</a></li><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.</strong> Software, Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.1.</strong> Installing haddock3</a></li><li class="chapter-item expanded "><a href="shared/intall/auxiliary_software.html"><strong aria-hidden="true">3.2.</strong> Auxiliary software</a></li></ol></li><li class="chapter-item expanded "><a href="software_and_data.html"><strong aria-hidden="true">4.</strong> Starting data</a></li><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.1.</strong> Prepare the antibody structure</a></li><li class="chapter-item expanded "><a href="prepare_antigen.html"><strong aria-hidden="true">5.2.</strong> Prepare the antigen structure</a></li></ol></li><li class="chapter-item expanded "><a href="airs.html"><strong aria-hidden="true">6.</strong> Defining Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="antibody_paratope.html"><strong aria-hidden="true">6.1.</strong> Antibody paratope</a></li><li class="chapter-item expanded "><a href="antigen_epitope.html"><strong aria-hidden="true">6.2.</strong> Antigen epitope</a></li></ol></li><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.</strong> Generating Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.1.</strong> How AIRs are defined ?</a></li><li class="chapter-item expanded "><a href="validate_tbl.html"><strong aria-hidden="true">7.2.</strong> Validating your interaction restraints</a></li><li class="chapter-item expanded "><a href="restrain_bodies.html"><strong aria-hidden="true">7.3.</strong> Additional restraints for multi-chain proteins</a></li></ol></li><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.</strong> Haddock3 docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.1.</strong> Setting up a haddock3 docking workflow</a></li><li class="chapter-item expanded "><a href="running_haddock3.html"><strong aria-hidden="true">8.2.</strong> Running haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.</strong> Analysis of your docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.1.</strong> Docking run outputs</a></li><li class="chapter-item expanded "><a href="clusters.html"><strong aria-hidden="true">9.2.</strong> Clustering results</a></li><li class="chapter-item expanded "><a href="scores.html"><strong aria-hidden="true">9.3.</strong> Scores and plots</a></li><li class="chapter-item expanded "><a href="contacts.html"><strong aria-hidden="true">9.4.</strong> Contact analysis</a></li><li class="chapter-item expanded "><a href="visualizing_models.html"><strong aria-hidden="true">9.5.</strong> Analysing models</a></li></ol></li><li class="chapter-item expanded "><a href="bonus_toc.html"><strong aria-hidden="true">10.</strong> BONUS: additional analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="arctic_3d_abag_bonus.html"><strong aria-hidden="true">10.1.</strong> Comparing contacts observed in litterature</a></li><li class="chapter-item expanded "><a href="ai_based_input_bonus.html"><strong aria-hidden="true">10.2.</strong> Using AI based methods to obtain input structures</a></li><li class="chapter-item expanded "><a href="ai_based_ensemble_docking.html"><strong aria-hidden="true">10.3.</strong> Performing ensemble docking</a></li><li class="chapter-item expanded "><a href="ai_based_abag_modelling.html" class="active"><strong aria-hidden="true">10.4.</strong> AI based modelling</a></li><li class="chapter-item expanded "><a href="abag_haddock3_webapp.html"><strong aria-hidden="true">10.5.</strong> Haddock3 web application</a></li></ol></li><li class="chapter-item expanded "><a href="shared/congratulations.html"><strong aria-hidden="true">11.</strong> Final words</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">HADDOCK3-antibody-antigen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="bonus-4-antibody-antigen-complex-structure-prediction-from-sequence-using-alphafold2"><a class="header" href="#bonus-4-antibody-antigen-complex-structure-prediction-from-sequence-using-alphafold2">BONUS 4: Antibody-antigen complex structure prediction from sequence using AlphaFold2</a></h2>
+<p>With the advent of Artificial Intelligence (AI) and AlphaFold2, we can also try to predict directly the full antibody-antigen complex using AlphaFold2.
+For this we are going to use the <em>AlphaFold2_mmseq2</em> Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov
+<a href="https://github.com/sokrypton/ColabFold">ColabFold GitHub repository</a>{:target="_blank"}, making use of the Google Colab CLOUD resources.</p>
+<p>Start the AlphaFold2 notebook on Colab by clicking <a href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb">here</a>{:target="_blank"}.</p>
+<p><strong>Note</strong>: The bottom part of the notebook contains instructions on how to use it.</p>
+<br>
+<h3 id="setting-up-the-antibody-antigen-complex-prediction-with-alphafold2"><a class="header" href="#setting-up-the-antibody-antigen-complex-prediction-with-alphafold2">Setting up the antibody-antigen complex prediction with AlphaFold2</a></h3>
+<p>To setup the prediction we need to provide the sequence of the heavy and light chains of the antibody and the sequence of the antigen.
+These are respectively</p>
+<ul>
+<li>Antibody heavy chain:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDES
+YNPSLKSRLTISKDTSKNQVSLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSS
+</pre>
+<ul>
+<li>Antibody light chain:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPS
+RFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIK
+</pre>
+<ul>
+<li>Antigen:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+VRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVALGL
+KEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNWYI
+STSQAENMPVFLGGTKGGQDITDFTMQFVSS
+</pre>
+<br>
+<p>To use AlphaFold2 to predict this antibody-antigen complex follow the following steps:</p>
+<a class="prompt prompt-info">
+Copy and paste each of the above sequences in the _query_sequence_ field, adding a colon *:* in between the sequences.
+</a>
+<p>For your convenience the full sequence with colons is provided:</p>
+<pre style="background-color:#DAE4E7">
+QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQVSLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSS:DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPSRFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIK:VRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVALGLKEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNWYISTSQAENMPVFLGGTKGGQDITDFTMQFVSS
+</pre>
+<a class="prompt prompt-info">
+Define the _jobname_, e.g. Ab-Ag
+</a>
+<a class="prompt prompt-info">
+In the _Advanced settings_ block you can check the option to save the results to your Google Drive (if you have an account)
+</a>
+<a class="prompt prompt-info">
+In the top section of the Colab, click: _Runtime > Run All_
+</a>
+<p>(It may give a warning that this is not authored by Google because it is pulling code from GitHub - you can ignore it).</p>
+<p>This will automatically install, configure and run AlphaFold2 for you - leave this window open.
+After the prediction completed, you will be asked to download a zip archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).</p>
+<br>
+_Time to grab a cup of tea or a coffee!
+And while waiting try to answer the following questions:_
+<a class="prompt prompt-question">
+    How do you interpret AlphaFold2 predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
+</a>
+<p><em>Tip</em>: Try to find information about the prediction confidence at <a href="https://alphafold.ebi.ac.uk/faq">https://alphafold.ebi.ac.uk/faq</a>{:target="_blank"}. A nice summary can also be found <a href="https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html">here</a>{:target="_blank"}.</p>
+<p>Pre-calculated AlphFold2 predictions are provided <a href="abagtest_2d03e.result.zip">here</a>{:target="_blank"}. This archive contains the five predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).</p>
+<br>
+<h3 id="analysis-of-the-generated-af2-models"><a class="header" href="#analysis-of-the-generated-af2-models">Analysis of the generated AF2 models</a></h3>
+<p>While the notebook is running, models will appear first under the <code>Run Prediction</code> section, colored both by chain and by pLDDT.</p>
+<p>The best model will then be displayed under the <code>Display 3D structure</code> section. This is an interactive 3D viewer that allows you to rotate the molecule and zoom in or out.</p>
+<p><strong>Note</strong> that you can change the model displayed with the <em>rank_num</em> option. After changing, it execute the cell by clicking on the run cell icon on the left of it.</p>
+<a class="prompt prompt-question">
+    How similar are the five models generated by AF2?
+</a>
+<p>Consider the pLDDT of the various models (the higher the pLDDT the more reliable the model).</p>
+<a class="prompt prompt-question">
+    What is the confidence of those predictions? (check again the FAQ page of the Alphafold database provided above for pLDDT values)
+</a>
+<p>While the pLDDT score is an overall measure, you can also focus on the interface score reported in the <code>iptm</code> score (value between 0 and 1).</p>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the confidence statistics for the five generated models</i>
+  </summary>
+   <pre>
+    Model1: pLDDT=90.4 pTM=0.654 ipTM=0.525
+    Model2: pLDDT=88.0 pTM=0.65  ipTM=0.522
+    Model3: pLDDT=88.2 pTM=0.647 ipTM=0.52
+    Model4: pLDDT=88.0 pTM=0.644 ipTM=0.516
+    Model5: pLDDT=88.1 pTM=0.641 ipTM=0.512
+</pre>
+<br>
+Note that if you performed a fresh run your results might well differ from those shown here.
+<br>
+</details>
+<br>
+<a class="prompt prompt-question">
+    Based on the iptm scores, would you qualify those models as reliable?
+</a>
+<p><strong>Note</strong> that in this case the iptm score reports on all interfaces, i.e. both the interface between the two chains of the antibody, and the antibody-antigen interface</p>
+<p>Another useful way of looking at the model accuracy is to check the Predicted Alignment Error plots (PAE) (also referred to as Domain position confidence).
+The PAE gives a distance error for every pair of residues: It gives the estimate of the position error at residue x when the predicted and true structures are aligned on residue y.
+Values range from 0 to 35 Angstroms.
+It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues.
+If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain.
+When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diagonal blocks report the accuracy of the domain-domain placement.</p>
+<p>Our antibody-antigen complex consists of three interfaces:</p>
+<ul>
+<li>The interface between the heavy and light chains of the antibody</li>
+<li>The interface between the heavy chain of the antibody and the antigen</li>
+<li>The interface between the light chain of the antibody and the antigen</li>
+</ul>
+<br>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the PAE plots for the five generated models</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/abagtest_2d03e_pae.png">
+  </figure>
+</details>
+<br>
+<a class="prompt prompt-question">
+    Based on the PAE plots, which interfaces can be considered reliable/unreliable?
+</a>
+<br>
+<h3 id="visualization-of-the-generated-af2-models"><a class="header" href="#visualization-of-the-generated-af2-models">Visualization of the generated AF2 models</a></h3>
+<p>In order to visualize the models in PyMOL save your predictions to disk or download the precalculated AlphaFold2 models from <a href="abagtest_2d03e.result.zip">here</a>{:target="_blank"}.</p>
+<p>Start PyMOL and load via the File menu all five AF2 models.</p>
+<p><a class="prompt prompt-pymol">File menu -&gt; Open -&gt; select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000.pdb</a></p>
+<p>Repeat this for each model (<code>abagtest_2d03e_unrelaxed_rank_X_alphafold2_multimer_v3_model_X_seed_000.pdb</code> or whatever the naming of your model is).</p>
+<p>Let us superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains A and B):</p>
+<a class="prompt prompt-pymol">
+util.cbc<br>
+select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000 and chain A+B<br>
+alignto sele<br>
+</a>
+<p>This will align all clusters on the antibody, maximizing the differences in the orientation of the antigen.</p>
+<a class="prompt prompt-question">
+Examine the various models. How does the orientation of the antigen differ between them?
+</a>
+<p><strong>Note:</strong> You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.</p>
+<details>
+  <summary style="font-weight: bold">
+    <i>See tips on how to visualize the prediction confidence in PyMOL</i>
+  </summary>
+<p>When looking at the structures generated by AlphaFold2 in PyMOL, the pLDDT is encoded as the B-factor. <br>
+To color the model according to the pLDDT type in PyMOL:
+<br>
+<a class="prompt prompt-pymol">
+spectrum b
+</a></p>
+<p><strong>Note</strong> that the scale in the B-factor field is the inverse of the color coding in the PAE plots: i.e. red mean reliable (high pLDDT) and blue unreliable (low pLDDT))</p>
+</details>
+<br>
+<p>Since we do have NMR chemical shift perturbation data for the antigen, we can check if the perturbed residues are at the interface in the AF2 models.
+Note that there is a shift in the numbering of 2 residues between the AF2 and the HADDOCK models.</p>
+<a class="prompt prompt-pymol">
+util.cbc<br>
+select epitope, (resi 70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115) and chain C<br>
+color orange, epitope<br>
+</a>
+<a class="prompt prompt-question">
+Does any model have the NMR-identified epitope at the interface with the antibody?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold2 models with the NMR-mapped epitope </i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af2.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>It should be clear from the visualization of the NMR-mapped epitope on the AF2 models that none satisfies the NMR data.
+To further make that clear we can compare the models to the crystal structure of the complex (4G6M).</p>
+<p>For this download and superimpose the models onto the crystal structure in PyMOL with the following commands:</p>
+<a class="prompt prompt-pymol">
+fetch 4G6M<br>
+remove resn HOH<br>
+color yellow, 4G6M<br>
+select 4G6M and chain H+L<br>
+alignto sele
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold2 models superimposed onto the crystal structure of the complex (4G6M)</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af2-4G6M.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>More recently, the third version of AlphaFold (AlphaFold3) has been <a href="https://www.nature.com/articles/s41586-024-07487-w">published</a>{:target="_blank"}.
+While the code is not yet released, a dedicated online tool <a href="https://golgi.sandbox.google.com/">AlphaFoldServer</a>{:target="_blank"} is made available for the academic community to allow us to make upto 20 predictions per day with this new version.
+Pre-calculated AlphFold3 predictions are provided <a href="af3server_abag_15052024.zip">here</a>{:target="_blank"}.</p>
+<a class="prompt prompt-question">
+Try to reproduce the previous steps and examine the quality of the various generated models. Do AlphaFold3 provide better predictions?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold3 models with mapped epitope residues in orange</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af3-epitope.png">
+  </figure>
+  <br>
+</details>
+<br>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold3 models onto the crystal structure of the complex (4G6M) in red</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af3-4G6M.png">
+  </figure>
+  <br>
+</details>
+<br>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ai_based_ensemble_docking.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="abag_haddock3_webapp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ai_based_ensemble_docking.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="abag_haddock3_webapp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

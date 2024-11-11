@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Performing ensemble docking - HADDOCK3-antibody-antigen</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.</strong> High Ambiguity Driven DOCKing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.1.</strong> HADDOCK</a></li><li class="chapter-item expanded "><a href="shared/intro/haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Antibody-antigen</a></li><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.</strong> Software, Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.1.</strong> Installing haddock3</a></li><li class="chapter-item expanded "><a href="shared/intall/auxiliary_software.html"><strong aria-hidden="true">3.2.</strong> Auxiliary software</a></li></ol></li><li class="chapter-item expanded "><a href="software_and_data.html"><strong aria-hidden="true">4.</strong> Starting data</a></li><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.1.</strong> Prepare the antibody structure</a></li><li class="chapter-item expanded "><a href="prepare_antigen.html"><strong aria-hidden="true">5.2.</strong> Prepare the antigen structure</a></li></ol></li><li class="chapter-item expanded "><a href="airs.html"><strong aria-hidden="true">6.</strong> Defining Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="antibody_paratope.html"><strong aria-hidden="true">6.1.</strong> Antibody paratope</a></li><li class="chapter-item expanded "><a href="antigen_epitope.html"><strong aria-hidden="true">6.2.</strong> Antigen epitope</a></li></ol></li><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.</strong> Generating Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.1.</strong> How AIRs are defined ?</a></li><li class="chapter-item expanded "><a href="validate_tbl.html"><strong aria-hidden="true">7.2.</strong> Validating your interaction restraints</a></li><li class="chapter-item expanded "><a href="restrain_bodies.html"><strong aria-hidden="true">7.3.</strong> Additional restraints for multi-chain proteins</a></li></ol></li><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.</strong> Haddock3 docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.1.</strong> Setting up a haddock3 docking workflow</a></li><li class="chapter-item expanded "><a href="running_haddock3.html"><strong aria-hidden="true">8.2.</strong> Running haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.</strong> Analysis of your docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.1.</strong> Docking run outputs</a></li><li class="chapter-item expanded "><a href="clusters.html"><strong aria-hidden="true">9.2.</strong> Clustering results</a></li><li class="chapter-item expanded "><a href="scores.html"><strong aria-hidden="true">9.3.</strong> Scores and plots</a></li><li class="chapter-item expanded "><a href="contacts.html"><strong aria-hidden="true">9.4.</strong> Contact analysis</a></li><li class="chapter-item expanded "><a href="visualizing_models.html"><strong aria-hidden="true">9.5.</strong> Analysing models</a></li></ol></li><li class="chapter-item expanded "><a href="bonus_toc.html"><strong aria-hidden="true">10.</strong> BONUS: additional analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="arctic_3d_abag_bonus.html"><strong aria-hidden="true">10.1.</strong> Comparing contacts observed in litterature</a></li><li class="chapter-item expanded "><a href="ai_based_input_bonus.html"><strong aria-hidden="true">10.2.</strong> Using AI based methods to obtain input structures</a></li><li class="chapter-item expanded "><a href="ai_based_ensemble_docking.html" class="active"><strong aria-hidden="true">10.3.</strong> Performing ensemble docking</a></li><li class="chapter-item expanded "><a href="ai_based_abag_modelling.html"><strong aria-hidden="true">10.4.</strong> AI based modelling</a></li><li class="chapter-item expanded "><a href="abag_haddock3_webapp.html"><strong aria-hidden="true">10.5.</strong> Haddock3 web application</a></li></ol></li><li class="chapter-item expanded "><a href="shared/congratulations.html"><strong aria-hidden="true">11.</strong> Final words</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">HADDOCK3-antibody-antigen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="bonus-3-ensemble-docking-using-a-combination-of-exprimental-and-ai-predicted-antibody-structures"><a class="header" href="#bonus-3-ensemble-docking-using-a-combination-of-exprimental-and-ai-predicted-antibody-structures">BONUS 3: Ensemble docking using a combination of exprimental and AI-predicted antibody structures</a></h2>
+<p>Instead of running haddock3 using a specific input structure of the antibody, we can also use an ensemble of all available models.
+Such an ensemble can be created from the individual models using <code>pdb_mkensemble</code> from PDB-tools:</p>
+<a class="prompt prompt-cmd">
+pdb_mkensemble 4G6K_clean.pdb 4G6K_abb_clean.pdb 4G6K_af2_clean.pdb > 4G6K-ensemble.pdb
+</a>
+<p>This ensemble file is provided in the <code>pdbs</code> directory.</p>
+<p>Now we can make use of the flexibility of haddock3 in defining workflows to add a clustering step after the rigid body docking step in order to make sure that models originating from all models will ideally be selected for the refinement steps (provided they do cluster). This modified workflow looks like:</p>
+<p>{% highlight toml %}</p>
+<h1 id=""><a class="header" href="#">====================================================================</a></h1>
+<h1 id="antibody-antigen-docking-example-with-restraints-from-the-antibody"><a class="header" href="#antibody-antigen-docking-example-with-restraints-from-the-antibody">Antibody-antigen docking example with restraints from the antibody</a></h1>
+<h1 id="paratope-to-the-nmr-identified-epitope-on-the-antigen"><a class="header" href="#paratope-to-the-nmr-identified-epitope-on-the-antigen">paratope to the NMR-identified epitope on the antigen</a></h1>
+<h1 id="-1"><a class="header" href="#-1">====================================================================</a></h1>
+<h1 id="directory-in-which-the-scoring-will-be-done"><a class="header" href="#directory-in-which-the-scoring-will-be-done">directory in which the scoring will be done</a></h1>
+<p>run_dir = "run-ens-CDR-NMR-CSP"</p>
+<h1 id="compute-mode"><a class="header" href="#compute-mode">compute mode</a></h1>
+<p>mode = "local"
+ncores = 50</p>
+<h1 id="self-contained-rundir-to-avoid-problems-with-long-filename-paths"><a class="header" href="#self-contained-rundir-to-avoid-problems-with-long-filename-paths">Self contained rundir (to avoid problems with long filename paths)</a></h1>
+<p>self_contained = true</p>
+<h1 id="post-processing-to-generate-statistics-and-plots"><a class="header" href="#post-processing-to-generate-statistics-and-plots">Post-processing to generate statistics and plots</a></h1>
+<p>postprocess = true
+clean = true</p>
+<p>molecules =  [
+"pdbs/4G6K-ensemble.pdb",
+"pdbs/4I1B_clean.pdb"
+]</p>
+<h1 id="-2"><a class="header" href="#-2">====================================================================</a></h1>
+<h1 id="parameters-for-each-stage-are-defined-below-prefer-full-paths"><a class="header" href="#parameters-for-each-stage-are-defined-below-prefer-full-paths">Parameters for each stage are defined below, prefer full paths</a></h1>
+<h1 id="-3"><a class="header" href="#-3">====================================================================</a></h1>
+<p>[topoaa]</p>
+<p>[rigidbody]</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together"><a class="header" href="#restraints-to-keep-the-antibody-chains-together">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<h1 id="increased-sampling-so-each-conformation-is-sampled-50-times"><a class="header" href="#increased-sampling-so-each-conformation-is-sampled-50-times">Increased sampling so each conformation is sampled 50 times</a></h1>
+<p>sampling = 150</p>
+<p>[clustfcc]
+plot_matrix = true</p>
+<p>[seletopclusts]
+top_models = 10</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[flexref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-1"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-1">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-1"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-1">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[emref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-2"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-2">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-2"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-2">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[clustfcc]
+plot_matrix = true</p>
+<p>[seletopclusts]
+top_models = 4</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[contactmap]</p>
+<h1 id="-4"><a class="header" href="#-4">====================================================================</a></h1>
+<p>{% endhighlight %}</p>
+<p>Our workflow consists of the following 14 modules:</p>
+<ol start="0">
+<li><strong><code>topoaa</code></strong>: <em>Generates the topologies for the CNS engine and builds missing atoms</em></li>
+<li><strong><code>rigidbody</code></strong>: <em>Performs Rigid body energy minimisation</em> - with increased sampling (150 models - 50 per input model)</li>
+<li><strong><code>caprieval</code></strong>: <em>Calculates CAPRI metrics</em></li>
+<li><strong><code>clustfcc</code></strong>: <em>Clustering of models based on the fraction of common contacts (FCC)</em></li>
+<li><strong><code>seletopclusts</code></strong>: <em>Selects the top models of all clusters</em> - In this case, we select max 10 models per cluster.</li>
+<li><strong><code>caprieval</code></strong>: <em>Calculates CAPRI metrics</em> of the selected clusters</li>
+<li><strong><code>flexref</code></strong>: <em>Performs Semi-flexible refinement of the interface (<code>it1</code> in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>emref</code></strong>: <em>Performs a final refinement by energy minimisation (<code>itw</code> EM only in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>clustfcc</code></strong>: <em>Clustering of models based on the fraction of common contacts (FCC)</em></li>
+<li><strong><code>seletopclusts</code></strong>: <em>Selects the top models of all clusters</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>contactmap</code></strong>: <em>Contacts matrix and a chordchart of intermolecular contacts</em></li>
+</ol>
+<p>Compared to the original workflow described in this tutorial we have added clustering and cluster selections steps after the rigid body docking.</p>
+<p>Run haddock3 with this configuration file as described above.</p>
+<p>A pre-calculated run is provided in the <code>runs</code> directory as <code>run1-ens-clst</code>.
+Analyse your run (or the pre-calculated ones) as described previously.</p>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the cluster statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run-ens-CDR-NMR-CSP/11_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  4  out of  11
+Total number of medium or better clusters:      1  out of  11
+Total number of high quality clusters:          0  out of  11
+<p>First acceptable cluster - rank:  1  i-RMSD:  1.188  Fnat:  0.862  DockQ:  0.795
+First medium cluster     - rank:  1  i-RMSD:  1.188  Fnat:  0.862  DockQ:  0.795
+Best cluster             - rank:  1  i-RMSD:  1.188  Fnat:  0.862  DockQ:  0.795
+</pre>
+<br></p>
+</details>
+<br>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See single structure statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run-ens-CDR-NMR-CSP/04_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  25  out of  83
+Total number of medium or better models:      10  out of  83
+Total number of high quality models:          0  out of  83
+<h1>First acceptable model - rank:  3  i-RMSD:  1.238  Fnat:  0.672  DockQ:  0.725
+First medium model     - rank:  3  i-RMSD:  1.238  Fnat:  0.672  DockQ:  0.725
+Best model             - rank:  6  i-RMSD:  1.074  Fnat:  0.707  DockQ:  0.731</h1>
+<h1 id="-runsrun-ens-cdr-nmr-csp06_caprievalcapri_sstsv"><a class="header" href="#-runsrun-ens-cdr-nmr-csp06_caprievalcapri_sstsv">== runs/run-ens-CDR-NMR-CSP/06_caprieval/capri_ss.tsv</a></h1>
+<p>Total number of acceptable or better models:  27  out of  83
+Total number of medium or better models:      10  out of  83
+Total number of high quality models:           5  out of  83</p>
+<h1>First acceptable model - rank:  1  i-RMSD:  1.492  Fnat:  0.741  DockQ:  0.697
+First medium model     - rank:  1  i-RMSD:  1.492  Fnat:  0.741  DockQ:  0.697
+Best model             - rank:  4  i-RMSD:  0.857  Fnat:  0.897  DockQ:  0.872</h1>
+<h1 id="-runsrun-ens-cdr-nmr-csp08_caprievalcapri_sstsv"><a class="header" href="#-runsrun-ens-cdr-nmr-csp08_caprievalcapri_sstsv">== runs/run-ens-CDR-NMR-CSP/08_caprieval/capri_ss.tsv</a></h1>
+<p>Total number of acceptable or better models:  26  out of  83
+Total number of medium or better models:      10  out of  83
+Total number of high quality models:           3  out of  83</p>
+<p>First acceptable model - rank:  1  i-RMSD:  1.504  Fnat:  0.776  DockQ:  0.708
+First medium model     - rank:  1  i-RMSD:  1.504  Fnat:  0.776  DockQ:  0.708
+Best model             - rank:  4  i-RMSD:  0.902  Fnat:  0.914  DockQ:  0.871
+</pre>
+<br></p>
+</details>
+<br>
+<p>We started from three different conformations of the antibody: 1) the unbound crystal structure, 2) the ABodyBuilder2 model and 3) the AlphaFold2 model.</p>
+<a class="prompt prompt-question">
+Using the information in the _traceback_ directory, try to figure out which of the three starting antibody models makes it into the best cluster at the end of the workflow.
+</a>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ai_based_input_bonus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="ai_based_abag_modelling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ai_based_input_bonus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="ai_based_abag_modelling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

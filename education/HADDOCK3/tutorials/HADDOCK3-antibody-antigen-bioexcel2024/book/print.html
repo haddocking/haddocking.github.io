@@ -1,0 +1,2353 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HADDOCK3-antibody-antigen</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.</strong> High Ambiguity Driven DOCKing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.1.</strong> HADDOCK</a></li><li class="chapter-item expanded "><a href="shared/intro/haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Antibody-antigen</a></li><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.</strong> Software, Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.1.</strong> Installing haddock3</a></li><li class="chapter-item expanded "><a href="shared/intall/auxiliary_software.html"><strong aria-hidden="true">3.2.</strong> Auxiliary software</a></li></ol></li><li class="chapter-item expanded "><a href="software_and_data.html"><strong aria-hidden="true">4.</strong> Starting data</a></li><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.1.</strong> Prepare the antibody structure</a></li><li class="chapter-item expanded "><a href="prepare_antigen.html"><strong aria-hidden="true">5.2.</strong> Prepare the antigen structure</a></li></ol></li><li class="chapter-item expanded "><a href="airs.html"><strong aria-hidden="true">6.</strong> Defining Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="antibody_paratope.html"><strong aria-hidden="true">6.1.</strong> Antibody paratope</a></li><li class="chapter-item expanded "><a href="antigen_epitope.html"><strong aria-hidden="true">6.2.</strong> Antigen epitope</a></li></ol></li><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.</strong> Generating Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.1.</strong> How AIRs are defined ?</a></li><li class="chapter-item expanded "><a href="validate_tbl.html"><strong aria-hidden="true">7.2.</strong> Validating your interaction restraints</a></li><li class="chapter-item expanded "><a href="restrain_bodies.html"><strong aria-hidden="true">7.3.</strong> Additional restraints for multi-chain proteins</a></li></ol></li><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.</strong> Haddock3 docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.1.</strong> Setting up a haddock3 docking workflow</a></li><li class="chapter-item expanded "><a href="running_haddock3.html"><strong aria-hidden="true">8.2.</strong> Running haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.</strong> Analysis of your docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.1.</strong> Docking run outputs</a></li><li class="chapter-item expanded "><a href="clusters.html"><strong aria-hidden="true">9.2.</strong> Clustering results</a></li><li class="chapter-item expanded "><a href="scores.html"><strong aria-hidden="true">9.3.</strong> Scores and plots</a></li><li class="chapter-item expanded "><a href="contacts.html"><strong aria-hidden="true">9.4.</strong> Contact analysis</a></li><li class="chapter-item expanded "><a href="visualizing_models.html"><strong aria-hidden="true">9.5.</strong> Analysing models</a></li></ol></li><li class="chapter-item expanded "><a href="bonus_toc.html"><strong aria-hidden="true">10.</strong> BONUS: additional analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="arctic_3d_abag_bonus.html"><strong aria-hidden="true">10.1.</strong> Comparing contacts observed in litterature</a></li><li class="chapter-item expanded "><a href="ai_based_input_bonus.html"><strong aria-hidden="true">10.2.</strong> Using AI based methods to obtain input structures</a></li><li class="chapter-item expanded "><a href="ai_based_ensemble_docking.html"><strong aria-hidden="true">10.3.</strong> Performing ensemble docking</a></li><li class="chapter-item expanded "><a href="ai_based_abag_modelling.html"><strong aria-hidden="true">10.4.</strong> AI based modelling</a></li><li class="chapter-item expanded "><a href="abag_haddock3_webapp.html"><strong aria-hidden="true">10.5.</strong> Haddock3 web application</a></li></ol></li><li class="chapter-item expanded "><a href="shared/congratulations.html"><strong aria-hidden="true">11.</strong> Final words</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">HADDOCK3-antibody-antigen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="high-ambiguity-driven-docking"><a class="header" href="#high-ambiguity-driven-docking">High Ambiguity Driven DOCKing</a></h1>
+<h2 id="haddock-general-concepts"><a class="header" href="#haddock-general-concepts">HADDOCK general concepts</a></h2>
+<p>HADDOCK (see <a href="https://www.bonvinlab.org/software/haddock2.4">https://www.bonvinlab.org/software/haddock2.4</a>) is a collection of python scripts derived from ARIA (<a href="https://aria.pasteur.fr">https://aria.pasteur.fr</a>) that harness the power of CNS (Crystallography and NMR System – <a href="https://cns-online.org">https://cns-online.org</a>) for structure calculation of molecular complexes.
+What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity.
+Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.</p>
+<p>A central aspect of HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs.
+These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance
+restraints that are incorporated into the energy function used in the calculations.
+AIRs are defined through a list of residues that fall under two categories: active and passive.
+Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher.
+Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring a scoring penalty.
+Passive residues are those that contribute to the interaction but are deemed of less importance.
+If such a residue does not belong in the interface there is no scoring penalty.
+Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="high-ambiguity-driven-docking-1"><a class="header" href="#high-ambiguity-driven-docking-1">High Ambiguity Driven DOCKing</a></h1>
+<h2 id="haddock-general-concepts-1"><a class="header" href="#haddock-general-concepts-1">HADDOCK general concepts</a></h2>
+<p>HADDOCK (see <a href="https://www.bonvinlab.org/software/haddock2.4">https://www.bonvinlab.org/software/haddock2.4</a>) is a collection of python scripts derived from ARIA (<a href="https://aria.pasteur.fr">https://aria.pasteur.fr</a>) that harness the power of CNS (Crystallography and NMR System – <a href="https://cns-online.org">https://cns-online.org</a>) for structure calculation of molecular complexes.
+What distinguishes HADDOCK from other docking software is its ability, inherited from CNS, to incorporate experimental data as restraints and use these to guide the docking process alongside traditional energetics and shape complementarity.
+Moreover, the intimate coupling with CNS endows HADDOCK with the ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.</p>
+<p>A central aspect of HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs.
+These allow the translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance
+restraints that are incorporated into the energy function used in the calculations.
+AIRs are defined through a list of residues that fall under two categories: active and passive.
+Generally, active residues are those of central importance for the interaction, such as residues whose knockouts abolish the interaction or those where the chemical shift perturbation is higher.
+Throughout the simulation, these active residues are restrained to be part of the interface, if possible, otherwise incurring a scoring penalty.
+Passive residues are those that contribute to the interaction but are deemed of less importance.
+If such a residue does not belong in the interface there is no scoring penalty.
+Hence, a careful selection of which residues are active and which are passive is critical for the success of the docking.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="a-brief-introduction-to-haddock3"><a class="header" href="#a-brief-introduction-to-haddock3">A brief introduction to HADDOCK3</a></h2>
+<p>HADDOCK3 is the next generation integrative modelling software in the long-lasting HADDOCK project.
+It represents a complete rethinking and rewriting of the HADDOCK2.X series, implementing a new way to interact with HADDOCK and offering new features to users who can now define custom workflows.</p>
+<p>In the previous HADDOCK2.x versions, users had access to a highly parameterisable yet rigid simulation pipeline composed of three steps:
+<code>rigid-body docking (it0)</code>, <code>semi-flexible refinement (it1)</code>, and <code>final refinement (itw)</code>.</p>
+<figure style="text-align: center;">
+<img width="75%" src="shared/intro/../images/HADDOCK2-stages.png">
+</figure>
+<p>In HADDOCK3, users have the freedom to configure docking workflows into
+functional pipelines by combining the different HADDOCK3 modules, thus
+adapting the workflows to their projects.
+HADDOCK3 has therefore developed to truthfully work like a puzzle of many pieces (simulation modules) that users can
+combine freely.
+To this end, the “old” HADDOCK machinery has been modularized, and several new modules added, including third-party software additions.
+As a result, the modularization achieved in HADDOCK3 allows users to duplicate steps within one workflow (e.g., to repeat twice the <code>it1</code> stage of the HADDOCK2.x rigid workflow).</p>
+<p>Note that, for simplification purposes, at this time, not all functionalities of HADDOCK2.x have been ported to HADDOCK3, which does not (yet) support NMR RDC, PCS and diffusion anisotropy restraints, cryo-EM restraints and coarse-graining.
+Any type of information that can be converted into ambiguous interaction restraints can, however, be used in HADDOCK3, which also supports the <em>ab initio</em> docking modes of HADDOCK.</p>
+<figure style="text-align: center;">
+<img width="75%" src="shared/intro/../images/HADDOCK3-workflow-scheme.png">
+</figure>
+<p>To keep HADDOCK3 modules organized, we catalogued them into several categories.
+However, there are no constraints on piping modules of different categories.</p>
+<p>The main module categories are "topology", "sampling", "refinement", "scoring", and "analysis".
+There is no limit to how many modules can belong to a category.
+Modules are added as developed, and new categories will be created if/when needed.
+You can access the HADDOCK3 documentation page for the list of all categories and modules.
+Below is a summary of the available modules:</p>
+<ul>
+<li><strong>Topology modules</strong>
+<ul>
+<li><code>topoaa</code>: <em>generates the all-atom topologies for the CNS engine.</em></li>
+</ul>
+</li>
+<li><strong>Sampling modules</strong>
+<ul>
+<li><code>rigidbody</code>: <em>Rigid body energy minimization with CNS (<code>it0</code> in haddock2.x).</em></li>
+<li><code>lightdock</code>: <em>Third-party glow-worm swam optimization docking software.</em></li>
+</ul>
+</li>
+<li><strong>Model refinement modules</strong>
+<ul>
+<li><code>flexref</code>: <em>Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (<code>it1</code> in haddock2.x).</em></li>
+<li><code>emref</code>: <em>Refinement by energy minimisation (<code>itw</code> EM only in haddock2.4).</em></li>
+<li><code>mdref</code>: <em>Refinement by a short molecular dynamics simulation in explicit solvent (<code>itw</code> in haddock2.X).</em></li>
+</ul>
+</li>
+<li><strong>Scoring modules</strong>
+<ul>
+<li><code>emscoring</code>: <em>scoring of a complex performing a short EM (builds the topology and all missing atoms).</em></li>
+<li><code>mdscoring</code>: <em>scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).</em></li>
+</ul>
+</li>
+<li><strong>Analysis modules</strong>
+<ul>
+<li><code>alascan</code>: <em>Performs a systematic (or user-define) alanine scanning mutagenesis of interface residues.</em></li>
+<li><code>caprieval</code>: <em>Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top-scoring model or reference structure if provided.</em></li>
+<li><code>clustfcc</code>: <em>Clusters models based on the fraction of common contacts (FCC)</em></li>
+<li><code>clustrmsd</code>: <em>Clusters models based on pairwise RMSD matrix calculated with the <code>rmsdmatrix</code> module.</em></li>
+<li><code>contactmap</code>: <em>Generate contact matrices of both intra- and intermolecular contacts and a chordchart of intermolecular contacts.</em></li>
+<li><code>rmsdmatrix</code>: <em>Calculates the pairwise RMSD matrix between all the models generated in the previous step.</em></li>
+<li><code>ilrmsdmatrix</code>: <em>Calculates the pairwise interface-ligand-RMSD (il-RMSD) matrix between all the models generated in the previous step.</em></li>
+<li><code>seletop</code>: <em>Selects the top N models from the previous step.</em></li>
+<li><code>seletopclusts</code>: <em>Selects the top N clusters from the previous step.</em></li>
+</ul>
+</li>
+</ul>
+<p>The HADDOCK3 workflows are defined in simple configuration text files, similar to the TOML format but with extra features.
+Contrary to HADDOCK2.X which follows a rigid (yet highly parameterisable) procedure, in HADDOCK3, you can create your own simulation workflows by combining a multitude of independent modules that perform specialized tasks.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
+the structure of an antibody-antigen complex using knowledge of the hypervariable loops
+on the antibody (i.e., the most basic knowledge) and epitope information identified from NMR experiments for the antigen to guide the docking.</p>
+<p>An antibody is a large protein that generally works by attaching itself to an antigen,
+which is a unique site of the pathogen. The binding harnesses the immune system to directly
+attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity (i.e. the ability to provoke an immune response),
+which is achieved by their unique structure. <strong>The fragment crystallizable region (Fc region)</strong>
+activates the immune response and is species-specific, i.e. the human Fc region should not
+induce an immune response in humans. <strong>The fragment antigen-binding region (Fab region</strong>)
+needs to be highly variable to be able to bind to antigens of various nature (high specificity).
+In this tutorial, we will concentrate on the terminal <strong>variable domain (Fv)</strong> of the Fab region.</p>
+<figure style="text-align: center;">
+  <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/antibody_described.png">
+</figure>
+<p>The small part of the Fab region that binds the antigen is called <strong>paratope</strong>. The part of the antigen
+that binds to an antibody is called <strong>epitope</strong>. The paratope consists of six highly flexible loops,
+known as <strong>complementarity-determining regions (CDRs)</strong> or hypervariable loops whose sequence
+and conformation are altered to bind to different antigens. CDRs are shown in red in the figure below:</p>
+<figure style="text-align: center;">
+  <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/CDRs.png">
+</figure>
+<p>In this tutorial we will be working with Interleukin-1β (IL-1β)
+(PDB code <a href="https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b">4I1B</a>) as an antigen
+and its highly specific monoclonal antibody gevokizumab
+(PDB code <a href="https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k">4G6K</a>)
+(PDB code of the complex <a href="https://www.ebi.ac.uk/pdbe/entry/pdb/4g6m">4G6M</a>).</p>
+<p>Throughout the tutorial, colored text will be used to refer to questions or
+instructions, and/or PyMOL commands.</p>
+<p><a class="prompt prompt-question">This is a question prompt: try answering it!</a>
+<a class="prompt prompt-info">This an instruction prompt: follow it!</a>
+<a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
+<a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="local-setup-on-your-own"><a class="header" href="#local-setup-on-your-own">Local setup (on your own)</a></h3>
+<p>If you are installing HADDOCK3 on your own system, check the instructions and requirements below.</p>
+<h4 id="installing-haddock3"><a class="header" href="#installing-haddock3">Installing HADDOCK3</a></h4>
+<p>To obtain HADDOCK3,
+fill the registration form, and then follow the <a href="https://www.bonvinlab.org/haddock3/INSTALL.html">installation instructions</a>or navigate to <a href="https://github.com/haddocking/haddock3">its GitHub repository</a>.</p>
+<h4 id="installing-cns"><a class="header" href="#installing-cns">Installing CNS</a></h4>
+<p>The other required piece of software to run HADDOCK is its computational engine,
+CNS (Crystallography and NMR System – <a href="https://cns-online.org">https://cns-online.org</a>{:target="_blank"}).
+CNS is freely available for non-profit organizations.
+To get access to all features of HADDOCK you will need to compile CNS using the additional files provided in the HADDOCK distribution in the <code>extras/cns1.3</code> directory.
+Compilation of CNS might be non-trivial. Some guidance on installing CNS is provided on the online HADDOCK3 documentation page <a href="https://github.com/haddocking/haddock3/blob/main/docs/CNS.md">here</a>.</p>
+<p>Once CNS has been properly compiled, you will have create a symbolic link or copy the executable to <code>haddock3/bin/cns</code> and make sure it is executable and functional.
+Try starting <code>cns</code> from the command line. You should see the following output:</p>
+<details style="background-color:#DAE4E7">
+  <summary>
+  <i>View CNS prompt output</i><i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+          ============================================================
+          |                                                          |
+          |            Crystallography & NMR System (CNS)            |
+          |                         CNSsolve                         |
+          |                                                          |
+          ============================================================
+           Version: 1.3 at patch level U
+           Status: Special UU release with Rg, paramagnetic
+                   and Z-restraints (A. Bonvin, UU 2013)
+          ============================================================
+           Written by: A.T.Brunger, P.D.Adams, G.M.Clore, W.L.DeLano,
+                       P.Gros, R.W.Grosse-Kunstleve,J.-S.Jiang,J.M.Krahn,
+                       J.Kuszewski, M.Nilges, N.S.Pannu, R.J.Read,
+                       L.M.Rice, G.F.Schroeder, T.Simonson, G.L.Warren.
+           Copyright (c) 1997-2010 Yale University
+          ============================================================
+           Running on machine: hostname unknown (Linux,64-bit)
+           Program started by: l00902
+           Program started at: 16:34:22 on 06-Dec-2023
+          ============================================================
+<p>FFT3C: Using FFTPACK4.1</p>
+<p>CNSsolve&gt;
+</pre></p>
+</details>
+<br>
+Exit the CNS command line by typing `stop`.
+<div style="break-before: page; page-break-before: always;"></div><h3 id="local-setup-on-your-own-1"><a class="header" href="#local-setup-on-your-own-1">Local setup (on your own)</a></h3>
+<p>If you are installing HADDOCK3 on your own system, check the instructions and requirements below.</p>
+<h4 id="installing-haddock3-1"><a class="header" href="#installing-haddock3-1">Installing HADDOCK3</a></h4>
+<p>To obtain HADDOCK3,
+fill the registration form, and then follow the <a href="https://www.bonvinlab.org/haddock3/INSTALL.html">installation instructions</a>or navigate to <a href="https://github.com/haddocking/haddock3">its GitHub repository</a>.</p>
+<h4 id="installing-cns-1"><a class="header" href="#installing-cns-1">Installing CNS</a></h4>
+<p>The other required piece of software to run HADDOCK is its computational engine,
+CNS (Crystallography and NMR System – <a href="https://cns-online.org">https://cns-online.org</a>{:target="_blank"}).
+CNS is freely available for non-profit organizations.
+To get access to all features of HADDOCK you will need to compile CNS using the additional files provided in the HADDOCK distribution in the <code>extras/cns1.3</code> directory.
+Compilation of CNS might be non-trivial. Some guidance on installing CNS is provided on the online HADDOCK3 documentation page <a href="https://github.com/haddocking/haddock3/blob/main/docs/CNS.md">here</a>.</p>
+<p>Once CNS has been properly compiled, you will have create a symbolic link or copy the executable to <code>haddock3/bin/cns</code> and make sure it is executable and functional.
+Try starting <code>cns</code> from the command line. You should see the following output:</p>
+<details style="background-color:#DAE4E7">
+  <summary>
+  <i>View CNS prompt output</i><i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+          ============================================================
+          |                                                          |
+          |            Crystallography & NMR System (CNS)            |
+          |                         CNSsolve                         |
+          |                                                          |
+          ============================================================
+           Version: 1.3 at patch level U
+           Status: Special UU release with Rg, paramagnetic
+                   and Z-restraints (A. Bonvin, UU 2013)
+          ============================================================
+           Written by: A.T.Brunger, P.D.Adams, G.M.Clore, W.L.DeLano,
+                       P.Gros, R.W.Grosse-Kunstleve,J.-S.Jiang,J.M.Krahn,
+                       J.Kuszewski, M.Nilges, N.S.Pannu, R.J.Read,
+                       L.M.Rice, G.F.Schroeder, T.Simonson, G.L.Warren.
+           Copyright (c) 1997-2010 Yale University
+          ============================================================
+           Running on machine: hostname unknown (Linux,64-bit)
+           Program started by: l00902
+           Program started at: 16:34:22 on 06-Dec-2023
+          ============================================================
+<p>FFT3C: Using FFTPACK4.1</p>
+<p>CNSsolve&gt;
+</pre></p>
+</details>
+<br>
+Exit the CNS command line by typing `stop`.
+<div style="break-before: page; page-break-before: always;"></div><h1 id="auxiliary-software"><a class="header" href="#auxiliary-software">Auxiliary software</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="software-and-data-setup"><a class="header" href="#software-and-data-setup">Software and data setup</a></h2>
+<p>In order to follow this tutorial you will need to work on a Linux or MacOSX system.
+We will also make use of <a href="https://www.pymol.org/"><strong>PyMOL</strong></a> (freely available for most operating systems) in order to visualize the input and output data.
+We will provide you links to download the various required software and data.</p>
+<p>Further, we are providing pre-processed PDB files for docking and analysis (but the preprocessing of those files will also be explained in this tutorial).
+The files have been processed to facilitate their use in HADDOCK and to allow comparison with the known reference structure of the complex.</p>
+<p>If you are running this tutorial on your own resources <em>download and unzip the following</em> <a href="https://surfdrive.surf.nl/files/index.php/s/ts2kMjBFxjaNeId">zip archive</a> <em>and note the location of the extracted PDB files in your system</em>.
+If running as part of the EU-ASEAN HPC school see the instructions below.</p>
+<p><em>Note</em> that you can also download and unzip this archive directly from the Linux command line:</p>
+<a class="prompt prompt-cmd">
+wget https://surfdrive.surf.nl/files/index.php/s/ts2kMjBFxjaNeId/download -O HADDOCK3-antibody-antigen.zip<br>
+unzip HADDOCK3-antibody-antigen-BioExcel.zip
+</a>
+<p>Unziping the file will create the <code>HADDOCK3-antibody-antigen-BioExcelSS2024</code> directory which should contain the following directories and files:</p>
+<ul>
+<li><code>pdbs</code>: a directory containing the pre-processed PDB files</li>
+<li><code>restraints</code>: a directory containing the interface information and the corresponding restraint files for HADDOCK3</li>
+<li><code>runs</code>: a directory containing pre-calculated results</li>
+<li><code>scripts</code>: a directory containing various scripts used in this tutorial</li>
+<li><code>workflows</code>: a directory containing configuration file examples for HADDOCK3</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="preparing-the-antibody-structure"><a class="header" href="#preparing-the-antibody-structure">Preparing the antibody structure</a></h3>
+<p>Using PDB-tools we will download the unbound structure of the antibody from the PDB database (the PDB ID is <a href="https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k">4G6K</a>) and then process it to have a unique chain ID (A) and non-overlapping residue numbering by renumbering the merged pdb (starting from 1).</p>
+<p>This can be done from the command line with:</p>
+<a class="prompt prompt-cmd">
+pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain \-H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_selres \-1:120 | pdb_tidy -strict > 4G6K_H.pdb
+</a>
+<a class="prompt prompt-cmd">
+pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_selres \-1:107 | pdb_tidy \-strict > 4G6K_L.pdb
+</a>
+<a class="prompt prompt-cmd">
+pdb_merge 4G6K_H.pdb 4G6K_L.pdb | pdb_reres \-1 | pdb_chain \-A | pdb_chainxseg | pdb_tidy \-strict > 4G6K_clean.pdb
+</a>
+<p>The first command fetches the PDB ID, selects the heavy chain (H) (<code>pdb_selchain</code>) and removes water and heteroatoms (<code>pdb_delhetatm</code>) (in this case no co-factor is present that should be kept).</p>
+<p>An important part for antibodies is the <code>pdb_fixinsert</code> command that fixes the residue numbering of the HV loops: Antibodies often follow the <a href="https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib">Chothia numbering scheme</a> and insertions created by this numbering scheme (e.g. 82A, 82B, 82C) cannot be processed by HADDOCK directly (if not done those residues will not be considered resulting effectively in a break in the loop).
+As such, renumbering is necessary before starting the docking.</p>
+<p>Then, the command <code>pdb_selres</code> selects only the residues from 1 to 120, so as to consider only the variable domain (FV) of the antibody. This allows to save a substantial amount of computational resources.</p>
+<p>The second command does the same for the light chain (L) with the difference that the light chain is slightly shorter and we can focus on the first 107 residues.</p>
+<p>The third and last command merges the two processed chains, renumber the residues starting from 1 (<code>pdb_reres</code>) and assign them unique chain and segIDs (<code>pdb_chain</code> and <code>pdb_chainxseg</code>), resulting in the HADDOCK-ready <code>4G6K_clean.pdb</code> file. You can view its sequence by running:</p>
+<a class="prompt prompt-cmd">
+pdb_tofasta 4G6K_clean.pdb
+</a>
+<p><em><strong>Note</strong></em> The ready-to-use file can be found in the <code>pdbs</code> directory of the provided tutorial data.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="preparing-the-antibody-structure-1"><a class="header" href="#preparing-the-antibody-structure-1">Preparing the antibody structure</a></h3>
+<p>Using PDB-tools we will download the unbound structure of the antibody from the PDB database (the PDB ID is <a href="https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k">4G6K</a>) and then process it to have a unique chain ID (A) and non-overlapping residue numbering by renumbering the merged pdb (starting from 1).</p>
+<p>This can be done from the command line with:</p>
+<a class="prompt prompt-cmd">
+pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain \-H | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_selres \-1:120 | pdb_tidy -strict > 4G6K_H.pdb
+</a>
+<a class="prompt prompt-cmd">
+pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_keepcoord | pdb_selres \-1:107 | pdb_tidy \-strict > 4G6K_L.pdb
+</a>
+<a class="prompt prompt-cmd">
+pdb_merge 4G6K_H.pdb 4G6K_L.pdb | pdb_reres \-1 | pdb_chain \-A | pdb_chainxseg | pdb_tidy \-strict > 4G6K_clean.pdb
+</a>
+<p>The first command fetches the PDB ID, selects the heavy chain (H) (<code>pdb_selchain</code>) and removes water and heteroatoms (<code>pdb_delhetatm</code>) (in this case no co-factor is present that should be kept).</p>
+<p>An important part for antibodies is the <code>pdb_fixinsert</code> command that fixes the residue numbering of the HV loops: Antibodies often follow the <a href="https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib">Chothia numbering scheme</a> and insertions created by this numbering scheme (e.g. 82A, 82B, 82C) cannot be processed by HADDOCK directly (if not done those residues will not be considered resulting effectively in a break in the loop).
+As such, renumbering is necessary before starting the docking.</p>
+<p>Then, the command <code>pdb_selres</code> selects only the residues from 1 to 120, so as to consider only the variable domain (FV) of the antibody. This allows to save a substantial amount of computational resources.</p>
+<p>The second command does the same for the light chain (L) with the difference that the light chain is slightly shorter and we can focus on the first 107 residues.</p>
+<p>The third and last command merges the two processed chains, renumber the residues starting from 1 (<code>pdb_reres</code>) and assign them unique chain and segIDs (<code>pdb_chain</code> and <code>pdb_chainxseg</code>), resulting in the HADDOCK-ready <code>4G6K_clean.pdb</code> file. You can view its sequence by running:</p>
+<a class="prompt prompt-cmd">
+pdb_tofasta 4G6K_clean.pdb
+</a>
+<p><em><strong>Note</strong></em> The ready-to-use file can be found in the <code>pdbs</code> directory of the provided tutorial data.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="preparing-the-antigen-structure"><a class="header" href="#preparing-the-antigen-structure">Preparing the antigen structure</a></h3>
+<p>Using PDB-tools, we will now download the unbound structure of Interleukin-1β from the PDB database (the PDB ID is <a href="https://www.ebi.ac.uk/pdbe/entry/pdb/4i1b">4I1B</a>), remove the hetero atoms and then process it to assign it chainID B.</p>
+<p><em><strong>Important</strong>: Each molecule given to HADDOCK in a docking scenario must have a unique chainID/segID.</em></p>
+<a class="prompt prompt-cmd">
+pdb_fetch 4I1B | pdb_tidy \-strict | pdb_delhetatm  | pdb_keepcoord | pdb_chain \-B | pdb_chainxseg | pdb_tidy \-strict > 4I1B_clean.pdb
+</a>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="defining-restraints-for-docking"><a class="header" href="#defining-restraints-for-docking">Defining restraints for docking</a></h2>
+<p>Before setting up the docking, we first need to generate distance restraint files in a format suitable for HADDOCK.
+HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational engine.
+A description of the format for the various restraint types supported by HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.</p>
+<p>Distance restraints are defined as follows:</p>
+<pre style="background-color:#DAE4E7">
+assign (selection1) (selection2) distance, lower-bound correction, upper-bound correction
+</pre>
+<p>The lower limit for the distance is calculated as: distance minus lower-bound correction
+and the upper limit as: distance plus upper-bound correction.</p>
+<p>The syntax for the selections can combine information about:</p>
+<ul>
+<li>chainID - <code>segid</code> keyword</li>
+<li>residue number - <code>resid</code> keyword</li>
+<li>atom name - <code>name</code> keyword.</li>
+</ul>
+<p>Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual][link-cns]{:target="_blank"}.</p>
+<p>E.g.: a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an
+allowed distance range between 10Å and 20Å would be defined as follows:</p>
+<pre style="background-color:#DAE4E7">
+assign (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
+</pre>
+<a class="prompt prompt-question">
+Can you think of a different way of defining the distance and lower and upper corrections while maintaining the same
+allowed range?
+</a>
+<div style="break-before: page; page-break-before: always;"></div><hr>
+<h3 id="identifying-the-paratope-of-the-antibody"><a class="header" href="#identifying-the-paratope-of-the-antibody">Identifying the paratope of the antibody</a></h3>
+<p>Nowadays several computational tools can identify the paratope (the residues of the hypervariable loops involved in binding) from the provided antibody sequence.
+In this tutorial, we are providing you with the corresponding list of residue obtained using <a href="https://wenmr.science.uu.nl/proabc2/">ProABC-2</a>{:target="_blank"}.
+ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic).
+The work is described in <a href="https://academic.oup.com/bioinformatics/article/36/20/5107/5873593">Ambrosetti, <em>et al</em> Bioinformatics, 2020</a>{:target="_blank"}.</p>
+<p>The corresponding paratope residues (those with either an overall probability &gt;= 0.4 or a probability for hydrophobic or hydrophilic &gt; 0.3) are:</p>
+<pre style="background-color:#DAE4E7">
+31,32,33,34,35,52,54,55,56,100,101,102,103,104,105,106,151,152,169,170,173,211,212,213,214,216
+</pre>
+<p>The numbering corresponds to the numbering of the <code>4G6K_clean.pdb</code> PDB file.</p>
+<p>Let us visualize those onto the 3D structure.
+For this start PyMOL and load <code>4G6K_clean.pdb</code></p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_clean.pdb
+</a>
+<p>Alternatively, if PyMOL is accessible from the command line, simply type:</p>
+<a class="prompt prompt-cmd">
+pymol 4G6K_clean.pdb
+</a>
+<p>We will now highlight the predicted paratope residues in red. In PyMOL type the following commands:</p>
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+select paratope, (resi 31+32+33+34+35+52+54+55+56+100+101+102+103+104+105+106+151+152+169+170+173+211+212+213+214+216)<br>
+</a>
+<a class="prompt prompt-pymol">
+color red, paratope
+</a>
+<a class="prompt prompt-question">
+Can you identify the H3 loop? H stands for heavy chain (the first domain in our case with lower residue numbering). H3 is typically the longest loop.
+</a>
+<p>Let us now switch to a surface representation to inspect the predicted binding site.</p>
+<a class="prompt prompt-pymol">
+show surface<br>
+</a>
+<p>Inspect the surface.</p>
+<a class="prompt prompt-question">
+Do the identified paratope residues form a well-defined patch on the surface?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See surface view of the paratope</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="75%" src="../HADDOCK3-antibody-antigen/antibody-paratope.png">
+  </figure>
+  <br>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="identifying-the-epitope-of-the-antigen"><a class="header" href="#identifying-the-epitope-of-the-antigen">Identifying the epitope of the antigen</a></h3>
+<p>The article describing the crystal structure of the antibody-antigen complex we are modeling also reports experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab) on Interleukin-1β.
+The residues affected by binding are listed in Table 5 of <a href="https://dx.doi.org/10.1016/j.jmb.2012.09.021">Blech et al. JMB 2013</a>{:target="_blank"}:</p>
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
+</figure>
+<p>The list of binding site (epitope) residues identified by NMR is:</p>
+<pre style="background-color:#DAE4E7">
+72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+</pre>
+<p>We will now visualize the epitope on Interleukin-1β.
+To do this, start PyMOL and open the provided PDB file of the antigen from the PyMOL File menu.</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4I1B_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)
+</a>
+<a class="prompt prompt-pymol">
+color red, epitope
+</a>
+<p>Inspect the surface.</p>
+<a class="prompt prompt-question">
+Do the identified residues form a well-defined patch on the surface?
+</a>
+<p>The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding - there are some white spots around/in the red surface.</p>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See surface view of the epitope identified by NMR</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="75%" src="../HADDOCK3-antibody-antigen/antigen-epitope.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>In HADDOCK, we are dealing with potentially incomplete binding sites by defining surface neighbors as <code>passive</code> residues.
+These passive residues are added in the definition of the interface but do not incur any energetic penalty if they are not part of the binding site in the final models. In contrast, residues defined as active (typically the identified or predicted binding site residues) will incur an energetic penalty.
+When using the HADDOCK2.x webserver, <code>passive</code> residues will be automatically defined.
+Here, since we are using a local version, we need to define those manually.</p>
+<p>This can easily be done using a haddock3 command line tool in the following way:</p>
+<a class="prompt prompt-cmd">
+haddock3-restraints passive_from_active 4I1B_clean.pdb 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117 \-\-cutoff 0.15
+</a>
+<p>The command prints a list of passive residues, which you should save to a file for further use.</p>
+<p>We can visualize the epitope and its surface neighbors using PyMOL:</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4I1B_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)
+</a>
+<a class="prompt prompt-pymol">
+color red, epitope
+</a>
+<a class="prompt prompt-pymol">
+select passive, (resi 3+24+46+47+48+50+66+76+77+79+80+82+86+87+88+91+93+95+118+119+120)
+</a>
+<a class="prompt prompt-pymol">
+color green, passive
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See the epitope and passive residues</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="75%" src="antigen-active-passive.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors.</p>
+<p>The difference between <code>active</code> and <code>passive</code> residues in HADDOCK is as follows:</p>
+<p><em><strong>Active residues</strong></em>: These residues are "forced" to be at the interface. If they are not part of the interface in the final models, an energetic penalty will be applied. The interface in this context is defined by the union of active and passive residues on the partner molecules.</p>
+<p><em><strong>Passive residues</strong></em>: These residues are expected to be at the interface. However, if they are not, no energetic penalty is applied.</p>
+<p>In general, it is better to be too generous rather than too strict in the definition of passive residues.
+An important aspect is to filter both the active (the residues identified from your mapping experiment) and passive residues by their solvent accessibility.
+This is done automatically when using the <code>haddock3-restraints passive_from_active</code> command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discared.
+This is, however, not a hard limit, and you might consider including even more buried residues if some important chemical group seems solvent accessible from a visual inspection.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="defining-ambiguous-restraints"><a class="header" href="#defining-ambiguous-restraints">Defining ambiguous restraints</a></h3>
+<p>Once you have identified your active and passive residues for both molecules, you can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
+For this you can either make use of our online [GenTBL][gentbl] web service, entering the list of active and passive residues for each molecule, the chainIDs of each molecule and saving the resulting restraint list to a text file, or use another <code>haddock3-restraints</code> sub-command.</p>
+<p>To use our <code>haddock3-restraints active_passive_to_ambig</code> script, you need to
+create for each molecule a file containing two lines:</p>
+<ul>
+<li>The first line corresponds to the list of active residues (numbers separated by spaces)</li>
+<li>The second line corresponds to the list of passive residues (numbers separated by spaces).</li>
+</ul>
+<p><em><strong>Important</strong></em>: The file must consist of two lines, but a line can be empty (e.g., if you do not want to define active residues for one molecule). However, there must be at least one set of active residue defined for one of the molecules.</p>
+<ul>
+<li>For the antibody we will use the predicted paratope as active and no passive residues defined. The corresponding file can be found in the <code>restraints</code> directory as <code>antibody-paratope.act-pass</code>:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+1 32 33 34 35 52 54 55 56 100 101 102 103 104 105 106 151 152 169 170 173 211 212 213 214 216
+
+</pre>
+<ul>
+<li>For the antigen we will use the NMR-identified epitope as active and the surface neighbors as passive. The corresponding file can be found in the <code>restraints</code> directory as <code>antigen-NMR-epitope.act-pass</code>:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+72 73 74 75 81 83 84 89 90 92 94 96 97 98 115 116 117
+3 24 46 47 48 50 66 76 77 79 80 82 86 87 88 91 93 95 118 119 120
+</pre>
+<p>Using those two files, we can generate the CNS-formatted Ambiguous Interaction Restraints (AIRs) file with the following command:</p>
+<a class="prompt prompt-cmd">
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass \-\-segid-one A \-\-segid-two B > ambig-paratope-NMR-epitope.tbl
+</a>
+<p>This generates a file called <code>ambig-paratope-NMR-epitope.tbl</code> that contains the AIRs.</p>
+<a class="prompt prompt-question">
+Inspect the generated file and note how the ambiguous distances are defined.
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>View an extract of the AIR file</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+<pre>
+assign (resi 31 and segid A)
+(
+       (resi 72 and segid B)
+        or
+       (resi 73 and segid B)
+        or
+       (resi 74 and segid B)
+        or
+       (resi 75 and segid B)
+        or
+       (resi 81 and segid B)
+        or
+       (resi 83 and segid B)
+        or
+       (resi 84 and segid B)
+        or
+       (resi 89 and segid B)
+        or
+       (resi 90 and segid B)
+        or
+       (resi 92 and segid B)
+        or
+       (resi 94 and segid B)
+        or
+       (resi 96 and segid B)
+        or
+       (resi 97 and segid B)
+        or
+       (resi 98 and segid B)
+        or
+       (resi 115 and segid B)
+        or
+       (resi 116 and segid B)
+        or
+       (resi 117 and segid B)
+        or
+       (resi 3 and segid B)
+        or
+       (resi 24 and segid B)
+        or
+       (resi 46 and segid B)
+        or
+       (resi 47 and segid B)
+        or
+       (resi 48 and segid B)
+        or
+       (resi 50 and segid B)
+        or
+       (resi 66 and segid B)
+        or
+       (resi 76 and segid B)
+        or
+       (resi 77 and segid B)
+        or
+       (resi 79 and segid B)
+        or
+       (resi 80 and segid B)
+        or
+       (resi 82 and segid B)
+        or
+       (resi 86 and segid B)
+        or
+       (resi 87 and segid B)
+        or
+       (resi 88 and segid B)
+        or
+       (resi 91 and segid B)
+        or
+       (resi 93 and segid B)
+        or
+       (resi 95 and segid B)
+        or
+       (resi 118 and segid B)
+        or
+       (resi 119 and segid B)
+        or
+       (resi 120 and segid B)
+) 2.0 2.0 0.0
+...
+</pre>
+  <br>
+</details>
+<br>
+<a class="prompt prompt-question">
+Refering to the way the distance restraints are defined (see above), what is the distance range for the ambiguous distance restraints?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+The default distance range for those is between 0 and 2Å, which 
+might seem short but makes senses because of the 1/r^6 summation in the AIR
+energy function that makes the effective distance to be significantly shorter than
+the shortest distance entering the sum.
+<br>
+<br>
+The effective distance is calculated as the SUM over all pairwise atom-atom
+distance combinations between an active residue and all the active+passive on
+the other molecule: SUM[1/r^6]^(-1/6).
+</details>
+<br>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="defining-ambiguous-restraints-1"><a class="header" href="#defining-ambiguous-restraints-1">Defining ambiguous restraints</a></h3>
+<p>Once you have identified your active and passive residues for both molecules, you can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
+For this you can either make use of our online [GenTBL][gentbl] web service, entering the list of active and passive residues for each molecule, the chainIDs of each molecule and saving the resulting restraint list to a text file, or use another <code>haddock3-restraints</code> sub-command.</p>
+<p>To use our <code>haddock3-restraints active_passive_to_ambig</code> script, you need to
+create for each molecule a file containing two lines:</p>
+<ul>
+<li>The first line corresponds to the list of active residues (numbers separated by spaces)</li>
+<li>The second line corresponds to the list of passive residues (numbers separated by spaces).</li>
+</ul>
+<p><em><strong>Important</strong></em>: The file must consist of two lines, but a line can be empty (e.g., if you do not want to define active residues for one molecule). However, there must be at least one set of active residue defined for one of the molecules.</p>
+<ul>
+<li>For the antibody we will use the predicted paratope as active and no passive residues defined. The corresponding file can be found in the <code>restraints</code> directory as <code>antibody-paratope.act-pass</code>:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+1 32 33 34 35 52 54 55 56 100 101 102 103 104 105 106 151 152 169 170 173 211 212 213 214 216
+
+</pre>
+<ul>
+<li>For the antigen we will use the NMR-identified epitope as active and the surface neighbors as passive. The corresponding file can be found in the <code>restraints</code> directory as <code>antigen-NMR-epitope.act-pass</code>:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+72 73 74 75 81 83 84 89 90 92 94 96 97 98 115 116 117
+3 24 46 47 48 50 66 76 77 79 80 82 86 87 88 91 93 95 118 119 120
+</pre>
+<p>Using those two files, we can generate the CNS-formatted Ambiguous Interaction Restraints (AIRs) file with the following command:</p>
+<a class="prompt prompt-cmd">
+haddock3-restraints active_passive_to_ambig ./restraints/antibody-paratope.act-pass ./restraints/antigen-NMR-epitope.act-pass \-\-segid-one A \-\-segid-two B > ambig-paratope-NMR-epitope.tbl
+</a>
+<p>This generates a file called <code>ambig-paratope-NMR-epitope.tbl</code> that contains the AIRs.</p>
+<a class="prompt prompt-question">
+Inspect the generated file and note how the ambiguous distances are defined.
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>View an extract of the AIR file</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+<pre>
+assign (resi 31 and segid A)
+(
+       (resi 72 and segid B)
+        or
+       (resi 73 and segid B)
+        or
+       (resi 74 and segid B)
+        or
+       (resi 75 and segid B)
+        or
+       (resi 81 and segid B)
+        or
+       (resi 83 and segid B)
+        or
+       (resi 84 and segid B)
+        or
+       (resi 89 and segid B)
+        or
+       (resi 90 and segid B)
+        or
+       (resi 92 and segid B)
+        or
+       (resi 94 and segid B)
+        or
+       (resi 96 and segid B)
+        or
+       (resi 97 and segid B)
+        or
+       (resi 98 and segid B)
+        or
+       (resi 115 and segid B)
+        or
+       (resi 116 and segid B)
+        or
+       (resi 117 and segid B)
+        or
+       (resi 3 and segid B)
+        or
+       (resi 24 and segid B)
+        or
+       (resi 46 and segid B)
+        or
+       (resi 47 and segid B)
+        or
+       (resi 48 and segid B)
+        or
+       (resi 50 and segid B)
+        or
+       (resi 66 and segid B)
+        or
+       (resi 76 and segid B)
+        or
+       (resi 77 and segid B)
+        or
+       (resi 79 and segid B)
+        or
+       (resi 80 and segid B)
+        or
+       (resi 82 and segid B)
+        or
+       (resi 86 and segid B)
+        or
+       (resi 87 and segid B)
+        or
+       (resi 88 and segid B)
+        or
+       (resi 91 and segid B)
+        or
+       (resi 93 and segid B)
+        or
+       (resi 95 and segid B)
+        or
+       (resi 118 and segid B)
+        or
+       (resi 119 and segid B)
+        or
+       (resi 120 and segid B)
+) 2.0 2.0 0.0
+...
+</pre>
+  <br>
+</details>
+<br>
+<a class="prompt prompt-question">
+Refering to the way the distance restraints are defined (see above), what is the distance range for the ambiguous distance restraints?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+The default distance range for those is between 0 and 2Å, which 
+might seem short but makes senses because of the 1/r^6 summation in the AIR
+energy function that makes the effective distance to be significantly shorter than
+the shortest distance entering the sum.
+<br>
+<br>
+The effective distance is calculated as the SUM over all pairwise atom-atom
+distance combinations between an active residue and all the active+passive on
+the other molecule: SUM[1/r^6]^(-1/6).
+</details>
+<br>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="restraints-validation"><a class="header" href="#restraints-validation">Restraints validation</a></h3>
+<p>If you modify manually this generated restraint files or create your own, it is possible to quickly check if the format is valid using the following <code>haddock3-restraints</code> sub-command:</p>
+<a class="prompt prompt-cmd">
+haddock3-restraints validate_tbl ambig-paratope-NMR-epitope.tbl \-\-silent
+</a>
+<p>No output means that your TBL file is valid.</p>
+<p><em><strong>Note</strong></em> that this only validates the syntax of the restraint file, but does not check if the selections defined in the restraints are actually existing in your input PDB files.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="additional-restraints-for-multi-chain-proteins"><a class="header" href="#additional-restraints-for-multi-chain-proteins">Additional restraints for multi-chain proteins</a></h3>
+<p>As an antibody consists of two separate chains, it is important to define a few distance restraints
+to keep them together during the high temperature flexible refinement stage of HADDOCK otherwise they might slightly drift appart. This can easily be done using the <code>haddock3-restraints restrain_bodies</code> sub-command.</p>
+<a class="prompt prompt-cmd">
+haddock3-restraints restrain_bodies 4G6K_clean.pdb > antibody-unambig.tbl
+</a>
+<p>The result file contains two CA-CA distance restraints with the exact distance measured between two randomly picked CA atoms pairs:</p>
+<pre style="background-color:#DAE4E7">
+  assign (segid A and resi 110 and name CA) (segid A and resi 132 and name CA) 26.326 0.0 0.0
+  assign (segid A and resi 97 and name CA) (segid A and resi 204 and name CA) 19.352 0.0 0.0
+</pre>
+<p>This file is also provided in the <code>restraints</code> directory.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="setting-up-and-running-the-docking-with-haddock3"><a class="header" href="#setting-up-and-running-the-docking-with-haddock3">Setting up and running the docking with HADDOCK3</a></h2>
+<p>Now that we have all required files at hand (PDB and restraints files), it is time to setup our docking protocol. In this tutorial, considering we have rather good information about the paratope and epitope, we will execute a fast HADDOCK3 docking workflow, reducing the non-negligible computational cost of HADDOCK by decreasing the sampling, without impacting too much the accuracy of the resulting models.</p>
+<hr>
+<h3 id="haddock3-workflow-definition"><a class="header" href="#haddock3-workflow-definition">HADDOCK3 workflow definition</a></h3>
+<p>The first step is to create a HADDOCK3 configuration file that will define the docking workflow.
+We will follow a classic HADDOCK workflow consisting of rigid body docking, semi-flexible refinement and final energy minimisation followed by clustering.</p>
+<p>We will also integrate two analysis modules in our workflow:</p>
+<ul>
+<li><code>caprieval</code> will be used at various stages to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case we have at hand (<code>pdbs/4G6M_matched.pdb</code>). This will directly allow us to assess the performance of the protocol. In the absence of a reference, <code>caprieval</code> is still usefull to assess the convergence of a run and analyse the results.</li>
+<li><code>contactmap</code> added as last module will generate contact matrices of both intra- and intermolecular contacts and a chordchart of intermolecular contacts for each cluster.</li>
+</ul>
+<p>Our workflow consists of the following modules:</p>
+<ol>
+<li><strong><code>topoaa</code></strong>: <em>Generates the topologies for the CNS engine and builds missing atoms</em></li>
+<li><strong><code>rigidbody</code></strong>: <em>Preforms rigid body energy minimisation (<code>it0</code> in haddock2.x)</em></li>
+<li><strong><code>caprieval</code></strong>: <em>Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided</em></li>
+<li><strong><code>seletop</code></strong> : <em>Selects the top X models from the previous module</em></li>
+<li><strong><code>flexref</code></strong>: <em>Preforms semi-flexible refinement of the interface (<code>it1</code> in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>emref</code></strong>: <em>Final refinement by energy minimisation (<code>itw</code> EM only in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>clustfcc</code></strong>: <em>Clustering of models based on the fraction of common contacts (FCC)</em></li>
+<li><strong><code>seletopclusts</code></strong>: <em>Selects the top models of all clusters</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>contactmap</code></strong>: <em>Contacts matrix and a chordchart of intermolecular contacts</em></li>
+</ol>
+<p>The corresponding toml configuration file (provided in <code>workflows/docking-antibody-antigen-CDR-NMR-CSP.cfg</code>) looks like:</p>
+<p>{% highlight toml %}</p>
+<h1 id=""><a class="header" href="#">====================================================================</a></h1>
+<h1 id="antibody-antigen-docking-example-with-restraints-from-the-antibody"><a class="header" href="#antibody-antigen-docking-example-with-restraints-from-the-antibody">Antibody-antigen docking example with restraints from the antibody</a></h1>
+<h1 id="paratope-to-the-nmr-identified-epitope-on-the-antigen"><a class="header" href="#paratope-to-the-nmr-identified-epitope-on-the-antigen">paratope to the NMR-identified epitope on the antigen</a></h1>
+<h1 id="-1"><a class="header" href="#-1">====================================================================</a></h1>
+<h1 id="directory-in-which-the-scoring-will-be-done"><a class="header" href="#directory-in-which-the-scoring-will-be-done">Directory in which the scoring will be done</a></h1>
+<p>run_dir = "run1-CDR-NMR-CSP"</p>
+<h1 id="compute-mode"><a class="header" href="#compute-mode">Compute mode</a></h1>
+<p>mode = "local"
+ncores = 50</p>
+<h1 id="self-contained-rundir-to-avoid-problems-with-long-filename-paths"><a class="header" href="#self-contained-rundir-to-avoid-problems-with-long-filename-paths">Self contained rundir (to avoid problems with long filename paths)</a></h1>
+<p>self_contained = true</p>
+<h1 id="post-processing-to-generate-statistics-and-plots"><a class="header" href="#post-processing-to-generate-statistics-and-plots">Post-processing to generate statistics and plots</a></h1>
+<p>postprocess = true
+clean = true</p>
+<p>molecules =  [
+"pdbs/4G6K_clean.pdb",
+"pdbs/4I1B_clean.pdb"
+]</p>
+<h1 id="-2"><a class="header" href="#-2">====================================================================</a></h1>
+<h1 id="parameters-for-each-stage-are-defined-below-prefer-full-paths"><a class="header" href="#parameters-for-each-stage-are-defined-below-prefer-full-paths">Parameters for each stage are defined below, prefer full paths</a></h1>
+<h1 id="-3"><a class="header" href="#-3">====================================================================</a></h1>
+<p>[topoaa]</p>
+<p>[rigidbody]</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together"><a class="header" href="#restraints-to-keep-the-antibody-chains-together">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"
+sampling = 50</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[seletop]</p>
+<h1 id="selection-of-the-top-40-best-scoring-complexes"><a class="header" href="#selection-of-the-top-40-best-scoring-complexes">Selection of the top 40 best scoring complexes</a></h1>
+<p>select = 40</p>
+<p>[flexref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-1"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-1">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-1"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-1">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[emref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-2"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-2">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-2"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-2">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[clustfcc]
+plot_matrix = true</p>
+<p>[seletopclusts]</p>
+<h1 id="selection-of-the-top-4-best-scoring-complexes-from-each-cluster"><a class="header" href="#selection-of-the-top-4-best-scoring-complexes-from-each-cluster">Selection of the top 4 best scoring complexes from each cluster</a></h1>
+<p>top_models = 4</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[contactmap]</p>
+<h1 id="-4"><a class="header" href="#-4">====================================================================</a></h1>
+<p>{% endhighlight %}</p>
+<p>In this case, since we have information for both interfaces we use a low-sampling configuration file, which takes only a small amount of computational resources to run. From the sampling parameters in the above config file, you can see we are sampling only 50 models at each stage of the docking:</p>
+<p>The initial <code>sampling</code> parameter at the rigid-body energy minimization (<em>rigidbody</em>) module is set to 50 models, of which only best the 40 are passed to the flexible refinement (<em>flexref</em>) module with the <em>seletop</em> module.
+The subsequence flexible refinement (<em>flexref</em> module) and energy minimisation (<em>emref</em>) modules will use all models passed by the <em>seletop</em> module.
+FCC clustering (<em>clustfcc</em>) is then applied to group together models sharing a consistent fraction of the interface contacts.
+The top 4 models of each cluster are saved to disk (<em>seletopclusts</em>).
+Multiple <em>caprieval</em> modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol.</p>
+<p>To get a list of all possible parameters that can be defined in a specific module (and their default values) you can use the following command:</p>
+<a class="prompt prompt-cmd">
+haddock3-cfg -m \<module\-name\>
+</a>
+<p>Add the <code>-d</code> option to get a more detailed description of parameters and use the <code>-h</code> option to see a list of arguments and options.</p>
+<a class="prompt prompt-question">
+In the above workflow we see in three modules a *tolerance* parameter defined. Using the *haddock3-cfg* command try to figure out what this parameter does.
+</a>
+<p><em><strong>Note</strong></em> that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow.
+As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, selecting a given number of models per cluster and refining all of those.
+For an example of this strategy see the BONUS 3 section about ensemble docking.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="setting-up-and-running-the-docking-with-haddock3-1"><a class="header" href="#setting-up-and-running-the-docking-with-haddock3-1">Setting up and running the docking with HADDOCK3</a></h2>
+<p>Now that we have all required files at hand (PDB and restraints files), it is time to setup our docking protocol. In this tutorial, considering we have rather good information about the paratope and epitope, we will execute a fast HADDOCK3 docking workflow, reducing the non-negligible computational cost of HADDOCK by decreasing the sampling, without impacting too much the accuracy of the resulting models.</p>
+<hr>
+<h3 id="haddock3-workflow-definition-1"><a class="header" href="#haddock3-workflow-definition-1">HADDOCK3 workflow definition</a></h3>
+<p>The first step is to create a HADDOCK3 configuration file that will define the docking workflow.
+We will follow a classic HADDOCK workflow consisting of rigid body docking, semi-flexible refinement and final energy minimisation followed by clustering.</p>
+<p>We will also integrate two analysis modules in our workflow:</p>
+<ul>
+<li><code>caprieval</code> will be used at various stages to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case we have at hand (<code>pdbs/4G6M_matched.pdb</code>). This will directly allow us to assess the performance of the protocol. In the absence of a reference, <code>caprieval</code> is still usefull to assess the convergence of a run and analyse the results.</li>
+<li><code>contactmap</code> added as last module will generate contact matrices of both intra- and intermolecular contacts and a chordchart of intermolecular contacts for each cluster.</li>
+</ul>
+<p>Our workflow consists of the following modules:</p>
+<ol>
+<li><strong><code>topoaa</code></strong>: <em>Generates the topologies for the CNS engine and builds missing atoms</em></li>
+<li><strong><code>rigidbody</code></strong>: <em>Preforms rigid body energy minimisation (<code>it0</code> in haddock2.x)</em></li>
+<li><strong><code>caprieval</code></strong>: <em>Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided</em></li>
+<li><strong><code>seletop</code></strong> : <em>Selects the top X models from the previous module</em></li>
+<li><strong><code>flexref</code></strong>: <em>Preforms semi-flexible refinement of the interface (<code>it1</code> in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>emref</code></strong>: <em>Final refinement by energy minimisation (<code>itw</code> EM only in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>clustfcc</code></strong>: <em>Clustering of models based on the fraction of common contacts (FCC)</em></li>
+<li><strong><code>seletopclusts</code></strong>: <em>Selects the top models of all clusters</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>contactmap</code></strong>: <em>Contacts matrix and a chordchart of intermolecular contacts</em></li>
+</ol>
+<p>The corresponding toml configuration file (provided in <code>workflows/docking-antibody-antigen-CDR-NMR-CSP.cfg</code>) looks like:</p>
+<p>{% highlight toml %}</p>
+<h1 id="-5"><a class="header" href="#-5">====================================================================</a></h1>
+<h1 id="antibody-antigen-docking-example-with-restraints-from-the-antibody-1"><a class="header" href="#antibody-antigen-docking-example-with-restraints-from-the-antibody-1">Antibody-antigen docking example with restraints from the antibody</a></h1>
+<h1 id="paratope-to-the-nmr-identified-epitope-on-the-antigen-1"><a class="header" href="#paratope-to-the-nmr-identified-epitope-on-the-antigen-1">paratope to the NMR-identified epitope on the antigen</a></h1>
+<h1 id="-6"><a class="header" href="#-6">====================================================================</a></h1>
+<h1 id="directory-in-which-the-scoring-will-be-done-1"><a class="header" href="#directory-in-which-the-scoring-will-be-done-1">Directory in which the scoring will be done</a></h1>
+<p>run_dir = "run1-CDR-NMR-CSP"</p>
+<h1 id="compute-mode-1"><a class="header" href="#compute-mode-1">Compute mode</a></h1>
+<p>mode = "local"
+ncores = 50</p>
+<h1 id="self-contained-rundir-to-avoid-problems-with-long-filename-paths-1"><a class="header" href="#self-contained-rundir-to-avoid-problems-with-long-filename-paths-1">Self contained rundir (to avoid problems with long filename paths)</a></h1>
+<p>self_contained = true</p>
+<h1 id="post-processing-to-generate-statistics-and-plots-1"><a class="header" href="#post-processing-to-generate-statistics-and-plots-1">Post-processing to generate statistics and plots</a></h1>
+<p>postprocess = true
+clean = true</p>
+<p>molecules =  [
+"pdbs/4G6K_clean.pdb",
+"pdbs/4I1B_clean.pdb"
+]</p>
+<h1 id="-7"><a class="header" href="#-7">====================================================================</a></h1>
+<h1 id="parameters-for-each-stage-are-defined-below-prefer-full-paths-1"><a class="header" href="#parameters-for-each-stage-are-defined-below-prefer-full-paths-1">Parameters for each stage are defined below, prefer full paths</a></h1>
+<h1 id="-8"><a class="header" href="#-8">====================================================================</a></h1>
+<p>[topoaa]</p>
+<p>[rigidbody]</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-3"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-3">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-3"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-3">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"
+sampling = 50</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[seletop]</p>
+<h1 id="selection-of-the-top-40-best-scoring-complexes-1"><a class="header" href="#selection-of-the-top-40-best-scoring-complexes-1">Selection of the top 40 best scoring complexes</a></h1>
+<p>select = 40</p>
+<p>[flexref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-4"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-4">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-4"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-4">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[emref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-5"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-5">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-5"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-5">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[clustfcc]
+plot_matrix = true</p>
+<p>[seletopclusts]</p>
+<h1 id="selection-of-the-top-4-best-scoring-complexes-from-each-cluster-1"><a class="header" href="#selection-of-the-top-4-best-scoring-complexes-from-each-cluster-1">Selection of the top 4 best scoring complexes from each cluster</a></h1>
+<p>top_models = 4</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[contactmap]</p>
+<h1 id="-9"><a class="header" href="#-9">====================================================================</a></h1>
+<p>{% endhighlight %}</p>
+<p>In this case, since we have information for both interfaces we use a low-sampling configuration file, which takes only a small amount of computational resources to run. From the sampling parameters in the above config file, you can see we are sampling only 50 models at each stage of the docking:</p>
+<p>The initial <code>sampling</code> parameter at the rigid-body energy minimization (<em>rigidbody</em>) module is set to 50 models, of which only best the 40 are passed to the flexible refinement (<em>flexref</em>) module with the <em>seletop</em> module.
+The subsequence flexible refinement (<em>flexref</em> module) and energy minimisation (<em>emref</em>) modules will use all models passed by the <em>seletop</em> module.
+FCC clustering (<em>clustfcc</em>) is then applied to group together models sharing a consistent fraction of the interface contacts.
+The top 4 models of each cluster are saved to disk (<em>seletopclusts</em>).
+Multiple <em>caprieval</em> modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol.</p>
+<p>To get a list of all possible parameters that can be defined in a specific module (and their default values) you can use the following command:</p>
+<a class="prompt prompt-cmd">
+haddock3-cfg -m \<module\-name\>
+</a>
+<p>Add the <code>-d</code> option to get a more detailed description of parameters and use the <code>-h</code> option to see a list of arguments and options.</p>
+<a class="prompt prompt-question">
+In the above workflow we see in three modules a *tolerance* parameter defined. Using the *haddock3-cfg* command try to figure out what this parameter does.
+</a>
+<p><em><strong>Note</strong></em> that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow.
+As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, selecting a given number of models per cluster and refining all of those.
+For an example of this strategy see the BONUS 3 section about ensemble docking.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="running-haddock3"><a class="header" href="#running-haddock3">Running HADDOCK3</a></h3>
+<p>In in the first section of the workflow above we have a parameter <code>mode</code> defining the execution mode. HADDOCK3 currently supports three difference execution modes:</p>
+<ul>
+<li><strong>local</strong> : In this mode, HADDOCK3 will run on the current system, using the defined number of cores (<code>ncores</code>) in the config file to a maximum of the total number of available cores on the system.</li>
+<li><strong>batch</strong>: In this mode, HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster (slurm and torque are currently supported).</li>
+<li><strong>mpi</strong>: HADDOCK3 also supports a pseudo parallel MPI implementation, which allows to harvest the power of multiple nodes to distribute the computations (functional but still very experimental at this stage).</li>
+</ul>
+<hr>
+<h4 id="learn-about-the-various-execution-modes-of-haddock3"><a class="header" href="#learn-about-the-various-execution-modes-of-haddock3">Learn about the various execution modes of haddock3</a></h4>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>Execution of Fugaku using a full node (EU-ASEAN HPC School)</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+To execute the workflow on Fugaku, we will create a job file that will execute HADDOCK3 on a node, with HADDOCK3 running in local mode (the setup in the above configuration file with `mode="local"`) and harvesting all core of that node (`ncores=50`).
+<p>Here is an example of such an execution script (also provided in the <code>workflows</code> directory as <code>run-haddock3-fugaku.sh</code>):</p>
+<p>{% highlight shell %}
+#!/bin/sh
+#PJM -g ra022304
+#PJM -L "rscgrp=small"
+#PJM -L "node=1"
+#PJM -L "elapse=01:00:00"
+#PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0003
+#PJM -s # Statistical information output</p>
+<p>source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh
+conda activate haddock3</p>
+<p>haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg</p>
+<p>{% endhighlight %}</p>
+<p>This file should be submitted to the batch system using the <code>pjsub</code> command:</p>
+<a class="prompt prompt-cmd">
+pjsub workflows/run-haddock3-fugaku.sh
+</a>
+<br>
+<p>This run should take about 20 minutes to complete on a single node using 50 arm cores.</p>
+</details>
+<hr>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>Local execution</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+<p>In this mode HADDOCK3 will run on the current system, using the defined number of cores (<code>ncores</code>) in the config file to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:</p>
+<p>{% highlight toml %}</p>
+<h1 id="compute-mode-2"><a class="header" href="#compute-mode-2">compute mode</a></h1>
+<p>mode = "local"</p>
+<h1 id="1-nodes-x-50-ncores"><a class="header" href="#1-nodes-x-50-ncores">1 nodes x 50 ncores</a></h1>
+<p>ncores = 50
+{% endhighlight %}</p>
+<p>In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.</p>
+<a class="prompt prompt-cmd">
+haddock3 \<my-workflow-configuration-file\>
+</a>
+<p>Alternatively redirect the output to a log file and send haddock3 to the background.</p>
+<p>As an indication, running locally on an Apple M2 laptop using 10 cores, this workflow completed in 7 minutes.</p>
+<a class="prompt prompt-cmd">
+haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
+</a>
+<p><em><strong>Note</strong></em>: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.</p>
+</details>
+<hr>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>Exection in batch mode using slurm</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+<p>Here is an example script for submitting via the slurm batch system:</p>
+<p>{% highlight shell %}
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=50
+#SBATCH -J haddock3
+#SBATCH --partition=medium</p>
+<h1 id="activate-the-haddock3-conda-environment"><a class="header" href="#activate-the-haddock3-conda-environment">activate the haddock3 conda environment</a></h1>
+<p>source $HOME/miniconda3/etc/profile.d/conda.sh
+conda activate haddock3</p>
+<h1 id="go-to-the-run-directory"><a class="header" href="#go-to-the-run-directory">go to the run directory</a></h1>
+<p>cd $HOME/HADDOCK3-antibody-antigen</p>
+<h1 id="execute"><a class="header" href="#execute">execute</a></h1>
+<p>haddock3 &lt;my-workflow-configuration-file&gt;
+{% endhighlight %}
+<br></p>
+<p>In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. Two batch systems are currently supported: <code>slurm</code> and <code>torque</code> (defined by the <code>batch_type</code> parameter). In the configuration file you will
+have to define the <code>queue</code> name and the maximum number of concurrent jobs sent to the queue (<code>queue_limit</code>).</p>
+<p>Since HADDOCK3 single model calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. The number of model per job is defined by the <code>concat</code> parameter in the configuration file. You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...</p>
+<p>An example of the relevant parameters to be defined in the first section of the config file is:</p>
+<p>{% highlight toml %}</p>
+<h1 id="compute-mode-3"><a class="header" href="#compute-mode-3">compute mode</a></h1>
+<p>mode = "batch"</p>
+<h1 id="batch-system"><a class="header" href="#batch-system">batch system</a></h1>
+<p>batch_type = "slurm"</p>
+<h1 id="queue-name"><a class="header" href="#queue-name">queue name</a></h1>
+<p>queue = "short"</p>
+<h1 id="number-of-concurrent-jobs-to-submit-to-the-batch-system"><a class="header" href="#number-of-concurrent-jobs-to-submit-to-the-batch-system">number of concurrent jobs to submit to the batch system</a></h1>
+<p>queue_limit = 100</p>
+<h1 id="number-of-models-to-produce-per-submitted-job"><a class="header" href="#number-of-models-to-produce-per-submitted-job">number of models to produce per submitted job</a></h1>
+<p>concat = 10
+{% endhighlight %}</p>
+<p>In this mode HADDOCK3 can be started from the command line as for the local mode.</p>
+</details>
+<hr>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>Exection in MPI mode</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+<p>HADDOCK3 supports a parallel pseudo-MPI implementation (functional but still very experimental at this stage). For this to work, the <code>mpi4py</code> library must have been installed at installation time. Refer to the <a href="https://www.bonvinlab.org/haddock3/tutorials/mpi.html">MPI-related instructions</a>{:target="_blank"}.</p>
+<p>The execution mode should be set to <code>mpi</code> and the total number of cores should match the requested resources when submitting to the batch system.</p>
+<p>An example of the relevant parameters to be defined in the first section of the config file is:</p>
+<p>{% highlight toml %}</p>
+<h1 id="compute-mode-4"><a class="header" href="#compute-mode-4">compute mode</a></h1>
+<p>mode = "mpi"</p>
+<h1 id="5-nodes-x-50-tasks--ncores--250"><a class="header" href="#5-nodes-x-50-tasks--ncores--250">5 nodes x 50 tasks = ncores = 250</a></h1>
+<p>ncores = 250
+{% endhighlight %}</p>
+<p>In this execution mode the HADDOCK3 job should be submitted to the batch system requesting the corresponding number of nodes and cores per node.</p>
+<p>{% highlight shell %}
+#!/bin/bash
+#SBATCH --nodes=5
+#SBATCH --tasks-per-node=50
+#SBATCH -J haddock3mpi</p>
+<h1 id="make-sure-haddock3-is-activated"><a class="header" href="#make-sure-haddock3-is-activated">Make sure haddock3 is activated</a></h1>
+<p>source $HOME/miniconda3/etc/profile.d/conda.sh
+conda activate haddock3</p>
+<h1 id="go-to-the-run-directory-1"><a class="header" href="#go-to-the-run-directory-1">go to the run directory</a></h1>
+<h1 id="edit-if-needed-to-specify-the-correct-location"><a class="header" href="#edit-if-needed-to-specify-the-correct-location">edit if needed to specify the correct location</a></h1>
+<p>cd $HOME/HADDOCK3-antibody-antigen</p>
+<h1 id="execute-1"><a class="header" href="#execute-1">execute</a></h1>
+<p>haddock3 &lt;my-workflow-configuration-file&gt;
+{% endhighlight %}
+<br></p>
+</details>
+<br><div style="break-before: page; page-break-before: always;"></div><h3 id="outputs-of-your-docking-run"><a class="header" href="#outputs-of-your-docking-run">Outputs of your docking run</a></h3>
+<p>In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the <code>runs</code> directory:</p>
+<ul>
+<li><code>run1</code>: run created using the unbound antibody.</li>
+<li><code>run1-af2</code>: run created using the Alphafold-multimer antibody (see BONUS 2).</li>
+<li><code>run1-abb</code>: run created using the Immunebuilder antibody (see BONUS 2).</li>
+<li><code>run1-ens</code>: run created using an ensemble of antibody models (see BONUS 3).</li>
+</ul>
+<p>Once your run has completed - inspect the content of the resulting directory.
+You will find the various steps (modules) of the defined workflow numbered sequentially starting at 0, e.g.:</p>
+<p>{% highlight shell %}</p>
+<blockquote>
+<p>ls run1/
+00_topoaa/
+01_rigidbody/
+02_caprieval/
+03_seletop/
+04_flexref/
+05_caprieval/
+06_emref/
+07_caprieval/
+08_clustfcc/
+09_seletopclusts/
+10_caprieval/
+11_contactmap/
+analysis/
+data/
+log
+toppar/
+traceback/
+{% endhighlight %}</p>
+</blockquote>
+<p>In addition, there is a log file (text file) and four additional directories:</p>
+<ul>
+<li>the <code>analysis</code> directory contains various plots to visualize the results for each caprieval step and a general report (<code>report.html</code>) that provides all statistics with various plots. You can open this file in your preferred web browser</li>
+<li>the <code>data</code> directory contains the input data (PDB and restraint files) for the various modules</li>
+<li>the <code>toppar</code> directory contains the force field topology and parameter files (only present when running in self-contained mode)</li>
+<li>the <code>traceback</code> directory contains <code>traceback.tsv</code>, which links all models to see which model originates from which throughout all steps of the workflow.</li>
+</ul>
+<p>You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.</p>
+<p>For example, the <code>09_seletopclusts</code> directory contains the selected models from each cluster. The clusters in that directory are numbered based
+on their rank, i.e. <code>cluster_1</code> refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the <code>seletopclusts.txt</code> file.</p>
+<p>The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the <code>10_caprieval</code> directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a <code>capri_ss.tsv</code> single model statistics file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:</p>
+<pre style="background-color:#DAE4E7">
+                  model  md5  caprieval_rank     score  irmsd   fnat  lrmsd  ilrmsd  dockq  cluster_id  cluster_ranking  model-cluster_ranking      air  angles  bonds       bsa   cdih   coup   dani  desolv   dihe      elec  improper   rdcs     rg    sym     total      vdw   vean   xpcs
+../06_emref/emref_1.pdb    -               1  -142.417  1.193  0.862  2.242   2.261  0.803           -                -                      -   61.388   0.000  0.000  1884.490  0.000  0.000  0.000   6.496  0.000  -546.456     0.000  0.000  0.000  0.000  -530.829  -45.760  0.000  0.000
+../06_emref/emref_2.pdb    -               2  -142.268  0.957  0.948  1.681   1.512  0.874           -                -                      -   78.754   0.000  0.000  1849.190  0.000  0.000  0.000   0.557  0.000  -497.733     0.000  0.000  0.000  0.000  -470.134  -51.154  0.000  0.000
+../06_emref/emref_3.pdb    -               3  -142.107  1.040  0.931  1.985   1.675  0.852           -                -                      -   44.821   0.000  0.000  1886.680  0.000  0.000  0.000  -0.829  0.000  -491.378     0.000  0.000  0.000  0.000  -494.041  -47.484  0.000  0.000
+../06_emref/emref_8.pdb    -               4  -133.948  1.063  0.931  2.135   1.719  0.846           -                -                      -  104.785   0.000  0.000  1746.970  0.000  0.000  0.000   3.183  0.000  -481.057     0.000  0.000  0.000  0.000  -427.670  -51.398  0.000  0.000
+...
+</pre>
+<p>If clustering was performed prior to calling the <code>caprieval</code> module, the <code>capri_ss.tsv</code> file will also contain information about to which cluster the model belongs to and its ranking within the cluster.</p>
+<p>The relevant statistics are:</p>
+<ul>
+<li><strong>score</strong>: <em>the HADDOCK score (arbitrary units)</em></li>
+<li><strong>irmsd</strong>: <em>the interface RMSD, calculated over the interfaces the molecules</em></li>
+<li><strong>fnat</strong>: <em>the fraction of native contacts</em></li>
+<li><strong>lrmsd</strong>: <em>the ligand RMSD, calculated on the ligand after fitting on the receptor (1st component)</em></li>
+<li><strong>ilrmsd</strong>: <em>the interface-ligand RMSD, calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example)</em></li>
+<li><strong>dockq</strong>: <em>the DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale between 1 (exactly equal to reference) and 0</em></li>
+</ul>
+<p>Various other terms are also reported including:</p>
+<ul>
+<li><strong>bsa</strong>: <em>the buried surface area (in squared angstroms)</em></li>
+<li><strong>elec</strong>: <em>the intermolecular electrostatic energy</em></li>
+<li><strong>vdw</strong>: <em>the intermolecular van der Waals energy</em></li>
+<li><strong>desolv</strong>: <em>the desolvation energy</em></li>
+</ul>
+<p>The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment <a href="https://capri.ebi.ac.uk/">CAPRI</a>{:target="_blank"} (Critical PRediction of Interactions).</p>
+<p>In CAPRI the quality of a model is defined as (for protein-protein complexes):</p>
+<ul>
+<li><strong>acceptable model</strong>: i-RMSD &lt; 4Å or l-RMSD &lt; 10Å and Fnat &gt; 0.1 (0.23 &lt; DOCKQ &lt; 0.49)</li>
+<li><strong>medium quality model</strong>: i-RMSD &lt; 2Å or l-RMSD &lt; 5Å and Fnat &gt; 0.3 (0.49 &lt; DOCKQ &lt; 0.8)</li>
+<li><strong>high quality model</strong>: i-RMSD &lt; 1Å or l-RMSD &lt; 1Å and Fnat &gt; 0.5 (DOCKQ &gt; 0.8)</li>
+</ul>
+<a class="prompt prompt-question">
+Based on this CAPRI criterion, what is the quality of the best model listed above (emref_2.pdb)?
+</a>
+<p>In case where the <code>caprieval</code> module is called after a clustering step, an additional <code>capri_clt.tsv</code> file will be present in the directory.
+This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering
+(4 by default), with their corresponding standard deviations. E.g.:</p>
+<pre style="background-color:#DAE4E7">
+cluster_rank  cluster_id  n  under_eval     score  score_std   irmsd  irmsd_std   fnat  fnat_std   lrmsd  lrmsd_std  dockq  dockq_std      air  air_std       bsa  bsa_std  desolv  desolv_std      elec  elec_std     total  total_std      vdw  vdw_std  caprieval_rank
+           1           2  4           -  -140.185      3.603   1.063      0.085  0.918     0.033   2.011      0.211  0.844      0.026   72.437   22.198  1841.833   56.754   2.352       2.793  -504.156    25.137  -480.668     37.466  -48.949    2.407               1
+           2           4  4           -  -104.627      9.604   4.985      0.167  0.159     0.022  10.983      0.735  0.206      0.017  140.887   17.004  1599.765  101.246   3.738       2.425  -267.555    26.639  -195.611     16.008  -68.943    5.880               2
+           3           1  4           -   -90.803      5.270  10.263      0.837  0.086     0.017  19.261      1.307  0.091      0.012  139.801   40.076  1431.878   53.377   3.217       6.569  -335.970    38.177  -236.975     36.344  -40.806    2.883               3
+           4           3  4           -   -90.321     12.145  14.645      0.132  0.099     0.007  23.305      0.134  0.076      0.003  154.818   25.452  1792.695   68.993   5.937       1.759  -308.110    28.984  -203.410     46.861  -50.118    6.689               4
+...
+</pre>
+<p>In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the preceeding <code>09_seletopclusts</code> directory.</p>
+<p>While these simple text files can be easily checked from the command line already, they might be cumbersome to read.
+For that reason, we have developed a post-processing analysis that automatically generates html reports for all <code>caprieval</code> steps in the workflow.
+These are located in the respective <code>analysis/XX_caprieval</code> directories and can be viewed using your favorite web browser.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="outputs-of-your-docking-run-1"><a class="header" href="#outputs-of-your-docking-run-1">Outputs of your docking run</a></h3>
+<p>In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the <code>runs</code> directory:</p>
+<ul>
+<li><code>run1</code>: run created using the unbound antibody.</li>
+<li><code>run1-af2</code>: run created using the Alphafold-multimer antibody (see BONUS 2).</li>
+<li><code>run1-abb</code>: run created using the Immunebuilder antibody (see BONUS 2).</li>
+<li><code>run1-ens</code>: run created using an ensemble of antibody models (see BONUS 3).</li>
+</ul>
+<p>Once your run has completed - inspect the content of the resulting directory.
+You will find the various steps (modules) of the defined workflow numbered sequentially starting at 0, e.g.:</p>
+<p>{% highlight shell %}</p>
+<blockquote>
+<p>ls run1/
+00_topoaa/
+01_rigidbody/
+02_caprieval/
+03_seletop/
+04_flexref/
+05_caprieval/
+06_emref/
+07_caprieval/
+08_clustfcc/
+09_seletopclusts/
+10_caprieval/
+11_contactmap/
+analysis/
+data/
+log
+toppar/
+traceback/
+{% endhighlight %}</p>
+</blockquote>
+<p>In addition, there is a log file (text file) and four additional directories:</p>
+<ul>
+<li>the <code>analysis</code> directory contains various plots to visualize the results for each caprieval step and a general report (<code>report.html</code>) that provides all statistics with various plots. You can open this file in your preferred web browser</li>
+<li>the <code>data</code> directory contains the input data (PDB and restraint files) for the various modules</li>
+<li>the <code>toppar</code> directory contains the force field topology and parameter files (only present when running in self-contained mode)</li>
+<li>the <code>traceback</code> directory contains <code>traceback.tsv</code>, which links all models to see which model originates from which throughout all steps of the workflow.</li>
+</ul>
+<p>You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.</p>
+<p>For example, the <code>09_seletopclusts</code> directory contains the selected models from each cluster. The clusters in that directory are numbered based
+on their rank, i.e. <code>cluster_1</code> refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the <code>seletopclusts.txt</code> file.</p>
+<p>The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the <code>10_caprieval</code> directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a <code>capri_ss.tsv</code> single model statistics file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:</p>
+<pre style="background-color:#DAE4E7">
+                  model  md5  caprieval_rank     score  irmsd   fnat  lrmsd  ilrmsd  dockq  cluster_id  cluster_ranking  model-cluster_ranking      air  angles  bonds       bsa   cdih   coup   dani  desolv   dihe      elec  improper   rdcs     rg    sym     total      vdw   vean   xpcs
+../06_emref/emref_1.pdb    -               1  -142.417  1.193  0.862  2.242   2.261  0.803           -                -                      -   61.388   0.000  0.000  1884.490  0.000  0.000  0.000   6.496  0.000  -546.456     0.000  0.000  0.000  0.000  -530.829  -45.760  0.000  0.000
+../06_emref/emref_2.pdb    -               2  -142.268  0.957  0.948  1.681   1.512  0.874           -                -                      -   78.754   0.000  0.000  1849.190  0.000  0.000  0.000   0.557  0.000  -497.733     0.000  0.000  0.000  0.000  -470.134  -51.154  0.000  0.000
+../06_emref/emref_3.pdb    -               3  -142.107  1.040  0.931  1.985   1.675  0.852           -                -                      -   44.821   0.000  0.000  1886.680  0.000  0.000  0.000  -0.829  0.000  -491.378     0.000  0.000  0.000  0.000  -494.041  -47.484  0.000  0.000
+../06_emref/emref_8.pdb    -               4  -133.948  1.063  0.931  2.135   1.719  0.846           -                -                      -  104.785   0.000  0.000  1746.970  0.000  0.000  0.000   3.183  0.000  -481.057     0.000  0.000  0.000  0.000  -427.670  -51.398  0.000  0.000
+...
+</pre>
+<p>If clustering was performed prior to calling the <code>caprieval</code> module, the <code>capri_ss.tsv</code> file will also contain information about to which cluster the model belongs to and its ranking within the cluster.</p>
+<p>The relevant statistics are:</p>
+<ul>
+<li><strong>score</strong>: <em>the HADDOCK score (arbitrary units)</em></li>
+<li><strong>irmsd</strong>: <em>the interface RMSD, calculated over the interfaces the molecules</em></li>
+<li><strong>fnat</strong>: <em>the fraction of native contacts</em></li>
+<li><strong>lrmsd</strong>: <em>the ligand RMSD, calculated on the ligand after fitting on the receptor (1st component)</em></li>
+<li><strong>ilrmsd</strong>: <em>the interface-ligand RMSD, calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example)</em></li>
+<li><strong>dockq</strong>: <em>the DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale between 1 (exactly equal to reference) and 0</em></li>
+</ul>
+<p>Various other terms are also reported including:</p>
+<ul>
+<li><strong>bsa</strong>: <em>the buried surface area (in squared angstroms)</em></li>
+<li><strong>elec</strong>: <em>the intermolecular electrostatic energy</em></li>
+<li><strong>vdw</strong>: <em>the intermolecular van der Waals energy</em></li>
+<li><strong>desolv</strong>: <em>the desolvation energy</em></li>
+</ul>
+<p>The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment <a href="https://capri.ebi.ac.uk/">CAPRI</a>{:target="_blank"} (Critical PRediction of Interactions).</p>
+<p>In CAPRI the quality of a model is defined as (for protein-protein complexes):</p>
+<ul>
+<li><strong>acceptable model</strong>: i-RMSD &lt; 4Å or l-RMSD &lt; 10Å and Fnat &gt; 0.1 (0.23 &lt; DOCKQ &lt; 0.49)</li>
+<li><strong>medium quality model</strong>: i-RMSD &lt; 2Å or l-RMSD &lt; 5Å and Fnat &gt; 0.3 (0.49 &lt; DOCKQ &lt; 0.8)</li>
+<li><strong>high quality model</strong>: i-RMSD &lt; 1Å or l-RMSD &lt; 1Å and Fnat &gt; 0.5 (DOCKQ &gt; 0.8)</li>
+</ul>
+<a class="prompt prompt-question">
+Based on this CAPRI criterion, what is the quality of the best model listed above (emref_2.pdb)?
+</a>
+<p>In case where the <code>caprieval</code> module is called after a clustering step, an additional <code>capri_clt.tsv</code> file will be present in the directory.
+This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering
+(4 by default), with their corresponding standard deviations. E.g.:</p>
+<pre style="background-color:#DAE4E7">
+cluster_rank  cluster_id  n  under_eval     score  score_std   irmsd  irmsd_std   fnat  fnat_std   lrmsd  lrmsd_std  dockq  dockq_std      air  air_std       bsa  bsa_std  desolv  desolv_std      elec  elec_std     total  total_std      vdw  vdw_std  caprieval_rank
+           1           2  4           -  -140.185      3.603   1.063      0.085  0.918     0.033   2.011      0.211  0.844      0.026   72.437   22.198  1841.833   56.754   2.352       2.793  -504.156    25.137  -480.668     37.466  -48.949    2.407               1
+           2           4  4           -  -104.627      9.604   4.985      0.167  0.159     0.022  10.983      0.735  0.206      0.017  140.887   17.004  1599.765  101.246   3.738       2.425  -267.555    26.639  -195.611     16.008  -68.943    5.880               2
+           3           1  4           -   -90.803      5.270  10.263      0.837  0.086     0.017  19.261      1.307  0.091      0.012  139.801   40.076  1431.878   53.377   3.217       6.569  -335.970    38.177  -236.975     36.344  -40.806    2.883               3
+           4           3  4           -   -90.321     12.145  14.645      0.132  0.099     0.007  23.305      0.134  0.076      0.003  154.818   25.452  1792.695   68.993   5.937       1.759  -308.110    28.984  -203.410     46.861  -50.118    6.689               4
+...
+</pre>
+<p>In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the preceeding <code>09_seletopclusts</code> directory.</p>
+<p>While these simple text files can be easily checked from the command line already, they might be cumbersome to read.
+For that reason, we have developed a post-processing analysis that automatically generates html reports for all <code>caprieval</code> steps in the workflow.
+These are located in the respective <code>analysis/XX_caprieval</code> directories and can be viewed using your favorite web browser.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="cluster-statistics"><a class="header" href="#cluster-statistics">Cluster statistics</a></h3>
+<p>Let us now analyse the docking results. Use for that either your own run or a pre-calculated run provided in the <code>runs</code> directory.
+Go into the <code>analysis/10_caprieval_analysis</code> directory of the respective run directory  (if needed copy the run or that directory to your local computer) and open in a web browser the <code>report.html</code> file. Be patient as this page contains interactive plots that may take some time to generate.</p>
+<p>On the top of the page, you will see a table that summarises the cluster statistics (taken from the <code>capri_clt.tsv</code> file).
+The columns (corresponding to the various clusters) are sorted by default on the cluster rank, which is based on the HADDOCK score (found on the 4th row of the table).
+As this is an interactive table, you can sort it as you wish by using the arrows present in the first column.
+Simply click on the arrows of the term you want to use to sort the table (and you can sort it in ascending or descending order).
+A snapshot of this table is shown below:</p>
+<figure style="text-align: center;">
+    <img width="100%" src="caprieval_analysis-table.png">
+</figure>
+<p>You can also view this report online <a href="plots/report.html">here</a>{:target="_blank"}</p>
+<p><em><strong>Note</strong></em> that in case the PDB files are still compressed (gzipped) the download links will not work. Also online visualisation is not enabled. To overcome this disk space storge solution, consider adding the global parameter <code>clean = true</code> at the begining of your configuration file.</p>
+<p><a class="prompt prompt-info">Inspect the final cluster statistics</a></p>
+<p><a class="prompt prompt-question">How many clusters have been generated?</a></p>
+<p><a class="prompt prompt-question">Look at the score of the first few clusters: Are they significantly different if you consider their average scores and standard deviations?</a></p>
+<p>Since for this tutorial we have at hand the crystal structure of the complex, we provided it as reference to the <code>caprieval</code> modules.
+This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the quality of the docked model compared to the reference crystal structure.</p>
+<p><a class="prompt prompt-question">How many clusters of acceptable or better quality have been generate according to CAPRI criteria?</a></p>
+<p><a class="prompt prompt-question">What is the rank of the best cluster generated?</a></p>
+<p><a class="prompt prompt-question">What is the rank of the first acceptable of better cluster generated?</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="visualizing-the-scores-and-their-components"><a class="header" href="#visualizing-the-scores-and-their-components">Visualizing the scores and their components</a></h3>
+<p>Next to the cluster statistic table shown above, the <code>report.html</code> file also contains a variety of plots displaying the HADDOCK score
+and its components against various CAPRI metrics (i-RMSD, l-RMSD,  Fnat, Dock-Q) with a color-coded representation of the clusters.
+These are interactive plots. A menu on the top right of the first row (you might have to scroll to the rigth to see it)
+allows you to zoom in and out in the plots and turn on and off clusters.</p>
+<figure style="text-align: center;">
+    <img width="100%" src="caprieval_analysis-plots.png">
+</figure>
+<p>As a reminder, you can also view this report online <a href="plots/report.html">here</a>{:target="_blank"}</p>
+<a class="prompt prompt-info">
+Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+</a>
+<p>Finally, the report also shows plots of the cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):</p>
+<figure style="text-align: center;">
+    <img width="100%" src="caprieval_analysis-distributions.png">
+</figure>
+<p><a class="prompt prompt-question">For this antibody-antigen case, which of the score components correlates best with the quality of the models?</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="contacts-analysis"><a class="header" href="#contacts-analysis">Contacts analysis</a></h3>
+<p>We have recently added a new contact analysis module to HADDOCK3 that generates for each cluster both a contact matrix of the entire system showing all contacts within a 4.5Å cutoff and a chord chart representation of intermolecular contacts.</p>
+<p>In the current workflow we run, those files can be found in the <code>11_contactmap</code> directory.
+These are again html files with interactive plots (hover with your mouse over the plots).</p>
+<a class="prompt prompt-info">
+Open in your favorite web browser the _cluster1_contmap_chordchart.html_ file to analyse the intermolecular contacts of the best-ranked cluster.
+</a>
+<p>This file taken from the pre-computed run can also directly be visualized <a href="cluster1_contmap_chordchart.html">here</a>{:target="_blank"}</p>
+<a class="prompt prompt-question">
+Can you identify which residue(s) make(s) the most intermolecular contacts?
+</a>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="visualization-of-the-models"><a class="header" href="#visualization-of-the-models">Visualization of the models</a></h3>
+<p>To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster1 for run <code>run1-CDR-NMR-CSP</code>.
+These can be found in the <code>runs/run1/09_seletopclusts/</code> directory.</p>
+<p><a class="prompt prompt-pymol">File menu -&gt; Open -&gt; select cluster_1_model_1.pdb</a></p>
+<p><em><strong>Note</strong></em> that the PDB files are compressed (gzipped) by default at the end of a run. You can uncompress those with the <code>gunzip</code> command. PyMOL can directly read the gzipped files.</p>
+<p>If you want to get an impression of how well-defined a cluster is, repeat this for the best N models you want to view (<code>cluster_1_model_X.pdb</code>).
+Also load the reference structure from the <code>pdbs</code> directory, <code>4G6M-matched.pdb</code>.</p>
+<p>Once all files have been loaded, type in the PyMOL command window:</p>
+<a class="prompt prompt-pymol">
+show cartoon
+</a>
+<a class="prompt prompt-pymol">
+util.cbc
+</a>
+<a class="prompt prompt-pymol">
+color yellow, 4G6M_matched
+</a>
+<p>Let us then superimpose all models onto the reference structure:</p>
+<a class="prompt prompt-pymol">
+alignto 4G6M_matched
+</a>
+<a class="prompt prompt-question">
+How close are the top4 models to the reference? Did HADDOCK do a good job at ranking the best in the top?
+</a>
+<p>Let’s now check if the active residues which we have defined (the paratope and epitope) are actually part of the interface. In the PyMOL command window type:</p>
+<a class="prompt prompt-pymol">
+select paratope, (resi 31+32+33+34+35+52+54+55+56+100+101+102+103+104+105+106+151+152+169+170+173+211+212+213+214+216 and chain A)
+</a>
+<a class="prompt prompt-pymol">
+color red, paratope
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117 and chain B)
+</a>
+<a class="prompt prompt-pymol">
+color orange, epitope
+</a>
+<a class="prompt prompt-question">
+Are the residues of the paratope and NMR epitope at the interface?
+</a>
+<p><strong>Note:</strong> You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.</p>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <b><i>See the overlay of the top ranked model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
+ </summary>
+ <p> Top-ranked model of the top cluster superimposed onto the reference crystal structure (in yellow)</p>
+ <figure style="text-align: center">
+   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/results-best-model.png">
+ </figure>
+ <br>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bonus"><a class="header" href="#bonus">Bonus</a></h1>
+<p>Here are 5 bonus:</p>
+<ul>
+<li><a href="./arctic_3d_abag_bonus.html">Comparing contacts observed in litterature</a>:</li>
+<li><a href="./ai_based_input_bonus.html">Using AI based methods to obtain input structures</a>:</li>
+<li><a href="./ai_based_ensemble_docking.html">Performing ensemble docking</a>:</li>
+<li><a href="./ai_based_abag_modelling.html">AI based modelling</a>:</li>
+<li><a href="./abag_haddock3_webapp.html">Haddock3 web application</a>:</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="bonus-1-does-the-antibody-bind-to-a-known-interface-of-interleukin-arctic-3d-analysis"><a class="header" href="#bonus-1-does-the-antibody-bind-to-a-known-interface-of-interleukin-arctic-3d-analysis">BONUS 1: Does the antibody bind to a known interface of interleukin? ARCTIC-3D analysis</a></h2>
+<p>Gevokizumab is a highly specific antibody that targets an allosteric site of Interleukin-1β (IL-1β) in PDB file <em>4G6M</em>, thus reducing its binding affinity for its substrate, interleukin-1 receptor type I (IL-1RI). Canakinumab, another antibody binding to IL-1β, has a different mode of action, as it competes directly with the binding site of IL-1RI (in PDB file <em>4G6J</em>). For more details please check <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022283612007863?via%3Dihub">this article</a>{:target="_blank"}.</p>
+<p>We will now use our new software, <a href="https://www.nature.com/articles/s42003-023-05718-w">ARCTIC-3D</a>{:target="_blank"}, to visualize the binding interfaces formed by IL-1β. First, the program retrieves all the existing binding surfaces formed by IL-1β from the <a href="https://www.ebi.ac.uk/pdbe/">PDBe website</a>{:target="_blank"}. Then, these binding surfaces are compared and clustered together if they span a similar region of the selected protein (IL-1β in our case).</p>
+<p>We will run an ARCTIC-3D job targeting the uniprot ID of human Interleukin-1 beta, namely <a href="https://www.uniprot.org/uniprotkb/P01584/entry">P01584</a>{:target="_blank"}.</p>
+<p>For this first open the ARCTIC-3D web-server page <a href="https://wenmr.science.uu.nl/arctic3d/">here</a>{:target="_blank"}.</p>
+<a class="prompt prompt-info">
+Insert the selected UniProt ID in the **UniprotID** field.
+</a>
+<a class="prompt prompt-info">
+Leave the other parameters as they are and click on **Submit**.
+</a>
+<p>Wait a few seconds for the job to complete or access a precalculated run <a href="https://wenmr.science.uu.nl/arctic3d/example-P01584">here</a>{:target="_blank"}.</p>
+<a class="prompt prompt-question">
+How many interface clusters were found for this protein?
+</a>
+<p>Once you download the output archive, you can find the clustering information presented in the dendrogram:</p>
+<figure style="text-align: center;">
+<img width="75%" src="dendrogram_average_P01584.png">
+</figure>
+<p>We can see how the two <em>4G6M</em> antibody chains are recognized as a unique cluster, clearly separated from the other binding surfaces and, in particular, from those proper to IL-1RI (uniprot ID P14778).</p>
+<a class="prompt prompt-info">
+Re-run ARCTIC-3D with a clustering threshold equal to 0.95
+</a>
+<p>This means that the clustering will be looser, therefore lumping more dissimilar surfaces into the same object.</p>
+<p>You can inspect a precalculated run <a href="https://wenmr.science.uu.nl/arctic3d/example-P01584-095">here</a>{:target="_blank"}.</p>
+<a class="prompt prompt-question">
+How do the results change? Are gevokizumab or canakinumab PDB files being clustered with any IL-1RI-related interface?
+</a>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="bonus-2-how-good-are-ai-based-models-of-antibody-for-docking"><a class="header" href="#bonus-2-how-good-are-ai-based-models-of-antibody-for-docking">BONUS 2: How good are AI-based models of antibody for docking?</a></h2>
+<p>The release of <a href="https://www.nature.com/articles/s41586-021-03819-2">AlphaFold2 in late 2020</a> has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with <a href="https://github.com/sokrypton/ColabFold">Alphafold2-multimer</a>{:target="_blank"} and other prediction methods (most notably <a href="https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/">ABodyBuilder2</a>{:target="_blank"}, from the ImmuneBuilder suite) performing nicely on the variable regions.</p>
+<p>For a short introduction to AI and AlphaFold2 refer to this other tutorial <a href="/education/molmod_online/alphafold/#introduction">introduction</a>{:target="_blank"}.</p>
+<p>For antibody modelings, CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility.
+Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.</p>
+<p>Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used for generating reliable models of the antibody-antigen complex by docking, instead of the unbound form used in this tutorial, which, in many cases, will not be available.</p>
+<h3 id="analysing-the-ai-models"><a class="header" href="#analysing-the-ai-models">Analysing the AI models</a></h3>
+<p>We already ran the prediction with these two tools, and you can find the resulting models in the <code>pdbs</code> directory as:</p>
+<ul>
+<li><code>4g6k_Abodybuilder2.pdb</code></li>
+<li><code>4g6k_AF2_multimer.pdb</code></li>
+</ul>
+<p>As was demonstrated in the tutorial, those files must be preprocessed for their use in HADDOCK. Docking-ready files are also provided in the <code>pdbs</code> directory:</p>
+<ul>
+<li><code>4G6K_abb_clean.pdb</code></li>
+<li><code>4G6K_af2_clean.pdb</code></li>
+</ul>
+<p>Load the experimental unbound structure (<code>4G6K_clean.pdb</code>) and the two AI models in PyMOL to see whether they resemble the experimental unbound structure.</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_abb_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_af2_clean.pdb
+</a>
+<p>Align the models to the experimental unbound structure</p>
+<a class="prompt prompt-pymol">
+alignto 4G6K_clean
+</a>
+<a class="prompt prompt-question">
+Which model is the closest to the unbound conformation?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the RMSD values</i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+  4G6K_abb_clean       RMSD =    0.428 Å
+  4G6K_af2_clean       RMSD =    0.765 Å
+</pre>
+ <br>
+</details>
+<br>
+<p>For docking purposes however, it might be more interesting to know how far are the models from the bound conformation, i.e. the conformation in the antibody-antigen complex.
+The closer it is, the easier it should become to model the complex by docking.
+To assess this, we can load the structure of the complex in PyMOL and align all other structures/models to it.</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6M_matched.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> color yellow, 4G6M_matched
+</a>
+<p>Align now the models to the experimental bound structure</p>
+<a class="prompt prompt-pymol">
+alignto 4G6M_matched and chain A
+</a>
+<a class="prompt prompt-question">
+Which model is the closest to the bound conformation?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the RMSD values</i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+  4G6K_abb_clean       RMSD =    0.330 Å
+  4G6K_af2_clean       RMSD =    0.675 Å
+  4G6K_clean           RMSD =    0.393 Å
+</pre>
+ <br>
+</details>
+<br>
+<hr>
+<h3 id="docking-performance-using-ai-based-antibody-models"><a class="header" href="#docking-performance-using-ai-based-antibody-models">Docking performance using AI-based antibody models</a></h3>
+<p>We can repeat the docking as described above in our tutorial, but using this time either the ABodyBuilder2 or AlphaFold2 models as input.
+For this, modify your haddock3 configuration file, changing the input PDB file of the first molecule (the antibody) using the respective HADDOCK-ready models provided in the <code>pdbs</code> directory.
+You will also need to change the restraint filename used to keep the two parts of the antibody together (those files are present in the <code>restraints</code> directory.</p>
+<p>Further, run haddock3 as described above.</p>
+<p>Pre-calculated runs are provided in the <code>runs</code> directory. Analyse your run (or the pre-calculated ones) as described previously.</p>
+<a class="prompt prompt-question">
+Which starting structure of the antibody gives the best results in terms of cluster quality and ranking?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the cluster statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run1-CDR-NMR-CSP/10_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  4
+Total number of medium or better clusters:      1  out of  4
+Total number of high quality clusters:          0  out of  4
+<p>First acceptable cluster - rank:  1  i-RMSD:  1.063  Fnat:  0.918  DockQ:  0.844
+First medium cluster     - rank:  1  i-RMSD:  1.063  Fnat:  0.918  DockQ:  0.844
+Best cluster             - rank:  1  i-RMSD:  1.063  Fnat:  0.918  DockQ:  0.844</p>
+<h1>==============================================
+== runs/run1-abb-CDR-NMR-CSP/10_caprieval/capri_clt.tsv</h1>
+<p>Total number of acceptable or better clusters:  1  out of  2
+Total number of medium or better clusters:      1  out of  2
+Total number of high quality clusters:          0  out of  2</p>
+<p>First acceptable cluster - rank:  1  i-RMSD:  1.197  Fnat:  0.845  DockQ:  0.796
+First medium cluster     - rank:  1  i-RMSD:  1.197  Fnat:  0.845  DockQ:  0.796
+Best cluster             - rank:  1  i-RMSD:  1.197  Fnat:  0.845  DockQ:  0.796</p>
+<h1>==============================================
+== runs/run1-CDR-NMR-CSP-af2/10_caprieval/capri_clt.tsv</h1>
+<p>Total number of acceptable or better clusters:  3  out of  5
+Total number of medium or better clusters:      0  out of  5
+Total number of high quality clusters:          0  out of  5</p>
+<p>First acceptable cluster - rank:  1  i-RMSD:  2.458  Fnat:  0.474  DockQ:  0.486
+First medium cluster     - rank:  -  i-RMSD:    -    Fnat:    -    DockQ:     -
+Best cluster             - rank:  1  i-RMSD:  2.458  Fnat:  0.474  DockQ:  0.486
+</pre>
+<br></p>
+</details>
+<br>
+<a class="prompt prompt-question">
+Which starting structure of the antibody gives the best overall model (irrespective of the ranking)?
+</a>
+<p><em><strong>Hint</strong></em>: Use the <code>extract-capri-stats.sh</code> script to analyse the various runs and find the best (lowest i-RMSD or highest Dock-Q score).</p>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See single structure statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run1-CDR-NMR-CSP/07_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  8  out of  40
+Total number of medium or better models:      7  out of  40
+Total number of high quality models:          1  out of  40
+<p>First acceptable model - rank:  1  i-RMSD:  1.193  Fnat:  0.862  DockQ:  0.803
+First medium model     - rank:  1  i-RMSD:  1.193  Fnat:  0.862  DockQ:  0.803
+Best model             - rank:  2  i-RMSD:  0.957  Fnat:  0.948  DockQ:  0.874</p>
+<h1>==============================================
+== runs/run1-abb-CDR-NMR-CSP/07_caprieval/capri_ss.tsv</h1>
+<p>Total number of acceptable or better models:  13  out of  40
+Total number of medium or better models:       9  out of  40
+Total number of high quality models:           1  out of  40</p>
+<p>First acceptable model - rank:  1  i-RMSD:  1.406  Fnat:  0.862  DockQ:  0.775
+First medium model     - rank:  1  i-RMSD:  1.406  Fnat:  0.862  DockQ:  0.775
+Best model             - rank:  4  i-RMSD:  0.862  Fnat:  0.879  DockQ:  0.870</p>
+<h1>==============================================
+== runs/run1-CDR-NMR-CSP-af2/07_caprieval/capri_ss.tsv</h1>
+<p>Total number of acceptable or better models:  15  out of  40
+Total number of medium or better models:       1  out of  40
+Total number of high quality models:           0  out of  40</p>
+<p>First acceptable model - rank:  1   i-RMSD:  2.780  Fnat:  0.362  DockQ:  0.421
+First medium model     - rank:  10  i-RMSD:  1.654  Fnat:  0.707  DockQ:  0.645
+Best model             - rank:  10  i-RMSD:  1.654  Fnat:  0.707  DockQ:  0.645
+</pre>
+<br></p>
+</details>
+<br>
+<hr>
+<h3 id="conclusions---ai-based-docking"><a class="header" href="#conclusions---ai-based-docking">Conclusions - AI-based docking</a></h3>
+<p>All three antibody structures used in input give good to reasonable results.
+The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure.
+Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="bonus-3-ensemble-docking-using-a-combination-of-exprimental-and-ai-predicted-antibody-structures"><a class="header" href="#bonus-3-ensemble-docking-using-a-combination-of-exprimental-and-ai-predicted-antibody-structures">BONUS 3: Ensemble docking using a combination of exprimental and AI-predicted antibody structures</a></h2>
+<p>Instead of running haddock3 using a specific input structure of the antibody, we can also use an ensemble of all available models.
+Such an ensemble can be created from the individual models using <code>pdb_mkensemble</code> from PDB-tools:</p>
+<a class="prompt prompt-cmd">
+pdb_mkensemble 4G6K_clean.pdb 4G6K_abb_clean.pdb 4G6K_af2_clean.pdb > 4G6K-ensemble.pdb
+</a>
+<p>This ensemble file is provided in the <code>pdbs</code> directory.</p>
+<p>Now we can make use of the flexibility of haddock3 in defining workflows to add a clustering step after the rigid body docking step in order to make sure that models originating from all models will ideally be selected for the refinement steps (provided they do cluster). This modified workflow looks like:</p>
+<p>{% highlight toml %}</p>
+<h1 id="-10"><a class="header" href="#-10">====================================================================</a></h1>
+<h1 id="antibody-antigen-docking-example-with-restraints-from-the-antibody-2"><a class="header" href="#antibody-antigen-docking-example-with-restraints-from-the-antibody-2">Antibody-antigen docking example with restraints from the antibody</a></h1>
+<h1 id="paratope-to-the-nmr-identified-epitope-on-the-antigen-2"><a class="header" href="#paratope-to-the-nmr-identified-epitope-on-the-antigen-2">paratope to the NMR-identified epitope on the antigen</a></h1>
+<h1 id="-11"><a class="header" href="#-11">====================================================================</a></h1>
+<h1 id="directory-in-which-the-scoring-will-be-done-2"><a class="header" href="#directory-in-which-the-scoring-will-be-done-2">directory in which the scoring will be done</a></h1>
+<p>run_dir = "run-ens-CDR-NMR-CSP"</p>
+<h1 id="compute-mode-5"><a class="header" href="#compute-mode-5">compute mode</a></h1>
+<p>mode = "local"
+ncores = 50</p>
+<h1 id="self-contained-rundir-to-avoid-problems-with-long-filename-paths-2"><a class="header" href="#self-contained-rundir-to-avoid-problems-with-long-filename-paths-2">Self contained rundir (to avoid problems with long filename paths)</a></h1>
+<p>self_contained = true</p>
+<h1 id="post-processing-to-generate-statistics-and-plots-2"><a class="header" href="#post-processing-to-generate-statistics-and-plots-2">Post-processing to generate statistics and plots</a></h1>
+<p>postprocess = true
+clean = true</p>
+<p>molecules =  [
+"pdbs/4G6K-ensemble.pdb",
+"pdbs/4I1B_clean.pdb"
+]</p>
+<h1 id="-12"><a class="header" href="#-12">====================================================================</a></h1>
+<h1 id="parameters-for-each-stage-are-defined-below-prefer-full-paths-2"><a class="header" href="#parameters-for-each-stage-are-defined-below-prefer-full-paths-2">Parameters for each stage are defined below, prefer full paths</a></h1>
+<h1 id="-13"><a class="header" href="#-13">====================================================================</a></h1>
+<p>[topoaa]</p>
+<p>[rigidbody]</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-6"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-6">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-6"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-6">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<h1 id="increased-sampling-so-each-conformation-is-sampled-50-times"><a class="header" href="#increased-sampling-so-each-conformation-is-sampled-50-times">Increased sampling so each conformation is sampled 50 times</a></h1>
+<p>sampling = 150</p>
+<p>[clustfcc]
+plot_matrix = true</p>
+<p>[seletopclusts]
+top_models = 10</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[flexref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-7"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-7">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-7"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-7">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[emref]
+tolerance = 5</p>
+<h1 id="cdr-to-nmr-epitope-ambig-restraints-8"><a class="header" href="#cdr-to-nmr-epitope-ambig-restraints-8">CDR to NMR epitope ambig restraints</a></h1>
+<p>ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"</p>
+<h1 id="restraints-to-keep-the-antibody-chains-together-8"><a class="header" href="#restraints-to-keep-the-antibody-chains-together-8">Restraints to keep the antibody chains together</a></h1>
+<p>unambig_fname = "restraints/antibody-unambig.tbl"</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[clustfcc]
+plot_matrix = true</p>
+<p>[seletopclusts]
+top_models = 4</p>
+<p>[caprieval]
+reference_fname = "pdbs/4G6M_matched.pdb"</p>
+<p>[contactmap]</p>
+<h1 id="-14"><a class="header" href="#-14">====================================================================</a></h1>
+<p>{% endhighlight %}</p>
+<p>Our workflow consists of the following 14 modules:</p>
+<ol start="0">
+<li><strong><code>topoaa</code></strong>: <em>Generates the topologies for the CNS engine and builds missing atoms</em></li>
+<li><strong><code>rigidbody</code></strong>: <em>Performs Rigid body energy minimisation</em> - with increased sampling (150 models - 50 per input model)</li>
+<li><strong><code>caprieval</code></strong>: <em>Calculates CAPRI metrics</em></li>
+<li><strong><code>clustfcc</code></strong>: <em>Clustering of models based on the fraction of common contacts (FCC)</em></li>
+<li><strong><code>seletopclusts</code></strong>: <em>Selects the top models of all clusters</em> - In this case, we select max 10 models per cluster.</li>
+<li><strong><code>caprieval</code></strong>: <em>Calculates CAPRI metrics</em> of the selected clusters</li>
+<li><strong><code>flexref</code></strong>: <em>Performs Semi-flexible refinement of the interface (<code>it1</code> in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>emref</code></strong>: <em>Performs a final refinement by energy minimisation (<code>itw</code> EM only in haddock2.4)</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>clustfcc</code></strong>: <em>Clustering of models based on the fraction of common contacts (FCC)</em></li>
+<li><strong><code>seletopclusts</code></strong>: <em>Selects the top models of all clusters</em></li>
+<li><strong><code>caprieval</code></strong></li>
+<li><strong><code>contactmap</code></strong>: <em>Contacts matrix and a chordchart of intermolecular contacts</em></li>
+</ol>
+<p>Compared to the original workflow described in this tutorial we have added clustering and cluster selections steps after the rigid body docking.</p>
+<p>Run haddock3 with this configuration file as described above.</p>
+<p>A pre-calculated run is provided in the <code>runs</code> directory as <code>run1-ens-clst</code>.
+Analyse your run (or the pre-calculated ones) as described previously.</p>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the cluster statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run-ens-CDR-NMR-CSP/11_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  4  out of  11
+Total number of medium or better clusters:      1  out of  11
+Total number of high quality clusters:          0  out of  11
+<p>First acceptable cluster - rank:  1  i-RMSD:  1.188  Fnat:  0.862  DockQ:  0.795
+First medium cluster     - rank:  1  i-RMSD:  1.188  Fnat:  0.862  DockQ:  0.795
+Best cluster             - rank:  1  i-RMSD:  1.188  Fnat:  0.862  DockQ:  0.795
+</pre>
+<br></p>
+</details>
+<br>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See single structure statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run-ens-CDR-NMR-CSP/04_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  25  out of  83
+Total number of medium or better models:      10  out of  83
+Total number of high quality models:          0  out of  83
+<h1>First acceptable model - rank:  3  i-RMSD:  1.238  Fnat:  0.672  DockQ:  0.725
+First medium model     - rank:  3  i-RMSD:  1.238  Fnat:  0.672  DockQ:  0.725
+Best model             - rank:  6  i-RMSD:  1.074  Fnat:  0.707  DockQ:  0.731</h1>
+<h1 id="-runsrun-ens-cdr-nmr-csp06_caprievalcapri_sstsv"><a class="header" href="#-runsrun-ens-cdr-nmr-csp06_caprievalcapri_sstsv">== runs/run-ens-CDR-NMR-CSP/06_caprieval/capri_ss.tsv</a></h1>
+<p>Total number of acceptable or better models:  27  out of  83
+Total number of medium or better models:      10  out of  83
+Total number of high quality models:           5  out of  83</p>
+<h1>First acceptable model - rank:  1  i-RMSD:  1.492  Fnat:  0.741  DockQ:  0.697
+First medium model     - rank:  1  i-RMSD:  1.492  Fnat:  0.741  DockQ:  0.697
+Best model             - rank:  4  i-RMSD:  0.857  Fnat:  0.897  DockQ:  0.872</h1>
+<h1 id="-runsrun-ens-cdr-nmr-csp08_caprievalcapri_sstsv"><a class="header" href="#-runsrun-ens-cdr-nmr-csp08_caprievalcapri_sstsv">== runs/run-ens-CDR-NMR-CSP/08_caprieval/capri_ss.tsv</a></h1>
+<p>Total number of acceptable or better models:  26  out of  83
+Total number of medium or better models:      10  out of  83
+Total number of high quality models:           3  out of  83</p>
+<p>First acceptable model - rank:  1  i-RMSD:  1.504  Fnat:  0.776  DockQ:  0.708
+First medium model     - rank:  1  i-RMSD:  1.504  Fnat:  0.776  DockQ:  0.708
+Best model             - rank:  4  i-RMSD:  0.902  Fnat:  0.914  DockQ:  0.871
+</pre>
+<br></p>
+</details>
+<br>
+<p>We started from three different conformations of the antibody: 1) the unbound crystal structure, 2) the ABodyBuilder2 model and 3) the AlphaFold2 model.</p>
+<a class="prompt prompt-question">
+Using the information in the _traceback_ directory, try to figure out which of the three starting antibody models makes it into the best cluster at the end of the workflow.
+</a>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="bonus-4-antibody-antigen-complex-structure-prediction-from-sequence-using-alphafold2"><a class="header" href="#bonus-4-antibody-antigen-complex-structure-prediction-from-sequence-using-alphafold2">BONUS 4: Antibody-antigen complex structure prediction from sequence using AlphaFold2</a></h2>
+<p>With the advent of Artificial Intelligence (AI) and AlphaFold2, we can also try to predict directly the full antibody-antigen complex using AlphaFold2.
+For this we are going to use the <em>AlphaFold2_mmseq2</em> Jupyter notebook which can be found with other interesting notebooks in Sergey Ovchinnikov
+<a href="https://github.com/sokrypton/ColabFold">ColabFold GitHub repository</a>{:target="_blank"}, making use of the Google Colab CLOUD resources.</p>
+<p>Start the AlphaFold2 notebook on Colab by clicking <a href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb">here</a>{:target="_blank"}.</p>
+<p><strong>Note</strong>: The bottom part of the notebook contains instructions on how to use it.</p>
+<br>
+<h3 id="setting-up-the-antibody-antigen-complex-prediction-with-alphafold2"><a class="header" href="#setting-up-the-antibody-antigen-complex-prediction-with-alphafold2">Setting up the antibody-antigen complex prediction with AlphaFold2</a></h3>
+<p>To setup the prediction we need to provide the sequence of the heavy and light chains of the antibody and the sequence of the antigen.
+These are respectively</p>
+<ul>
+<li>Antibody heavy chain:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDES
+YNPSLKSRLTISKDTSKNQVSLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSS
+</pre>
+<ul>
+<li>Antibody light chain:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPS
+RFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIK
+</pre>
+<ul>
+<li>Antigen:</li>
+</ul>
+<pre style="background-color:#DAE4E7">
+VRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVALGL
+KEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNWYI
+STSQAENMPVFLGGTKGGQDITDFTMQFVSS
+</pre>
+<br>
+<p>To use AlphaFold2 to predict this antibody-antigen complex follow the following steps:</p>
+<a class="prompt prompt-info">
+Copy and paste each of the above sequences in the _query_sequence_ field, adding a colon *:* in between the sequences.
+</a>
+<p>For your convenience the full sequence with colons is provided:</p>
+<pre style="background-color:#DAE4E7">
+QVQLQESGPGLVKPSQTLSLTCSFSGFSLSTSGMGVGWIRQPSGKGLEWLAHIWWDGDESYNPSLKSRLTISKDTSKNQVSLKITSVTAADTAVYFCARNRYDPPWFVDWGQGTLVTVSS:DIQMTQSTSSLSASVGDRVTITCRASQDISNYLSWYQQKPGKAVKLLIYYTSKLHSGVPSRFSGSGSGTDYTLTISSLQQEDFATYFCLQGKMLPWTFGQGTKLEIK:VRSLNCTLRDSQQKSLVMSGPYELKALHLQGQDMEQQVVFSMSFVQGEESNDKIPVALGLKEKNLYLSCVLKDDKPTLQLESVDPKNYPKKKMEKRFVFNKIEINNKLEFESAQFPNWYISTSQAENMPVFLGGTKGGQDITDFTMQFVSS
+</pre>
+<a class="prompt prompt-info">
+Define the _jobname_, e.g. Ab-Ag
+</a>
+<a class="prompt prompt-info">
+In the _Advanced settings_ block you can check the option to save the results to your Google Drive (if you have an account)
+</a>
+<a class="prompt prompt-info">
+In the top section of the Colab, click: _Runtime > Run All_
+</a>
+<p>(It may give a warning that this is not authored by Google because it is pulling code from GitHub - you can ignore it).</p>
+<p>This will automatically install, configure and run AlphaFold2 for you - leave this window open.
+After the prediction completed, you will be asked to download a zip archive with the results (if you configured it to use Google Drive, a result archive will be automatically saved to your Google Drive).</p>
+<br>
+_Time to grab a cup of tea or a coffee!
+And while waiting try to answer the following questions:_
+<a class="prompt prompt-question">
+    How do you interpret AlphaFold2 predictions? What are the predicted LDDT (pLDDT), PAE, iptm?
+</a>
+<p><em>Tip</em>: Try to find information about the prediction confidence at <a href="https://alphafold.ebi.ac.uk/faq">https://alphafold.ebi.ac.uk/faq</a>{:target="_blank"}. A nice summary can also be found <a href="https://www.rbvi.ucsf.edu/chimerax/data/pae-apr2022/pae.html">here</a>{:target="_blank"}.</p>
+<p>Pre-calculated AlphFold2 predictions are provided <a href="abagtest_2d03e.result.zip">here</a>{:target="_blank"}. This archive contains the five predicted models (the naming indicates the rank), figures (png) files (PAE, pLDDT, coverage) and json files containing the corresponding values (the last part of the json files report the ptm and iptm values).</p>
+<br>
+<h3 id="analysis-of-the-generated-af2-models"><a class="header" href="#analysis-of-the-generated-af2-models">Analysis of the generated AF2 models</a></h3>
+<p>While the notebook is running, models will appear first under the <code>Run Prediction</code> section, colored both by chain and by pLDDT.</p>
+<p>The best model will then be displayed under the <code>Display 3D structure</code> section. This is an interactive 3D viewer that allows you to rotate the molecule and zoom in or out.</p>
+<p><strong>Note</strong> that you can change the model displayed with the <em>rank_num</em> option. After changing, it execute the cell by clicking on the run cell icon on the left of it.</p>
+<a class="prompt prompt-question">
+    How similar are the five models generated by AF2?
+</a>
+<p>Consider the pLDDT of the various models (the higher the pLDDT the more reliable the model).</p>
+<a class="prompt prompt-question">
+    What is the confidence of those predictions? (check again the FAQ page of the Alphafold database provided above for pLDDT values)
+</a>
+<p>While the pLDDT score is an overall measure, you can also focus on the interface score reported in the <code>iptm</code> score (value between 0 and 1).</p>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the confidence statistics for the five generated models</i>
+  </summary>
+   <pre>
+    Model1: pLDDT=90.4 pTM=0.654 ipTM=0.525
+    Model2: pLDDT=88.0 pTM=0.65  ipTM=0.522
+    Model3: pLDDT=88.2 pTM=0.647 ipTM=0.52
+    Model4: pLDDT=88.0 pTM=0.644 ipTM=0.516
+    Model5: pLDDT=88.1 pTM=0.641 ipTM=0.512
+</pre>
+<br>
+Note that if you performed a fresh run your results might well differ from those shown here.
+<br>
+</details>
+<br>
+<a class="prompt prompt-question">
+    Based on the iptm scores, would you qualify those models as reliable?
+</a>
+<p><strong>Note</strong> that in this case the iptm score reports on all interfaces, i.e. both the interface between the two chains of the antibody, and the antibody-antigen interface</p>
+<p>Another useful way of looking at the model accuracy is to check the Predicted Alignment Error plots (PAE) (also referred to as Domain position confidence).
+The PAE gives a distance error for every pair of residues: It gives the estimate of the position error at residue x when the predicted and true structures are aligned on residue y.
+Values range from 0 to 35 Angstroms.
+It is usually shown as a heatmap image with residue numbers running along vertical and horizontal axes and each pixel colored according to the PAE value for the corresponding pair of residues.
+If the relative position of two domains is confidently predicted then the PAE values will be low (less than 5A - dark blue) for pairs of residues with one residue in each domain.
+When analysing your complex, the diagonal block will indicate the PAE within each molecule/domain, while the off-diagonal blocks report the accuracy of the domain-domain placement.</p>
+<p>Our antibody-antigen complex consists of three interfaces:</p>
+<ul>
+<li>The interface between the heavy and light chains of the antibody</li>
+<li>The interface between the heavy chain of the antibody and the antigen</li>
+<li>The interface between the light chain of the antibody and the antigen</li>
+</ul>
+<br>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the PAE plots for the five generated models</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/abagtest_2d03e_pae.png">
+  </figure>
+</details>
+<br>
+<a class="prompt prompt-question">
+    Based on the PAE plots, which interfaces can be considered reliable/unreliable?
+</a>
+<br>
+<h3 id="visualization-of-the-generated-af2-models"><a class="header" href="#visualization-of-the-generated-af2-models">Visualization of the generated AF2 models</a></h3>
+<p>In order to visualize the models in PyMOL save your predictions to disk or download the precalculated AlphaFold2 models from <a href="abagtest_2d03e.result.zip">here</a>{:target="_blank"}.</p>
+<p>Start PyMOL and load via the File menu all five AF2 models.</p>
+<p><a class="prompt prompt-pymol">File menu -&gt; Open -&gt; select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000.pdb</a></p>
+<p>Repeat this for each model (<code>abagtest_2d03e_unrelaxed_rank_X_alphafold2_multimer_v3_model_X_seed_000.pdb</code> or whatever the naming of your model is).</p>
+<p>Let us superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains A and B):</p>
+<a class="prompt prompt-pymol">
+util.cbc<br>
+select abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000 and chain A+B<br>
+alignto sele<br>
+</a>
+<p>This will align all clusters on the antibody, maximizing the differences in the orientation of the antigen.</p>
+<a class="prompt prompt-question">
+Examine the various models. How does the orientation of the antigen differ between them?
+</a>
+<p><strong>Note:</strong> You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.</p>
+<details>
+  <summary style="font-weight: bold">
+    <i>See tips on how to visualize the prediction confidence in PyMOL</i>
+  </summary>
+<p>When looking at the structures generated by AlphaFold2 in PyMOL, the pLDDT is encoded as the B-factor. <br>
+To color the model according to the pLDDT type in PyMOL:
+<br>
+<a class="prompt prompt-pymol">
+spectrum b
+</a></p>
+<p><strong>Note</strong> that the scale in the B-factor field is the inverse of the color coding in the PAE plots: i.e. red mean reliable (high pLDDT) and blue unreliable (low pLDDT))</p>
+</details>
+<br>
+<p>Since we do have NMR chemical shift perturbation data for the antigen, we can check if the perturbed residues are at the interface in the AF2 models.
+Note that there is a shift in the numbering of 2 residues between the AF2 and the HADDOCK models.</p>
+<a class="prompt prompt-pymol">
+util.cbc<br>
+select epitope, (resi 70,71,72,73,81,82,87,88,90,92,94,95,96,113,114,115) and chain C<br>
+color orange, epitope<br>
+</a>
+<a class="prompt prompt-question">
+Does any model have the NMR-identified epitope at the interface with the antibody?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold2 models with the NMR-mapped epitope </i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af2.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>It should be clear from the visualization of the NMR-mapped epitope on the AF2 models that none satisfies the NMR data.
+To further make that clear we can compare the models to the crystal structure of the complex (4G6M).</p>
+<p>For this download and superimpose the models onto the crystal structure in PyMOL with the following commands:</p>
+<a class="prompt prompt-pymol">
+fetch 4G6M<br>
+remove resn HOH<br>
+color yellow, 4G6M<br>
+select 4G6M and chain H+L<br>
+alignto sele
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold2 models superimposed onto the crystal structure of the complex (4G6M)</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af2-4G6M.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>More recently, the third version of AlphaFold (AlphaFold3) has been <a href="https://www.nature.com/articles/s41586-024-07487-w">published</a>{:target="_blank"}.
+While the code is not yet released, a dedicated online tool <a href="https://golgi.sandbox.google.com/">AlphaFoldServer</a>{:target="_blank"} is made available for the academic community to allow us to make upto 20 predictions per day with this new version.
+Pre-calculated AlphFold3 predictions are provided <a href="af3server_abag_15052024.zip">here</a>{:target="_blank"}.</p>
+<a class="prompt prompt-question">
+Try to reproduce the previous steps and examine the quality of the various generated models. Do AlphaFold3 provide better predictions?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold3 models with mapped epitope residues in orange</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af3-epitope.png">
+  </figure>
+  <br>
+</details>
+<br>
+<details style="background-color:#DAE4E7">
+  <summary style="font-weight: bold">
+    <i>See the AlphaFold3 models onto the crystal structure of the complex (4G6M) in red</i>
+  <br>
+  </summary>
+  <figure align="center">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2024/ab-ag-af3-4G6M.png">
+  </figure>
+  <br>
+</details>
+<br>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="bonus-5-introduction-to-the-haddock3-webapp"><a class="header" href="#bonus-5-introduction-to-the-haddock3-webapp">BONUS 5: Introduction to the haddock3 webapp</a></h2>
+<p>In addition to the command line interface of haddock3, we are currently developing a new dedicated web application enabling the use of haddock3 under a graphical user interface, directly linking the software functionalities and computed results in an interactive manner.
+While not yet deployed as a web service, the application is already available for local installations.</p>
+<h3 id="intallation-procedure"><a class="header" href="#intallation-procedure">Intallation procedure</a></h3>
+<p>The current version requires <a href="https://www.docker.com/">docker</a> to build the web application.
+Once docker is installed on your computer, deploying the webapp is as simple as following the next 3 command lines.</p>
+<p><strong>Note</strong> that for the sake of this tutorial, the webapp was already built on your computer, and you can simply access it using the following url: <a href="http://localhost:8080">http://localhost:8080</a></p>
+<details style="background-color:#DAE4E7">
+  <summary>
+    <b><i>How to build the webapp</i></b> <i class="material-icons">expand_more</i>
+  <br>
+  </summary>
+First, download the haddock3 webapp:
+<p><a class="prompt prompt-cmd">git clone https://github.com/i-VRESSE/haddock3-webapp.git</a></p>
+<p>Then copy a compiled CNS executable in the <code>deploy/</code> directory.
+<strong>Note</strong> that the container is running under Linux, therfore a Linux-compiled version (compatible with your CPU architecture) of CNS is required here. Instructions on how to compile CNS are available in the <a href="https://github.com/haddocking/haddock3/blob/main/docs/CNS.md">haddock3 documentation</a></p>
+<p><b style="color: red;">As this is still in heavy development, the instructions on how to build the web-app is not yet trivial. Better instructions will be written onces it will be in production.</b></p>
+</details>
+<h3 id="creating-an-account"><a class="header" href="#creating-an-account">Creating an account</a></h3>
+<p>For the sake of this tutorial, we have already created accounts:</p>
+<ul>
+<li><strong>email</strong>: summerschool@bioexcel.eu</li>
+<li><strong>password</strong>: haddock3</li>
+</ul>
+<details style="background-color:#DAE4E7">
+  <summary>
+    <b><i>How to create an account</i></b> <i class="material-icons">expand_more</i>
+  <br>
+  </summary>
+To create a new account, add your email adresse and choose a password.
+<br>
+Right after its creation, you will be able to login, but before you can definitely use all the functionalities of the webapp, your account must be validated by an adminitrator that will grant you priviledges.
+<p><strong>Note</strong> that with the current implementation, the first user to register comes the administrator.</p>
+</details>
+<h3 id="running-this-tutorial"><a class="header" href="#running-this-tutorial">Running this tutorial</a></h3>
+<p>Once logged in, click on the <code>build</code> menu to start the creation of a custom workflow.
+You will land on the workflow-builder page, where you can interactively build your haddock3 scenario by combining the available modules.
+This page is subdivided into three areas described below.</p>
+<figure style="text-align: center;">
+  <img width="75%" src="./haddock3-webapp-workflow-builder.png">
+</figure>
+<p>On the left is presented the list of modules.
+To add a module to the workflow, just click on it, and it will be automatically added at the bottom of the configuration file.
+Alternatively, you can drag-and-drop (using the dots) it to the central panel, at the location where you wish to place it.</p>
+<p>The set of modules defining your current workflow is presented on the central panel.
+You can switch between interactive (click on “Visual” tab under the Workflow section) and textual (click on “Text” tab) forms of it.
+You can configure the parameters of each module by clicking on this module (inside the central panel).</p>
+<p>Initially, default parameters are set for each module.
+Parameters are sub-categorized based on their properties.
+Unfold a property by clicking on it, and discover the set of related parameters.
+<strong>Note</strong> that you should always click the <code>save</code> button after modifying a parameter value for it to be taken into consideration.</p>
+<p>Finally, once you configured your workflow, click on <code>submit</code> to launch the corresponding haddock3 run.</p>
+<details style="background-color:#DAE4E7">
+  <summary>
+    <b><i>Display available modules</i></b> <i class="material-icons">expand_more</i>
+  <br>
+  </summary>
+<ul>
+<li>
+<p><strong>Topology modules</strong></p>
+<ul>
+<li><code>topoaa</code>: <em>Generates the all-atom topologies for the CNS engine.</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Sampling modules</strong></p>
+<ul>
+<li><code>rigidbody</code>: <em>Performs rigid body energy minimization with CNS (<code>it0</code> in haddock2.x).</em></li>
+<li><code>lightdock</code>: <em>Third-party glow-worm swam optimization docking software.</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Model refinement modules</strong></p>
+<ul>
+<li><code>flexref</code>: <em>Performs semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (<code>it1</code> in haddock2.x).</em></li>
+<li><code>emref</code>: <em>Performs refinement by energy minimisation (<code>itw</code> EM only in haddock2.4).</em></li>
+<li><code>mdref</code>: <em>Performs refinement by a short molecular dynamics simulation in explicit solvent (<code>itw</code> in haddock2.X).</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Scoring modules</strong></p>
+<ul>
+<li><code>emscoring</code>: <em>Performs scoring of a complex performing a short EM (builds the topology and all missing atoms).</em></li>
+<li><code>mdscoring</code>: <em>Performs scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Analysis modules</strong></p>
+<ul>
+<li><code>alascan</code>: <em>Performs a systematic (or user-define) alanine scanning mutagenesis of interface residues.</em></li>
+<li><code>caprieval</code>: <em>Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided.</em></li>
+<li><code>clustfcc</code>: <em>Clusters models based on the fraction of common contacts (FCC)</em></li>
+<li><code>clustrmsd</code>: <em>Clusters models based on pairwise RMSD matrix calculated with the <code>rmsdmatrix</code> module.</em></li>
+<li><code>contactmap</code>: <em>Generate contact matrices of both intra- and intermolecular contacts and a chordchart of intermolecular contacts.</em></li>
+<li><code>rmsdmatrix</code>: <em>Calculates the pairwise RMSD matrix between all the models generated in the previous step.</em></li>
+<li><code>ilrmsdmatrix</code>: <em>Calculates the pairwise interface-ligand-RMSD (il-RMSD) matrix between all the models generated in the previous step.</em></li>
+<li><code>seletop</code>: <em>Selects the top N models from the previous step.</em></li>
+<li><code>seletopclusts</code>: <em>Selects top N clusters from the previous step.</em></li>
+</ul>
+</li>
+</ul>
+</details>
+<br>
+<p><strong>Note</strong> that you can also upload a zip archive of a workflow containing a configuration file named <code>workflow.cfg</code> and all corresponding files (e.g.: pdb structures, restraints files, topological parameters, etc.). Workflow archives presented in this tutorial are available in <code>workflows/webapp-workflows/</code>.</p>
+<h3 id="loading-haddock3-runs"><a class="header" href="#loading-haddock3-runs">Loading haddock3 runs</a></h3>
+<p>The webapp also allows you to upload a pre-computed run, so you can navigate through the docking results with ease thanks to the graphical interface.
+Under the <code>Upload</code> menu, you can upload two types of zip archives:</p>
+<ul>
+<li><strong>Workflow</strong>: a zip archive containing a configuration file named <code>workflow.cfg</code> and all corresponding files (e.g.: pdb structures, restraints files, topological parameters, etc.)</li>
+<li><strong>Run</strong>: a zip archive of the run.</li>
+</ul>
+<details style="background-color:#DAE4E7">
+ <summary>
+  <b><i>How to generate a zip archive of a run?</i></b> <i class="material-icons">expand_more</i>
+ </summary>
+<br>
+<p>First go to the run directory containing all the generated data<br>
+<a class="prompt prompt-cmd">cd run_dir</a><br>
+Create the zip archive<br>
+<a class="prompt prompt-cmd">zip -r run.zip .</a></p>
+</details>
+<br>
+<p><strong>Note</strong> that the archives of workflows are available in <code>workflows/webapp-workflows/</code>, and archives of pre-computed runs are stored in <code>runs/webapp_runs/</code>.</p>
+<h3 id="navigating-throught-the-results"><a class="header" href="#navigating-throught-the-results">Navigating throught the results</a></h3>
+<p>On the <code>Manage</code> page, a table displays all the haddock3 runs performed by one user.
+This table contains the job status (queued, running, error, ok), its name, creation date and modification date.
+On the right side of the table, actions can be performed.
+The current implementation allows to rename a run or to delete it.</p>
+<figure style="text-align: center;">
+  <img width="75%" src="./haddock3-webapp-manage-run-access.png">
+</figure>
+<p>To access the content of a run, click on its name to be directed to the haddock3 webapp results page.
+You will land on the analysis page, which summarizes the performance of the models obtained at the last stage.
+This is similar to the previous method of opening the <code>report.html</code> file (see above), which contains various plots displaying the HADDOCK score and its components against different CAPRI metrics.
+In this case, because a reference was provided during the <code>caprieval</code> module, performance is evaluated based on this structure.</p>
+<p>In addition, you can click on the <code>browse</code> button, which will let you access all the files of the run.</p>
+<h3 id="running-a-scoring-scenario"><a class="header" href="#running-a-scoring-scenario">Running a scoring scenario</a></h3>
+<p>In this scenario, we want to score the various models obtained at the previous stages (ensemble docking and AlphaFold predictions) and observe if the HADDOCK scoring function is able to detect the quality of the models.</p>
+<p>In this scenario, we want to:</p>
+<ul>
+<li>Start by generating the topologies for the various models.</li>
+<li>Cluster the models using Fraction of Common Contacts:
+<ul>
+<li>set the parameter <code>min_population</code> to 1 so that all models, including singletons (models that do not cluster with any others), will be forwarded to the next steps.</li>
+<li>set the parameter <code>plot_matrix</code> to true to generate a matrix of the clusters for a visual representation.</li>
+</ul>
+</li>
+<li>Add the Energy Minimisation module to score all complexes.</li>
+<li>End the scenario with a comparison of the models with the reference complex <code>4G6M_matched.pdb</code> using CAPRI criteria.</li>
+</ul>
+<p>For this, two ensembles must be scored and one structure will be used as a reference. You can find them in the <code>pdbs/</code> directory:</p>
+<ul>
+<li><code>07_emref_and_top5af2_ensemble.pdb</code>: An ensemble of models obtained from the ensemble run, combined with top5 AlphaFold2 predictions.</li>
+<li><code>af3server_15052024_top5ens.pdb</code>: An ensemble of top5 AlphaFold3 predictions.</li>
+<li><code>4G6M_matched.pdb</code>: The reference structure for quality assessments.</li>
+</ul>
+<a class="prompt prompt-info">
+Generate a simple scoring configuration file scenario using the workflow builder.
+</a>
+<p>{% highlight toml %}</p>
+<h1 id="-15"><a class="header" href="#-15">====================================================================</a></h1>
+<h1 id="antibody-antigen-docking-example-with-restraints-from-the-antibody-3"><a class="header" href="#antibody-antigen-docking-example-with-restraints-from-the-antibody-3">Antibody-antigen docking example with restraints from the antibody</a></h1>
+<h1 id="paratope-to-the-nmr-identified-epitope-on-the-antigen-3"><a class="header" href="#paratope-to-the-nmr-identified-epitope-on-the-antigen-3">paratope to the NMR-identified epitope on the antigen</a></h1>
+<h1 id="-16"><a class="header" href="#-16">====================================================================</a></h1>
+<p>run_dir = "scoring-haddock3-alphafold2and3-ensemble"</p>
+<p>molecules =  [
+"07_emref_and_top5af2_ensemble.pdb",
+"af3server_15052024_top5ens.pdb",
+]</p>
+<h1 id="-17"><a class="header" href="#-17">====================================================================</a></h1>
+<h1 id="parameters-for-each-stage-are-defined-below"><a class="header" href="#parameters-for-each-stage-are-defined-below">Parameters for each stage are defined below</a></h1>
+<h1 id="-18"><a class="header" href="#-18">====================================================================</a></h1>
+<h1 id="start-by-generating-the-topologies"><a class="header" href="#start-by-generating-the-topologies">Start by generating the topologies</a></h1>
+<p>[topoaa]</p>
+<h1 id="cluster-structures-to-observe-similarities"><a class="header" href="#cluster-structures-to-observe-similarities">Cluster structures to observe similarities</a></h1>
+<p>[clustfcc]</p>
+<h1 id="reducing-min_population-to-define-a-cluster-to-1-so-even-complexes"><a class="header" href="#reducing-min_population-to-define-a-cluster-to-1-so-even-complexes">Reducing min_population to define a cluster to 1 so even complexes</a></h1>
+<h1 id="that-do-not-cluster-with-any-other-will-define-singlotons"><a class="header" href="#that-do-not-cluster-with-any-other-will-define-singlotons">that do not cluster with any other will define singlotons</a></h1>
+<p>min_population = 1</p>
+<h1 id="generate-a-matrix-of-the-clusters"><a class="header" href="#generate-a-matrix-of-the-clusters">Generate a matrix of the clusters</a></h1>
+<p>plot_matrix = true</p>
+<h1 id="run-the-energy-minimisation-scoring-module"><a class="header" href="#run-the-energy-minimisation-scoring-module">Run the Energy Minimisation Scoring module</a></h1>
+<p>[emscoring]</p>
+<h1 id="evaluate-the-models-with-the-capri-criterions"><a class="header" href="#evaluate-the-models-with-the-capri-criterions">Evaluate the models with the CAPRI criterions</a></h1>
+<p>[caprieval]
+reference_fname = "4G6M_matched.pdb"</p>
+<h1 id="-19"><a class="header" href="#-19">====================================================================</a></h1>
+<p>{% endhighlight %}</p>
+<p>To simplify the tutorial, scoring scenario configuration files are provided in the <code>workflow/</code> directory, precomputed results in the <code>runs/</code> directory and finally archives for the haddock3-webapp upload section in <code>workflow/webapp/scoring-*.cfg</code>.</p>
+<a class="prompt prompt-question">
+How are scoring the AlphaFold predictions?
+</a>
+<a class="prompt prompt-question">
+Can the HADDOCK scoring function identify the best models?
+</a>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="congratulations-"><a class="header" href="#congratulations-">Congratulations! 🎉</a></h2>
+<p>Congratulations, you have completed this tutorial.</p>
+<p>If you have any questions or suggestions, feel free to contact us via email or asking a question through our <a href="https://ask.bioexcel.eu">support center</a>.</p>
+<p>And check also our <a href="https://www.bonvinlab.org/education">education section</a> on our website, where you will find more tutorials!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

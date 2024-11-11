@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Using AI based methods to obtain input structures - HADDOCK3-antibody-antigen</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.</strong> High Ambiguity Driven DOCKing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.1.</strong> HADDOCK</a></li><li class="chapter-item expanded "><a href="shared/intro/haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Antibody-antigen</a></li><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.</strong> Software, Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.1.</strong> Installing haddock3</a></li><li class="chapter-item expanded "><a href="shared/intall/auxiliary_software.html"><strong aria-hidden="true">3.2.</strong> Auxiliary software</a></li></ol></li><li class="chapter-item expanded "><a href="software_and_data.html"><strong aria-hidden="true">4.</strong> Starting data</a></li><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.1.</strong> Prepare the antibody structure</a></li><li class="chapter-item expanded "><a href="prepare_antigen.html"><strong aria-hidden="true">5.2.</strong> Prepare the antigen structure</a></li></ol></li><li class="chapter-item expanded "><a href="airs.html"><strong aria-hidden="true">6.</strong> Defining Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="antibody_paratope.html"><strong aria-hidden="true">6.1.</strong> Antibody paratope</a></li><li class="chapter-item expanded "><a href="antigen_epitope.html"><strong aria-hidden="true">6.2.</strong> Antigen epitope</a></li></ol></li><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.</strong> Generating Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.1.</strong> How AIRs are defined ?</a></li><li class="chapter-item expanded "><a href="validate_tbl.html"><strong aria-hidden="true">7.2.</strong> Validating your interaction restraints</a></li><li class="chapter-item expanded "><a href="restrain_bodies.html"><strong aria-hidden="true">7.3.</strong> Additional restraints for multi-chain proteins</a></li></ol></li><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.</strong> Haddock3 docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.1.</strong> Setting up a haddock3 docking workflow</a></li><li class="chapter-item expanded "><a href="running_haddock3.html"><strong aria-hidden="true">8.2.</strong> Running haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.</strong> Analysis of your docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.1.</strong> Docking run outputs</a></li><li class="chapter-item expanded "><a href="clusters.html"><strong aria-hidden="true">9.2.</strong> Clustering results</a></li><li class="chapter-item expanded "><a href="scores.html"><strong aria-hidden="true">9.3.</strong> Scores and plots</a></li><li class="chapter-item expanded "><a href="contacts.html"><strong aria-hidden="true">9.4.</strong> Contact analysis</a></li><li class="chapter-item expanded "><a href="visualizing_models.html"><strong aria-hidden="true">9.5.</strong> Analysing models</a></li></ol></li><li class="chapter-item expanded "><a href="bonus_toc.html"><strong aria-hidden="true">10.</strong> BONUS: additional analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="arctic_3d_abag_bonus.html"><strong aria-hidden="true">10.1.</strong> Comparing contacts observed in litterature</a></li><li class="chapter-item expanded "><a href="ai_based_input_bonus.html" class="active"><strong aria-hidden="true">10.2.</strong> Using AI based methods to obtain input structures</a></li><li class="chapter-item expanded "><a href="ai_based_ensemble_docking.html"><strong aria-hidden="true">10.3.</strong> Performing ensemble docking</a></li><li class="chapter-item expanded "><a href="ai_based_abag_modelling.html"><strong aria-hidden="true">10.4.</strong> AI based modelling</a></li><li class="chapter-item expanded "><a href="abag_haddock3_webapp.html"><strong aria-hidden="true">10.5.</strong> Haddock3 web application</a></li></ol></li><li class="chapter-item expanded "><a href="shared/congratulations.html"><strong aria-hidden="true">11.</strong> Final words</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">HADDOCK3-antibody-antigen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="bonus-2-how-good-are-ai-based-models-of-antibody-for-docking"><a class="header" href="#bonus-2-how-good-are-ai-based-models-of-antibody-for-docking">BONUS 2: How good are AI-based models of antibody for docking?</a></h2>
+<p>The release of <a href="https://www.nature.com/articles/s41586-021-03819-2">AlphaFold2 in late 2020</a> has brought structure prediction methods to a new frontier, providing accurate models for the majority of known proteins. This revolution did not spare antibodies, with <a href="https://github.com/sokrypton/ColabFold">Alphafold2-multimer</a>{:target="_blank"} and other prediction methods (most notably <a href="https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabpred/abodybuilder2/">ABodyBuilder2</a>{:target="_blank"}, from the ImmuneBuilder suite) performing nicely on the variable regions.</p>
+<p>For a short introduction to AI and AlphaFold2 refer to this other tutorial <a href="/education/molmod_online/alphafold/#introduction">introduction</a>{:target="_blank"}.</p>
+<p>For antibody modelings, CDR loops are clearly the most challenging region to be predicted given their high sequence variability and flexibility.
+Multiple Sequence Alignment (MSA)-derived information is also less useful in this context.</p>
+<p>Here we will see whether the antibody models given by Alphafold2-multimer and ABodyBuilder2 can be used for generating reliable models of the antibody-antigen complex by docking, instead of the unbound form used in this tutorial, which, in many cases, will not be available.</p>
+<h3 id="analysing-the-ai-models"><a class="header" href="#analysing-the-ai-models">Analysing the AI models</a></h3>
+<p>We already ran the prediction with these two tools, and you can find the resulting models in the <code>pdbs</code> directory as:</p>
+<ul>
+<li><code>4g6k_Abodybuilder2.pdb</code></li>
+<li><code>4g6k_AF2_multimer.pdb</code></li>
+</ul>
+<p>As was demonstrated in the tutorial, those files must be preprocessed for their use in HADDOCK. Docking-ready files are also provided in the <code>pdbs</code> directory:</p>
+<ul>
+<li><code>4G6K_abb_clean.pdb</code></li>
+<li><code>4G6K_af2_clean.pdb</code></li>
+</ul>
+<p>Load the experimental unbound structure (<code>4G6K_clean.pdb</code>) and the two AI models in PyMOL to see whether they resemble the experimental unbound structure.</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_abb_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6K_af2_clean.pdb
+</a>
+<p>Align the models to the experimental unbound structure</p>
+<a class="prompt prompt-pymol">
+alignto 4G6K_clean
+</a>
+<a class="prompt prompt-question">
+Which model is the closest to the unbound conformation?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the RMSD values</i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+  4G6K_abb_clean       RMSD =    0.428 Å
+  4G6K_af2_clean       RMSD =    0.765 Å
+</pre>
+ <br>
+</details>
+<br>
+<p>For docking purposes however, it might be more interesting to know how far are the models from the bound conformation, i.e. the conformation in the antibody-antigen complex.
+The closer it is, the easier it should become to model the complex by docking.
+To assess this, we can load the structure of the complex in PyMOL and align all other structures/models to it.</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4G6M_matched.pdb
+</a>
+<a class="prompt prompt-pymol">
+File menu -> Open -> color yellow, 4G6M_matched
+</a>
+<p>Align now the models to the experimental bound structure</p>
+<a class="prompt prompt-pymol">
+alignto 4G6M_matched and chain A
+</a>
+<a class="prompt prompt-question">
+Which model is the closest to the bound conformation?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the RMSD values</i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+  4G6K_abb_clean       RMSD =    0.330 Å
+  4G6K_af2_clean       RMSD =    0.675 Å
+  4G6K_clean           RMSD =    0.393 Å
+</pre>
+ <br>
+</details>
+<br>
+<hr>
+<h3 id="docking-performance-using-ai-based-antibody-models"><a class="header" href="#docking-performance-using-ai-based-antibody-models">Docking performance using AI-based antibody models</a></h3>
+<p>We can repeat the docking as described above in our tutorial, but using this time either the ABodyBuilder2 or AlphaFold2 models as input.
+For this, modify your haddock3 configuration file, changing the input PDB file of the first molecule (the antibody) using the respective HADDOCK-ready models provided in the <code>pdbs</code> directory.
+You will also need to change the restraint filename used to keep the two parts of the antibody together (those files are present in the <code>restraints</code> directory.</p>
+<p>Further, run haddock3 as described above.</p>
+<p>Pre-calculated runs are provided in the <code>runs</code> directory. Analyse your run (or the pre-calculated ones) as described previously.</p>
+<a class="prompt prompt-question">
+Which starting structure of the antibody gives the best results in terms of cluster quality and ranking?
+</a>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See the cluster statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run1-CDR-NMR-CSP/10_caprieval/capri_clt.tsv
+==============================================
+Total number of acceptable or better clusters:  1  out of  4
+Total number of medium or better clusters:      1  out of  4
+Total number of high quality clusters:          0  out of  4
+<p>First acceptable cluster - rank:  1  i-RMSD:  1.063  Fnat:  0.918  DockQ:  0.844
+First medium cluster     - rank:  1  i-RMSD:  1.063  Fnat:  0.918  DockQ:  0.844
+Best cluster             - rank:  1  i-RMSD:  1.063  Fnat:  0.918  DockQ:  0.844</p>
+<h1>==============================================
+== runs/run1-abb-CDR-NMR-CSP/10_caprieval/capri_clt.tsv</h1>
+<p>Total number of acceptable or better clusters:  1  out of  2
+Total number of medium or better clusters:      1  out of  2
+Total number of high quality clusters:          0  out of  2</p>
+<p>First acceptable cluster - rank:  1  i-RMSD:  1.197  Fnat:  0.845  DockQ:  0.796
+First medium cluster     - rank:  1  i-RMSD:  1.197  Fnat:  0.845  DockQ:  0.796
+Best cluster             - rank:  1  i-RMSD:  1.197  Fnat:  0.845  DockQ:  0.796</p>
+<h1>==============================================
+== runs/run1-CDR-NMR-CSP-af2/10_caprieval/capri_clt.tsv</h1>
+<p>Total number of acceptable or better clusters:  3  out of  5
+Total number of medium or better clusters:      0  out of  5
+Total number of high quality clusters:          0  out of  5</p>
+<p>First acceptable cluster - rank:  1  i-RMSD:  2.458  Fnat:  0.474  DockQ:  0.486
+First medium cluster     - rank:  -  i-RMSD:    -    Fnat:    -    DockQ:     -
+Best cluster             - rank:  1  i-RMSD:  2.458  Fnat:  0.474  DockQ:  0.486
+</pre>
+<br></p>
+</details>
+<br>
+<a class="prompt prompt-question">
+Which starting structure of the antibody gives the best overall model (irrespective of the ranking)?
+</a>
+<p><em><strong>Hint</strong></em>: Use the <code>extract-capri-stats.sh</code> script to analyse the various runs and find the best (lowest i-RMSD or highest Dock-Q score).</p>
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+  <i>See single structure statistics </i> <i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+==============================================
+== runs/run1-CDR-NMR-CSP/07_caprieval/capri_ss.tsv
+==============================================
+Total number of acceptable or better models:  8  out of  40
+Total number of medium or better models:      7  out of  40
+Total number of high quality models:          1  out of  40
+<p>First acceptable model - rank:  1  i-RMSD:  1.193  Fnat:  0.862  DockQ:  0.803
+First medium model     - rank:  1  i-RMSD:  1.193  Fnat:  0.862  DockQ:  0.803
+Best model             - rank:  2  i-RMSD:  0.957  Fnat:  0.948  DockQ:  0.874</p>
+<h1>==============================================
+== runs/run1-abb-CDR-NMR-CSP/07_caprieval/capri_ss.tsv</h1>
+<p>Total number of acceptable or better models:  13  out of  40
+Total number of medium or better models:       9  out of  40
+Total number of high quality models:           1  out of  40</p>
+<p>First acceptable model - rank:  1  i-RMSD:  1.406  Fnat:  0.862  DockQ:  0.775
+First medium model     - rank:  1  i-RMSD:  1.406  Fnat:  0.862  DockQ:  0.775
+Best model             - rank:  4  i-RMSD:  0.862  Fnat:  0.879  DockQ:  0.870</p>
+<h1>==============================================
+== runs/run1-CDR-NMR-CSP-af2/07_caprieval/capri_ss.tsv</h1>
+<p>Total number of acceptable or better models:  15  out of  40
+Total number of medium or better models:       1  out of  40
+Total number of high quality models:           0  out of  40</p>
+<p>First acceptable model - rank:  1   i-RMSD:  2.780  Fnat:  0.362  DockQ:  0.421
+First medium model     - rank:  10  i-RMSD:  1.654  Fnat:  0.707  DockQ:  0.645
+Best model             - rank:  10  i-RMSD:  1.654  Fnat:  0.707  DockQ:  0.645
+</pre>
+<br></p>
+</details>
+<br>
+<hr>
+<h3 id="conclusions---ai-based-docking"><a class="header" href="#conclusions---ai-based-docking">Conclusions - AI-based docking</a></h3>
+<p>All three antibody structures used in input give good to reasonable results.
+The unbound and the ABodyBuilder2 antibodies provided better results, with the best cluster showing models within 1 angstrom of interface-RMSD with respect to the unbound structure.
+Using the Alphafold2 structure in this case is not the best option, as the input antibody is not perfectly modelled in its H3 loop.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="arctic_3d_abag_bonus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="ai_based_ensemble_docking.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="arctic_3d_abag_bonus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="ai_based_ensemble_docking.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

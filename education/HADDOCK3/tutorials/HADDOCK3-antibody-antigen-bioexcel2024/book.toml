@@ -1,0 +1,6 @@
+[book]
+authors = ["BonvinLab", "HADDOCK", "Computational Structural Biology", "Utrecht University"]
+language = "en"
+multilingual = false
+src = "src"
+title = "HADDOCK3-antibody-antigen"

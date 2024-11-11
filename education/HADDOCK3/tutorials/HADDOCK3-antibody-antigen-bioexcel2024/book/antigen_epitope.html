@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Antigen epitope - HADDOCK3-antibody-antigen</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.</strong> High Ambiguity Driven DOCKing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.1.</strong> HADDOCK</a></li><li class="chapter-item expanded "><a href="shared/intro/haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Antibody-antigen</a></li><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.</strong> Software, Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.1.</strong> Installing haddock3</a></li><li class="chapter-item expanded "><a href="shared/intall/auxiliary_software.html"><strong aria-hidden="true">3.2.</strong> Auxiliary software</a></li></ol></li><li class="chapter-item expanded "><a href="software_and_data.html"><strong aria-hidden="true">4.</strong> Starting data</a></li><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.1.</strong> Prepare the antibody structure</a></li><li class="chapter-item expanded "><a href="prepare_antigen.html"><strong aria-hidden="true">5.2.</strong> Prepare the antigen structure</a></li></ol></li><li class="chapter-item expanded "><a href="airs.html"><strong aria-hidden="true">6.</strong> Defining Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="antibody_paratope.html"><strong aria-hidden="true">6.1.</strong> Antibody paratope</a></li><li class="chapter-item expanded "><a href="antigen_epitope.html" class="active"><strong aria-hidden="true">6.2.</strong> Antigen epitope</a></li></ol></li><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.</strong> Generating Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.1.</strong> How AIRs are defined ?</a></li><li class="chapter-item expanded "><a href="validate_tbl.html"><strong aria-hidden="true">7.2.</strong> Validating your interaction restraints</a></li><li class="chapter-item expanded "><a href="restrain_bodies.html"><strong aria-hidden="true">7.3.</strong> Additional restraints for multi-chain proteins</a></li></ol></li><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.</strong> Haddock3 docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.1.</strong> Setting up a haddock3 docking workflow</a></li><li class="chapter-item expanded "><a href="running_haddock3.html"><strong aria-hidden="true">8.2.</strong> Running haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.</strong> Analysis of your docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="outputs.html"><strong aria-hidden="true">9.1.</strong> Docking run outputs</a></li><li class="chapter-item expanded "><a href="clusters.html"><strong aria-hidden="true">9.2.</strong> Clustering results</a></li><li class="chapter-item expanded "><a href="scores.html"><strong aria-hidden="true">9.3.</strong> Scores and plots</a></li><li class="chapter-item expanded "><a href="contacts.html"><strong aria-hidden="true">9.4.</strong> Contact analysis</a></li><li class="chapter-item expanded "><a href="visualizing_models.html"><strong aria-hidden="true">9.5.</strong> Analysing models</a></li></ol></li><li class="chapter-item expanded "><a href="bonus_toc.html"><strong aria-hidden="true">10.</strong> BONUS: additional analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="arctic_3d_abag_bonus.html"><strong aria-hidden="true">10.1.</strong> Comparing contacts observed in litterature</a></li><li class="chapter-item expanded "><a href="ai_based_input_bonus.html"><strong aria-hidden="true">10.2.</strong> Using AI based methods to obtain input structures</a></li><li class="chapter-item expanded "><a href="ai_based_ensemble_docking.html"><strong aria-hidden="true">10.3.</strong> Performing ensemble docking</a></li><li class="chapter-item expanded "><a href="ai_based_abag_modelling.html"><strong aria-hidden="true">10.4.</strong> AI based modelling</a></li><li class="chapter-item expanded "><a href="abag_haddock3_webapp.html"><strong aria-hidden="true">10.5.</strong> Haddock3 web application</a></li></ol></li><li class="chapter-item expanded "><a href="shared/congratulations.html"><strong aria-hidden="true">11.</strong> Final words</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">HADDOCK3-antibody-antigen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="identifying-the-epitope-of-the-antigen"><a class="header" href="#identifying-the-epitope-of-the-antigen">Identifying the epitope of the antigen</a></h3>
+<p>The article describing the crystal structure of the antibody-antigen complex we are modeling also reports experimental NMR chemical shift titration experiments to map the binding site of the antibody (gevokizumab) on Interleukin-1β.
+The residues affected by binding are listed in Table 5 of <a href="https://dx.doi.org/10.1016/j.jmb.2012.09.021">Blech et al. JMB 2013</a>{:target="_blank"}:</p>
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK24/HADDOCK24-antibody-antigen-basic/Table5-Blech.png">
+</figure>
+<p>The list of binding site (epitope) residues identified by NMR is:</p>
+<pre style="background-color:#DAE4E7">
+72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117
+</pre>
+<p>We will now visualize the epitope on Interleukin-1β.
+To do this, start PyMOL and open the provided PDB file of the antigen from the PyMOL File menu.</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4I1B_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)
+</a>
+<a class="prompt prompt-pymol">
+color red, epitope
+</a>
+<p>Inspect the surface.</p>
+<a class="prompt prompt-question">
+Do the identified residues form a well-defined patch on the surface?
+</a>
+<p>The answer to that question should be yes, but we can see some residues not colored that might also be involved in the binding - there are some white spots around/in the red surface.</p>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See surface view of the epitope identified by NMR</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="75%" src="../HADDOCK3-antibody-antigen/antigen-epitope.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>In HADDOCK, we are dealing with potentially incomplete binding sites by defining surface neighbors as <code>passive</code> residues.
+These passive residues are added in the definition of the interface but do not incur any energetic penalty if they are not part of the binding site in the final models. In contrast, residues defined as active (typically the identified or predicted binding site residues) will incur an energetic penalty.
+When using the HADDOCK2.x webserver, <code>passive</code> residues will be automatically defined.
+Here, since we are using a local version, we need to define those manually.</p>
+<p>This can easily be done using a haddock3 command line tool in the following way:</p>
+<a class="prompt prompt-cmd">
+haddock3-restraints passive_from_active 4I1B_clean.pdb 72,73,74,75,81,83,84,89,90,92,94,96,97,98,115,116,117 \-\-cutoff 0.15
+</a>
+<p>The command prints a list of passive residues, which you should save to a file for further use.</p>
+<p>We can visualize the epitope and its surface neighbors using PyMOL:</p>
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 4I1B_clean.pdb
+</a>
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 72+73+74+75+81+83+84+89+90+92+94+96+97+98+115+116+117)
+</a>
+<a class="prompt prompt-pymol">
+color red, epitope
+</a>
+<a class="prompt prompt-pymol">
+select passive, (resi 3+24+46+47+48+50+66+76+77+79+80+82+86+87+88+91+93+95+118+119+120)
+</a>
+<a class="prompt prompt-pymol">
+color green, passive
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See the epitope and passive residues</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="75%" src="antigen-active-passive.png">
+  </figure>
+  <br>
+</details>
+<br>
+<p>The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors.</p>
+<p>The difference between <code>active</code> and <code>passive</code> residues in HADDOCK is as follows:</p>
+<p><em><strong>Active residues</strong></em>: These residues are "forced" to be at the interface. If they are not part of the interface in the final models, an energetic penalty will be applied. The interface in this context is defined by the union of active and passive residues on the partner molecules.</p>
+<p><em><strong>Passive residues</strong></em>: These residues are expected to be at the interface. However, if they are not, no energetic penalty is applied.</p>
+<p>In general, it is better to be too generous rather than too strict in the definition of passive residues.
+An important aspect is to filter both the active (the residues identified from your mapping experiment) and passive residues by their solvent accessibility.
+This is done automatically when using the <code>haddock3-restraints passive_from_active</code> command: residues with less that 15% relative solvent accessibility (same cutoff as the default in the HADDOCK server) are discared.
+This is, however, not a hard limit, and you might consider including even more buried residues if some important chemical group seems solvent accessible from a visual inspection.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="antibody_paratope.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="gen_airs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="antibody_paratope.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="gen_airs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

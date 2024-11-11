@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Docking run outputs - HADDOCK3-antibody-antigen</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.</strong> High Ambiguity Driven DOCKing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/intro/haddock.html"><strong aria-hidden="true">1.1.</strong> HADDOCK</a></li><li class="chapter-item expanded "><a href="shared/intro/haddock3.html"><strong aria-hidden="true">1.2.</strong> Haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Antibody-antigen</a></li><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.</strong> Software, Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="shared/install/haddock3.html"><strong aria-hidden="true">3.1.</strong> Installing haddock3</a></li><li class="chapter-item expanded "><a href="shared/intall/auxiliary_software.html"><strong aria-hidden="true">3.2.</strong> Auxiliary software</a></li></ol></li><li class="chapter-item expanded "><a href="software_and_data.html"><strong aria-hidden="true">4.</strong> Starting data</a></li><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.</strong> Preparing input files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="prepare_antibody.html"><strong aria-hidden="true">5.1.</strong> Prepare the antibody structure</a></li><li class="chapter-item expanded "><a href="prepare_antigen.html"><strong aria-hidden="true">5.2.</strong> Prepare the antigen structure</a></li></ol></li><li class="chapter-item expanded "><a href="airs.html"><strong aria-hidden="true">6.</strong> Defining Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="antibody_paratope.html"><strong aria-hidden="true">6.1.</strong> Antibody paratope</a></li><li class="chapter-item expanded "><a href="antigen_epitope.html"><strong aria-hidden="true">6.2.</strong> Antigen epitope</a></li></ol></li><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.</strong> Generating Ambiguous Interaction Restraints</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gen_airs.html"><strong aria-hidden="true">7.1.</strong> How AIRs are defined ?</a></li><li class="chapter-item expanded "><a href="validate_tbl.html"><strong aria-hidden="true">7.2.</strong> Validating your interaction restraints</a></li><li class="chapter-item expanded "><a href="restrain_bodies.html"><strong aria-hidden="true">7.3.</strong> Additional restraints for multi-chain proteins</a></li></ol></li><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.</strong> Haddock3 docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="haddock3_abag_workflow.html"><strong aria-hidden="true">8.1.</strong> Setting up a haddock3 docking workflow</a></li><li class="chapter-item expanded "><a href="running_haddock3.html"><strong aria-hidden="true">8.2.</strong> Running haddock3</a></li></ol></li><li class="chapter-item expanded "><a href="outputs.html" class="active"><strong aria-hidden="true">9.</strong> Analysis of your docking run</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="outputs.html" class="active"><strong aria-hidden="true">9.1.</strong> Docking run outputs</a></li><li class="chapter-item expanded "><a href="clusters.html"><strong aria-hidden="true">9.2.</strong> Clustering results</a></li><li class="chapter-item expanded "><a href="scores.html"><strong aria-hidden="true">9.3.</strong> Scores and plots</a></li><li class="chapter-item expanded "><a href="contacts.html"><strong aria-hidden="true">9.4.</strong> Contact analysis</a></li><li class="chapter-item expanded "><a href="visualizing_models.html"><strong aria-hidden="true">9.5.</strong> Analysing models</a></li></ol></li><li class="chapter-item expanded "><a href="bonus_toc.html"><strong aria-hidden="true">10.</strong> BONUS: additional analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="arctic_3d_abag_bonus.html"><strong aria-hidden="true">10.1.</strong> Comparing contacts observed in litterature</a></li><li class="chapter-item expanded "><a href="ai_based_input_bonus.html"><strong aria-hidden="true">10.2.</strong> Using AI based methods to obtain input structures</a></li><li class="chapter-item expanded "><a href="ai_based_ensemble_docking.html"><strong aria-hidden="true">10.3.</strong> Performing ensemble docking</a></li><li class="chapter-item expanded "><a href="ai_based_abag_modelling.html"><strong aria-hidden="true">10.4.</strong> AI based modelling</a></li><li class="chapter-item expanded "><a href="abag_haddock3_webapp.html"><strong aria-hidden="true">10.5.</strong> Haddock3 web application</a></li></ol></li><li class="chapter-item expanded "><a href="shared/congratulations.html"><strong aria-hidden="true">11.</strong> Final words</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">HADDOCK3-antibody-antigen</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="outputs-of-your-docking-run"><a class="header" href="#outputs-of-your-docking-run">Outputs of your docking run</a></h3>
+<p>In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the <code>runs</code> directory:</p>
+<ul>
+<li><code>run1</code>: run created using the unbound antibody.</li>
+<li><code>run1-af2</code>: run created using the Alphafold-multimer antibody (see BONUS 2).</li>
+<li><code>run1-abb</code>: run created using the Immunebuilder antibody (see BONUS 2).</li>
+<li><code>run1-ens</code>: run created using an ensemble of antibody models (see BONUS 3).</li>
+</ul>
+<p>Once your run has completed - inspect the content of the resulting directory.
+You will find the various steps (modules) of the defined workflow numbered sequentially starting at 0, e.g.:</p>
+<p>{% highlight shell %}</p>
+<blockquote>
+<p>ls run1/
+00_topoaa/
+01_rigidbody/
+02_caprieval/
+03_seletop/
+04_flexref/
+05_caprieval/
+06_emref/
+07_caprieval/
+08_clustfcc/
+09_seletopclusts/
+10_caprieval/
+11_contactmap/
+analysis/
+data/
+log
+toppar/
+traceback/
+{% endhighlight %}</p>
+</blockquote>
+<p>In addition, there is a log file (text file) and four additional directories:</p>
+<ul>
+<li>the <code>analysis</code> directory contains various plots to visualize the results for each caprieval step and a general report (<code>report.html</code>) that provides all statistics with various plots. You can open this file in your preferred web browser</li>
+<li>the <code>data</code> directory contains the input data (PDB and restraint files) for the various modules</li>
+<li>the <code>toppar</code> directory contains the force field topology and parameter files (only present when running in self-contained mode)</li>
+<li>the <code>traceback</code> directory contains <code>traceback.tsv</code>, which links all models to see which model originates from which throughout all steps of the workflow.</li>
+</ul>
+<p>You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.</p>
+<p>For example, the <code>09_seletopclusts</code> directory contains the selected models from each cluster. The clusters in that directory are numbered based
+on their rank, i.e. <code>cluster_1</code> refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the <code>seletopclusts.txt</code> file.</p>
+<p>The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the <code>10_caprieval</code> directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps). This directory will always contain a <code>capri_ss.tsv</code> single model statistics file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:</p>
+<pre style="background-color:#DAE4E7">
+                  model  md5  caprieval_rank     score  irmsd   fnat  lrmsd  ilrmsd  dockq  cluster_id  cluster_ranking  model-cluster_ranking      air  angles  bonds       bsa   cdih   coup   dani  desolv   dihe      elec  improper   rdcs     rg    sym     total      vdw   vean   xpcs
+../06_emref/emref_1.pdb    -               1  -142.417  1.193  0.862  2.242   2.261  0.803           -                -                      -   61.388   0.000  0.000  1884.490  0.000  0.000  0.000   6.496  0.000  -546.456     0.000  0.000  0.000  0.000  -530.829  -45.760  0.000  0.000
+../06_emref/emref_2.pdb    -               2  -142.268  0.957  0.948  1.681   1.512  0.874           -                -                      -   78.754   0.000  0.000  1849.190  0.000  0.000  0.000   0.557  0.000  -497.733     0.000  0.000  0.000  0.000  -470.134  -51.154  0.000  0.000
+../06_emref/emref_3.pdb    -               3  -142.107  1.040  0.931  1.985   1.675  0.852           -                -                      -   44.821   0.000  0.000  1886.680  0.000  0.000  0.000  -0.829  0.000  -491.378     0.000  0.000  0.000  0.000  -494.041  -47.484  0.000  0.000
+../06_emref/emref_8.pdb    -               4  -133.948  1.063  0.931  2.135   1.719  0.846           -                -                      -  104.785   0.000  0.000  1746.970  0.000  0.000  0.000   3.183  0.000  -481.057     0.000  0.000  0.000  0.000  -427.670  -51.398  0.000  0.000
+...
+</pre>
+<p>If clustering was performed prior to calling the <code>caprieval</code> module, the <code>capri_ss.tsv</code> file will also contain information about to which cluster the model belongs to and its ranking within the cluster.</p>
+<p>The relevant statistics are:</p>
+<ul>
+<li><strong>score</strong>: <em>the HADDOCK score (arbitrary units)</em></li>
+<li><strong>irmsd</strong>: <em>the interface RMSD, calculated over the interfaces the molecules</em></li>
+<li><strong>fnat</strong>: <em>the fraction of native contacts</em></li>
+<li><strong>lrmsd</strong>: <em>the ligand RMSD, calculated on the ligand after fitting on the receptor (1st component)</em></li>
+<li><strong>ilrmsd</strong>: <em>the interface-ligand RMSD, calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example)</em></li>
+<li><strong>dockq</strong>: <em>the DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale between 1 (exactly equal to reference) and 0</em></li>
+</ul>
+<p>Various other terms are also reported including:</p>
+<ul>
+<li><strong>bsa</strong>: <em>the buried surface area (in squared angstroms)</em></li>
+<li><strong>elec</strong>: <em>the intermolecular electrostatic energy</em></li>
+<li><strong>vdw</strong>: <em>the intermolecular van der Waals energy</em></li>
+<li><strong>desolv</strong>: <em>the desolvation energy</em></li>
+</ul>
+<p>The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment <a href="https://capri.ebi.ac.uk/">CAPRI</a>{:target="_blank"} (Critical PRediction of Interactions).</p>
+<p>In CAPRI the quality of a model is defined as (for protein-protein complexes):</p>
+<ul>
+<li><strong>acceptable model</strong>: i-RMSD &lt; 4Å or l-RMSD &lt; 10Å and Fnat &gt; 0.1 (0.23 &lt; DOCKQ &lt; 0.49)</li>
+<li><strong>medium quality model</strong>: i-RMSD &lt; 2Å or l-RMSD &lt; 5Å and Fnat &gt; 0.3 (0.49 &lt; DOCKQ &lt; 0.8)</li>
+<li><strong>high quality model</strong>: i-RMSD &lt; 1Å or l-RMSD &lt; 1Å and Fnat &gt; 0.5 (DOCKQ &gt; 0.8)</li>
+</ul>
+<a class="prompt prompt-question">
+Based on this CAPRI criterion, what is the quality of the best model listed above (emref_2.pdb)?
+</a>
+<p>In case where the <code>caprieval</code> module is called after a clustering step, an additional <code>capri_clt.tsv</code> file will be present in the directory.
+This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering
+(4 by default), with their corresponding standard deviations. E.g.:</p>
+<pre style="background-color:#DAE4E7">
+cluster_rank  cluster_id  n  under_eval     score  score_std   irmsd  irmsd_std   fnat  fnat_std   lrmsd  lrmsd_std  dockq  dockq_std      air  air_std       bsa  bsa_std  desolv  desolv_std      elec  elec_std     total  total_std      vdw  vdw_std  caprieval_rank
+           1           2  4           -  -140.185      3.603   1.063      0.085  0.918     0.033   2.011      0.211  0.844      0.026   72.437   22.198  1841.833   56.754   2.352       2.793  -504.156    25.137  -480.668     37.466  -48.949    2.407               1
+           2           4  4           -  -104.627      9.604   4.985      0.167  0.159     0.022  10.983      0.735  0.206      0.017  140.887   17.004  1599.765  101.246   3.738       2.425  -267.555    26.639  -195.611     16.008  -68.943    5.880               2
+           3           1  4           -   -90.803      5.270  10.263      0.837  0.086     0.017  19.261      1.307  0.091      0.012  139.801   40.076  1431.878   53.377   3.217       6.569  -335.970    38.177  -236.975     36.344  -40.806    2.883               3
+           4           3  4           -   -90.321     12.145  14.645      0.132  0.099     0.007  23.305      0.134  0.076      0.003  154.818   25.452  1792.695   68.993   5.937       1.759  -308.110    28.984  -203.410     46.861  -50.118    6.689               4
+...
+</pre>
+<p>In this file you find the cluster rank, the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the preceeding <code>09_seletopclusts</code> directory.</p>
+<p>While these simple text files can be easily checked from the command line already, they might be cumbersome to read.
+For that reason, we have developed a post-processing analysis that automatically generates html reports for all <code>caprieval</code> steps in the workflow.
+These are located in the respective <code>analysis/XX_caprieval</code> directories and can be viewed using your favorite web browser.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="running_haddock3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="outputs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="running_haddock3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="outputs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
