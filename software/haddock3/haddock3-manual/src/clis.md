@@ -58,7 +58,7 @@ As an example, to list available parameters for the module `seletopclusts`, you 
 haddock3-cfg -m seletopclusts
 ```
 
-Please note that all the parameters for each module are also available from the [online documentation](https://www.bonvinlab.org/haddock3/modules/index.html).
+Please note that all the parameters for each module are also available in the [online documentation](https://www.bonvinlab.org/haddock3/modules/index.html).
 
 <hr>
 
@@ -71,7 +71,7 @@ The `haddock3-restraints` CLI is composed of several sub-commands, each one dedi
 - Gathering neighbors of a selection
 - Maintaining the conformation of a single chain with a potential gap
 - Generating ambiguous restraints from active and passive residues
-- Generating plans and corresponding restraints
+- Generating planes and corresponding restraints
 
 As this CLI is more specialized, we have made a [special chapter in this manual](./restraints_cli.md) to explain all the functionalities.
 
@@ -95,7 +95,7 @@ Be aware that only parameters available for the `emscoring` module are accepted.
 
 To tune the haddock3 scoring function weights, there are basically only 5 parameters to be tuned.
 
-- **w_vdw**: to tune the weight of the Van der Walls term
+- **w_vdw**: to tune the weight of the Van der Waals term
 - **w_elec**: to tune the weight of the Electrostatic term
 - **w_desolv**: to tune the weight of the Desolvation term
 - **w_air**: to tune the weight of the Ambiguous Restraints term
@@ -104,7 +104,7 @@ To tune the haddock3 scoring function weights, there are basically only 5 parame
 Note that, if a parameter is not tuned, the default scoring function weights are used.
 
 
-As an example, this command would tune the Van der Walls term during the evaluation of the complex:
+As an example, this command would tune the Van der Waals term during the evaluation of the complex:
 
 ```bash
 haddock3-score path/to/complex.pdb -p w_vdw 0.5
@@ -112,7 +112,7 @@ haddock3-score path/to/complex.pdb -p w_vdw 0.5
 
 Note how the parameter name and its new value are separated by a space.
 
-To modify multiple parameters, just add the new parameter separate by a space:
+To modify multiple parameters, just add the new parameter separated by a space:
 
 ```bash
 haddock3-score path/to/complex.pdb -p w_vdw 0.5 w_bsa 0.2
@@ -283,7 +283,7 @@ For now, three modules can be **re**computed and tuned, `[caprieval]`, `[clustfc
 
 ### -re score
 
-The subcommand `haddock3-re score`, allows to tune the weights of the [HADDOCK scoring function]().
+The subcommand `haddock3-re score`, allows to tune the weights of the [HADDOCK scoring function](./haddocking#haddock-scoring-function).
 It takes a `[caprieval]` step folder as positional argument and the tuned weights for the scoring function.
 
 Note that if you do not provide new weights as optional arguments, previous weights used in the run are used.
@@ -445,7 +445,7 @@ optional arguments:
 ## haddock3-unpack
 
 The `haddock3-unpack` CLI is the opposite of the `haddock3-clean` one.
-It takes a haddock3 run directory as input (or the output directory of a module), and uncompress archives found within.
+It takes a haddock3 run directory as input (or the output directory of a module), and uncompresses any archived file.
 
 This CLI can be especially useful when your run has been archived, but you would like to open a PDB file using a molecular viewer.
 
