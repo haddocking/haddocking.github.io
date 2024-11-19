@@ -94,7 +94,7 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 * [**Tutorials for DisVis and Powerfit**](/education/Others): Tutorials about rigid-body fitting into cryo-EM maps and assessing the information content of cross-linking data.
 
-* [**Integrative modelling of the RNA polymerase III apo complex**](/education/HADDOCK24/RNA-Pol-III-2022): A combination of our DISVIS, POWERFIT and HADDOCK2.4 portals using cross-links and cryo-EM data to model a large macromolecular assembly.
+* [**Integrative modelling of the RNA polymerase III apo complex**](/education/HADDOCK24/RNA-Pol-III-2024): A combination of our DISVIS, POWERFIT and HADDOCK2.4 portals using cross-links and cryo-EM data to model a large macromolecular assembly.
 
 * [**2022 BioExcel summerschool metadynamics / HADDOCK tutorial**](/education/biomolecular-simulations-2022)
 
