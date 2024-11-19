@@ -188,7 +188,11 @@ For this, simply set the `dnarest_on` to true (`dnarest_on = true`) in the corre
 
 ## Contact restraints
 
+Contact restraints can be automatically defined and set up in CNS modules (mainly `[flexref]` and `[mdref]`).
 
+By turning **on** the `contactairs` parameter (`contactairs = true`), HADDOCK will first search for current contacts in the input complex and define restraints to make sure to retain the contact during the simulation step.
+
+This can be useful when complexes where obtained using Center of Mass restraints (`cmrest = true`) at the `[rigidbody]` stage.
 
 # Custom symmetry restraints
 
