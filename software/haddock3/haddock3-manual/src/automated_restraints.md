@@ -35,7 +35,7 @@ _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author versio
 
 Non-crystallographic symmetry (NCS) restraints are a type of restraints available in CNS.
 While symmetry is in the name, there is in fact no symmetry involved.
-They are simply enforcing an RMSD = 0 between the selected segments, independently of any rotation and/or translation, restraining the conformations to be similar.
+They simply enforce an RMSD = 0 between the selected segments, independently of any rotation and/or translation, restraining the conformations to be similar.
 
 To make use of NCS parameters, one should first activate the use of such restraints using the `ncs_on = true` parameter!
 
@@ -45,12 +45,12 @@ Parameters used to define NCS restraints are always composed of 6 information (d
 - **The prefix section**:
   - **Symmetry type**: the parameter must start with `ncs_` as a prefix, indicating haddock3 on what type of symmetry restraints we are dealing with.
 - **The infix section**:
-  - **Starting residue**: using the infix `sta` (for start), defines the first residue in the cns restraint segment.
-  - **Ending residue**: using the infix `end` (for end), defines the last residue in the cns restraint segment.
+  - **Starting residue**: using the infix `sta` (for start), defines the first residue in the NCS restraint segment.
+  - **Ending residue**: using the infix `end` (for the end), defines the last residue in the NCS restraint segment.
   - **ChainID/SegmentID**: using the infix `seg` (for segment), defines the segmentID in the cns restraint segment.
-  - **Partner index**: after the infix, must be set an integer defining the partner (e.g.: `seg1`). This index is used to group parameters related to the same partner together and match the start, end, and segment id.
+  - **Partner index**: after the infix, must be set an integer defining the partner (e.g.: `seg1`). This index is used to group parameters related to the same partner together and match the start, end, and segment ID.
 - **The suffix section**:
-  - **Symmetry index**: as suffix (`_Y`) must be defined the index of the symmetry, this allows to define multiple C**N** symmetries at the same time.
+  - **Symmetry index**: the suffix (`_Y`) must start for one and define the index of the symmetry. This allows the definition of multiple C**N** symmetries at the same time and properly attribute the parameters.
 
 It is also possible to tune the force constant for the NCS symmetries restraints using the `kncs` parameter.
 
@@ -80,7 +80,7 @@ ncs_seg2_1 = "B"  # Segment ID (chain ID) of this segment
 
 Note that for the use of NCS restraints:
 
-- starting, and ending residues **MUST** be the same.
+- starting and ending residues **MUST** be the same.
 - chains/segments must be different.
 - the two partners must have the same sequence and residue numbering.
 
@@ -106,9 +106,9 @@ Parameters used to define segments on which symmetry must be enforced are always
   - **Starting residue**: using the infix `sta` (for start), defines the first residue in the C**N** symmetry segment.
   - **Ending residue**: using the infix `end` (for end), defines the last residue in the C**N** symmetry segment.
   - **ChainID/SegmentID**: using the infix `seg` (for segment), defines the segmentID in the C**N** symmetry segment.
-  - **Partner index**: after the infix, must be set an integer defining the partner (e.g.: `seg1`). This index is used to group parameters related to the same partner together and match the start, end, and segment id.
+  - **Partner index**: after the infix, must be set an integer defining the partner (e.g.: `seg1`). This index is used to group parameters related to the same partner together and match the start, end, and segment ID.
 - **The suffix section**:
-  - **Symmetry index**: as suffix (`_Y`) must be defined the index of the symmetry, this allows to define multiple C**N** symmetries at the same time.
+  - **Symmetry index**: the suffix (`_Y`) must be define the index of the symmetry. This allows the definition of multiple C**N** symmetries at the same time.
 
 Note that multiple symmetry restraints can be set up in the same run.
 This is performed by indexing (`_Y`) the parameter name (e.g: `cNsym_xxx_Y`)
