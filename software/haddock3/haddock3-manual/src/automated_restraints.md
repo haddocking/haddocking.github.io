@@ -31,7 +31,7 @@ Here is a related research article describing some of the available symmetries i
 _Mol. Cell. Proteomics_, *9*, 1784-1794 (2010). Download the final author version <a href="https://utrechtuniversity.on.worldcat.org/atoztitles/link?sid=Entrez:PubMed&id=pmid:20305088">here</a>.
 
 
-#### Non crystallographic symmetry
+#### Non-crystallographic symmetry
 
 Non-crystallographic symmetry (NCS) restraints are a type of restraints available in CNS.
 While symmetry is in the name, there is in fact no symmetry involved.
