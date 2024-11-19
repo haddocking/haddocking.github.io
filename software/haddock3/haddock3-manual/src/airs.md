@@ -50,7 +50,9 @@ The random AIRs are defined (in the `randomairs.cns` CNS script) as follows (onl
  1.  One residue on each molecule is selected randomly (Ai,Bi)
  2.  All surface neighbors within 5A are also selected
  3.  AIRs are defined between each residue selected from molecule A (Ai + 5A neighbors) and the first residue randomly selected from molecule B and all its surface neighbors within a 7.5A cutoff (Bi + 7.5A neighbors)
- 4.  AIRs are defined between each residue selected from molecule B (Bi + 5A neighbors) and the first residue randomly selected from molecule A and all its surface neighbors within a 7.5A cutoff (Ai + 7.5A neighbors)AIRs are thus defined from a 5A radius patch randomly selected from one molecule to a 7.5A radius patch randomly selected on the second molecule and vice-versa. The selected residues are written to disk in _**structures/it0**_ as _fileroot_1.disp,..._.  
+ 4.  AIRs are defined between each residue selected from molecule B (Bi + 5A neighbors) and the first residue randomly selected from molecule A and all its surface neighbors within a 7.5A cutoff (Ai + 7.5A neighbors).
+ 
+AIRs are thus defined from a 5A radius patch randomly selected from one molecule to a 7.5A radius patch randomly selected on the second molecule and vice-versa.
 
 For the semi-flexible refinement stage, contact AIRs are automatically defined between all residues within 5A across the interface. In the final refinement, no AIRs will be defined.
 
