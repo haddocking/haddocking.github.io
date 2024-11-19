@@ -23,7 +23,7 @@ reference_fname = "target_complex.pdb"
 
 **Notes**:
 - The best scoring complex will be used as a reference if the `reference_fname` in the `[caprieval]` module is not specified.
-- If a clustering step is placed before the `[caprieval]` module, the analysis will also be extended to the cluster level, hence providing a more robust analysis.
+- If a clustering step is placed before the `[caprieval]` module, the analysis will also be extended to the cluster level, providing a more robust analysis.
 
 <hr>
 
