@@ -1,6 +1,6 @@
 # Input files
 
-Over the years, HADDOCK was updated to increase the range of biomolecular entities to be dealt with.
+Over the years, HADDOCK was updated to increase the range of biomolecular entities to deal with.
 Currently, we support a broad range of molecular types, such as protein, DNA, RNA, glycans, cyclic-peptides and small-molecules.
 In addition, several modified residues/nucleotides are also available.
 For the full list of supported molecules, please refer to [https://wenmr.science.uu.nl/haddock2.4/library](https://wenmr.science.uu.nl/haddock2.4/library).
@@ -47,7 +47,7 @@ There are a few points to pay attention to when preparing the PDBs for HADDOCK.
 * HADDOCK can deal with ions.
  You will have however to make sure that the ion naming is consistent with the ion [topologies provided in HADDOCK](https://wenmr.science.uu.nl/haddock2.4/library).
  For example, a CA heteroatom with a residue name CA will be interpreted as a neutral calcium atom.
- A doubly charged calcium ion should be named CA+2 with as residue name CA2 to be properly recognized by HADDOCK.
+ A doubly charged calcium ion should be named CA+2 with CA2 as residue name to be properly recognized by HADDOCK.
  (See also the [FAQ](./faq.md) for docking in the presence of ions).
 
 A list of [supported modified amino acids and ions is available online](https://wenmr.science.uu.nl/haddock2.4/library).
@@ -92,7 +92,7 @@ Note that if in your ensemble, we detect two types of `REMARK` statements when p
 ## Dealing with non-standard molecules
 
 If you wish to work with a molecule type that is not present in the [list of supported molecules](https://rascar.science.uu.nl/haddock2.4/library), do not worry, as you will still be able to use HADDOCK.
-To properly function, HADDOCK require to have access to the topology and parameters of a molecule to run the molecular dynamics protocols.
+To properly function, HADDOCK requires to have access to the topology and parameters of a molecule to run the molecular dynamics protocols.
 The force field must therefore be updated by user-provided topology and parameter files.
 
 In modules that use CNS, you can provide such files with the `ligand_top_fname` (for ligand topology filename) and `ligand_param_fname` (for ligand parameters filename) parameters, specifying the location where to find those two files.
@@ -101,7 +101,7 @@ In modules that use CNS, you can provide such files with the `ligand_top_fname` 
 ### How to generate topology and parameters for my ligand
 
 Generating topology and parameters for your ligand is not trivial.
-For this, you will need to use dedicated tools, such as `acpype` or [`ccp4-prodrg`](https://www.ccp4.ac.uk/html/index.html), or use dedicated libraries such as [`BioBB`](https://mmb.irbbarcelona.org/biobb/).
+For this, you will need to use dedicated tools, such as `acpype` or [`ccp4-prodrg`](https://www.ccp4.ac.uk/html/index.html), or dedicated libraries such as [`BioBB`](https://mmb.irbbarcelona.org/biobb/).
 
 Here are some useful resources on how to generate those:
 
