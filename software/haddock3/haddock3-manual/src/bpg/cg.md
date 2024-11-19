@@ -7,7 +7,7 @@
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
 To be able to perform docking of large biological complexes in a reasonable timescale HADDOCK offers an option to coarse grain molecules.
-By downscaling the level of resolution of biomolecules to coarser representations HADDOCK can study protein interactions that are hardly accessible by classical atomistic approaches.
+By downscaling the level of resolution of biomolecules to coarser representations, HADDOCK can study protein interactions that are hardly accessible by classical atomistic approaches.
 Currently coarse-graining of proteins and nucleic acids  with [Martini](http://cgmartini.nl) is supported. 
 Preparation of coarse-grained pdb files is described in the HADDOCK [manual here](/software/haddock2.4/pdb-cg/) and coarse grained topology is described  in *run.cns* format in the [manual here](/software/haddock2.4/run/#coarse-grained-topology-and-parameters-files).
 All available documentation about coarse-graining is summed up in these sections:
