@@ -29,7 +29,7 @@ reference_fname = "target_complex.pdb"
 
 ## Analysis command line interface
 
-The `haddock3-analyse` command line allows to generate interactive plots from the data obtained by a `[caprieval]` module directory.
+The `haddock3-analyse` command line generates interactive plots from the data obtained by a `[caprieval]` module directory.
 
 Here is [the documentation of the `haddock3-analyse`](../clis.md#haddock3-analyse)
 
