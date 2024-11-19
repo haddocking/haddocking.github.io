@@ -13,7 +13,7 @@ CNS modules using restraints, such as `[rigidbody]`, `[flexref]`, `[emref]` or `
 This can be very useful when you know that the system you are working with contains such property, and you wish to enforce sampled solutions to be symmetrical.
 
 Various symmetry restraints are already available in Haddock3.
-But custom symmetry restraints can also be provided, to learn more about it, read the [custom symmetry section](#custom-symmetry-restraints).
+But custom symmetry restraints can also be provided. To learn more about them, read the [custom symmetry section](#custom-symmetry-restraints).
 
 
 ### Pre-defined symmetry restraints
