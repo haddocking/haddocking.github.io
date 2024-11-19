@@ -7,7 +7,7 @@ Yet, two clustering methods are available in Haddock3:
 
 Also, have a look at
 - the [shared clustering parameters section](#shared-clustering-parameters)
-- [selecting cluster members section](#selecting-cluster-members)
+- the [selecting cluster members section](#selecting-cluster-members)
 
 <hr>
 
