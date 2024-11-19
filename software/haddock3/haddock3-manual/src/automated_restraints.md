@@ -111,7 +111,7 @@ Parameters used to define segments on which symmetry must be enforced are always
   - **Symmetry index**: the suffix (`_Y`) must be define the index of the symmetry. This allows the definition of multiple C**N** symmetries at the same time.
 
 Note that multiple symmetry restraints can be set up in the same run.
-This is performed by indexing (`_Y`) the parameter name (e.g: `cNsym_xxx_Y`)
+This is performed by adding the index (`_Y`) to the parameter name (e.g: `cNsym_xxx_Y`)
 The first definition must always start with an index of 1 (`_1`)!
 
 Here is an example of how to define two C3 symmetries:
