@@ -46,7 +46,7 @@ Parameters used to define NCS restraints are always composed of 6 information (d
   - **Symmetry type**: the parameter must start with `ncs_` as a prefix, indicating haddock3 on what type of symmetry restraints we are dealing with.
 - **The infix section**:
   - **Starting residue**: using the infix `sta` (for start), defines the first residue in the NCS restraint segment.
-  - **Ending residue**: using the infix `end` (for the end), defines the last residue in the NCS restraint segment.
+  - **Ending residue**: using the infix `end` (for end), defines the last residue in the NCS restraint segment.
   - **ChainID/SegmentID**: using the infix `seg` (for segment), defines the segment ID in the CNS restraint segment.
   - **Partner index**: after the infix, must be set an integer defining the partner (e.g.: `seg1`). This index is used to group parameters related to the same partner together and match the start, end, and segment ID.
 - **The suffix section**:
