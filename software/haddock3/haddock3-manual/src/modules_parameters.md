@@ -1,6 +1,6 @@
 # Modules in haddock3
 
-Haddock3 has this particularity (compared to the pervious HADDOCK2.X versions), that there is not a single static workflow to be processed, but rather a custom one requiring the user to design its own workflows by placing `[modules]` one after the other, enabling to generate a sequence of events to solve their research question.
+Haddock3 has this particularity (compared to the pervious HADDOCK2.X versions), that there is not a single static workflow to be processed, but rather a custom one requiring the user to design their own workflows by placing `[modules]` one after the other, enabling to generate a sequence of events to solve their research question.
 
 <figure align="center">
 <img src="./images/hd3_custom_workflow.png">
@@ -58,7 +58,7 @@ You can also use the `haddock3-cfg` command line to get information on each modu
 ### Topology modules
 
 - [`[topoaa]`](./modules/topology.md#topoaa-module): Builds missing atoms and generates the all-atom topologies for the CNS engine.
-- [`[topocg]`](./modules/topology.md#topology-modules): *comming soon*
+- [`[topocg]`](./modules/topology.md#topology-modules): *coming soon*
 
 
 ### Sampling modules

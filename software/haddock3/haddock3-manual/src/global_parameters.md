@@ -31,7 +31,7 @@ Various parameters are related to the execution modes:
 - `concat`: Number of models to produce per job to send to the batch system. If set to a value above 1, multiple models can be calculated within one job. The default is 1.
 - `self_contained`: When set to `true`, this option will copy the CNS scripts and executable to the run folder, making it a self-contained run. The default is `false`.
 - `clean`: When set to `true`, clean the modules directory if the run succeeds by compressing or removing output files. The default is `true`.
-- `offline`: When set to `true`, completely isolate the haddock3 run & results from internet. This option is useful when no internet connection is available. Default is `false`.
+- `offline`: When set to `true`, completely isolate the haddock3 run and results from internet. This option is useful when no internet connection is available. Default is `false`.
 - `debug`: By setting it to `false`, reduces the amount of I/O operations, often speeding up the process. When set to `true`, input files, intermediate files and output files are generated and kept, which is useful when tracking potential errors. The default is `false`.
 
 
