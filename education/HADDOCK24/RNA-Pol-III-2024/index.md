@@ -361,7 +361,8 @@ If not, which ones are not satistified?
 
 __Note__ that the reported distances are Euclidian distances. In reality, the cross-linker will have to follow the
 surface of the molecule which might results in a longer effective distance. A proper comparison would require
-calculating the surface distance instead. Such an analysis can be done with the [XWalk][link-xwalk] or [jwalk](http://jwalk.ismb.lon.ac.uk/jwalk/){:target="_blank"} software.
+calculating the surface distance instead. Such an analysis can be done with the [jwalk](https://github.com/Topf-Lab/Jwalk){:target="_blank"} 
+or [nrgxl](https://nrgxl.pasteur.fr){:target="_blank"} software.
 
 
 
@@ -1699,4 +1700,3 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-powerfit-register]: https://wenmr.science.uu.nl/auth/register  "PowerFit registration"
 [link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
-[link-xwalk]: https://www.xwalk.org
