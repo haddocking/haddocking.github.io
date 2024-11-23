@@ -715,7 +715,7 @@ Start PyMOL and load via the File menu all five AF2 models (or use the command l
 
 Repeat this for each model (`Ab_Ag_unrelaxed_rank_X_model_Y.pdb` or whatever the naming of your model is). 
 
-Let's superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains B and C):
+Let us superimpose all models on the antibody (the antibody in the provided AF2 models correspond to chains B and C):
 
 <a class="prompt prompt-pymol">
 util.cbc<br>
@@ -731,7 +731,7 @@ Examine the various models. How does the orientation of the antigen differ betwe
 
 **Note:** You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.
 
-<details>
+<details style="background-color:#DAE4E7">
 
   <summary style="font-weight: bold">
     <i>See tips on how to visualize the prediction confidence in PyMOL</i>
@@ -746,11 +746,11 @@ Examine the various models. How does the orientation of the antigen differ betwe
 
   **Note** that the scale in the B-factor field is the inverse of the color coding in the PAE plots: 
   i.e. red mean reliable (high pLDDT) and blue unreliable (low pLDDT)). If you want to have the inverse coloring 
-  you can use a PyMol plugin, e.g. as described <a href="https://github.com/cbalbin-bio/pymol-color-alphafold" target="_blank">here</a>
+  you can use a PyMol plugin, e.g. as described <a href="https://github.com/cbalbin-bio/pymol-color-alphafold" target="_blank"><b><i>here</i></b>.</a>
 </details>
 <br>
 
-Since we do have NMR chemical shift perturbation data for the antigen, let's check if the perturbed residues are at the interface in the AF2 models.
+Since we do have NMR chemical shift perturbation data for the antigen, let us check if the perturbed residues are at the interface in the AF2 models.
 Note that there is a shift in numbering of 2 residues between the AF2 and the HADDOCK models. 
 
 <a class="prompt prompt-pymol">
