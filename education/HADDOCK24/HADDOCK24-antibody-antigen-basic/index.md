@@ -744,8 +744,9 @@ Examine the various models. How does the orientation of the antigen differ betwe
     spectrum b
   </a>
 
-  **Note** that the scale in the B-factor field is the inverse of the color coding in the PAE plots: i.e. red mean reliable (high pLDDT) and blue unreliable (low pLDDT))
-</details>
+  **Note** that the scale in the B-factor field is the inverse of the color coding in the PAE plots: 
+  i.e. red mean reliable (high pLDDT) and blue unreliable (low pLDDT)). If you want to have the inverse coloring 
+  you can use a PyMol plugin, e.g. as described [here](https://github.com/cbalbin-bio/pymol-color-alphafold){:target="\_blank"}</details>
 <br>
 
 Since we do have NMR chemical shift perturbation data for the antigen, let's check if the perturbed residues are at the interface in the AF2 models.
