@@ -802,6 +802,12 @@ alignto sele
 </details>
 <br>
 
+Finally, if you are curious, try running the same prediction using the new AlphaFold3 version. You can access the AlphaFold3 server [here](https://alphafoldserver.com/welcome){:target="\_blank"}. You will however need a Google account to be able to use it. 
+
+<a class="prompt prompt-question">
+AlphaFold3 claims to be doing better on antibody-antigen complexes. Is this the case for our complex?
+</a>
+
 <br>
 <hr>
 
