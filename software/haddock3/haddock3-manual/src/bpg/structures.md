@@ -172,7 +172,7 @@ Tutorials:
 * [haddock3 manual -> Structure requirements](../structure_requirements.md)
 
 * [Preparation of coarse-grained pdb files](https://www.bonvinlab.org/software/haddock2.4/pdb-cg/)
-    * HADDOCK can now handle large complexes containing up to 20 chains. An elegant way how to increase the speed of these calculations is to use coarse graining with [Martini](http://cgmartini.nl).    
+    * HADDOCK can now handle large complexes containing up to 20 chains. An elegant way to increase the speed of these calculations is to use coarse graining with [Martini](http://cgmartini.nl).    
 
 * [Preparation of pdb files for the local version of HADDOCK2.4](/education/HADDOCK24/HADDOCK24-local-tutorial/#preparing-pdb-files-for-docking)
 
