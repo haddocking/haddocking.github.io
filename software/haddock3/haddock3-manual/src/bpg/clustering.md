@@ -1,6 +1,6 @@
 # Clustering methods implemented in Haddock3
 
-The clustering of conformations and complexes is a key step in most of the workflows, as it allows us to observe convergence, redundancies, or even remove noise coming from singlotons.
+Clustering of conformations and complexes is a key step in most workflows, as it allows us to observe convergence, redundancies, or even remove noise from singletons.
 Yet, two clustering methods are available in Haddock3:
 - Clustering by **R**oot **M**ean **S**quared **D**eviation: [`[clustrmsd]`](#rmsd-clustering)
 - Clustering by **F**raction of **C**omon **C**ontacts: [`[clustfcc]`](#fcc-clustering)
