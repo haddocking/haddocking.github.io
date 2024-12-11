@@ -19,7 +19,7 @@ Two modules can compute the RMSD matrix:
 - [`[rmsdmatrix]`](../modules/analysis.md#rmsdmatrix-module): Calculates of the RMSD matrix between all the models generated in the previous step.
 - [`[ilrmsdmatrix]`](../modules/analysis.md#ilrmsdmatrix-module): Calculates the Interface Ligand Root Mean Square Deviation (ILRMSD) matrix.
 
-Those two modules must be followed by the `[clustrmsd]` module, otherwise, only the pair-wise RMSD matrix will be computed, and clustering not performed.
+Those two modules must be followed by the `[clustrmsd]` module; otherwise, only the pair-wise RMSD matrix will be computed, and clustering will not be performed.
 
 ### [rmsdmatrix] module
 
