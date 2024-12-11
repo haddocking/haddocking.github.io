@@ -7,7 +7,7 @@ Three different ways of doing *ab-initio* docking in haddock3 are discussed belo
 
 ### Prior considerations
 
-- Ab-initio docking typically involves limited, if any, prior information on how the various chains involved should interact. As a result, producing good solutions relies heavily on a trial-and-error approach. Thus, to enhance the likelihood of generating good models, we strongly advise increasing the sampling density at `[rigidbody]` docking stage (using the `sampling` parameter).
+- Ab-initio docking typically involves limited, if any, prior information on how the various chains involved should interact. As a result, producing good solutions relies heavily on a trial-and-error approach. Thus, to enhance the likelihood of generating good models, we strongly advise increasing the sampling at the `[rigidbody]` docking stage (by tuning the `sampling` parameter).
 - The next three *ab-initio* docking solutions described below are incompatible with each other, and you should not turn **on** multiple of them at the same time.
 
 
