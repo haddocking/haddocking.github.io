@@ -1,158 +1,143 @@
 # Flexibility options in Haddock3
 
-A molecule or a part of it, i.e., its segment, can be defined as:
-* rigid: Where the full chain will be treated as rigid.
-* semi-flexible: Where segments of the chains can be defined as flexible during the last two cooling phases of the simulated annealing protocol.
-* fully flexible: Where segments of the chains can be defined as flexible during all phases of the protocol.
+In the refinement modules of Haddock3, a molecule or parts of it (i.e., its segment(s)) can be treated as:
 
-By default, rigid and semi-flexible segments of docking partners are automatically defined based on interface contacts.
-Interface residues (detected when distance <5A) are defined as semi-flexible, while the other residues are kept rigid, as there is no point in refining non-contacting regions.
-By default, none of the segments are defined as fully flexible.
+* **Rigid**: The entire chain is treated as rigid throughout all phases of the module's protocol.
+* **Semi-flexible**: One or several segments of the chain are treated as rigid during the initial phases of the protocol and as fully flexible during the final phases.
+* **Fully flexible**: One or more segments of the chain are treated as fully flexible during all phases of the protocol.
 
-Flexibility can be defined in any of the CNS model refinement modules, namely `[emref]`, `[flexref]`, and `[mdref]`.
+By default, semi-flexible and rigid segments of docking partners are determined automatically based on interface contacts. Automatically defined semi-flexible segments include residues within the interface, meaning residues that are 5Å or closer to residues in another molecule. The remaining segments comprising residues outside of the interface are automatically defined as rigid.
+By default, no segments are defined as fully flexible.
 
-The process for manual definition is detailed below:
-* [Defining semi-flexible segments](#definition-of-semi-flexible-segments)
-  * [Automatic definiton](#automatic-definiton-of-semi-flexible-segments-based-on-contact)
-  * [Keeping a chain rigid](#treating-the-chain-as-rigidbody)
-  * [Custom definiton](#custom-definiton-of-semi-flexible-segments)
-* [Defining fully-flexible segments](#manual-definition-of-fully-flexible-segments)
-
-<hr>
-
-## Definition of semi-flexible segments
-
-Parameters `nsegX` (standing for **n**umber of semi-flexible **seg**ments for molecule **X**) are is used to define:
-
-* the docking partner (`X`) to which the segments of interest belong, where `X` is an integer corresponding to the position of the input molecule in the configuration file;
-* an integer describing if it must be automatic (-1) or kept rigid (0), used in [automatic definition](#automatic-definiton-of-semi-flexible-segments-based-on-contact) and to [keep a molecule rigid](#treating-the-molecule-as-rigidbody)
-
-The two parameters, `seg_sta_X_Y` and `seg_end_X_Y`, are used to [define custom semi-flexible segments](#custom-definiton-of-semi-flexible-segments).
-
-
-For a better understanding of the definition of **semi-flexible segments** in [refinements modules](./modules/refinement.md), please check the schemes for the various modules:
+Flexibility can be defined in any of the CNS model refinement modules, namely: `[emref]`, `[flexref]`, and `[mdref]`.
+Check out schematic images of the refinement protocols employed in different [refinements modules](./modules/refinement.md):
 * [`[flexref]`](./modules/refinement.md#flexref-module-simulated-annealing-protocol-scheme)
 * [`[mdref]`](./modules/refinement.md#mdref-module-scheme)
 * [`[emref]`](./modules/refinement.md#emref-module-scheme)
 
+Below you can find explanations and examples on the definition of different types of segments:
+* [Automatic Definition of Rigid and Semi-Flexible Segments)](#automatic-definition-of-rigid-and-semi-flexible-segments)
+* [Manual definition:](#manual-definition)
+  * [Rigid Molecule](#rigid-molecule)
+  * [Semi-flexible Segment](#semi-flexible-segment)
+  * [Fully flexible Segment](#fully-flexible-segment)
 
-Here you can access the various types of semi-flexible definitions:
-* [Automatic definiton](#automatic-definition-of-semi-flexible-segments-based-on-contact)
-* [Keeping a chain rigid](#treating-the-molecule-as-a-rigidbody)
-* [Custom definiton](#custom-definition-of-semi-flexible-segments)
+<hr>
 
+## Automatic Definition of Rigid and Semi-Flexible Segments
 
-### Automatic definition of semi-flexible segments based on contact
+As this behaviour is enabled by default, there is no need to add any parameters to the tolm file.
 
-Nothing is to be done, this is the default behavior.
+Internally, this behaviour is controlled by the `nsegX` parameter, which specifies the number of semi-flexible segments for molecule X. Here, `X` corresponds to the sequential number of the molecule in the input, i.e. the order in which input PDB files are given.
 
-To your knowledge, this is understood by haddock3 when the parameter `nsegX = -1`, which will trigger an internal search of what are the residues in contact with, and automatically turn their flexibility for the last two cooling stages of the simulated annealing protocol (*semi*-flexible).
+For example:
+* If no manual flexibility is defined and two docking partners are provided, Haddock3 will proceed with:
+`nseg1 = -1; nseg2 = -1`
+* For three docking partners, the parameters will be:
+`nseg1 = -1; nseg2 = -1; nseg3 = -1`
 
+And so on, for additional molecules.
+The default value of `-1` indicates that the semi-flexible and rigid segments are automatically defined based on the molecule's interface residues.
 
-### Treating the molecule as a rigidbody
+<hr>
 
-To keep a molecule rigid for the entire process, you must tune the parameter `nsegX` (standing for **n**umber of semi-flexible **seg**ments for molecule **X**) and set it to `0`.
+## Manual definition
+### Rigid Molecule
+To keep an entire molecule rigid throughout the refinement, the `nsegX` parameter for that molecule should be set to 0.
 
+#### Example: Keeping the Protein Molecule Rigid
 
-#### Example: Keeping the protein rigid
-
-In this case, the file `protein.pdb` is the second input molecule, and therefore will hold the index `2`, therefore we will use the parameter name `nseg2`, and set its value to `0`.
-
+Consider a docking protocol involving two molecules: DNA and protein, where DNA is the 1st molecule and protein is the 2nd by the order of the input. This order is important!  
+To treat the protein as a rigid body during flexible refinement, set the parameter nseg2 to 0. The corresponding .cfg file would look as follows:
 ```toml
-# Input two molecules, DNA as the first one, and protein as the second
+# Input molecules: DNA as the 1st molecule, and protein as the 2nd 
 molecules = ["DNA.pdb", "protein.pdb"]
+
 # ...
-# ...
+
 [flexref]
-# To maintain the protein rigid during the flexible refinement,
-# we must set the 'nseg2' parameter to '0'.
+# Keep the protein rigid
 nseg2 = 0
+
+# No definition for nseg1, so it is set to -1 by default.
+# This means the DNA molecule will have its rigid and semi-flexible segments
+# automatically defined based on interface residues.
 ```
 
+### Semi-flexible Segment
 
-### Custom definition of semi-flexible segments
+To manually define a semi-flexible segment, the user must specify the first and last residues of the segment using the parameters `seg_sta_X_Y` and `seg_end_X_Y`, respectively.
+Parameter Details:
+* `X` is the sequential number of the molecule (i.e. position of the PDB file in the input) to which the segment belongs. This follows the same logic as `X` in `nsegX` parameter, explained above. 
+* `Y` is the sequential number of the segment being defined. This allows multiple semi-flexible segments to be defined within the same molecule.
+* The values of `seg_sta_X_Y` and `seg_end_X_Y` must be integers and must correspond to residue indices present in the corresponding input PDB file.
 
-If you want to provide an explicit definition of semi-flexbile segments, two parameters must be used.
-These parameters are well structured and are composed of 4 parts, enabling HADDOCK to understand to which molecules you are defining semi-flexible segments.
+#### Example: Two Semi-Flexible Segments of DNA
 
-Here is a schematic representation of the two parameters:
+Consider a docking scenario with two partners: a DNA molecule and a protein, where two segments of the DNA are manually defined as semi-flexible.
+* The first segment includes residues 2 to 19.
+* The second segment includes residues 22 to 39.
 
-```toml
-seg_sta_X_Y = 1
-seg_end_X_Y = 10
-```
+The DNA molecule is defined as the 1st partner, and the protein as the 2nd. This order is important!
 
-Here is an explannation of the parameters:
-* It always starts with the `seg_` prefix
-* it is followed by either the `sta_` (to define the starting residue) or `end_` (to define the final residue)
-* a first index `X` corresponding the to input molecule position
-* a final suffix index `_Y` used to match the start and end position of a segment, thus allowing to define multiple segments for the same molecule.
-* The final integer value, corresponds the residue index in the input PDB file.
+To define the semi-flexible segments:
 
-Haddock3 allows for the definition of up to 1000 segments, with residues numbered ranging from -999 to 9999.
-
-
-#### Example: Two Semi-Flexible Segments of a DNA
-
-Let's consider a docking scenario involving two partners, namely a DNA and a protein, with two segments of DNA manually defined as semi-flexible.
-Suppose the first segment contains residues 2 to 19, and the second segment contains residues 22 to 39.
-
-Since the order of the docking partner is important, let's define DNA as the 1st partner and protein as the 2nd partner in .cfg file.
-In this case, the file `DNA.pdb` is first input molecule, and therefore will hold the index `1`.
-The next step is to define the first and last residues of each segment.
-The first segment (with suffix `_1`) `sta`rts with residue `2` and `end`s with residue `19`, and the second segment (with suffix `_2`) `sta`rts with residue `22` and `end`s with residue `39`:
+* The first segment (suffix _1) starts at residue 2 and ends at residue 19.
+* The second segment (suffix _2) starts at residue 22 and ends at residue 39.
+The corresponding .cfg file would look as follows:
 
 ```toml
+# Input molecules: DNA as the 1st molecule, and protein as the 2nd 
 molecules = ["DNA.pdb", "protein.pdb"]
+
 # ...
-# ...
+
 [flexref]
-# Defining a first segment (suffix _1) for DNA between residues 2 and 19
+# Define the first segment (suffix _1) for DNA (X = 1) between residues 2 and 19
 seg_sta_1_1 = 2
 seg_end_1_1 = 19
 
-# Defining a second (suffix _2) segment for DNA between residues 22 and 39
+# Define the second segment (suffix _2) for DNA (X = 1) between residues 22 and 39
 seg_sta_1_2 = 22
 seg_end_1_2 = 39
 ```
 
-<hr>
+### Fully flexible Segment
 
-## Manual Definition of Fully Flexible Segments
+Fully Flexible Segment
+The manual definition of a fully flexible segment differs slightly from the definition of a semi-flexible segment. For fully flexible segments, the user must specify the first and last residues of the fully flexible segment using the parameters `fle_sta_Y` and `fle_end_Y`. On top of it, the user must define the chain ID (instead of the molecule's sequential number) using the parameter `fle_seg_Y`.
 
-This definition is quite similar to the custom semi-flexible definition.
-This time the definition does not use the molecule index but its chain ID / Segment ID.
-It therefore requires the definition of 3 parameters for each fully flexible segment:
-* `fle_sta_X`: defining the starting residue of the `X`th fully-flexible segment
-* `fle_end_X`: defining the ending residue of the `X`th fully-flexible segment
-* `fle_seg_X`: defining the chainID/segmentID of the `X`th fully-flexible segment
-
-Here is a detailed explanation of how this parameter is built:
-- It starts with the prefix `fle_`, used to trigger the definition of a fully-flexible parameter
-- It continues with infix `sta`, `end` or `seg` defining the starting residue, end residue and chainID/segmentID of the fully-flexible segment
-- It terminates with the suffix `_X` defining the index of this segment, allowing to group together the fully flexible parameters together.
+Parameter Details:
+* `Y` defines the sequential number of the segment being defined. This allows multiple semi-flexible segments to be defined within the same chain.
+* The value of `fle_seg_Y` is a string and must correspond to the chainID/segemntID present in one of the input PDB files.
+* The values of `seg_sta_X_Y` and `seg_end_X_Y` must be integers and must correspond to residue indices present in chain/segment defined by `fle_seg_Y.
 
 
-#### Example: Giving full-flexibility to a Glycan
+#### Example: Fully Flexible Glycan
 
-Let's consider a docking scenario involving two partners, namely a protein (chain A) and a glycan (chain B, consisting of 4 residues), with the latter being set to fully flexible.
+Let's consider a docking scenario involving two partners, namely a protein (chain A) and a glycan (chain B, consisting of 4 residues, numbered strating from 1), where the entire chain of glycan is manually defined as fully flexible.
 
 Let's define the protein as the 1st docking partner and the glycan as the 2nd docking partner in `.cfg` file.
-Then, to be defined as fully flexible, the entire glycan (2nd partner, chain B) should be defined as a single segment, where we will define the starting residue (`sta`), ending residue (`end`) and the chainID/segmentID (`seg`).
+Then, to define glycan as fully flexible, its entire chain should be treated a single segment, i.e.:
+* the chainID is set to 'B'
+* the starting residue is set to 1
+* the ending residue is set to 4
 
+The corresponding .cfg file would look as follows:
 
 ```toml
 molecules = [
  "protein.pdb", # chain A
- "glycan.pdb"   # chain B
+ "glycan.pdb"   # chain B, residues from 1 to 4
  ]
+
 # ...
-# ...
+
 [flexref]
-# Starting residue for the flexibility
-fle_sta_1 = 1
-# Ending residue for the flexibility
-fle_end_1 = 4
-# ChaindID/segmentID of the molecule
+# Define chain ID of 1st fully flexible segment
 fle_seg_1 = "B"
+# Define the first residue for the 1st fully flexible segment 
+fle_sta_1 = 1
+# Define the last residue for the 1st fully flexible segment 
+fle_end_1 = 4
 ```
