@@ -5,7 +5,7 @@ From here, consider only relative paths for things to be functional.
 
 # Compile the book
 
-This manual is ment to be compiled by `mdbook`.
+This manual is meant to be compiled by `mdbook`.
 
 To generate it, mdbook must be installed (see [how to install mdbook](https://rust-lang.github.io/mdBook/index.html)).
 
