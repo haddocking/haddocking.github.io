@@ -26,4 +26,4 @@ In November 2023, we celebrated the 20-year anniversary of HADDOCK, where most o
 <img width="75%" src="./images/20-years-haddock.png" alt="photo 20 years haddock3">
 </figure>
 
-We wish to thank all the students, PhD candidates, and Post-doctoral researchers for each of their contributions to the tool, as it allowed us to continuously develop new methods and improve HADDOCK functionalities over the years.
+We wish to thank all the students, PhD candidates, and postdoctoral researchers for each of their contributions to the tool, as they have allowed us to continuously develop new methods and improve HADDOCK functionalities over the years.
