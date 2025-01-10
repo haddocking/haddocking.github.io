@@ -146,13 +146,13 @@ Take your time to know your system and what particularities its simulation entai
 
 
 In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username.
-You will find your own copy of the course material in `~/EVENTS/2024-struct-bioinfo-uu/` directory.
+You will find your own copy of the course material in `~/EVENTS/2025-struct-bioinfo-uu/` directory.
 You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
 
 
 __Note__: The data are automatically copied to your home directory under the `EVENTS` directory provided you have registered for this event on NMRBox. The event can be found at [https://nmrbox.nmrhub.org/events](https://nmrbox.nmrhub.org/events){:target="_blank"}. In order to register for the course you need to have an NMRBox account.
 
-__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2024-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
+__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2025-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
 
 Open the terminal and create a directory where you will work in with name of your choice:
 <a class="prompt prompt-cmd">
@@ -212,13 +212,17 @@ The successful completion of the tutorial requires, however, all three conformat
   Generate an ideal structure for the peptide sequence using the fab script in PyMOL, choose between helix/polypro/beta.
 </a>
 
-<a class="prompt prompt-pymol" style="dispay: none;">
+<a class="prompt prompt-pymol">
   fab SQETFSGLWKLLPPE, peptide_helix, ss=1
 </a>
-
+or
 <a class="prompt prompt-pymol">
   build_seq peptide_helix, SQETFSGLWKLLPPE, ss=helix
 </a>
+
+Note that both commands will produce the same for helices.
+The `build_seq` script is a home made one, while the `fab` command is a native PyMOL implementation.
+You can get more information on how to use the `fab` command by typing `help fab`.
 
 <a class="prompt prompt-pymol">
   save p53_helix.pdb, peptide_helix
