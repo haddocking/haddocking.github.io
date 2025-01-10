@@ -116,7 +116,7 @@ algorithms in place, during the simulation, that maintain these two properties c
 
 Despite decades of research, as well as advances in computer science and hardware development, most
 simulations are able to sample only a few microseconds of *real time*, although they take several
-days/weeks running on multiple processors. The millisecond (*ms*) barrier was broken only recently, by
+days/weeks running on multiple processors. The millisecond (*ms*) barrier was broken in 2010, by
 simulating on a purpose-built computer ([Anton](https://en.wikipedia.org/wiki/Anton_(computer))). Moreover, the force fields used in biomolecular simulation
 are approximating the interactions happening in reality. This results in errors in the estimation
 of energies of interacting atoms and groups of atoms. As such, molecular dynamics are not a

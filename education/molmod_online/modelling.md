@@ -89,8 +89,8 @@ Take the time to browse through the UniProt page of mouse MDM2. The header of th
 protein, gene, and organism names for this particular entry, as well as its unique UniProt
 accession code. On the left, below the header, there is a sidebar listing the several sections of
 the page. You can use these to navigate directly to the **Structure** section to verify if there are
-already published experimental structures for mouse MDM2. Fortunately, there aren't any _yet_; otherwise
-this tutorial would end here.
+already published experimental structures for mouse MDM2 (not a predicted model by AlphaFold2 !). 
+Fortunately, there aren't any _yet_; otherwise this tutorial would end here.
 
 
 Similarly as man, no protein is an island, entire of itself, every protein is a piece of the cell, a part of the main. Thus if we imagine the cytoplasm as a thick molecular soup, proteins are constantly in contact, interacting and exchanging information. Currently, predicting the entire cell interactome is close to impossible, however UniProt offers us a possibility to see experimentally confirmed interaction partners of proteins.
@@ -149,7 +149,7 @@ the first region (positions 1-110), the SWIB domain, or whatever seems best in y
   Why can the first ~20 amino acids of MDM2 be neglected for the modelling?
 </a>
 
-Clicking on the *position(s)* column of a particular region/domain (*Family and Domains* section) opens a new window showing the
+Clicking on the *position(s)* column of a particular region/domain (*Family and Domains* section) opens a drop-down section showing the
 corresponding sequence as well as the region in the context of the full sequence.
 Although this window provides a shortcut to launch a *BLAST* similarity search against the UniProtKB (or another)
 database, there are other more sensitive methods for this purpose. For now, pay attention to the
@@ -229,9 +229,9 @@ sequence, the _hit_, which was deemed similar to the query. It will contain the 
 itself and also some quantitative statistics, namely the sequence similarity, the bit score of the
 alignment, and its expectation (E) value. Sequence similarity is a quantitative measure of how
 evolutionarily related two sequences are. It is essentially a comparison of every amino acid to its
-aligned equivalent. There are three possible outcomes out of this comparison: the amino acids are
-exactly the same, i.e. identical; they are different but share common physicochemical
-characteristics, i.e. similar; they are neither. It is also possible that the alignment algorithm
+aligned equivalent. There are three possible outcomes out of this comparison: i) the amino acids are
+exactly the same, i.e. identical; ii) they are different but share common physicochemical
+characteristics, i.e. similar; iii) they are neither, they are very different. It is also possible that the alignment algorithm
 introduced _gaps_ in either of the sequences, meaning that there was possibly an insertion or a
 deletion event during evolution. While identity is straightforward, similarity depends on specific
 criteria that group amino acids together, e.g. D/E, K/R/H, F/Y/W. The bit score is the likelihood
