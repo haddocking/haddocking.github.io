@@ -36,7 +36,7 @@ Based on the available information we distinguish between the following options:
 
 <img src="./interface.png" align="right" >
 
-#### 1.) Information about the interface is available
+### 1.) Information about the interface is available
 
 #### Unambiguous Interaction restraints  
 
