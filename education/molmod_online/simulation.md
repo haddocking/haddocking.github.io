@@ -78,7 +78,7 @@ expanded to a three-dimensional space.
 
 $$
 \begin{equation}
-    \frac{\delta^2 x_{i}}{\delta t^2} = \frac{F_{x_{i}}}{m_i}
+    \frac{d^2 x_{i}}{d t^2} = \frac{F_{x_{i}}}{m_i}
 \end{equation}
 $$
 
@@ -117,9 +117,9 @@ algorithm first calculates the forces acting on each atom. From that force, one 
 acceleration of the atoms and combine these with their positions and velocities at time $$ t $$ to
 yield a new set of positions and velocities. The _time_ between the old and new positions is fixed
 and parametrized at the beginning of the simulation. In biomolecular simulations, the time step
-($$ \delta t $$) is usually set to 2 femtoseconds (*fs*), which is large enough to sample significant dynamics
+($$ \Delta t $$) is usually set to 2 femtoseconds (*fs*), which is large enough to sample significant dynamics
 but not as large as to cause problems during the calculations. Too big of a time step can lead to severe issues, such as two atoms
-overlooking each other, or even end up overlapping! At $$ t + \delta t $$, a new set of forces is
+overlooking each other, or even end up overlapping! At $$ t + \Delta t $$, a new set of forces is
 calculated and so on. The simulation finishes only when there have been enough steps to reach the
 desired simulation time. Besides all these calculations, biomolecular simulations try to also
 simulate the conditions inside cells, namely regarding temperature and pressure. There are special
@@ -922,7 +922,7 @@ with your name or initials.
 </a>
 
 <a class="prompt prompt-info">
-  Run the production MD! This will take a few hours to complete.
+  Run the production MD! This will take some time, from a few hours to a few days - depending on the amount of computing resources available. 
 </a>
 
 <a class="prompt prompt-cmd">
