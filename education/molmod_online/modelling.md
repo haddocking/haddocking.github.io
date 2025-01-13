@@ -121,16 +121,20 @@ The following tab, **Family & Domains**, lists structural and domain information
 For the mouse MDM2 protein, it shows that it contains a *SWIB* domain and two *zinc fingers* and that it interacts with proteins such as USP2, PYHIN1, RFFL, RNF34, among others.
 Additional information displayed in the text offers additional insights on binding partners and interfaces.
 
-<a class="prompt prompt-question">
-  Which region(s) of MDM2 bind p53 and which of those bind to the trans-activation domain?
-</a>
 
 From the introduction, you know that our region of interest in MDM2 interacts with the
 trans-activation region of p53 and does _not_ ubiquitinate it.
 The small print under the "Domain" header gives clues regarding possible p53 interfaces:
-"Region I is sufficient for binding p53";
+"Region I (1-110) is sufficient for binding p53";
 "the RING finger domain [...] is also essential for [MDM2] ubiquitin ligase E3 activity toward p53".
-It seems, therefore, that _Region I_ is our modelling target, but besides this annotation, it
+After, in the **Family and domain databases** sub-section, 
+have a look at [Pfam PF02201](https://www.ebi.ac.uk/interpro/entry/pfam/PF02201/) or [InterPro IPR003121](https://www.ebi.ac.uk/interpro/entry/InterPro/IPR003121/) entries to get more information about the composition of the first Region (1-110).
+
+<a class="prompt prompt-question">
+  Which region(s)/domains(s) of MDM2 bind p53 and which of those bind to the trans-activation domain?
+</a>
+
+It seems, therefore, that the _SWIB_ domain is our modelling target, but besides this annotation, it
 is not listed anywhere on the UniProt page. While this mystery has plenty of possible solutions,
 the easiest of which would be to search for a publication on the MDM2 domain organisation.
 Keep to the UniProt page to find an answer.
