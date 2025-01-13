@@ -6,16 +6,14 @@
 
 <p style='text-align: right; font-family: "PT Sans"; font-weight: 600;'> <font  size="6" color="RED" >Best practice guide</font></p>
 
-
-HADDOCK can perform docking of nucleic acids.
-The list of nucleic acid bases supported by HADDOCK is listed [here](https://wenmr.science.uu.nl/haddock2.4/library).
- 
+HADDOCK supports the docking of nucleic acids, including both DNA and RNA. Currently, only canonical nucleic acid bases are supported. They are listed [here](https://wenmr.science.uu.nl/haddock2.4/library).
 
 <hr>
 
 ### DNA and RNA nucleotide naming convention
 
-In HADDOCK, DNA and RNA bases must follow a strict naming convension for it to be well detected and understood by CNS.
+
+In HADDOCK, DNA and RNA bases must adhere to a strict naming convention to be correctly recognized and interpreted by CNS. 
 
 
 **DNA nucleotides**:
@@ -24,7 +22,7 @@ In HADDOCK, DNA and RNA bases must follow a strict naming convension for it to b
 - Cytosine: `DC`
 - Guanine: `DG`
 
-*Note* that DNA nucleotides are composed of **two** lettres only, starting at position 18.
+*Note* that DNA nucleotides are denoted by **two**-letter codes, starting at position 18 in the PDB file.
 
 **RNA nucleotides**:
 - Adenosine: `A`
@@ -32,7 +30,11 @@ In HADDOCK, DNA and RNA bases must follow a strict naming convension for it to b
 - Cytosine: `C`
 - Guanine: `G`
 
-*Note* that DNA nucleotides are composed of **one** lettres only, starting at position 18.
+*Note* that RNA nucleotides are denoted by **single**-letter codes, starting at position 18 in the PDB file.
+
+Any residue labeled simply as `T` will be ignored during docking. 
+If you notice missing thymine residues in your DNA after docking, it is likely that all DNA residues were labeled incorrectly - following the RNA naming convention instead. 
+This would result in the molecule being treated as RNA rather than DNA.
 
 <hr>
 
