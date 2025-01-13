@@ -409,14 +409,14 @@ The interface conservation can be quite useful in defining how well template int
 Thus, the closes homologues should reach the lowest interface conservation values in the highest possible identity cut-off.
 
 
+<a class="prompt prompt-question">
+Which template(s) show the evolutionary most conserved interface? Is this good?
+</a>
+
 In the **Sequence Similarity** plot, templates are clustered by their sequence identity and are represented by circles.
 Thus, templates with high sequence identity form clusters further away from clusters of lower sequence identity.
 The distance between templates is proportional to the sequence identity between them.
 You can see the name and the structure of each template by hovering over with your mouse.
-
-<a class="prompt prompt-question">
-Which templates show the evolutionary most conserved interface? Is this good?
-</a>
 
 
 If one selects multiple templates by checking the window in the **Templates** tab, their sequence alignment is shown in **Alignment of Selected Templates**.
