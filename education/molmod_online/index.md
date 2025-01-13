@@ -12,6 +12,7 @@ image:
 
 
 ## About this course
+
 The Structural Bioinformatics & Modelling course, created and maintained by the
 [Computational Structural Biology group](https://bonvinlab.org){:target="_blank"} of
 [Utrecht University](https://www.uu.nl){:target="_blank"}, is aimed
@@ -28,6 +29,7 @@ independently.
 
 
 ### Part 1: [Homology modelling](/education/molmod_online/modelling)
+
 This first module is about performing homology modelling of a protein, consisting of:
 
 * Template Search
@@ -139,7 +141,7 @@ Thus, you could run all three stages of this course here or transfer data betwee
 File transfer to and from the VM is quite straightforward and it is described here: [https://nmrbox.org/faqs/file-transfer](https://nmrbox.org/faqs/file-transfer){:target="_blank"}.
 
 In this course we will be working with command lines.
-For those of you who are not familiar with it, a lot of useful tutorials and documentation can be found [here](https://nmrbox.org/faqs/terminal-help){:target="_blank"}.
+For those of you who are not familiar with it, a lot of useful tutorials and documentation can be found [here](#familiarize-yourself-with-linux-terminal-and-command-lines).
 To find the terminal, look for a black icon with a `$_` symbol on it.
 Once you are familiar with the use of the terminal and basic command lines, we can start the Molecular Dynamics tutorial.
 
@@ -147,6 +149,15 @@ Further NMRbox documentation can be found [here](https://nmrbox.org/pages/docume
 
 Once you are done using your VM for the day, just log out of it using the top menu button as shown in this [9s video](https://www.youtube.com/watch?v=fHRCij5WJmM&feature=youtu.be){:target="_blank"}.
 
+
+#### Familiarize yourself with Linux, Terminal and Command lines
+
+Here are some useful resources that can help you in starting with Linux:
+
+- [Software Carpentry: Introduction to Shell](https://swcarpentry.github.io/shell-novice/01-intro.html){:target="_blank"}
+- [Linux tutorial](https://web.njit.edu/~alexg/courses/cs332/OLD/F2020/hand3f20/Linux-Tutorial.pdf){:target="_blank"}
+- [Linux Cheat-Sheet](https://www.geeksforgeeks.org/linux-commands-cheat-sheet/){:target="_blank"}
+- [NMRBox terminal tutorials and documentation](https://nmrbox.org/faqs/terminal-help){:target="_blank"}
 
 <hr>
 
