@@ -1,6 +1,6 @@
 ## Protein glycan docking
 
-A protein-glycan docking example making use of the knowledge of the binding site on the protein to guide the docking. The conformation of the glycan has been obtained from the [GLYCAM webserver](http://glycam.org/), while the structure of the protein is taken from the PDB in its unbound form. In the proposed workflows, a clustering step is always performed after initial docking stage, so as to increase the diversity of the ensemble of models to be refined.
+A protein-glycan docking example makes use of the knowledge of the binding site on the protein to guide the docking. The conformation of the glycan has been obtained from the [GLYCAM webserver](http://glycam.org/), while the structure of the protein is taken from the PDB in its unbound form. In the proposed workflows, a clustering step is always performed after the initial docking stage, so as to increase the diversity of the ensemble of models to be refined.
 
 Three different workflows are illustrated:
 - [docking-protein-glycan-full.cfg](https://github.com/haddocking/haddock3/blob/main/examples/docking-protein-glycan/docking-protein-glycan-full.cfg): 1000 rigidbody docking models, RMSD clustering to select 50 clusters, flexible refinement of the top 5 models of each cluster, final RMSD clustering for cluster-based scoring. The RMSD clustering assumes a good knowledge of the interface, as the user has to define the residues involved in the binding site by means of the resdic_ parameter.
