@@ -16,7 +16,7 @@ Two appoaches can then be used:
 
 #### Using surface accessible residues
 
-Generating restraints guiding the antibody CDR loops towards surface residues on the antigen side is a solution that will sample the entire surface of the antigen. For this, two major information must be extracted:
+Generating restraints guiding the antibody CDR loops toward surface residues on the antigen side is a solution that will sample the entire surface of the antigen. For this, two major pieces of information must be extracted:
 
 - The residue indices of the antibody CDR loops: can be predicted using bioinformatics tools for paratope prediction such as [proABC2](https://wenmr.science.uu.nl/proabc2).
 - The surface residue indices of the antigen: can be predicted computed using `haddock3-restraints calc_accessibility antigen.pdb`.
