@@ -17,7 +17,7 @@ This is followed by an short molecular dynamics simulation in explicit solvent `
 
 A RMSD clustering step is perfomed using `[rmsdmatrix]`, `[clustrmsd]` (with `criterion="maxclust"` and `n_clusters=50`) to generate a subset of 50 clusters, finalized by `[seletopclusts]` module setting `top_models=1`, to only extract one single model per clusters.
 
-`[topoaa]` module is then used again to re-generate the topology. In this case the three **important** parameters (`cyclicpept_dist`, `disulphide_dist`, and `cyclicpept`) are set, allowing for the detection of the disulphide bridge and peptide bond at higher distance, therefore generating the proper cyclicised topology.
+`[topoaa]` module is then used again to re-generate the topology. In this case the three **important** parameters (`cyclicpept_dist`, `disulphide_dist`, and `cyclicpept`) are set, allowing for the detection of the disulfide bridge and peptide bond at a higher distance, therefore generating the proper cyclicised topology.
 
 A second round of `[emref]`, `[flexref]` and `[mdref]` is then performed, allowing to reduce the length of the newly formed chemical bonds and optimise the cyclic peptide conformation.
 
