@@ -2,7 +2,7 @@
 
 ### Two body docking
 
-Here we provide various examples using the standard HADDOCK2.X workflows, now well established and banchmarked, using `[rigidbody]` docking (former *it0*), followed by flexible refinement in torsional angle space with the `[flexref]` module (former *it1*), with a final refinement step using molecular dynamics simulation in an explicit solvent shell (`[mdref]`, former *itw*) or an energy minimisation step (`[emref]`).
+Here we provide various examples using the standard HADDOCK2.X workflows, now well established and benchmarked, using `[rigidbody]` docking (former *it0*), followed by flexible refinement in torsional angle space with the `[flexref]` module (former *it1*), with a final refinement step using molecular dynamics simulation in an explicit solvent shell (`[mdref]`, former *itw*) or an energy minimization step (`[emref]`).
 The final set of complexes is later clustered using Fraction of Common Contacts clustering (FCC) with the `[clustfcc]` module.
 
 The protein-protein docking example makes use of the NMR chemical shift perturbation data providing information on the residues of binding site to guide the docking.
