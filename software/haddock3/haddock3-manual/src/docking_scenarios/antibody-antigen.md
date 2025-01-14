@@ -23,7 +23,7 @@ Generating restraints guiding the antibody CDR loops toward surface residues on 
 
 Defining the CDR loops as `active` residues and all surface residues on the antigen as `passive`, we can create an ambiguous restraints file `ambig.tbl`, that will guide the docking sampling the entire surface of the antigen while making sure the CDR loops are interacting. For more details on how to generate restraints, please refer to the [`haddock3-restraints` documention](/software/haddock3/manual/restraints_cli.md).
 
-For such kind of naive approach, increasing the sampling at the `[rigidbody]` level is important.
+For such a naive approach, increasing the sampling at the `[rigidbody]` level is important.
 
 Various examples are available:
 
