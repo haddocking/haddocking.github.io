@@ -387,7 +387,7 @@ The NGL viewer offers an option to toggle between different protein representati
 Notice how you can see residues names after you hover over them with your cursor.
 One of the coloring options is by `Bfactor Range`.
 The B-factor, or the temperature factor, refers to the displacement of atoms from their mean position in a crystal structure and reach the value between 0 and 1.
-It describes the local mobility of the macromolecule, with 0 being the most mobile parts, and in this case marked <font style="color: red;">red</font>.
+It describes the local mobility of the macromolecule, with 0 being the least mobile parts, and in this case marked <font style="color: blue;">blue</font>.
 
 <a class="prompt prompt-question">
 How do the residues properties change depending on the position in the protein? For example polar, hydrophobic or aromatic residues. Which parts of the protein are more stable and which on the other hand more flexible?
