@@ -19,6 +19,6 @@ A RMSD clustering step is perfomed using `[rmsdmatrix]`, `[clustrmsd]` (with `cr
 
 `[topoaa]` module is then used again to re-generate the topology. In this case the three **important** parameters (`cyclicpept_dist`, `disulphide_dist`, and `cyclicpept`) are set, allowing for the detection of the disulfide bridge and peptide bond at a higher distance, therefore generating the proper cyclicised topology.
 
-A second round of `[emref]`, `[flexref]` and `[mdref]` is then performed, allowing to reduce the length of the newly formed chemical bonds and optimise the cyclic peptide conformation.
+A second round of `[emref]`, `[flexref]`, and `[mdref]` is then performed, allowing to reduce the length of the newly formed chemical bonds and optimize the cyclic peptide conformation.
 
 The `[caprieval]` module is called at various stages during the workflow to assess the conformation of the peptide with respect to the known reference structure. Note that in this case, only the `global_rmsd` value is computed, as the structure is not a complex.
