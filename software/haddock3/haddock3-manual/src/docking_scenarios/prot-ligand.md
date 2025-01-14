@@ -14,7 +14,7 @@ Two protocols have been proposed:
 The use of experimental structure as template for docking have been shown to provide helpful information to guide the conformation of the ligand towards both the binding site and an adequate conformation (see: [D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6), [@TOME 3.0](https://www.sciencedirect.com/science/article/pii/S0022283624003139) and [CAPRI16 (soon)]())
 
 A protein-ligand docking example making use of the knowledge of a template ligand (a ligand similar to the ligand we want to dock and bind to the same receptor).
-The template ligand information is used in the form of shape consisting of dummy beads and positioned within the binding site to which distance restraints are defined.
+The template ligand information is used in the form of a shape consisting of dummy beads and positioned within the binding site to which distance restraints are defined.
 More details about the method and the performance of the protocol when benchmarked on a fully unbound dataset
 can be seen in our freely available [paper on JCIM](https://pubs.acs.org/doi/full/10.1021/acs.jcim.1c00796).
 
