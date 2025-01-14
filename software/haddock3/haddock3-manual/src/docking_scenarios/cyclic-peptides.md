@@ -1,7 +1,7 @@
 ## Peptide cyclisation
 
 The generation of cyclic peptides usually involves the formation of a disulfide bridge between two cysteines or the formation of a peptide bond between the N-terminus and C-terminus residues.
-This can be performed by haddock3 in a two step process, by first generating restraints between the two resiudes involved to induce a pre-cyclic conformation, and then re-generating the topology with an increased range of chemical bond detection (tuning `cyclicpept_dist`, `disulphide_dist` and turning on the `cyclicpept` parameters in `[topoaa]` module), therefore detecting and creating the covalent cyclic bond and refining again.
+This can be performed by haddock3 in a two-step process, by first generating restraints between the two residues involved to induce a pre-cyclic conformation, and then re-generating the topology with an increased range of chemical bond detection (tuning `cyclicpept_dist`, `disulphide_dist` and turning on the `cyclicpept` parameters in `[topoaa]` module), therefore detecting and creating the covalent cyclic bond and refining again.
 
 Protocol described in: [https://doi.org/10.1021/acs.jctc.2c00075](https://doi.org/10.1021/acs.jctc.2c00075)
 
