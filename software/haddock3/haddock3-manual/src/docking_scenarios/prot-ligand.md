@@ -20,7 +20,7 @@ can be seen in our freely available [paper on JCIM](https://pubs.acs.org/doi/ful
 
 As explained in our [shape small molecule HADDOCK2.4 tutorial](https://www.bonvinlab.org/education/HADDOCK24/shape-small-molecule/), during the docking and refinement the protein and the shape are kept in their original positions (see the `mol_fix_origin_X` parameters in the config file) and ambiguous distance restraints between the ligand and the shape beads are defined (the corresponding AIRs are defined in the `shape-restraints-from-shape-1.tbl` file in the `data` directory).
 This is effectively a three body docking.
-For the ligand an ensemble of 10 different conformations is provided as starting point for the docking (`ligand-ensemble.pdb` in the `data` directory).
+For the ligand, an ensemble of 10 different conformations is provided as starting point for the docking (`ligand-ensemble.pdb` in the `data` directory).
 Please refer to our [shape small molecule tutorial](https://www.bonvinlab.org/education/HADDOCK24/shape-small-molecule/) for information on how to generate such an ensemble.
 
 The [docking-protein-ligand-shape-full.cfg](https://github.com/haddocking/haddock3/tree/main/examples/docking-protein-ligand-shape/docking-protein-ligand-shape-full.cfg) workflow consists of the generation of 1000 rigidbody docking models with the protein and shape kept in their origin position, selection of top200 and flexible refinement of those.
