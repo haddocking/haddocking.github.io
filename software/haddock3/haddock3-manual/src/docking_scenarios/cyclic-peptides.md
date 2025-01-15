@@ -1,7 +1,7 @@
 ## Peptide cyclisation
 
-The generation of cyclic peptides usually involves the formation of a disulfide bridge between two cysteines or the formation of a peptide bond between the N-terminus and C-terminus residues.
-This can be performed by haddock3 in a two-step process, by first generating restraints between the two residues involved to induce a pre-cyclic conformation, and then re-generating the topology with an increased range of chemical bond detection (tuning `cyclicpept_dist`, `disulphide_dist` and turning on the `cyclicpept` parameters in `[topoaa]` module), therefore detecting and creating the covalent cyclic bond and refining again.
+The generation of cyclic peptides usually involve the formation of a disulphide bridge between two cysteins or the formation of a peptide bond between the N-terminus and C-terminus residues.
+This can be performed by haddock3 in a two step process, by first generating restraints between the two resiudes involved to induce a pre-cyclic conformation, and then re-generating the topology with an increased range of chemical bond detection (tuning `cyclicpept_dist`, `disulphide_dist` and turning on the `cyclicpept` parameters in `[topoaa]` module), therefore detecting and creating the covalent cyclic bond and refining again.
 
 Protocol described in: [https://doi.org/10.1021/acs.jctc.2c00075](https://doi.org/10.1021/acs.jctc.2c00075)
 
@@ -17,8 +17,8 @@ This is followed by an short molecular dynamics simulation in explicit solvent `
 
 A RMSD clustering step is perfomed using `[rmsdmatrix]`, `[clustrmsd]` (with `criterion="maxclust"` and `n_clusters=50`) to generate a subset of 50 clusters, finalized by `[seletopclusts]` module setting `top_models=1`, to only extract one single model per clusters.
 
-`[topoaa]` module is then used again to re-generate the topology. In this case the three **important** parameters (`cyclicpept_dist`, `disulphide_dist`, and `cyclicpept`) are set, allowing for the detection of the disulfide bridge and peptide bond at a higher distance, therefore generating the proper cyclicised topology.
+`[topoaa]` module is then used again to re-generate the topology. In this case the three **important** parameters (`cyclicpept_dist`, `disulphide_dist`, and `cyclicpept`) are set, allowing for the detection of the disulphide bridge and peptide bond at higher distance, therefore generating the proper cyclicised topology.
 
-A second round of `[emref]`, `[flexref]`, and `[mdref]` is then performed, allowing to reduce the length of the newly formed chemical bonds and optimize the cyclic peptide conformation.
+A second round of `[emref]`, `[flexref]` and `[mdref]` is then performed, allowing to reduce the length of the newly formed chemical bonds and optimise the cyclic peptide conformation.
 
 The `[caprieval]` module is called at various stages during the workflow to assess the conformation of the peptide with respect to the known reference structure. Note that in this case, only the `global_rmsd` value is computed, as the structure is not a complex.

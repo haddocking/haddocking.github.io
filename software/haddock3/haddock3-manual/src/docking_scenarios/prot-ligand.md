@@ -14,13 +14,13 @@ Two protocols have been proposed:
 The use of experimental structure as template for docking have been shown to provide helpful information to guide the conformation of the ligand towards both the binding site and an adequate conformation (see: [D3R Grand Challenge 4](https://doi.org/10.1007/s10822-019-00244-6), [@TOME 3.0](https://www.sciencedirect.com/science/article/pii/S0022283624003139) and [CAPRI16 (soon)]())
 
 A protein-ligand docking example making use of the knowledge of a template ligand (a ligand similar to the ligand we want to dock and bind to the same receptor).
-The template ligand information is used in the form of a shape consisting of dummy beads and positioned within the binding site to which distance restraints are defined.
+The template ligand information is used in the form of shape consisting of dummy beads and positioned within the binding site to which distance restraints are defined.
 More details about the method and the performance of the protocol when benchmarked on a fully unbound dataset
 can be seen in our freely available [paper on JCIM](https://pubs.acs.org/doi/full/10.1021/acs.jcim.1c00796).
 
 As explained in our [shape small molecule HADDOCK2.4 tutorial](https://www.bonvinlab.org/education/HADDOCK24/shape-small-molecule/), during the docking and refinement the protein and the shape are kept in their original positions (see the `mol_fix_origin_X` parameters in the config file) and ambiguous distance restraints between the ligand and the shape beads are defined (the corresponding AIRs are defined in the `shape-restraints-from-shape-1.tbl` file in the `data` directory).
 This is effectively a three body docking.
-For the ligand, an ensemble of 10 different conformations is provided as starting point for the docking (`ligand-ensemble.pdb` in the `data` directory).
+For the ligand an ensemble of 10 different conformations is provided as starting point for the docking (`ligand-ensemble.pdb` in the `data` directory).
 Please refer to our [shape small molecule tutorial](https://www.bonvinlab.org/education/HADDOCK24/shape-small-molecule/) for information on how to generate such an ensemble.
 
 The [docking-protein-ligand-shape-full.cfg](https://github.com/haddocking/haddock3/tree/main/examples/docking-protein-ligand-shape/docking-protein-ligand-shape-full.cfg) workflow consists of the generation of 1000 rigidbody docking models with the protein and shape kept in their origin position, selection of top200 and flexible refinement of those.
