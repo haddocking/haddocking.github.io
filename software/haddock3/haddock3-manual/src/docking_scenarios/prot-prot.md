@@ -2,10 +2,10 @@
 
 ### Two body docking
 
-Here we provide various examples using the standard HADDOCK2.X workflows, now well established and banchmarked, using `[rigidbody]` docking (former *it0*), followed by flexible refinement in torsional angle space with the `[flexref]` module (former *it1*), with a final refinement step using molecular dynamics simulation in an explicit solvent shell (`[mdref]`, former *itw*) or an energy minimisation step (`[emref]`).
+Here we provide various examples using the standard HADDOCK2.X workflows, now well established and benchmarked, using `[rigidbody]` docking (former *it0*), followed by flexible refinement in torsional angle space with the `[flexref]` module (former *it1*), with a final refinement step using molecular dynamics simulation in an explicit solvent shell (`[mdref]`, former *itw*) or an energy minimization step (`[emref]`).
 The final set of complexes is later clustered using Fraction of Common Contacts clustering (FCC) with the `[clustfcc]` module.
 
-The protein-protein docking example makes use of the NMR chemical shift perturbation data providing information on the residues of binding site to guide the docking.
+The protein-protein docking example makes use of the NMR chemical shift perturbation data providing information on the residues of the binding site to guide the docking.
 The NMR-identified residues are defined as active with their surface neighbors as passive (the corresponding AIRs are defined in the [e2a-hpr_air.tbl](../examples/docking-protein-protein/data/e2a-hpr_air.tbl) file in the `data` directory).
 This system is the same as described in our [HADDOCK2.4 basic protein-protein docking tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic/).
 For the second molecule (HPR), an ensemble of 10 conformations (taken from the NMR solution structure of this protein) is used as starting point for the docking.
