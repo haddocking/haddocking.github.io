@@ -371,7 +371,7 @@ The definition of restraints does require some thoughts. Active residues in HADD
 *might* be at the interface. Ambiguous Interaction Restraints, or AIRs, are created
 between each active residue of a partner and the combination of active and passive residues of the other partner.
 An active residue which is not at the interface will cause an energy penalty while this is not the case for passive residues.
-For the docking of MDM2 and p53, define **active** residues on MDM2 based on [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} output. As there is no information about interacting residues of the peptide, define entire p53 as **passive**.
+For the docking of MDM2 and p53, define **active** residues on MDM2 based on [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} output. As there is no information about interacting residues for the peptide, define entire p53 as **passive**.
 This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769){:target="_blank"} paper.
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have
 all to make contacts per se.
