@@ -186,7 +186,7 @@ Since the other sequences might be longer than our query, specify conservancy of
 In WebLogo 3, upload your alignment file
 </a>
 
-Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in logo range.
+Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 146-231 in logo range.
 
 <a class="prompt prompt-question">
   Which regions of the sequence are highly conserved? And which are less conserved?
@@ -202,7 +202,7 @@ Do you see where the mouse MDM2 sequence is located on the alignment? Try to sel
 solely on the evolutionary conservation analysis?
 </a>
 
-### Predicting interafce residues
+### Predicting interface residues
 
 Besides sequence conservation, other features can be used to predict possible interfaces on protein
 structures. For example, certain residues tend to be overrepresented at protein-protein interfaces.
@@ -249,7 +249,7 @@ Wisely define a probability threshold and note down the residue indices, as you 
 By selecting the 'Cluster partners by protein function' option the software will look into the function of the protein partners that interact with each binding surface.
 
 <a class="prompt prompt-question">
-  What is the most relevant cluster in our case?
+  What is the most relevant cluster in our case? Pay attention to the protein function!
   How many residues are above the 0.5 probability threshold ?
 </a>
 
