@@ -144,16 +144,16 @@ First we need to find sequence homologues again. This time we will be running a 
 Search for 'MDM2' in UniProt and choose the mouse isoform.
 </a>
 
-A familiar page should appear with all the previously described information. Go directly to the **Sequences** section. The sequence that you see is a canonical sequence, which means that it is either the most prevalent, the most similar to orthologous sequences in other species or in absence of any information, the longest sequence. On the right side of the sequence there is a possibility to run a BLAST (Basic Local Alignment Search Tool) search.
+A familiar page should appear with all the previously described information. Go directly to the **Sequences** section. The sequence that you see is a canonical sequence, which means that it is either the most prevalent, the most similar to orthologous sequences in other species or in absence of any information, the longest sequence. On the top-left side of the sequence there is a possibility to run a BLAST (Basic Local Alignment Search Tool) search.
 
 <a class="prompt prompt-info">
-Select 'BLAST' next to the canonical sequence and press 'GO'.
+Click on 'Tools' next to the canonical sequence and select 'BLAST'.
 </a>
 
 Next, a new [window](https://www.uniprot.org/blast/){:target="_blank"} will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier.
 
 <a class="prompt prompt-info">
-Since we are already have the UniProt ID in the field, we can click on Run BLAST and change the number of sequences to 100.
+Change the number of hits to 50 in advanced parameters (for an easy alignement). Then proceed to run BLAST.
 </a>
 
 This step might take a few moments since our sequence is being compared to the UniProtKB reference proteomes plus SwissProt databases. Once the run is finished, we can see a list of orthologous sequences from different organisms ordered by sequence identity.
@@ -162,14 +162,14 @@ This step might take a few moments since our sequence is being compared to the U
 Which organism shows the highest sequence similarity to the mouse MDM2? Is it surprising?
 </a>
 
-To be able to take information about conserved residues and utilize it in HADDOCK, we need to align selected sequences. An additional window with running alignment will open.
+To be able to take information about conserved residues and use it in HADDOCK, we need to align selected sequences.
 
 <a class="prompt prompt-info">
-Select all sequences and click on Align in the **Alignments** section. Once the run is completed download the compressed alignment in FASTA format.
+Select all 50 sequences and click Tools >> Align selected results, proceed to run the alignment. When finished, download the alignment in FASTA format.
 </a>
 
 
-To visualize the alignment, and which positions are more conserved, the easiest way is to generate a sequence *logo*. For each
+The easiest way to visualize the alignment to identifiy which positions are more conserved is by generating a sequence *logo*. For each
 position in the sequence, the logo identifies the most frequently occurring residues and scales its
 one-letter code according to a conservation score. We will be using the
 [WebLogo server](http://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
@@ -186,7 +186,7 @@ Since the other sequences might be longer than our query, specify conservancy of
 In WebLogo 3, upload your alignment file
 </a>
 
-Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 485-528 in logo range.
+Do you see where the mouse MDM2 sequence is located on the alignment? Try to select residues 146-231 in logo range.
 
 <a class="prompt prompt-question">
   Which regions of the sequence are highly conserved? And which are less conserved?
@@ -202,7 +202,7 @@ Do you see where the mouse MDM2 sequence is located on the alignment? Try to sel
 solely on the evolutionary conservation analysis?
 </a>
 
-### Predicting interafce residues
+### Predicting interface residues
 
 Besides sequence conservation, other features can be used to predict possible interfaces on protein
 structures. For example, certain residues tend to be overrepresented at protein-protein interfaces.
@@ -231,11 +231,12 @@ in Pymol.
   Note down the list of residues predicted by CPORT to be part of an interface.
 </a>
 
+Many tools in science are developed by dedicated PhD students and postdocs. Unfortunately, over time, some of these tools may become unavailable as maintaining and supporting them requires significant time and effort. In such cases, it may be necessary to transition to alternative tools.
 
 ### Obtain known interfaces of homologous proteins
 
-Finally, another way to obtain information about possible interface residues is by analysing known interfaces found in homologous proteins.
-This can easily be performed by [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a [new tool](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"} dedicated to the automatic retrieval and clustering of interfaces in complexes from 3D structural information.
+Another way to obtain information about possible interface residues is by analysing known interfaces found in **homologous** proteins.
+This can easily be performed by [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a [new tool](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"} dedicated to an automatic retrieval and clustering of interfaces in complexes from 3D structural information.
 As structural information of the human MDM2 interacting with other partners is available, ARCTIC-3D will extract interacting residues and cluster them into binding surfaces. Not all residues of a binding surface are relevant, as some amino acids may be rarely present among the interfaces that define that patch.
 Wisely define a probability threshold and note down the residue indices, as you will need them to define *active* residues in HADDOCK.
 
@@ -248,7 +249,7 @@ Wisely define a probability threshold and note down the residue indices, as you 
 By selecting the 'Cluster partners by protein function' option the software will look into the function of the protein partners that interact with each binding surface.
 
 <a class="prompt prompt-question">
-  What is the most relevant cluster in our case?
+  What is the most relevant cluster in our case? Pay attention to the protein function!
   How many residues are above the 0.5 probability threshold ?
 </a>
 
@@ -267,7 +268,7 @@ For this, you need to load your mouse MDM2 model on the same PyMOL session and t
 </a>
 
 <a class="prompt prompt-question">
-  What is the list of residues indices that you selected ?
+  What is the list of residues indices that you selected?
 </a>
 
 
@@ -370,7 +371,7 @@ The definition of restraints does require some thoughts. Active residues in HADD
 *might* be at the interface. Ambiguous Interaction Restraints, or AIRs, are created
 between each active residue of a partner and the combination of active and passive residues of the other partner.
 An active residue which is not at the interface will cause an energy penalty while this is not the case for passive residues.
-For the docking of MDM2 and p53, **active** residues on MDM2 are taken from [CPORT](https://alcazar.science.uu.nl/services/CPORT){:target="_blank"} / [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} predictions, while the peptide is only defined as **passive**.
+For the docking of MDM2 and p53, define **active** residues on MDM2 based on [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} output. As there is no information about interacting residues for the peptide, define entire p53 as **passive**.
 This follows the recipe published in our [Structure 2013](https://dx.plos.org/10.1371/journal.pone.0058769){:target="_blank"} paper.
 In that way the active residues of the protein will attract the peptide, while peptide residues do not have
 all to make contacts per se.
@@ -379,7 +380,7 @@ all to make contacts per se.
 In this stage we will make use of the active residues returned by CPORT for MDM2
 
 <a class="prompt prompt-info">
-  Active residues (directly involved in the interaction) -> Input here the list of active residues returned by CPORT/ARCTIC-3D for MDM2
+  Active residues (directly involved in the interaction) -> Input here the list of active residues returned by ARCTIC-3D for MDM2
 </a>
 <a class="prompt prompt-info">
   Automatically define passive residues around the active residues -> **uncheck** (passive should only be defined if active residues are defined for the second molecule)
