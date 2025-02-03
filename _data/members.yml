@@ -31,10 +31,6 @@
     position: Ph.D Candidate
     avatar: /images/people/Anna-Engel.jpg
 
--   name:  Miguel Sanchez Marin
-    position: M.Sc Student
-    avatar: /images/people/Miguel-Sanchez.jpg
-
 -   name:  Alkis Katsetsiadis
     position: M.Sc Student
     avatar: /images/people/Alkis-Katsetsiadis.png
@@ -42,3 +38,7 @@
 -   name:  Emile Straat
     position: M.Sc Student
     avatar: /images/people/Emile-Straat.png
+
+-   name:  Yara Weldam
+    position: M.Sc Student
+    avatar: /images/people/Yara-Weldam.png
