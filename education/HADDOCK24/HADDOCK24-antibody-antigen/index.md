@@ -15,7 +15,7 @@ This tutorial consists of the following sections:
 <hr>
 ## Introduction
 
-This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex. It also includes our newly developed [PDB-tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} and [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"} webservers. We will be following the protocol described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283){:target="_blank"}. 
+This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex. It also includes our [PDB-tools](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"} web service and uses results from our [ProABC-2](https://github.com/haddocking/proabc-2){:target="_blank"} paratope predictor. We will be following the protocol described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283){:target="_blank"}. 
 
 An antibody is a large protein that generally works by attaching itself to an antigen, which is a unique site of the pathogen. The binding harnesses the immune system to directly attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity, which is achieved by their unique structure. **The fragment crystallizable region (Fc region**) activates the immune response and is species specific, i.e. human Fc region should not evoke an immune response in humans.  **The fragment antigen-binding region (Fab region**) needs to be highly variable to be able to bind to antigens of various nature (high specificity). In this tutorial we will concentrate on the terminal **variable domain (Fv**) of the Fab region. 
  
@@ -34,9 +34,9 @@ In this tutorial we will be working with  Interleukin-1β (IL-1β) (PDB code [4I
 
 <hr>
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"}, [ProABC-2](https://wenmr.science.uu.nl/proabc2){:target="_blank"} and [PDB-tools webserver](https://wenmr.science.uu.nl/pdbtools){:target="_blank"}.
+References:
 
-* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._,  *19*, 3219–3241 (2024).
 
 
 ProABC-2 is described here:
@@ -125,7 +125,7 @@ The final models are automatically clustered based on a specific similarity meas
 <hr>
 ## Extracting antibody amino acid sequence to gain information about the paratope
 
-Nowadays there are several computational tools that can identify the paratope from the provided antibody sequence. In this tutorial we will use the one developed in our group [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
+Nowadays there are several computational tools that can identify the paratope from the provided antibody sequence. In this tutorial we will use the one developed in our group [ProABC-2](https://github.com/haddocking/proabc-2){:target="_blank"}. ProABC-2 uses a convolutional neural network to identify not only residues which are located in the paratope region but also the nature of interactions they are most likely involved in (hydrophobic or hydrophilic). The work is described in [Ambrosetti, *et al* Bioinformatics, 2020](https://academic.oup.com/bioinformatics/article/36/20/5107/5873593){:target="_blank"}.
 
 
 ### Using PDB tools to extract the amino acid sequence 
@@ -174,13 +174,9 @@ If you wish to save the pipeline after this step, click on **Download JSON pipel
 
 ### Using ProABC-2 to identify the paratope
 
-Once you have downloaded the sequence fasta files of both chains, open your browser to go to [ProABC-2](https://wenmr.science.uu.nl/proabc2/){:target="_blank"}. 
 
-<a class="prompt prompt-info"> Open the downloaded fasta files with a text editor and enter the sequences into corresponding fields in ProABC-2 interface.</a>
-
-<a class="prompt prompt-info"> Press **Sumbit** to let the webserver process your sequence.</a>
-
-The calculation takes only a few seconds and the result graph shows the probabilities that a residue is a part of the paratope. Note that the graphs are interactive, i.e. the three features (pt-probability, hb-hydrophobic, hy-hydrophilic) can be toggled. Detail values per each residue are shown upon hovering over it with the mouse.  
+Because of security issues we had to discontinue the ProABC-2 service. The code is however freely available from our [GitHub repository](https://github.com/haddocking/proabc-2){:target="_blank"}, which also include a docker container to run the server.
+The ProABC-2 prediction will be provided below, so no need to run the predictions at this stage.  
 
 **Note:** ProABC-2 uses the [Chothia numbering scheme](https://pubmed.ncbi.nlm.nih.gov/9367782/?otool=inluulib){:target="_blank"} for antibodies and only shows results for the antibody Fv domains. Insertions created by this numbering scheme (e.g. 82A,82B,82C) cannot be processed by HADDOCK directly and renumbering is necessary before starting the docking. Extracting active residues corresponding to this renumbered structures can be done locally as described in [Ambrosetti, *et al* ArXiv, 2020](https://arxiv.org/abs/2005.03283){:target="_blank"}. For simplicity we have already done this for you in this tutorial.
 
