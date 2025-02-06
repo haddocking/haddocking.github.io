@@ -4,15 +4,19 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2025
+
+* A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01810). _J. Chem. Inf. Mod._ Advanced Online Publication (2025).
+
+
 ## 2024
+
 * V. Reys∗, Ma. Giulini∗, V. Cojocaru, A. Engel, X. Xu, J. Roel-Touris, C. Geng, F. Ambrosetti, B.
 Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789) _Proteins: Struc. Funct. &amp; Bioinformatics_  Advanced Online Publication (2024).
 
 * K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1101/2024.08.09.60700). _BioRXiv._ 10.1101/2024.08.09.60700 (2024).
 
 * X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
-
-* A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://doi.org/10.1101/2024.06.02.597018). _BioRXiv._ 10.1101/2024.06.02.597018 (2024).
 
 * G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ *4*:vbae153 (2024).
 
