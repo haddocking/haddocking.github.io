@@ -20,7 +20,7 @@ Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van
 
 * G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ *4*:vbae153 (2024).
 
-* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _J. Chem. Inf. Mod._ *64*, 7816–7825 (2024).
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1021/acs.jcim.4c01372). _J. Chem. Inf. Mod._ *64*, 7816–7825 (2024).
 
 * M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1093/bioinformatics/btae583). _Bioinformatics_ *40*:btae583, p. 1-11 (2024).[BioRxiv](https://www.biorxiv.org/content/10.1101/2023.11.17.567543v1)
 
