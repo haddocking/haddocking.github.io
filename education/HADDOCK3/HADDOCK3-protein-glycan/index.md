@@ -31,6 +31,8 @@ In this tutorial we will be working with the catalytic domain of the *Humicola G
 *4-beta-glucopyranose*, as glycan
 (PDB code of the complex [1UU6](https://www.ebi.ac.uk/pdbe/entry/pdb/1uu6){:target="_blank"}).
 
+The tutorial is based on [A. Ranaudo et al., *J. Chem. Inf. Model.* 64 (19), 7816-7825, 2024](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01372){:target="_blank"}.
+
 <figure style="text-align: center;">
   <img width="75%" src="/education/HADDOCK3/HADDOCK3-protein-glycan/1UU6.png">
 </figure>
@@ -477,7 +479,7 @@ In CAPRI the quality of a model is defined as (for protein-protein complexes):
 As these metrics are for protein-protein complexes and glycans are typically smaller, it is best to use stricter metrics to assess the quality of the models.
 In the case of information-driven protein-glycan docking, the Fnat term is less relevant, as most contacts will typically be satisfied.
 
-For protein-glycan modelling we recently proposed a different, stricter metric based on the interface ligand RMSD (ilRMSD) [ADD REFERENCE TO BIORXIV PREPRINT]:
+For protein-glycan modelling we recently proposed a different, stricter metric based on the interface ligand RMSD (ilRMSD), see [A. Ranaudo et al., *J. Chem. Inf. Model.* 64 (19), 7816-7825, 2024](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01372){:target="_blank"}:
 
 * **near acceptable model**: ilRMSD < 4Å
 * **acceptable model**: ilRMSD < 3Å
