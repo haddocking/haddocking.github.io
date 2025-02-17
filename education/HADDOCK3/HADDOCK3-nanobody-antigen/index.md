@@ -28,7 +28,7 @@ comparable to that of monoclonal antibodies. Nanobodies are used in a wide range
 
 
 <figure style="text-align: center;">
-  <img src="/education/HADDOCK3/nanobody_figure.png">
+  <img src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/nb.png">
 </figure>
 
 As in antibodies, the small part of the nanobody region that binds the antigen is called **paratope**, while part of the antigen
@@ -38,11 +38,11 @@ Another important feature of these molecules is that the highly conserved amino 
 can play a role in the binding to the antigen. These interactions are thought to be non-specific and to occur because the absence of a light chain in the nanobody
 makes using the FRs to interact with the antigen more necessary to attain higher affinity.
 
-In this tutorial we will be working with the complex between a nanobody, 
-and mouse plexing protein B1 (PDB ID: [8BB7](https://www.ebi.ac.uk/pdbe/entry/pdb/4g6k){:target="_blank"}).
+In this tutorial we will be working with the complex between a nanobody (1-2C7), 
+and a fragment of the *Severe acute respiratory syndrome coronavirus 2* (SARS-CoV-2) Spike glycoprotein (PDB ID: [7x2m](https://www.ebi.ac.uk/pdbe/entry/pdb/7x2m){:target="_blank"}).
 
 <figure style="text-align: center;">
-  <img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/CDRs.png">
+  <img src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/7X2MB_REF.PDB.png">
 </figure>
 
 Throughout the tutorial, colored text will be used to refer to questions or
@@ -84,7 +84,6 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 * `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
 * `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
-* `scripts`: Contains a variety of scripts used in this tutorial
 
 <hr>
 
@@ -133,33 +132,35 @@ Let's search the PDB database for similar sequences using the [PDB advanced sear
 
 Taking the nanobody structure from the target PDB (7X2M) would not be very realistic, as the nanobody is already bound to the antigen. In a real-case scenario you would be forced to model the nanobody structure from scratch.
 
-A possible way to do this is to use AlphaFold2. You can run your AlphaFold modelling from [Colabfold]()
+A possible way to do this is to use AlphaFold2. You can run your AlphaFold modelling from [Colabfold](https://github.com/sokrypton/ColabFold){:target="_blank"}
 
-We provide you with AlphaFold2 models coming from the nanobody run in presence (multimer) and absence (monomer) of the antigen. The models are available in the `pdbs` directory of the archive you downloaded. Additionally, we provide you with some models coming from an antibody-specific predictor, [ImmuneBuilder](https://immunebuilder.org/){:target="_blank"}.
+We provide you with AlphaFold2 models coming from the nanobody run in presence (Alphafold2-multimer) and absence (Alphafold2-monomer) of the antigen. The models are available in the `pdbs` directory of the archive you downloaded. Additionally, we provide you with some models coming from an antibody-specific predictor, [ImmuneBuilder](https://immunebuilder.org/){:target="_blank"}.
 
 Let's have a look at them in PyMOL.
 
 <a class="prompt prompt-pymol">
-File menu -> Open -> select 7X2M_multimer_rank_001.pdb
-File menu -> Open -> select 7X2M_monomer_rank_001.pdb
-File menu -> Open -> select 7X2M_IB_rank_001.pdb
+File menu -> Open -> select pdbs/7X2M_multimer_rank_001.pdb
+File menu -> Open -> select pdbs/7X2M_monomer_rank_001.pdb
+File menu -> Open -> select pdbs/7X2M_IB_rank_001.pdb
 </a>
 
 <a class="prompt prompt-info">Remember that the ranking used by AlphaFold2 changes between the monomer and multimer version!</a>
 
-Check out [this description]() for more information about it.
-
-SOMETHING ABOUT THE KINKED CONFORMATION OF THE NANOBODY
-
-<a class="prompt prompt-question">Are the two nanobody models different? If yes, where do you see the major differences?</a>
+<a class="prompt prompt-question">Are the three nanobody models different? If yes, where do you see the major differences?</a>
 
 The CDR3 loop is the main contributor to the binding, and it is the longest and most variable loop in the nanobody. Predicting its conformation is extremely challenging, and it is not uncommon to see different conformations in the models.
+
+<a class="prompt prompt-pymol">
+select cdr3, 7X2M_monomer_rank_001.pdb and resi 99:115
+color red, cdr3
+</a>
+
+It seems that the CDR3 loop is "folding back" on the nanobody framework, at least according to our prediction methods. This conformation, typically called "kinked", is one of the two main conformations of the CDR3 loop in nanobodies. The other one is the "extended" conformation, where the loop is pointing away from the framework. Most of the nanobodies show a kinked conformation, but the extended one is not uncommon (occurs in around 30% of the cases).
 
 Let's visualize AlphaFold2's confidence in the prediction and in particular the values of the predicted Local Distance Difference Test (pLDDT) score. The pLDDT score is a per-residue confidence score that ranges from 0 to 100, with higher values indicating higher confidence. In AlphaFold2 and similar predictors the confidence score is typically encoded in the B-factor column of the PDB file.
 
 <a class="prompt prompt-pymol">
-select cd3, 7X2M_monomer_rank_001.pdb and resi 99:115
-spectrum b, selection=cd3
+spectrum b, selection=cdr3
 </a>
 
 <a class="prompt prompt-question">What are the residues with the highest/lowest confidence in this region? Are the residues with the lowest confidence those that change the most between the three structural models?</a>
@@ -178,19 +179,19 @@ In this situation we are quite happy about the overall fold of the nanobody and 
 First, let's extract the nanobody from the multimer model.
 
 <a class="prompt prompt-cmd">
-pdb_selchain -A 7X2M_multimer_rank_001.pdb > 7X2M_multimer_rank_001_A.pdb
+pdb_selchain -A pdbs/7X2M_multimer_rank_001.pdb > 7X2M_multimer_rank_001_A.pdb
 </a>
 
 Now we have to renumber the ImmuneBuilder models, as its numbering is not coherent with the other two models.
 
 <a class="prompt prompt-cmd">
-pdb_reres -1 7X2M_IB_rank_001.pdb | pdb_chain -A | pdb_tidy > 7X2M_IB_A.pdb
+pdb_reres -1 pdbs/7X2M_IB_rank_001.pdb | pdb_chain -A | pdb_tidy > 7X2M_IB_A.pdb
 </a>
 
 We're now ready to create the ensemble.
 
 <a class="prompt prompt-cmd">
-pdb_mkensemble 7X2M_multimer_rank_001_A.pdb 7X2M_monomer_rank_001.pdb 7X2M_IB_A.pdb | pdb_tidy > 7X2M_nb_ensemble.pdb
+pdb_mkensemble 7X2M_multimer_rank_001_A.pdb pdbs/7X2M_monomer_rank_001.pdb 7X2M_IB_A.pdb | pdb_tidy > 7X2M_nb_ensemble.pdb
 </a>
 
 _**Note**_ that the corresponding files can be found in the `pdbs` directory of the archive you downloaded.
@@ -220,7 +221,7 @@ Using PDB-tools we will download an unbound structure of the antigen from the PD
 We will select the chain corresponding to our antigen, remove the hetero atoms from the structure, and renumber the residues and then... we will have our antigen!
 
 <a class="prompt prompt-cmd">
-pdb_fetch 7EKG | pdb_selchain -B | pdb_delhetatm | pdb_keepcoord | pdb_reres -1 | pdb_chain -B | pdb_chainxseg | pdb_tidy -strict > 7EKG_clean.pdb
+pdb_fetch 7EKG | pdb_selchain -B | pdb_delhetatm | pdb_keepcoord | pdb_reres -1 | pdb_chain -B | pdb_chainxseg | pdb_selaltloc | pdb_tidy -strict > 7EKG_clean.pdb
 </a>
 
 <hr>
@@ -229,7 +230,7 @@ pdb_fetch 7EKG | pdb_selchain -B | pdb_delhetatm | pdb_keepcoord | pdb_reres -1 
 ## Defining restraints for docking
 
 Before setting up the docking we need first to generate distance restraint files
-in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational
+in a format suitable for HADDOCK. HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational
 engine. A description of the format for the various restraint types supported by
 HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.
 
@@ -246,11 +247,9 @@ keyword -, residue number - `resid` keyword -, atom name - `name` keyword.
 Other keywords can be used in various combinations of OR and AND statements.
 Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"}.
 
-We will shortly explain in this section how to generate both ambiguous
-interaction restraints (AIRs) and specific distance restraints for use in
-HADDOCK illustrating four scenarios:
+We will shortly explain in this section how to generate ambiguous
+interaction restraints (AIRs) in HADDOCK illustrating the following scenarios:
 
-* **paratope on the nanobody, epitope region on the antigen**
 * **HV loops on the nanobody, epitope region on the antigen**
 * **HV loops on the nanobody, vaguely defined epitope region on the antigen**
 * **HV loops on the nanobody, mutagenesis-based restraints on the antigen**
@@ -260,13 +259,37 @@ found in our [online manual][air-help]{:target="_blank"} pages.
 
 <hr>
 
-### Identifying the paratope of the antibody
+### Unambiguous distance restraints
+
+When docking multi-chain proteins, it is important to define unambiguous distance restraints to keep the two chains together. This is done by defining a set of distance restraints between atoms of the two chains. An example of this is given by standard antibody antigen docking protocols, where the heavy and light chains are kept together by defining distance restraints between the C-alpha atoms of the two chains, as illustrated in the [HADDOCK2.4 protein-protein tutorial][haddock24protein]{:target="_blank"} and in the [HADDOCK3 antibody-antigen tutorial][haddock3antibody-epitope]{:target="_blank"}.
+
+In this case, we should not need to define unambiguous restraints neither for the nanobody nor for the antigen, as they are monomeric entities.
+
+**Important**: when dealing with multi-chain antigens or with antigens with missing residues, remember to define unambiguous restraints using the `haddock3-restraints restrain_bodies` tool.
+
+### Identifying the paratope of the nanobody
+
+The paratope is the region of the nanobody that binds to the antigen. In the case of nanobodies, the paratope is mainly composed of the CDR loops, but the framework regions can also play a role in the binding. The CDR3 loop is the most important one, and will for sure be part of the paratope.
+
+Let's start by identifying all the amino acids that lie on the CDR loops and that are exposed to the surface. To do this we will use `FreeSASA`, which calls the [FreeSASA](https://freesasa.github.io){:target="_blank"} software to calculate the solvent accessible surface area of the residues.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints calc_accessibility pdbs/7X2M_monomer_rank_001.pdb
+</a>
+
+<pre style="background-color:#DAE4E7">
+14/02/2025 16:53:53 L116 INFO - Calculate accessibility...
+14/02/2025 16:53:53 L227 INFO - Chain: A - 124 residues
+14/02/2025 16:53:53 L236 INFO - Applying cutoff to side_chain_rel - 0.4
+14/02/2025 16:53:53 L248 INFO - Chain A - 1,3,5,7,8,10,11,13,14,15,16,17,19,23,25,26,27,28,30,31,39,41,42,43,44,46,54,56,57,59,62,63,65,66,69,71,73,75,76,77,84,85,87,88,89,100,101,102,104,105,109,111,112,114,118,121,123
+</pre>
+
+This command will generate a list of residues such that their relative side-chain solvent accessibility is greater than 0.4.
+Upon cross-referencing with the CDRs, we can identify the residues that are part of the paratope.
 
 <pre style="background-color:#DAE4E7">
 26,27,28,30,31,54,56,57,100,101,102,104,105,109,111,112,114
 </pre>
-
-The numbering corresponds to the numbering of the `7X2M_nb_ensemble.pdb` PDB file.
 
 Let us visualize those onto the 3D structure.
 For this start PyMOL and load one of the elements of the `7X2M_nb_ensemble.pdb` ensemble (e.g., the monomer model).
@@ -312,12 +335,453 @@ Do the identified residues form a well defined patch on the surface?
 
 <hr>
 
+### Antigen scenario 1: true epitope information
+
+In this scenario we will assume that we have perfect knowledge of the epitope region on the antigen. This is the best-case scenario, as it is quite unlikely to have such detailed information in real life. An example of this scenario is when the epitope region has been extensively mapped through NMR chemical shift titration experiments, as shown in the [HADDOCK3 antibody-antigen tutorial][haddock3antibody-epitope]{:target="_blank"}.
+
+The list of epitope residues is
+
+<pre style="background-color:#DAE4E7">
+36,37,38,39,40,41,42,43,44,45,46,51,52,171,172,176
+</pre>
+
+Let's visualize those onto the 3D structure. For this start PyMOL and load the `7EKG_clean.pdb` file.
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 7EKG_clean.pdb
+</a>
+
+We will now highlight the epitope residues. In PyMOL type the following commands:
+
+<a class="prompt prompt-pymol">
+color white, all
+</a>
+<a class="prompt prompt-pymol">
+show surface
+</a>
+<a class="prompt prompt-pymol">
+select epitope, (resi 36+37+38+39+40+41+42+43+44+45+46+51+52+171+172+176)
+</a>
+<a class="prompt prompt-pymol">
+color red, epitope
+</a>
+
+Inspect the surface.
+
+<a class="prompt prompt-question">
+Do the identified residues form a well defined patch on the surface?
+</a>
+
+### Defining ambiguous restraints for scenario 1
+
+We will now generate the ambiguous interaction restraints (AIRs) for this scenario. The AIRs will be used to define the paratope-epitope interaction. The AIRs will be generated using the `haddock3-restraints` tool.
+
+To use our `haddock3-restraints` `active_passive_to_ambig` script you need to
+create for each molecule a file containing two lines:
+
+* The first line corresponds to the list of active residues (numbers separated by spaces)
+* The second line corresponds to the list of passive residues.
+
+For scenario 1 this would be:
+
+* For the antibody (the file called `antibody-cdr.actpass` from the `restraints` directory):
+<pre style="background-color:#DAE4E7">
+26 27 28 30 31 54 56 57 100 101 102 104 105 109 111 112 114
+
+</pre>
+
+* For the antigen (the file called `antigen-epi.actpass` from the `restraints` directory):
+<pre style="background-color:#DAE4E7">
+36 37 38 39 40 41 42 43 44 45 46 51 52 171 172 176
+
+</pre>
+
+Let's generate the AIRs.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints active_passive_to_ambig restraints/antibody-cdr.actpass restraints/antigen-epi.actpass > restraints/cdr_epitope.tbl
+</a>
+
+This will generate the file `cdr_epitope.tbl` in the `restraints` directory.
+
+<hr>
+
+### Antigen scenario 2: loosely-defined epitope information
+
+In this scenario we assume that we only have a vague idea of the epitope region on the antigen, a more realistic scenario. Here the region may have been identified through competition experiments or less precise mapping techniques.
+
+The list of epitope residues is
+
+<pre style="background-color:#DAE4E7">
+32,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,52,53,54,71,72,73,104,105,169,170,171,172,173,176
+</pre>
+
+Let's visualize those onto the 3D structure as we did before:
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 7EKG_clean.pdb
+color white, all
+show surface
+select loose_epitope, (resi 32+34+35+36+37+38+39+40+41+42+43+44+45+46+47+48+50+51+52+53+54+71+72+73+104+105+169+170+171+172+173+176)
+color red, loose_epitope
+</a>
+
+<a class="prompt prompt-question">
+How did the surface change?
+</a>
+
+Here we will define this patch as **passive** in the docking, as we are not sure whether all the residues are part of the epitope. In fact, most of them are not part of the true epitope.
+
+**Rule of thumb**: for HADDOCK it's better to be more generous rather than too strict in the definition of passive residues. Indeed, the nature 
+
+### Defining ambiguous restraints for scenario 2
+
+We will now generate the AIRs for this scenario.
+
+* For the antibody we will keep using the same file as before (`antibody-cdr.actpass` from the `restraints` directory).:
+
+* For the antigen (the file called `antigen-loose_epi.actpass` from the `restraints` directory):
+
+<pre style="background-color:#DAE4E7">
+
+32 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 50 51 52 53 54 71 72 73 104 105 169 170 171 172 173 176
+</pre>
+
+Here the first line is empty as we are not defining any active residues for the antigen.
+
+Let's generate the AIRs.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints active_passive_to_ambig restraints/antibody-cdr.actpass restraints/antigen-loose_epi.actpass > restraints/cdr-loose_epi.tbl
+</a>
+
+This will generate the file `cdr-loose_epi.tbl` in the `restraints` directory.
+
+<hr>
+
+### Antigen scenario 3: mutagenesis-based epitope information
+
+In this scenario we assume that we have limited information about the epitope region on the antigen coming from mutagenesis experiments. This is a very common scenario in the field of structural biology, where one or two residues are known to be crucial for the binding, but the rest of the epitope is completely unknown.
+
+In this case our rationale is to define the two residues as active and to define the solvent-exposed residues around them as passive.
+
+We assume that our mutagenesis-mapped residues are Tyrosine 37 and Lysine 46.
+
+PICTURE
+
+First, let's extract the solvent-exposed residues on the antigen. Once again, we will use the calc_accessibility command.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints calc_accessibility 7EKG_clean.pdb
+</a>
+
+<pre style="background-color:#DAE4E7">
+L116 INFO - Calculate accessibility...
+L227 INFO - Chain: B - 195 residues
+L236 INFO - Applying cutoff to side_chain_rel - 0.4
+L248 INFO - Chain B - 1,2,3,5,7,8,11,12,13,14,22,24,25,28,30,32,34,35,37,38,39,40,41,43,46,49,51,53,54,55,57,58,59,73,76,81,82,83,84,85,95,96,98,108,109,112,113,114,117,118,126,127,128,130,131,136,137,138,139,142,145,146,147,149,150,151,152,153,154,157,158,161,168,170,171,173,184,185,186,187,189,191,193,195
+</pre>
+
+<a class="prompt prompt-info">
+Copy the list comma separated list of solvent-exposed amino acids!
+</a>
+
+Now let's use these residues to force the passive residues around the mutagenesis-mapped residues to be exposed.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints passive_from_active 7EKG_clean_altloc.pdb 37,46 -s 1,2,3,5,7,8,11,12,13,14,22,24,25,28,30,32,34,35,37,38,39,40,41,43,46,49,51,53,54,55,57,58,59,73,76,81,82,83,84,85,95,96,98,108,109,112,113,114,117,118,126,127,128,130,131,136,137,138,139,142,145,146,147,149,150,151,152,153,154,157,158,161,168,170,171,173,184,185,186,187,189,191,193,195
+</a>
+
+The script extracts the neighboring residues of the active residues (`37,46`) and filters them according to the solvent-accessible ones (defined with the `-s` option). The output is a list of passive residues.
+
+You should get a list of residues very similar to this one:
+
+<pre style="background-color:#DAE4E7">
+32 34 35 38 39 40 43 53 54
+</pre>
+
+Let's visualize those onto the 3D structure as we did before:
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> select 7EKG_clean.pdb
+color white, all
+select mutagenesis_active, (resi 37+46)
+color red, mutagenesis_active
+select mutagenesis_passive, (resi 32+34+35+38+39+40+43+53+54)
+color orange, mutagenesis_passive
+show sticks, mutagenesis_active
+show sticks, mutagenesis_passive
+</a>
+
+<a class="prompt prompt-question">
+Does the defined epitope make sense? Are the exposed side chains pointing towards the same direction?
+</a>
+
+The epitope region is nice but is also quite small, with only nine residues defined as passive. This happened because the two active residues are not surrounded by many solvent-exposed residues.
+
+In the previous section we learned how HADDOCK is prefers to have slightly too many passive residues rather than too few. In this case we will add a few more residues to the passive list by relaxing a bit our cutoffs in solvent accessibility and proximity to the active residues.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints calc_accessibility 7EKG_clean.pdb -c 0.25
+</a>
+
+The `-c` option (`--cutoff`) allows you to change the cutoff for the relative side-chain solvent accessibility. The default value is 0.4, but we will lower it to 0.25.
+
+<a class="prompt prompt-info">
+Copy the list comma separated list of solvent-exposed amino acids!
+</a>
+
+Now let's expand a bit the space around the active residues.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints passive_from_active 7EKG_clean_altloc.pdb 37,46 -r 7.5 -s 1,2,3,5,7,8,11,12,13,14,16,20
+,22,23,24,25,27,28,30,32,34,35,37,38,39,40,41,43,46,48,49,51,52,53,54,55,57,58,5
+9,71,73,76,81,82,83,84,85,89,95,96,98,105,108,109,112,113,114,117,118,120,123,12
+4,126,127,128,130,131,132,133,134,136,137,138,139,141,142,143,144,145,146,147,14
+9,150,151,152,153,154,155,157,158,161,166,167,168,169,170,171,172,173,184,185,18
+6,187,188,189,190,191,193,195
+</a>
+
+Now the list of passive residues should contains a few more residues.
+
+<a class="prompt prompt-question">By relaxing the passive residues search were we able to capture more amino acids that are part of the real epitope?</a>
+
+### Defining ambiguous restraints for scenario 3
+
+We will now generate the AIRs for this scenario.
+
+* For the antibody we will keep using the same file as before (`antibody-cdr.actpass` from the `restraints` directory).:
+
+* For the antigen (the file called `antigen-mut_epi.actpass` from the `restraints` directory):
+
+<pre style="background-color:#DAE4E7">
+37 46
+32 34 35 38 39 40 41 43 48 51 52 53 54 76
+</pre>
+
+Note how first line corresponds to the active residues and the second line to the passive residues.
+
+Let's generate the AIRs.
+
+<a class="prompt prompt-cmd">
+haddock3-restraints active_passive_to_ambig restraints/antibody-cdr.actpass restraints/antigen-mut_epi.actpass > restraints/cdr-mut_epi.tbl
+</a>
+
+## Setting up the docking with HADDOCK3
+
+Having now all the required restraints we can proceed with the docking setup. We will use the HADDOCK3 software to perform the docking calculations.
+
+Here we will stick to the most basic HADDOCK3 workflow, which is the literal translation of the HADDOCK2.4 workflow, but several other workflows are possible, such as adding a clustering step between the rigid-body and the semi-flexible refinement stages, as done in the [HADDOCK3 antibody-antigen tutorial][haddock3antibody-epitope]{:target="_blank"}. For several examples of HADDOCK3 workflows, please refer to the [HADDOCK3 GitHub repository][haddock-repo]{:target="_blank"}. For nanobody-specific workflows, check out the [corresponding HADDOCK3 examples][haddock3-nano]{:target="_blank"}. 
+
+1. **`topoaa`**: *Generates the topologies for the CNS engine and builds missing atoms*
+2. **`rigidbody`**: *Performs rigid body energy minimisation (`it0` in haddock2.x)*
+3. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
+4. **`seletop`** : *Selects the top N models from the previous module*
+5. **`flexref`**: *Performs semi-flexible refinement of the interface (`it1` in haddock2.4)*
+6. **`caprieval`**
+7. **`emref`**: *Final refinement by energy minimisation (`itw` EM only in haddock2.4)*
+8. **`caprieval`**
+9. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
+10. **`seletopclusts`**: *Selects the top models of all clusters*
+11. **`caprieval`**
+12. **`contactmap`**: *Contacts matrix and a chordchart of intermolecular contacts*
+
+The configuration file for the three scenarios is already provided in the `haddock3` directory of the archive you downloaded.
+
+If we consider the first scenario, the workflow is as follows (file `haddock3/nanobody-antigen-real.cfg`):
+
+{% highlight toml %}
+# execution mode
+mode = "local"
+# run directory
+run_dir = "run-real-unbound-7ekg"
+# number of cores to use
+ncores = 24
+# input molecules, AI-derived nanobody ensemble and antigen from the PDB
+molecules = [
+    "../pdbs/7X2M_nb_ensemble.pdb",
+    "../pdbs/7EKG_clean.pdb",
+]
+
+[topoaa]
+[rigidbody]
+ambig_fname = "../restraints/cdr_epitope.tbl"
+[caprieval]
+reference_fname = "../pdbs/7x2mB_ref.pdb"
+[seletop]
+select = 200
+[flexref]
+tolerance = 10
+ambig_fname = "../restraints/cdr_epitope.tbl"
+# in the case of unambiguous restraints, uncomment this line
+# and link the correct file
+# unambig_fname = "./restraints/7x2mB_unambig.tbl"
+[caprieval]
+reference_fname = "../pdbs/7x2mB_ref.pdb"
+[emref]
+ambig_fname = "../restraints/cdr_epitope.tbl"
+[caprieval]
+reference_fname = "../pdbs/7x2mB_ref.pdb"
+[clustfcc]
+[seletopclusts]
+top_models = 4
+[caprieval]
+reference_fname = "../pdbs/7x2mB_ref.pdb"
+[contactmap]
+
+{% endhighlight %}
+
+Here we selected the local running mode and a quite high number of cores (ncores = 24) to speed up the calculations. For more information about HADDOCK running modes please check [the documentation]() or [the corresponding section in the antibody-antigen tutorial](). If you're running the tutorial on your laptop, you will not have access to so many cores, and HADDOCK will automatically adjust the number of cores to the available ones. We recommend running this tutorial on a HPC system or on a powerful workstation.
+
+HADDOCK3 also provides an analysis module (`caprieval`) that allows
+to compare models to either the best scoring model (if no reference is given) or to a reference structure, which in our case we have at hand (`7x2mB_ref.pdb`).
+
+When running locally, you can adjust a few parameters to make the execution faster. For example, you can reduce the number of models generated in the rigid-body docking stage by changing the `sampling` parameter in the `rigidbody` section of the configuration file. The default value is 1000, but you can put it to 100 or 200 to generate fewer models.
+
+{% highlight toml %}
+...
+[topoaa]
+[rigidbody]
+ambig_fname = "./restraints/7x2mB_real_ambig.tbl"
+sampling = 200
+[caprieval]
+...
+{% endhighlight %}
+
+At the same time you can also reduce the number of rigid-body models selected in the `seletop` section.
+
+{% highlight toml %}
+...
+[caprieval]
+reference_fname = "./pdbs/7x2mB_ref.pdb"
+[seletop]
+select = 48
+[flexref]
+...
+
+{% endhighlight %}
+
+These modifications will speed up the calculations substantially, but keep in mind that the quality of the results will be affected.
+
+To run the docking (in local mode), simply execute the following command:
+
+<a class="prompt prompt-cmd">
+haddock3 haddock3/nanobody-antigen-real.cfg
+</a>
+
+This will start the docking calculations. The output will be stored in the `run-real-7x2m` directory.
+
+The same procedure can be followed for the other two scenarios, by changing the configuration file accordingly.
+
+<a class="prompt prompt-cmd">
+haddock3 haddock3/nanobody-antigen-loose.cfg
+</a>
+
+<a class="prompt prompt-cmd">
+haddock3 haddock3/nanobody-antigen-mut.cfg
+</a>
+
+<a class="prompt prompt-info">
+Using 10 cores on a Max OSX M2 processor the workflow with lower sampling executes in around 20 minutes, time for a cup of coffee!
+</a>
+
+If you do not wish to wait for the run to finish, you can find the (partial) results of the run in the `runs/run_prot-glyc` directory of the archive you downloaded.
+
+## Analysis of docking results
+
+### Inspecting the results of the docking run
+
+
+<hr>
+
+Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
+
+{% highlight shell %}
+> ls run_prot-glyc/
+  00_topoaa
+  01_rigidbody
+  02_caprieval
+  03_seletop
+  04_flexref
+  05_caprieval
+  06_emref
+  07_caprieval
+  08_clustfcc
+  09_seletopclusts
+  10_caprieval
+  11_contactmap
+  analysis
+  data
+  log
+  traceback
+{% endhighlight %}
+
+There is in addition to the various modules defined in the config workflow a log file (text file) and three additional directories:
+
+- the `data` directory containing the input data (PDB and restraint files) for the various modules
+- the `analysis` directory containing various plots to visualise the results for each `caprieval` step
+- the `traceback` directory containing the names of the generated models for each step, allowing to trace back a model throughout the various stages.
+
+You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.
+
+For example, the `11_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
+on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
+
+The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps, even when no reference structures are known). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
+
+<pre style="background-color:#DAE4E7">
+model                         md5 caprieval_rank  score         irmsd    fnat   lrmsd   ilrmsd  dockq      cluster_id      cluster_ranking model-cluster_ranking   air     angles     bonds   bsa     cdih    coup    dani    desolv  dihe    elec    improper   rdcs    rg      sym     total   vdw     vean    xpcs
+
+....
+</pre>
+
+The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions).
+
+In CAPRI the quality of a model is defined as (for protein-protein complexes):
+
+* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1
+* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
+* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
+
+<a class="prompt prompt-question">
+What is based on this criterion the quality of the top ranked model listed above (emref_XXX.pdb)?
+</a>
+
+
+
+### Cluster statistics
+
+## Conclusions
+
+We have demonstrated the usage of HADDOCK3 in a nanobody-antigen modelling and docking scenario, showing how to incorporate different levels of information on the antigen side. The use of AI-derived nanobody models allows to model the system from sequence, thus eliminating the need of an unbound nanobody structure (rarely available).
+
+We have shown how to define ambiguous restraints for the docking, and how to set up the docking run using the HADDOCK3 software. We have also shown how to analyze the results of the docking run.
+
+A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published in [biorxiv](https://){:target="_blank"}. Please refer to this publication for more information on the performance of HADDOCK3 on nanobody-antigen systems. If you use HADDOCK in your nanobody-focused research, please cite this publication.
+
+## BONUS: Incorporating framework regions in the ambiguous restraints
+
+In the three scenarios shown in this tutorial we always considered only the CDR loops of the nanobody as part of the possible paratope. However, the framework regions can also play a role in the binding. In some cases, it is possible that the binding occurs only through CDR3 and some framework residues, thus completely excluding the other two CDR loops. In such a case, our definition of restraints would likely be incorrect and the resulting models would not be accurate.
+
+In this bonus section, we will show how to include the framework regions in the ambiguous restraints. We will use the same scenario as in the first section, where we have perfect knowledge of the epitope region on the antigen.
+
+IMAGE CLUSTERING BUBBLES
+
+NUMBERING ISSUE
+
+ZIPPING ISSUE
+
+
+
+
+
 
 All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESSE](https://github.com/i-VRESSE){:target="_blank"} repository.
 
 So stay tuned!
 
 <!-- Links -->
+[haddock3antibody-epitope]: https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#antigen-scenario-2-nmr-mapped-epitope-information "HADDOCK3 antibody-antigen tutorial"
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
 [gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
