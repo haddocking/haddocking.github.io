@@ -15,7 +15,7 @@ image:
 
 ![Structure + Binformatic/Biophysical Data => Complex](HADDOCK2.4.png)  
 
-_Version:_ 2.4 (March 2024) ([changes](/software/haddock2.4/changes))  
+_Version:_ 2.5 (December 2024) ([changes](/software/haddock2.4/changes))  
 
 _Authors:_ Alexandre Bonvin and members of the computational structural biology group, Utrecht University  
 
@@ -30,21 +30,22 @@ Fax: +31-30-2537623
 **HADDOCK is one of the flagship software in the EU H2020 [BioExcel](https://www.bioexcel.eu) Center of Excellence for Biomolecular Research [<figure >
 <img src="/images/posts/Logo_bioexcel.png" width="100"> </figure> ](https://www.bioexcel.eu)**
 
-
+**Note** that as of December 2024 we are only distributing the 2.5 version of HADDOCK, which is the Python3 port of HADDOCK2.4. 
+The functionalities are the same as the 2.4 version (the online manual has not changed). The web server is still called HADDOCK2.4, but run in backgroun the 2.5 version.
 
 * * *
 
-**HADDOCK2.4 manual**: [https://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
+**HADDOCK2.4/5 manual**: [https://www.bonvinlab.org/software/haddock2.4/manual](/software/haddock2.4/manual)
 
 **HADDOCK2.4 webserver**:  [https://wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4) 
 
-**Getting the software**:  [license form](/software/haddock2.4/download)   
+**Getting the software**:  [license form](/software/haddock2.5/download)   
 
 **Questions about HADDOCK or looking for support?**  [Ask BioExcel](https://ask.bioexcel.eu)   
 
 [**HADDOCK best practice guide**](/software/bpg) - A must read when starting to use our software!
   
-**An introduction to HADDOCK2.4:** View the [SBGrid](https://www.sbgrid.org)  [webinar]:
+**An introduction to HADDOCK2.4/5:** View the [SBGrid](https://www.sbgrid.org)  [webinar]:
   <ul>
   <details>
   <summary>View recorded lecture

@@ -1,12 +1,21 @@
 ---
 layout: page
 tags: [Jekyll, HADDOCK, Bonvin, Docking, Simulation, Molecular Dynamics, Structural Biology, Computational Biology, Modelling, Protein Structure]
-modified: 2014-08-08T20:53:07.573882-04:00
+modified: 
 comments: false
 image:
   feature: pages/banner_software.jpg
 ---
-### Latest changes
+### Changes - version December 2024 (haddock2.5 only)
+- Removed the minimisation of fully flexible regions during topology generation
+- Changed nucleic acid oxygen phosphage naming to OP1/OP2 (inline with PDB naming)
+- Fixed the class of hbond restraint to be hbon
+- Fixed the detection of chain break for coarse-grained nucleic acids
+- Updated CNS code modification instructions (cns1.3 dir)
+- Added support for new glycan types (BDP, MMA, XYS, ABE)
+
+
+### Changes - version March 2024
 - Implemented missing glycan 1-6 linkage
 - Shortened the distance cutoff for automatic detection of glycan linkages
 - Added missing improper parameter for D-amino acid
