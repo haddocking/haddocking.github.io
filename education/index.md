@@ -88,9 +88,12 @@ We offer various [research projects](/education/research-projects/) to both bach
 
 * Consult our [**HADDOCK best practice guide**](/software/bpg/) - a must read before starting to use HADDOCK!
 
+* [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html){:target="_blank"}:
+  A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK.
+
 * [**Tutorials for HADDOCK version 2.4**](/education/HADDOCK24): Various tutorials from basic protein-protein docking, to the use of cross-linking data, symmetry and homology informations to guide the docking, and advanced modelling of protein-ligand complexes.
 
-* __New!__: [**Tutorials for HADDOCK version 3.0**](/education/HADDOCK3): The first HADDOCK3 tutorial to install and run HADDOCK3 to model an antibody-antigen complex.
+* [**Tutorials for HADDOCK version 3.0**](/education/HADDOCK3): The first HADDOCK3 tutorial to install and run HADDOCK3 to model an antibody-antigen complex.
 
 * [**Tutorials for DisVis and Powerfit**](/education/Others): Tutorials about rigid-body fitting into cryo-EM maps and assessing the information content of cross-linking data.
 
