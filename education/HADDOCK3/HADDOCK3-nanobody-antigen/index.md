@@ -18,18 +18,21 @@ This tutorial consists of the following sections:
 
 This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
 the structure of a nanobody-antigen complex using different possible information scenarios, ranging
-from complete knowledge of the epitope to no information at all. 
+from complete knowledge of the epitope to more limited information.
 
 Nanobodies are monomeric proteins that closely resemble the variable region of the heavy chain of an antibody.
 They are derived from camelid heavy-chain antibodies and are composed of a single variable domain (VHH) that
 contains the antigen-binding site. Nanobodies are small, stable, and soluble proteins that can be easily
 produced in bacteria, yeast, or mammalian cells. They have a high affinity for their target antigens, typically
-comparable to that of monoclonal antibodies. Nanobodies are used in a wide range of applications, such as
-
+comparable to that of monoclonal antibodies. Nanobodies are used in a wide range of applications, such as therapeutics and disease diagnosis.
 
 <figure style="text-align: center;">
   <img src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/nb.png">
+  <center>
+  <i>An example nanobody structure.</i>
+  </center>
 </figure>
+
 
 As in antibodies, the small part of the nanobody region that binds the antigen is called **paratope**, while part of the antigen
 that binds to an nanobody is called **epitope**. Different from antibodies, nanobodies have only 
@@ -43,6 +46,9 @@ and a fragment of the *Severe acute respiratory syndrome coronavirus 2* (SARS-Co
 
 <figure style="text-align: center;">
   <img src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/7X2MB_REF.PDB.png">
+  <center>
+  <i>PDB file 7X2M, complex between nanobody 1-2C7 (cartoon view, in light blue) and a SARS-CoV-2 Spike glycoprotein fragment (surface view, white).</i>
+  </center>
 </figure>
 
 Throughout the tutorial, colored text will be used to refer to questions or
@@ -83,7 +89,7 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 * `pdbs`: Contains the pre-processed PDB files
 * `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
-* `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
+* `runs`: Contains pre-calculated run results for the various scenarios in this tutorial
 
 <hr>
 
@@ -95,17 +101,15 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 
 In this section we will prepare the PDB files of the nanobody and antigen for docking.
 Crystal structures of both the antibody and the antigen in their free forms are available from the
-[PDBe database](https://www.pdbe.org){:target="_blank"}.
+[PDBe database](https://www.pdbe.org){:target="_blank"}. We will use [pdb-tools][link-pdbtools] to perform several operations on the PDB files, such as selecting chains, renumbering residues, and creating ensembles.
 
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
-
 
 _**Note**_: Before starting to work on the tutorial, make sure to activate haddock3 if installed using `conda`
 
 <a class="prompt prompt-cmd">
 conda activate haddock3
 </a>
-
 
 <hr>
 
@@ -132,9 +136,9 @@ Let's search the PDB database for similar sequences using the [PDB advanced sear
 
 Taking the nanobody structure from the target PDB (7X2M) would not be very realistic, as the nanobody is already bound to the antigen. In a real-case scenario you would be forced to model the nanobody structure from scratch.
 
-A possible way to do this is to use AlphaFold2. You can run your AlphaFold modelling from [Colabfold](https://github.com/sokrypton/ColabFold){:target="_blank"}
+A possible way to do this is to use AlphaFold2. You can run your AlphaFold modelling from [Colabfold](https://github.com/sokrypton/ColabFold){:target="_blank"}.
 
-We provide you with AlphaFold2 models coming from the nanobody run in presence (Alphafold2-multimer) and absence (Alphafold2-monomer) of the antigen. The models are available in the `pdbs` directory of the archive you downloaded. Additionally, we provide you with some models coming from an antibody-specific predictor, [ImmuneBuilder](https://immunebuilder.org/){:target="_blank"}.
+We provide you with AlphaFold2 models coming from the nanobody run in presence (Alphafold2-multimer) and absence (AlphaFold2-monomer) of the antigen. The models are available in the `pdbs` directory of the archive you downloaded. Additionally, we provide you with some models coming from an antibody-specific predictor, [ImmuneBuilder](https://immunebuilder.org/){:target="_blank"}.
 
 Let's have a look at them in PyMOL.
 
@@ -167,14 +171,14 @@ spectrum b, selection=cdr3
 
 <figure align="center">
   <img width="90%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/af2_monomer_h3_plddt.png">
-</figure>
-<center>
+  <center>
   <i>Top ranked AlphaFold2-monomer nanobody prediction. The CDR3 is coloured according to the pLDDT values. The lowest ones (around 60) are shown in blue, while the highest ones (>90) are the anchor residues, shown in red.</i>
 </center>
+</figure>
 
 <a class="prompt prompt-info">Inspect the pLDDT of the H1 and H2 loops and check that they are confidently predicted.</a>
 
-In this situation we are quite happy about the overall fold of the nanobody and we can say that the kinked region of the CDR3 loop is well predicted. We cannot say much about the three residues at the start of the loop, as their confidence is not great. In this case we will therefore mix the three nanobody models to create a structural ensemble, with the aim of capturing the right H3 conformation in at least one of the models. This has been shown multiple times to be a good strategy to improve the docking results.
+In this situation we are quite happy about the overall fold of the nanobody and we can say that the kinked region of the CDR3 loop is well predicted. We cannot say much about the three/four residues at the start of the loop, as their confidence is not great. In this case we will therefore mix the three nanobody models to create a structural ensemble, with the aim of capturing the right H3 conformation in at least one of the models. This has been shown multiple times to be a good strategy to improve the docking results.
 
 First, let's extract the nanobody from the multimer model.
 
@@ -182,7 +186,7 @@ First, let's extract the nanobody from the multimer model.
 pdb_selchain -A pdbs/7X2M_multimer_rank_001.pdb > 7X2M_multimer_rank_001_A.pdb
 </a>
 
-Now we have to renumber the ImmuneBuilder models, as its numbering is not coherent with the other two models.
+Now we have to renumber the ImmuneBuilder model, as its numbering is not coherent with the other two models.
 
 <a class="prompt prompt-cmd">
 pdb_reres -1 pdbs/7X2M_IB_rank_001.pdb | pdb_chain -A | pdb_tidy > 7X2M_IB_A.pdb
@@ -212,7 +216,7 @@ YRLFRKSNLKPFERDISTEIYQAGSTPCNGVKGFNCYFPLQSYGFQPTYGVGYQPYRVVV
 LSFELLHAPATVCGPK
 </pre>
 
-<a class="prompt prompt-info">Repeat the Sequence Similarity search described [here](Preparing-the-nanobody-structural-ensemble).</a>
+<a class="prompt prompt-info">Repeat the Sequence Similarity search described above.</a>
 
 <a class="prompt prompt-question">Are there any structures showing 100% sequence identity?</a>
 
@@ -221,7 +225,7 @@ Using PDB-tools we will download an unbound structure of the antigen from the PD
 We will select the chain corresponding to our antigen, remove the hetero atoms from the structure, and renumber the residues and then... we will have our antigen!
 
 <a class="prompt prompt-cmd">
-pdb_fetch 7EKG | pdb_selchain -B | pdb_delhetatm | pdb_keepcoord | pdb_reres -1 | pdb_chain -B | pdb_chainxseg | pdb_selaltloc | pdb_tidy -strict > 7EKG_clean.pdb
+pdb_fetch 7EKG | pdb_selchain -B | pdb_delhetatm | pdb_keepcoord | pdb_reres -1 | pdb_selaltloc | pdb_tidy -strict > 7EKG_clean.pdb
 </a>
 
 <hr>
@@ -328,7 +332,7 @@ Do the identified residues form a well defined patch on the surface?
     <b><i>See surface view of the paratope</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-    <img width="50%" src="./nanobody-paratope.png">
+    <img width="60%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/paratope.png">
   </figure>
   <br>
 </details>
@@ -357,13 +361,13 @@ We will now highlight the epitope residues. In PyMOL type the following commands
 color white, all
 </a>
 <a class="prompt prompt-pymol">
-show surface
-</a>
-<a class="prompt prompt-pymol">
 select epitope, (resi 36+37+38+39+40+41+42+43+44+45+46+51+52+171+172+176)
 </a>
 <a class="prompt prompt-pymol">
 color red, epitope
+</a>
+<a class="prompt prompt-pymol">
+show surface
 </a>
 
 Inspect the surface.
@@ -371,6 +375,19 @@ Inspect the surface.
 <a class="prompt prompt-question">
 Do the identified residues form a well defined patch on the surface?
 </a>
+
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See surface view of the epitope</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="60%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/epitope.png">
+  </figure>
+  <br>
+</details>
+
+<hr>
+
 
 ### Defining ambiguous restraints for scenario 1
 
@@ -432,7 +449,7 @@ How did the surface change?
 
 Here we will define this patch as **passive** in the docking, as we are not sure whether all the residues are part of the epitope. In fact, most of them are not part of the true epitope.
 
-**Rule of thumb**: for HADDOCK it's better to be more generous rather than too strict in the definition of passive residues. Indeed, the nature 
+**Rule of thumb**: for HADDOCK it's better to be more generous rather than too strict in the definition of passive residues. Indeed, the docking protocol will automatically discard 50% of the proposed restraints for every docking pose, allowing to discriminate between structurally plausible and unfavourable restraints.
 
 ### Defining ambiguous restraints for scenario 2
 
@@ -465,11 +482,9 @@ In this scenario we assume that we have limited information about the epitope re
 
 In this case our rationale is to define the two residues as active and to define the solvent-exposed residues around them as passive.
 
-We assume that our mutagenesis-mapped residues are Tyrosine 37 and Lysine 46.
+We assume that our mutagenesis-mapped residues are **Tyrosine 37** and **Lysine 46**.
 
-PICTURE
-
-First, let's extract the solvent-exposed residues on the antigen. Once again, we will use the calc_accessibility command.
+First, let's extract the solvent-exposed residues on the antigen. Once again, we will use the `calc_accessibility` command.
 
 <a class="prompt prompt-cmd">
 haddock3-restraints calc_accessibility 7EKG_clean.pdb
@@ -489,7 +504,7 @@ Copy the list comma separated list of solvent-exposed amino acids!
 Now let's use these residues to force the passive residues around the mutagenesis-mapped residues to be exposed.
 
 <a class="prompt prompt-cmd">
-haddock3-restraints passive_from_active 7EKG_clean_altloc.pdb 37,46 -s 1,2,3,5,7,8,11,12,13,14,22,24,25,28,30,32,34,35,37,38,39,40,41,43,46,49,51,53,54,55,57,58,59,73,76,81,82,83,84,85,95,96,98,108,109,112,113,114,117,118,126,127,128,130,131,136,137,138,139,142,145,146,147,149,150,151,152,153,154,157,158,161,168,170,171,173,184,185,186,187,189,191,193,195
+haddock3-restraints passive_from_active 7EKG_clean.pdb 37,46 -s 1,2,3,5,7,8,11,12,13,14,22,24,25,28,30,32,34,35,37,38,39,40,41,43,46,49,51,53,54,55,57,58,59,73,76,81,82,83,84,85,95,96,98,108,109,112,113,114,117,118,126,127,128,130,131,136,137,138,139,142,145,146,147,149,150,151,152,153,154,157,158,161,168,170,171,173,184,185,186,187,189,191,193,195
 </a>
 
 The script extracts the neighboring residues of the active residues (`37,46`) and filters them according to the solvent-accessible ones (defined with the `-s` option). The output is a list of passive residues.
@@ -519,7 +534,7 @@ Does the defined epitope make sense? Are the exposed side chains pointing toward
 
 The epitope region is nice but is also quite small, with only nine residues defined as passive. This happened because the two active residues are not surrounded by many solvent-exposed residues.
 
-In the previous section we learned how HADDOCK is prefers to have slightly too many passive residues rather than too few. In this case we will add a few more residues to the passive list by relaxing a bit our cutoffs in solvent accessibility and proximity to the active residues.
+In the previous section we learned how HADDOCK prefers to have slightly too many passive residues rather than too few. In this case we will add a few more residues to the passive list by relaxing a bit our cutoffs in solvent accessibility and proximity to the active residues.
 
 <a class="prompt prompt-cmd">
 haddock3-restraints calc_accessibility 7EKG_clean.pdb -c 0.25
@@ -534,7 +549,7 @@ Copy the list comma separated list of solvent-exposed amino acids!
 Now let's expand a bit the space around the active residues.
 
 <a class="prompt prompt-cmd">
-haddock3-restraints passive_from_active 7EKG_clean_altloc.pdb 37,46 -r 7.5 -s 1,2,3,5,7,8,11,12,13,14,16,20
+haddock3-restraints passive_from_active 7EKG_clean.pdb 37,46 -r 7.5 -s 1,2,3,5,7,8,11,12,13,14,16,20
 ,22,23,24,25,27,28,30,32,34,35,37,38,39,40,41,43,46,48,49,51,52,53,54,55,57,58,5
 9,71,73,76,81,82,83,84,85,89,95,96,98,105,108,109,112,113,114,117,118,120,123,12
 4,126,127,128,130,131,132,133,134,136,137,138,139,141,142,143,144,145,146,147,14
@@ -545,6 +560,19 @@ haddock3-restraints passive_from_active 7EKG_clean_altloc.pdb 37,46 -r 7.5 -s 1,
 Now the list of passive residues should contains a few more residues.
 
 <a class="prompt prompt-question">By relaxing the passive residues search were we able to capture more amino acids that are part of the real epitope?</a>
+
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See the epitope determined from mutagenesis residues</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <figure style="text-align: center;">
+    <img width="60%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/epitope_mut.png">
+  </figure>
+  <br>
+  <center>
+  <i>Tyrosine 37 and Lysine 46 are shown in red, while the neighboring surface-exposed residues (defined as passive) are depicted in orange.</i>
+  </center>
+</details>
 
 ### Defining ambiguous restraints for scenario 3
 
@@ -571,7 +599,7 @@ haddock3-restraints active_passive_to_ambig restraints/antibody-cdr.actpass rest
 
 Having now all the required restraints we can proceed with the docking setup. We will use the HADDOCK3 software to perform the docking calculations.
 
-Here we will stick to the most basic HADDOCK3 workflow, which is the literal translation of the HADDOCK2.4 workflow, but several other workflows are possible, such as adding a clustering step between the rigid-body and the semi-flexible refinement stages, as done in the [HADDOCK3 antibody-antigen tutorial][haddock3antibody-epitope]{:target="_blank"}. For several examples of HADDOCK3 workflows, please refer to the [HADDOCK3 GitHub repository][haddock-repo]{:target="_blank"}. For nanobody-specific workflows, check out the [corresponding HADDOCK3 examples][haddock3-nano]{:target="_blank"}. 
+Here we will stick to the most basic HADDOCK3 workflow, which is the literal translation of the HADDOCK2.4 workflow, but several other workflows are possible, such as adding a clustering step between the rigid-body and the semi-flexible refinement stages, as done in the [HADDOCK3 antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/){:target="_blank"}. For several examples of HADDOCK3 workflows, please refer to the [HADDOCK3 GitHub repository][haddock-repo]{:target="_blank"}. For nanobody-specific workflows, check out the [corresponding HADDOCK3 examples](https://github.com/haddocking/haddock3/tree/main/examples/docking-antibody-antigen){:target="_blank"}.
 
 1. **`topoaa`**: *Generates the topologies for the CNS engine and builds missing atoms*
 2. **`rigidbody`**: *Performs rigid body energy minimisation (`it0` in haddock2.x)*
@@ -648,7 +676,7 @@ sampling = 200
 ...
 {% endhighlight %}
 
-At the same time you can also reduce the number of rigid-body models selected in the `seletop` section.
+At the same time you can also reduce the number of rigid-body models selected for refinement in the `seletop` section.
 
 {% highlight toml %}
 ...
@@ -666,7 +694,8 @@ These modifications will speed up the calculations substantially, but keep in mi
 To run the docking (in local mode), simply execute the following command:
 
 <a class="prompt prompt-cmd">
-haddock3 haddock3/nanobody-antigen-real.cfg
+cd haddock3 <br>
+haddock3 nanobody-antigen-real.cfg
 </a>
 
 This will start the docking calculations. The output will be stored in the `run-real-7x2m` directory.
@@ -674,30 +703,29 @@ This will start the docking calculations. The output will be stored in the `run-
 The same procedure can be followed for the other two scenarios, by changing the configuration file accordingly.
 
 <a class="prompt prompt-cmd">
-haddock3 haddock3/nanobody-antigen-loose.cfg
+haddock3 nanobody-antigen-loose.cfg
 </a>
 
 <a class="prompt prompt-cmd">
-haddock3 haddock3/nanobody-antigen-mut.cfg
+haddock3 nanobody-antigen-mut.cfg
 </a>
 
 <a class="prompt prompt-info">
-Using 10 cores on a Max OSX M2 processor the workflow with lower sampling executes in around 20 minutes, time for a cup of coffee!
+Using 8 cores on a Max OSX M2 processor the workflow with lower sampling executes in less than 10 minutes, time for a cup of coffee!
 </a>
 
-If you do not wish to wait for the run to finish, you can find the (partial) results of the run in the `runs/run_prot-glyc` directory of the archive you downloaded.
+If you do not wish to wait for the run to finish, you can find the results of the runs in the `runs/` directory of the archive you downloaded.
 
 ## Analysis of docking results
 
 ### Inspecting the results of the docking run
-
 
 <hr>
 
 Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
 
 {% highlight shell %}
-> ls run_prot-glyc/
+> ls run-real-unbound-7ekg/
   00_topoaa
   01_rigidbody
   02_caprieval
@@ -724,32 +752,147 @@ There is in addition to the various modules defined in the config workflow a log
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.
 
-For example, the `11_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
+For example, the `09_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
 on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
 The simplest way to extract ranking information and the corresponding HADDOCK scores is to look at the `X_caprieval` directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps, even when no reference structures are known). This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and dockq score). E.g.:
 
 <pre style="background-color:#DAE4E7">
 model                         md5 caprieval_rank  score         irmsd    fnat   lrmsd   ilrmsd  dockq      cluster_id      cluster_ranking model-cluster_ranking   air     angles     bonds   bsa     cdih    coup    dani    desolv  dihe    elec    improper   rdcs    rg      sym     total   vdw     vean    xpcs
-
+cluster_1_model_1.pdb       -       1       -88.419 2.688   0.479   9.389   5.908   0.389   3.206   3       1       1       127.812 0.000   0.000   1588.840        0.000   0.000      0.000   -4.268  0.000   -243.259        0.000   0.000   0.000   0.000   -163.728        -48.280 0.000   0.000
+cluster_6_model_1.pdb       -       2       -84.588 3.545   0.417   13.407  8.407   0.285   4.228   10      6       1       91.272  0.000   0.000   1350.300        0.000   0.000      0.000   -2.488  0.000   -191.631        0.000   0.000   0.000   0.000   -153.260        -52.901 0.000   0.000
+cluster_2_model_1.pdb       -       3       -83.383 9.311   0.167   29.532  20.445  0.089   9.131   4       2       1       79.337  0.000   0.000   1523.910        0.000   0.000      0.000   2.255   0.000   -209.896        0.000   0.000   0.000   0.000   -182.151        -51.592 0.000   0.000
+cluster_5_model_1.pdb       -       4       -82.609 8.992   0.146   41.070  24.802  0.071   9.715   11      5       1       38.601  0.000   0.000   1474.010        0.000   0.000      0.000   -0.927  0.000   -172.699        0.000   0.000   0.000   0.000   -185.100        -51.002 0.000   0.000
+cluster_1_model_2.pdb       -       5       -81.766 1.303   0.667   2.630   2.068   0.716   1.097   3       1       2       106.269 0.000   0.000   1292.000        0.000   0.000      0.000   -9.242  0.000   -222.905        0.000   0.000   0.000   0.000   -155.205        -38.570 0.000   0.000
 ....
 </pre>
 
-The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.uk/) (Critical PRediction of Interactions).
+The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment [CAPRI](https://www.ebi.ac.uk/pdbe/complex-pred/capri/) (Critical PRediction of Interactions).
 
 In CAPRI the quality of a model is defined as (for protein-protein complexes):
 
-* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1
-* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
-* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
+* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1 (or DockQ > 0.23)
+* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3 (or DockQ > 0.49)
+* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5 (or DockQ > 0.8)
 
 <a class="prompt prompt-question">
-What is based on this criterion the quality of the top ranked model listed above (emref_XXX.pdb)?
+What is based on this criterion the quality of the top ranked model listed above (cluster_1_model_1.pdb)?
 </a>
 
+Let's use **DockQ**, [a combination of i-RMSD, l-RMSD, and Fnat](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0161879) to assess the quality of the models. Since DockQ is the column number nine in the caprieval files...
 
+<a class="prompt prompt-cmd">
+sort -r \-k9 run-real-unbound-7ekg/10_caprieval/capri_ss.tsv | head -4
+</a>
+
+This command will extract the 3 models with highest DockQ score. Let's estimate the impact of the refinement by performing the same analysis on the rigid-body docking models.
+
+<a class="prompt prompt-cmd">
+sort -r \-k9 run-real-unbound-7ekg/02_caprieval/capri_ss.tsv | head -4
+</a>
+
+<a class="prompt prompt-question">
+Did the models improve after the refinement? Which quantity changed the most? Can you guess why?
+</a>
+
+<a class="prompt prompt-question">
+How did the rank of the best models change? Is the refinement step beneficial also for scoring the models?
+</a>
+
+### Visualising the scores and their components
+
+The HADDOCK3 analysis precalculated a lot of plots and tables for you to inspect the results. 
+You can find them in the `analysis` directory of each run, with one folder available for each `caprieval` step. 
+The plots are in html format and can be opened in your browser. You can also open the full report in your browser:
+
+<a class="prompt prompt-cmd">
+python -m http.server \-\-directory ./run-real-unbound-7ekg
+</a>
+
+and then open your browser at `http://localhost:8000/analysis/`. From there you can navigate to the preferred caprieval directory (typically the last one), to inspect the results.
+Under a given `caprieval` step, the overall view of the results can be found in the `report.html` file.
+
+If this does not work (for example because port 8000 is already in use), you can also open the html files directly from the file system. For example, to inspect the final results (after refinement):
+
+<a class="prompt prompt-cmd">
+open run-real-unbound-7ekg/analysis/10_caprieval_analysis/report.html
+</a>
+
+Alternatively, you can check this [example report](plots/report.html) for the final docking results.
+
+<a class="prompt prompt-question">
+For the real interface scenario (run-real-unbound-7ekg run), which of the components is more correlated with the model quality (DockQ)?
+</a>
 
 ### Cluster statistics
+
+The `clustfcc` module performs the fraction of common contacts (FCC)-based clustering of the models. Models inside a cluster are supposed to share a high number of contacts with the antigen, meaning that they will also be highly structurally similar. The `seletopclusts` module then selects the top models from each cluster.
+
+Now we want to see how statistically significant are the difference in scores between the different clusters.
+
+The 10_caprieval folder contains a file named capri_clt.tsv, which contains the average and standard deviation of the scores for each cluster. Let's inspect the file for the real interface scenario:
+
+<a class="prompt prompt-cmd">
+head -15 run-real-unbound-7ekg/10_caprieval/capri_clt.tsv
+</a>
+
+<pre style="background-color:#DAE4E7">
+cluster_rank cluster_id n     score   score_std   irmsd   irmsd_std fnat    fnat_std lrmsd   lrmsd_std dockq   dockq_std
+1            3          4     -81.125 4.668       1.726   0.580     0.557   0.081    4.868   2.893     0.592   0.136
+2            4          4     -75.467 4.585       9.552   0.435     0.161   0.009    30.395  1.005     0.086   0.003
+3            1          4     -74.485 5.777       4.551   0.524     0.193   0.047    19.325  3.497     0.156   0.039
+4            5          4     -72.457 4.393       4.334   0.204     0.214   0.034    14.976  0.659     0.188   0.016
+....
+</pre>
+
+This can be done also directly inside the [report file](plots/report.html).
+
+<a class="prompt prompt-question">
+Is the best cluster significantly better than the second best-ranked one? Do the scores overlap if you consider the standard deviations?
+</a>
+
+## Visualisation and comparison with the reference structure
+
+To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, 
+e.g. this could be the top model from cluster1. These can be found in the `runs/run-real-unbound-7ekg/09_seletopclusts/` directory. Each run has a similar directory.
+
+Let us unzip the files:
+<a class="prompt prompt-cmd">
+gunzip -d run-real-unbound-7ekg/09\_seletopclusts/cluster_*.pdb.gz
+</a>
+
+You can load the models from the `run-real-unbound-7ekg/09_seletopclusts/` directory in PyMOL.
+Will first check the top ranked cluster to see if this is good solution.
+
+<a class="prompt prompt-pymol">
+File menu -> Open -> cluster_1_model_1.pdb
+</a>
+
+If you want to get an impression of how well defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`).
+
+From the `pdbs` directory we can load the reference structure:
+<a class="prompt prompt-pymol">
+File menu -> Open -> 7x2mB_ref.pdb
+</a>
+
+Once all files have been loaded, type in the PyMOL command window:
+
+<a class="prompt prompt-pymol">
+util.cbc<br>
+color yellow, 7x2mB_ref<br>
+</a>
+
+Let us then superimpose all models on the reference structure:
+
+<a class="prompt prompt-pymol">
+alignto 7x2mB_ref
+</a>
+
+This will use both chains to align the models, thus giving you the the full-structure RMSD with respect to the reference. Please refer to the capri files for the individual i-RMSD and l-RMSD values or try to use the `rms_cur` command.
+
+<a class="prompt prompt-question">
+How close are the top4 models of cluster_1 to the reference? Did HADDOCK do a good job at ranking the best in the top?
+</a>
 
 ## Conclusions
 
@@ -758,27 +901,6 @@ We have demonstrated the usage of HADDOCK3 in a nanobody-antigen modelling and d
 We have shown how to define ambiguous restraints for the docking, and how to set up the docking run using the HADDOCK3 software. We have also shown how to analyze the results of the docking run.
 
 A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published in [biorxiv](https://){:target="_blank"}. Please refer to this publication for more information on the performance of HADDOCK3 on nanobody-antigen systems. If you use HADDOCK in your nanobody-focused research, please cite this publication.
-
-## BONUS: Incorporating framework regions in the ambiguous restraints
-
-In the three scenarios shown in this tutorial we always considered only the CDR loops of the nanobody as part of the possible paratope. However, the framework regions can also play a role in the binding. In some cases, it is possible that the binding occurs only through CDR3 and some framework residues, thus completely excluding the other two CDR loops. In such a case, our definition of restraints would likely be incorrect and the resulting models would not be accurate.
-
-In this bonus section, we will show how to include the framework regions in the ambiguous restraints. We will use the same scenario as in the first section, where we have perfect knowledge of the epitope region on the antigen.
-
-IMAGE CLUSTERING BUBBLES
-
-NUMBERING ISSUE
-
-ZIPPING ISSUE
-
-
-
-
-
-
-All the HADDOCK3 VRE software development is open and can be followed from our [GitHub i-VRESSE](https://github.com/i-VRESSE){:target="_blank"} repository.
-
-So stay tuned!
 
 <!-- Links -->
 [haddock3antibody-epitope]: https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#antigen-scenario-2-nmr-mapped-epitope-information "HADDOCK3 antibody-antigen tutorial"
