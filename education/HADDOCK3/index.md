@@ -15,7 +15,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 * [**HADDOCK3 documentation**](https://www.bonvinlab.org/haddock3)
   Documentation for HADDOCK3 including [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
 
-* [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html{:target="_blank"}
+* [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html){:target="_blank"}:
   A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK.
 
 * [**HADDOCK3 antibody-antigen docking**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
