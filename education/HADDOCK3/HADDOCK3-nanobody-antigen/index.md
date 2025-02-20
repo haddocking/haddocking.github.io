@@ -38,8 +38,7 @@ As in antibodies, the small part of the nanobody region that binds the antigen i
 that binds to an nanobody is called **epitope**. Different from antibodies, nanobodies have only 
 **three complementarity-determining regions (CDRs)** (hypervariable loops) whose sequence and conformation are altered to bind to different antigens. 
 Another important feature of these molecules is that the highly conserved amino acids that are not par of the CDRs, namely the **framework regions (FRs)**,
-can play a role in the binding to the antigen. These interactions are thought to be non-specific and to occur because the absence of a light chain in the nanobody
-makes using the FRs to interact with the antigen more necessary to attain higher affinity.
+can play a role in the binding to the antigen.
 
 In this tutorial we will be working with the complex between a nanobody (1-2C7), 
 and a fragment of the *Severe acute respiratory syndrome coronavirus 2* (SARS-CoV-2) Spike glycoprotein (PDB ID: [7x2m](https://www.ebi.ac.uk/pdbe/entry/pdb/7x2m){:target="_blank"}).
@@ -82,8 +81,8 @@ Further we are providing pre-processed PDB files for docking and analysis (but t
 preprocessing of those files will also be explained in this tutorial). The files have been processed
 to facilitate their use in HADDOCK and for allowing comparison with the known reference
 structure of the complex. For this _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/HvXxgxCTY1DiPsV){:target="_blank"}
-_and note the location of the extracted PDB files in your system_. In it you should find the following directories:
+[zip archive](https://surfdrive.surf.nl/files/remote.php/webdav/Shared/HADDOCK/HADDOCK3/tutorials/nanobody-antigen-tutorial.zip){:target="_blank"}
+_and note the location of the extracted files in your system_. In it you should find the following directories:
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
 * `pdbs`: Contains the pre-processed PDB files
@@ -138,7 +137,7 @@ Taking the nanobody structure from the target PDB (7X2M) would not be very reali
 
 A possible way to do this is to use AlphaFold2. You can run your AlphaFold modelling from [Colabfold](https://github.com/sokrypton/ColabFold){:target="_blank"}.
 
-We provide you with AlphaFold2 models coming from the nanobody run in presence (Alphafold2-multimer) and absence (AlphaFold2-monomer) of the antigen. The models are available in the `pdbs` directory of the archive you downloaded. Additionally, we provide you with some models coming from an antibody-specific predictor, [ImmuneBuilder](https://immunebuilder.org/){:target="_blank"}.
+We provide you with AlphaFold2 models coming from the nanobody run in presence (Alphafold2-multimer) and absence (AlphaFold2-monomer) of the antigen. The models are available in the `pdbs` directory of the archive you downloaded. Additionally, we provide you with some models coming from an antibody-specific predictor, [ImmuneBuilder](https://github.com/oxpig/ImmuneBuilder){:target="_blank"}.
 
 Let's have a look at them in PyMOL.
 
@@ -265,7 +264,7 @@ found in our [online manual][air-help]{:target="_blank"} pages.
 
 ### Unambiguous distance restraints
 
-When docking multi-chain proteins, it is important to define unambiguous distance restraints to keep the two chains together. This is done by defining a set of distance restraints between atoms of the two chains. An example of this is given by standard antibody antigen docking protocols, where the heavy and light chains are kept together by defining distance restraints between the C-alpha atoms of the two chains, as illustrated in the [HADDOCK2.4 protein-protein tutorial][haddock24protein]{:target="_blank"} and in the [HADDOCK3 antibody-antigen tutorial][haddock3antibody-epitope]{:target="_blank"}.
+When docking multi-chain proteins, it is important to define unambiguous distance restraints to keep the two chains together. This is done by defining a set of distance restraints between atoms of the two chains. An example of this is given by standard antibody antigen docking protocols, where the heavy and light chains are kept together by defining distance restraints between the C-alpha atoms of the two chains, as illustrated in the [HADDOCK2.4 protein-protein tutorial][haddock24protein]{:target="_blank"} and in [corresponding section of the HADDOCK3 antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#additional-restraints-for-multi-chain-proteins){:target="_blank"}.
 
 In this case, we should not need to define unambiguous restraints neither for the nanobody nor for the antigen, as they are monomeric entities.
 
@@ -599,7 +598,7 @@ haddock3-restraints active_passive_to_ambig restraints/antibody-cdr.actpass rest
 
 Having now all the required restraints we can proceed with the docking setup. We will use the HADDOCK3 software to perform the docking calculations.
 
-Here we will stick to the most basic HADDOCK3 workflow, which is the literal translation of the HADDOCK2.4 workflow, but several other workflows are possible, such as adding a clustering step between the rigid-body and the semi-flexible refinement stages, as done in the [HADDOCK3 antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/){:target="_blank"}. For several examples of HADDOCK3 workflows, please refer to the [HADDOCK3 GitHub repository][haddock-repo]{:target="_blank"}. For nanobody-specific workflows, check out the [corresponding HADDOCK3 examples](https://github.com/haddocking/haddock3/tree/main/examples/docking-antibody-antigen){:target="_blank"}.
+Here we will stick to the most basic HADDOCK3 workflow, which is the literal translation of the HADDOCK2.4 workflow, but several other workflows are possible, such as adding a clustering step between the rigid-body and the semi-flexible refinement stages, as done in the [HADDOCK3 antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/){:target="_blank"}. For several examples of HADDOCK3 workflows, please refer to the [HADDOCK3 GitHub repository][haddock-repo]{:target="_blank"}. For nanobody-specific workflows, check out the [corresponding HADDOCK3 examples](https://github.com/haddocking/haddock3/tree/main/examples/docking-nanobody-antigen){:target="_blank"}.
 
 1. **`topoaa`**: *Generates the topologies for the CNS engine and builds missing atoms*
 2. **`rigidbody`**: *Performs rigid body energy minimisation (`it0` in haddock2.x)*
