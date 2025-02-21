@@ -29,15 +29,15 @@ comparable to that of monoclonal antibodies. Nanobodies are used in a wide range
 <figure style="text-align: center;">
   <img src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/nb.png">
   <center>
-  <i>An example nanobody structure.</i>
+  <i style="font-size: 1.2em;">An example nanobody structure.</i>
   </center>
 </figure>
 
 
 As in antibodies, the small part of the nanobody region that binds the antigen is called **paratope**, while part of the antigen
-that binds to an nanobody is called **epitope**. Different from antibodies, nanobodies have only 
+that binds to a nanobody is called **epitope**. Different from antibodies, nanobodies have only 
 **three complementarity-determining regions (CDRs)** (hypervariable loops) whose sequence and conformation are altered to bind to different antigens. 
-Another important feature of these molecules is that the highly conserved amino acids that are not par of the CDRs, namely the **framework regions (FRs)**,
+Another important feature of these molecules is that the highly conserved amino acids that are not part of the CDRs, namely the **framework regions (FRs)**,
 can play a role in the binding to the antigen.
 
 In this tutorial we will be working with the complex between a nanobody (1-2C7), 
@@ -46,7 +46,7 @@ and a fragment of the *Severe acute respiratory syndrome coronavirus 2* (SARS-Co
 <figure style="text-align: center;">
   <img src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/7X2MB_REF.PDB.png">
   <center>
-  <i>PDB file 7X2M, complex between nanobody 1-2C7 (cartoon view, in light blue) and a SARS-CoV-2 Spike glycoprotein fragment (surface view, white).</i>
+  <i style="font-size: 1.2em;">PDB file 7X2M, complex between nanobody 1-2C7 (cartoon view, in light blue) and a SARS-CoV-2 Spike glycoprotein fragment (surface view, white).</i>
   </center>
 </figure>
 
@@ -100,7 +100,7 @@ _and note the location of the extracted files in your system_. In it you should 
 
 In this section we will prepare the PDB files of the nanobody and antigen for docking.
 Crystal structures of both the antibody and the antigen in their free forms are available from the
-[PDBe database](https://www.pdbe.org){:target="_blank"}. We will use [pdb-tools][link-pdbtools] to perform several operations on the PDB files, such as selecting chains, renumbering residues, and creating ensembles.
+[PDBe database](https://www.pdbe.org){:target="_blank"}. We will use [pdb-tools][link-pdbtools] to perform several operations on the PDB files, such as selecting chains, renumbering residues, and creating ensembles. `pdb-tools` is already installed in the `haddock3` environment.
 
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
@@ -133,7 +133,7 @@ Let's search the PDB database for similar sequences using the [PDB advanced sear
 
 <a class="prompt prompt-question">Besides the target complex, what is the closest structure to our nanobody sequence? How close are the two sequences in terms of sequence identity?</a>
 
-Taking the nanobody structure from the target PDB (7X2M) would not be very realistic, as the nanobody is already bound to the antigen. In a real-case scenario you would be forced to model the nanobody structure from scratch.
+Using the nanobody structure directly from the target PDB (7X2M) would not be very realistic, as the nanobody is already bound to the antigen. In a real-case scenario you would be forced to model the nanobody structure from scratch.
 
 A possible way to do this is to use AlphaFold2. You can run your AlphaFold modelling from [Colabfold](https://github.com/sokrypton/ColabFold){:target="_blank"}.
 
@@ -171,7 +171,7 @@ spectrum b, selection=cdr3
 <figure align="center">
   <img width="90%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/af2_monomer_h3_plddt.png">
   <center>
-  <i>Top ranked AlphaFold2-monomer nanobody prediction. The CDR3 is coloured according to the pLDDT values. The lowest ones (around 60) are shown in blue, while the highest ones (>90) are the anchor residues, shown in red.</i>
+  <i style="font-size: 1.2em;">Top ranked AlphaFold2-monomer nanobody prediction. The CDR3 is coloured according to the pLDDT values. The lowest ones (around 60) are shown in blue, while the highest ones (>90) are the anchor residues, shown in red.</i>
 </center>
 </figure>
 
@@ -556,6 +556,8 @@ haddock3-restraints passive_from_active 7EKG_clean.pdb 37,46 -r 7.5 -s 1,2,3,5,7
 6,187,188,189,190,191,193,195
 </a>
 
+The `-r` argument (`radius`) tunes the radius of the sphere that is used to extract the passive radius. 7.5 is slightly higher than the default value (6.5) used in HADDOCK. In this case a higher value makes sense as only two active residues are defined.
+
 Now the list of passive residues should contains a few more residues.
 
 <a class="prompt prompt-question">By relaxing the passive residues search were we able to capture more amino acids that are part of the real epitope?</a>
@@ -569,7 +571,7 @@ Now the list of passive residues should contains a few more residues.
   </figure>
   <br>
   <center>
-  <i>Tyrosine 37 and Lysine 46 are shown in red, while the neighboring surface-exposed residues (defined as passive) are depicted in orange.</i>
+  <i style="font-size: 1.2em;">Tyrosine 37 and Lysine 46 are shown in red, while the neighboring surface-exposed residues (defined as passive) are depicted in orange.</i>
   </center>
 </details>
 
@@ -658,12 +660,14 @@ reference_fname = "../pdbs/7x2mB_ref.pdb"
 
 {% endhighlight %}
 
-Here we selected the local running mode and a quite high number of cores (ncores = 24) to speed up the calculations. For more information about HADDOCK running modes please check [the documentation]() or [the corresponding section in the antibody-antigen tutorial](). If you're running the tutorial on your laptop, you will not have access to so many cores, and HADDOCK will automatically adjust the number of cores to the available ones. We recommend running this tutorial on a HPC system or on a powerful workstation.
+Here we selected the local running mode and a quite high number of cores (`ncores = 24`) to speed up the calculations. For more information about HADDOCK running modes please check [the documentation](https://www.bonvinlab.org/haddock3/){:target="_blank"} or [the corresponding section in the antibody-antigen tutorial](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#haddock3-execution-modes){:target="_blank"}. If you're running the tutorial on your laptop, you will not have access to so many cores, and HADDOCK will automatically adjust the number of cores to the available ones. We recommend running this tutorial on a HPC system or on a powerful workstation.
 
 HADDOCK3 also provides an analysis module (`caprieval`) that allows
 to compare models to either the best scoring model (if no reference is given) or to a reference structure, which in our case we have at hand (`7x2mB_ref.pdb`).
 
-When running locally, you can adjust a few parameters to make the execution faster. For example, you can reduce the number of models generated in the rigid-body docking stage by changing the `sampling` parameter in the `rigidbody` section of the configuration file. The default value is 1000, but you can put it to 100 or 200 to generate fewer models.
+### Decreasing sampling with low computing power
+
+When running locally with limited computational resources, you can adjust a few parameters to make the execution faster. For example, you can reduce the number of models generated in the rigid-body docking stage by changing the `sampling` parameter in the `rigidbody` section of the configuration file. The default value is 1000, but you can put it to 100 or 200 to generate fewer models.
 
 {% highlight toml %}
 ...
@@ -688,9 +692,11 @@ select = 48
 
 {% endhighlight %}
 
-These modifications will speed up the calculations substantially, but keep in mind that the quality of the results will be affected.
+These modifications will speed up the calculations substantially, but **keep in mind that the quality of the results will be affected**.
 
-To run the docking (in local mode), simply execute the following command:
+### Running HADDOCK
+
+To run the docking (in `local` mode), simply execute the following command:
 
 <a class="prompt prompt-cmd">
 cd haddock3 <br>
@@ -829,7 +835,7 @@ The `clustfcc` module performs the fraction of common contacts (FCC)-based clust
 
 Now we want to see how statistically significant are the difference in scores between the different clusters.
 
-The 10_caprieval folder contains a file named capri_clt.tsv, which contains the average and standard deviation of the scores for each cluster. Let's inspect the file for the real interface scenario:
+The `10_caprieval` folder contains a file named `capri_clt.tsv`, which contains the average and standard deviation of the scores for each cluster. Let's inspect the file for the real interface scenario:
 
 <a class="prompt prompt-cmd">
 head -15 run-real-unbound-7ekg/10_caprieval/capri_clt.tsv
