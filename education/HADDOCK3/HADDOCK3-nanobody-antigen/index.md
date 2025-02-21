@@ -36,7 +36,7 @@ comparable to that of monoclonal antibodies. Nanobodies are used in a wide range
 
 As in antibodies, the small part of the nanobody region that binds the antigen is called **paratope**, while part of the antigen
 that binds to a nanobody is called **epitope**. Different from antibodies, nanobodies have only 
-**three complementarity-determining regions (CDRs)** (hypervariable loops) whose sequence and conformation are altered to bind to different antigens. 
+**three complementarity-determining regions (CDRs)** (hypervariable loops) whose sequence and conformation are altered to bind to different antigens.
 Another important feature of these molecules is that the highly conserved amino acids that are not part of the CDRs, namely the **framework regions (FRs)**,
 can play a role in the binding to the antigen.
 
@@ -75,7 +75,7 @@ If not, please install it through
 pip install haddock3
 ```
 
-or refer to the [HADDOCK3 installation instructions](https://github.com/haddocking/haddock3/blob/main/docs/INSTALL.md){:target="_blank"} for more details.
+or refer to the [HADDOCK3 installation instructions][installation] for more details.
 
 Further we are providing pre-processed PDB files for docking and analysis (but the
 preprocessing of those files will also be explained in this tutorial). The files have been processed
@@ -274,7 +274,7 @@ In this case, we should not need to define unambiguous restraints neither for th
 
 The paratope is the region of the nanobody that binds to the antigen. In the case of nanobodies, the paratope is mainly composed of the CDR loops, but the framework regions can also play a role in the binding. The CDR3 loop is the most important one, and will for sure be part of the paratope.
 
-Let's start by identifying all the amino acids that lie on the CDR loops and that are exposed to the surface. To do this we will use `FreeSASA`, which calls the [FreeSASA](https://freesasa.github.io){:target="_blank"} software to calculate the solvent accessible surface area of the residues.
+Let's start by identifying all the amino acids that lie on the CDR loops and that are exposed to the surface. To do this we will use `FreeSASA`, which calls the [FreeSASA][link-freesasa] software to calculate the solvent accessible surface area of the residues.
 
 <a class="prompt prompt-cmd">
 haddock3-restraints calc_accessibility pdbs/7X2M_monomer_rank_001.pdb
@@ -907,13 +907,13 @@ We have shown how to define ambiguous restraints for the docking, and how to set
 
 A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published in [biorxiv](https://){:target="_blank"}. Please refer to this publication for more information on the performance of HADDOCK3 on nanobody-antigen systems. If you use HADDOCK in your nanobody-focused research, please cite this publication.
 
+If you want to ask questions and receive feedback don't hesitate to contact us at the [Bioexcel HADDOCK forum][link-forum]. 
+
 <!-- Links -->
 [haddock3antibody-epitope]: https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#antigen-scenario-2-nmr-mapped-epitope-information "HADDOCK3 antibody-antigen tutorial"
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
-[gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
 [haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK3 GitHub"
-[haddock-tools]: https://github.com/haddocking/haddock-tools "HADDOCK tools GitHub"
 [installation]: https://www.bonvinlab.org/haddock3/INSTALL.html "Installation"
 [link-cns]: https://cns-online.org "CNS online"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
@@ -921,4 +921,3 @@ A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published
 [link-pdbtools]:http://www.bonvinlab.org/pdb-tools/ "PDB-Tools"
 [link-pymol]: https://www.pymol.org/ "PyMOL"
 [nat-pro]: https://www.nature.com/nprot/journal/v5/n5/abs/nprot.2010.32.html "Nature protocol"
-[tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
