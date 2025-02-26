@@ -198,6 +198,12 @@ Unziping the file will create the `HADDOCK3-antibody-antigen-BioExcelSS2024` dir
 * `workflows`: a directory containing configuration file examples for HADDOCK3
 
 
+This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided pre-calculated runs were obtained on a Macbook Pro M2 processors with as OS Sequoia 15.3.1.
+
+In case you need to obtain and install HADDOCK3, navigate to [its repository][haddock-repo], fill the
+registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
+
+
 <hr>
 
 ### ASEAN 2025 HPC school
@@ -263,12 +269,6 @@ optional arguments:
 </pre>
 </details>
 <br>
-
-This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided pre-calculated runs were obtained on a Macbook Pro M2 processors with as OS Sequoia 15.3.1.
-
-In case you want to obtain HADDOCK3 for another platform, navigate to [its repository][haddock-repo], fill the
-registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
-
 
 <hr>
 
