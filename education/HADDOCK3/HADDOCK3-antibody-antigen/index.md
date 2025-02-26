@@ -197,16 +197,18 @@ Unziping the file will create the `HADDOCK3-antibody-antigen-BioExcelSS2024` dir
 * `scripts`: a directory containing various scripts used in this tutorial
 * `workflows`: a directory containing configuration file examples for HADDOCK3
 
+In case of a workshop of course, HADDOCK3 will usually have been installed on the system you will be using.
+
+It this is not the case, you will have to install it yourself. To obtain and install HADDOCK3, navigate to [its repository][haddock-repo], fill the
+registration form, and then follow the instructions under the **Local setup (on your own)** section below.
 
 This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided pre-calculated runs were obtained on a Macbook Pro M2 processors with as OS Sequoia 15.3.1.
 
-In case you need to obtain and install HADDOCK3, navigate to [its repository][haddock-repo], fill the
-registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
 
 
 <hr>
 
-### ASEAN 2025 HPC school
+### ASEAN 2025 HPC school (still to be updated)
 
 We will be making use of the Fugaku supercomputer for this tutorial. 
 Please connect to Fugaku using your credentials.
