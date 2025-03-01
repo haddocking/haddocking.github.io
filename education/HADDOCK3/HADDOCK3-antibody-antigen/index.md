@@ -208,16 +208,16 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 <hr>
 
-### ASEAN 2025 HPC school (still to be updated)
+### ASEAN 2025 HPC school
 
 We will be making use of the Fugaku supercomputer for this tutorial. 
 Please connect to Fugaku using your credentials.
 
 The software and data required for this tutorial have been pre-installed on Fugaku.
-In order to run the tutorial, first copy the required data into your home directory on Fugagku:
+In order to run the tutorial, go into you data directory, then copy and unzip the required data:
 
 <a class="prompt prompt-cmd">
-unzip /vol0300/share/ra022304/LifeScience/20231213_Bonvin/HADDOCK3-antibody-antigen.zip
+unzip /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/HADDOCK3-antibody-antigen.zip
 </a>
 
 This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
@@ -226,14 +226,13 @@ HADDOCK3 has been pre-installed on the compute nodes. To test the installation, 
 
 
 <a class="prompt prompt-cmd">
-pjsub \-\-interact \-L \"node=1\" \-L \"rscgrp=int\" \-\-sparam \"wait-time=600\" -L \"elapse=01:00:00\"
+pjsub --interact -L "node=1" -L "rscgrp=int" -L "elapse=2:00:00"  --sparam "wait-time=600"  -g hp240465 -x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
 </a>
 
 Once the session is active, activate HADDOCK3 with:
 
 <a class="prompt prompt-cmd">
-source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh<br>
-conda activate haddock3
+source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate<br>
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
@@ -273,6 +272,7 @@ optional arguments:
 <br>
 
 <hr>
+
 
 ### Local setup (on your own)
 
@@ -958,45 +958,63 @@ In in the first section of the workflow above we have a parameter `mode` definin
 
 <hr>
 
-#### Learn about the various execution modes of haddock3
+#### Execution of HADDOCK3 on Fugaku (ASEAN HPC school)
 
-<details style="background-color:#DAE4E7">
-  <summary style="bold">
-    <b><i>Execution of Fugaku using a full node (ASEAN HPC School)</i></b> <i class="material-icons">expand_more</i>
-  </summary>
-To execute the workflow on Fugaku, we will create a job file that will execute HADDOCK3 on a node, with HADDOCK3 running in local mode (the setup in the above configuration file with `mode="local"`) and harvesting all core of that node (`ncores=50`).
+To execute the workflow on Fugaku, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, with HADDOCK3 running in local mode (the setup in the above configuration file with `mode="local"`) and harvesting all core of that node (`ncores=48`).
 
-Here is an example of such an execution script (also provided in the `workflows` directory as `run-haddock3-fugaku.sh`):
+**_Interactive session on a node:_**
+
+<a class="prompt prompt-cmd">
+pjsub --interact -L "node=1" -L "rscgrp=int" -L "elapse=2:00:00"  --sparam "wait-time=600"  -g hp240465 -x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
+</a>
+
+Once the session is active, activate HADDOCK3 with:
+
+<a class="prompt prompt-cmd">
+source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate<br>
+</a>
+
+You can then run the workflow with:
+
+<a class="prompt prompt-cmd">
+haddock3 ./workflows/docking-antibody-antigen.cfg
+</a>
+
+
+**_Job submission to the batch system:_**
+
+
+For this execution mode you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-fugaku.sh`):
 
 {% highlight shell %}
-#!/bin/sh
-#PJM -g ra022304
-#PJM -L "rscgrp=small"
-#PJM -L "node=1"
-#PJM -L "elapse=01:00:00"
-#PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0003
-#PJM -s # Statistical information output
+#!/bin/sh -x
+#PJM -L  "node=1"                           # Assign node 1 node
+#PJM -L  "rscgrp=small"                     # Specify resource group
+#PJM -L  "elapse=02:00:00"                  # Elapsed time limit 1 hour
+#PJM -g hp240465                            # group name
+#PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0006 # volume names that job uses
+#PJM -s                                     # Statistical information output
 
-source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh
-conda activate haddock3
-
-haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg
+source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate
+haddock3 ./workflows/docking-antibody-antigen.cfg
 
 {% endhighlight %}
 
 This file should be submitted to the batch system using the `pjsub` command:
 
 <a class="prompt prompt-cmd">
-pjsub workflows/run-haddock3-fugaku.sh
+pjsub run-haddock3-fugaku.sh
 </a>
 <br>
 
-This run should take about 20 minutes to complete on a single node using 50 arm cores.
-</details>
+And you can check the status in the queue using `pjstat`.
 
+This run should take about 20 minutes to complete on a single node using 48 arm cores.
+
+
+#### Learn more about the various execution modes of haddock3
 
 <hr>
-
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
@@ -2336,7 +2354,7 @@ reference_fname = "4G6M_matched.pdb"
 {% endhighlight %}
 
 
-A scoring scenario configuration file is provided in the `workflow/` directory as `scoring-antibody-antigen.cfg, precomputed results in `runs/run-scoring`.
+A scoring scenario configuration file is provided in the `workflows/` directory as `scoring-antibody-antigen.cfg, precomputed results in `runs/run-scoring`.
 
 You can again look at the `capri_ss.tsv` file in the `4_caprieval` directory. It contains the energy minimised statistics:
 
