@@ -179,7 +179,7 @@ structure of the complex.
 If you are running this tutorial on your own resources _download and unzip the following_
 [zip archive](https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
-If running as part of the EU-ASEAN HPC school see the instructions below.
+If running as part of the EU-ASEAN HPC school see the instructions in the next section.
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
@@ -211,9 +211,13 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 ### ASEAN 2025 HPC school
 
 We will be making use of the Fugaku supercomputer for this tutorial. 
-Please connect to Fugaku using your credentials.
-
 The software and data required for this tutorial have been pre-installed on Fugaku.
+Please connect to Fugaku using your credentials either via ssh connection or from a web browser using OnDemand:
+
+[https://ondemand.fugaku.r-ccs.riken.jp/](https://ondemand.fugaku.r-ccs.riken.jp/){:target="_blank"}
+
+If using OnDemand, open then a terminal session.
+
 In order to run the tutorial, go into you data directory, then copy and unzip the required data:
 
 <a class="prompt prompt-cmd">
