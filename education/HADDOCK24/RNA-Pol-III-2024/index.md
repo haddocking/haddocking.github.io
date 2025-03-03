@@ -2,7 +2,7 @@
 layout: page
 title: "Integrative modelling of the apo RNA-Polymerase-III complex from MS cross-linking and cryo-EM data"
 excerpt: "A tutorial demonstrating the use of MS crosslinks and low resolution cryo-EM data to build a complex molecular machine."
-tags: [MS, Cross-links, cryo-EM, Interaction, HADDOCK, DISVIS, PowerFit, RNA Polymerase, Pymol, Chimera, Visualisation]
+tags: [MS, Cross-links, cryo-EM, Interaction, HADDOCK, DISVIS, PowerFit, RNA Polymerase, ChimeraX, Visualisation]
 image:
   feature: pages/banner_education-thin.jpg
 ---
@@ -35,11 +35,11 @@ As an alternative strategy, we will use our [PowerFit server][link-powerfit-web]
 * R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
 
 Throughout the tutorial, colored text will be used to refer to questions or
-instructions, and/or PyMOL commands.
+instructions, and/or ChimeraX commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering it!</a>
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
-<a class="prompt prompt-pymol">This is a PyMOL prompt: write this in the PyMOL command line prompt!</a>
+<a class="prompt prompt-pymol">This is a ChimeraX prompt: write this in the ChimeraX command line!</a>
 <a class="prompt prompt-cmd">This is a Linux prompt: insert the commands in the terminal!</a>
 
 
@@ -47,7 +47,7 @@ instructions, and/or PyMOL commands.
 ## Setup/Requirements
 
 
-In order to follow this tutorial you will need a **web browser**, a **text editor**, [**PyMOL**][link-pymol]{:target="_blank"} and [**Chimera**][link-chimera]{:target="_blank"}
+In order to follow this tutorial you will need a **web browser**, a **text editor**, and [**ChimeraX**][link-chimerax]{:target="_blank"}
 (both freely available for most operating systems) to visualize the input and output data. 
 We used our [**pdb-tools**](https://github.com/haddocking/pdb-tools){:target="_blank"} to pre-process PDB files for HADDOCK, 
 renumbering the core domains to avoid overlap in their residue numbering.
@@ -263,7 +263,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 <br>
 
 
-A trimmed model of C82 has been provided with the data for this tutorial. Inspect it in PyMol or your favourite 3D structure viewer. 
+A trimmed model of C82 has been provided with the data for this tutorial. Inspect it in ChimeraX or your favourite 3D structure viewer. 
 
 <a class="prompt prompt-question">
    What are the differences with the model from the AlphaFold database?
@@ -319,36 +319,46 @@ __Tip__: To assess how well defined the relative positions of the domains are co
 
 
 Since we do have a number of cross-links between wHTH1 and wHTH2, let's check if the AlphaFold model satisfies those.
-For this we will inspect in PyMol the provided trimmed model of C34. 
+For this we will inspect in ChimeraX the provided trimmed model of C34. 
 
-Start PyMOL and load the trimmed C82 model (`C_C34-alphafold-trimmed.pdb`):
+Start ChimeraX and load the trimmed C82 model (`C_C34-alphafold-trimmed.pdb`):
 
-<a class="prompt prompt-pymol">File menu -> Open -> select C_C34-alphafold-trimmed.pdb</a>
+<a class="prompt prompt-info"> ChimeraX menu -> File -> Open... -> select C_C34-alphafold-trimmed.pdb</a>
 
 __Note:__ If using the command line, simply type:
 
-<a class="prompt prompt-cmd">pymol C_C34-alphafold-trimmed.pdb</a>
+<a class="prompt prompt-cmd">chimerax C_C34-alphafold-trimmed.pdb</a>
 
 
 Let's now check if this model actually fit the cross-links identified between the first two wHTH domains.
 
-In the PyMOL command window type:
+In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-distance C34-d1-30A, chain C and resid 62 and name CB, chain C and resid   82 and name CB<br>
-distance C34-d2-30A, chain C and resid 62 and name CB, chain C and resid   83 and name CB<br>
-distance C34-d3-30A, chain C and resid 62 and name CB, chain C and resid  123 and name CB<br>
-distance C34-d4-30A, chain C and resid 65 and name CB, chain C and resid   82 and name CB<br>
-distance C34-d5-30A, chain C and resid 65 and name CB, chain C and resid  123 and name CB<br>
-distance C34-d6-30A, chain C and resid 65 and name CB, chain C and resid  126 and name CB<br>
-distance C34-d7-30A, chain C and resid 65 and name CB, chain C and resid  135 and name CB<br>
+distance /C:62@CB /C:82@CB<br>
+distance /C:62@CB /C:83@CB<br>
+distance /C:62@CB /C:123@CB<br>
+distance /C:65@CB /C:82@CB<br>
+distance /C:65@CB /C:123@CB<br>
+distance /C:65@CB /C:126@CB<br>
+distance /C:65@CB /C:135@CB<br>
 </a>
 
-This will draw lines between the connected atoms and display the corresponding Euclidian distance.
-Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
+This will display the Euclidian distance between the two atoms in the Log display on your screen.
+If you want to see the distances all together you can open the distance tool by typing the following in the ChimeraX command window:
+
+<a class="prompt prompt-pymol">
+ui tool show distance
+</a>
+
+The distances are not displayed yet in the model. This is because ChimeraX will only show those when the model is displayed in atom mode, which is off when you load your model. To set your model to atom mode, type the following in the ChimeraX command window:
+
+<a class="prompt prompt-pymol">
+show atoms
+</a>
 
 <a class="prompt prompt-info">
-Inspect the various cross-link distances.
+Now inspect the various cross-link distances.
 </a>
 
 <a class="prompt prompt-question">
@@ -370,16 +380,16 @@ or [nrgxl](https://nrgxl.pasteur.fr){:target="_blank"} software.
 <br>
 ### C82-C34 AlphaFold-multimer model
 
-We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer/C82-C34-wo-template` directory. You can inspect the pdb models together with the png files, which contains the plDDT and PAE analysis calculated per model. For coloring the pdb files according to the plDDT scores, you can use the following PyMOL command:
+We have generated this model using the [Colab version of Alphafold](https://github.com/sokrypton/ColabFold){:target="_blank"}. The results are provided in the data you downloaded in the `AF2-multimer/C82-C34-wo-template` directory. You can inspect the pdb models together with the png files, which contains the plDDT and PAE analysis calculated per model. For coloring the pdb files according to the plDDT scores, you can use the following ChimeraX command:
 
-<a class="prompt prompt-pymol">
-File menu -> Open -> select C82C34_873a4_unrelaxed_rank_1_model_1.pdb
+<a class="prompt prompt-info">
+ChimeraX menu -> File -> Open... -> select C82C34_873a4_unrelaxed_rank_1_model_1.pdb
 </a>
 
-In the PyMOL command window type:
+In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-spectrum b, tv_red yellow cyan blue, minimum=30, maximum=100
+color bfactor palette alphafold
 </a>
 
 <a class="prompt prompt-info">
@@ -603,26 +613,24 @@ is a false positive.
 
 _Note_: Results for the different pair combinations are available from the tutorial data directory in the `disvis` directory as `disvis-results-X-Y`.
 
-Let us now inspect the solutions and visualise the interaction space in Chimera:
+Let us now inspect the solutions and visualise the interaction space in ChimeraX:
 
 <a class="prompt prompt-info">
-  Open the *fixed_chain.pdb* file and the *accessible_interaction_space.mrc* density map in Chimera.
+  Open the *fixed_chain.pdb* file and the *accessible_interaction_space.mrc* density map in ChimeraX.
 </a>
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the file
+  ChimeraX Menu → File → Open... → Select the file
 </a>
 
 Or from the Linux command line:
 
 <a class="prompt prompt-linux">
-chimera fixed_chain.pdb accessible_interaction_space.mrc
+chimerax fixed_chain.pdb accessible_interaction_space.mrc
 </a>
 
-The values of the `accessible_interaction_space.mrc` slider bar correspond to the number of satisfied restraints (N).
-In this way, you can selectively visualise regions where complexes have been found to be consistent with a given number of
-restraints. Try to change the level in the "**Volume Viewer**" to see how the addition of restraints reduces
-the accessible interaction space. 
+The values of the `accessible_interaction_space.mrc` level in the "**Volume Viewer**" correspond to the number of satisfied restraints (N).
+In this way, you can selectively visualise regions where complexes have been found to be consistent with a given number ofrestraints. Try to change the level to see how the addition of restraints reducesthe accessible interaction space. 
 
 _Note_: The interaction space displayed corresponds to the region of space where the center of mass 
         of the scanning molecule can be placed while satisfying a given number of restraints
@@ -741,7 +749,7 @@ The server makes use of either local resources on our cluster, using the multi-c
 [EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software, based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
-of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
+of the PowerFit output using [UCSF ChimeraX][link-chimerax]{:target="_blank"}.
 
 For more details about PowerFit and its usage we refer to a related [online tutorial](/education/Others/powerfit-webserver){:target="_blank"}.
 
@@ -775,7 +783,7 @@ job by reloading the status page every 30 seconds.
 
 For convenience, we have already provided pre-calculated results in the `cryo-EM/powerfit-PolIII-core` directory in the data downloaded for this tutorial.
 The `fit_1.pdb` file corresponds to the top solution predicted by PowerFit. You can inspect it and see how well it fits into the cryo-EM map 
-using `Chimera` with its `Volume -> Fit in Map` tool (see instructions above).
+using `ChimeraX` with its `Volume -> Fit in Map` tool (see instructions below).
 
 
 Repeat the above procedure, but this time for the C82+C34wHTH3 AlphaFold model (`BE_C82-C34-wHTH3-alphafold-trimmed.pdb`).
@@ -783,39 +791,36 @@ Pre-calculated results are available in the `powerfit-PolIII-core/` and `cryo-EM
 
 
 <hr>
-### Refining the fit in Chimera
+### Refining the fit in ChimeraX
 
-Let's see how well did PowerFit perform in fitting and try to further optimize the fit using Chimera.
+Let's see how well did PowerFit perform in fitting and try to further optimize the fit using ChimeraX.
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the cryo-EM/powerfit-PolIII-core/fit_1.pdb
+ChimeraX menu → File → Open... → Select the cryo-EM/powerfit-PolIII-core/fit_1.pdb
 </a>
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the cryo-EM/powerfit-PolIII-C82-C34-wHTH3/fit_1.pdb
+ChimeraX menu → File → Open... → Select the cryo-EM/powerfit-PolIII-C82-C34-wHTH3/fit_1.pdb
 </a>
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the cryo-EM/PolIII_9A.mrc
+ChimeraX menu → File → Open... → Select the cryo-EM/PolIII_9A.mrc
 </a>
 
-In the `Volume Viewer` window, the middle slide bar provides control on the
+__Note:__ Make sure you open the files in the above order, otherwise the ChimeraX commands will not work on the correct model. The # sign in the upcoming commands refer to the model number (#1 is the first opened model)
+
+In the `Volume Viewer` window, the slide bar provides control on the
 value at which the isosurface of the density is shown. At high values, the
 envelope will shrink while lower values might even display the noise in the map.
-In the same window, you can click on `Center` to center the view on all visible molecules and the density.
 
 First make the density transparent, in order to be able to see the fitted structure inside:
 
-<a class="prompt prompt-info">
-  Within the Volume Viewer window click on the gray box next to Color
-</a>
-<a class="prompt prompt-info">
-Set the alpha channel value to around 0.6.
+<a class="prompt prompt-pymol">
+transparency #3 60
 </a>
 
 In order to distinguish the various chains color the structure by chain:
 
-<a class="prompt prompt-info">
-Chimera menu -> Tools -> Depiction -> Rainbow
-Select the option to color by chain and click the Apply button
+<a class="prompt prompt-pymol">
+color bychain
 </a>
 
 The two molecules were fitted separately into the map, which can cause clashes at the interface.
@@ -837,10 +842,10 @@ Can you identify possible problematic areas of the interface?
 <br>
 
 
-Now let's check the quality of the fit and try to improve the fit in Chimera:
+Now let's check the quality of the fit of the first molecule (fit_1#1) and try to improve the fit in ChimeraX:
 
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
+<a class="prompt prompt-pymol">
+ui tool show "Fit in Map"
 </a>
 <a class="prompt prompt-info">
 Click the Options button
@@ -855,10 +860,19 @@ Click on Update and note the correlation value
 Click on Fit and check if the correlation does improve
 </a>
 <a class="prompt prompt-question">
-Has the quality of the fit measured bu correlation coefficient improved?
+Has the quality of the fit measured by correlation coefficient improved?
 </a>
 
-Repeat this procedure using the second molecule (fit_1#1) corresponding to the C82+C34wHTH3 model.
+Alternatively this can also be done using the ChimeraX command line:
+
+<a class="prompt prompt-pymol">
+fitmap #1 inMap #3 resolution 9<br>
+close #4<br>
+</a>
+
+The correlation is shown underneath the command line
+
+Repeat this procedure using the second molecule (fit_1#2) corresponding to the C82+C34wHTH3 model.
 
 <a class="prompt prompt-question">
 What about the clashes? Is the fit between core and C82 better in terms of clashes?
@@ -868,7 +882,7 @@ What about the clashes? Is the fit between core and C82 better in terms of clash
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
-<p>The fit in chimera has clearly removed some of the chain clashes, but there are still regions where the two molecules are clashing (especially considering we don't visualize the side-chains.</p>
+<p>The fit in chimeraX has clearly removed some of the chain clashes, but there are still regions where the two molecules are clashing (especially considering we don't visualize the side-chains.</p>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III-2024/core-C82-clashes2.png">
 </figure>
@@ -880,11 +894,11 @@ What about the clashes? Is the fit between core and C82 better in terms of clash
 Do save the fitted molecules:
 
 <a class="prompt prompt-info">
-File -> Save PDB -> Save relative to model -> Select PolIII_9A.mrc (to make sure the models are saved in the orientation of the EM map)
+File -> Save -> Files of type -> PDB (*.pdb *.pdb1 *.ent *.pqr)
 </a>
 
 <a class="prompt prompt-info">
-In the save model panel select both fit_1.pdb (#0) and fit_1.pdb (#1), give a filename (e.g.: PolIII-core-C82-C34-wHTH3-chimera-fitted.pdb) and click on the save button
+In the save model panel select both fit_1.pdb (#1) and fit_1.pdb (#2), give a filename (e.g.: PolIII-core-C82-C34-wHTH3-chimera-fitted.pdb) and select "save relative to model". Choose the PolIII_9A.mrc #3 to ensure the PDB files are saved in the orientation of the density map. Then click on the save button
 </a>
 
 This will save both molecules into one PDB file as multimodel file (i.e. with MODEL/ENDMDL statements).
@@ -969,87 +983,28 @@ The result page of such a refinement can be found:
 * coarse-grained refinement [here](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/188533-RPolIII-core-C82-C34-wHTH-CGref){:target="_blank"}.
 
 <a class="prompt prompt-info">
-Download the best model and following the previously provided instructions to fit in the EM map using Chimera, fit the refined model into the 9Å cryo-EM map and check the correlation coefficient.
+Download the best model and following the previously provided instructions to fit in the EM map using ChimeraX, fit the refined model into the 9Å cryo-EM map and check the correlation coefficient.
 </a>
 
+__Note__: The ChimeraX Fit in Map function does not move the model to the density if they are far apart. If this is the case you can first perform a more exhaustive search. Note that this might take a while since it is a large system 
+
+<a class="prompt promt-pymol">
+fitmap #model inMap #density search 100
+</a>
+
+You can now optimize the fit by using the previously described instructions
+
 <a class="prompt prompt-question">
-How do the correlation coefficient of the unrefined and refined models compare?
+How do the correlation coefficients of the unrefined and refined models compare?
 </a>
 
 <details style="background-color:#DAE4E7"><summary>View the pre-calculated correlation coefficients for the various models:
 </summary>
 <br>
 <pre>
-     PolIII-core-C82-C34-wHTH3-chimera-fitted-merged.pdb:  0.9446
-     PolIII-core-C82-C34-wHTH3-chimera-fitted-watref.pdb:  0.9336
-     PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb:   0.9496
-</pre>
-<br>
-</details>
-<br>
-
-__Note__: In the `cryo-EM` directory of the downloaded data you will find a Python script that can be used to fit a structure into an EM map using Chimera from the command line. Assuming that you are in the pre-calculated`cryo-EM` directory:
-
-<a class="prompt prompt-cmd">
-chimera \-\-nogui \-\-script \"CCcalculate.py PolIII-core-C82-chimera-fitted-CGref.pdb PolIII_9A.mrc 9 10\"
-</a>
-
-The last number in the command is the number of fittings tried from different random positions. The best fit value will be reported.
-
-<details style="background-color:#DAE4E7"><summary>View an example output of the CCcalculate script:
-</summary>
-<br>
-<pre>
-RNA-Pol-III-2024/cryo-EM> chimera --nogui --script "CCcalculate.py PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb PolIII_9A.mrc 9 10"
-Opening PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb...
-...
-
-Model 0 (PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-
-Computing secondary structure assignments...
-Computed secondary structure assignments (see reply log)
-reading PolIII_9A.mrc 2.8 Mb 0%
-Done reading PolIII_9A.mrc
-reading PolIII_9A.mrc 178 Mb 0%
-Done reading PolIII_9A.mrc
-Fit 1 of 10
-Fit 2 of 10
-Fit 3 of 10
-Fit 4 of 10
-Fit 5 of 10
-Fit 6 of 10
-Fit 7 of 10
-Fit 8 of 10
-Fit 9 of 10
-Fit 10 of 10
-Fit search: finished
-Found 9 unique fits from 10 random placements having fraction of points inside contour >= 0.100 (10 of 10).
-
-Correlations and times found:
-	0.952 (1), 0.8203 (1), 0.8133 (1), 0.8103 (2), 0.8049 (1), 0.8041 (1), 0.8009 (1), 0.7976 (1), 0.7753 (1)
-
-Best fit found:
-Fit map molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 in map PolIII_9A.mrc using 33394 points
-  correlation = 0.952, correlation about mean = 0.595, overlap = 208
-  steps = 328, shift = 49.3, angle = 31.6 degrees
-Position of molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 (#0.1) relative to PolIII_9A.mrc (#1) coordinates:
-  Matrix rotation and translation
-     0.10322358  -0.51111512  -0.85329141 185.59573168
-     0.45569008  -0.73824752   0.49733002 190.85526186
-    -0.88413316  -0.44017262   0.15670554 189.33240076
-  Axis  -0.69596127   0.02289558   0.71771422
-  Axis point 133.17124957 144.56295228   0.00000000
-  Rotation angle (degrees) 137.65984172
-  Shift along axis  11.08885675
-
-correlation = 0.9496, corr about mean = 0.5599
-Correlation between molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb res 9 and PolIII_9A.mrc = 0.9496, about mean = 0.5599
-
+     PolIII-core-C82-C34-wHTH3-chimera-fitted-merged.pdb:  0.9478
+     PolIII-core-C82-C34-wHTH3-chimera-fitted-watref.pdb:  0.9427
+     PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb:   0.9517
 </pre>
 <br>
 </details>
@@ -1059,15 +1014,14 @@ Correlation between molmap PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb re
 <hr>
 ### Checking the agreement of the refined cryo-EM fitted models with the cross-links
 
-Let's now check if the EM-fitted model of core+C82+C34wHTH3 fits the two cross-links we have between those domains.
-Start a new PyMOL session and load as described above `PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb`.
+Let's now check if the EM-fitted model of core+C82+C34wHTH3 fits the two cross-links we have between those domains. Start a new ChimeraX session and load as described above `PolIII-core-C82-C34-wHTH3-chimera-fitted-CGref.pdb`.
 
-In the PyMOL command window type:
+In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-util.cbc<br>
-distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
+color bychain<br>
+distance /B:472@CB /A:5394@CB<br>
+distance /B:520@CB /A:5394@CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1273,33 +1227,37 @@ Once your run has completed you will be presented with the result page. You can 
 
 Let's now visualize the various clusters. Download all clusters at once and unpack the archive.
 
-Start PyMOL and load each cluster representative (`clusterX_1.pdb`):
+Start ChimeraX and load each cluster representative (`clusterX_1.pdb`):
 
-<a class="prompt prompt-pymol">File menu -> Open -> select cluster1_1.pdb</a>
+<a class="prompt prompt-pymol">ChimeraX menu -> File -> Open... -> select cluster1_1.pdb</a>
 
 Repeat this for each cluster. 
 
 __Note:__ If using the command line, all clusters can be loaded easily in one command:
 
-<a class="prompt prompt-cmd">pymol cluster*_1.pdb</a>
+<a class="prompt prompt-cmd">chimerax cluster*_1.pdb</a>
 
 
-Once all files have been loaded, type in the PyMOL command window:
+Once all files have been loaded, type in the ChimeraX command window:
 
 <a class="prompt prompt-pymol">
-util.cbc<br>
+hide atoms<br>
+show cartoon<br>
+color bychain<br>
 </a>
 
 Let's then superimpose all models on chain A of the first cluster:
 
 <a class="prompt prompt-pymol">
-alignto cluster1_1 and chain A<br>
+matchmaker #2 to #1/A<br>
 </a>
 
 This will align all clusters on chain A (PolIII-core), maximizing the differences in the orientation of the other chains. Be patient as given the size of the system this might take a bit of time...
 
+__Note:__ If you want to align more models, you can extend the first model selection with a "-". For example, #2-4.
 
-__Note__: You can also open in PyMol a session in which the models have already been fitted. Open for this the `clusters.pse` file found in the `docking/RNA-PolIII-core-C82-C34-wHTHs-C31pept_summary` directory
+
+__Note__: You can also open in ChimeraX a session in which the models have already been fitted. Open for this the `clusters.cxs` file found in the `docking/RNA-PolIII-core-C82-C34-wHTHs-C31pept_summary` directory
 
 
 <a class="prompt prompt-question">
@@ -1307,13 +1265,13 @@ Examine the various clusters. Compare the orientation of each domain (C82,C34 an
 How does their orientation differ between the various clusters?
 </a>
 
-__Reminder:__ ChainA corresponds to PolIII-core (green), B to C82 (blue), C to C34 wHTH1 (magenta), D to C34 wHTH2 (yellow), E to C34 wHTH3 (wheat) and F and G (violet and gray) to C31.
+__Reminder:__ Chain A corresponds to PolIII-core (medium slate blue), B to C82 (light coral), C to C34 wHTH1 (dark see green), D to C34 wHTH2 (burly wood), E to C34 wHTH3 (coral) and F and G (gray and olive drab) to C31.
 
-<details style="background-color:#DAE4E7"><summary><b>See PyMol view:</b>
+<details style="background-color:#DAE4E7"><summary><b>See ChimeraX view:</b>
 </summary>
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III-2024/strategy2-clusters-pymol.png">
-<p> <i>PyMol view of the various clusters, superimposed on PolIII core</i></p>
+<img src="/education/HADDOCK24/RNA-Pol-III-2024/strategy2-clusters-chimerax.png">
+<p> <i>ChimeraX view of the various clusters, superimposed on PolIII core</i></p>
 </figure>
 </details>
 <br>
@@ -1336,28 +1294,30 @@ How different are the solutions compared to those of Strategy1?
 ### Satisfaction of cross-link restraints
 
 Let's now check if the solutions actually fit the cross-links we defined.
-Start a new PyMOL session and load as described above the model you want to analyze, e.g. the best model of the top
+Start a new ChimeraX session and load as described above the model you want to analyze, e.g. the best model of the top
 ranking cluster, `clusterX_1.pdb`.
 
 
 #### Analysing the cross-links defining the position of the C82 domain
 
-In the PyMOL command window type:
+In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-util.cbc<br>
-distance C82-d01-30A, chain B and resid  50 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d02-30A, chain B and resid 472 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d03-30A, chain B and resid 520 and name CB, chain A and resid 5394 and name CB<br>
-distance C82-d04-30A, chain B and resid 520 and name CB, chain D and resid  135 and name CB<br>
-distance C82-d05-30A, chain B and resid 520 and name CB, chain D and resid  138 and name CB<br>
-distance C82-d06-30A, chain B and resid 520 and name CB, chain D and resid  141 and name CB<br>
-distance C82-d07-30A, chain B and resid 605 and name CB, chain F and resid   91 and name CB<br>
-distance C82-d08-30A, chain B and resid 612 and name CB, chain G and resid  111 and name CB<br>
+color by chain<br>
+hide atoms<br>
+show cartoon<br>
+distance /B:50@CB /F:91@CB<br>
+distance /B:472@CB /A:5394@CB<br>
+distance /B:520@CB /A:5394@CB<br>
+distance /B:520@CB /D:135@CB<br>
+distance /B:520@CB /D:138@CB<br>
+distance /B:520@CB /D:141@CB<br>
+distance /B:605@CB /F:91@CB<br>
+distance /B:612@CB /G:111@CB<br>
+ui tool show distance<br>
 </a>
 
 This will draw lines between the connected atoms and display the corresponding Euclidian distance.
-Objects are created in the left panel with their name corresponding to the cross-link and its associated maximum distance.
 
 <a class="prompt prompt-info">
 Inspect the various cross-link distances.
@@ -1381,22 +1341,19 @@ If not, which ones are not satistified?
 
 #### Analysing the cross-links defining the position of the C34 wHTH1 domain
 
-You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
+You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
 
-<a class="prompt prompt-pymol">delete C82*</a>
-
-In the PyMOL command window type:
+In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-distance C34-d01-30A, chain C and resid  62 and name CB, chain D and resid   82 and name CB<br>
-distance C34-d02-30A, chain C and resid  62 and name CB, chain D and resid   83 and name CB<br>
-distance C34-d03-30A, chain C and resid  62 and name CB, chain D and resid  123 and name CB<br>
-distance C34-d04-30A, chain C and resid  65 and name CB, chain D and resid   82 and name CB<br>
-distance C34-d05-30A, chain C and resid  65 and name CB, chain D and resid  123 and name CB<br>
-distance C34-d06-30A, chain C and resid  65 and name CB, chain D and resid  126 and name CB<br>
-distance C34-d07-30A, chain C and resid  65 and name CB, chain D and resid  135 and name CB<br>
-distance C34-d08-30A, chain C and resid  65 and name CB, chain A and resid 5394 and name CB<br>
+distance /C:62@CB /D:82@CB<br>
+distance /C:62@CB /D:83@CB<br>
+distance /C:62@CB /D:123@CB<br>
+distance /C:65@CB /D:82@CB<br>
+distance /C:65@CB /D:123@CB<br>
+distance /C:65@CB /D:126@CB<br>
+distance /C:65@CB /D:135@CB<br>
+distance /C:65@CB /A:5394@CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1422,18 +1379,15 @@ If not, which ones are not satistified?
 
 #### Analysing the cross-links defining the position of the C34 wHTH2 domain
 
-You can first hide the distances shown for C82 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
+You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
 
-<a class="prompt prompt-pymol">delete C82*</a>
-
-In the PyMOL command window type:
+In the Chimerax command window type:
 
 <a class="prompt prompt-pymol">
-distance C34-d01-30A, chain D and resid 123 and name CB, chain A and resid 5394 and name CB<br>
-distance C34-d02-30A, chain D and resid 135 and name CB, chain B and resid  520 and name CB<br>
-distance C34-d03-30A, chain D and resid 138 and name CB, chain B and resid  520 and name CB<br>
-distance C34-d04-30A, chain D and resid 141 and name CB, chain B and resid  520 and name CB<br>
+distance /D:123@CB /A:5394@CB<br>
+distance /D:135@CB /B:520@CB<br>
+distance /D:138@CB /B:520@CB<br>
+distance /D:141@CB /B:520@CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1459,24 +1413,21 @@ If not, which ones are not satistified?
 
 #### Analysing the cross-links defining the position of the C31 peptides
 
-You can first hide the distances shown for C34 by unselecting them in the menu on the right side of the window.
-Alternatively delete them in PyMol by typing:
+You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
 
-<a class="prompt prompt-pymol">delete C34*</a>
-
-In the PyMOL command window type:
+In the Chimerax command window type:
 
 <a class="prompt prompt-pymol">
-distance C31-d01-30A, chain F and resid  91 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d02-30A, chain F and resid  91 and name CB, chain A and resid 3402 and name CB<br>
-distance C31-d03-30A, chain F and resid  91 and name CB, chain A and resid 4206 and name CB<br>
-distance C31-d04-30A, chain F and resid  91 and name CB, chain A and resid 4359 and name CB<br>
-distance C31-d05-30A, chain F and resid  91 and name CB, chain A and resid 4361 and name CB<br>
-distance C31-d06-30A, chain F and resid  91 and name CB, chain B and resid   50 and name CB<br>
-distance C31-d07-30A, chain F and resid  91 and name CB, chain B and resid  605 and name CB<br>
-distance C31-d08-30A, chain G and resid 111 and name CB, chain B and resid  612 and name CB<br>
-distance C31-d09-30A, chain G and resid 111 and name CB, chain A and resid 1458 and name CB<br>
-distance C31-d10-30A, chain G and resid 111 and name CB, chain A and resid 3514 and name CB<br>
+distance /F:91@CB /A:1458@CB<br>
+distance /F:91@CB /A:3402@CB<br>
+distance /F:91@CB /A:4206@CB<br>
+distance /F:91@CB /A:4359@CB<br>
+distance /F:91@CB /A:4361@CB<br>
+distance /F:91@CB /B:50@CB<br>
+distance /F:91@CB /B:605@CB<br>
+distance /G:111@CB /B:612@CB<br>
+distance /G:111@CB /A:1458@CB<br>
+distance /G:111@CB /A:3514@CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1503,24 +1454,18 @@ If not, which ones are not satistified?
 ### Fitting the docking models into low resolution cryo-EM maps
 
 We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
-For this we will use the [UCSF Chimera][link-chimera]{:target="_blank"} software.
+For this we will use the [UCSF ChimeraX][link-chimerax]{:target="_blank"} software.
 
 For this open the PDB file of the cluster you want to fit and the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory).
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the file
+  ChimeraX menu → File → Open... → Select the file
 </a>
 
 Repeat this for each file. Chimera will automatically guess their type.
 
 
-If you want to use the Chimera command-line instead, you need to first display it:
-
-<a class="prompt prompt-info">
-  UCSF Chimera Menu → Favorites → Command Line
-</a>
-
-and type:
+Or you can open the files through the ChimeraX command line:
 
 <a class="prompt prompt-pymol">
   open /path/to/clusterX_1.pdb
@@ -1530,84 +1475,35 @@ and type:
 </a>
 
 
-In the `Volume Viewer` window, the middle slide bar provides control on the
+In the `Volume Viewer` window, the slide bar provides control on the
 value at which the isosurface of the density is shown. At high values, the
 envelope will shrink while lower values might even display the noise in the map.
-In the same window, you can click on `Center` to center the view on all visible molecules and the density.
 
-We will first make the density transparent, in order to be able to see the fitted structure inside:
+First make the density transparent, in order to be able to see the fitted structure inside:
 
-<a class="prompt prompt-info">
-  Within the Volume Viewer window click on the gray box next to Color
+<a class="prompt prompt-pymol">
+transparency #density 60
 </a>
 
-This opens the`Color Editor` window.
+In order to distinguish the various chains color the structure by chain:
 
-<a class="prompt prompt-info">
-Check the Opacity box.
+<a class="prompt prompt-pymol">
+color bychain
 </a>
-
-An extra slider bar appears in the box called A, for the alpha channel.
-
-<a class="prompt prompt-info">
-Set the alpha channel value to around 0.6.
-</a>
-
-In order to distinguish the various chains we can color the structure by chain. For this:
-<a class="prompt prompt-info">
-Chimera menu -> Tools -> Depiction -> Rainbow
-Select the option to color by chain and click the Apply button
-</a>
-
 
 In order to perform the fit, we will use the Command Line more:
 
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Favorites → Command Line
-</a>
-
-Also open the Model Panel to know the ID of the various files within Chimera:
-
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Favorites → Model Panel
-</a>
-
-Note the number of the cluster model you upload and of the cryo-EM map (e.g. if you loaded first the PDB file, it must have model #0 and the map is #1).
-Then, in the Command Line interface type:
-
 <a class="prompt prompt-pymol">
-molmap #0 9 modelId 3    
-</a>
-
-This generate a 9Å map from the PDB model we uploaded with ID #3.
-The next command then performs the fit of this map onto the experimental cryo-EM map:
-
-<a class="prompt prompt-pymol">
-fitmap #1 #3 search 100<br>
-close #3
+fitmap #model inMap #density search 100<br>
 </a>
 
 When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
 Note the value for the cluster you selected.
+You can also try to further improve the fit":
 
-You also try to improve further the fit:
-<a class="prompt prompt-info">
-UCSF Chimera Menu → Tools → Volume Data -> Fit in Map
+<a class="prompt prompt-pymol">
+fitmap #model inMap #density resolution 9<br>
 </a>
-
-<a class="prompt prompt-info">
-Click the Options button
-</a>
-<a class="prompt prompt-info">
-Select the Use map simulated from atoms and set the Resolution to 9
-</a>
-<a class="prompt prompt-info">
-Click on Update and note the correlation value
-</a>
-<a class="prompt prompt-info">
-Click on Fit and check if the correlation does improve
-</a>
-
 
 You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
 In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
@@ -1621,41 +1517,13 @@ What is the best correlation coefficient obtained?
 </a>
 
 
-__Note__: In the `cryo-EM` directory of the downloaded data you will find a Python script that can be used to fit a structure 
-          into an EM map using Chimera from the command line. Here is an example of how to run it for the CGref model assuming you
-          are in the `docking/strategy2_RNA-PolIII-core-C82-C34-C31pept_summary` directory (if not do correct the path to the CCalculate script and the EM map):
-
-<a class="prompt prompt-cmd">
-chimera \-\-nogui \-\-script \"../../cryo-EM/CCcalculate.py cluster1_1.pdb ../../cryo-EM/PolIII_9A.mrc 9 10\"
-</a>
-
-The last number in the command is the number of fittings tried from different random positions. The best fit value will be reported.
-
-<details style="background-color:#DAE4E7"><summary>View the correlation coefficients calculated with the CCcalculate script of the various clusters:
-</summary>
-<br>
-<pre>
-    cluster1_1.pdb :  0.9435
-    cluster1_2.pdb :  0.9439
-    cluster1_3.pdb :  0.9458
-    cluster1_4.pdb :  0.9434
-    cluster2_1.pdb :  0.9456
-    cluster2_2.pdb :  0.9425
-    cluster2_3.pdb :  0.9415
-    cluster2_4.pdb :  0.9504
-</pre>
-<br>
-</details>
-<br>
-
-
 <details style="background-color:#DAE4E7"><summary><b>See the best model fit into the EM map:</b>
 </summary>
 <figure align="center">
 <img src="/education/HADDOCK24/RNA-Pol-III-2024/strategy2-EMfit.png">
 </figure>
 <br>
-<p>View of cluster2_4 in the the EM map (correlation 0.9504). C82 and C34 wHTH3 domain (yellow) nicely fit into the density. The other two C34 domains (green and cyan are found in a region where some density starts to appear seen when playing with the density level, which might indicate some disorder / conformational variability.</p>
+<p>View of cluster2_4 in the the EM map (correlation 0.9526). C82 and C34 wHTH3 domain (coral) nicely fit into the density. The other two C34 domains (dark see green and burly wood are found in a region where some density starts to appear seen when playing with the density level, which might indicate some disorder / conformational variability.</p>
 </details>
 <br>
 <br>
@@ -1683,12 +1551,12 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [<img width="70" src="/images/Bioexcel_logo.png">](https://bioexcel.eu){:target="_blank"} Center of Excellence for Computational Biomolecular Research.
 
 [link-cns]: http://cns-online.org/v1.3/ "CNS online"
-[link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
+[link-chimerax]: https://www.cgl.ucsf.edu/chimerax/ "UCSF ChimeraX"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
 [link-disvis-web]: https://wenmr.science.uu.nl/disvis "DisVis web server"
 [link-disvis-submit]: https://wenmr.science.uu.nl/disvis/submit "DisVis submission"
 [link-disvis-register]: https://wenmr.science.uu.nl/auth/register "DisVis registration"
-[link-pymol]: https://www.pymol.org/ "PyMOL"
+
 [link-haddock]: https://bonvinlab.org/software/haddock2.2 "HADDOCK 2.2"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK 2.4 webserver"
 [link-haddock-easy]: https://alcazar.science.uu.nl/services/HADDOCK2.2/haddockserver-easy.html "HADDOCK2.2 webserver easy interface"
