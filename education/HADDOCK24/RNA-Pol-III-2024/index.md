@@ -52,7 +52,7 @@ In order to follow this tutorial you will need a **web browser**, a **text edito
 We used our [**pdb-tools**](https://github.com/haddocking/pdb-tools){:target="_blank"} to pre-process PDB files for HADDOCK, 
 renumbering the core domains to avoid overlap in their residue numbering.
 Ready to dock models are provided as part of the material for this tutorial. 
-The required data to run this tutorial should be downloaded from [**here**](https://surfdrive.surf.nl/files/index.php/s/zD8xSZKHID8JK0L/download){:target="_blank"}.
+The required data to run this tutorial should be downloaded from [**here**](https://surfdrive.surf.nl/files/index.php/s/Nio76AwEgDYwjvG/download){:target="_blank"}.
 Once downloaded, make sure to unpack/unzip the archive (for Windows system you can install the [7-zip](https://www.7-zip.org){:target="_blank"} software if needed to unpack tar archives).
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
