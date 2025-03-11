@@ -36,7 +36,7 @@ if __name__ == '__main__':
     curdir = os.path.abspath(os.curdir)
     contents = set(os.listdir(curdir))
     if '_config.yml' not in contents:
-        print >>sys.stderr, "Run this script in the root folder of the website"
+        print("Run this script in the root folder of the website", file=sys.stderr)
         sys.exit(1)
     
     # Get data and make blank post
@@ -51,6 +51,6 @@ if __name__ == '__main__':
     
     os.chdir('news/_posts')
     with open(fname, 'w') as handle:
-        print >>handle, post_content
+        print(post_content, file=handle)
 
-    print "New blank post created at {0}".format(os.path.join('news/_posts', fname))
+    print("New blank post created at {0}".format(os.path.join('news/_posts', fname)))
