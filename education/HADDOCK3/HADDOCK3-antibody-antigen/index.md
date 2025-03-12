@@ -829,7 +829,7 @@ Our workflow consists of the following modules:
 12. **`contactmap`**: *Contacts matrix and a chordchart of intermolecular contacts*
 
 
-The corresponding toml configuration file (provided in `workflows/docking-antibody-antigen-CDR-NMR-CSP.cfg`) looks like:
+The corresponding toml configuration file (provided in `workflows/docking-antibody-antigen.cfg`) looks like:
 
 {% highlight toml %}
 # ====================================================================
