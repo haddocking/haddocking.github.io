@@ -998,7 +998,7 @@ sbatch run-haddock3-hamsri.sh
 
 And you can check the status in the queue using the `squeue`command.
 
-This example run should take about 20 minutes to complete on a single node using 50 cores.
+This example run should take about 7 minutes to complete on a single node using 50 cores.
 
 
 <hr>
