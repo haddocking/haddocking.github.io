@@ -189,7 +189,7 @@ unzip HADDOCK3-antibody-antigen.zip
 </a>
 
 
-Unziping the file will create the `HADDOCK3-antibody-antigen-BioExcelSS2024` directory which should contain the following directories and files:
+Unziping the file will create the `HADDOCK3-antibody-antigen` directory which should contain the following directories and files:
 
 * `pdbs`: a directory containing the pre-processed PDB files
 * `restraints`: a directory containing the interface information and the corresponding restraint files for HADDOCK3
@@ -208,35 +208,31 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 <hr>
 
-### ASEAN 2025 HPC school
+### EuroCC HPC workshop, Istanbul April 2025
 
-We will be making use of the Fugaku supercomputer for this tutorial. 
-The software and data required for this tutorial have been pre-installed on Fugaku.
-Please connect to Fugaku using your credentials either via ssh connection or from a web browser using OnDemand:
+We will be making use of the TRUBA computational resources for this tutorial. 
+The software and data required for this tutorial have been pre-installed.
+Please connect to the system using your credentials either via ssh connection or from a web browser using OnDemand:
 
-[https://ondemand.fugaku.r-ccs.riken.jp/](https://ondemand.fugaku.r-ccs.riken.jp/){:target="_blank"}
+[TRUBA onDemand interface](https://172.16.6.20/){:target="_blank"}
 
-If using OnDemand, open then a terminal session.
+If using OnDemand, open then a terminal session using the `_arf Shell Access` menu.
 
-In order to run the tutorial, go into you data directory, then copy and unzip the required data:
+In order to run the tutorial, go into you scratch directory, then unzip the required data:
 
 <a class="prompt prompt-cmd">
-unzip /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/HADDOCK3-antibody-antigen.zip
+cd /arf/scratch/\<my\-username\><br>
+unzip ~egitin/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
+cd HADDOCK3-antibody-antigen
 </a>
 
 This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
 
-HADDOCK3 has been pre-installed on the compute nodes. To test the installation, first create an interactive session on a node with:
+HADDOCK3 has been pre-installed. To activate the HADDOCK3 environment type:
 
 
 <a class="prompt prompt-cmd">
-pjsub \-\-interact \-L \"node=1\" \-L \"rscgrp=int\" \-L \"elapse=2:00:00\"  \-\-sparam \"wait-time=600\"  \-g hp240465 \-x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
-</a>
-
-Once the session is active, activate HADDOCK3 with:
-
-<a class="prompt prompt-cmd">
-source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate<br>
+source ~egitim\/HADDOCK\/haddock3\/.venv\/bin\/activate
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
@@ -838,7 +834,7 @@ The corresponding toml configuration file (provided in `workflows/docking-antibo
 # ====================================================================
 
 # Directory in which the scoring will be done
-run_dir = "run1-CDR-NMR-CSP"
+run_dir = "run1"
 
 # Compute mode
 mode = "local"
@@ -965,33 +961,81 @@ In in the first section of the workflow above we have a parameter `mode` definin
 
 <hr>
 
-#### Execution of HADDOCK3 on Fugaku (ASEAN HPC school)
+#### Execution of HADDOCK3 on the TRUBA resources (EuroCC Istanbul April 2024 workshop)
 
-To execute the workflow on Fugaku, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, with HADDOCK3 running in local mode (the setup in the above configuration file with `mode="local"`) and harvesting all core of that node (`ncores=48`).
+To execute the HADDOCK3 workflow on the computational resources provided for this workshop, 
+you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
+Two scripts are provided with the data you unzipped, one for execution on the hamsri cluster and one for the barbun cluster:
 
-**_Interactive session on a node:_**
+{% highlight shell %}
+run-haddock3-barbun.sh
+run-haddock3-hamsri.sh
+{% endhighlight %}
+
+
+Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-hamsri.sh`):
+
+{% highlight shell %}
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=54
+#SBATCH -C weka
+#SBATCH -p hamsi
+#SBATCH --time 00:30:00
+
+source ~egitim/HADDOCK/haddock3/.venv/bin/activate
+haddock3 workflows/docking-antibody-antigen.cfg
+
+{% endhighlight %}
+
+This file should be submitted to the batch system using the `sbatch` command:
 
 <a class="prompt prompt-cmd">
-pjsub --interact -L "node=1" -L "rscgrp=int" -L "elapse=2:00:00"  --sparam "wait-time=600"  -g hp240465 -x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
+sbatch run-haddock3-hamsri.sh
 </a>
+
+**_Note_** that batch submission is only possible from the `scratch` partition (`/arf/scratch/<my-home-directory>`)
+
+And you can check the status in the queue using the `squeue`command.
+
+This example run should take about 20 minutes to complete on a single node using 50 cores.
+
+
+<hr>
+
+#### Execution of HADDOCK3 on Fugaku (ASEAN 2025 HPC school)
+
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>Execution instructions for running HADDOCK3 on Fugaku</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+
+To execute the workflow on Fugaku, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, 
+with HADDOCK3 running in local mode (the setup in the above configuration file with <i>mode="local"</i>) and harvesting all core of that node (<i>ncores=48</i>).
+<br>
+<br>
+<b>Interactive session on a node:</b>
+<br>
+{% highlight shell %}
+pjsub --interact -L "node=1" -L "rscgrp=int" -L "elapse=2:00:00"  --sparam "wait-time=600"  -g hp240465 -x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
+{% endhighlight %}
 
 Once the session is active, activate HADDOCK3 with:
 
-<a class="prompt prompt-cmd">
+{% highlight shell %}
 source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate<br>
-</a>
+{% endhighlight %}
 
 You can then run the workflow with:
 
-<a class="prompt prompt-cmd">
+{% highlight shell %}
 haddock3 ./workflows/docking-antibody-antigen.cfg
-</a>
-
-
-**_Job submission to the batch system:_**
-
-
-For this execution mode you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-fugaku.sh`):
+{% endhighlight %}
+<b>Job submission to the batch system:</b>
+<br>
+<br>
+For this execution mode you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
+Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-fugaku.sh`):
 
 {% highlight shell %}
 #!/bin/sh -x
@@ -1009,15 +1053,19 @@ haddock3 ./workflows/docking-antibody-antigen.cfg
 
 This file should be submitted to the batch system using the `pjsub` command:
 
-<a class="prompt prompt-cmd">
+{% highlight shell %}
 pjsub run-haddock3-fugaku.sh
-</a>
+{% endhighlight %}
+
 <br>
 
 And you can check the status in the queue using `pjstat`.
 
 This run should take about 20 minutes to complete on a single node using 48 arm cores.
+</details>
 
+
+<hr>
 
 #### Learn more about the various execution modes of haddock3
 
@@ -1028,7 +1076,9 @@ This run should take about 20 minutes to complete on a single node using 48 arm 
     <b><i>Local execution</i></b> <i class="material-icons">expand_more</i>
   </summary>
 
-In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
+In this mode HADDOCK3 will run on the current system, using the defined number of cores (<i>ncores</i>) 
+in the config file to a maximum of the total number of available cores on the system minus one. 
+An example of the relevant parameters to be defined in the first section of the config file is:
 
 {% highlight toml %}
 # compute mode
@@ -1039,9 +1089,9 @@ ncores = 50
 
 In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
 
-<a class="prompt prompt-cmd">
-haddock3 \<my-workflow-configuration-file\>
-</a>
+{% highlight shell %}
+haddock3 <my-workflow-configuration-file>
+{% endhighlight %}
 
 Alternatively redirect the output to a log file and send haddock3 to the background.
 
@@ -1049,11 +1099,11 @@ Alternatively redirect the output to a log file and send haddock3 to the backgro
 As an indication, running locally on an Apple M2 laptop using 10 cores, this workflow completed in 7 minutes.
 
 
-<a class="prompt prompt-cmd">
-haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
-</a>
+{% highlight shell %}
+haddock3 <my-workflow-configuration-file> > haddock3.log &
+{% endhighlight %}
 
-_**Note**_: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
+<b>Note</b>: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
 
 </details>
 
@@ -1081,15 +1131,18 @@ _**Note**_: This is also the execution mode that should be used for example when
   cd $HOME/HADDOCK3-antibody-antigen
 
   # execute
-  haddock3 \<my-workflow-configuration-file\>
+  haddock3 <my-workflow-configuration-file>
   {% endhighlight %}
   <br>
 
 
-  In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
-have to define the `queue` name and the maximum number of concurrent jobs sent to the queue (`queue_limit`). 
+  In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. 
+  Two batch systems are currently supported: <i>slurm</i> and <i>torque</i> (defined by the <i>batch_type</i> parameter). 
+  In the configuration file you will have to define the <i>queue</i> name and the maximum number of concurrent jobs sent to the queue (<i>queue_limit</i>). 
 
-  Since HADDOCK3 single model calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. The number of model per job is defined by the `concat` parameter in the configuration file. You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
+  Since HADDOCK3 single model calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. 
+  he number of model per job is defined by the <i>concat</i> parameter in the configuration file. 
+  You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
 
   An example of the relevant parameters to be defined in the first section of the config file is:
 
@@ -1117,8 +1170,8 @@ have to define the `queue` name and the maximum number of concurrent jobs sent t
   </summary>
 
 
-HADDOCK3 supports a parallel pseudo-MPI implementation. For this to work, the `mpi4py` library must have been installed at installation time. 
-Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html){:target="_blank"}.
+HADDOCK3 supports a parallel pseudo-MPI implementation. For this to work, the <i>mpi4py</i> library must have been installed at installation time. 
+Refer to the (<a href="https://www.bonvinlab.org/haddock3/tutorials/mpi.html" target=new>MPI-related instructions</a>).
 
 The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
 
