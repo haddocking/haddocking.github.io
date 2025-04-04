@@ -7,6 +7,10 @@
     position: IT-Researcher (Software Development and Operations)
     avatar: /images/people/Rodrigo.jpg
 
+-   name: Stefan Verhoeven
+    position: Research Software Engineer (Netherlands eScience Center)
+    avatar: /images/people/Stefan-Verhoeven.png
+
 -   name: Marco Giulini
     position: Postdoctoral Researcher
     avatar: /images/people/Marco-Giulini.jpeg
@@ -49,10 +53,10 @@
     position: M.Sc Student
     avatar: /images/people/Yara-Weldam.png
 
--   name:  Lorenzo Possanzini
-    position: M.Sc Student
-    avatar: /images/people/Lorenzo-Possanzini.png
-
 -   name:  Ilaria-Coratella
     position: M.Sc Student
     avatar: /images/people/Ilaria-Coratella.png
+
+-   name:  Lorenzo Possanzini
+    position: M.Sc Student
+    avatar: /images/people/Lorenzo_Possanzini.jpg
