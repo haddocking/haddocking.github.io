@@ -222,7 +222,7 @@ In order to run the tutorial, go into you scratch directory, then unzip the requ
 
 <a class="prompt prompt-cmd">
 cd /arf/scratch/\<my\-username\><br>
-unzip ~egitin/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
+unzip ~egitim/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
 cd HADDOCK3-antibody-antigen
 </a>
 
