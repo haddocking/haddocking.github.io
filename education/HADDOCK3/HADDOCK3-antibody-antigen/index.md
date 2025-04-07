@@ -208,31 +208,12 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 <hr>
 
-### EuroCC HPC workshop, Istanbul April 2025
+### BioExcel Summer School, Sardinia 2025 
 
-We will be making use of the TRUBA computational resources for this tutorial. 
-The software and data required for this tutorial have been pre-installed.
-Please connect to the system using your credentials either via ssh connection or from a web browser using OnDemand:
-
-[TRUBA onDemand interface](https://172.16.6.20/){:target="_blank"}
-
-If using OnDemand, open then a terminal session using the `_arf Shell Access` menu.
-
-In order to run the tutorial, go into you scratch directory, then unzip the required data:
-
+We will be making use of the laptops with pre-installed software and data required for this tutorial. 
+Please open a terminal and activate the HADDOCK3 environment:
 <a class="prompt prompt-cmd">
-cd /arf/scratch/\<my\-username\><br>
-unzip ~egitim/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
-cd HADDOCK3-antibody-antigen
-</a>
-
-This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
-
-HADDOCK3 has been pre-installed. To activate the HADDOCK3 environment type:
-
-
-<a class="prompt prompt-cmd">
-source ~egitim\/HADDOCK\/haddock3\/.venv\/bin\/activate
+haddock3env
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
@@ -270,6 +251,20 @@ optional arguments:
 </pre>
 </details>
 <br>
+
+Next, navigate to the folder with compressed tutoril data: 
+<a class="prompt prompt-cmd">
+cd BioExcel_SS_2025/HADDOCK/
+</a>
+
+And unzip the required:
+<a class="prompt prompt-cmd">
+unzip HADDOCK3-antibody-antigen.zip<br>
+cd HADDOCK3-antibody-antigen
+</a>
+
+This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
+Now everything is set for us to proceed with the practical part.
 
 <hr>
 
