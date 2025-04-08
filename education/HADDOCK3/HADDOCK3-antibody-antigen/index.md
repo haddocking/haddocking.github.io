@@ -232,7 +232,7 @@ HADDOCK3 has been pre-installed. To activate the HADDOCK3 environment type:
 
 
 <a class="prompt prompt-cmd">
-source ~egitim\/HADDOCK\/haddock3\/.venv\/bin\/activate
+source ~egitim/HADDOCK/haddock3/.venv/bin/activate
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
