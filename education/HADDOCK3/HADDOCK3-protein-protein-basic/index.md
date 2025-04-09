@@ -410,12 +410,11 @@ binding site in the final models, while the residues defined as `active` (typica
 site residues) will. When using the HADDOCK server, `passive` residues will be automatically defined. Here since we are
 using a local version, we need to define those manually and create a file in which the active and passive residues will be listed.
 
-This can easily be done using a script from our [haddock-tools][haddock-tools] repository, which is also provided for convenience
-in the `scripts` directly of the archive you downloaded for this tutorial:
+This can easily be done using a haddock3 command line tool in the following way:
 
 <a class="prompt prompt-cmd">
 echo "38 40 45 46 69 71 78 80 94 96 141" > e2a.act-pass
-python ./scripts/passive_from_active.py e2a_1F3G.pdb 38,40,45,46,69,71,78,80,94,96,141 >> e2a.act-pass
+haddock3-restraints passive_from_active e2a_1F3G.pdb 38,40,45,46,69,71,78,80,94,96,141 >> e2a.act-pass
 </a>
 
 The NMR-identified residues and their surface neighbors generated with the above command can be used to define ambiguous interactions restraints, either using the NMR identified residues as active in HADDOCK, or combining those with the surface neighbors and use this combination as passive only. Here we decided to treat the NMR-identified residues as active residues. 
@@ -439,11 +438,11 @@ As stated before, the following residues were identified has having significant 
 
 <a class="prompt prompt-info">15,16,17,20,48,49,51,52,54,56</a>
 
-Using the same script provided in the archive of this tutorial: 
+Using the same haddock3 command line tool: 
 
 <a class="prompt prompt-cmd">
 echo "15 16 17 20 48 49 51 52 54 56" > hpr.act-pass
-python ./scripts/passive_from_active.py hpr-ensemble.pdb 15,16,17,20,48,49,51,52,54,56 >> hpr.act-pass
+haddock3-restraints passive_from_active hpr-ensemble.pdb 15,16,17,20,48,49,51,52,54,56 >> hpr.act-pass
 </a>
 
 <hr>
@@ -477,7 +476,7 @@ Using those two files, we can generate the CNS-formatted AIR restraint files
 with the following command:
 
 <a class="prompt prompt-cmd">
-python ./scripts/active-passive-to-ambig.py e2a.act-pass hpr.act-pass > e2a-hpr_air.tbl
+haddock3-restraints active_passive_to_ambig e2a.act-pass hpr.act-pass \-\-segid-one A \-\-segid-two B > e2a-hpr_air.tbl
 </a>
 
 This generates a file called `ambig-prot-prot.tbl` that contains the AIR
