@@ -135,20 +135,30 @@ all categories and modules. Below is a summary of the available modules:
 * **Sampling modules**
     * `rigidbody`: *Rigid body energy minimization with CNS (`it0` in haddock2.x).*
     * `lightdock`: *Third-party glow-worm swam optimization docking software.*
+    * 'gdock': *Gdock integration sampling modulex.*
 * **Model refinement modules**
     * `flexref`: *Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (`it1` in haddock2.x).*
     * `emref`: *Refinement by energy minimisation (`itw` EM only in haddock2.4).*
     * `mdref`: *Refinement by a short molecular dynamics simulation in explicit solvent (`itw` in haddock2.X).*
+    * `openmm`: *Molecular Dynamics refinement module.*
 * **Scoring modules**
     * `emscoring`: *scoring of a complex performing a short EM (builds the topology and all missing atoms).*
     * `mdscoring`: *scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).*
+    * `prodigyligand`: *performs the scoring of input complexes using PRODIGY-ligand. It predicts deltaG of the complex and can return predictions as either deltaG or pKd values.*
+    * `prodigyprotein`: *performs the scoring of input complexes using PRODIGY (protein). It predicts deltaG of the complex and can return predictions as either deltaG or pKd values.*
+    * `sasascore`: *solvent accessibility analysis based on some user-defined residues that should be buried or accessible.*
 * **Analysis modules**
     * `caprieval`: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided.*
     * `clustfcc`: *Clusters models based on the fraction of common contacts (FCC)*
     * `clustrmsd`: *Clusters models based on pairwise RMSD matrix calculated with the `rmsdmatrix` module.*
     * `rmsdmatrix`: *Calculates the pairwise RMSD matrix between all the models generated in the previous step.*
+    * `ilrmsdmatrix`: *calculates of the interface-ligand RMSD (ilRMSD) matrix between all the models generated in the previous step.*
     * `seletop`: *Selects the top N models from the previous step.*
     * `seletopclusts`: *Selects top N clusters from the previous step.*
+    * `alascan`: *For each model, the module will mutate the interface residues and calculate the energy differences between the wild type and the mutant, thus providing a measure of the impact of such mutation.*
+    * `contactmap`: *aims at generating heatmaps and chordcharts of the contacts observed in the input complexes.*
+* **Extra modules**
+    * `exit`: *Stop the workflow when this module is reached.*
 
 The HADDOCK3 workflows are defined in simple configuration text files, similar to the TOML format but with extra features.
 Contrarily to HADDOCK2.X which follows a rigid (yet highly parameterisable)
