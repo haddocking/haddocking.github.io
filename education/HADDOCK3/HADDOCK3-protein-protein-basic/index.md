@@ -680,7 +680,7 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
-The configuration file for this scenario (assuming a batch running mode) is:
+The configuration file for this scenario is:
 
 {% highlight toml %}
 # ====================================================================
@@ -690,7 +690,8 @@ The configuration file for this scenario (assuming a batch running mode) is:
 run_dir = "scenario1-full"
 
 # execution mode
-mode = "batch"
+mode = "local"
+ncores = 50
 #  it will take the system's default
 # queue = "short"
 # concatenate models inside each job, concat = 5 each .job will produce 5 models
@@ -769,7 +770,7 @@ submitting it to the batch system requesting in this local run mode a full node 
 
 In scenario 2, we proceed to produce 1000 rigidbody docking models, from which we proceed to do a first clustering analysis. From the top clusters a flexible refinment then energy minization is done. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
-The configuration file for this scenario (assuming a batch running mode) is:
+The configuration file for this scenario is:
 
 {% highlight toml %}
 # ====================================================================
@@ -780,7 +781,8 @@ The configuration file for this scenario (assuming a batch running mode) is:
 run_dir = "scenario2-cltsel-full"
 
 # execution mode
-mode = "batch"
+mode = "local"
+ncores = 50
 # concatenate models inside each job, concat = 5 each .job will produce 5 models
 concat = 5
 #  Limit the number of concurrent submissions to the queue
