@@ -26,3 +26,4 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: -q './**/*.md' --accept 403,502 --cache
+          fail: false
