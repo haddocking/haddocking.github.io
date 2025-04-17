@@ -1,6 +1,7 @@
 name: links
 
 on:
+  pull_request:
   repository_dispatch:
   workflow_dispatch:
   schedule:
@@ -18,4 +19,4 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          args: -q './**/*.md' --accept 403
+          args: -q './**/*.md' --accept 403,502
