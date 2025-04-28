@@ -330,8 +330,8 @@ and then process it to have a unique chain ID (A) and non-overlapping residue nu
 2. clean the PDB file (`pdb_tidy`)
 3. select the chain (`pdb_selchain`),
 4. remove any hetero atoms from the structure (e.g. crystal waters, small molecules from the crystallisation buffer and such) (`pdb_delhetatm`),
-5. remove any possible side-chain duplication (can be present in high-resolution crystal structures in case of multiple conformations of some side chains) (`pdb_selaltloc`)
-6. fix residue numbering insertion in the HV loops (often occuring in antibodies - see note below) (`pdb_fixinsert`)
+5. fix residue numbering insertion in the HV loops (often occuring in antibodies - see note below) (`pdb_fixinsert`)
+6. remove any possible side-chain duplication (can be present in high-resolution crystal structures in case of multiple conformations of some side chains) (`pdb_selaltloc`)
 7. keep only the coordinates lines (`pdb_keepcoord`),
 8. select only the variable domain (FV) of the antibody (to reduce computing time) (`pdb_selres`)
 9. clean the PDB file (`pdb_tidy`)
@@ -349,10 +349,10 @@ As such, renumbering is necessary before starting the docking.
 This can be done from the command line with:
 
 <a class="prompt prompt-cmd">
-pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain \-H | pdb_delhetatm | pdb_selaltloc | pdb_fixinsert | pdb_keepcoord | pdb_selres \-1:120 | pdb_tidy -strict > 4G6K_H.pdb
+pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain \-H | pdb_delhetatm | pdb_fixinsert | pdb_selaltloc | pdb_keepcoord | pdb_selres \-1:120 | pdb_tidy -strict > 4G6K_H.pdb
 </a>
 <a class="prompt prompt-cmd">
-pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain -L | pdb_delhetatm | pdb_selaltloc| pdb_fixinsert | pdb_keepcoord | pdb_selres \-1:107 | pdb_tidy \-strict > 4G6K_L.pdb
+pdb_fetch 4G6K | pdb_tidy \-strict | pdb_selchain -L | pdb_delhetatm | pdb_fixinsert | pdb_selaltloc | pdb_keepcoord | pdb_selres \-1:107 | pdb_tidy \-strict > 4G6K_L.pdb
 </a>
 
 We then combined the heavy and light chain into one, renumbering the residues starting at 1 to avoid overlap in residue numbering between the chains and assigning a unique chainID/segID:
