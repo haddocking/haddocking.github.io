@@ -21,6 +21,9 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   It illustrates the modularity of HADDOCK3 by introducing a new workflow not possible under the current HADDOCK2.X versions.
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
+* [**HADDOCK3 nanobody-antigen docking**](/education/HADDOCK3/HADDOCK3-nanobody-antigen):
+  This tutorial is similar to the antibody-antigen docking tutorial, but it uses a nanobody instead of an antibody. In the tutorial we explain how to generate an ensemble of nanobody conformations in their unbound form and then how to dock it to the antigen using HADDOCK3.
+
 * [**HADDOCK3 protein-glycan modelling and docking**](/education/HADDOCK3/HADDOCK3-protein-glycan):
   This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
 
