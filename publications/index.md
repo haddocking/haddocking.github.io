@@ -6,13 +6,15 @@ image:
 ---
 ## 2025
 
+* M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1101/2025.02.24.639865). _BioRXiv._ 10.1101/2025.02.24.639865 (2025).
+
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01810). _J. Chem. Inf. Mod._ Advanced Online Publication (2025).
 
 
 ## 2024
 
 * V. Reys∗, Ma. Giulini∗, V. Cojocaru, A. Engel, X. Xu, J. Roel-Touris, C. Geng, F. Ambrosetti, B.
-Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789) _Proteins: Struc. Funct. &amp; Bioinformatics_  Advanced Online Publication (2024).
+Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789). _Proteins: Struc. Funct. &amp; Bioinformatics_  Advanced Online Publication (2024).
 
 * K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1101/2024.08.09.60700). _BioRXiv._ 10.1101/2024.08.09.60700 (2024).
 
@@ -20,7 +22,7 @@ Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van
 
 * G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ *4*:vbae153 (2024).
 
-* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _J. Chem. Inf. Mod._ *64*, 7816–7825 (2024).
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1021/acs.jcim.4c01372). _J. Chem. Inf. Mod._ *64*, 7816–7825 (2024).
 
 * M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1093/bioinformatics/btae583). _Bioinformatics_ *40*:btae583, p. 1-11 (2024).[BioRxiv](https://www.biorxiv.org/content/10.1101/2023.11.17.567543v1)
 

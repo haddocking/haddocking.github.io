@@ -11,6 +11,9 @@ In this page you can find links to tutorials on the usage of our software and we
   A tutorial demonstrating the installation and use of a local installation of HADDOCK2.4. It demonstrates various docking scenarios.
   You will need for this a valid license of HADDOCK2.4.
 
+* [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html){:target="_blank"}:
+  A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK.
+
 * [**HADDOCK2.4 basic protein-protein docking tutorial**](/education/HADDOCK24/HADDOCK24-protein-protein-basic):
   A tutorial demonstrating the use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.
   This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis.

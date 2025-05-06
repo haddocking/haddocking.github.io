@@ -179,7 +179,7 @@ structure of the complex.
 If you are running this tutorial on your own resources _download and unzip the following_
 [zip archive](https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
-If running as part of the EU-ASEAN HPC school see the instructions in the next section.
+If running as part of the EU-ASEAN HPC school see the instructions below.
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
@@ -189,7 +189,7 @@ unzip HADDOCK3-antibody-antigen.zip
 </a>
 
 
-Unziping the file will create the `HADDOCK3-antibody-antigen` directory which should contain the following directories and files:
+Unziping the file will create the `HADDOCK3-antibody-antigen-BioExcelSS2024` directory which should contain the following directories and files:
 
 * `pdbs`: a directory containing the pre-processed PDB files
 * `restraints`: a directory containing the interface information and the corresponding restraint files for HADDOCK3
@@ -197,42 +197,35 @@ Unziping the file will create the `HADDOCK3-antibody-antigen` directory which sh
 * `scripts`: a directory containing various scripts used in this tutorial
 * `workflows`: a directory containing configuration file examples for HADDOCK3
 
-In case of a workshop of course, HADDOCK3 will usually have been installed on the system you will be using.
-
-It this is not the case, you will have to install it yourself. To obtain and install HADDOCK3, navigate to [its repository][haddock-repo], fill the
-registration form, and then follow the instructions under the **Local setup (on your own)** section below.
-
-This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided pre-calculated runs were obtained on a Macbook Pro M2 processors with as OS Sequoia 15.3.1.
-
-
 
 <hr>
 
-### EuroCC HPC workshop, Istanbul April 2025
+### ASEAN 2025 HPC school
 
-We will be making use of the TRUBA computational resources for this tutorial. 
-The software and data required for this tutorial have been pre-installed.
-Please connect to the system using your credentials either via ssh connection or from a web browser using OnDemand:
+We will be making use of the Fugaku supercomputer for this tutorial. 
+Please connect to Fugaku using your credentials.
 
-[TRUBA onDemand interface](https://172.16.6.20/){:target="_blank"}
-
-If using OnDemand, open then a terminal session using the `_arf Shell Access` menu.
-
-In order to run the tutorial, go into you scratch directory, then unzip the required data:
+The software and data required for this tutorial have been pre-installed on Fugaku.
+In order to run the tutorial, first copy the required data into your home directory on Fugagku:
 
 <a class="prompt prompt-cmd">
-cd /arf/scratch/\<my\-username\><br>
-unzip ~egitin/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
-cd HADDOCK3-antibody-antigen
+unzip /vol0300/share/ra022304/LifeScience/20231213_Bonvin/HADDOCK3-antibody-antigen.zip
 </a>
 
 This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
 
-HADDOCK3 has been pre-installed. To activate the HADDOCK3 environment type:
+HADDOCK3 has been pre-installed on the compute nodes. To test the installation, first create an interactive session on a node with:
 
 
 <a class="prompt prompt-cmd">
-source ~egitim\/HADDOCK\/haddock3\/.venv\/bin\/activate
+pjsub \-\-interact \-L \"node=1\" \-L \"rscgrp=int\" \-\-sparam \"wait-time=600\" -L \"elapse=01:00:00\"
+</a>
+
+Once the session is active, activate HADDOCK3 with:
+
+<a class="prompt prompt-cmd">
+source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh<br>
+conda activate haddock3
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
@@ -271,8 +264,13 @@ optional arguments:
 </details>
 <br>
 
-<hr>
+This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided pre-calculated runs were obtained on a Macbook Pro M2 processors with as OS Sequoia 15.3.1.
 
+In case you want to obtain HADDOCK3 for another platform, navigate to [its repository][haddock-repo], fill the
+registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
+
+
+<hr>
 
 ### Local setup (on your own)
 
@@ -284,11 +282,54 @@ If you are installing HADDOCK3 on your own system, check the instructions and re
 To obtain HADDOCK3 navigate to [its repository][haddock-repo], fill the
 registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
 
-Provided you have a working Python version (3.9 to 3.12). you can install HADDOCK3 simply through
 
-```bash
-pip install haddock3
-```
+#### Installing CNS
+
+The other required piece of software to run HADDOCK is its computational engine,
+CNS (Crystallography and NMR System –
+[https://cns-online.org](https://cns-online.org){:target="_blank"}). CNS is
+freely available for non-profit organizations. To get access to all
+features of HADDOCK you will need to compile CNS using the additional files
+provided in the HADDOCK distribution in the `extras/cns1.3` directory. Compilation of
+CNS might be non-trivial. Some guidance on installing CNS is provided on the online
+HADDOCK3 documentation page [here](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md){:target="_blank"}.
+
+Once CNS has been properly compiled, you will have create a symbolic link or copy the executable to `haddock3/bin/cns` 
+and make sure it is executable and functional. Try starting `cns` from the command line. You should see the following output:
+
+<details style="background-color:#DAE4E7">
+  <summary>
+  <i>View CNS prompt output</i><i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+          ============================================================
+          |                                                          |
+          |            Crystallography & NMR System (CNS)            |
+          |                         CNSsolve                         |
+          |                                                          |
+          ============================================================
+           Version: 1.3 at patch level U
+           Status: Special UU release with Rg, paramagnetic
+                   and Z-restraints (A. Bonvin, UU 2013)
+          ============================================================
+           Written by: A.T.Brunger, P.D.Adams, G.M.Clore, W.L.DeLano,
+                       P.Gros, R.W.Grosse-Kunstleve,J.-S.Jiang,J.M.Krahn,
+                       J.Kuszewski, M.Nilges, N.S.Pannu, R.J.Read,
+                       L.M.Rice, G.F.Schroeder, T.Simonson, G.L.Warren.
+           Copyright (c) 1997-2010 Yale University
+          ============================================================
+           Running on machine: hostname unknown (Linux,64-bit)
+           Program started by: l00902
+           Program started at: 16:34:22 on 06-Dec-2023
+          ============================================================
+
+ FFT3C: Using FFTPACK4.1
+
+CNSsolve>
+</pre>
+</details>
+<br>
+Exit the CNS command line by typing `stop`.
 
 
 #### Auxiliary software
@@ -825,7 +866,7 @@ Our workflow consists of the following modules:
 12. **`contactmap`**: *Contacts matrix and a chordchart of intermolecular contacts*
 
 
-The corresponding toml configuration file (provided in `workflows/docking-antibody-antigen.cfg`) looks like:
+The corresponding toml configuration file (provided in `workflows/docking-antibody-antigen-CDR-NMR-CSP.cfg`) looks like:
 
 {% highlight toml %}
 # ====================================================================
@@ -834,7 +875,7 @@ The corresponding toml configuration file (provided in `workflows/docking-antibo
 # ====================================================================
 
 # Directory in which the scoring will be done
-run_dir = "run1"
+run_dir = "run1-CDR-NMR-CSP"
 
 # Compute mode
 mode = "local"
@@ -862,8 +903,8 @@ molecules =  [
 ambig_fname = "restraints/ambig-paratope-NMR-epitope.tbl"
 # Restraints to keep the antibody chains together
 unambig_fname = "restraints/antibody-unambig.tbl"
-# Reduced sampling (100 instead of the default of 1000)
-sampling = 100
+# Reduced sampling (50 instead of the default of 1000)
+sampling = 50
 
 [caprieval]
 reference_fname = "pdbs/4G6M_matched.pdb"
@@ -910,16 +951,13 @@ reference_fname = "pdbs/4G6M_matched.pdb"
 
 
 In this case, since we have information for both interfaces we use a low-sampling configuration file, which takes only a small amount of computational resources to run. 
-The initial `sampling` parameter at the rigid-body energy minimization (`rigidbody`) module is set to 100 models, of which only best the 40 are passed to the flexible refinement (`flexref`) module with the `seletop` module.
+The initial `sampling` parameter at the rigid-body energy minimization (`rigidbody`) module is set to 50 models, of which only best the 40 are passed to the flexible refinement (`flexref`) module with the `seletop` module.
 The subsequence flexible refinement (`flexref` module) and energy minimisation (*emref*) modules will use all models passed by the *seletop* module.
 FCC clustering (`clustfcc`) is then applied to group together models sharing a consistent fraction of the interface contacts.
 The top 4 models of each cluster are saved to disk (`seletopclusts`).
 
 Multiple `caprieval` modules are executed at different stages of the workflow to check how the quality (and rankings) of the models change throughout the protocol. 
 In this case we are providing the known crystal structure of the complex as reference.
-
-
-**_Note_**: For making best use of the available CPU resources it is recommended to adapt the sampling parameter to be a multiple of the number of available cores when running in local mode. For this reason, for the ASEAN HPC school the sampling is set to be a multiple of 48.
 
 **_Note_**: In case no reference is available (the usual scenario), the best ranked model is used as reference for each stage.
 Including `caprieval` at the various stages even when no reference is provided is useful to get the rankings and scores and visualise the results (see Analysis section below).
@@ -961,124 +999,52 @@ In in the first section of the workflow above we have a parameter `mode` definin
 
 <hr>
 
-#### Execution of HADDOCK3 on the TRUBA resources (EuroCC Istanbul April 2024 workshop)
-
-To execute the HADDOCK3 workflow on the computational resources provided for this workshop, 
-you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
-Two scripts are provided with the data you unzipped, one for execution on the hamsri cluster and one for the barbun cluster:
-
-{% highlight shell %}
-run-haddock3-barbun.sh
-run-haddock3-hamsri.sh
-{% endhighlight %}
-
-
-Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-hamsri.sh`):
-
-{% highlight shell %}
-#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --tasks-per-node=54
-#SBATCH -C weka
-#SBATCH -p hamsi
-#SBATCH --time 00:30:00
-
-source ~egitim/HADDOCK/haddock3/.venv/bin/activate
-haddock3 workflows/docking-antibody-antigen.cfg
-
-{% endhighlight %}
-
-This file should be submitted to the batch system using the `sbatch` command:
-
-<a class="prompt prompt-cmd">
-sbatch run-haddock3-hamsri.sh
-</a>
-
-**_Note_** that batch submission is only possible from the `scratch` partition (`/arf/scratch/<my-home-directory>`)
-
-And you can check the status in the queue using the `squeue`command.
-
-This example run should take about 7 minutes to complete on a single node using 50 cores.
-
-
-<hr>
-
-#### Execution of HADDOCK3 on Fugaku (ASEAN 2025 HPC school)
+#### Learn about the various execution modes of haddock3
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <b><i>Execution instructions for running HADDOCK3 on Fugaku</i></b> <i class="material-icons">expand_more</i>
+    <b><i>Execution of Fugaku using a full node (ASEAN HPC School)</i></b> <i class="material-icons">expand_more</i>
   </summary>
+To execute the workflow on Fugaku, we will create a job file that will execute HADDOCK3 on a node, with HADDOCK3 running in local mode (the setup in the above configuration file with `mode="local"`) and harvesting all core of that node (`ncores=50`).
 
-To execute the workflow on Fugaku, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, 
-with HADDOCK3 running in local mode (the setup in the above configuration file with <i>mode="local"</i>) and harvesting all core of that node (<i>ncores=48</i>).
-<br>
-<br>
-<b>Interactive session on a node:</b>
-<br>
-{% highlight shell %}
-pjsub --interact -L "node=1" -L "rscgrp=int" -L "elapse=2:00:00"  --sparam "wait-time=600"  -g hp240465 -x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
-{% endhighlight %}
-
-Once the session is active, activate HADDOCK3 with:
+Here is an example of such an execution script (also provided in the `workflows` directory as `run-haddock3-fugaku.sh`):
 
 {% highlight shell %}
-source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate<br>
-{% endhighlight %}
+#!/bin/sh
+#PJM -g ra022304
+#PJM -L "rscgrp=small"
+#PJM -L "node=1"
+#PJM -L "elapse=01:00:00"
+#PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0003
+#PJM -s # Statistical information output
 
-You can then run the workflow with:
+source /vol0300/share/ra022304/LifeScience/20231213_Bonvin/miniconda3/etc/profile.d/conda.sh
+conda activate haddock3
 
-{% highlight shell %}
-haddock3 ./workflows/docking-antibody-antigen.cfg
-{% endhighlight %}
-<b>Job submission to the batch system:</b>
-<br>
-<br>
-For this execution mode you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
-Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-fugaku.sh`):
-
-{% highlight shell %}
-#!/bin/sh -x
-#PJM -L  "node=1"                           # Assign node 1 node
-#PJM -L  "rscgrp=small"                     # Specify resource group
-#PJM -L  "elapse=02:00:00"                  # Elapsed time limit 1 hour
-#PJM -g hp240465                            # group name
-#PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0006 # volume names that job uses
-#PJM -s                                     # Statistical information output
-
-source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate
-haddock3 ./workflows/docking-antibody-antigen.cfg
+haddock3 docking-antibody-antigen-CDR-NMR-CSP.cfg
 
 {% endhighlight %}
 
 This file should be submitted to the batch system using the `pjsub` command:
 
-{% highlight shell %}
-pjsub run-haddock3-fugaku.sh
-{% endhighlight %}
-
+<a class="prompt prompt-cmd">
+pjsub workflows/run-haddock3-fugaku.sh
+</a>
 <br>
 
-And you can check the status in the queue using `pjstat`.
-
-This run should take about 20 minutes to complete on a single node using 48 arm cores.
+This run should take about 20 minutes to complete on a single node using 50 arm cores.
 </details>
 
 
 <hr>
 
-#### Learn more about the various execution modes of haddock3
-
-<hr>
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
     <b><i>Local execution</i></b> <i class="material-icons">expand_more</i>
   </summary>
 
-In this mode HADDOCK3 will run on the current system, using the defined number of cores (<i>ncores</i>) 
-in the config file to a maximum of the total number of available cores on the system minus one. 
-An example of the relevant parameters to be defined in the first section of the config file is:
+In this mode HADDOCK3 will run on the current system, using the defined number of cores (`ncores`) in the config file to a maximum of the total number of available cores on the system minus one. An example of the relevant parameters to be defined in the first section of the config file is:
 
 {% highlight toml %}
 # compute mode
@@ -1089,9 +1055,9 @@ ncores = 50
 
 In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
 
-{% highlight shell %}
-haddock3 <my-workflow-configuration-file>
-{% endhighlight %}
+<a class="prompt prompt-cmd">
+haddock3 \<my-workflow-configuration-file\>
+</a>
 
 Alternatively redirect the output to a log file and send haddock3 to the background.
 
@@ -1099,11 +1065,11 @@ Alternatively redirect the output to a log file and send haddock3 to the backgro
 As an indication, running locally on an Apple M2 laptop using 10 cores, this workflow completed in 7 minutes.
 
 
-{% highlight shell %}
-haddock3 <my-workflow-configuration-file> > haddock3.log &
-{% endhighlight %}
+<a class="prompt prompt-cmd">
+haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
+</a>
 
-<b>Note</b>: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
+_**Note**_: This is also the execution mode that should be used for example when submitting the HADDOCK3 job to a node of a cluster, requesting X number of cores.
 
 </details>
 
@@ -1131,18 +1097,15 @@ haddock3 <my-workflow-configuration-file> > haddock3.log &
   cd $HOME/HADDOCK3-antibody-antigen
 
   # execute
-  haddock3 <my-workflow-configuration-file>
+  haddock3 \<my-workflow-configuration-file\>
   {% endhighlight %}
   <br>
 
 
-  In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. 
-  Two batch systems are currently supported: <i>slurm</i> and <i>torque</i> (defined by the <i>batch_type</i> parameter). 
-  In the configuration file you will have to define the <i>queue</i> name and the maximum number of concurrent jobs sent to the queue (<i>queue_limit</i>). 
+  In this mode HADDOCK3 will typically be started on your local server (e.g. the login node) and will dispatch jobs to the batch system of your cluster. Two batch systems are currently supported: `slurm` and `torque` (defined by the `batch_type` parameter). In the configuration file you will
+have to define the `queue` name and the maximum number of concurrent jobs sent to the queue (`queue_limit`). 
 
-  Since HADDOCK3 single model calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. 
-  he number of model per job is defined by the <i>concat</i> parameter in the configuration file. 
-  You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
+  Since HADDOCK3 single model calculations are quite fast, it is recommended to calculate multiple models within one job submitted to the batch system. The number of model per job is defined by the `concat` parameter in the configuration file. You want to avoid sending thousands of very short jobs to the batch system if you want to remain friend with your system administrators...
 
   An example of the relevant parameters to be defined in the first section of the config file is:
 
@@ -1170,8 +1133,8 @@ haddock3 <my-workflow-configuration-file> > haddock3.log &
   </summary>
 
 
-HADDOCK3 supports a parallel pseudo-MPI implementation. For this to work, the <i>mpi4py</i> library must have been installed at installation time. 
-Refer to the (<a href="https://www.bonvinlab.org/haddock3/tutorials/mpi.html" target=new>MPI-related instructions</a>).
+HADDOCK3 supports a parallel pseudo-MPI implementation. For this to work, the `mpi4py` library must have been installed at installation time. 
+Refer to the [MPI-related instructions](https://www.bonvinlab.org/haddock3/tutorials/mpi.html){:target="_blank"}.
 
 The execution mode should be set to `mpi` and the total number of cores should match the requested resources when submitting to the batch system.
 
@@ -1407,45 +1370,45 @@ To use it, simply call the script with as argument the run directory you want to
  </summary>
 <pre>
 ==============================================
-== runs/run1/02_caprieval/capri_ss.tsv
+== run1/02_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  25  out of  100
-Total number of medium or better models:      15  out of  100
-Total number of high quality models:          1  out of  100
+Total number of acceptable or better models:  9  out of  50
+Total number of medium or better models:      4  out of  50
+Total number of high quality models:          1  out of  50
 
-First acceptable model - rank:  1  i-RMSD:  1.196  Fnat:  0.672  DockQ:  0.741
-First medium model     - rank:  1  i-RMSD:  1.196  Fnat:  0.672  DockQ:  0.741
-Best model             - rank:  17  i-RMSD:  0.982  Fnat:  0.759  DockQ:  0.774
+First acceptable model - rank:  1  i-RMSD:  1.034  Fnat:  0.707  DockQ:  0.744
+First medium model     - rank:  1  i-RMSD:  1.034  Fnat:  0.707  DockQ:  0.744
+Best model             - rank:  7  i-RMSD:  0.982  Fnat:  0.759  DockQ:  0.774
 ==============================================
-== runs/run1/05_caprieval/capri_ss.tsv
+== run1/05_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  14  out of  40
-Total number of medium or better models:      14  out of  40
-Total number of high quality models:          5  out of  40
+Total number of acceptable or better models:  7  out of  40
+Total number of medium or better models:      4  out of  40
+Total number of high quality models:          2  out of  40
 
-First acceptable model - rank:  1  i-RMSD:  0.992  Fnat:  0.897  DockQ:  0.834
-First medium model     - rank:  1  i-RMSD:  0.992  Fnat:  0.897  DockQ:  0.834
-Best model             - rank:  11  i-RMSD:  0.789  Fnat:  0.776  DockQ:  0.842
+First acceptable model - rank:  1  i-RMSD:  0.836  Fnat:  0.931  DockQ:  0.878
+First medium model     - rank:  1  i-RMSD:  0.836  Fnat:  0.931  DockQ:  0.878
+Best model             - rank:  1  i-RMSD:  0.836  Fnat:  0.931  DockQ:  0.878
 ==============================================
-== runs/run1/07_caprieval/capri_ss.tsv
+== run1/07_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  14  out of  40
-Total number of medium or better models:      14  out of  40
-Total number of high quality models:          3  out of  40
+Total number of acceptable or better models:  7  out of  40
+Total number of medium or better models:      4  out of  40
+Total number of high quality models:          2  out of  40
 
-First acceptable model - rank:  1  i-RMSD:  1.037  Fnat:  0.931  DockQ:  0.841
-First medium model     - rank:  1  i-RMSD:  1.037  Fnat:  0.931  DockQ:  0.841
-Best model             - rank:  11  i-RMSD:  0.841  Fnat:  0.897  DockQ:  0.875
+First acceptable model - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+First medium model     - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+Best model             - rank:  2  i-RMSD:  0.879  Fnat:  0.948  DockQ:  0.881
 ==============================================
-== runs/run1/10_caprieval/capri_ss.tsv
+== run1/10_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  4  out of  12
 Total number of medium or better models:      4  out of  12
-Total number of high quality models:          1  out of  12
+Total number of high quality models:          2  out of  12
 
-First acceptable model - rank:  1  i-RMSD:  1.037  Fnat:  0.931  DockQ:  0.841
-First medium model     - rank:  1  i-RMSD:  1.037  Fnat:  0.931  DockQ:  0.841
-Best model             - rank:  3  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+First acceptable model - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+First medium model     - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+Best model             - rank:  2  i-RMSD:  0.879  Fnat:  0.948  DockQ:  0.881
 </pre>
 </details>
 <br>
@@ -1752,9 +1715,9 @@ Total number of acceptable or better clusters:  1  out of  3
 Total number of medium or better clusters:      1  out of  3
 Total number of high quality clusters:          0  out of  3
 
-First acceptable cluster - rank:  1  i-RMSD:  1.049  Fnat:  0.879  DockQ:  0.815
-First medium cluster     - rank:  1  i-RMSD:  1.049  Fnat:  0.879  DockQ:  0.815
-Best cluster             - rank:  1  i-RMSD:  1.049  Fnat:  0.879  DockQ:  0.815
+First acceptable cluster - rank:  1  i-RMSD:  1.044  Fnat:  0.888  DockQ:  0.830
+First medium cluster     - rank:  1  i-RMSD:  1.044  Fnat:  0.888  DockQ:  0.830
+Best cluster             - rank:  1  i-RMSD:  1.044  Fnat:  0.888  DockQ:  0.830
 
 ==============================================
 == run1-abb/10_caprieval/capri_clt.tsv
@@ -1770,13 +1733,13 @@ Best cluster             - rank:  1  i-RMSD:  1.134  Fnat:  0.841  DockQ:  0.796
 ==============================================
 == run1-af2/10_caprieval/capri_clt.tsv
 ==============================================
-Total number of acceptable or better clusters:  2  out of  3
-Total number of medium or better clusters:      0  out of  3
-Total number of high quality clusters:          0  out of  3
+Total number of acceptable or better clusters:  1  out of  4
+Total number of medium or better clusters:      0  out of  4
+Total number of high quality clusters:          0  out of  4
 
-First acceptable cluster - rank:  1  i-RMSD:  3.974  Fnat:  0.289  DockQ:  0.239
+First acceptable cluster - rank:  3  i-RMSD:  3.412  Fnat:  0.302  DockQ:  0.275
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
-Best cluster             - rank:  3  i-RMSD:  3.305  Fnat:  0.302  DockQ:  0.290
+Best cluster             - rank:  3  i-RMSD:  3.412  Fnat:  0.302  DockQ:  0.275
 </pre>
  <br>
 </details>
@@ -1796,15 +1759,21 @@ Which starting structure of the antibody gives the best overall model (irrespect
 ==============================================
 == run1/07_caprieval/capri_ss.tsv
 ==============================================
-...
-First acceptable model - rank:  1  i-RMSD:  1.037  Fnat:  0.931  DockQ:  0.841
-First medium model     - rank:  1  i-RMSD:  1.037  Fnat:  0.931  DockQ:  0.841
-Best model             - rank:  11  i-RMSD:  0.841  Fnat:  0.897  DockQ:  0.875
+Total number of acceptable or better models:  7  out of  40
+Total number of medium or better models:      4  out of  40
+Total number of high quality models:          2  out of  40
+
+First acceptable model - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+First medium model     - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
+Best model             - rank:  2  i-RMSD:  0.879  Fnat:  0.948  DockQ:  0.881
 
 ==============================================
 == run1-abb/07_caprieval/capri_ss.tsv
 ==============================================
-...
+Total number of acceptable or better models:  5  out of  40
+Total number of medium or better models:      4  out of  40
+Total number of high quality models:          1  out of  40
+
 First acceptable model - rank:  1  i-RMSD:  0.990  Fnat:  0.931  DockQ:  0.860
 First medium model     - rank:  1  i-RMSD:  0.990  Fnat:  0.931  DockQ:  0.860
 Best model             - rank:  1  i-RMSD:  0.990  Fnat:  0.931  DockQ:  0.860
@@ -1812,10 +1781,13 @@ Best model             - rank:  1  i-RMSD:  0.990  Fnat:  0.931  DockQ:  0.860
 ==============================================
 == run1-af2/07_caprieval/capri_ss.tsv
 ==============================================
-...
-First acceptable model - rank:  1  i-RMSD:  3.246  Fnat:  0.362  DockQ:  0.389
+Total number of acceptable or better models:  10  out of  40
+Total number of medium or better models:      0  out of  40
+Total number of high quality models:          0  out of  40
+
+First acceptable model - rank:  1  i-RMSD:  2.483  Fnat:  0.586  DockQ:  0.545
 First medium model     - rank:   i-RMSD:   Fnat:   DockQ:
-Best model             - rank:  21  i-RMSD:  2.474  Fnat:  0.362  DockQ:  0.468
+Best model             - rank:  21  i-RMSD:  2.396  Fnat:  0.448  DockQ:  0.513
 </pre>
  <br>
 </details>
@@ -1964,7 +1936,7 @@ Analyse your run (or the pre-calculated ones) as described previously.
  </summary>
 <pre>
 ==============================================
-== run1-ens//12_caprieval/capri_clt.tsv
+== run1-ens//11_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  3  out of  11
 Total number of medium or better clusters:      1  out of  11
@@ -1985,17 +1957,7 @@ Best cluster             - rank:  1  i-RMSD:  0.981  Fnat:  0.918  DockQ:  0.850
  </summary>
 <pre>
 ==============================================
-== run1-ens//02_caprieval/capri_ss.tsv
-==============================================
-Total number of acceptable or better models:  27  out of  150
-Total number of medium or better models:      11  out of  150
-Total number of high quality models:          1  out of  150
-
-First acceptable model - rank:  2  i-RMSD:  1.422  Fnat:  0.586  DockQ:  0.631
-First medium model     - rank:  2  i-RMSD:  1.422  Fnat:  0.586  DockQ:  0.631
-Best model             - rank:  26  i-RMSD:  0.982  Fnat:  0.759  DockQ:  0.774
-==============================================
-== run1-ens//05_caprieval/capri_ss.tsv
+== run1-ens//04_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  16  out of  83
 Total number of medium or better models:      10  out of  83
@@ -2005,7 +1967,7 @@ First acceptable model - rank:  2  i-RMSD:  1.422  Fnat:  0.586  DockQ:  0.631
 First medium model     - rank:  2  i-RMSD:  1.422  Fnat:  0.586  DockQ:  0.631
 Best model             - rank:  24  i-RMSD:  0.982  Fnat:  0.759  DockQ:  0.774
 ==============================================
-== run1-ens//07_caprieval/capri_ss.tsv
+== run1-ens//06_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  17  out of  83
 Total number of medium or better models:      9  out of  83
@@ -2015,7 +1977,7 @@ First acceptable model - rank:  1  i-RMSD:  0.836  Fnat:  0.931  DockQ:  0.878
 First medium model     - rank:  1  i-RMSD:  0.836  Fnat:  0.931  DockQ:  0.878
 Best model             - rank:  7  i-RMSD:  0.829  Fnat:  0.845  DockQ:  0.854
 ==============================================
-== run1-ens//09_caprieval/capri_ss.tsv
+== run1-ens//08_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  16  out of  83
 Total number of medium or better models:      9  out of  83
@@ -2025,7 +1987,7 @@ First acceptable model - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
 First medium model     - rank:  1  i-RMSD:  0.908  Fnat:  0.897  DockQ:  0.855
 Best model             - rank:  12  i-RMSD:  0.851  Fnat:  0.845  DockQ:  0.851
 ==============================================
-== run1-ens//12_caprieval/capri_ss.tsv
+== run1-ens//11_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  10  out of  44
 Total number of medium or better models:      4  out of  44
@@ -2349,24 +2311,151 @@ Try to reproduce the previous steps and examine the quality of the various gener
 <hr>
 
 
-## BONUS 5: Running a scoring scenario
+## BONUS 5: Introduction to the haddock3 webapp
 
-This section demonstrates the use of HADDOCK3 to score the various models obtained at the previous stages (ensemble docking and AlphaFold predictions) 
-and observe if the HADDOCK scoring function is able to detect the quality of the models.
+In addition to the command line interface of haddock3, we are currently developing a new dedicated web application enabling the use of haddock3 under a graphical user interface, directly linking the software functionalities and computed results in an interactive manner.
+While not yet deployed as a web service, the application is already available for local installations.
 
-To this end the following workflow is defined:
 
-1. Generate the topologies for the various models.
-2. Energy Minimise all complexes.
-3. Cluster the models using Fraction of Common Contacts:
+### Intallation procedure
+
+The current version requires [docker](https://www.docker.com/) to build the web application.
+Once docker is installed on your computer, deploying the webapp is as simple as following the next 3 command lines.
+
+**Note** that for the sake of this tutorial, the webapp was already built on your computer, and you can simply access it using the following url: [http://localhost:8080](http://localhost:8080)
+
+
+<details style="background-color:#DAE4E7">
+  <summary>
+    <b><i>How to build the webapp</i></b> <i class="material-icons">expand_more</i>
+  <br>
+  </summary>
+First, download the haddock3 webapp:
+
+<a class="prompt prompt-cmd">git clone https://github.com/i-VRESSE/haddock3-webapp.git</a>
+
+Then copy a compiled CNS executable in the `deploy/` directory.
+**Note** that the container is running under Linux, therfore a Linux-compiled version (compatible with your CPU architecture) of CNS is required here. Instructions on how to compile CNS are available in the [haddock3 documentation](https://github.com/haddocking/haddock3/blob/main/docs/CNS.md)
+
+<b style="color: red;">As this is still in heavy development, the instructions on how to build the web-app is not yet trivial. Better instructions will be written onces it will be in production.</b>
+</details>
+
+
+### Creating an account
+
+For the sake of this tutorial, we have already created accounts:
+* **email**: summerschool@bioexcel.eu
+* **password**: haddock3
+
+<details style="background-color:#DAE4E7">
+  <summary>
+    <b><i>How to create an account</i></b> <i class="material-icons">expand_more</i>
+  <br>
+  </summary>
+To create a new account, add your email adresse and choose a password.
+
+<br>
+Right after its creation, you will be able to login, but before you can definitely use all the functionalities of the webapp, your account must be validated by an adminitrator that will grant you priviledges.
+
+**Note** that with the current implementation, the first user to register comes the administrator.
+
+</details>
+
+
+### Running this tutorial
+
+Once logged in, click on the `build` menu to start the creation of a custom workflow.
+You will land on the workflow-builder page, where you can interactively build your haddock3 scenario by combining the available modules.
+This page is subdivided into three areas described below.
+
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/haddock3-webapp-workflow-builder.png">
+</figure>
+
+On the left is presented the list of modules.
+To add a module to the workflow, just click on it, and it will be automatically added at the bottom of the configuration file.
+Alternatively, you can drag-and-drop (using the dots) it to the central panel, at the location where you wish to place it.
+
+The set of modules defining your current workflow is presented on the central panel.
+You can switch between interactive (click on “Visual” tab under the Workflow section) and textual (click on “Text” tab) forms of it.
+You can configure the parameters of each module by clicking on this module (inside the central panel).
+
+Initially, default parameters are set for each module.
+Parameters are sub-categorized based on their properties.
+Unfold a property by clicking on it, and discover the set of related parameters.
+**Note** that you should always click the `save` button after modifying a parameter value for it to be taken into consideration.
+
+Finally, once you configured your workflow, click on `submit` to launch the corresponding haddock3 run.
+
+<br>
+
+**Note** that you can also upload a zip archive of a workflow containing a configuration file named `workflow.cfg` and all corresponding files (e.g.: pdb structures, restraints files, topological parameters, etc.). Workflow archives presented in this tutorial are available in `workflows/webapp-workflows/`.
+
+
+### Loading haddock3 runs
+
+The webapp also allows you to upload a pre-computed run, so you can navigate through the docking results with ease thanks to the graphical interface.
+Under the `Upload` menu, you can upload two types of zip archives:
+
+* **Workflow**: a zip archive containing a configuration file named `workflow.cfg` and all corresponding files (e.g.: pdb structures, restraints files, topological parameters, etc.)
+* **Run**: a zip archive of the run.
+
+<details style="background-color:#DAE4E7">
+ <summary>
+  <b><i>How to generate a zip archive of a run?</i></b> <i class="material-icons">expand_more</i>
+ </summary>
+<br>
+
+First go to the run directory containing all the generated data<br>
+<a class="prompt prompt-cmd">cd run_dir</a><br>
+Create the zip archive<br>
+<a class="prompt prompt-cmd">zip -r run.zip .</a>
+
+</details>
+
+**Note** that the archives of workflows are available in `workflows/webapp-workflows/`, and archives of pre-computed runs are stored in `runs/webapp_runs/`.
+
+
+### Navigating throught the results
+
+On the `Manage` page, a table displays all the haddock3 runs performed by one user.
+This table contains the job status (queued, running, error, ok), its name, creation date and modification date.
+On the right side of the table, actions can be performed.
+The current implementation allows to rename a run or to delete it.
+
+<figure style="text-align: center;">
+  <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/haddock3-webapp-manage-run-access.png">
+</figure>
+
+To access the content of a run, click on its name to be directed to the haddock3 webapp results page.
+You will land on the analysis page, which summarizes the performance of the models obtained at the last stage.
+This is similar to the previous method of opening the `report.html` file (see above), which contains various plots displaying the HADDOCK score and its components against different CAPRI metrics.
+In this case, because a reference was provided during the `caprieval` module, performance is evaluated based on this structure.
+
+In addition, you can click on the `browse` button, which will let you access all the files of the run.
+
+
+### Running a scoring scenario
+
+In this scenario, we want to score the various models obtained at the previous stages (ensemble docking and AlphaFold predictions) and observe if the HADDOCK scoring function is able to detect the quality of the models.
+
+In this scenario, we want to:
+- Start by generating the topologies for the various models.
+- Cluster the models using Fraction of Common Contacts:
   - set the parameter `min_population` to 1 so that all models, including singletons (models that do not cluster with any others), will be forwarded to the next steps.
   - set the parameter `plot_matrix` to true to generate a matrix of the clusters for a visual representation.
-4. Comparison of the models with the reference complex `4G6M_matched.pdb` using CAPRI criteria.
+- Add the Energy Minimisation module to score all complexes.
+- End the scenario with a comparison of the models with the reference complex `4G6M_matched.pdb` using CAPRI criteria.
 
 For this, two ensembles must be scored and one structure will be used as a reference. You can find them in the `pdbs/` directory:
 - `07_emref_and_top5af2_ensemble.pdb`: An ensemble of models obtained from the ensemble run, combined with top5 AlphaFold2 predictions.
 - `af3server_15052024_top5ens.pdb`: An ensemble of top5 AlphaFold3 predictions.
 - `4G6M_matched.pdb`: The reference structure for quality assessments.
+
+
+<a class="prompt prompt-info">
+Generate a simple scoring configuration file scenario using the workflow builder.
+</a>
 
 
 {% highlight toml %}
@@ -2377,26 +2466,30 @@ For this, two ensembles must be scored and one structure will be used as a refer
 run_dir = "scoring-haddock3-alphafold2and3-ensemble"
 
 molecules =  [
-    "pdbs/haddock3-ens-emref-ensemble.pdb",
-    "pdbs/af2-models.pdb",
-    "pdbs/af3-models.pdb",
+    "07_emref_and_top5af2_ensemble.pdb",
+    "af3server_15052024_top5ens.pdb",
     ]
 
 # ====================================================================
 # Parameters for each stage are defined below
 # ====================================================================
 
+# Start by generating the topologies
 [topoaa]
 
-[emscoring]
-
+# Cluster structures to observe similarities
 [clustfcc]
-# Reduce the min_population to define a cluster to 1 so that models
-# that do not cluster with any other will define singlotons
+# Reducing min_population to define a cluster to 1 so even complexes
+#  that do not cluster with any other will define singlotons
 min_population = 1
 # Generate a matrix of the clusters
 plot_matrix = true
 
+# Run the Energy Minimisation Scoring module
+[emscoring]
+
+
+# Evaluate the models with the CAPRI criterions
 [caprieval]
 reference_fname = "4G6M_matched.pdb"
 
@@ -2405,131 +2498,16 @@ reference_fname = "4G6M_matched.pdb"
 {% endhighlight %}
 
 
-A scoring scenario configuration file is provided in the `workflows/` directory as `scoring-antibody-antigen.cfg, precomputed results in `runs/run-scoring`.
-
-You can again look at the `capri_ss.tsv` file in the `4_caprieval` directory. It contains the energy minimised statistics:
-
-<pre>
-              model md5 caprieval_rank   score      irmsd   fnat    lrmsd   ilrmsd  dockq   rmsd    cluster_id  cluster_ranking model-cluster_ranking   air angles  bonds   bsa cdih    coup    dani    desolv  dihe    elec    improper    rdcs    rg  sym total   vdw vean    xpcs
-../1_emscoring/emscoring_82.pdb -   1   -157.149    0.910   0.897   2.201   1.456   0.855   1.016  3   1   1   0.000   0.000   0.000   2000.130    0.000  0.000   0.000   7.345   0.000   -599.183  0.000   0.000   0.000   0.000   -643.841        -44.658 0.000   0.000
-../1_emscoring/emscoring_2.pdb  -   2   -156.452    0.880   0.948   1.949   1.355   0.881   0.989  3   1   2   0.000   0.000   0.000   1914.860    0.000  0.000   0.000   3.125   0.000   -504.372  0.000   0.000   0.000   0.000   -563.075        -58.703 0.000   0.000
-../1_emscoring/emscoring_64.pdb -   3   -138.214    1.052   0.914   3.039   1.955   0.824   1.294  3   1   3   0.000   0.000   0.000   1784.350    0.000  0.000   0.000   -2.359  0.000   -424.542  0.000   0.000   0.000   0.000   -475.489        -50.947 0.000   0.000
-../1_emscoring/emscoring_40.pdb -   4   -135.230    1.085   0.897   1.866   1.756   0.836   1.144  3   1   4   0.000   0.000   0.000   1875.210    0.000  0.000   0.000   3.490   0.000   -429.067  0.000   0.000   0.000   0.000   -481.973        -52.906 0.000   0.000
-../1_emscoring/emscoring_37.pdb -   5   -134.569   13.624  0.069   22.589  21.764  0.068   13.881  5   2   1   0.000   0.000   0.000   1802.890    0.000  0.000   0.000   6.081   0.000   -426.815  0.000   0.000   0.000   0.000   -482.102        -55.287 0.000   0.000
-
-...
-</pre>
+To simplify the tutorial, scoring scenario configuration files are provided in the `workflow/` directory, precomputed results in the `runs/` directory and finally archives for the haddock3-webapp upload section in `workflow/webapp/scoring-*.cfg`.
 
 <a class="prompt prompt-question">
-Did the HADDOCK scoring do a good job at putting the best models on top (consider for example the DockQ score)? 
-</a>
-
-The `emscoring` module renames all models, which makes it difficult to know what was the original model. 
-You can however trace back a model to its original file by looking into the `traceback/traceback.tsv` file:
-
-<pre>
-00_topoaa                                               1_emscoring             1_emscoring_rank
-emref_9_from_haddock3-ens-emref-ensemble_83_haddock.psf emscoring_82.pdb        1
-emref_10_from_haddock3-ens-emref-ensemble_2_haddock.psf emscoring_2.pdb         2
-emref_7_from_haddock3-ens-emref-ensemble_67_haddock.psf emscoring_64.pdb        3
-emref_5_from_haddock3-ens-emref-ensemble_45_haddock.psf emscoring_40.pdb        4
-...
-</pre>
-
-<a class="prompt prompt-question">
-Try to locate the AlphaFold2 and AlphaFold3 models (their filenames start with _abag_test_ and _af3server_, respectively)
-</a>
-
-A simple way to extra this information is to use `grep`:
-
-<a class="prompt prompt-cmd">
-grep abag traceback.tsv
-</a>
-
-<details style="background-color:#DAE4E7">
-  <summary style="font-weight: bold">
-    <i>See the output of grep for the AlphaFold2 models</i>
-  <br>
-  </summary>
-  <pre>
-> grep abag traceback.tsv
-abagtest_2d03e_unrelaxed_rank_001_alphafold2_multimer_v3_model_3_seed_000_from_af2-models_1_haddock.psf	emscoring_84.pdb	86
-abagtest_2d03e_unrelaxed_rank_005_alphafold2_multimer_v3_model_2_seed_000_from_af2-models_5_haddock.psf	emscoring_88.pdb	90
-abagtest_2d03e_unrelaxed_rank_004_alphafold2_multimer_v3_model_4_seed_000_from_af2-models_4_haddock.psf	emscoring_87.pdb	91
-abagtest_2d03e_unrelaxed_rank_003_alphafold2_multimer_v3_model_1_seed_000_from_af2-models_3_haddock.psf	emscoring_86.pdb	92
-abagtest_2d03e_unrelaxed_rank_002_alphafold2_multimer_v3_model_5_seed_000_from_af2-models_2_haddock.psf	emscoring_85.pdb	93
-  </pre>
-</details>
-<br>
-
-
-<a class="prompt prompt-cmd">
-grep af3server traceback.tsv
-</a>
-
-<details style="background-color:#DAE4E7">
-  <summary style="font-weight: bold">
-    <i>See the output of grep for the AlphaFold3 models</i>
-  <br>
-  </summary>
-  <pre>
-> grep abag traceback.tsv
-af3server_15052024_2_ready_from_af3-models_2_haddock.psf	emscoring_90.pdb	40
-af3server_15052024_1_ready_from_af3-models_1_haddock.psf	emscoring_89.pdb	81
-af3server_15052024_4_ready_from_af3-models_4_haddock.psf	emscoring_92.pdb	87
-af3server_15052024_3_ready_from_af3-models_3_haddock.psf	emscoring_91.pdb	88
-af3server_15052024_5_ready_from_af3-models_5_haddock.psf	emscoring_93.pdb	89
-  </pre>
-</details>
-<br>
-
-<a class="prompt prompt-question">
-What are their ranks?
-</a>
-
-We have already seen in the previous section that none of the AlphaFold models were close to the real complex. 
-This is however also the case for some of the HADDOCK models.
-Still the AlpaFold models score very badly, toward the end of the ranked list of models.
-
-<a class="prompt prompt-question">
-Having found their ranks, can you figure out from the statistics in _capri_ss.tsv_ which component of the HADDOCK score causes in particular this bad scoring?
-</a>
-
-
-<details style="background-color:#DAE4E7">
-  <summary style="font-weight: bold">
-    <i>See the answer</i>
-  <br>
-  </summary>
-  <p> The bottom eight models (the worst ranking ones) are all AlphaFold3/2 models. Looking at the componenents of the score 
-  (some were left out in the table below for simplicity) one can see that it is mainly the van der Waals energy that causes the high scores, 
-  which is indicative of clashes in the models.</p>
-  <pre>
-model               md5 caprieval_rank  score    irmsd   fnat    lrmsd   ilrmsd  dockq   rmsd    bsa        desolv    elec      vdw vean    xpcs
-...
-../1_emscoring/emscoring_84.pdb -   86  -67.914  11.123  0.000   22.413  18.626  0.048   12.213  3535.520   -67.537  -150.913    29.806 
-../1_emscoring/emscoring_92.pdb -   87  -63.263  11.426  0.000   22.104  21.035  0.049   11.048  1383.920    -9.924   -88.656   -35.607
-../1_emscoring/emscoring_91.pdb -   88  -50.990  13.665  0.000   23.793  22.150  0.042   13.796  1492.150    -8.962  -167.236    -8.581 
-../1_emscoring/emscoring_93.pdb -   89  -46.871   6.644  0.000   10.617  11.333  0.146   6.455   1740.990    -8.906   -35.623   -30.841
-../1_emscoring/emscoring_88.pdb -   90   48.283  12.919  0.000   20.484  19.885  0.053   14.706  3914.250   -68.786  -129.461   142.961
-../1_emscoring/emscoring_87.pdb -   91  180.468  12.447  0.000   22.153  19.299  0.048   14.160  3639.430   -66.857  -240.130   295.351
-../1_emscoring/emscoring_86.pdb -   92  240.307  12.572  0.000   21.662  19.799  0.049   14.187  3535.820   -69.380  -154.703   340.628
-../1_emscoring/emscoring_85.pdb -   93  781.210  15.174  0.000   23.497  24.993  0.042   17.151  3278.340   -61.261   -86.026   859.677
-  </pre>
-</details>
-<br>
-
-<a class="prompt prompt-question">
-Inspect more closely the reported scores above? Can you discover something peculiar with the buried surface area?
+How are scoring the AlphaFold predictions?
 </a>
 
 <a class="prompt prompt-question">
-How can you explain that?
+Can the HADDOCK scoring function identify the best models?
 </a>
 
-**_Hint 1_**: The HADDOCK score is calculated over all existing interfaces defined by different chainIDs.
-
-**_Hint 2_**: Visualise two of the models with very different BSA values, color-coding the chains.
 
 <hr>
 <hr>
