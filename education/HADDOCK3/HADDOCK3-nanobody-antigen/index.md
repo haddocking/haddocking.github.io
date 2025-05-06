@@ -16,10 +16,6 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
-the structure of a nanobody-antigen complex using different possible information scenarios, ranging
-from complete knowledge of the epitope to more limited information.
-
 Nanobodies are monomeric proteins that closely resemble the variable region of the heavy chain of an antibody.
 They are derived from camelid heavy-chain antibodies and are composed of a single variable domain (VHH) that
 contains the antigen-binding site. Nanobodies are small, stable, and soluble proteins that can be easily
@@ -31,6 +27,12 @@ that binds to a nanobody is called **epitope**. Different from antibodies, nanob
 **three complementarity-determining regions (CDRs)** (hypervariable loops) whose sequence and conformation are altered to bind to different antigens.
 Another important feature of these molecules is that the highly conserved amino acids that are not part of the CDRs, namely the **framework regions (FRs)**,
 can play a role in the binding to the antigen.
+
+Predicting the structure of a nanobody-antigen complex is very challenging, as the epitope can be located in any part of the antigen molecule. In the last years AlphaFold2-Multimer has been shown to be able to predict the correct structure of the nanobody-antigen complex for a limited number of cases. This is due to the fact that there's no co-evolution between the antibody and antigen sequences, which makes the prediction of the correct conformation extremely difficult. AlphaFold3 is expected to improve the prediction of the nanobody-antigen complex, but still fails for many cases.
+
+This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
+the structure of a nanobody-antigen complex using different possible information scenarios, ranging
+from complete knowledge of the epitope to more limited information.
 
 In this tutorial we will be working with the complex between a nanobody (1-2C7), 
 and a fragment of the *Severe acute respiratory syndrome coronavirus 2* (SARS-CoV-2) Spike glycoprotein (PDB ID: [7x2m](https://www.ebi.ac.uk/pdbe/entry/pdb/7x2m){:target="_blank"}).
@@ -61,7 +63,7 @@ most operating systems) in order to visualize the input and output data. We will
 provide you links to download the various required software and data.
 
 We assume that you have a working installation of HADDOCK3 on your system. 
-If not, provided you have a working Python version (3.9 to 3.12), you can install it through
+If not, provided you have a working Python version (3.9 to 3.13), you can install it through
 
 ```bash
 pip install haddock3
@@ -154,7 +156,7 @@ select cdr3, 7X2M_monomer_rank_001.pdb and resi 99:115
 color red, cdr3
 </a>
 
-It looks like the CDR3 loop is "folding back" on the nanobody framework, at least in the predicted models. This conformation, typically called "kinked", is one of the two main observed conformations of the CDR3 loop in nanobodies. The other one is an"extended" conformation, where the loop is pointing away from the framework. Most of the nanobodies show a kinked conformation, but the extended one is not uncommon (occurs in about 30% of the cases).
+It looks like the CDR3 loop is "folding back" on the nanobody framework, at least in the predicted models. This conformation, typically called "kinked", is one of the two main observed conformations of the CDR3 loop in nanobodies. The other one is an "extended" conformation, where the loop is pointing away from the framework. Most of the nanobodies show a kinked conformation, but the extended one is not uncommon (occurs in about 30% of the cases).
 
 Let us now visualize AlphaFold2's confidence in the prediction and in particular the values of the predicted Local Distance Difference Test (pLDDT) score. The pLDDT score is a per-residue confidence score that ranges from 0 to 100, with higher values indicating higher confidence. In AlphaFold2 and similar predictors the confidence score is typically encoded in the B-factor column of the PDB file. To color the CDR3 loop based on the pLDDT scores type the following command in PyMOL:
 
@@ -237,7 +239,7 @@ To prepare the structure for docking, we will:
 pdb_fetch 7EKG | pdb_selchain -B | pdb_delhetatm | pdb_keepcoord | pdb_reres -1 | pdb_selaltloc | pdb_tidy -strict > 7EKG_clean.pdb
 </a>
 
-_**Note**_ The last command `pdb_tidy -strict` cleans the PDB file, add TER statements only between different chains). Without the `-strict` option TER statements would be added between each chain break (e.g. missing residues), which should be avoided.
+_**Note**_ The last command `pdb_tidy -strict` cleans the PDB file, and adds TER statements only between different chains. Without the `-strict` option TER statements would be added between each chain break (e.g. missing residues), which should be avoided.
 
 <hr>
 <hr>
@@ -360,7 +362,7 @@ In this scenario we will assume that we have perfect knowledge of the epitope re
 The list of epitope residues is
 
 <pre style="background-color:#DAE4E7">
-36,37,38,39,40,41,42,43,44,45,46,51,52,171,172,176
+37,38,39,40,41,42,43,44,45,46,171,172,176
 </pre>
 
 Let us visualize those onto the 3D structure. For this start PyMOL and load the `7EKG_clean.pdb` file.
@@ -422,7 +424,7 @@ For scenario 1 this would be:
 
 * For the antigen (the file called `antigen-epi.actpass` from the `restraints` directory):
 <pre style="background-color:#DAE4E7">
-36 37 38 39 40 41 42 43 44 45 46 51 52 171 172 176
+37 38 39 40 41 42 43 44 45 46 171 172 176
 
 </pre>
 
@@ -870,6 +872,13 @@ The HADDOCK3 analysis precalculated a lot of plots and tables for you to inspect
 You can find them in the `analysis` directory of each run, with one folder available for each `caprieval` step. 
 The plots are in html format and can be opened in your browser.  You can also open the full report in your browser:
 
+<figure style="text-align: center;">
+  <img width="100%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/report_example.png">
+  <center>
+  <i>Example screenshot of the HADDOCK3 report, where the top models of the first ten clusters can be quickly visualized.</i>
+  </center>
+</figure>
+
 For example, to inspect the final results (after refinement):
 
 <a class="prompt prompt-cmd">
@@ -968,6 +977,136 @@ alignto 7x2mB_ref and chain B
 
 <hr>
 <hr>
+
+## Visualising the contact map of the best clusters
+
+The `contactmap` module performs a contact analysis of the interface between the two partners. For each cluster, HADDOCK3 will analyse the existing interface contacts, providing two interactive visualizations of the contact map. In the *heatmap*, you can see the classical contact map, where the probability of contacts (<5A) between two residues (both intramolecular and intermolecular) are shown. The *chordchart* instead shows only the intermolecular contacts between the two partners, provinging type and features of the contacts.
+
+Let's visualize an example chordchart for the best cluster:
+
+<figure style="text-align: center;">
+  <img width="60%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/chordchart_example.png">
+  <center>
+  <i>Example chordchart contact map for the best ranked cluster (scenario 1).</i>
+  </center>
+</figure>
+
+Check out the [interactive version of the chordchart](/education/HADDOCK3/HADDOCK3-nanobody-antigen/plots/contmap_chordchart_example.html).
+
+You can find all the contact maps in the `11_contactmap` directory of the run. 
+
+## BONUS 1: design interface mutations in an nanobody-antigen complex with HADDOCK3
+
+HADDOCK3 can also be used to analyse and extract information from a nanobody-antigen complex. 
+
+We've already seen how to analyse the nature and type of interface contacts using the `contactmap` module. Now we will use HADDOCK3 to estimate the impact of mutations at the interface of a nanobody-antigen complex using the `alascan` module, for example to design a mutation that slightly destabilizes the complex.
+
+The `alascan` module will mutate every residue at the interface into the desired amino acid (alanine by default). Although the HADDOCK score is not a predictor of binding affinity, it can be used to estimate the impact of mutations on the local environment from an energetical perspective.
+
+Take this example HADDOCK3 workflow:
+
+{% highlight toml %}
+#================== General parameters, input files and settings ==========
+# execution mode
+mode = "local"
+# run directory
+run_dir = "./run-7x2m-analysis"
+# number of cores to use
+ncores = 1
+# input molecule: here we use the reference structure, but one can use any 
+# other structure (or ensemble) as long as it contains the same residues
+molecules = "../pdbs/7x2mB_ref.pdb"
+
+#================== Workflow definition ===================================
+
+[topoaa]
+
+[emscoring]
+
+[alascan]
+plot = true
+
+[alascan]
+scan_residue = "GLY"
+plot = true
+#=========================================================================
+{% endhighlight %}
+
+With this workflow we will mutate all the interface residues to alanine and then to glycine (in the second `alascan` step). The `alascan` module will generate a plot with the difference between the scores of the wild-type and mutant structures. The `scan_residue` parameter allows to specify the residue to mutate to. The default is alanine, but you can change it to any other residue.
+
+To run the analysis, execute the following command:
+<a class="prompt prompt-cmd">
+haddock3 ./haddock3/nanobody-antigen-analysis.cfg
+</a>
+
+Let's inspect the [alanine-scanning plot](/education/HADDOCK3/HADDOCK3-nanobody-antigen/plots/alascan_ALA.html) and the [glycine-scanning plot](/education/HADDOCK3/HADDOCK3-nanobody-antigen/plots/alascan_GLY.html).
+
+<a class="prompt prompt-question">
+Which amino acid shows the most significant impact on the HADDOCK score (i.e. the most negative difference with the wild-type) for the nanobody (chain A)?
+</a>
+
+<a class="prompt prompt-question">
+Which amino acid shows the most significant impact on the antigen (chain B)?
+</a>
+
+Let's visualize the residue ASP114 on the nanobody with pyMOL:
+<a class="prompt prompt-pymol">
+File menu -> Open -> 7x2mB_ref.pdb <br>
+util.cbc <br>
+</a>
+
+<a class="prompt prompt-pymol">
+select asp114, (resi 114 and chain A) <br>
+show sticks, asp114 <br>
+util.cbao asp114 <br>
+</a>
+
+Now we want to visualize the interaction of this residue with the antigen.
+<a class="prompt prompt-pymol">
+select asp114_neighbors, (resi 114 and chain A) around 6 and chain B <br>
+show sticks, asp114_neighbors <br>
+util.cbao asp114_neighbors <br>
+</a>
+
+if we zoom into the interaction...
+
+<figure style="text-align: center;">
+  <img width="100%" src="/education/HADDOCK3/HADDOCK3-nanobody-antigen/asp114.png">
+  <center>
+  <i>Interaction between ASP114 and LYS46 at the nanobody-antigen interface.</i>
+  </center>
+</figure>
+
+we can see a strong electrostatic interaction between ASP114 and LYS46 of the antigen. It is reasonable to expect that subsitituting ASP114 with an alanine would have a significant impact on the binding affinity of the nanobody to the antigen.
+
+Now that we idenfitied a possible key residue, we could test all the possible mutations:
+{% highlight toml %}
+mode = "local"
+run_dir = "./run-7x2m-analysis-asp114"
+ncores = 1
+molecules = "../pdbs/7x2mB_ref.pdb"
+
+[topoaa]
+
+[emscoring]
+
+[alascan]
+resdic_A = [114]
+
+[alascan]
+scan_residue = "GLY"
+resdic_A = [114]
+
+[alascan]
+scan_residue = "ARG"
+resdic_A = [114]
+
+[alascan]
+scan_residue = "LYS"
+resdic_A = [114]
+
+...
+{% endhighlight %}
 
 ## Conclusions
 
