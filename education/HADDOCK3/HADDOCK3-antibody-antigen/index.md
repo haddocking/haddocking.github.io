@@ -167,7 +167,7 @@ combining a multitude of independent modules that perform specialized tasks.
 ## Software and data setup
 
 In order to follow this tutorial you will need to work on a Linux or MacOSX
-system. We will also make use of [**PyMOL**][link-pymol]{:target="_blank"} (freely available for
+system. We will also make use of [**PyMOL**](https://www.pymol.org/){:target="_blank"} (freely available for
 most operating systems) in order to visualize the input and output data. We will
 provide you links to download the various required software and data.
 
@@ -208,21 +208,17 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 <hr>
 
-### EuroCC HPC workshop, Istanbul April 2025
+### BioExcel HPC workshop, Sofia May 2025
 
-We will be making use of the TRUBA computational resources for this tutorial. 
+We will be making use of the [Discoverer HPC CPU cluster](https://docs.discoverer.bg){:target="_blank"} for this tutorial. 
 The software and data required for this tutorial have been pre-installed.
-Please connect to the system using your credentials either via ssh connection or from a web browser using OnDemand:
-
-[TRUBA onDemand interface](https://172.16.6.20/){:target="_blank"}
-
-If using OnDemand, open then a terminal session using the `_arf Shell Access` menu.
+Please connect to the system using your credentials as instructed.
 
 In order to run the tutorial, go into you scratch directory, then unzip the required data:
 
 <a class="prompt prompt-cmd">
-cd /arf/scratch/\<my\-username\><br>
-unzip ~egitim/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
+cd /discofs/\<my\-username\><br>
+unzip /valhalla/projects/school-01/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
 cd HADDOCK3-antibody-antigen
 </a>
 
@@ -232,7 +228,7 @@ HADDOCK3 has been pre-installed. To activate the HADDOCK3 environment type:
 
 
 <a class="prompt prompt-cmd">
-source ~egitim/HADDOCK/haddock3/.venv/bin/activate
+source /valhalla/projects/school-01/HADDOCK/haddock3/.venv/bin/activate
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
@@ -284,23 +280,12 @@ If you are installing HADDOCK3 on your own system, check the instructions and re
 To obtain HADDOCK3 navigate to [its repository][haddock-repo], fill the
 registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
 
-Provided you have a working Python version (3.9 to 3.12). you can install HADDOCK3 simply through
-
-```bash
-pip install haddock3
-```
-
+**_Note_** that depending on the system you are installing HADDOCK3 on, you might have to recompile CNS if the provided executable is not working. See the [CNS troubleshooting section](https://github.com/haddocking/haddock3/blob/main/DEVELOPMENT.md#troubleshooting-the-cns-executable){:target="_blank"} on the HADDOCK3 GitHub repository for instructions.
 
 #### Auxiliary software
 
-**[PDB-tools][link-pdbtools]{:target="_blank"}**: A useful collection of Python scripts for the
-manipulation (renumbering, changing chain and segIDs...) of PDB files is freely
-available from our GitHub repository. `pdb-tools` is automatically installed
-with HADDOCK3. If you have activated the HADDOCK3 Python environment you have
-access to the pdb-tools package.
-
-**[PyMOL][link-pymol]{:target="_blank"}**: In this tutorial we will make use of PyMOL for visualization. If not
-already installed on your system, download and install [**PyMOL**][link-pymol]{:target="_blank"}. Note that you can use your favorite visulation software but instructions are only provided here for PyMOL.
+[**PyMOL**](https://www.pymol.org/){:target="_blank"}: In this tutorial we will make use of PyMOL for visualization. If not
+already installed on your system, download and install [**PyMOL**](https://www.pymol.org/){:target="_blank"}. Note that you can use your favorite visulation software but instructions are only provided here for PyMOL.
 
 
 <hr>
@@ -869,8 +854,8 @@ sampling = 100
 reference_fname = "pdbs/4G6M_matched.pdb"
 
 [seletop]
-# Selection of the top 40 best scoring complexes (instead of the default of 200)
-select = 40
+# Selection of the top 50 best scoring complexes (instead of the default of 200)
+select = 50
 
 [flexref]
 tolerance = 5
@@ -961,7 +946,53 @@ In in the first section of the workflow above we have a parameter `mode` definin
 
 <hr>
 
+#### Execution of HADDOCK3 on DISCOVERER (BioExcel Sofia May 2025 workshop)
+
+To execute the HADDOCK3 workflow on the computational resources provided for this workshop, 
+you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
+An example slurm script is provided with the data you unzipped:
+
+{% highlight shell %}
+run-haddock3-discoverer.sh
+{% endhighlight %}
+
+
+Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-discoverer.sh`):
+
+{% highlight shell %}
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --account=school-01
+#SBATCH --qos=school-01
+#SBATCH --job-name "haddock3"
+#SBATCH --tasks-per-node=50
+#SBATCH --mem-per-cpu 1500
+#SBATCH --time 04:00:00
+
+source /valhalla/projects/school-01/HADDOCK/haddock3/.venv/bin/activate
+haddock3 workflows/docking-antibody-antigen.cfg
+
+{% endhighlight %}
+
+This file should be submitted to the batch system using the `sbatch` command:
+
+<a class="prompt prompt-cmd">
+sbatch run-haddock3-discoverer.sh
+</a>
+
+And you can check the status in the queue using the `squeue`command.
+
+This example run should take about 7 minutes to complete on a single node using 50 cores.
+
+
+<hr>
+
 #### Execution of HADDOCK3 on the TRUBA resources (EuroCC Istanbul April 2024 workshop)
+
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <i>View execution instructions for running HADDOCK3 the TRUBA resources</i> <i class="material-icons">expand_more</i>
+  </summary>
 
 To execute the HADDOCK3 workflow on the computational resources provided for this workshop, 
 you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
@@ -972,9 +1003,8 @@ run-haddock3-barbun.sh
 run-haddock3-hamsri.sh
 {% endhighlight %}
 
-
-Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-hamsri.sh`):
-
+Here is an example of such an execution script (also provided in the <i>HADDOCK3-antibody-antigen</i> directory as <i>run-haddock3-hamsri.sh</i>):
+  
 {% highlight shell %}
 #!/bin/bash
 #SBATCH --nodes=1
@@ -985,20 +1015,21 @@ Here is an example of such an execution script (also provided in the `HADDOCK3-a
 
 source ~egitim/HADDOCK/haddock3/.venv/bin/activate
 haddock3 workflows/docking-antibody-antigen.cfg
-
 {% endhighlight %}
 
-This file should be submitted to the batch system using the `sbatch` command:
+This file should be submitted to the batch system using the <i>sbatch</i> command:
 
-<a class="prompt prompt-cmd">
+{% highlight shell %}
 sbatch run-haddock3-hamsri.sh
-</a>
+{% endhighlight %}
 
-**_Note_** that batch submission is only possible from the `scratch` partition (`/arf/scratch/<my-home-directory>`)
+<b><i>Note</i></b> that batch submission is only possible from the <i>scratch</i> partition (<i>/arf/scratch/my-home-directory</i>)
 
-And you can check the status in the queue using the `squeue`command.
+And you can check the status in the queue using the <i>squeue</i>command.
 
 This example run should take about 7 minutes to complete on a single node using 50 cores.
+
+</details>
 
 
 <hr>
@@ -1007,7 +1038,7 @@ This example run should take about 7 minutes to complete on a single node using 
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <b><i>Execution instructions for running HADDOCK3 on Fugaku</i></b> <i class="material-icons">expand_more</i>
+    <i>View execution instructions for running HADDOCK3 on Fugaku</i> <i class="material-icons">expand_more</i>
   </summary>
 
 To execute the workflow on Fugaku, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, 
@@ -1035,7 +1066,7 @@ haddock3 ./workflows/docking-antibody-antigen.cfg
 <br>
 <br>
 For this execution mode you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
-Here is an example of such an execution script (also provided in the `HADDOCK3-antibody-antigen` directory as `run-haddock3-fugaku.sh`):
+Here is an example of such an execution script (also provided in the <i>HADDOCK3-antibody-antigen</i> directory as <i>run-haddock3-fugaku.sh</i>):
 
 {% highlight shell %}
 #!/bin/sh -x
@@ -1051,7 +1082,7 @@ haddock3 ./workflows/docking-antibody-antigen.cfg
 
 {% endhighlight %}
 
-This file should be submitted to the batch system using the `pjsub` command:
+This file should be submitted to the batch system using the <i>pjsub</i> command:
 
 {% highlight shell %}
 pjsub run-haddock3-fugaku.sh
@@ -1059,9 +1090,10 @@ pjsub run-haddock3-fugaku.sh
 
 <br>
 
-And you can check the status in the queue using `pjstat`.
+And you can check the status in the queue using <i>pjstat</i>.
 
 This run should take about 20 minutes to complete on a single node using 48 arm cores.
+
 </details>
 
 
@@ -2553,7 +2585,5 @@ And check also our [education](/education){:target="_blank"} web page where you 
 [link-cns]: https://cns-online.org "CNS online"
 [link-forum]: https://ask.bioexcel.eu/c/haddock "HADDOCK Forum"
 [link-freesasa]: https://freesasa.github.io "FreeSASA"
-[link-pdbtools]:http://www.bonvinlab.org/pdb-tools/ "PDB-Tools"
-[link-pymol]: https://www.pymol.org/ "PyMOL"
 [nat-pro]: https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D "Nature protocol"
 [tbl-examples]: https://github.com/haddocking/haddock-tools/tree/master/haddock_tbl_validation "tbl examples"
