@@ -79,7 +79,6 @@ _and note the location of the extracted files in your system_. In it you should 
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
 * `pdbs`: Contains the pre-processed PDB files
-* `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
 * `runs`: Contains pre-calculated run results for the various scenarios in this tutorial
 
