@@ -24,7 +24,7 @@ comparable to that of monoclonal antibodies. Nanobodies are used in a wide range
 
 As in antibodies, the small part of the nanobody region that binds the antigen is called **paratope**, while part of the antigen
 that binds to a nanobody is called **epitope**. Different from antibodies, nanobodies have only 
-**three complementarity-determining regions (CDRs)** (hypervariable loops) whose sequence and conformation are altered to bind to different antigens.
+**three complementarity-determining regions** (CDRs-hypervariable loops) whose sequence and conformation are altered to bind to different antigens.
 Another important feature of these molecules is that the highly conserved amino acids that are not part of the CDRs, namely the **framework regions (FRs)**,
 can play a role in the binding to the antigen.
 
@@ -59,8 +59,7 @@ instructions, and/or PyMOL commands.
 
 In order to follow this tutorial you will need to work on a Linux or MacOSX
 system. We will also make use of [**PyMOL**][link-pymol]{:target="_blank"} (freely available for
-most operating systems) in order to visualize the input and output data. We will
-provide you links to download the various required software and data.
+most operating systems) in order to visualize the input and output data.
 
 We assume that you have a working installation of HADDOCK3 on your system. 
 If not, provided you have a working Python version (3.9 to 3.13), you can install it through
@@ -377,7 +376,7 @@ We will now highlight the epitope residues. In PyMOL type the following commands
 color white, all
 </a>
 <a class="prompt prompt-pymol">
-select epitope, (resi 36+37+38+39+40+41+42+43+44+45+46+51+52+171+172+176)
+select epitope, (resi 37+38+39+40+41+42+43+44+45+46+171+172+176)
 </a>
 <a class="prompt prompt-pymol">
 color red, epitope
@@ -469,8 +468,6 @@ In fact, most of them are not part of the true epitope. Passive residues will no
 
 **Rule of thumb**: for HADDOCK it is better to be more generous rather than too strict in the definition of the interface. The docking protocol will automatically discard 50% of the active residue restraints for every docking pose, allowing to discriminate between structurally plausible and unfavourable restraints.
 
-<br>
-
 #### Defining ambiguous restraints for scenario 2
 
 We will now generate the AIRs for this scenario.
@@ -554,7 +551,7 @@ Does the defined epitope make sense? Are the exposed side chains pointing toward
 
 #### Defining ambiguous restraints for scenario 3
 
-We will now generate the AIRs filefor this scenario.
+We will now generate the AIRs file for this scenario.
 
 * For the antibody we will use the same file as before (`antibody-cdr.actpass` from the `restraints` directory).:
 
@@ -574,7 +571,6 @@ haddock3-restraints active_passive_to_ambig restraints/antibody-cdr.actpass rest
 </a>
 
 This will generate the file `cdr-mut_epi.tbl`. A copy of this file is available in the `restraints` directory.
-
 
 <hr>
 <hr>
@@ -1032,9 +1028,10 @@ plot = true
 #=========================================================================
 {% endhighlight %}
 
-With this workflow we will mutate all the interface residues to alanine and then to glycine (in the second `alascan` step). The `alascan` module will generate a plot with the difference between the scores of the wild-type and mutant structures. The `scan_residue` parameter allows to specify the residue to mutate to. The default is alanine, but you can change it to any other residue.
+With this workflow we will mutate all the interface residues to alanine and then to glycine (in the second `alascan` step). The `alascan` module will generate a plot with the difference between the scores of the wild-type and mutant structures. The `scan_residue` parameter allows to specify the scanning residue with a three-letter code. The default is alanine.
 
 To run the analysis, execute the following command:
+
 <a class="prompt prompt-cmd">
 haddock3 ./haddock3/nanobody-antigen-analysis.cfg
 </a>
@@ -1050,6 +1047,7 @@ Which amino acid shows the most significant impact on the antigen (chain B)?
 </a>
 
 Let's visualize the residue ASP114 on the nanobody with pyMOL:
+
 <a class="prompt prompt-pymol">
 File menu -> Open -> 7x2mB_ref.pdb <br>
 util.cbc <br>
@@ -1077,7 +1075,7 @@ if we zoom into the interaction...
   </center>
 </figure>
 
-we can see a strong electrostatic interaction between ASP114 and LYS46 of the antigen. It is reasonable to expect that subsitituting ASP114 with an alanine would have a significant impact on the binding affinity of the nanobody to the antigen.
+we can see a strong electrostatic interaction between ASP114 and LYS46 of the antigen. It is reasonable to expect that subsitituting ASP114 with an alanine would have a significant impact on the binding affinity of the nanobody to the antigen, thus destabilizing the complex.
 
 Now that we idenfitied a possible key residue, we could test all the possible mutations:
 {% highlight toml %}
@@ -1114,7 +1112,7 @@ We have demonstrated the usage of HADDOCK3 in a nanobody-antigen modelling and d
 
 We have shown how to define ambiguous restraints for the docking, and how to set up the docking run using the HADDOCK3 software. We have also shown how to analyze the results of the docking run.
 
-A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published in [biorxiv](https://){:target="_blank"}. Please refer to this publication for more information on the performance of HADDOCK3 on nanobody-antigen systems. If you use HADDOCK in your nanobody-focused research, please cite this publication.
+A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published in [biorxiv](./){:target="_blank"}. Please refer to this publication for more information on the performance of HADDOCK3 on nanobody-antigen systems. If you use HADDOCK in your nanobody-focused research, please cite this publication.
 
 If you want to ask questions and receive feedback don't hesitate to contact us at the [Bioexcel HADDOCK forum][link-forum]. 
 
