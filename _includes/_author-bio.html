@@ -9,14 +9,15 @@
 {% endif %}
 <p>{{ author.bio }}</p>
 {% if author.email %}<a href="mailto:{{ author.email }}" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>{% endif %}
-{% if author.twitter %}<a href="http://twitter.com/{{ author.twitter }}" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>{% endif %}
-{% if author.facebook %}<a href="http://facebook.com/{{ author.facebook }}" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>{% endif %}
-{% if author.google.plus %}<a href="http://plus.google.com/+{{ author.google.plus }}" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>{% endif %}
-{% if author.linkedin %}<a href="http://linkedin.com/in/{{ author.linkedin }}" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>{% endif %}
-{% if author.github %}<a href="http://github.com/{{ author.github }}" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>{% endif %}
+{% if author.twitter%}<a href="https://bsky.app/{{ author.bluesky}}" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Bluesky</a>{% endif %}
+{% if author.facebook %}<a href="https://facebook.com/{{ author.facebook }}" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>{% endif %}
+{% if author.google.plus %}<a href="https://plus.google.com/+{{ author.google.plus }}" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>{% endif %}
+{% if author.linkedin %}<a href="https://linkedin.com/in/{{ author.linkedin }}" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>{% endif %}
+{% if author.github %}<a href="https://github.com/{{ author.github }}" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>{% endif %}
 {% if author.youtube %}<a href="https://www.youtube.com/user/{{ author.youtube }}" class="author-social" target="_blank"><i class="fa fa-youtube-play"></i> Youtube</a>{% endif %}
 <a href="{{ site.url }}/feed.xml" class="author-social" target="_blank"><i class="fa fa-rss"></i> Subscribe</a>
 <p><br>Supported by:</p>
+<a target=new href="https://https://www.esciencecenter.nl"><img height="30" src="{{ site.url }}/images/escience-center-logo.png"></a><br>
 <a target=new href="https://www.bioexcel.eu"><img height="30" src="{{ site.url }}/images/Bioexcel_logo.png"></a><br>
 <a target=new href="https://www.ganana.eu"><img height="30" src="{{ site.url }}/images/Ganana-logo.png"></a><br>
 <a target=new href="https://www.egi.eu"><img height="40" src="{{ site.url }}/images/EGI_logo.png"></a>
