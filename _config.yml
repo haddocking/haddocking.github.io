@@ -48,7 +48,7 @@ owner:
     ad-client:
     ad-slot:
   github: haddocking
-  bluesky: amjjbonvin.bsky.social
+  twitter: amjjbonvin.bsky.social
   x: amjjbonvin
 
 include: [".htaccess"]
