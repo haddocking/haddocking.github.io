@@ -14,7 +14,7 @@ image:
 
 ![Structure + Binformatic/Biophysical Data => Complex](/images/HADDOCK3-logo.png) 
 
-_Version:_ 
+_Version:_ 2025.5.0
 
 _Authors:_ Computational structural biology group, Utrecht University  
 
