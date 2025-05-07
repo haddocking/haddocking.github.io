@@ -6,6 +6,8 @@ image:
 ---
 ## 2025
 
+* M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoevenand **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1101/2025.04.30.651432). _BioRXiv._ 10.1101/2025.04.30.651432 (2025).
+
 * M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1101/2025.02.24.639865). _BioRXiv._ 10.1101/2025.02.24.639865 (2025).
 
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01810). _J. Chem. Inf. Mod._ Advanced Online Publication (2025).
