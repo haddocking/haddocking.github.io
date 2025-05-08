@@ -11,8 +11,9 @@ image:
 
 ***<font size="+2" color="RED">H</font>*****igh *<font size="+2" color="RED">A</font>*mbiguity *<font size="+2" color="RED">D</font>*riven biomolecular *<font size="+2" color="RED">DOCK</font>*ing**.
 
-
-![Structure + Binformatic/Biophysical Data => Complex](/images/HADDOCK3-logo.png) 
+<center>
+<img src="/images/HADDOCK3-logo.png" width="50%">
+</center>
 
 _Version:_ 2025.5.0
 
