@@ -4,23 +4,31 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2025
+
+* M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoevenand **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1101/2025.04.30.651432). _BioRXiv._ 10.1101/2025.04.30.651432 (2025).
+
+* M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1101/2025.02.24.639865). _BioRXiv._ 10.1101/2025.02.24.639865 (2025).
+
+* A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01810). _J. Chem. Inf. Mod._ Advanced Online Publication (2025).
+
+
 ## 2024
+
 * V. Reys∗, Ma. Giulini∗, V. Cojocaru, A. Engel, X. Xu, J. Roel-Touris, C. Geng, F. Ambrosetti, B.
-Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](https://doi.org/10.1101/2024.09.16.613212) _BioRXiv._ (2024).
+Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789). _Proteins: Struc. Funct. &amp; Bioinformatics_  Advanced Online Publication (2024).
 
 * K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1101/2024.08.09.60700). _BioRXiv._ 10.1101/2024.08.09.60700 (2024).
 
 * X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
 
-* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://www.biorxiv.org/content/10.1101/2024.06.07.597882v2) _BioRXiv_ 10.1101/2024.06.07.597882 (2024).
+* G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ *4*:vbae153 (2024).
 
-* A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://doi.org/10.1101/2024.06.02.597018). _BioRXiv._ 10.1101/2024.06.02.597018 (2024).
+* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1021/acs.jcim.4c01372). _J. Chem. Inf. Mod._ *64*, 7816–7825 (2024).
 
-* A. Ranaudo, M. Giulini, A. Pelissou Ayuso and **A.M.J.J. Bonvin**. [Modelling Protein-Glycan Interactions with HADDOCK](https://doi.org/10.1101/2024.07.31.605986). _J. Chem. Inf. Mod._ In press (2024). [BioRXiv](https://doi.org/10.1101/2024.07.31.605986)
+* M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1093/bioinformatics/btae583). _Bioinformatics_ *40*:btae583, p. 1-11 (2024).[BioRxiv](https://www.biorxiv.org/content/10.1101/2023.11.17.567543v1)
 
-* M. Giulini, C. Schneider, D. Cutting, N. Desai, C. Deane and **A.M.J.J. Bonvin**. [Towards the accurate modelling of antibody-antigen complexes from sequence using machine learning and information-driven docking](https://doi.org/10.1093/bioinformatics/btae583). _Bioinformatics_ Advanced Online Publication, 10.1093/bioinformatics/btae583 (2024).[BioRxiv](https://www.biorxiv.org/content/10.1101/2023.11.17.567543v1)
-
-* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
+* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, *19*, 3219–3241 (2024).
 
 * B. Vallat, B.M. Webb, J.D. Westbrook, T. Goddard, C.A. Hanke, A. Graziadei, E. Peisach, A. Zalevsky, J. Sagendorf, H. Tangmunarunkit, S. Voinea, M. Sekharan, J. Yu, **A.M.J.J. Bonvin**, Fr, DiMaio, G. Hummer, J. Meiler, E. Tajkhorshid, T. Ferrin, C.L. Lawson, A. Leitner, J. Rappsilber, C.A.M. Seidel, C.M. Jeffries, S.K. Burley, J. Hoch, G.i Kurisu, K.e Morris, A. Patwardhan, S. Velankar, T. Schwede, J. Trewhella, C. Kesselman, H.M. Berman, A. Sali. [IHMCIF: An extension of PDBx/mmCIF data standard for integrative structure determination methods](https://doi.org/10.1016/j.jmb.2024.168546). _J. Mol. Biol._, *436*:168546 (2024).
 
@@ -28,7 +36,7 @@ Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van
 
 * M. Giulini, R.V. Honorato, J.L. Rivera, **A.M.J.J. Bonvin**. [ARCTIC-3D: Automatic Retrieval and ClusTering of Interfaces in Complexes from 3D structural information](https://doi.org/10.1038/s42003-023-05718-w). _Comm. Biol._  *7*:49, p. 1-9  (2024).
 
-* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1093/bioadv/vbad191). _Bioinfo. Adv._  vbad191, _Advanced Online Publication  (2024).
+* X. Xu, **A.M.J.J. Bonvin**. [DeepRank-GNN-esm: A Graph Neural Network for Scoring Protein-Protein Models using Protein Language Model](https://doi.org/10.1093/bioadv/vbad191). _Bioinfo. Adv._  *4*:vbad191  (2024).
 
 
 ## 2023
@@ -1196,4 +1204,3 @@ _J. Magn. Reson._ *91*, 659-664 (1991).
 * I. Burghardt , L. Di Bari, **A. Bonvin** and G. Bodenhausen
 [Effect of strong coupling in multiple-quantum-filtered two-dimensional NOE spectroscopy.](https://doi.org/doi:10.1016/0022-2364(90)90044-A)
 _J. Magn. Reson._ *86*, 652-656 (1990).
-
