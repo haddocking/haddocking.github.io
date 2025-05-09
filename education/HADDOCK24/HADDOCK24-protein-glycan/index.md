@@ -28,7 +28,7 @@ makes the prediction of glycan-protein interactions a challenging task.
 
 In this tutorial we will be working with *Family 16 Cabohydrate Binding Domain Module 1* of the *Caldanaerobius polysaccharolyticus* thermophile
 (PDB code [2ZEW](https://www.ebi.ac.uk/pdbe/entry/pdb/2ZEW){:target="_blank"}) and a linear homopolymer,
-*4-beta-glucopyranose*, as glycan
+*5-beta-glucopyranose*, as glycan
 (PDB code of the complex [2ZEX](https://www.ebi.ac.uk/pdbe/entry/pdb/2ZEX){:target="_blank"}).
 
 <figure style="text-align: center;">
@@ -54,7 +54,7 @@ In order to run this tutorial you will need to have the following software insta
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
-Further we are providing pre-processed PDB files for docking and analysis (but the preprocessing of those files will also be explained in this tutorial). For this _download and unzip the following_ [zip archive](/education/HADDOCK24/HADDOCK24-protein-glycan/HADDOCK2.4-protein-glycan.zip){:target="_blank"}
+Further we are providing pre-processed PDB files for docking and analysis. For this _download and unzip the following_ [zip archive](/education/HADDOCK24/HADDOCK24-protein-glycan/HADDOCK2.4-protein-glycan.zip){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 Once unzipped, you should find the following files:
 
@@ -133,7 +133,7 @@ Now it is time to visualize the strucure of our glycan. In this case we used the
 
 Our glycan is a linear polymer consisting of 5 beta-D-glucopyranose units. Beta-D-glucopyranose is a common monosaccharide found basically in all the living organisms. In this case the four monosaccharides are linked by beta-1,4-glycosidic bonds, where the *anomeric carbon* (C1) of one monosaccharide is linked to the C4 of the next one.
 
-Let's have a look at our generated glycan. Start pymol and then load the generated PDB file from the file menu:
+Let's have a look at our generated glycan. Start PyMOL and then load the generated PDB file from the file menu:
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 2ZEX_l_u.pdb
@@ -166,7 +166,7 @@ The `cycles=0` option will make sure that no atoms are neglected during the alig
 align 2ZEX_l_u, 2ZEX
 </a>
 
-<a class="prompt prompt-question">What is the RMSD between the two glycan structures? In which of the four monosaccharide units is the model accurate? In which ones is it not?</a>
+<a class="prompt prompt-question">What is the RMSD between the two glycan structures? In which of the five monosaccharide units is the model accurate? In which ones is it not?</a>
 
 <figure align="center">
   <img width="90%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/glycan_2zex_comparison.png">
@@ -185,7 +185,7 @@ The two structures are pretty close to each other..let's see if HADDOCK can crea
 
 ### Registration / Login
 
-In previous steps we have inspected the binding site on the protein. For the glycan, we assume that we have no information about which saccarides interact with the protein.
+In previous steps we have inspected the binding site on the protein. For the glycan, we assume that we have no information about which monosaccharides interact with the protein.
 
 If not provided with special workshop credentials, in order to start the submission you need first to register. For this go to [https://wenmr.science.uu.nl/haddock2.4/](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and click on **Register**.
 
@@ -263,7 +263,7 @@ By default HADDOCK will automatically filter our residues that have a relative s
 
 * **Step 7:** Specify the residues for the second molecule. For this, unfold the "Molecule 2 - parameters" if not already unfolded.
 
-Here we want to select the full glycan as passive, as we don't know whether all the monosaccharide units take part in the interaction. Since our molecule is a glycan we have to perform a trick to do this.
+Here we want to select the full glycan as passive, as we don't know whether all the monosaccharide units take part in the interaction.
 
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)
 </a>
@@ -271,11 +271,13 @@ Here we want to select the full glycan as passive, as we don't know whether all 
 <a class="prompt prompt-info">Click on the sequence (XXXXX) box to select the whole sequence of the glycan.
 </a>
 
-<a class="prompt prompt-info">Move the active residues selection (1,2,3,4,5) to the passive residues box.
+<a class="prompt prompt-info">Cut the active residues selection (1,2,3,4,5) and paste it to the passive residues box.
 </a>
 
 <a class="prompt prompt-info">Click on the Visualize residues button and make sure all the glycan monosaccharide units have been selected. They should be highlighted in green to indicate that they are selected as passive.
 </a>
+
+### Docking parameters for protein-glycan modelling
 
 * **Step 8:** Click on the **Next** button on the bottom of the page.
 
@@ -300,7 +302,7 @@ If not already done automatically, we should change the followin clustering para
 <a class="prompt prompt-info">Scoring parameters -> Evdw 1 -> 1.0
 </a>
 
-The interface allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the file upload inteface of the HADDOCK webserver. The haddockparameter file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again.
+The interface allows us to download the input structures of the docking run (in the form of a tgz archive) and a haddockparameter file which contains all the settings and input structures for our run (in json format). We strongly recommend downloading this file as it will allow you to repeat the run by uploading it into the file upload interface of the HADDOCK webserver. The haddockparameter file also serves as a run input reference. It can be edited to change a few parameters and repeat the run without going through the whole menu process again.
 
 * **Step 9:** Click on the "Submit" button at the bottom left of the interface.
 
@@ -459,6 +461,60 @@ We hope you have enjoyed this tutorial and that you have learned something new. 
 
 <hr>
 <hr>
+
+## BONUS: Adding pairwise contact information
+
+In the tutorial we used information about the protein binding site to drive the docking. Such information, though, was quite coarse, as we only had a list of residues that were supposed to be part of the binding site.
+
+In this section we will see how you can add more fine-grained information to HADDOCK. As an example, we will assume that we know that a Saturation Transfer Difference (STD) NMR experiment has been performed and that 2 protons on the third monosaccharide give the strongest STD signal. This means that these two hydrogens are in close contact with the protein.
+
+Then, let's assume we are able to infer the contact those two hydrogens make with the protein and in particular with residue Gln84. 
+
+<a class="prompt prompt-info">Since HADDOCK does not keep all the hydrogens by default, we define the restraints with respect to the two oxygens of the glycan.</a>
+
+The two protons are those located on the O2 and O3 oxygens, that are located at a distance of 2.7 and 3.0 Å from the two Gln84 terminal atoms, respectively. We're sure about these contacts, so we will add them to the docking run as an unambiguous restraints. By doing this, the restraints will be always enforced, and all our resulting models should be compatible with them.
+
+To add these restraints we have to create a file that contains information about the restraints (table file):
+
+```
+! std nmr restraints
+assign (resid 84 and name OE1 and segid A) (resid 3 and name O2 and segid B) 2.7 0.00 0.00
+assign (resid 84 and name NE2 and segid A) (resid 3 and name O3 and segid B) 3.0 0.00 0.00
+```
+
+The first line is a comment. The second and third lines contain the information about the restraints. Between the two parenthesis you can see the selection of the atoms that are restrained: the first atom is the one from the protein, and the second one is the one from the glycan. The last three numbers are the selected distance, the lower bound and the upper bound of the restraint. The latter are 0.0, thus indicating that any deviation from the specified distance will be penalized during the docking.
+
+<figure style="text-align: center">
+  <img width="80%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/std-nmr.png">
+</figure>
+<center>
+  <i>Graphical representation of the imposed unambiguous restraints between the glycan and the protein.</i>
+</center>
+
+<br>
+
+<a class="prompt prompt-info">Save the file as contacts.tbl in the same directory as the PDB files.</a>
+
+<a class="prompt prompt-info">Now let's go back to the HADDOCK webserver perform the docking again!</a>
+
+* **Step 1:** Go to the HADDOCK webserver and click on **Submit a new job**.
+
+* **Step 2:** repeat steps 1-7 as [before](#submission-and-analysis-of-structures), including the [generation of restraints](#definition-of-interfaces-to-guide-the-docking).
+
+* **Step 3:** In the **Docking parameters** section, you can find the option to upload an unambiguous restraints table file (**You can supply a HADDOCK restraints TBL file with restraints that will always be enforced (unambiguous restraints)**). Upload the `contacts.tbl` file you just created.
+
+* **Step 4:** Adjust the other docking parameters as explained [in the dedicated section of the tutorial](#docking-parameters-for-protein-glycan-modelling).
+
+* **Step 5:** Click on the **Submit** button at the bottom left of the interface.
+
+You can inspect the results of a precalculated run [here](https://rascar.science.uu.nl/haddock2.4/result/1184711698/485935-2zex-bonus).
+
+<a class="prompt prompt-question">How many clusters are generated? Is the first cluster unambiguously better than the second and third ones? Are the HADDOCK scores better than in the previous case?</a>
+
+<a class="prompt prompt-question">Can you make an hypothesis about the reason why we have a lower number of clusters than before?</a>
+
+<a class="prompt prompt-question">What is the l-RMSD of the best model of the top cluster?</a>
+
 
 <!-- Links -->
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
