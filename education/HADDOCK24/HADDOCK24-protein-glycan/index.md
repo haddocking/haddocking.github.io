@@ -54,7 +54,7 @@ In order to run this tutorial you will need to have the following software insta
 
 Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
-Further we are providing pre-processed PDB files for docking and analysis (but the preprocessing of those files will also be explained in this tutorial). For this _download and unzip the following_ [zip archive](./){:target="_blank"}
+Further we are providing pre-processed PDB files for docking and analysis (but the preprocessing of those files will also be explained in this tutorial). For this _download and unzip the following_ [zip archive](/education/HADDOCK24/HADDOCK24-protein-glycan/HADDOCK2.4-protein-glycan.zip){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 Once unzipped, you should find the following files:
 
@@ -336,12 +336,14 @@ While the name of the clusters is defined by their size (cluster 1 is the larges
 
 **In B** the visualization option of the various models is shown. You can visualize online a model by clicking on the **eye** icon, or download those for further analysis.
 
+<a class="prompt prompt-info">Toggle the Surface or the Line buttons to visualize the glycan.</a>
+
 **In C** a view of some graphical representation of the results shown at the bottom of the page under **Model analysis** is shown. Distribution of various measures (HADDOCK score, van der Waals energy, ...) as a function of the Fraction of Common Contact with- and RMSD from the best generated model (the best scoring model) are shown. The models are color-coded by the cluster they belong to. You can turn on and off specific clusters, but also zoom in on specific areas of the plot.
 
-The bottom graphs in **Cluster analysis** show you the distribution of components of the HADDOCK score (Evdw, Eelec and Edesol) for the various clusters.
+**In D** the **Cluster analysis** section shows you the distribution of components of the HADDOCK score (Evdw, Eelec and Edesol) for the various clusters.
 
 <figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-antibody-antigen/result_page.png">
+<img src="protein-glycan-results-page.png">
 </figure>
 
 The ranking of the clusters is based on the average score of the top 4 members of each cluster. The score is calculated as:
@@ -457,8 +459,6 @@ We hope you have enjoyed this tutorial and that you have learned something new. 
 
 <hr>
 <hr>
-
-
 
 <!-- Links -->
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
