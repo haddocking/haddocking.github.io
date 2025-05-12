@@ -179,7 +179,8 @@ structure of the complex.
 If you are running this tutorial on your own resources _download and unzip the following_
 [zip archive](https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
-If running as part of the EU-ASEAN HPC school see the instructions in the next section.
+
+__If running as part of a BioExcel workshop or summerschool see the instructions in the next section.__
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
@@ -224,11 +225,12 @@ cd HADDOCK3-antibody-antigen
 
 This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
 
-HADDOCK3 has been pre-installed. To activate the HADDOCK3 environment type:
+HADDOCK3 is part of the standard software supported on discoverer. To activate the HADDOCK3 environment load the following modules:
 
 
 <a class="prompt prompt-cmd">
-source /valhalla/projects/school-01/HADDOCK/haddock3/.venv/bin/activate
+module load python/3/3.12<br>
+module load haddock3/2025.5.0
 </a>
 
 You can then test that `haddock3` is indeed accessible with:
@@ -969,7 +971,8 @@ Here is an example of such an execution script (also provided in the `HADDOCK3-a
 #SBATCH --mem-per-cpu 1500
 #SBATCH --time 04:00:00
 
-source /valhalla/projects/school-01/HADDOCK/haddock3/.venv/bin/activate
+module load python/3/3.12
+module load haddock3/2025.5.0
 haddock3 workflows/docking-antibody-antigen.cfg
 
 {% endhighlight %}
