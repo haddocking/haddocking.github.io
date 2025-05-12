@@ -1204,4 +1204,3 @@ _J. Magn. Reson._ *91*, 659-664 (1991).
 * I. Burghardt , L. Di Bari, **A. Bonvin** and G. Bodenhausen
 [Effect of strong coupling in multiple-quantum-filtered two-dimensional NOE spectroscopy.](https://doi.org/doi:10.1016/0022-2364(90)90044-A)
 _J. Magn. Reson._ *86*, 652-656 (1990).
-
