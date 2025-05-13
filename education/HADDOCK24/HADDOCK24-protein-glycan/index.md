@@ -24,7 +24,7 @@ by glycosidic bonds. Glycans are involved in a wide range of biological processe
 cell-cell recognition, cell adhesion, and immune response. Glycan are highly diverse and complex 
 in their structure, as they can involve multiple *branches* and different *linkages*, namely different ways 
 in which a glycosidic bond can connect two monosaccharides. This complexity together with their flexibility 
-makes the prediction of glycan-protein interactions a challenging task.
+makes the prediction of protein-glycan interactions a challenging task.
 
 In this tutorial we will be working with *Family 16 Cabohydrate Binding Domain Module 1* of the *Caldanaerobius polysaccharolyticus* thermophile
 (PDB code [2ZEW](https://www.ebi.ac.uk/pdbe/entry/pdb/2ZEW){:target="_blank"}) and a linear homopolymer,
@@ -92,13 +92,13 @@ Can you already identify a possible binding site for a long, linear, unbranched 
 
 Here we assume that we have enough information about the glycan binding site on the protein, but no knowledge about which monosaccharide units are relevant for the binding. In this case (see Fig. 1), all the five monosaccharide units are at the interface, although this might not be true in general, especially when longer glycans are considered.
 
-The following residues correspond to the protein binding site, as calculated from the crystal structure of the complex are:
+The residues corresponding to the glycan binding site on the protein (calculated from the crystal structure of the complex) are:
 
 <pre style="background-color:#DAE4E7">
 23,24,80,82,84,96,98,100,124,126,128
 </pre>
 
-Let us visualize the interface on our unbound protein structure. For this start PyMol and load the PDB file of the unbound protein:
+Let us visualize this interface on our unbound protein structure. For this start PyMol and load the PDB file of the unbound protein:
 
 <a class="prompt prompt-pymol">
 File menu -> Open -> select 2ZEW_clean.pdb
@@ -160,13 +160,13 @@ fetch 2ZEX
 align 2ZEX_l_u, 2ZEX, cycles=0
 </a>
 
-The `cycles=0` option will make sure that no atoms are neglected during the alignment and RMSD calculation. You can check what happens if you don't use this option.
+The `cycles=0` option will make sure that no atoms are neglected during the alignment and RMSD calculation. You can check what happens if you do not use this option.
 
 <a class="prompt prompt-pymol">
 align 2ZEX_l_u, 2ZEX
 </a>
 
-<a class="prompt prompt-question">What is the RMSD between the two glycan structures? In which of the five monosaccharide units is the model accurate? In which ones is it not?</a>
+<a class="prompt prompt-question">What is the RMSD between the two glycan structures (find the value reported by PyMOL)? In which of the five monosaccharide units is the model the most accurate? In which ones is it not?</a>
 
 <figure align="center">
   <img width="90%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/glycan_2zex_comparison.png">
@@ -176,7 +176,7 @@ align 2ZEX_l_u, 2ZEX
 </center>
 <br>
 
-The two structures are pretty close to each other..let's see if HADDOCK can create a reasonable model of the interaction!
+The two structures are pretty close to each other... Let us next see if HADDOCK can create a reasonable model of the interaction!
 
 <hr>
 <hr>
@@ -247,7 +247,7 @@ If everything went well, the interface window should have updated itself and it 
 Active residues (directly involved in the interaction) -> 23,24,80,82,84,96,98,100,124,126,128
 </a>
 
-Then uncheck the option to automatically define passive residues: in our case we're defining the whole protein pocket as active, so this is not required.
+Then uncheck the option to automatically define passive residues: in our case we are defining the whole protein pocket as active, and the glycan will be defined as passive only, so this is not required.
 
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)
 </a>
@@ -263,7 +263,7 @@ By default HADDOCK will automatically filter our residues that have a relative s
 
 * **Step 7:** Specify the residues for the second molecule. For this, unfold the "Molecule 2 - parameters" if not already unfolded.
 
-Here we want to select the full glycan as passive, as we don't know whether all the monosaccharide units take part in the interaction.
+Here we want to select the full glycan as passive, as we do not know whether all the monosaccharide units take part in the interaction.
 
 <a class="prompt prompt-info">Automatically define passive residues around the active residues -> **uncheck** (checked by default)
 </a>
@@ -271,7 +271,7 @@ Here we want to select the full glycan as passive, as we don't know whether all 
 <a class="prompt prompt-info">Click on the sequence (XXXXX) box to select the whole sequence of the glycan.
 </a>
 
-<a class="prompt prompt-info">Cut the active residues selection (1,2,3,4,5) and paste it to the passive residues box.
+<a class="prompt prompt-info">This should automatically add the 5 glycan residues (1,2,3,4,5) to the passive residues box.
 </a>
 
 <a class="prompt prompt-info">Click on the Visualize residues button and make sure all the glycan monosaccharide units have been selected. They should be highlighted in green to indicate that they are selected as passive.
@@ -283,7 +283,7 @@ Here we want to select the full glycan as passive, as we don't know whether all 
 
 Here we will tweak a few parameters to make the docking more accurate.
 
-**Sampling parameters** : here let's just remove the final refinement step, as it is not needed for this type of docking.
+**Sampling parameters** : Here we will remove the final refinement step, as, as in the case of small ligands, it is not recommended for this type of molecules.
 
 <a class="prompt prompt-info">Sampling parameters -> Perform final refinement -> **uncheck** (checked by default)
 </a>
@@ -330,6 +330,7 @@ In case you do not want to wait for your runs to be finished, a precalculated ru
 <a class="prompt prompt-question">Inspect the result page</a>
 
 <a class="prompt prompt-question">How many clusters are generated?</a>
+
 In the figure below you can see different parts of the result page. 
 
 **In A** the result page reports the number of clusters and for the top 10 clusters also the related statistics (HADDOCK score, Size, RMSD, Energies, BSA and Z-score).
@@ -418,7 +419,10 @@ rms_cur 2ZEX_target and chain B, cluster10_1 and chain B <br>
 What is the l-RMSD of the best model of the top cluster? What about the second and third clusters? Which of them is the best one?
 </a>
 
-<a class="prompt prompt-question">Did the glycan conformation improve thanks to the refinement in any of the selected models?</a>
+
+Let us now focus on the conformation of the glycan itself.
+
+<a class="prompt prompt-question">Did the flexible refinement improved the glycan conformation?</a>
 
 To address this question you can use the standard align command, focusing on chain B:
 
@@ -426,7 +430,23 @@ To address this question you can use the standard align command, focusing on cha
 align cluster10_1 and chain B, 2ZEX_target and chain B, cycles=0
 </a>
 
-Let’s now check if the active residues which we have defined (the protein binding site) are actually part of the interface. In the PyMOL command window type:
+Compare the RMSD values you obtained with that of the conformation we used originally for docking. 
+
+<details style="background-color:#DAE4E7">
+ <summary style="bold">
+ <i>See RMSD values of the orignal and docked glycan conformations with respect to that of the reference crystal structure</i>
+  </summary>
+  <pre>
+    2ZEX_l_u.pdb
+    cluster1_1.pdb
+    cluster2_1.pdb
+    cluster3_1.pdb
+    ...
+  </pre>
+  <br>
+</details>
+
+Let us now check if the active residues which we have defined (the protein binding site) are actually part of the interface. In the PyMOL command window type:
 
 <a class="prompt prompt-pymol">
 select binding_site, chain A and (resi 23+24+80+82+84+96+98+100+124+126+128) and not 2ZEX_target<br>
@@ -455,7 +475,7 @@ Are the residues of the binding_site at the interface with the glycan?
 
 ## Conclusions
 
-In this tutorial we have demonstrated the use of the HADDOCK 2.4 webserver to predict the structure of a protein-glycan complex using information about the protein binding site. Always check and compare multiple clusters, don't blindly trust the cluster with the best HADDOCK score! We have also discussed the analysis of the docking results and the comparison with the reference structure.
+In this tutorial we have demonstrated the use of the HADDOCK 2.4 webserver to predict the structure of a protein-glycan complex using information about the protein binding site. Always check and compare multiple clusters, do not blindly trust the cluster with the best HADDOCK score! We have also discussed the analysis of the docking results and the comparison with the reference structure.
 
 We hope you have enjoyed this tutorial and that you have learned something new. If you have any questions or feedback, please do not hesitate to contact us on the [HADDOCK forum][link-forum]{:target="_blank"}.
 
