@@ -420,7 +420,6 @@ rms_cur 2ZEX_target and chain B, cluster10_1 and chain B <br>
 What is the l-RMSD of the best model of the top cluster? What about the second and third clusters? Which of them is the best one?
 </a>
 
-
 Let us now focus on the conformation of the glycan itself.
 
 <a class="prompt prompt-question">Did the flexible refinement improved the glycan conformation?</a>
@@ -438,10 +437,10 @@ Compare the RMSD values you obtained with that of the conformation we used origi
  <i>See RMSD values of the original and docked glycan conformations with respect to that of the reference crystal structure</i>
   </summary>
   <pre>
-    2ZEX_l_u.pdb
-    cluster1_1.pdb
-    cluster2_1.pdb
-    cluster3_1.pdb
+    2ZEX_l_u.pdb: 1.071
+    cluster1_1.pdb: 1.004
+    cluster2_1.pdb: 0.968
+    cluster10_1.pdb: 0.954
     ...
   </pre>
   <br>
