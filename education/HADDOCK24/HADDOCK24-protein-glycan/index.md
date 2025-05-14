@@ -496,11 +496,11 @@ To add these restraints we have to create a file that contains information about
 
 ```
 ! STD NMR restraints
-assign (resid 3 and name H5 and segid B) (resid 128 and segid A or resid 23 and segid A) 2.5 2.5 0.00
-assign (resid 4 and name H4 and segid B) (resid 128 and segid A or resid 23 and segid A) 2.5 2.5 0.00
+assign (resid 3 and name H5 and segid B) ((resid 128 and segid A) or (resid 23 and segid A)) 2.5 2.5 0.00
+assign (resid 4 and name H4 and segid B) ((resid 128 and segid A) or (resid 23 and segid A)) 2.5 2.5 0.00
 ```
 
-The first line is a comment. The second and third lines contain the information about the restraints. Between the two parenthesis you can see the selection of the atoms that are restrained: the first atom is the one from the glycan, and the second one is the selection of the aromatic residues at the protein binding site. The last three numbers are the selected distance, the lower bound and the upper bound of the restraint. The latter is 0.0, thus indicating that any distance larger than 2.5A will be penalized during the docking.
+The first line is a comment. The second and third lines contain the information about the restraints. Between the two parenthesis you can see the selection of the atoms that are restrained: the first atom is the one from the glycan, and the second one is the (ambiguous) selection of the aromatic residues at the protein binding site. The last three numbers are the selected distance, the lower bound and the upper bound of the restraint. The latter is 0.0, thus indicating that any distance larger than 2.5A will be penalized during the docking.
 
 <figure style="text-align: center">
   <img width="100%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/std-nmr.png">
