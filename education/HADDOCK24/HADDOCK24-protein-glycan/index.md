@@ -139,14 +139,15 @@ Let's have a look at our generated glycan. Start PyMOL and then load the generat
 File menu -> Open -> select 2ZEX_l_u.pdb
 </a>
 
-First, let's check that the linkages are correct. You can isolate C1 and C4 atoms with the following commands:
+First, let's check that the linkages are correct. You can measure the distance between consecutive C1 and C4 atoms with the following command:
 
 <a class="prompt prompt-pymol">
-select c1, name C1 <br>
-select c4, name C4
+distance resi 1 and name C4, resi 2 and name C1
 </a>
 
-Alternatively, you can simply click on the atoms in the PyMOL window to select them.
+Then you will see a dashed line between the two atoms showing the distance.
+
+Alternatively, you can simply click on the atoms in the PyMOL window to inspect them.
 
 <a class="prompt prompt-question">Are all the C1 and C4 atoms located as expected? Are all of them involved in a glycosidic bond?</a>
 
@@ -312,7 +313,7 @@ Currently your run should be queued but eventually its status will change to "Ru
 
 The page will automatically refresh and the results will appear upon completion of the run (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
 
-If you do not wish to wait for the run to finish, you can find the results of the run [at this link](https://rascar.science.uu.nl/haddock2.4/result/1184711698/484985-2zex).
+If you do not wish to wait for the run to finish, you can find the results of the run [at this link](https://rascar.science.uu.nl/haddock2.4/result/4242424242/488462-2zex-modeling).
 
 <hr>
 <hr>
@@ -325,7 +326,7 @@ If you do not wish to wait for the run to finish, you can find the results of th
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email).
 
-In case you do not want to wait for your runs to be finished, a precalculated run can be found [here](https://rascar.science.uu.nl/haddock2.4/result/1184711698/484985-2zex).
+In case you do not want to wait for your runs to be finished, a precalculated run can be found [here](https://rascar.science.uu.nl/haddock2.4/result/4242424242/488462-2zex-modeling).
 
 <a class="prompt prompt-question">Inspect the result page</a>
 
@@ -434,7 +435,7 @@ Compare the RMSD values you obtained with that of the conformation we used origi
 
 <details style="background-color:#DAE4E7">
  <summary style="bold">
- <i>See RMSD values of the orignal and docked glycan conformations with respect to that of the reference crystal structure</i>
+ <i>See RMSD values of the original and docked glycan conformations with respect to that of the reference crystal structure</i>
   </summary>
   <pre>
     2ZEX_l_u.pdb
@@ -486,36 +487,34 @@ We hope you have enjoyed this tutorial and that you have learned something new. 
 
 In the tutorial we used information about the protein binding site to drive the docking. Such information, though, was quite coarse, as we only had a list of residues that were supposed to be part of the binding site.
 
-In this section we will see how you can add more fine-grained information to HADDOCK. As an example, we will assume that we know that a Saturation Transfer Difference (STD) NMR experiment has been performed and that 2 protons on the third monosaccharide give the strongest STD signal. This means that these two hydrogens are in close contact with the protein.
+In this section we will see how you can add more fine-grained information to HADDOCK. As an example, we will assume that we know that a Saturation Transfer Difference (STD) NMR experiment has been performed and that 2 protons give the strongest STD signal with respect to the aromatic residues in the binding site. This means that these two hydrogens are in close contact with the side chains of the two trypthophan residues (TRP23 and TRP128).
 
-Then, let's assume we are able to infer the contact those two hydrogens make with the protein and in particular with residue Gln84. 
+<a class="prompt prompt-info">In this experiment you would not know which of the two protons interacts with which tryptophan residues.</a>
 
-<a class="prompt prompt-info">Since HADDOCK does not keep all the hydrogens by default, we define the restraints with respect to the two oxygens of the glycan.</a>
-
-The two protons are those located on the O2 and O3 oxygens, that are located at a distance of 2.7 and 3.0 Å from the two Gln84 terminal atoms, respectively. We're sure about these contacts, so we will add them to the docking run as an unambiguous restraints. By doing this, the restraints will be always enforced, and all our resulting models should be compatible with them.
+The two protons are H5 and H4 on the third and fourth monosaccharide, respectively. We're sure about their contacts with the two aromatic residues, so we will add them to the docking run as an unambiguous restraints. By doing this, the restraints will be always enforced, and all our resulting models should be compatible with them.
 
 To add these restraints we have to create a file that contains information about the restraints (table file):
 
 ```
-! std nmr restraints
-assign (resid 84 and name OE1 and segid A) (resid 3 and name O2 and segid B) 2.7 0.00 0.00
-assign (resid 84 and name NE2 and segid A) (resid 3 and name O3 and segid B) 3.0 0.00 0.00
+! STD NMR restraints
+assign (resid 3 and name H5 and segid B) (resid 128 and segid A or resid 23 and segid A) 2.5 2.5 0.00
+assign (resid 4 and name H4 and segid B) (resid 128 and segid A or resid 23 and segid A) 2.5 2.5 0.00
 ```
 
-The first line is a comment. The second and third lines contain the information about the restraints. Between the two parenthesis you can see the selection of the atoms that are restrained: the first atom is the one from the protein, and the second one is the one from the glycan. The last three numbers are the selected distance, the lower bound and the upper bound of the restraint. The latter are 0.0, thus indicating that any deviation from the specified distance will be penalized during the docking.
+The first line is a comment. The second and third lines contain the information about the restraints. Between the two parenthesis you can see the selection of the atoms that are restrained: the first atom is the one from the glycan, and the second one is the selection of the aromatic residues at the protein binding site. The last three numbers are the selected distance, the lower bound and the upper bound of the restraint. The latter is 0.0, thus indicating that any distance larger than 2.5A will be penalized during the docking.
 
 <figure style="text-align: center">
   <img width="80%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/std-nmr.png">
 </figure>
 <center>
-  <i>Graphical representation of the imposed unambiguous restraints between the glycan and the protein.</i>
+  <i>Graphical representation of the interactions between the H4 and H5 protons and the two tryptophan amino acids in the binding site.</i>
 </center>
 
 <br>
 
-<a class="prompt prompt-info">Save the file as contacts.tbl in the same directory as the PDB files.</a>
+<a class="prompt prompt-info">Save the above text as a .tbl file (for example named contacts.tbl) in the same directory as the PDB files.</a>
 
-<a class="prompt prompt-info">Now let's go back to the HADDOCK webserver perform the docking again!</a>
+<a class="prompt prompt-info">Now let's go back to the HADDOCK webserver and perform the docking again!</a>
 
 * **Step 1:** Go to the HADDOCK webserver and click on **Submit a new job**.
 
@@ -527,7 +526,7 @@ The first line is a comment. The second and third lines contain the information 
 
 * **Step 5:** Click on the **Submit** button at the bottom left of the interface.
 
-You can inspect the results of a precalculated run [here](https://rascar.science.uu.nl/haddock2.4/result/1184711698/485935-2zex-bonus).
+You can inspect the results of a precalculated run [here](https://rascar.science.uu.nl/haddock2.4/result/4242424242/488508-2zex-modeling-bonus).
 
 <a class="prompt prompt-question">How many clusters are generated? Is the first cluster unambiguously better than the second and third ones? Are the HADDOCK scores better than in the previous case?</a>
 
