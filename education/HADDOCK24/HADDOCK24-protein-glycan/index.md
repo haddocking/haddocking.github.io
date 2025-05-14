@@ -21,7 +21,7 @@ the structure of a protein-glycan complex using information about the protein bi
 
 A glycan is a molecule composed of different monosaccharide units, linked to each other
 by glycosidic bonds. Glycans are involved in a wide range of biological processes, such as
-cell-cell recognition, cell adhesion, and immune response. Glycan are highly diverse and complex 
+cell-cell recognition, cell adhesion, and immune response. Glycans are highly diverse and complex 
 in their structure, as they can involve multiple *branches* and different *linkages*, namely different ways 
 in which a glycosidic bond can connect two monosaccharides. This complexity together with their flexibility 
 makes the prediction of protein-glycan interactions a challenging task.
@@ -48,7 +48,7 @@ Throughout the tutorial, colored text will be used to refer to questions or inst
 <hr>
 <hr>
 
-## Requirements
+## Requirements and Setup
 
 In order to run this tutorial you will need to have the following software installed: [PyMOL][link-PyMOL].
 
@@ -90,7 +90,7 @@ fetch 2ZEW
 Can you already identify a possible binding site for a long, linear, unbranched glycan?
 </a>
 
-Here we assume that we have enough information about the glycan binding site on the protein, but no knowledge about which monosaccharide units are relevant for the binding. In this case (see Fig. 1), all the five monosaccharide units are at the interface, although this might not be true in general, especially when longer glycans are considered.
+Here we assume that we have enough information about the glycan binding site on the protein, but no knowledge about which monosaccharide units are relevant for the binding. In this case (see the figure above), all the five monosaccharide units are at the interface, although this might not be true in general, especially when longer glycans are considered.
 
 The residues corresponding to the glycan binding site on the protein (calculated from the crystal structure of the complex) are:
 
@@ -177,7 +177,7 @@ align 2ZEX_l_u, 2ZEX
 </center>
 <br>
 
-The two structures are pretty close to each other... Let us next see if HADDOCK can create a reasonable model of the interaction!
+The two structures are pretty close to each other... Let us next see if HADDOCK can generate a reasonable model of the interaction!
 
 <hr>
 <hr>
@@ -370,7 +370,7 @@ experiment, one of the parameters used is the Ligand root-mean-square deviation 
 the structures onto the backbone atoms of the receptor (the antibody in this case) and calculating the RMSD on the backbone 
 residues of the ligand (the antigen). To calculate the l-RMSD it is possible to either use the software 
 [Profit](http://www.bioinf.org.uk/software/profit){:target="_blank"} or [PyMOL](https://PyMOL.org/2/){:target="_blank"}.
-For the sake of convenience we have provided you with a renumbered reference structure `2ZEX_target.pdb` (in the zip archive you downloaded (see Setup)).
+For the sake of convenience we have provided you with a renumbered reference structure `2ZEX_target.pdb` (in the zip archive you downloaded in the [Setup section](#requirements-and-setup)).
 
 <a class="prompt prompt-info">From your completed (or pre-calculated) result page, use the option to _download all cluster files_ and uncompress the archive (alternatively download for each cluster the Nr. 1 best model).
 </a>
@@ -503,7 +503,7 @@ assign (resid 4 and name H4 and segid B) (resid 128 and segid A or resid 23 and 
 The first line is a comment. The second and third lines contain the information about the restraints. Between the two parenthesis you can see the selection of the atoms that are restrained: the first atom is the one from the glycan, and the second one is the selection of the aromatic residues at the protein binding site. The last three numbers are the selected distance, the lower bound and the upper bound of the restraint. The latter is 0.0, thus indicating that any distance larger than 2.5A will be penalized during the docking.
 
 <figure style="text-align: center">
-  <img width="80%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/std-nmr.png">
+  <img width="100%" src="/education/HADDOCK24/HADDOCK24-protein-glycan/std-nmr.png">
 </figure>
 <center>
   <i>Graphical representation of the interactions between the H4 and H5 protons and the two tryptophan amino acids in the binding site.</i>
