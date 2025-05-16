@@ -18,10 +18,13 @@ This tutorial consists of the following sections:
 
 This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. 
 Namely, we will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). 
-The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](https://www.ebi.ac.uk/pdbe/entry/pdb/1f3g){:target="_blank"}) and NMR spectroscopy (HPr) (PDB ID [1HDN](https://www.ebi.ac.uk/pdbe/entry/pdb/1hdn){:target="_blank"}). 
+The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](https://www.ebi.ac.uk/pdbe/entry/pdb/1f3g){:target="_blank"}) 
+and NMR spectroscopy (HPr) (PDB ID [1HDN](https://www.ebi.ac.uk/pdbe/entry/pdb/1hdn){:target="_blank"}). 
 The structure of the native complex has also been determined with NMR (PDB ID [1GGR](https://www.ebi.ac.uk/pdbe/entry/pdb/1ggr){:target="_blank"}). 
-These NMR experiments have also provided us with an array of data on the interaction itself (chemical shift perturbations, intermolecular NOEs, residual dipolar couplings, and simulated diffusion anisotropy data), which will be useful for the docking. 
-For this tutorial, we will only make use of inteface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract){:target="_blank"}.
+These NMR experiments have also provided us with an array of data on the interaction itself 
+(chemical shift perturbations, intermolecular NOEs, residual dipolar couplings, and simulated diffusion anisotropy data), which will be useful for the docking. 
+For this tutorial, we will only make use of inteface residues identified from NMR chemical shift perturbation data as described 
+in [Wang *et al*, EMBO J (2000)](https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract){:target="_blank"}.
 
 Throughout the tutorial, colored text will be used to refer to questions or instructions, and/or PyMOL commands.
 
@@ -171,16 +174,6 @@ combining a multitude of independent modules that perform specialized tasks.
 
 ## Software requirements
 
-### Installing CNS
-The other required piece of software to run HADDOCK is its computational engine,
-CNS (Crystallography and NMR System –
-[https://cns-online.org](https://cns-online.org){:target="_blank"}). CNS is
-freely available for non-profit organizations. In order to get access to all
-features of HADDOCK you will need to compile CNS using the additional files
-provided in the HADDOCK distribution in the `varia/cns1.3` directory. Compilation of
-CNS might be non-trivial. Some guidance on installing CNS is provided in the online
-HADDOCK3 documentation page [here](https://www.bonvinlab.org/haddock3/CNS.html){:target="_blank"}.
-
 
 ### Installing HADDOCK3
 
@@ -252,7 +245,7 @@ As a preparation step before docking, it is advised to remove any irrelevant wat
 
 <a class="prompt prompt-pymol">remove resn HOH</a>
 
-Now let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract){:target="_blank"} the following residues of E2A were identified has having significant chemical shift perturbations:
+Now let us vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract){:target="_blank"} the following residues of E2A were identified has having significant chemical shift perturbations:
 
 <a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a>
 
@@ -266,7 +259,7 @@ color red, e2a_active<br>
 </a>
 
 <figure align="center">
-<img src="./e2a-surface-airs.png">
+<img src="/eduction/HADDOCK24/HADDOCK24-protein-protein-basic/e2a-surface-airs.png">
 </figure>
 
 Inspect the surface.
@@ -307,7 +300,7 @@ Since the biological function of this complex is to transfer a phosphate group f
 <a class="prompt prompt-question">Check the list of supported modified amino acids.</a>
 <a class="prompt prompt-question">What is the proper residue name for a phospho-histidine in HADDOCK?</a>
 
-In order to use a modified amino-acid in HADDOCK, the only thing you will need to do is to edit the PDB file and change the residue name of the amino-acid you want to modify. Don't bother deleting irrelevant atoms or adding missing ones, HADDOCK will take care of that. For E2A, the histidine that is phosphorylated has residue number 90. In order to change it to a phosphorylated histidine do the following:
+In order to use a modified amino-acid in HADDOCK, the only thing you will need to do is to edit the PDB file and change the residue name of the amino-acid you want to modify. Don not bother deleting irrelevant atoms or adding missing ones, HADDOCK will take care of that. For E2A, the histidine that is phosphorylated has residue number 90. In order to change it to a phosphorylated histidine do the following:
 
 <a class="prompt prompt-info">Edit the PDB file (*e2a_1F3G_B.pdb*) in your favorite editor</a>
 <a class="prompt prompt-info">Change the name of histidine 90 to NEP </a>
@@ -365,7 +358,7 @@ show lines, hpr_active<br>
 </a>
 
 <figure align="center">
-<img src="./hpr-ensemble.png">
+<img src="/eduction/HADDOCK24/HADDOCK24-protein-protein-basic/hpr-ensemble.png">
 </figure>
 
 You should be able to see the amount of conformational space sampled by those surface side-chains. You can clearly see that some residues do sample a large variety of conformations, one of which might lead to much better docking results.
@@ -676,7 +669,7 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 <hr>
 
-### Scenario 1: 1000 rigidbody docking models, selection of top200 and flexible refinement + EM 
+### Scenario 1: 1000 rigidbody docking models, selection of top 200 and flexible refinement + EM 
 
 Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
@@ -691,13 +684,8 @@ run_dir = "scenario1-full"
 
 # execution mode
 mode = "local"
-ncores = 50
-#  it will take the system's default
-# queue = "short"
-# concatenate models inside each job, concat = 5 each .job will produce 5 models
-concat = 5
-#  Limit the number of concurrent submissions to the queue
-queue_limit = 100
+# maximum of 50 cores (limited by the number of available cores)
+ncores = 50  
 
 # molecules to be docked
 molecules =  [
@@ -723,13 +711,11 @@ hise_1 = 15
 [rigidbody]
 tolerance = 5
 ambig_fname = "data/e2a-hpr_air.tbl"
-sampling = 1000
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
 
 [seletop]
-select = 200
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
@@ -751,7 +737,6 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-top_models = 500
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
@@ -782,11 +767,8 @@ run_dir = "scenario2-cltsel-full"
 
 # execution mode
 mode = "local"
-ncores = 50
-# concatenate models inside each job, concat = 5 each .job will produce 5 models
-concat = 5
-#  Limit the number of concurrent submissions to the queue
-queue_limit = 100
+# maximum of 50 cores (limited by the number of available cores)
+ncores = 50  
 
 # molecules to be docked
 molecules =  [
@@ -820,7 +802,7 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-## select the best 20 models of each cluster
+# select the best 20 models of each cluster
 top_models = 20
 
 [caprieval]
@@ -843,7 +825,6 @@ reference_fname = "data/e2a-hpr_1GGR.pdb"
 [clustfcc]
 
 [seletopclusts]
-top_models = 500
 
 [caprieval]
 reference_fname = "data/e2a-hpr_1GGR.pdb"
