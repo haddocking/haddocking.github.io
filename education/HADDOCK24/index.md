@@ -51,6 +51,9 @@ In this page you can find links to tutorials on the usage of our software and we
   This tutorial demonstrate the modelling of protein-ligand complexes making use the shape-based modelling capabilities of HADDOCK.
   It is an advanced tutorial requiring a Linux shell, which, next to using the HADDOCK2.4 webserver, also uses open-source chemoinformatics
   toolkits such as [RDKit](https://www.rdkit.org/){:target="_blank"}.
+
+* [**HADDOCK2.4 basic protein-glycan tutorial**](/education/HADDOCK24/HADDOCK24-protein-glycan):
+  This tutorial explains the modelling of protein-glycan complexes using the HADDOCK2.4 webserver and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis. It is a basic, fully web-based tutorial requiring no Linux expertise.
   
 * [**HADDOCK2.4 ligand binding site tutorial**](/education/HADDOCK24/HADDOCK24-binding-sites):
   A tutorial demonstrating the use of HADDOCK in ab-initio mode to screen for potential ligand binding sites.
