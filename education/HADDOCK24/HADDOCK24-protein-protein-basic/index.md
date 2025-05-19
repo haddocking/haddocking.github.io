@@ -105,6 +105,9 @@ Try to locate the histidines in this structure.
 
 <a class="prompt prompt-question">Is there any phosphate group present in this structure?</a>
 
+*Hint* : you can select phosphate atoms with the following PyMOL command: 
+<a class="prompt prompt-pymol">select elem P</a>
+
 Note that you can zoom on the histidines by typing in PyMOL:
 
 <a class="prompt prompt-pymol">zoom resn HIS</a>
@@ -505,6 +508,14 @@ In the blind protein-protein prediction experiment [CAPRI](https://capri.ebi.ac.
 <a class="prompt prompt-pymol">
 rms_cur cluster1_1 and chain B, 1GGR<br>
 </a>
+
+**Note:** On some machines the pymol rms_cur command can fail due to a bug in the PyMOL software. In this case you can use the following command instead:
+
+<a class="prompt prompt-pymol">
+align cluster1_1, 1GGR, cycles=0<br>
+</a>
+
+This will align the two structures based on the all-atom RMSD, different from the ligand-RMSD (l-RMSD) that you can calculate with rms_cur and the above commands.
 
 In CAPRI, the l-RMSD value defines the quality of a model:
 
