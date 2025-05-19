@@ -1284,12 +1284,13 @@ You will find the various steps (modules) of the defined workflow numbered seque
 In addition, there is a log file (text file) and four additional directories:
 
 - the `analysis` directory contains various plots to visualize the results for each caprieval step and a general report (`report.html`) that provides all statistics with various plots. You can open this file in your preferred web browser
-- the `data` directory contains the input data (PDB and restraint files) for the various modules
+- the `data` directory contains the input data (PDB and restraint files) for the various modules, as well as an input workflow  (in `configurations` directory)
 - the `toppar` directory contains the force field topology and parameter files (only present when running in self-contained mode)
 - the `traceback` directory contains `traceback.tsv`, which links all models to see which model originates from which throughout all steps of the workflow.
 
-You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files.
+You can find information about the duration of the run at the bottom of the log file. 
 
+Each sampling/refinement/selection module will contain PDB files.
 For example, the `09_seletopclusts` directory contains the selected models from each cluster. The clusters in that directory are numbered based
 on their rank, i.e. `cluster_1` refers to the top-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
@@ -1541,8 +1542,7 @@ Can you identify which residue(s) make(s) the most intermolecular contacts?
 
 ### Visualization of the models
 
-To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model from cluster3 for run `run1-CDR-NMR-CSP`.
-These can be found in the `runs/run1/09_seletopclusts/` directory.
+To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model of cluster 1, 2 or 3, located in `XX_seletopclusts` directory of the run. Precalcuated models can be found in the `runs/run1/09_seletopclusts/` directory.
 
 <a class="prompt prompt-info">File menu -> Open -> select cluster_1_model_1.pdb</a>
 
