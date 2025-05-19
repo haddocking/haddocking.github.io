@@ -912,8 +912,8 @@ In this case we are providing the known crystal structure of the complex as refe
 Including `caprieval` at the various stages even when no reference is provided is useful to get the rankings and scores and visualise the results (see Analysis section below).
 
 **_Note_**: The default sampling would be 1000 models for `rigidbody` of which 200 are passed to the flexible refinement in `seletop`. 
-As an indication of the computational requirements, the default sampling worflow for this tutorial completes in about 1h20min using 8 cores on a MaxOSX M2 processor.
-In comparison, the reduced sampling run (100/40) takes about 10-15min.
+As an indication of the computational requirements, the default sampling worflow for this tutorial completes in about 37min using 12 cores on a MaxOSX M2 processor.
+In comparison, the reduced sampling run (100/40) takes about 7-8min.
 
 
 
