@@ -210,7 +210,7 @@ align 1UU6_l_u, 1UU6
 ## Defining restraints for docking
 
 
-### Visualing the information about the bindind site
+### Visualising the information about the binding site
 
 Here we mimic a scenario where we have information about the glycan binding site on the protein, but no knowledge about which monosaccharide units are relevant for the binding. In this case (see Fig. 1), all the four beta-D-glucopyranose units are at the interface, although this might not be true in general, especially when longer glycans are considered.
 
