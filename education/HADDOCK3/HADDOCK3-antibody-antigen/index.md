@@ -932,7 +932,7 @@ In the above workflow we see in three modules a *tolerance* parameter defined. U
 
 *__Note__* that, in contrast to HADDOCK2.X, we have much more flexibility in defining our workflow.
 As an example, we could use this flexibility by introducing a clustering step after the initial rigid-body docking stage, selecting a given number of models per cluster and refining all of those.
-For an example of this strategy see the BONUS 4 section about ensemble docking.
+For an example of this strategy see the  4 section about ensemble docking.
 
 
 <hr>
@@ -1252,10 +1252,10 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the `runs` directory:
 - `run1`: docking run created using the unbound antibody.
-- `run1-af2`: docking run created using the Alphafold-multimer antibody (see BONUS 3).
-- `run1-abb`: docking run created using the Immunebuilder antibody (see BONUS 3).
-- `run1-ens`: docking run created using an ensemble of antibody models (see BONUS 4).
-- `run-scoring`: scoring run created using various models obtained at the previous stages (see BONUS 6).
+- `run1-af2`: docking run created using the Alphafold-multimer antibody (see  3).
+- `run1-abb`: docking run created using the Immunebuilder antibody (see  3).
+- `run1-ens`: docking run created using an ensemble of antibody models (see  4).
+- `run-scoring`: scoring run created using various models obtained at the previous stages (see  6).
 
 
 Once your run has completed - inspect the content of the resulting directory.
@@ -1614,7 +1614,7 @@ HADDOCK3's intrinsic flexibility can be used to improve the performance of antib
 <hr>
 <hr>
 
-## BONUS 1: Dissecting the interface energetics: how much can a single mutation matter? 
+##  1: Dissecting the interface energetics: what is the impact of a single mutation? 
 
 Mutations at the binding interfaces can have widely varying effects on binding affinity - some may be negligible, while others can significantly strengthen or weaken the interaction. Exploring these mutations helps identify critical amino acids for redesigning a structurally characterized protein-protein interfaces, which paves the way for developing protein-based therapeutics to deal with diverse range of diseases.
 To pinpoint such amino acids positions, the residues across the protein interaction surfaces are either randomly or strategically mutated. Scanning mutations in this manner is experimentally costly. Therefore, computational methods have been developed to estimate the impact of an interfacial mutation on protein-protein interactions. 
@@ -1670,7 +1670,7 @@ Inspect the proposed amino acid in PyMol. Can you rationalise why it might incre
 
 With HADDOCK3 it is possible to take a step further. To perform the mutation, simply rename the desired residue and score such model - HADDOCK will take care of the topology regardless on the side chain differences and energy minimisation of the model. To do so, first either edit _4G6M-matched.pdb_ in your favourite text editor and save this new file as _4G6M_matched_S150W.pdb_, or use command line: 
 <a class="prompt prompt-cmd">
-sed 's/SER A 150/TRP A 150/g' 4G6M_matched.pdb > 4G6M_matched_S150W.pdb
+sed 's/SER\ A\ 150/TRP\ A\ 150/g' 4G6M_matched.pdb > 4G6M_matched_S150W.pdb
 </a>
 
 Next, score the mutant using command-line tool `haddock3-score`. 
@@ -1681,19 +1681,19 @@ haddock3-score 4G6M_matched_S150W.pdb --outputpdb
 
 <a class="prompt prompt-question">
 Use `haddock3-score` to calculate score of the  _4G6M-matched.pdb_. Do you see a difference between wild type and mutant scores? 4G6M_matched.pdb = -147.0143 4G6M_matched_S150W.pdb  = -167.4492
-Might such single-residue mutation affected the affinity? 
+Might such single-residue mutation affect the binding affinity? 
 </a>
 
 <a class="prompt prompt-info">
-Inspect energy-minimized mutant model (4G6M_matched_S150W_hs.pdb) visually.
+Inspect the energy-minimized mutant model (4G6M_matched_S150W_hs.pdb) visually.
 Can you rationalise why such mutation might increase the affinity?
 </a>
 
 ### Alanine Scanning module 
 
-Another way of exploring interface energetics is by using `alascan` module of HADDOCK3. The `alascan` is a short for the "Alanine Scanning module". 
+Another way of exploring interface energetics is by using the `alascan` module of HADDOCK3. `alascan` stands for "Alanine Scanning module". 
 
-This module is capable of mutating interface residues to Alanine and calculation of the **Δ HADDOCK score** between the wild type and mutant, thus providing a measure of the impact of each individual mutation. It is posible to scan all interface residues one by one, or limit this scanning to a selected by user set of residues. By default, the mutation to Alanine is performed, as its side chain is just a methyl group, so side chain perturbations are minimal, as well as possible secondary strcuture changes. It is possible to perform the mutation to any other amino acid type - at your own risk, as such mutatations may introduce structural uncertainty. 
+This module is capable of mutating interface residues to Alanine and calculating the **Δ HADDOCK score** between the wild type and mutant, thus providing a measure of the impact of each individual mutation. It is posible to scan all interface residues one by one, or limit this scanning to a selected by user set of residues. By default, the mutation to Alanine is performed, as its side chain is just a methyl group, so side chain perturbations are minimal, as well as possible secondary strcuture changes. It is possible to perform the mutation to any other amino acid type - at your own risk, as such mutations may introduce structural uncertainty. 
 
 **Important**: 1/ `alascan` calculates the difference between wild type score vs mutant score, i.e. positive `Δscore` indicative of the enriched (stronder) binding and negative `Δscore` is indicative of the depleated (weaker) binding; 2/ Inside `alascan`, a short energy minimization of an input strcuture is performed, i.e. there's no need to inclued an additionla refinement module prior to `alascan`. 
 
@@ -1732,7 +1732,7 @@ plot = true
 # ====================================================================
 {% endhighlight %}
 
-! candidate for replasement this paragraph:
+! candidate for replacing this paragraph:
 A scoring scenario configuration file is provided in the `workflows/` directory as `interaction-energetics.cfg`, precomputed results are in `runs/run-energetics`.
 However, this pre-made workflow contains an extra refinement step, so the score of such refined model does not match the score of our input strcuture. 
 
@@ -1773,11 +1773,11 @@ Compare values obtained with `alascan` to the corresponding values obtained with
   <summary style="bold">
     <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
   </summary>
-The values themselves are expercted to differ, because `alascan` calculates Δ HADDOCK score, while PROT-ON predicts ΔΔG. Moreover, both tools are making predictions using different methods, so it is normal to have different results. However, if both tools consistently identify the same mutations as binding enreaching or depleting - this may signal that mutated residues indeed play a key role in binding affinity.
+The values themselves are expected to differ, because `alascan` calculates ΔHADDOCK score, while PROT-ON predicts ΔΔG. Moreover, both tools are making predictions using different methods, so it is normal to have different results. However, if both tools consistently identify the same mutations as binding enreaching or depleting - this may signal that mutated residues indeed play a key role in binding affinity.
 </details>
 <br>
 
-Now let’s consider how sensitive is this kind of analysis on the quality of the docking model. Instead of using the crystal structure, repeat this analysis using the best model of the top-ranked cluster or the best model with the lowest LRMSD value. 
+Now let us consider how sensitive is this kind of analysis on the quality of the docking model. Instead of using the crystal structure, repeat this analysis using the best model of the top-ranked cluster or the best model with the lowest LRMSD value. 
 
 <a class="prompt prompt-question">
 Consider the most binding-enrishing/-depleating mutations predicted based on the docking model. How different are those compared to the mutations, predicted based on the crystal structure?
