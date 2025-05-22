@@ -799,7 +799,7 @@ We will also integrate two analysis modules in our workflow:
 Our workflow consists of the following modules:
 
 1. **`topoaa`**: *Generates the topologies for the CNS engine and builds missing atoms*
-2. **`rigidbody`**: *Preforms rigid body energy minimisation (`it0` in haddock2.x)*
+2. **`rigidbody`**: *Performs rigid body energy minimisation (`it0` in haddock2.x)*
 3. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 4. **`seletop`** : *Selects the top X models from the previous module*
 5. **`flexref`**: *Preforms semi-flexible refinement of the interface (`it1` in haddock2.4)*
