@@ -1800,6 +1800,8 @@ show sticks, asp58_neighbour_residues <br>
 util.cbao asp58_neighbour_residues <br>
 </a>
 
+
+Let us display contacts using [show contacts plugin](https://pymolwiki.org/index.php/Show_contacts):
 <figure style="text-align: center;">
   <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/asp58_contacts.png">
   <center>
@@ -1814,7 +1816,7 @@ This is reflected by the high negative value (-136.01) of `delta_elec` in either
 Let us test several unfavourable mutations to confirm our hypothesis. 
 Here is an example of the workflow to perform such mutations and save mutated models:
 
-{% highlight toml %}
+{% highlight ini %}
 # ====================================================================
 # Mutating selected interface residue with haddock3
 # ====================================================================
@@ -1830,9 +1832,7 @@ ncores = 50
 postprocess = true
 clean = true
 
-molecules =  [
-    "pdbs/4G6M_matched.pdb",
-    ]
+molecules =  ["pdbs/4G6M_matched.pdb"]
 
 # ====================================================================
 # Parameters for each stage are defined below
@@ -1854,7 +1854,6 @@ scan_residue = "LYS"
 resdic_A = [58]
 output_mutants= true 
 
-# ====================================================================
 {% endhighlight %}
  
 <a class="prompt prompt-question">
@@ -1870,7 +1869,10 @@ Inspect the mutant vs wild type complex. Can you see the difference at the inter
     <b><i>See the overlay of the mutant onto the wild type structure </i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-    <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/mutant-ref-overlay-alascan.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/mutant-ref-overlay-alascan.png">
+    <center>
+    <i>Wild type residue ASP58 is displayed in pink, mutant residue AGR58 is displayed in orange</i>
+    </center>
   </figure>
   <br>
 </details>
