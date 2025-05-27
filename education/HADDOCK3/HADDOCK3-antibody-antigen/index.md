@@ -1813,7 +1813,7 @@ We can see one hydrogen bound between ASP58 and LYS98, and two hydrogen bonds AS
 Mutating ASP58 to ALA should result in the dissaperance of those h-bonds, and overall depleating of the binding. 
 This is reflected by the high negative value (-136.01) of `delta_elec` in either of .tsv files. 
 
-Let us test several unfavourable mutations to confirm our hypothesis. 
+Let us test several mutations to confirm our hypothesis. 
 Here is an example of the workflow to perform such mutations and save mutated models:
 
 {% highlight ini %}
@@ -1850,7 +1850,7 @@ resdic_A = [58]
 output_mutants= true 
 
 [alascan]
-scan_residue = "LYS"
+scan_residue = "TRP"
 resdic_A = [58]
 output_mutants= true 
 
