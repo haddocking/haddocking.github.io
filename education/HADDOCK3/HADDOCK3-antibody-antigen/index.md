@@ -1616,14 +1616,14 @@ HADDOCK3's intrinsic flexibility can be used to improve the performance of antib
 
 ## BONUS 1: Dissecting the interface energetics: what is the impact of a single mutation? 
 
-Mutations at the binding interfaces can have widely varying effects on binding affinity - some may be negligible, while others can significantly strengthen or weaken the interaction. Exploring these mutations helps identify critical amino acids for redesigning a structurally characterized protein-protein interfaces, which paves the way for developing protein-based therapeutics to deal with diverse range of diseases.
+Mutations at the binding interfaces can have widely varying effects on binding affinity - some may be negligible, while others can significantly strengthen or weaken the interaction. Exploring these mutations helps identify critical amino acids for redesigning structurally characterized protein-protein interfaces, which paves the way for developing protein-based therapeutics to deal with a diverse range of diseases.
 To pinpoint such amino acids positions, the residues across the protein interaction surfaces are either randomly or strategically mutated. Scanning mutations in this manner is experimentally costly. Therefore, computational methods have been developed to estimate the impact of an interfacial mutation on protein-protein interactions. 
-These computational methods come it two main flavour. One involves rigorous free energy calculations, and, while highly accurate, these methods are computationally expensive. The other category includes faster, approximate approaches that predicts changes in binding energy using statistical potentials, machine learning, empirical scoring functions etc. Though less precise, these faster methods are practical for large-scale screening and early-stage analysis. In this bonus excersice, we will take a look at two quick ways of estimating the effect of a single mutation in the interface.
+These computational methods come in two main flavours. One involves rigorous free energy calculations, and, while highly accurate, these methods are computationally expensive. The other category includes faster, approximate approaches that predict changes in binding energy using statistical potentials, machine learning, empirical scoring functions etc. Though less precise, these faster methods are practical for large-scale screening and early-stage analysis. In this bonus exercise, we will take a look at two quick ways of estimating the effect of a single mutation in the interface.
 
 
 ### PROT-ON and haddock3-scoring to inspect a single mutation
 
-PROT-ON (Structure-based detection of designer mutations in PROTein-protein interface mutatiONs) is a tool and [online server](http://proton.tools.ibg.edu.tr:8001/about) that scans all possible interfacial mutations and **pedicts ΔΔG score** by using EvoEF1 (active in both on the web server and stand-alone versions) or FoldX (active only in the stand-alone version) with the aim of finding the most mutable positions. The original publication describing PROT-ON can be found [here](https://www.frontiersin.org/journals/molecular-biosciences/articles/10.3389/fmolb.2023.1063971/full). 
+PROT-ON (Structure-based detection of designer mutations in PROTein-protein interface mutatiONs) is a tool and [online server](http://proton.tools.ibg.edu.tr:8001/about) that scans all possible interfacial mutations and **predicts ΔΔG score** by using EvoEF1 (active in both on the web server and stand-alone versions) or FoldX (active only in the stand-alone version) with the aim of finding the most mutable positions. The original publication describing PROT-ON can be found [here](https://www.frontiersin.org/journals/molecular-biosciences/articles/10.3389/fmolb.2023.1063971/full). 
 
 Here we will use PROT-ON to analyse the interface of our antibody-antigen complex. For that, we will use the provided matched reference structure (`4G6M-matched.pdb`) in which both chains of the antibody have the same chainID (A), which allows us to analyse all interface residues of the antibody at once.
 
@@ -1636,21 +1636,21 @@ Specify your run name* --> 4G6M_matched
 </a>
 
 <a class="prompt prompt-info">
-Choose / Upload your protein complex* --> select the provided _4G6M-matched.pdb_ file
+Choose / Upload your protein complex* --> Select the provided _4G6M-matched.pdb_ file
 </a>
 
 <a class="prompt prompt-info">
-Which dimer chains should be analyzed* --> select chain A for the 1st molecule and B for the 2nd
+Which dimer chains should be analyzed* --> Select chain A for the 1st molecule and B for the 2nd
 </a>
 <a class="prompt prompt-info">
-Pick the monomer for mutational scanning* --> select the first molecule - the antibody (toggle the switch ON under the chain A)
+Pick the monomer for mutational scanning* --> Select the first molecule - the antibody (toggle the switch ON under the chain A)
 </a>
 
 <a class="prompt prompt-info">
-Click on Submit button
+Click on the Submit button
 </a>
 
-You run should complete in 5-10 minutes. Once finished, you will be presented with a result page summarising the most depleting (ones that lower the binding affinity) and most enriching (ones that increases the binding affinity) mutations.
+Your run should complete in 5-10 minutes. Once finished, you will be presented with a result page summarising the most depleting (ones that decrease the binding affinity) and most enriching (ones that increase the binding affinity) mutations.
 
 <a class="prompt prompt-question">
 Which possible mutation would you propose to improve the binding affinity of the antibody?
@@ -1660,7 +1660,7 @@ Which possible mutation would you propose to improve the binding affinity of the
   <summary style="bold">
     <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
   </summary>
-The most enriching mutation is S150W with -3.69 ΔΔG score.
+The most enriching mutation is S150W with a -3.69 ΔΔG score.
 </details>
 <br>
 
@@ -1668,25 +1668,25 @@ The most enriching mutation is S150W with -3.69 ΔΔG score.
 Inspect the proposed amino acid in PyMol. Can you rationalise why it might increase the affinity?
 </a>
 
-With HADDOCK3 it is possible to take a step further. To perform the mutation, simply rename the desired residue and score such model - HADDOCK will take care of the topology regardless on the side chain differences and energy minimisation of the model. To do so, first either edit _4G6M-matched.pdb_ in your favourite text editor and save this new file as _4G6M_matched_S150W.pdb_, or use command line: 
+With HADDOCK3, it is possible to take a step further. To perform the mutation, simply rename the desired residue and score such model - HADDOCK will take care of the topology regardless of the side chain differences and energy minimisation of the model. To do so, first either edit _4G6M-matched.pdb_ in your favourite text editor and save this new file as _4G6M_matched_S150W.pdb_, or use the command line: 
 <a class="prompt prompt-cmd">
 sed 's/SER\ A\ 150/TRP\ A\ 150/g' 4G6M_matched.pdb > 4G6M_matched_S150W.pdb
 </a>
 
-Next, score the mutant using command-line tool `haddock3-score`. 
+Next, score the mutant using the command-line tool `haddock3-score`. 
 This tool performs a short workflow composed of the `topoaa` and `emscoring` modules. Use flag `--outputpdb` to save energy-minimized model:
 <a class="prompt prompt-cmd">
 haddock3-score 4G6M_matched_S150W.pdb \-\-outputpdb
 </a>
 
 <a class="prompt prompt-question">
-Use _haddock3-score_ to calculate score of the 4G6M-matched.pdb. Do you see a difference between wild type and mutant scores? 
+Use _haddock3-score_ to calculate the score of the 4G6M-matched.pdb. Do you see a difference between wild-type and mutant scores? 
 Might such single-residue mutation affect the binding affinity? 
 </a>
 
 <a class="prompt prompt-info">
 Inspect the energy-minimized mutant model (4G6M_matched_S150W_hs.pdb) visually.
-Can you rationalise why such mutation might increase the affinity?
+Can you rationalise why such a mutation might increase the affinity?
 </a>
 
 
@@ -1709,9 +1709,9 @@ Can you rationalise why such mutation might increase the affinity?
 
 Another way of exploring interface energetics is by using the `alascan` module of HADDOCK3. `alascan` stands for "Alanine Scanning module". 
 
-This module is capable of mutating interface residues to Alanine and calculating the **Δ HADDOCK score** between the wild type and mutant, thus providing a measure of the impact of each individual mutation. It is posible to scan all interface residues one by one, or limit this scanning to a selected by user set of residues. By default, the mutation to Alanine is performed, as its side chain is just a methyl group, so side chain perturbations are minimal, as well as possible secondary strcuture changes. It is possible to perform the mutation to any other amino acid type - at your own risk, as such mutations may introduce structural uncertainty. 
+This module is capable of mutating interface residues to Alanine and calculating the **Δ HADDOCK score** between the wild-type and mutant, thus providing a measure of the impact of each individual mutation. It is possible to scan all interface residues one by one or limit this scanning to a selected by user set of residues. By default, the mutation to Alanine is performed, as its side chain is just a methyl group, so side chain perturbations are minimal, as well as possible secondary structure changes. It is possible to perform the mutation to any other amino acid type - at your own risk, as such mutations may introduce structural uncertainty. 
 
-**Important**: 1/ `alascan` calculates the difference between wild type score vs mutant score, i.e. positive `Δscore` indicative of the enriched (stronder) binding and negative `Δscore` is indicative of the depleated (weaker) binding; 2/ Inside `alascan`, a short energy minimization of an input strcuture is performed, i.e. there's no need to inclued an additionla refinement module prior to `alascan`. 
+**Important**: 1/ `alascan` calculates the difference between wild-type score vs mutant score, i.e. positive `Δscore` indicative of the enriched (stronger) binding and negative `Δscore` is indicative of the depleted (weaker) binding; 2/ Inside `alascan`, a short energy minimization of an input structure is performed, i.e. there's no need to include an additional refinement module prior to `alascan`. 
 
 Here is an example of the workflow to scan interface energetics:
 {% highlight toml %}
@@ -1748,7 +1748,7 @@ plot = true
 # ====================================================================
 {% endhighlight %}
 
-A scoring scenario configuration file is provided in the `workflows/` directory as `interaction-energetics.cfg`, precomputed results are in `runs/run-energetics-alascan`.
+A scoring scenario configuration file is provided in the `workflows/` directory as `interaction-energetics.cfg`, and precomputed results are in `runs/run-energetics-alascan`.
 The output folder contains, among others, a directory titled `1_alascan` with a file `scan_4G6M_matched_haddock.tsv` that lists each mutation, corresponding score and individual terms:
 <pre>
 ##########################################################
@@ -1769,8 +1769,8 @@ A	33	GLY	ALA	-148.50	-61.56	-473.22	7.71	1693.18	2.91	-2.08	30.43	-1.10	4.92	1.2
 </pre>
 
 <a class="prompt prompt-question">
-Can you identifiy the most enriching/depleting mutation of each chain? 
-Take a look at _scan_clt_-.tsv_ and open it's visualisation _scan_clt_-.html_ in the web browser. 
+Can you identify the most enriching/depleting mutation of each chain? 
+Take a look at _scan_clt_-.tsv_ and open its visualisation _scan_clt_-.html_ in the web browser. 
 </a>
 
 You can use an additional script `/scripts/get-alascan-extrema.sh` to check your answer:
@@ -1778,7 +1778,7 @@ You can use an additional script `/scripts/get-alascan-extrema.sh` to check your
 bash scripts/get-alascan-extrema.sh run-energetics-alascan/1_alascan/scan_4G6M_matched_haddock.tsv 
 </a>
 
-Mutation of the resudie ASP58 turned out to be the most depleting within chain A. 
+Mutation of the residue ASP58 turned out to be the most depleting within chain A. 
 Let us visualise it in PyMol to analyse its contribution to the binding:
 <a class="prompt prompt-pymol">
 File menu -> Open -> 4G6M_matched.pdb 
@@ -1809,8 +1809,8 @@ Let us display contacts using [show contacts plugin](https://pymolwiki.org/index
   </center>
 </figure>
 
-We can see one hydrogen bound between ASP58 and LYS98, and two hydrogen bonds ASP58 and LYS94. 
-Mutating ASP58 to ALA should result in the dissaperance of those h-bonds, and overall depleating of the binding. 
+We can see one hydrogen bond between ASP58 and LYS98, and two hydrogen bonds ASP58 and LYS94. 
+Mutating ASP58 to ALA should result in the disappearance of those h-bonds, and the overall depletion of the binding. 
 This is reflected by the high negative value (-136.01) of `delta_elec` in either of .tsv files. 
 
 Let us test several mutations to confirm our hypothesis. 
@@ -1858,24 +1858,24 @@ output_mutants= true
 
 {% endhighlight %}
 
-Configuration file for this scenario can be found in `workflows/single-residue-mutations.cfg`, precomputed results are in `run-residue-mutations`. The output folder contain, among others, an energy-minimised mutant model `1_alascan/4G6M_matched_haddock-A_D58R.pdb.gz`, and tables `.tsv` with energetics.
+Configuration file for this scenario can be found in `workflows/single-residue-mutations.cfg`, precomputed results are in `run-residue-mutations`. The output folder contains, among others, an energy-minimised mutant model `1_alascan/4G6M_matched_haddock-A_D58R.pdb.gz`, and tables `.tsv` with energetics.
  
 <a class="prompt prompt-question">
-Take a look at the scores of the mutants. Which mutation depleats binding the most? 
+Take a look at the scores of the mutants. Which mutation depletes binding the most? 
 </a>
 
 <a class="prompt prompt-question">
-Inspect the mutant vs wild type complex. Can you see the difference at the interface level? 
+Inspect the mutant vs wild-type complex. Can you see the difference at the interface level? 
 </a>
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
-    <b><i>See the overlay of the mutant onto the wild type structure </i></b> <i class="material-icons">expand_more</i>
+    <b><i>See the overlay of the mutant onto the wild-type structure </i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
     <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/mutant-ref-overlay-alascan.png">
     <center>
-    <i>Wild type residue ASP58 is displayed in pink, mutant residue AGR58 is displayed in orange</i>
+    <i>wild-type residue ASP58 is displayed in pink, and mutant residue AGR58 is displayed in orange</i>
     </center>
   </figure>
   <br>
@@ -1893,15 +1893,15 @@ Compare values obtained with [alascan] to the corresponding values obtained with
   </summary>
 The values themselves are expected to differ, because [alascan] calculates ΔHADDOCK score, while PROT-ON predicts ΔΔG. 
 Moreover, both tools are making predictions using different methods, so it is normal to have different results. 
-However, if both tools consistently identify the same mutations as binding enreaching or depleting - this may signal that selected residues indeed play a key role in binding affinity.
+However, if both tools consistently identify the same mutations as binding enriching or depleting - this may signal that selected residues indeed play a key role in binding affinity.
 </details>
 <br>
 
-Now let us consider how sensitive is this kind of analysis on the quality of the docking model. 
+Now let us consider how sensitive this kind of analysis is to the quality of the docking model.
 Instead of using the crystal structure, repeat this analysis using the best model of the top-ranked cluster or the best model with the lowest LRMSD value. 
 
 <a class="prompt prompt-question">
-Consider the most binding-enrishing/-depleating mutations predicted based on your favourite docking model. 
+Consider the most binding-enrishing/-depleting mutations predicted based on your favourite docking model. 
 How different are those compared to the mutations, predicted based on the crystal structure?
 </a>
 
