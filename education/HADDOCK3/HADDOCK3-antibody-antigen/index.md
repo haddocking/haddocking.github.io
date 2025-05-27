@@ -185,7 +185,7 @@ __If running as part of a BioExcel workshop or summerschool see the instructions
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn/download -O HADDOCK3-antibody-antigen.zip<br>
+wget https://surfdrive.surf.nl/files/index.php/s/MuC8YogNPj9Ac31/download -O HADDOCK3-antibody-antigen.zip<br>
 unzip HADDOCK3-antibody-antigen.zip
 </a>
 
@@ -1814,7 +1814,7 @@ Mutating ASP58 to ALA should result in the dissaperance of those h-bonds, and ov
 This is reflected by the high negative value (-136.01) of `delta_elec` in either of .tsv files. 
 
 Let us test several mutations to confirm our hypothesis. 
-Here is an example of the workflow to perform such mutations and save mutated models:
+Here is an example of the workflow to perform such mutations and save generated models:
 
 {% highlight ini %}
 # ====================================================================
@@ -1840,8 +1840,10 @@ molecules =  ["pdbs/4G6M_matched.pdb"]
 [topoaa]
 
 [alascan]
+# mutate residue 58 of chain A to Arginine 
 scan_residue = "ARG"
 resdic_A = [58]
+# save energy-minimised mutant model 
 output_mutants= true 
 
 [alascan]
