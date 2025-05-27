@@ -1748,8 +1748,8 @@ plot = true
 # ====================================================================
 {% endhighlight %}
 
-A scoring scenario configuration file is provided in the `workflows/` directory as `interaction-energetics.cfg`, precomputed results are in `runs/run-energetics`.
-The output folder `run-energetics` contain, among others, a directory titled `1_alascan` with a file `scan_4G6M_matched_haddock.tsv` that lists each mutation, corresponding score and individual terms:
+A scoring scenario configuration file is provided in the `workflows/` directory as `interaction-energetics.cfg`, precomputed results are in `runs/run-energetics-alascan`.
+The output folder contains, among others, a directory titled `1_alascan` with a file `scan_4G6M_matched_haddock.tsv` that lists each mutation, corresponding score and individual terms:
 <pre>
 ##########################################################
 # `alascan` results for 4G6M_matched_haddock.pdb
@@ -1855,6 +1855,8 @@ resdic_A = [58]
 output_mutants= true 
 
 {% endhighlight %}
+
+Configuration file for this scenario can be found in `workflows/single-residue-mutations.cfg`, precomputed results are in `run-residue-mutations`. The output folder contain, among others, an energy-minimised mutant model `1_alascan/4G6M_matched_haddock-A_D58R.pdb.gz`, and tables `.tsv` with energetics.
  
 <a class="prompt prompt-question">
 Take a look at the scores of the mutants. Which mutation depleats binding the most? 
