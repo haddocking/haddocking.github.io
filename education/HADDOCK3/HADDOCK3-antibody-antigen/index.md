@@ -209,29 +209,27 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 <hr>
 
-### BioExcel HPC workshop, Sofia May 2025
+### BioExcel summerschool, Pula, Sardinia June 2025
 
-We will be making use of the [Discoverer HPC CPU cluster](https://docs.discoverer.bg){:target="_blank"} for this tutorial. 
+
+We will be making use of the local computers for this tutorial. 
 The software and data required for this tutorial have been pre-installed.
-Please connect to the system using your credentials as instructed.
 
-In order to run the tutorial, go into you scratch directory, then unzip the required data:
-
-<a class="prompt prompt-cmd">
-cd /discofs/\<my\-username\><br>
-unzip /valhalla/projects/school-01/HADDOCK/HADDOCK3-antibody-antigen.zip<br>
-cd HADDOCK3-antibody-antigen
-</a>
-
-This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
-
-HADDOCK3 is part of the standard software supported on discoverer. To activate the HADDOCK3 environment load the following modules:
-
+In order to run the tutorial, go into the HADDOCK3-antibody-antigen directory and activate the HADDOCK3 environment:
 
 <a class="prompt prompt-cmd">
-module load python/3/3.12<br>
-module load haddock3/2025.5.0
+cd ~/BioExcel_SS_2025/HADDOCK/HADDOCK3-antibody-antigen<br>
 </a>
+
+This directory contains all necessary data and scripts to run this tutorial.
+
+To activate the HADDOCK3 environment type:
+
+<a class="prompt prompt-cmd">
+haddock3env<br>
+</a>
+
+which is alias to `source ~/BioExcel_SS_2025/HADDOCK/haddock3/.venv/bin/activate`
 
 You can then test that `haddock3` is indeed accessible with:
 
@@ -948,7 +946,29 @@ In in the first section of the workflow above we have a parameter `mode` definin
 
 <hr>
 
+#### Execution of HADDOCK3 on the computers of the BioExcel 2025 summerschool
+
+To execute the HADDOCK3 workflow on the computational resources provided for this workshop, 
+we will simply run in local mode, calling haddock3 with as argument the workflow you want to execute.
+
+{% highlight shell %}
+haddock3 <my-workflow-configuration-file>
+{% endhighlight %}
+
+Alternatively redirect the output to a log file and send haddock3 to the background.
+
+As an indication, running locally on an Apple M2 laptop using 10 cores, this workflow completed in 7 minutes.
+
+
+
+<hr>
+
 #### Execution of HADDOCK3 on DISCOVERER (BioExcel Sofia May 2025 workshop)
+
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <i>View execution instructions for running HADDOCK3 on DISCOVERER</i> <i class="material-icons">expand_more</i>
+  </summary>
 
 To execute the HADDOCK3 workflow on the computational resources provided for this workshop, 
 you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
@@ -986,6 +1006,8 @@ sbatch run-haddock3-discoverer.sh
 And you can check the status in the queue using the `squeue`command.
 
 This example run should take about 7 minutes to complete on a single node using 50 cores.
+
+</details>
 
 
 <hr>
@@ -1623,9 +1645,11 @@ These computational methods come in two main flavours. One involves rigorous fre
 
 ### PROT-ON and haddock3-scoring to inspect a single mutation
 
-PROT-ON (Structure-based detection of designer mutations in PROTein-protein interface mutatiONs) is a tool and [online server](http://proton.tools.ibg.edu.tr:8001/about) that scans all possible interfacial mutations and **predicts ΔΔG score** by using EvoEF1 (active in both on the web server and stand-alone versions) or FoldX (active only in the stand-alone version) with the aim of finding the most mutable positions. The original publication describing PROT-ON can be found [here](https://www.frontiersin.org/journals/molecular-biosciences/articles/10.3389/fmolb.2023.1063971/full). 
+PROT-ON (Structure-based detection of designer mutations in PROTein-protein interface mutatiONs) is a tool and [online server](http://proton.tools.ibg.edu.tr:8001/about){:target="_blank"} that scans all possible interfacial mutations and **predicts ΔΔG score** by using EvoEF1 (active in both on the web server and stand-alone versions) or FoldX (active only in the stand-alone version) with the aim of finding the most mutable positions. The original publication describing PROT-ON can be found [here](https://www.frontiersin.org/journals/molecular-biosciences/articles/10.3389/fmolb.2023.1063971/full){:target="_blank"}. 
 
 Here we will use PROT-ON to analyse the interface of our antibody-antigen complex. For that, we will use the provided matched reference structure (`4G6M-matched.pdb`) in which both chains of the antibody have the same chainID (A), which allows us to analyse all interface residues of the antibody at once.
+
+__Note:__ Pre-calculated PROT-ON results for this system can be accessed [here](http://proton.tools.ibg.edu.tr:8001/result/ebcdec31308c46acb82e8010f7f21df1){:target="_blank"}.
 
 <a class="prompt prompt-info">
 Connect to the PROT-ON server page (link above) and fill in the following fields:
