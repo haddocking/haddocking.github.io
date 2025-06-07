@@ -11,7 +11,7 @@ post-AlphaFold era: the 8th CAPRI evaluation](https://doi.org/10.22541/au.174829
 
 * A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. [Updates to the CASP infrastructure in 2024](https://doi.org/10.22541/au.174646994.49522644/v1). _Authorea_ 10.22541/au.174646994.49522644/v1 (2025) 
 
-* M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoeven and **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1101/2025.04.30.651432). _BioRXiv._ 10.1101/2025.04.30.651432 (2025).
+* M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoeven and **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1101/2025.04.30.651432). _J. Chem. Inf. Mod._ In Press, DOI:10.1021/acs.jcim.5c00969 (2025). Preprint [here](https://doi.org/10.1101/2025.04.30.651432).
 
 * M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1101/2025.02.24.639865). _BioRXiv._ 10.1101/2025.02.24.639865 (2025).
 
