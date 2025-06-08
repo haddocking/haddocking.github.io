@@ -923,6 +923,8 @@ haddock3-cfg -m \<module\-name\>
 
 Add the `-d` option to get a more detailed description of parameters and use the `-h` option to see a list of arguments and options.
 
+Alternatively, you can use [developer's guide](https://www.bonvinlab.org/haddock3/){:target="_blank"}, where each parameter of each module is listed along with their default values, short and long descriptions, etc. Navigate to the [Modules](https://www.bonvinlab.org/haddock3/modules/index.html#){:target="_blank"} and select a module which parameters you want to display.
+
 <a class="prompt prompt-question">
 In the above workflow we see in three modules a *tolerance* parameter defined. Using the *haddock3-cfg* command try to figure out what this parameter does.
 </a>
