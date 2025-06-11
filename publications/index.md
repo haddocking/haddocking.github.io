@@ -15,6 +15,10 @@ post-AlphaFold era: the 8th CAPRI evaluation](https://doi.org/10.22541/au.174829
 
 * M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1101/2025.02.24.639865). _BioRXiv._ 10.1101/2025.02.24.639865 (2025).
 
+* L. Pulido-Cortés, H. Gielingh, V. Thijssen, M. Liu, R. Yoshisada, L.Romão Soares, S. Nizamuddin, F. Friedrich, H. Greschik, L. Peng, R. Vargas Honorato, M. Jung, **A.M.J.J. Bonvin**, M. Biniossek, R. Schüle, S. Jongkees, H. van Ingen, Hugo and H.Th.M. Timmers. Molecular determinants for recognition of serotonylated chromatin. _Nucl. Acids Res_. In press (2025).
+
+* K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1126/sciadv.ads3071). _Science Adv._ *11*, eads3071, 1-12 (2025). Preprint [here](https://doi.org/10.1101/2024.08.09.60700).
+
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01810). _J. Chem. Inf. Mod._ Advanced Online Publication (2025).
 
 
@@ -22,8 +26,6 @@ post-AlphaFold era: the 8th CAPRI evaluation](https://doi.org/10.22541/au.174829
 
 * V. Reys∗, Ma. Giulini∗, V. Cojocaru, A. Engel, X. Xu, J. Roel-Touris, C. Geng, F. Ambrosetti, B.
 Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication (2024).
-
-* K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1101/2024.08.09.60700). _BioRXiv._ 10.1101/2024.08.09.60700 (2024).
 
 * X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
 
