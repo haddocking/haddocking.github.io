@@ -92,7 +92,7 @@ _and note the location of the extracted files in your system_. In it you should 
 
 In this section we will prepare the PDB files of the nanobody and antigen for docking.
 Crystal structures of both the antibody and the antigen in their free forms are available from the
-[PDBe database](https://www.pdbe.org){:target="_blank"}. We will use [pdb-tools][link-pdbtools]{:target="_blank"} to perform several operations on the PDB files, such as selecting chains, renumbering residues, and creating ensembles. `pdb-tools` is already installed in the `haddock3` environment.
+[PDBe database](https://www.pdbe.org){:target="_blank"}. We will use [pdb-tools][link-pdbtools]{:target="_blank"} to perform several operations on the PDB files, such as selecting chains, renumbering residues, and creating ensembles. `pdb-tools` is already installed in the `haddock3` environment. For more information about the requirements for pdb files in HADDOCK3, please refer to the [HADDOCK3 user manual - structure requirements](https://www.bonvinlab.org/haddock3-user-manual/structure_requirements.html){:target="_blank"}.
 
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
@@ -990,7 +990,7 @@ Check out the [interactive version of the chordchart](/education/HADDOCK3/HADDOC
 
 You can find all the contact maps in the `11_contactmap` directory of the run. 
 
-## BONUS 1: design interface mutations in an nanobody-antigen complex with HADDOCK3
+## BONUS 1: design interface mutations in a nanobody-antigen complex with HADDOCK3
 
 HADDOCK3 can also be used to analyse and extract information from a nanobody-antigen complex. 
 
@@ -1113,7 +1113,9 @@ We have shown how to define ambiguous restraints for the docking, and how to set
 
 A benchmarking study of HADDOCK3 on a nanobody-antigen system has been published in [biorxiv](./){:target="_blank"}. Please refer to this publication for more information on the performance of HADDOCK3 on nanobody-antigen systems. If you use HADDOCK in your nanobody-focused research, please cite this publication.
 
-If you want to ask questions and receive feedback don't hesitate to contact us at the [Bioexcel HADDOCK forum][link-forum]. 
+If you want to ask questions and receive feedback don't hesitate to contact us at the [Bioexcel HADDOCK forum][link-forum].
+
+Another use case for nanobody antigen docking is the [HADDOCK nanobody-antigen example](https://github.com/haddocking/haddock3/tree/main/examples/docking-nanobody-antigen){:target="_blank"} in the HADDOCK3 GitHub repository, which contains similar workflows applied to a different system.
 
 <!-- Links -->
 [haddock3antibody-epitope]: https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen/#antigen-scenario-2-nmr-mapped-epitope-information "HADDOCK3 antibody-antigen tutorial"
