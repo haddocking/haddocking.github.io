@@ -1,86 +1,63 @@
-# Bonvin Lab webpage based on the Jekyll template [Minimal Mistakes](http://mmistakes.github.io/minimal-mistakes)
+# BonvinLab webpage
 
-See a [live version of this website](http://haddocking.github.io/) hosted on GitHub.
-For more information on the template and folder organization, visit the [original author's
-web page](http://mmistakes.github.io/minimal-mistakes/theme-setup/).
+> Go to [bonvinlab.org](https://bonvinlab.org) for
+> the latest version of the BonvinLab website.
 
-## Getting Started
+## Adding to the page
 
-To ensure whatever you create/change appears as faithfully as possible after pushing to the main repository, install the version of Ruby and the gems used by Github. See a list [here](https://pages.github.com/versions/).
+### Install dependencies
 
-### Installation Instructions (updt. Nov. 2023)
+#### Ruby
 
-Following the instructions from: https://github.com/BillRaymond/install-jekyll-apple-silicon/blob/main/README.md
+Install Ruby following your system's instructions.
 
-And using homebrew
-
-
-1. Install ruby3.0
+```text
+brew install ruby
 
 ```
-brew install ruby@3.0
+
+```text
+sudo apt install ruby-full
 ```
 
-2. Add path to ruby3.0 in .bashrc (or .bash_provile)
-
-export PATH="/opt/homebrew/opt/ruby@3.0/bin/:$PATH"
-
-3. Restart your terminal and make sure you are now using ruby3.0
-
-```
-ruby -v
+```text
+sudo pacman -S ruby ruby-erb
 ```
 
-4. Install Jekyll and Bundler
+#### Clone this repository
 
+```bash
+git clone --depth 1 https://github.com/haddocking/haddocking.github.io.git haddocking-website
+cd bonvinlab-website
 ```
+
+#### Install website dependencies
+
+These are Ruby packages (gems) required to run the website.
+First install Ruby's dependency manager `bundler` and `jekyll`
+
+```bash
+# Change the ruby version if you are not using `3.4.0`
+export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 gem install --user-install bundler jekyll
 ```
 
-5. Add the path to the gems to in .bashrc (or .bash_provile)
-
-export PATH="~/.local/share/gem/ruby/3.0.0/bin:$PATH"
-
-
-6. Clone the haddocking.github.io repository and install all dependency Gems with Bundler
+Now install the required website dependencies (gems) using Bundler.
 
 ```bash
-git clone https://github.com/haddocking/haddocking.github.io.git haddocking-website
-cd haddocking-website
-bundle init
-bundle add jekyll --version "~>4.2"
 bundle config set --local path 'vendor/bundle'
-bundle install
-bundle exec jekyll new --force --skip-bundle .
-bundle add webrick
 bundle install
 bundle update
 ```
 
-7. Adapt the settings in _config.yml accordingly
-In order for links to properly work, the `url` setting in must be set accordingly, otherwise you will be redirected to the live version. This sets all the `site.url` variable calls throughout _layouts/,  _includes/, etc.
+### Running the site locally
 
-```yaml
-url: "" # Empty string will render the page successfully locally. Do not commit it to the main repository!
-incremental: true # This will be disabled by Github, but is useful for testing changes locally!
-```
-
-### Running the website locally
-
-To preview changes, which you should always do before committing anything or making any pull requests, run the web server locally using the following:
-
-```bash --login
-    $ bundle exec jekyll serve
-```
-
-### Small utility to create a new post automatically. Quick and dirty replacement of `octopress new post`
-
-```python
-    $ python _utilities/create_new_article.py 'A Random Post'
-```
-
-8. For updating jeckyll and bundle
+Serve it locally by running:
 
 ```bash
-    $ gem update jekyll
-    $ gem update bundle 
+bundle exec jekyll serve
+```
+
+It should now be served on [http://127.0.0.1:4000](http://127.0.0.1:4000)
+
+Go ahead and edit/add what you need, to see the rendered version, refresh the page.
