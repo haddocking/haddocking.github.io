@@ -30,6 +30,8 @@ This page provide you links to software, web services and datasets of the comput
   
   * [**HADDOCK3 software**](/software/haddock3) - A [BioExcel](https://www.bioexcel.eu){:target="_blank"} redesign of HADDOCK in a modular code. Still in beta release.
 
+  * [**HADDOCK Restraints Generator**](https://wenmr.science.uu.nl/new/haddock-restraints){:target="_blank"} - A graphical user interface of the [`haddock-restraints`](https://github.com/haddocking/haddock-restraints){:target="_blank"} utility to generate restraints to be used in HADDOCK.
+
 <HR>
 ### [HADDOCKING GitHub repository](https://github.com/haddocking)
   The GitHub repository for HADDOCK and its associated tools
