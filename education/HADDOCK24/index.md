@@ -12,7 +12,7 @@ In this page you can find links to tutorials on the usage of our software and we
   You will need for this a valid license of HADDOCK2.4.
 
 * [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html){:target="_blank"}:
-  A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK.
+  A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK, also available via [a graphical user interface](http://wenmr.science.uu.nl/new/haddock-restraints){:target="_blank"}.
 
 * [**HADDOCK2.4 basic protein-protein docking tutorial**](/education/HADDOCK24/HADDOCK24-protein-protein-basic):
   A tutorial demonstrating the use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.

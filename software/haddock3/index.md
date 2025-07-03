@@ -56,7 +56,7 @@ However it is able to take full advantage of the ambiguous interaction restraint
   User manual for HADDOCK3, with a comprehensive description of the software and its features, including a [Best Practices](https://www.bonvinlab.org/haddock3-user-manual/bpg.html){:target="_blank"} section and descriptions of several [HADDOCK docking scenarios](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios.html){:target="_blank"}.
 
 * [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html){:target="_blank"}:
-  A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK.
+  A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK, also available via [a graphical user interface](http://wenmr.science.uu.nl/new/haddock-restraints){:target="_blank"}.
 
 * * *
 
