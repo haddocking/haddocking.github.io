@@ -13,7 +13,6 @@ Install Ruby following your system's instructions.
 
 ```text
 brew install ruby
-
 ```
 
 ```text
@@ -27,7 +26,7 @@ sudo pacman -S ruby ruby-erb
 #### Clone this repository
 
 ```bash
-git clone --depth 1 https://github.com/haddocking/haddocking.github.io.git haddocking-website
+git clone --depth 1 https://github.com/haddocking/haddocking.github.io.git bonvinlab-website
 cd bonvinlab-website
 ```
 
