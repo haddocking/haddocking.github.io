@@ -59,4 +59,4 @@ bundle exec jekyll serve
 
 It should now be served on [http://127.0.0.1:4000](http://127.0.0.1:4000)
 
-Go ahead and edit/add what you need, to see the rendered version, refresh the page.
+Go ahead and edit/add what you need! To see the rendered version, refresh the page.
