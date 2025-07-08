@@ -33,7 +33,7 @@ cd bonvinlab-website
 #### Install website dependencies
 
 These are Ruby packages (gems) required to run the website.
-First install Ruby's dependency manager `bundler` and `jekyll`
+First, install Ruby's dependency manager `bundler` and `jekyll`
 
 ```bash
 # Change the ruby version if you are not using `3.4.0`
