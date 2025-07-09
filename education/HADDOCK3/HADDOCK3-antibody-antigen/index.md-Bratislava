@@ -585,7 +585,7 @@ important chemical group seems solvent accessible from a visual inspection.
 
 Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
-For this you can either make use of our online [GenTBL][gentbl] web service, entering the
+For this you can either make use of our online [haddock-restraints][haddock-restraints] web service, entering the
 list of active and passive residues for each molecule, and saving the resulting
 restraint list to a text file, or use the relevant `haddock3-restraints` command.
 
@@ -1517,7 +1517,7 @@ And check also our [education](/education) web page where you will find more tut
 
 <!-- Links -->
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
-[gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
+[haddock-restraints]: https://wenmr.science.uu.nl/haddock-restraints "haddock-restraints"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
 [haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK3 GitHub"
 [haddock-tools]: https://github.com/haddocking/haddock-tools "HADDOCK tools GitHub"
