@@ -509,7 +509,8 @@ In this part, you will use a custom-made plugin for the `PyMol` molecular viewer
 This plugin (`AIRviewer.py`) comes as part of the tutorial data set, and you will be instructed on how to use it during the course of this part.
 The plugin combines the ability to construct custom restraint sets for multi-body systems with the convenience of a visual appreciation of the resulting restraints network. 
 
-An alternative to the use of this plugin is a special HADDOCK interface available at: [https://wenmr.science.uu.nl/haddock-restraints/](https://wenmr.science.uu.nl/haddock-restraints/)
+An alternative to the use of this plugin is a special HADDOCK `Generate Restraints` web interface available at: [https://wenmr.science.uu.nl/haddock-restraints/](https://wenmr.science.uu.nl/haddock-restraints/)
+
 
 #### Constructing AIRs for protein-DNA systems
 
