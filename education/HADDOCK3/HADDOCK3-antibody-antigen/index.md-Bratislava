@@ -585,7 +585,7 @@ important chemical group seems solvent accessible from a visual inspection.
 
 Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
-For this you can either make use of our online [haddock-restraints][haddock-restraints] web service, entering the
+For this you can either make use of our online `Generate Restraints` [haddock-restraints][haddock-restraints] web service, entering the
 list of active and passive residues for each molecule, and saving the resulting
 restraint list to a text file, or use the relevant `haddock3-restraints` command.
 
