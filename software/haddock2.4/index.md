@@ -82,7 +82,7 @@ The functionalities are the same as the 2.4 version (the online manual has not c
 
 * Cyril Dominguez, Rolf Boelens and Alexandre M.J.J. Bonvin. [HADDOCK: a protein-protein docking approach based on biochemical and/or biophysical information.](https://doi.org/doi:10.1021/ja026939x) _J. Am. Chem. Soc._ **125**, 1731-1737 (2003).
 
-* R.V. Honorato, M.E. Trellet, B. Jiménez-García1, J.J. Schaarschmidt, M. Giulini, V. Reys,  P.I. Koukos, J.P.G.L.M. Rodrigues, E. Karaca, G.C.P. van Zundert, J. Roel-Touris, C.W. van Noort, Z. Jandová, A.S.J. Melquiond and **A.M.J.J. Bonvin**. [The HADDOCK2.4 web server: A leap forward in integrative modelling of biomolecular complexes](https://www.nature.com/articles/s41596-024-01011-0.epdf?sharing_token=UHDrW9bNh3BqijxD2u9Xd9RgN0jAjWel9jnR3ZoTv0O8Cyf_B_3QikVaNIBRHxp9xyFsQ7dSV3t-kBtpCaFZWPfnuUnAtvRG_vkef9o4oWuhrOLGbBXJVlaaA9ALOULn6NjxbiqC2VkmpD2ZR_r-o0sgRZoHVz10JqIYOeus_nM%3D). _Nature Prot._, Advanced Online Publication DOI: 10.1038/s41596-024-01011-0 (2024).
+{% include paper_citation.html key="haddock24" %}
 
 **_For additional citations when using specific modules see also our [publication page](./publications)_**.
 
