@@ -1,0 +1,5 @@
+{% assign paper = site.data.papers[include.key] %}
+<!-- Define how the citation should be formatted -->
+* {{ paper.authors }} [{{ paper.title }}]({{ paper.url }}). _{{ paper.journal
+}}_, {{ paper.details }} DOI: [{{ paper.doi }}](https://doi.org/{{ paper.doi }})
+({{ paper.year }})
