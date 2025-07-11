@@ -166,7 +166,7 @@ More about optimal settings for different docking scenarios can be found [here](
 
 In [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4/) active and passive residues can be entered manually or in a *tbl* file of ambiguous and unambiguous restraints. 
 
-Such restraints file can be generated in the [GenTBL server](https://alcazar.science.uu.nl/services/GenTBL/) and can be further used when using HADDOCK locally, since it is already CNS-formatted.
+Such restraints file can be generated using the `Generate Restraints` from [haddock-restraints](https://wenmr.science.uu.nl/haddock-restraints) web service and can be further used when using HADDOCK locally, since it is already CNS-formatted.
 
 **[Haddock tools](https://github.com/haddocking/haddock-tools)** a bunch of useful tool available on [Github](https://github.com/haddocking/haddock-tools) a bunch of useful tool available on github for use with local version of HADDOCK.
 * *contact-chain*, *contact-segID* - programs to calculate all heavy atom interchain contacts within a given distance cutoff - useful to define active/passive residues based on a template structure

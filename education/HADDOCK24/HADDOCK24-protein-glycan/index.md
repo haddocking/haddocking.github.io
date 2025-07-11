@@ -536,7 +536,7 @@ You can inspect the results of a precalculated run [here](https://rascar.science
 
 <!-- Links -->
 [air-help]: https://www.bonvinlab.org/software/haddock2.4/airs/ "AIRs help"
-[gentbl]: https://wenmr.science.uu.nl/gentbl/ "GenTBL"
+[haddock-restraints]: https://wenmr.science.uu.nl/haddock-restraints "haddock-restraints"
 [haddock24protein]: /education/HADDOCK24/HADDOCK24-protein-protein-basic/
 [haddock-repo]: https://github.com/haddocking/haddock3 "HADDOCK3 GitHub"
 [installation]: https://www.bonvinlab.org/haddock3/INSTALL.html "Installation"

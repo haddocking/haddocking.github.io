@@ -641,7 +641,7 @@ The following command will return all residues with a relative SASA for either t
 </a>
 
 Once you have defined your active and passive residues for both molecules, you can proceed with the generation of the AIR restraint file for HADDOCK.
-For this you can either make use of our online [GenTBL](https://alcazar.science.uu.nl/services/GenTBL/){:target="_blank"} webserver, entering the list of active and passive residues for each molecule, and saving the resulting restraint list to a text file, or use another `haddock-tools` script.
+For this you can either make use of our online `Generate Restraints` [haddock-restraints](https://wenmr.science.uu.nl/haddock-restraints/){:target="_blank"} web service, entering the list of active and passive residues for each molecule, and saving the resulting restraint list to a text file, or use another `haddock-tools` script.
 
 To use our `haddock-tools` `active-passive-to-ambig.py` script you need to create for each molecule a file containing two lines:
 * The first line corresponds to the list of active residues (numbers separated by spaces)

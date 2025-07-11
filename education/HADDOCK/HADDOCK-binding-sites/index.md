@@ -686,7 +686,7 @@ This will ensure that the ligand is properly drawn inside the binding pocket.
 2. For the subsequent flexible refinement stages, we define the binding pocket only as passive and the ligand as active. 
 This ensures that the ligand can explore the binding pocket.
 
-In order to create those two restraint files, use the HADDOCK server tool to generate AIR restraints: [https://alcazar.science.uu.nl/services/GenTBL/](https://alcazar.science.uu.nl/services/GenTBL/) (unfold the *Residue selection* menu):
+In order to create those two restraint files, use the `Generate Restraints` option from the  haddock-restraints tool accessible at [https://wenmr.science.uu.nl/haddock-restraints/](https://wenmr.science.uu.nl/haddock-restraints/):
 
 <a class="prompt prompt-info">
 Selection 1: Active residues (directly involved in the interaction) -> enter here the list of residues defining the binding site (see above)
