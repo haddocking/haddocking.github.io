@@ -1,62 +1,69 @@
--   name: Alexandre Bonvin
-    position: Full Professor
-    url: http://www.uu.nl/staff/amjjbonvin
-    avatar: /images/people/Bonvin-2020-12.jpg
+- name: Alexandre Bonvin
+  position: Full Professor
+  url: http://www.uu.nl/staff/amjjbonvin
+  avatar: /images/people/Bonvin-2020-12.jpg
+  github: https://github.com/haddocking
+  orcid: https://orcid.org/0000-0001-7369-1322
+  bluesky: https://bsky.app/profile/amjjbonvin.bsky.social
+  linkedin: https://www.linkedin.com/in/alexandrebonvin/
 
--   name: Rodrigo Vargas Honorato
-    position: IT-Researcher (Software Development and Operations)
-    avatar: /images/people/Rodrigo.jpg
+- name: Rodrigo Vargas Honorato
+  position: Engineering and Application Manager
+  avatar: /images/people/Rodrigo.jpg
+  github: https://github.com/rvhonorato
+  orcid: https://orcid.org/0000-0001-5267-3002
+  linkedin: https://www.linkedin.com/in/rodrigo-v-honorato/
 
--   name: Stefan Verhoeven
-    position: Research Software Engineer (Netherlands eScience Center)
-    avatar: /images/people/Stefan-Verhoeven.png
+- name: Stefan Verhoeven
+  position: Research Software Engineer (Netherlands eScience Center)
+  avatar: /images/people/Stefan-Verhoeven.png
 
--   name: Marco Giulini
-    position: Postdoctoral Researcher
-    avatar: /images/people/Marco-Giulini.jpeg
+- name: Marco Giulini
+  position: Postdoctoral Researcher
+  avatar: /images/people/Marco-Giulini.jpeg
 
--   name: Victor Reys
-    position: Postdoctoral Researcher
-    avatar: /images/people/Victor-Reys.png
-    
--   name: Raphaelle Versini
-    position: Postdoctoral Researcher
-    avatar: /images/people/Raphaelle-Versini.jpg
+- name: Victor Reys
+  position: Postdoctoral Researcher
+  avatar: /images/people/Victor-Reys.png
 
--   name: Anna Kravchenko
-    position: Postdoctoral Researcher
-    avatar: /images/people/Anna-Kravchenko.jpg
+- name: Raphaelle Versini
+  position: Postdoctoral Researcher
+  avatar: /images/people/Raphaelle-Versini.jpg
 
--   name: Your name here?
-    position: Postdoctoral Researcher
+- name: Anna Kravchenko
+  position: Postdoctoral Researcher
+  avatar: /images/people/Anna-Kravchenko.jpg
 
--   name: Your name here?
-    position: Postdoctoral Researcher
+- name: Your name here?
+  position: Postdoctoral Researcher
 
--   name: Xiaotong Xu
-    position: Ph.D Candidate
-    avatar: /images/people/Xiaotong-Xu.jpg
+- name: Your name here?
+  position: Postdoctoral Researcher
 
--   name: Anna Engel
-    position: Ph.D Candidate
-    avatar: /images/people/Anna-Engel.jpg
+- name: Xiaotong Xu
+  position: Ph.D Candidate
+  avatar: /images/people/Xiaotong-Xu.jpg
 
--   name:  Alkis Katsetsiadis
-    position: M.Sc Student
-    avatar: /images/people/Alkis-Katsetsiadis.png
+- name: Anna Engel
+  position: Ph.D Candidate
+  avatar: /images/people/Anna-Engel.jpg
 
--   name:  Emile Straat
-    position: M.Sc Student
-    avatar: /images/people/Emile-Straat.png
+- name: Alkis Katsetsiadis
+  position: M.Sc Student
+  avatar: /images/people/Alkis-Katsetsiadis.png
 
--   name:  Yara Weldam
-    position: M.Sc Student
-    avatar: /images/people/Yara-Weldam.png
+- name: Emile Straat
+  position: M.Sc Student
+  avatar: /images/people/Emile-Straat.png
 
--   name:  Ilaria-Coratella
-    position: M.Sc Student
-    avatar: /images/people/Ilaria-Coratella.png
+- name: Yara Weldam
+  position: M.Sc Student
+  avatar: /images/people/Yara-Weldam.png
 
--   name:  Lorenzo Possanzini
-    position: M.Sc Student
-    avatar: /images/people/Lorenzo_Possanzini.jpg
+- name: Ilaria-Coratella
+  position: M.Sc Student
+  avatar: /images/people/Ilaria-Coratella.png
+
+- name: Lorenzo Possanzini
+  position: M.Sc Student
+  avatar: /images/people/Lorenzo_Possanzini.jpg
