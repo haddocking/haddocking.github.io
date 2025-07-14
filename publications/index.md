@@ -6,28 +6,30 @@ image:
 ---
 ## 2025
 
-* M. Lensink, N. Raouraoua, G. Brysbaert, S. Velankar, S. Wodak and **A.M.J.J. Bonvin**. [Protein-protein interaction prediction in the pre- and
-post-AlphaFold era: the 8th CAPRI evaluation](https://doi.org/10.22541/au.174829163.35923269/v1). _Authorea_. 10.22541/au.174829163.35923269/v1 (2025)
+* M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1101/2025.07.01.662355). _BioRxiv_ 10.1101/2025.07.01.662355 (2025).
 
 * A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. [Updates to the CASP infrastructure in 2024](https://doi.org/10.22541/au.174646994.49522644/v1). _Authorea_ 10.22541/au.174646994.49522644/v1 (2025) 
 
+* M. Lensink, N. Raouraoua, G. Brysbaert, S. Velankar, S. Wodak and **A.M.J.J. Bonvin**. [Protein-protein interaction prediction in the pre- and
+post-AlphaFold era: the 8th CAPRI evaluation](http://doi.org/10.1002/prot.70018). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication DOI:10.1002/prot.70018 (2025)
+
 * M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoeven and **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1101/2025.04.30.651432). _J. Chem. Inf. Mod._ In Press, DOI:10.1021/acs.jcim.5c00969 (2025). Preprint [here](https://doi.org/10.1101/2025.04.30.651432).
 
-* M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1101/2025.02.24.639865). _BioRXiv._ 10.1101/2025.02.24.639865 (2025).
+* M. Giulini#, X. Xu# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1093/bioadv/vbaf161). _Bioinfo. Adv._ In Press, DOI:10.1093/bioadv/vbaf161 (2025). Preprint [here](https://doi.org/10.1101/2025.02.24.639865)
 
-* L. Pulido-Cortés, H. Gielingh, V. Thijssen, M. Liu, R. Yoshisada, L.Romão Soares, S. Nizamuddin, F. Friedrich, H. Greschik, L. Peng, R. Vargas Honorato, M. Jung, **A.M.J.J. Bonvin**, M. Biniossek, R. Schüle, S. Jongkees, H. van Ingen, Hugo and H.Th.M. Timmers. Molecular determinants for recognition of serotonylated chromatin. _Nucl. Acids Res_. In press (2025).
+* L. Pulido-Cortés, H. Gielingh, V. Thijssen, M. Liu, R. Yoshisada, L.Romão Soares, S. Nizamuddin, F. Friedrich, H. Greschik, L. Peng, R. Vargas Honorato, M. Jung, **A.M.J.J. Bonvin**, M. Biniossek, R. Schüle, S. Jongkees, H. van Ingen, Hugo and H.Th.M. Timmers. [Molecular determinants for recognition of serotonylated chromatin](https://doi.org/10.1093/nar/gkaf612). _Nucl. Acids Res_. *53*, gkaf612 (2025).
 
 * K. Devantier, T.L. Toft-Bertelsen, A. Prestel, V.M.S. Kjaer, C.a Sahin, M. Giulini, S. Louka, K. Spiess, A. Manandhar, K. Qvortrup, T. Ulven, B. Hjorth Bentzen, **A.M.J.J. Bonvin**, N. MacAulay, B.B. Kragelund and M.M. Rosenkilde. [The SH Protein of Mumps Virus is a Druggable Pentameric Viroporin](https://doi.org/10.1126/sciadv.ads3071). _Science Adv._ *11*, eads3071, 1-12 (2025). Preprint [here](https://doi.org/10.1101/2024.08.09.60700).
 
 * A. Basciu, M. Athar, H. Kurt, C. Neville, G. Malloci, F. Muredda, A. Bosin, P. Ruggerone, **A.M.J.J. Bonvin** and A.V. Vargiu. [Predicting binding events in very flexible, allosteric, multi-domain proteins](https://pubs.acs.org/doi/10.1021/acs.jcim.4c01810). _J. Chem. Inf. Mod._ *65*, 2052–2065 (2025).
+
+* X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://doi.org/10.1007/978-1-0716-4623-6_4). In: KC, D.B. (eds) Large Language Models (LLMs) in Protein Bioinformatics. Methods in Molecular Biology, vol 2941, 71-83. Humana, New York, NY.71-83 (2025). Preprint [here](https://arxiv.org/abs/2407.16375)
 
 
 ## 2024
 
 * V. Reys∗, Ma. Giulini∗, V. Cojocaru, A. Engel, X. Xu, J. Roel-Touris, C. Geng, F. Ambrosetti, B.
 Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication (2024).
-
-* X. Xu and **A.M.J.J. Bonvin** [Ranking protein-protein models with large language models and graph neural networks](https://arxiv.org/abs/2407.16375). _arXiv_:2407.16375 (2024).
 
 * G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ *4*:vbae153 (2024).
 
