@@ -52,7 +52,28 @@
                     <img src="{{ avatar }}" />                
                 {% endif %}
                 <h3>{{ member.name }}</h3>
-                <a class='mem-position'>{{ member.position }}</a>
+                <span class='mem-position'>{{ member.position }}</span>
+                <br />
+                {% if member.orcid %}
+                <a target="_blank" href={{ member.orcid }}>
+                  <img width="10%" src="/assets/icons/orcid.svg">
+                </a>
+                {% endif %}
+                {% if member.github %}
+                <a target="_blank" href={{ member.github }}>
+                  <img width="10%" src="/assets/icons/github.svg">
+                </a>
+                {% endif %}
+                {% if member.linkedin %}
+                <a target="_blank" href={{ member.linkedin }}>
+                  <img width="10%" src="/assets/icons/linkedin.svg">
+                </a>
+                {% endif %}
+                {% if member.bluesky %}
+                <a target="_blank" href={{member.bluesky}}>
+                  <img width="10%" src="/assets/icons/bluesky.svg">
+                </a>
+                {% endif %}
                 {% if member.bio %}
                     <p class='mem-bio'>{{ member.bio }}</p>                
                 {% endif %}
