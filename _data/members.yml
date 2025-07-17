@@ -31,7 +31,10 @@
 - name: Anna Kravchenko
   position: Postdoctoral Researcher
   avatar: /images/people/Anna-Kravchenko.jpg
-
+  github: https://github.com/AnnaKravchenko
+  orcid: https://orcid.org/0000-0002-2332-4206
+  linkedin: https://www.linkedin.com/in/kravchenko-anna-d/
+  
 - name: Danai Kotzampasi
   position: Postdoctoral Researcher
   avatar: /images/people/Danai-Kotzampasi.png
