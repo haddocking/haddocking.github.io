@@ -15,11 +15,11 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 # Getting started
 
 * **Online lectures**:
-  These two recordings of HADDOCK lectures are explaining basis of HADDOCK, ambiguous interaction restraints and introduce HADDOCK3 (*by Prof. Bonvin (June 7th, 2021) at the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool*):
+  These two recordings of HADDOCK lectures explain basis of HADDOCK, ambiguous interaction restraints and introduce HADDOCK3 (*by Prof. Bonvin (June 7th, 2021) at the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool*):
 
   <ul>
   <details>
-  <summary>View recorded lecture Part I (46 min.)
+  <summary>Click here to view recorded lecture Part I (46 min.)
   </summary>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/N2Sr4qtRKhs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
   </details>
@@ -27,7 +27,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   </ul>
   <ul>
   <details>
-  <summary>View recorded lecture Part II (43 min.)
+  <summary>Click here to view recorded lecture Part II (43 min.)
   </summary>
      <iframe width="560" height="315" src="https://www.youtube.com/embed/qpx6bQZhWrU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </details>
@@ -35,7 +35,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   </ul>
 
 * [**Basic docking run with HADDOCK3**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
-  This tutorial describes a full step-by-step process from preparing the files for the docking, to the interpretation of the results. It is a good idea to go though it to get a basic intoduction to HADDOCK3.
+  This tutorial describes a full step-by-step process from preparing the files for the docking, to the interpretation of the results. It is a good idea to go through it to get a basic introduction to HADDOCK3.
 
 <hr>
 
