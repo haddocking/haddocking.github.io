@@ -35,7 +35,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   </ul>
 
 * [**Basic docking run with HADDOCK3**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
-  This tutorial describes a full step-by-step process from preparing the files for the docking, to the interpretation of the results. It is a good idea to go through it to get a basic introduction to HADDOCK3. *Note that the tutorial used here is the basic antibody-antigen tutorial, so don't do both, are they are the same.*
+  This tutorial describes a full step-by-step process from preparing the files for the docking, to the interpretation of the results. It is a good idea to go through it to get a basic introduction to HADDOCK3. *Note that the tutorial used here is the basic antibody-antigen tutorial, so don't do both, as they are the same.*
 
 <hr>
 
