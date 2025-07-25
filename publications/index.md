@@ -13,7 +13,7 @@ image:
 * M. Lensink, N. Raouraoua, G. Brysbaert, S. Velankar, S. Wodak and **A.M.J.J. Bonvin**. [Protein-protein interaction prediction in the pre- and
 post-AlphaFold era: the 8th CAPRI evaluation](http://doi.org/10.1002/prot.70018). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication DOI:10.1002/prot.70018 (2025)
 
-* M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoeven and **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1101/2025.04.30.651432). _J. Chem. Inf. Mod._ In Press, DOI:10.1021/acs.jcim.5c00969 (2025). Preprint [here](https://doi.org/10.1101/2025.04.30.651432).
+* M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoeven and **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1021/acs.jcim.5c00969). _J. Chem. Inf. Mod._ *65*, 7315–7324 (2025). Preprint [here](https://doi.org/10.1101/2025.04.30.651432).
 
 * X. Xu#, M. Giulini# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1093/bioadv/vbaf161). _Bioinfo. Adv._ In Press, DOI:10.1093/bioadv/vbaf161 (2025). Preprint [here](https://doi.org/10.1101/2025.02.24.639865)
 
