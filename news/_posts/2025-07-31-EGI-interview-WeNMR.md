@@ -7,7 +7,9 @@ tags: [HADDOCK, WeNMR, Utrecht University, Alexandre Bonvin, Docking]
 image:
   feature:
 ---
-Check out the interview with Alexandre Bonvin about empowering structural biology - the long WeNMR journey with EGI - published in the [EGI Magazine](https://www.egi.eu/magazine/issue-03/).
+Now serving over 66,000 users in 174 countries, WeNMR’s success is built on user-friendly tools like the HADDOCK server, strong support and training, and a commitment to scientific excellence.
+
+Check out the interview with Alexandre Bonvin about empowering structural biology published in the [EGI Magazine](https://www.egi.eu/magazine/issue-03/).
 
 <center>
 <figure>
