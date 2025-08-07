@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Antibody-antigen modelling tutorial using a local version of HADDOCK3 w3griugiwuefg"
+title: "Antibody-antigen modelling tutorial using a local version of HADDOCK3"
 excerpt: "A tutorial describing the use of HADDOCK3 in the low-sampling scenario to model an antibody-antigen complex"
 tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, sampling]
 image:
