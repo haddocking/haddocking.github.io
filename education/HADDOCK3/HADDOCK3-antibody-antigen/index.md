@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Antibody-antigen modelling tutorial using a local version of HADDOCK3"
+title: "Antibody-antigen modelling tutorial using a local version of HADDOCK3 w3griugiwuefg"
 excerpt: "A tutorial describing the use of HADDOCK3 in the low-sampling scenario to model an antibody-antigen complex"
 tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, sampling]
 image:
@@ -19,6 +19,8 @@ This tutorial consists of the following sections:
 This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
 the structure of an antibody-antigen complex using knowledge of the hypervariable loops
 on the antibody (i.e., the most basic knowledge) and epitope information identified from NMR experiments for the antigen to guide the docking.
+
+**Video-recording of this tutorial, captured at BioExcel Sofia May 2025 Workshop, is available [here](https://youtu.be/0pLOPev3ni0?feature=shared){:target="_blank"}.**
 
 An antibody is a large protein that generally works by attaching itself to an antigen,
 which is a unique site of the pathogen. The binding harnesses the immune system to directly
