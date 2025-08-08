@@ -12,7 +12,6 @@ This tutorial consists of the following sections:
 {:toc}
 
 <hr>
-<hr>
 
 ## Introduction
 
@@ -20,6 +19,10 @@ This tutorial demonstrates the use of the new modular HADDOCK3 version for predi
 the structure of an antibody-antigen complex using knowledge of the hypervariable loops
 on the antibody (i.e., the most basic knowledge) and epitope information identified from NMR experiments for the antigen to guide the docking.
 
+This tutorial was recorded at the BioExcel Sofia Workshop in May 2025:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0pLOPev3ni0?si=RaI2lT7iX9USleZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br>
 An antibody is a large protein that generally works by attaching itself to an antigen,
 which is a unique site of the pathogen. The binding harnesses the immune system to directly
 attack and destroy the pathogen. Antibodies can be highly specific while showing low immunogenicity (i.e. the ability to provoke an immune response),
