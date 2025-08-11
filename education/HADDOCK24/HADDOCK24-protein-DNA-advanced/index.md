@@ -505,11 +505,14 @@ In this part we will introduce you to some of the more powerful methods for gene
 ### Using this part
 The topics covered in this part assume that you are familiar with the concept of "Ambiguous Interaction Restraints" and their basic setup using *active* and *passive* residues (See Reference for more information). 
 
-In this part, you will use a custom-made plugin for the `PyMol` molecular viewer to construct and visualise *AIR*s for the Cro-OR1 system.
-This plugin (`AIRviewer.py`) comes as part of the tutorial data set, and you will be instructed on how to use it during the course of this part.
-The plugin combines the ability to construct custom restraint sets for multi-body systems with the convenience of a visual appreciation of the resulting restraints network. 
+In this part, you will use a custom-made plugin for the PyMOL molecular viewer to construct and visualise *AIR*s for the Cro-OR1 system.
+The plugin combines the ability to construct custom restraint sets for multi-body systems with the convenience of a visual appreciation of the resulting restraints network. **Download `AIRviewer3.py` using this** [**link**](https://surfdrive.surf.nl/files/index.php/s/GX1zKtcaCWq0nFk){:target="_blank"}.
 
 An alternative to the use of this plugin is a special HADDOCK `Generate Restraints` web interface available at: [https://wenmr.science.uu.nl/haddock-restraints/](https://wenmr.science.uu.nl/haddock-restraints/)
+
+**Note** that data archive includes `tools/AIRviewer.py`, which differs from the version linked above. The linked AIRviewer3 requires Python 3, while the one in `tools/` requires Python 2. 
+
+**Note** that `AIRviewer.py` is useful only when AIR visualization is needed. Otherwise, the HADDOCK `Generate Restraints` web interface, `haddock-restraints` command-line tool, or manual selection of active/passive residues directly in the `Input parameters` section of the HADDOCK web server is sufficient.
 
 
 #### Constructing AIRs for protein-DNA systems
@@ -558,10 +561,12 @@ load airsession.pdb
 
 2) Setup PyMol to use the AIRviewer plugin
 
-On the PyMol Command line (1): 
+Click on `Plugin`>>`Plugin Manager` on the top-right of the screen. A plugin menu will appear. Click on `Install New Plugin`, and `Choose file...`. Select `AIRviewer.py`, follow PyMol's instructions. 
+
+Alternatively, on the PyMol Command line (1): 
 
 <a class="prompt prompt-pymol">
-run ../tools/AIRviewer.py<br>
+run ../path/to/AIRviewer3.py # add actual path to AIRviewer3.py on your machine<br>
 Activate PyMols sequence viewer (`S` button Figure 3, bottom-right option bar (3)).
 </a>
 
@@ -573,6 +578,12 @@ The sequence viewer can be used to select residues.
 </figure>
 
 The plugin is now activated and its functionality is available as a number of buttons on the right side panel (**Figure 3.2**). Let's start constructing the restraint set for our system in 4 steps (3-6). All steps are performed in the same PyMol session:
+
+**Note** that AIRviewer3 requires manual actvation every time new PyMOL window is open. To do so, go to `Plugin Manager`>>`Installed Plugins`, 
+find `AIRviewer3` in the list and click `Load`. Please note that it is **mandatory** to upload a complex to PyMOL before loading `AIRviewer3`.
+If no molecules are open in PyMOL, `AIRviewer3` loading will fail with the next error message:
+`ERROR: no chain ID and no segid ID defined. Need one of these object of type 'NoneType' has no len()`
+`Unable to initialize plugin 'AIRviewer' (pmg_tk.startup.AIRviewer3)`  
 
 3) Setup AIRs between conserved residues of helix 3 and nucleotide bases of OR1
 
