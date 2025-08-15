@@ -59,6 +59,9 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
   In addition to provided ambiguous restraints used to drive the docking, symmetry restraints are also defined to enforce symmetrical binding to the protein.
   As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
+* [**Protein-peptide docking tutorial**](/education/HADDOCK3/HADDOCK3-protein-peptide):
+  This tutorial guides you through protein–peptide docking in HADDOCK3, from preparing input structures and defining restraints to running the protocol and analyzing results. The peptide is docked as a pre-generated ensemble prepared in advance.
+
 <hr>
 
 # Advanced tutorials
