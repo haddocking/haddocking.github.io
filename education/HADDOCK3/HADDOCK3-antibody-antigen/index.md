@@ -188,7 +188,7 @@ __If running as part of a BioExcel workshop or summerschool see the instructions
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/MuC8YogNPj9Ac31/download -O HADDOCK3-antibody-antigen.zip<br>
+wget https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn/download -O HADDOCK3-antibody-antigen.zip<br>
 unzip HADDOCK3-antibody-antigen.zip
 </a>
 
