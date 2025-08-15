@@ -20,13 +20,13 @@ This tutorial demonstrates how to setup a Haddock3 workflow dedicated to predict
 * creation of the suitable Haddock3 workflow; 
 * basic analysis of the docking results. 
 
-Please note that we do not cover the processing of literature data into docking restraints; for more information, please refer to the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/). 
+Please note that we do not cover the processing of literature data into docking restraints; for more information, please refer to the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/){:target="_blank"}. 
 
-Computation within this tutorial should take 1.5 hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/files/index.php/s/NzibuNryl3RgVPn).  
+Computation within this tutorial should take 1.5 hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/files/index.php/s/UCULEeLRUkYmr0d){:target="_blank"}.  
 
 ### Tutorial test case
 
-In this tutorial, we will work with the phage 434 Cro/OR1 complex (PDB: [3CRO](https://www.rcsb.org/structure/3CRO)), formed by bacteriophage 434 Cro repressor proteins and the OR1 operator.
+In this tutorial, we will work with the phage 434 Cro/OR1 complex (PDB: [3CRO](https://www.rcsb.org/structure/3CRO){:target="_blank"}), formed by bacteriophage 434 Cro repressor proteins and the OR1 operator.
 
 Cro is part of the bacteriophage 434 genetic switch, playing a key role in controlling the switch between the lysogenic and lytic cycles of the bacteriophage. It is a *repressor* protein that works in opposition to the phage's repressor cI protein to control the genetic switch. Both repressors compete to gain control over an operator region containing three operators that determine the state of the lytic/lysogenic genetic switch. If Cro prevails, the late genes of the phage will be expressed, resulting in lysis. Conversely, if the cI repressor prevails, the transcription of Cro genes is blocked, and cI repressor synthesis is maintained, resulting in a state of lysogeny.
 
@@ -54,24 +54,24 @@ Throughout the tutorial, coloured text will be used to refer to questions, instr
 
 It is always possible that you have questions or run into problems for which you cannot find the answer. Here are some additional links that can help you to find the answers and solutions:
 
-* Haddock3 Documentation: [https://www.bonvinlab.org/haddock3/](https://www.bonvinlab.org/haddock3/)
-* Bioexcel User Forum: [https://ask.bioexcel.eu/c/haddock/6](https://ask.bioexcel.eu/c/haddock/6)
-* Haddock3 Github (issues & discussions): [https://github.com/haddocking/haddock3/](https://github.com/haddocking/haddock3/)
-* HADDOCK Help Center: [https://wenmr.science.uu.nl/haddock2.4/help](https://wenmr.science.uu.nl/haddock2.4/help)
+* Haddock3 Documentation: [https://www.bonvinlab.org/haddock3/](https://www.bonvinlab.org/haddock3/){:target="_blank"}
+* Bioexcel User Forum: [https://ask.bioexcel.eu/c/haddock/6](https://ask.bioexcel.eu/c/haddock/6){:target="_blank"}
+* Haddock3 Github (issues & discussions): [https://github.com/haddocking/haddock3/](https://github.com/haddocking/haddock3/){:target="_blank"}
+* HADDOCK Help Center: [https://wenmr.science.uu.nl/haddock2.4/help](https://wenmr.science.uu.nl/haddock2.4/help){:target="_blank"}
 
 <hr>
 
 ## Software and data setup
 
-For a complete setup of the local version of Haddock3, refer to the [online documentation](https://www.bonvinlab.org/haddock3/).
-Please, familiarise yourself with the sections ['**A brief introduction to HADDOCK3**'](https://www.bonvinlab.org/haddock3/intro.html) and ['**Installation**'](https://www.bonvinlab.org/haddock3/INSTALL.html).
+For a complete setup of the local version of Haddock3, refer to the [online documentation](https://www.bonvinlab.org/haddock3/){:target="_blank"}.
+Please, familiarise yourself with the sections ['**A brief introduction to HADDOCK3**'](https://www.bonvinlab.org/haddock3/intro.html){:target="_blank"} and ['**Installation**'](https://www.bonvinlab.org/haddock3/INSTALL.html).
 
-In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/). You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
+In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/){:target="_blank"}. You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 
 Please, download and decompress the tutorial data archive. Move the archive to your working directory of choice and extract it. You can download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/NzibuNryl3RgVPn/download -O haddock3-protein-dna-basic.zip<br> 
+wget https://surfdrive.surf.nl/files/index.php/s/UCULEeLRUkYmr0d/download -O haddock3-protein-dna-basic.zip<br> 
 unzip haddock3-protein-dna-basic.zip
 </a>
 
@@ -188,7 +188,7 @@ _**Note**_ that in the real docking case the bound structure of a complex is una
 
 The ambiguous interaction restraints are defined in the `ambig_prot_dna.tbl` file.
 This file was created using both experimental knowledge and information from literature.
-A detailed explanation of how to generate these restraints can be found in the advanced version of the tutorial, accessible [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data). 
+A detailed explanation of how to generate these restraints can be found in the advanced version of the tutorial, accessible [here](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#available-data){:target="_blank"}. 
 
 Let’s have a look at it's first lines:
 ```bash
@@ -218,17 +218,17 @@ HADDOCK is not limited to ambiguous restraints, other types, like unambiguous an
 Haddock3 requires an input structure for each docking partner. The quality of these input structures are highly influential to the quality of the docking models. Conformational deficiencies such as sterical clashes, chain breaks and missing atoms may cause problems during the docking, so it is important to verify each input file.
 Another important factor is the difference between unbound and bound conformations. The more different these conformations are, the more difficult it is to generate correct docking models.
 
-In this section we will go over the preparation of the protein structures. The preparation of the DNA structure is out of the scope of this tutorial, but is detailed in the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#preparing-pdb-coordinate-files-for-the-or1-operator).
+In this section we will go over the preparation of the protein structures. The preparation of the DNA structure is out of the scope of this tutorial, but is detailed in the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/#preparing-pdb-coordinate-files-for-the-or1-operator){:target="_blank"}.
 
 Ready-to-dock structures are available in `pdbs` directory, namely `1ZUG_dimer1.pdb`, `1ZUG_dimer2.pdb` and `OR1_unbound.pdb`.
 
 ### Protein structures
 
-An unbound structure of the protein is available on [PDB](https://www.rcsb.org/structure/1ZUG). We already examined this structure using PyMOL. 
+An unbound structure of the protein is available on [PDB](https://www.rcsb.org/structure/1ZUG){:target="_blank"}. We already examined this structure using PyMOL. 
 Our observation revealed that this protein has a disordered tail, which does not interact with the DNA.
 Since the core conformation remains unchanged, we can simply take the first conformation from the ensemble, remove the disordered tail from it and use it as an input structure for the docking. 
 
-This can be done using `pdb-tools`, a collection of simple scripts handy to manipulate pdb files. `pdb-tools` is installed automatically with Haddock3. Alternatively, it is also available as a [web-server](https://wenmr.science.uu.nl/pdbtools/).
+This can be done using `pdb-tools`, a collection of simple scripts handy to manipulate pdb files. `pdb-tools` is installed automatically with Haddock3. Alternatively, it is also available as a [web-server](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
 To obtain a single trimmed structure, we will make use of the command-line version of `pdb-tools`. 
 Please, _**remember to activate a virtual environment for Haddock3**_ before using  `pdb-tools`. 
@@ -450,7 +450,7 @@ mode = "local"
 ncores = 8
 {% endhighlight %}
 
-The parameter `mode` defines how this workflow will be executed. In this case, it will run locally, on your machine, using up to 8 CPUs. Feel free to change this value, if more cores are available. You can find out about other modes [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/#local-execution).
+The parameter `mode` defines how this workflow will be executed. In this case, it will run locally, on your machine, using up to 8 CPUs. Feel free to change this value, if more cores are available. You can find out about other modes [here](https://www.bonvinlab.org/education/HADDOCK3/HADDOCK3-antibody-antigen-bioexcel2023/#local-execution){:target="_blank"}.
 
 To start the docking you need to **activate your haddock3 environment**, then navigate to the folder `haddock3-protein-dna-basic` with the configuration file `protein-dna-basic.cfg`, and type one of the following:
 <a class="prompt prompt-cmd">
@@ -617,6 +617,6 @@ It may be helpful to examine several top-ranked models from each cluster. This c
 ## Congratulations!
 
 
-You've reached the end of this basic protein-DNA docking tutorial. We hope it has been informative and helps you get started with your own docking projects. Check out the advanced version of this tutorial ([currently awaliable only for Haddock2.4 server](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/)) for deeper insights into protein-DNA docking!
+You've reached the end of this basic protein-DNA docking tutorial. We hope it has been informative and helps you get started with your own docking projects. Check out the advanced version of this tutorial ([currently awaliable only for Haddock2.4 server](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/){:target="_blank"}) for deeper insights into protein-DNA docking!
 
 Happy docking!
