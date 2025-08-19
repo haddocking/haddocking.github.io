@@ -99,7 +99,7 @@ parameterisable yet rigid simulation pipeline composed of three steps:
 `rigid-body docking (it0)`, `semi-flexible refinement (it1)`, and `final refinement (itw)`.
 
 <figure style="text-align: center;">
-<img width="75%" src="./HADDOCK2-stages.png">
+<img width="75%" src="/eduction/HADDOCK3/HADDOCK3-antibody-antigen/HADDOCK2-stages.png">
 </figure>
 
 In HADDOCK3, users have the freedom to configure docking workflows into
@@ -120,7 +120,7 @@ restraints can, however, be used in HADDOCK3, which also supports the
 *ab initio* docking modes of HADDOCK.
 
 <figure style="text-align: center;">
-<img width="75%" src="./HADDOCK3-workflow-scheme.png">
+<img width="75%" src="/eduction/HADDOCK3/HADDOCK3-antibody-antigen/HADDOCK3-workflow-scheme.png">
 </figure>
 
 To keep HADDOCK3 modules organized, we catalogued them into several
