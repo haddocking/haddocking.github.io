@@ -63,7 +63,7 @@ _and note the location of the extracted PDB files in your system_. In it you sho
 
 ## HADDOCK general concepts
 
-HADDOCK (see [https://www.bonvinlab.org/software/haddock2.4](https://www.bonvinlab.org/software/haddock2.4){:target="_blank"})
+HADDOCK (see [https://www.bonvinlab.org/haddock3-user-manual/](https://www.bonvinlab.org/haddock3-user-manual/){:target="_blank"})
 is a collection of python scripts derived from ARIA ([https://aria.pasteur.fr](https://aria.pasteur.fr){:target="_blank"})
 that harness the power of CNS (Crystallography and NMR System – [https://cns-online.org](https://cns-online.org){:target="_blank"})
 for structure calculation of molecular complexes. What distinguishes HADDOCK from other docking software is its ability,
