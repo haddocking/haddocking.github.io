@@ -71,7 +71,7 @@ inherited from CNS, to incorporate experimental data as restraints and use these
 traditional energetics and shape complementarity. Moreover, the intimate coupling with CNS endows HADDOCK with the
 ability to actually produce models of sufficient quality to be archived in the Protein Data Bank.
 
-A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs. These allow the
+A central aspect to HADDOCK is the definition of Ambiguous Interaction Restraints or AIRs (see [https://www.bonvinlab.org/haddock3-user-manual/intro_restraints.html](https://www.bonvinlab.org/haddock3-user-manual/intro_restraints.html#ambiguous-distance-restraints)). These allow the
 translation of raw data such as NMR chemical shift perturbation or mutagenesis experiments into distance
 restraints that are incorporated in the energy function used in the calculations. AIRs are defined through
 a list of residues that fall under two categories: active and passive. Generally, active residues are those
@@ -124,7 +124,6 @@ restraints can, however, be used in HADDOCK3, which also supports the
 </figure>
 
 To keep HADDOCK3 modules organized, we catalogued them into several
-categories. But, there are no constraints on piping modules of different
 categories.
 
 The main module categories are "topology", "sampling", "refinement",
@@ -138,7 +137,6 @@ all categories and modules. Below is a summary of the available modules:
 * **Sampling modules**
     * `rigidbody`: *Rigid body energy minimization with CNS (`it0` in haddock2.x).*
     * `lightdock`: *Third-party glow-worm swam optimization docking software.*
-    * 'gdock': *Gdock integration sampling modulex.*
 * **Model refinement modules**
     * `flexref`: *Semi-flexible refinement using a simulated annealing protocol through molecular dynamics simulations in torsion angle space (`it1` in haddock2.x).*
     * `emref`: *Refinement by energy minimisation (`itw` EM only in haddock2.4).*
@@ -450,7 +448,7 @@ haddock3-restraints passive_from_active hpr-ensemble.pdb 15,16,17,20,48,49,51,52
 
 <hr>
 
-### Defining the position restraints locally
+### Defining the ambiguous interaction restraints
 
 Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
@@ -515,12 +513,12 @@ after the initial rigid-body docking stage, select up to 10 models per cluster a
 
 HADDOCK3 also provides an analysis module (`caprieval`) that allows
 to compare models to either the best scoring model (if no reference is given) or a reference structure, which in our case
-we have at hand. This will directly allow us to assess the performance of the protocol for the following three scenarios:
+we have at hand. This will directly allow us to assess the performance of the protocol for the following two scenarios:
 
 1. Scenario 1: 1000 rigidbody docking models, selection of top200 and flexible refinement + EM 
 3. Scenario 2: 1000 rigidbody docking models, FCC clustering and selection of max 20 models per cluster followed by flexible refinement and EM
 
-The basic workflow for all three scenarios will consists of the following modules, with some differences in the restraints used and some parameter settings (see below):
+The basic workflow for all three scenarios will consists of the following modules, with some differences in the parameter settings (see below):
 
 1. **`topoaa`**: *Generates the topologies for the CNS engine and build missing atoms*
 2. **`rigidbody`**: *Rigid body energy minimisation (`it0` in haddock2.x)*
@@ -531,7 +529,7 @@ The basic workflow for all three scenarios will consists of the following module
 7. **`clustfcc`**: *Clustering of models based on the fraction of common contacts (FCC)*
 8. **`caprieval`**: *Calculates CAPRI metrics (i-RMSD, l-RMSD, Fnat, DockQ) with respect to the top scoring model or reference structure if provided*
 
-The input PDB files are the same for all two scenarios. The differences are in the sampling at the rigid body stage.
+The input PDB and restraints files are the same for the two scenarios. The differences are in the sampling at the rigid body stage.
 
 
 <hr>
@@ -843,7 +841,7 @@ If you have everything ready, you can launch haddock3 either from the command li
 
 ### Structure of the run directory
 
-Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g.:
+Once your run has completed inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially, e.g. for scenario 2:
 
 {% highlight shell %}
 > ls scenario2/
