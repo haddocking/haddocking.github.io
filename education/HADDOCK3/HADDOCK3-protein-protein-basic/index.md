@@ -125,7 +125,6 @@ restraints can, however, be used in HADDOCK3, which also supports the
 
 To keep HADDOCK3 modules organized, we catalogued them into several
 categories.
-
 The main module categories are "topology", "sampling", "refinement",
 "scoring", and "analysis". There is no limit to how many modules can belong to a
 category. Modules are added as developed, and new categories will be created
@@ -452,11 +451,11 @@ haddock3-restraints passive_from_active hpr-ensemble.pdb 15,16,17,20,48,49,51,52
 
 Once you have defined your active and passive residues for both molecules, you
 can proceed with the generation of the ambiguous interaction restraints (AIR) file for HADDOCK.
-For this you can either make use of our online [GenTBL][gentbl] web service, entering the
+For this you can either make use of our online [haddock-restraints](https://rascar.science.uu.nl/haddock-restraints) web service, entering the
 list of active and passive residues for each molecule, and saving the resulting
-restraint list to a text file, or use the relevant `haddock-tools` script.
+restraint list to a text file, or use our haddock3 command line tool.
 
-To use our `haddock-tools` `active-passive-to-ambig.py` script (also found in the archive of the tutorial) you need to create for each molecule a file containing two lines:
+To use our haddock3 command line tool you need to create for each molecule a file containing two lines:
 
 * The first line corresponds to the list of active residues (numbers separated by spaces)
 * The second line corresponds to the list of passive residues.
