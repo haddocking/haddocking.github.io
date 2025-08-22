@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Protein-Peptide modelling tutorial using a local version of HADDOCK3"
+title: "Protein-peptide modelling tutorial using a local version of HADDOCK3"
 excerpt: "A tutorial describing the use of HADDOCK3 in the low-sampling scenario to model an protein-peptide complex"
 tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, sampling]
 image:
@@ -16,7 +16,7 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-TThe tumor suppressor protein **p53** plays a central role in controlling cell cycle arrest, apoptosis, and DNA repair. Its activity is tightly regulated by **MDM2**, an E3 ubiquitin ligase that binds to the transactivation domain of p53 and targets it for degradation. This interaction is a key node in cancer biology, as overexpression of MDM2 leads to functional inactivation of p53 in many tumors.
+The tumor suppressor protein **p53** plays a central role in controlling cell cycle arrest, apoptosis, and DNA repair. Its activity is tightly regulated by **MDM2**, an E3 ubiquitin ligase that binds to the transactivation domain of p53 and targets it for degradation. This interaction is a key node in cancer biology, as overexpression of MDM2 leads to functional inactivation of p53 in many tumors.
 
 The **N-terminal region of p53 (residues 18–32)** adopts a short α-helical conformation when bound to the hydrophobic pocket of MDM2. Although short, this peptide region forms several crucial contacts at the interface, making it an ideal candidate for structure-based drug design and peptide inhibitor development.
 
@@ -26,7 +26,7 @@ In this tutorial, you will model the interaction between MDM2 and these peptide 
 
 Since there is no experimentally determined interface for mouse MDM2, we use the human MDM2–p53 interaction as a reference to guide restraint definition and assess the docking results. Specifically, we refer to the [**1YCR**](https://www.rcsb.org/structure/1YCR){:target="_blank"} structure from the Protein Data Bank, which is the crystallographic complex of human MDM2 bound to the N-terminal transactivation domain of p53. This structure provides high-resolution information about the binding interface and serves as a reliable template for identifying key interaction residues in our docking setup.
 
-For background information on the differences between HADDOCK2.4 and HADDOCK3, see the [web-page](https://www.bonvinlab.org/haddock3/intro.html){:target="_blank"}.
+For background information on the differences between HADDOCK2.4 and HADDOCK3, see this [web-page](https://www.bonvinlab.org/haddock3/intro.html){:target="_blank"}.
 
 <hr>
 <hr>
@@ -46,32 +46,37 @@ instructions, and/or PyMOL commands.
 
 ## Setup/Requirements
 
-In order to follow this tutorial you will need to work on a Linux or MacOSX system. We will also make use of [PyMOL](https://www.pymol.org/) (freely available for most operating systems) in order to visualize the input and output data.
+In order to follow this tutorial you will need to work on a Linux or MacOSX system. We will also make use of [PyMOL](https://www.pymol.org/){:target="_blank"} (freely available for most operating systems) in order to visualize the input and output data.
 
-We assume that you have a working installation of HADDOCK3 on your system. If not, provided you have a working Python version (3.9 to 3.13), you can install it through
+We assume that you have a working installation of HADDOCK3 on your system. If not, provided you have a working Python version (3.9 to 3.13), you can install it through:
 
 ```bash
 pip install haddock3
 ```
 
-or refer to the [HADDOCK3 installation instructions][installation]{:target="_blank"} for more details.
+or refer to the HADDOCK3 installation [instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"} for more details.
 
-Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive]() and make sure to **note the location of the extracted files** on your system.
+Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/vqpRJHi5Io6R3a0) and make sure to **note the location of the extracted files** on your system.There is also a linux command for it:
 
-Unziping the file will create the `HADDOCK3-Protein-peptide` directory which should contain the following directories and files:
+<a class="prompt prompt-cmd">
+wget https://surfdrive.surf.nl/files/index.php/s/vqpRJHi5Io6R3a0/download -O Protein-peptide.zip<br>
+unzip Protein-peptide.zip
+</a>
+
+Unzipping the file will create the `Protein-peptide` directory ,which should contain the following directories and files:
 
 * `pdbs`: Contains the pre-processed protein and peptide PDB structures required for docking, as well as bound reference (i.e. experimentally obtained structure).
 * `restraints`: Contains interface definition files and the corresponding ambiguous restraint files to guide the docking process.
 * `runs`: Contains pre-computed docking results for each scenario as defined in `workflows` directory, useful for comparison or if you prefer to skip the computationally intensive runs.
-* `scripts`: a directory containing various scripts used in this tutorial.
-* `workflows`:Contains HADDOCK3 configuration files used for the docking scenarios in this tutorial.
+* `scripts`: A directory containing various scripts used in this tutorial.
+* `workflows`: Contains HADDOCK3 configuration files used for the docking scenarios in this tutorial.
 
 <hr>
 <hr>
 
 ## Preparing PDB Files for Docking
 
-In this section, we will prepare the PDB files of the protein and peptide for docking. The protein model is obtained using **AlphaFold** and multiple conformations of the peptide are generated using [**PyMOL**](https://www.pymol.org){:target="_blank"}. We will use `pdb-tools` to process the structures, including residue selection, renumbering, and ensemble generation. By default, `pdb-tools` are being installed to your machine together with haddock3. `pdb-tools` documentation is available [here](http://www.bonvinlab.org/pdb-tools/){:target="_blank"}. 
+In this section, we will prepare the PDB files of the protein and peptide for docking. The protein model is obtained using **AlphaFold**, and multiple conformations of the peptide are generated using [**PyMOL**](https://www.pymol.org){:target="_blank"}. We will use `pdb-tools` to process the structures, including residue selection, renumbering, and ensemble generation. By default, `pdb-tools` are being installed on your machine together with haddock3. `pdb-tools` documentation is available [here](http://www.bonvinlab.org/pdb-tools/){:target="_blank"}. 
 
 _**Note:**_ that pdb-tools is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
@@ -90,7 +95,7 @@ The accuracy of docking results in HADDOCK3 depends heavily on the quality of th
 <a class="prompt prompt-info">Find the mouse MDM2 entry in UniProt using the search box on the home page.
 </a>
 
-The correct UniProt entry is **“P23804 – E3 ubiquitin-protein ligase Mdm2 [Mus musculus]**” This protein has no experimentally solved 3D structure. Therefore, we will use a predicted model from AlphaFold.
+The correct UniProt entry is **“P23804 – E3 ubiquitin-protein ligase Mdm2 [Mus musculus]**”. This protein has no experimentally solved 3D structure. Therefore, we will use a predicted model from AlphaFold.
 
 <a class="prompt prompt-info">Click on the section ‘Structure’ (on the left) or scroll down until you reach it, and click on “AlphaFold predicted structure” to download the .pdb file.
 </a>
@@ -414,7 +419,7 @@ In a real-case docking scenario, especially when restraint quality is uncertain 
 
 ### Best Practice of Protein-Peptide Docking
 
-For completeness, we also carried out a **full-scale docking run** using the optimal settings for peptide docking recommended. We generated 1000 models per peptide conformer (3000 in total for three conformations), employed **RMSD-based clustering** with a cutoff of 5, and extended the MD phases (e.g., 2000 steps during the high-temperature TAD and first cooling stage, and 4000 steps during the subsequent cooling stages). This configuration gave a slight improvement in model diversity and interface quality compared to the reduced-sampling run. The results of this 3000-model run are provided under the `runs` directory as `run_bp_capri`.
+For completeness, we also carried out a **full-scale docking run** using the optimal settings for peptide docking recommended. We generated 1000 models per peptide conformer (3000 in total for three conformations), employed **RMSD-based clustering** with a cutoff of 5, and extended the MD phases (e.g., 2000 steps during the high-temperature TAD and first cooling stage, and 4000 steps during the subsequent cooling stages). This configuration gave a slight improvement in model diversity and interface quality compared to the reduced-sampling run. The results of this 3000-model run are provided under the `runs` directory as `run_bp`.
 
 **Higher sampling** and longer simulations are most beneficial when the correct binding pose is unknown, when restraints are derived from predicted rather than experimental data, when the peptide is highly flexible, or when there could be multiple binding sites. In our case, the difference was modest because the restraints were high-confidence and targeted a single known binding interface; the reduced-sampling run (**~333 models per conformer**) still produced results very similar to those of the larger run.
 
@@ -665,7 +670,7 @@ _**Note:**_ A similar script to extract cluster statistics is available in the `
 <hr>
 <hr>
 
-## Visualisation and Comparision with the Reference Strucuture
+## Visualisation and Comparison with the Reference Structure
 
 To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model of cluster 1, 2 or 3, located in `XX_seletopclusts` directory of the run. Precalculated models can be found in the `runs/run2/7_seletopclusts/` directory.
 
@@ -733,7 +738,7 @@ We hope you have enjoyed this tutorial and that you have learned something new. 
 <hr>
 <hr>
 
-## BONUS:How to Use ARCTIC-3D to Predict Active Residues of Protein?
+## BONUS: How to Use ARCTIC-3D to Predict Active Residues of Protein?
 
 Predicting residues that participate in the binding  is an essential step in integrative docking when no experimental interaction data is available. In this section, we explain how to use [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a structure-based tool that identifies and clusters interface residues based on homologous protein complexes. These predicted residues are then used as active residues in HADDOCK3.
 
@@ -754,7 +759,6 @@ Then click submit.
 ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot - you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 93-V - clusters 2, 3 and 4, while some residues are found only in a single cluster e.g. 105-R - cluster 2. 
 
 Inspect each of the 4 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
-
 
 <a class="prompt prompt-question">
 What is the most relevant cluster in our case? Pay attention to the protein function!
@@ -804,34 +808,3 @@ After alignment, we visually transferred the predicted active residues from the 
 
 
 
-<hr>
-
-
-
-<details style="background-color:#DAE4E7">
-  <summary style="bold">
-    <i>Answer</i> <i class="material-icons">expand_more</i>
-  </summary>
-  <p>
-  In terms of iRMSD values, we only observe very small differences in the best model.
-  The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement but increases again slightly after final minimisation.
-  All this will of course depend on how different are the bound and unbound conformations and the amount of data used to drive the docking process.
-  In general, from our experience, the more and better data at hand, the larger the conformational changes that can be induced.
-  </p>
-</details>
-<br>
-
-
-<details style="background-color:#DAE4E7">
- <summary style="bold">
-  <b><i>See the overlay of the top ranked model onto the reference structure</i></b> <i class="material-icons">expand_more</i>
- </summary>
- <p> Top-ranked model of the top cluster (cluster1_model_1) superimposed onto the reference crystal structure (in yellow)</p>
- <figure style="text-align: center">
-   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/results-best-model.png">
- </figure>
- <br>
-</details>
-
-<hr>
-<hr>
