@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Protein-peptide modelling tutorial using a local version of HADDOCK3"
+title: "Protein-peptide modeling tutorial using a local version of HADDOCK3"
 excerpt: "A tutorial describing the use of HADDOCK3 in the low-sampling scenario to model an protein-peptide complex"
 tags: [HADDOCK, HADDOCK3, installation, preparation, proteins, docking, analysis, workflows, sampling]
 image:
@@ -62,8 +62,8 @@ Further, we are providing pre-processed haddock-compatible PDB and configuration
 wget https://surfdrive.surf.nl/files/index.php/s/vqpRJHi5Io6R3a0/download -O Protein-peptide.zip<br>
 unzip Protein-peptide.zip
 </a>
-
-Unzipping the file will create the `Protein-peptide` directory ,which should contain the following directories and files:
+ 
+Unzipping the file will create the `protein-peptide` directory ,which should contain the following directories and files:
 
 * `pdbs`: Contains the pre-processed protein and peptide PDB structures required for docking, as well as bound reference (i.e. experimentally obtained structure).
 * `restraints`: Contains interface definition files and the corresponding ambiguous restraint files to guide the docking process.
@@ -103,18 +103,18 @@ The correct UniProt entry is **“P23804 – E3 ubiquitin-protein ligase Mdm2 [M
 <a class="prompt prompt-question">Which part of MDM2 should be kept for docking instead of using the full model, and why might removing irrelevant regions be beneficial?
 </a>
 
-This model covers the **full-length sequence**, but for docking we only need a specific part. We are specifically interested in the p53-binding domain which corresponds to **residues 26 to 109**.The remaining regions, particularly the disordered parts, are known not to interact with the peptide, so it is acceptable to remove them. This also has the advantage of reducing computational cost by making the receptor smaller.
+This model covers the **full-length sequence**, but for docking we only need a specific part. We are specifically interested in the p53-binding domain ,which corresponds to **residues 26 to 109**. The remaining regions, particularly the disordered parts, are known not to interact with the peptide, so it is advisable to remove them. This also has the advantage of reducing computational cost by making the receptor smaller.
 
 <a class="prompt prompt-info">Scroll further down to the “Family & Domains” section of the same UniProt entry and see the “Domain”
 </a>
 
-Once you’ve downloaded the .pdb model, extract the binding domain and replace chain id with `A` using:
+Once you’ve downloaded the .pdb model,move the downloaded structure file (e.g., AF-P23804-F1-model_v4.pdb) into your working directory (here named Protein-peptide). Then extract the binding domain and replace chain id with `A` using:
 
 <a class="prompt prompt-cmd">
-pdb_selres -26:109 AF_MDM2.pdb | pdb_chain -A | pdb_tidy > AF_MDM2_26_109.pdb
+pdb_selres -26:109 AF-P23804-F1-model_v4.pdb | pdb_chain -A | pdb_tidy > AF_MDM2_26_109.pdb
 </a>
 
-Command `pdb_selres -26:109` keeps only residues from 26 to 109 out of the entire file. Then, command `pdb_chain -A` modifies chain id to A. This is done to ensure there will be no overlap between chain id of the receptor with the chain id of the ligand to avoid issues during docking. Lastly, the command `pdb_tidy` ensures the PDB file corresponds to the format specifications. 
+Command `pdb_selres -26:109` keeps only residues from 26 to 109 out of the entire file. Then, command `pdb_chain -A` modifies the chain id to A. This is done to ensure there will be no overlap between chain id of the receptor with the chain id of the ligand to avoid issues during docking. Lastly, the command `pdb_tidy` ensures the PDB file corresponds to the format specifications. 
 
 _**Note**_ pdb_tidy attempts to correct formatting only, not the actual content of the PDB file.   
 
@@ -135,22 +135,24 @@ You will use PyMOL’s built-in `fab` command to build the idealized conformatio
 
 Helical conformation:
 <a class="prompt prompt-pymol">
-fab SQETFSGLWKLLPPE, peptide_helix, ss=1
+fab SQETFSGLWKLLPPE, peptide_helix, ss=1 <br>
 save peptide_helix.pdb, peptide_helix
 </a>
 Beta-sheet conformation:
 <a class="prompt prompt-pymol">
-fab SQETFSGLWKLLPPE, peptide_sheet, ss=2
+fab SQETFSGLWKLLPPE, peptide_sheet, ss=2 <br>
 save peptide_sheet.pdb, peptide_sheet
 </a>
  Polyproline II conformation (random coil):
 <a class="prompt prompt-pymol">
-fab SQETFSGLWKLLPPE, peptide_ppii, ss=0
+fab SQETFSGLWKLLPPE, peptide_ppii, ss=0 <br>
 save peptide_ppii.pdb, peptide_ppii
 </a>
 
 <a class="prompt prompt-question">Why do we simulate multiple conformations of the peptide instead of just one?
 </a>
+
+*_Note_*: Once you created pdb files, move saved files to the working directory.
 
 Once you’ve generated the three conformations, use `pdb-mkensemble` from `pdb-tools` to arrange all 3 structures in a single ensemble file:
 
@@ -158,11 +160,20 @@ Once you’ve generated the three conformations, use `pdb-mkensemble` from `pdb-
 pdb_mkensemble peptide_helix.pdb peptide_sheet.pdb peptide_ppii.pdb|pdb_tidy > peptide_ensemble.pdb
 </a>
 
+To quickly inspect the contents of the generated ensemble, you can look at the header of the file with:
+
+<a class="prompt prompt-cmd">
+head peptide_ensemble.pdb
+</a>
+
 #### Examine Ensemble in PyMOL(Optional)
 Before moving on to docking, it’s a good practice to **inspect the generated peptide ensemble visually**. This step helps you ensure that all three conformations have been included correctly and that the file structure is clean and consistent.
 
+To open the ensemble in PyMOL, use:
+<a class="prompt prompt-info">File >> Open >> peptide_ensemble.pdb
+</a>
+
 <a class="prompt prompt-pymol">
-load peptide_ensemble.pdb<br>
 split_states all<br>
 as cartoon<br>
 color yellow, all<br>
@@ -177,38 +188,38 @@ This command loads the ensemble, **splits it into separate model**, and displays
 
 In this section, we describe how to define restraints that guide the docking process in **HADDOCK3**. The restraints specify which regions of the molecules are expected to be involved in the interaction and help focus the docking calculation on relevant interfaces.
 
-_**Note:**_HADDOCK uses the **CNS (Crystallography & NMR System)** engine for energy calculations, and thus restraint files must follow a CNS-compatible format. 
+_**Note:**_ HADDOCK uses the [**CNS (Crystallography & NMR System)**](https://cns-online.org/v1.3/){target:blank} engine for energy calculations, and thus restraint files must follow a CNS-compatible format. 
 
-We use the `haddock3-restraints` command line tool  to generate ambiguous **distance restraints in** `.tbl` **format**, which is the required format for HADDOCK3. Before generating the `.tbl` file, which contains the ambiguous distance restraints for HADDOCK3, we first need to prepare the active/passive residue lists that define which residues on the interacting molecules are expected to be in contact.
+We use the `haddock3-restraints` command line tool to generate **ambiguous interaction restraints in** `.tbl` **format**, which is the required format for HADDOCK3. Before generating the `.tbl` file, which contains the 
+ambiguous interaction restraints for HADDOCK3, we first need to prepare the active/passive residue lists that define which residues on the interacting molecules are expected to be in contact.
 
- **Active residues** are those expected to make direct contacts at the interface (from experiments, homologs, or predictors like **ARCTIC‑3D**). **Passive residues** are the immediate neighbors of the actives, included to allow flexibility and avoid over‑restricting the search.
+**Active residues:** These residues are “forced” to be at the interface. If they are not part of the interface in the final models, an energetic penalty will be applied. The interface in this context is defined by the union of active and passive residues on the partner molecules. Active residues are typically identified by wet-lab experiments (e.g. mutagenesis, NMR data) or predicted using various software tools such as ARCTIC-3D.
+**Passive residues:** These residues are expected to be at the interface. However, if they are not, no energetic penalty is applied.
  
- These **restraint files** guide the docking process by constraining the conformational search around biologically meaningful interfaces.
+These **restraint files** guide the docking process by constraining the conformational search around used-defined interfaces.
 
- To generate ambiguous distance restraints (AIRs) from active/passive residue files, use the following general syntax:
+To generate **AIRs** from active/passive residue files, use the following general syntax:
+
+* `file_actpass_protein` and `file_actpass_peptide`: act/pass files for each molecule
+*  `--segid-one`, `--segid-two`: specify segment/chain identifiers (optional, but recommended for multi-chain systems).
 
  <a class="prompt prompt-cmd">
 haddock3-restraints active_passive_to_ambig file_actpass_one file_actpass_two [--segid-one] [--segid-two] > output.tbl
 </a>
 
-* `file_actpass_protein` and `file_actpass_peptide`: act/pass files for each molecule
-*  `--segid-one`, `--segid-two`: specify segment/chain identifiers (optional, but recommended for multi-chain systems).
-
 We will now describe how to prepare `.act-pass` files for peptide and protein in detail for each molecule in the following sections.
 
 ### Defining Active Residues for Protein
 
-To define the active residues on the protein side, we used **ARCTIC-3D**, a data-mining software, which can cluster all known interfaces of a protein, grouping similar interfaces in interacting surfaces, i.e. list of amino acids that are likely to participate in the binding. No structural information of the **mouse MDM2** is available, however, such information is present for a **human MDM2**. The list of probable binding site residues identified by **ARCTIC-3D** is:  
+To define the active residues on the protein side, we used [**ARCTIC-3D**](https://rascar.science.uu.nl/arctic3d/){target:blank}, a data-mining software, which can cluster all known interfaces of a protein, grouping similar interfaces in interacting surfaces, i.e. list of amino acids that are likely to participate in the binding. No structural information of the **mouse MDM2** is available, however, such information is present for a **human MDM2**. The list of probable binding site residues identified by **ARCTIC-3D** is:  
 
 <pre style="background-color:#DAE4E7">
 54 57 58 61 62 67 72 73 75 93 94 100
 </pre>
 
-<a class="prompt prompt-attention"> 
-These residues were specifically chosen considering high probability values (over XX and the known p53 binding interface and were cross-validated in PyMOL using the reference structure 1YCR.
-</a>
+These residues were specifically chosen considering high probability values over 0.5-0.4 and the known p53 binding interface and were cross-validated in PyMOL using the reference structure 1YCR.
 
-_**Note:**_ See the [BONUS:ARCTIC-3D](#bonushow-to-use-arctic-3d-to-predict-active-residues-of-protein)section to learn how to extract interface clusters from structural prediction.
+_**Note:**_ See the [BONUS: ARCTIC-3D](#bonushow-to-use-arctic-3d-to-predict-active-residues-of-protein)section to learn how to extract interface clusters from structural prediction.
 
 Precited Active Residue and Associated probability values:
 
@@ -224,12 +235,6 @@ Precited Active Residue and Associated probability values:
 </details>
 <br>
 
-Add these residues to the protein-AR3D-active.act-pass file on the first line, while the second line was left empty because passive should only be defined if active residues are defined for the second molecule.
-
-<a class= "prompt prompt-info">
-Add these residues to the "protein-AR3D-active.act-pass" file on the first line, while the second line was left empty because passive should only be defined if active residues are defined for the second molecule.
-</a>
-
 **Check In PyMol:**
 Before finalizing the actives, visually confirm that the selected residues correspond to the **p53 binding region** in the MDM2 structure, using the **reference complex 1YCR**.
 
@@ -244,25 +249,34 @@ This allows you to see which protein residues are within interaction distance (4
 Then use this command to highlight predicted interface residues on the protein:
 
 <a class="prompt prompt-pymol">
-fetch 1YCR (or open it from pdbs folder) <br>
-select active, (resi 54+57+58+61+62+67+72+73+75+93+94+100) and chain A and 1YCR <br>
-show surface, active <br>
+load AF_MDM2_26_109.pdb <br>
+color green <br>
+show surface <br>
+select active, (resi 54+57+58+61+62+67+72+73+75+93+94+100) <br>
 color red, active <br>
 </a>
+
+Optionally, you can align this structure with 1YCR to verify that the selected residues correspond to the known p53 binding site.
 
 <a class="prompt prompt-question">
 Do the selected residues overlap with the p53 peptide-binding site in the MDM2 structure?
 </a>
 
+Add these residues to the protein-AR3D-active.act-pass file on the first line, while the second line was left empty because passive should only be defined if active residues are defined for the second molecule.
+
+<a class= "prompt prompt-info">
+Add these residues to the "protein-AR3D-active.act-pass" file on the first line, while the second line was left empty because passive should only be defined if active residues are defined for the second molecule.
+</a>
+
 ### Defining Passive Residues for the Peptide
-Since the peptide is flexible and lacks structural constraints, we don’t define any active residues. Instead, passive residues are declared manually.
+Since we do not have experimental data or a reliable way to predict which residues of the peptide are directly at the interface, we do not define any active residues. Instead, passive residues are declared manually.
 
 <a class= "prompt prompt-info">
 Add all the residues to the peptide-ens-passive.act-pass file on the second line, while the first line was left empty.
 </a>
 
 <a class="prompt prompt-attention"> 
-Passive residues must only be defined if actives were specified on the other molecule (which we did for MDM2).
+Passive residues must only be defined if actives were specified on the other molecule (which we did for MDM2). Typically, active residues are surrounded by passive residues to account for uncertainties in binding site definition and to provide flexibility. In this specific case, however, no active residues are defined on the peptide, so only passive residues are specified. 
 </a>
 
 ### Restraints Validation
@@ -283,7 +297,7 @@ _**Note:**_ This command checks only the file’s formatting, not the biological
 
 After preparing the input structures and defining the interaction restraints, we proceed with setting up and running the docking using the HADDOCK3. In this section, we describe the configuration and execution of a protein–peptide docking workflow involving the MDM2 protein and an ensemble of peptide conformations.
 
-### Defining the Modelling Workflow
+### Defining the Modeling Workflow
 
 We use a standard HADDOCK3 workflow adapted to protein–peptide docking. This workflow includes topology generation, rigid-body minimization, semi-flexible interface refinement, and final refinement, followed by model selection, clustering, and evaluation. Our configuration is stored in the protein_peptide_docking.cfg file.
 
