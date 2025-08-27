@@ -177,8 +177,7 @@ combining a multitude of independent modules that perform specialized tasks.
 In this tutorial we will make use of the HADDOCK3 version. In case HADDOCK3
 is not pre-installed in your system you will have to install it.
 
-To obtain HADDOCK3 navigate to [its repository][haddock-repo], fill the
-registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
+To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w){:target="_blank"},  navigate to [its repository][haddock-repo]{:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
 
 
 ### Auxiliary software
@@ -280,7 +279,7 @@ After saving the molecule delete it from the Pymol window or close Pymol. You ca
 delete 1F3G
 </a>
 
-In a terminal, change the chain of e2a from a to B. 
+In a terminal, change the chain of e2a from A to B. 
 
 <a class="prompt prompt-cmd">
 pdb_chain -B e2a_1F3G.pdb > e2a_1F3G_B.pdb
@@ -299,7 +298,7 @@ Since the biological function of this complex is to transfer a phosphate group f
 
 In order to use a modified amino-acid in HADDOCK, the only thing you will need to do is to edit the PDB file and change the residue name of the amino-acid you want to modify. Don not bother deleting irrelevant atoms or adding missing ones, HADDOCK will take care of that. For E2A, the histidine that is phosphorylated has residue number 90. In order to change it to a phosphorylated histidine do the following:
 
-<a class="prompt prompt-info">Edit the PDB file (*e2a_1F3G_B.pdb*) in your favorite editor</a>
+<a class="prompt prompt-info">Edit the PDB file (*e2a_1F3G_B.pdb*) in your favorite text editor</a>
 <a class="prompt prompt-info">Change the name of histidine 90 to NEP </a>
 <a class="prompt prompt-info">Save the file (as simple text file) under a new name, e.g. *e2aP_1F3G.pdb*</a>
 
