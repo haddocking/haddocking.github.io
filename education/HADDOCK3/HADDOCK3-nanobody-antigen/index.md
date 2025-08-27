@@ -62,13 +62,11 @@ system. We will also make use of [**PyMOL**][link-pymol]{:target="_blank"} (free
 most operating systems) in order to visualize the input and output data.
 
 We assume that you have a working installation of HADDOCK3 on your system. 
-If not, provided you have a working Python version (3.9 to 3.13), you can install it through
 
-```bash
-pip install haddock3
-```
+In case HADDOCK3 is not pre-installed in your system you will have to install it.
+To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w){:target="_blank"},  navigate to [its repository][haddock-repo]{:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
 
-or refer to the [HADDOCK3 installation instructions][installation]{:target="_blank"} for more details.
+In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/){:target="_blank"}. You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 
 Further we are providing pre-processed PDB files for docking and analysis (but the
 preprocessing of those files will also be explained in this tutorial). The files have been processed

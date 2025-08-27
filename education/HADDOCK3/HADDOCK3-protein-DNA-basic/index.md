@@ -63,8 +63,11 @@ It is always possible that you have questions or run into problems for which you
 
 ## Software and data setup
 
-For a complete setup of the local version of Haddock3, refer to the [online documentation](https://www.bonvinlab.org/haddock3/){:target="_blank"}.
-Please, familiarise yourself with the sections ['**A brief introduction to HADDOCK3**'](https://www.bonvinlab.org/haddock3/intro.html){:target="_blank"} and ['**Installation**'](https://www.bonvinlab.org/haddock3/INSTALL.html).
+In order to follow this tutorial you will need to work in a Linux terminal. 
+We assume that you have a working installation of HADDOCK3 on your system. 
+
+In case HADDOCK3 is not pre-installed in your system you will have to install it.
+To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w){:target="_blank"},  navigate to [its repository][haddock-repo]{:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
 
 In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/){:target="_blank"}. You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 

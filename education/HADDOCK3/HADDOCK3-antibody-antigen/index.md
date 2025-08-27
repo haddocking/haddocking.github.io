@@ -203,8 +203,10 @@ Unziping the file will create the `HADDOCK3-antibody-antigen` directory which sh
 
 In case of a workshop of course, HADDOCK3 will usually have been installed on the system you will be using.
 
-It this is not the case, you will have to install it yourself. To obtain and install HADDOCK3, navigate to [its repository][haddock-repo], fill the
-registration form, and then follow the instructions under the **Local setup (on your own)** section below.
+In case HADDOCK3 is not pre-installed in your system you will have to install it.
+To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w){:target="_blank"},  navigate to [its repository][haddock-repo]{:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
+
+In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/){:target="_blank"}. You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 
 This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided pre-calculated runs were obtained on a Macbook Pro M2 processors with as OS Sequoia 15.3.1.
 
