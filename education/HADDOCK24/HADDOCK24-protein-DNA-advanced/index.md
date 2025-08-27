@@ -506,7 +506,11 @@ In this part we will introduce you to some of the more powerful methods for gene
 The topics covered in this part assume that you are familiar with the concept of "Ambiguous Interaction Restraints" and their basic setup using *active* and *passive* residues (See Reference for more information). 
 
 In this part, you will use a custom-made plugin for the PyMOL molecular viewer to construct and visualise *AIR*s for the Cro-OR1 system.
-The plugin combines the ability to construct custom restraint sets for multi-body systems with the convenience of a visual appreciation of the resulting restraints network. **Download `AIRviewer3.py` using this** [**link**](https://surfdrive.surf.nl/files/index.php/s/GX1zKtcaCWq0nFk){:target="_blank"}.
+The plugin combines the ability to construct custom restraint sets for multi-body systems with the convenience of a visual appreciation of the resulting restraints network. 
+<p align="center">
+  <a href="AIRviewer3.py"><strong>Download AIRviewer plugin</strong></a>
+</p>
+<br>
 
 **Note** that data archive includes `tools/AIRviewer.py`, which differs from the version linked above. The linked AIRviewer3 requires Python 3, while the one in `tools/` requires Python 2. 
 
