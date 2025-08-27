@@ -28,7 +28,7 @@ that binds to a nanobody is called **epitope**. Different from antibodies, nanob
 Another important feature of these molecules is that the highly conserved amino acids that are not part of the CDRs, namely the **framework regions (FRs)**,
 can play a role in the binding to the antigen.
 
-Predicting the structure of a nanobody-antigen complex is very challenging, as the epitope can be located in any part of the antigen molecule. In the last years AlphaFold2-Multimer has been shown to be able to predict the correct structure of the nanobody-antigen complex for a limited number of cases. This is due to the fact that there's no co-evolution between the antibody and antigen sequences, which makes the prediction of the correct conformation extremely difficult. AlphaFold3 is expected to improve the prediction of the nanobody-antigen complex, but still fails for many cases.
+Predicting the structure of a nanobody-antigen complex is very challenging, as the epitope can be located in any part of the antigen molecule. In the last years AlphaFold2-Multimer has been shown to be able to predict the correct structure of the nanobody-antigen complex for a limited number of cases. This is due to the fact that there is no co-evolution between the antibody and antigen sequences, which makes the prediction of the correct conformation extremely difficult. AlphaFold3 is expected to improve the prediction of the nanobody-antigen complex, but still fails for many cases.
 
 This tutorial demonstrates the use of the new modular HADDOCK3 version for predicting
 the structure of a nanobody-antigen complex using different possible information scenarios, ranging
@@ -64,7 +64,7 @@ most operating systems) in order to visualize the input and output data.
 We assume that you have a working installation of HADDOCK3 on your system. 
 
 In case HADDOCK3 is not pre-installed in your system you will have to install it.
-To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w){:target="_blank"},  navigate to [its repository][haddock-repo]{:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
+To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w/viewform?){:target="_blank"},  navigate to [its repository][haddock-repo]{:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
 
 In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/){:target="_blank"}. You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 
