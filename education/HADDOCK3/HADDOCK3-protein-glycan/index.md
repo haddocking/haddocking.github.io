@@ -59,7 +59,9 @@ We will also make use of [**PyMOL**][link-pymol] (freely available for
 most operating systems) in order to visualize the input and output data. 
 We will provide you links to download the various required software and data. 
 We assume that you have a working installation of HADDOCK3 on your system. 
-If not, please refer to the [HADDOCK3 installation instructions](https://github.com/haddocking/haddock3/blob/main/docs/INSTALL.md){:target="_blank"}.
+
+In case HADDOCK3 is not pre-installed in your system you will have to install it.
+To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w/viewform?){:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"}.
 
 Further we are providing pre-processed PDB files for docking and analysis (but the
 preprocessing of those files will also be explained in this tutorial). 

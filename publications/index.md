@@ -6,6 +6,8 @@ image:
 ---
 ## 2025
 
+* **A.M.J.J. Bonvin** and M. Lensink. [Navigating the Pre- and Post-AlphaFold Divide: CAPRI 8th evaluation meeting, February 12-14, Grenoble, FR](https://doi.org/10.22541/au.175613473.32747661/v1), _Authorea_ Editorial to the Proteins 8th CAPRI special issue, 10.22541/au.175613473.32747661/v1 (2025).
+
 * M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1101/2025.07.01.662355). _BioRxiv_ 10.1101/2025.07.01.662355 (2025).
 
 * A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. Updates to the CASP infrastructure in 2024. _Proteins: Struc. Funct. &amp; Bioinformatics_. In press (2025). Preprint [here](https://doi.org/10.22541/au.174646994.49522644/v1)
