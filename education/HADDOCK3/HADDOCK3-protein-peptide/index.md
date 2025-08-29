@@ -46,20 +46,18 @@ instructions, and/or PyMOL commands.
 
 ## Setup/Requirements
 
-In order to follow this tutorial you will need to work on a Linux or MacOSX system. We will also make use of [PyMOL](https://www.pymol.org/){:target="_blank"} (freely available for most operating systems) in order to visualize the input and output data.
+In this tutorial we will use the PyMOL molecular visualisation system. If not already installed, download and install PyMOL from [here](https://pymol.org/){:target="_blank"}. You can use your favourite visualisation software instead, but be aware that instructions in this tutorial are provided only for PyMOL.
 
-We assume that you have a working installation of HADDOCK3 on your system. If not, provided you have a working Python version (3.9 to 3.13), you can install it through:
+We assume that you have a working installation of HADDOCK3 on your system. If HADDOCK3 is not pre-installed in your system, you will have to install it. To obtain HADDOCK3, fill the [registration form](https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w/viewform?){:target="_blank"}, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3-user-manual/install.html){:target="_blank"} or you can install it through:
 
 ```bash
 pip install haddock3
 ```
 
-or refer to the HADDOCK3 installation [instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"} for more details.
-
-Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/vqpRJHi5Io6R3a0) and make sure to **note the location of the extracted files** on your system.There is also a linux command for it:
+Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb) and make sure to **note the location of the extracted files** on your system.There is also a linux command for it:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/vqpRJHi5Io6R3a0/download -O Protein-peptide.zip<br>
+wget https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb -O Protein-peptide.zip<br>
 unzip Protein-peptide.zip
 </a>
  
@@ -211,15 +209,27 @@ We will now describe how to prepare `.act-pass` files for peptide and protein in
 
 ### Defining Active Residues for Protein
 
-To define the active residues on the protein side, we used [**ARCTIC-3D**](https://rascar.science.uu.nl/arctic3d/){target:blank}, a data-mining software, which can cluster all known interfaces of a protein, grouping similar interfaces in interacting surfaces, i.e. list of amino acids that are likely to participate in the binding. No structural information of the **mouse MDM2** is available, however, such information is present for a **human MDM2**. The list of probable binding site residues identified by **ARCTIC-3D** is:  
+To define the active residues on the protein side, we used [**ARCTIC-3D**](https://rascar.science.uu.nl/arctic3d/){target:blank}, a data-mining software, which can cluster all known interfaces of a protein, grouping similar interfaces in interacting surfaces, i.e. list of amino acids that are likely to participate in the binding. No structural information of the **mouse MDM2** is available, however, such information is present for a **human MDM2**. he list of probable binding site residues identified by ARCTIC-3D was further evaluated by calculating their solvent accessible surface area (SASA), since residues buried inside the protein are less likely to contribute directly to binding. Only residues with sufficient solvent exposure were retained as actives, which yielded the following residues:  
 
 <pre style="background-color:#DAE4E7">
-54 57 58 61 62 67 72 73 75 93 94 100
+54 55 58 59 62 67 72 73 93 94 100
 </pre>
 
 These residues were specifically chosen considering high probability values over 0.5-0.4 and the known p53 binding interface and were cross-validated in PyMOL using the reference structure 1YCR.
 
-_**Note:**_ See the [BONUS: ARCTIC-3D](#bonushow-to-use-arctic-3d-to-predict-active-residues-of-protein)section to learn how to extract interface clusters from structural prediction.
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>Surface model of MDM2 with active residues highlighted in red</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+  <br>
+  <figure style="text-align: center;">
+    <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/active_residue.png">
+  </figure>
+<br>
+</details>
+<br>
+
+_**Note:**_ See the [BONUS: ARCTIC-3D](#bonushow-to-use-arctic-3d-to-predict-active-residues-of-protein)section to learn how to extract interface clusters from structural prediction and using SASA.
 
 Precited Active Residue and Associated probability values:
 
@@ -493,13 +503,10 @@ The simplest way to extract ranking information and the corresponding HADDOCK sc
 
 <pre style="background-color:#DAE4E7">
                                    model	md5	caprieval_rank	score	irmsd	fnat	lrmsd	ilrmsd	dockq	rmsd	cluster_id	cluster_ranking	model-cluster_ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	sym	total	vdw	vean	xpcs
-../12_seletopclusts/cluster_2_model_1.pdb       -       1       -102.990        5.349   0.083   12.607  12.622  0.156   4.485   1       2       1       2.323   0.000   0.000   1429.890        0.000   0.000   0.000   -18.001 0.000   -213.378        0.000   0.000   0.000   0.000   -253.600        -42.545 0.000   0.000
-../12_seletopclusts/cluster_1_model_1.pdb       -       2       -95.638 2.110   0.375   4.829   4.804   0.489   1.847   2       1       1       51.169  0.000   0.000   1304.920        0.000   0.000   0.000   -36.536 0.000   -120.294        0.000   0.000   0.000   0.000   -109.285        -40.160 0.000   0.000
-../12_seletopclusts/cluster_1_model_2.pdb       -       3       -93.064 2.140   0.188   5.251   5.231   0.414   1.844   2       1       2       1.653   0.000   0.000   1246.410        0.000   0.000   0.000   -13.950 0.000   -186.916        0.000   0.000   0.000   0.000   -227.159        -41.896 0.000   0.000
-../12_seletopclusts/cluster_1_model_3.pdb       -       4       -91.247 2.406   0.188   5.510   5.498   0.391   2.127   2       1       3       63.658  0.000   0.000   1301.090        0.000   0.000   0.000   -14.069 0.000   -178.029        0.000   0.000   0.000   0.000   -162.309        -47.938 0.000   0.000
-../12_seletopclusts/cluster_4_model_1.pdb       -       5       -90.971 6.200   0.083   15.148  15.162  0.126   5.236   5       4       1       42.373  0.000   0.000   1368.080        0.000   0.000   0.000   -27.050 0.000   -130.441        0.000   0.000   0.000   0.000   -130.138        -42.071 0.000   0.000
-../12_seletopclusts/cluster_1_model_4.pdb       -       6       -90.247 1.803   0.438   3.839   3.880   0.559   1.555   2       1       4       20.889  0.000   0.000   1177.880        0.000   0.000   0.000   -33.332 0.000   -137.283        0.000   0.000   0.000   0.000   -147.941        -31.547 0.000   0.000
-../12_seletopclusts/cluster_3_model_1.pdb       -       7       -86.083 3.542   0.104   8.477   8.440   0.253   3.030   3       3       1       4.620   0.000   0.000   1024.940        0.000   0.000   0.000   -15.482 0.000   -198.277        0.000   0.000   0.000   0.000   -225.065        -31.408 0.000   0.000
+../12_seletopclusts/cluster_1_model_1.pdb       -       1       -108.487        1.978   0.229   4.403   4.433   0.461   1.700   1       1       1       9.126   0.000   0.000   1440.260        0.000   0.000   0.000   -17.764 0.000   -333.853        0.000   0.000   0.000   0.000       -349.593        -24.865 0.000   0.000
+../12_seletopclusts/cluster_2_model_1.pdb       -       2       -100.478        3.890   0.188   9.510   9.464   0.254   3.324   5       2       1       4.749   0.000   0.000   1476.810        0.000   0.000   0.000   -21.463 0.000   -164.223        0.000   0.000   0.000   0.000       -206.119        -46.645 0.000   0.000
+../12_seletopclusts/cluster_1_model_2.pdb       -       3       -100.226        5.959   0.083   14.636  14.611  0.132   5.034   1       1       2       2.106   0.000   0.000   1174.060        0.000   0.000   0.000   -31.189 0.000   -118.077        0.000   0.000   0.000   0.000       -161.604        -45.633 0.000   0.000
+../12_seletopclusts/cluster_3_model_1.pdb       -       4       -95.360 4.446   0.167   10.556  10.589  0.221   3.742   2       3       1       10.580  0.000   0.000   1147.310        0.000   0.000   0.000   -25.872 0.000   -210.751        0.000   0.000   0.000   0.000   -228.566    -28.396 0.000   0.000
 </pre>
 
 
@@ -532,18 +539,17 @@ In CAPRI the quality of a model is defined as (for protein-protein complexes):
 You can use **DockQ**, a [combination of i-RMSD](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0161879){:target="_blank"}, l-RMSD, and Fnat to assess the quality of the models. It corresponds to column 9 in the capri_ss.tsv file. Since DockQ is the column number nine in the caprieval files…
 
 <a class="prompt prompt-question">
-What is based on this criterion the quality of the top ranked model listed above (cluster_2_model_1.pdb)?
+What is based on this criterion the quality of the top ranked model listed above (cluster_1_model_1.pdb)?
 </a>
 
 In case where the `caprieval` module is called after a clustering step, an additional `capri_clt.tsv` file will be present in the directory. This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering (4 by default), with their corresponding standard deviations. E.g.:
 
 <pre style="background-color:#DAE4E7">
 cluster_rank    cluster_id  n   under_eval  score   score_std  irmsd   irmsd_std   fnat   fnat_std   lrmsd   lrmsd_std  dockq   dockq_std  ilrmsd  ilrmsd_std  rmsd    rmsd_std    air air_std bsa bsa_std desolv  desolv_std  elec    elec_std    total   total_std   vdw vdw_std caprieval_rank
-          1       2       4       -       -92.549 2.050   2.115   0.214   0.297   0.112   4.857   0.636   0.463   0.066   4.853   0.614   1.843   0.202   34.342  24.455  1257.575        51.505  -24.472 10.524  -155.630        27.685  -161.673        42.491  -40.385 5.863   1
-          2       1       4       -       -86.021 9.942   5.870   0.403   0.078   0.043   14.473  1.568   0.134   0.014   14.477  1.558   4.951   0.365   16.346  17.505  1235.268        123.291 -20.531 7.156   -204.655        33.674  -214.503        49.019  -26.194 9.634   2
-          3       3       4       -       -83.784 1.  997   6.213   1.759   0.125   0.044   14.976  4.162   0.158   0.061   14.955  4.177   5.265   1.463   53.286  28.875  1193.743        126.378 -27.998 7.317   -108.220        56.725  -94.405 76.812  -39.470 6.008   3
-          4       5       4       -       -80.317 8.413   6.172   0.753   0.141   0.034   15.146  1.935   0.148   0.026   15.148  1.928   5.223   0.630   47.955  19.714  1186.205        105.492 -28.845 3.245   -72.285 36.060  -66.141 39.395  -41.811 4.617   4
-          5       6       4       -       -72.185 6.513   8.515   0.057   0.057   0.009   21.768  0.091   0.073   0.003   21.821  0.106   7.217   0.043   12.402  3.527   1133.517        66.538  -6.189  1.700   -135.169        23.515  -162.969        18.713  -40.202 7.728   5
+          1       1       4       -       -98.198 6.822   3.420   1.561   0.161   0.068   8.312   4.011   0.314   0.131   8.315   3.990   2.928   1.307   8.405   5.510   1288.665        121.768 -23.809 5.685   -179.051        95.731  -210.066        84.887  -39.419 8.969   1
+          2       5       4       -       -87.901 10.237  3.329   0.576   0.182   0.056   8.046   1.507   0.299   0.065   8.010   1.495   2.853   0.486   17.886  11.509  1278.430        172.834 -21.787 6.034   -137.808        22.462  -160.262        29.104  -40.340 12.703  2
+          3       2       4       -       -87.896 6.834   5.759   1.265   0.099   0.050   13.673  3.101   0.155   0.040   13.682  3.075   4.833   1.064   14.920  11.076  1210.532        78.007  -16.600 12.142  -184.888        83.105  -205.779        86.544  -35.810 9.490   3
+
 </pre>
 
 In this file you find the cluster rank (which corresponds to the naming of the clusters in the previous `seletop` directory), the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the preceding `7_seletopclusts` directory.
@@ -691,12 +697,12 @@ To visualize the models from the top cluster of your favorite run, start PyMOL a
 **Visual examination of the best models** is a crucial step. This allows you to check whether the model(s) look as expected, identify any unphysical geometries, and assess whether there is meaningful diversity between clusters. Such inspection often reveals issues or interesting variations that may not be apparent from numerical scores alone.
 
 <a class="prompt prompt-info">
-File menu -> Open -> select cluster_2_model_1.pdb
+File menu -> Open -> select cluster_1_model_1.pdb
 </a>
 
 _**Note**_ that the PDB files are compressed (gzipped) by default at the end of a run. You can decompress those with the `gunzip` command. PyMOL can directly read the gzipped files.
 
-If you want to get an impression of how well-defined a cluster is, repeat this for the best N models you want to view (`cluster_2_model_X.pdb`). Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
+If you want to get an impression of how well-defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`). Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
 
 <a class="prompt prompt-info">
 File menu -> Open -> select 1YCR.pdb
@@ -733,7 +739,7 @@ _**Note:**_You can turn on and off a model by clicking on its name in the right 
   <summary style="bold">
     <b><i>See the overlay of the selected model onto the reference structure </i></b> <i class="material-icons">expand_more</i>
   </summary>
-  <i>Top-ranked model of the top cluster (cluster_2_model_1) superimposed onto the reference structure (in yellow).</i>
+  <i>Top-ranked model of the top cluster (cluster_1_model_1) superimposed onto the reference structure (in yellow).</i>
   <br>
   <figure style="text-align: center;">
     <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/aligned_structure.png">
@@ -815,6 +821,14 @@ align AF_MDM_26_109, 1YCR
 </a>
 
 After alignment, we visually transferred the predicted active residues from the ARCTIC-3D output to our own model and recorded them for use in HADDOCK3.
+
+### SASA: Solvent Accessible Surface Area
+
+In addition to ARCTIC-3D predictions, we further validated candidate residues by calculating their solvent accessible surface area (SASA). SASA measures the surface of a biomolecule that is accessible to a solvent (e.g. water), which is directly related to how exposed a residue is. Buried residues, with low SASA, are unlikely to contribute directly to binding, while surface-exposed residues, with higher SASA, are typically more relevant in protein–protein or protein–peptide interactions.
+
+Both active and passive residues should have a relative solvent accessibility (RSA) of at least 15% to be considered in HADDOCK docking setups.
+
+For calculating SASA, we used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes SASA values directly from PDB structures. By applying this criterion, we filtered ARCTIC-3D predicted residues and retained only those with sufficient solvent exposure for docking.
 
 <hr>
 <hr>
