@@ -213,85 +213,119 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 
 <hr>
-
 ### BioExcel summerschool, Pula, Sardinia June 2025
+<details>
+  <summary style="font-weight:bold; cursor:pointer;">
+    <i>click to expand</i>
+  </summary>
+    <p>
+      We will be making use of the local computers for this tutorial. 
+      The software and data required for this tutorial have been pre-installed.
+    </p>
 
+    <p>
+      In order to run the tutorial, go into the 
+      <code>HADDOCK3-antibody-antigen</code> directory and activate the HADDOCK3 environment:
+    </p>
 
-We will be making use of the local computers for this tutorial. 
-The software and data required for this tutorial have been pre-installed.
+    <a class="prompt prompt-cmd">cd ~/BioExcel_SS_2025/HADDOCK/HADDOCK3-antibody-antigen</a>
 
-In order to run the tutorial, go into the HADDOCK3-antibody-antigen directory and activate the HADDOCK3 environment:
+    <p>
+      This directory contains all necessary data and scripts to run this tutorial.  
+      To activate the HADDOCK3 environment type:
+    </p>
 
-<a class="prompt prompt-cmd">
-cd ~/BioExcel_SS_2025/HADDOCK/HADDOCK3-antibody-antigen<br>
-</a>
+    <a class="prompt prompt-cmd">haddock3env</a>
 
-This directory contains all necessary data and scripts to run this tutorial.
+    <p>
+      which is an alias for:<br>
+      <code>source ~/BioExcel_SS_2025/HADDOCK/haddock3/.venv/bin/activate</code>
+    </p>
 
-To activate the HADDOCK3 environment type:
+    <p>
+      You can then test that <code>haddock3</code> is accessible with:
+    </p>
 
-<a class="prompt prompt-cmd">
-haddock3env<br>
-</a>
+    <a class="prompt prompt-cmd">haddock3 -h</a>
+  You should see a small help message explaining how to use the software.
 
-which is alias to `source ~/BioExcel_SS_2025/HADDOCK/haddock3/.venv/bin/activate`
+    <details style="background-color:#DAE4E7">
+      <summary>
+      <i>View output</i><i class="material-icons">expand_more</i>
+    </summary>
+      <pre>
+      (haddock3)$ haddock3 -h
+      usage: haddock3 [-h] [--restart RESTART] [--extend-run EXTEND_RUN] [--setup]
+                      [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v]
+                      recipe
 
-You can then test that `haddock3` is indeed accessible with:
+      positional arguments:
+        recipe                The input recipe file path
 
-<a class="prompt prompt-cmd">
-haddock3 -h
-</a>
-
-You should see a small help message explaining how to use the software.
-
-<details style="background-color:#DAE4E7">
-  <summary>
-  <i>View output</i><i class="material-icons">expand_more</i>
- </summary>
-<pre>
-(haddock3)$ haddock3 -h
-usage: haddock3 [-h] [--restart RESTART] [--extend-run EXTEND_RUN] [--setup]
-                [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v]
-                recipe
-
-positional arguments:
-  recipe                The input recipe file path
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --restart RESTART     Restart the run from a given step. Previous folders from the
-                        selected step onward will be deleted.
-  --extend-run EXTEND_RUN
-                        Start a run from a run directory previously prepared with the
-                        `haddock3-copy` CLI. Provide the run directory created with
-                        `haddock3-copy` CLI.
-  --setup               Only setup the run, do not execute
-  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
-  -v, --version         show version
-</pre>
-</details>
-<br>
+      optional arguments:
+        -h, --help            show this help message and exit
+        --restart RESTART     Restart the run from a given step. Previous folders from the
+                              selected step onward will be deleted.
+        --extend-run EXTEND_RUN
+                              Start a run from a run directory previously prepared with the
+                              `haddock3-copy` CLI. Provide the run directory created with
+                              `haddock3-copy` CLI.
+        --setup               Only setup the run, do not execute
+        --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+        -v, --version         show version
+      </pre>
+    </details>
+  <br>
+  </details>
 
 <hr>
 
 
 ### Local setup (on your own)
+<details>
+  <summary style="font-weight:bold; cursor:pointer;">
+    <i>click to expand</i>
+  </summary>
+  <br>
+  If you are installing HADDOCK3 on your own system, check the instructions and requirements below.
 
-If you are installing HADDOCK3 on your own system, check the instructions and requirements below.
+  <h4> Installing HADDOCK3</h4>
+
+  <p>
+    To obtain HADDOCK3, fill the
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w/viewform" target="_blank">
+      registration form
+    </a>,
+    and then follow the
+    <a href="https://www.bonvinlab.org/haddock3-user-manual/install.html" target="_blank">
+      installation instructions
+    </a>.
+  </p>
+
+  <p>
+    <strong><em>Note</em></strong> that depending on the system you are installing HADDOCK3 on, 
+    you might have to recompile CNS if the provided executable is not working. 
+    See the 
+    <a href="https://github.com/haddocking/haddock3/blob/main/DEVELOPMENT.md#troubleshooting-the-cns-executable" target="_blank">
+      CNS troubleshooting section
+    </a> 
+    on the HADDOCK3 GitHub repository for instructions.
+  </p>
 
 
-#### Installing HADDOCK3
+  <h4> Auxiliary software </h4>
 
-To obtain HADDOCK3 navigate to [its repository][haddock-repo], fill the
-registration form, and then follow the [installation instructions](https://www.bonvinlab.org/haddock3/INSTALL.html){:target="_blank"}.
+  <p>
+    <a href="https://www.pymol.org/" target="_blank"><strong>PyMOL</strong></a>: 
+    In this tutorial we will make use of PyMOL for visualization. 
+    If not already installed on your system, download and install 
+    <a href="https://www.pymol.org/" target="_blank"><strong>PyMOL</strong></a>. 
+    Note that you can use your favorite visualization software, 
+    but instructions are only provided here for PyMOL.
+  </p>
 
-**_Note_** that depending on the system you are installing HADDOCK3 on, you might have to recompile CNS if the provided executable is not working. See the [CNS troubleshooting section](https://github.com/haddocking/haddock3/blob/main/DEVELOPMENT.md#troubleshooting-the-cns-executable){:target="_blank"} on the HADDOCK3 GitHub repository for instructions.
-
-#### Auxiliary software
-
-[**PyMOL**](https://www.pymol.org/){:target="_blank"}: In this tutorial we will make use of PyMOL for visualization. If not
-already installed on your system, download and install [**PyMOL**](https://www.pymol.org/){:target="_blank"}. Note that you can use your favorite visulation software but instructions are only provided here for PyMOL.
-
+  <br>
+  </details>
 
 <hr>
 <hr>
@@ -302,7 +336,7 @@ In this section we will prepare the PDB files of the antibody and antigen for do
 Crystal structures of both the antibody and the antigen in their free forms are available from the
 [PDBe database](https://www.pdbe.org){:target="_blank"}. 
 
-*__Important:__ For a docking run with HADDOCK, each molecule should consist of a single chain with non-overlapping residue numbering within the same chain.
+__Important:__ For a docking run with HADDOCK, each molecule should consist of a single chain with non-overlapping residue numbering within the same chain.
 
 As an antibody consists of two chains (L+H), we will have to prepare it for use in HADDOCK. For this we will be making use of `pdb-tools` from the command line.
 
