@@ -619,7 +619,7 @@ batch_type = "slurm"
 # queue name
 queue = "short"
 # number of concurrent jobs to submit to the batch system
-queue_limit = 100
+queue_limit = 50
 # number of models to produce per submitted job
 concat = 10
 {% endhighlight %}
