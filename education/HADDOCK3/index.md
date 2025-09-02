@@ -41,6 +41,9 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 
 # System-specific basic tutorials
 
+* [**Protein-Protein docking**](/education/HADDOCK3/HADDOCK3-protein-protein-basic):
+  This tutorial describes a basic protein-protein docking case using HADDOCK3. The interface information for the docking is derived from NMR chemical shift perturbation data. This tutorial requires basic Linux expertise.
+
 * [**Antibody-antigen docking**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information
   about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments.
@@ -48,9 +51,6 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 
 * [**Nanobody-antigen docking**](/education/HADDOCK3/HADDOCK3-nanobody-antigen):
   This tutorial is similar to the antibody-antigen docking tutorial, but it uses a nanobody instead of an antibody. In the tutorial we explain how to generate an ensemble of nanobody conformations in their unbound form and then how to dock it to the antigen using HADDOCK3.
-
-* [**Protein-Protein docking**](/education/HADDOCK3/HADDOCK3-protein-protein-basic):
-  This tutorial describes a basic protein-protein docking case using HADDOCK3. The interface information for the docking is derived from NMR chemical shift perturbation data. This tutorial requires basic Linux expertise.
 
 * [**Protein-Glycan modelling and docking**](/education/HADDOCK3/HADDOCK3-protein-glycan):
   This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
