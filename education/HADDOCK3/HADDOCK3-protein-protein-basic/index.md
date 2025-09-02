@@ -553,8 +553,8 @@ to a maximum of the total number of available cores on the system minus one. An 
 {% highlight toml %}
 # compute mode
 mode = "local"
-#  1 nodes x 96 ncores
-ncores = 96
+#  1 nodes x 50 ncores
+ncores = 50
 {% endhighlight %}
 
 In this mode HADDOCK3 can be started from the command line with as argument the configuration file of the defined workflow.
@@ -564,9 +564,6 @@ haddock3 \<my-workflow-configuration-file\>
 </a>
 
 Alternatively redirect the output to a log file and send haddock3 to the background.
-
-_**Note**_: This is the execution mode you should use on the NMRBox resources. For the tutorial we limit the number of cores to 10.
-
 
 <a class="prompt prompt-cmd">
 haddock3 \<my-workflow-configuration-file\> \> haddock3.log &
@@ -582,7 +579,7 @@ _**Note**_: This is also the execution mode that should be used for example when
   {% highlight shell %}
   #!/bin/bash
   #SBATCH --nodes=1
-  #SBATCH --tasks-per-node=96
+  #SBATCH --tasks-per-node=50
   #SBATCH -J haddock3
   #SBATCH --partition=medium
 
