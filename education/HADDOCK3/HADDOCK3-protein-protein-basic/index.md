@@ -701,16 +701,7 @@ molecules =  [
 # Parameters for each stage are defined below, prefer full paths
 # ====================================================================
 [topoaa]
-autohis = false
-[topoaa.mol1]
-nhisd = 0
-nhise = 1
-hise_1 = 75
-[topoaa.mol2]
-nhisd = 1
-hisd_1 = 76
-nhise = 1
-hise_1 = 15
+autohis = true
 
 [rigidbody]
 tolerance = 5
@@ -787,16 +778,7 @@ molecules =  [
 # ====================================================================
 
 [topoaa]
-autohis = false
-[topoaa.mol1]
-nhisd = 0
-nhise = 1
-hise_1 = 75
-[topoaa.mol2]
-nhisd = 1
-hisd_1 = 76
-nhise = 1
-hise_1 = 15
+autohis = true
 
 [rigidbody]
 tolerance = 5
