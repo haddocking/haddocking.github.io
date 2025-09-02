@@ -279,10 +279,10 @@ After saving the molecule delete it from the Pymol window or close Pymol. You ca
 delete 1F3G
 </a>
 
-In a terminal, change the chain of e2a from A to B. 
+In a terminal, make sure that E2A chain is A.
 
 <a class="prompt prompt-cmd">
-pdb_chain -B e2a_1F3G.pdb > e2a_1F3G_B.pdb
+pdb_chain -A e2a_1F3G.pdb | pdb_chainxseg > e2a_1F3G_clean.pdb
 </a>
 
 This will be usefull in the docking phase, as HADDOCK3 needs different chain associated to each protein involved in the docking.
@@ -298,7 +298,7 @@ Since the biological function of this complex is to transfer a phosphate group f
 
 In order to use a modified amino-acid in HADDOCK, the only thing you will need to do is to edit the PDB file and change the residue name of the amino-acid you want to modify. Don not bother deleting irrelevant atoms or adding missing ones, HADDOCK will take care of that. For E2A, the histidine that is phosphorylated has residue number 90. In order to change it to a phosphorylated histidine do the following:
 
-<a class="prompt prompt-info">Edit the PDB file (*e2a_1F3G_B.pdb*) in your favorite text editor</a>
+<a class="prompt prompt-info">Edit the PDB file (*e2a_1F3G_clean.pdb*) in your favorite text editor</a>
 <a class="prompt prompt-info">Change the name of histidine 90 to NEP </a>
 <a class="prompt prompt-info">Save the file (as simple text file) under a new name, e.g. *e2aP_1F3G.pdb*</a>
 
@@ -369,6 +369,15 @@ For this in the PyMOL menu select:
 <a class="prompt prompt-info">Click on Save...</a>
 <a class="prompt prompt-info">Select as ouptut format PDB (*.pdb *.pdb.gz)</a>
 <a class="prompt prompt-info">Name your file *hpr-ensemble.pdb* and note its location</a>
+
+
+In a terminal, make sure that hpr chain is B.
+
+<a class="prompt prompt-cmd">
+pdb_chain -B hpr-ensemble.pdb | pdb_chainxseg > hpr-ensemble_clean.pdb
+</a>
+
+This will be usefull in the docking phase, as HADDOCK3 needs different chain associated to each protein involved in the docking.
 
 
 <hr>
@@ -686,7 +695,7 @@ ncores = 50
 # molecules to be docked
 molecules =  [
     "data/e2aP_1F3G.pdb",
-    "data/hpr_ensemble.pdb"
+    "data/hpr-ensemble_clean.pdb"
     ]
 
 # ====================================================================
@@ -769,7 +778,7 @@ ncores = 50
 # molecules to be docked
 molecules =  [
     "data/e2aP_1F3G.pdb",
-    "data/hpr_ensemble.pdb"
+    "data/hpr-ensemble_clean.pdb"
     ]
 
 # ====================================================================
