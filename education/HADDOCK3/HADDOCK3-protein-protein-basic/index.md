@@ -1164,6 +1164,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 ...
 </pre>
 </details>
+<br>
 
 <a class="prompt prompt-question">How many clusters of acceptable or better quality have been generate according to CAPRI criteria?</a>
 
