@@ -674,6 +674,8 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 ### Scenario 1: 1000 rigidbody docking models, selection of top 200 and flexible refinement + EM 
 
 Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinement and energy minimization. 
+This corresponds to the default docking scenario of the HADDOCK2.X version.
+
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario is:
 
@@ -756,6 +758,8 @@ submitting it to the batch system requesting in this local run mode a full node 
 ### Scenario 2: 1000 rigidbody docking models, FCC clustering and selection of max 20 models per cluster followed by flexible refinement and EM 
 
 In scenario 2, we proceed to produce 1000 rigidbody docking models, from which we proceed to do a first clustering analysis. From the top clusters a flexible refinement then energy minization is done. 
+This scenario illustrates the new flexibility of HADDOCK3, adding a clustering step after rigid-body docking, which is not possible in the HADDOCK2.X version.
+
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario is:
 
@@ -968,7 +972,7 @@ We are providing in the `scripts` directory a simple script that extract some cl
 To use is simply call the script with as argument the run directory you want to analyze, e.g.:
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh ./scenario1
+   ./scripts/extract-capri-stats-clt.sh ./run1-full
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -977,7 +981,7 @@ To use is simply call the script with as argument the run directory you want to 
  </summary>
 <pre>
 ==============================================
-== scenario1-full/02_caprieval/capri_clt.tsv
+== run1-full/02_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -987,7 +991,7 @@ First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ:
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
 Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== scenario1-full/04_caprieval/capri_clt.tsv
+== run1-full/04_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -997,7 +1001,7 @@ First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ:
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
 Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== scenario1-full/06_caprieval/capri_clt.tsv
+== run1-full/06_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1007,7 +1011,7 @@ First acceptable cluster - rank:  -  i-RMSD:  2.976  Fnat:  0.611  DockQ:  0.601
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
 Best cluster             - rank:  -  i-RMSD:  2.976  Fnat:  0.611  DockQ:  0.601      
 ==============================================
-== scenario1-full/08_caprieval/capri_clt.tsv
+== run1-full/08_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  1  out of  1
 Total number of medium or better clusters:      1  out of  1
@@ -1017,7 +1021,7 @@ First acceptable cluster - rank:  -  i-RMSD:  1.673  Fnat:  0.736  DockQ:  0.727
 First medium cluster     - rank:  -  i-RMSD:  1.673  Fnat:  0.736  DockQ:  0.727      
 Best cluster             - rank:  -  i-RMSD:  1.673  Fnat:  0.736  DockQ:  0.727      
 ==============================================
-== scenario1-full/11_caprieval/capri_clt.tsv
+== run1-full/11_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  3  out of  4
 Total number of medium or better clusters:      1  out of  4
@@ -1035,7 +1039,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
 
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats.sh ./runs/scenario1-surface
+   ./scripts/extract-capri-stats.sh ./runs/run1-full
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1044,7 +1048,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== scenario1-full/02_caprieval/capri_ss.tsv
+== run1-full/02_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  365  out of  1000
 Total number of medium or better models:      199  out of  1000
@@ -1054,7 +1058,7 @@ First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
 First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
 Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== scenario1-full/04_caprieval/capri_ss.tsv
+== run1-full/04_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  144  out of  200
 Total number of medium or better models:      137  out of  200
@@ -1064,7 +1068,7 @@ First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
 First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
 Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== scenario1-full/06_caprieval/capri_ss.tsv
+== run1-full/06_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  147  out of  200
 Total number of medium or better models:      118  out of  200
@@ -1074,7 +1078,7 @@ First acceptable model - rank:  2  i-RMSD:  1.221  Fnat:  0.694  DockQ:  0.727
 First medium model     - rank:  2  i-RMSD:  1.221  Fnat:  0.694  DockQ:  0.727        
 Best model             - rank:  30  i-RMSD:  0.883  Fnat:  0.750  DockQ:  0.823       
 ==============================================
-== scenario1-full/08_caprieval/capri_ss.tsv
+== run1-full/08_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  147  out of  200
 Total number of medium or better models:      118  out of  200
@@ -1084,7 +1088,7 @@ First acceptable model - rank:  1  i-RMSD:  1.219  Fnat:  0.833  DockQ:  0.787
 First medium model     - rank:  1  i-RMSD:  1.219  Fnat:  0.833  DockQ:  0.787        
 Best model             - rank:  39  i-RMSD:  0.807  Fnat:  0.833  DockQ:  0.862       
 ==============================================
-== scenario1-full/11_caprieval/capri_ss.tsv
+== run1-full/11_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  141  out of  185
 Total number of medium or better models:      116  out of  185
@@ -1232,7 +1236,7 @@ cluster_rank    cluster_id      n       under_eval      score   score_std       
 Use the `extract-capri-stats-clt.sh` script to extract some simple cluster statistics for this run.
 
 <a class="prompt prompt-cmd">
-   ./scripts/extract-capri-stats-clt.sh runs/scenario2/
+   ./scripts/extract-capri-stats-clt.sh runs/run2-full/
 </a>
 
 
@@ -1242,7 +1246,7 @@ Use the `extract-capri-stats-clt.sh` script to extract some simple cluster stati
  </summary>
 <pre>
 ==============================================
-== scenario2-cltsel-full/02_caprieval/capri_clt.tsv
+== run2-full/02_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1252,7 +1256,7 @@ First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ:
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
 Best cluster             - rank:  -  i-RMSD:  6.407  Fnat:  0.202  DockQ:  0.264      
 ==============================================
-== scenario2-cltsel-full/05_caprieval/capri_clt.tsv
+== run2-full/05_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  6  out of  33
 Total number of medium or better clusters:      1  out of  33
@@ -1262,7 +1266,7 @@ First acceptable cluster - rank:  2  i-RMSD:  1.193  Fnat:  0.563  DockQ:  0.701
 First medium cluster     - rank:  2  i-RMSD:  1.193  Fnat:  0.563  DockQ:  0.701      
 Best cluster             - rank:  2  i-RMSD:  1.193  Fnat:  0.563  DockQ:  0.701      
 ==============================================
-== scenario2-cltsel-full/07_caprieval/capri_clt.tsv
+== run2-full/07_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1272,7 +1276,7 @@ First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ:
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
 Best cluster             - rank:  -  i-RMSD:  8.237  Fnat:  0.104  DockQ:  0.121      
 ==============================================
-== scenario2-cltsel-full/09_caprieval/capri_clt.tsv
+== run2-full/09_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  0  out of  1
 Total number of medium or better clusters:      0  out of  1
@@ -1282,7 +1286,7 @@ First acceptable cluster - rank:   i-RMSD:   Fnat:   DockQ:
 First medium cluster     - rank:   i-RMSD:   Fnat:   DockQ:
 Best cluster             - rank:  -  i-RMSD:  4.840  Fnat:  0.361  DockQ:  0.400      
 ==============================================
-== scenario2-cltsel-full/12_caprieval/capri_clt.tsv
+== run2-full/12_caprieval/capri_clt.tsv
 ==============================================
 Total number of acceptable or better clusters:  4  out of  25
 Total number of medium or better clusters:      2  out of  25
@@ -1299,7 +1303,7 @@ Best cluster             - rank:  4  i-RMSD:  0.980  Fnat:  0.812  DockQ:  0.819
 Similarly some simple statistics can be extracted from the single model `caprieval` `capri_ss.tsv` files with the `extract-capri-stats.sh` script:
 
 <a class="prompt prompt-cmd">
-./scripts/extract-capri-stats.sh ./runs/scenario2
+./scripts/extract-capri-stats.sh ./runs/run2-full
 </a>
 
 <details style="background-color:#DAE4E7">
@@ -1308,7 +1312,7 @@ Similarly some simple statistics can be extracted from the single model `capriev
  </summary>
 <pre>
 ==============================================
-== scenario2-cltsel-full/02_caprieval/capri_ss.tsv
+== run2-full/02_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  365  out of  1000
 Total number of medium or better models:      199  out of  1000
@@ -1318,7 +1322,7 @@ First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
 First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
 Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== scenario2-cltsel-full/05_caprieval/capri_ss.tsv
+== run2-full/05_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  62  out of  375
 Total number of medium or better models:      22  out of  375
@@ -1328,7 +1332,7 @@ First acceptable model - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711
 First medium model     - rank:  3  i-RMSD:  1.153  Fnat:  0.556  DockQ:  0.711        
 Best model             - rank:  46  i-RMSD:  1.145  Fnat:  0.556  DockQ:  0.713       
 ==============================================
-== scenario2-cltsel-full/07_caprieval/capri_ss.tsv
+== run2-full/07_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  74  out of  375
 Total number of medium or better models:      27  out of  375
@@ -1338,7 +1342,7 @@ First acceptable model - rank:  6  i-RMSD:  1.081  Fnat:  0.750  DockQ:  0.771
 First medium model     - rank:  6  i-RMSD:  1.081  Fnat:  0.750  DockQ:  0.771        
 Best model             - rank:  36  i-RMSD:  0.930  Fnat:  0.778  DockQ:  0.822       
 ==============================================
-== scenario2-cltsel-full/09_caprieval/capri_ss.tsv
+== run2-full/09_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  74  out of  375
 Total number of medium or better models:      27  out of  375
@@ -1348,7 +1352,7 @@ First acceptable model - rank:  1  i-RMSD:  3.718  Fnat:  0.333  DockQ:  0.382
 First medium model     - rank:  3  i-RMSD:  0.991  Fnat:  0.806  DockQ:  0.821        
 Best model             - rank:  60  i-RMSD:  0.896  Fnat:  0.778  DockQ:  0.828       
 ==============================================
-== scenario2-cltsel-full/12_caprieval/capri_ss.tsv
+== run2-full/12_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  65  out of  317
 Total number of medium or better models:      27  out of  317
