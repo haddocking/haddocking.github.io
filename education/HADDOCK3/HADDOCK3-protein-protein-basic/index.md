@@ -673,7 +673,7 @@ In this execution mode the HADDOCK3 job should be submitted to the batch system 
 
 ### Scenario 1: 1000 rigidbody docking models, selection of top 200 and flexible refinement + EM 
 
-Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinment and energy minimization. 
+Now that we have all data ready, and know about execution modes of HADDOCK3 it is time to setup the docking for the first scenario. The restraint file to use for this is `e2a-hpr_air.tbl`. We proceed to produce 1000 rigidbody docking models, from which 200 will be selected and refined through flexible refinement and energy minimization. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario is:
 
@@ -755,7 +755,7 @@ submitting it to the batch system requesting in this local run mode a full node 
 
 ### Scenario 2: 1000 rigidbody docking models, FCC clustering and selection of max 20 models per cluster followed by flexible refinement and EM 
 
-In scenario 2, we proceed to produce 1000 rigidbody docking models, from which we proceed to do a first clustering analysis. From the top clusters a flexible refinment then energy minization is done. 
+In scenario 2, we proceed to produce 1000 rigidbody docking models, from which we proceed to do a first clustering analysis. From the top clusters a flexible refinement then energy minization is done. 
 For the analysis following the docking results, we are using the solved complex [1GGR](https://www.rcsb.org/structure/1GGR), named e2a-hpr_1GGR.pdb.
 The configuration file for this scenario is:
 
