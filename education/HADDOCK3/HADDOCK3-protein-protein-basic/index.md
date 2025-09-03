@@ -684,7 +684,7 @@ The configuration file for this scenario is:
 # Protein-protein docking example with NMR-derived ambiguous interaction restraints
 
 # directory in which the scoring will be done
-run_dir = "scenario1-full"
+run_dir = "run2-full"
 
 # execution mode
 mode = "local"
@@ -760,7 +760,7 @@ The configuration file for this scenario is:
 # ====================================================================
 
 # directory in which the scoring will be done
-run_dir = "scenario2-cltsel-full"
+run_dir = "run2-full"
 
 # execution mode
 mode = "local"
