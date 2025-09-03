@@ -684,7 +684,7 @@ The configuration file for this scenario is:
 # Protein-protein docking example with NMR-derived ambiguous interaction restraints
 
 # directory in which the scoring will be done
-run_dir = "run2-full"
+run_dir = "run1-full"
 
 # execution mode
 mode = "local"
