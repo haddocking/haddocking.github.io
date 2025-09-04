@@ -41,7 +41,7 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 
 # System-specific basic tutorials
 
-* [**Protein-Protein docking**](/education/HADDOCK3/HADDOCK3-protein-protein-basic):
+* [**Protein-Protein docking**](/education/HADDOCK3/HADDOCK3-protein-protein):
   This tutorial describes a basic protein-protein docking case using HADDOCK3. The interface information for the docking is derived from NMR chemical shift perturbation data. This tutorial requires basic Linux expertise.
 
 * [**Antibody-antigen docking**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
