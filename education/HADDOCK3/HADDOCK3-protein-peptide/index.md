@@ -146,13 +146,12 @@ And to align two models:
 align AF-P23804-F1-model_v4.pdb, AF_MDM2_26_109.pdb 
 </a>
 
-
 If starting PyMOL directly from the command line, you can load multiple PDB files in one go:
+
 <a class="prompt prompt-cmd">
 cd protein-peptide <br>
 pymol AF_MDM2_26_109.pdb AF-P23804-F1-model_v4.pdb
 </a>
-
 
 ### Preparing peptide structure 
 
@@ -306,6 +305,7 @@ _**Note**_ that _passive_ residues on partner 1 should only be defined if _activ
 Typically, active residues are complemented by nearby passive residues on the same molecule to account for uncertainties in the binding site definition. But if there's no active residues on the partner 2 - passive residues of partner 1 have nothing to interact with. In this tutorial, active residues are defined only for MDM2, while no active residues are defined for the peptide. Thus, we only assign the peptide residues as passive.
 
 ### Restraints validation
+
 After generating `protein-peptide_ambig.tbl`, one can validate the syntax of this file using:
 
 <a class="prompt prompt-cmd">
@@ -425,11 +425,13 @@ You might've noticed that some of the modules do not have any parameters defined
 haddock3-cfg -m clustrmsd
 </a>
 
+
 This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`).
 
 ### Running HADDOCK3
 
 To run the docking (in `local` mode), open the terminal, activate your haddock3 environment, navigate to `protein-pepitde/` and execute: 
+
 <a class="prompt prompt-cmd">
 haddock3 workflows/protein_peptide_docking.cfg
 </a>
@@ -439,6 +441,7 @@ In this case docking log will appear on the screen. Alternative, you can run the
 <a class="prompt prompt-cmd">
 haddock3 ./workflows/protein_peptide_docking.cfg > haddock.log 2> haddock.err
 </a>
+
 
 On a Max OSX M2 processor using 8 cores the full workflow completes in about 2h10m55s. 
 <a class="prompt prompt-info">
