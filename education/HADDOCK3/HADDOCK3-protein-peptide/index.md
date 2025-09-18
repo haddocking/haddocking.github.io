@@ -136,12 +136,18 @@ It's a good practice to verify resulting structure visually using PyMOL. Start P
 <a class="prompt prompt-info"> 
 File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
 </a> 
+
 Feel free to compare this structure with initial AlphaFold model:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF-P23804-F1-model_v4.pdb
+File menu -> Open -> select protein-peptide/AF-P23804-F1-model_v4.pdb <br>
 </a> 
+And to align two models:
+<a class="prompt prompt-pymol">
+align AF-P23804-F1-model_v4.pdb, AF_MDM2_26_109.pdb 
+</a>
 
-If starting PyMOL directly from the command line you can use instead:
+If starting PyMOL directly from the command line, you can load multiple PDB files in one go:
+
 <a class="prompt prompt-cmd">
 cd protein-peptide <br>
 pymol AF_MDM2_26_109.pdb AF-P23804-F1-model_v4.pdb
@@ -149,7 +155,7 @@ pymol AF_MDM2_26_109.pdb AF-P23804-F1-model_v4.pdb
 
 ### Preparing peptide structure 
 
-When modelling peptides with no experimental structure available, a common approach is to perform a molecular dynamics (MD) simulation to capture the peptide’s conformational variability. 
+When modelling peptides with no experimental structure available, a common approach is to perform a molecular dynamics (MD) simulation and cluster the trajectory to capture the peptide’s conformational variability. 
 This process is computationally expensive and can be challenging in the absence of MD experience. 
 A simpler alternative is to generate several idealized peptide conformations. 
 While less robust, this approach still indirectly accounts for peptide's flexibility to some degree, and that can be just enough to build a model of acceptable quality.
@@ -236,7 +242,7 @@ Resulting residues were filtered based on their solvent accessibility:
 <pre style="background-color:#DAE4E7"> 54 55 58 59 62 67 72 73 93 94 100 
 </pre>
 
-For more details, take a look at the bonus section: [How to use ARCTIC-3D?](#bonus-how-to-use-arctic-3d-to-predict-active-residues-of-protein)
+For more details, take a look at the bonus section: [How to use ARCTIC-3D?](#bonus-how-to-use-arctic-3d-to-predict-interface-residues)
 
 Let's visualize predicted active residues on the protein structure we prepared:
 <a class="prompt prompt-info">Open PyMOL <br>
@@ -298,7 +304,8 @@ _**Note**_ that _passive_ residues on partner 1 should only be defined if _activ
 
 Typically, active residues are complemented by nearby passive residues on the same molecule to account for uncertainties in the binding site definition. But if there's no active residues on the partner 2 - passive residues of partner 1 have nothing to interact with. In this tutorial, active residues are defined only for MDM2, while no active residues are defined for the peptide. Thus, we only assign the peptide residues as passive.
 
-### Restraints Validation
+### Restraints validation
+
 After generating `protein-peptide_ambig.tbl`, one can validate the syntax of this file using:
 
 <a class="prompt prompt-cmd">
@@ -421,8 +428,10 @@ haddock3-cfg -m clustrmsd
 
 This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`).
 
+### Running HADDOCK3
 
-To run the docking, open the terminal, navigate to `protein-pepitde/` and execute: 
+To run the docking (in `local` mode), open the terminal, activate your haddock3 environment, navigate to `protein-pepitde/` and execute: 
+
 <a class="prompt prompt-cmd">
 haddock3 workflows/protein_peptide_docking.cfg
 </a>
@@ -433,79 +442,54 @@ In this case docking log will appear on the screen. Alternative, you can run the
 haddock3 ./workflows/protein_peptide_docking.cfg > haddock.log 2> haddock.err
 </a>
 
-**THE MATERIAL BELOW THIS POINT HAS NOT BEEN VERIFIED**
+
+On a Max OSX M2 processor using 8 cores the full workflow completes in about 2h10m55s. 
+<a class="prompt prompt-info">
+Pre-computed results are available in **runs/run1/**
+</a>
+
+### Best practices in protein–peptide docking (and tutorial choices)
+
+For optimal peptide docking with HADDOCK, the following settings are recommended:
+2. In `flexref`, set `mdsteps_cool1` to 2000 (default: 500);
+1. In `flexref`, set `mdsteps_rigid` to 2000 (default: 500);
+3. In `flexref`, set `mdsteps_cool2` to 4000 (default: 500);
+4. In `flexref`, set `mdsteps_cool3` to 4000 (default: 500);
+5. Use `clustrmsd` for clustering instead of the defailt `clustfcc` and 
+6. In `clustrmsd`, set `clust_cutoff` to 5 (default: 7.5).
+
+Additionally, when dealing with an ensemble docking with HADDOCK, one should consider increasing the number of models to be sampled (`rigidbody` module, parameter `sampling`) with respect to the number of ensemble conformers. 
+HADDOCK distributes the sampling evenly across all possible combinations of input conformers.
+If you set `sampling = X` and provide an input ensemble of `n` peptide conformers and `m` protein conformers, each peptide–protein pair will be sampled `X/(n·m)` times, minus rounding error.
+E.g. with `sampling = 1000`, 3 peptide conformers and 1 protein conformer, HADDOCK will generate a total of 999 models, with each protein–peptide conformer combination sampled 1000/(3·1) = 333.33(3) ≈ 333 times. 
 
 
+On the contrary, both increasing `sampling` and `mdsteps_` parameters will lead to the heafty increase of the computational resourses required. 
+To balance efficiency and accuracy in this tutorial, we keep the best-practice settings for clustering but chose not to increase sampling or MD step counts.
+Despite these simplifications, the use of reliable restraints and asseptable input PDBs ensures that the docking still produces meaningful models.
 
-### Best Practice of Protein-Peptide Docking
+_**Note**_ that pre-computed best-practice run - with all recommended settings applied - can be found in `runs/run_bp/`.
 
-HADDOCK will use default parameter values for each module, unless different values is defined in the workflow. 
-Optimal settings for peptide docking are:
-1. Number of sampling models in `rididbody` should be increased by the number of input conformers of the peptide.
-2. Number of MD steps in `flexref` for rigid body high temperature TAD: mdsteps_rigid = 2000 (default is 500)
-3. Number of MD steps in `flexref` during first rigid body cooling stage:	mdsteps_cool1 = 2000 (default is 500)
-4. Number of MD steps in `flexref` during second cooling stage with flexible side-chains at interface:	mdsteps_cool2	=	4000 (default is 500)
-5. Number of MD steps in `flexref` during third cooling stage with fully flexible interface: mdsteps_cool3 = 4000 (default is 500)
-6. Clustering method: `clustrmsd` (default clustering method is `clustfcc`);
-7. Cutoff for clustering: clust_cutoff= 5 (default value is 7.5)
-
-However, increasing number of MD steps in `fexref` will increase computational significantly, as well as increasing number of models to sample. Thus, for the purpose of this tutorial, we will keep default number models to be sampled, as well as number of MD steps, but use `clustrmsd` with optimal cutoff. 
-
-_**Note**_ that pre-computed best-practice run can be found in `runs/run_bp`.
-
-
-To optimize performance while maintaining sampling quality, we set `sampling = 1000` in the `rigidbody` stage and selected the top 200 models (`select = 200`) for downstream refinement (default values). Clustering was performed using the RMSD metric, and the top 4 models from each cluster were selected.
-
-Model evaluation (`aprieval`) was performed using a reference structure (`pdbs/1YCR.pdb`) to assess structural similarity via CAPRI metrics such as i-RMSD, l-RMSD, and Fnat. If reference_fname parameter would not be defined, then the same metrics would’ve been calculated using lowest-score structure. 
-
-On a Max OSX M2 processor using 8 cores the full workflow completes in about 2h10m55s.
-
-### Sampling Strategy Consideration
-
-We used the default sampling size of **1000 models**, which corresponds to HADDOCK’s default behavior. In our case, this value was applied across all input conformers in the peptide ensemble.
-
-_**Note:**_ HADDOCK distributes the sampling across each input conformer. This means that if you set `sampling = X` and provide an ensemble of n peptide conformers, the total number of models generated will still be X, but each conformer will be sampled X / n times.For example, with `sampling = 300` and 3 peptide conformations, a total of 300 models will be generated, with each conformation sampled **300 / 3 = 100** times.
-
-Although ideally one should aim for 1000 models per peptide conformation (i.e., sampling = 3000), such computations are rather heavy for 8 cores  . Given that our restraints were defined with high confidence, this reduces sampling deemed a reasonable compromise. A full-size precomputed run with sampling=3000 is available in runs/name.
-
-In a real-case docking scenario, especially when restraint quality is uncertain it is advisable to increase the sampling accordingly, if computational resources allow. However, for very large ensembles (e.g., MD trajectory ), **prior clustering** to reduce ensemble size is highly recommended before attempting full-scale sampling.
-
-
-
-For completeness, we also carried out a **full-scale docking run** using the optimal settings for peptide docking recommended. We generated 1000 models per peptide conformer (3000 in total for three conformations), employed **RMSD-based clustering** with a cutoff of 5, and extended the MD phases (e.g., 2000 steps during the high-temperature TAD and first cooling stage, and 4000 steps during the subsequent cooling stages). This configuration gave a slight improvement in model diversity and interface quality compared to the reduced-sampling run. The results of this 3000-model run are provided under the `runs` directory as `run_bp`.
-
-**Higher sampling** and longer simulations are most beneficial when the correct binding pose is unknown, when restraints are derived from predicted rather than experimental data, when the peptide is highly flexible, or when there could be multiple binding sites. In our case, the difference was modest because the restraints were high-confidence and targeted a single known binding interface; the reduced-sampling run (**~333 models per conformer**) still produced results very similar to those of the larger run.
-
-In practice, **1000 models per conformer** is a good default when computational resources allow. For exploratory work, or when restraint quality is high, the reduced sampling used in this tutorial remains a valid and efficient alternative.
 
 <hr>
 <hr>
 
-## Analysis of Docking Results
-The docking run was configured with `sampling = 1000` in the `rigidbody` stage and used a peptide ensemble containing **3 conformers**.HADDOCK generates an equal number of rigid-body models for each input conformer combination. With `sampling = 1000`, this results in approximately 1000 total models.
+## Analysis of docking results
 
-In practice, the `1_rigidbody/` output contained **999 models**, indicating that HADDOCK evenly distributed the sampling across the three conformers, generating about **333 models per conformer**.
-
-### Examine the Results of the Docking Run
-
-In case something went wrong with the docking (or simply if you do not want to wait for the results) you can find the following precalculated runs in the `runs` directory:
-- `run1`: Results from the reduced-sampling tutorial run (~333 models/conformer).
-- `run_bp_capri`: Results from the full-scale run (1000 models/conformer, 3000 total) with extended MD refinement.
-
-After the docking run was completed, the result directory was inspected. HADDOCK3 automatically generated numbered folders corresponding to each module of the workflow:
+Once your run has completed (or oncw you open precomputed `runs/run1/`), inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially:
 
 {% highlight shell %}
 > ls runs/
-  0_topoaa/
-  1_rigidbody/
-  2_caprieval/
-  3_flexref/
-  4_caprieval/
-  5_emref/
-  6_caprieval/
-  7_seletop/
-  8_caprieval/
-  9_rmsdmatrix/
+  00_topoaa/
+  01_rigidbody/
+  02_caprieval/
+  03_flexref/
+  04_caprieval/
+  05_emref/
+  06_caprieval/
+  07_seletop/
+  08_caprieval/
+  09_rmsdmatrix/
   10_clustrmsd
   11_caprieval/
   12_seletopclusts/
@@ -516,46 +500,48 @@ After the docking run was completed, the result directory was inspected. HADDOCK
   traceback/
 {% endhighlight %}
 
-There is in addition to the various modules defined in the config workflow a log file (text file) and three additional directories:
+In addition to the various modules defined in the workflow file, you will also find a `log` file (text file) and three additional directories:
 
-  * the `data` directory containing the input data (PDB and restraint files) for the various modules.
+  * the `data` directory containing the input data (PDB and restraint files) for the various modules, as well as original workflow configuration file.
   * the `analysis`directory containing various plots to visualise the results for each caprieval step.
-  * the `traceback` directory containing the names of the generated models for each step, allowing to trace back a model throughout the various stages.
+  * the `traceback` directory containing the names of the generated models for each step, allowing to trace back a model and it's rank throughout the various stages.
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files - models produced by this module.
 
-For example, the `12_seletopclusts` directory contains the selected models from top-ranked clusters. The clusters in that directory are numbered based on their rank, i.e. `cluster_1` refers to the best-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
+For example, the `12_seletopclusts` directory contains the best models from top-ranked clusters. The clusters in that directory are numbered based on their rank, i.e. `cluster_1` refers to the best-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
-### Finding Ranking, Scores and Model Quality Information
+### Overview docking run via visual statistics
 
-The simplest way to extract ranking information and the corresponding HADDOCK scores per model is to look at the X_caprieval directories (which is why it is a good idea to have it as the final module, and possibly as intermediate steps, even when no reference structures are known). This directory will always contain a capri_ss.tsv file, which contains the model names, rankings and statistics (score, iRMSD, Fnat, lRMSD, ilRMSD and DockQ score). E.g.:
+The quickest way (though not the most detailed) to get an overview of a docking run is through the visual statistics provided by the caprieval module. 
+Each caprieval step generates a summary table and multiple plots, bundled into a `report.html` file. 
+These reports can be found in the corresponding analysis directories, e.g. `analysis/XX_caprieval_analysis/`. 
+This is one of the reasons why the caprieval module is included after almost every step of the workflow.
 
-<pre style="background-color:#DAE4E7">
-                                   model	md5	caprieval_rank	score	irmsd	fnat	lrmsd	ilrmsd	dockq	rmsd	cluster_id	cluster_ranking	model-cluster_ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	sym	total	vdw	vean	xpcs
-../12_seletopclusts/cluster_1_model_1.pdb       -       1       -108.487        1.978   0.229   4.403   4.433   0.461   1.700   1       1       1       9.126   0.000   0.000   1440.260        0.000   0.000   0.000   -17.764 0.000   -333.853        0.000   0.000   0.000   0.000       -349.593        -24.865 0.000   0.000
-../12_seletopclusts/cluster_2_model_1.pdb       -       2       -100.478        3.890   0.188   9.510   9.464   0.254   3.324   5       2       1       4.749   0.000   0.000   1476.810        0.000   0.000   0.000   -21.463 0.000   -164.223        0.000   0.000   0.000   0.000       -206.119        -46.645 0.000   0.000
-../12_seletopclusts/cluster_1_model_2.pdb       -       3       -100.226        5.959   0.083   14.636  14.611  0.132   5.034   1       1       2       2.106   0.000   0.000   1174.060        0.000   0.000   0.000   -31.189 0.000   -118.077        0.000   0.000   0.000   0.000       -161.604        -45.633 0.000   0.000
-../12_seletopclusts/cluster_3_model_1.pdb       -       4       -95.360 4.446   0.167   10.556  10.589  0.221   3.742   2       3       1       10.580  0.000   0.000   1147.310        0.000   0.000   0.000   -25.872 0.000   -210.751        0.000   0.000   0.000   0.000   -228.566    -28.396 0.000   0.000
-</pre>
+The content of `report.html` depends on where in the workflow the corresponding caprieval module is placed. 
+If it follows an early step, the report describes unclustered models and details 10 top-ranked models (e.g. `analysis/13_caprieval_analysis/report.html`). 
+If it follows clustering, the report summarizes clusters and their top models (e.g. `analysis/04_caprieval_analysis/report.html`).
 
+To open `report.html` in a web-browser, [click here](plots/report.html){:target="_blank"}, or type: 
+<a class="prompt prompt-cmd">
+open run1/analysis/13_caprieval_analysis/report.html
+</a>
 
-The relevant statistics are:
+At the top of the page, you will find a summary table of the cluster statistics (taken from the `13_caprieval/capri_clt.tsv` file). 
+By default, the table is sorted by cluster rank, which is based on the HADDOCK score. 
+The table is interactive anf you can re-sort columns (corresponding to the various clusters) by clicking the arrow icon (⇄) in the header rows.
 
-  * `score`: *The HADDOCK score (arbitrary units)*
-  * `irmsd`: *The interface RMSD, calculated over the interfaces the molecules.*
-  * `fnat`: *The fraction of native contacts.*
-  * `lrmsd`: *The ligand RMSD, calculated on the ligand after fitting on the receptor (1st component).*
-  * `ilrmsd`: *The interface-ligand RMSD, calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example).*
-  * `dockq`: *The DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale between 1 (exactly equal to reference) and 0.*
+<figure style="text-align: center;">
+  <img src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/Analysis_report.png">
+</figure>
 
-Various other terms are also reported including:
+The table reports averages and standard deviations for the HADDOCK score, its components, and evaluation metrics. Some key statistics are:
+  * `HADDOCK score`: The HADDOCK score (arbitrary units)
+  * `Interface RMSD`: The interface RMSD (irmsd), calculated over the interfaces the molecules.
+  * `Fraction of Common Contacts`: The fraction of common contacts (fcc) between given model and top-ranked model. In case reference strucutre is povided, this metric displays the fraction of native contacts (fnat) - between given model and reference strucutre.
+  * `Ligand RMSD`: The ligand RMSD (lrmsd), calculated on the ligand after fitting on the receptor (1st component).
+  * `Interface-ligand RMSD`: The interface-ligand RMSD (ilrmsd), calculated over the interface of the ligand after fitting on the interface of the receptor (more relevant for small ligands for example).
+  * `DockQ`: The DockQ score, which is a combination of irmsd, lrmsd and fnat and provides a continuous scale between 1 (exactly equal to reference) and 0.
 
-  * `bsa`: *the buried surface area (in squared angstroms).*
-  * `elec`: *the intermolecular electrostatic energy.*
-  * `rmsdmatrix`: *Generates the pairwisw RMSD matrix for all models to asses structural similarity.*
-  * `vdw`: *The intermolecular van der Waals energy.*
-  * `desolv`: *The desolvation energy.*
-  * various intramolecular covalent energy terms, e.g. bond, angle, dihedral and improper.
 
 The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein prediction experiment CAPRI (Critical PRediction of Interactions).
 
@@ -565,66 +551,82 @@ In CAPRI the quality of a model is defined as (for protein-protein complexes):
   * **medium quality model:** i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3 (or DockQ > 0.49)
   * **high quality model:** i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5 (or DockQ > 0.8)
 
-You can use **DockQ**, a [combination of i-RMSD](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0161879){:target="_blank"}, l-RMSD, and Fnat to assess the quality of the models. It corresponds to column 9 in the capri_ss.tsv file. Since DockQ is the column number nine in the caprieval files…
-
 <a class="prompt prompt-question">
-What is based on this criterion the quality of the top ranked model listed above (cluster_1_model_1.pdb)?
+Examine the table. Does the cluster with the lowest average score has lowest average irmsd?
 </a>
 
-In case where the `caprieval` module is called after a clustering step, an additional `capri_clt.tsv` file will be present in the directory. This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering (4 by default), with their corresponding standard deviations. E.g.:
-
-<pre style="background-color:#DAE4E7">
-cluster_rank    cluster_id  n   under_eval  score   score_std  irmsd   irmsd_std   fnat   fnat_std   lrmsd   lrmsd_std  dockq   dockq_std  ilrmsd  ilrmsd_std  rmsd    rmsd_std    air air_std bsa bsa_std desolv  desolv_std  elec    elec_std    total   total_std   vdw vdw_std caprieval_rank
-          1       1       4       -       -98.198 6.822   3.420   1.561   0.161   0.068   8.312   4.011   0.314   0.131   8.315   3.990   2.928   1.307   8.405   5.510   1288.665        121.768 -23.809 5.685   -179.051        95.731  -210.066        84.887  -39.419 8.969   1
-          2       5       4       -       -87.901 10.237  3.329   0.576   0.182   0.056   8.046   1.507   0.299   0.065   8.010   1.495   2.853   0.486   17.886  11.509  1278.430        172.834 -21.787 6.034   -137.808        22.462  -160.262        29.104  -40.340 12.703  2
-          3       2       4       -       -87.896 6.834   5.759   1.265   0.099   0.050   13.673  3.101   0.155   0.040   13.682  3.075   4.833   1.064   14.920  11.076  1210.532        78.007  -16.600 12.142  -184.888        83.105  -205.779        86.544  -35.810 9.490   3
-
-</pre>
-
-In this file you find the cluster rank (which corresponds to the naming of the clusters in the previous `seletop` directory), the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (n) in the cluster and the corresponding statistics (averages + standard deviations). The corresponding cluster PDB files will be found in the preceding `7_seletopclusts` directory.
-
-While these simple text files can be easily checked from the command line already, they might be cumbersome to read. For that reason, we have developed a post-processing analysis that automatically generates html reports for all `caprieval` steps in the workflow. These are located in the respective `analysis/XX_caprieval` directories and can be viewed using your favorite web browser.
-
-### Cluster Statistics
-
-Let us now analyse the docking results. Use for that either your own run or a pre-calculated run provided in the `runs` directory. Go into the `analysis/13_caprieval_analysis` directory of the respective run directory and open in a web browser the `report.html` file. Be patient as this page contains interactive plots that may take some time to generate.
-
-On the top of the page, you will see a table that summarises the cluster statistics (taken from the `capri_clt.tsv` file). The columns (corresponding to the various clusters) are sorted by default on the cluster rank, which is based on the HADDOCK score (found on the 4th row of the table). As this is an interactive table, you can sort it as you wish by using the arrows present in the first column. Simply click on the arrows of the term you want to use to sort the table (and you can sort it in ascending or descending order). A snapshot of this table is shown below:
-
-**Analysis report of step 13_caprieval:**
-<figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/Analysis_report.png">
-</figure>
-
-You can also view this report online [here](plots/report.html){:target="_blank"}.
-
-Since for this tutorial we have at hand the crystal structure of the complex, we provided it as reference to the `caprieval` modules. This means that the iRMSD, lRMSD, Fnat and DockQ statistics report on the quality of the docked model compared to the reference crystal structure.
-
-### Visualizing the Scores and Their Components
-Next to the cluster statistic table shown above, the `report.html` file also contains a variety of plots displaying the HADDOCK score and its components against various CAPRI metrics (i-RMSD, l-RMSD, Fnat, Dock-Q) with a color-coded representation of the clusters. These are interactive plots. A menu on the top right of the first row (you might have to scroll to the right to see it) allows you to zoom in and out in the plots and turn on and off clusters.
+Below the table, a variety of plots displaying the HADDOCK score vs its components against various metrics with a color-coded representation of the clusters. These are interactive plots, one can toggle which clusters are displayed, zoom in and out, etc. - using a menu on the top right of the first row (you might have to scroll to the right to see it). 
 
 <figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/plot_1.png">
+  <img src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/models-plots.png">
 </figure>
 
 <a class="prompt prompt-info">
-Examine the plots (remember here that higher DockQ values and lower i-RMSD values correspond to better models)
+Examine the plots - do open report.html in the browser, as images above do not show all the plots. Remember that higher DockQ values and lower iRMSD values correspond to better models.
 </a>
 
-Finally, the report also shows plots of the cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
-
+Finally, the very bottom plots diplayes the cluster statistics:
 <figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/newplot-2.png">
+  <img src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/cluster-plots.png">
 </figure>
 
-### Some Single Structure Analysis
+<a class="prompt prompt-question">
+Examine report.html for one of the unclustered steps. Are any of the top-10 models as good as cluster_1_model_1 based on their iRMSD?
+</a>
 
-Going back to command line analysis, we are providing in the `scripts` directory a simple script that extracts some model statistics for acceptable or better models from the `caprieval` steps. To use it, simply call the script with as argument the run directory you want to analyze, e.g.:
+### Detailed information about models and clusters
+
+To extract most of the avalilable information about the model(s), one should look at the `XX_caprieval` directories. 
+This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics, e.g. `11_caprieval/capri_ss.tsv`:
+
+<pre style="background-color:#DAE4E7">
+                    model	md5	caprieval_rank	score	    irmsd	fnat	lrmsd	  ilrmsd	dockq	rmsd	cluster_id	cluster_ranking	model-cluster_ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	sym	total	vdw	vean	xpcs
+../05_emref/emref_175.pdb	-	1	-108.487	1.978	0.229	4.403	  4.433	  0.461	1.700	1	1	1	9.126	0.000	0.000	1440.260	0.000	0.000	0.000	-17.7640.000	-333.853	0.000	0.000	0.000	0.000	-349.593	-24.865	0.000	0.000
+../05_emref/emref_692.pdb	-	2	-100.478	3.890	0.188	9.510	  9.464	  0.254	3.324	5	2	1	4.749	0.000	0.000	1476.810	0.000	0.000	0.000	-21.4630.000	-164.223	0.000	0.000	0.000	0.000	-206.119	-46.645	0.000	0.000
+../05_emref/emref_98.pdb	-	3	-100.226	5.959	0.083	14.636	14.611	0.132	5.034	1	1	2	2.106	0.000	0.000	1174.060	0.000	0.000	0.000	-31.1890.000	-118.077	0.000	0.000	0.000	0.000	-161.604	-45.633	0.000	0.000
+../05_emref/emref_292.pdb	-	4	-95.360	  4.446	0.167	10.556	10.589	0.221	3.742	2	3	1	10.580	0.000	0.000	1147.310	0.000	0.000	0.000	-25.872	0.000	-210.751	0.000	0.000	0.000	0.000	-228.566	-28.396	0.000	0.000
+../05_emref/emref_505.pdb	-	5	-94.092	  3.799	0.146	9.326	  9.281	  0.245	3.252	5	2	2	35.123	0.000	0.000	1410.450	0.000	0.000	0.000	-19.475	0.000	-103.134	0.000	0.000	0.000	0.000	-125.514	-57.503	0.000	0.000
+../05_emref/emref_305.pdb	-	6	-92.845	  5.424	0.062	12.809	12.828	0.146	4.541	2	3	2	8.091	0.000	0.000	1283.300	0.000	0.000	0.000	-7.136	0.000	-231.428	0.000	0.000	0.000	0.000	-263.570	-40.233	0.000	0.000
+../05_emref/emref_501.pdb	-	7	-92.499	  6.364	0.167	16.694	16.620	0.142	5.520	9	4	1	38.783	0.000	0.000	1291.390	0.000	0.000	0.000	-20.593	0.000	-192.180	0.000	0.000	0.000	0.000	-190.745	-37.348	0.000	0.000
+../05_emref/emref_248.pdb	-	8	-92.432	  2.317	0.229	5.352	  5.367	  0.414	1.988	1	1	3	16.925	0.000	0.000	1376.260	0.000	0.000	0.000	-18.819	0.000	-179.963	0.000	0.000	0.000	0.000	-202.352	-39.313	0.000	0.000
+../05_emref/emref_61.pdb	-	9	-91.648	  3.427	0.104	8.856	  8.849	  0.248	2.990	1	1	4	5.463	0.000	0.000	1164.080	0.000	0.000	0.000	-27.465	0.000	-84.313	0.000	0.000	0.000	0.000	-126.716	-47.867	0.000	0.000
+...
+</pre>
+
+
+In case where the caprieval module was called after a clustering step, an additional `capri_clt.tsv` file will be present in the directory. This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering (4 by default), with their corresponding standard deviations, e.g. `11_caprieval/capri_clt.tsv`:
+
+<pre style="background-color:#DAE4E7">
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	ilrmsd	ilrmsd_std	rmsd	rmsd_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std    	total	total_std	vdw	vdw_std	caprieval_rank
+1	1	90	-	-98.198	6.822	3.420	1.561	0.161	0.068	8.312	4.011	0.314	0.131	8.315	3.990	2.928	1.307	8.405	5.510	1288.665	121.768	-23.809	5.685	-179.05195.731	-210.066	84.887	-39.419	8.969	1
+2	5	12	-	-87.901	10.237	3.329	0.576	0.182	0.056	8.046	1.507	0.299	0.065	8.010	1.495	2.853	0.486	17.886	11.509	1278.430	172.834	-21.787	6.034	-137.80822.462	-160.262	29.104	-40.340	12.703	2
+3	2	29	-	-87.896	6.834	5.759	1.265	0.099	0.050	13.673	3.101	0.155	0.040	13.682	3.075	4.833	1.064	14.920	11.076	1210.532	78.007	-16.600	12.142	-184.88883.105	-205.779	86.544	-35.810	9.490	3
+4	9	6	-	-77.482	8.980	6.432	1.325	0.120	0.040	16.392	3.663	0.135	0.037	16.344	3.631	5.516	1.143	24.593	16.023	1092.057	118.002	-24.420	3.408	-92.25458.414	-104.731	52.843	-37.070	2.519	4
+5	3	14	-	-76.449	7.822	9.812	0.673	0.094	0.010	25.283	2.176	0.073	0.007	25.240	2.158	8.321	0.597	13.161	15.804	1153.420	99.208	-10.555	4.474	-194.41873.604	-209.584	58.464	-28.326	11.725	5
+6	4	14	-	-75.768	8.698	8.656	0.051	0.031	0.010	22.081	0.196	0.063	0.004	22.155	0.181	7.331	0.046	9.422	2.845	1180.285	94.733	-7.799	2.862	-149.28135.997	-178.914	34.066	-39.055	5.437	6
+7	7	9	-	-74.858	4.797	6.942	0.582	0.078	0.017	17.108	1.215	0.108	0.015	17.093	1.214	5.891	0.458	25.698	16.927	1160.588	81.306	-19.064	9.579	-127.49268.554	-134.659	79.410	-32.865	8.559	7
+8	6	11	-	-63.640	1.862	7.323	0.773	0.042	0.026	19.234	1.937	0.083	0.018	19.289	1.951	6.206	0.656	7.153	3.709	948.450	112.263	-10.060	8.375	-128.485	47.644	-149.931	50.337	-28.598	3.513	8
+9	8	6	-	-63.561	3.071	6.482	0.648	0.073	0.056	16.731	1.737	0.111	0.032	16.730	1.735	5.538	0.570	14.238	6.930	1013.990	34.855	-13.123	5.508	-75.58332.708	-98.090	36.421	-36.745	2.992	9
+</pre>
+
+In this file you find the cluster rank (which corresponds to the naming of the clusters in the previous `seletop` directory), the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (column `n`) in the cluster and the corresponding statistics (averages + standard deviations). 
+
+These simple text files can be somewhat cumbersome to read "as-is", but they can be easily manipulated using command line. The following commands will extract the best 3 models based on the DockQ score:
+<a class="prompt prompt-cmd">
+sort -r -k9 run1/02_caprieval/capri_ss.tsv | head -4
+</a>
+
+
+### Performance analysis (when reference is available)
+
+In case a reference structure is available, one may want to analyse the performance of the docking protocol, for example to count how many models of different quality were generated at each step of the workflow.
+This can be done with a simple bash script provided in `protein-peptide/scripts/`. 
+This script extracts CAPRI statistics per model and reports the number of models of acceptable or better models from each `caprieval` steps. 
+To use it, run the script with the path to the run directory you want to analyse as its argument:
 
 <a class="prompt prompt-cmd">
 ./scripts/extract-capri-stats.sh ./runs/run1
 </a>
-
 <details style="background-color:#DAE4E7">
 <summary>
 <i>View the output of the script</i> <i class="material-icons">expand_more</i>
@@ -694,84 +696,74 @@ Best model             - rank:  6  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
 </details>
 <br>
 
-_**Note**_ that this kind of analysis only makes sense when we know the reference complex and for benchmarking / performance analysis purposes.
-
-<a class="prompt prompt-info">
-Look at the single structure statistics provided by the script.
-</a>
-
 <a class="prompt prompt-question">
-How does the quality of the best model change after flexible refinement? Consider here the various metrics.
+Look at the single structure statistics. How does the quality of the best model change after flexible refinement? After final energy minimisation?
+Consider all 3 metrics. 
 </a>
 
-<details style="background-color:#DAE4E7">
-  <summary style="font-style:italic">
-    <b><i>Answer</i></b> 
-    <i class="material-icons">expand_more</i>
-  </summary>
-  <p>In terms of iRMSD values, we only observe very small differences in the best model. The fraction of native contacts and the DockQ scores are however improving much more after flexible refinement but increases again slightly after final minimisation. All this will of course depend on how different are the bound and unbound conformations and the amount of data used to drive the docking process. In general, from our experience, the more and better data at hand, the larger the conformational changes that can be induced.
-  </p>
-</details>
-<br>
-
-_**Note:**_ A similar script to extract cluster statistics is available in the `scripts` directory as `extract-capri-stats-clt.sh`.
+_**Note:**_ To extract similar statistics per cluster, use `scripts/extract-capri-stats-clt.sh`.
 
 <hr>
 <hr>
 
-## Visualisation and Comparison with the Reference Structure
 
-To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top model of cluster 1, 2 or 3, located in `XX_seletopclusts` directory of the run. Precalculated models can be found in the `runs/run2/7_seletopclusts/` directory.
+## Visualisation and comparison with the reference structure
 
-**Visual examination of the best models** is a crucial step. This allows you to check whether the model(s) look as expected, identify any unphysical geometries, and assess whether there is meaningful diversity between clusters. Such inspection often reveals issues or interesting variations that may not be apparent from numerical scores alone.
+It’s time to visualise some of the docking models! This part is not only nice and colorful, but also quite important. 
+Model visualisation allows you to check whether the models look as expected, if the clusters well-defined, zoom in on the interface, etc.
+
+To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster1. These can be found in the `runs/run1/07_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
+
 
 <a class="prompt prompt-info">
-File menu -> Open -> select cluster_1_model_1.pdb
+File menu -> Open -> cluster_1_model_1.pdb
 </a>
 
-_**Note**_ that the PDB files are compressed (gzipped) by default at the end of a run. You can decompress those with the `gunzip` command. PyMOL can directly read the gzipped files.
+_**Note**_ that the PDB files are compressed (gzipped) by default at the end of a run. PyMOL can read the gzipped files, but you can decompress those with the `gunzip` command. 
 
-If you want to get an impression of how well-defined a cluster is, repeat this for the best N models you want to view (`cluster_1_model_X.pdb`). Also load the reference structure from the `pdbs` directory, `4G6M-matched.pdb`.
+If you want to get an impression of how well-defined a cluster is, repeat this for the best X models you want to view (`cluster_1_model_X.pdb`).
 
+Load the reference structure `1YCR.pdb` from `pdbs/`. 
+Alternatively, if reference has been used in caprieval, it can be found in corresponding `run1/data/XX_caprieval/`
 <a class="prompt prompt-info">
 File menu -> Open -> select 1YCR.pdb
 </a>
 
-Once all files have been loaded, type in the PyMOL command window:
-
+Once all files have been loaded, display models in cartoon representatin and colour by chain:
 <a class="prompt prompt-pymol">
 show cartoon<br>
 util.cbc<br>
 </a>
 
-Next, **select the peptide sequences** in the viewer or command line and apply coloring for better visualization and understand the direction of the alignment:
-
+For proteins and other large molecules, colouring by chains is usually sufficient, as their 3D structure makes it easy to distinguish the N- and C-termini.
+However, for small peptides in near-idealised conformations, the structure alone often makes it difficult to tell which terminus is which.
+To overcome this, we can color the peptide sequentially, with one terminus in blue and the other in red:
 <a class="prompt prompt-pymol">
-select peptide, (chain B)<br>
-spectrum count, rainbow, peptide<br>
+select (1YCR and chain B)<br>
+spectrum count, rainbow, sele <br>
 </a>
+Repeat for each loaded model. 
 
-Let us color and then superimpose all models onto the reference structure:
+Now, to superimpose all models onto the reference structure using both chains:
 <a class="prompt prompt-pymol">
-alignto  1YCR  
+alignto 1YCR  
 </a>
 
-In addition to comparing the top 4 clustered models to the reference, it might be interesting to examine **unclustered models.** Very seldom, good-quality models may not be included in the top clusters. To find unclustered models, navigate to traceback/ directory and open traceback.tsv, find 1st models with no value for cluster column. In this case it’s  emref_890.pdb with 05_emref_rank rank of 4. Feel free to examine this model in PyMOL.
-
-<a class="prompt prompt-question">
-How close are the top4 models to the reference? Did HADDOCK do a good job at ranking the best in the top?
+To maximize the differences you can superimpose all models using a single chain. For example to fit all models on the protein of the reference structure use:
+<a class="prompt prompt-pymol">
+alignto 1YCR and chain A 
 </a>
 
-_**Note:**_You can turn on and off a model by clicking on its name in the right panel of the PyMOL window.
+_**Note:**_You can hide or display a model by clicking on its name in the right panel of the PyMOL window.
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
     <b><i>See the overlay of the selected model onto the reference structure </i></b> <i class="material-icons">expand_more</i>
   </summary>
-  <i>Top-ranked model of the top cluster (cluster_1_model_1) superimposed onto the reference structure (in yellow).</i>
+  <i>Top-ranked model of the top cluster (cluster_1_model_1) superimposed onto the reference structure.</i>
   <br>
   <figure style="text-align: center;">
-    <img width="50%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/aligned_structure.png">
+    <img width="95%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/aligned.png">
   </figure>
 <br>
 </details>
@@ -780,32 +772,42 @@ _**Note:**_You can turn on and off a model by clicking on its name in the right 
 <hr>
 <hr>
 
-## Conclusion
-This tutorial demonstrated the use of **HADDOCK3** for protein–peptide docking, making use of AlphaFold model of the protein, and simulating peptide flexibility indirectly by using an ensemble of idealized input conformations. Active residues on the protein were defined using **ARCTIC-3D** predictions, while the whole peptide was treated as passive due to lack of structural information. HADDOCK3 offers control over the docking workflow through flexible restraint definitions and advanced ensemble handling.
-We hope you have enjoyed this tutorial and that you have learned something new. If you have any questions or feedback, please do not hesitate to contact us on the [HADDOCK](https://ask.bioexcel.eu/c/haddock){:target="_blank"} forum.
+## BONUS: How to use ARCTIC-3D to predict interface residues?
 
-<hr>
-<hr>
+ARCTIC-3D, is a tool and a [web-server](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} for automatic retrieval and clustering of protein–ligand interfaces from available 3D structures. It can be used to predict interface residues, which in turn can be used as active (or passive) residues to guide docking.
 
-## BONUS: How to Use ARCTIC-3D to Predict Active Residues of Protein?
+Our target complex is the mouse variant of MDM2 binding to p53m for which no structural data are available, as mouse MDM2 in not solved experimentally.
+Fortunately, its close homolog, the human MDM2 protein, has been extensively studied experimentally.
+This information can be leveraged with ARCTIC-3D to infer likely interface residues for the mouse protein. 
 
-Predicting residues that participate in the binding  is an essential step in integrative docking when no experimental interaction data is available. In this section, we explain how to use [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a structure-based tool that identifies and clusters interface residues based on homologous protein complexes. These predicted residues are then used as active residues in HADDOCK3.
+In a nutshell, ARCTIC-3D will retrieve available on [PDB](https://www.ebi.ac.uk/pdbe/){:target="_blank"} complexes involving input protein (idenified via its UniProtID), cluster all available interfaces, and output a list of residues that are likely to be present in the binding site of each cluster, along with corresponding probabilities. As different binding interfaces are often associated with different protein functions, it’s a good idea to take these functions into account while clustering. For more details, please refer to the original [publication](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"}. 
 
-In this tutorial, the target protein is MDM2_mouse (UniProt ID: P23804) for which no structural information is available. Fortunately, it has a close homolog (i.e. another protein with similar sequence), MDM2_human (UniProt ID: Q00987), with extensive experimental data. This MDM2_human experimental data can be leveraged to gain insights into MDM2_mouse binding - using ARCTIC-3D. 
-
-In a nutshell, ARCTIC-3D will retrieve available on [PDB](https://www.ebi.ac.uk/pdbe/){:target="_blank"} complexes involving input protein, cluster all available interfaces, and output a list of residues that are likely to be present in the binding site of each cluster, along with corresponding probabilities. As different binding interfaces are often associated with different protein functions, it’s a good idea to take these functions into account while clustering. For more details, please refer to the original [publication](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"}.
+<a class="prompt prompt-question">
+Can you find UniProtID for MDM2_human?
+</a>
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
+  </summary>
+Q00987
+</details>
+<br>
 
 <a class="prompt prompt-info">
-Go to ARCTIC-3D website and enter the UniProt ID of your reference protein (in our case enter Q00987 - MDM2_human).
+Open ARCTIC-3D web-server and enter the UniProt_ID of MDM2_human.
 </a>
 <a class="prompt prompt-info">
 Check “Cluster partners by protein function” 
 </a>
 <a class="prompt prompt-info">
-Then click submit. 
+Click on "Submit". 
 </a>
 
-ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot - you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 93-V - clusters 2, 3 and 4, while some residues are found only in a single cluster e.g. 105-R - cluster 2. 
+In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot - you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 93-V - clusters 2, 3 and 4, while some residues are found only in a single cluster e.g. 105-R - cluster 2. 
+
+<figure align="center">
+<img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-plot.png">
+</figure>
 
 Inspect each of the 4 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
 
@@ -817,51 +819,46 @@ What is the most relevant cluster in our case? Pay attention to the protein func
     <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
   </summary>
 Cluster 4, as p53 binding is one of the dominant functions.
+  <br>
+  <figure style="text-align: center;">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-probabilities.png">
+  </figure>
 </details>
 <br>
 
 Each residue within these clusters is assigned a contact probability score, which is saved in the B-factor column of the output PDB file. These values allow a visual inspection of the predicted interfaces using PyMOL. 
 
 <a class="prompt prompt-info">
-Download zip results, decompress… 
+Download zip results, decompress **output.zip**. Then load PDB model of the most appropriate cluster to PyMOL
 </a>
 
-Also, as shown in the Protein Function output, we specifically checked for the presence of "p53 binding" among the top-ranked functional terms. If “p53 binding” does not appear in the top 3–5 functions, then that cluster may not be suitable for your docking setup, even if the contact probabilities appear high. Always cross-check the biological relevance of the predicted partner. 
-The list of selected residues should then be extracted and saved.
-
-<a class="prompt prompt-question">
-What is the most relevant cluster for your biological system? How many residues exceed the 0.5 probability threshold? 
-</a>
-
-After identifying a suitable cluster, we downloaded the corresponding PDB file. ARCTIC-3D encodes contact probabilities in the B-factor column, allowing easy visualization in PyMOL.
-
+To color model by values of B-factor column, cyan for low vlues and red for high values: 
 <a class="prompt prompt-pymol">
 spectrum b, cyan_red
 </a>
 
-This command color-codes residues by contact probability (cyan = low, red = high). We selected residues above the 0.5 probability threshold as candidates for active residues.
 
-Do not rely solely on interface probability values. Always validate clusters by checking whether the functional annotation of the binding partner makes sense. For example, “p53 binding” should be explicitly listed in systems involving MDM2. ARCTIC-3D provides both structural and functional filters; using both ensures that your docking setup remains biologically meaningful.
+We used probability threshold of 0.5 to select candidates for active residues, which resulted in the following list: 
+```bash
+72 62 67 93 58 96 54 61 73 57 100 94 75 99 55
+```
+Since our docking input is a mouse MDM2 model, not the human reference structure, we should align both structures in PyMOL and map residues from ARCTIC-3D stucutre to mouse MDM2 model (`AF_MDM2_26_109.pdb`). 
 
-Since our docking model uses mouse MDM2, not the human reference structure, we aligned the two structures in PyMOL to ensure consistent residue mapping.
+As you may remember from the definition of active residues, they should be solvent accessible. 
+Relative solvent accessibility (RSA) measures which percentage of the surface of a residue that is accessible to a solvent (usually water), which is directly related to how exposed a residue is.
+Buried residues are unlikely to contribute directly to binding, as they are often simply unreachabe for the docking partner.  
 
-<a class="prompt prompt-pymol">
-align AF_MDM_26_109, 1YCR
+
+Default RSA threshlod for active residues is 40%; for passive - 15%. Therse values are a suggestions, not a hard rule. 
+In our case, we chose a cutoff of 25% for the active residues.
+We used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes RSA and relates solvent accessibility values directly from PDB structure:
+<a class="prompt prompt-cmd">
+freesasa --format=rsa AF_MDM2_26_109.pdb 
 </a>
 
-After alignment, we visually transferred the predicted active residues from the ARCTIC-3D output to our own model and recorded them for use in HADDOCK3.
-
-### SASA: Solvent Accessible Surface Area
-
-In addition to ARCTIC-3D predictions, we further validated candidate residues by calculating their solvent accessible surface area (SASA). SASA measures the surface of a biomolecule that is accessible to a solvent (e.g. water), which is directly related to how exposed a residue is. Buried residues, with low SASA, are unlikely to contribute directly to binding, while surface-exposed residues, with higher SASA, are typically more relevant in protein–protein or protein–peptide interactions.
-
-Both active and passive residues should have a relative solvent accessibility (RSA) of at least 15% to be considered in HADDOCK docking setups.
-
-For calculating SASA, we used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes SASA values directly from PDB structures. By applying this criterion, we filtered ARCTIC-3D predicted residues and retained only those with sufficient solvent exposure for docking.
-
 <hr>
 <hr>
 
-
-
-
+## Congratulations!
+You’ve reached the end of this basic protein-peptide docking tutorial! We hope it has been informative and helps you get started with your own docking projects.
+What more protein-pepdide docking workflow examples, this time with explisit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.
