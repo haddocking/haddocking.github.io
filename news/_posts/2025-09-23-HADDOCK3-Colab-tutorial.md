@@ -10,10 +10,9 @@ image:
 
 We have released a Jyputer notebook running on Colab resources that demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments. 
 
-To access and launch the notebook visit:
+To access and launch the notebook visit [https://github.com/haddocking/haddock3/tree/main/notebooks](https://github.com/haddocking/haddock3/tree/main/notebooks)
 
-[https://github.com/haddocking/haddock3/tree/main/notebooks](https://github.com/haddocking/haddock3/tree/main/notebooks)
- 
+
 <center> 
 <img width="50%" align="center" src="/images/posts/HADDOCK3-antibody-antigen-tutorial.png">
 <br>
