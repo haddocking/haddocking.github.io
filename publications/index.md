@@ -10,7 +10,7 @@ image:
 
 * M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1101/2025.07.01.662355). _BioRxiv_ 10.1101/2025.07.01.662355 (2025).
 
-* A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. Updates to the CASP infrastructure in 2024. _Proteins: Struc. Funct. &amp; Bioinformatics_. In press (2025). Preprint [here](https://doi.org/10.22541/au.174646994.49522644/v1)
+* A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. [Updates to the CASP infrastructure in 2024](https://doi.org/10.1002/prot.70042). _Proteins: Struc. Funct. &amp; Bioinformatics_. Advanced Online Publication DOI:10.1002/prot.70042 (2025).
 
 * M. Lensink, N. Raouraoua, G. Brysbaert, S. Velankar, S. Wodak and **A.M.J.J. Bonvin**. [Protein-protein interaction prediction in the pre- and
 post-AlphaFold era: the 8th CAPRI evaluation](http://doi.org/10.1002/prot.70018). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication DOI:10.1002/prot.70018 (2025)
