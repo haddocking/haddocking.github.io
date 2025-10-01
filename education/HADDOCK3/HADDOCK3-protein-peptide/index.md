@@ -806,13 +806,17 @@ Check “Cluster partners by protein function”
 Click on "Submit". 
 </a>
 
-In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot - you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 93-V - clusters 2, 3 and 4, while some residues are found only in a single cluster e.g. 105-R - cluster 2. 
+In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot: you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 91-F - clusters 2, 3 and 1, while some residues are found only in a single cluster e.g. 105-R - cluster 3 only. 
+
+_**NOTE**_ this ARCTIC-3D run was performed in September 2025 and thus used strucutes available online at that time.
+With the time, new structures of MDM2_human may became available, which may lead to the change in the number and numbering of clusters.
+So if you're running ARCTIC-3D in the future, don't be surprised if the output looks a bit different! 
 
 <figure align="center">
 <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-plot.png">
 </figure>
 
-Inspect each of the 4 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
+Inspect each of the 3 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
 
 <a class="prompt prompt-question">
 What is the most relevant cluster in our case? Pay attention to the protein function!
@@ -821,10 +825,10 @@ What is the most relevant cluster in our case? Pay attention to the protein func
   <summary style="bold">
     <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
   </summary>
-Cluster 4, as p53 binding is one of the dominant functions.
+Cluster 2, as p53 binding is one of the dominant functions.
   <br>
   <figure style="text-align: center;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-probabilities.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-prot-func.png">
   </figure>
 </details>
 <br>
