@@ -58,7 +58,7 @@ _As HADDOCK3 currently only exists as a command line version, all HADDOCK3 tutor
   In addition to provided ambiguous restraints used to drive the docking, symmetry restraints are also defined to enforce symmetrical binding to the protein.
 
 * [**Protein-peptide docking**](/education/HADDOCK3/HADDOCK3-protein-peptide):
-  This tutorial covers ensemble docking, starting with the preparation of input structures and the definition of restraints using ARCTIC-3D predictions.  
+  This tutorial covers ensemble docking, starting with the preparation of input structures and the definition of restraints using ARCTIC-3D predictions.
   Next, we guide you through running HADDOCK3 and show how to analyse the docking results using pre-computed data.
 
 
