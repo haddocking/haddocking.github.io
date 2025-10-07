@@ -234,9 +234,9 @@ page (you will also receive an email notification).
 <details style="background-color:#DAE4E7">
 <summary>See solution</summary>
 If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input and complete scanning <a href="https://wenmr.science.uu.nl/disvis/run/rth_3XwWbRcd" target="_blank">here</a>.
-<br>
-You can also <a href="https://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/DisVis_output_complete.zip" download>download the corresponding archive here</a>.
+with the same input and complete scanning <b><a href="https://wenmr.science.uu.nl/disvis/run/rth_3XwWbRcd" target="_blank">here</a></b>.
+<br><br>
+You can also <b><a href="https://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/DisVis_output_complete.zip" download>download the corresponding archive here</a></b>.
 <br>
 </details>
 
