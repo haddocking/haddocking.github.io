@@ -24,7 +24,7 @@ local resources on our cluster, using the multi-core version of the software, or
 [EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
-of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
+of the PowerFit output using [UCSF ChimeraX][link-chimerax]{:target="_blank"}.
 Chimera is a visualization software and popular tool in the cryo-EM community for its volume visualization capabilities.
 
 The case we will be investigating is a complex between the 30S maturing *E. coli*
@@ -418,7 +418,7 @@ for computational biomolecular research.
 [link-powerfit-register]: https://wenmr.science.uu.nl/auth/register/powerfit"PowerFit registration"
 [link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
-[link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
+[link-chimerax]: https://www.cgl.ucsf.edu/chimerax/ "UCSF ChimeraX"
 [link-data]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-1884 "Ribosome RsgA density"
 [link-pdb]: https://www.rcsb.org/pdb/explore/explore.do?structureId=2YKR "PDBid 2YKR"
