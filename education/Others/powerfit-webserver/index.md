@@ -414,7 +414,7 @@ for computational biomolecular research.
 
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
-[link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
+[link-powerfit-web]: https://rascar.science.uu.nl/powerfit "PowerFit web server"
 [link-powerfit-register]: https://wenmr.science.uu.nl/auth/register/powerfit"PowerFit registration"
 [link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
 [link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
