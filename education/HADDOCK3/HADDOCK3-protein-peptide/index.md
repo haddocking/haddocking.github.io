@@ -429,7 +429,7 @@ haddock3-cfg -m clustrmsd
 
 
 This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`). 
-If you are using your own reference, make sure the PDB file is adequately preprocessed.
+If you are using your own reference, make sure the PDB file is adequately preprocessed (for example, using `pdb_tools`).
 
 ### Running HADDOCK3
 
@@ -715,7 +715,7 @@ _**Note:**_ To extract similar statistics per cluster, use `scripts/extract-capr
 It’s time to visualise some of the docking models! This part is not only nice and colorful, but also quite important. 
 Model visualisation allows you to check whether the models look as expected, if the clusters well-defined, zoom in on the interface, etc.
 
-To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster1. These can be found in the `runs/run1/12_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
+To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster 1. These can be found in the `runs/run1/12_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
 
 
 <a class="prompt prompt-info">
@@ -858,7 +858,7 @@ Buried residues are unlikely to contribute directly to binding, as they are ofte
 Default RSA threshlod for active residues is 40%; for passive - 15%. Therse values are a suggestions, not a hard rule. 
 
 In our case, we chose a cutoff of 25% for the active residues.
-Many tools are available for calculating RSA, e.g. PyMOL’s built-in function `get_sasa_relative`, the Biopython module `Bio.PDB.SASA` etc.
+There are many tools available for calculating RSA, e.g. PyMOL’s built-in function `get_sasa_relative`, the Biopython module `Bio.PDB.SASA` etc.
 We used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes RSA and related solvent accessibility values directly from PDB structures.
 
 After installing FreeSASA, you can run it with the following command:  
@@ -902,4 +902,4 @@ RES LYS A  39    87.79  42.8  69.98  42.9  17.81  42.4  45.42  40.9  42.37  45.1
 
 ## Congratulations!
 You’ve reached the end of this basic protein-peptide docking tutorial! We hope it has been informative and helps you get started with your own docking projects.
-What more protein-peptide docking workflow examples, this time with explicit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.
+Do you want more protein-peptide docking workflow examples, this time with explicit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.
