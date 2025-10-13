@@ -62,14 +62,14 @@ We assume that you have a working installation of HADDOCK3 on your system. If HA
 pip install haddock3
 ```
 
-Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
+Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/3GE8k07b8EtuVK8) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb -O protein-peptide.zip<br>
-unzip protein-peptide.zip
+wget https://surfdrive.surf.nl/files/index.php/s/3GE8k07b8EtuVK8/download -O HADDOCK3-protein-peptide.zip<br>
+unzip HADDOCK3-protein-peptide.zip
 </a>
  
-Unzipping the file will create the `protein-peptide` directory, which contains the following directories and files:
+Unzipping the file will create the `HADDOCK3-protein-peptide` directory, which contains the following directories and files:
 
 * `pdbs`: Contains the pre-processed PDB files, both the docking input, and bound reference.
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK.
@@ -108,13 +108,13 @@ You should see the entry "P23804 · MDM2_MOUSE". Feel free to take you time and 
 </a>
 
 This protein has no experimentally solved 3D structure, only AlphaFold model is available. 
-This model model covers the full-length sequence of MDM2, but for docking we only need a its p53-binding domain.
+This model model covers the full-length sequence of MDM2, but for docking we only need its p53-binding domain.
 This domain corresponds to residues 26 to 109. Check out [Family & Domains](https://www.uniprot.org/uniprotkb/P23804/entry#family_and_domains){:target="_blank"} section of the UniProt to see all other regions of the protein. 
 The remaining regions, particularly the disordered one, are known not to interact with the peptide, so it's a good idea remove them, both to make the docking problem easier, and to reduce the computational cost of the docking.
 
 <a class="prompt prompt-info"> Click on the download icon (right end of the yellow ribbon) to obtain this model (file name **AF-P23804-F1-model_v4.pdb**).
 </a>
-<a class="prompt prompt-info"> Move downloaded model **AF-P23804-F1-model_v4.pdb** to your work directory, e.g. **protein-peptide/**
+<a class="prompt prompt-info"> Move downloaded model **AF-P23804-F1-model_v4.pdb** to your work directory, e.g. **HADDOCK3-protein-peptide/**
 </a>
 
 To prepare this model for docking, we will: 
@@ -134,22 +134,22 @@ _**Note**_ `pdb_tidy` attempts to correct formatting only, e.g. ensure each line
 
 It's a good practice to verify resulting structure visually using PyMOL. Start PyMOL and load the PDB file as followed:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
+File menu -> Open -> select HADDOCK3-protein-peptide/AF_MDM2_26_109.pdb
 </a> 
 
 Feel free to compare this structure with initial AlphaFold model:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF-P23804-F1-model_v4.pdb <br>
+File menu -> Open -> select HADDOCK3-protein-peptide/AF-P23804-F1-model_v4.pdb <br>
 </a> 
 And to align two models:
 <a class="prompt prompt-pymol">
-align AF-P23804-F1-model_v4.pdb, AF_MDM2_26_109.pdb 
+align AF-P23804-F1-model_v4, AF_MDM2_26_109
 </a>
 
 If starting PyMOL directly from the command line, you can load multiple PDB files in one go:
 
 <a class="prompt prompt-cmd">
-cd protein-peptide <br>
+cd HADDOCK3-protein-peptide <br>
 pymol AF_MDM2_26_109.pdb AF-P23804-F1-model_v4.pdb
 </a>
 
@@ -165,6 +165,8 @@ The sequence of interest (residues 18-32 of the p53_mouse) is:
 <pre style="background-color:#DAE4E7">
 SQETFSGLWKLLPPE
 </pre>
+
+_**Note**_ this sequence can be found on the UniProt page for `P02340 · P53_MOUSE`, under the 'Structure' section.  
 
 We will generate three idealized peptide conformations: α-helix, β-sheet, and polyproline II (ppII). 
 This can be done using PyMOL’s built-in fab command. To see a usage example: 
@@ -191,13 +193,13 @@ Or, alternatively:
 
 Once all 3 PDB files are saved in your work directory, save them as a single ensemble PDB (`pdb-mkensemble`) and assign chain B (`pdb_chain`):
 <a class="prompt prompt-cmd">
-pdb_mkensemble peptide_helix.pdb peptide_sheet.pdb peptide_ppii.pdb | pdb_chain -B | pdb_tidy -strict > peptide_ensemble.pdb
+pdb_mkensemble peptide_helix.pdb peptide_sheet.pdb peptide_ppii.pdb | pdb_chain -B | pdb_tidy -strict > peptide_ens.pdb
 </a>
 
 To quickly inspect the contents of the generated ensemble, you can look at the header of the file with:
 
 <a class="prompt prompt-cmd">
-head peptide_ensemble.pdb
+head peptide_ens.pdb
 </a>
 
 <hr>
@@ -246,7 +248,7 @@ For more details, take a look at the bonus section: [How to use ARCTIC-3D?](#bon
 
 Let's visualize predicted active residues on the protein structure we prepared:
 <a class="prompt prompt-info">Open PyMOL <br>
-File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
+File menu -> Open -> select HADDOCK3-protein-peptide/AF_MDM2_26_109.pdb
 </a> 
 <a class="prompt prompt-pymol">
 color green <br>
@@ -309,7 +311,7 @@ Typically, active residues are complemented by nearby passive residues on the sa
 After generating `protein-peptide_ambig.tbl`, one can validate the syntax of this file using:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints validate_tbl protein-peptide_ambig.tbl --silent
+haddock3-restraints validate_tbl protein-peptide_ambig.tbl \-\-silent
 </a>
 If the file is valid, there will be no output.
 
@@ -426,7 +428,8 @@ haddock3-cfg -m clustrmsd
 </a>
 
 
-This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`).
+This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`). 
+If you are using your own reference, make sure the PDB file is adequately preprocessed (for example, using `pdb_tools`).
 
 ### Running HADDOCK3
 
@@ -502,9 +505,9 @@ Once your run has completed (or oncw you open precomputed `runs/run1/`), inspect
 
 In addition to the various modules defined in the workflow file, you will also find a `log` file (text file) and three additional directories:
 
-  * the `data` directory containing the input data (PDB and restraint files) for the various modules, as well as original workflow configuration file.
-  * the `analysis`directory containing various plots to visualise the results for each caprieval step.
-  * the `traceback` directory containing the names of the generated models for each step, allowing to trace back a model and it's rank throughout the various stages.
+  * `data` directory containing the input data (PDB and restraint files) for the various modules, as well as original workflow configuration file;
+  * `analysis`directory containing various plots to visualise the results for each caprieval step;
+  * `traceback` directory containing the names of the generated models for each step, allowing to trace back a model and it's rank throughout the various stages.
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files - models produced by this module.
 
@@ -620,12 +623,12 @@ sort -r -k9 run1/02_caprieval/capri_ss.tsv | head -4
 ### Performance analysis (when reference is available)
 
 In case a reference structure is available, one may want to analyse the performance of the docking protocol, for example to count how many models of different quality were generated at each step of the workflow.
-This can be done with a simple bash script provided in `protein-peptide/scripts/`. 
+This can be done with a simple bash script provided in `HADDOCK3-protein-peptide/scripts/`. 
 This script extracts CAPRI statistics per model and reports the number of models of acceptable or better models from each `caprieval` steps. 
 To use it, run the script with the path to the run directory you want to analyse as its argument:
 
 <a class="prompt prompt-cmd">
-./scripts/extract-capri-stats.sh ./runs/run1
+bash ./scripts/extract-capri-stats.sh ./runs/run1
 </a>
 <details style="background-color:#DAE4E7">
 <summary>
@@ -712,7 +715,7 @@ _**Note:**_ To extract similar statistics per cluster, use `scripts/extract-capr
 It’s time to visualise some of the docking models! This part is not only nice and colorful, but also quite important. 
 Model visualisation allows you to check whether the models look as expected, if the clusters well-defined, zoom in on the interface, etc.
 
-To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster1. These can be found in the `runs/run1/07_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
+To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster 1. These can be found in the `runs/run1/12_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
 
 
 <a class="prompt prompt-info">
@@ -754,7 +757,7 @@ To maximize the differences you can superimpose all models using a single chain.
 alignto 1YCR and chain A 
 </a>
 
-_**Note:**_You can hide or display a model by clicking on its name in the right panel of the PyMOL window.
+_**Note:**_ You can hide or display a model by clicking on its name in the right panel of the PyMOL window.
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
@@ -803,13 +806,17 @@ Check “Cluster partners by protein function”
 Click on "Submit". 
 </a>
 
-In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot - you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 93-V - clusters 2, 3 and 4, while some residues are found only in a single cluster e.g. 105-R - cluster 2. 
+In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot: you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 91-F - clusters 2, 3 and 1, while some residues are found only in a single cluster e.g. 105-R - cluster 3 only. 
+
+_**NOTE**_ this ARCTIC-3D run was performed in September 2025 and thus used strucutes available online at that time.
+With the time, new structures of MDM2_human may became available, which may lead to the change in the number and numbering of clusters.
+So if you're running ARCTIC-3D in the future, don't be surprised if the output looks a bit different! 
 
 <figure align="center">
 <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-plot.png">
 </figure>
 
-Inspect each of the 4 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
+Inspect each of the 3 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
 
 <a class="prompt prompt-question">
 What is the most relevant cluster in our case? Pay attention to the protein function!
@@ -818,10 +825,10 @@ What is the most relevant cluster in our case? Pay attention to the protein func
   <summary style="bold">
     <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
   </summary>
-Cluster 4, as p53 binding is one of the dominant functions.
+Cluster 2, as p53 binding is one of the dominant functions.
   <br>
   <figure style="text-align: center;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-probabilities.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-prot-func.png">
   </figure>
 </details>
 <br>
@@ -845,20 +852,54 @@ We used probability threshold of 0.5 to select candidates for active residues, w
 Since our docking input is a mouse MDM2 model, not the human reference structure, we should align both structures in PyMOL and map residues from ARCTIC-3D stucutre to mouse MDM2 model (`AF_MDM2_26_109.pdb`). 
 
 As you may remember from the definition of active residues, they should be solvent accessible. 
-Relative solvent accessibility (RSA) measures which percentage of the surface of a residue that is accessible to a solvent (usually water), which is directly related to how exposed a residue is.
-Buried residues are unlikely to contribute directly to binding, as they are often simply unreachabe for the docking partner.  
-
-
+Relative solvent accessibility (RSA) measures the percentage of a residue’s surface that is exposed to solvent, typically water. 
+It reflects how accessible a residue is to potential binding partners.
+Buried residues are unlikely to contribute directly to binding, as they are often simply unreachabe for the docking partner.
 Default RSA threshlod for active residues is 40%; for passive - 15%. Therse values are a suggestions, not a hard rule. 
+
 In our case, we chose a cutoff of 25% for the active residues.
-We used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes RSA and relates solvent accessibility values directly from PDB structure:
+There are many tools available for calculating RSA, e.g. PyMOL’s built-in function `get_sasa_relative`, the Biopython module `Bio.PDB.SASA` etc.
+We used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes RSA and related solvent accessibility values directly from PDB structures.
+
+After installing FreeSASA, you can run it with the following command:  
 <a class="prompt prompt-cmd">
-freesasa --format=rsa AF_MDM2_26_109.pdb 
+freesasa --format=rsa AF_MDM2_26_109.pdb
 </a>
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View freesasa output</i> <i class="material-icons">expand_more</i>
+ </summary>
+ The column of interest is `All-atoms`, sub-column `REL`
+<pre>
+REM  FreeSASA 2.1.2
+REM  Absolute and relative SASAs for AF_MDM2_26_109.pdb
+REM  Atomic radii and reference values for relative SASA: ProtOr
+REM  Chains: A
+REM  Algorithm: Lee & Richards
+REM  Probe-radius: 1.40
+REM  Slices: 20
+REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
+REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
+RES PRO A  30    29.26  21.3   5.87   5.4  23.39  85.0   5.87   4.8  23.39 145.4
+RES LYS A  31    87.65  42.8  87.13  53.5   0.52   1.2  45.91  41.3  41.74  44.5
+RES PRO A  32   109.77  80.0 102.81  93.7   6.96  25.3 104.24  86.1   5.53  34.4
+RES LEU A  33    95.62  53.3  95.57  68.4   0.05   0.1  95.57  67.1   0.05   0.1
+RES LEU A  34     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES LEU A  35    32.31  18.0  32.31  23.1   0.00   0.0  32.31  22.7   0.00   0.0
+RES LYS A  36   131.57  64.2 122.34  75.1   9.23  22.0  79.53  71.6  52.04  55.4
+RES LEU A  37     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES LEU A  38     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES LYS A  39    87.79  42.8  69.98  42.9  17.81  42.4  45.42  40.9  42.37  45.1
+...
+</pre>
+</details>
+<br>
+
+
 
 <hr>
 <hr>
 
 ## Congratulations!
 You’ve reached the end of this basic protein-peptide docking tutorial! We hope it has been informative and helps you get started with your own docking projects.
-What more protein-pepdide docking workflow examples, this time with explisit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.
+Do you want more protein-peptide docking workflow examples, this time with explicit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.

@@ -357,9 +357,6 @@ __Note:__ _The blue bars on the server can be folded/unfolded by clicking on the
 * **Step2:** Input the first protein PDB file. For this unfold the **First Molecule menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
-</a>
-<a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
 </a>
 <a class="prompt prompt-info">
@@ -415,7 +412,7 @@ Center of mass restraints -> Check the box
 Use this type of restraints	 -> Check the box
 </a>
 Unfold the **segment pair menu** and define for N molecules N-1 segment pairs, e.g. for a trimer this would be: A-B and B-C.
-The protein sequence starts at residue 32 and ends at residue 254. Use those numbers to define the various segments.
+The protein sequence starts at residue 32 and ends at residue 254. Use those numbers to define the various segments (a segment is thus defined by range of residues with the first and last residues specified here).
 
 * **Step 6:** Define the symmetry restraints to enforce the symmetry that corresponds to the oligomeric state you choose. For this unfold the **symmetry restraints menu**:
 
