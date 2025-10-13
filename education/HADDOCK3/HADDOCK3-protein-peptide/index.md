@@ -62,14 +62,14 @@ We assume that you have a working installation of HADDOCK3 on your system. If HA
 pip install haddock3
 ```
 
-Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
+Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/3GE8k07b8EtuVK8) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb/download -O protein-peptide.zip<br>
-unzip protein-peptide.zip
+wget https://surfdrive.surf.nl/files/index.php/s/3GE8k07b8EtuVK8/download -O HADDOCK3-protein-peptide.zip<br>
+unzip HADDOCK3-protein-peptide.zip
 </a>
  
-Unzipping the file will create the `protein-peptide` directory, which contains the following directories and files:
+Unzipping the file will create the `HADDOCK3-protein-peptide` directory, which contains the following directories and files:
 
 * `pdbs`: Contains the pre-processed PDB files, both the docking input, and bound reference.
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK.
@@ -114,7 +114,7 @@ The remaining regions, particularly the disordered one, are known not to interac
 
 <a class="prompt prompt-info"> Click on the download icon (right end of the yellow ribbon) to obtain this model (file name **AF-P23804-F1-model_v4.pdb**).
 </a>
-<a class="prompt prompt-info"> Move downloaded model **AF-P23804-F1-model_v4.pdb** to your work directory, e.g. **protein-peptide/**
+<a class="prompt prompt-info"> Move downloaded model **AF-P23804-F1-model_v4.pdb** to your work directory, e.g. **HADDOCK3-protein-peptide/**
 </a>
 
 To prepare this model for docking, we will: 
@@ -134,12 +134,12 @@ _**Note**_ `pdb_tidy` attempts to correct formatting only, e.g. ensure each line
 
 It's a good practice to verify resulting structure visually using PyMOL. Start PyMOL and load the PDB file as followed:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
+File menu -> Open -> select HADDOCK3-protein-peptide/AF_MDM2_26_109.pdb
 </a> 
 
 Feel free to compare this structure with initial AlphaFold model:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF-P23804-F1-model_v4.pdb <br>
+File menu -> Open -> select HADDOCK3-protein-peptide/AF-P23804-F1-model_v4.pdb <br>
 </a> 
 And to align two models:
 <a class="prompt prompt-pymol">
@@ -149,7 +149,7 @@ align AF-P23804-F1-model_v4, AF_MDM2_26_109
 If starting PyMOL directly from the command line, you can load multiple PDB files in one go:
 
 <a class="prompt prompt-cmd">
-cd protein-peptide <br>
+cd HADDOCK3-protein-peptide <br>
 pymol AF_MDM2_26_109.pdb AF-P23804-F1-model_v4.pdb
 </a>
 
@@ -248,7 +248,7 @@ For more details, take a look at the bonus section: [How to use ARCTIC-3D?](#bon
 
 Let's visualize predicted active residues on the protein structure we prepared:
 <a class="prompt prompt-info">Open PyMOL <br>
-File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
+File menu -> Open -> select HADDOCK3-protein-peptide/AF_MDM2_26_109.pdb
 </a> 
 <a class="prompt prompt-pymol">
 color green <br>
@@ -623,7 +623,7 @@ sort -r -k9 run1/02_caprieval/capri_ss.tsv | head -4
 ### Performance analysis (when reference is available)
 
 In case a reference structure is available, one may want to analyse the performance of the docking protocol, for example to count how many models of different quality were generated at each step of the workflow.
-This can be done with a simple bash script provided in `protein-peptide/scripts/`. 
+This can be done with a simple bash script provided in `HADDOCK3-protein-peptide/scripts/`. 
 This script extracts CAPRI statistics per model and reports the number of models of acceptable or better models from each `caprieval` steps. 
 To use it, run the script with the path to the run directory you want to analyse as its argument:
 
