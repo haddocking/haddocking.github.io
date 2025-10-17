@@ -513,7 +513,7 @@ You can find information about the duration of the run at the bottom of the log 
 
 For example, the `12_seletopclusts` directory contains the best models from top-ranked clusters. The clusters in that directory are numbered based on their rank, i.e. `cluster_1` refers to the best-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
-### Overview docking run via visual statistics
+### Docking run overview via visual statistics
 
 The quickest way (though not the most detailed) to get an overview of a docking run is through the visual statistics provided by the caprieval module. 
 Each caprieval step generates a summary table and multiple plots, bundled into a `report.html` file. 
@@ -521,8 +521,8 @@ These reports can be found in the corresponding analysis directories, e.g. `anal
 This is one of the reasons why the caprieval module is included after almost every step of the workflow.
 
 The content of `report.html` depends on where in the workflow the corresponding caprieval module is placed. 
-If it follows an early step, the report describes unclustered models and details 10 top-ranked models (e.g. `analysis/13_caprieval_analysis/report.html`). 
-If it follows clustering, the report summarizes clusters and their top models (e.g. `analysis/04_caprieval_analysis/report.html`).
+If it follows an early step, the report describes unclustered models and details 10 top-ranked models (e.g. `analysis/04_caprieval_analysis/report.html`). 
+If it follows clustering, the report summarizes clusters and their top models (e.g. `analysis/13_caprieval_analysis/report.html`).
 
 To open `report.html` in a web-browser, [click here](plots/report.html){:target="_blank"}, or type: 
 <a class="prompt prompt-cmd">
