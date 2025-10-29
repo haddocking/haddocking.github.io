@@ -405,19 +405,25 @@
 -   name: Daphne van Oosten
     status: student
 
--   name:  Bora Akdari
+-   name: Bora Akdari
     status: student
 
--   name:  Erdem Kertmen
+-   name: Erdem Kertmen
     status: student
 
 -   name: Tineke Kadijk
     status: student
 
--   name:  Joe Zhang
+-   name: Joe Zhang
     status: student
 
--   name:  Miguel Sanchez Marin
+-   name: Miguel Sanchez Marin
     status: student
+
+-   name: Alkis Katsetsiadis
+    status: Student
+
+-   name: Ilaria-Coratella
+    status: Student
 
 

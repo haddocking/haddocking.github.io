@@ -55,9 +55,9 @@
   bluesky: https://bsky.app/profile/aengel1.bsky.social
   linkedin: https://www.linkedin.com/in/anna-engel-msc-53266a157/
 
-- name: Alkis Katsetsiadis
-  position: M.Sc Student
-  avatar: /images/people/Alkis-Katsetsiadis.png
+- name: Han Kurt
+  position: Visiting Ph.D Candidate
+  avatar: /images/people/Han-Kurt.png
 
 - name: Emile Straat
   position: M.Sc Student
@@ -67,10 +67,6 @@
   position: M.Sc Student
   avatar: /images/people/Yara-Weldam.png
 
-- name: Ilaria-Coratella
-  position: M.Sc Student
-  avatar: /images/people/Ilaria-Coratella.png
-
 - name: Lorenzo Possanzini
   position: M.Sc Student
   avatar: /images/people/Lorenzo_Possanzini.jpg
@@ -78,3 +74,8 @@
 - name: Qingyang Yang
   position: M.Sc Student
   avatar: /images/people/Qingyang-Yang.png
+  
+- name: Jahaciel Villaverde Nogues
+  position: M.Sc Student
+  avatar: /images/people/Jahaciel-Villaverde.jpg
+  
