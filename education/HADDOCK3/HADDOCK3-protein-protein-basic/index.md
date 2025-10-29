@@ -890,9 +890,9 @@ The iRMSD, lRMSD and Fnat metrics are the ones used in the blind protein-protein
 
 In CAPRI the quality of a model is defined as (for protein-protein complexes):
 
-* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1
-* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3
-* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5
+* **acceptable model**: i-RMSD < 4Å or l-RMSD<10Å and Fnat > 0.1  (0.23 < DOCKQ < 0.49)
+* **medium quality model**: i-RMSD < 2Å or l-RMSD<5Å and Fnat > 0.3 (0.49 < DOCKQ < 0.8)
+* **high quality model**: i-RMSD < 1Å or l-RMSD<1Å and Fnat > 0.5 (DOCKQ > 0.8)
 
 <a class="prompt prompt-question">
 What is based on this CAPRI criterion the quality of the best model listed above (emref_33.pdb)?
