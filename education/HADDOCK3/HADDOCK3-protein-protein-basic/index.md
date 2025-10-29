@@ -1499,7 +1499,7 @@ alignto sele<br>
 </a>
 
 <a class="prompt prompt-question">
-Does any of the cluster representatives ressemble the reference NMR structure?
+Does any of the cluster representatives ressemble the reference NMR structure? (note: in principle the analysis done above and the caprieval results should allow you to already answer these questions)
 </a>
 <a class="prompt prompt-question">
 In case you found a reasonable prediction, what is its cluster rank?
