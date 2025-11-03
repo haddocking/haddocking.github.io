@@ -62,10 +62,10 @@ We assume that you have a working installation of HADDOCK3 on your system. If HA
 pip install haddock3
 ```
 
-Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/3GE8k07b8EtuVK8) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
+Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/public.php/dav/files/3GE8k07b8EtuVK8) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/3GE8k07b8EtuVK8/download -O HADDOCK3-protein-peptide.zip<br>
+wget https://surfdrive.surf.nl/public.php/dav/files/3GE8k07b8EtuVK8 -O HADDOCK3-protein-peptide.zip<br>
 unzip HADDOCK3-protein-peptide.zip
 </a>
  

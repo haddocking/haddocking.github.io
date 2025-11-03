@@ -177,14 +177,14 @@ to facilitate their use in HADDOCK and to allow comparison with the known refere
 structure of the complex. 
 
 If you are running this tutorial on your own resources _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn){:target="_blank"}
+[zip archive](https://surfdrive.surf.nl/public.php/dav/files/R7VHGQM9nx8QuQn){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 If running as part of the EU-ASEAN HPC school see the instructions below.
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/R7VHGQM9nx8QuQn/download -O HADDOCK3-antibody-antigen.zip<br>
+wget https://surfdrive.surf.nl/public.php/dav/files/R7VHGQM9nx8QuQn -O HADDOCK3-antibody-antigen.zip<br>
 unzip HADDOCK3-antibody-antigen.zip
 </a>
 

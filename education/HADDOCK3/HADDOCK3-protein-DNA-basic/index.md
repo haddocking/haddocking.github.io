@@ -22,7 +22,7 @@ This tutorial demonstrates how to setup a Haddock3 workflow dedicated to predict
 
 Please note that we do not cover the processing of literature data into docking restraints; for more information, please refer to the [advanced tutorial](https://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-DNA-advanced/){:target="_blank"}. 
 
-Computation within this tutorial should take 1.5 hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/files/index.php/s/UCULEeLRUkYmr0d){:target="_blank"}.  
+Computation within this tutorial should take 1.5 hours on 8 CPUs. The tutorial data, as well as precomputed results available [here](https://surfdrive.surf.nl/public.php/dav/files/UCULEeLRUkYmr0d){:target="_blank"}.  
 
 ### Tutorial test case
 
@@ -74,7 +74,7 @@ In this tutorial we will use the PyMOL molecular visualisation system. If not al
 Please, download and decompress the tutorial data archive. Move the archive to your working directory of choice and extract it. You can download and unzip this archive directly from the Linux command line:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/UCULEeLRUkYmr0d/download -O haddock3-protein-dna-basic.zip<br> 
+wget https://surfdrive.surf.nl/public.php/dav/files/UCULEeLRUkYmr0d -O haddock3-protein-dna-basic.zip<br> 
 unzip haddock3-protein-dna-basic.zip
 </a>
 
