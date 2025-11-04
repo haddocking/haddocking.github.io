@@ -1093,7 +1093,7 @@ There are various steps that can be performed:
 * Performing cluster analysis
 * Rerunning the analysis for a single cluster
 
-In order to work with real data, we have performed full runs on this system. Download and unpack the following [gzipped tar archive](https://surfdrive.surf.nl/files/index.php/s/sf2FUVau1Iasocd){:target="_blank"}.
+In order to work with real data, we have performed full runs on this system. Download and unpack the following [gzipped tar archive](https://surfdrive.surf.nl/public.php/dav/files/sf2FUVau1Iasocd){:target="_blank"}.
 
 <a class="prompt prompt-cmd">
   tar xfz antibody-antigen.tgz

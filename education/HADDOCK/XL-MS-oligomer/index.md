@@ -445,10 +445,10 @@ Remember that we have increased the weight of the distance restraints for our ru
 
 <details style="background-color:#DAE4E7"><summary><b>Don't want to wait for your results?</b>
 </summary>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/tQuToprVwHZORnb" target="_blank">Download dimer HADDOCK run</a></li>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/za9ILYprxF9gDVw" target="_blank">Download trimer HADDOCK run</a></li>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/VkiC8cZBosVALBR" target="_blank">Download tetramer HADDOCK run</a></li>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/sAh09Cf2bJNykbk" target="_blank">Download pentamer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/tQuToprVwHZORnb" target="_blank">Download dimer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/za9ILYprxF9gDVw" target="_blank">Download trimer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/VkiC8cZBosVALBR" target="_blank">Download tetramer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/sAh09Cf2bJNykbk" target="_blank">Download pentamer HADDOCK run</a></li>
 
 </details>
 <br>

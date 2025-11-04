@@ -251,10 +251,10 @@ Let's have a more detailed look at the quality and ranking of the generated mode
 
 In order to perform the more quantitative analysis, download the full run from the results page (provide in a link in the first line of the result page) and unpack it. Alternatively, download the pre-calculated data from the following links:
 
-* T70 tetramer docking - reduced settings: [link](https://surfdrive.surf.nl/files/index.php/s/jUjk3gbLRkylPo4/download)
-* T70 tetramer docking - full sampling: [link](https://surfdrive.surf.nl/files/index.php/s/NQe3VPuPF05iFVY/download)
-* T70 dimer docking - reduced settings: [link](https://surfdrive.surf.nl/files/index.php/s/tnT2sZKcpDNmZeP/download)
-* T70 dimer docking - full sampling: [link](https://surfdrive.surf.nl/files/index.php/s/t7wIYpuddJqhlFn/download)
+* T70 tetramer docking - reduced settings: [link](https://surfdrive.surf.nl/public.php/dav/files/jUjk3gbLRkylPo4)
+* T70 tetramer docking - full sampling: [link](https://surfdrive.surf.nl/public.php/dav/files/NQe3VPuPF05iFVY)
+* T70 dimer docking - reduced settings: [link](https://surfdrive.surf.nl/public.php/dav/files/tnT2sZKcpDNmZeP)
+* T70 dimer docking - full sampling: [link](https://surfdrive.surf.nl/public.php/dav/files/t7wIYpuddJqhlFn)
 
 Then start the quantitative analysis in the directory where you saved and unpacked the run with the following command:
 

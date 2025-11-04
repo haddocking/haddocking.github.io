@@ -82,7 +82,7 @@ We will be using the HADDOCK 2.4 webserver [https://wenmr.science.uu.nl/haddock2
 
 #### Tutorial data set
 
-In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case. All the tutorial data are made available as a *gzipped* tar archive (.tgz) in the following address [https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz](https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz). 
+In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case. All the tutorial data are made available as a *gzipped* tar archive (.tgz) in the following address [https://surfdrive.surf.nl/public.php/dav/files/CuyiqNVryeN2wNz](https://surfdrive.surf.nl/public.php/dav/files/CuyiqNVryeN2wNz). 
 
 #### Virtual Machine
 
@@ -154,7 +154,7 @@ Cro distorts the normal B-form DNA conformation: the OR1 DNA is bent (curved) by
 
 ### Tutorial setup
 
-The tutorial data is present as a zipped file in the following address [https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz](https://surfdrive.surf.nl/files/index.php/s/CuyiqNVryeN2wNz).
+The tutorial data is present as a zipped file in the following address [https://surfdrive.surf.nl/public.php/dav/files/CuyiqNVryeN2wNz](https://surfdrive.surf.nl/public.php/dav/files/CuyiqNVryeN2wNz).
 
 #### Extract the archive
 You need to decompress the tutorial data archive. Move the archive to your working directory of choice and extract it.

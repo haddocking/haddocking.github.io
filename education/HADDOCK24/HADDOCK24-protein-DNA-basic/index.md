@@ -59,7 +59,7 @@ Throughout the tutorial, coloured text will be used to refer to questions or ins
 ### Tutorial data set
 
 In this tutorial you will perform a protein-DNA docking using the bacteriophage 434 Cro repressor protein and the OR1 operator as an example case.
-All the tutorial data are made available as a zip archive and can be downloaded at the [following link](https://surfdrive.surf.nl/files/index.php/s/BWhfEEAEHtmqa5a/download).
+All the tutorial data are made available as a zip archive and can be downloaded at the [following link](https://surfdrive.surf.nl/public.php/dav/files/BWhfEEAEHtmqa5a).
 
 ### Extract the archive
 
