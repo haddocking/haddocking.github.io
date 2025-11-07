@@ -1690,7 +1690,7 @@ PROT-ON (Structure-based detection of designer mutations in PROTein-protein inte
 
 Here we will use PROT-ON to analyse the interface of our antibody-antigen complex. For that, we will use the provided matched reference structure (`4G6M-matched.pdb`) in which both chains of the antibody have the same chainID (A), which allows us to analyse all interface residues of the antibody at once.
 
-__Note:__ Pre-calculated PROT-ON results for this system can be accessed [here](http://proton.tools.ibg.edu.tr:8001/result/ebcdec31308c46acb82e8010f7f21df1){:target="_blank"}.
+__Note:__ Pre-calculated PROT-ON results for this system can be accessed [here](http://proton.tools.ibg.edu.tr:8001/result/4G6M_matched_chain_A_EvoEF1){:target="_blank"}.
 
 <a class="prompt prompt-info">
 Connect to the PROT-ON server page (link above) and fill in the following fields:
