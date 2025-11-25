@@ -1,14 +1,16 @@
 ---
 layout: page
-title: "HADDOCK Tutorials for version 2.4"
+title: "HADDOCK2.4 tutorials"
 tags: [MODELLER, GROMACS, HADDOCK, molecular dynamics, homology modelling, docking, p53, MDM2]
 image:
   feature: pages/banner_education-thin.jpg
 ---
-In this page you can find links to tutorials on the usage of our software and webportal [HADDOCK 2.4](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"}.
+In this page you can find links to tutorials on the usage of our web server [HADDOCK 2.4](https://wenmr.science.uu.nl/haddock2.4/){:target="_blank"} and command-line tool installation tutorial.
 
 * table of contents
 {:toc}
+
+<hr>
 
 # Getting started with HADDOCK web server
 
@@ -16,7 +18,7 @@ In this page you can find links to tutorials on the usage of our software and we
   A tutorial demonstrating a step-by-step use of the HADDOCK web server to model a protein-protein complex using interface information derived from NMR chemical shift perturbation data.
   This tutorial does not require any Linux expertise and only makes use of our web server and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis.
 
-# Basic web tutorials
+# Basic web server tutorials
 
 * [**HADDOCK2.4 basic antibody-antigen docking tutorial**](/education/HADDOCK24/HADDOCK24-antibody-antigen-basic):
   This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of an antibody-antigen complex using information 
@@ -27,7 +29,7 @@ In this page you can find links to tutorials on the usage of our software and we
 * [**HADDOCK2.4 basic protein-glycan tutorial**](/education/HADDOCK24/HADDOCK24-protein-glycan):
   This tutorial explains the modelling of protein-glycan complexes using the HADDOCK2.4 webserver and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis. It is a basic, fully web-based tutorial requiring no Linux expertise.
 
-# Intermediate web tutorials
+# Intermediate web server tutorials 
 
 * [**HADDOCK2.4 basic Protein-DNA tutorial**](/education/HADDOCK24/HADDOCK24-protein-DNA-basic):
   This tutorial demonstrates the use of HADDOCK2.4 for predicting the structure of a protein-DNA complex in which two protein units bind to the DNA in a symmetrical manner (3CRO). Next to ambiguous restraints to drive the docking symmetry restraints are defined to enforce symmetrical protein binding.
@@ -54,13 +56,7 @@ In this page you can find links to tutorials on the usage of our software and we
   The tutorial does not require any Linux expertise and only makes use of the DISVIS and HADDOCK web servers and [PyMol](https://www.pymol.org){:target="_blank"} for visualisation/analysis.
   It now also includes a part describing the modelling of these homomeric complexes using AlphaFold2.
 
-# Intermediate command-line tutorials
-
-* [**HADDOCK2.4 local installation tutorial**](/education/HADDOCK24/HADDOCK24-local-tutorial):
-  A tutorial demonstrating the installation and use of a local installation of HADDOCK2.4. It demonstrates various docking scenarios.
-  You will need for this a valid license of HADDOCK2.4.
-
-# Advanced tutorials (mix of web server and command-line)
+# Advanced web server tutorials 
 
 * [**HADDOCK2.4 ab-initio, multi-body symmetrical docking tutorial**](/education/HADDOCK24/HADDOCK24-CASP-CAPRI-T70):
   A tutorial demonstrating multi-body docking with HADDOCK using its ab-initio mode with symmetry restraints.
@@ -81,9 +77,15 @@ In this page you can find links to tutorials on the usage of our software and we
   This tutorial demonstrates the use of LightDock for predicting the structure of membrane receptor–soluble protein complex using the topological information 
   provided by the membrane to guide the modelling process. The resulting LightDock models are then refined using HADDOCK.
 
-# Documentations 
+# Documentation
 
 * [**HADDOCK best practice guide**](https://www.bonvinlab.org/software/bpg/){:target="_blank"}
 
 * [**HADDOCK restraints generation**](https://www.bonvinlab.org/haddock-restraints/home.html){:target="_blank"}:
   A guide for the `haddock-restraints` tool allowing to generate various types of distance restraints for use in HADDOCK, also available via [a graphical user interface](http://wenmr.science.uu.nl/new/haddock-restraints){:target="_blank"}.
+
+# HADDOCK2.4 local installation tutorial  
+
+* [**HADDOCK2.4 local installation tutorial**](/education/HADDOCK24/HADDOCK24-local-tutorial):
+  A tutorial demonstrating the installation and use of a local installation of HADDOCK2.4. It demonstrates various docking scenarios.
+  You will need for this a valid license of HADDOCK2.4.
