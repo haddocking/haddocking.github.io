@@ -6,7 +6,7 @@ image:
 ---
 ## 2025
 
-* X. Xu, I. Coratella **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.64898/2025.12.03.691974). _BioRxiv_ 10.64898/2025.12.03.691974 (2025).
+* X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.64898/2025.12.03.691974). _BioRxiv_ 10.64898/2025.12.03.691974 (2025).
 
 * X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1101/2025.10.17.682998). _BioRxiv_ 10.1101/2025.10.17.682998 (2025).
 
