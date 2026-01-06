@@ -20,7 +20,7 @@ By the end of this tutorial, you should know the steps involved in setting up, r
 ## Use of virtual machines (VMs)
 
 For this module of the practical, we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}.
-NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance) experiements.
+NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance) experiments.
 NMRbox users can choose from 261 already installed software packages, that focus on various research topics such as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding.
 One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
 
@@ -298,10 +298,10 @@ that have been parameterized to reproduce the properties of biological molecules
 first day of molecular dynamics simulations. There are several literature reviews available in
 PubMed that assess the quality and appropriateness of each force field and their several versions.
 Some are well-known for their artifacts, such as a biased propensity for alpha-helical conformations.
-Here, in this tutorial, we will use the AMBER99SB-ILDN force field, which is widely used
-in sampling and folding simulations and has been shown to reproduce fairly well experimental data
-([source](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131){:target="_blank"}).
-Another, more practical, reason behind this choice is the availability of this force field in GROMACS.
+Here, in this tutorial, we will use the *CHARMM36m* force field, which was specifically
+optimized to improve backbone conformational sampling and is particularly well suited
+for folded and intrinsically disordered proteins. CHARMM36m has been shown to reproduce fairly well experimental data
+([source](https://doi.org/10.1038/nmeth.4067){:target="_blank"}).
 
 Since the simulation takes place in a solvated environment, i.e. a box of water molecules, we have
 also to choose an appropriate solvent model. The model is simply an addition to the force field
@@ -310,9 +310,8 @@ such as density and freezing and vaporization temperatures. As such, particular 
 to be tied to specific force fields. Due to the difficulties of reproducing the properties of water
 computationally - yes, even for such a simple molecule! - some models represent water with more
 than 3 atoms, using additional pseudo-particles to improve characteristics such as its electrostatic distribution.
-The water model suggested to use with the AMBER force field, and which
-we will use in this simulation, is the *TIP3P* model (for Transferable Interaction Potential with 3
-Points).
+The water model suggested to use with the CHARMM36m force field, and which
+we will use in this simulation, is the *TIP3P* model, specifically the CHARMM-modified TIP3P water model.
 
 This choice is usually limited by the force field, unless there is a specific need for a particular solvent model.
 
@@ -349,6 +348,21 @@ capped by an additional chemical group (e.g. N-terminal acetyl and C-terminal am
 important since leaving the termini charged (default) can lead to artificial charge-charge
 interactions, particular in small molecules. If a peptide is part of a larger structure, then it
 makes sense to cap the termini in order to neutralize their charge, as it would happen in reality.
+Terminal capping should be performed prior to topology generation using the `pdb_cap.py` script. 
+This script replaces the first residue with an ACE cap and the last residue with an NME cap 
+by modifying atom and residue names in the PDB file, making them compatible with the CHARMM36m force field.
+For capping to work correctly, the input structure must include one additional residue at both the N- and C-termini 
+(i.e. residues *−1* and *N+1* relative to the peptide of interest). 
+These residues act as placeholders and will be converted into caps. In practice, we add two glycine residues, 
+one at each end of the peptide sequence, before capping.
+Capping is performed with:
+
+<a class="prompt prompt-cmd">
+python pdb_cap.py --pdb peptide_helix.pdb --cap
+</a>
+
+The script produces a new file named peptide_helix_capped.pdb, which should then be used as input for pdb2gmx. 
+Once capped, pdb2gmx will recognize the ACE and NME residues automatically when using the CHARMM36m force field.
 Read through the output of `pdb2gmx` and check the choices the program made for histidine
 protonation states and the resulting charge of the peptide.
 
@@ -374,7 +388,7 @@ in internal parameter libraries that are defined at the very top of the topology
 
 <pre style="background-color:#DAE4E7;padding:15px">
 ; Include forcefield parameters
-#include "amber99sb-ildn.ff/forcefield.itp"
+#include "charmm36-jul2022.ff/forcefield.itp"
 
 [ moleculetype ]
 ; Name            nrexcl
@@ -400,7 +414,7 @@ Protein             3
 
 <a class="prompt prompt-info">
 Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom.
-<a>
+</a>
 
 <a class="prompt prompt-question">
   SER is in principle a neutral amino acid within a protein sequence. Can you rationalize why in this case the sum of the charges add up to +1?
@@ -779,7 +793,7 @@ particles, the pressure is kept constant by varying the volume of the simulation
   gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -r peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
 </a>
 <a class="prompt prompt-question">
-  Were you able to succesfully execute the previous command? If not, read the error message carefully.
+  Were you able to successfully execute the previous command? If not, read the error message carefully.
 </a>
 
 Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although this weak-coupling algorithm is not rigorously compatible with a full isothermal-isobaric (NPT) ensemble.
@@ -894,7 +908,7 @@ calculations:
 The simulation will run for 50 nanoseconds, which is sufficient to derive some insights on the
 conformational dynamics of such a small peptide. Bear in mind that a proper simulation to fully and
 exhaustively sample the entire landscape should last much longer, and probably make use of more
-advance molecular dynamics protocols such as replica exchange. In this case, since several students
+advanced molecular dynamics protocols such as replica exchange. In this case, since several students
 are expected to work on the same peptide, using different random seeds and starting from different
 initial conformations, we assume that individual simulations of 50 nanoseconds are informative
 enough.
