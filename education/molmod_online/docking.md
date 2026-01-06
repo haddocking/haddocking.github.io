@@ -153,7 +153,7 @@ Click on 'Tools' next to the canonical sequence and select 'BLAST'.
 Next, a new [window](https://www.uniprot.org/blast/){:target="_blank"} will open with the BLAST search. One can enter either a protein or a nucleotide sequence or a UniProt identifier.
 
 <a class="prompt prompt-info">
-Change the number of hits to 50 in advanced parameters (for an easy alignement). Then proceed to run BLAST.
+Change the number of hits to 50 in advanced parameters (for an easy alignment). Then proceed to run BLAST.
 </a>
 
 This step might take a few moments since our sequence is being compared to the UniProtKB reference proteomes plus SwissProt databases. Once the run is finished, we can see a list of orthologous sequences from different organisms ordered by sequence identity.
@@ -169,7 +169,7 @@ Select all 50 sequences and click Tools >> Align selected results, proceed to ru
 </a>
 
 
-The easiest way to visualize the alignment to identifiy which positions are more conserved is by generating a sequence *logo*. For each
+The easiest way to visualize the alignment to identify which positions are more conserved is by generating a sequence *logo*. For each
 position in the sequence, the logo identifies the most frequently occurring residues and scales its
 one-letter code according to a conservation score. We will be using the
 [WebLogo server](http://weblogo.threeplusone.com/create.cgi){:target="_blank"}, in order the generate the sequence
@@ -260,7 +260,7 @@ ARCTIC-3D will provide a structure of the human MDM2, and add the residue contac
   spectrum b, cyan_red
 </a>
 
-Because the current residue indices match the human canonical sequence, you will have to run a structural alignment of you mouse MDM2 model onto this structure and define the residue mapping by hand.
+Because the current residue indices match the human canonical sequence, you will have to run a structural alignment of your mouse MDM2 model onto this structure and define the residue mapping by hand.
 For this, you need to load your mouse MDM2 model on the same PyMOL session and then perform a structural alignment on the human one. The `align` [function](https://pymolwiki.org/index.php/Align){:target="_blank"}, already implemented in PyMOL, is easy to use and well suited for this task.
 
 <a class="prompt prompt-pymol">
@@ -328,7 +328,7 @@ To start the job submission, click on `Submit  a new job`.
 
 ### Submission and validation of structures
 
-For this we will make us of the [HADDOCK 2.4 submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
+For this we will make use of the [HADDOCK 2.4 submission interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
 
 
@@ -524,7 +524,7 @@ Double the number of steps for all four stages of the semi-flexible refinement:
 
 ### Job submission
 
-This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a `.tgz` archive) and a parameter file which contains all the settings and input structures for our run (in `.json` format). We strongly recommend to download this file as it will allow you to repeat the run afterwards by uploading into the [file upload inteface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK web server. It can serve as input reference for the run and added to the suplementary material of your publications. This file can also be manually edited.
+This interface allows us to modify many parameters that control the behavior of HADDOCK but in our case the default values are all appropriate. It also allows us to download the input structures of the docking run (in the form of a `.tgz` archive) and a parameter file which contains all the settings and input structures for our run (in `.json` format). We strongly recommend to download this file as it will allow you to repeat the run afterwards by uploading into the [file upload interface](https://wenmr.science.uu.nl/haddock2.4/submit_file){:target="_blank"} of the HADDOCK web server. It can serve as input reference for the run and added to the supplementary material of your publications. This file can also be manually edited.
 
 
 * **Step 14:** Click on the `Submit` button at the bottom left of the interface.

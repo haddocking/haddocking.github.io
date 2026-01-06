@@ -739,7 +739,7 @@ used to generate initial velocities. Pick an unlikely number for the random seed
 </a>
 
 The inclusion of velocity in this system caused the particles and the system to gain kinetic energy.
-This information is stored in an binary file format with extension `.edr`, which can be read using the GROMACS utility `energy`.
+This information is stored in a binary file format with extension `.edr`, which can be read using the GROMACS utility `energy`.
 This utility extracts the information from the energy file into tabular files that can then be turned into plots.
 Select the terms of interest by typing their numbers sequentially followed by `Enter`.
 To quit, type `0` and `Enter`. Use the `xvg_plot.py` utility to plot the resulting `.xvg` file, passing the `-i` flag to have an interactive session open.
@@ -1204,7 +1204,7 @@ remained stable while others didn't?
 
 Feel free to play around with Pymol. Zoom in on specific regions, such as where the peptide is most
 rigid or most flexible, and check the side chain conformations (`show sticks`). Feel free to waste
-some (CPU) time on making an nice image, using `ray` and `png`. Do mind that scenes that are too
+some (CPU) time on making a nice image, using `ray` and `png`. Do mind that scenes that are too
 complex may cause the built-in ray-tracer of Pymol to crash, so in that case you can only get the
 image as you have it on screen using `png` directly. Check out the
 [Pymol Gallery](https://pymolwiki.org/index.php/Gallery){:target="_blank"} for inspiration, or ask your instructors for tips. If you
@@ -1686,7 +1686,7 @@ with the centroids, or representatives, of each cluster.
 
 <a class="prompt prompt-info">
   Cluster the RMSD matrix using the GROMOS method to quantitatively extract representative
-structures of the simulation. Choose peptide backbone for fitting and all-atoms of peptide as output. This is important, since we have will use the output structures for docking.
+structures of the simulation. Choose peptide backbone for fitting and all-atoms of peptide as output. This is important, since we will use the output structures for docking.
 </a>
 
 <a class="prompt prompt-cmd">
@@ -1738,7 +1738,7 @@ these clusters are meaningful, i.e. contain only similar structures?
 <hr>
 ## Picking representatives of the simulation
 
-The aim of this simulation exercise was the sample the conformational landscape of the p53
+The aim of this simulation exercise was to sample the conformational landscape of the p53
 N-terminal transactivation peptide, in order to extract representatives that could be used to
 generate models of its interaction with the MDM2 protein. The last step of clustering provides an
 unbiased method to select structures that were sampled throughout most of the trajectory (large
