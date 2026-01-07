@@ -84,7 +84,7 @@ The molecular dynamics module requires installation of specific software package
 GROMACS is installed on the virtual machines, which students can access via [NMRbox](https://nmrbox.org){:target="_blank"}) (see below). **IMPORTANT**:
 Early registration to NMRBox before the course start is necessary [https://nmrbox.org/signup](https://nmrbox.org/signup){:target="_blank"}.
 
-Once you have registered, please enroll for the 2024 version of the course on NMRBox [here](https://nmrbox.nmrhub.org/events/events/2025-struct-bioinfo-uu){:target="_blank"}.
+Once you have registered, please enroll for the 2026 version of the course on NMRBox [here](https://nmrbox.nmrhub.org/events/events/2026-struct-bioinfo-uu){:target="_blank"}.
 
 
 Another software we will be using throughout the course is a very popular molecular visualization software named [PyMOL](https://pymol.org/2/){:target="_blank"}.
