@@ -22,7 +22,7 @@ procedure.
 
 The last decades of scientific advances in the fields of protein biology revealed the extent of both the protein sequence and structure universes.
 Protein sequences databases currently hold hundreds of
-millions entries ([source](https://www.ebi.ac.uk/uniprot/TrEMBLstats){:target="_blank"}) and are foreseen to continue
+millions of entries ([source](https://www.ebi.ac.uk/uniprot/TrEMBLstats){:target="_blank"}) and are foreseen to continue
 growing exponentially, driven by high-throughput sequencing efforts.
 On the other hand, the number of experimental protein structures is three orders of magnitude smaller ([source](https://www.rcsb.org/stats/growth/growth-released-structures){:target="_blank"}), and
 that of unique folds has remained virtually unchanged since 2008.
@@ -43,10 +43,10 @@ This apparent stagnation of the protein structure universe is a boon for structu
 There are many computational methods for predicting the three-dimensional structure of proteins from their sequence,
 most of which fall in one of four broad categories.
 Of this quadrumvirate, homology modelling is one of the
-most reliable class of methods, with an estimated accuracy close to a low-resolution experimental
+most reliable classes of methods, with an estimated accuracy close to a low-resolution experimental
 structure ([source](https://salilab.org/modeller/downloads/marc-bozi.pdf){:target="_blank"}).
 Two others, molecular threading and _ab initio_ modelling, are usually of interest only if homology modelling is not an option.
-Finally, since 2021, machine-leaning methods have show to be able to handle protein structure prediction with high accuracy.
+Finally, since 2021, machine-learning methods have been shown to be able to handle protein structure prediction with high accuracy.
 
 Homology modelling is then a structure prediction method \- worth noting, not exclusively for
 proteins
@@ -89,12 +89,10 @@ Take the time to browse through the UniProt page of mouse MDM2. The header of th
 protein, gene, and organism names for this particular entry, as well as its unique UniProt
 accession code. On the left, below the header, there is a sidebar listing the several sections of
 the page. You can use these to navigate directly to the **Structure** section to verify if there are
-already published experimental structures for mouse MDM2 (not a predicted model by AlphaFold2 !). 
-Fortunately, there aren't any _yet_; otherwise this tutorial would end here.
+already published experimental structures for mouse MDM2.
 
-
-Similarly as man, no protein is an island, entire of itself, every protein is a piece of the cell, a part of the main. Thus if we imagine the cytoplasm as a thick molecular soup, proteins are constantly in contact, interacting and exchanging information. Currently, predicting the entire cell interactome is close to impossible, however UniProt offers us a possibility to see experimentally confirmed interaction partners of proteins.
-Under **Interaction** you can see the available information about the interaction partners of MDM2. The 'Binary Interaction' subsection shows which is taken and regularly updated from the [InAct database](https://www.ebi.ac.uk/intact/){:target="_blank"}. These interactions represent only those binary interactions, which were proven by more than one experiment. The complete IntAct set can be accessed using the link in the *Cross-references* section.
+Similarly to humans, no protein is an island, entire of itself, every protein is a piece of the cell, a part of the main. Thus if we imagine the cytoplasm as a thick molecular soup, proteins are constantly in contact, interacting and exchanging information. Currently, predicting the entire cell interactome is close to impossible, however UniProt offers us a possibility to see experimentally confirmed interaction partners of proteins.
+Under **Interaction** you can see the available information about the interaction partners of MDM2. The 'Binary Interaction' subsection shows which is taken and regularly updated from the [IntAct database](https://www.ebi.ac.uk/intact/){:target="_blank"}. These interactions represent only those binary interactions, which were proven by more than one experiment. The complete IntAct set can be accessed using the link in the *Cross-references* section.
 
 <a class="prompt prompt-question">
   Which proteins does MDM2 interact with and which interaction was most frequently confirmed? Where does the interaction with p53 take place?
@@ -114,7 +112,7 @@ Besides reporting on experimental structures, UniProt links to portals such as t
 sequence and structure databases in order to build homology models.
 These automated protocols are configured to create models only under certain conditions, such as sufficient sequence identity and coverage.
 Still, the template identification, target/template alignment, and modelling options are unsupervised, which may lead to severe errors in some cases.
-In general, these models offer a quick peek of what fold(s) a particular sequence can adapt and may as well serve as a starting point for further refinement and analyses.
+In general, these models offer a quick peek of what fold(s) a particular sequence can adopt and may as well serve as a starting point for further refinement and analyses.
 Nevertheless, if the model will be a central part of a larger study, it might be worth to invest time and effort in modelling a particular protein of interest with a set of dedicated protocols.
 
 The following tab, **Family & Domains**, lists structural and domain information derived either from experiments or by similarity to other entries.
@@ -270,7 +268,7 @@ Each aligned residue pair is marked with symbols:
 * `&nbsp;` - quite different
 
 Below, there is an example of an alignment of the full mouse MDM2 sequence aligned to the human MDM2 in *Clustal* format.
-This kind of alignment can be generated by UniProt, upon selecting organisms or isoforms you are interested it.
+This kind of alignment can be generated by UniProt, upon selecting organisms or isoforms you are interested in.
 
 
 <pre style="background-color:#DAE4E7;padding:15px">
@@ -325,8 +323,8 @@ This is not the scenario we will use in this course, however if you want to use 
 ### 2. Template search
 
 After you inserted the amino-acid sequence, which serves as *query* for *template* search, on the next page there will be all found templates listed.
-SWISS-MODEL uses its own database [STML](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} to search against when looking for related protein structure for this query.
-STML [https://swissmodel.expasy.org/templates/](https://swissmodel.expasy.org/templates/){:target="_blank"} is a curated template library updated regularly with the new PDB release, containing templates for more than 120000 unique protein sequences.
+SWISS-MODEL uses its own database [SMTL](https://www.ncbi.nlm.nih.gov/pubmed/24782522){:target="_blank"} to search against when looking for related protein structure for this query.
+SMTL [https://swissmodel.expasy.org/templates/](https://swissmodel.expasy.org/templates/){:target="_blank"} is a curated template library updated regularly with the new PDB release, containing templates for more than 120000 unique protein sequences.
 
 SWISS-MODEL uses two databases to search through: fast and accurate [BLAST](https://www.ncbi.nlm.nih.gov/pubmed/9254694){:target="_blank"}, mostly used for closely related templates and more sensitive and time consuming [HHblits](https://www.ncbi.nlm.nih.gov/pubmed/22198341){:target="_blank"}, in cases of remote homology.
 
@@ -367,7 +365,7 @@ After clicking on the arrow `﹀` on the left a short preview of the template wi
 
 The **oligomeric state** is predicted for each template and user can modify it manually under "target prediction". A warning sign appears if the oligomeric state of the model doesn't exactly match the one of the template (for example not all chains of the biounit included in the model).
 
-As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution lower than $$2.2Å$$ as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures determined by X-ray crystallography are preferred over averaged NMR structures and structures determined with electron microscopy, as the latter determines the overall shape of the molecule not individual atoms locations.
+As a rule of thumb, in homology modelling it is recommended to use X-ray crystal structures with a resolution lower than $$2.2Å$$ as templates. One has to often compromise between high sequence identity/similarity and **template resolution**. In general structures determined by X-ray crystallography are preferred over averaged NMR structures. Nowadays, cryo-EM can also reaches near-atomic resolution and can support atomic model building.
 
 
  **Sequence similarity** between the sequence and the template is calculated from a normalized [BLOSUM62](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC50453/){:target="_blank"} substitution matrix and similarly as the QSQE score, it ranged between 0 and 1 with 1 as 100% sequence similarity and vice versa. Note that gaps are not taken into account while calculating the sequence similarity.
@@ -384,8 +382,8 @@ Have a look at found templates and their properties.
 
 
 The NGL viewer offers an option to toggle between different protein representations as well as to create and save template figures.
-Notice how you can see residues names after you hover over them with your cursor.
-One of the coloring options is by `Bfactor Range`.
+Notice how you can see residue names after you hover over them with your cursor.
+One of the coloring options is by `B-factor Range`.
 The B-factor, or the temperature factor, refers to the displacement of atoms from their mean position in a crystal structure and reach the value between 0 and 1.
 It describes the local mobility of the macromolecule, with 0 being the least mobile parts, and in this case marked <font style="color: blue;">blue</font>.
 
@@ -445,7 +443,7 @@ The Global Quality Estimate consists of four individual terms: Cβ atoms only, a
 Here again, the lower values indicate that the models scores lower than the experimental structure (<font style="color: red;">red</font>) and higher values indicate, that the model scores higher than the experimental structure (<font style="color: blue;">blue</font>).
 
 SWISS-MODEL uses another method [QMEAN](https://pubmed.ncbi.nlm.nih.gov/21134891/){:target="_blank"} to estimate the quality of freshly built models.
-QMEAN quantifies model accuracy as well as modelling errors per residues and globally - for the entire model.
+QMEAN quantifies model accuracy as well as modelling errors per residue and globally - for the entire model.
 This is done using statistical potentials of mean force.
 
 
@@ -453,7 +451,7 @@ The QMEAN Z-score or the normalized QMEAN score shows the "*degree of nativeness
 
 
 QMEAN score per residue is shown in the *Local Quality Estimate* plot. The [QMEANDisCo](https://doi.org/10.1093/bioinformatics/btz828){:target="_blank"} method is used in this step. QMEANDisCo compares interatomic distances in the model with ensemble information extracted from experimentally determined protein structures of target sequence homologues. The score shows similarity of the residues to the experimental structure and if it drops below 0.6, modelled residues are in general of low quality.
-Different chains are showed in different colours and the residue modelling-quality can be viewed in 3D by selecting *Confidence (gradient)* as the coloring method in the NGL viewer.
+Different chains are shown in different colours and the residue modelling-quality can be viewed in 3D by selecting *Confidence (gradient)* as the coloring method in the NGL viewer.
 
 The comparison plot shows the QMEAN score of our model (<font style="color: red;">red</font> star) within all QMEAN scores of experimentally determined structures compared to their size (number of residues). Here the Z-score is equivalent to the standard deviation of the mean.
 
@@ -471,7 +469,7 @@ For more detailed structure information, one can click on the `Structure Assessm
 Investigate a selected model and its structural properties. What is the percentage of Ramachandran favoured residues?
 </a>
 
-A Ramachandran plot is a way to visualize backbone dihedral angles of amino acid residues in the model against energetically favored regions of dihedrals of amino acids in general. These favored regions were obtained from more than 12000 experimental structures from [PISCES](https://pubmed.ncbi.nlm.nih.gov/12912846/){:target="_blank"}. Moreover the model is validated by [Molprobity](https://molprobity.biochem.duke.edu){:target="_blank"} both locally and globally. The quality of the structure is then expressed in Molprobity score, which should be as low as possible, and the percentage of Ramachandran Favoured residues, ideally above 98%. Clash score, outliers and bad angles and bonds should be as well as low as possible. More about structure assessment can be found in its [documentation](https://swissmodel.expasy.org/assess/help){:target="_blank"}. Examples of Ramachadran plots for all residues below:
+A Ramachandran plot is a way to visualize backbone dihedral angles of amino acid residues in the model against energetically favored regions of dihedrals of amino acids in general. These favored regions were obtained from more than 12000 experimental structures from [PISCES](https://pubmed.ncbi.nlm.nih.gov/12912846/){:target="_blank"}. Moreover the model is validated by [Molprobity](https://molprobity.biochem.duke.edu){:target="_blank"} both locally and globally. The quality of the structure is then expressed in Molprobity score, which should be as low as possible, and the percentage of Ramachandran Favoured residues, ideally above 98%. Clash score, outliers and bad angles and bonds should be as well as low as possible. More about structure assessment can be found in its [documentation](https://swissmodel.expasy.org/assess/help){:target="_blank"}. Examples of Ramachandran plots for all residues below:
 
 <img src="/education/molmod_online/ramachandran.png">
 
