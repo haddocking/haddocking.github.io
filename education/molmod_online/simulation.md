@@ -318,6 +318,10 @@ This choice is usually limited by the force field, unless there is a specific ne
 <a class="prompt prompt-info">
   Generate a topology and matching structure for the p53 peptide with GROMACS.
 </a>
+<a class="prompt prompt-attention">
+  Make sure the folder charmm36-jul2022.ff/ is present in your current working directory before running pdb2gmx.
+  When you run the command, GROMACS will prompt you to choose a force field - charmm36-jul2022 should appear as option 1.
+</a>
 <a class="prompt prompt-cmd">
   gmx pdb2gmx -f p53_helix.pdb -o peptide.gro -p peptide.top -ignh -ter
 </a>
