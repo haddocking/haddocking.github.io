@@ -362,7 +362,7 @@ one at each end of the peptide sequence, before capping.
 Capping is performed with:
 
 <a class="prompt prompt-cmd">
-python pdb_cap.py --pdb peptide_helix.pdb --cap
+python3.10 pdb_cap.py --pdb peptide_helix.pdb --cap
 </a>
 
 The script produces a new file named peptide_helix_capped.pdb, which should then be used as input for pdb2gmx. 
