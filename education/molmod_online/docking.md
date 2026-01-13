@@ -204,39 +204,14 @@ solely on the evolutionary conservation analysis?
 
 ### Predicting interface residues
 
-Besides sequence conservation, other features can be used to predict possible interfaces on protein
-structures. For example, certain residues tend to be overrepresented at protein-protein interfaces.
-This information, combined with evolutionary conservation and with a surface clustering algorithm
-that finds groups of surface residues meeting both the previous criteria results in reasonably
-accurate predictions. This is the basis of the
-[WHISCY](https://wenmr.science.uu.nl/whiscy/){:target="_blank"} server. A more advanced
-predictor, the [CPORT](https://alcazar.science.uu.nl/services/CPORT/){:target="_blank"} web server, judiciously
-combines (up to) 6 different predictors to provide a consensus prediction that is more robust and
-more reliable than any of the individual predictors alone. CPORT was designed to provide
-predictions for HADDOCK. The server also returns a PDB file of the
-original structure loaded with the predictions in the temperature factor column. This is extremely
-helpful to visualize the predictions in PyMOL.
+Besides sequence conservation, other features can be used to predict possible interfaces on protein structures. For example, certain residues tend to be overrepresented at protein-protein interfaces. This information, combined with evolutionary conservation and with a surface clustering algorithm that finds groups of surface residues meeting both the previous criteria results in reasonably accurate predictions. This is the basis of the [WHISCY](https://wenmr.science.uu.nl/whiscy/){:target="_blank"} server. A more advanced predictor, the [CPORT](https://alcazar.science.uu.nl/services/CPORT/){:target="_blank"} web server, judiciously combines (up to) 6 different predictors to provide a consensus prediction that is more robust and more reliable than any of the individual predictors alone. 
 
-<a class="prompt prompt-info">
-  Submit the homology model of mouse MDM2 to the CPORT web server and load the resulting PDB file
-in Pymol.
-</a>
-<a class="prompt prompt-pymol">
-    spectrum b, cyan_red, cport
-</a>
-<a class="prompt prompt-question">
-    Do the predictions highlight a particular region of the homology model?
-</a>
-<a class="prompt prompt-info">
-  Note down the list of residues predicted by CPORT to be part of an interface.
-</a>
-
-Many tools in science are developed by dedicated PhD students and postdocs. Unfortunately, over time, some of these tools may become unavailable as maintaining and supporting them requires significant time and effort. In such cases, it may be necessary to transition to alternative tools.
+Many tools in science are developed by dedicated PhD students and postdocs. Unfortunately, over time, some of these tools may become unavailable as maintaining and supporting them requires significant time and effort. In such cases, it may be necessary to use alternative tools.
 
 ### Obtain known interfaces of homologous proteins
 
 Another way to obtain information about possible interface residues is by analysing known interfaces found in **homologous** proteins.
-This can easily be performed by [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a [new tool](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"} dedicated to an automatic retrieval and clustering of interfaces in complexes from 3D structural information.
+This can easily be performed by [ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"}, a [tool](https://www.nature.com/articles/s42003-023-05718-w){:target="_blank"} dedicated to an automatic retrieval and clustering of interfaces in complexes from 3D structural information.
 As structural information of the human MDM2 interacting with other partners is available, ARCTIC-3D will extract interacting residues and cluster them into binding surfaces. Not all residues of a binding surface are relevant, as some amino acids may be rarely present among the interfaces that define that patch.
 Wisely define a probability threshold and note down the residue indices, as you will need them to define *active* residues in HADDOCK.
 

@@ -155,15 +155,19 @@ Take your time to know your system and what particularities its simulation entai
   To run the actual simulation, you will need access to a computing cluster. Running on your laptop is likely to take far too long. In our hands, the simulations of this system take ~2 full days on 18 CPU cores in our dedicated cluster.
 </a>
 
+<a class="prompt prompt-attention">
+You may have noticed that NMRBox is in the process of migrating its virtual machines from Ubuntu 20 to Ubuntu 24. The “Selecting an initial structure” section of this course was developed with Ubuntu 20 in mind and is currently not functional under Ubuntu 24. 
+However, Ubuntu 24 can be used for the remaining of this part of the course.
+</a>
 
 In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username.
-You will find your own copy of the course material in `~/EVENTS/2025-struct-bioinfo-uu/` directory.
+You will find your own copy of the course material in `~/EVENTS/2026-struct-bioinfo-uu/` directory.
 You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
 
 
 __Note__: The data are automatically copied to your home directory under the `EVENTS` directory provided you have registered for this event on NMRBox. The event can be found at [https://nmrbox.nmrhub.org/events](https://nmrbox.nmrhub.org/events){:target="_blank"}. In order to register for the course you need to have an NMRBox account.
 
-__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2025-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
+__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2026-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
 
 Open the terminal and create a directory where you will work in with name of your choice:
 <a class="prompt prompt-cmd">
@@ -351,25 +355,29 @@ these atoms when reading the structure and (re)generate their coordinates using 
 parameters defined in the force field. Also, the program allows the user to define the status of
 the termini of the molecule through the `-ter` flag. Termini can be either charged (e.g.
 NH<sub>3</sub><sup>+</sup> and COO<sup>-</sup>), uncharged (e.g. NH<sub>2</sub> and COOH), or
-capped by an additional chemical group (e.g. N-terminal acetyl and C-terminal amide). This is very
-important since leaving the termini charged (default) can lead to artificial charge-charge
-interactions, particular in small molecules. If a peptide is part of a larger structure, then it
-makes sense to cap the termini in order to neutralize their charge, as it would happen in reality.
+capped by an additional chemical group (e.g. N-terminal acetyl and C-terminal amide). 
+
+<a class="prompt prompt-attention">
+This is very important since leaving the termini charged (default) can lead to artificial charge-charge
+interactions, particular in small-sized molecules. 
+</a>
+
+If a peptide is part of a larger structure, then it makes sense to cap the termini in order to neutralize their charge, 
+as it would happen in reality.
 Terminal capping should be performed prior to topology generation using the `pdb_cap.py` script. 
 This script replaces the first residue with an ACE cap and the last residue with an NME cap 
 by modifying atom and residue names in the PDB file, making them compatible with the CHARMM36m force field.
-For capping to work correctly, the input structure must include one additional residue at both the N- and C-termini 
+For capping to work correctly, **the input structure must include one additional residue** at both the N- and C-termini 
 (i.e. residues *−1* and *N+1* relative to the peptide of interest). 
 These residues act as placeholders and will be converted into caps. In practice, we add two glycine residues, 
 one at each end of the peptide sequence, before capping.
-Capping is performed with:
-
+Capping is performed with a python script `$MOLMOD_BIN/pdb_cap.py`, read it's help message to learn how to use it:
 <a class="prompt prompt-cmd">
-python3.10 $MOLMOD_BIN/pdb_cap.py --pdb peptide_helix.pdb --cap
+python3.10 $MOLMOD_BIN/pdb_cap.py -h
 </a>
 
-The script produces a new file named peptide_helix_capped.pdb, which should then be used as input for pdb2gmx. 
-Once capped, pdb2gmx will recognize the ACE and NME residues automatically when using the CHARMM36m force field.
+The script will produce a new file, which should then be used as input for pdb2gmx. 
+Once capped, `pdb2gmx` will recognize the ACE and NME residues automatically when using the CHARMM36m force field.
 Read through the output of `pdb2gmx` and check the choices the program made for histidine
 protonation states and the resulting charge of the peptide.
 
@@ -420,7 +428,8 @@ Protein             3
 </pre>
 
 <a class="prompt prompt-info">
-Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom.
+Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom. 
+Note that displayed file was generated using the default settings.   
 </a>
 
 <a class="prompt prompt-question">
@@ -717,8 +726,8 @@ gmx mdrun -v -deffnm peptide-EM-solvated
 Despite dissipating most of the strain in the system, energy minimization does not consider
 temperature, and therefore velocities and kinetic energy. When first running molecular dynamics,
 the algorithm assigns velocities to the atoms, which again stresses the system and might cause the
-simulation to become unstable. To avoid possible instabilities, the preparation setup here
-described includes several stages of molecular dynamics that progressively remove constraints on
+simulation to become unstable. To avoid possible instabilities, the preparation setup described 
+here includes several stages of molecular dynamics that progressively remove constraints on
 the system and as such, let it slowly adapt to the conditions in which the production simulation
 will run.
 
