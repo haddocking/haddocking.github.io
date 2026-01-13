@@ -51,7 +51,7 @@ By the end of this tutorial, you should know the steps involved in:
 ### Part 3: [Protein-peptide data-driven docking](/education/molmod_online/docking)
 
 The third module introduces protein-peptide docking using the [HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/).
-It also introduces the CPORT web server for interface prediction, based on evolutionary conservation and other biophysical properties.
+It also introduces the ARCTIC3D web server for interface prediction, based on clustering of structural protein interface information.
 By the end of this tutorial, you should know how to:
 
 * setup a HADDOCK run
