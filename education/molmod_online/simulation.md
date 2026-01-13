@@ -157,7 +157,7 @@ Take your time to know your system and what particularities its simulation entai
 
 <a class="prompt prompt-attention">
 You may have noticed that NMRBox is in the process of migrating its virtual machines from Ubuntu 20 to Ubuntu 24. The “Selecting an initial structure” section of this course was developed with Ubuntu 20 in mind and is currently not functional under Ubuntu 24. 
-However, Ubuntu 24 can be used for the rest of this part of the course.
+However, Ubuntu 24 can be used for the remaining of this part of the course.
 </a>
 
 In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username.
@@ -371,7 +371,7 @@ For capping to work correctly, **the input structure must include one additional
 (i.e. residues *−1* and *N+1* relative to the peptide of interest). 
 These residues act as placeholders and will be converted into caps. In practice, we add two glycine residues, 
 one at each end of the peptide sequence, before capping.
-Capping is performed with a python script `$MOLMOD_BIN/pdb_cap.py`, read it help message to learn how to use it:
+Capping is performed with a python script `$MOLMOD_BIN/pdb_cap.py`, read it's help message to learn how to use it:
 <a class="prompt prompt-cmd">
 python3.10 $MOLMOD_BIN/pdb_cap.py -h
 </a>
@@ -727,7 +727,7 @@ Despite dissipating most of the strain in the system, energy minimization does n
 temperature, and therefore velocities and kinetic energy. When first running molecular dynamics,
 the algorithm assigns velocities to the atoms, which again stresses the system and might cause the
 simulation to become unstable. To avoid possible instabilities, the preparation setup here
-describes several stages of molecular dynamics that progressively remove constraints on
+describes by includes several stages of molecular dynamics that progressively remove constraints on
 the system and as such, let it slowly adapt to the conditions in which the production simulation
 will run.
 
