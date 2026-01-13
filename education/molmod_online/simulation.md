@@ -726,8 +726,8 @@ gmx mdrun -v -deffnm peptide-EM-solvated
 Despite dissipating most of the strain in the system, energy minimization does not consider
 temperature, and therefore velocities and kinetic energy. When first running molecular dynamics,
 the algorithm assigns velocities to the atoms, which again stresses the system and might cause the
-simulation to become unstable. To avoid possible instabilities, the preparation setup here
-describes by includes several stages of molecular dynamics that progressively remove constraints on
+simulation to become unstable. To avoid possible instabilities, the preparation setup described 
+here includes several stages of molecular dynamics that progressively remove constraints on
 the system and as such, let it slowly adapt to the conditions in which the production simulation
 will run.
 
