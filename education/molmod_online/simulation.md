@@ -952,7 +952,11 @@ with your name or initials.
 </a>
 
 <a class="prompt prompt-info">
-  Run the production MD! This will take some time, from a few hours to a few days - depending on the amount of computing resources available. 
+  Run the production MD! This will take some time, from a few hours to a few days - depending on the amount of computing resources available.   
+</a>
+
+<a class="prompt prompt-info">
+  MD simulations will run faster if a VM has all or most of its CPU available. You can check the CPU load for all NMRBox VMs at [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"} by looking at the “CPU Load” column.
 </a>
 
 <a class="prompt prompt-cmd">
