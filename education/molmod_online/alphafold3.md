@@ -67,7 +67,7 @@ In this section, we will use the AlphaFold Server to predict the 3D structure of
 </a>
 
 You should see the job appearing in the panel at the bottom of the page.
-Depending on the size of the molecules, the job can take several minutes to several hours. But once it's done you will be see the results. 
+Depending on the size of the molecules, the job can take several minutes to several hours. Once it's done you will be able to click on it and see the results. 
 
 ### Interpreting confidence metrics
 
@@ -90,7 +90,7 @@ Look at the pLDDT of MDM2. Can you trust this model? What about the N-ter?
  <p>
    The majority of the MDM2-predicted structure has a pLDDT of 90 or higher, so the structure can, in principle, be trusted. AlphaFold3, like any of the currently existing deep learning models, cannot guarantee the absence of so-called artificial hallucination, i.e. false information presented with high confidence; however, given the abundance of information about MDM2 that you used to build a homology model, it's safe to trust AlphaFold3 in this case. 
 
-   The N-ter of the model has a low pLDDT score. This is expected for the flexible long terminal stretches of proteins, often because those parts of the molecules are not experimentally resolved, or are resolved as an NMR ensemble with varied positions. This means that these termini are not as well presented in the online databases, meaning that AF3 is not as good in predicting them. This usually does not hinder the quality of the overall prediction. 
+   The N-terminus of the model has a low pLDDT score, which is expected for long terminal regions of proteins, as these regions are often intrinsically flexible or disordered. Often because those parts of the molecules are not experimentally resolved, or are resolved as an NMR ensemble with varied positions. This means that these termini are not as well presented in the online databases, meaning that AF3 is not as good in predicting them. This usually does not hinder the quality of the overall prediction. 
  </p>
 </details>
 <br>
@@ -124,7 +124,7 @@ Look at the PAE matrix - what can you conclude given that a dark green colour do
 <br>
 
 <a class="prompt prompt-info">
-    Download the results of the AF Server using a button above the plDDT scale.  
+    Download the results of the AF Server using a button above the pLDDT scale.  
     Unpack the zip file. Open all 5 cif models in PyMOL, check the difference between all 5 models and their pLDDT values. 
 </a>
 
