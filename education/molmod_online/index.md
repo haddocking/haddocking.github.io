@@ -227,16 +227,16 @@ If time is an issue, start with the molecular dynamics simulations and, while th
 <table class="two-col-table">
   <tr>
     <td></td>
-    <td><center><i><b>AlphaFold 2</b></i></center></td>
+    <td><center><i><b>AlphaFold 3</b></i></center></td>
   </tr>
   <tr>
     <td style="padding-right: 20px" valign="top">
-      In this bonus module you will discover the power of artificial intelligence (AI) for structural biology. We will introduce AlphaFold 2 and use it to model the MDM2/p53 protein-peptide complex from sequence only.
+      In this bonus module you will discover the power of artificial intelligence (AI) for structural biology. We will introduce AlphaFold 3 and use it to model the MDM2/p53 protein-peptide complex from sequence only.
     </td>
     <td style="width: 220px">
-      <a href="/education/molmod_online/alphafold"
-        alt="Modelling the MDM2/p53 complex using AlphaFold."
-        title="Modelling the MDM2/p53 complex using AlphaFold.">
+      <a href="/education/molmod_online/alphafold3"
+        alt="Modelling the MDM2/p53 complex using AlphaFold3."
+        title="Modelling the MDM2/p53 complex using AlphaFold3.">
         <img src="/images/molmod/alphafold_link-cropped.png" class="col-table" style="border-radius: 50%;">
       </a>
     </td>
