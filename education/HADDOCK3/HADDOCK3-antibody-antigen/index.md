@@ -183,7 +183,7 @@ If you are running this tutorial on your own resources _download and unzip the f
 [zip archive](https://surfdrive.surf.nl/public.php/dav/files/R7VHGQM9nx8QuQn){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 
-__If running as part of a BioExcel workshop or summerschool see the instructions in the next section.__
+_If running as part of the ASM HPC/AI school or a BioExcel workshop or summerschool see the instructions in the respective next sections._
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
@@ -213,6 +213,83 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 
 <hr>
+### ASM 2026 HPC/AI school, Kobe, Japan, February 2026
+
+You can either:
+
+ * make use of the Fugaku supercomputer for this tutorial, working at the command line,
+ * or [start a Colab notebook](https://colab.research.google.com/github/haddocking/haddock3/blob/main/notebooks/HADDOCK3-antibody-antigen.ipynb){:target="_blank"} (provided you have Google credentials) and follow the instructions in that notebook (simpler). 
+
+
+If running on Fugaku, the software and data required for this tutorial have been pre-installed.
+Please connect to Fugaku using your credentials either via ssh connection or from a web browser using OnDemand:
+
+[https://ondemand.fugaku.r-ccs.riken.jp/](https://ondemand.fugaku.r-ccs.riken.jp/){:target="_blank"}
+
+<a class="prompt prompt-info">
+If using OnDemand, open then a terminal session, requiring one node and 48 processes and change the working directory to your directory under _/vol0300/data/hp250477/Students/..._.
+</a>
+
+In order to run the tutorial, go into you data directory, then copy and unzip the required data:
+
+<a class="prompt prompt-cmd">
+unzip /vol0300/data/hp250477/Materials/Life_Science/20260202-HADDOCK/HADDOCK3-antibody-antigen.zip
+</a>
+
+This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
+
+HADDOCK3 has been pre-installed on the compute nodes. To test the installation, first create an interactive session on a node with:
+
+
+<a class="prompt prompt-cmd">
+pjsub \-\-interact \-L \"node=1\" \-L \"rscgrp=int\" \-L \"elapse=2:00:00\"  \-\-sparam \"wait-time=600\"  \-g hp250477 \-x PJM_LLIO_GFSCACHE=/vol0003:/vol0004
+</a>
+
+Once the session is active, activate HADDOCK3 with:
+
+<a class="prompt prompt-cmd">
+source /vol0300/data/hp250477/Materials/Life_Science/20260202-HADDOCK/haddock3/.venv/bin/activate<br>
+</a>
+
+You can then test that `haddock3` is indeed accessible with:
+
+<a class="prompt prompt-cmd">
+haddock3 -h
+</a>
+
+You should see a small help message explaining how to use the software.
+
+<details style="background-color:#DAE4E7">
+  <summary>
+  <i>View output</i><i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+(haddock3)$ haddock3 -h
+usage: haddock3 [-h] [--restart RESTART] [--extend-run EXTEND_RUN] [--setup]
+                [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v]
+                recipe
+
+positional arguments:
+  recipe                The input recipe file path
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --restart RESTART     Restart the run from a given step. Previous folders from the
+                        selected step onward will be deleted.
+  --extend-run EXTEND_RUN
+                        Start a run from a run directory previously prepared with the
+                        `haddock3-copy` CLI. Provide the run directory created with
+                        `haddock3-copy` CLI.
+  --setup               Only setup the run, do not execute
+  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+  -v, --version         show version
+</pre>
+</details>
+<br>
+
+<hr>
+
+
 ### BioExcel summerschool, Pula, Sardinia June 2025
 <details>
   <summary style="font-weight:bold; cursor:pointer;">
@@ -943,7 +1020,7 @@ Multiple `caprieval` modules are executed at different stages of the workflow to
 In this case we are providing the known crystal structure of the complex as reference.
 
 
-**_Note_**: For making best use of the available CPU resources it is recommended to adapt the sampling parameter to be a multiple of the number of available cores when running in local mode. For this reason, for the ASEAN HPC school the sampling is set to be a multiple of 48.
+**_Note_**: For making best use of the available CPU resources it is recommended to adapt the sampling parameter to be a multiple of the number of available cores when running in local mode. For this reason, for the ASM HPC/AI school the sampling is set to be a multiple of 48.
 
 **_Note_**: In case no reference is available (the usual scenario), the best ranked model is used as reference for each stage.
 Including `caprieval` at the various stages even when no reference is provided is useful to get the rankings and scores and visualise the results (see Analysis section below).
@@ -1100,7 +1177,7 @@ This example run should take about 7 minutes to complete on a single node using 
 
 <hr>
 
-#### Execution of HADDOCK3 on Fugaku (ASEAN 2025 HPC school)
+#### Execution of HADDOCK3 on Fugaku (ASM 2026 HPC/AI school, Kobe Japan)
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
@@ -1114,13 +1191,13 @@ with HADDOCK3 running in local mode (the setup in the above configuration file w
 <b>Interactive session on a node:</b>
 <br>
 {% highlight shell %}
-pjsub --interact -L "node=1" -L "rscgrp=int" -L "elapse=2:00:00"  --sparam "wait-time=600"  -g hp240465 -x PJM_LLIO_GFSCACHE=/vol0006:/vol0004
+pjsub -x PJM_LLIO_GFSCACHE=/vol0003:/vol0004 -g "hp250477" --interact -L "node=1" - -L "rscgrp=int" -L "elapse=2:00:00" --sparam "wait-time=600"
 {% endhighlight %}
 
 Once the session is active, activate HADDOCK3 with:
 
 {% highlight shell %}
-source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate<br>
+source /vol0300/data/hp250477/Materials/Life_Science/20250202_Bonvin/haddock3/.venv/bin/activate<br>
 {% endhighlight %}
 
 You can then run the workflow with:
@@ -1139,11 +1216,11 @@ Here is an example of such an execution script (also provided in the <i>HADDOCK3
 #PJM -L  "node=1"                           # Assign node 1 node
 #PJM -L  "rscgrp=small"                     # Specify resource group
 #PJM -L  "elapse=02:00:00"                  # Elapsed time limit 1 hour
-#PJM -g hp240465                            # group name
-#PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0006 # volume names that job uses
+#PJM -g hp250477                            # group name
+#PJM -x PJM_LLIO_GFSCACHE=/vol0003:/vol0004 # volume names that job uses
 #PJM -s                                     # Statistical information output
 
-source /vol0601/data/hp240465/Materials/Life_Science/20250312_Bonvin/haddock3/.venv/bin/activate
+source /vol0300/data/hp250477/Materials/Life_Science/20260202-HADDOCK/haddock3/.venv/bin/activate
 haddock3 ./workflows/docking-antibody-antigen.cfg
 
 {% endhighlight %}
@@ -1158,7 +1235,7 @@ pjsub run-haddock3-fugaku.sh
 
 And you can check the status in the queue using <i>pjstat</i>.
 
-This run should take about 20 minutes to complete on a single node using 48 arm cores.
+This run should take about 25 minutes to complete on a single node using 48 arm cores.
 
 </details>
 
