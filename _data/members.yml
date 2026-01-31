@@ -70,14 +70,6 @@
 - name: Luca Gazolla
   position: Visiting Ph.D Candidate
   avatar: /images/people/Luca-Gazolla.png
-
-- name: Emile Straat
-  position: M.Sc Student
-  avatar: /images/people/Emile-Straat.png
-  
-- name: Qingyang Yang
-  position: Visiting M.Sc Student
-  avatar: /images/people/Qingyang-Yang.png
   
 - name: Jahaciel Villaverde Nogues
   position: M.Sc Student
@@ -90,3 +82,7 @@
 - name: Felix Maas
   position: M.Sc Student
   avatar: /images/people/Felix-Maas.jpg
+
+- name: Viktoria Vodilovska
+  position: M.Sc Student
+  avatar: /images/people/Viktoria-Vodilovska.jpg
