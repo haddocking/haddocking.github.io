@@ -1441,23 +1441,23 @@ haddock3 <my-workflow-configuration-file> > haddock3.log &
 
   Here is an example script for submitting via the slurm batch system:
 
-  {% highlight shell %}
-  #!/bin/bash
-  #SBATCH --nodes=1
-  #SBATCH --tasks-per-node=50
-  #SBATCH -J haddock3
-  #SBATCH --partition=medium
+{% highlight shell %}
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=50
+#SBATCH -J haddock3
+#SBATCH --partition=medium
 
-  # activate the haddock3 conda environment
-  source $HOME/miniconda3/etc/profile.d/conda.sh
-  conda activate haddock3
+# activate the haddock3 conda environment
+source $HOME/miniconda3/etc/profile.d/conda.sh
+conda activate haddock3
 
-  # go to the run directory
-  cd $HOME/HADDOCK3-antibody-antigen
+# go to the run directory
+cd $HOME/HADDOCK3-antibody-antigen
 
-  # execute
-  haddock3 <my-workflow-configuration-file>
-  {% endhighlight %}
+# execute
+haddock3 <my-workflow-configuration-file>
+{% endhighlight %}
   <br>
 
 
