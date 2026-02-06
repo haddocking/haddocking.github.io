@@ -213,8 +213,86 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 
 <hr>
+
+### BioExcel Adriatic edition 2026, Ljubljana, Slovenia
+
+You can either:
+
+ * make use of the ADD HPC system for this tutorial, working at the command line,
+ * or [start a Colab notebook](https://colab.research.google.com/github/haddocking/haddock3/blob/main/notebooks/HADDOCK3-antibody-antigen.ipynb){:target="_blank"} (provided you have Google credentials) and follow the instructions in that notebook (simpler). 
+
+
+If running on HPC system, the software and data required for this tutorial have been pre-installed.
+Please connect to the HPC system using your credentials either via ssh connection.
+
+In order to run the tutorial, go into you data directory, then copy and unzip the required data:
+
+<a class="prompt prompt-cmd">
+unzip /home/vreys/HADDOCK3-antibody-antigen.zip
+</a>
+
+This will create the `HADDOCK3-antibody-antigen` directory with all necessary data and scripts and job examples ready for submission to the batch system.
+
+HADDOCK3 has been pre-installed on the compute nodes.
+To test the installation, first create an interactive session on a node with:
+
+
+<a class="prompt prompt-cmd">
+salloc --job-name=interactive_haddock3 --partition=amd --nodes=1 --cpus-per-task=8 --time-min=120
+</a>
+
+Once the session is active, activate HADDOCK3 with:
+
+<a class="prompt prompt-cmd">
+source /home/vreys/haddock3/.haddock-env/bin/activate
+<br>
+</a>
+
+You can then test that `haddock3` is indeed accessible with:
+
+<a class="prompt prompt-cmd">
+haddock3 -h
+</a>
+
+You should see a small help message explaining how to use the software.
+
+<details style="background-color:#DAE4E7">
+  <summary>
+  <i>View output</i><i class="material-icons">expand_more</i>
+ </summary>
+<pre>
+(haddock3)$ haddock3 -h
+usage: haddock3 [-h] [--restart RESTART] [--extend-run EXTEND_RUN] [--setup]
+                [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v]
+                recipe
+
+positional arguments:
+  recipe                The input recipe file path
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --restart RESTART     Restart the run from a given step. Previous folders from the
+                        selected step onward will be deleted.
+  --extend-run EXTEND_RUN
+                        Start a run from a run directory previously prepared with the
+                        `haddock3-copy` CLI. Provide the run directory created with
+                        `haddock3-copy` CLI.
+  --setup               Only setup the run, do not execute
+  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+  -v, --version         show version
+</pre>
+</details>
+<br>
+
+<hr>
+
 ### ASM 2026 HPC/AI school, Kobe, Japan, February 2026
 
+
+<details>
+  <summary style="font-weight:bold; cursor:pointer;">
+    <i>click to expand</i>
+  </summary>
 You can either:
 
  * make use of the Fugaku supercomputer for this tutorial, working at the command line,
@@ -286,11 +364,12 @@ optional arguments:
 </pre>
 </details>
 <br>
-
+</details>
 <hr>
 
 
 ### BioExcel summerschool, Pula, Sardinia June 2025
+
 <details>
   <summary style="font-weight:bold; cursor:pointer;">
     <i>click to expand</i>
@@ -359,6 +438,7 @@ optional arguments:
 
 
 ### Local setup (on your own)
+
 <details>
   <summary style="font-weight:bold; cursor:pointer;">
     <i>click to expand</i>
@@ -1238,6 +1318,76 @@ And you can check the status in the queue using <i>pjstat</i>.
 This run should take about 25 minutes to complete on a single node using 48 arm cores.
 
 </details>
+
+<hr>
+
+#### Execution of HADDOCK3 on ADD Ljubljana (BioExcel Adriatic edition 2026, Ljubljana, Slovenia)
+
+To execute the workflow, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, 
+with HADDOCK3 running in local mode (the setup in the above configuration file with <i>mode="local"</i>) and harvesting all core of that node (<i>ncores=16</i>).
+<br>
+<br>
+<b>Start an interactive session on a node:</b>
+<br>
+{% highlight shell %}
+salloc --job-name=interactive_haddock3 --partition=amd --nodes=1 --cpus-per-task=16 --time-min=120
+{% endhighlight %}
+
+Once the session is active, activate HADDOCK3 with:
+
+{% highlight shell %}
+source /home/vreys/haddock3/.haddock3-env/bin/activate<br>
+{% endhighlight %}
+
+You can then follow the tutorial and run all the commands present in it, such as starting a haddock3 docking workflow with:
+
+{% highlight shell %}
+haddock3 ./workflows/docking-antibody-antigen.cfg
+{% endhighlight %}
+<b>Job submission to the batch system:</b>
+<br>
+<br>
+For this execution mode you should create an execution script contain specific requirements for the queueing system and the HADDOCK3 configuration and execution. 
+Here is an example of such an execution script (that can be saved under the name <i>run-haddock3-slurm.sh</i>):
+
+{% highlight shell %}
+#!/bin/bash
+#SBATCH --partition=amd 
+#SBATCH --job-name=haddock3_run
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=16
+#SBATCH --time-min=120
+#SBATCH --output="haddock3_run_log.txt"
+
+# Source the environement
+source /home/vreys/haddock3/.haddock3-env/bin/activate
+
+# Go to the appropriate directory
+cd ~/HADDOCK3-antibody-antigen
+
+# Launch haddock3
+haddock3 workflows/docking-antibody-antigen.cfg
+
+
+{% endhighlight %}
+
+This file should be submitted to the batch system using the <i>sbatch</i> command:
+
+{% highlight shell %}
+sbatch run-haddock3-slurm.sh
+{% endhighlight %}
+
+<br>
+
+And you can check the status in the queue using <i>squeue -u Username</i>.
+
+Also, you can follow the state of your run by looking a the content of either the log file or the slurm output using:
+
+{% highlight shell %}
+tail -f haddock3_run_log.txt
+{% endhighlight %}
+
+This run should take around 20 minutes to complete on a single node using 16 arm cores.
 
 
 <hr>
