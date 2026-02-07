@@ -244,7 +244,7 @@ salloc --job-name=interactive_haddock3 --partition=amd --nodes=1 --cpus-per-task
 Once the session is active, activate HADDOCK3 with:
 
 <a class="prompt prompt-cmd">
-source /home/vreys/haddock3/.haddock-env/bin/activate
+source /home/vreys/haddock3/.haddock3-env/bin/activate
 <br>
 </a>
 
