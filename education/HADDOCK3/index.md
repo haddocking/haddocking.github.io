@@ -42,6 +42,9 @@ _As HADDOCK3 currently only exists as a command line version, all HADDOCK3 tutor
 
 # System-specific basic tutorials
 
+* [**Protein-Protein docking**](/education/HADDOCK3/HADDOCK3-protein-protein):
+  This tutorial describes a basic protein-protein docking case using HADDOCK3. The interface information for the docking is derived from NMR chemical shift perturbation data. This tutorial requires basic Linux expertise.
+
 * [**Antibody-antigen docking**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information
   about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments.
