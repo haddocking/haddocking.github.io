@@ -38,6 +38,10 @@
 - name: Danai Kotzampasi
   position: Postdoctoral Researcher
   avatar: /images/people/Danai-Kotzampasi.png
+  
+- name: Shantanu Khatri
+  position: Postdoctoral Researcher
+  avatar: /images/people/Shantanu-Khatri.jpg
 
 - name: Xiaotong Xu
   position: Ph.D Candidate
@@ -55,26 +59,30 @@
   bluesky: https://bsky.app/profile/aengel1.bsky.social
   linkedin: https://www.linkedin.com/in/anna-engel-msc-53266a157/
 
-- name: Alkis Katsetsiadis
-  position: M.Sc Student
-  avatar: /images/people/Alkis-Katsetsiadis.png
+- name: Andrea Roconli
+  position: External Ph.D Candidate (Roche)
+  avatar: /images/people/Andrea-Roncoli.jpg
 
-- name: Emile Straat
-  position: M.Sc Student
-  avatar: /images/people/Emile-Straat.png
+- name: Han Kurt
+  position: Visiting Ph.D Candidate
+  avatar: /images/people/Han-Kurt.png
 
-- name: Yara Weldam
-  position: M.Sc Student
-  avatar: /images/people/Yara-Weldam.png
-
-- name: Ilaria-Coratella
-  position: M.Sc Student
-  avatar: /images/people/Ilaria-Coratella.png
-
-- name: Lorenzo Possanzini
-  position: M.Sc Student
-  avatar: /images/people/Lorenzo_Possanzini.jpg
+- name: Luca Gazolla
+  position: Visiting Ph.D Candidate
+  avatar: /images/people/Luca-Gazolla.png
   
-- name: Qingyang Yang
+- name: Jahaciel Villaverde Nogues
   position: M.Sc Student
-  avatar: /images/people/Qingyang-Yang.png
+  avatar: /images/people/Jahaciel-Villaverde.jpg
+  
+- name: Robert Romijn
+  position: M.Sc Student
+  avatar: /images/people/Robert-Romijn.png
+  
+- name: Felix Maas
+  position: M.Sc Student
+  avatar: /images/people/Felix-Maas.jpg
+
+- name: Viktoria Vodilovska
+  position: M.Sc Student
+  avatar: /images/people/Viktoria-Vodilovska.jpg

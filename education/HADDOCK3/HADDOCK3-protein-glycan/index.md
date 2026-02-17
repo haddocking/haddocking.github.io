@@ -67,7 +67,7 @@ Further we are providing pre-processed PDB files for docking and analysis (but t
 preprocessing of those files will also be explained in this tutorial). 
 The files have been processed to facilitate their use in HADDOCK and for allowing 
 comparison with the known reference structure of the complex. 
-For this _download and unzip the following_ [zip archive](https://surfdrive.surf.nl/files/index.php/s/fNdwCbjtUtBeuXi){:target="_blank"}
+For this _download and unzip the following_ [zip archive](https://surfdrive.surf.nl/public.php/dav/files/fNdwCbjtUtBeuXi){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 Once unzipped, you should find the following directories:
 

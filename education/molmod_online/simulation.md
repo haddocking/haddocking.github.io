@@ -20,7 +20,7 @@ By the end of this tutorial, you should know the steps involved in setting up, r
 ## Use of virtual machines (VMs)
 
 For this module of the practical, we will be using [**NMR**box](https://nmrbox.org){:target="_blank"}.
-NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance) experiements.
+NMRbox offers cloud-based virtual machines for executing various biomolecular software that can complement NMR (Nuclear Magnetic Resonance) experiments.
 NMRbox users can choose from 261 already installed software packages, that focus on various research topics such as metabolomics, molecular dynamics, structure, intrinsically disordered proteins or binding.
 One can search through all available packages on [https://nmrbox.org/software](https://nmrbox.org/software){:target="_blank"}.
 
@@ -155,15 +155,19 @@ Take your time to know your system and what particularities its simulation entai
   To run the actual simulation, you will need access to a computing cluster. Running on your laptop is likely to take far too long. In our hands, the simulations of this system take ~2 full days on 18 CPU cores in our dedicated cluster.
 </a>
 
+<a class="prompt prompt-attention">
+You may have noticed that NMRBox is in the process of migrating its virtual machines from Ubuntu 20 to Ubuntu 24. The “Selecting an initial structure” section of this course was developed with Ubuntu 20 in mind and is currently not functional under Ubuntu 24. 
+However, Ubuntu 24 can be used for the remaining of this part of the course.
+</a>
 
 In NMRBox, after you open the terminal prompt you notice `username@machine`, where your username is the same as the NMRbox username.
-You will find your own copy of the course material in `~/EVENTS/2025-struct-bioinfo-uu/` directory.
+You will find your own copy of the course material in `~/EVENTS/2026-struct-bioinfo-uu/` directory.
 You can store your data in your `home` directory but we recommend creating a new directory where you will store your data and work in.
 
 
 __Note__: The data are automatically copied to your home directory under the `EVENTS` directory provided you have registered for this event on NMRBox. The event can be found at [https://nmrbox.nmrhub.org/events](https://nmrbox.nmrhub.org/events){:target="_blank"}. In order to register for the course you need to have an NMRBox account.
 
-__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2025-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
+__Note__: In case you are following this tutorial on your own, you will have to manually copy all the required data and edit possibly some files to correct the paths (e.g. the `setup.sh` and the `bashrc` scripts). The data for the course can be found once logged in into a VM in the following directory: `/public/EVENTS/2026-struct-bioinfo-uu/`.This directory will however automatically be copied to your home directory when you register for the course on NMRBox
 
 Open the terminal and create a directory where you will work in with name of your choice:
 <a class="prompt prompt-cmd">
@@ -298,10 +302,10 @@ that have been parameterized to reproduce the properties of biological molecules
 first day of molecular dynamics simulations. There are several literature reviews available in
 PubMed that assess the quality and appropriateness of each force field and their several versions.
 Some are well-known for their artifacts, such as a biased propensity for alpha-helical conformations.
-Here, in this tutorial, we will use the AMBER99SB-ILDN force field, which is widely used
-in sampling and folding simulations and has been shown to reproduce fairly well experimental data
-([source](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0032131){:target="_blank"}).
-Another, more practical, reason behind this choice is the availability of this force field in GROMACS.
+Here, in this tutorial, we will use the *CHARMM36m* force field, which was specifically
+optimized to improve backbone conformational sampling and is particularly well suited
+for folded and intrinsically disordered proteins. CHARMM36m has been shown to reproduce fairly well experimental data
+([source](https://doi.org/10.1038/nmeth.4067){:target="_blank"}).
 
 Since the simulation takes place in a solvated environment, i.e. a box of water molecules, we have
 also to choose an appropriate solvent model. The model is simply an addition to the force field
@@ -310,14 +314,20 @@ such as density and freezing and vaporization temperatures. As such, particular 
 to be tied to specific force fields. Due to the difficulties of reproducing the properties of water
 computationally - yes, even for such a simple molecule! - some models represent water with more
 than 3 atoms, using additional pseudo-particles to improve characteristics such as its electrostatic distribution.
-The water model suggested to use with the AMBER force field, and which
-we will use in this simulation, is the *TIP3P* model (for Transferable Interaction Potential with 3
-Points).
+The water model suggested to use with the CHARMM36m force field, and which
+we will use in this simulation, is the *TIP3P* model, specifically the CHARMM-modified TIP3P water model.
 
 This choice is usually limited by the force field, unless there is a specific need for a particular solvent model.
 
 <a class="prompt prompt-info">
   Generate a topology and matching structure for the p53 peptide with GROMACS.
+</a>
+<a class="prompt prompt-attention">
+  Make sure the folder charmm36-jul2022.ff/ is present in your current working directory before running pdb2gmx. 
+  When you run the command, GROMACS will prompt you to choose a force field - charmm36-jul2022 should appear as option 1.
+</a>
+<a class="prompt prompt-cmd">
+cp -r $MOLMOD_DATA/charmm36-jul2022.ff .
 </a>
 <a class="prompt prompt-cmd">
   gmx pdb2gmx -f p53_helix.pdb -o peptide.gro -p peptide.top -ignh -ter
@@ -345,10 +355,29 @@ these atoms when reading the structure and (re)generate their coordinates using 
 parameters defined in the force field. Also, the program allows the user to define the status of
 the termini of the molecule through the `-ter` flag. Termini can be either charged (e.g.
 NH<sub>3</sub><sup>+</sup> and COO<sup>-</sup>), uncharged (e.g. NH<sub>2</sub> and COOH), or
-capped by an additional chemical group (e.g. N-terminal acetyl and C-terminal amide). This is very
-important since leaving the termini charged (default) can lead to artificial charge-charge
-interactions, particular in small molecules. If a peptide is part of a larger structure, then it
-makes sense to cap the termini in order to neutralize their charge, as it would happen in reality.
+capped by an additional chemical group (e.g. N-terminal acetyl and C-terminal amide). 
+
+<a class="prompt prompt-attention">
+This is very important since leaving the termini charged (default) can lead to artificial charge-charge
+interactions, particular in small-sized molecules. 
+</a>
+
+If a peptide is part of a larger structure, then it makes sense to cap the termini in order to neutralize their charge, 
+as it would happen in reality.
+Terminal capping should be performed prior to topology generation using the `pdb_cap.py` script. 
+This script replaces the first residue with an ACE cap and the last residue with an NME cap 
+by modifying atom and residue names in the PDB file, making them compatible with the CHARMM36m force field.
+For capping to work correctly, **the input structure must include one additional residue** at both the N- and C-termini 
+(i.e. residues *−1* and *N+1* relative to the peptide of interest). 
+These residues act as placeholders and will be converted into caps. In practice, we add two glycine residues, 
+one at each end of the peptide sequence, before capping.
+Capping is performed with a python script `$MOLMOD_BIN/pdb_cap.py`, read it's help message to learn how to use it:
+<a class="prompt prompt-cmd">
+python3.10 $MOLMOD_BIN/pdb_cap.py -h
+</a>
+
+The script will produce a new file, which should then be used as input for pdb2gmx. 
+Once capped, `pdb2gmx` will recognize the ACE and NME residues automatically when using the CHARMM36m force field.
 Read through the output of `pdb2gmx` and check the choices the program made for histidine
 protonation states and the resulting charge of the peptide.
 
@@ -374,7 +403,7 @@ in internal parameter libraries that are defined at the very top of the topology
 
 <pre style="background-color:#DAE4E7;padding:15px">
 ; Include forcefield parameters
-#include "amber99sb-ildn.ff/forcefield.itp"
+#include "charmm36-jul2022.ff/forcefield.itp"
 
 [ moleculetype ]
 ; Name            nrexcl
@@ -399,8 +428,9 @@ Protein             3
 </pre>
 
 <a class="prompt prompt-info">
-Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom.
-<a>
+Look at the partial charge that each atom carries (column 7) and note the differences between different types of atom. 
+Note that displayed file was generated using the default settings.   
+</a>
 
 <a class="prompt prompt-question">
   SER is in principle a neutral amino acid within a protein sequence. Can you rationalize why in this case the sum of the charges add up to +1?
@@ -696,8 +726,8 @@ gmx mdrun -v -deffnm peptide-EM-solvated
 Despite dissipating most of the strain in the system, energy minimization does not consider
 temperature, and therefore velocities and kinetic energy. When first running molecular dynamics,
 the algorithm assigns velocities to the atoms, which again stresses the system and might cause the
-simulation to become unstable. To avoid possible instabilities, the preparation setup here
-described includes several stages of molecular dynamics that progressively remove constraints on
+simulation to become unstable. To avoid possible instabilities, the preparation setup described 
+here includes several stages of molecular dynamics that progressively remove constraints on
 the system and as such, let it slowly adapt to the conditions in which the production simulation
 will run.
 
@@ -739,7 +769,7 @@ used to generate initial velocities. Pick an unlikely number for the random seed
 </a>
 
 The inclusion of velocity in this system caused the particles and the system to gain kinetic energy.
-This information is stored in an binary file format with extension `.edr`, which can be read using the GROMACS utility `energy`.
+This information is stored in a binary file format with extension `.edr`, which can be read using the GROMACS utility `energy`.
 This utility extracts the information from the energy file into tabular files that can then be turned into plots.
 Select the terms of interest by typing their numbers sequentially followed by `Enter`.
 To quit, type `0` and `Enter`. Use the `xvg_plot.py` utility to plot the resulting `.xvg` file, passing the `-i` flag to have an interactive session open.
@@ -779,7 +809,7 @@ particles, the pressure is kept constant by varying the volume of the simulation
   gmx grompp -v -f $MOLMOD_DATA/mdp/04_npt_pr_PME.mdp -c peptide-NVT-PR1000.gro -r peptide-NVT-PR1000.gro -p peptide.top -o peptide-NPT-PR1000.tpr
 </a>
 <a class="prompt prompt-question">
-  Were you able to succesfully execute the previous command? If not, read the error message carefully.
+  Were you able to successfully execute the previous command? If not, read the error message carefully.
 </a>
 
 Inside `04_npt_pr_PME.mdp` we define the Berendsen barostat to be used, although this weak-coupling algorithm is not rigorously compatible with a full isothermal-isobaric (NPT) ensemble.
@@ -894,7 +924,7 @@ calculations:
 The simulation will run for 50 nanoseconds, which is sufficient to derive some insights on the
 conformational dynamics of such a small peptide. Bear in mind that a proper simulation to fully and
 exhaustively sample the entire landscape should last much longer, and probably make use of more
-advance molecular dynamics protocols such as replica exchange. In this case, since several students
+advanced molecular dynamics protocols such as replica exchange. In this case, since several students
 are expected to work on the same peptide, using different random seeds and starting from different
 initial conformations, we assume that individual simulations of 50 nanoseconds are informative
 enough.
@@ -922,7 +952,11 @@ with your name or initials.
 </a>
 
 <a class="prompt prompt-info">
-  Run the production MD! This will take some time, from a few hours to a few days - depending on the amount of computing resources available. 
+  Run the production MD! This will take some time, from a few hours to a few days - depending on the amount of computing resources available.   
+</a>
+
+<a class="prompt prompt-info">
+  MD simulations will run faster if a VM has all or most of its CPU available. You can check the CPU load for all NMRBox VMs at [https://nmrbox.org/user-dashboard](https://nmrbox.org/user-dashboard){:target="_blank"} by looking at the “CPU Load” column.
 </a>
 
 <a class="prompt prompt-cmd">
@@ -1204,7 +1238,7 @@ remained stable while others didn't?
 
 Feel free to play around with Pymol. Zoom in on specific regions, such as where the peptide is most
 rigid or most flexible, and check the side chain conformations (`show sticks`). Feel free to waste
-some (CPU) time on making an nice image, using `ray` and `png`. Do mind that scenes that are too
+some (CPU) time on making a nice image, using `ray` and `png`. Do mind that scenes that are too
 complex may cause the built-in ray-tracer of Pymol to crash, so in that case you can only get the
 image as you have it on screen using `png` directly. Check out the
 [Pymol Gallery](https://pymolwiki.org/index.php/Gallery){:target="_blank"} for inspiration, or ask your instructors for tips. If you
@@ -1686,7 +1720,7 @@ with the centroids, or representatives, of each cluster.
 
 <a class="prompt prompt-info">
   Cluster the RMSD matrix using the GROMOS method to quantitatively extract representative
-structures of the simulation. Choose peptide backbone for fitting and all-atoms of peptide as output. This is important, since we have will use the output structures for docking.
+structures of the simulation. Choose peptide backbone for fitting and all-atoms of peptide as output. This is important, since we will use the output structures for docking.
 </a>
 
 <a class="prompt prompt-cmd">
@@ -1738,7 +1772,7 @@ these clusters are meaningful, i.e. contain only similar structures?
 <hr>
 ## Picking representatives of the simulation
 
-The aim of this simulation exercise was the sample the conformational landscape of the p53
+The aim of this simulation exercise was to sample the conformational landscape of the p53
 N-terminal transactivation peptide, in order to extract representatives that could be used to
 generate models of its interaction with the MDM2 protein. The last step of clustering provides an
 unbiased method to select structures that were sampled throughout most of the trajectory (large

@@ -61,7 +61,7 @@ The following software packages will be used during the tutorial:
 * [HADDOCK2.4](https://wenmr.science.uu.nl/haddock2.4/): The HADDOCK web portal which allows to perform information-driven flexible docking among macromolecules and between a chemical compound and a macromolecule.
 
 
-You can download from [here](https://surfdrive.surf.nl/files/index.php/s/uChxo21NAp2QxSl) an archive containing the `tutorial_files` directory used in this tutorial. 
+You can download from [here](https://surfdrive.surf.nl/public.php/dav/files/uChxo21NAp2QxSl) an archive containing the `tutorial_files` directory used in this tutorial. 
 This contains all the materials and scripts needed to run the tutorial.
 
 

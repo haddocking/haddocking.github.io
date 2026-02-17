@@ -51,7 +51,7 @@ By the end of this tutorial, you should know the steps involved in:
 ### Part 3: [Protein-peptide data-driven docking](/education/molmod_online/docking)
 
 The third module introduces protein-peptide docking using the [HADDOCK2.4 web server](https://wenmr.science.uu.nl/haddock2.4/).
-It also introduces the CPORT web server for interface prediction, based on evolutionary conservation and other biophysical properties.
+It also introduces the ARCTIC3D web server for interface prediction, based on clustering of structural protein interface information.
 By the end of this tutorial, you should know how to:
 
 * setup a HADDOCK run
@@ -84,7 +84,7 @@ The molecular dynamics module requires installation of specific software package
 GROMACS is installed on the virtual machines, which students can access via [NMRbox](https://nmrbox.org){:target="_blank"}) (see below). **IMPORTANT**:
 Early registration to NMRBox before the course start is necessary [https://nmrbox.org/signup](https://nmrbox.org/signup){:target="_blank"}.
 
-Once you have registered, please enroll for the 2024 version of the course on NMRBox [here](https://nmrbox.nmrhub.org/events/events/2025-struct-bioinfo-uu){:target="_blank"}.
+Once you have registered, please enroll for the 2026 version of the course on NMRBox [here](https://nmrbox.nmrhub.org/events/events/2026-struct-bioinfo-uu){:target="_blank"}.
 
 
 Another software we will be using throughout the course is a very popular molecular visualization software named [PyMOL](https://pymol.org/2/){:target="_blank"}.
@@ -227,16 +227,16 @@ If time is an issue, start with the molecular dynamics simulations and, while th
 <table class="two-col-table">
   <tr>
     <td></td>
-    <td><center><i><b>AlphaFold 2</b></i></center></td>
+    <td><center><i><b>AlphaFold 3</b></i></center></td>
   </tr>
   <tr>
     <td style="padding-right: 20px" valign="top">
-      In this bonus module you will discover the power of artificial intelligence (AI) for structural biology. We will introduce AlphaFold 2 and use it to model the MDM2/p53 protein-peptide complex from sequence only.
+      In this bonus module you will discover the power of artificial intelligence (AI) for structural biology. We will introduce AlphaFold 3 and use it to model the MDM2/p53 protein-peptide complex from sequence only.
     </td>
     <td style="width: 220px">
-      <a href="/education/molmod_online/alphafold"
-        alt="Modelling the MDM2/p53 complex using AlphaFold."
-        title="Modelling the MDM2/p53 complex using AlphaFold.">
+      <a href="/education/molmod_online/alphafold3"
+        alt="Modelling the MDM2/p53 complex using AlphaFold3."
+        title="Modelling the MDM2/p53 complex using AlphaFold3.">
         <img src="/images/molmod/alphafold_link-cropped.png" class="col-table" style="border-radius: 50%;">
       </a>
     </td>

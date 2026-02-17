@@ -62,14 +62,14 @@ We assume that you have a working installation of HADDOCK3 on your system. If HA
 pip install haddock3
 ```
 
-Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
+Further, we are providing pre-processed haddock-compatible PDB and configuration files, as well as pre-computed docking results. Please download and unzip the provided [zip archive](https://surfdrive.surf.nl/public.php/dav/files/3GE8k07b8EtuVK8) and make sure to note the location of the extracted folder on your system. There is also a linux command for it:
 
 <a class="prompt prompt-cmd">
-wget https://surfdrive.surf.nl/files/index.php/s/Io1JF9FYiXz9NTb -O protein-peptide.zip<br>
-unzip protein-peptide.zip
+wget https://surfdrive.surf.nl/public.php/dav/files/3GE8k07b8EtuVK8 -O HADDOCK3-protein-peptide.zip<br>
+unzip HADDOCK3-protein-peptide.zip
 </a>
  
-Unzipping the file will create the `protein-peptide` directory, which contains the following directories and files:
+Unzipping the file will create the `HADDOCK3-protein-peptide` directory, which contains the following directories and files:
 
 * `pdbs`: Contains the pre-processed PDB files, both the docking input, and bound reference.
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK.
@@ -108,13 +108,13 @@ You should see the entry "P23804 · MDM2_MOUSE". Feel free to take you time and 
 </a>
 
 This protein has no experimentally solved 3D structure, only AlphaFold model is available. 
-This model model covers the full-length sequence of MDM2, but for docking we only need a its p53-binding domain.
+This model model covers the full-length sequence of MDM2, but for docking we only need its p53-binding domain.
 This domain corresponds to residues 26 to 109. Check out [Family & Domains](https://www.uniprot.org/uniprotkb/P23804/entry#family_and_domains){:target="_blank"} section of the UniProt to see all other regions of the protein. 
 The remaining regions, particularly the disordered one, are known not to interact with the peptide, so it's a good idea remove them, both to make the docking problem easier, and to reduce the computational cost of the docking.
 
-<a class="prompt prompt-info"> Click on the download icon (right end of the yellow ribbon) to obtain this model (file name **AF-P23804-F1-model_v4.pdb**).
+<a class="prompt prompt-info"> Click the download icon at the right end of the yellow ribbon to obtain this model. At the time this tutorial was created, the file name was **AF-P23804-F1-model_v4.pdb**. With future updates to the AlphaFold Database, the version tag “**v4**” will change. 
 </a>
-<a class="prompt prompt-info"> Move downloaded model **AF-P23804-F1-model_v4.pdb** to your work directory, e.g. **protein-peptide/**
+<a class="prompt prompt-info"> Move downloaded model **AF-P23804-F1-model_v4.pdb** to your work directory, e.g. **HADDOCK3-protein-peptide/**
 </a>
 
 To prepare this model for docking, we will: 
@@ -134,22 +134,22 @@ _**Note**_ `pdb_tidy` attempts to correct formatting only, e.g. ensure each line
 
 It's a good practice to verify resulting structure visually using PyMOL. Start PyMOL and load the PDB file as followed:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
+File menu -> Open -> select HADDOCK3-protein-peptide/AF_MDM2_26_109.pdb
 </a> 
 
 Feel free to compare this structure with initial AlphaFold model:
 <a class="prompt prompt-info"> 
-File menu -> Open -> select protein-peptide/AF-P23804-F1-model_v4.pdb <br>
+File menu -> Open -> select HADDOCK3-protein-peptide/AF-P23804-F1-model_v4.pdb <br>
 </a> 
 And to align two models:
 <a class="prompt prompt-pymol">
-align AF-P23804-F1-model_v4.pdb, AF_MDM2_26_109.pdb 
+align AF-P23804-F1-model_v4, AF_MDM2_26_109
 </a>
 
 If starting PyMOL directly from the command line, you can load multiple PDB files in one go:
 
 <a class="prompt prompt-cmd">
-cd protein-peptide <br>
+cd HADDOCK3-protein-peptide <br>
 pymol AF_MDM2_26_109.pdb AF-P23804-F1-model_v4.pdb
 </a>
 
@@ -165,6 +165,8 @@ The sequence of interest (residues 18-32 of the p53_mouse) is:
 <pre style="background-color:#DAE4E7">
 SQETFSGLWKLLPPE
 </pre>
+
+_**Note**_ this sequence can be found on the UniProt page for `P02340 · P53_MOUSE`, under the 'Structure' section.  
 
 We will generate three idealized peptide conformations: α-helix, β-sheet, and polyproline II (ppII). 
 This can be done using PyMOL’s built-in fab command. To see a usage example: 
@@ -191,13 +193,13 @@ Or, alternatively:
 
 Once all 3 PDB files are saved in your work directory, save them as a single ensemble PDB (`pdb-mkensemble`) and assign chain B (`pdb_chain`):
 <a class="prompt prompt-cmd">
-pdb_mkensemble peptide_helix.pdb peptide_sheet.pdb peptide_ppii.pdb | pdb_chain -B | pdb_tidy -strict > peptide_ensemble.pdb
+pdb_mkensemble peptide_helix.pdb peptide_sheet.pdb peptide_ppii.pdb | pdb_chain -B | pdb_tidy -strict > peptide_ens.pdb
 </a>
 
 To quickly inspect the contents of the generated ensemble, you can look at the header of the file with:
 
 <a class="prompt prompt-cmd">
-head peptide_ensemble.pdb
+head peptide_ens.pdb
 </a>
 
 <hr>
@@ -246,7 +248,7 @@ For more details, take a look at the bonus section: [How to use ARCTIC-3D?](#bon
 
 Let's visualize predicted active residues on the protein structure we prepared:
 <a class="prompt prompt-info">Open PyMOL <br>
-File menu -> Open -> select protein-peptide/AF_MDM2_26_109.pdb
+File menu -> Open -> select HADDOCK3-protein-peptide/AF_MDM2_26_109.pdb
 </a> 
 <a class="prompt prompt-pymol">
 color green <br>
@@ -309,7 +311,7 @@ Typically, active residues are complemented by nearby passive residues on the sa
 After generating `protein-peptide_ambig.tbl`, one can validate the syntax of this file using:
 
 <a class="prompt prompt-cmd">
-haddock3-restraints validate_tbl protein-peptide_ambig.tbl --silent
+haddock3-restraints validate_tbl protein-peptide_ambig.tbl \-\-silent
 </a>
 If the file is valid, there will be no output.
 
@@ -426,7 +428,8 @@ haddock3-cfg -m clustrmsd
 </a>
 
 
-This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`).
+This workflow is ready-to-run, and can be executed as-is, using pre-made PDB and restraint files. To use your own files, make sure you provide correct relative or absolute path for each file used during the run (`molecules`, `ambig_fname` and `reference_fname`). 
+If you are using your own reference, make sure the PDB file is adequately preprocessed (for example, using `pdb_tools`).
 
 ### Running HADDOCK3
 
@@ -476,7 +479,7 @@ _**Note**_ that pre-computed best-practice run - with all recommended settings a
 
 ## Analysis of docking results
 
-Once your run has completed (or oncw you open precomputed `runs/run1/`), inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially:
+Once your run has completed (or once you open precomputed `runs/run1/`), inspect the content of the resulting directory. You will find the various steps (modules) of the defined workflow numbered sequentially:
 
 {% highlight shell %}
 > ls runs/
@@ -502,15 +505,15 @@ Once your run has completed (or oncw you open precomputed `runs/run1/`), inspect
 
 In addition to the various modules defined in the workflow file, you will also find a `log` file (text file) and three additional directories:
 
-  * the `data` directory containing the input data (PDB and restraint files) for the various modules, as well as original workflow configuration file.
-  * the `analysis`directory containing various plots to visualise the results for each caprieval step.
-  * the `traceback` directory containing the names of the generated models for each step, allowing to trace back a model and it's rank throughout the various stages.
+  * `data` directory containing the input data (PDB and restraint files) for the various modules, as well as original workflow configuration file;
+  * `analysis`directory containing various plots to visualise the results for each caprieval step;
+  * `traceback` directory containing the names of the generated models for each step, allowing to trace back a model and it's rank throughout the various stages.
 
 You can find information about the duration of the run at the bottom of the log file. Each sampling/refinement/selection module will contain PDB files - models produced by this module.
 
 For example, the `12_seletopclusts` directory contains the best models from top-ranked clusters. The clusters in that directory are numbered based on their rank, i.e. `cluster_1` refers to the best-ranked cluster. Information about the origin of these files can be found in that directory in the `seletopclusts.txt` file.
 
-### Overview docking run via visual statistics
+### Docking run overview via visual statistics
 
 The quickest way (though not the most detailed) to get an overview of a docking run is through the visual statistics provided by the caprieval module. 
 Each caprieval step generates a summary table and multiple plots, bundled into a `report.html` file. 
@@ -518,8 +521,8 @@ These reports can be found in the corresponding analysis directories, e.g. `anal
 This is one of the reasons why the caprieval module is included after almost every step of the workflow.
 
 The content of `report.html` depends on where in the workflow the corresponding caprieval module is placed. 
-If it follows an early step, the report describes unclustered models and details 10 top-ranked models (e.g. `analysis/13_caprieval_analysis/report.html`). 
-If it follows clustering, the report summarizes clusters and their top models (e.g. `analysis/04_caprieval_analysis/report.html`).
+If it follows an early step, the report describes unclustered models and details 10 top-ranked models (e.g. `analysis/04_caprieval_analysis/report.html`). 
+If it follows clustering, the report summarizes clusters and their top models (e.g. `analysis/13_caprieval_analysis/report.html`).
 
 To open `report.html` in a web-browser, [click here](plots/report.html){:target="_blank"}, or type: 
 <a class="prompt prompt-cmd">
@@ -580,16 +583,16 @@ To extract most of the avalilable information about the model(s), one should loo
 This directory will always contain a `capri_ss.tsv` file, which contains the model names, rankings and statistics, e.g. `11_caprieval/capri_ss.tsv`:
 
 <pre style="background-color:#DAE4E7">
-                    model	md5	caprieval_rank	score	    irmsd	fnat	lrmsd	  ilrmsd	dockq	rmsd	cluster_id	cluster_ranking	model-cluster_ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	sym	total	vdw	vean	xpcs
-../05_emref/emref_175.pdb	-	1	-108.487	1.978	0.229	4.403	  4.433	  0.461	1.700	1	1	1	9.126	0.000	0.000	1440.260	0.000	0.000	0.000	-17.7640.000	-333.853	0.000	0.000	0.000	0.000	-349.593	-24.865	0.000	0.000
-../05_emref/emref_692.pdb	-	2	-100.478	3.890	0.188	9.510	  9.464	  0.254	3.324	5	2	1	4.749	0.000	0.000	1476.810	0.000	0.000	0.000	-21.4630.000	-164.223	0.000	0.000	0.000	0.000	-206.119	-46.645	0.000	0.000
-../05_emref/emref_98.pdb	-	3	-100.226	5.959	0.083	14.636	14.611	0.132	5.034	1	1	2	2.106	0.000	0.000	1174.060	0.000	0.000	0.000	-31.1890.000	-118.077	0.000	0.000	0.000	0.000	-161.604	-45.633	0.000	0.000
-../05_emref/emref_292.pdb	-	4	-95.360	  4.446	0.167	10.556	10.589	0.221	3.742	2	3	1	10.580	0.000	0.000	1147.310	0.000	0.000	0.000	-25.872	0.000	-210.751	0.000	0.000	0.000	0.000	-228.566	-28.396	0.000	0.000
-../05_emref/emref_505.pdb	-	5	-94.092	  3.799	0.146	9.326	  9.281	  0.245	3.252	5	2	2	35.123	0.000	0.000	1410.450	0.000	0.000	0.000	-19.475	0.000	-103.134	0.000	0.000	0.000	0.000	-125.514	-57.503	0.000	0.000
-../05_emref/emref_305.pdb	-	6	-92.845	  5.424	0.062	12.809	12.828	0.146	4.541	2	3	2	8.091	0.000	0.000	1283.300	0.000	0.000	0.000	-7.136	0.000	-231.428	0.000	0.000	0.000	0.000	-263.570	-40.233	0.000	0.000
-../05_emref/emref_501.pdb	-	7	-92.499	  6.364	0.167	16.694	16.620	0.142	5.520	9	4	1	38.783	0.000	0.000	1291.390	0.000	0.000	0.000	-20.593	0.000	-192.180	0.000	0.000	0.000	0.000	-190.745	-37.348	0.000	0.000
-../05_emref/emref_248.pdb	-	8	-92.432	  2.317	0.229	5.352	  5.367	  0.414	1.988	1	1	3	16.925	0.000	0.000	1376.260	0.000	0.000	0.000	-18.819	0.000	-179.963	0.000	0.000	0.000	0.000	-202.352	-39.313	0.000	0.000
-../05_emref/emref_61.pdb	-	9	-91.648	  3.427	0.104	8.856	  8.849	  0.248	2.990	1	1	4	5.463	0.000	0.000	1164.080	0.000	0.000	0.000	-27.465	0.000	-84.313	0.000	0.000	0.000	0.000	-126.716	-47.867	0.000	0.000
+                  model	md5	caprieval_rank	score	irmsd	fnat	lrmsd	ilrmsd	dockq	rmsd	cluster_id	cluster_ranking	model-cluster_ranking	air	angles	bonds	bsa	cdih	coup	dani	desolv	dihe	elec	improper	rdcs	rg	sym	total	vdw	vean	xpcs
+../05_emref/emref_280.pdb	-	1	-103.403	1.437	0.458	3.139	3.184	0.620	1.249	1	1	1	11.045	66.508	10.291	1266.690	0.000	0.000	0.000	-42.226519.082	-110.279	13.374	0.000	0.000	0.000	-139.461	-40.226	0.000	0.000
+../05_emref/emref_331.pdb	-	2	-101.588	2.256	0.229	5.365	5.385	0.417	1.941	1	1	2	9.775	64.115	13.897	1420.890	0.000	0.000	0.000	-16.012541.892	-295.776	16.619	0.000	0.000	0.000	-313.399	-27.398	0.000	0.000
+../05_emref/emref_195.pdb	-	3	-98.641	3.134	0.188	7.947	7.992	0.302	2.658	1	1	3	30.399	59.802	10.347	1236.320	0.000	0.000	0.000	-31.515	541.989-164.995	13.680	0.000	0.000	0.000	-171.762	-37.167	0.000	0.000
+../05_emref/emref_87.pdb	-	4	-97.050	5.607	0.042	13.802	13.778	0.128	4.714	1	1	4	12.931	66.559	10.655	1383.200	0.000	0.000	0.000	-30.812	534.429-154.782	15.061	0.000	0.000	0.000	-178.425	-36.575	0.000	0.000
+../05_emref/emref_535.pdb	-	5	-91.671	7.347	0.125	18.121	18.097	0.115	6.173	8	2	1	37.430	56.527	10.334	1267.570	0.000	0.000	0.000	-25.055	530.791-221.283	12.885	0.000	0.000	0.000	-209.955	-26.103	0.000	0.000
+../05_emref/emref_516.pdb	-	6	-91.505	6.299	0.167	15.940	15.926	0.147	5.332	8	2	2	3.678	59.310	10.443	1193.220	0.000	0.000	0.000	-28.827	523.618-164.442	14.663	0.000	0.000	0.000	-190.921	-30.157	0.000	0.000
+../05_emref/emref_969.pdb	-	7	-90.572	7.556	0.146	18.350	18.325	0.120	6.340	5	5	1	36.431	56.119	9.840	1306.030	0.000	0.000	0.000	-28.212	528.441-135.020	14.626	0.000	0.000	0.000	-137.588	-38.999	0.000	0.000
+../05_emref/emref_271.pdb	-	8	-89.669	3.531	0.104	9.525	9.502	0.233	3.053	1	1	5	3.724	65.185	10.717	1142.830	0.000	0.000	0.000	-29.924	520.532-70.314	14.768	0.000	0.000	0.000	-112.645	-46.054	0.000	0.000
+../05_emref/emref_852.pdb	-	9	-87.644	9.828	0.146	25.599	25.541	0.089	8.298	3	4	1	58.163	55.462	10.341	1304.070	0.000	0.000	0.000	-26.725	526.028-121.548	12.783	0.000	0.000	0.000	-105.811	-42.426	0.000	0.000
 ...
 </pre>
 
@@ -597,16 +600,16 @@ This directory will always contain a `capri_ss.tsv` file, which contains the mod
 In case where the caprieval module was called after a clustering step, an additional `capri_clt.tsv` file will be present in the directory. This file contains the cluster ranking and score statistics, averaged over the minimum number of models defined for clustering (4 by default), with their corresponding standard deviations, e.g. `11_caprieval/capri_clt.tsv`:
 
 <pre style="background-color:#DAE4E7">
-cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	ilrmsd	ilrmsd_std	rmsd	rmsd_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std    	total	total_std	vdw	vdw_std	caprieval_rank
-1	1	90	-	-98.198	6.822	3.420	1.561	0.161	0.068	8.312	4.011	0.314	0.131	8.315	3.990	2.928	1.307	8.405	5.510	1288.665	121.768	-23.809	5.685	-179.05195.731	-210.066	84.887	-39.419	8.969	1
-2	5	12	-	-87.901	10.237	3.329	0.576	0.182	0.056	8.046	1.507	0.299	0.065	8.010	1.495	2.853	0.486	17.886	11.509	1278.430	172.834	-21.787	6.034	-137.80822.462	-160.262	29.104	-40.340	12.703	2
-3	2	29	-	-87.896	6.834	5.759	1.265	0.099	0.050	13.673	3.101	0.155	0.040	13.682	3.075	4.833	1.064	14.920	11.076	1210.532	78.007	-16.600	12.142	-184.88883.105	-205.779	86.544	-35.810	9.490	3
-4	9	6	-	-77.482	8.980	6.432	1.325	0.120	0.040	16.392	3.663	0.135	0.037	16.344	3.631	5.516	1.143	24.593	16.023	1092.057	118.002	-24.420	3.408	-92.25458.414	-104.731	52.843	-37.070	2.519	4
-5	3	14	-	-76.449	7.822	9.812	0.673	0.094	0.010	25.283	2.176	0.073	0.007	25.240	2.158	8.321	0.597	13.161	15.804	1153.420	99.208	-10.555	4.474	-194.41873.604	-209.584	58.464	-28.326	11.725	5
-6	4	14	-	-75.768	8.698	8.656	0.051	0.031	0.010	22.081	0.196	0.063	0.004	22.155	0.181	7.331	0.046	9.422	2.845	1180.285	94.733	-7.799	2.862	-149.28135.997	-178.914	34.066	-39.055	5.437	6
-7	7	9	-	-74.858	4.797	6.942	0.582	0.078	0.017	17.108	1.215	0.108	0.015	17.093	1.214	5.891	0.458	25.698	16.927	1160.588	81.306	-19.064	9.579	-127.49268.554	-134.659	79.410	-32.865	8.559	7
-8	6	11	-	-63.640	1.862	7.323	0.773	0.042	0.026	19.234	1.937	0.083	0.018	19.289	1.951	6.206	0.656	7.153	3.709	948.450	112.263	-10.060	8.375	-128.485	47.644	-149.931	50.337	-28.598	3.513	8
-9	8	6	-	-63.561	3.071	6.482	0.648	0.073	0.056	16.731	1.737	0.111	0.032	16.730	1.735	5.538	0.570	14.238	6.930	1013.990	34.855	-13.123	5.508	-75.58332.708	-98.090	36.421	-36.745	2.992	9
+cluster_rank	cluster_id	n	under_eval	score	score_std	irmsd	irmsd_std	fnat	fnat_std	lrmsd	lrmsd_std	dockq	dockq_std	ilrmsd	ilrmsd_std	rmsd	rmsd_std	air	air_std	bsa	bsa_std	desolv	desolv_std	elec	elec_std	total	total_std	vdw	vdw_std	caprieval_rank
+1	1	125	-	-100.170	2.477	3.108	1.562	0.229	0.150	7.563	3.983	0.367	0.179	7.585	3.960	2.640	1.297	16.037	8.367	1326.775	77.191	-30.141	9.327	-181.458	69.133	-200.762	66.680	-35.341	4.791	1
+2	8	5	-	-84.151	10.090	7.100	0.463	0.115	0.056	17.505	0.912	0.117	0.024	17.503	0.917	5.970	0.369	23.103	16.128	1257.242	46.358	-22.902	7.088	-139.000	57.498	-151.657	49.813	-35.759	8.016	2
+3	2	16	-	-82.312	1.350	8.538	0.082	0.052	0.010	22.035	0.263	0.071	0.004	22.085	0.274	7.229	0.078	9.269	3.596	1253.533	28.777	-12.127	1.805	-135.983	5.649	-170.630	2.214	-43.916	2.976	3
+4	3	11	-	-76.833	7.460	10.099	0.229	0.089	0.037	26.372	0.764	0.068	0.013	26.323	0.764	8.541	0.203	25.125	22.462	1089.075	126.968	-18.911	5.253	-114.106	15.228	-126.594	27.678	-37.614	3.485	4
+5	5	8	-	-76.379	8.245	8.514	0.753	0.094	0.052	21.566	2.476	0.088	0.021	21.533	2.461	7.179	0.662	18.685	11.196	1126.436	129.493	-19.390	8.808	-132.176	35.568	-145.914	32.684	-32.423	4.286	5
+6	4	9	-	-76.368	4.881	6.269	0.328	0.068	0.023	16.667	0.891	0.110	0.009	16.736	0.899	5.301	0.268	24.795	13.112	1150.585	62.269	-24.017	3.038	-52.364	14.345	-71.926	11.076	-44.357	4.763	6
+7	6	7	-	-72.663	6.002	4.009	0.629	0.177	0.074	10.705	2.214	0.236	0.067	10.682	2.189	3.427	0.548	26.332	15.668	1211.172	38.298	-17.933	15.664	-107.707	63.530	-117.197	64.538	-35.821	7.280	7
+8	7	7	-	-67.701	9.637	9.540	0.728	0.068	0.034	24.795	2.084	0.066	0.018	24.756	2.102	8.109	0.624	3.507	4.671	1035.520	65.979	-12.564	9.268	-91.881	22.162	-125.484	21.545	-37.111	6.027	8
+9	9	4	-	-63.502	1.756	6.879	1.034	0.156	0.067	17.669	3.435	0.134	0.028	17.629	3.433	5.860	0.923	34.061	17.099	1001.322	75.611	-21.500	3.965	-70.569	48.643	-67.802	52.681	-31.294	8.104	9
 </pre>
 
 In this file you find the cluster rank (which corresponds to the naming of the clusters in the previous `seletop` directory), the cluster ID (which is related to the size of the cluster, 1 being always the largest cluster), the number of models (column `n`) in the cluster and the corresponding statistics (averages + standard deviations). 
@@ -620,12 +623,12 @@ sort -r -k9 run1/02_caprieval/capri_ss.tsv | head -4
 ### Performance analysis (when reference is available)
 
 In case a reference structure is available, one may want to analyse the performance of the docking protocol, for example to count how many models of different quality were generated at each step of the workflow.
-This can be done with a simple bash script provided in `protein-peptide/scripts/`. 
+This can be done with a simple bash script provided in `HADDOCK3-protein-peptide/scripts/`. 
 This script extracts CAPRI statistics per model and reports the number of models of acceptable or better models from each `caprieval` steps. 
 To use it, run the script with the path to the run directory you want to analyse as its argument:
 
 <a class="prompt prompt-cmd">
-./scripts/extract-capri-stats.sh ./runs/run1
+bash ./scripts/extract-capri-stats.sh ./runs/run1
 </a>
 <details style="background-color:#DAE4E7">
 <summary>
@@ -633,65 +636,65 @@ To use it, run the script with the path to the run directory you want to analyse
  </summary>
 <pre>
 ==============================================
-== runs/run1/02_caprieval/capri_ss.tsv
+== ./02_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  82  out of  999
-Total number of medium or better models:      2  out of  999
+Total number of acceptable or better models:  101  out of  999
+Total number of medium or better models:      5  out of  999
 Total number of high quality models:          0  out of  999
- 
-First acceptable model - rank:  1  i-RMSD:  2.232  Fnat:  0.271  DockQ:  0.425
-First medium model     - rank:  2  i-RMSD:  1.845  Fnat:  0.271  DockQ:  0.491
-Best model             - rank:  2  i-RMSD:  1.845  Fnat:  0.271  DockQ:  0.491
+
+First acceptable model - rank:  1  i-RMSD:  2.651  Fnat:  0.229  DockQ:  0.363
+First medium model     - rank:  2  i-RMSD:  1.914  Fnat:  0.271  DockQ:  0.470
+Best model             - rank:  4  i-RMSD:  1.774  Fnat:  0.250  DockQ:  0.485
 ==============================================
-== runs/run1/04_caprieval/capri_ss.tsv
+== ./04_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  82  out of  999
-Total number of medium or better models:      1  out of  999
+Total number of acceptable or better models:  102  out of  999
+Total number of medium or better models:      3  out of  999
 Total number of high quality models:          0  out of  999
- 
-First acceptable model - rank:  2  i-RMSD:  3.983  Fnat:  0.167  DockQ:  0.230
-First medium model     - rank:  12  i-RMSD:  1.843  Fnat:  0.438  DockQ:  0.551
-Best model             - rank:  12  i-RMSD:  1.843  Fnat:  0.438  DockQ:  0.551
+
+First acceptable model - rank:  1  i-RMSD:  2.574  Fnat:  0.083  DockQ:  0.318
+First medium model     - rank:  12  i-RMSD:  1.517  Fnat:  0.396  DockQ:  0.584
+Best model             - rank:  12  i-RMSD:  1.517  Fnat:  0.396  DockQ:  0.584
 ==============================================
-== runs/run1/06_caprieval/capri_ss.tsv
+== ./06_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  83  out of  999
-Total number of medium or better models:      1  out of  999
+Total number of acceptable or better models:  103  out of  999
+Total number of medium or better models:      3  out of  999
 Total number of high quality models:          0  out of  999
- 
-First acceptable model - rank:  2  i-RMSD:  2.110  Fnat:  0.375  DockQ:  0.489
-First medium model     - rank:  7  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
-Best model             - rank:  7  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
+
+First acceptable model - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+First medium model     - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+Best model             - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
 ==============================================
-== runs/run1/08_caprieval/capri_ss.tsv
+== ./08_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  44  out of  200
-Total number of medium or better models:      1  out of  200
+Total number of acceptable or better models:  57  out of  200
+Total number of medium or better models:      3  out of  200
 Total number of high quality models:          0  out of  200
- 
-First acceptable model - rank:  2  i-RMSD:  2.110  Fnat:  0.375  DockQ:  0.489
-First medium model     - rank:  7  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
-Best model             - rank:  7  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
+
+First acceptable model - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+First medium model     - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+Best model             - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
 ==============================================
-== runs/run1/11_caprieval/capri_ss.tsv
+== ./11_caprieval/capri_ss.tsv
 ==============================================
-Total number of acceptable or better models:  44  out of  198
-Total number of medium or better models:      1  out of  198
-Total number of high quality models:          0  out of  198
- 
-First acceptable model - rank:  2  i-RMSD:  2.110  Fnat:  0.375  DockQ:  0.489
-First medium model     - rank:  6  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
-Best model             - rank:  6  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
+Total number of acceptable or better models:  57  out of  192
+Total number of medium or better models:      3  out of  192
+Total number of high quality models:          0  out of  192
+
+First acceptable model - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+First medium model     - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+Best model             - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
 ==============================================
-== runs/run1/13_caprieval/capri_ss.tsv
+== ./13_caprieval/capri_ss.tsv
 ==============================================
 Total number of acceptable or better models:  5  out of  36
 Total number of medium or better models:      1  out of  36
 Total number of high quality models:          0  out of  36
- 
-First acceptable model - rank:  2  i-RMSD:  2.110  Fnat:  0.375  DockQ:  0.489
-First medium model     - rank:  6  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
-Best model             - rank:  6  i-RMSD:  1.803  Fnat:  0.438  DockQ:  0.559
+
+First acceptable model - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+First medium model     - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
+Best model             - rank:  1  i-RMSD:  1.437  Fnat:  0.458  DockQ:  0.620
 </pre>
 </details>
 <br>
@@ -712,7 +715,7 @@ _**Note:**_ To extract similar statistics per cluster, use `scripts/extract-capr
 It’s time to visualise some of the docking models! This part is not only nice and colorful, but also quite important. 
 Model visualisation allows you to check whether the models look as expected, if the clusters well-defined, zoom in on the interface, etc.
 
-To visualize the models from top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster1. These can be found in the `runs/run1/07_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
+To visualize the models from the top cluster of your favorite run, start PyMOL and load the cluster representatives you want to view, e.g. this could be the top models from cluster 1. These can be found in the `runs/run1/12_seletopclusts/` directory. Each run has a similar directory. Alternatively, in `analysis/XX_caprieval_analysis` you can find `summary.tgz` with either top-models of best clusters (decompress with `tar -xf summary.tgz`), or top-10 models among all unclustered ones. 
 
 
 <a class="prompt prompt-info">
@@ -754,13 +757,16 @@ To maximize the differences you can superimpose all models using a single chain.
 alignto 1YCR and chain A 
 </a>
 
-_**Note:**_You can hide or display a model by clicking on its name in the right panel of the PyMOL window.
+_**Note:**_ You can hide or display a model by clicking on its name in the right panel of the PyMOL window.
 
 <details style="background-color:#DAE4E7">
   <summary style="bold">
     <b><i>See the overlay of the selected model onto the reference structure </i></b> <i class="material-icons">expand_more</i>
   </summary>
-  <i>Top-ranked model of the top cluster (cluster_1_model_1) superimposed onto the reference structure.</i>
+  <i>Top-ranked model from the top cluster (cluster_1_model_1) superimposed onto the reference structure.
+      The modeled protein is shown in cyan with its peptide colored in the standard spectrum.
+      The reference protein is shown in green with its peptide colored in a darker variant of the spectrum. 
+   </i>
   <br>
   <figure style="text-align: center;">
     <img width="95%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/aligned.png">
@@ -803,13 +809,17 @@ Check “Cluster partners by protein function”
 Click on "Submit". 
 </a>
 
-In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot - you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 93-V - clusters 2, 3 and 4, while some residues are found only in a single cluster e.g. 105-R - cluster 2. 
+In a few seconds or a few minutes, ARCTIC-3D will return a set of clusters representing possible binding surfaces with respect to protein functions. Take a look at the “ARCTIC3D clustering” plot: you’ll see that some amino acids are found in the interfaces of the multiple clusters, e.g. 91-F - clusters 2, 3 and 1, while some residues are found only in a single cluster e.g. 105-R - cluster 3 only. 
+
+_**NOTE**_ this ARCTIC-3D run was performed in September 2025 and thus used strucutes available online at that time.
+With the time, new structures of MDM2_human may became available, which may lead to the change in the number and numbering of clusters.
+So if you're running ARCTIC-3D in the future, don't be surprised if the output looks a bit different! 
 
 <figure align="center">
 <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-plot.png">
 </figure>
 
-Inspect each of the 4 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
+Inspect each of the 3 clusters by clicking on the corresponding tab. Click on the “Load model” to see visual representations of the interfaces. Can you spot a difference?
 
 <a class="prompt prompt-question">
 What is the most relevant cluster in our case? Pay attention to the protein function!
@@ -818,10 +828,10 @@ What is the most relevant cluster in our case? Pay attention to the protein func
   <summary style="bold">
     <b><i>See answer</i></b> <i class="material-icons">expand_more</i>
   </summary>
-Cluster 4, as p53 binding is one of the dominant functions.
+Cluster 2, as p53 binding is one of the dominant functions.
   <br>
   <figure style="text-align: center;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-probabilities.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-protein-peptide/png/arctic-prot-func.png">
   </figure>
 </details>
 <br>
@@ -845,20 +855,58 @@ We used probability threshold of 0.5 to select candidates for active residues, w
 Since our docking input is a mouse MDM2 model, not the human reference structure, we should align both structures in PyMOL and map residues from ARCTIC-3D stucutre to mouse MDM2 model (`AF_MDM2_26_109.pdb`). 
 
 As you may remember from the definition of active residues, they should be solvent accessible. 
-Relative solvent accessibility (RSA) measures which percentage of the surface of a residue that is accessible to a solvent (usually water), which is directly related to how exposed a residue is.
-Buried residues are unlikely to contribute directly to binding, as they are often simply unreachabe for the docking partner.  
-
-
+Relative solvent accessibility (RSA) measures the percentage of a residue’s surface that is exposed to solvent, typically water. 
+It reflects how accessible a residue is to potential binding partners.
+Buried residues are unlikely to contribute directly to binding, as they are often simply unreachabe for the docking partner.
 Default RSA threshlod for active residues is 40%; for passive - 15%. Therse values are a suggestions, not a hard rule. 
+
 In our case, we chose a cutoff of 25% for the active residues.
-We used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes RSA and relates solvent accessibility values directly from PDB structure:
+There are many tools available for calculating RSA, e.g. PyMOL’s built-in function `get_sasa_relative`, the Biopython module `Bio.PDB.SASA` etc.
+We used [FreeSASA](http://freesasa.github.io/){:target="_blank"}, an open-source tool that computes RSA and related solvent accessibility values directly from PDB structures.
+
+After installing FreeSASA, you can run it with the following command:  
 <a class="prompt prompt-cmd">
-freesasa --format=rsa AF_MDM2_26_109.pdb 
+freesasa --format=rsa AF_MDM2_26_109.pdb
 </a>
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View freesasa output</i> <i class="material-icons">expand_more</i>
+ </summary>
+ The column of interest is `All-atoms`, sub-column `REL`
+<pre>
+REM  FreeSASA 2.1.2
+REM  Absolute and relative SASAs for pdbs/AF_MDM2_26_109.pdb
+REM  Atomic radii and reference values for relative SASA: ProtOr
+REM  Chains: A
+REM  Algorithm: Lee & Richards
+REM  Probe-radius: 1.40
+REM  Slices: 20
+REM RES _ NUM      All-atoms   Total-Side   Main-Chain    Non-polar    All polar
+REM                ABS   REL    ABS   REL    ABS   REL    ABS   REL    ABS   REL
+RES THR A  26   154.31 109.8 106.32 107.8  48.00 114.4  89.64 120.4  64.67  97.8
+RES LEU A  27   123.68  68.9  96.37  68.9  27.30  68.6  96.39  67.7  27.28  73.4
+RES VAL A  28    19.16  12.6  18.39  16.6   0.76   1.8  19.16  16.6   0.00   0.0
+RES ARG A  29   136.97  57.5 136.14  69.4   0.83   2.0  36.29  49.6 100.68  61.0
+RES PRO A  30     4.19   3.1   0.00   0.0   4.19  15.2   0.00   0.0   4.19  26.0
+RES LYS A  31    87.33  42.6  86.72  53.2   0.61   1.5  46.06  41.5  41.28  44.0
+RES PRO A  32   110.32  80.4 103.66  94.5   6.66  24.2 104.86  86.6   5.45  33.9
+RES LEU A  33    94.62  52.7  94.62  67.7   0.00   0.0  94.62  66.5   0.00   0.0
+RES LEU A  34     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES LEU A  35    31.29  17.4  31.29  22.4   0.00   0.0  31.29  22.0   0.00   0.0
+RES LYS A  36   130.72  63.8 121.89  74.8   8.83  21.0  78.25  70.4  52.46  55.9
+RES LEU A  37     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES LEU A  38     0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0   0.00   0.0
+RES LYS A  39    87.45  42.7  69.84  42.9  17.61  41.9  45.62  41.1  41.84  44.6
+...
+</pre>
+</details>
+<br>
+
+
 
 <hr>
 <hr>
 
 ## Congratulations!
 You’ve reached the end of this basic protein-peptide docking tutorial! We hope it has been informative and helps you get started with your own docking projects.
-What more protein-pepdide docking workflow examples, this time with explisit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.
+Do you want more protein-peptide docking workflow examples, this time with explicit flexibility? Check [this page](https://www.bonvinlab.org/haddock3-user-manual/docking_scenarios/prot-peptide.html){:target="_blank"}.

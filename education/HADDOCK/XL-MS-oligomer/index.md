@@ -357,9 +357,6 @@ __Note:__ _The blue bars on the server can be folded/unfolded by clicking on the
 * **Step2:** Input the first protein PDB file. For this unfold the **First Molecule menu**.
 
 <a class="prompt prompt-info">
-First molecule: where is the structure provided? -> "I am submitting it"
-</a>
-<a class="prompt prompt-info">
 Which chain to be used? -> All (for this particular case)
 </a>
 <a class="prompt prompt-info">
@@ -415,7 +412,7 @@ Center of mass restraints -> Check the box
 Use this type of restraints	 -> Check the box
 </a>
 Unfold the **segment pair menu** and define for N molecules N-1 segment pairs, e.g. for a trimer this would be: A-B and B-C.
-The protein sequence starts at residue 32 and ends at residue 254. Use those numbers to define the various segments.
+The protein sequence starts at residue 32 and ends at residue 254. Use those numbers to define the various segments (a segment is thus defined by range of residues with the first and last residues specified here).
 
 * **Step 6:** Define the symmetry restraints to enforce the symmetry that corresponds to the oligomeric state you choose. For this unfold the **symmetry restraints menu**:
 
@@ -448,10 +445,10 @@ Remember that we have increased the weight of the distance restraints for our ru
 
 <details style="background-color:#DAE4E7"><summary><b>Don't want to wait for your results?</b>
 </summary>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/tQuToprVwHZORnb" target="_blank">Download dimer HADDOCK run</a></li>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/za9ILYprxF9gDVw" target="_blank">Download trimer HADDOCK run</a></li>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/VkiC8cZBosVALBR" target="_blank">Download tetramer HADDOCK run</a></li>
-<li> <a href="https://surfdrive.surf.nl/files/index.php/s/sAh09Cf2bJNykbk" target="_blank">Download pentamer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/tQuToprVwHZORnb" target="_blank">Download dimer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/za9ILYprxF9gDVw" target="_blank">Download trimer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/VkiC8cZBosVALBR" target="_blank">Download tetramer HADDOCK run</a></li>
+<li> <a href="https://surfdrive.surf.nl/public.php/dav/files/sAh09Cf2bJNykbk" target="_blank">Download pentamer HADDOCK run</a></li>
 
 </details>
 <br>

@@ -72,7 +72,7 @@ Further we are providing pre-processed PDB files for docking and analysis (but t
 preprocessing of those files will also be explained in this tutorial). The files have been processed
 to facilitate their use in HADDOCK and for allowing comparison with the known reference
 structure of the complex. For this _download and unzip the following_
-[zip archive](https://surfdrive.surf.nl/files/index.php/s/5w4wi4yLgSngUul){:target="_blank"}
+[zip archive](https://surfdrive.surf.nl/public.php/dav/files/5w4wi4yLgSngUul){:target="_blank"}
 _and note the location of the extracted files in your system_. In it you should find the following directories:
 
 * `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial

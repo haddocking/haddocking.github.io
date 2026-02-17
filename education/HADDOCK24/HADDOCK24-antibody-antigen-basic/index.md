@@ -857,11 +857,9 @@ Considering the predicted most advantageous mutations, how different are those t
 </a>
 
 
-_Note_: For the purpose of our EMBO course pre-calculated runs are provided:
+_Note_: A pre-calculated run for the 4G6M crystal stucture is provided:
 
-* [_4G6M_matched_](http://proton.tools.ibg.edu.tr:8001/result/dae4ee4df0ec47e9a119fd512fdbfd98){:target="_blank"} (crystal structure)
-* [_cluster5_1_](http://proton.tools.ibg.edu.tr:8001/result/73cdda1fade6457faefa98af9e55b454){:target="_blank"} (top ranked cluster, l-RMSD 7.3Å)
-* [_cluster2_1_](http://proton.tools.ibg.edu.tr:8001/result/5ab290262ad340eaba0e6357b6ef46f2){:target="_blank"} (second best ranked cluster, l-RMSD 2.2Å)
+* [_4G6M_matched_](http://proton.tools.ibg.edu.tr:8001/result/4G6M_matched_chain_A_EvoEF1){:target="_blank"} (crystal structure)
 
 
 <br>

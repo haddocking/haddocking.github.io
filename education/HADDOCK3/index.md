@@ -9,6 +9,7 @@ In this page you can find links to tutorials on the usage of the new modular HAD
 the umbrella of the [BioExcel Center of Excellence for Computational Biomolecular Research](https://www.bioexcel.eu){:target="_blank"} and in collaboration with the [Netherlands e-Science Center](https://www.esciencecenter.nl/){:target="_blank"}. 
 
 _Note that HADDOCK3 is still in heavy development and as such the software is evolving quickly._
+_As HADDOCK3 currently only exists as a command line version, all HADDOCK3 tutorials require some basic knowledge of Linux._
 
 <hr>
 
@@ -44,20 +45,22 @@ _Note that HADDOCK3 is still in heavy development and as such the software is ev
 * [**Antibody-antigen docking**](/education/HADDOCK3/HADDOCK3-antibody-antigen):
   This tutorial demonstrates the use of HADDOCK3 for predicting the structure of an antibody-antigen complex using information
   about the hypervariable loops of the antibody and a loose definition of the epitope determined through NMR experiments.
-  As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
 * [**Nanobody-antigen docking**](/education/HADDOCK3/HADDOCK3-nanobody-antigen):
   This tutorial is similar to the antibody-antigen docking tutorial, but it uses a nanobody instead of an antibody. In the tutorial we explain how to generate an ensemble of nanobody conformations in their unbound form and then how to dock it to the antigen using HADDOCK3.
 
-* [**Protein-Glycan modelling and docking**](/education/HADDOCK3/HADDOCK3-protein-glycan):
+* [**Protein-glycan modelling and docking**](/education/HADDOCK3/HADDOCK3-protein-glycan):
   This tutorial shows how to use HADDOCK3 to dock a glycan to a protein, provided that some information exists about the protein binding site.
-  As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
 
-* [**Protein-DNA docking tutorial**](/education/HADDOCK3/HADDOCK3-protein-DNA-basic):
-  This tutorial demonstrates the use of Haddock3 for predicting the structure of a protein-DNA complex in which two protein units bind 
-  to the double-stranded DNA in a symmetrical manner (reference structure [3CRO](https://www.rcsb.org/structure/3CRO)).
+* [**Protein-DNA docking**](/education/HADDOCK3/HADDOCK3-protein-DNA-basic):
+  This tutorial demonstrates the use of HADDOCK3 for predicting the structure of a protein-DNA complex in which two protein units bind 
+  to the double-stranded DNA in a symmetrical manner.
   In addition to provided ambiguous restraints used to drive the docking, symmetry restraints are also defined to enforce symmetrical binding to the protein.
-  As HADDOCK3 only exists as a command line version, this tutorial does require some basic Linux expertise.
+
+* [**Protein-peptide docking**](/education/HADDOCK3/HADDOCK3-protein-peptide):
+  This tutorial covers ensemble docking, starting with the preparation of input structures and the definition of restraints using ARCTIC-3D predictions.
+  Next, we guide you through running HADDOCK3 and show how to analyse the docking results using pre-computed data.
+
 
 <hr>
 
