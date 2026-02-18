@@ -333,7 +333,7 @@ their interactions:
   residues and their spatial neighbors.
 </a>
 <a class="prompt prompt-question">
-  Are there any clashes between the ribosome and RsgA chains? Show the selection as spheres to visualize this better
+  Are there any clashes between the ribosome and RsgA chains? Show the selection as spheres to visualize this better.
 </a>
 
 
