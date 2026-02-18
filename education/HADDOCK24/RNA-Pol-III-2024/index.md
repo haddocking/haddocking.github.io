@@ -745,7 +745,7 @@ in the map and calculate a cross-correlation score for each of them.
 PowerFit is open-source and available for download from our [Github repository][link-powerfit]{:target="_blank"}.
 To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
-The server makes use of either local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
+The server makes use of either local resources on our cluster, using the multi-core version of the software, or GPU-accelerated grid resources of the
 [EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software, based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
@@ -1050,7 +1050,7 @@ Another explanation could be conformational changes in the structures that are n
 <hr>
 ### Setting up the full docking run using the cryo-EM fitted and refined core and C82 domains
 
-We will setup a docking run to model the full complex including some information about the C31 cross-links and the missing two first wHTH domains of C34. For this we will use the PowerFit/Chimera, HADDOCK-refined structure (Core+C82+C34wHTH3) which we have generated as starting point. We will fix those domains in their original positions for the initial rigid-body docking stage and dock the two missing C34 wHTH domains including fragments of C31 for which we have cross-links.
+We will setup a docking run to model the full complex including some information about the C31 cross-links and the missing two first wHTH domains of C34. For this we will use the PowerFit/ChimeraX, HADDOCK-refined structure (Core+C82+C34wHTH3) which we have generated as starting point. We will fix those domains in their original positions for the initial rigid-body docking stage and dock the two missing C34 wHTH domains including fragments of C31 for which we have cross-links.
 
 Connect to the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
@@ -1303,7 +1303,7 @@ ranking cluster, `clusterX_1.pdb`.
 In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-color by chain<br>
+color bychain<br>
 hide atoms<br>
 show cartoon<br>
 distance /B:50@CB /F:91@CB<br>
@@ -1564,7 +1564,7 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-haddock-register]: https://wenmr.science.uu.nl/auth/register/"HADDOCK web server registration"
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
-[link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
+[link-powerfit-web]: https://wenmr.science.uu.nl/powerfit "PowerFit web server"
 [link-powerfit-register]: https://wenmr.science.uu.nl/auth/register  "PowerFit registration"
-[link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
-[link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
+[link-powerfit-submit]: https://wenmr.science.uu.nl/powerfit "PowerFit submission"
+[link-powerfit-help]: https://www.bonvinlab.org/powerfit/manual.html "PowerFit help"
