@@ -32,56 +32,176 @@
 <img width=75% src="/images/people/CSB-group-2025.png"><br><br>
 </center>
 <hr />
-<div id="main" role="main">
-  <article class="people">
-    <h3>Current members</h3>
-    <ul class="rig columns-4">
-        {% for member in site.data.members %}
-            <li>
-                {% if member.avatar %}
-                    {% assign avatar = member.avatar %}
-                {% else %}
-                    {% assign avatar = '/images/people/bio-photo.jpg' %}
-                {% endif %}
-                
-                {% if member.url %}
-                <a href="{{ member.url }}" target="_blank">
-                    <img src="{{ avatar }}" />
-                </a>
-                {% else %}
-                    <img src="{{ avatar }}" />                
-                {% endif %}
-                <h3>{{ member.name }}</h3>
-                <span class='mem-position'>{{ member.position }}</span>
-                <br />
-                {% if member.orcid %}
-                <a target="_blank" href={{ member.orcid }}>
-                  <img width="10%" src="/assets/icons/orcid.svg">
-                </a>
-                {% endif %}
-                {% if member.github %}
-                <a target="_blank" href={{ member.github }}>
-                  <img width="10%" src="/assets/icons/github.svg">
-                </a>
-                {% endif %}
-                {% if member.linkedin %}
-                <a target="_blank" href={{ member.linkedin }}>
-                  <img width="10%" src="/assets/icons/linkedin.svg">
-                </a>
-                {% endif %}
-                {% if member.bluesky %}
-                <a target="_blank" href={{ member.bluesky }}>
-                  <img width="10%" src="/assets/icons/bluesky.svg">
-                </a>
-                {% endif %}
-                {% if member.bio %}
-                    <p class='mem-bio'>{{ member.bio }}</p>                
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-  </article>
-</div><!-- /#index -->
+<style>
+  .team-section {
+    width: 82%;
+    margin: 2rem auto 3rem;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .member-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    padding: 1.25rem 0.9rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .member-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .member-card[data-role="professor"]::before { background: #C64537; }
+  .member-card[data-role="engineer"]::before  { background: #343434; }
+  .member-card[data-role="postdoc"]::before   { background: #308cbc; }
+  .member-card[data-role="phd"]::before       { background: #5cb85c; }
+  .member-card[data-role="msc"]::before       { background: #dd8338; }
+  .member-card[data-role="visiting"]::before  { background: #9b59b6; }
+  .member-card[data-role="other"]::before     { background: #ccc; }
+  .member-photo {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin-bottom: 0.85rem;
+    flex-shrink: 0;
+    border: 3px solid #f0f0f0;
+  }
+  .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .member-name {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 0.3rem;
+    line-height: 1.25;
+  }
+  .member-name a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .member-name a:hover {
+    color: #C64537;
+  }
+  .member-position {
+    font-family: 'PT Serif', serif;
+    font-size: 0.85rem;
+    color: #999;
+    line-height: 1.45;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .member-links {
+    display: flex;
+    gap: 0.35rem;
+    justify-content: center;
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f0f0f0;
+    width: 100%;
+  }
+  .member-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #f4f4f4;
+    transition: background 0.15s ease;
+    text-decoration: none;
+  }
+  .member-links a:hover {
+    background: #343434;
+  }
+  .member-links a img {
+    width: 13px;
+    height: 13px;
+    display: block;
+    transition: filter 0.15s ease;
+  }
+  .member-links a:hover img {
+    filter: brightness(0) invert(1);
+  }
+</style>
+
+<div class="team-section">
+  <h3>Current members</h3>
+  <ul class="team-grid">
+    {% for member in site.data.members %}
+      {% assign avatar = member.avatar | default: '/images/people/bio-photo.jpg' %}
+
+      {% assign role = 'other' %}
+      {% if member.position contains 'Professor' %}
+        {% assign role = 'professor' %}
+      {% elsif member.position contains 'Engineer' or member.position contains 'Manager' %}
+        {% assign role = 'engineer' %}
+      {% elsif member.position contains 'Postdoc' %}
+        {% assign role = 'postdoc' %}
+      {% elsif member.position contains 'Visiting' %}
+        {% assign role = 'visiting' %}
+      {% elsif member.position contains 'Ph.D' or member.position contains 'PhD' %}
+        {% assign role = 'phd' %}
+      {% elsif member.position contains 'M.Sc' or member.position contains 'MSc' %}
+        {% assign role = 'msc' %}
+      {% endif %}
+
+      <li class="member-card" data-role="{{ role }}">
+        <div class="member-photo">
+          <img src="{{ avatar }}" alt="{{ member.name }}" />
+        </div>
+        <p class="member-name">
+          {% if member.url %}
+            <a href="{{ member.url }}" target="_blank">{{ member.name }}</a>
+          {% else %}
+            {{ member.name }}
+          {% endif %}
+        </p>
+        <p class="member-position">{{ member.position }}</p>
+        {% if member.orcid or member.github or member.linkedin or member.bluesky %}
+        <div class="member-links">
+          {% if member.orcid %}
+          <a href="{{ member.orcid }}" target="_blank" title="ORCID">
+            <img src="/assets/icons/orcid.svg" alt="ORCID">
+          </a>
+          {% endif %}
+          {% if member.github %}
+          <a href="{{ member.github }}" target="_blank" title="GitHub">
+            <img src="/assets/icons/github.svg" alt="GitHub">
+          </a>
+          {% endif %}
+          {% if member.linkedin %}
+          <a href="{{ member.linkedin }}" target="_blank" title="LinkedIn">
+            <img src="/assets/icons/linkedin.svg" alt="LinkedIn">
+          </a>
+          {% endif %}
+          {% if member.bluesky %}
+          <a href="{{ member.bluesky }}" target="_blank" title="Bluesky">
+            <img src="/assets/icons/bluesky.svg" alt="Bluesky">
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 <hr />
 <center>
 <h3>Previous group pictures</h3>
