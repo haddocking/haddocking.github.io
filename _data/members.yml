@@ -1,3 +1,15 @@
+# Example entry — all fields are optional except `name` and `position`
+# - name: Capitaine Haddock
+#   position: Ph.D Candidate        # used for role colour: Professor, Engineer/Manager,
+#                                   # Postdoc, Ph.D/PhD, M.Sc/MSc, Visiting
+#   url: https://example.com        # personal website (makes the name a link)
+#   avatar: /images/people/capitaine-haddock.jpg
+#   orcid: https://orcid.org/0000-0000-0000-0000
+#   github: https://github.com/capitainehaddock
+#   linkedin: https://www.linkedin.com/in/capitainehaddock/
+#   bluesky: https://bsky.app/profile/haddock.bsky.social
+#   x: https://x.com/capitainehaddock
+
 - name: Alexandre Bonvin
   position: Full Professor
   url: http://www.uu.nl/staff/amjjbonvin
@@ -90,4 +102,3 @@
 - name: Viktoria Vodilovska
   position: M.Sc Student
   avatar: /images/people/Viktoria-Vodilovska.jpg
-

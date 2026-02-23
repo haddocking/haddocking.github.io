@@ -174,7 +174,7 @@
           {% endif %}
         </p>
         <p class="member-position">{{ member.position }}</p>
-        {% if member.orcid or member.github or member.linkedin or member.bluesky %}
+        {% if member.orcid or member.github or member.linkedin or member.bluesky or member.x %}
         <div class="member-links">
           {% if member.orcid %}
           <a href="{{ member.orcid }}" target="_blank" title="ORCID">
@@ -194,6 +194,11 @@
           {% if member.bluesky %}
           <a href="{{ member.bluesky }}" target="_blank" title="Bluesky">
             <img src="/assets/icons/bluesky.svg" alt="Bluesky">
+          </a>
+          {% endif %}
+          {% if member.x %}
+          <a href="{{ member.x }}" target="_blank" title="X">
+            <img src="/assets/icons/x.svg" alt="X">
           </a>
           {% endif %}
         </div>
