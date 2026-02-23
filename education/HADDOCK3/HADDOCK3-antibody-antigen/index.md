@@ -33,7 +33,7 @@ needs to be highly variable to be able to bind to antigens of various nature (hi
 In this tutorial, we will concentrate on the terminal **variable domain (Fv)** of the Fab region.
 
 <figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen/antibody_described.png">
+  <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/antibody_described.png">
 </figure>
 
 The small part of the Fab region that binds the antigen is called **paratope**. The part of the antigen
@@ -42,7 +42,7 @@ known as **complementarity-determining regions (CDRs)** or hypervariable loops w
 and conformation are altered to bind to different antigens. CDRs are shown in red in the figure below:
 
 <figure style="text-align: center;">
-  <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen/CDRs.png">
+  <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/CDRs.png">
 </figure>
 
 In this tutorial we will be working with Interleukin-1β (IL-1β)
@@ -101,7 +101,7 @@ parameterisable yet rigid simulation pipeline composed of three steps:
 `rigid-body docking (it0)`, `semi-flexible refinement (it1)`, and `final refinement (itw)`.
 
 <figure style="text-align: center;">
-<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/HADDOCK2-stages.png">
+<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/HADDOCK2-stages.png">
 </figure>
 
 In HADDOCK3, users have the freedom to configure docking workflows into
@@ -122,7 +122,7 @@ restraints can, however, be used in HADDOCK3, which also supports the
 *ab initio* docking modes of HADDOCK.
 
 <figure style="text-align: center;">
-<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/HADDOCK3-workflow-scheme.png">
+<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/HADDOCK3-workflow-scheme.png">
 </figure>
 
 To keep HADDOCK3 modules organized, we catalogued them into several
@@ -659,7 +659,7 @@ Do the identified paratope residues form a well-defined patch on the surface?
     <b><i>See surface view of the paratope</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-    <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/antibody-paratope.png">
+    <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/antibody-paratope.png">
   </figure>
   <br>
 </details>
@@ -673,7 +673,7 @@ to map the binding site of the antibody (gevokizumab) on Interleukin-1β.
 The residues affected by binding are listed in Table 5 of [Blech et al. JMB 2013](https://dx.doi.org/10.1016/j.jmb.2012.09.021){:target="_blank"}:
 
 <figure style="text-align: center;">
-  <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/Table5-Blech.png">
+  <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/Table5-Blech.png">
 </figure>
 
 The list of binding site (epitope) residues identified by NMR is:
@@ -709,7 +709,7 @@ The answer to that question should be yes, but we can see some residues not colo
     <b><i>See surface view of the epitope identified by NMR</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-    <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/antigen-epitope.png">
+    <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/antigen-epitope.png">
   </figure>
   <br>
 </details>
@@ -751,7 +751,7 @@ color green, passive<br>
     <b><i>See the epitope and passive residues</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-    <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/antigen-active-passive.png">
+    <img width="60%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/antigen-active-passive.png">
   </figure>
   <br>
 </details>
@@ -1662,7 +1662,7 @@ Simply click on the arrows of the term you want to use to sort the table (and yo
 A snapshot of this table is shown below:
 
 <figure style="text-align: center;">
-    <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/caprieval_analysis-table.png">
+    <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/caprieval_analysis-table.png">
 </figure>
 
 You can also view this report online [here](plots/report.html){:target="_blank"}
@@ -1697,7 +1697,7 @@ These are interactive plots. A menu on the top right of the first row (you might
 allows you to zoom in and out in the plots and turn on and off clusters. 
 
 <figure style="text-align: center;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/caprieval_analysis-plots.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/caprieval_analysis-plots.png">
 </figure>
 
 As a reminder, you can also view this report online [here](plots/report.html){:target="_blank"}
@@ -1710,7 +1710,7 @@ Examine the plots (remember here that higher DockQ values and lower i-RMSD value
 Finally, the report also shows plots of the cluster statistics (distributions of values per cluster ordered according to their HADDOCK rank):
 
 <figure style="text-align: center;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/caprieval_analysis-distributions.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/caprieval_analysis-distributions.png">
 </figure>
 
 <a class="prompt prompt-question">For this antibody-antigen case, which of the score components correlates best with the quality of the models?</a>
@@ -1883,7 +1883,7 @@ Are the residues of the paratope and NMR epitope at the interface?
  </summary>
  <p> Top-ranked model of the top cluster (cluster1_model_1) superimposed onto the reference crystal structure (in yellow)</p>
  <figure style="text-align: center">
-   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/results-best-model.png">
+   <img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/results-best-model.png">
  </figure>
  <br>
 </details>
@@ -1987,7 +1987,7 @@ Can you rationalise why such a mutation might increase the affinity?
     <b><i>Zoom in on the mutated residue</i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-   <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/mutant-stacking.png">
+   <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/mutant-stacking.png">
    <center>
    <i>TRP150 is stacking with TYR24 </i>
    </center>
@@ -2095,7 +2095,7 @@ util.cbao asp58_neighbour_residues <br>
 
 Let us display contacts using [show contacts plugin](https://pymolwiki.org/index.php/Show_contacts):
 <figure style="text-align: center;">
-  <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/asp58_contacts.png">
+  <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/asp58_contacts.png">
   <center>
   <i>ASP58 makes h-bonds with two neighbouring residues</i>
   </center>
@@ -2165,7 +2165,7 @@ Inspect the mutant vs wild-type complex. Can you see the difference at the inter
     <b><i>See the overlay of the mutant onto the wild-type structure </i></b> <i class="material-icons">expand_more</i>
   </summary>
   <figure style="text-align: center;">
-    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/mutant-ref-overlay-alascan.png">
+    <img width="100%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/mutant-ref-overlay-alascan.png">
     <center>
     <i>wild-type residue ASP58 is displayed in pink, and mutant residue AGR58 is displayed in orange</i>
     </center>
@@ -2228,7 +2228,7 @@ How many interface clusters were found for this protein?
 Once you download the output archive, you can find the clustering information presented in the dendrogram:
 
 <figure style="text-align: center;">
-<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/dendrogram_average_P01584.png">
+<img width="75%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/dendrogram_average_P01584.png">
 </figure>
 
 We can see how the two *4G6M* antibody chains are recognized as a unique cluster, clearly separated from the other binding surfaces and, in particular, from those proper to IL-1RI (uniprot ID P14778).
@@ -2825,7 +2825,7 @@ Our antibody-antigen complex consists of three interfaces:
   <br>
   </summary>
   <figure align="center">
-   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen/abagtest_2d03e_pae.png">
+   <img src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/abagtest_2d03e_pae.png">
   </figure>
 </details>
 <br>
@@ -2901,7 +2901,7 @@ Does any model have the NMR-identified epitope at the interface with the antibod
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/ab-ag-af2.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/ab-ag-af2.png">
   </figure>
   <br>
 </details>
@@ -2927,7 +2927,7 @@ alignto sele
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/ab-ag-af2-4G6M.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/ab-ag-af2-4G6M.png">
   </figure>
   <br>
 </details>
@@ -2949,7 +2949,7 @@ Try to reproduce the previous steps and examine the quality of the various gener
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/ab-ag-af3-epitope.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/ab-ag-af3-epitope.png">
   </figure>
   <br>
 </details>
@@ -2962,7 +2962,7 @@ Try to reproduce the previous steps and examine the quality of the various gener
   <br>
   </summary>
   <figure align="center">
-   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/ab-ag-af3-4G6M.png">
+   <img width="90%" src="/education/HADDOCK3/HADDOCK3-antibody-antigen/images/ab-ag-af3-4G6M.png">
   </figure>
   <br>
 </details>
