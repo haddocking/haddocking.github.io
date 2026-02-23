@@ -9,6 +9,7 @@
 
 - name: Rodrigo Vargas Honorato
   position: Engineering and Application Manager
+  url: https://rvhonorato.me
   avatar: /images/people/Rodrigo.jpg
   github: https://github.com/rvhonorato
   orcid: https://orcid.org/0000-0001-5267-3002
@@ -34,11 +35,11 @@
   github: https://github.com/AnnaKravchenko
   orcid: https://orcid.org/0000-0002-2332-4206
   linkedin: https://www.linkedin.com/in/kravchenko-anna-d/
-  
+
 - name: Danai Kotzampasi
   position: Postdoctoral Researcher
   avatar: /images/people/Danai-Kotzampasi.png
-  
+
 - name: Shantanu Khatri
   position: Postdoctoral Researcher
   avatar: /images/people/Shantanu-Khatri.jpg
@@ -70,15 +71,15 @@
 - name: Luca Gazolla
   position: Visiting Ph.D Candidate
   avatar: /images/people/Luca-Gazolla.png
-  
+
 - name: Jahaciel Villaverde Nogues
   position: M.Sc Student
   avatar: /images/people/Jahaciel-Villaverde.jpg
-  
+
 - name: Robert Romijn
   position: M.Sc Student
   avatar: /images/people/Robert-Romijn.png
-  
+
 - name: Felix Maas
   position: M.Sc Student
   avatar: /images/people/Felix-Maas.jpg
@@ -86,3 +87,4 @@
 - name: Viktoria Vodilovska
   position: M.Sc Student
   avatar: /images/people/Viktoria-Vodilovska.jpg
+
