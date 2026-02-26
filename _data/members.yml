@@ -4,6 +4,8 @@
 #                                   # Postdoc, Ph.D/PhD, M.Sc/MSc, Visiting
 #   url: https://example.com        # personal website (makes the name a link)
 #   avatar: /images/people/capitaine-haddock.jpg
+#   pet: /images/people/pets/capitaine-haddock-pet.jpg  # easter egg: photo shown on hover
+#   pet_name: Milou                                      # easter egg: name shown on hover
 #   orcid: https://orcid.org/0000-0000-0000-0000
 #   github: https://github.com/capitainehaddock
 #   linkedin: https://www.linkedin.com/in/capitainehaddock/
@@ -14,6 +16,8 @@
   position: Full Professor
   url: http://www.uu.nl/staff/amjjbonvin
   avatar: /images/people/Bonvin-2020-12.jpg
+  pet: /images/people/pets/Milou.png
+  pet_name: Milou
   github: https://github.com/haddocking
   orcid: https://orcid.org/0000-0001-7369-1322
   bluesky: https://bsky.app/profile/amjjbonvin.bsky.social
@@ -23,6 +27,7 @@
   position: Engineering and Application Manager
   url: https://rvhonorato.me
   avatar: /images/people/Rodrigo.jpg
+
   github: https://github.com/rvhonorato
   orcid: https://orcid.org/0000-0001-5267-3002
   linkedin: https://www.linkedin.com/in/rodrigo-v-honorato/
