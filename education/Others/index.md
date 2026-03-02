@@ -14,7 +14,7 @@ In this page you can find links and tutorials to two HADDOCK-complementary softw
 
 * [**PowerFit web server tutorial**](/education/Others/powerfit-webserver/): A small introduction into
   PowerFit to automatically place a high-resolution atomic structure in a
-  lower-resolution cryo-electron microscopy density map making use of our [web portal](https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit)
+  lower-resolution cryo-electron microscopy density map making use of our [web portal](https://wenmr.science.uu.nl/powerfit)
   (does not require Linux).
 
 * [**DisVis web server tutorial**](/education/Others/disvis-webserver/): A small introduction into
