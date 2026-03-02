@@ -989,7 +989,7 @@ Download the best model and following the previously provided instructions to fi
 
 __Note__: The ChimeraX Fit in Map function does not move the model to the density if they are far apart. If this is the case you can first perform a more exhaustive search. Note that this might take a while since it is a large system 
 
-<a class="prompt promt-pymol">
+<a class="prompt prompt-pymol">
 fitmap #model inMap #density search 100
 </a>
 
