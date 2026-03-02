@@ -6,13 +6,13 @@ tags: [MS, Cross-links, cryo-EM, Interaction, HADDOCK, DISVIS, PowerFit, RNA Pol
 image:
   feature: pages/banner_education-thin.jpg
 ---
-This tutorial was last updated on 18-02-2026. <br>
+
 This tutorial consists of the following sections:
 
 * table of contents
 {:toc}
 
-
+This tutorial was last updated on 02-03-2026. <br>
 
 <hr>
 ## Introduction
@@ -1566,6 +1566,5 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: https://wenmr.science.uu.nl/powerfit "PowerFit web server"
-[link-powerfit-register]: https://wenmr.science.uu.nl/auth/register  "PowerFit registration"
 [link-powerfit-submit]: https://wenmr.science.uu.nl/powerfit "PowerFit submission"
-[link-powerfit-help]: https://www.bonvinlab.org/powerfit/manual.html "PowerFit help"
+

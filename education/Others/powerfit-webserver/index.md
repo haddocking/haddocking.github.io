@@ -6,13 +6,14 @@ tags: [PowerFit, Cryo-EM, HADDOCK, Ribosome, ChimeraX, rigid body fitting]
 image:
   feature: pages/banner_education-thin.jpg
 ---
-This tutorial was last updated on 18-02-2026 and is up-to-date 
-with release v4.0.4. <br>
+
 This tutorial consists of the following sections:
 
 * table of contents
 {:toc}
 
+This tutorial was last updated on 02-03-2026 and is up-to-date 
+with release v4.0.4. <br>
 
 ## Introduction
 
