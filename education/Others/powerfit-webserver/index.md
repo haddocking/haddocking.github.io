@@ -2,15 +2,18 @@
 layout: page
 title: "PowerFit web server Tutorial"
 excerpt: "A small tutorial on PowerFit web server for automatic rigid body fitting"
-tags: [PowerFit, Cryo-EM, HADDOCK, Ribosome, Chimera, rigid body fitting]
+tags: [PowerFit, Cryo-EM, HADDOCK, Ribosome, ChimeraX, rigid body fitting]
 image:
   feature: pages/banner_education-thin.jpg
 ---
+
 This tutorial consists of the following sections:
 
 * table of contents
 {:toc}
 
+This tutorial was last updated on 02-03-2026 and is up-to-date 
+with release v4.0.4. <br>
 
 ## Introduction
 
@@ -20,12 +23,11 @@ It is open-source and available for download from our [Github repository][link-p
 To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
 This tutorial demonstrates the use of the PowerFit web server. The server makes use of either
-local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
+local resources on our cluster, using the multi-core version of the software, or GPU-accelerated grid resources of the
 [EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software based on a stable and tested workflow. Next to providing an automated workflow around
-PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
-of the PowerFit output using [UCSF Chimera][link-chimera]{:target="_blank"}.
-Chimera is a visualization software and popular tool in the cryo-EM community for its volume visualization capabilities.
+PowerFit, the web server also summarizes and higlights the results in a single page including some visualization of the 
+PowerFit output using [MolViewSpec][link-molviewspec]{:target="_blank"}.
 
 The case we will be investigating is a complex between the 30S maturing *E. coli*
 ribosome and RsgA, a GTPase. There are models ([2YKR][link-pdb]{:target="_blank"}) and a cryo-EM density map of around 9.8Å resolution
@@ -55,19 +57,20 @@ _Structure._ *23*, 949-960 (2015).
 
 
 Throughout the tutorial, coloured text will be used to refer to questions,
-instructions, and Chimera commands.
+instructions, and ChimeraX commands.
 
 <a class="prompt prompt-question">This is a question prompt: try answering
 it!</a>
 <a class="prompt prompt-info">This an instruction prompt: follow it!</a>
-<a class="prompt prompt-pymol">This is a Chimera prompt: write this in the
-Chimera command line prompt!</a>
+<a class="prompt prompt-pymol">This is a ChimeraX prompt: write this in the
+ChimeraX command line prompt!</a>
 
 
 ## Setup/Requirements
 
-In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF Chimera**][link-chimera]{:target="_blank"}
+In order to follow this tutorial you only need a **web browser**, a **text editor**, and [**UCSF ChimeraX**][link-chimerax]{:target="_blank"}
 (freely available for most operating systems) on your computer in order to visualise the input and output data.  
+ChimeraX is a visualization software and popular tool in the cryo-EM community for its volume visualization capabilities.
 Further, the required data to run this tutorial should be downloaded [**here**][link-data]{:target="_blank"}.
 Once downloaded, make sure to unpack the archive.
 
@@ -77,22 +80,20 @@ Once downloaded, make sure to unpack the archive.
 Let us first inspect the data we have available, namely the cryo-EM density map
 and the structures we will attempt to fit.
 
-Using Chimera, we can easily visualize and inspect the density and models,
+Using ChimeraX, we can easily visualize and inspect the density and models,
 mostly through a few mouse clicks.
 
-For this open the density map `ribosome-RsgA.map` and the PDB file of the ribosome which is already fitted into the map `ribosome.pdb`.
+Open first the density map `ribosome-RsgA.map` and then the PDB file of the ribosome which is already fitted into the map `ribosome.pdb`.
+ChimeraX will automatically guess their type.
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → File → Open... → Select the file
+  UCSF ChimeraX Menu → File → Open... → Select the file
 </a>
 
-Repeat this for each file. Chimera will automatically guess their type.
-
-
-If you want to use the Chimera command-line instead, you need to first display it:
+You can also use the ChimeraX command-line, however you might need to display it first:
 
 <a class="prompt prompt-info">
-  UCSF Chimera Menu → Favorites → Command Line
+  UCSF ChimeraX Menu → Tools → Command Line
 </a>
 
 and type:
@@ -108,30 +109,18 @@ and type:
 In the `Volume Viewer` window, the middle slide bar provides control on the
 value at which the isosurface of the density is shown. At high values, the
 envelope will shrink while lower values might even display the noise in the map.
-In the same window, you can click on `Center` to center the view on all visible molecules and the density.
 
 We will first make the density transparent, in order to be able to see the fitted structure inside:
 
-<a class="prompt prompt-info">
-  Within the Volume Viewer window click on the gray box next to Color
-</a>
-
-This opens the`Color Editor` window.
-
-<a class="prompt prompt-info">
-Check the Opacity box.
-</a>
-
-An extra slider bar appears in the box called A, for the alpha channel.
-
-<a class="prompt prompt-info">
-Set the alpha channel value to around 0.6.
+<a class="prompt prompt-pymol">
+  transparency #1 60
 </a>
 
 Notice that the density becomes transparent providing a better view of the fit
 of the ribosome model. On closer inspection, you can also discern a region of
 the density that is not accounted for by the ribosome structure alone: This should be the
-binding location of RsgA. Although you could try and manually place the crystal
+binding location of RsgA. If you cannot find it you can try to lower the value of the isosurface using the slider in the `Volume Viewer` window.  
+Although you could try and manually place the crystal
 structure in that region, finding the correct orientation is not
 straightforward. PowerFit can help you here as it will exhaustively sample all possible translations and rotations in order to find the best fit, based on an objective score.
 
@@ -145,7 +134,7 @@ the three translational and three rotational degrees of freedom. In short,
 PowerFit will try to systematically fit the structure in different orientations at every position
 in the map and calculate a cross-correlation score for each of them.
 
-In order to perform the search PowerFit requires three different things:
+In order to perform the search, PowerFit requires three different things:
 a high-resolution atomic structure of the
 biomolecule to be fitted (`RsgA.pdb`), a target cryo-EM density map to fit the
 structure in (`ribosome-RsgA.map`), and the resolution, in Ångstrom, of the
@@ -153,7 +142,7 @@ density map (`9.8`). This is also the minimal required input for the web server 
 
 To run PowerFit, go to
 
-<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/powerfit" target="_blank">https://wenmr.science.uu.nl/powerfit</a>
 
 On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
@@ -161,8 +150,8 @@ On this page, you will find the most relevant information about the server as we
 
 [Register][link-powerfit-register]{:target="_blank"} for getting access to the webserver (or use the credentials provided in case of a workshop).
 
-You can click on the "**Register**" menu from any PowerFit page and fill the required information.
 Registration is not automatic but is usually processed within 12h, so be patient.
+When you are registered you can use all the software provided in the webserver.
 
 ### Step2: Define the input files and parameters and submit
 
@@ -170,7 +159,7 @@ Click on the "**Submit**" menu to access the [input form][link-powerfit-submit]{
 
 <figure align="center">
 <img src="/education/Others/powerfit-webserver/powerfit_submission.png">
-</figure>
+</figure> 
 
 Complete the form by filling the required fields and selecting the respective files
 (most browsers should also support dragging the files onto the selection button):
@@ -192,9 +181,7 @@ pre- and post-processing steps might substantially increase the time until the r
 
 While the calculations are running, open a second tab and go to
 
-<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
-
-Then click on the "**Help/Manual**" menu.
+<a class="prompt prompt-info" href="https://www.bonvinlab.org/powerfit/manual.html" target="_blank">https://www.bonvinlab.org/powerfit/manual.html</a>
 
 Here, you can have a look at the several features and options of PowerFit and read about the meaning of the various input
 parameters (including the ones under "**Advanced options**").
@@ -205,32 +192,25 @@ sampled. Lower values will cause PowerFit to perform a finer search, at the
 expense of increased computational time. The default value is 10°, but it can be lowered
 to 5° for more sensitive searches, or raised to 20° if time is an issue or if
 there aren't sufficient computational resources.
-The number of processors used for the calculation is fixed on the web server side to 8 processors.
-This number can of course be changed when using the local version of PowerFit.
-
 
 ## Analysing the results
 
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
-page (you will also receive an email notification). The results page presents a summary split into several sections:
+page (you will also receive an email notification).
 
-* `Status`: In this section you will find a link from which you can download the output data as well as some information
-about how to cite the use of the portal.
-* `Solutions`: The best 15 non-redundant solutions found, ordered by their
-cross correlation score. The first column shows the rank, column 2 the cross correlation
-score, column 3 and 4 the Fisher z-score and the number of standard
-deviations. The table is created with values taken from the file `solutions.out`.
-* `Fit N`: Summary of the previous table for the 10 best fitted structures according to the cross correlation score.
-A PDB of the solution can be downloaded and 6 images of the PDB within the density map are shown, covering different
-views over the scene.
+On the interactive results page you can look at the top
 
-If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted
+<figure align="center">
+<img src="/education/Others/powerfit-webserver/webservice_result_page.png">
+</figure> 
+
+If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
 with the same input [here][link-powerfit-tutorial]{:target="_blank"}.
 
 The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better),
 which, together with its associated number of standard deviations (σ difference), is an excellent indicator of the accuracy of a fit
 (see for details [van Zundert and Bonvin, J. Struct. Biol. (2016)](https://doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}
-and PowerFit [help page](link-powerfit-help){:target="_blank"}).
+and PowerFit [help page][link-powerfit-help]{:target="_blank"}).
 To enhance the interpretation of the results in the `Solutions` table, the entries are colored in a green gradient up to
 a sigma difference of 3.
 
@@ -261,11 +241,11 @@ likely location of the center of mass of the structure.
 with date and timing information.
 
 
-Let us now inspect the solutions in Chimera.
+Let us now inspect the solutions in ChimeraX.
 
 <a class="prompt prompt-info">
   Open the density map, the *lcc.mrc* cross-correlation map, and the 10
-best-ranked solutions in Chimera.
+best-ranked solutions in ChimeraX.
 </a>
 
 Use for this either the `Menus` or the `command line interface` as explained [before](#inspecting-the-data), e.g.:
@@ -284,8 +264,13 @@ Use for this either the `Menus` or the `command line interface` as explained [be
 </a>
 
 
-Make the density map transparent again, by adjusting the alpha channel value to
-0.6. The values of the `lcc.mrc` slider bar correspond to the cross-correlation
+Make the density map transparent again.
+
+<a class="prompt prompt-pymol">
+  transparency #1 60
+</a>
+
+The values of the `lcc.mrc` slider bar correspond to the cross-correlation
 score found. In this way, you can selectively visualize regions of high or low
 cross-correlation values: i.e., pushing the slider to the right (higher cutoff)
 shows only regions of the grid with high cross-correlation scores.
@@ -294,15 +279,16 @@ As you can see, PowerFit found quite some local optima, one of which stands out
 (if the rotational search was tight enough). Further, the 10 best-ranked
 solutions are centered on regions corresponding to local cross-correlation maxima.
 
-To view each fitted solution individually, open the `Model Panel` window.
+To view each fitted solution individually, open the `Model Panel` window if it is 
+not already open
 
 <a class="prompt prompt-pymol">
-Favorites → Model Panel
+Tools → Models 
 </a>
 
 The window shows each model
-and its associated color that Chimera has processed. To show or hide a specific
-model you can click the box in the `S` column.
+and its associated color that ChimeraX has processed. To show or hide a specific
+model you can click the box in the column with an eye.
 
 <a class="prompt prompt-info">
   Go through the 10 solutions one by one to asses their goodness-of-fit
@@ -314,7 +300,7 @@ model you can click the box in the `S` column.
 </a>
 
 <a class="prompt prompt-info">
-  In a new Chimera session, reopen the density map and the fit that you find
+  In a new ChimeraX session, reopen the density map and the fit that you find
 best.
 </a>
 
@@ -334,23 +320,27 @@ You now have combined the ribosome structure with the rigid-body fit of RsgA
 calculated by PowerFit, yielding an initial model of the complex. Take a closer look at residues `R47` to `H51`
 which are contributing to the interface with the ribosome.
 
-In the command line of Chimera, type the
+In the command line of ChimeraX, type the
 following instructions to center your view on these residues and highlight
 their interactions:
 
 <a class="prompt prompt-pymol">
-  show #2:47-51 zr<5 & #1 || #2:47-51  
-  focus #2:47-51 zr<5 & #1 || #2:47-51
+  hide #2 atoms <br>
+  show #2 cartoons <br>
+  sel #3:47-51 <br>
+  view sel <br>
+  contacts sel distanceOnly 5.0 makePseudobonds true reveal true <br>
 </a>
 <a class="prompt prompt-info">
   Take some time to inspect the model, paying particular attention to these five
   residues and their spatial neighbors.
 </a>
 <a class="prompt prompt-question">
-  Are there any clashes between the ribosome and RsgA chains?
+  Are there any clashes between the ribosome and RsgA chains? Show the selection as spheres to visualize this better.
 </a>
 
-Chimera also includes a tool to locally optimize the fit of a rigid structure
+
+ChimeraX also includes a tool to locally optimize the fit of a rigid structure
 against a given density map, which can be an additional help on top of the
 PowerFit calculations. Make the main display window active by clicking on it,
 
@@ -366,14 +356,14 @@ Press Fit to start the optimization.
 </a>
 
 <a class="prompt prompt-question">
-  Does the Chimera local fit optimization tool improve the results of PowerFit?
+  Does the ChimeraX local fit optimization tool improve the results of PowerFit?
 </a>
 
-The scoring function used by Chimera to estimate the quality of the fit makes
+The scoring function used by ChimeraX to estimate the quality of the fit makes
 our model worse, increasing the number of clashes between the ribosomal RNA and
 RsgA. Click `Undo` in the `Fit in Map` window to undo the optimization.
 
-Next, we will try to optimize the fit using the cross-correlation that Chimera
+Next, we will try to optimize the fit using the cross-correlation that ChimeraX
 provides.
 
 <a class="prompt prompt-info">
@@ -414,14 +404,15 @@ for computational biomolecular research.
 
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
-[link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: https://wenmr.science.uu.nl/auth/register/powerfit"PowerFit registration"
-[link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
-[link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
-[link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
+[link-powerfit-web]: https://wenmr.science.uu.nl/powerfit "PowerFit web server"
+[link-powerfit-register]: https://wenmr.science.uu.nl/auth "PowerFit registration"
+[link-powerfit-submit]: https://wenmr.science.uu.nl/powerfit "PowerFit submission"
+[link-powerfit-help]: https://www.bonvinlab.org/powerfit/manual.html "PowerFit submission"
+[link-chimerax]: https://www.cgl.ucsf.edu/chimerax/ "UCSF ChimeraX"
 [link-data]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-1884 "Ribosome RsgA density"
 [link-pdb]: https://www.rcsb.org/pdb/explore/explore.do?structureId=2YKR "PDBid 2YKR"
 [link-haddock-tuto]: https://bonvinlab.org/education/Others/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
 [link-powerfit-tuto]: https://bonvinlab.org/education/Others/powerfit "Powerfit command-line tutorial"
 [link-powerfit-tutorial]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/example "Powerfit tutorial results page"
+[link-molviewspec]: https://molstar.org/mol-view-spec/ "molviewspec"
