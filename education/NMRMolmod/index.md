@@ -622,7 +622,7 @@ Q20: Explain the concept of NMR chemical shift perturbation data? How are these 
 <a class="prompt prompt-question">
 Q21: Referring to the article describing the NMR structure of this complex (Wang et al. 2000), next to chemical shift perturbation data, what are the other types of NMR restraints that have been used to calculate the structure of the complex?
 </a>
-[Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract)
+[Wang *et al*, EMBO J (2000)](https://pmc.ncbi.nlm.nih.gov/articles/PMC305802/)
 
 <a class="prompt prompt-question">
 Q22: Which optimization techniques discussed in the MolMod lectures are used by HADDOCK?
@@ -635,8 +635,8 @@ Q23: Referring to the desciption of the last stage of HADDOCK (final refinement 
 
 ## Submitting your report
 
-Your report should be submitted in the form of a PDF file at the latest on Friday April 8rd before midnight. 
-Submission should be done via Blackboard (assignment in Docking Practical under Course Content).
+Your report should be submitted in the form of a PDF file at the latest on Friday April 3rd before midnight. 
+Submission should be done via Brightspace (assignment in Docking Practical under Course Content).
 
 
 [link-pymol]: http://www.pymol.org/ "PyMOL"
