@@ -237,7 +237,7 @@ Let's now take a look at the models for the three monomers that we want to dock 
 
 ### C82 AlphaFold model
 
-The C82 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/A0A816BHH4){:target="\_blank"}.
+The C82 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/P32349){:target="\_blank"}.
 
 <a class="prompt prompt-info">
 Inspect the 3D model and in particular the color-coding which indicates the model confidence.
@@ -253,7 +253,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold model and PAE plot</i>
+    <i>See the AlphaFold model and PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -289,7 +289,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold model and PAE plot</i>
+    <i>See the AlphaFold model and PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -403,7 +403,7 @@ Consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold-multimer PAE plot</i>
+    <i>See the AlphaFold-multimer PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -446,7 +446,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold model and PAE plot</i>
+    <i>See the AlphaFold model and PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -759,7 +759,7 @@ For more details about PowerFit and its usage we refer to a related [online tuto
 
 To run PowerFit, go to
 
-<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/powerfit" target="_blank">https://wenmr.science.uu.nl/powerfit</a>
 
 On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
@@ -990,7 +990,7 @@ Download the best model and following the previously provided instructions to fi
 __Note__: The ChimeraX Fit in Map function does not move the model to the density if they are far apart. If this is the case you can first perform a more exhaustive search. Note that this might take a while since it is a large system 
 
 <a class="prompt prompt-pymol">
-fitmap #model inMap #density search 100
+fitmap #model inMap #density search 5
 </a>
 
 You can now optimize the fit by using the previously described instructions
@@ -1495,7 +1495,7 @@ color bychain
 In order to perform the fit, we will use the Command Line more:
 
 <a class="prompt prompt-pymol">
-fitmap #model inMap #density search 100<br>
+fitmap #model inMap #density search 5<br>
 </a>
 
 When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
