@@ -510,7 +510,7 @@ In CAPRI, the l-RMSD value defines the quality of a model:
 * high quality model: l-RMSD<1Å
 
 <a class="prompt prompt-question">
-Q19: What is based on this CAPRI criterion the quality of the best model?
+Q19: Based on this CAPRI criterion, what is the quality of the best model?
 </a>
 
 **Note:** On some machines the pymol rms_cur command can fail due to a bug in the PyMOL software. In this case you can use the following command instead:
