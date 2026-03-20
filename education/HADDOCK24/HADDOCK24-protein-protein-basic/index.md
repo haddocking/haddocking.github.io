@@ -16,14 +16,15 @@ This tutorial was last updated on 12-03-2026
 <hr>
 ## Introduction
 
-This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, we will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPR). 
+This tutorial will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, we will dock two E. coli proteins involved in glucose transport: the [glucose-specific enzyme IIA](https://www.uniprot.org/uniprotkb/P69783/){:target="_blank"} (E2A) and the [histidine-containing phosphocarrier protein](https://www.uniprot.org/uniprotkb/P0AA04/){:target="_blank"} (HPR). 
 
-Bacteria use a specific mechanism to import glucose from outside the cell.
+Bacteria use a specific mechanism to import glucose from outside the cell. 
 As glucose enters the cell, a phosphate group is attached to it, i.e. glucose becomes phosphorylated.
 This phosphorylation prevents glucose from diffusing back out of the cell and at the same time marks it for further metabolism.
 The phosphate group used for the glucose transport process originates from phosphoenolpyruvate (PEP) and is transferred through a cascade of proteins.
 It first moves from PEP to enzyme I, then to HPR, next to E2A, and finally to enzyme IIB. Enzyme IIB is located on the cytoplasmic side of the membrane, where the phosphate group is ultimately transferred to glucose as it crosses the membrane.
-This animation provides a simple visualisation of the entire process: 
+More information can be found in [Jeckelmann *et al*, Eur J Physiol (2020)](https://doi.org/10.1007/s00424-020-02379-0){:target="_blank"}.
+In the mean time, this animation provides a simple visualisation of the entire process: 
 
 <div style="width:60%; margin:auto;">
   <iframe
@@ -99,8 +100,11 @@ The second stage of the docking protocol introduces flexibility to the interacti
   </details>
   <br>
 
- **3. Refinement in Cartesian space with explicit solvent (water)**
- **_Note_** that this stage was part of the standard HADDOCK protocol up to (and including) v2.2. As of v2.4 it is no longer performed by default but the user still has the option of enabling it. In its place, a short energy minimisation is performed instead. The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side chains to be optimized.
+ **3. Refinement in Cartesian space with explicit solvent (itw)**
+ The final stage of the docking protocol immerses the complex in a solvent shell so as to improve the energetics of the interaction. HADDOCK currently supports water (TIP3P model) and DMSO environments. The latter can be used as a membrane mimic. In this short explicit solvent refinement the models are subjected to a short molecular dynamics simulation at 300K, with position restraints on the non-interface heavy atoms. These restraints are later relaxed to allow all side chains to be optimized. <br>
+**_Note_** that as of v2.4, it is no longer performed by default, which used to be the case up to (and including) v2.2. 
+Instead, a short energy minimisation in Cartesian space is performed.
+Users can still opt for refinement with explicit solvent as an alternative to this energy minimisation.
 
  <details >
  <summary style="bold">
@@ -126,7 +130,7 @@ hide lines<br>
 </a>
 
 You should see a cartoon representation of the protein. 
-It is known from the literature that a phosphate group interacts with the side chain of a histidine residue. 
+It is known from the literature that a phosphate group interacts and can form a covalent bond with the side chain of a histidine residue. 
 Let us first check whether histidine residues are present in this structure:
 <a class="prompt prompt-pymol">
 show sticks, resn HIS<br>
@@ -169,7 +173,7 @@ Inspect the surface.
 <a class="prompt prompt-question">Do the identified residues form a well defined patch on the surface?</a>
 <a class="prompt prompt-question">Do they form a contiguous surface?</a>
 
-The answer to the last question should be no: we can observe residue in the center of the patch that do not seem significantly affected while still being in the middle of the defined interface. This is the reason why in HADDOCK we also define "*passive*" residues that correspond to surface neighbors of active residues. These can be selected manually, or more conveniently you can let the HADDOCK server do it for you (see [Setting up the docking run](#setting-up-the-docking-run) below).
+The answer to the last question should be **no**: we can observe residue in the center of the patch that do not seem significantly affected while still being in the middle of the defined interface. This is the reason why in HADDOCK we also define "*passive*" residues that correspond to surface neighbors of active residues. These can be selected manually, or more conveniently you can let the HADDOCK server do it for you (see [Setting up the docking run](#setting-up-the-docking-run) below).
 
 As final step save the molecule as a new PDB file which we will call: *e2a_1F3G.pdb*<br>
 For this in the PyMOL menu on top select:
@@ -200,7 +204,7 @@ hide lines<br>
 
 <a class="prompt prompt-question">Are there any histidines present in this structure?</a>
 <a class="prompt prompt-question">Is there a phosphate group present in this structure?</a>
-<a class="prompt prompt-question">Are there any irrelevant molecules present in this structure?</a>
+<a class="prompt prompt-question">Are there any irrelevant (for the docking) molecules present in this structure?</a>
 
 Let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://doi.org/10.1093/emboj/19.21.5635){:target="_blank"} the following residues were identified has having significant chemical shift perturbations:
 
@@ -229,11 +233,11 @@ To stop the playback:
 
 HADDOCK is able to handle such ensembles by using each conformer in turn as a starting point for docking. 
 We generally recommend limiting the number of conformers used. 
-Otherwise, the number of possible combinations between the input molecules can quickly explode (i.e. become very large).
+Otherwise, the number of possible combinations between the input molecules can quickly escalate (i.e. become very large).
 For example, if both partners contain 10 conformers, this results in 100 possible starting combinations. If 1000 rigid-body models are generated (see [HADDOCK general concepts](#haddock-general-concepts) above), each combination would then be sampled only 10 times!
 
 In case if limiting number of input conformers is an unreasonable choice, it is possible to increase the number of models generated in the rigid-body docking stage (it0).
-However, this requires elevated access privileges on the HADDOCK 2.4 server. 
+However, this requires elevated permissions level on the HADDOCK 2.4 server, which you can request via "[User Dashboard](https://wenmr.science.uu.nl/dashboard){:target="_blank"}". 
 
 Now let's display all models of this NMR ensemble simultaneously in ribbon representation. 
 This representation is handy for visualizing backbone conformation:
