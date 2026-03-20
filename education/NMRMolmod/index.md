@@ -154,7 +154,7 @@ Inspect the surface.
 As final step save the molecule as a new PDB file which we will call: *e2a_1F3G.pdb*<br>
 For this in the PyMOL menu on top select:
 
-<a class="prompt prompt-info">File -> Export structure -> save molecule...</a>
+<a class="prompt prompt-info">File -> Export structure -> Export molecule...</a>
 <a class="prompt prompt-info">Select 1F3G and click on the save button</a>
 <a class="prompt prompt-info">Name your file *e2a_1F3G.pdb*, make sure to select *PDB* as format and note the location of the saved file</a>
 
