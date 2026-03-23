@@ -15,7 +15,7 @@ image:
 
 ![Structure + Binformatic/Biophysical Data => Complex](HADDOCK2.4.png)  
 
-_Version:_ 2.5 (December 2024) ([changes](/software/haddock2.4/changes))  
+_Version:_ 2.5 (March 2026) ([changes](/software/haddock2.4/changes))  
 
 _Authors:_ Alexandre Bonvin and members of the computational structural biology group, Utrecht University  
 
