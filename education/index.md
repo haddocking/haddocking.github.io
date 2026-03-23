@@ -22,16 +22,48 @@ In this page you can find links to our educational material, namely tutorials on
 
 We offer various [research projects](/education/research-projects/) to both bachelor and master students, all centered around our main research area: the development of reliable bioinformatics and computational approaches to predict, model and dissect biomolecular interactions at atomic level. Read more [here](/education/research-projects/).
 
-<!--
-## Conferences and workshops
-
-* [Fall meeting of the Netherlands Society for Biomolecular Modelling - November 2016](/news/NSBM-fall-meeting)
-
-* [INSTRUCT practical course: Advanced methods for the integration of diverse structural data with NMR data - April 2016](/education/INSTRUCT-practical-course/)
--->
 
 ## Online lectures
 
+* Recordings of the [Second ASM ASEAN School on HPC and AI](https://europe.acm.org/seasonal-schools/asean/2026){:target="_blank"} HADDOCK lectures and tutorial by Prof. Bonvin (February 2nd, 2026, Riken, Japan):
+
+  <ul>
+  <details>
+  <summary>View recorded lecture Part I (43 min.)
+  </summary>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ONrDHPZw9TQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+  </details>
+  <br>
+  </ul>
+  
+  <ul>
+  <details>
+  <summary>View recorded lecture Part II (43 min.)
+  </summary>
+     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=uC_rTKRVyRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
+  
+  <ul>
+  <details>
+  <summary>View recorded HADDOCK3 practical Part I (46 min.)
+  </summary>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=yh60TdXKi2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+  </details>
+  <br>
+  </ul>
+  
+  <ul>
+  <details>
+  <summary>View recorded HADDOCK3 practical Part II (46 min.)
+  </summary>
+     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=iAGIuaJ5ZtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>
+  <br>
+  </ul>
+
+ 
 * Recordings of the Computer Aided Drugs Design [ELIXIR 3D-BioInfo](https://elixir-europe.org/communities/3d-bioinfo){:target="_blank"} webinar by Prof. Bonvin (April 18th, 2023) on `Shape-restrainted modelling of protein-small molecule complexes with HADDOCK`:
 
   <ul>
@@ -42,26 +74,7 @@ We offer various [research projects](/education/research-projects/) to both bach
   </details>
   <br>
   </ul>
-
-* Recordings of the [BioExcel](https://www.bioexcel.eu){:target="_blank"} summerschool HADDOCK lectures by Prof. Bonvin (June 7th, 2021):
-
-  <ul>
-  <details>
-  <summary>View recorded lecture Part I (46 min.)
-  </summary>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/N2Sr4qtRKhs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-  </details>
-  <br>
-  </ul>
-  <ul>
-  <details>
-  <summary>View recorded lecture Part II (43 min.)
-  </summary>
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/qpx6bQZhWrU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </details>
-  <br>
-  </ul>
-  
+ 
 * Recording of a [CCPBioSim](https://www.ccpbiosim.ac.uk/events/workshop-course-material/eventdetail/127/-/training-week-2020){:target="_blank"} lecture by Prof. Bonvin on the topic of binding affinity (Oct. 7th, 2020):
 
   <ul>
