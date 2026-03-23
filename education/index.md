@@ -40,7 +40,7 @@ We offer various [research projects](/education/research-projects/) to both bach
   <details>
   <summary>View recorded lecture Part II (43 min.)
   </summary>
-     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=uC_rTKRVyRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/uC_rTKRVyRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </details>
   <br>
   </ul>
@@ -49,16 +49,15 @@ We offer various [research projects](/education/research-projects/) to both bach
   <details>
   <summary>View recorded HADDOCK3 practical Part I (46 min.)
   </summary>
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=yh60TdXKi2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-  </details>
-  <br>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/yh60TdXKi2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </details>  <br>
   </ul>
   
   <ul>
   <details>
   <summary>View recorded HADDOCK3 practical Part II (46 min.)
   </summary>
-     <iframe width="560" height="315" src="https://www.youtube.com/watch?v=iAGIuaJ5ZtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iAGIuaJ5ZtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
   </details>
   <br>
   </ul>
