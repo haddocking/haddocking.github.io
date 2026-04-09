@@ -77,20 +77,52 @@
     margin-bottom: 0.85rem;
     flex-shrink: 0;
     border: 3px solid #f0f0f0;
+    position: relative;
   }
   .member-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: opacity 0.35s ease;
+  }
+  .member-photo .photo-pet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .member-card.has-pet:hover .member-photo .photo-person {
+    opacity: 0;
+  }
+  .member-card.has-pet:hover .member-photo .photo-pet {
+    opacity: 1;
+  }
+  .member-name-wrap {
+    position: relative;
+    margin: 0 0 0.3rem;
   }
   .member-name {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 1.15rem;
     font-weight: 700;
     color: #222;
-    margin: 0 0 0.3rem;
+    margin: 0;
     line-height: 1.25;
+    transition: opacity 0.35s ease;
+  }
+  .member-name.pet-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+  }
+  .member-card.has-pet:hover .member-name.person-name {
+    opacity: 0;
+  }
+  .member-card.has-pet:hover .member-name.pet-name {
+    opacity: 1;
   }
   .member-name a {
     color: inherit;
@@ -162,17 +194,25 @@
         {% assign role = 'msc' %}
       {% endif %}
 
-      <li class="member-card" data-role="{{ role }}">
+      <li class="member-card{% if member.pet %} has-pet{% endif %}" data-role="{{ role }}">
         <div class="member-photo">
-          <img src="{{ avatar }}" alt="{{ member.name }}" />
-        </div>
-        <p class="member-name">
-          {% if member.url %}
-            <a href="{{ member.url }}" target="_blank">{{ member.name }}</a>
-          {% else %}
-            {{ member.name }}
+          <img class="photo-person" src="{{ avatar }}" alt="{{ member.name }}" />
+          {% if member.pet %}
+          <img class="photo-pet" src="{{ member.pet }}" alt="{{ member.name }}'s pet" />
           {% endif %}
-        </p>
+        </div>
+        <div class="member-name-wrap">
+          <p class="member-name person-name">
+            {% if member.url %}
+              <a href="{{ member.url }}" target="_blank">{{ member.name }}</a>
+            {% else %}
+              {{ member.name }}
+            {% endif %}
+          </p>
+          {% if member.pet_name %}
+          <p class="member-name pet-name">{{ member.pet_name }}</p>
+          {% endif %}
+        </div>
         <p class="member-position">{{ member.position }}</p>
         {% if member.orcid or member.github or member.linkedin or member.bluesky or member.x %}
         <div class="member-links">
