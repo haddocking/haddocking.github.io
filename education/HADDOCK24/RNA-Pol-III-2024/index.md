@@ -6,12 +6,13 @@ tags: [MS, Cross-links, cryo-EM, Interaction, HADDOCK, DISVIS, PowerFit, RNA Pol
 image:
   feature: pages/banner_education-thin.jpg
 ---
+
 This tutorial consists of the following sections:
 
 * table of contents
 {:toc}
 
-
+This tutorial was last updated on 02-03-2026. <br>
 
 <hr>
 ## Introduction
@@ -236,7 +237,7 @@ Let's now take a look at the models for the three monomers that we want to dock 
 
 ### C82 AlphaFold model
 
-The C82 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/A0A816BHH4){:target="\_blank"}.
+The C82 AlphaFold model can be accessed [here](https://alphafold.ebi.ac.uk/entry/P32349){:target="\_blank"}.
 
 <a class="prompt prompt-info">
 Inspect the 3D model and in particular the color-coding which indicates the model confidence.
@@ -252,7 +253,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold model and PAE plot</i>
+    <i>See the AlphaFold model and PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -288,7 +289,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold model and PAE plot</i>
+    <i>See the AlphaFold model and PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -402,7 +403,7 @@ Consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold-multimer PAE plot</i>
+    <i>See the AlphaFold-multimer PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -445,7 +446,7 @@ Also consider the Predicted aligned error displayed as a matrix.
 
 <details style="background-color:#DAE4E7">
   <summary style="font-weight: bold">
-    <i>See the AlhpaFold model and PAE plot</i>
+    <i>See the AlphaFold model and PAE plot</i>
   <br>
   </summary>
   <figure align="center">
@@ -745,7 +746,7 @@ in the map and calculate a cross-correlation score for each of them.
 PowerFit is open-source and available for download from our [Github repository][link-powerfit]{:target="_blank"}.
 To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
-The server makes use of either local resources on our cluster, using the multi-core version of the software, or GPGPU-accelerated grid resources of the
+The server makes use of either local resources on our cluster, using the multi-core version of the software, or GPU-accelerated grid resources of the
 [EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
 developments in the software, based on a stable and tested workflow. Next to providing an automated workflow around
 PowerFit, the web server also summarizes and higlights the results in a single page including some additional postprocessing
@@ -758,7 +759,7 @@ For more details about PowerFit and its usage we refer to a related [online tuto
 
 To run PowerFit, go to
 
-<a class="prompt prompt-info" href="https://alcazar.science.uu.nl/services/POWERFIT" target="_blank">https://alcazar.science.uu.nl/services/POWERFIT</a>
+<a class="prompt prompt-info" href="https://wenmr.science.uu.nl/powerfit" target="_blank">https://wenmr.science.uu.nl/powerfit</a>
 
 On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
 
@@ -988,8 +989,8 @@ Download the best model and following the previously provided instructions to fi
 
 __Note__: The ChimeraX Fit in Map function does not move the model to the density if they are far apart. If this is the case you can first perform a more exhaustive search. Note that this might take a while since it is a large system 
 
-<a class="prompt promt-pymol">
-fitmap #model inMap #density search 100
+<a class="prompt prompt-pymol">
+fitmap #model inMap #density search 5
 </a>
 
 You can now optimize the fit by using the previously described instructions
@@ -1050,7 +1051,7 @@ Another explanation could be conformational changes in the structures that are n
 <hr>
 ### Setting up the full docking run using the cryo-EM fitted and refined core and C82 domains
 
-We will setup a docking run to model the full complex including some information about the C31 cross-links and the missing two first wHTH domains of C34. For this we will use the PowerFit/Chimera, HADDOCK-refined structure (Core+C82+C34wHTH3) which we have generated as starting point. We will fix those domains in their original positions for the initial rigid-body docking stage and dock the two missing C34 wHTH domains including fragments of C31 for which we have cross-links.
+We will setup a docking run to model the full complex including some information about the C31 cross-links and the missing two first wHTH domains of C34. For this we will use the PowerFit/ChimeraX, HADDOCK-refined structure (Core+C82+C34wHTH3) which we have generated as starting point. We will fix those domains in their original positions for the initial rigid-body docking stage and dock the two missing C34 wHTH domains including fragments of C31 for which we have cross-links.
 
 Connect to the [HADDOCK2.4 interface](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"} of the HADDOCK web server.
 
@@ -1303,7 +1304,7 @@ ranking cluster, `clusterX_1.pdb`.
 In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
-color by chain<br>
+color bychain<br>
 hide atoms<br>
 show cartoon<br>
 distance /B:50@CB /F:91@CB<br>
@@ -1494,7 +1495,7 @@ color bychain
 In order to perform the fit, we will use the Command Line more:
 
 <a class="prompt prompt-pymol">
-fitmap #model inMap #density search 100<br>
+fitmap #model inMap #density search 5<br>
 </a>
 
 When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
@@ -1564,7 +1565,6 @@ our [HADDOCK forum](https://ask.bioexcel.eu/c/haddock){:target="_blank"} hosted 
 [link-haddock-register]: https://wenmr.science.uu.nl/auth/register/"HADDOCK web server registration"
 [link-molprobity]: http://molprobity.biochem.duke.edu "MolProbity"
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
-[link-powerfit-web]: https://alcazar.science.uu.nl/services/POWERFIT/ "PowerFit web server"
-[link-powerfit-register]: https://wenmr.science.uu.nl/auth/register  "PowerFit registration"
-[link-powerfit-submit]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/submit "PowerFit submission"
-[link-powerfit-help]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/help "PowerFit submission"
+[link-powerfit-web]: https://wenmr.science.uu.nl/powerfit "PowerFit web server"
+[link-powerfit-submit]: https://wenmr.science.uu.nl/powerfit "PowerFit submission"
+

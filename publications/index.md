@@ -4,6 +4,11 @@ title: "Publications"
 image:
   feature: pages/banner_publications-mini.jpg
 ---
+## 2026
+* V.G.P. Reys, M. Giulini and **A.M.J.J. Bonvin**. [Integrative modelling of protein-glycan interactions with HADDOCK3](
+https://doi.org/10.48550/arXiv.2603.17251). _ArXiv_ 10.48550/arXiv.2603.17251 (2026).
+
+
 ## 2025
 
 * X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.64898/2025.12.03.691974). _BioRxiv_ 10.64898/2025.12.03.691974 (2025).
@@ -21,7 +26,7 @@ post-AlphaFold era: the 8th CAPRI evaluation](http://doi.org/10.1002/prot.70018)
 
 * M. Giulini#, V. Reys#, J.M.C. Teixeira, B. Jiménez-García, R.V. Honorato, A. Kravchenko, X. Xu, R. Versini, A. Engel, S. Verhoeven and **A.M.J.J. Bonvin**. [HADDOCK3: A modular and versatile platform for integrative modelling of biomolecular complexes](https://doi.org/10.1021/acs.jcim.5c00969). _J. Chem. Inf. Mod._ *65*, 7315–7324 (2025). Preprint [here](https://doi.org/10.1101/2025.04.30.651432).
 
-* X. Xu#, M. Giulini# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1093/bioadv/vbaf161). _Bioinfo. Adv._ In Press, DOI:10.1093/bioadv/vbaf161 (2025). Preprint [here](https://doi.org/10.1101/2025.02.24.639865)
+* X. Xu#, M. Giulini# and **A.M.J.J. Bonvin**. [Improved structural modelling of antibodies and their complexes with clustered diffusion ensembles](https://doi.org/10.1093/bioadv/vbaf161). _Bioinfo. Adv._ *5* DOI:10.1093/bioadv/vbaf161 (2025). Preprint [here](https://doi.org/10.1101/2025.02.24.639865)
 
 * L. Pulido-Cortés, H. Gielingh, V. Thijssen, M. Liu, R. Yoshisada, L.Romão Soares, S. Nizamuddin, F. Friedrich, H. Greschik, L. Peng, R. Vargas Honorato, M. Jung, **A.M.J.J. Bonvin**, M. Biniossek, R. Schüle, S. Jongkees, H. van Ingen, Hugo and H.Th.M. Timmers. [Molecular determinants for recognition of serotonylated chromatin](https://doi.org/10.1093/nar/gkaf612). _Nucl. Acids Res_. *53*, gkaf612 (2025).
 
