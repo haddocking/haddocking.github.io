@@ -146,7 +146,7 @@ This structure has two histidines present. How about phosphate group?
 
 <a class="prompt prompt-question">Is there a phosphate group present in this structure?</a>
 
-*Hint* : you can select phosphate atoms with the following command and check how many atoms are in this selection: 
+*Hint* : you can select phosphate atoms with the following command and check (read from the log) how many atoms are in this selection: 
 <a class="prompt prompt-pymol">select elem P</a>
 
 As a preparation step before docking, it is advised to remove any irrelevant water and other small molecules (e.g. small molecules from the crystallisation buffer), however do leave relevant co-factors if present. For E2A, the only irrelevant molecules in the PDB file are the water molecules. You can remove those by typing:
@@ -185,7 +185,9 @@ For this in the PyMOL menu on top select:
 Another way to save the structure as a PDB file is via the command:
 <a class="prompt prompt-pymol">save e2a_1F3G.pdb, 1F3G</a>
 
-The file will be written to the current working directory: if PyMOL was launched from a terminal, it will be saved in the directory from which PyMOL was started; if PyMOL was opened manually (e.g., via the graphical interface), it is typically saved in your home directory.
+The file will be written to the current working directory: 
+- if PyMOL was launched from a terminal, it will be saved in the directory from which PyMOL was started;
+- if PyMOL was opened manually (e.g., via the graphical interface), it is typically saved in your home directory.
 
 After saving the molecule delete it from the PyMOL window or close PyMOL. You can remove the molecule by:
 <a class="prompt prompt-pymol">
@@ -206,7 +208,7 @@ hide lines<br>
 <a class="prompt prompt-question">Is there a phosphate group present in this structure?</a>
 <a class="prompt prompt-question">Are there any irrelevant (for the docking) molecules present in this structure?</a>
 
-Let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://doi.org/10.1093/emboj/19.21.5635){:target="_blank"} the following residues were identified has having significant chemical shift perturbations:
+Let's vizualise the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://doi.org/10.1093/emboj/19.21.5635){:target="_blank"} the following residues were identified has having significant chemical shift perturbations:
 
 <a class="prompt prompt-info">15,16,17,20,48,49,51,52,54,56</a>
 
@@ -236,7 +238,7 @@ We generally recommend limiting the number of conformers used.
 Otherwise, the number of possible combinations between the input molecules can quickly escalate (i.e. become very large).
 For example, if both partners contain 10 conformers, this results in 100 possible starting combinations. If 1000 rigid-body models are generated (see [HADDOCK general concepts](#haddock-general-concepts) above), each combination would then be sampled only 10 times!
 
-In case if limiting number of input conformers is an unreasonable choice, it is possible to increase the number of models generated in the rigid-body docking stage (it0).
+If limiting the number of input conformers is an unreasonable choice, it is possible to increase the number of models generated in the rigid-body docking stage (it0).
 However, this requires elevated permissions level on the HADDOCK 2.4 server, which you can request via "[User Dashboard](https://wenmr.science.uu.nl/dashboard){:target="_blank"}". 
 
 Now let's display all models of this NMR ensemble simultaneously in ribbon representation. 
@@ -248,7 +250,7 @@ set all_states, on<br>
 </a>
 
 You should now be seeing the 30 conformers present in this NMR structure.
-It may appear that conformations are fairly conserved across all 30 models, but let us look at the side chains of the active residues:
+At first, it may appear that conformations are fairly conserved across all 30 models, but let us look at the side chains of the active residues:
 <a class="prompt prompt-pymol">
 show lines, hpr_active<br>
 </a>
@@ -258,7 +260,7 @@ show lines, hpr_active<br>
 </figure>
 
 You should now be able to observe the range of conformational space sampled by these surface side chains. 
-Some residues clearly adopt a wide variety of conformations, and one of these might lead to much better docking results.
+Some residues clearly adopt a wide variety of conformations, and one of these might resemble the bound conformation, hence leading to much better docking results.
 This illustrates the potential benefit of using an ensemble of conformations as starting points rather than a single structure, especially when there is no clear indication of which 1 out of the 30 models would be best for the docking.
 
 As final step, save the molecule as a new PDB file which we will call *hpr-ensemble.pdb*. 
@@ -285,12 +287,13 @@ HADDOCK supports a number of modified amino acids, which can be found at: [https
 
 <a class="prompt prompt-question">Check the list of supported modified amino acids. What is the proper residue name for a phosphorylated histidine in HADDOCK?</a>
 
-To use a modified amino acid in HADDOCK, it is sufficient to edit the PDB file and change the residue name of the corresponding residue. There is no need to add or delete atoms - HADDOCK will take care of this automatically.
+To use a modified amino acid in HADDOCK, it is sufficient to edit the PDB file and change the residue name of the corresponding residue. There is no need to add or delete atoms - HADDOCK will take care of removing the irrelevant atoms and building the missing atoms automatically while generating the topology of the system.
+
 
 To introduce this modification:
 <a class="prompt prompt-info">Open the PDB file *e2a_1F3G.pdb* in your favorite text editor</a>
-<a class="prompt prompt-info">Find histidine with residue sequence number equal to 90</a> 
-Remember that residue sequence number is the second integer value in the line starting with "ATOM". Check [this link](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html){:target="_blank"} for more info.
+<a class="prompt prompt-info">Find the histidine with residue sequence number equal to 90</a> 
+Remember that residue sequence number is the second integer value in the coordinate lines (starting with "ATOM" or "HETATM"). Check [this link](https://cupnet.net/pdb-format/){:target="_blank"} for more info.
 <a class="prompt prompt-info">Change this residue name to NEP</a>
 <a class="prompt prompt-info">Save the file under a new name, e.g. *e2aP_1F3G.pdb*</a>
 
@@ -306,13 +309,13 @@ After successful validation of credentials, scroll down to "Services", locate **
 
 #### HADDOCK submission: Input data
 
-Locate "[Submit a new job](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"}" button. Note that you are now in "Input data" tab.
+Locate and click on the "[Submit a new job](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"}" button. Note that you are now in "Input data" tab.
 
 In this stage of the submission process we will upload the structures we previously prepared with PyMOL.
 
 * **Step1:** In the field "Job name", define a name for your docking run, e.g. *E2A-HPR*.
 
-* **Step2:** In the field "Number of molecules", select the number of molecules to dock, in this case 2.
+* **Step2:** In the field "Number of molecules", select the number of molecules to dock, in this case 2,  which is the default value. 
 
 * **Step3:** In the section "Molecule 1 - input", upload the PDB file for E2A.   
 
@@ -324,7 +327,7 @@ PDB structure to submit -> Browse and select *e2aP_1F3G.pdb* (the file you edite
 </a>
 
 Leave all other options to their default values. 
-**_Note_** that you can fold and unfold the "Molecule 1 - input" section by clicking on the ▼ icon. This works for any section and subsection of HADDOCK server.
+**_Note_** that you can fold and unfold the "Molecule 1 - input" section by clicking on the ▼ icon. This works for any section and subsection of HADDOCK2.4 server.
 
 * **Step4:** In the subsection "Molecule 2 - input", upload the PDB file for HPR. 
 
@@ -348,7 +351,7 @@ If processing and validation of the input files run without errors, you will be 
 
 ##### Definition of restraints
 
-In this tab, we will define distance restraints by specify active residues for each molecule.
+In this tab, we will define distance restraints by specifying active residues for each molecule.
 
 * **Step 6:** In the section "Molecule 1 - parameters", in the subsection "Active/Passive residues - Selection #1", in the field "Active residues (directly involved in the interaction)", specify the active residues for E2A.
 
@@ -418,13 +421,13 @@ At first your job will have status "Processed", then "Queued", and eventually it
 
 This run will take between 30 minutes to several hours - depending on the load of the server. You will be notified by email once your job has been completed. The results will remain accessible for a week. 
 
-You do not have to keep this page open, all resent jobs can be accessed via the "[Workspace](https://wenmr.science.uu.nl/haddock2.4/workspace){:target="_blank"}" button in the navigation bar.
+You do not have to keep this page open, all recent jobs can be accessed via the "[Workspace](https://wenmr.science.uu.nl/haddock2.4/workspace){:target="_blank"}" button in the navigation bar.
 
 <hr>
 ## Analysing the results
 
 Once your run has completed (you will also be notified by email about it) you will be presented with a result page showing the cluster statistics and graphical representation of the run. 
-An example output page for E2A-HPR docking can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/195967-E2A-HPR){:target="_blank"} - just in case you don't want to wait for the results of your docking run.
+An example output page for E2A-HPR docking can be found [here](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/195967-E2A-HPR){:target="_blank"} - just in case you don't want to wait for the results of your own docking run.
 
 <figure align="center">
 <img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/HADDOCK-result-page.png">
@@ -442,7 +445,7 @@ The score for each model is calculated as:
 <pre>
       HADDOCK_score = 1.0 * E_vdw + 0.2 * E_elec + 1.0 * E_desol + 0.1 * E_air,
 </pre>
-where *E_vdw* is the intermolecular van der Waals energy, *E_elec* is the intermolecular electrostatic energy, *E_desol* represents an empirical desolvation energy term adapted from Fernandez-Recio *et al.* J. Mol. Biol. 2004, and *E_air* is a penalty for violation of the restraints. 
+where *E_vdw* is the intermolecular van der Waals energy, *E_elec* is the intermolecular electrostatic energy, *E_desol* represents an empirical desolvation energy term adapted from [Fernandez-Recio *et al.* J. Mol. Biol. 2004](https://www.sciencedirect.com/science/article/pii/S0022283603013755){:target="_blank"}, and *E_air* is a penalty for violation of the restraints. 
 
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations. Is the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
 
@@ -461,7 +464,7 @@ In case the scores of various clusters are within standard deviation from each o
 <hr>
 ## Visualisation
 
-HADDOCK server integrates the NGL viewer which allows you to quickly visualize a specific structure among clustered. For that click on the "eye" icon next to a structure.
+HADDOCK server integrates the NGL viewer which allows you to quickly visualize a specific structure among clustered ones. For that click on the "eye" icon next to a structure.
 
 In order to compare the various clusters we will however download the models and inspect them using PyMol.
 <a class="prompt prompt-info">Download and save to disk the first model of each cluster (use the PDB format). To do it, search for the "download all cluster files" link just above the top-ranked cluster.</a>
@@ -538,7 +541,7 @@ zoom vis<br>
 
 Now inspect each cluster in turn and check if histidine 90 of E2A is in close proximity to another histidine of HPR.
 
-<a class="prompt prompt-question">Based on this analysis, which cluster fits biological information the mos does satisfy best the biological information? Is this cluster also the best ranked one?</a>
+<a class="prompt prompt-question">Based on this analysis, which cluster fits available the biological information best? Is this cluster also the best ranked one?</a>
 
 <hr>
 ## Comparison with the reference structure
@@ -557,7 +560,7 @@ The numbering of chain B in this structure is different from the HPR numbering i
 <a class="prompt prompt-pymol">
 alter (chain B and 1GGR), resv -=300<br>
 </a>
-This shift is critical for the RMDS calculation described below!
+This shift is critical for appropriate residue mapping when performing the RMDS calculation described below!  
 
 Let's superimpose all cluster representatives on the chain A of the reference structure:
 <a class="prompt prompt-pymol">
