@@ -6,6 +6,8 @@ image:
 ---
 ## 2026
 
+* R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.64898/2026.04.25.720800). _BioRxiv_ 10.64898/2026.04.25.720800 (2026)
+
 * S. Grill-Walcher, A. Breitwieser, M. Afzal, D. Pum, **A.M.J.J. Bonvin**, C. Oostenbrink and C. Schäffer. Molecular Insights into the Dual-Glycoprotein Surface-Layer of the oral bacterium Tannerella serpentiformis. _Journal of Molecular Graphics and Modelling_ In press (2026).
 
 * R. Versini, M. Baaden, **A.M.J.J. Bonvin**, P. Fuchs and A. Taly. [Full-Length Structural Modeling of Mitofusins with AlphaFold Reveals a Novel Cross-Type Dimerization and Insights into Oligomerization](https://doi.org/10.64898/2026.04.10.717648). _BioRxiv_ 10.64898/2026.04.10.717648 (2026)
