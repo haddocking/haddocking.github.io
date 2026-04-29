@@ -6,6 +6,21 @@ comments: false
 image:
   feature: pages/banner_software.jpg
 ---
+
+### Changes - version March 2026 (haddock2.5 only)
+- Added missing improper parameters for NGA glycan
+- Correct bug causing automatic reduction of the cluster size for reclustering to fail
+- Added support for THR glycosylation
+
+
+### Changes - version August 2025 (haddock2.5 only)
+- Increased some array size parameters in the provided CNS code
+- Added support for pyro-glutamic acid (PCA)
+- Modified analysis to write stage-specific CNS average job files
+- Simplified CNS execution scripts
+- Added check of coordinates for consistency with the PDB format
+
+
 ### Changes - version December 2024 (haddock2.5 only)
 - Removed the minimisation of fully flexible regions during topology generation
 - Changed nucleic acid oxygen phosphage naming to OP1/OP2 (inline with PDB naming)
@@ -76,7 +91,7 @@ image:
 - Added beta sialic acid (SIB), and additional linkages between glycans
 - Added modified DNA baseJ (DJ)
 - Corrected issue with automatic his protonation state
-- Added automatic definition of restraints to maintain ions in their coordination sphere.
+- Added automatic definition of restraints to maintain ions in their coordination sphere
 - Modified analysis scripts to work with a single ligand molecule
 
 
