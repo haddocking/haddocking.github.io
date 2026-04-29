@@ -1437,7 +1437,19 @@ This difference is most probably a consequence of the clustering step carried ou
 
 ## Biological insights
 
-The E2A-HPR complex is involved in phosphate-transfer, in which a phosphate group attached to histidine 90 of E2A (which we named NEP) is transferred to a histidine of HPR. As such, the docking models should make sense according to this information, meaning that two histidines should be in close proximity at the interface. Using PyMOL, check the various cluster representatives (we are assuming here you have performed all PyMOL commands of the previous section):
+The E2A-HPR complex is involved in phosphate-transfer, in which a phosphate group attached to histidine 90 of E2A (which we named NEP) is transferred to a histidine of HPR. As such, the docking models should make sense according to this information, meaning that two histidines should be in close proximity at the interface. Using PyMOL, check the various cluster representatives:
+
+<a class="prompt prompt-pymol">File menu -> Open -> select cluster1_1.pdb</a>
+
+Repeat this for each cluster. Once all files have been loaded, type in the PyMOL command window:
+
+<a class="prompt prompt-pymol">
+show cartoon<br>
+util.cbc<br>
+hide lines<br>
+</a>
+
+And check the histidines of the system (including NEP):
 
 <a class="prompt prompt-pymol">
 select histidines, resn HIS+NEP<br>
