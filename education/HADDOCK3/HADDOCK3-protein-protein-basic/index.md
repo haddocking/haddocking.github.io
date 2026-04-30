@@ -1515,7 +1515,7 @@ zoom vis<br>
 Now inspect each cluster in turn and check if histidine 90 of E2A is in close proximity to another histidine of HPR.
 To facilitate this analysis, view each cluster in turn (use the right panel to activate/desactivate the various clusters by clicking on their name).
 
-<a class="prompt prompt-question">Based on this analysis, which cluster does satisfy best the biolocal information?</a>
+<a class="prompt prompt-question">Based on this analysis, which cluster does satisfy best the biolocal information? (note: in principle the analysis done above and the caprieval results should allow you to already answer those questions.)</a>
 
 <a class="prompt prompt-question">Is this cluster also the best ranked one?</a>
 
