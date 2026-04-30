@@ -47,14 +47,13 @@ Further we are providing pre-processed PDB files for docking and analysis (but t
 preprocessing of those files will also be explained in this tutorial). The files have been processed
 to facilitate their use in HADDOCK and for allowing comparison with the known reference
 structure of the complex. For this _download and unzip the following_
-[zip archive](){:target="_blank"}
+[zip archive](https://surfdrive.surf.nl/s/2RmROYLP4HcNZ1V){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. In it you should find the following directories:
 
-* `haddock3`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
+* `workflows`: Contains HADDOCK3 configuration and job files for the various scenarios in this tutorial
 * `pdbs`: Contains the pre-processed PDB files
-* `plots`: Contains pre-generated html plots for the various scenarios in this tutorial
 * `restraints`: Contains the interface information and the correspond restraint files for HADDOCK
-* `runs`: Contains pre-calculated (partial) run results for the various scenarios in this tutorial
+* `runs`: Contains pre-calculated run results for the various scenarios in this tutorial (plots can be found in this folder)
 * `scripts`: Contains a variety of scripts used in this tutorial
 
 
