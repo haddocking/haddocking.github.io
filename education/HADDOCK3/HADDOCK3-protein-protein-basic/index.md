@@ -124,7 +124,9 @@ restraints can, however, be used in HADDOCK3, which also supports the
 </figure>
 
 To keep HADDOCK3 modules organized, we catalogued them into several
+categories. However, there are no constraints on piping modules of different
 categories.
+
 The main module categories are "topology", "sampling", "refinement",
 "scoring", and "analysis". There is no limit to how many modules can belong to a
 category. Modules are added as developed, and new categories will be created
@@ -133,6 +135,7 @@ all categories and modules. Below is a summary of the available modules:
 
 * **Topology modules**
     * `topoaa`: *generates the all-atom topologies for the CNS engine.*
+    * `topocg`: *generates coarse-grained topologies from the all-atom structures for the CNS engine.*
 * **Sampling modules**
     * `rigidbody`: *Rigid body energy minimization with CNS (`it0` in haddock2.x).*
     * `lightdock`: *Third-party glow-worm swam optimization docking software.*
@@ -141,6 +144,7 @@ all categories and modules. Below is a summary of the available modules:
     * `emref`: *Refinement by energy minimisation (`itw` EM only in haddock2.4).*
     * `mdref`: *Refinement by a short molecular dynamics simulation in explicit solvent (`itw` in haddock2.X).*
     * `openmm`: *Molecular Dynamics refinement module.*
+    * `cgtoaa`: *Backmapping of a coarse-grained structure to its all-atom counterpart. the `topocg`.*
 * **Scoring modules**
     * `emscoring`: *scoring of a complex performing a short EM (builds the topology and all missing atoms).*
     * `mdscoring`: *scoring of a complex performing a short MD in explicit solvent + EM (builds the topology and all missing atoms).*
@@ -170,6 +174,30 @@ combining a multitude of independent modules that perform specialized tasks.
 <hr>
 
 ## Software requirements
+
+In order to follow this tutorial you will need to work on a Linux or MacOSX
+system. We will also make use of [**PyMOL**](https://www.pymol.org/){:target="_blank"} (freely available for
+most operating systems) in order to visualize the input and output data. We will
+provide you links to download the various required software and data.
+
+Further, we are providing pre-processed PDB files for docking and analysis (but the
+preprocessing of those files will also be explained in this tutorial). The files have been processed
+to facilitate their use in HADDOCK and to allow comparison with the known reference
+structure of the complex. 
+
+### Data setup
+
+If you are running this tutorial on your own resources _download and unzip the following_
+[zip archive](LINK MISSING){:target="_blank"}
+_and note the location of the extracted PDB files in your system_. 
+
+Unziping the file will create the `HADDOCK3-protein-protein` directory which should contain the following directories and files:
+
+* `pdbs`: a directory containing the pre-processed PDB files
+* `restraints`: a directory containing the interface information and the corresponding restraint files for HADDOCK3
+* `runs`: a directory containing pre-calculated results
+* `scripts`: a directory containing various scripts used in this tutorial
+* `workflows`: a directory containing configuration file examples for HADDOCK3
 
 
 ### Installing HADDOCK3
@@ -204,11 +232,7 @@ Throughout this step, we will use `pdb-tools` from the command line.
 _**Note**_ that `pdb-tools` is also available as a [web service](https://wenmr.science.uu.nl/pdbtools/){:target="_blank"}.
 
 
-_**Note**_: Before starting to work on the tutorial, make sure to activate haddock3 (follow the workshop-specific instructions above), or, e.g. if installed using `conda`
-
-<a class="prompt prompt-cmd">
-conda activate haddock3
-</a>
+_**Note**_: Before starting to work on the tutorial, make sure to activate the haddock3 environment (either venv or conda, see the installation instructions in the github [README](https://github.com/haddocking/haddock3/blob/main/README.md)).
 
 
 <hr>
@@ -386,8 +410,9 @@ This will be usefull in the docking phase, as HADDOCK3 needs different chain ass
 ## Defining restraints for docking
 
 Before setting up the docking we need first to generate distance restraint files
-in a format suitable for HADDOCK.  HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational
-engine. A description of the format for the various restraint types supported by
+in a format suitable for HADDOCK. 
+HADDOCK uses [CNS][link-cns]{:target="_blank"} as computational engine. 
+A description of the format for the various restraint types supported by
 HADDOCK can be found in our [Nature Protocol][nat-pro]{:target="_blank"} paper, Box 4.
 
 Distance restraints are defined as:
@@ -397,11 +422,23 @@ assign (selection1) (selection2) distance, lower-bound correction, upper-bound c
 </pre>
 
 The lower limit for the distance is calculated as: distance minus lower-bound
-correction and the upper limit as: distance plus upper-bound correction.  The
-syntax for the selections can combine information about chainID - `segid`
-keyword -, residue number - `resid` keyword -, atom name - `name` keyword.
-Other keywords can be used in various combinations of OR and AND statements.
-Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"}.
+correction and the upper limit as: distance plus upper-bound correction.  
+
+The syntax for the selections can combine information about:
+
+* chainID - `segid` keyword
+* residue number - `resid` keyword
+* atom name - `name` keyword.
+
+Other keywords can be used in various combinations of OR and AND statements. Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"}.
+
+E.g.: a distance restraint between the CB carbons of residues 10 and 200 in chains A and B with an
+allowed distance range between 10Å and 20Å would be defined as follows:
+
+<pre style="background-color:#DAE4E7">
+assign (segid A and resid 10 and name CB) (segid B and resid 200 and name CB) 20.0 10.0 0.0
+</pre>
+
 
 <hr>
 
