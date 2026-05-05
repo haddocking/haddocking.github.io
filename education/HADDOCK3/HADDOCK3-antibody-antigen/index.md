@@ -19,8 +19,32 @@ This tutorial demonstrates the use of the new modular HADDOCK3 version for predi
 the structure of an antibody-antigen complex using knowledge of the hypervariable loops
 on the antibody (i.e., the most basic knowledge) and epitope information identified from NMR experiments for the antigen to guide the docking.
 
-This tutorial was recorded at the BioExcel Sofia Workshop in May 2025:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0pLOPev3ni0?si=RaI2lT7iX9USleZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+The command line version of this tutorial was recorded at the BioExcel Sofia Workshop in May 2025:
+<ul>
+  <details>
+  <summary><li>View recorded command line tutorial</li>
+  </summary>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0pLOPev3ni0?si=RaI2lT7iX9USleZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</details> 
+</ul>
+
+And the Jupyter notebook version was recorded at the ASEAN ASM HPC school in Kope, Japan, in January 2026:
+  
+<ul>
+<details>
+  <summary><li>View recorded Jupyter notebook HADDOCK3 practical Part I (46 min.)</li>
+  </summary>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/yh60TdXKi2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</details> 
+</ul>
+  
+<ul>
+<details>
+  <summary><li>View recorded Jupyter notebook HADDOCK3 practical Part II (46 min.)</li>
+  </summary>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iAGIuaJ5ZtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+</details>
+</ul>
 
 <br>
 An antibody is a large protein that generally works by attaching itself to an antigen,
@@ -183,7 +207,7 @@ If you are running this tutorial on your own resources _download and unzip the f
 [zip archive](https://surfdrive.surf.nl/public.php/dav/files/R7VHGQM9nx8QuQn){:target="_blank"}
 _and note the location of the extracted PDB files in your system_. 
 
-_If running as part of the ASM HPC/AI school or a BioExcel workshop or summerschool see the instructions in the respective next sections._
+_If running as part of a BioExcel workshop or summerschool see the instructions in the respective next sections._
 
 _Note_ that you can also download and unzip this archive directly from the Linux command line:
 
@@ -214,7 +238,89 @@ This tutorial was last tested using HADDOCK3 version 2024.10.0b7. The provided p
 
 <hr>
 
+### BioExcel summerschool, Pula, Sardinia June 2026
+
+
+For this tutorial you can either:
+
+ * work at the command line,
+ * or start a Jupyter notebook from the command line (simpler). 
+
+<p>
+We will be making use of the local computers for this tutorial. 
+The software and data required for this tutorial have been pre-installed.
+</p>
+
+<p>
+In order to run the tutorial, go into the 
+<code>HADDOCK3-antibody-antigen</code> directory and activate the HADDOCK3 environment:
+</p>
+
+<a class="prompt prompt-cmd">cd ~/BioExcel_SS_2026/HADDOCK/HADDOCK3-antibody-antigen</a>
+
+<p>
+This directory contains all necessary data and scripts to run this tutorial.  
+</p>
+
+<a class="prompt prompt-cmd">haddock3env</a>
+
+<p>
+which is an alias for:<br>
+<code>source ~/BioExcel_SS_2026/HADDOCK/haddock3/.venv/bin/activate</code>
+</p>
+
+<p>
+You can then test that <code>haddock3</code> is accessible with:
+</p>
+
+<a class="prompt prompt-cmd">haddock3 -h</a>
+You should see a small help message explaining how to use the software.
+
+<details style="background-color:#DAE4E7">
+<summary>
+<i>View output</i><i class="material-icons">expand_more</i>
+</summary>
+<pre>
+  (haddock3)$ haddock3 -h
+  usage: haddock3 [-h] [--restart RESTART] [--extend-run EXTEND_RUN] [--setup]
+                  [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v]
+                  recipe
+
+  positional arguments:
+    recipe                The input recipe file path
+
+    optional arguments:
+      -h, --help            show this help message and exit
+     --restart RESTART      Restart the run from a given step. Previous folders from the
+                            selected step onward will be deleted.
+      --extend-run EXTEND_RUN
+                            Start a run from a run directory previously prepared with the
+                            `haddock3-copy` CLI. Provide the run directory created with
+                            `haddock3-copy` CLI.
+      --setup               Only setup the run, do not execute
+      --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+      -v, --version         show version
+</pre>
+</details>
+
+<p>
+If you rather work through a Jupyter notebook, then type the following command (inside the `HADDOCK3-antibody-antigen` directory):
+</p>
+
+<a class="prompt prompt-cmd">jupyter notebook HADDOCK3-antibody-antigen.ipynd</a>
+
+<p>
+This will open a window in your browser. From there follow the instructions in that window.
+</p>
+
+<hr>
+
+
 ### BioExcel Adriatic edition 2026, Ljubljana, Slovenia
+<details>
+  <summary style="font-weight:bold; cursor:pointer;">
+    <i>click to expand</i>
+  </summary>
 
 You can either:
 
@@ -283,11 +389,12 @@ optional arguments:
 </pre>
 </details>
 <br>
+</details>
 
 <hr>
 
-### ASM 2026 HPC/AI school, Kobe, Japan, February 2026
 
+### ASM 2026 HPC/AI school, Kobe, Japan, February 2026
 
 <details>
   <summary style="font-weight:bold; cursor:pointer;">
@@ -365,75 +472,6 @@ optional arguments:
 </details>
 <br>
 </details>
-<hr>
-
-
-### BioExcel summerschool, Pula, Sardinia June 2025
-
-<details>
-  <summary style="font-weight:bold; cursor:pointer;">
-    <i>click to expand</i>
-  </summary>
-    <p>
-      We will be making use of the local computers for this tutorial. 
-      The software and data required for this tutorial have been pre-installed.
-    </p>
-
-    <p>
-      In order to run the tutorial, go into the 
-      <code>HADDOCK3-antibody-antigen</code> directory and activate the HADDOCK3 environment:
-    </p>
-
-    <a class="prompt prompt-cmd">cd ~/BioExcel_SS_2025/HADDOCK/HADDOCK3-antibody-antigen</a>
-
-    <p>
-      This directory contains all necessary data and scripts to run this tutorial.  
-      To activate the HADDOCK3 environment type:
-    </p>
-
-    <a class="prompt prompt-cmd">haddock3env</a>
-
-    <p>
-      which is an alias for:<br>
-      <code>source ~/BioExcel_SS_2025/HADDOCK/haddock3/.venv/bin/activate</code>
-    </p>
-
-    <p>
-      You can then test that <code>haddock3</code> is accessible with:
-    </p>
-
-    <a class="prompt prompt-cmd">haddock3 -h</a>
-  You should see a small help message explaining how to use the software.
-
-    <details style="background-color:#DAE4E7">
-      <summary>
-      <i>View output</i><i class="material-icons">expand_more</i>
-    </summary>
-      <pre>
-      (haddock3)$ haddock3 -h
-      usage: haddock3 [-h] [--restart RESTART] [--extend-run EXTEND_RUN] [--setup]
-                      [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v]
-                      recipe
-
-      positional arguments:
-        recipe                The input recipe file path
-
-      optional arguments:
-        -h, --help            show this help message and exit
-        --restart RESTART     Restart the run from a given step. Previous folders from the
-                              selected step onward will be deleted.
-        --extend-run EXTEND_RUN
-                              Start a run from a run directory previously prepared with the
-                              `haddock3-copy` CLI. Provide the run directory created with
-                              `haddock3-copy` CLI.
-        --setup               Only setup the run, do not execute
-        --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
-        -v, --version         show version
-      </pre>
-    </details>
-  <br>
-  </details>
-
 <hr>
 
 
@@ -1323,6 +1361,11 @@ This run should take about 25 minutes to complete on a single node using 48 arm 
 
 #### Execution of HADDOCK3 on ADD Ljubljana (BioExcel Adriatic edition 2026, Ljubljana, Slovenia)
 
+<details style="background-color:#DAE4E7">
+  <summary style="bold">
+    <i>View execution instructions for running HADDOCK3 on the ADD cluster</i> <i class="material-icons">expand_more</i>
+  </summary>
+
 To execute the workflow, you can either start an interactive session or create a job file that will execute HADDOCK3 on a node, 
 with HADDOCK3 running in local mode (the setup in the above configuration file with <i>mode="local"</i>) and harvesting all core of that node (<i>ncores=16</i>).
 <br>
@@ -1388,6 +1431,8 @@ tail -f haddock3_run_log.txt
 {% endhighlight %}
 
 This run should take around 20 minutes to complete on a single node using 16 arm cores.
+
+</details>
 
 
 <hr>
