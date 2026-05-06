@@ -8,7 +8,7 @@ image:
 
 * R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.64898/2026.04.25.720800). _BioRxiv_ 10.64898/2026.04.25.720800 (2026)
 
-* S. Grill-Walcher, A. Breitwieser, M. Afzal, D. Pum, **A.M.J.J. Bonvin**, C. Oostenbrink and C. Schäffer. Molecular Insights into the Dual-Glycoprotein Surface-Layer of the oral bacterium Tannerella serpentiformis. _Journal of Molecular Graphics and Modelling_ In press (2026).
+* S. Grill-Walcher, A. Breitwieser, M. Afzal, D. Pum, **A.M.J.J. Bonvin**, C. Oostenbrink and C. Schäffer. [Molecular Insights into the Dual-Glycoprotein Surface-Layer of the oral bacterium Tannerella serpentiformis](https://doi.org/10.1016/j.jmgm.2026.109413). _Journal of Molecular Graphics and Modelling_ *146*, 109413 (2026).
 
 * R. Versini, M. Baaden, **A.M.J.J. Bonvin**, P. Fuchs and A. Taly. [Full-Length Structural Modeling of Mitofusins with AlphaFold Reveals a Novel Cross-Type Dimerization and Insights into Oligomerization](https://doi.org/10.64898/2026.04.10.717648). _BioRxiv_ 10.64898/2026.04.10.717648 (2026)
 
@@ -26,7 +26,7 @@ https://doi.org/10.48550/arXiv.2603.17251). _ArXiv_ 10.48550/arXiv.2603.17251 (2
 
 * M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1101/2025.07.01.662355). _BioRxiv_ 10.1101/2025.07.01.662355 (2025).
 
-* A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. [Updates to the CASP infrastructure in 2024](https://doi.org/10.1002/prot.70042). _Proteins: Struc. Funct. &amp; Bioinformatics_. Advanced Online Publication DOI:10.1002/prot.70042 (2025).
+* A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. [Updates to the CASP infrastructure in 2024](https://doi.org/10.1002/prot.70042). _Proteins: Struc. Funct. &amp; Bioinformatics_. *94*, 15-24 (2025).
 
 * M. Lensink, N. Raouraoua, G. Brysbaert, S. Velankar, S. Wodak and **A.M.J.J. Bonvin**. [Protein-protein interaction prediction in the pre- and
 post-AlphaFold era: the 8th CAPRI evaluation](http://doi.org/10.1002/prot.70018). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication DOI:10.1002/prot.70018 (2025)
