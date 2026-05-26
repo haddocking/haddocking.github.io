@@ -216,6 +216,14 @@
     current: 'Medical University of Vienna, Austria'
     status: phd
 
+-   name: Han Kurt
+    current: 'University of Cagliari, Italy'
+    status: visiting-phd
+  
+-   name: Cintia Leal
+    current: 'University of Lorraine, France'
+    status: visiting-phd
+
 -   name: Greta Bellinzona
     current: 'University of Pavia'
     status: visiting-phd
@@ -421,21 +429,21 @@
     status: student
 
 -   name: Alkis Katsetsiadis
-    status: Student
+    status: student
 
 -   name: Ilaria-Coratella
-    status: Student
+    status: student
 
 -   name: Yara Weldam
-    status: Student
+    status: student
 
 -   name: Lorenzo Possanzini
-    status: Student
+    status: student
 
 -   name: Qingyang Yang
-    status: Student
+    status: student
 
 -   name: Emile Straat
-    status: Student
+    status: student
   
 
