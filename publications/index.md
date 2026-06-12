@@ -6,6 +6,8 @@ image:
 ---
 ## 2026
 
+* X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.1038/s42003-026-10408-4). _Commun. Biol._ Advanced Online Publication (2026). [Preprint](https://doi.org/10.64898/2025.12.03.691974)
+
 * R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.64898/2026.04.25.720800). _BioRxiv_ 10.64898/2026.04.25.720800 (2026)
 
 * S. Grill-Walcher, A. Breitwieser, M. Afzal, D. Pum, **A.M.J.J. Bonvin**, C. Oostenbrink and C. Schäffer. [Molecular Insights into the Dual-Glycoprotein Surface-Layer of the oral bacterium Tannerella serpentiformis](https://doi.org/10.1016/j.jmgm.2026.109413). _Journal of Molecular Graphics and Modelling_ *146*, 109413 (2026).
@@ -17,10 +19,6 @@ https://doi.org/10.48550/arXiv.2603.17251). _ArXiv_ 10.48550/arXiv.2603.17251 (2
 
 
 ## 2025
-
-* X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.64898/2025.12.03.691974). _BioRxiv_ 10.64898/2025.12.03.691974 (2025).
-
-* X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1101/2025.10.17.682998). _BioRxiv_ 10.1101/2025.10.17.682998 (2025).
 
 * **A.M.J.J. Bonvin** and M. Lensink. [Navigating the Pre- and Post-AlphaFold Divide: CAPRI 8th evaluation meeting, February 12-14, Grenoble, FR](https://doi.org/10.22541/au.175613473.32747661/v1), _Authorea_ Editorial to the Proteins 8th CAPRI special issue, 10.22541/au.175613473.32747661/v1 (2025).
 
