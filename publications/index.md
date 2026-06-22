@@ -6,6 +6,10 @@ image:
 ---
 ## 2026
 
+* X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1093/bib/bbag374). Briefings In Bioinformatics. 10.1093/bib/bbag374 (2026).
+
+* A. Rapti, B.J.C. Janssen and **A.M.J.J. Bonvin**. [Integrating experimental and computational approaches for protein–protein interaction discovery](https://doi.org/10.1038/s44222-026-00464-0). Nat. Rev. Bioeng. 10.1038/s44222-026-00464-0 (2026). ([free access](https://rdcu.be/fpH4Y)).
+
 * X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.1038/s42003-026-10408-4). _Commun. Biol._ Advanced Online Publication (2026). [Preprint](https://doi.org/10.64898/2025.12.03.691974)
 
 * R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.64898/2026.04.25.720800). _BioRxiv_ 10.64898/2026.04.25.720800 (2026)
