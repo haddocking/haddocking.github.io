@@ -232,12 +232,12 @@ These can be combined with logical operators AND, OR to construct more complex d
 Please refer for that to the [online CNS manual](http://cns-online.org/v1.3/){:target="_blank"} for more info.
 
 
-AIRs file (`.tbl`) can be generated using the `haddock3-restraints` command line tool (installed with haddock3) or a version [web version](https://rascar.science.uu.nl/haddock-restraints){:target="_blank"}. 
+AIRs file (`.tbl`) can be generated using the `haddock3-restraints` command line tool (installed with haddock3) or a version [web version](https://wenmr.science.uu.nl/haddock-restraints){:target="_blank"}. 
 We will explain how to use this tool shortly, but first we need to identify which residues participate in the interaction - both active and passive.
 
 ### Defining active residues for protein
 
-[ARCTIC-3D](https://rascar.science.uu.nl/arctic3d/){:target="_blank"} is a data-mining tool that clusters all known interfaces of a protein, grouping similar interaction sites into residue sets that are likely to participate in binding.
+[ARCTIC-3D](https://wenmr.science.uu.nl/arctic3d/){:target="_blank"} is a data-mining tool that clusters all known interfaces of a protein, grouping similar interaction sites into residue sets that are likely to participate in binding.
 For mouse MDM2, no structural information is currently available, however, such data exists for its human homolog.
 To define plausible active residues in mouse MDM2, we applied ARCTIC-3D to the human protein and transferred the results onto mouse variant.
 Resulting residues were filtered based on their solvent accessibility:

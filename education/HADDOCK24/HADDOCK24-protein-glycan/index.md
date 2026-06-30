@@ -313,7 +313,7 @@ Currently your run should be queued but eventually its status will change to "Ru
 
 The page will automatically refresh and the results will appear upon completion of the run (which can take between 1/2 hour to several hours depending on the size of your system and the load of the server). You will be notified by email once your job has successfully completed.
 
-If you do not wish to wait for the run to finish, you can find the results of the run [at this link](https://rascar.science.uu.nl/haddock2.4/result/4242424242/488462-2zex-modeling).
+If you do not wish to wait for the run to finish, you can find the results of the run [at this link](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/488462-2zex-modeling).
 
 <hr>
 <hr>
@@ -326,7 +326,7 @@ If you do not wish to wait for the run to finish, you can find the results of th
 
 Once your run has completed you will be presented with a result page showing the cluster statistics and some graphical representation of the data (and if registered, you will also be notified by email).
 
-In case you do not want to wait for your runs to be finished, a precalculated run can be found [here](https://rascar.science.uu.nl/haddock2.4/result/4242424242/488462-2zex-modeling).
+In case you do not want to wait for your runs to be finished, a precalculated run can be found [here](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/488462-2zex-modeling).
 
 <a class="prompt prompt-question">Inspect the result page</a>
 
@@ -525,7 +525,7 @@ The first line is a comment. The second and third lines contain the information 
 
 * **Step 5:** Click on the **Submit** button at the bottom left of the interface.
 
-You can inspect the results of a precalculated run [here](https://rascar.science.uu.nl/haddock2.4/result/4242424242/488508-2zex-modeling-bonus).
+You can inspect the results of a precalculated run [here](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/488508-2zex-modeling-bonus).
 
 <a class="prompt prompt-question">How many clusters are generated? Is the first cluster unambiguously better than the second and third ones? Are the HADDOCK scores better than in the previous case?</a>
 

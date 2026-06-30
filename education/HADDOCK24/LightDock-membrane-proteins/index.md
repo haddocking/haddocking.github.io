@@ -15,7 +15,7 @@ This tutorial consists of the following sections:
 
 ## Introduction
 
-This tutorial demonstrates the use of [LightDock](https://lightdock.org){:target="_blank"} for predicting the structure of membrane receptor–soluble protein complex using the topological information provided by the membrane to guide the modeling process. The resulting LightDock models are then refined using [HADDOCK2.4 webserver](https://haddock.science.uu.nl/haddock2.4/). We will be following the protocol described in [Roel-Touris *et al*, 2020](https://www.nature.com/articles/s41467-020-20076-5){:target="_blank"}.
+This tutorial demonstrates the use of [LightDock](https://lightdock.org){:target="_blank"} for predicting the structure of membrane receptor–soluble protein complex using the topological information provided by the membrane to guide the modeling process. The resulting LightDock models are then refined using [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4/). We will be following the protocol described in [Roel-Touris *et al*, 2020](https://www.nature.com/articles/s41467-020-20076-5){:target="_blank"}.
 
 Membrane proteins are among the most challenging systems to study with experimental structural biology techniques, thus computational techniques such as docking might offer invaluable insights on the modeling of those systems.
 
@@ -30,7 +30,7 @@ In this tutorial we will be working with the crystal structure  of _Mus musculus
 
 <hr>
 
-For this tutorial we will make use of the [HADDOCK2.4 webserver](https://haddock.science.uu.nl/haddock2.4){:target="_blank"} and [LightDock software](https://lightdock.org/){:target="_blank"}.
+For this tutorial we will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"} and [LightDock software](https://lightdock.org/){:target="_blank"}.
 
 {% include paper_citation.html key="haddock24" %}
 
@@ -74,7 +74,7 @@ For more information about LightDock, please visit the [tutorials section](https
 
 In order to run this tutorial you will need to have the following software installed: [LightDock][link-lightdock], [pdb-tools][link-pdbtools] and [PyMOL][link-pymol].
 
-Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://haddock.science.uu.nl/auth/register/haddock](https://haddock.science.uu.nl/auth/register/haddock){:target="_blank"}.
+Also, if not provided with special workshop credentials to use the HADDOCK portal, make sure to register in order to be able to submit jobs. Use for this the following registration page: [https://wenmr.science.uu.nl/auth/register/haddock](https://wenmr.science.uu.nl/auth/register/haddock){:target="_blank"}.
 
 
 ### Installing LightDock

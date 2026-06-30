@@ -146,7 +146,7 @@ When done, press Download Minimized Structure and download the PDB file.</a>
 Unfortunately, the glycan structure we just obtained cannot be directly used in HADDOCK as the formant and the residue 
 and atom naming differ from the conventions used in HADDOCK (which follow the naming in the PDB).
 We will need to edit it to remove the several TER statements GLYCAM placed between the monosaccharides, 
-and to add the [HADDOCK residue name](https://rascar.science.uu.nl/haddock2.4/library){:target="_blank"} 
+and to add the [HADDOCK residue name](https://wenmr.science.uu.nl/haddock2.4/library){:target="_blank"} 
 proper to beta-D-glucopyranose. Importantly, we have to merge the OH aglycon with the first monosaccharide unit, 
 as they are now separated in two different residues.
 
