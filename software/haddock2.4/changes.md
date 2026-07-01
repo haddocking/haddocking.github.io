@@ -7,6 +7,17 @@ image:
   feature: pages/banner_software.jpg
 ---
 
+### Changes - version July 2026
+- Added support for glucosamine (GCS)
+- Added support for O-glycosylated serine
+- Added support for GalNAc-OMe
+- Fixed issue in automatic flexibility definition (introduced in May)
+
+
+### Changes - version May 2026
+- Excluded water for the definition of flexible segments
+
+
 ### Changes - version March 2026 (haddock2.5 only)
 - Added missing improper parameters for NGA glycan
 - Correct bug causing automatic reduction of the cluster size for reclustering to fail
