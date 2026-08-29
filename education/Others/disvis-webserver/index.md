@@ -208,7 +208,7 @@ This number can of course be changed when using the local version of DisVis.
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
 page (you will also receive an email notification).
 
-If you don't' want to wait for your run to complete, you can access the precalculated results of a run submitted
+If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
 with the same input [here](https://wenmr.science.uu.nl/disvis/tutorial){:target="_blank"}.
 
 The results page presents a summary split into several sections:
@@ -246,16 +246,15 @@ their z-Score and their violation frequency for a specific number of restraints.
 crosslinks with the highest number of violations. The DisVis web server preformats the results in a way that false positive restraints
 are highlighted and can be spotted at a glance.
 
-In our case, you should observe that DisVis found solutions consistent with up to 6 restraints indicating that there might be three false positive restraints.Taking a closer look at the violations table might already be enough to determine which residues are most likely True false positives.
-In this example two restraints are violated in all complexes consistent with 6 restrains and are thus the most likely candidates:
+In our case, you should observe that DisVis found solutions consistent with up to 8 restraints indicating that there might be three false positive restraints.Taking a closer look at the violations table might already be enough to determine which residues are most likely True false positives.
+In this example one restraint is violated in all complexes consistent with 8 restrains and are thus the most likely candidates:
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
 <center><b>A164(CA) - A49(CA)</b></center>
-<center><b>A49(CA) - A188(CA)</b></center>
 </details>
 
-When DisVis fails to identify complexes consistent with all provided restraints during quick scanning it is advisable to rerun with the complete scanning parameters before remove all restraints (or remove only the most violated ones and rerun with complete scanning). It is possible that a more thourough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the list of putative false positive restraints.  
+When DisVis fails to identify complexes consistent with all provided restraints during quick scanning it is advisable to rerun with the complete scanning parameters before remove all restraints (or remove only the most violated ones and rerun with complete scanning). It is possible that a more thorough sampling of the interaction space will yield complexes consistent with all restraints or at least reduce the list of putative false positive restraints.  
 
 ### DisVis output files
 
@@ -292,7 +291,7 @@ How many restraints do you need to significantly reduce the AIS? Can you explain
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary><br>
-The most significant difference can be seen when going from <b>4</b> to <b>5</b> restraints. By looking closer at the restraints,
+The most significant difference can be seen when going from <b>3</b> to <b>4</b> restraints. By looking closer at the restraints,
 we can see that two clusters of 3 and 4 residues exist. Once we add a fifth restraint, links from both clusters need to be
 fulfilled. Thus, significantly reducing the accessible interaction space.
 </details>
@@ -366,12 +365,12 @@ __Note__ _that in the context of using this information to drive the docking in 
 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary><br>
-Respectively <b>11</b> and <b>8</b> residues have been identified as important for the interaction between <b>PRE5</b>
+Respectively <b>15</b> and <b>16</b> residues have been identified as important for the interaction between <b>PRE5</b>
 and <b>PUP2</b>:<br><br>
 
- PRE5 active residues: 7, 10, 13, 15, 55, 58, 60, 82, 83, 125, 126, 127, 128, 129, 131, 133 <br>
+ PRE5 active residues: 3, 5, 8, 11, 53, 54, 55,56, 58, 60, 79, 82 , 122, 123, 124
 
- PUP2 active residues: 1, 2, 3, 5, 8, 11, 13, 15, 16, 17, 114, 121, 122, 123, 124, 140, 152, 154, 177<br><br>
+ PUP2 active residues: 13, 15, 17, 18, 19, 126, 127, 128, 129, 130, 131, 162, 164, 165, 180, 184<br><br>
 
 
 You can see the results <a href="https://wenmr.science.uu.nl/disvis/tutorial/2" target="_blank" style="color:#294fa7">here</a>
@@ -499,16 +498,16 @@ extracted from *S.cerevisiae*.
 First select and colour the key residues identified by DisVis:
 
 <a class="prompt prompt-pymol">
-color red #0:7,10,13,15,55,58,60,82,83,125,126,127,128,129,131,133
+color red #0:3, 5, 8, 11, 53, 54, 55,56, 58, 60, 79, 82 , 122, 123, 124
 </a>
 <a class="prompt prompt-pymol">
-color orange #1:1,2,3,5,8,11,13,15,16,17,114,121,122,123,124,140,152,154,177
+color orange #1:13, 15, 17, 18, 19, 126, 127, 128, 129, 130, 131, 162, 164, 165, 180, 184
 </a>
 <a class="prompt prompt-pymol">
-show #0:7,10,13,15,55,58,60,82,83,125,126,127,128,129,131,133
+show #0:3, 5, 8, 11, 53, 54, 55,56, 58, 60, 79, 82 , 122, 123, 124
 </a>
 <a class="prompt prompt-pymol">
-show #1:1,2,3,5,8,11,13,15,16,17,114,121,122,123,124,140,152,154,177
+show #1:13, 15, 17, 18, 19, 126, 127, 128, 129, 130, 131, 162, 164, 165, 180, 184
 </a>
 
 <details style="background-color:#DAE4E7">
