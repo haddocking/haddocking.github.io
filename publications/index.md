@@ -6,11 +6,11 @@ image:
 ---
 ## 2026
 
-* X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1093/bib/bbag374). Briefings In Bioinformatics. 10.1093/bib/bbag374 (2026).
+* X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1093/bib/bbag374). _Briefings In Bioinformatics._ 10.1093/bib/bbag374 (2026).
 
-* A. Rapti, B.J.C. Janssen and **A.M.J.J. Bonvin**. [Integrating experimental and computational approaches for protein–protein interaction discovery](https://doi.org/10.1038/s44222-026-00464-0). Nat. Rev. Bioeng. 10.1038/s44222-026-00464-0 (2026). ([free access](https://rdcu.be/fpH4Y)).
+* A. Rapti, B.J.C. Janssen and **A.M.J.J. Bonvin**. [Integrating experimental and computational approaches for protein–protein interaction discovery](https://doi.org/10.1038/s44222-026-00464-0). _Nat. Rev. Bioeng._ 10.1038/s44222-026-00464-0 (2026). ([free access](https://rdcu.be/fpH4Y)).
 
-* X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.1038/s42003-026-10408-4). _Commun. Biol._ Advanced Online Publication (2026). [Preprint](https://doi.org/10.64898/2025.12.03.691974)
+* X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.1038/s42003-026-10408-4). _Commun. Biol._ *9*, 1160 (2026). [Preprint](https://doi.org/10.64898/2025.12.03.691974)
 
 * R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.64898/2026.04.25.720800). _BioRxiv_ 10.64898/2026.04.25.720800 (2026)
 
@@ -21,12 +21,12 @@ image:
 * V.G.P. Reys, M. Giulini and **A.M.J.J. Bonvin**. [Integrative modelling of protein-glycan interactions with HADDOCK3](
 https://doi.org/10.48550/arXiv.2603.17251). _ArXiv_ 10.48550/arXiv.2603.17251 (2026).
 
+* M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1021/acs.jcim.6c01301). _J. Chem. Inf. Mod._ Advanced Online Publication (2026).
+
 
 ## 2025
 
 * **A.M.J.J. Bonvin** and M. Lensink. [Navigating the Pre- and Post-AlphaFold Divide: CAPRI 8th evaluation meeting, February 12-14, Grenoble, FR](https://doi.org/10.22541/au.175613473.32747661/v1), _Authorea_ Editorial to the Proteins 8th CAPRI special issue, 10.22541/au.175613473.32747661/v1 (2025).
-
-* M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1101/2025.07.01.662355). _BioRxiv_ 10.1101/2025.07.01.662355 (2025).
 
 * A. Kryshtafovych, M. Milostan, M. Lensink, S. Velankar, **A.M.J.J. Bonvin**, J. Moult and K. Fidelis. [Updates to the CASP infrastructure in 2024](https://doi.org/10.1002/prot.70042). _Proteins: Struc. Funct. &amp; Bioinformatics_. *94*, 15-24 (2025).
 
