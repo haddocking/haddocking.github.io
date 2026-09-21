@@ -14,7 +14,7 @@ image:
 
 * X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.1038/s42003-026-10408-4). _Commun. Biol._ *9*, 1160 (2026). [Preprint](https://doi.org/10.64898/2025.12.03.691974)
 
-* R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.64898/2026.04.25.720800). _BioRxiv_ 10.64898/2026.04.25.720800 (2026)
+* R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.1002/pro.70793). _Protein Science_, *10*, e70793 (2026)
 
 * S. Grill-Walcher, A. Breitwieser, M. Afzal, D. Pum, **A.M.J.J. Bonvin**, C. Oostenbrink and C. Schäffer. [Molecular Insights into the Dual-Glycoprotein Surface-Layer of the oral bacterium Tannerella serpentiformis](https://doi.org/10.1016/j.jmgm.2026.109413). _Journal of Molecular Graphics and Modelling_ *146*, 109413 (2026).
 
