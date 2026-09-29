@@ -15,7 +15,7 @@ rss: true
 
 
 # Build settings
-theme: minima
+# theme: minima  # removed: contributed no layouts, includes or styles -- only an unused assets/main.css
 permalink:   /:categories/:title/
 post_dir: false
 markdown:    kramdown

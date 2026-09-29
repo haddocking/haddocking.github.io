@@ -1,3 +1,5 @@
+@use "sass:math";
+@use "sass:color";
 // UTILITY MIXINS
 // --------------------------------------------------
 
@@ -44,25 +46,25 @@
 // ------------------------
 @mixin font-size($size) {
   font-size: 0px + $size;
-  font-size: 0rem + $size / $doc-font-size;
-  line-height: 0 + round($doc-line-height / $size*10000) / 10000;
+  font-size: 0rem + math.div($size, $doc-font-size);
+  line-height: 0 + math.div(math.round(math.div($doc-line-height, $size) * 10000), 10000);
   margin-bottom: 0px + $doc-line-height;
-  margin-bottom: 0rem + ($doc-line-height / $doc-font-size);
+  margin-bottom: 0rem + math.div($doc-line-height, $doc-font-size);
 }
 
 // Just the REMs
 // -------------
 @mixin font-rem($size) {
   font-size: 0px + $size;
-  font-size: 0rem + $size / $doc-font-size;
+  font-size: 0rem + math.div($size, $doc-font-size);
 }
 
 // Just font-size and line-height
 // ------------------------------
 @mixin font($size) {
   font-size: 0px + $size;
-  font-size: 0rem + $size / $doc-font-size;
-  line-height: 0 + round($doc-line-height / $size*10000) / 10000;
+  font-size: 0rem + math.div($size, $doc-font-size);
+  line-height: 0 + math.div(math.round(math.div($doc-line-height, $size) * 10000), 10000);
 }
 
 @mixin text-overflow() {
@@ -70,7 +72,7 @@ overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap; }
 
-$indent-var: 0rem + ($doc-line-height / $doc-font-size);
+$indent-var: 0rem + math.div($doc-line-height, $doc-font-size);
 
 // GRADIENTS
 // --------------------------------------------------
