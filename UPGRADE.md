@@ -18,12 +18,12 @@ which Jekyll are in use. Nothing in the repo arbitrates (there is still no
 | Where | Ruby | Jekyll |
 | --- | --- | --- |
 | Local workstation | 3.4.5 | 4.4.1 |
-| CI build container (`actions/jekyll-build-pages@v1.0.13`) | 3.3 | 3.10.0 (github-pages 232) |
-| Required by `Gemfile.lock` | >= 3.1 | — |
+| CI (`ruby/setup-ruby` + `bundle exec jekyll build`) | 3.4.5 (from `.ruby-version`) | 4.4.1 (from `Gemfile.lock`) |
 
-Both ends have now been moved up (local 3.0.7 -> 3.4.5, CI 2.7.4 -> 3.3), so the
-Ruby gap is down from three majors to one and both are supported releases. The
-**Jekyll** gap remains and is the real outstanding risk — see item 3.
+**Resolved.** Local and CI now run the same Ruby and the same Jekyll, both driven
+by files in this repository. `Gemfile.lock` governs the published site, so the
+dependency pins and Dependabot alerts apply to production rather than to local
+development only. Items 1-3 below record how this was reached.
 
 ---
 
@@ -40,8 +40,10 @@ it received nothing automatically. Upgrading moved the build container from
 - [x] Update the pin in `.github/workflows/jekyll-gh-pages.yml`
 - [ ] Spot-check a few rendered pages on the live site after the deploy
 
-This narrows but does not close the local/CI gap: `github-pages` has never
-shipped Jekyll 4, so local 4.x vs deployed 3.x remains (item 3).
+This narrowed but did not close the local/CI gap: `github-pages` has never
+shipped Jekyll 4. **Superseded by item 3**, which removes
+`actions/jekyll-build-pages` from both workflows entirely; the bump is recorded
+here because it was the intermediate step that shipped first.
 
 ### 2. Upgrade local Ruby and pin it — MOSTLY DONE
 
@@ -59,26 +61,48 @@ byte-identical.
 
 - [x] Install a supported Ruby locally (3.4.5)
 - [x] `bundle install` and confirm `Gemfile.lock` matches HEAD afterwards
-- [ ] Add a `.ruby-version` file so the version is recorded in-repo rather than
-      living only on one workstation
+- [x] Add a `.ruby-version` file so the version is recorded in-repo rather than
+      living only on one workstation (3.4.5; both workflows now read it)
 - [ ] Retire `check-gemfile.sh` now that the churn is gone
 
-### 3. Decide how to handle the local/CI Jekyll split
+### 3. Resolve the local/CI Jekyll split — DONE
 
-Local previews render with **Jekyll 4.4.1**; the published site is built with
-**3.9.3**. Supporting divergences: kramdown 2.5.1 vs 2.3.2, and `sass-embedded`
-vs `sassc` compiling the `style: compressed` SCSS.
+Local previews rendered with **Jekyll 4.4.1** while the published site was built
+with **3.10.0** (github-pages 232), with kramdown 2.5.1 vs 2.3.2 and
+`sass-embedded` vs `sassc` behind it. CI emitted `github-pages can't satisfy your
+Gemfile's dependencies` on every run.
 
-CI has been emitting `github-pages can't satisfy your Gemfile's dependencies` on
-every run for a long time (confirmed present on runs predating this audit). Both
-engines currently build successfully, so this is a silent-divergence risk rather
-than a live breakage.
+**Direction chosen:** move both workflows off `actions/jekyll-build-pages` to
+`ruby/setup-ruby` + `bundle exec jekyll build`. This is the only option that
+makes `Gemfile.lock` govern the published site — and therefore the only one under
+which the Dependabot alerts fixed in `6e817a9` mean anything for production. It
+is also what GitHub's own warning now recommends.
 
-- [ ] Choose a direction: accept the gap, align local to `github-pages`, or move
-      deploys to a custom Jekyll 4 workflow (`ruby/setup-ruby` + `bundle exec
-      jekyll build`) that actually honours `Gemfile.lock`
-- [ ] Whichever is chosen, make the CI warning either resolved or explicitly
-      acknowledged
+- [x] Move `jekyll-gh-pages.yml` to a native Jekyll 4 build
+- [x] Move `build.yml` to the same toolchain, so a green check predicts a green
+      deploy
+- [x] Resolve the `github-pages can't satisfy your Gemfile's dependencies` warning
+
+**Regression found and fixed during the migration.** `_layouts/home.html` listed
+recent news via `site.categories.news`, whose ordering Jekyll 4 does not
+guarantee to match Jekyll 3. Under Jekyll 4 the homepage showed news items from
+2014 instead of the current ones. Fixed with an explicit
+`| sort: 'date' | reverse`, which behaves identically on both engines. The
+`/news/` index was unaffected (it uses `site.posts`), as was `site.related_posts`.
+
+**Verification.** A 24-page random sample was diffed against the live Jekyll 3
+site: 21 byte-identical, 3 differing only by blank lines that Jekyll 3 emits and
+Jekyll 4 does not. The homepage matches to within two blank lines inside an
+excerpt.
+
+Note the comparison must be run with `TZ=UTC` to be meaningful: `_config.yml`
+sets no `timezone`, so Jekyll uses the system zone and a local build stamps
+`<time datetime>` as `+01:00` where CI stamps `+00:00`. The rendered date text is
+identical either way. Setting `timezone:` explicitly would make local and CI
+agree, but would change the published offsets, so it is deliberately left alone.
+
+- [ ] Optional: set `timezone:` in `_config.yml` if the `<time datetime>` offsets
+      should be stable across machines
 
 ---
 
@@ -130,6 +154,9 @@ affects local previews only, since CI compiles with its own toolchain.
 `actions/checkout@v4` is the source of the Node 20 deprecation annotation on
 every run. `configure-pages` / `upload-pages-artifact` / `deploy-pages` are a
 matched set and should be bumped together and tested as a group.
+
+`ruby/setup-ruby` (added in item 3) is pinned to the floating `@v1` major tag,
+which is that action's documented convention, so it needs no bump here.
 
 - [ ] Bump `actions/checkout` across all three workflows
 - [ ] Bump the Pages action trio together, then verify a full deploy

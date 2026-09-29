@@ -1,3 +1,5 @@
+# Buildability check. Uses the same toolchain as the deploy workflow so that a
+# green check here actually predicts a green deploy.
 name: check if site is buildable
 
 on:
@@ -6,8 +8,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
@@ -16,8 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1.0.13
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          source: ./
-          destination: ./_site
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --destination ./_site
+        env:
+          JEKYLL_ENV: production
