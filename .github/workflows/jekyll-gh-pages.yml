@@ -1,5 +1,7 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+# Build the site with the Jekyll version pinned in Gemfile.lock (currently
+# Jekyll 4.x) rather than with actions/jekyll-build-pages, which ships its own
+# github-pages gem set (Jekyll 3.x) and ignores this repository's Gemfile.
+name: Deploy Jekyll site to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -28,13 +30,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1.0.13
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          source: ./
-          destination: ./_site
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+
+      # NOTE: the site is served from a custom apex domain (see CNAME), so
+      # baseurl stays "" as set in _config.yml. Deliberately do not pass
+      # steps.pages.outputs.base_path here -- doing so would prefix every URL
+      # with a repository subpath and break the published links.
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --destination ./_site
+        env:
+          JEKYLL_ENV: production
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
