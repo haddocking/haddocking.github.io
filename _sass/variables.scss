@@ -1,3 +1,4 @@
+@use "sass:color";
 // TYPOGRAPHY ================================================
 $doc-font-size: 16;
 $doc-line-height: 26;
@@ -36,9 +37,9 @@ $info				  : #308cbc;
 // Links
 $linkcolor 		    : #343434;
 $link-color       : $linkcolor;
-$linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited : lighten($linkcolorhover, 20);
-$linkcolorfocus 	: darken($linkcolorvisited, 10);
+$linkcolorhover 	: color.adjust($linkcolor, $lightness: -10%);
+$linkcolorvisited : color.adjust($linkcolorhover, $lightness: 20%);
+$linkcolorfocus 	: color.adjust($linkcolorvisited, $lightness: -10%);
 
 // Media Queries
 $micro            : "only screen and (min-width: 30em)";

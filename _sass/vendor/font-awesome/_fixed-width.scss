@@ -1,6 +1,8 @@
+// Local patch: namespaced Sass built-ins for dart-sass 2.x. Re-apply if this vendored library is updated.
+@use "sass:math";
 // Fixed Width Icons
 // -------------------------
 .#{$fa-css-prefix}-fw {
-  width: (18em / 14);
+  width: math.div(18em, 14);
   text-align: center;
 }

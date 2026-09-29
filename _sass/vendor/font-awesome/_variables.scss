@@ -1,3 +1,5 @@
+// Local patch: namespaced Sass built-ins for dart-sass 2.x. Re-apply if this vendored library is updated.
+@use "sass:math";
 // Variables
 // --------------------------
 
@@ -7,7 +9,7 @@ $fa-css-prefix:       fa !default;
 $fa-version:          "4.1.0" !default;
 $fa-border-color:     #eee !default;
 $fa-inverse:          #fff !default;
-$fa-li-width:         (30em / 14) !default;
+$fa-li-width:         math.div(30em, 14) !default;
 
 $fa-var-adjust: "\f042";
 $fa-var-adn: "\f170";

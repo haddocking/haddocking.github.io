@@ -1,3 +1,5 @@
+@use "sass:math";
+@use "sass:color";
 btnform { 
 	margin: 0 0 5px 0;
 	fieldset { 
@@ -13,7 +15,7 @@ btnform {
 		padding: 0;
 		color: $textcolor;
 		border: 0;
-		border-bottom: 1px solid lighten($black, 80);
+		border-bottom: 1px solid color.adjust($black, $lightness: 80%);
 		white-space: normal; 
 	}
 	p {
@@ -63,10 +65,10 @@ select {
 	padding: 4px;
 	margin-bottom: 5px / 4;
 	background-color: $white;
-	border: 1px solid lighten($black, 80);
+	border: 1px solid color.adjust($black, $lightness: 80%);
 	color: $textcolor; 
 	&:hover {
-		border-color: lighten($accentcolor, 50); 
+		border-color: color.adjust($accentcolor, $lightness: 50%); 
 	}
 }
 .input-mini { 
@@ -184,7 +186,7 @@ select:focus {
 /* help text ==================================== */
 .help-block,
 .help-inline {
-	color : lighten($black, 50); 
+	color : color.adjust($black, $lightness: 50%); 
 }
 .help-block {
 	display : block; 
