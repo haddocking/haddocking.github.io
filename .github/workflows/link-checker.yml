@@ -13,13 +13,13 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: .lycheecache
           key: cache-lychee-${{ github.sha }}
           restore-keys: cache-lychee-
           
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Link Checker
         id: lychee
