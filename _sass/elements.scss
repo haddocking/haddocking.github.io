@@ -86,6 +86,16 @@ img.grayscale {
   border-bottom: 0px !important;
 }
 
+// Keep prompt links legible inside article body text.
+// Ported from main_pretty.css, where this rule existed only as a direct edit
+// to the generated file and was absent from the SCSS sources.
+.article-wrap {
+  p > a.prompt,
+  li > a.prompt {
+    color: $white;
+  }
+}
+
 .prompt-attention {
   background-color: $attention;
   color: $white;
@@ -204,7 +214,9 @@ img.grayscale {
 // Status indicators
 // Bastard buttons with no hover actions
 // Do not changing cursor to avoid tricking people
-.btn-postdoc {
+// Visiting postdocs share the postdoc badge colour.
+.btn-postdoc,
+.btn-visiting-postdoc {
   background-color: $info;
   color: $white;
   border-color: $info;
@@ -213,7 +225,9 @@ img.grayscale {
     cursor: default;
   }
 }
-.btn-phd {
+// Visiting PhD candidates share the PhD badge colour.
+.btn-phd,
+.btn-visiting-phd {
   background-color: $warning;
   color: $white;
   border-color: $warning;
