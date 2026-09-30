@@ -6,6 +6,8 @@ image:
 ---
 ## 2026
 
+*  B. Abanades, A. Roncoli, M. Bhagawati, P. Kessel,  S. Imhof-Jung, D. Doerr, J. Schilz, S. Vasilaki, F. Seeger, **A.M.J.J. Bonvin**, R. Bonneau, V. Gligorijevic and A. Vangone. [MIMOSA: Guiding De Novo Antibody Design with Natural Interaction Fingerprints](https://doi.org/10.64898/2026.09.24.753155). _bioRxiv_, 2026.09.24.753155 (2026).
+
 * J.J. Oosterhoff, S.R. van Brummelen, M. Giulini, I.M. De Cuyper, R. Visser, R. Kapur, C. Gstoettner, E. Dominguez Vega, T. de Vos, S. Hofstede-van Egmond, M. Cragg, M. Wuhrer, L. Porcelijn, M. de Haas, **A.M.J.J. Bonvin**, C.E. van der Schoot, G. Vidarsson. [Patient-derived monoclonal anti-HPA-1a can induce platelet activation through FcγRIIa](https://doi.org/10.64898/2026.09.10.750554). _bioRxiv_, 2026.09.10.750554 (2026).
 
 * X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1093/bib/bbag374). _Briefings In Bioinformatics._ 10.1093/bib/bbag374 (2026).
