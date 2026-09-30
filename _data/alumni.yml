@@ -216,6 +216,14 @@
     current: 'Medical University of Vienna, Austria'
     status: phd
 
+-   name: Andrea Villani
+    current: 'University of Roma Tre, Italy'
+    status: visiting-phd
+
+-   name: Luca Gazolla
+    current: 'University of Bologna, Italy'
+    status: visiting-phd
+
 -   name: Han Kurt
     current: 'University of Cagliari, Italy'
     status: visiting-phd
@@ -445,5 +453,11 @@
 
 -   name: Emile Straat
     status: student
-  
+
+-   name: Robert Romijn
+    status: student
+
+-   name: Viktoria Vodilovska
+    status: student
+
 

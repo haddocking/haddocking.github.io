@@ -60,3 +60,18 @@ bundle exec jekyll serve
 It should now be served on [http://127.0.0.1:4000](http://127.0.0.1:4000)
 
 Go ahead and edit/add what you need! To see the rendered version, refresh the page.
+
+## Styling
+
+The site's CSS is compiled by Jekyll from the Sass sources in `_sass/`, with
+`assets/css/main.scss` as the entry point. Editing a file under `_sass/` is all
+that is needed — `assets/css/main.css` is regenerated on every build and is what
+`_includes/_head.html` loads.
+
+There is no manual regeneration step. The site previously shipped a committed,
+hand-optimised `assets/css/main_pretty.css`; nothing in the repo regenerated it,
+so it had drifted from the Sass sources and some styles never reached the site.
+It has been removed — do not reintroduce a committed CSS artifact.
+
+Source maps are disabled for the build (`sourcemap: never` in `_config.yml`). Set
+it to `always` temporarily if you need to trace a rule back to its partial.
