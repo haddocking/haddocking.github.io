@@ -214,7 +214,9 @@ img.grayscale {
 // Status indicators
 // Bastard buttons with no hover actions
 // Do not changing cursor to avoid tricking people
-.btn-postdoc {
+// Visiting postdocs share the postdoc badge colour.
+.btn-postdoc,
+.btn-visiting-postdoc {
   background-color: $info;
   color: $white;
   border-color: $info;
