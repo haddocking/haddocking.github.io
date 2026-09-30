@@ -86,6 +86,16 @@ img.grayscale {
   border-bottom: 0px !important;
 }
 
+// Keep prompt links legible inside article body text.
+// Ported from main_pretty.css, where this rule existed only as a direct edit
+// to the generated file and was absent from the SCSS sources.
+.article-wrap {
+  p > a.prompt,
+  li > a.prompt {
+    color: $white;
+  }
+}
+
 .prompt-attention {
   background-color: $attention;
   color: $white;
