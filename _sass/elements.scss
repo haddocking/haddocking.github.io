@@ -223,7 +223,9 @@ img.grayscale {
     cursor: default;
   }
 }
-.btn-phd {
+// Visiting PhD candidates share the PhD badge colour.
+.btn-phd,
+.btn-visiting-phd {
   background-color: $warning;
   color: $white;
   border-color: $warning;
