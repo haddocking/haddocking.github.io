@@ -13,7 +13,7 @@ In this page you can find links to our educational material, namely tutorials on
 
 ## Courses
 
-* [**NMR & Molecular Modelling**](/education/NMRMolmod/): A bachelor course dealing with both NMR and modelling. This link will bring you the computer practical for this course in which you will be modelling a protein-protein complex based on NMR chemical shift data.
+* [**Mathematics, Data & Molecular Modelling**](/education/MathMolmod/): A bachelor course dealing with molecular modelling. This link will bring you the computer practical for this course in which you will be modelling a protein-protein complex based on NMR chemical shift data.
 
 * [**Structural Bioinformatics & Modelling**](/education/molmod_online/): A MSc course aimed at those interested in learning homology modelling, molecular simulation, and docking of biological molecules. All the material is freely available on our Github repository and makes use of Vagrant/Virtualbox.
 
