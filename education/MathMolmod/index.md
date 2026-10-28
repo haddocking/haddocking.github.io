@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "NMR and Molecular Modelling practical - HADDOCK2.4 protein-protein docking"
+title: "Mathematics, Data & Molecular Modelling practical - HADDOCK2.4 protein-protein docking"
 excerpt: "A small tutorial on predicting a protein-protein complex using interface residues identified from NMR chemical shift perturbation experiments"
 tags: [HADDOCK, NMR, docking, dimer, chemical shifts]
 image:
@@ -15,7 +15,7 @@ This computer practical consists of the following sections:
 <hr>
 ## Introduction
 
-This practical will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, you will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](https://www.ebi.ac.uk/pdbe/entry/pdb/1f3g)) and NMR spectroscopy (HPr) (PDB ID [1HDN](https://www.ebi.ac.uk/pdbe/entry/pdb/1hdn)). The structure of the native complex has also been determined with NMR (PDB ID [1GGR](https://www.ebi.ac.uk/pdbe/entry/pdb/1ggr)). These NMR experiments have also provided us with an array of data on the interaction itself. For this tutorial, you will only make use of interface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract).
+This practical will demonstrate the use of HADDOCK for predicting the structure of a protein-protein complex from NMR chemical shift perturbation (CSP) data. Namely, you will dock two E. coli proteins involved in glucose transport: the glucose-specific enzyme IIA (E2A) and the histidine-containing phosphocarrier protein (HPr). The structures in the free form have been determined using X-ray crystallography (E2A) (PDB ID [1F3G](https://www.ebi.ac.uk/pdbe/entry/pdb/1f3g)) and NMR spectroscopy (HPr) (PDB ID [1HDN](https://www.ebi.ac.uk/pdbe/entry/pdb/1hdn)). The structure of the native complex has also been determined with NMR (PDB ID [1GGR](https://www.ebi.ac.uk/pdbe/entry/pdb/1ggr)). These NMR experiments have also provided us with an array of data on the interaction itself. For this tutorial, you will only make use of interface residues identified from NMR chemical shift perturbation data as described in [Wang *et al*, EMBO J (2000)](https://pmc.ncbi.nlm.nih.gov/articles/PMC305802/).
 
 For this tutorial you will make use of the [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4).
 
@@ -130,7 +130,7 @@ As a preparation step before docking, it is advised to remove any irrelevant wat
 
 <a class="prompt prompt-pymol">remove resn HOH</a>
 
-Now let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract) the following residues of E2A were identified has having significant chemical shift perturbations:
+Now let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://pmc.ncbi.nlm.nih.gov/articles/PMC305802/) the following residues of E2A were identified has having significant chemical shift perturbations:
 
 <a class="prompt prompt-info">38,40,45,46,69,71,78,80,94,96,141</a>
 
@@ -177,7 +177,7 @@ hide lines<br>
 
 Since this is an NMR structure it does not contain any water molecules and we don't need to remove them.
 
-Let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](http://onlinelibrary.wiley.com/doi/10.1093/emboj/19.21.5635/abstract) the following residues were identified has having significant chemical shift perturbations:
+Let's vizualize the residues affected by binding as identified by NMR. From [Wang *et al*, EMBO J (2000)](https://pmc.ncbi.nlm.nih.gov/articles/PMC305802/) the following residues were identified has having significant chemical shift perturbations:
 
 <a class="prompt prompt-info">15,16,17,20,48,49,51,52,54,56</a>
 
@@ -312,10 +312,6 @@ This interface allows us to modify many parameters that control the behaviour of
 * **Step 8:** Click on the "Submit" button at the bottom left of the interface.
 
 Upon submission you will be presented with a web page which also contains a link to the previously mentioned haddockparameter file as well as some information about the status of the run.
-
-<figure align="center">
-<img src="/education/HADDOCK24/HADDOCK24-protein-protein-basic/submission.png">
-</figure>
 
 Currently your run should be queued but eventually its status will change to "Running":
 
