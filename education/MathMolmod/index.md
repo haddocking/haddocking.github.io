@@ -487,7 +487,7 @@ Q17: Does any of the cluster representatives ressemble the reference NMR structu
 </a>
 
 
-In the blind protein-protein prediction experiment [CAPRI](http://capri.ebi.ac.uk/) (Critical PRediction of Interactions), a measure of the quality of a model is the so-called ligand-RMSD (l-RMSD). It is calculated by fitting on the receptor chain (E2A or chain A in our case) and calculating the RMSD on the backbone of the ligand (HPR or chain B in our case). 
+In the blind protein-protein prediction experiment [CAPRI](https://www.ebi.ac.uk/pdbe/complex-pred/capri/) (Critical PRediction of Interactions), a measure of the quality of a model is the so-called ligand-RMSD (l-RMSD). It is calculated by fitting on the receptor chain (E2A or chain A in our case) and calculating the RMSD on the backbone of the ligand (HPR or chain B in our case). 
 
 <a class="prompt prompt-question">
 Q18: Give and explain the equation to calculate the RMSD.
