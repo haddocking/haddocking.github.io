@@ -631,7 +631,7 @@ Q23: Referring to the desciption of the last stage of HADDOCK (final refinement 
 
 ## Submitting your report
 
-Your report should be submitted in the form of a PDF file at the latest on Friday April 3rd before midnight. 
+Your report should be submitted in the form of a PDF file at the latest on Sunday November 15th before midnight. 
 Submission should be done via Brightspace (assignment in Docking Practical under Course Content).
 
 
