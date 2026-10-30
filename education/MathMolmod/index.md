@@ -220,7 +220,7 @@ As final step, save the molecule as a new PDB file which we will call: *hpr-ense
 For this in the PyMOL menu select:
 
 <a class="prompt prompt-info">File -> Export structure -> Export molecule...</a></a>
-<a class="prompt prompt-info">Select 1HDN, set states to o (all states), and click on the save button</a>
+<a class="prompt prompt-info">Select 1HDN, set states to 0 (all states), and click on the save button</a>
 <a class="prompt prompt-info">Name your file *hpr-ensemble.pdb*, make sure to select *PDB* as format and note the location of the saved file</a>
 
 <hr>
