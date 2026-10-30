@@ -465,7 +465,7 @@ color yellow, 1GGR and chain A<br>
 color orange, 1GGR and chain B<br>
 </a>
 
-The number of chain B in this structure is however different from the HPR numbering in the structure we used: It starts at 301 while in our models chain B starts at 1. We can change the residue numbering easily in PyMol with the following command:
+The residue numbering of chain B in this structure is however different from the HPR numbering in the structure we used: It starts at 301 while in our models chain B starts at 1. We can change the residue numbering easily in PyMol with the following command:
 
 <a class="prompt prompt-pymol">
 alter (chain B and 1GGR), resv -=300<br>
