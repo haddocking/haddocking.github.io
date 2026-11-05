@@ -17,19 +17,19 @@ image:
 * V.G.P. Reys, M. Giulini and **A.M.J.J. Bonvin**. [Integrative modelling of protein-glycan interactions with HADDOCK3](
 https://doi.org/10.48550/arXiv.2603.17251). _ArXiv_ 10.48550/arXiv.2603.17251 (2026).
 
-* H. Kurt, M. Athar, A. Basciu, V. Reys, **A.M.J.J. Bonvin** and A.V. Vargiu.[Mapping Functional Transitions across Protein Homologues from a Single Simulation: Application of gEDES-HM to Adenylate Kinases](https://doi.org/10.1021/acs.jcim.6c02521). _J. Chem. Inf. Mod._ Advanced Online Publication (2026)
+* H. Kurt, M. Athar, A. Basciu, V. Reys, **A.M.J.J. Bonvin** and A.V. Vargiu. [Mapping Functional Transitions across Protein Homologues from a Single Simulation: Application of gEDES-HM to Adenylate Kinases](https://doi.org/10.1021/acs.jcim.6c02521). _J. Chem. Inf. Mod._ *66*, 13586–13596 (2026).
 
-* X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1093/bib/bbag374). _Briefings In Bioinformatics._ 10.1093/bib/bbag374 (2026).
+* X. Xu and **A.M.J.J. Bonvin**. [AbTune: Layer-wise selective fine-tuning of protein language models for antibodies](https://doi.org/10.1093/bib/bbag374). _Briefings in Bioinformatics_ *27*, bbag374 (2026). Preprint [here](https://doi.org/10.1101/2025.10.17.682998).
 
 * A. Rapti, B.J.C. Janssen and **A.M.J.J. Bonvin**. [Integrating experimental and computational approaches for protein–protein interaction discovery](https://doi.org/10.1038/s44222-026-00464-0). _Nat. Rev. Bioeng._ 10.1038/s44222-026-00464-0 (2026). ([free access](https://rdcu.be/fpH4Y)).
 
 * X. Xu, I. Coratella, V.G.P. Reys and **A.M.J.J. Bonvin**. [DeepRank-Ab: a dedicated scoring function for antibody-antigen complexes based on geometric deep learning](https://doi.org/10.1038/s42003-026-10408-4). _Commun. Biol._ *9*, 1160 (2026). [Preprint](https://doi.org/10.64898/2025.12.03.691974)
 
-* R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.1002/pro.70793). _Protein Science_, *10*, e70793 (2026)
+* R. Versini, V.G.P. Reys, A. Kravchenko, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrating the MARTINI2 Coarse-Grained Force Field into HADDOCK3 for Faster Modelling of Large Biomolecular Complexes](https://doi.org/10.1002/pro.70793). _Protein Science_ *35*, e70793 (2026).
 
 * S. Grill-Walcher, A. Breitwieser, M. Afzal, D. Pum, **A.M.J.J. Bonvin**, C. Oostenbrink and C. Schäffer. [Molecular Insights into the Dual-Glycoprotein Surface-Layer of the oral bacterium Tannerella serpentiformis](https://doi.org/10.1016/j.jmgm.2026.109413). _Journal of Molecular Graphics and Modelling_ *146*, 109413 (2026).
 
-* M. Sánchez-Marín,  M. Giuliniand **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1021/acs.jcim.6c01301). _J. Chem. Inf. Mod._ *66*, 11445–11458 (2026).
+* M. Sánchez-Marín, M. Giulini and **A.M.J.J. Bonvin**. [Combining AI structure prediction and integrative modelling for nanobody-antigen complexes](https://doi.org/10.1021/acs.jcim.6c01301). _J. Chem. Inf. Mod._ *66*, 11445–11458 (2026). Preprint [here](https://doi.org/10.1101/2025.07.01.662355).
 
 
 ## 2025
@@ -57,7 +57,7 @@ post-AlphaFold era: the 8th CAPRI evaluation](http://doi.org/10.1002/prot.70018)
 ## 2024
 
 * V. Reys∗, Ma. Giulini∗, V. Cojocaru, A. Engel, X. Xu, J. Roel-Touris, C. Geng, F. Ambrosetti, B.
-Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789). _Proteins: Struc. Funct. &amp; Bioinformatics_.  Advanced Online Publication (2024).
+Jimenez-Garcia, Z. Jandova, P.I. Koukos, C. van Noort, J.M. . Teixeira, S.C. van Keulen, M. Reau, R.V. Honorato and **A.M.J.J. Bonvin**. [Integrative modeling in the age of machine learning: a summary of HADDOCK strategies in CAPRI rounds 47-55](http://doi.org/10.1002/prot.26789). _Proteins: Struc. Funct. &amp; Bioinformatics_ *94*, 1746–1752 (2026).
 
 * G. Bellinzona, D. Sassera and **A.M.J.J. Bonvin**. [Accelerating Protein-Protein Interaction screens with reduced AlphaFold-Multimer sampling](https://doi.org/10.1093/bioadv/vbae153) _Bioinformatics Advances_ *4*:vbae153 (2024).
 
