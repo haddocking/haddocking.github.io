@@ -7,6 +7,19 @@ image:
   feature: pages/banner_software.jpg
 ---
 
+### Changes - version October 2026
+- New glycan residues: 1-O-methyl-α-GlcNAc (NAA) and 1-O-methyl-α-GalNAc (NGM)
+- Fixed the alpha-GalNAc (A2G) description and added a missing improper
+- Linkage fixes in bondglycans.cns, ported from haddock3
+- Coarse-grained DNA/RNA (Martini): Adenine SC1 now has its own bead type, which fixes the stretched SC1–SC4 bond and removes duplicate bonds
+- Nucleic acids base-pair restraint detection now supports Hoogsteen pairs
+- Nucleic acids chain break cutoff (dnacgbreak_cutoff) lowered from 10 to 6 Å, so a single missing nucleotide is now detected
+- Nucleic acids bonded parameters are now identical to haddock3
+- Fixed the alpha/beta phi/psi range check in the ssdihed restraints
+- HA hydrogens are now kept so that chirality can be detected and enforced
+- Dropped Python 3.9. Python 3.10 to 3.14 supported
+
+
 ### Changes - version July 2026
 - Added support for glucosamine (GCS)
 - Added support for O-glycosylated serine
