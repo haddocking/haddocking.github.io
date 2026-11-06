@@ -9,6 +9,11 @@
 #
 # 3. You can add several statuses separated by commas and between quotes: e.g. 'a,b,c'
 
+-   name: Rodrigo Vargas Honorato
+    url: https://www.esciencecenter.nl
+    current: 'Netherlands eScience Center'
+    status: Engineering and Application Manager
+
 -   name: Jeff Grinstead
     url: http://webspace.pugetsound.edu/facultypages/jgrinstead/Grinstead/Homepage.html
     current: 'University of Puget Sound, WA, USA'
@@ -56,6 +61,11 @@
     url: https://www.boehringer-ingelheim.at/en
     current: 'Boehringer Ingelheim, Vienna, Austria'
     status: 'postdoc'
+
+-   name: Xiaotong Xu
+    url: https://www.stats.ox.ac.uk/opig
+    current: 'Oxford University, UK'
+    status: Ph.D Candidate
 
 -   name: Charlotte van Noort
     status: Ph.D Candidate
@@ -459,5 +469,9 @@
 
 -   name: Viktoria Vodilovska
     status: student
+
+-   name: Jahaciel Villaverde Nogues
+    status: student
+
 
 
