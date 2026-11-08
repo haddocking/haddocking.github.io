@@ -12,8 +12,8 @@ This tutorial consists of the following sections:
 * table of contents
 {:toc}
 
-This tutorial was last updated on 02-03-2026 and is up-to-date 
-with release v4.0.4. <br>
+This tutorial was last updated on 08-11-2026 and is up-to-date 
+with PowerFit release v6.0.2 as used on the web server. <br>
 
 ## Introduction
 
@@ -22,11 +22,10 @@ structures of biomolecules into cryo-electron microscopy (cryo-EM) density maps.
 It is open-source and available for download from our [Github repository][link-powerfit]{:target="_blank"}.
 To facilitate its use, we have developed a [web portal][link-powerfit-web]{:target="_blank"} for it.
 
-This tutorial demonstrates the use of the PowerFit web server. The server makes use of either
-local resources on our cluster, using the multi-core version of the software, or GPU-accelerated grid resources of the
-[EGI](https://www.egi.eu){:target="_blank"} to speed up the calculations. It only requires a web browser to work and benefits from the latest
+This tutorial demonstrates the use of the PowerFit web server. The server runs the multi-core version
+of the software on our local resources. It only requires a web browser to work and benefits from the latest
 developments in the software based on a stable and tested workflow. Next to providing an automated workflow around
-PowerFit, the web server also summarizes and higlights the results in a single page including some visualization of the 
+PowerFit, the web server also summarizes and highlights the results in a single page including some visualization of the 
 PowerFit output using [MolViewSpec][link-molviewspec]{:target="_blank"}.
 
 The case we will be investigating is a complex between the 30S maturing *E. coli*
@@ -39,9 +38,13 @@ detailed analysis of the results of a run with the methyltransferase KsgA, anoth
 
 The PowerFit and HADDOCK software are described in:
 
+* R.V. Honorato, P.I. Koukos, B. Jiménez-García, A. Tsaregorodtsev, M. Verlato, A. Giachetti, A. Rosato and A.M.J.J. Bonvin.
+[Structural Biology in the Clouds: The WeNMR-EOSC Ecosystem](https://doi.org/10.3389/fmolb.2021.729513){:target="_blank"}.
+_Frontiers Mol. Biosci._ *8*, 729513 (2021).
+
 * G.C.P. van Zundert, M. Trellet, J. Schaarschmidt, Z. Kurkcuoglu, M. David, M. Verlato, A. Rosato and A.M.J.J. Bonvin.
 [The DisVis and PowerFit web servers: Explorative and Integrative Modeling of Biomolecular Complexes.](https://doi.org/10.1016/j.jmb.2016.11.032){:target="_blank"}.
-_J. Mol. Biol._. *429(3)*, 399-407 (2016).
+_J. Mol. Biol._. *429(3)*, 399-407 (2017).
 
 * G.C.P van Zundert and A.M.J.J. Bonvin.
 [Defining the limits and reliability of rigid-body fitting in cryo-EM maps using multi-scale image pyramids](https://doi.org/10.1016/j.jsb.2016.06.011){:target="_blank"}.
@@ -144,18 +147,18 @@ To run PowerFit, go to
 
 <a class="prompt prompt-info" href="https://wenmr.science.uu.nl/powerfit" target="_blank">https://wenmr.science.uu.nl/powerfit</a>
 
-On this page, you will find the most relevant information about the server as well as the links to the local and grid versions of the portal's submission page.
+On this page, you will find the most relevant information about the server as well as the submission form.
 
 ### Step1: Register to the server
 
 [Register][link-powerfit-register]{:target="_blank"} for getting access to the webserver (or use the credentials provided in case of a workshop).
 
-Registration is not automatic but is usually processed within 12h, so be patient.
+After registering, you will receive an email with a link to confirm your email address and activate your account.
 When you are registered you can use all the software provided in the webserver.
 
 ### Step2: Define the input files and parameters and submit
 
-Click on the "**Submit**" menu to access the [input form][link-powerfit-submit]{:target="_blank"}:
+Once logged in, the [input form][link-powerfit-submit]{:target="_blank"} is shown on the PowerFit page:
 
 <figure align="center">
 <img src="/education/Others/powerfit-webserver/powerfit_submission.png">
@@ -164,10 +167,12 @@ Click on the "**Submit**" menu to access the [input form][link-powerfit-submit]{
 Complete the form by filling the required fields and selecting the respective files
 (most browsers should also support dragging the files onto the selection button):
 
+<a class="prompt prompt-info">Input structure → RsgA.pdb</a>
 <a class="prompt prompt-info">Cryo-EM map → ribosome-RsgA.map</a>
-<a class="prompt prompt-info">Map resolution → 9.8</a>
-<a class="prompt prompt-info">Atomic structure → RsgA.pdb</a>
-<a class="prompt prompt-info">Rotational angle interval → 10.0</a>
+<a class="prompt prompt-info">Resolution (Å) → 9.8</a>
+
+The other parameters are found under "**Optional Parameters**" (click "**Show**" to display them).
+For this tutorial we keep their default values, including a rotational sampling of 10 degrees.
 
 Once the fields have been filled in you can submit your job to our server
 by clicking on "**Submit**" at the bottom of the page.
@@ -175,7 +180,8 @@ by clicking on "**Submit**" at the bottom of the page.
 If the input fields have been correctly filled you should be redirected to a status page displaying a pop-up message
 indicating that your run has been successfully submitted.
 While performing the search, the PowerFit web server will update you on the progress of the
-job by reloading the status page every 30 seconds.
+job by refreshing the status every few seconds. You can also close the page and find your job back later in your
+[Workspace](https://wenmr.science.uu.nl/workspace){:target="_blank"}.
 The runtime of this example case is below 5 minutes on our local servers. However the load of the server as well as
 pre- and post-processing steps might substantially increase the time until the results are available.
 
@@ -184,7 +190,7 @@ While the calculations are running, open a second tab and go to
 <a class="prompt prompt-info" href="https://www.bonvinlab.org/powerfit/manual.html" target="_blank">https://www.bonvinlab.org/powerfit/manual.html</a>
 
 Here, you can have a look at the several features and options of PowerFit and read about the meaning of the various input
-parameters (including the ones under "**Advanced options**").
+parameters (including the ones under "**Optional Parameters**").
 
 The rotational sampling interval option is given in
 degrees and defines how tightly the three rotational degrees of freedom will be
@@ -196,16 +202,17 @@ there aren't sufficient computational resources.
 ## Analysing the results
 
 Once your job has completed, and provided you did not close the status page, you will be automatically redirected to the results
-page (you will also receive an email notification).
+page (otherwise, open it from your [Workspace](https://wenmr.science.uu.nl/workspace){:target="_blank"}).
 
-On the interactive results page you can look at the top
+The interactive results page shows the fitted solutions in the density map and a table with their scores:
 
 <figure align="center">
 <img src="/education/Others/powerfit-webserver/webservice_result_page.png">
 </figure> 
 
-If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input [here][link-powerfit-tutorial]{:target="_blank"}.
+If you don't want to wait for your run to complete, you can access the precalculated results of a run with the same input
+on the [examples page][link-powerfit-tutorial]{:target="_blank"} of the server
+("POWERFIT RsgA-30S_ribosomal_subunit-GMPPNP favouring one solution example").
 
 The higher the cross-correlation score the better the fit. But also important is the Fisher z-score (the higher the better),
 which, together with its associated number of standard deviations (σ difference), is an excellent indicator of the accuracy of a fit
@@ -224,16 +231,16 @@ a sigma difference of 3.
 
 You can inspect online the results for the top 10 models (different views are provided). However, it is difficult to
 really appreciate the accuracy of PowerFit and the differences between the solutions with only images.
-Therefore download the results archive to your computer which is available at the top of your results page.
+Therefore download the results archive to your computer using the "**Download**" button at the bottom of your results page.
 
 You will find in it the following files:
 
 * `fit_N.pdb`: the best *N* fits, judged by the cross-correlation score.
 * `solutions.out`: all the non-redundant solutions found, ordered by their
-cross-correlation score. The first column shows the rank, column 2 the correlation
-score, column 3 and 4 the Fisher z-score and the number of standard
-deviations; column 5 to 7 are the x, y and z coordinate of the center of the
-chain; column 8 to 17 are the rotation matrix values.
+cross-correlation score, as comma-separated values. The first column shows the rank, column 2 the correlation
+score, column 3 and 4 the Fisher z-score and the relative z-score (z-score/α, i.e. the number of standard
+deviations); column 5 to 7 are the x, y and z coordinate of the center of the
+chain; column 8 to 16 are the rotation matrix values.
 * `lcc.mrc`: a cross-correlation map showing, at each grid position, the
 highest cross-correlation score found during the search, thus showing the most
 likely location of the center of mass of the structure.
@@ -291,7 +298,7 @@ and its associated color that ChimeraX has processed. To show or hide a specific
 model you can click the box in the column with an eye.
 
 <a class="prompt prompt-info">
-  Go through the 10 solutions one by one to asses their goodness-of-fit
+  Go through the 10 solutions one by one to assess their goodness-of-fit
   with the density.
 </a>
 
@@ -390,7 +397,7 @@ The obvious limitation of rigid-body fitting is that it cannot account for any
 conformational changes that the structures might undergo. Further, the low
 resolution of this particular density map does not allow to identify
 side-chain atoms. The quality of the fitted models by PowerFit is, therefore,
-limited. In particular, such models will typically result in a significant clashes at the interface between molecules.
+limited. In particular, such models will typically result in significant clashes at the interface between molecules.
 Such clashes can be removed by making use of the HADDOCK-EM flexible refinement capabilities.
 This is demonstrated in the [command line version][link-haddock-tuto]{:target="_blank"} of the PowerFit tutorial and described in:
 
@@ -405,14 +412,14 @@ for computational biomolecular research.
 
 [link-powerfit]: https://github.com/haddocking/powerfit "PowerFit"
 [link-powerfit-web]: https://wenmr.science.uu.nl/powerfit "PowerFit web server"
-[link-powerfit-register]: https://wenmr.science.uu.nl/auth "PowerFit registration"
+[link-powerfit-register]: https://wenmr.science.uu.nl/registration "PowerFit registration"
 [link-powerfit-submit]: https://wenmr.science.uu.nl/powerfit "PowerFit submission"
-[link-powerfit-help]: https://www.bonvinlab.org/powerfit/manual.html "PowerFit submission"
+[link-powerfit-help]: https://www.bonvinlab.org/powerfit/manual.html#using-the-webservice "PowerFit manual"
 [link-chimerax]: https://www.cgl.ucsf.edu/chimerax/ "UCSF ChimeraX"
-[link-data]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/powerfit-tutorial.tgz "PowerFit tutorial data"
+[link-data]: /education/Others/powerfit-webserver/powerfit-webserver-tutorial.zip "PowerFit tutorial data"
 [link-density]: https://www.ebi.ac.uk/pdbe/entry/emdb/EMD-1884 "Ribosome RsgA density"
 [link-pdb]: https://www.rcsb.org/pdb/explore/explore.do?structureId=2YKR "PDBid 2YKR"
 [link-haddock-tuto]: https://bonvinlab.org/education/Others/powerfit#HADDOCK-cryoEM "HADDOCK with cryoEM data"
 [link-powerfit-tuto]: https://bonvinlab.org/education/Others/powerfit "Powerfit command-line tutorial"
-[link-powerfit-tutorial]: https://alcazar.science.uu.nl/cgi/services/POWERFIT/powerfit/example "Powerfit tutorial results page"
+[link-powerfit-tutorial]: https://wenmr.science.uu.nl/examples "Powerfit tutorial results page"
 [link-molviewspec]: https://molstar.org/mol-view-spec/ "molviewspec"
