@@ -109,7 +109,9 @@ We prepared a folder that contains the cryo-EM density map file in CCP4 format
 (`ribosome-RsgA.map`), the model of the ribosome (`ribosome.pdb`), which has
 already been fitted in the density, and the model of RsgA (`RsgA.pdb`), taken
 from the 2YKR entry, centred at the origin and randomly rotated so that it
-does not start from its position in the map.
+does not start from its position in the map. It also contains the
+experimental structure `7NAR.pdb`, used at the end of the tutorial, in case it
+cannot be downloaded from the PDB.
 
 <a class="prompt prompt-info">
   Download the data and unpack the archive.
@@ -431,6 +433,10 @@ of RsgA, without any further fitting.
   hide atoms <br>
   show cartoons
 </a>
+
+**Note:** If the download from the PDB fails (e.g. network problems), use the
+copy of the structure provided in the tutorial data instead: replace
+`open 7nar` by `open 7NAR.pdb`.
 
 RsgA is chain W in 7NAR. Our RsgA model has a few gaps, so we select in 7NAR
 only the residues that are also present in the model:
