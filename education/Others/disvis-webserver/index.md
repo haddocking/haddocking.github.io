@@ -149,7 +149,7 @@ This page holds a short description of the server, how to cite it, and the submi
 [Register][link-disvis-register]{:target="_blank"} for getting access to the web server (or use the credentials provided in case of a workshop).
 
 If you are not logged in, the DisVis page shows the login form: click on its "**Register**" button and fill the required information.
-Registration is not automatic but is usually processed within 12h, so be patient.
+After registering, you will receive an email with a link to confirm your email address and activate your account.
 
 
 ### Step2: Define the input files and parameters and submit
