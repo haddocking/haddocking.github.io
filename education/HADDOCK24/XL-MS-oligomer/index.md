@@ -159,7 +159,7 @@ In this particular case, for the DisVis analysis, we have to duplicate the cross
 above since we are dealing with a symmetrical homomeric system. This is required since in principle we don't know from which monomer they originate.
 
 
-The data you downloaded already contain a text file with the cross-links defined in the proper DisVis format: `cross-links.txt`
+The data you downloaded already contain a text file with the cross-links defined in the proper DisVis format: `crosslinks.txt`
 
 <pre style="background-color:#DAE4E7">
 # cross-links
@@ -186,19 +186,19 @@ We have all input data required to run DisVis. To launch the run go to:
 
 <a class="prompt prompt-info" href="https://wenmr.science.uu.nl/disvis" target="_blank">https://wenmr.science.uu.nl/disvis</a>
 
-On this page, you will find the most relevant information about the server.
+This page holds a short description of the server, how to cite it, and the submission form. You need to be logged in to see it.
 
-* **Step1:** Register to the server
+* **Step1:** Register to the server (if needed) or login
 
 [Register][link-disvis-register]{:target="_blank"} for getting access to the web server (or use the credentials provided to you).
 
-You can click on the "**Register**" menu from any DisVis page and fill the required information.
-Registration is not automatic but is usually processed within 12h, so be patient.
+If you are not logged in, the DisVis page shows the login form: click on its "**Register**" button and fill the required information.
+After registering, you will receive an email with a link to confirm your email address and activate your account.
 
 
 * **Step2:** Define the input files and parameters and submit
 
-Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:target="_blank"}.
+Once logged in, the [input form][link-disvis-submit]{:target="_blank"} is shown on the DisVis page.
 
 <figure align="center">
 <img src="/education/Others/disvis-webserver/disvis_submission.png">
@@ -206,20 +206,20 @@ Click on the "**Submit**" menu to access the [input form][link-disvis-submit]{:t
 
 <a class="prompt prompt-info">Fixed chain → monomer-A.pdb</a>
 <a class="prompt prompt-info">Scanning chain → monomer-B.pdb</a>
-<a class="prompt prompt-info">Restraints file → cross-links.txt</a>
+<a class="prompt prompt-info">Restraints → crosslinks.txt</a>
 
 Once the fields have been filled in, you can submit your job to our server
 by clicking on "**Submit**" at the bottom of the page.
 
-If the input fields have been correctly filled you should be redirected to a status page displaying a message
-indicating that your run has been successfully submitted.
-While performing the search, the DisVis web server will update you on the progress of the
-job by reloading the status page every 30 seconds.
-The runtime of this example case is usually below 5 minutes on our local CPU and grid GPU servers. However the load of the server as well as
+If the input fields have been correctly filled you should get a message
+indicating that your run has been successfully submitted, and be redirected to a status page.
+The status page checks the progress of the job every few seconds, and takes you to the results page once the job is done.
+You can also find your job later in your "**Workspace**".
+The runtime of this example case is below 2 minutes on our servers with complete scanning. However the load of the server as well as
 pre- and post-processing steps might substantially increase the time until the results are available.
 
-The default on the server is to perform a `quick scanning` grid search (meaning `15.00°` rotational sampling and `2.0Å` grid) in order to get results in a reasonable time.
-You can however choose to perform a `complete scanning`, which should give more reliable results (`9.72°` rotational sampling and `1.0Å` grid).
+The default on the server is to perform a "**Quick scanning**" (meaning `15.00°` rotational sampling and `2.0Å` grid) in order to get results in a reasonable time.
+You can however choose in the "**Scanning**" section of the form to perform a "**Complete scanning**", which should give more reliable results (`9.72°` rotational sampling and `1.0Å` grid).
 
 
 <hr>
@@ -234,50 +234,51 @@ page (you will also receive an email notification).
 <details style="background-color:#DAE4E7">
 <summary>See solution</summary>
 If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input and complete scanning <b><a href="https://wenmr.science.uu.nl/disvis/run/rth_3XwWbRcd" target="_blank">here</a></b>.
+with the same input and complete scanning <b><a href="https://wenmr.science.uu.nl/disvis/result/1857324" target="_blank">here</a></b>.
 <br><br>
 You can also <b><a href="https://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/DisVis_output_complete.zip" download>download the corresponding archive here</a></b>.
 <br>
 </details>
 
-The results page presents a summary split into several sections:
+The results page shows the DisVis report, followed by the output of the run and a "**Download**" button
+for an archive with all input and output files. The report is split into several sections:
 
-* `Status`: In this section you will find a link from which you can download the output data as well as some information
-about how to cite the use of the portal.
-* `Accessible Interaction Space`: Here, images of the fixed chain together with the accessible interaction space, in
-a density map representation, are displayed. Different views of the molecular scene can be chosen by clicking
- on the right or left part of the image frame. Each set of images matches a specific level of N restraints which corresponds
- to the accessible interaction space by complexes consistent with at least N restraints. A slider below the image container
- allows you to change the the number of restraints N and load the corresponding set of images.
-* `Accessible Complexes`: Summary of the statistics for number of complexes consistent with at least N number of restraints.
- The statistics are displayed for the N levels, N being the total number of restraints provided in the restraints file (here `restraints.txt`)
-* `z-Score`: For each restraint provided as input, a z-Score is provided, giving an indication of how likely it is that the restraint is a false positive.
-The higher the score, the more likely it is that a restraint might be a false positive. Putative false positive restraints
-are only highlighted if no single solution was found to be consistent with the total number of restraints provided. If DisVis
-finds complexes consistent with all restraints, the z-Scores are still displayed, but should be ignored.
-* `Violations`: The table in this sections shows how often a specific restraint is violated for all models consistent with
+* `Options`: The parameters of the run (click on it to expand the list), followed by links to download the individual output files.
+* `Accessible interaction space`: An interactive 3D view (Mol*) of the fixed chain together with the accessible interaction space,
+in a density map representation (grey). Each view matches a specific level of N restraints, which corresponds
+to the accessible interaction space of the complexes consistent with at least N restraints. The panel on the right of the viewer
+describes the current view (the number of complexes consistent with at least N restraints) and lets you switch between
+the views for the different N. You can rotate and zoom the scene with the mouse.
+* `Accessible complexes`: Summary of the statistics for number of complexes consistent with at least N number of restraints.
+ The statistics are displayed for all N levels, from the total number of restraints provided in the restraints file (here `crosslinks.txt`) down to 0.
+* `Fraction of complexes violating each restraint`: The table in this sections shows how often a specific restraint is violated for all models consistent with
 a given number of restraints. The higher the violation fraction of a specific restraint, the more likely it is to be a false positive.
 Column 1 shows the number of consistent restraints N, while each following column indicates the violation fractions of
 a specific restraint for complexes consistent with at least N restraints. Each row thus represents the fraction of all
-complexes consistent with at least N restraints that violated a particular restraint. As for the z-Scores, if solutions have been found
+complexes consistent with at least N restraints that violated a particular restraint. If solutions have been found
 that are consistent with all restraints provided, this table should be ignored.
+* `Z-scores`: For each restraint provided as input, a z-Score is provided, giving an indication of how likely it is that the restraint is a false positive.
+The higher the score, the more likely it is that a restraint might be a false positive. Restraints with a z-Score above 1 are highlighted.
+If DisVis finds complexes consistent with all restraints, the z-Scores are still displayed, but should be ignored.
+
+The tables can be sorted by clicking on a column header.
 
 
 Take your time to analyse the output of DisVis and try to answer the following questions.
 
 
-<a class="prompt prompt-question"> <b>Q3:</b> Looking at the results section _Accessible Complexes_, what is the maximum number of restraints for which DisVis can find consistent solutions?</a>
+<a class="prompt prompt-question"> <b>Q3:</b> Looking at the results section _Accessible complexes_, what is the maximum number of restraints for which DisVis can find consistent solutions?</a>
 
-Looking at the `z-Score` section, the DisVis output does highlight some restraints as likely false positives.
+Looking at the `Z-scores` section, the DisVis output does highlight some restraints as likely false positives.
 Remember however that we have full trust in our cross-links.
-So we don't expect any false positives. Look now at the pictures visualising the accessible space in the `Accessible Interaction Space` section.
-Change the value of the slider `Current Level (N)`. Changing its value changes the displayed accessible space, showing the space consistent with N cross-links.
+So we don't expect any false positives. Look now at the 3D view of the accessible space in the `Accessible interaction space` section.
+Switch between the views for the different N in the panel on the right of the viewer. This changes the displayed accessible space, showing the space consistent with at least N cross-links.
 
 <a class="prompt prompt-question"> <b>Q4:</b> Do you observe a continuous density?</a>
 
 <a class="prompt prompt-question"> <b>Q5:</b> If not, knowing all cross-links are correct ones, what does it tell you about the binding site and the oligomeric state of the complex?</a>
 
-Now set the `Current Level (N)` to its maximum value and look at the view from the top of the structure (i.e. looking down the helices) (you can toggle between different views by clicking on the arrows on the side of the picture):
+Now select the view with the maximum value of N and rotate the scene with the mouse to look at it from the top of the structure (i.e. looking down the helices):
 
 <a class="prompt prompt-question"><b>Q6:</b> Considering the shape of the molecule and the accessible interaction space, what would be your guess of the oligomeric state of this complex?</a>
 
@@ -360,7 +361,7 @@ Let's now setup the docking run!
 
 #### Registration / Login
 
-In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/auth/register/){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
+In order to start the submission, either click on "*here*" next to the submission section, or click [here](https://wenmr.science.uu.nl/haddock2.4/submit/1){:target="_blank"}. To start the submission process, we are prompted for our login credentials. After successful validation of our credentials we can proceed to the structure upload.
 
 **Note:** The blue bars on the server can be folded/unfolded by clicking on the arrow on the left
 
@@ -794,8 +795,8 @@ Or use a dedicated online tool [AlphaFold3 viewer](https://wenmr.science.uu.nl/a
 [link-cns]: https://cns-online.org "CNS online"
 [link-disvis]: https://github.com/haddocking/disvis "DisVis GitHub repository"
 [link-disvis-web]: https://wenmr.science.uu.nl/disvis "DisVis web server"
-[link-disvis-submit]: https://wenmr.science.uu.nl/disvis/submit "DisVis submission"
-[link-disvis-register]: https://wenmr.science.uu.nl/auth/register "DisVis registration"
+[link-disvis-submit]: https://wenmr.science.uu.nl/disvis "DisVis submission"
+[link-disvis-register]: https://wenmr.science.uu.nl/registration "DisVis registration"
 [link-data]: https://www.bonvinlab.org/education/HADDOCK24/XL-MS-oligomer/XL-MS-oligomer.zip "DisVis tutorial data"
 [link-chimera]: https://www.cgl.ucsf.edu/chimera/ "UCSF Chimera"
 [link-chimera-distance]: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/framecommand.html "UCSF Chimera distance command"
@@ -805,5 +806,5 @@ Or use a dedicated online tool [AlphaFold3 viewer](https://wenmr.science.uu.nl/a
 [link-haddock]: https://bonvinlab.org/software/haddock2.4 "HADDOCK2.4"
 [link-haddock-web]: https://wenmr.science.uu.nl/haddock2.4/ "HADDOCK2.4 webserver"
 [link-haddock-multi]: https://wenmr.science.uu.nl/haddock2.4/submit/1 "HADDOCK2.4 docking interface"
-[link-haddock-register]: https://wenmr.science.uu.nl/auth/register/ "HADDOCK2.4 registration"
+[link-haddock-register]: https://wenmr.science.uu.nl/registration "HADDOCK2.4 registration"
 [link-haddock-tutorial]: https://bonvinlab.org/education/HADDOCK24/HADDOCK24-protein-protein-basic "HADDOCK2.4 webserver tutorial"
