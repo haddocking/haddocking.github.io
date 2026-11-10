@@ -206,7 +206,9 @@ Once your job has completed, and provided you did not close the status page, you
 page (you will also receive an email notification).
 
 If you don't want to wait for your run to complete, you can access the precalculated results of a run submitted
-with the same input [here](https://wenmr.science.uu.nl/disvis/result/1854818){:target="_blank"}.
+with the same input [here](https://wenmr.science.uu.nl/disvis/result/1857309){:target="_blank"}.
+Note that this run used the "**Complete scanning**" settings (`9.72°` and `1.0Å`) instead of the default quick scanning;
+it finds the same number of consistent restraints and the same likely false positives.
 
 The results page shows the DisVis report, followed by the output of the run and a "**Download**" button
 for an archive with all input and output files. The report is split into several sections:
@@ -340,7 +342,7 @@ Then click on the **Submit** button to start the run.
 
 Once your job has completed, the results page will be displayed.
 If you don't want to wait for your run to complete, you can see the results of a pre-calculated run
-[here](https://wenmr.science.uu.nl/disvis/result/1854823){:target="_blank"} (this run also used the occupancy analysis).
+[here](https://wenmr.science.uu.nl/disvis/result/1857395){:target="_blank"} (this run also used the occupancy analysis).
 
 <a class="prompt prompt-question">
 Did the number of satisfied restraints change in comparison to the first quick scanning run?
@@ -378,7 +380,7 @@ and <b>PUP2</b>:<br><br>
  PUP2 active residues: 5, 11, 13, 15, 16, 17, 114, 121, 122, 123, 140, 152, 154, 177<br><br>
 
 
-You can see the results <a href="https://wenmr.science.uu.nl/disvis/result/1854823" target="_blank" style="color:#294fa7">here</a>.
+You can see the results <a href="https://wenmr.science.uu.nl/disvis/result/1857395" target="_blank" style="color:#294fa7">here</a>.
 </details><br>
 
 In order to check if those residues are indeed important for the interaction, we will highlight them in ChimeraX and use a
@@ -532,7 +534,7 @@ Does the accessible interaction space correspond to the position of the binding 
 </a>
 
 You can even rerun DisVis with the occupancy analysis option enabled and repeat the exercise with the generated `occupancy_N.mrc` files.
-An example run with occupancy analysis can be found [here](https://wenmr.science.uu.nl/disvis/result/1854823){:target="_blank"}.
+An example run with occupancy analysis can be found [here](https://wenmr.science.uu.nl/disvis/result/1857395){:target="_blank"}.
 
 
 ## Final remarks
