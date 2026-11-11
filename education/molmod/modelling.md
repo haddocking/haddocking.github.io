@@ -971,7 +971,7 @@ collaborators or using it to draw any functional/biological conclusions. Besides
 there are other dedicated validation protocols that analyze the quality of the models based on many
 different criteria. Many of these are available as web servers, such as
 [QMEAN](https://swissmodel.expasy.org/qmean/), [PSVS](https://psvs-1_5-dev.nesg.org/)
-and [Molprobity](https://molprobity.biochem.duke.edu/). These servers report on both the overall
+and [Molprobity](https://molprobity.lbl.gov/). These servers report on both the overall
 quality of the model and per-residue profiles, using metrics based on statistical comparisons to
 existing high-resolution crystal structures. For instance, they calculate all bond lengths and
 angles in the model and compare the distribution with that found in experimental structures. Using
