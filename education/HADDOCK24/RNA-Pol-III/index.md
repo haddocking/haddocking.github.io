@@ -31,7 +31,7 @@ The case we will be investigating is the apo form of the <em>Saccharomyces cerev
 During this tutorial, we pretend that the structure of the Pol III core (14 subunits) is known. Therefore, we will focus on modeling the positioning of the C82/C34/C31 heterotrimer subunits relatively to the others (which we will treat as the core of Pol III). The structure of Pol III core is quite well characterized, with multiple cryo-EM structures of Pol III published.
 
 We will be making use of i) our [DISVIS server](https://wenmr.science.uu.nl/disvis/){:target="_blank"} to analyse the cross-links and detect possible false positives and ii) of the new [HADDOCK2.4 webserver](https://wenmr.science.uu.nl/haddock2.4){:target="_blank"} to setup docking runs, using the coarse-graining option to speed up the calculations (especially needed due to the large size of the system). 
-As an alternative strategy, we will use our [PowerFit server][link-powerfit-web]{:target="_blank"} to fit the largest components of the complex into the 9Å cryo-EM map and then use those as a starting point for the modelling of the remaining components.
+We will then use our [PowerFit server][link-powerfit-web]{:target="_blank"} to fit the largest components of the complex into the 9Å cryo-EM map and then use those as a starting point for the modelling of the remaining components.
 
 {% include paper_citation.html key="haddock24" %}
 
@@ -421,7 +421,7 @@ Consider the Predicted aligned error displayed as a matrix.
     <i>See answer</i>
   </summary>
   <br>
-  <p>From an analysis of the diagonal blocks we can identify the three wHTH domains, whose stucture is well predicted. When considering the off-diagonal blocks, the last domain of C34, wHTH3, seems to be the best defined with respect to C82. We will make use of this in our modelling strategy 2 in this tutorial. Since the orientation of the other domains are not well defined with respect with C82, we will treat them as separate entities during our modelling.</p>
+  <p>From an analysis of the diagonal blocks we can identify the three wHTH domains, whose stucture is well predicted. When considering the off-diagonal blocks, the last domain of C34, wHTH3, seems to be the best defined with respect to C82. We will make use of this in our modelling in this tutorial. Since the orientation of the other domains are not well defined with respect with C82, we will treat them as separate entities during our modelling.</p>
 <br>
 </details>
 <br>
@@ -1337,22 +1337,22 @@ In  the same page as where restraints are provided you can modify a large number
 
 * **Step 13:** Unfold the **sampling parameters** menu.
 
-Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts)). When docking multiple subunits, depending on the amount of information available to guide the docking, it is recommended to increase the sampling. For this tutorial we will use 4000/400/400 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
+Here you can change the number of models that will be calculated, the default being 1000/200/200 for the three stages of HADDOCK (see [HADDOCK General Concepts](#haddock-general-concepts)). When docking multiple subunits, depending on the amount of information available to guide the docking, it is recommended to increase the sampling. For this tutorial we will use 2000/200/200 (but if you are using course accounts, this will be automatically downsampled to 250/50/50). 
 
 <a class="prompt prompt-info">
-Number of structures for rigid body docking -> 4000
+Number of structures for rigid body docking -> 2000
 </a>
 
 <a class="prompt prompt-info">
-Number of structures for semi-flexible refinement -> 400
+Number of structures for semi-flexible refinement -> 200
 </a>
 
 <a class="prompt prompt-info">
-Number of structures for the final refinement -> 400
+Number of structures for the final refinement -> 200
 </a>
 
 <a class="prompt prompt-info">
-Number of structures to analyze -> 400
+Number of structures to analyze -> 200
 </a>
 
 When docking only with  interface information (i.e. no specific distances), we are systematically sampling the 180 degrees rotated solutions for each interface, minimizing the rotated solution and keeping the best of the two in terms of HADDOCK score. Since here we are using rather specific distance restraints, we can turn off this option to save time.
@@ -1395,12 +1395,22 @@ the docking will take quite some time (about 22 hours). So be patient. You will 
 ### First analysis of the docking results
 
 
-Once your run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [**link**](https://wenmr.science.uu.nl/haddock2.4/run/4242424242/188552-RPolIII-EMfit-C34-wHTH1-wHTH2-C31-xlinks){:target="_blank"}.
+Once your run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [**link**](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/797985-RPolIII-EMfit-C34-wHTH1-wHTH2-C31-xlinks){:target="_blank"}.
 
 <a class="prompt prompt-question">Inspect the result page</a>
 <a class="prompt prompt-question">How many clusters are generated?</a>
 <a class="prompt prompt-question">Consider the cluster scores and their standard deviations.</a>
-<a class="prompt prompt-question">If there is more than one cluster, is  the top ranked cluster significantly better than the second one? (This is also reflected in the z-score).</a>
+<a class="prompt prompt-question">If there is more than one cluster, is  the top ranked cluster significantly better than the second one? (consider also the standard deviations).</a>
+
+<details style="background-color:#DAE4E7"><summary><b>See solution:</b>
+</summary>
+<br>
+<p>HADDOCK clustered 373 models into 8 clusters. The two top-ranked clusters have overlapping scores within their standard deviations:
+cluster 1 (HADDOCK score -589.3 ± 43.4, Z-score -1.3) and cluster 2 (-572.5 ± 26.4, Z-score -1.2).
+The top-ranked cluster is thus not significantly better than the second one in terms of score.
+Cluster 1 is however by far the most populated one, with 268 models, compared to 47 for cluster 2.</p>
+</details>
+<br>
 
 
 <hr>
@@ -1451,7 +1461,7 @@ __Reminder:__ Chain A corresponds to PolIII-core (medium slate blue), B to C82 (
 <details style="background-color:#DAE4E7"><summary><b>See ChimeraX view:</b>
 </summary>
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III/strategy2-clusters-chimerax.png">
+<img src="/education/HADDOCK24/RNA-Pol-III/docking-clusters-chimerax.png">
 <p> <i>ChimeraX view of the various clusters, superimposed on PolIII core</i></p>
 </figure>
 </details>
@@ -1466,16 +1476,12 @@ Which domain is the best defined over the various clusters?
 Which domain is the worst defined over the various clusters?
 </a>
 
-<a class="prompt prompt-question">
-How different are the solutions compared to those of Strategy1?
-</a>
-
 
 <hr>
 ### Satisfaction of cross-link restraints
 
 Let's now check if the solutions actually fit the cross-links we defined.
-Start a new ChimeraX session and load as described above the model you want to analyze, e.g. the best model of the top
+Start a new ChimeraX session (or clear the current one with `close session`, see above) and load as described above the model you want to analyze, e.g. the best model of the top
 ranking cluster, `clusterX_1.pdb`.
 
 
@@ -1515,7 +1521,7 @@ If not, which ones are not satistified?
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
 <br>
-<p>The fit is better than in strategy 1, but thre is still one heavily violated cross-link between resid 472 of C82 and resid 5394 of the core. This might well be a false positive. It was not detected by DISVIS because the analysis is only performed for pair of domain and it can be satisfied, while when considering all molecules and all cross-links it can not.</p>
+<p>There is still one heavily violated cross-link between resid 472 of C82 and resid 5394 of the core. This might well be a false positive. It was not detected by DISVIS because the analysis is only performed for pair of domain and it can be satisfied, while when considering all molecules and all cross-links it can not.</p>
 </details>
 <br>
 
@@ -1626,7 +1632,7 @@ If not, which ones are not satistified?
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
 <br>
-<p>All cross-links are now stastified, including the one with C82 that was not in strategy 1.</p>
+<p>All cross-links are now satisfied.</p>
 </details>
 <br>
 
@@ -1701,7 +1707,7 @@ What is the best correlation coefficient obtained?
 <details style="background-color:#DAE4E7"><summary><b>See the best model fit into the EM map:</b>
 </summary>
 <figure align="center">
-<img src="/education/HADDOCK24/RNA-Pol-III/strategy2-EMfit.png">
+<img src="/education/HADDOCK24/RNA-Pol-III/docking-EMfit.png">
 </figure>
 <br>
 <p>View of cluster2_4 in the the EM map (correlation 0.9526). C82 and C34 wHTH3 domain (coral) nicely fit into the density. The other two C34 domains (dark see green and burly wood are found in a region where some density starts to appear seen when playing with the density level, which might indicate some disorder / conformational variability.</p>
