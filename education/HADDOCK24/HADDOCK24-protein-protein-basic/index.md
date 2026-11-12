@@ -342,7 +342,7 @@ PDB structure to submit -> Browse and select *hpr-ensemble.pdb* (the ensemble of
 
 * **Step 5:** Click on the "Next" button at the bottom left of the interface. 
 
-This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](http://molprobity.biochem.duke.edu/){:target="_blank"} to check side chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
+This will upload the structures to the HADDOCK webserver where they will be processed and validated (checked for formatting errors). The server makes use of [Molprobity](https://molprobity.lbl.gov/){:target="_blank"} to check side chain conformations, eventually swap them (e.g. for asparagines) and define the protonation state of histidine residues.
 
 
 #### HADDOCK submission: Input parameters
@@ -373,7 +373,7 @@ Active residues (directly involved in the interaction) -> 15,16,17,20,48,49,51,5
 
 ##### Checking the histidines protonation state
 
-The HADDOCK server assigns the protonation states of histidines automatically using [MolProbity](http://molprobity.biochem.duke.edu/){:target="_blank"}.
+The HADDOCK server assigns the protonation states of histidines automatically using [MolProbity](https://molprobity.lbl.gov/){:target="_blank"}.
 However, we know that the histidine of HPR that is expected to interact with the phosphate group should be positively charged.
 From the literature, this residue in HPR is most likely histidine 15. Let's make sure this histidine is positively charged. 
 
