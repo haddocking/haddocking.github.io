@@ -13,7 +13,7 @@ This tutorial consists of the following sections:
 {:toc}
 
 This tutorial was last updated on 08-11-2026 and is up-to-date 
-with PowerFit release v6.0.2 as used on the web server. <br>
+with PowerFit release v6.1.0 as used on the web server. <br>
 
 ## Introduction
 
