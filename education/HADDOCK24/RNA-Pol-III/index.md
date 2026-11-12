@@ -1370,7 +1370,7 @@ Cutoff for clustering -> 0.75
 </a>
 
 
-__Note__: Because of the size of the system, this docking run takes quite some time to complete: about 22 hours in total.
+__Note__: Because of the size of the system, this docking run takes quite some time to complete: about 7 hours in total.
 **We therefore recommend to skip the submission step below and to proceed with the analysis of the pre-calculated run.**
 
 * **Step 15:** Submission.
@@ -1387,7 +1387,7 @@ Upon submission you will be presented with a web page which also contains a link
 Your run will first be queued but eventually its status will change to "Running" with the page showing the progress of the calculations.
 The page will automatically refresh and the results will appear upon completion (which can take between 1/2 hour to
 several hours depending on the size of your system and the load of the server). Since we are dealing here with a large complex, 
-the docking will take quite some time (about 22 hours). So be patient. You will be notified by email once your job has successfully completed.
+the docking will take quite some time (about 7 hours). So be patient. You will be notified by email once your job has successfully completed.
 
 
 
@@ -1395,7 +1395,7 @@ the docking will take quite some time (about 22 hours). So be patient. You will 
 ### First analysis of the docking results
 
 
-Once your run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [**link**](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/797985-RPolIII-EMfit-C34-wHTH1-wHTH2-C31-xlinks){:target="_blank"}.
+Once your run has completed you will be presented with the result page. You can also access a pre-calculated run following the docking scenario just described from the following [**link**](https://wenmr.science.uu.nl/haddock2.4/result/4242424242/798370-RNA-PolIII-core-C82-C34-wHTHs-C31pept){:target="_blank"}.
 
 <a class="prompt prompt-question">Inspect the result page</a>
 <a class="prompt prompt-question">How many clusters are generated?</a>
@@ -1405,10 +1405,9 @@ Once your run has completed you will be presented with the result page. You can 
 <details style="background-color:#DAE4E7"><summary><b>See solution:</b>
 </summary>
 <br>
-<p>HADDOCK clustered 373 models into 8 clusters. The two top-ranked clusters have overlapping scores within their standard deviations:
-cluster 1 (HADDOCK score -589.3 ± 43.4, Z-score -1.3) and cluster 2 (-572.5 ± 26.4, Z-score -1.2).
-The top-ranked cluster is thus not significantly better than the second one in terms of score.
-Cluster 1 is however by far the most populated one, with 268 models, compared to 47 for cluster 2.</p>
+<p>HADDOCK clustered 188 models into 2 clusters. The top-ranked cluster 1 (HADDOCK score -676.4 ± 15.3, Z-score -1.0)
+is significantly better than cluster 2 (-500.7 ± 50.0, Z-score 1.0): the difference in score is much larger than the standard deviations.
+Cluster 1 is also by far the most populated one, with 184 models, compared to only 4 for cluster 2.</p>
 </details>
 <br>
 
@@ -1521,7 +1520,12 @@ If not, which ones are not satistified?
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
 <br>
-<p>There is still one heavily violated cross-link between resid 472 of C82 and resid 5394 of the core. This might well be a false positive. It was not detected by DISVIS because the analysis is only performed for pair of domain and it can be satisfied, while when considering all molecules and all cross-links it can not.</p>
+<p>Not all cross-links are satisfied (upper limit of 30Å). As already seen for the PowerFit-refined model, the two cross-links between C82 and the core are violated:
+the one between resid 472 of C82 and resid 5394 of the core heavily (~65Å), the one with resid 520 of C82 less (~36Å).
+This might be a false positive, or point to conformational changes not accounted for in our modelling.
+It was not detected by DisVis because the analysis is only performed for a pair of domains, where it can be satisfied, while when considering all molecules and all cross-links it can not.</p>
+<p>The cross-links between C82 and the C31 peptides (resid 50 and 612 of C82 with resid 91 of chain F and resid 111 of chain G, respectively) are found at the 30Å upper limit:
+they are just satisfied, which indicates that they are pulling on the C31 peptides.</p>
 </details>
 <br>
 
@@ -1568,13 +1572,11 @@ If not, which ones are not satistified?
 
 You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
 
-In the Chimerax command window type:
+The cross-links between C34 wHTH2 and C82 (resid 135, 138 and 141 of wHTH2 with resid 520 of C82) were already measured in the C82 section above.
+The remaining cross-link is the one with the core. In the Chimerax command window type:
 
 <a class="prompt prompt-pymol">
 distance /D:123@CB /A:5394@CB<br>
-distance /D:135@CB /B:520@CB<br>
-distance /D:138@CB /B:520@CB<br>
-distance /D:141@CB /B:520@CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1593,7 +1595,7 @@ If not, which ones are not satistified?
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
 <br>
-<p>In the case of C34 wHTH2, all cross-links are satisfied.</p>
+<p>In the case of C34 wHTH2, all cross-links are satisfied, but the one between resid 123 of wHTH2 and resid 5394 of the core is at the 30Å upper limit.</p>
 </details>
 <br>
 
@@ -1632,7 +1634,7 @@ If not, which ones are not satistified?
 <details style="background-color:#DAE4E7"><summary><b>See answer:</b>
 </summary>
 <br>
-<p>All cross-links are now satisfied.</p>
+<p>All cross-links are satisfied, but three of them are at the 30Å upper limit: resid 91 of chain F with resid 1458 of the core and with resid 50 of C82, and resid 111 of chain G with resid 612 of C82.</p>
 </details>
 <br>
 
@@ -1643,7 +1645,8 @@ If not, which ones are not satistified?
 We will now fit the models we obained into the unpublished 9Å resolution cryo-EM map for the RNA Polymerase III apo state.
 For this we will use the [UCSF ChimeraX][link-chimerax]{:target="_blank"} software.
 
-For this open the PDB file of the cluster you want to fit and the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory).
+For this open first the PDB file of the cluster you want to fit and then the EM map `PolIII_9A.mrc` (available in the `cryo-EM` directory),
+so that the cluster is model #1 and the map model #2 (the model numbers in the commands below depend on it).
 
 <a class="prompt prompt-info">
   ChimeraX menu → File → Open... → Select the file
@@ -1655,10 +1658,8 @@ Repeat this for each file. Chimera will automatically guess their type.
 Or you can open the files through the ChimeraX command line:
 
 <a class="prompt prompt-pymol">
-  open /path/to/clusterX_1.pdb
-</a>
-<a class="prompt prompt-pymol">
-  open /path/to/PolIII_9A.mrc
+open /path/to/clusterX_1.pdb<br>
+open /path/to/PolIII_9A.mrc<br>
 </a>
 
 
@@ -1669,28 +1670,28 @@ envelope will shrink while lower values might even display the noise in the map.
 First make the density transparent, in order to be able to see the fitted structure inside:
 
 <a class="prompt prompt-pymol">
-transparency #density 60
+transparency #2 60
 </a>
 
-In order to distinguish the various chains color the structure by chain:
+In order to distinguish the various chains, show the structure as cartoon and color it by chain:
 
 <a class="prompt prompt-pymol">
-color bychain
+hide atoms<br>
+show cartoon<br>
+color bychain<br>
 </a>
 
-In order to perform the fit, we will use the Command Line more:
+Since the core and C82 were kept fixed in their EM-fitted positions during the docking, the docking models are already placed in the map.
+We therefore only need to locally optimise the fit, without a global search. In order to perform the fit, we will use the command line:
 
 <a class="prompt prompt-pymol">
-fitmap #model inMap #density search 5<br>
+fitmap #1 inMap #2<br>
+fitmap #1 inMap #2 resolution 9<br>
 </a>
 
-When the fit completes, a window will appear showing the fit results in terms of correlation coefficients.
+The first command optimises the fit of the atoms into the map. The second one simulates a map at 9Å resolution from the model and reports its correlation coefficient with the cryo-EM map.
+The correlation is shown in the bottom bar of the ChimeraX window and in the Log panel.
 Note the value for the cluster you selected.
-You can also try to further improve the fit":
-
-<a class="prompt prompt-pymol">
-fitmap #model inMap #density resolution 9<br>
-</a>
 
 You can repeat this procedure for the various clusters and try to find out which solution best fits the map.
 In case you upload multiple models simultaneously, make sure to use the correct model number in the above commands (check the Model Panel window for this).
@@ -1710,7 +1711,9 @@ What is the best correlation coefficient obtained?
 <img src="/education/HADDOCK24/RNA-Pol-III/docking-EMfit.png">
 </figure>
 <br>
-<p>View of cluster2_4 in the the EM map (correlation 0.9526). C82 and C34 wHTH3 domain (coral) nicely fit into the density. The other two C34 domains (dark see green and burly wood are found in a region where some density starts to appear seen when playing with the density level, which might indicate some disorder / conformational variability.</p>
+<p>View of cluster1_1 in the EM map (correlation 0.948), shown at two different density levels (left: higher, right: lower).
+All docking models fit the map equally well (correlations between 0.945 and 0.949): the fit to the map does not discriminate between the clusters.
+C82 (light coral) and C34 wHTH3 domain (coral) nicely fit into the density. The other two C34 domains (dark sea green and burly wood) are found in a region where some density starts to appear when lowering the density level, which might indicate some disorder / conformational variability.</p>
 </details>
 <br>
 <br>
