@@ -1486,9 +1486,10 @@ ranking cluster, `clusterX_1.pdb`.
 
 #### Analysing the cross-links defining the position of the C82 domain
 
-In the ChimeraX command window type:
+In the ChimeraX command window type (the first command, `~distance`, removes any distance shown previously; each block of distance commands below starts with it):
 
 <a class="prompt prompt-pymol">
+~distance<br>
 color bychain<br>
 hide atoms<br>
 show cartoon<br>
@@ -1532,11 +1533,10 @@ they are just satisfied, which indicates that they are pulling on the C31 peptid
 
 #### Analysing the cross-links defining the position of the C34 wHTH1 domain
 
-You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
-
 In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
+~distance<br>
 distance /C:62@CB /D:82@CB<br>
 distance /C:62@CB /D:83@CB<br>
 distance /C:62@CB /D:123@CB<br>
@@ -1570,13 +1570,14 @@ If not, which ones are not satistified?
 
 #### Analysing the cross-links defining the position of the C34 wHTH2 domain
 
-You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
-
-The cross-links between C34 wHTH2 and C82 (resid 135, 138 and 141 of wHTH2 with resid 520 of C82) were already measured in the C82 section above.
-The remaining cross-link is the one with the core. In the Chimerax command window type:
+In the ChimeraX command window type:
 
 <a class="prompt prompt-pymol">
+~distance<br>
 distance /D:123@CB /A:5394@CB<br>
+distance /D:135@CB /B:520@CB<br>
+distance /D:138@CB /B:520@CB<br>
+distance /D:141@CB /B:520@CB<br>
 </a>
 
 <a class="prompt prompt-info">
@@ -1602,11 +1603,10 @@ If not, which ones are not satistified?
 
 #### Analysing the cross-links defining the position of the C31 peptides
 
-You can first hide the distances shown for C82 by pressing the "Delete" in the distance tool window.
-
 In the Chimerax command window type:
 
 <a class="prompt prompt-pymol">
+~distance<br>
 distance /F:91@CB /A:1458@CB<br>
 distance /F:91@CB /A:3402@CB<br>
 distance /F:91@CB /A:4206@CB<br>
