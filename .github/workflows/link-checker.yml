@@ -4,8 +4,8 @@ on:
   pull_request:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: "00 18 * * *"
+  # schedule:
+  #  - cron: "00 18 * * *"
 
 jobs:
   linkChecker:
